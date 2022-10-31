@@ -74,19 +74,19 @@ class CompliancePreDefinedSearchesPredefinedSearchesItemNormalizer implements De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getCategoryName()) {
+        if ($object->isInitialized('categoryName') && null !== $object->getCategoryName()) {
             $data['categoryName'] = $object->getCategoryName();
         }
-        if (null !== $object->getProductName()) {
+        if ($object->isInitialized('productName') && null !== $object->getProductName()) {
             $data['productName'] = $object->getProductName();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getConfidence()) {
+        if ($object->isInitialized('confidence') && null !== $object->getConfidence()) {
             $data['confidence'] = $object->getConfidence();
         }
         foreach ($object as $key => $value) {

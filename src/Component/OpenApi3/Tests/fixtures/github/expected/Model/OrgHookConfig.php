@@ -5,6 +5,14 @@ namespace Github\Model;
 class OrgHookConfig extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class OrgHookConfig extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -67,6 +76,7 @@ class OrgHookConfig extends \ArrayObject
      */
     public function setInsecureSsl(string $insecureSsl) : self
     {
+        $this->initialized['insecureSsl'] = true;
         $this->insecureSsl = $insecureSsl;
         return $this;
     }
@@ -88,6 +98,7 @@ class OrgHookConfig extends \ArrayObject
      */
     public function setContentType(string $contentType) : self
     {
+        $this->initialized['contentType'] = true;
         $this->contentType = $contentType;
         return $this;
     }
@@ -109,6 +120,7 @@ class OrgHookConfig extends \ArrayObject
      */
     public function setSecret(string $secret) : self
     {
+        $this->initialized['secret'] = true;
         $this->secret = $secret;
         return $this;
     }

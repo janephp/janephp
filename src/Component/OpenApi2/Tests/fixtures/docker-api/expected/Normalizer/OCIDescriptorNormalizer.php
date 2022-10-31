@@ -62,13 +62,13 @@ class OCIDescriptorNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMediaType()) {
+        if ($object->isInitialized('mediaType') && null !== $object->getMediaType()) {
             $data['mediaType'] = $object->getMediaType();
         }
-        if (null !== $object->getDigest()) {
+        if ($object->isInitialized('digest') && null !== $object->getDigest()) {
             $data['digest'] = $object->getDigest();
         }
-        if (null !== $object->getSize()) {
+        if ($object->isInitialized('size') && null !== $object->getSize()) {
             $data['size'] = $object->getSize();
         }
         if (!($context['skip_validation'] ?? false)) {

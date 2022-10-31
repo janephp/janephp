@@ -92,14 +92,14 @@ class SchemaPermissionSetCreateRequestNormalizer implements DenormalizerInterfac
     {
         $data = array();
         $data['names'] = $object->getNames();
-        if (null !== $object->getUserRolesRights()) {
+        if ($object->isInitialized('userRolesRights') && null !== $object->getUserRolesRights()) {
             $values = array();
             foreach ($object->getUserRolesRights() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['userRolesRights'] = $values;
         }
-        if (null !== $object->getUserRolesPermissionSetRights()) {
+        if ($object->isInitialized('userRolesPermissionSetRights') && null !== $object->getUserRolesPermissionSetRights()) {
             $values_1 = array();
             foreach ($object->getUserRolesPermissionSetRights() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
@@ -107,7 +107,7 @@ class SchemaPermissionSetCreateRequestNormalizer implements DenormalizerInterfac
             $data['userRolesPermissionSetRights'] = $values_1;
         }
         $data['exclusive'] = $object->getExclusive();
-        if (null !== $object->getRequestId()) {
+        if ($object->isInitialized('requestId') && null !== $object->getRequestId()) {
             $data['requestId'] = $object->getRequestId();
         }
         foreach ($object as $key => $value_2) {

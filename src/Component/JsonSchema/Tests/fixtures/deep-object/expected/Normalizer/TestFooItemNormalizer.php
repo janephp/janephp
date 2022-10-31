@@ -52,7 +52,7 @@ class TestFooItemNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBar()) {
+        if ($object->isInitialized('bar') && null !== $object->getBar()) {
             $data['bar'] = $object->getBar();
         }
         return $data;

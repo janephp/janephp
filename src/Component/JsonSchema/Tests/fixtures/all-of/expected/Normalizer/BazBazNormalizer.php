@@ -46,7 +46,7 @@ class BazBazNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBaz()) {
+        if ($object->isInitialized('baz') && null !== $object->getBaz()) {
             $data['baz'] = $object->getBaz();
         }
         return $data;

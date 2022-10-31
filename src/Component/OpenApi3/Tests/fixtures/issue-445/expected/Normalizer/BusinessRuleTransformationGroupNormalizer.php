@@ -81,24 +81,24 @@ class BusinessRuleTransformationGroupNormalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getInputs()) {
+        if ($object->isInitialized('inputs') && null !== $object->getInputs()) {
             $values = array();
             foreach ($object->getInputs() as $value) {
                 $values[] = $value;
             }
             $data['inputs'] = $values;
         }
-        if (null !== $object->getTransformations()) {
+        if ($object->isInitialized('transformations') && null !== $object->getTransformations()) {
             $values_1 = array();
             foreach ($object->getTransformations() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['transformations'] = $values_1;
         }
-        if (null !== $object->getStoreIn()) {
+        if ($object->isInitialized('storeIn') && null !== $object->getStoreIn()) {
             $data['storeIn'] = $object->getStoreIn();
         }
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         return $data;

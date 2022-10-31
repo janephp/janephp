@@ -70,13 +70,13 @@ class SingleTweetLookupResponseNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getData()) {
+        if ($object->isInitialized('data') && null !== $object->getData()) {
             $data['data'] = $object->getData();
         }
-        if (null !== $object->getIncludes()) {
+        if ($object->isInitialized('includes') && null !== $object->getIncludes()) {
             $data['includes'] = $this->normalizer->normalize($object->getIncludes(), 'json', $context);
         }
-        if (null !== $object->getErrors()) {
+        if ($object->isInitialized('errors') && null !== $object->getErrors()) {
             $values = array();
             foreach ($object->getErrors() as $value) {
                 $values[] = $value;

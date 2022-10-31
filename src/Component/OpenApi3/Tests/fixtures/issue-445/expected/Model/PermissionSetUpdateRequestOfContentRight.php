@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class PermissionSetUpdateRequestOfContentRight
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Language specific permission set names.
      *
      * @var mixed
@@ -40,6 +48,7 @@ class PermissionSetUpdateRequestOfContentRight
      */
     public function setNames($names) : self
     {
+        $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }
@@ -61,6 +70,7 @@ class PermissionSetUpdateRequestOfContentRight
      */
     public function setUserRolesRights(?array $userRolesRights) : self
     {
+        $this->initialized['userRolesRights'] = true;
         $this->userRolesRights = $userRolesRights;
         return $this;
     }
@@ -82,6 +92,7 @@ class PermissionSetUpdateRequestOfContentRight
      */
     public function setUserRolesPermissionSetRights(?array $userRolesPermissionSetRights) : self
     {
+        $this->initialized['userRolesPermissionSetRights'] = true;
         $this->userRolesPermissionSetRights = $userRolesPermissionSetRights;
         return $this;
     }

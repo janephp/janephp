@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class FieldLong extends FieldBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The long pattern structure.
      *
      * @var string|null
@@ -46,6 +54,7 @@ class FieldLong extends FieldBase
      */
     public function setPattern(?string $pattern) : self
     {
+        $this->initialized['pattern'] = true;
         $this->pattern = $pattern;
         return $this;
     }
@@ -67,6 +76,7 @@ class FieldLong extends FieldBase
      */
     public function setMinimum(?float $minimum) : self
     {
+        $this->initialized['minimum'] = true;
         $this->minimum = $minimum;
         return $this;
     }
@@ -88,6 +98,7 @@ class FieldLong extends FieldBase
      */
     public function setMaximum(?float $maximum) : self
     {
+        $this->initialized['maximum'] = true;
         $this->maximum = $maximum;
         return $this;
     }
@@ -109,6 +120,7 @@ class FieldLong extends FieldBase
      */
     public function setBoost(float $boost) : self
     {
+        $this->initialized['boost'] = true;
         $this->boost = $boost;
         return $this;
     }

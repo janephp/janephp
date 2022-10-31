@@ -5,6 +5,14 @@ namespace Github\Model;
 class InteractionLimit extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The interaction limit to enable.
      *
      * @var string
@@ -40,6 +48,7 @@ class InteractionLimit extends \ArrayObject
      */
     public function setLimit(string $limit) : self
     {
+        $this->initialized['limit'] = true;
         $this->limit = $limit;
         return $this;
     }
@@ -61,6 +70,7 @@ class InteractionLimit extends \ArrayObject
      */
     public function setOrigin(string $origin) : self
     {
+        $this->initialized['origin'] = true;
         $this->origin = $origin;
         return $this;
     }
@@ -82,6 +92,7 @@ class InteractionLimit extends \ArrayObject
      */
     public function setExpiresAt(\DateTime $expiresAt) : self
     {
+        $this->initialized['expiresAt'] = true;
         $this->expiresAt = $expiresAt;
         return $this;
     }

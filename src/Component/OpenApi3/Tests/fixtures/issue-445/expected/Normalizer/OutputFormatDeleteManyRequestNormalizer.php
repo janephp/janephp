@@ -59,7 +59,7 @@ class OutputFormatDeleteManyRequestNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getIds()) {
+        if ($object->isInitialized('ids') && null !== $object->getIds()) {
             $values = array();
             foreach ($object->getIds() as $value) {
                 $values[] = $value;

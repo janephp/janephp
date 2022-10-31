@@ -70,10 +70,10 @@ class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Normalizer imp
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTotalCount()) {
+        if ($object->isInitialized('totalCount') && null !== $object->getTotalCount()) {
             $data['total_count'] = $object->getTotalCount();
         }
-        if (null !== $object->getCheckRuns()) {
+        if ($object->isInitialized('checkRuns') && null !== $object->getCheckRuns()) {
             $values = array();
             foreach ($object->getCheckRuns() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

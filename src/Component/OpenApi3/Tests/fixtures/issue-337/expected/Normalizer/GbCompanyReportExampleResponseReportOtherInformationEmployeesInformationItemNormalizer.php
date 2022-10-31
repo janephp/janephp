@@ -65,10 +65,10 @@ class GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationIt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getYear()) {
+        if ($object->isInitialized('year') && null !== $object->getYear()) {
             $data['year'] = $object->getYear();
         }
-        if (null !== $object->getNumberOfEmployees()) {
+        if ($object->isInitialized('numberOfEmployees') && null !== $object->getNumberOfEmployees()) {
             $data['numberOfEmployees'] = $object->getNumberOfEmployees();
         }
         foreach ($object as $key => $value) {

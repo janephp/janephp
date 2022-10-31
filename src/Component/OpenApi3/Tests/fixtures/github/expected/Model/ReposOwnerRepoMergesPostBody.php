@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoMergesPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The name of the base branch that the head will be merged into.
      *
      * @var string
@@ -40,6 +48,7 @@ class ReposOwnerRepoMergesPostBody extends \ArrayObject
      */
     public function setBase(string $base) : self
     {
+        $this->initialized['base'] = true;
         $this->base = $base;
         return $this;
     }
@@ -61,6 +70,7 @@ class ReposOwnerRepoMergesPostBody extends \ArrayObject
      */
     public function setHead(string $head) : self
     {
+        $this->initialized['head'] = true;
         $this->head = $head;
         return $this;
     }
@@ -82,6 +92,7 @@ class ReposOwnerRepoMergesPostBody extends \ArrayObject
      */
     public function setCommitMessage(string $commitMessage) : self
     {
+        $this->initialized['commitMessage'] = true;
         $this->commitMessage = $commitMessage;
         return $this;
     }

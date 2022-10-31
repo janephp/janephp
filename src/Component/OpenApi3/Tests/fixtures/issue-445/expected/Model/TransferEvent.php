@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class TransferEvent extends ApplicationEvent
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -34,6 +42,7 @@ class TransferEvent extends ApplicationEvent
      */
     public function setTransferId(?string $transferId) : self
     {
+        $this->initialized['transferId'] = true;
         $this->transferId = $transferId;
         return $this;
     }
@@ -55,6 +64,7 @@ class TransferEvent extends ApplicationEvent
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }

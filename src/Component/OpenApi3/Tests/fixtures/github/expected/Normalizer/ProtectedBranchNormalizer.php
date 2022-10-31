@@ -95,28 +95,28 @@ class ProtectedBranchNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $data = array();
         $data['url'] = $object->getUrl();
-        if (null !== $object->getRequiredStatusChecks()) {
+        if ($object->isInitialized('requiredStatusChecks') && null !== $object->getRequiredStatusChecks()) {
             $data['required_status_checks'] = $this->normalizer->normalize($object->getRequiredStatusChecks(), 'json', $context);
         }
-        if (null !== $object->getRequiredPullRequestReviews()) {
+        if ($object->isInitialized('requiredPullRequestReviews') && null !== $object->getRequiredPullRequestReviews()) {
             $data['required_pull_request_reviews'] = $this->normalizer->normalize($object->getRequiredPullRequestReviews(), 'json', $context);
         }
-        if (null !== $object->getRequiredSignatures()) {
+        if ($object->isInitialized('requiredSignatures') && null !== $object->getRequiredSignatures()) {
             $data['required_signatures'] = $this->normalizer->normalize($object->getRequiredSignatures(), 'json', $context);
         }
-        if (null !== $object->getEnforceAdmins()) {
+        if ($object->isInitialized('enforceAdmins') && null !== $object->getEnforceAdmins()) {
             $data['enforce_admins'] = $this->normalizer->normalize($object->getEnforceAdmins(), 'json', $context);
         }
-        if (null !== $object->getRequiredLinearHistory()) {
+        if ($object->isInitialized('requiredLinearHistory') && null !== $object->getRequiredLinearHistory()) {
             $data['required_linear_history'] = $this->normalizer->normalize($object->getRequiredLinearHistory(), 'json', $context);
         }
-        if (null !== $object->getAllowForcePushes()) {
+        if ($object->isInitialized('allowForcePushes') && null !== $object->getAllowForcePushes()) {
             $data['allow_force_pushes'] = $this->normalizer->normalize($object->getAllowForcePushes(), 'json', $context);
         }
-        if (null !== $object->getAllowDeletions()) {
+        if ($object->isInitialized('allowDeletions') && null !== $object->getAllowDeletions()) {
             $data['allow_deletions'] = $this->normalizer->normalize($object->getAllowDeletions(), 'json', $context);
         }
-        if (null !== $object->getRestrictions()) {
+        if ($object->isInitialized('restrictions') && null !== $object->getRestrictions()) {
             $data['restrictions'] = $this->normalizer->normalize($object->getRestrictions(), 'json', $context);
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyDismissalRestrictions extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The list of user `login`s with dismissal access
      *
      * @var string[]
@@ -34,6 +42,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyD
      */
     public function setUsers(array $users) : self
     {
+        $this->initialized['users'] = true;
         $this->users = $users;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyD
      */
     public function setTeams(array $teams) : self
     {
+        $this->initialized['teams'] = true;
         $this->teams = $teams;
         return $this;
     }

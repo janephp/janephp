@@ -58,7 +58,7 @@ class SubBazNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getParent()) {
+        if ($object->isInitialized('parent') && null !== $object->getParent()) {
             $data['parent'] = $this->normalizer->normalize($object->getParent(), 'json', $context);
         }
         foreach ($object as $key => $value) {

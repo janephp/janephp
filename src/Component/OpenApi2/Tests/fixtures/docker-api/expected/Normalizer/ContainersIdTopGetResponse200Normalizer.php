@@ -71,14 +71,14 @@ class ContainersIdTopGetResponse200Normalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTitles()) {
+        if ($object->isInitialized('titles') && null !== $object->getTitles()) {
             $values = array();
             foreach ($object->getTitles() as $value) {
                 $values[] = $value;
             }
             $data['Titles'] = $values;
         }
-        if (null !== $object->getProcesses()) {
+        if ($object->isInitialized('processes') && null !== $object->getProcesses()) {
             $values_1 = array();
             foreach ($object->getProcesses() as $value_1) {
                 $values_2 = array();

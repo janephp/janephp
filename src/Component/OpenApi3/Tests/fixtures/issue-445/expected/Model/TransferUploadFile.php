@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class TransferUploadFile extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Replaced in favor of RequestId. Client generated identifier of the item.
      *
      * @deprecated
@@ -46,6 +54,7 @@ class TransferUploadFile extends \ArrayObject
      */
     public function setIdentifier(?string $identifier) : self
     {
+        $this->initialized['identifier'] = true;
         $this->identifier = $identifier;
         return $this;
     }
@@ -67,6 +76,7 @@ class TransferUploadFile extends \ArrayObject
      */
     public function setRequestId(?string $requestId) : self
     {
+        $this->initialized['requestId'] = true;
         $this->requestId = $requestId;
         return $this;
     }
@@ -88,6 +98,7 @@ class TransferUploadFile extends \ArrayObject
      */
     public function setFileName(string $fileName) : self
     {
+        $this->initialized['fileName'] = true;
         $this->fileName = $fileName;
         return $this;
     }

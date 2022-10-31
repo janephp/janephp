@@ -5,6 +5,14 @@ namespace Github\Model;
 class PageBuild extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -70,6 +78,7 @@ class PageBuild extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -91,6 +100,7 @@ class PageBuild extends \ArrayObject
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -112,6 +122,7 @@ class PageBuild extends \ArrayObject
      */
     public function setError(PageBuildError $error) : self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
         return $this;
     }
@@ -133,6 +144,7 @@ class PageBuild extends \ArrayObject
      */
     public function setPusher(?PageBuildPusher $pusher) : self
     {
+        $this->initialized['pusher'] = true;
         $this->pusher = $pusher;
         return $this;
     }
@@ -154,6 +166,7 @@ class PageBuild extends \ArrayObject
      */
     public function setCommit(string $commit) : self
     {
+        $this->initialized['commit'] = true;
         $this->commit = $commit;
         return $this;
     }
@@ -175,6 +188,7 @@ class PageBuild extends \ArrayObject
      */
     public function setDuration(int $duration) : self
     {
+        $this->initialized['duration'] = true;
         $this->duration = $duration;
         return $this;
     }
@@ -196,6 +210,7 @@ class PageBuild extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -217,6 +232,7 @@ class PageBuild extends \ArrayObject
      */
     public function setUpdatedAt(\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }

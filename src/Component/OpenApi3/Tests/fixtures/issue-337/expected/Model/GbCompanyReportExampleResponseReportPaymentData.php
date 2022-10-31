@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var float
@@ -166,6 +174,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setPaymentsOnFile(float $paymentsOnFile) : self
     {
+        $this->initialized['paymentsOnFile'] = true;
         $this->paymentsOnFile = $paymentsOnFile;
         return $this;
     }
@@ -187,6 +196,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setPaymentsOnTime(float $paymentsOnTime) : self
     {
+        $this->initialized['paymentsOnTime'] = true;
         $this->paymentsOnTime = $paymentsOnTime;
         return $this;
     }
@@ -208,6 +218,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setPaymentsPaidLate(float $paymentsPaidLate) : self
     {
+        $this->initialized['paymentsPaidLate'] = true;
         $this->paymentsPaidLate = $paymentsPaidLate;
         return $this;
     }
@@ -229,6 +240,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setPaymentsSentLegal(float $paymentsSentLegal) : self
     {
+        $this->initialized['paymentsSentLegal'] = true;
         $this->paymentsSentLegal = $paymentsSentLegal;
         return $this;
     }
@@ -250,6 +262,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setPaymentsStillOwingLate(float $paymentsStillOwingLate) : self
     {
+        $this->initialized['paymentsStillOwingLate'] = true;
         $this->paymentsStillOwingLate = $paymentsStillOwingLate;
         return $this;
     }
@@ -271,6 +284,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setPaymentsPaid0to30Days(float $paymentsPaid0to30Days) : self
     {
+        $this->initialized['paymentsPaid0to30Days'] = true;
         $this->paymentsPaid0to30Days = $paymentsPaid0to30Days;
         return $this;
     }
@@ -292,6 +306,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setHighestInvoiceValueOutstandingLate(float $highestInvoiceValueOutstandingLate) : self
     {
+        $this->initialized['highestInvoiceValueOutstandingLate'] = true;
         $this->highestInvoiceValueOutstandingLate = $highestInvoiceValueOutstandingLate;
         return $this;
     }
@@ -313,6 +328,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setPaymentsPaid90DaysplusLate(float $paymentsPaid90DaysplusLate) : self
     {
+        $this->initialized['paymentsPaid90DaysplusLate'] = true;
         $this->paymentsPaid90DaysplusLate = $paymentsPaid90DaysplusLate;
         return $this;
     }
@@ -334,6 +350,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setTotalBalanceStillOwingLate(float $totalBalanceStillOwingLate) : self
     {
+        $this->initialized['totalBalanceStillOwingLate'] = true;
         $this->totalBalanceStillOwingLate = $totalBalanceStillOwingLate;
         return $this;
     }
@@ -355,6 +372,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setDbt(float $dbt) : self
     {
+        $this->initialized['dbt'] = true;
         $this->dbt = $dbt;
         return $this;
     }
@@ -376,6 +394,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setPaymentsPaid61to90Days(float $paymentsPaid61to90Days) : self
     {
+        $this->initialized['paymentsPaid61to90Days'] = true;
         $this->paymentsPaid61to90Days = $paymentsPaid61to90Days;
         return $this;
     }
@@ -397,6 +416,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setTotalBalanceStillOwing(float $totalBalanceStillOwing) : self
     {
+        $this->initialized['totalBalanceStillOwing'] = true;
         $this->totalBalanceStillOwing = $totalBalanceStillOwing;
         return $this;
     }
@@ -418,6 +438,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setPayments31to60DaysLate(float $payments31to60DaysLate) : self
     {
+        $this->initialized['payments31to60DaysLate'] = true;
         $this->payments31to60DaysLate = $payments31to60DaysLate;
         return $this;
     }
@@ -439,6 +460,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setPayments61to90DaysLate(float $payments61to90DaysLate) : self
     {
+        $this->initialized['payments61to90DaysLate'] = true;
         $this->payments61to90DaysLate = $payments61to90DaysLate;
         return $this;
     }
@@ -460,6 +482,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setHighestInvoiceValueOutstanding(float $highestInvoiceValueOutstanding) : self
     {
+        $this->initialized['highestInvoiceValueOutstanding'] = true;
         $this->highestInvoiceValueOutstanding = $highestInvoiceValueOutstanding;
         return $this;
     }
@@ -481,6 +504,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setPaymentsStillOwing(float $paymentsStillOwing) : self
     {
+        $this->initialized['paymentsStillOwing'] = true;
         $this->paymentsStillOwing = $paymentsStillOwing;
         return $this;
     }
@@ -502,6 +526,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setPaymentsWithinTerms(float $paymentsWithinTerms) : self
     {
+        $this->initialized['paymentsWithinTerms'] = true;
         $this->paymentsWithinTerms = $paymentsWithinTerms;
         return $this;
     }
@@ -523,6 +548,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setPayments0to30Dayslate(float $payments0to30Dayslate) : self
     {
+        $this->initialized['payments0to30Dayslate'] = true;
         $this->payments0to30Dayslate = $payments0to30Dayslate;
         return $this;
     }
@@ -544,6 +570,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setAverageInvoiceValue(float $averageInvoiceValue) : self
     {
+        $this->initialized['averageInvoiceValue'] = true;
         $this->averageInvoiceValue = $averageInvoiceValue;
         return $this;
     }
@@ -565,6 +592,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setPaymentsPaid31to60Days(float $paymentsPaid31to60Days) : self
     {
+        $this->initialized['paymentsPaid31to60Days'] = true;
         $this->paymentsPaid31to60Days = $paymentsPaid31to60Days;
         return $this;
     }
@@ -586,6 +614,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setPaymentsPaid90Daysplus(float $paymentsPaid90Daysplus) : self
     {
+        $this->initialized['paymentsPaid90Daysplus'] = true;
         $this->paymentsPaid90Daysplus = $paymentsPaid90Daysplus;
         return $this;
     }
@@ -607,6 +636,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setTotalInvoiceValues(float $totalInvoiceValues) : self
     {
+        $this->initialized['totalInvoiceValues'] = true;
         $this->totalInvoiceValues = $totalInvoiceValues;
         return $this;
     }
@@ -628,6 +658,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setPaymentTrend(string $paymentTrend) : self
     {
+        $this->initialized['paymentTrend'] = true;
         $this->paymentTrend = $paymentTrend;
         return $this;
     }
@@ -649,6 +680,7 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
      */
     public function setIndustryDBT(float $industryDBT) : self
     {
+        $this->initialized['industryDBT'] = true;
         $this->industryDBT = $industryDBT;
         return $this;
     }

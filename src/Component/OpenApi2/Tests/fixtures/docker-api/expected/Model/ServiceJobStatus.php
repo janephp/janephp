@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ServiceJobStatus
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * The version number of the object such as node, service, etc. This is needed
     to avoid conflicting writes. The client must send the version number along
     with the modified specification when updating these objects.
@@ -66,6 +74,7 @@ class ServiceJobStatus
     */
     public function setJobIteration(ObjectVersion $jobIteration) : self
     {
+        $this->initialized['jobIteration'] = true;
         $this->jobIteration = $jobIteration;
         return $this;
     }
@@ -91,6 +100,7 @@ class ServiceJobStatus
     */
     public function setLastExecution(string $lastExecution) : self
     {
+        $this->initialized['lastExecution'] = true;
         $this->lastExecution = $lastExecution;
         return $this;
     }

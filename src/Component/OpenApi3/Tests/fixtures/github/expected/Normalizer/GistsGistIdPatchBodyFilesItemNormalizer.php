@@ -69,10 +69,10 @@ class GistsGistIdPatchBodyFilesItemNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getContent()) {
+        if ($object->isInitialized('content') && null !== $object->getContent()) {
             $data['content'] = $object->getContent();
         }
-        if (null !== $object->getFilename()) {
+        if ($object->isInitialized('filename') && null !== $object->getFilename()) {
             $data['filename'] = $object->getFilename();
         }
         foreach ($object as $key => $value) {

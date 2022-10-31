@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class AccessCountriesResponse extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class AccessCountriesResponse extends \ArrayObject
      */
     public function setCorrelationId(string $correlationId) : self
     {
+        $this->initialized['correlationId'] = true;
         $this->correlationId = $correlationId;
         return $this;
     }
@@ -55,6 +64,7 @@ class AccessCountriesResponse extends \ArrayObject
      */
     public function setCountryAccess(array $countryAccess) : self
     {
+        $this->initialized['countryAccess'] = true;
         $this->countryAccess = $countryAccess;
         return $this;
     }

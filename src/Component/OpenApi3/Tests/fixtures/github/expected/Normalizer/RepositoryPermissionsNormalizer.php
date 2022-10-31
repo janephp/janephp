@@ -80,11 +80,11 @@ class RepositoryPermissionsNormalizer implements DenormalizerInterface, Normaliz
         $data = array();
         $data['admin'] = $object->getAdmin();
         $data['pull'] = $object->getPull();
-        if (null !== $object->getTriage()) {
+        if ($object->isInitialized('triage') && null !== $object->getTriage()) {
             $data['triage'] = $object->getTriage();
         }
         $data['push'] = $object->getPush();
-        if (null !== $object->getMaintain()) {
+        if ($object->isInitialized('maintain') && null !== $object->getMaintain()) {
             $data['maintain'] = $object->getMaintain();
         }
         foreach ($object as $key => $value) {

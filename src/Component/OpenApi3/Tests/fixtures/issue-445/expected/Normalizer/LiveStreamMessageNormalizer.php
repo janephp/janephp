@@ -116,29 +116,29 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
         $data['retries'] = $object->getRetries();
         $data['priority'] = $object->getPriority();
         $data['deduplicate'] = $object->getDeduplicate();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getCustomerId()) {
+        if ($object->isInitialized('customerId') && null !== $object->getCustomerId()) {
             $data['customerId'] = $object->getCustomerId();
         }
-        if (null !== $object->getCustomerAlias()) {
+        if ($object->isInitialized('customerAlias') && null !== $object->getCustomerAlias()) {
             $data['customerAlias'] = $object->getCustomerAlias();
         }
-        if (null !== $object->getTimestamp()) {
+        if ($object->isInitialized('timestamp') && null !== $object->getTimestamp()) {
             $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getScope()) {
+        if ($object->isInitialized('scope') && null !== $object->getScope()) {
             $data['scope'] = $object->getScope();
         }
-        if (null !== $object->getDocumentChange()) {
+        if ($object->isInitialized('documentChange') && null !== $object->getDocumentChange()) {
             $data['documentChange'] = $object->getDocumentChange();
         }
-        if (null !== $object->getApplicationEvent()) {
+        if ($object->isInitialized('applicationEvent') && null !== $object->getApplicationEvent()) {
             $data['applicationEvent'] = $object->getApplicationEvent();
         }
         foreach ($object as $key => $value) {

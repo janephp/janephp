@@ -74,16 +74,16 @@ class OrgHookConfigNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getInsecureSsl()) {
+        if ($object->isInitialized('insecureSsl') && null !== $object->getInsecureSsl()) {
             $data['insecure_ssl'] = $object->getInsecureSsl();
         }
-        if (null !== $object->getContentType()) {
+        if ($object->isInitialized('contentType') && null !== $object->getContentType()) {
             $data['content_type'] = $object->getContentType();
         }
-        if (null !== $object->getSecret()) {
+        if ($object->isInitialized('secret') && null !== $object->getSecret()) {
             $data['secret'] = $object->getSecret();
         }
         foreach ($object as $key => $value) {

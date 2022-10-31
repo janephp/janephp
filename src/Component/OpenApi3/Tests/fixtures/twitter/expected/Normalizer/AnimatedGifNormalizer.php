@@ -74,10 +74,10 @@ class AnimatedGifNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getPreviewImageUrl()) {
+        if ($object->isInitialized('previewImageUrl') && null !== $object->getPreviewImageUrl()) {
             $data['preview_image_url'] = $object->getPreviewImageUrl();
         }
         $data['media_key'] = $object->getMediaKey();

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class OutputFormatSetXmpWritebackStateManyRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * XMP writeback state changes to be processed.
      *
      * @var OutputFormatSetXmpWritebackStateRequestItem[]|null
@@ -28,6 +36,7 @@ class OutputFormatSetXmpWritebackStateManyRequest
      */
     public function setItems(?array $items) : self
     {
+        $this->initialized['items'] = true;
         $this->items = $items;
         return $this;
     }

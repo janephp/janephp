@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UserRoleSearchRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Limits the search by using a query string filter. The Lucene query string syntax is supported.
      *
      * @var string|null
@@ -76,6 +84,7 @@ class UserRoleSearchRequest
      */
     public function setSearchString(?string $searchString) : self
     {
+        $this->initialized['searchString'] = true;
         $this->searchString = $searchString;
         return $this;
     }
@@ -97,6 +106,7 @@ class UserRoleSearchRequest
      */
     public function setSearchBehaviors(?array $searchBehaviors) : self
     {
+        $this->initialized['searchBehaviors'] = true;
         $this->searchBehaviors = $searchBehaviors;
         return $this;
     }
@@ -118,6 +128,7 @@ class UserRoleSearchRequest
      */
     public function setSort(?array $sort) : self
     {
+        $this->initialized['sort'] = true;
         $this->sort = $sort;
         return $this;
     }
@@ -139,6 +150,7 @@ class UserRoleSearchRequest
      */
     public function setLimit(int $limit) : self
     {
+        $this->initialized['limit'] = true;
         $this->limit = $limit;
         return $this;
     }
@@ -160,6 +172,7 @@ class UserRoleSearchRequest
      */
     public function setPageToken(?string $pageToken) : self
     {
+        $this->initialized['pageToken'] = true;
         $this->pageToken = $pageToken;
         return $this;
     }
@@ -181,6 +194,7 @@ class UserRoleSearchRequest
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }
@@ -202,6 +216,7 @@ class UserRoleSearchRequest
      */
     public function setDebugMode(bool $debugMode) : self
     {
+        $this->initialized['debugMode'] = true;
         $this->debugMode = $debugMode;
         return $this;
     }
@@ -223,6 +238,7 @@ class UserRoleSearchRequest
      */
     public function setSearchLanguages(?array $searchLanguages) : self
     {
+        $this->initialized['searchLanguages'] = true;
         $this->searchLanguages = $searchLanguages;
         return $this;
     }
@@ -244,6 +260,7 @@ class UserRoleSearchRequest
      */
     public function setIncludeAdministratorSystemUserRole(bool $includeAdministratorSystemUserRole) : self
     {
+        $this->initialized['includeAdministratorSystemUserRole'] = true;
         $this->includeAdministratorSystemUserRole = $includeAdministratorSystemUserRole;
         return $this;
     }

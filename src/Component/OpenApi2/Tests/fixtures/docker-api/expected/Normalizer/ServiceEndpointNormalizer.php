@@ -70,17 +70,17 @@ class ServiceEndpointNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSpec()) {
+        if ($object->isInitialized('spec') && null !== $object->getSpec()) {
             $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
         }
-        if (null !== $object->getPorts()) {
+        if ($object->isInitialized('ports') && null !== $object->getPorts()) {
             $values = array();
             foreach ($object->getPorts() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['Ports'] = $values;
         }
-        if (null !== $object->getVirtualIPs()) {
+        if ($object->isInitialized('virtualIPs') && null !== $object->getVirtualIPs()) {
             $values_1 = array();
             foreach ($object->getVirtualIPs() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

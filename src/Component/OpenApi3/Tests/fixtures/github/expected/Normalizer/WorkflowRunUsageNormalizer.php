@@ -66,10 +66,10 @@ class WorkflowRunUsageNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBillable()) {
+        if ($object->isInitialized('billable') && null !== $object->getBillable()) {
             $data['billable'] = $this->normalizer->normalize($object->getBillable(), 'json', $context);
         }
-        if (null !== $object->getRunDurationMs()) {
+        if ($object->isInitialized('runDurationMs') && null !== $object->getRunDurationMs()) {
             $data['run_duration_ms'] = $object->getRunDurationMs();
         }
         foreach ($object as $key => $value) {

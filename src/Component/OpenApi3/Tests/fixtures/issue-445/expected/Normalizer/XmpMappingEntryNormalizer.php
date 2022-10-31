@@ -90,7 +90,7 @@ class XmpMappingEntryNormalizer implements DenormalizerInterface, NormalizerInte
         $data['stopProcessing'] = $object->getStopProcessing();
         $data['xmpPath'] = $object->getXmpPath();
         $data['metadataPath'] = $object->getMetadataPath();
-        if (null !== $object->getConfiguration()) {
+        if ($object->isInitialized('configuration') && null !== $object->getConfiguration()) {
             $data['configuration'] = $object->getConfiguration();
         }
         $data['id'] = $object->getId();

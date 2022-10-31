@@ -5,6 +5,14 @@ namespace Github\Model;
 class PullRequestHeadRepoLicense extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class PullRequestHeadRepoLicense extends \ArrayObject
      */
     public function setKey(string $key) : self
     {
+        $this->initialized['key'] = true;
         $this->key = $key;
         return $this;
     }
@@ -73,6 +82,7 @@ class PullRequestHeadRepoLicense extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -94,6 +104,7 @@ class PullRequestHeadRepoLicense extends \ArrayObject
      */
     public function setUrl(?string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -115,6 +126,7 @@ class PullRequestHeadRepoLicense extends \ArrayObject
      */
     public function setSpdxId(?string $spdxId) : self
     {
+        $this->initialized['spdxId'] = true;
         $this->spdxId = $spdxId;
         return $this;
     }
@@ -136,6 +148,7 @@ class PullRequestHeadRepoLicense extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }

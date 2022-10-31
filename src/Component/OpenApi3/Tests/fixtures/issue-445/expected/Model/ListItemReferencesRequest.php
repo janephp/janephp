@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ListItemReferencesRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Limits the number of the returned metadata references by setting paging information.
      *
      * @var mixed|null
@@ -28,6 +36,7 @@ class ListItemReferencesRequest
      */
     public function setReferences($references) : self
     {
+        $this->initialized['references'] = true;
         $this->references = $references;
         return $this;
     }

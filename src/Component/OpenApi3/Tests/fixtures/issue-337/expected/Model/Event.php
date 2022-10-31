@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class Event extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The unique identifier for the event.
      *
      * @var float
@@ -82,6 +90,7 @@ class Event extends \ArrayObject
      */
     public function setEventId(float $eventId) : self
     {
+        $this->initialized['eventId'] = true;
         $this->eventId = $eventId;
         return $this;
     }
@@ -103,6 +112,7 @@ class Event extends \ArrayObject
      */
     public function setCompanyId(float $companyId) : self
     {
+        $this->initialized['companyId'] = true;
         $this->companyId = $companyId;
         return $this;
     }
@@ -124,6 +134,7 @@ class Event extends \ArrayObject
      */
     public function setPortfolioId(float $portfolioId) : self
     {
+        $this->initialized['portfolioId'] = true;
         $this->portfolioId = $portfolioId;
         return $this;
     }
@@ -145,6 +156,7 @@ class Event extends \ArrayObject
      */
     public function setRuleName(string $ruleName) : self
     {
+        $this->initialized['ruleName'] = true;
         $this->ruleName = $ruleName;
         return $this;
     }
@@ -166,6 +178,7 @@ class Event extends \ArrayObject
      */
     public function setLocalEventCode(string $localEventCode) : self
     {
+        $this->initialized['localEventCode'] = true;
         $this->localEventCode = $localEventCode;
         return $this;
     }
@@ -187,6 +200,7 @@ class Event extends \ArrayObject
      */
     public function setGlobalEventCode(string $globalEventCode) : self
     {
+        $this->initialized['globalEventCode'] = true;
         $this->globalEventCode = $globalEventCode;
         return $this;
     }
@@ -208,6 +222,7 @@ class Event extends \ArrayObject
      */
     public function setNewValue(string $newValue) : self
     {
+        $this->initialized['newValue'] = true;
         $this->newValue = $newValue;
         return $this;
     }
@@ -229,6 +244,7 @@ class Event extends \ArrayObject
      */
     public function setOldValue(string $oldValue) : self
     {
+        $this->initialized['oldValue'] = true;
         $this->oldValue = $oldValue;
         return $this;
     }
@@ -250,6 +266,7 @@ class Event extends \ArrayObject
      */
     public function setEventDate(\DateTime $eventDate) : self
     {
+        $this->initialized['eventDate'] = true;
         $this->eventDate = $eventDate;
         return $this;
     }
@@ -271,6 +288,7 @@ class Event extends \ArrayObject
      */
     public function setCreatedDate(\DateTime $createdDate) : self
     {
+        $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
         return $this;
     }

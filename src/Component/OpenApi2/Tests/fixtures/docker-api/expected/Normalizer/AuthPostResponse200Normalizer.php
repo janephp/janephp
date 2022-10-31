@@ -60,7 +60,7 @@ class AuthPostResponse200Normalizer implements DenormalizerInterface, Normalizer
     {
         $data = array();
         $data['Status'] = $object->getStatus();
-        if (null !== $object->getIdentityToken()) {
+        if ($object->isInitialized('identityToken') && null !== $object->getIdentityToken()) {
             $data['IdentityToken'] = $object->getIdentityToken();
         }
         if (!($context['skip_validation'] ?? false)) {

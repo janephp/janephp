@@ -145,92 +145,92 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getEnumString()) {
+        if ($object->isInitialized('enumString') && null !== $object->getEnumString()) {
             $data['enumString'] = $object->getEnumString();
         }
-        if (null !== $object->getEnumArrayString()) {
+        if ($object->isInitialized('enumArrayString') && null !== $object->getEnumArrayString()) {
             $value = $object->getEnumArrayString();
             if (is_string($object->getEnumArrayString())) {
                 $value = $object->getEnumArrayString();
             }
             $data['enumArrayString'] = $value;
         }
-        if (null !== $object->getEnumNoType()) {
+        if ($object->isInitialized('enumNoType') && null !== $object->getEnumNoType()) {
             $data['enumNoType'] = $object->getEnumNoType();
         }
         $data['constString'] = $object->getConstString();
-        if (null !== $object->getMinLengthString()) {
+        if ($object->isInitialized('minLengthString') && null !== $object->getMinLengthString()) {
             $data['minLengthString'] = $object->getMinLengthString();
         }
-        if (null !== $object->getMaxLengthString()) {
+        if ($object->isInitialized('maxLengthString') && null !== $object->getMaxLengthString()) {
             $data['maxLengthString'] = $object->getMaxLengthString();
         }
-        if (null !== $object->getMinMaxLengthString()) {
+        if ($object->isInitialized('minMaxLengthString') && null !== $object->getMinMaxLengthString()) {
             $data['minMaxLengthString'] = $object->getMinMaxLengthString();
         }
         $data['patternString'] = $object->getPatternString();
-        if (null !== $object->getArrayMinItems()) {
+        if ($object->isInitialized('arrayMinItems') && null !== $object->getArrayMinItems()) {
             $values = array();
             foreach ($object->getArrayMinItems() as $value_1) {
                 $values[] = $value_1;
             }
             $data['arrayMinItems'] = $values;
         }
-        if (null !== $object->getArrayMaxItems()) {
+        if ($object->isInitialized('arrayMaxItems') && null !== $object->getArrayMaxItems()) {
             $values_1 = array();
             foreach ($object->getArrayMaxItems() as $value_2) {
                 $values_1[] = $value_2;
             }
             $data['arrayMaxItems'] = $values_1;
         }
-        if (null !== $object->getArrayMinMaxItems()) {
+        if ($object->isInitialized('arrayMinMaxItems') && null !== $object->getArrayMinMaxItems()) {
             $values_2 = array();
             foreach ($object->getArrayMinMaxItems() as $value_3) {
                 $values_2[] = $value_3;
             }
             $data['arrayMinMaxItems'] = $values_2;
         }
-        if (null !== $object->getArrayUnique()) {
+        if ($object->isInitialized('arrayUnique') && null !== $object->getArrayUnique()) {
             $values_3 = array();
             foreach ($object->getArrayUnique() as $value_4) {
                 $values_3[] = $value_4;
             }
             $data['arrayUnique'] = $values_3;
         }
-        if (null !== $object->getNumericMultipleOf()) {
+        if ($object->isInitialized('numericMultipleOf') && null !== $object->getNumericMultipleOf()) {
             $data['numericMultipleOf'] = $object->getNumericMultipleOf();
         }
-        if (null !== $object->getNumericMaximum()) {
+        if ($object->isInitialized('numericMaximum') && null !== $object->getNumericMaximum()) {
             $data['numericMaximum'] = $object->getNumericMaximum();
         }
-        if (null !== $object->getNumericExclusiveMaximum()) {
+        if ($object->isInitialized('numericExclusiveMaximum') && null !== $object->getNumericExclusiveMaximum()) {
             $data['numericExclusiveMaximum'] = $object->getNumericExclusiveMaximum();
         }
-        if (null !== $object->getNumericMinimum()) {
+        if ($object->isInitialized('numericMinimum') && null !== $object->getNumericMinimum()) {
             $data['numericMinimum'] = $object->getNumericMinimum();
         }
-        if (null !== $object->getNumericExclusiveMinimum()) {
+        if ($object->isInitialized('numericExclusiveMinimum') && null !== $object->getNumericExclusiveMinimum()) {
             $data['numericExclusiveMinimum'] = $object->getNumericExclusiveMinimum();
         }
-        if (null !== $object->getEmailFormat()) {
+        if ($object->isInitialized('emailFormat') && null !== $object->getEmailFormat()) {
             $data['emailFormat'] = $object->getEmailFormat();
         }
-        if (null !== $object->getIpv4Format()) {
+        if ($object->isInitialized('ipv4Format') && null !== $object->getIpv4Format()) {
             $data['ipv4Format'] = $object->getIpv4Format();
         }
-        if (null !== $object->getIpv6Format()) {
+        if ($object->isInitialized('ipv6Format') && null !== $object->getIpv6Format()) {
             $data['ipv6Format'] = $object->getIpv6Format();
         }
-        if (null !== $object->getUriFormat()) {
+        if ($object->isInitialized('uriFormat') && null !== $object->getUriFormat()) {
             $data['uriFormat'] = $object->getUriFormat();
         }
-        if (null !== $object->getIriFormat()) {
+        if ($object->isInitialized('iriFormat') && null !== $object->getIriFormat()) {
             $data['iriFormat'] = $object->getIriFormat();
         }
-        if (null !== $object->getUuidFormat()) {
+        if ($object->isInitialized('uuidFormat') && null !== $object->getUuidFormat()) {
             $data['uuidFormat'] = $object->getUuidFormat();
         }
-        if (null !== $object->getFoo()) {
+        if ($object->isInitialized('foo') && null !== $object->getFoo()) {
             $data['foo'] = $this->normalizer->normalize($object->getFoo(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

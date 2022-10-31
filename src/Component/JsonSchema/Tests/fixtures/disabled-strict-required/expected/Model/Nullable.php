@@ -5,6 +5,14 @@ namespace Jane\Component\JsonSchema\Tests\Expected\Model;
 class Nullable
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var null
@@ -46,6 +54,7 @@ class Nullable
      */
     public function setOnlyNull($onlyNull) : self
     {
+        $this->initialized['onlyNull'] = true;
         $this->onlyNull = $onlyNull;
         return $this;
     }
@@ -67,6 +76,7 @@ class Nullable
      */
     public function setNullOrString(?string $nullOrString) : self
     {
+        $this->initialized['nullOrString'] = true;
         $this->nullOrString = $nullOrString;
         return $this;
     }
@@ -88,6 +98,7 @@ class Nullable
      */
     public function setRequired(?string $required) : self
     {
+        $this->initialized['required'] = true;
         $this->required = $required;
         return $this;
     }
@@ -109,6 +120,7 @@ class Nullable
      */
     public function setRequiredNull(?string $requiredNull) : self
     {
+        $this->initialized['requiredNull'] = true;
         $this->requiredNull = $requiredNull;
         return $this;
     }

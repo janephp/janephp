@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class Share
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Share ID.
      *
      * @var string
@@ -64,6 +72,7 @@ class Share
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -85,6 +94,7 @@ class Share
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -106,6 +116,7 @@ class Share
      */
     public function setContentIds(array $contentIds) : self
     {
+        $this->initialized['contentIds'] = true;
         $this->contentIds = $contentIds;
         return $this;
     }
@@ -127,6 +138,7 @@ class Share
      */
     public function setAudit($audit) : self
     {
+        $this->initialized['audit'] = true;
         $this->audit = $audit;
         return $this;
     }
@@ -148,6 +160,7 @@ class Share
      */
     public function setExpirationDate(?\DateTime $expirationDate) : self
     {
+        $this->initialized['expirationDate'] = true;
         $this->expirationDate = $expirationDate;
         return $this;
     }
@@ -169,6 +182,7 @@ class Share
      */
     public function setShareType($shareType) : self
     {
+        $this->initialized['shareType'] = true;
         $this->shareType = $shareType;
         return $this;
     }
@@ -190,6 +204,7 @@ class Share
      */
     public function setIsReadOnly(bool $isReadOnly) : self
     {
+        $this->initialized['isReadOnly'] = true;
         $this->isReadOnly = $isReadOnly;
         return $this;
     }

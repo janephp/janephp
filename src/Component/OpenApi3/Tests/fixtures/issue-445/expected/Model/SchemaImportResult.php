@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SchemaImportResult
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Number of schemas imported
      *
      * @var int
@@ -52,6 +60,7 @@ class SchemaImportResult
      */
     public function setImportedSchemaCount(int $importedSchemaCount) : self
     {
+        $this->initialized['importedSchemaCount'] = true;
         $this->importedSchemaCount = $importedSchemaCount;
         return $this;
     }
@@ -73,6 +82,7 @@ class SchemaImportResult
      */
     public function setSkippedSchemaCount(int $skippedSchemaCount) : self
     {
+        $this->initialized['skippedSchemaCount'] = true;
         $this->skippedSchemaCount = $skippedSchemaCount;
         return $this;
     }
@@ -94,6 +104,7 @@ class SchemaImportResult
      */
     public function setTotalSchemaCount(int $totalSchemaCount) : self
     {
+        $this->initialized['totalSchemaCount'] = true;
         $this->totalSchemaCount = $totalSchemaCount;
         return $this;
     }
@@ -115,6 +126,7 @@ class SchemaImportResult
      */
     public function setSkippedSchemaIds(?array $skippedSchemaIds) : self
     {
+        $this->initialized['skippedSchemaIds'] = true;
         $this->skippedSchemaIds = $skippedSchemaIds;
         return $this;
     }
@@ -136,6 +148,7 @@ class SchemaImportResult
      */
     public function setImportedSchemaIds(?array $importedSchemaIds) : self
     {
+        $this->initialized['importedSchemaIds'] = true;
         $this->importedSchemaIds = $importedSchemaIds;
         return $this;
     }

@@ -124,10 +124,10 @@ class BusinessProcessNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $data['id'] = $object->getId();
         $data['processDefinitionId'] = $object->getProcessDefinitionId();
-        if (null !== $object->getReferenceId()) {
+        if ($object->isInitialized('referenceId') && null !== $object->getReferenceId()) {
             $data['referenceId'] = $object->getReferenceId();
         }
-        if (null !== $object->getReferenceDocType()) {
+        if ($object->isInitialized('referenceDocType') && null !== $object->getReferenceDocType()) {
             $data['referenceDocType'] = $object->getReferenceDocType();
         }
         $data['supportsCancellation'] = $object->getSupportsCancellation();
@@ -136,20 +136,20 @@ class BusinessProcessNormalizer implements DenormalizerInterface, NormalizerInte
         $data['startDate'] = $object->getStartDate()->format('Y-m-d\\TH:i:sP');
         $data['endDate'] = $object->getEndDate()->format('Y-m-d\\TH:i:sP');
         $data['finished'] = $object->getFinished();
-        if (null !== $object->getStateHistory()) {
+        if ($object->isInitialized('stateHistory') && null !== $object->getStateHistory()) {
             $values = array();
             foreach ($object->getStateHistory() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['stateHistory'] = $values;
         }
-        if (null !== $object->getCurrentState()) {
+        if ($object->isInitialized('currentState') && null !== $object->getCurrentState()) {
             $data['currentState'] = $object->getCurrentState();
         }
-        if (null !== $object->getLastReportedProgress()) {
+        if ($object->isInitialized('lastReportedProgress') && null !== $object->getLastReportedProgress()) {
             $data['lastReportedProgress'] = $object->getLastReportedProgress()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getContinuationBusinessProcessId()) {
+        if ($object->isInitialized('continuationBusinessProcessId') && null !== $object->getContinuationBusinessProcessId()) {
             $data['continuationBusinessProcessId'] = $object->getContinuationBusinessProcessId();
         }
         $data['kind'] = $object->getKind();

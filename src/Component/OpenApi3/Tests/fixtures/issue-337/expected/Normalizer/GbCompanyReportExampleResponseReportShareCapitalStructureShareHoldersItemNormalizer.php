@@ -84,22 +84,22 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItemN
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getShareholderType()) {
+        if ($object->isInitialized('shareholderType') && null !== $object->getShareholderType()) {
             $data['shareholderType'] = $object->getShareholderType();
         }
-        if (null !== $object->getShareType()) {
+        if ($object->isInitialized('shareType') && null !== $object->getShareType()) {
             $data['shareType'] = $object->getShareType();
         }
-        if (null !== $object->getCurrency()) {
+        if ($object->isInitialized('currency') && null !== $object->getCurrency()) {
             $data['currency'] = $object->getCurrency();
         }
-        if (null !== $object->getTotalNumberOfSharesOwned()) {
+        if ($object->isInitialized('totalNumberOfSharesOwned') && null !== $object->getTotalNumberOfSharesOwned()) {
             $data['totalNumberOfSharesOwned'] = $object->getTotalNumberOfSharesOwned();
         }
-        if (null !== $object->getPercentSharesHeld()) {
+        if ($object->isInitialized('percentSharesHeld') && null !== $object->getPercentSharesHeld()) {
             $data['percentSharesHeld'] = $object->getPercentSharesHeld();
         }
         foreach ($object as $key => $value) {

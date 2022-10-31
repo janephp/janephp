@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class MetadataStatus
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The schema ids (of type Content or Layer) for which the contents are outdated and need to be updated.
      *
      * @var string[]|null
@@ -46,6 +54,7 @@ class MetadataStatus
      */
     public function setContentOrLayerSchemaIds(?array $contentOrLayerSchemaIds) : self
     {
+        $this->initialized['contentOrLayerSchemaIds'] = true;
         $this->contentOrLayerSchemaIds = $contentOrLayerSchemaIds;
         return $this;
     }
@@ -67,6 +76,7 @@ class MetadataStatus
      */
     public function setListSchemaIds(?array $listSchemaIds) : self
     {
+        $this->initialized['listSchemaIds'] = true;
         $this->listSchemaIds = $listSchemaIds;
         return $this;
     }
@@ -88,6 +98,7 @@ class MetadataStatus
      */
     public function setState($state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -109,6 +120,7 @@ class MetadataStatus
      */
     public function setFieldIdsToCleanup(?iterable $fieldIdsToCleanup) : self
     {
+        $this->initialized['fieldIdsToCleanup'] = true;
         $this->fieldIdsToCleanup = $fieldIdsToCleanup;
         return $this;
     }

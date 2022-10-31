@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class SwarmSpecRaft
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The number of log entries between snapshots.
      *
      * @var int
@@ -65,6 +73,7 @@ class SwarmSpecRaft
      */
     public function setSnapshotInterval(int $snapshotInterval) : self
     {
+        $this->initialized['snapshotInterval'] = true;
         $this->snapshotInterval = $snapshotInterval;
         return $this;
     }
@@ -86,6 +95,7 @@ class SwarmSpecRaft
      */
     public function setKeepOldSnapshots(int $keepOldSnapshots) : self
     {
+        $this->initialized['keepOldSnapshots'] = true;
         $this->keepOldSnapshots = $keepOldSnapshots;
         return $this;
     }
@@ -111,6 +121,7 @@ class SwarmSpecRaft
     */
     public function setLogEntriesForSlowFollowers(int $logEntriesForSlowFollowers) : self
     {
+        $this->initialized['logEntriesForSlowFollowers'] = true;
         $this->logEntriesForSlowFollowers = $logEntriesForSlowFollowers;
         return $this;
     }
@@ -144,6 +155,7 @@ class SwarmSpecRaft
     */
     public function setElectionTick(int $electionTick) : self
     {
+        $this->initialized['electionTick'] = true;
         $this->electionTick = $electionTick;
         return $this;
     }
@@ -175,6 +187,7 @@ class SwarmSpecRaft
     */
     public function setHeartbeatTick(int $heartbeatTick) : self
     {
+        $this->initialized['heartbeatTick'] = true;
         $this->heartbeatTick = $heartbeatTick;
         return $this;
     }

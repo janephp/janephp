@@ -62,7 +62,7 @@ class NotificationsThreadsThreadIdSubscriptionPutBodyNormalizer implements Denor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getIgnored()) {
+        if ($object->isInitialized('ignored') && null !== $object->getIgnored()) {
             $data['ignored'] = $object->getIgnored();
         }
         foreach ($object as $key => $value) {

@@ -154,16 +154,16 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $data = array();
         $data['id'] = $object->getId();
-        if (null !== $object->getIndexId()) {
+        if ($object->isInitialized('indexId') && null !== $object->getIndexId()) {
             $data['indexId'] = $object->getIndexId();
         }
-        if (null !== $object->getFieldNamespace()) {
+        if ($object->isInitialized('fieldNamespace') && null !== $object->getFieldNamespace()) {
             $data['fieldNamespace'] = $object->getFieldNamespace();
         }
-        if (null !== $object->getNames()) {
+        if ($object->isInitialized('names') && null !== $object->getNames()) {
             $data['names'] = $object->getNames();
         }
-        if (null !== $object->getDescriptions()) {
+        if ($object->isInitialized('descriptions') && null !== $object->getDescriptions()) {
             $data['descriptions'] = $object->getDescriptions();
         }
         $data['required'] = $object->getRequired();
@@ -173,22 +173,22 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
         $data['sortable'] = $object->getSortable();
         $data['kind'] = $object->getKind();
         $data['schemaId'] = $object->getSchemaId();
-        if (null !== $object->getSchemaIndexingInfo()) {
+        if ($object->isInitialized('schemaIndexingInfo') && null !== $object->getSchemaIndexingInfo()) {
             $data['schemaIndexingInfo'] = $object->getSchemaIndexingInfo();
         }
-        if (null !== $object->getMaximumItems()) {
+        if ($object->isInitialized('maximumItems') && null !== $object->getMaximumItems()) {
             $data['maximumItems'] = $object->getMaximumItems();
         }
-        if (null !== $object->getMinimumItems()) {
+        if ($object->isInitialized('minimumItems') && null !== $object->getMinimumItems()) {
             $data['minimumItems'] = $object->getMinimumItems();
         }
-        if (null !== $object->getFilter()) {
+        if ($object->isInitialized('filter') && null !== $object->getFilter()) {
             $data['filter'] = $object->getFilter();
         }
-        if (null !== $object->getListItemCreateTemplate()) {
+        if ($object->isInitialized('listItemCreateTemplate') && null !== $object->getListItemCreateTemplate()) {
             $data['listItemCreateTemplate'] = $object->getListItemCreateTemplate();
         }
-        if (null !== $object->getViewModeDisplayPatternType()) {
+        if ($object->isInitialized('viewModeDisplayPatternType') && null !== $object->getViewModeDisplayPatternType()) {
             $data['viewModeDisplayPatternType'] = $object->getViewModeDisplayPatternType();
         }
         foreach ($object as $key => $value) {

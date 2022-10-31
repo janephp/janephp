@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ImageDeleteResponseItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The image ID of an image that was untagged
      *
      * @var string
@@ -34,6 +42,7 @@ class ImageDeleteResponseItem
      */
     public function setUntagged(string $untagged) : self
     {
+        $this->initialized['untagged'] = true;
         $this->untagged = $untagged;
         return $this;
     }
@@ -55,6 +64,7 @@ class ImageDeleteResponseItem
      */
     public function setDeleted(string $deleted) : self
     {
+        $this->initialized['deleted'] = true;
         $this->deleted = $deleted;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessProcessEvent extends ApplicationEvent
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -40,6 +48,7 @@ class BusinessProcessEvent extends ApplicationEvent
      */
     public function setBusinessProcessId(?string $businessProcessId) : self
     {
+        $this->initialized['businessProcessId'] = true;
         $this->businessProcessId = $businessProcessId;
         return $this;
     }
@@ -61,6 +70,7 @@ class BusinessProcessEvent extends ApplicationEvent
      */
     public function setLifeCycle($lifeCycle) : self
     {
+        $this->initialized['lifeCycle'] = true;
         $this->lifeCycle = $lifeCycle;
         return $this;
     }
@@ -82,6 +92,7 @@ class BusinessProcessEvent extends ApplicationEvent
      */
     public function setState(?string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }

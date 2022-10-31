@@ -62,10 +62,10 @@ class DefaultUserFieldsEntitiesNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $this->normalizer->normalize($object->getUrl(), 'json', $context);
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $this->normalizer->normalize($object->getDescription(), 'json', $context);
         }
         foreach ($object as $key => $value) {

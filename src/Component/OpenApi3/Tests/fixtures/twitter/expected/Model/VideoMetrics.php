@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class VideoMetrics extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The Media Key identifier for this attachment.
      *
      * @var string
@@ -64,6 +72,7 @@ class VideoMetrics extends \ArrayObject
      */
     public function setMediaKey(string $mediaKey) : self
     {
+        $this->initialized['mediaKey'] = true;
         $this->mediaKey = $mediaKey;
         return $this;
     }
@@ -85,6 +94,7 @@ class VideoMetrics extends \ArrayObject
      */
     public function setViewCount(int $viewCount) : self
     {
+        $this->initialized['viewCount'] = true;
         $this->viewCount = $viewCount;
         return $this;
     }
@@ -106,6 +116,7 @@ class VideoMetrics extends \ArrayObject
      */
     public function setPlayback0Count(int $playback0Count) : self
     {
+        $this->initialized['playback0Count'] = true;
         $this->playback0Count = $playback0Count;
         return $this;
     }
@@ -127,6 +138,7 @@ class VideoMetrics extends \ArrayObject
      */
     public function setPlayback25Count(int $playback25Count) : self
     {
+        $this->initialized['playback25Count'] = true;
         $this->playback25Count = $playback25Count;
         return $this;
     }
@@ -148,6 +160,7 @@ class VideoMetrics extends \ArrayObject
      */
     public function setPlayback50Count(int $playback50Count) : self
     {
+        $this->initialized['playback50Count'] = true;
         $this->playback50Count = $playback50Count;
         return $this;
     }
@@ -169,6 +182,7 @@ class VideoMetrics extends \ArrayObject
      */
     public function setPlayback75Count(int $playback75Count) : self
     {
+        $this->initialized['playback75Count'] = true;
         $this->playback75Count = $playback75Count;
         return $this;
     }
@@ -190,6 +204,7 @@ class VideoMetrics extends \ArrayObject
      */
     public function setPlayback100Count(int $playback100Count) : self
     {
+        $this->initialized['playback100Count'] = true;
         $this->playback100Count = $playback100Count;
         return $this;
     }

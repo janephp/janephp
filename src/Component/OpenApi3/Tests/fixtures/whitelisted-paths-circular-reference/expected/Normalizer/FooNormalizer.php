@@ -62,10 +62,10 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLabel()) {
+        if ($object->isInitialized('label') && null !== $object->getLabel()) {
             $data['label'] = $object->getLabel();
         }
-        if (null !== $object->getParent()) {
+        if ($object->isInitialized('parent') && null !== $object->getParent()) {
             $data['parent'] = $this->normalizer->normalize($object->getParent(), 'json', $context);
         }
         foreach ($object as $key => $value) {

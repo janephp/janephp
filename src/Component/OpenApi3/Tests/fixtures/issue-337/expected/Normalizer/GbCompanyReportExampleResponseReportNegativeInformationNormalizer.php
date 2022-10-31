@@ -62,10 +62,10 @@ class GbCompanyReportExampleResponseReportNegativeInformationNormalizer implemen
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCcjSummary()) {
+        if ($object->isInitialized('ccjSummary') && null !== $object->getCcjSummary()) {
             $data['ccjSummary'] = $this->normalizer->normalize($object->getCcjSummary(), 'json', $context);
         }
-        if (null !== $object->getCountyCourtJudgements()) {
+        if ($object->isInitialized('countyCourtJudgements') && null !== $object->getCountyCourtJudgements()) {
             $data['countyCourtJudgements'] = $this->normalizer->normalize($object->getCountyCourtJudgements(), 'json', $context);
         }
         foreach ($object as $key => $value) {

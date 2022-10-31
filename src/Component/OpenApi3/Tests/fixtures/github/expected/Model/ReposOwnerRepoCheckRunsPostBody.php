@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoCheckRunsPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The name of the check. For example, "code-coverage".
      *
      * @var string
@@ -83,6 +91,7 @@ class ReposOwnerRepoCheckRunsPostBody extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -104,6 +113,7 @@ class ReposOwnerRepoCheckRunsPostBody extends \ArrayObject
      */
     public function setHeadSha(string $headSha) : self
     {
+        $this->initialized['headSha'] = true;
         $this->headSha = $headSha;
         return $this;
     }
@@ -125,6 +135,7 @@ class ReposOwnerRepoCheckRunsPostBody extends \ArrayObject
      */
     public function setDetailsUrl(string $detailsUrl) : self
     {
+        $this->initialized['detailsUrl'] = true;
         $this->detailsUrl = $detailsUrl;
         return $this;
     }
@@ -146,6 +157,7 @@ class ReposOwnerRepoCheckRunsPostBody extends \ArrayObject
      */
     public function setExternalId(string $externalId) : self
     {
+        $this->initialized['externalId'] = true;
         $this->externalId = $externalId;
         return $this;
     }
@@ -167,6 +179,7 @@ class ReposOwnerRepoCheckRunsPostBody extends \ArrayObject
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -188,6 +201,7 @@ class ReposOwnerRepoCheckRunsPostBody extends \ArrayObject
      */
     public function setStartedAt(string $startedAt) : self
     {
+        $this->initialized['startedAt'] = true;
         $this->startedAt = $startedAt;
         return $this;
     }
@@ -211,6 +225,7 @@ class ReposOwnerRepoCheckRunsPostBody extends \ArrayObject
     */
     public function setConclusion(string $conclusion) : self
     {
+        $this->initialized['conclusion'] = true;
         $this->conclusion = $conclusion;
         return $this;
     }
@@ -232,6 +247,7 @@ class ReposOwnerRepoCheckRunsPostBody extends \ArrayObject
      */
     public function setCompletedAt(string $completedAt) : self
     {
+        $this->initialized['completedAt'] = true;
         $this->completedAt = $completedAt;
         return $this;
     }
@@ -253,6 +269,7 @@ class ReposOwnerRepoCheckRunsPostBody extends \ArrayObject
      */
     public function setOutput(ReposOwnerRepoCheckRunsPostBodyOutput $output) : self
     {
+        $this->initialized['output'] = true;
         $this->output = $output;
         return $this;
     }
@@ -274,6 +291,7 @@ class ReposOwnerRepoCheckRunsPostBody extends \ArrayObject
      */
     public function setActions(array $actions) : self
     {
+        $this->initialized['actions'] = true;
         $this->actions = $actions;
         return $this;
     }

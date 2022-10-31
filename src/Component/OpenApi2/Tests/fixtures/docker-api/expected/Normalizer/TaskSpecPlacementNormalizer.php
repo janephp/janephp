@@ -77,24 +77,24 @@ class TaskSpecPlacementNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getConstraints()) {
+        if ($object->isInitialized('constraints') && null !== $object->getConstraints()) {
             $values = array();
             foreach ($object->getConstraints() as $value) {
                 $values[] = $value;
             }
             $data['Constraints'] = $values;
         }
-        if (null !== $object->getPreferences()) {
+        if ($object->isInitialized('preferences') && null !== $object->getPreferences()) {
             $values_1 = array();
             foreach ($object->getPreferences() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['Preferences'] = $values_1;
         }
-        if (null !== $object->getMaxReplicas()) {
+        if ($object->isInitialized('maxReplicas') && null !== $object->getMaxReplicas()) {
             $data['MaxReplicas'] = $object->getMaxReplicas();
         }
-        if (null !== $object->getPlatforms()) {
+        if ($object->isInitialized('platforms') && null !== $object->getPlatforms()) {
             $values_2 = array();
             foreach ($object->getPlatforms() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);

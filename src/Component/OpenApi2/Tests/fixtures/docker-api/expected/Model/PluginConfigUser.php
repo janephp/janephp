@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class PluginConfigUser
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -34,6 +42,7 @@ class PluginConfigUser
      */
     public function setUID(int $uID) : self
     {
+        $this->initialized['uID'] = true;
         $this->uID = $uID;
         return $this;
     }
@@ -55,6 +64,7 @@ class PluginConfigUser
      */
     public function setGID(int $gID) : self
     {
+        $this->initialized['gID'] = true;
         $this->gID = $gID;
         return $this;
     }

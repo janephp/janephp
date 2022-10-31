@@ -66,10 +66,10 @@ class WorkflowRunUsageBillableMACOSNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTotalMs()) {
+        if ($object->isInitialized('totalMs') && null !== $object->getTotalMs()) {
             $data['total_ms'] = $object->getTotalMs();
         }
-        if (null !== $object->getJobs()) {
+        if ($object->isInitialized('jobs') && null !== $object->getJobs()) {
             $data['jobs'] = $object->getJobs();
         }
         foreach ($object as $key => $value) {

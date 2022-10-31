@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class SwarmSpecTaskDefaultsLogDriver
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The log driver to use as a default for new tasks.
      *
      * @var string
@@ -36,6 +44,7 @@ class SwarmSpecTaskDefaultsLogDriver
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -61,6 +70,7 @@ class SwarmSpecTaskDefaultsLogDriver
     */
     public function setOptions(iterable $options) : self
     {
+        $this->initialized['options'] = true;
         $this->options = $options;
         return $this;
     }

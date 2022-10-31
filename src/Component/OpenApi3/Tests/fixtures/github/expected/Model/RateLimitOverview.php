@@ -5,6 +5,14 @@ namespace Github\Model;
 class RateLimitOverview extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var RateLimitOverviewResources
@@ -34,6 +42,7 @@ class RateLimitOverview extends \ArrayObject
      */
     public function setResources(RateLimitOverviewResources $resources) : self
     {
+        $this->initialized['resources'] = true;
         $this->resources = $resources;
         return $this;
     }
@@ -55,6 +64,7 @@ class RateLimitOverview extends \ArrayObject
      */
     public function setRate(RateLimit $rate) : self
     {
+        $this->initialized['rate'] = true;
         $this->rate = $rate;
         return $this;
     }

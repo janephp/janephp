@@ -76,7 +76,7 @@ class ValidationErrorSimpleNormalizer implements DenormalizerInterface, Normaliz
         $data = array();
         $data['message'] = $object->getMessage();
         $data['documentation_url'] = $object->getDocumentationUrl();
-        if (null !== $object->getErrors()) {
+        if ($object->isInitialized('errors') && null !== $object->getErrors()) {
             $values = array();
             foreach ($object->getErrors() as $value) {
                 $values[] = $value;

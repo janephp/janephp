@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessProcessDetailsDataContentImport extends BusinessProcessDetailsDataBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Items that were imported.
      *
      * @var ContentImportResult[]|null
@@ -28,6 +36,7 @@ class BusinessProcessDetailsDataContentImport extends BusinessProcessDetailsData
      */
     public function setItems(?array $items) : self
     {
+        $this->initialized['items'] = true;
         $this->items = $items;
         return $this;
     }

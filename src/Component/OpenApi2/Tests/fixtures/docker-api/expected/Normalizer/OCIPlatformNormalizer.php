@@ -72,23 +72,23 @@ class OCIPlatformNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getArchitecture()) {
+        if ($object->isInitialized('architecture') && null !== $object->getArchitecture()) {
             $data['architecture'] = $object->getArchitecture();
         }
-        if (null !== $object->getOs()) {
+        if ($object->isInitialized('os') && null !== $object->getOs()) {
             $data['os'] = $object->getOs();
         }
-        if (null !== $object->getOsVersion()) {
+        if ($object->isInitialized('osVersion') && null !== $object->getOsVersion()) {
             $data['os.version'] = $object->getOsVersion();
         }
-        if (null !== $object->getOsFeatures()) {
+        if ($object->isInitialized('osFeatures') && null !== $object->getOsFeatures()) {
             $values = array();
             foreach ($object->getOsFeatures() as $value) {
                 $values[] = $value;
             }
             $data['os.features'] = $values;
         }
-        if (null !== $object->getVariant()) {
+        if ($object->isInitialized('variant') && null !== $object->getVariant()) {
             $data['variant'] = $object->getVariant();
         }
         if (!($context['skip_validation'] ?? false)) {

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class NamedCacheConfigurationBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Name of named cache.
      *
      * @var string|null
@@ -38,6 +46,7 @@ class NamedCacheConfigurationBase
      */
     public function setName(?string $name)
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
     }
     /**
@@ -56,6 +65,7 @@ class NamedCacheConfigurationBase
      */
     public function setCaseSensitive(bool $caseSensitive)
     {
+        $this->initialized['caseSensitive'] = true;
         $this->caseSensitive = $caseSensitive;
     }
     /**
@@ -74,6 +84,7 @@ class NamedCacheConfigurationBase
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

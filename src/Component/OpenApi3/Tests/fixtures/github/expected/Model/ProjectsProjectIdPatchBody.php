@@ -5,6 +5,14 @@ namespace Github\Model;
 class ProjectsProjectIdPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Name of the project
      *
      * @var string
@@ -52,6 +60,7 @@ class ProjectsProjectIdPatchBody extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -73,6 +82,7 @@ class ProjectsProjectIdPatchBody extends \ArrayObject
      */
     public function setBody(?string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }
@@ -94,6 +104,7 @@ class ProjectsProjectIdPatchBody extends \ArrayObject
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -115,6 +126,7 @@ class ProjectsProjectIdPatchBody extends \ArrayObject
      */
     public function setOrganizationPermission(string $organizationPermission) : self
     {
+        $this->initialized['organizationPermission'] = true;
         $this->organizationPermission = $organizationPermission;
         return $this;
     }
@@ -136,6 +148,7 @@ class ProjectsProjectIdPatchBody extends \ArrayObject
      */
     public function setPrivate(bool $private) : self
     {
+        $this->initialized['private'] = true;
         $this->private = $private;
         return $this;
     }

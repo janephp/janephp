@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class OutputDataBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The extension of the file.
      *
      * @var string|null
@@ -56,6 +64,7 @@ class OutputDataBase
      */
     public function setFileExtension(?string $fileExtension)
     {
+        $this->initialized['fileExtension'] = true;
         $this->fileExtension = $fileExtension;
     }
     /**
@@ -74,6 +83,7 @@ class OutputDataBase
      */
     public function setFilePath(?string $filePath)
     {
+        $this->initialized['filePath'] = true;
         $this->filePath = $filePath;
     }
     /**
@@ -92,6 +102,7 @@ class OutputDataBase
      */
     public function setFileSizeInBytes(?int $fileSizeInBytes)
     {
+        $this->initialized['fileSizeInBytes'] = true;
         $this->fileSizeInBytes = $fileSizeInBytes;
     }
     /**
@@ -110,6 +121,7 @@ class OutputDataBase
      */
     public function setSha1Hash(?string $sha1Hash)
     {
+        $this->initialized['sha1Hash'] = true;
         $this->sha1Hash = $sha1Hash;
     }
     /**
@@ -128,6 +140,7 @@ class OutputDataBase
      */
     public function setOriginalFileName(?string $originalFileName)
     {
+        $this->initialized['originalFileName'] = true;
         $this->originalFileName = $originalFileName;
     }
     /**
@@ -146,6 +159,7 @@ class OutputDataBase
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

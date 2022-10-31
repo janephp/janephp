@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class XmpMappingEntrySearchRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Enable debug mode to get as result of the Searched additional debug information. Warning! Severely affects performance.
      *
      * @var bool
@@ -81,6 +89,7 @@ class XmpMappingEntrySearchRequest
      */
     public function setDebugMode(bool $debugMode) : self
     {
+        $this->initialized['debugMode'] = true;
         $this->debugMode = $debugMode;
         return $this;
     }
@@ -112,6 +121,7 @@ class XmpMappingEntrySearchRequest
     */
     public function setAggregationFilters(?array $aggregationFilters) : self
     {
+        $this->initialized['aggregationFilters'] = true;
         $this->aggregationFilters = $aggregationFilters;
         return $this;
     }
@@ -133,6 +143,7 @@ class XmpMappingEntrySearchRequest
      */
     public function setAggregators(?array $aggregators) : self
     {
+        $this->initialized['aggregators'] = true;
         $this->aggregators = $aggregators;
         return $this;
     }
@@ -154,6 +165,7 @@ class XmpMappingEntrySearchRequest
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }
@@ -175,6 +187,7 @@ class XmpMappingEntrySearchRequest
      */
     public function setLimit(int $limit) : self
     {
+        $this->initialized['limit'] = true;
         $this->limit = $limit;
         return $this;
     }
@@ -196,6 +209,7 @@ class XmpMappingEntrySearchRequest
      */
     public function setPageToken(?string $pageToken) : self
     {
+        $this->initialized['pageToken'] = true;
         $this->pageToken = $pageToken;
         return $this;
     }
@@ -217,6 +231,7 @@ class XmpMappingEntrySearchRequest
      */
     public function setSearchString(?string $searchString) : self
     {
+        $this->initialized['searchString'] = true;
         $this->searchString = $searchString;
         return $this;
     }
@@ -238,6 +253,7 @@ class XmpMappingEntrySearchRequest
      */
     public function setSearchBehaviors(?array $searchBehaviors) : self
     {
+        $this->initialized['searchBehaviors'] = true;
         $this->searchBehaviors = $searchBehaviors;
         return $this;
     }
@@ -259,6 +275,7 @@ class XmpMappingEntrySearchRequest
      */
     public function setSort(?array $sort) : self
     {
+        $this->initialized['sort'] = true;
         $this->sort = $sort;
         return $this;
     }

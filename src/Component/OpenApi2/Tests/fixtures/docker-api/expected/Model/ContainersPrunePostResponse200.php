@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ContainersPrunePostResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Container IDs that were deleted
      *
      * @var string[]
@@ -34,6 +42,7 @@ class ContainersPrunePostResponse200
      */
     public function setContainersDeleted(array $containersDeleted) : self
     {
+        $this->initialized['containersDeleted'] = true;
         $this->containersDeleted = $containersDeleted;
         return $this;
     }
@@ -55,6 +64,7 @@ class ContainersPrunePostResponse200
      */
     public function setSpaceReclaimed(int $spaceReclaimed) : self
     {
+        $this->initialized['spaceReclaimed'] = true;
         $this->spaceReclaimed = $spaceReclaimed;
         return $this;
     }

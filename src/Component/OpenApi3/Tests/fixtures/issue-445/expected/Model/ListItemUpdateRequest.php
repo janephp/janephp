@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ListItemUpdateRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema of the list item.
      *
      * @var mixed[]|null
@@ -37,6 +45,7 @@ class ListItemUpdateRequest
      */
     public function setContent(?iterable $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }
@@ -64,6 +73,7 @@ class ListItemUpdateRequest
     */
     public function setContentFieldsUpdateOptions($contentFieldsUpdateOptions) : self
     {
+        $this->initialized['contentFieldsUpdateOptions'] = true;
         $this->contentFieldsUpdateOptions = $contentFieldsUpdateOptions;
         return $this;
     }

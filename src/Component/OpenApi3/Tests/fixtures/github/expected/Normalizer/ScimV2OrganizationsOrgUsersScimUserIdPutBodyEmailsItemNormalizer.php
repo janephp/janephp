@@ -70,11 +70,11 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyEmailsItemNormalizer implement
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
         $data['value'] = $object->getValue();
-        if (null !== $object->getPrimary()) {
+        if ($object->isInitialized('primary') && null !== $object->getPrimary()) {
             $data['primary'] = $object->getPrimary();
         }
         foreach ($object as $key => $value) {

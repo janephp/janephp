@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ImagesNameHistoryGetResponse200Item
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -58,6 +66,7 @@ class ImagesNameHistoryGetResponse200Item
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -79,6 +88,7 @@ class ImagesNameHistoryGetResponse200Item
      */
     public function setCreated(int $created) : self
     {
+        $this->initialized['created'] = true;
         $this->created = $created;
         return $this;
     }
@@ -100,6 +110,7 @@ class ImagesNameHistoryGetResponse200Item
      */
     public function setCreatedBy(string $createdBy) : self
     {
+        $this->initialized['createdBy'] = true;
         $this->createdBy = $createdBy;
         return $this;
     }
@@ -121,6 +132,7 @@ class ImagesNameHistoryGetResponse200Item
      */
     public function setTags(array $tags) : self
     {
+        $this->initialized['tags'] = true;
         $this->tags = $tags;
         return $this;
     }
@@ -142,6 +154,7 @@ class ImagesNameHistoryGetResponse200Item
      */
     public function setSize(int $size) : self
     {
+        $this->initialized['size'] = true;
         $this->size = $size;
         return $this;
     }
@@ -163,6 +176,7 @@ class ImagesNameHistoryGetResponse200Item
      */
     public function setComment(string $comment) : self
     {
+        $this->initialized['comment'] = true;
         $this->comment = $comment;
         return $this;
     }

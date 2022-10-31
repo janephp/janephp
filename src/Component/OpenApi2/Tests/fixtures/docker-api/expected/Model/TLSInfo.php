@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class TLSInfo
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * The root CA certificate(s) that are used to validate leaf TLS
     certificates.
     
@@ -46,6 +54,7 @@ class TLSInfo
     */
     public function setTrustRoot(string $trustRoot) : self
     {
+        $this->initialized['trustRoot'] = true;
         $this->trustRoot = $trustRoot;
         return $this;
     }
@@ -67,6 +76,7 @@ class TLSInfo
      */
     public function setCertIssuerSubject(string $certIssuerSubject) : self
     {
+        $this->initialized['certIssuerSubject'] = true;
         $this->certIssuerSubject = $certIssuerSubject;
         return $this;
     }
@@ -88,6 +98,7 @@ class TLSInfo
      */
     public function setCertIssuerPublicKey(string $certIssuerPublicKey) : self
     {
+        $this->initialized['certIssuerPublicKey'] = true;
         $this->certIssuerPublicKey = $certIssuerPublicKey;
         return $this;
     }

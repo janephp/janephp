@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UserCreateRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * User's first name.
      *
      * @var string|null
@@ -58,6 +66,7 @@ class UserCreateRequest
      */
     public function setFirstName(?string $firstName) : self
     {
+        $this->initialized['firstName'] = true;
         $this->firstName = $firstName;
         return $this;
     }
@@ -79,6 +88,7 @@ class UserCreateRequest
      */
     public function setLastName(?string $lastName) : self
     {
+        $this->initialized['lastName'] = true;
         $this->lastName = $lastName;
         return $this;
     }
@@ -100,6 +110,7 @@ class UserCreateRequest
      */
     public function setEmailAddress(string $emailAddress) : self
     {
+        $this->initialized['emailAddress'] = true;
         $this->emailAddress = $emailAddress;
         return $this;
     }
@@ -121,6 +132,7 @@ class UserCreateRequest
      */
     public function setLanguageCode(?string $languageCode) : self
     {
+        $this->initialized['languageCode'] = true;
         $this->languageCode = $languageCode;
         return $this;
     }
@@ -142,6 +154,7 @@ class UserCreateRequest
      */
     public function setUserRoleIds(?array $userRoleIds) : self
     {
+        $this->initialized['userRoleIds'] = true;
         $this->userRoleIds = $userRoleIds;
         return $this;
     }
@@ -163,6 +176,7 @@ class UserCreateRequest
      */
     public function setAddress($address) : self
     {
+        $this->initialized['address'] = true;
         $this->address = $address;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class ProjectsProjectIdColumnsPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Name of the project column
      *
      * @var string
@@ -28,6 +36,7 @@ class ProjectsProjectIdColumnsPostBody extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }

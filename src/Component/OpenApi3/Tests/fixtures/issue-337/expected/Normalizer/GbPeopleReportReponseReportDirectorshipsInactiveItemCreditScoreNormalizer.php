@@ -58,7 +58,7 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreNormalizer 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCurrentCreditRating()) {
+        if ($object->isInitialized('currentCreditRating') && null !== $object->getCurrentCreditRating()) {
             $data['currentCreditRating'] = $this->normalizer->normalize($object->getCurrentCreditRating(), 'json', $context);
         }
         foreach ($object as $key => $value) {

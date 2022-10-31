@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class DetailedUserFieldsStats extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Number of users who are following this user.
      *
      * @var int
@@ -46,6 +54,7 @@ class DetailedUserFieldsStats extends \ArrayObject
      */
     public function setFollowersCount(int $followersCount) : self
     {
+        $this->initialized['followersCount'] = true;
         $this->followersCount = $followersCount;
         return $this;
     }
@@ -67,6 +76,7 @@ class DetailedUserFieldsStats extends \ArrayObject
      */
     public function setFollowingCount(int $followingCount) : self
     {
+        $this->initialized['followingCount'] = true;
         $this->followingCount = $followingCount;
         return $this;
     }
@@ -88,6 +98,7 @@ class DetailedUserFieldsStats extends \ArrayObject
      */
     public function setTweetCount(int $tweetCount) : self
     {
+        $this->initialized['tweetCount'] = true;
         $this->tweetCount = $tweetCount;
         return $this;
     }
@@ -109,6 +120,7 @@ class DetailedUserFieldsStats extends \ArrayObject
      */
     public function setListedCount(int $listedCount) : self
     {
+        $this->initialized['listedCount'] = true;
         $this->listedCount = $listedCount;
         return $this;
     }

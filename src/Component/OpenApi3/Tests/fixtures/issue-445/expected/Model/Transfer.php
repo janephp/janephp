@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class Transfer
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of transfer.
      *
      * @var string
@@ -64,6 +72,7 @@ class Transfer
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -85,6 +94,7 @@ class Transfer
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -106,6 +116,7 @@ class Transfer
      */
     public function setState($state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -127,6 +138,7 @@ class Transfer
      */
     public function setTransferType($transferType) : self
     {
+        $this->initialized['transferType'] = true;
         $this->transferType = $transferType;
         return $this;
     }
@@ -148,6 +160,7 @@ class Transfer
      */
     public function setBusinessProcessId(?string $businessProcessId) : self
     {
+        $this->initialized['businessProcessId'] = true;
         $this->businessProcessId = $businessProcessId;
         return $this;
     }
@@ -169,6 +182,7 @@ class Transfer
      */
     public function setFileTransferCount(int $fileTransferCount) : self
     {
+        $this->initialized['fileTransferCount'] = true;
         $this->fileTransferCount = $fileTransferCount;
         return $this;
     }
@@ -190,6 +204,7 @@ class Transfer
      */
     public function setCollectionId(?string $collectionId) : self
     {
+        $this->initialized['collectionId'] = true;
         $this->collectionId = $collectionId;
         return $this;
     }

@@ -70,10 +70,10 @@ class ReposOwnerRepoDispatchesPostBodyNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getEventType()) {
+        if ($object->isInitialized('eventType') && null !== $object->getEventType()) {
             $data['event_type'] = $object->getEventType();
         }
-        if (null !== $object->getClientPayload()) {
+        if ($object->isInitialized('clientPayload') && null !== $object->getClientPayload()) {
             $values = array();
             foreach ($object->getClientPayload() as $key => $value) {
                 $values[$key] = $value;

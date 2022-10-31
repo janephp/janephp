@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentDownloadLinkCreateRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * List of content information to generate the download link
      *
      * @var ContentDownloadRequestItem[]
@@ -34,6 +42,7 @@ class ContentDownloadLinkCreateRequest
      */
     public function setContents(array $contents) : self
     {
+        $this->initialized['contents'] = true;
         $this->contents = $contents;
         return $this;
     }
@@ -55,6 +64,7 @@ class ContentDownloadLinkCreateRequest
      */
     public function setNotifyProgress(bool $notifyProgress) : self
     {
+        $this->initialized['notifyProgress'] = true;
         $this->notifyProgress = $notifyProgress;
         return $this;
     }

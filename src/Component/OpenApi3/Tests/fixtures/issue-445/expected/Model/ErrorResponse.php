@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ErrorResponse
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Serialized PictureparkBusinessException.
      *
      * @var string|null
@@ -40,6 +48,7 @@ class ErrorResponse
      */
     public function setException(?string $exception) : self
     {
+        $this->initialized['exception'] = true;
         $this->exception = $exception;
         return $this;
     }
@@ -61,6 +70,7 @@ class ErrorResponse
      */
     public function setTraceId(?string $traceId) : self
     {
+        $this->initialized['traceId'] = true;
         $this->traceId = $traceId;
         return $this;
     }
@@ -82,6 +92,7 @@ class ErrorResponse
      */
     public function setTraceJobId(?string $traceJobId) : self
     {
+        $this->initialized['traceJobId'] = true;
         $this->traceJobId = $traceJobId;
         return $this;
     }

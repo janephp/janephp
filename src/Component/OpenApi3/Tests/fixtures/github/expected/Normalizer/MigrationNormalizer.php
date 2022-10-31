@@ -136,10 +136,10 @@ class MigrationNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['node_id'] = $object->getNodeId();
-        if (null !== $object->getArchiveUrl()) {
+        if ($object->isInitialized('archiveUrl') && null !== $object->getArchiveUrl()) {
             $data['archive_url'] = $object->getArchiveUrl();
         }
-        if (null !== $object->getExclude()) {
+        if ($object->isInitialized('exclude') && null !== $object->getExclude()) {
             $values_1 = array();
             foreach ($object->getExclude() as $value_1) {
                 $values_1[] = $value_1;

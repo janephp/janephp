@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentFilterRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Limits the simple search fields to the fields available in the specified channel.
      *
      * @var string|null
@@ -76,6 +84,7 @@ class ContentFilterRequest
      */
     public function setChannelId(?string $channelId) : self
     {
+        $this->initialized['channelId'] = true;
         $this->channelId = $channelId;
         return $this;
     }
@@ -97,6 +106,7 @@ class ContentFilterRequest
      */
     public function setSearchLanguages(?array $searchLanguages) : self
     {
+        $this->initialized['searchLanguages'] = true;
         $this->searchLanguages = $searchLanguages;
         return $this;
     }
@@ -118,6 +128,7 @@ class ContentFilterRequest
      */
     public function setSearchString(?string $searchString) : self
     {
+        $this->initialized['searchString'] = true;
         $this->searchString = $searchString;
         return $this;
     }
@@ -139,6 +150,7 @@ class ContentFilterRequest
      */
     public function setSearchType($searchType) : self
     {
+        $this->initialized['searchType'] = true;
         $this->searchType = $searchType;
         return $this;
     }
@@ -160,6 +172,7 @@ class ContentFilterRequest
      */
     public function setCollectionId(?string $collectionId) : self
     {
+        $this->initialized['collectionId'] = true;
         $this->collectionId = $collectionId;
         return $this;
     }
@@ -181,6 +194,7 @@ class ContentFilterRequest
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }
@@ -202,6 +216,7 @@ class ContentFilterRequest
      */
     public function setLifeCycleFilter($lifeCycleFilter) : self
     {
+        $this->initialized['lifeCycleFilter'] = true;
         $this->lifeCycleFilter = $lifeCycleFilter;
         return $this;
     }
@@ -223,6 +238,7 @@ class ContentFilterRequest
      */
     public function setBrokenDependenciesFilter($brokenDependenciesFilter) : self
     {
+        $this->initialized['brokenDependenciesFilter'] = true;
         $this->brokenDependenciesFilter = $brokenDependenciesFilter;
         return $this;
     }
@@ -244,6 +260,7 @@ class ContentFilterRequest
      */
     public function setRightsFilter(?array $rightsFilter) : self
     {
+        $this->initialized['rightsFilter'] = true;
         $this->rightsFilter = $rightsFilter;
         return $this;
     }

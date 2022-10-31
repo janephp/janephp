@@ -70,16 +70,16 @@ class GbCompanyReportExampleResponseReportCreditScoreNormalizer implements Denor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCurrentCreditRating()) {
+        if ($object->isInitialized('currentCreditRating') && null !== $object->getCurrentCreditRating()) {
             $data['currentCreditRating'] = $this->normalizer->normalize($object->getCurrentCreditRating(), 'json', $context);
         }
-        if (null !== $object->getCurrentContractLimit()) {
+        if ($object->isInitialized('currentContractLimit') && null !== $object->getCurrentContractLimit()) {
             $data['currentContractLimit'] = $this->normalizer->normalize($object->getCurrentContractLimit(), 'json', $context);
         }
-        if (null !== $object->getPreviousCreditRating()) {
+        if ($object->isInitialized('previousCreditRating') && null !== $object->getPreviousCreditRating()) {
             $data['previousCreditRating'] = $this->normalizer->normalize($object->getPreviousCreditRating(), 'json', $context);
         }
-        if (null !== $object->getLatestRatingChangeDate()) {
+        if ($object->isInitialized('latestRatingChangeDate') && null !== $object->getLatestRatingChangeDate()) {
             $data['latestRatingChangeDate'] = $object->getLatestRatingChangeDate();
         }
         foreach ($object as $key => $value) {

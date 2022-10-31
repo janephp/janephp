@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ServiceUpdateResponse
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Optional warning messages
      *
      * @var string[]
@@ -28,6 +36,7 @@ class ServiceUpdateResponse
      */
     public function setWarnings(array $warnings) : self
     {
+        $this->initialized['warnings'] = true;
         $this->warnings = $warnings;
         return $this;
     }

@@ -66,10 +66,10 @@ class ReposOwnerRepoPagesPostBodySourceNormalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBranch()) {
+        if ($object->isInitialized('branch') && null !== $object->getBranch()) {
             $data['branch'] = $object->getBranch();
         }
-        if (null !== $object->getPath()) {
+        if ($object->isInitialized('path') && null !== $object->getPath()) {
             $data['path'] = $object->getPath();
         }
         foreach ($object as $key => $value) {

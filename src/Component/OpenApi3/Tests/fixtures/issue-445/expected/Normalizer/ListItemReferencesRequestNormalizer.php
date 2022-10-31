@@ -55,7 +55,7 @@ class ListItemReferencesRequestNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getReferences()) {
+        if ($object->isInitialized('references') && null !== $object->getReferences()) {
             $data['references'] = $object->getReferences();
         }
         return $data;

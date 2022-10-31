@@ -104,28 +104,28 @@ class ReposOwnerRepoCheckRunsPostBodyNormalizer implements DenormalizerInterface
         $data = array();
         $data['name'] = $object->getName();
         $data['head_sha'] = $object->getHeadSha();
-        if (null !== $object->getDetailsUrl()) {
+        if ($object->isInitialized('detailsUrl') && null !== $object->getDetailsUrl()) {
             $data['details_url'] = $object->getDetailsUrl();
         }
-        if (null !== $object->getExternalId()) {
+        if ($object->isInitialized('externalId') && null !== $object->getExternalId()) {
             $data['external_id'] = $object->getExternalId();
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        if (null !== $object->getStartedAt()) {
+        if ($object->isInitialized('startedAt') && null !== $object->getStartedAt()) {
             $data['started_at'] = $object->getStartedAt();
         }
-        if (null !== $object->getConclusion()) {
+        if ($object->isInitialized('conclusion') && null !== $object->getConclusion()) {
             $data['conclusion'] = $object->getConclusion();
         }
-        if (null !== $object->getCompletedAt()) {
+        if ($object->isInitialized('completedAt') && null !== $object->getCompletedAt()) {
             $data['completed_at'] = $object->getCompletedAt();
         }
-        if (null !== $object->getOutput()) {
+        if ($object->isInitialized('output') && null !== $object->getOutput()) {
             $data['output'] = $this->normalizer->normalize($object->getOutput(), 'json', $context);
         }
-        if (null !== $object->getActions()) {
+        if ($object->isInitialized('actions') && null !== $object->getActions()) {
             $values = array();
             foreach ($object->getActions() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

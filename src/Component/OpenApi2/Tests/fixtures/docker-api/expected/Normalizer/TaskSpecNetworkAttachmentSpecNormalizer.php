@@ -56,7 +56,7 @@ class TaskSpecNetworkAttachmentSpecNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getContainerID()) {
+        if ($object->isInitialized('containerID') && null !== $object->getContainerID()) {
             $data['ContainerID'] = $object->getContainerID();
         }
         if (!($context['skip_validation'] ?? false)) {

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class DisplayPattern
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The template engine used for parsing the display patterns.
      *
      * @var mixed
@@ -40,6 +48,7 @@ class DisplayPattern
      */
     public function setTemplateEngine($templateEngine) : self
     {
+        $this->initialized['templateEngine'] = true;
         $this->templateEngine = $templateEngine;
         return $this;
     }
@@ -61,6 +70,7 @@ class DisplayPattern
      */
     public function setDisplayPatternType($displayPatternType) : self
     {
+        $this->initialized['displayPatternType'] = true;
         $this->displayPatternType = $displayPatternType;
         return $this;
     }
@@ -82,6 +92,7 @@ class DisplayPattern
      */
     public function setTemplates($templates) : self
     {
+        $this->initialized['templates'] = true;
         $this->templates = $templates;
         return $this;
     }

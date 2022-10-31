@@ -5,6 +5,14 @@ namespace Github\Model;
 class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of the IdP group.
      *
      * @var string
@@ -58,6 +66,7 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItem extends \ArrayObject
      */
     public function setGroupId(string $groupId) : self
     {
+        $this->initialized['groupId'] = true;
         $this->groupId = $groupId;
         return $this;
     }
@@ -79,6 +88,7 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItem extends \ArrayObject
      */
     public function setGroupName(string $groupName) : self
     {
+        $this->initialized['groupName'] = true;
         $this->groupName = $groupName;
         return $this;
     }
@@ -100,6 +110,7 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItem extends \ArrayObject
      */
     public function setGroupDescription(string $groupDescription) : self
     {
+        $this->initialized['groupDescription'] = true;
         $this->groupDescription = $groupDescription;
         return $this;
     }
@@ -121,6 +132,7 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItem extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -142,6 +154,7 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItem extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -163,6 +176,7 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItem extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }

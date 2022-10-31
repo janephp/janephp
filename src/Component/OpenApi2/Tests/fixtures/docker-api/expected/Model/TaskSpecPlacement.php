@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class TaskSpecPlacement
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * An array of constraint expressions to limit the set of nodes where
     a task can be scheduled. Constraint expressions can either use a
     _match_ (`==`) or _exclude_ (`!=`) rule. Multiple constraints find
@@ -112,6 +120,7 @@ class TaskSpecPlacement
     */
     public function setConstraints(array $constraints) : self
     {
+        $this->initialized['constraints'] = true;
         $this->constraints = $constraints;
         return $this;
     }
@@ -139,6 +148,7 @@ class TaskSpecPlacement
     */
     public function setPreferences(array $preferences) : self
     {
+        $this->initialized['preferences'] = true;
         $this->preferences = $preferences;
         return $this;
     }
@@ -164,6 +174,7 @@ class TaskSpecPlacement
     */
     public function setMaxReplicas(int $maxReplicas) : self
     {
+        $this->initialized['maxReplicas'] = true;
         $this->maxReplicas = $maxReplicas;
         return $this;
     }
@@ -193,6 +204,7 @@ class TaskSpecPlacement
     */
     public function setPlatforms(array $platforms) : self
     {
+        $this->initialized['platforms'] = true;
         $this->platforms = $platforms;
         return $this;
     }

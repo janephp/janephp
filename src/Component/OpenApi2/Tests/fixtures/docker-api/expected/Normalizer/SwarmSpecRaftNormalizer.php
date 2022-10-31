@@ -68,19 +68,19 @@ class SwarmSpecRaftNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSnapshotInterval()) {
+        if ($object->isInitialized('snapshotInterval') && null !== $object->getSnapshotInterval()) {
             $data['SnapshotInterval'] = $object->getSnapshotInterval();
         }
-        if (null !== $object->getKeepOldSnapshots()) {
+        if ($object->isInitialized('keepOldSnapshots') && null !== $object->getKeepOldSnapshots()) {
             $data['KeepOldSnapshots'] = $object->getKeepOldSnapshots();
         }
-        if (null !== $object->getLogEntriesForSlowFollowers()) {
+        if ($object->isInitialized('logEntriesForSlowFollowers') && null !== $object->getLogEntriesForSlowFollowers()) {
             $data['LogEntriesForSlowFollowers'] = $object->getLogEntriesForSlowFollowers();
         }
-        if (null !== $object->getElectionTick()) {
+        if ($object->isInitialized('electionTick') && null !== $object->getElectionTick()) {
             $data['ElectionTick'] = $object->getElectionTick();
         }
-        if (null !== $object->getHeartbeatTick()) {
+        if ($object->isInitialized('heartbeatTick') && null !== $object->getHeartbeatTick()) {
             $data['HeartbeatTick'] = $object->getHeartbeatTick();
         }
         if (!($context['skip_validation'] ?? false)) {

@@ -146,70 +146,70 @@ class BranchRestrictionPolicyAppsItemOwnerNormalizer implements DenormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLogin()) {
+        if ($object->isInitialized('login') && null !== $object->getLogin()) {
             $data['login'] = $object->getLogin();
         }
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getNodeId()) {
+        if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getReposUrl()) {
+        if ($object->isInitialized('reposUrl') && null !== $object->getReposUrl()) {
             $data['repos_url'] = $object->getReposUrl();
         }
-        if (null !== $object->getEventsUrl()) {
+        if ($object->isInitialized('eventsUrl') && null !== $object->getEventsUrl()) {
             $data['events_url'] = $object->getEventsUrl();
         }
-        if (null !== $object->getHooksUrl()) {
+        if ($object->isInitialized('hooksUrl') && null !== $object->getHooksUrl()) {
             $data['hooks_url'] = $object->getHooksUrl();
         }
-        if (null !== $object->getIssuesUrl()) {
+        if ($object->isInitialized('issuesUrl') && null !== $object->getIssuesUrl()) {
             $data['issues_url'] = $object->getIssuesUrl();
         }
-        if (null !== $object->getMembersUrl()) {
+        if ($object->isInitialized('membersUrl') && null !== $object->getMembersUrl()) {
             $data['members_url'] = $object->getMembersUrl();
         }
-        if (null !== $object->getPublicMembersUrl()) {
+        if ($object->isInitialized('publicMembersUrl') && null !== $object->getPublicMembersUrl()) {
             $data['public_members_url'] = $object->getPublicMembersUrl();
         }
-        if (null !== $object->getAvatarUrl()) {
+        if ($object->isInitialized('avatarUrl') && null !== $object->getAvatarUrl()) {
             $data['avatar_url'] = $object->getAvatarUrl();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getGravatarId()) {
+        if ($object->isInitialized('gravatarId') && null !== $object->getGravatarId()) {
             $data['gravatar_id'] = $object->getGravatarId();
         }
-        if (null !== $object->getHtmlUrl()) {
+        if ($object->isInitialized('htmlUrl') && null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
-        if (null !== $object->getFollowersUrl()) {
+        if ($object->isInitialized('followersUrl') && null !== $object->getFollowersUrl()) {
             $data['followers_url'] = $object->getFollowersUrl();
         }
-        if (null !== $object->getFollowingUrl()) {
+        if ($object->isInitialized('followingUrl') && null !== $object->getFollowingUrl()) {
             $data['following_url'] = $object->getFollowingUrl();
         }
-        if (null !== $object->getGistsUrl()) {
+        if ($object->isInitialized('gistsUrl') && null !== $object->getGistsUrl()) {
             $data['gists_url'] = $object->getGistsUrl();
         }
-        if (null !== $object->getStarredUrl()) {
+        if ($object->isInitialized('starredUrl') && null !== $object->getStarredUrl()) {
             $data['starred_url'] = $object->getStarredUrl();
         }
-        if (null !== $object->getSubscriptionsUrl()) {
+        if ($object->isInitialized('subscriptionsUrl') && null !== $object->getSubscriptionsUrl()) {
             $data['subscriptions_url'] = $object->getSubscriptionsUrl();
         }
-        if (null !== $object->getOrganizationsUrl()) {
+        if ($object->isInitialized('organizationsUrl') && null !== $object->getOrganizationsUrl()) {
             $data['organizations_url'] = $object->getOrganizationsUrl();
         }
-        if (null !== $object->getReceivedEventsUrl()) {
+        if ($object->isInitialized('receivedEventsUrl') && null !== $object->getReceivedEventsUrl()) {
             $data['received_events_url'] = $object->getReceivedEventsUrl();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
         foreach ($object as $key => $value) {

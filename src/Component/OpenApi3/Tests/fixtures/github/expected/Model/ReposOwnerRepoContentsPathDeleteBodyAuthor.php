@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoContentsPathDeleteBodyAuthor extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The name of the author (or committer) of the commit
      *
      * @var string
@@ -34,6 +42,7 @@ class ReposOwnerRepoContentsPathDeleteBodyAuthor extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReposOwnerRepoContentsPathDeleteBodyAuthor extends \ArrayObject
      */
     public function setEmail(string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }

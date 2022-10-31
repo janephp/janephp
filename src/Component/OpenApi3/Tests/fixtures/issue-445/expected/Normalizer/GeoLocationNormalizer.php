@@ -61,10 +61,10 @@ class GeoLocationNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLat()) {
+        if ($object->isInitialized('lat') && null !== $object->getLat()) {
             $data['lat'] = $object->getLat();
         }
-        if (null !== $object->getLon()) {
+        if ($object->isInitialized('lon') && null !== $object->getLon()) {
             $data['lon'] = $object->getLon();
         }
         return $data;

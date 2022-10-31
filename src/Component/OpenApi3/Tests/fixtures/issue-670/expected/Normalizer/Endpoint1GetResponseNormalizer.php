@@ -58,7 +58,7 @@ class Endpoint1GetResponseNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getField1()) {
+        if ($object->isInitialized('field1') && null !== $object->getField1()) {
             $data['field-1'] = $object->getField1();
         }
         foreach ($object as $key => $value) {

@@ -140,17 +140,17 @@ class ScimUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['emails'] = $values_1;
         $data['active'] = $object->getActive();
         $data['meta'] = $this->normalizer->normalize($object->getMeta(), 'json', $context);
-        if (null !== $object->getOrganizationId()) {
+        if ($object->isInitialized('organizationId') && null !== $object->getOrganizationId()) {
             $data['organization_id'] = $object->getOrganizationId();
         }
-        if (null !== $object->getOperations()) {
+        if ($object->isInitialized('operations') && null !== $object->getOperations()) {
             $values_2 = array();
             foreach ($object->getOperations() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['operations'] = $values_2;
         }
-        if (null !== $object->getGroups()) {
+        if ($object->isInitialized('groups') && null !== $object->getGroups()) {
             $values_3 = array();
             foreach ($object->getGroups() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);

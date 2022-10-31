@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class DateRangeAggregator extends AggregatorBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The field's ID to execute the aggregation on.
      *
      * @var string
@@ -34,6 +42,7 @@ class DateRangeAggregator extends AggregatorBase
      */
     public function setField(string $field) : self
     {
+        $this->initialized['field'] = true;
         $this->field = $field;
         return $this;
     }
@@ -55,6 +64,7 @@ class DateRangeAggregator extends AggregatorBase
      */
     public function setRanges(array $ranges) : self
     {
+        $this->initialized['ranges'] = true;
         $this->ranges = $ranges;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class NodeStatus
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * NodeState represents the state of a node.
      *
      * @var string
@@ -40,6 +48,7 @@ class NodeStatus
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -61,6 +70,7 @@ class NodeStatus
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -82,6 +92,7 @@ class NodeStatus
      */
     public function setAddr(string $addr) : self
     {
+        $this->initialized['addr'] = true;
         $this->addr = $addr;
         return $this;
     }

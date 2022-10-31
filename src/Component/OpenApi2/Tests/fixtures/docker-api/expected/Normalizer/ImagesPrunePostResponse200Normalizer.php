@@ -63,14 +63,14 @@ class ImagesPrunePostResponse200Normalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getImagesDeleted()) {
+        if ($object->isInitialized('imagesDeleted') && null !== $object->getImagesDeleted()) {
             $values = array();
             foreach ($object->getImagesDeleted() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['ImagesDeleted'] = $values;
         }
-        if (null !== $object->getSpaceReclaimed()) {
+        if ($object->isInitialized('spaceReclaimed') && null !== $object->getSpaceReclaimed()) {
             $data['SpaceReclaimed'] = $object->getSpaceReclaimed();
         }
         if (!($context['skip_validation'] ?? false)) {

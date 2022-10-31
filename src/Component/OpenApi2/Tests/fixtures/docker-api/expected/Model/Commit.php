@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class Commit
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Actual commit ID of external tool.
      *
      * @var string
@@ -34,6 +42,7 @@ class Commit
      */
     public function setID(string $iD) : self
     {
+        $this->initialized['iD'] = true;
         $this->iD = $iD;
         return $this;
     }
@@ -55,6 +64,7 @@ class Commit
      */
     public function setExpected(string $expected) : self
     {
+        $this->initialized['expected'] = true;
         $this->expected = $expected;
         return $this;
     }

@@ -108,37 +108,37 @@ class StatusNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getAvatarUrl()) {
+        if ($object->isInitialized('avatarUrl') && null !== $object->getAvatarUrl()) {
             $data['avatar_url'] = $object->getAvatarUrl();
         }
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getNodeId()) {
+        if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
-        if (null !== $object->getState()) {
+        if ($object->isInitialized('state') && null !== $object->getState()) {
             $data['state'] = $object->getState();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getTargetUrl()) {
+        if ($object->isInitialized('targetUrl') && null !== $object->getTargetUrl()) {
             $data['target_url'] = $object->getTargetUrl();
         }
-        if (null !== $object->getContext()) {
+        if ($object->isInitialized('context') && null !== $object->getContext()) {
             $data['context'] = $object->getContext();
         }
-        if (null !== $object->getCreatedAt()) {
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt();
         }
-        if (null !== $object->getUpdatedAt()) {
+        if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt();
         }
-        if (null !== $object->getCreator()) {
+        if ($object->isInitialized('creator') && null !== $object->getCreator()) {
             $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class TweetMetrics extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Unique identifier of this Tweet. This is returned as a string in order to avoid complications with languages and tools that cannot handle large integers.
      *
      * @var string
@@ -40,6 +48,7 @@ class TweetMetrics extends \ArrayObject
      */
     public function setTweetId(string $tweetId) : self
     {
+        $this->initialized['tweetId'] = true;
         $this->tweetId = $tweetId;
         return $this;
     }
@@ -61,6 +70,7 @@ class TweetMetrics extends \ArrayObject
      */
     public function setTweet(TweetInteractionMetrics $tweet) : self
     {
+        $this->initialized['tweet'] = true;
         $this->tweet = $tweet;
         return $this;
     }
@@ -82,6 +92,7 @@ class TweetMetrics extends \ArrayObject
      */
     public function setVideo(VideoMetrics $video) : self
     {
+        $this->initialized['video'] = true;
         $this->video = $video;
         return $this;
     }

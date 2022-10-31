@@ -86,34 +86,34 @@ class BuildCacheNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getID()) {
+        if ($object->isInitialized('iD') && null !== $object->getID()) {
             $data['ID'] = $object->getID();
         }
-        if (null !== $object->getParent()) {
+        if ($object->isInitialized('parent') && null !== $object->getParent()) {
             $data['Parent'] = $object->getParent();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['Type'] = $object->getType();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['Description'] = $object->getDescription();
         }
-        if (null !== $object->getInUse()) {
+        if ($object->isInitialized('inUse') && null !== $object->getInUse()) {
             $data['InUse'] = $object->getInUse();
         }
-        if (null !== $object->getShared()) {
+        if ($object->isInitialized('shared') && null !== $object->getShared()) {
             $data['Shared'] = $object->getShared();
         }
-        if (null !== $object->getSize()) {
+        if ($object->isInitialized('size') && null !== $object->getSize()) {
             $data['Size'] = $object->getSize();
         }
-        if (null !== $object->getCreatedAt()) {
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['CreatedAt'] = $object->getCreatedAt();
         }
-        if (null !== $object->getLastUsedAt()) {
+        if ($object->isInitialized('lastUsedAt') && null !== $object->getLastUsedAt()) {
             $data['LastUsedAt'] = $object->getLastUsedAt();
         }
-        if (null !== $object->getUsageCount()) {
+        if ($object->isInitialized('usageCount') && null !== $object->getUsageCount()) {
             $data['UsageCount'] = $object->getUsageCount();
         }
         if (!($context['skip_validation'] ?? false)) {

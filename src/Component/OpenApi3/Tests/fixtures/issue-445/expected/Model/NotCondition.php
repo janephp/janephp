@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class NotCondition extends BusinessRuleCondition
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Inner condition.
      *
      * @var mixed|null
@@ -28,6 +36,7 @@ class NotCondition extends BusinessRuleCondition
      */
     public function setCondition($condition) : self
     {
+        $this->initialized['condition'] = true;
         $this->condition = $condition;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class ProjectPermissions extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -40,6 +48,7 @@ class ProjectPermissions extends \ArrayObject
      */
     public function setRead(bool $read) : self
     {
+        $this->initialized['read'] = true;
         $this->read = $read;
         return $this;
     }
@@ -61,6 +70,7 @@ class ProjectPermissions extends \ArrayObject
      */
     public function setWrite(bool $write) : self
     {
+        $this->initialized['write'] = true;
         $this->write = $write;
         return $this;
     }
@@ -82,6 +92,7 @@ class ProjectPermissions extends \ArrayObject
      */
     public function setAdmin(bool $admin) : self
     {
+        $this->initialized['admin'] = true;
         $this->admin = $admin;
         return $this;
     }

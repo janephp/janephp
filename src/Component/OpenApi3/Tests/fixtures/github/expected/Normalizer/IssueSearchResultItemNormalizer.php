@@ -234,10 +234,10 @@ class IssueSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         $data['number'] = $object->getNumber();
         $data['title'] = $object->getTitle();
         $data['locked'] = $object->getLocked();
-        if (null !== $object->getActiveLockReason()) {
+        if ($object->isInitialized('activeLockReason') && null !== $object->getActiveLockReason()) {
             $data['active_lock_reason'] = $object->getActiveLockReason();
         }
-        if (null !== $object->getAssignees()) {
+        if ($object->isInitialized('assignees') && null !== $object->getAssignees()) {
             $values = array();
             foreach ($object->getAssignees() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
@@ -257,37 +257,37 @@ class IssueSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getTextMatches()) {
+        if ($object->isInitialized('textMatches') && null !== $object->getTextMatches()) {
             $values_2 = array();
             foreach ($object->getTextMatches() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['text_matches'] = $values_2;
         }
-        if (null !== $object->getPullRequest()) {
+        if ($object->isInitialized('pullRequest') && null !== $object->getPullRequest()) {
             $data['pull_request'] = $this->normalizer->normalize($object->getPullRequest(), 'json', $context);
         }
-        if (null !== $object->getBody()) {
+        if ($object->isInitialized('body') && null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
         $data['score'] = $object->getScore();
         $data['author_association'] = $object->getAuthorAssociation();
-        if (null !== $object->getDraft()) {
+        if ($object->isInitialized('draft') && null !== $object->getDraft()) {
             $data['draft'] = $object->getDraft();
         }
-        if (null !== $object->getRepository()) {
+        if ($object->isInitialized('repository') && null !== $object->getRepository()) {
             $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
         }
-        if (null !== $object->getBodyHtml()) {
+        if ($object->isInitialized('bodyHtml') && null !== $object->getBodyHtml()) {
             $data['body_html'] = $object->getBodyHtml();
         }
-        if (null !== $object->getBodyText()) {
+        if ($object->isInitialized('bodyText') && null !== $object->getBodyText()) {
             $data['body_text'] = $object->getBodyText();
         }
-        if (null !== $object->getTimelineUrl()) {
+        if ($object->isInitialized('timelineUrl') && null !== $object->getTimelineUrl()) {
             $data['timeline_url'] = $object->getTimelineUrl();
         }
-        if (null !== $object->getPerformedViaGithubApp()) {
+        if ($object->isInitialized('performedViaGithubApp') && null !== $object->getPerformedViaGithubApp()) {
             $data['performed_via_github_app'] = $this->normalizer->normalize($object->getPerformedViaGithubApp(), 'json', $context);
         }
         foreach ($object as $key => $value_3) {

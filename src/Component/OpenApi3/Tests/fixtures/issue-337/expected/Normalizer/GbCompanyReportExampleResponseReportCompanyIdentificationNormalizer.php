@@ -74,17 +74,17 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationNormalizer implem
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBasicInformation()) {
+        if ($object->isInitialized('basicInformation') && null !== $object->getBasicInformation()) {
             $data['basicInformation'] = $this->normalizer->normalize($object->getBasicInformation(), 'json', $context);
         }
-        if (null !== $object->getActivityClassifications()) {
+        if ($object->isInitialized('activityClassifications') && null !== $object->getActivityClassifications()) {
             $values = array();
             foreach ($object->getActivityClassifications() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['activityClassifications'] = $values;
         }
-        if (null !== $object->getPreviousNames()) {
+        if ($object->isInitialized('previousNames') && null !== $object->getPreviousNames()) {
             $values_1 = array();
             foreach ($object->getPreviousNames() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

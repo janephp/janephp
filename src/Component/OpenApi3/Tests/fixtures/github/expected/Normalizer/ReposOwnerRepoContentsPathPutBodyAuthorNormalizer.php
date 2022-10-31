@@ -72,7 +72,7 @@ class ReposOwnerRepoContentsPathPutBodyAuthorNormalizer implements DenormalizerI
         $data = array();
         $data['name'] = $object->getName();
         $data['email'] = $object->getEmail();
-        if (null !== $object->getDate()) {
+        if ($object->isInitialized('date') && null !== $object->getDate()) {
             $data['date'] = $object->getDate();
         }
         foreach ($object as $key => $value) {

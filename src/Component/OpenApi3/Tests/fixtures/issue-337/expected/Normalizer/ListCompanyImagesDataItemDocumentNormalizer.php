@@ -66,13 +66,13 @@ class ListCompanyImagesDataItemDocumentNormalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getImageType()) {
+        if ($object->isInitialized('imageType') && null !== $object->getImageType()) {
             $data['imageType'] = $object->getImageType();
         }
-        if (null !== $object->getImageCode()) {
+        if ($object->isInitialized('imageCode') && null !== $object->getImageCode()) {
             $data['imageCode'] = $object->getImageCode();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
         foreach ($object as $key => $value) {

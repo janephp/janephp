@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentMetadataUpdateItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * An optional list of IDs of the schemas that should be updated/replaced based on the options below and Metadata provided.
     The SchemaType of the specified schemas must be Layer.
     *
@@ -84,6 +92,7 @@ class ContentMetadataUpdateItem extends \ArrayObject
     */
     public function setLayerSchemaIds(?array $layerSchemaIds) : self
     {
+        $this->initialized['layerSchemaIds'] = true;
         $this->layerSchemaIds = $layerSchemaIds;
         return $this;
     }
@@ -111,6 +120,7 @@ class ContentMetadataUpdateItem extends \ArrayObject
     */
     public function setContent(?iterable $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }
@@ -138,6 +148,7 @@ class ContentMetadataUpdateItem extends \ArrayObject
     */
     public function setMetadata(?iterable $metadata) : self
     {
+        $this->initialized['metadata'] = true;
         $this->metadata = $metadata;
         return $this;
     }
@@ -169,6 +180,7 @@ class ContentMetadataUpdateItem extends \ArrayObject
     */
     public function setLayerSchemasUpdateOptions($layerSchemasUpdateOptions) : self
     {
+        $this->initialized['layerSchemasUpdateOptions'] = true;
         $this->layerSchemasUpdateOptions = $layerSchemasUpdateOptions;
         return $this;
     }
@@ -196,6 +208,7 @@ class ContentMetadataUpdateItem extends \ArrayObject
     */
     public function setLayerFieldsUpdateOptions($layerFieldsUpdateOptions) : self
     {
+        $this->initialized['layerFieldsUpdateOptions'] = true;
         $this->layerFieldsUpdateOptions = $layerFieldsUpdateOptions;
         return $this;
     }
@@ -223,6 +236,7 @@ class ContentMetadataUpdateItem extends \ArrayObject
     */
     public function setContentFieldsUpdateOptions($contentFieldsUpdateOptions) : self
     {
+        $this->initialized['contentFieldsUpdateOptions'] = true;
         $this->contentFieldsUpdateOptions = $contentFieldsUpdateOptions;
         return $this;
     }
@@ -244,6 +258,7 @@ class ContentMetadataUpdateItem extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }

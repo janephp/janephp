@@ -124,7 +124,7 @@ class ContentTreeNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['git_url'] = $object->getGitUrl();
         $data['html_url'] = $object->getHtmlUrl();
         $data['download_url'] = $object->getDownloadUrl();
-        if (null !== $object->getEntries()) {
+        if ($object->isInitialized('entries') && null !== $object->getEntries()) {
             $values = array();
             foreach ($object->getEntries() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

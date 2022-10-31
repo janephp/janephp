@@ -70,16 +70,16 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreCurrentCred
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCommonValue()) {
+        if ($object->isInitialized('commonValue') && null !== $object->getCommonValue()) {
             $data['commonValue'] = $object->getCommonValue();
         }
-        if (null !== $object->getCommonDescription()) {
+        if ($object->isInitialized('commonDescription') && null !== $object->getCommonDescription()) {
             $data['commonDescription'] = $object->getCommonDescription();
         }
-        if (null !== $object->getCreditLimit()) {
+        if ($object->isInitialized('creditLimit') && null !== $object->getCreditLimit()) {
             $data['creditLimit'] = $this->normalizer->normalize($object->getCreditLimit(), 'json', $context);
         }
-        if (null !== $object->getProviderValue()) {
+        if ($object->isInitialized('providerValue') && null !== $object->getProviderValue()) {
             $data['providerValue'] = $this->normalizer->normalize($object->getProviderValue(), 'json', $context);
         }
         foreach ($object as $key => $value) {

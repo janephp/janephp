@@ -70,16 +70,16 @@ class SubmittedFreshInvestigationRepsonseNormalizer implements DenormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCorrelationId()) {
+        if ($object->isInitialized('correlationId') && null !== $object->getCorrelationId()) {
             $data['correlationId'] = $object->getCorrelationId();
         }
-        if (null !== $object->getMessage()) {
+        if ($object->isInitialized('message') && null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
-        if (null !== $object->getOrderID()) {
+        if ($object->isInitialized('orderID') && null !== $object->getOrderID()) {
             $data['orderID'] = $object->getOrderID();
         }
-        if (null !== $object->getTransactionID()) {
+        if ($object->isInitialized('transactionID') && null !== $object->getTransactionID()) {
             $data['transactionID'] = $object->getTransactionID();
         }
         foreach ($object as $key => $value) {

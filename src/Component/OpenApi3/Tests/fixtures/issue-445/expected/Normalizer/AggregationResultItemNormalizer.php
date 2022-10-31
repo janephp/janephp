@@ -76,11 +76,11 @@ class AggregationResultItemNormalizer implements DenormalizerInterface, Normaliz
         $data = array();
         $data['name'] = $object->getName();
         $data['count'] = $object->getCount();
-        if (null !== $object->getFilter()) {
+        if ($object->isInitialized('filter') && null !== $object->getFilter()) {
             $data['filter'] = $object->getFilter();
         }
         $data['active'] = $object->getActive();
-        if (null !== $object->getAggregationResults()) {
+        if ($object->isInitialized('aggregationResults') && null !== $object->getAggregationResults()) {
             $values = array();
             foreach ($object->getAggregationResults() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

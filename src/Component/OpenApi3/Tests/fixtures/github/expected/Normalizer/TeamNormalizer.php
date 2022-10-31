@@ -117,7 +117,7 @@ class TeamNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $data['name'] = $object->getName();
         $data['slug'] = $object->getSlug();
         $data['description'] = $object->getDescription();
-        if (null !== $object->getPrivacy()) {
+        if ($object->isInitialized('privacy') && null !== $object->getPrivacy()) {
             $data['privacy'] = $object->getPrivacy();
         }
         $data['permission'] = $object->getPermission();
@@ -125,7 +125,7 @@ class TeamNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $data['html_url'] = $object->getHtmlUrl();
         $data['members_url'] = $object->getMembersUrl();
         $data['repositories_url'] = $object->getRepositoriesUrl();
-        if (null !== $object->getParent()) {
+        if ($object->isInitialized('parent') && null !== $object->getParent()) {
             $data['parent'] = $this->normalizer->normalize($object->getParent(), 'json', $context);
         }
         foreach ($object as $key => $value) {

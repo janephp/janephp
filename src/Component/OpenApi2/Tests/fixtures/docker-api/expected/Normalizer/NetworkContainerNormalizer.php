@@ -68,19 +68,19 @@ class NetworkContainerNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['Name'] = $object->getName();
         }
-        if (null !== $object->getEndpointID()) {
+        if ($object->isInitialized('endpointID') && null !== $object->getEndpointID()) {
             $data['EndpointID'] = $object->getEndpointID();
         }
-        if (null !== $object->getMacAddress()) {
+        if ($object->isInitialized('macAddress') && null !== $object->getMacAddress()) {
             $data['MacAddress'] = $object->getMacAddress();
         }
-        if (null !== $object->getIPv4Address()) {
+        if ($object->isInitialized('iPv4Address') && null !== $object->getIPv4Address()) {
             $data['IPv4Address'] = $object->getIPv4Address();
         }
-        if (null !== $object->getIPv6Address()) {
+        if ($object->isInitialized('iPv6Address') && null !== $object->getIPv6Address()) {
             $data['IPv6Address'] = $object->getIPv6Address();
         }
         if (!($context['skip_validation'] ?? false)) {

@@ -5,6 +5,14 @@ namespace Github\Model;
 class GitTreeTreeItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -58,6 +66,7 @@ class GitTreeTreeItem extends \ArrayObject
      */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -79,6 +88,7 @@ class GitTreeTreeItem extends \ArrayObject
      */
     public function setMode(string $mode) : self
     {
+        $this->initialized['mode'] = true;
         $this->mode = $mode;
         return $this;
     }
@@ -100,6 +110,7 @@ class GitTreeTreeItem extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -121,6 +132,7 @@ class GitTreeTreeItem extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -142,6 +154,7 @@ class GitTreeTreeItem extends \ArrayObject
      */
     public function setSize(int $size) : self
     {
+        $this->initialized['size'] = true;
         $this->size = $size;
         return $this;
     }
@@ -163,6 +176,7 @@ class GitTreeTreeItem extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }

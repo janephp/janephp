@@ -5,6 +5,14 @@ namespace Github\Model;
 class SearchTopicsGetResponse200 extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -40,6 +48,7 @@ class SearchTopicsGetResponse200 extends \ArrayObject
      */
     public function setTotalCount(int $totalCount) : self
     {
+        $this->initialized['totalCount'] = true;
         $this->totalCount = $totalCount;
         return $this;
     }
@@ -61,6 +70,7 @@ class SearchTopicsGetResponse200 extends \ArrayObject
      */
     public function setIncompleteResults(bool $incompleteResults) : self
     {
+        $this->initialized['incompleteResults'] = true;
         $this->incompleteResults = $incompleteResults;
         return $this;
     }
@@ -82,6 +92,7 @@ class SearchTopicsGetResponse200 extends \ArrayObject
      */
     public function setItems(array $items) : self
     {
+        $this->initialized['items'] = true;
         $this->items = $items;
         return $this;
     }

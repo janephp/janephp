@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ContainersCreatePostBody
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The hostname to use for the container, as a valid RFC 1123 hostname.
      *
      * @var string
@@ -201,6 +209,7 @@ class ContainersCreatePostBody
      */
     public function setHostname(string $hostname) : self
     {
+        $this->initialized['hostname'] = true;
         $this->hostname = $hostname;
         return $this;
     }
@@ -222,6 +231,7 @@ class ContainersCreatePostBody
      */
     public function setDomainname(string $domainname) : self
     {
+        $this->initialized['domainname'] = true;
         $this->domainname = $domainname;
         return $this;
     }
@@ -243,6 +253,7 @@ class ContainersCreatePostBody
      */
     public function setUser(string $user) : self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
     }
@@ -264,6 +275,7 @@ class ContainersCreatePostBody
      */
     public function setAttachStdin(bool $attachStdin) : self
     {
+        $this->initialized['attachStdin'] = true;
         $this->attachStdin = $attachStdin;
         return $this;
     }
@@ -285,6 +297,7 @@ class ContainersCreatePostBody
      */
     public function setAttachStdout(bool $attachStdout) : self
     {
+        $this->initialized['attachStdout'] = true;
         $this->attachStdout = $attachStdout;
         return $this;
     }
@@ -306,6 +319,7 @@ class ContainersCreatePostBody
      */
     public function setAttachStderr(bool $attachStderr) : self
     {
+        $this->initialized['attachStderr'] = true;
         $this->attachStderr = $attachStderr;
         return $this;
     }
@@ -333,6 +347,7 @@ class ContainersCreatePostBody
     */
     public function setExposedPorts(iterable $exposedPorts) : self
     {
+        $this->initialized['exposedPorts'] = true;
         $this->exposedPorts = $exposedPorts;
         return $this;
     }
@@ -354,6 +369,7 @@ class ContainersCreatePostBody
      */
     public function setTty(bool $tty) : self
     {
+        $this->initialized['tty'] = true;
         $this->tty = $tty;
         return $this;
     }
@@ -375,6 +391,7 @@ class ContainersCreatePostBody
      */
     public function setOpenStdin(bool $openStdin) : self
     {
+        $this->initialized['openStdin'] = true;
         $this->openStdin = $openStdin;
         return $this;
     }
@@ -396,6 +413,7 @@ class ContainersCreatePostBody
      */
     public function setStdinOnce(bool $stdinOnce) : self
     {
+        $this->initialized['stdinOnce'] = true;
         $this->stdinOnce = $stdinOnce;
         return $this;
     }
@@ -423,6 +441,7 @@ class ContainersCreatePostBody
     */
     public function setEnv(array $env) : self
     {
+        $this->initialized['env'] = true;
         $this->env = $env;
         return $this;
     }
@@ -444,6 +463,7 @@ class ContainersCreatePostBody
      */
     public function setCmd(array $cmd) : self
     {
+        $this->initialized['cmd'] = true;
         $this->cmd = $cmd;
         return $this;
     }
@@ -465,6 +485,7 @@ class ContainersCreatePostBody
      */
     public function setHealthcheck(HealthConfig $healthcheck) : self
     {
+        $this->initialized['healthcheck'] = true;
         $this->healthcheck = $healthcheck;
         return $this;
     }
@@ -486,6 +507,7 @@ class ContainersCreatePostBody
      */
     public function setArgsEscaped(bool $argsEscaped) : self
     {
+        $this->initialized['argsEscaped'] = true;
         $this->argsEscaped = $argsEscaped;
         return $this;
     }
@@ -507,6 +529,7 @@ class ContainersCreatePostBody
      */
     public function setImage(string $image) : self
     {
+        $this->initialized['image'] = true;
         $this->image = $image;
         return $this;
     }
@@ -532,6 +555,7 @@ class ContainersCreatePostBody
     */
     public function setVolumes(iterable $volumes) : self
     {
+        $this->initialized['volumes'] = true;
         $this->volumes = $volumes;
         return $this;
     }
@@ -553,6 +577,7 @@ class ContainersCreatePostBody
      */
     public function setWorkingDir(string $workingDir) : self
     {
+        $this->initialized['workingDir'] = true;
         $this->workingDir = $workingDir;
         return $this;
     }
@@ -584,6 +609,7 @@ class ContainersCreatePostBody
     */
     public function setEntrypoint(array $entrypoint) : self
     {
+        $this->initialized['entrypoint'] = true;
         $this->entrypoint = $entrypoint;
         return $this;
     }
@@ -605,6 +631,7 @@ class ContainersCreatePostBody
      */
     public function setNetworkDisabled(bool $networkDisabled) : self
     {
+        $this->initialized['networkDisabled'] = true;
         $this->networkDisabled = $networkDisabled;
         return $this;
     }
@@ -626,6 +653,7 @@ class ContainersCreatePostBody
      */
     public function setMacAddress(string $macAddress) : self
     {
+        $this->initialized['macAddress'] = true;
         $this->macAddress = $macAddress;
         return $this;
     }
@@ -647,6 +675,7 @@ class ContainersCreatePostBody
      */
     public function setOnBuild(array $onBuild) : self
     {
+        $this->initialized['onBuild'] = true;
         $this->onBuild = $onBuild;
         return $this;
     }
@@ -668,6 +697,7 @@ class ContainersCreatePostBody
      */
     public function setLabels(iterable $labels) : self
     {
+        $this->initialized['labels'] = true;
         $this->labels = $labels;
         return $this;
     }
@@ -689,6 +719,7 @@ class ContainersCreatePostBody
      */
     public function setStopSignal(string $stopSignal) : self
     {
+        $this->initialized['stopSignal'] = true;
         $this->stopSignal = $stopSignal;
         return $this;
     }
@@ -710,6 +741,7 @@ class ContainersCreatePostBody
      */
     public function setStopTimeout(int $stopTimeout) : self
     {
+        $this->initialized['stopTimeout'] = true;
         $this->stopTimeout = $stopTimeout;
         return $this;
     }
@@ -731,6 +763,7 @@ class ContainersCreatePostBody
      */
     public function setShell(array $shell) : self
     {
+        $this->initialized['shell'] = true;
         $this->shell = $shell;
         return $this;
     }
@@ -752,6 +785,7 @@ class ContainersCreatePostBody
      */
     public function setHostConfig(HostConfig $hostConfig) : self
     {
+        $this->initialized['hostConfig'] = true;
         $this->hostConfig = $hostConfig;
         return $this;
     }
@@ -781,6 +815,7 @@ class ContainersCreatePostBody
     */
     public function setNetworkingConfig(NetworkingConfig $networkingConfig) : self
     {
+        $this->initialized['networkingConfig'] = true;
         $this->networkingConfig = $networkingConfig;
         return $this;
     }

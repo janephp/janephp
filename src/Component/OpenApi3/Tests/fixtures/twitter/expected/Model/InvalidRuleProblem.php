@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class InvalidRuleProblem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class InvalidRuleProblem extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -61,6 +70,7 @@ class InvalidRuleProblem extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -82,6 +92,7 @@ class InvalidRuleProblem extends \ArrayObject
      */
     public function setDetail(string $detail) : self
     {
+        $this->initialized['detail'] = true;
         $this->detail = $detail;
         return $this;
     }

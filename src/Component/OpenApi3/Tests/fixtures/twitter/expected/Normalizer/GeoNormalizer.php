@@ -84,7 +84,7 @@ class GeoNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $values[] = $value;
         }
         $data['bbox'] = $values;
-        if (null !== $object->getGeometry()) {
+        if ($object->isInitialized('geometry') && null !== $object->getGeometry()) {
             $data['geometry'] = $this->normalizer->normalize($object->getGeometry(), 'json', $context);
         }
         $values_1 = array();

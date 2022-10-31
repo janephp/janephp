@@ -66,10 +66,10 @@ class GbImageTypesResponseNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCountry()) {
+        if ($object->isInitialized('country') && null !== $object->getCountry()) {
             $data['country'] = $object->getCountry();
         }
-        if (null !== $object->getAvailableTypes()) {
+        if ($object->isInitialized('availableTypes') && null !== $object->getAvailableTypes()) {
             $values = array();
             foreach ($object->getAvailableTypes() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

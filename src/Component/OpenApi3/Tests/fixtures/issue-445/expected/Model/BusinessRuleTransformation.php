@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessRuleTransformation
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Optional trace log reference ID set by the system when EnableTracing is set to true on the associated rule.
      *
      * @var string|null
@@ -32,6 +40,7 @@ class BusinessRuleTransformation
      */
     public function setTraceRefId(?string $traceRefId)
     {
+        $this->initialized['traceRefId'] = true;
         $this->traceRefId = $traceRefId;
     }
     /**
@@ -50,6 +59,7 @@ class BusinessRuleTransformation
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

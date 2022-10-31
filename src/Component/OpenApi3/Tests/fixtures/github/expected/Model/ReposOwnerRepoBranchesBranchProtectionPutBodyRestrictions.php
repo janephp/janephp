@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictions extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The list of user `login`s with push access
      *
      * @var string[]
@@ -40,6 +48,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictions extends \ArrayOb
      */
     public function setUsers(array $users) : self
     {
+        $this->initialized['users'] = true;
         $this->users = $users;
         return $this;
     }
@@ -61,6 +70,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictions extends \ArrayOb
      */
     public function setTeams(array $teams) : self
     {
+        $this->initialized['teams'] = true;
         $this->teams = $teams;
         return $this;
     }
@@ -82,6 +92,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictions extends \ArrayOb
      */
     public function setApps(array $apps) : self
     {
+        $this->initialized['apps'] = true;
         $this->apps = $apps;
         return $this;
     }

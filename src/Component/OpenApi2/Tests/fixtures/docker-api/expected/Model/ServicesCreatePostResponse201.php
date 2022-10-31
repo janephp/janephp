@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ServicesCreatePostResponse201
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the created service.
      *
      * @var string
@@ -34,6 +42,7 @@ class ServicesCreatePostResponse201
      */
     public function setID(string $iD) : self
     {
+        $this->initialized['iD'] = true;
         $this->iD = $iD;
         return $this;
     }
@@ -55,6 +64,7 @@ class ServicesCreatePostResponse201
      */
     public function setWarning(string $warning) : self
     {
+        $this->initialized['warning'] = true;
         $this->warning = $warning;
         return $this;
     }

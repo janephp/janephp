@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ExecIdJsonGetResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -88,6 +96,7 @@ class ExecIdJsonGetResponse200
      */
     public function setCanRemove(bool $canRemove) : self
     {
+        $this->initialized['canRemove'] = true;
         $this->canRemove = $canRemove;
         return $this;
     }
@@ -109,6 +118,7 @@ class ExecIdJsonGetResponse200
      */
     public function setDetachKeys(string $detachKeys) : self
     {
+        $this->initialized['detachKeys'] = true;
         $this->detachKeys = $detachKeys;
         return $this;
     }
@@ -130,6 +140,7 @@ class ExecIdJsonGetResponse200
      */
     public function setID(string $iD) : self
     {
+        $this->initialized['iD'] = true;
         $this->iD = $iD;
         return $this;
     }
@@ -151,6 +162,7 @@ class ExecIdJsonGetResponse200
      */
     public function setRunning(bool $running) : self
     {
+        $this->initialized['running'] = true;
         $this->running = $running;
         return $this;
     }
@@ -172,6 +184,7 @@ class ExecIdJsonGetResponse200
      */
     public function setExitCode(int $exitCode) : self
     {
+        $this->initialized['exitCode'] = true;
         $this->exitCode = $exitCode;
         return $this;
     }
@@ -193,6 +206,7 @@ class ExecIdJsonGetResponse200
      */
     public function setProcessConfig(ProcessConfig $processConfig) : self
     {
+        $this->initialized['processConfig'] = true;
         $this->processConfig = $processConfig;
         return $this;
     }
@@ -214,6 +228,7 @@ class ExecIdJsonGetResponse200
      */
     public function setOpenStdin(bool $openStdin) : self
     {
+        $this->initialized['openStdin'] = true;
         $this->openStdin = $openStdin;
         return $this;
     }
@@ -235,6 +250,7 @@ class ExecIdJsonGetResponse200
      */
     public function setOpenStderr(bool $openStderr) : self
     {
+        $this->initialized['openStderr'] = true;
         $this->openStderr = $openStderr;
         return $this;
     }
@@ -256,6 +272,7 @@ class ExecIdJsonGetResponse200
      */
     public function setOpenStdout(bool $openStdout) : self
     {
+        $this->initialized['openStdout'] = true;
         $this->openStdout = $openStdout;
         return $this;
     }
@@ -277,6 +294,7 @@ class ExecIdJsonGetResponse200
      */
     public function setContainerID(string $containerID) : self
     {
+        $this->initialized['containerID'] = true;
         $this->containerID = $containerID;
         return $this;
     }
@@ -298,6 +316,7 @@ class ExecIdJsonGetResponse200
      */
     public function setPid(int $pid) : self
     {
+        $this->initialized['pid'] = true;
         $this->pid = $pid;
         return $this;
     }

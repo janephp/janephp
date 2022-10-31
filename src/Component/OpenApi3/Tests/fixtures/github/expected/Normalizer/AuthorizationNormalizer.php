@@ -158,10 +158,10 @@ class AuthorizationNormalizer implements DenormalizerInterface, NormalizerInterf
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['fingerprint'] = $object->getFingerprint();
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         }
-        if (null !== $object->getInstallation()) {
+        if ($object->isInitialized('installation') && null !== $object->getInstallation()) {
             $data['installation'] = $this->normalizer->normalize($object->getInstallation(), 'json', $context);
         }
         foreach ($object as $key => $value_1) {

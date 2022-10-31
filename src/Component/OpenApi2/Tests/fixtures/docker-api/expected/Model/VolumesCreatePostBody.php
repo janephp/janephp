@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class VolumesCreatePostBody
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The new volume's name. If not specified, Docker generates a name.
      *
      * @var string
@@ -48,6 +56,7 @@ class VolumesCreatePostBody
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -69,6 +78,7 @@ class VolumesCreatePostBody
      */
     public function setDriver(string $driver) : self
     {
+        $this->initialized['driver'] = true;
         $this->driver = $driver;
         return $this;
     }
@@ -94,6 +104,7 @@ class VolumesCreatePostBody
     */
     public function setDriverOpts(iterable $driverOpts) : self
     {
+        $this->initialized['driverOpts'] = true;
         $this->driverOpts = $driverOpts;
         return $this;
     }
@@ -115,6 +126,7 @@ class VolumesCreatePostBody
      */
     public function setLabels(iterable $labels) : self
     {
+        $this->initialized['labels'] = true;
         $this->labels = $labels;
         return $this;
     }

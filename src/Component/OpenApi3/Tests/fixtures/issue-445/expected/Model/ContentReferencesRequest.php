@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentReferencesRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Limits the number of the returned metadata references by setting paging information.
      *
      * @var mixed|null
@@ -34,6 +42,7 @@ class ContentReferencesRequest
      */
     public function setReferences($references) : self
     {
+        $this->initialized['references'] = true;
         $this->references = $references;
         return $this;
     }
@@ -55,6 +64,7 @@ class ContentReferencesRequest
      */
     public function setShares($shares) : self
     {
+        $this->initialized['shares'] = true;
         $this->shares = $shares;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessRuleTracedTransformationGroup
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Trace reference ID of transformation group.
      *
      * @var string|null
@@ -46,6 +54,7 @@ class BusinessRuleTracedTransformationGroup
      */
     public function setTraceRefId(?string $traceRefId) : self
     {
+        $this->initialized['traceRefId'] = true;
         $this->traceRefId = $traceRefId;
         return $this;
     }
@@ -67,6 +76,7 @@ class BusinessRuleTracedTransformationGroup
      */
     public function setInput(?string $input) : self
     {
+        $this->initialized['input'] = true;
         $this->input = $input;
         return $this;
     }
@@ -88,6 +98,7 @@ class BusinessRuleTracedTransformationGroup
      */
     public function setOutput(?string $output) : self
     {
+        $this->initialized['output'] = true;
         $this->output = $output;
         return $this;
     }
@@ -109,6 +120,7 @@ class BusinessRuleTracedTransformationGroup
      */
     public function setTransformations(?array $transformations) : self
     {
+        $this->initialized['transformations'] = true;
         $this->transformations = $transformations;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoContentsPathDeleteBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The commit message.
      *
      * @var string
@@ -52,6 +60,7 @@ class ReposOwnerRepoContentsPathDeleteBody extends \ArrayObject
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -73,6 +82,7 @@ class ReposOwnerRepoContentsPathDeleteBody extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -94,6 +104,7 @@ class ReposOwnerRepoContentsPathDeleteBody extends \ArrayObject
      */
     public function setBranch(string $branch) : self
     {
+        $this->initialized['branch'] = true;
         $this->branch = $branch;
         return $this;
     }
@@ -115,6 +126,7 @@ class ReposOwnerRepoContentsPathDeleteBody extends \ArrayObject
      */
     public function setCommitter(ReposOwnerRepoContentsPathDeleteBodyCommitter $committer) : self
     {
+        $this->initialized['committer'] = true;
         $this->committer = $committer;
         return $this;
     }
@@ -136,6 +148,7 @@ class ReposOwnerRepoContentsPathDeleteBody extends \ArrayObject
      */
     public function setAuthor(ReposOwnerRepoContentsPathDeleteBodyAuthor $author) : self
     {
+        $this->initialized['author'] = true;
         $this->author = $author;
         return $this;
     }

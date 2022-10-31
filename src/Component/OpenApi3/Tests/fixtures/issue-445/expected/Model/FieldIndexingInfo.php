@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class FieldIndexingInfo
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The field ID.
      *
      * @var string
@@ -58,6 +66,7 @@ class FieldIndexingInfo
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -79,6 +88,7 @@ class FieldIndexingInfo
      */
     public function setIndex(bool $index) : self
     {
+        $this->initialized['index'] = true;
         $this->index = $index;
         return $this;
     }
@@ -100,6 +110,7 @@ class FieldIndexingInfo
      */
     public function setSimpleSearch(bool $simpleSearch) : self
     {
+        $this->initialized['simpleSearch'] = true;
         $this->simpleSearch = $simpleSearch;
         return $this;
     }
@@ -121,6 +132,7 @@ class FieldIndexingInfo
      */
     public function setSortable(bool $sortable) : self
     {
+        $this->initialized['sortable'] = true;
         $this->sortable = $sortable;
         return $this;
     }
@@ -142,6 +154,7 @@ class FieldIndexingInfo
      */
     public function setBoost(float $boost) : self
     {
+        $this->initialized['boost'] = true;
         $this->boost = $boost;
         return $this;
     }
@@ -163,6 +176,7 @@ class FieldIndexingInfo
      */
     public function setRelatedSchemaIndexing($relatedSchemaIndexing) : self
     {
+        $this->initialized['relatedSchemaIndexing'] = true;
         $this->relatedSchemaIndexing = $relatedSchemaIndexing;
         return $this;
     }

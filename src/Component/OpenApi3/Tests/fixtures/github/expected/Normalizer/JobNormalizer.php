@@ -139,7 +139,7 @@ class JobNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         $data['started_at'] = $object->getStartedAt()->format('Y-m-d\\TH:i:sP');
         $data['completed_at'] = $object->getCompletedAt()->format('Y-m-d\\TH:i:sP');
         $data['name'] = $object->getName();
-        if (null !== $object->getSteps()) {
+        if ($object->isInitialized('steps') && null !== $object->getSteps()) {
             $values = array();
             foreach ($object->getSteps() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

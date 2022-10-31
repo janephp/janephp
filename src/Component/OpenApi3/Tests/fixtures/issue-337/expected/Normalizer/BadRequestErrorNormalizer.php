@@ -66,13 +66,13 @@ class BadRequestErrorNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCorrelationId()) {
+        if ($object->isInitialized('correlationId') && null !== $object->getCorrelationId()) {
             $data['correlationId'] = $object->getCorrelationId();
         }
-        if (null !== $object->getMessage()) {
+        if ($object->isInitialized('message') && null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
-        if (null !== $object->getDetails()) {
+        if ($object->isInitialized('details') && null !== $object->getDetails()) {
             $data['details'] = $object->getDetails();
         }
         foreach ($object as $key => $value) {

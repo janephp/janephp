@@ -87,13 +87,13 @@ class OrgsOrgMigrationsPostBodyNormalizer implements DenormalizerInterface, Norm
             $values[] = $value;
         }
         $data['repositories'] = $values;
-        if (null !== $object->getLockRepositories()) {
+        if ($object->isInitialized('lockRepositories') && null !== $object->getLockRepositories()) {
             $data['lock_repositories'] = $object->getLockRepositories();
         }
-        if (null !== $object->getExcludeAttachments()) {
+        if ($object->isInitialized('excludeAttachments') && null !== $object->getExcludeAttachments()) {
             $data['exclude_attachments'] = $object->getExcludeAttachments();
         }
-        if (null !== $object->getExclude()) {
+        if ($object->isInitialized('exclude') && null !== $object->getExclude()) {
             $values_1 = array();
             foreach ($object->getExclude() as $value_1) {
                 $values_1[] = $value_1;

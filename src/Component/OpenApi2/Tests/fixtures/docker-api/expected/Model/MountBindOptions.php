@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class MountBindOptions
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * A propagation mode with the value `[r]private`, `[r]shared`, or `[r]slave`.
      *
      * @var string
@@ -34,6 +42,7 @@ class MountBindOptions
      */
     public function setPropagation(string $propagation) : self
     {
+        $this->initialized['propagation'] = true;
         $this->propagation = $propagation;
         return $this;
     }
@@ -55,6 +64,7 @@ class MountBindOptions
      */
     public function setNonRecursive(bool $nonRecursive) : self
     {
+        $this->initialized['nonRecursive'] = true;
         $this->nonRecursive = $nonRecursive;
         return $this;
     }

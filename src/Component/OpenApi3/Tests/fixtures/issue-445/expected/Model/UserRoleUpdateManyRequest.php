@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UserRoleUpdateManyRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * New value for user roles with specified IDs.
      *
      * @var UserRole[]
@@ -28,6 +36,7 @@ class UserRoleUpdateManyRequest
      */
     public function setItems(array $items) : self
     {
+        $this->initialized['items'] = true;
         $this->items = $items;
         return $this;
     }

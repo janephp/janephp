@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredPossibleItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
      */
     public function setCcjDate(string $ccjDate) : self
     {
+        $this->initialized['ccjDate'] = true;
         $this->ccjDate = $ccjDate;
         return $this;
     }
@@ -73,6 +82,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
      */
     public function setCourt(string $court) : self
     {
+        $this->initialized['court'] = true;
         $this->court = $court;
         return $this;
     }
@@ -94,6 +104,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
      */
     public function setCcjAmount(float $ccjAmount) : self
     {
+        $this->initialized['ccjAmount'] = true;
         $this->ccjAmount = $ccjAmount;
         return $this;
     }
@@ -115,6 +126,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
      */
     public function setCaseNumber(string $caseNumber) : self
     {
+        $this->initialized['caseNumber'] = true;
         $this->caseNumber = $caseNumber;
         return $this;
     }
@@ -136,6 +148,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
      */
     public function setCcjStatus(string $ccjStatus) : self
     {
+        $this->initialized['ccjStatus'] = true;
         $this->ccjStatus = $ccjStatus;
         return $this;
     }

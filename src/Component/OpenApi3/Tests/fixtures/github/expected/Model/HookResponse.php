@@ -5,6 +5,14 @@ namespace Github\Model;
 class HookResponse extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int|null
@@ -40,6 +48,7 @@ class HookResponse extends \ArrayObject
      */
     public function setCode(?int $code) : self
     {
+        $this->initialized['code'] = true;
         $this->code = $code;
         return $this;
     }
@@ -61,6 +70,7 @@ class HookResponse extends \ArrayObject
      */
     public function setStatus(?string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -82,6 +92,7 @@ class HookResponse extends \ArrayObject
      */
     public function setMessage(?string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class OutputSearchRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Limits the document count of the result set. Defaults to 30.
      *
      * @var int
@@ -58,6 +66,7 @@ class OutputSearchRequest
      */
     public function setLimit(int $limit) : self
     {
+        $this->initialized['limit'] = true;
         $this->limit = $limit;
         return $this;
     }
@@ -79,6 +88,7 @@ class OutputSearchRequest
      */
     public function setPageToken(?string $pageToken) : self
     {
+        $this->initialized['pageToken'] = true;
         $this->pageToken = $pageToken;
         return $this;
     }
@@ -100,6 +110,7 @@ class OutputSearchRequest
      */
     public function setContentIds(?array $contentIds) : self
     {
+        $this->initialized['contentIds'] = true;
         $this->contentIds = $contentIds;
         return $this;
     }
@@ -121,6 +132,7 @@ class OutputSearchRequest
      */
     public function setRenderingStates(?array $renderingStates) : self
     {
+        $this->initialized['renderingStates'] = true;
         $this->renderingStates = $renderingStates;
         return $this;
     }
@@ -142,6 +154,7 @@ class OutputSearchRequest
      */
     public function setFileExtensions(?array $fileExtensions) : self
     {
+        $this->initialized['fileExtensions'] = true;
         $this->fileExtensions = $fileExtensions;
         return $this;
     }
@@ -163,6 +176,7 @@ class OutputSearchRequest
      */
     public function setOutputFormatIds(?array $outputFormatIds) : self
     {
+        $this->initialized['outputFormatIds'] = true;
         $this->outputFormatIds = $outputFormatIds;
         return $this;
     }

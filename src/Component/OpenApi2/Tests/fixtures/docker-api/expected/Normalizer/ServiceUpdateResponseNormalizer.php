@@ -60,7 +60,7 @@ class ServiceUpdateResponseNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getWarnings()) {
+        if ($object->isInitialized('warnings') && null !== $object->getWarnings()) {
             $values = array();
             foreach ($object->getWarnings() as $value) {
                 $values[] = $value;

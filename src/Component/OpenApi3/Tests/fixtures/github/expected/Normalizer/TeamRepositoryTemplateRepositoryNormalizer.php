@@ -386,251 +386,251 @@ class TeamRepositoryTemplateRepositoryNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getNodeId()) {
+        if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getFullName()) {
+        if ($object->isInitialized('fullName') && null !== $object->getFullName()) {
             $data['full_name'] = $object->getFullName();
         }
-        if (null !== $object->getOwner()) {
+        if ($object->isInitialized('owner') && null !== $object->getOwner()) {
             $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
         }
-        if (null !== $object->getPrivate()) {
+        if ($object->isInitialized('private') && null !== $object->getPrivate()) {
             $data['private'] = $object->getPrivate();
         }
-        if (null !== $object->getHtmlUrl()) {
+        if ($object->isInitialized('htmlUrl') && null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getFork()) {
+        if ($object->isInitialized('fork') && null !== $object->getFork()) {
             $data['fork'] = $object->getFork();
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getArchiveUrl()) {
+        if ($object->isInitialized('archiveUrl') && null !== $object->getArchiveUrl()) {
             $data['archive_url'] = $object->getArchiveUrl();
         }
-        if (null !== $object->getAssigneesUrl()) {
+        if ($object->isInitialized('assigneesUrl') && null !== $object->getAssigneesUrl()) {
             $data['assignees_url'] = $object->getAssigneesUrl();
         }
-        if (null !== $object->getBlobsUrl()) {
+        if ($object->isInitialized('blobsUrl') && null !== $object->getBlobsUrl()) {
             $data['blobs_url'] = $object->getBlobsUrl();
         }
-        if (null !== $object->getBranchesUrl()) {
+        if ($object->isInitialized('branchesUrl') && null !== $object->getBranchesUrl()) {
             $data['branches_url'] = $object->getBranchesUrl();
         }
-        if (null !== $object->getCollaboratorsUrl()) {
+        if ($object->isInitialized('collaboratorsUrl') && null !== $object->getCollaboratorsUrl()) {
             $data['collaborators_url'] = $object->getCollaboratorsUrl();
         }
-        if (null !== $object->getCommentsUrl()) {
+        if ($object->isInitialized('commentsUrl') && null !== $object->getCommentsUrl()) {
             $data['comments_url'] = $object->getCommentsUrl();
         }
-        if (null !== $object->getCommitsUrl()) {
+        if ($object->isInitialized('commitsUrl') && null !== $object->getCommitsUrl()) {
             $data['commits_url'] = $object->getCommitsUrl();
         }
-        if (null !== $object->getCompareUrl()) {
+        if ($object->isInitialized('compareUrl') && null !== $object->getCompareUrl()) {
             $data['compare_url'] = $object->getCompareUrl();
         }
-        if (null !== $object->getContentsUrl()) {
+        if ($object->isInitialized('contentsUrl') && null !== $object->getContentsUrl()) {
             $data['contents_url'] = $object->getContentsUrl();
         }
-        if (null !== $object->getContributorsUrl()) {
+        if ($object->isInitialized('contributorsUrl') && null !== $object->getContributorsUrl()) {
             $data['contributors_url'] = $object->getContributorsUrl();
         }
-        if (null !== $object->getDeploymentsUrl()) {
+        if ($object->isInitialized('deploymentsUrl') && null !== $object->getDeploymentsUrl()) {
             $data['deployments_url'] = $object->getDeploymentsUrl();
         }
-        if (null !== $object->getDownloadsUrl()) {
+        if ($object->isInitialized('downloadsUrl') && null !== $object->getDownloadsUrl()) {
             $data['downloads_url'] = $object->getDownloadsUrl();
         }
-        if (null !== $object->getEventsUrl()) {
+        if ($object->isInitialized('eventsUrl') && null !== $object->getEventsUrl()) {
             $data['events_url'] = $object->getEventsUrl();
         }
-        if (null !== $object->getForksUrl()) {
+        if ($object->isInitialized('forksUrl') && null !== $object->getForksUrl()) {
             $data['forks_url'] = $object->getForksUrl();
         }
-        if (null !== $object->getGitCommitsUrl()) {
+        if ($object->isInitialized('gitCommitsUrl') && null !== $object->getGitCommitsUrl()) {
             $data['git_commits_url'] = $object->getGitCommitsUrl();
         }
-        if (null !== $object->getGitRefsUrl()) {
+        if ($object->isInitialized('gitRefsUrl') && null !== $object->getGitRefsUrl()) {
             $data['git_refs_url'] = $object->getGitRefsUrl();
         }
-        if (null !== $object->getGitTagsUrl()) {
+        if ($object->isInitialized('gitTagsUrl') && null !== $object->getGitTagsUrl()) {
             $data['git_tags_url'] = $object->getGitTagsUrl();
         }
-        if (null !== $object->getGitUrl()) {
+        if ($object->isInitialized('gitUrl') && null !== $object->getGitUrl()) {
             $data['git_url'] = $object->getGitUrl();
         }
-        if (null !== $object->getIssueCommentUrl()) {
+        if ($object->isInitialized('issueCommentUrl') && null !== $object->getIssueCommentUrl()) {
             $data['issue_comment_url'] = $object->getIssueCommentUrl();
         }
-        if (null !== $object->getIssueEventsUrl()) {
+        if ($object->isInitialized('issueEventsUrl') && null !== $object->getIssueEventsUrl()) {
             $data['issue_events_url'] = $object->getIssueEventsUrl();
         }
-        if (null !== $object->getIssuesUrl()) {
+        if ($object->isInitialized('issuesUrl') && null !== $object->getIssuesUrl()) {
             $data['issues_url'] = $object->getIssuesUrl();
         }
-        if (null !== $object->getKeysUrl()) {
+        if ($object->isInitialized('keysUrl') && null !== $object->getKeysUrl()) {
             $data['keys_url'] = $object->getKeysUrl();
         }
-        if (null !== $object->getLabelsUrl()) {
+        if ($object->isInitialized('labelsUrl') && null !== $object->getLabelsUrl()) {
             $data['labels_url'] = $object->getLabelsUrl();
         }
-        if (null !== $object->getLanguagesUrl()) {
+        if ($object->isInitialized('languagesUrl') && null !== $object->getLanguagesUrl()) {
             $data['languages_url'] = $object->getLanguagesUrl();
         }
-        if (null !== $object->getMergesUrl()) {
+        if ($object->isInitialized('mergesUrl') && null !== $object->getMergesUrl()) {
             $data['merges_url'] = $object->getMergesUrl();
         }
-        if (null !== $object->getMilestonesUrl()) {
+        if ($object->isInitialized('milestonesUrl') && null !== $object->getMilestonesUrl()) {
             $data['milestones_url'] = $object->getMilestonesUrl();
         }
-        if (null !== $object->getNotificationsUrl()) {
+        if ($object->isInitialized('notificationsUrl') && null !== $object->getNotificationsUrl()) {
             $data['notifications_url'] = $object->getNotificationsUrl();
         }
-        if (null !== $object->getPullsUrl()) {
+        if ($object->isInitialized('pullsUrl') && null !== $object->getPullsUrl()) {
             $data['pulls_url'] = $object->getPullsUrl();
         }
-        if (null !== $object->getReleasesUrl()) {
+        if ($object->isInitialized('releasesUrl') && null !== $object->getReleasesUrl()) {
             $data['releases_url'] = $object->getReleasesUrl();
         }
-        if (null !== $object->getSshUrl()) {
+        if ($object->isInitialized('sshUrl') && null !== $object->getSshUrl()) {
             $data['ssh_url'] = $object->getSshUrl();
         }
-        if (null !== $object->getStargazersUrl()) {
+        if ($object->isInitialized('stargazersUrl') && null !== $object->getStargazersUrl()) {
             $data['stargazers_url'] = $object->getStargazersUrl();
         }
-        if (null !== $object->getStatusesUrl()) {
+        if ($object->isInitialized('statusesUrl') && null !== $object->getStatusesUrl()) {
             $data['statuses_url'] = $object->getStatusesUrl();
         }
-        if (null !== $object->getSubscribersUrl()) {
+        if ($object->isInitialized('subscribersUrl') && null !== $object->getSubscribersUrl()) {
             $data['subscribers_url'] = $object->getSubscribersUrl();
         }
-        if (null !== $object->getSubscriptionUrl()) {
+        if ($object->isInitialized('subscriptionUrl') && null !== $object->getSubscriptionUrl()) {
             $data['subscription_url'] = $object->getSubscriptionUrl();
         }
-        if (null !== $object->getTagsUrl()) {
+        if ($object->isInitialized('tagsUrl') && null !== $object->getTagsUrl()) {
             $data['tags_url'] = $object->getTagsUrl();
         }
-        if (null !== $object->getTeamsUrl()) {
+        if ($object->isInitialized('teamsUrl') && null !== $object->getTeamsUrl()) {
             $data['teams_url'] = $object->getTeamsUrl();
         }
-        if (null !== $object->getTreesUrl()) {
+        if ($object->isInitialized('treesUrl') && null !== $object->getTreesUrl()) {
             $data['trees_url'] = $object->getTreesUrl();
         }
-        if (null !== $object->getCloneUrl()) {
+        if ($object->isInitialized('cloneUrl') && null !== $object->getCloneUrl()) {
             $data['clone_url'] = $object->getCloneUrl();
         }
-        if (null !== $object->getMirrorUrl()) {
+        if ($object->isInitialized('mirrorUrl') && null !== $object->getMirrorUrl()) {
             $data['mirror_url'] = $object->getMirrorUrl();
         }
-        if (null !== $object->getHooksUrl()) {
+        if ($object->isInitialized('hooksUrl') && null !== $object->getHooksUrl()) {
             $data['hooks_url'] = $object->getHooksUrl();
         }
-        if (null !== $object->getSvnUrl()) {
+        if ($object->isInitialized('svnUrl') && null !== $object->getSvnUrl()) {
             $data['svn_url'] = $object->getSvnUrl();
         }
-        if (null !== $object->getHomepage()) {
+        if ($object->isInitialized('homepage') && null !== $object->getHomepage()) {
             $data['homepage'] = $object->getHomepage();
         }
-        if (null !== $object->getLanguage()) {
+        if ($object->isInitialized('language') && null !== $object->getLanguage()) {
             $data['language'] = $object->getLanguage();
         }
-        if (null !== $object->getForksCount()) {
+        if ($object->isInitialized('forksCount') && null !== $object->getForksCount()) {
             $data['forks_count'] = $object->getForksCount();
         }
-        if (null !== $object->getStargazersCount()) {
+        if ($object->isInitialized('stargazersCount') && null !== $object->getStargazersCount()) {
             $data['stargazers_count'] = $object->getStargazersCount();
         }
-        if (null !== $object->getWatchersCount()) {
+        if ($object->isInitialized('watchersCount') && null !== $object->getWatchersCount()) {
             $data['watchers_count'] = $object->getWatchersCount();
         }
-        if (null !== $object->getSize()) {
+        if ($object->isInitialized('size') && null !== $object->getSize()) {
             $data['size'] = $object->getSize();
         }
-        if (null !== $object->getDefaultBranch()) {
+        if ($object->isInitialized('defaultBranch') && null !== $object->getDefaultBranch()) {
             $data['default_branch'] = $object->getDefaultBranch();
         }
-        if (null !== $object->getOpenIssuesCount()) {
+        if ($object->isInitialized('openIssuesCount') && null !== $object->getOpenIssuesCount()) {
             $data['open_issues_count'] = $object->getOpenIssuesCount();
         }
-        if (null !== $object->getIsTemplate()) {
+        if ($object->isInitialized('isTemplate') && null !== $object->getIsTemplate()) {
             $data['is_template'] = $object->getIsTemplate();
         }
-        if (null !== $object->getTopics()) {
+        if ($object->isInitialized('topics') && null !== $object->getTopics()) {
             $values = array();
             foreach ($object->getTopics() as $value) {
                 $values[] = $value;
             }
             $data['topics'] = $values;
         }
-        if (null !== $object->getHasIssues()) {
+        if ($object->isInitialized('hasIssues') && null !== $object->getHasIssues()) {
             $data['has_issues'] = $object->getHasIssues();
         }
-        if (null !== $object->getHasProjects()) {
+        if ($object->isInitialized('hasProjects') && null !== $object->getHasProjects()) {
             $data['has_projects'] = $object->getHasProjects();
         }
-        if (null !== $object->getHasWiki()) {
+        if ($object->isInitialized('hasWiki') && null !== $object->getHasWiki()) {
             $data['has_wiki'] = $object->getHasWiki();
         }
-        if (null !== $object->getHasPages()) {
+        if ($object->isInitialized('hasPages') && null !== $object->getHasPages()) {
             $data['has_pages'] = $object->getHasPages();
         }
-        if (null !== $object->getHasDownloads()) {
+        if ($object->isInitialized('hasDownloads') && null !== $object->getHasDownloads()) {
             $data['has_downloads'] = $object->getHasDownloads();
         }
-        if (null !== $object->getArchived()) {
+        if ($object->isInitialized('archived') && null !== $object->getArchived()) {
             $data['archived'] = $object->getArchived();
         }
-        if (null !== $object->getDisabled()) {
+        if ($object->isInitialized('disabled') && null !== $object->getDisabled()) {
             $data['disabled'] = $object->getDisabled();
         }
-        if (null !== $object->getVisibility()) {
+        if ($object->isInitialized('visibility') && null !== $object->getVisibility()) {
             $data['visibility'] = $object->getVisibility();
         }
-        if (null !== $object->getPushedAt()) {
+        if ($object->isInitialized('pushedAt') && null !== $object->getPushedAt()) {
             $data['pushed_at'] = $object->getPushedAt();
         }
-        if (null !== $object->getCreatedAt()) {
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt();
         }
-        if (null !== $object->getUpdatedAt()) {
+        if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt();
         }
-        if (null !== $object->getPermissions()) {
+        if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
-        if (null !== $object->getAllowRebaseMerge()) {
+        if ($object->isInitialized('allowRebaseMerge') && null !== $object->getAllowRebaseMerge()) {
             $data['allow_rebase_merge'] = $object->getAllowRebaseMerge();
         }
-        if (null !== $object->getTemplateRepository()) {
+        if ($object->isInitialized('templateRepository') && null !== $object->getTemplateRepository()) {
             $data['template_repository'] = $object->getTemplateRepository();
         }
-        if (null !== $object->getTempCloneToken()) {
+        if ($object->isInitialized('tempCloneToken') && null !== $object->getTempCloneToken()) {
             $data['temp_clone_token'] = $object->getTempCloneToken();
         }
-        if (null !== $object->getAllowSquashMerge()) {
+        if ($object->isInitialized('allowSquashMerge') && null !== $object->getAllowSquashMerge()) {
             $data['allow_squash_merge'] = $object->getAllowSquashMerge();
         }
-        if (null !== $object->getDeleteBranchOnMerge()) {
+        if ($object->isInitialized('deleteBranchOnMerge') && null !== $object->getDeleteBranchOnMerge()) {
             $data['delete_branch_on_merge'] = $object->getDeleteBranchOnMerge();
         }
-        if (null !== $object->getAllowMergeCommit()) {
+        if ($object->isInitialized('allowMergeCommit') && null !== $object->getAllowMergeCommit()) {
             $data['allow_merge_commit'] = $object->getAllowMergeCommit();
         }
-        if (null !== $object->getSubscribersCount()) {
+        if ($object->isInitialized('subscribersCount') && null !== $object->getSubscribersCount()) {
             $data['subscribers_count'] = $object->getSubscribersCount();
         }
-        if (null !== $object->getNetworkCount()) {
+        if ($object->isInitialized('networkCount') && null !== $object->getNetworkCount()) {
             $data['network_count'] = $object->getNetworkCount();
         }
         foreach ($object as $key => $value_1) {

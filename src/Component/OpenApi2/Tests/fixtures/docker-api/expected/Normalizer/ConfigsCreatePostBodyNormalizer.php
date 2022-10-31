@@ -69,20 +69,20 @@ class ConfigsCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['Name'] = $object->getName();
         }
-        if (null !== $object->getLabels()) {
+        if ($object->isInitialized('labels') && null !== $object->getLabels()) {
             $values = array();
             foreach ($object->getLabels() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['Labels'] = $values;
         }
-        if (null !== $object->getData()) {
+        if ($object->isInitialized('data') && null !== $object->getData()) {
             $data['Data'] = $object->getData();
         }
-        if (null !== $object->getTemplating()) {
+        if ($object->isInitialized('templating') && null !== $object->getTemplating()) {
             $data['Templating'] = $this->normalizer->normalize($object->getTemplating(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

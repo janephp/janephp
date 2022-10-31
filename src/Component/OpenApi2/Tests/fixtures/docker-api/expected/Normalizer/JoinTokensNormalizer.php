@@ -59,10 +59,10 @@ class JoinTokensNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getWorker()) {
+        if ($object->isInitialized('worker') && null !== $object->getWorker()) {
             $data['Worker'] = $object->getWorker();
         }
-        if (null !== $object->getManager()) {
+        if ($object->isInitialized('manager') && null !== $object->getManager()) {
             $data['Manager'] = $object->getManager();
         }
         if (!($context['skip_validation'] ?? false)) {

@@ -87,38 +87,38 @@ class TaskSpecNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPluginSpec()) {
+        if ($object->isInitialized('pluginSpec') && null !== $object->getPluginSpec()) {
             $data['PluginSpec'] = $this->normalizer->normalize($object->getPluginSpec(), 'json', $context);
         }
-        if (null !== $object->getContainerSpec()) {
+        if ($object->isInitialized('containerSpec') && null !== $object->getContainerSpec()) {
             $data['ContainerSpec'] = $this->normalizer->normalize($object->getContainerSpec(), 'json', $context);
         }
-        if (null !== $object->getNetworkAttachmentSpec()) {
+        if ($object->isInitialized('networkAttachmentSpec') && null !== $object->getNetworkAttachmentSpec()) {
             $data['NetworkAttachmentSpec'] = $this->normalizer->normalize($object->getNetworkAttachmentSpec(), 'json', $context);
         }
-        if (null !== $object->getResources()) {
+        if ($object->isInitialized('resources') && null !== $object->getResources()) {
             $data['Resources'] = $this->normalizer->normalize($object->getResources(), 'json', $context);
         }
-        if (null !== $object->getRestartPolicy()) {
+        if ($object->isInitialized('restartPolicy') && null !== $object->getRestartPolicy()) {
             $data['RestartPolicy'] = $this->normalizer->normalize($object->getRestartPolicy(), 'json', $context);
         }
-        if (null !== $object->getPlacement()) {
+        if ($object->isInitialized('placement') && null !== $object->getPlacement()) {
             $data['Placement'] = $this->normalizer->normalize($object->getPlacement(), 'json', $context);
         }
-        if (null !== $object->getForceUpdate()) {
+        if ($object->isInitialized('forceUpdate') && null !== $object->getForceUpdate()) {
             $data['ForceUpdate'] = $object->getForceUpdate();
         }
-        if (null !== $object->getRuntime()) {
+        if ($object->isInitialized('runtime') && null !== $object->getRuntime()) {
             $data['Runtime'] = $object->getRuntime();
         }
-        if (null !== $object->getNetworks()) {
+        if ($object->isInitialized('networks') && null !== $object->getNetworks()) {
             $values = array();
             foreach ($object->getNetworks() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['Networks'] = $values;
         }
-        if (null !== $object->getLogDriver()) {
+        if ($object->isInitialized('logDriver') && null !== $object->getLogDriver()) {
             $data['LogDriver'] = $this->normalizer->normalize($object->getLogDriver(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

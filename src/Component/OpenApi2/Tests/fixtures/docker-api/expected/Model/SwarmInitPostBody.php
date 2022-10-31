@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class SwarmInitPostBody
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * Listen address used for inter-manager communication, as well
     as determining the networking interface used for the VXLAN
     Tunnel Endpoint (VTEP). This can either be an address/port
@@ -111,6 +119,7 @@ class SwarmInitPostBody
     */
     public function setListenAddr(string $listenAddr) : self
     {
+        $this->initialized['listenAddr'] = true;
         $this->listenAddr = $listenAddr;
         return $this;
     }
@@ -144,6 +153,7 @@ class SwarmInitPostBody
     */
     public function setAdvertiseAddr(string $advertiseAddr) : self
     {
+        $this->initialized['advertiseAddr'] = true;
         $this->advertiseAddr = $advertiseAddr;
         return $this;
     }
@@ -185,6 +195,7 @@ class SwarmInitPostBody
     */
     public function setDataPathAddr(string $dataPathAddr) : self
     {
+        $this->initialized['dataPathAddr'] = true;
         $this->dataPathAddr = $dataPathAddr;
         return $this;
     }
@@ -212,6 +223,7 @@ class SwarmInitPostBody
     */
     public function setDataPathPort(int $dataPathPort) : self
     {
+        $this->initialized['dataPathPort'] = true;
         $this->dataPathPort = $dataPathPort;
         return $this;
     }
@@ -237,6 +249,7 @@ class SwarmInitPostBody
     */
     public function setDefaultAddrPool(array $defaultAddrPool) : self
     {
+        $this->initialized['defaultAddrPool'] = true;
         $this->defaultAddrPool = $defaultAddrPool;
         return $this;
     }
@@ -258,6 +271,7 @@ class SwarmInitPostBody
      */
     public function setForceNewCluster(bool $forceNewCluster) : self
     {
+        $this->initialized['forceNewCluster'] = true;
         $this->forceNewCluster = $forceNewCluster;
         return $this;
     }
@@ -283,6 +297,7 @@ class SwarmInitPostBody
     */
     public function setSubnetSize(int $subnetSize) : self
     {
+        $this->initialized['subnetSize'] = true;
         $this->subnetSize = $subnetSize;
         return $this;
     }
@@ -304,6 +319,7 @@ class SwarmInitPostBody
      */
     public function setSpec(SwarmSpec $spec) : self
     {
+        $this->initialized['spec'] = true;
         $this->spec = $spec;
         return $this;
     }

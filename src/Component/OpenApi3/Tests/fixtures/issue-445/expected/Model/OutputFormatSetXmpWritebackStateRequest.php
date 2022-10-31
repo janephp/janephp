@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class OutputFormatSetXmpWritebackStateRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Indicates if XMP writeback shall be enabled for the format.
      *
      * @var bool
@@ -28,6 +36,7 @@ class OutputFormatSetXmpWritebackStateRequest
      */
     public function setEnabled(bool $enabled) : self
     {
+        $this->initialized['enabled'] = true;
         $this->enabled = $enabled;
         return $this;
     }

@@ -73,10 +73,10 @@ class BusinessProcessDetailsDataSchemaImportNormalizer implements DenormalizerIn
     {
         $data = array();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getSchemaImportResult()) {
+        if ($object->isInitialized('schemaImportResult') && null !== $object->getSchemaImportResult()) {
             $data['schemaImportResult'] = $object->getSchemaImportResult();
         }
-        if (null !== $object->getListItemImportResult()) {
+        if ($object->isInitialized('listItemImportResult') && null !== $object->getListItemImportResult()) {
             $data['listItemImportResult'] = $object->getListItemImportResult();
         }
         foreach ($object as $key => $value) {

@@ -117,23 +117,23 @@ class SearchBehaviorWithAggregationBaseResultOfContentNormalizer implements Deno
         }
         $data['results'] = $values;
         $data['elapsedMilliseconds'] = $object->getElapsedMilliseconds();
-        if (null !== $object->getPageToken()) {
+        if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
             $data['pageToken'] = $object->getPageToken();
         }
-        if (null !== $object->getSearchString()) {
+        if ($object->isInitialized('searchString') && null !== $object->getSearchString()) {
             $data['searchString'] = $object->getSearchString();
         }
-        if (null !== $object->getIsSearchStringRewritten()) {
+        if ($object->isInitialized('isSearchStringRewritten') && null !== $object->getIsSearchStringRewritten()) {
             $data['isSearchStringRewritten'] = $object->getIsSearchStringRewritten();
         }
-        if (null !== $object->getQueryDebugInformation()) {
+        if ($object->isInitialized('queryDebugInformation') && null !== $object->getQueryDebugInformation()) {
             $values_1 = array();
             foreach ($object->getQueryDebugInformation() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['queryDebugInformation'] = $values_1;
         }
-        if (null !== $object->getAggregationResults()) {
+        if ($object->isInitialized('aggregationResults') && null !== $object->getAggregationResults()) {
             $values_2 = array();
             foreach ($object->getAggregationResults() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);

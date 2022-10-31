@@ -66,13 +66,13 @@ class MonitoringPortfoliosPostBodyEmailsNormalizer implements DenormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFirstName()) {
+        if ($object->isInitialized('firstName') && null !== $object->getFirstName()) {
             $data['firstName'] = $object->getFirstName();
         }
-        if (null !== $object->getLastName()) {
+        if ($object->isInitialized('lastName') && null !== $object->getLastName()) {
             $data['lastName'] = $object->getLastName();
         }
-        if (null !== $object->getEmailAddress()) {
+        if ($object->isInitialized('emailAddress') && null !== $object->getEmailAddress()) {
             $data['emailAddress'] = $object->getEmailAddress();
         }
         foreach ($object as $key => $value) {

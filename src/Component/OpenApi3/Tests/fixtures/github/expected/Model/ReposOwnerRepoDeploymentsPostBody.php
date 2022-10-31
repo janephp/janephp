@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ref to deploy. This can be a branch, tag, or SHA.
      *
      * @var string
@@ -84,6 +92,7 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
      */
     public function setRef(string $ref) : self
     {
+        $this->initialized['ref'] = true;
         $this->ref = $ref;
         return $this;
     }
@@ -105,6 +114,7 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
      */
     public function setTask(string $task) : self
     {
+        $this->initialized['task'] = true;
         $this->task = $task;
         return $this;
     }
@@ -126,6 +136,7 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
      */
     public function setAutoMerge(bool $autoMerge) : self
     {
+        $this->initialized['autoMerge'] = true;
         $this->autoMerge = $autoMerge;
         return $this;
     }
@@ -147,6 +158,7 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
      */
     public function setRequiredContexts(array $requiredContexts) : self
     {
+        $this->initialized['requiredContexts'] = true;
         $this->requiredContexts = $requiredContexts;
         return $this;
     }
@@ -168,6 +180,7 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
      */
     public function setPayload(string $payload) : self
     {
+        $this->initialized['payload'] = true;
         $this->payload = $payload;
         return $this;
     }
@@ -189,6 +202,7 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
      */
     public function setEnvironment(string $environment) : self
     {
+        $this->initialized['environment'] = true;
         $this->environment = $environment;
         return $this;
     }
@@ -210,6 +224,7 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -233,6 +248,7 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
     */
     public function setTransientEnvironment(bool $transientEnvironment) : self
     {
+        $this->initialized['transientEnvironment'] = true;
         $this->transientEnvironment = $transientEnvironment;
         return $this;
     }
@@ -256,6 +272,7 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
     */
     public function setProductionEnvironment(bool $productionEnvironment) : self
     {
+        $this->initialized['productionEnvironment'] = true;
         $this->productionEnvironment = $productionEnvironment;
         return $this;
     }
@@ -277,6 +294,7 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
      */
     public function setCreatedAt(string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }

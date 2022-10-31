@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class DetailedTweetFields extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Engagement metrics for the Tweet at the time of the request.
      *
      * @var DetailedTweetFieldsStats
@@ -52,6 +60,7 @@ class DetailedTweetFields extends \ArrayObject
      */
     public function setStats(DetailedTweetFieldsStats $stats) : self
     {
+        $this->initialized['stats'] = true;
         $this->stats = $stats;
         return $this;
     }
@@ -73,6 +82,7 @@ class DetailedTweetFields extends \ArrayObject
      */
     public function setContextAnnotation(array $contextAnnotation) : self
     {
+        $this->initialized['contextAnnotation'] = true;
         $this->contextAnnotation = $contextAnnotation;
         return $this;
     }
@@ -94,6 +104,7 @@ class DetailedTweetFields extends \ArrayObject
      */
     public function setPossiblySensitive(bool $possiblySensitive) : self
     {
+        $this->initialized['possiblySensitive'] = true;
         $this->possiblySensitive = $possiblySensitive;
         return $this;
     }
@@ -115,6 +126,7 @@ class DetailedTweetFields extends \ArrayObject
      */
     public function setLang(string $lang) : self
     {
+        $this->initialized['lang'] = true;
         $this->lang = $lang;
         return $this;
     }
@@ -136,6 +148,7 @@ class DetailedTweetFields extends \ArrayObject
      */
     public function setSource(string $source) : self
     {
+        $this->initialized['source'] = true;
         $this->source = $source;
         return $this;
     }

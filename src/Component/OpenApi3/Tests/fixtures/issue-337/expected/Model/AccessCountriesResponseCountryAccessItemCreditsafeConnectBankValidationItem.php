@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class AccessCountriesResponseCountryAccessItemCreditsafeConnectBankValidationItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectBankValidationIte
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -73,6 +82,7 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectBankValidationIte
      */
     public function setStartDate(string $startDate) : self
     {
+        $this->initialized['startDate'] = true;
         $this->startDate = $startDate;
         return $this;
     }
@@ -94,6 +104,7 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectBankValidationIte
      */
     public function setExpireDate(string $expireDate) : self
     {
+        $this->initialized['expireDate'] = true;
         $this->expireDate = $expireDate;
         return $this;
     }
@@ -115,6 +126,7 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectBankValidationIte
      */
     public function setPaid(int $paid) : self
     {
+        $this->initialized['paid'] = true;
         $this->paid = $paid;
         return $this;
     }
@@ -136,6 +148,7 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectBankValidationIte
      */
     public function setUsed(int $used) : self
     {
+        $this->initialized['used'] = true;
         $this->used = $used;
         return $this;
     }

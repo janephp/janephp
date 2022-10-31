@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoImportLfsPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Can be one of `opt_in` (large files will be stored using Git LFS) or `opt_out` (large files will be removed during the import).
      *
      * @var string
@@ -28,6 +36,7 @@ class ReposOwnerRepoImportLfsPatchBody extends \ArrayObject
      */
     public function setUseLfs(string $useLfs) : self
     {
+        $this->initialized['useLfs'] = true;
         $this->useLfs = $useLfs;
         return $this;
     }

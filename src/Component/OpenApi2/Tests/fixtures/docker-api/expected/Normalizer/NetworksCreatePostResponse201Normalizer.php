@@ -59,10 +59,10 @@ class NetworksCreatePostResponse201Normalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['Id'] = $object->getId();
         }
-        if (null !== $object->getWarning()) {
+        if ($object->isInitialized('warning') && null !== $object->getWarning()) {
             $data['Warning'] = $object->getWarning();
         }
         if (!($context['skip_validation'] ?? false)) {

@@ -79,16 +79,16 @@ class ReposOwnerRepoImportPutBodyNormalizer implements DenormalizerInterface, No
     {
         $data = array();
         $data['vcs_url'] = $object->getVcsUrl();
-        if (null !== $object->getVcs()) {
+        if ($object->isInitialized('vcs') && null !== $object->getVcs()) {
             $data['vcs'] = $object->getVcs();
         }
-        if (null !== $object->getVcsUsername()) {
+        if ($object->isInitialized('vcsUsername') && null !== $object->getVcsUsername()) {
             $data['vcs_username'] = $object->getVcsUsername();
         }
-        if (null !== $object->getVcsPassword()) {
+        if ($object->isInitialized('vcsPassword') && null !== $object->getVcsPassword()) {
             $data['vcs_password'] = $object->getVcsPassword();
         }
-        if (null !== $object->getTfvcProject()) {
+        if ($object->isInitialized('tfvcProject') && null !== $object->getTfvcProject()) {
             $data['tfvc_project'] = $object->getTfvcProject();
         }
         foreach ($object as $key => $value) {

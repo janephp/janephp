@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ApiStatisticsEvent extends ApplicationEvent
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int[]|null
@@ -28,6 +36,7 @@ class ApiStatisticsEvent extends ApplicationEvent
      */
     public function setRequestsPerClient(?iterable $requestsPerClient) : self
     {
+        $this->initialized['requestsPerClient'] = true;
         $this->requestsPerClient = $requestsPerClient;
         return $this;
     }

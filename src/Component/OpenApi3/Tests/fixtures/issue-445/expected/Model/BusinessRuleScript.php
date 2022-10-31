@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessRuleScript extends BusinessRule
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Script
      *
      * @var string|null
@@ -28,6 +36,7 @@ class BusinessRuleScript extends BusinessRule
      */
     public function setScript(?string $script) : self
     {
+        $this->initialized['script'] = true;
         $this->script = $script;
         return $this;
     }

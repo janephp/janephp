@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class AacAudioFormat extends FormatBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -52,6 +60,7 @@ class AacAudioFormat extends FormatBase
      */
     public function setExtension(?string $extension) : self
     {
+        $this->initialized['extension'] = true;
         $this->extension = $extension;
         return $this;
     }
@@ -73,6 +82,7 @@ class AacAudioFormat extends FormatBase
      */
     public function setProfile($profile) : self
     {
+        $this->initialized['profile'] = true;
         $this->profile = $profile;
         return $this;
     }
@@ -94,6 +104,7 @@ class AacAudioFormat extends FormatBase
      */
     public function setCoder($coder) : self
     {
+        $this->initialized['coder'] = true;
         $this->coder = $coder;
         return $this;
     }
@@ -115,6 +126,7 @@ class AacAudioFormat extends FormatBase
      */
     public function setBitrate(?int $bitrate) : self
     {
+        $this->initialized['bitrate'] = true;
         $this->bitrate = $bitrate;
         return $this;
     }
@@ -136,6 +148,7 @@ class AacAudioFormat extends FormatBase
      */
     public function setVariableBitRate(?int $variableBitRate) : self
     {
+        $this->initialized['variableBitRate'] = true;
         $this->variableBitRate = $variableBitRate;
         return $this;
     }

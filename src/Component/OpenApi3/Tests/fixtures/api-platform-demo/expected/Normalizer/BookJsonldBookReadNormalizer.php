@@ -104,14 +104,14 @@ class BookJsonldBookReadNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getIsbn()) {
+        if ($object->isInitialized('isbn') && null !== $object->getIsbn()) {
             $data['isbn'] = $object->getIsbn();
         }
         $data['title'] = $object->getTitle();
         $data['description'] = $object->getDescription();
         $data['author'] = $object->getAuthor();
         $data['publicationDate'] = $object->getPublicationDate()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getReviews()) {
+        if ($object->isInitialized('reviews') && null !== $object->getReviews()) {
             $values = array();
             foreach ($object->getReviews() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

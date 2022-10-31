@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoTransferPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * **Required:** The username or organization name the repository will be transferred to.
      *
      * @var string
@@ -34,6 +42,7 @@ class ReposOwnerRepoTransferPostBody extends \ArrayObject
      */
     public function setNewOwner(string $newOwner) : self
     {
+        $this->initialized['newOwner'] = true;
         $this->newOwner = $newOwner;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReposOwnerRepoTransferPostBody extends \ArrayObject
      */
     public function setTeamIds(array $teamIds) : self
     {
+        $this->initialized['teamIds'] = true;
         $this->teamIds = $teamIds;
         return $this;
     }

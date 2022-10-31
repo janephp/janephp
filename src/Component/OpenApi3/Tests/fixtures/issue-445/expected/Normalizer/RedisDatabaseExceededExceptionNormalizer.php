@@ -110,35 +110,35 @@ class RedisDatabaseExceededExceptionNormalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceLevel()) {
+        if ($object->isInitialized('traceLevel') && null !== $object->getTraceLevel()) {
             $data['traceLevel'] = $object->getTraceLevel();
         }
-        if (null !== $object->getTraceId()) {
+        if ($object->isInitialized('traceId') && null !== $object->getTraceId()) {
             $data['traceId'] = $object->getTraceId();
         }
-        if (null !== $object->getTraceJobId()) {
+        if ($object->isInitialized('traceJobId') && null !== $object->getTraceJobId()) {
             $data['traceJobId'] = $object->getTraceJobId();
         }
-        if (null !== $object->getHttpStatusCode()) {
+        if ($object->isInitialized('httpStatusCode') && null !== $object->getHttpStatusCode()) {
             $data['httpStatusCode'] = $object->getHttpStatusCode();
         }
-        if (null !== $object->getExceptionMessage()) {
+        if ($object->isInitialized('exceptionMessage') && null !== $object->getExceptionMessage()) {
             $data['exceptionMessage'] = $object->getExceptionMessage();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getCustomerId()) {
+        if ($object->isInitialized('customerId') && null !== $object->getCustomerId()) {
             $data['customerId'] = $object->getCustomerId();
         }
-        if (null !== $object->getCustomerCount()) {
+        if ($object->isInitialized('customerCount') && null !== $object->getCustomerCount()) {
             $data['customerCount'] = $object->getCustomerCount();
         }
-        if (null !== $object->getMaxCount()) {
+        if ($object->isInitialized('maxCount') && null !== $object->getMaxCount()) {
             $data['maxCount'] = $object->getMaxCount();
         }
-        if (null !== $object->getStartIndex()) {
+        if ($object->isInitialized('startIndex') && null !== $object->getStartIndex()) {
             $data['startIndex'] = $object->getStartIndex();
         }
-        if (null !== $object->getRedisDatabaseCount()) {
+        if ($object->isInitialized('redisDatabaseCount') && null !== $object->getRedisDatabaseCount()) {
             $data['redisDatabaseCount'] = $object->getRedisDatabaseCount();
         }
         foreach ($object as $key => $value) {

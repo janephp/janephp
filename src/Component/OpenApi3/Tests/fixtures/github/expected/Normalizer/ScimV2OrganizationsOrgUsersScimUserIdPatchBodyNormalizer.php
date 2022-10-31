@@ -74,7 +74,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyNormalizer implements Denorm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSchemas()) {
+        if ($object->isInitialized('schemas') && null !== $object->getSchemas()) {
             $values = array();
             foreach ($object->getSchemas() as $value) {
                 $values[] = $value;

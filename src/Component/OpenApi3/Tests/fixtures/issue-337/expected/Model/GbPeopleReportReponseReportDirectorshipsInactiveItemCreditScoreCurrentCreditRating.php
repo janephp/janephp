@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRating extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCred
      */
     public function setCommonValue(string $commonValue) : self
     {
+        $this->initialized['commonValue'] = true;
         $this->commonValue = $commonValue;
         return $this;
     }
@@ -67,6 +76,7 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCred
      */
     public function setCommonDescription(string $commonDescription) : self
     {
+        $this->initialized['commonDescription'] = true;
         $this->commonDescription = $commonDescription;
         return $this;
     }
@@ -88,6 +98,7 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCred
      */
     public function setCreditLimit(GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingCreditLimit $creditLimit) : self
     {
+        $this->initialized['creditLimit'] = true;
         $this->creditLimit = $creditLimit;
         return $this;
     }
@@ -109,6 +120,7 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCred
      */
     public function setProviderValue(GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingProviderValue $providerValue) : self
     {
+        $this->initialized['providerValue'] = true;
         $this->providerValue = $providerValue;
         return $this;
     }

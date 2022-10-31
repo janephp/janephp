@@ -74,16 +74,16 @@ class RunnerApplicationNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getOs()) {
+        if ($object->isInitialized('os') && null !== $object->getOs()) {
             $data['os'] = $object->getOs();
         }
-        if (null !== $object->getArchitecture()) {
+        if ($object->isInitialized('architecture') && null !== $object->getArchitecture()) {
             $data['architecture'] = $object->getArchitecture();
         }
-        if (null !== $object->getDownloadUrl()) {
+        if ($object->isInitialized('downloadUrl') && null !== $object->getDownloadUrl()) {
             $data['download_url'] = $object->getDownloadUrl();
         }
-        if (null !== $object->getFilename()) {
+        if ($object->isInitialized('filename') && null !== $object->getFilename()) {
             $data['filename'] = $object->getFilename();
         }
         foreach ($object as $key => $value) {

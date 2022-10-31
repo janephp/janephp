@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class TaskSpecResources
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * An object describing a limit on resources which can be requested by a task.
      *
      * @var Limit
@@ -36,6 +44,7 @@ class TaskSpecResources
      */
     public function setLimits(Limit $limits) : self
     {
+        $this->initialized['limits'] = true;
         $this->limits = $limits;
         return $this;
     }
@@ -61,6 +70,7 @@ class TaskSpecResources
     */
     public function setReservation(ResourceObject $reservation) : self
     {
+        $this->initialized['reservation'] = true;
         $this->reservation = $reservation;
         return $this;
     }

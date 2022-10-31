@@ -110,51 +110,51 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getIPAMConfig()) {
+        if ($object->isInitialized('iPAMConfig') && null !== $object->getIPAMConfig()) {
             $data['IPAMConfig'] = $this->normalizer->normalize($object->getIPAMConfig(), 'json', $context);
         }
-        if (null !== $object->getLinks()) {
+        if ($object->isInitialized('links') && null !== $object->getLinks()) {
             $values = array();
             foreach ($object->getLinks() as $value) {
                 $values[] = $value;
             }
             $data['Links'] = $values;
         }
-        if (null !== $object->getAliases()) {
+        if ($object->isInitialized('aliases') && null !== $object->getAliases()) {
             $values_1 = array();
             foreach ($object->getAliases() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['Aliases'] = $values_1;
         }
-        if (null !== $object->getNetworkID()) {
+        if ($object->isInitialized('networkID') && null !== $object->getNetworkID()) {
             $data['NetworkID'] = $object->getNetworkID();
         }
-        if (null !== $object->getEndpointID()) {
+        if ($object->isInitialized('endpointID') && null !== $object->getEndpointID()) {
             $data['EndpointID'] = $object->getEndpointID();
         }
-        if (null !== $object->getGateway()) {
+        if ($object->isInitialized('gateway') && null !== $object->getGateway()) {
             $data['Gateway'] = $object->getGateway();
         }
-        if (null !== $object->getIPAddress()) {
+        if ($object->isInitialized('iPAddress') && null !== $object->getIPAddress()) {
             $data['IPAddress'] = $object->getIPAddress();
         }
-        if (null !== $object->getIPPrefixLen()) {
+        if ($object->isInitialized('iPPrefixLen') && null !== $object->getIPPrefixLen()) {
             $data['IPPrefixLen'] = $object->getIPPrefixLen();
         }
-        if (null !== $object->getIPv6Gateway()) {
+        if ($object->isInitialized('iPv6Gateway') && null !== $object->getIPv6Gateway()) {
             $data['IPv6Gateway'] = $object->getIPv6Gateway();
         }
-        if (null !== $object->getGlobalIPv6Address()) {
+        if ($object->isInitialized('globalIPv6Address') && null !== $object->getGlobalIPv6Address()) {
             $data['GlobalIPv6Address'] = $object->getGlobalIPv6Address();
         }
-        if (null !== $object->getGlobalIPv6PrefixLen()) {
+        if ($object->isInitialized('globalIPv6PrefixLen') && null !== $object->getGlobalIPv6PrefixLen()) {
             $data['GlobalIPv6PrefixLen'] = $object->getGlobalIPv6PrefixLen();
         }
-        if (null !== $object->getMacAddress()) {
+        if ($object->isInitialized('macAddress') && null !== $object->getMacAddress()) {
             $data['MacAddress'] = $object->getMacAddress();
         }
-        if (null !== $object->getDriverOpts()) {
+        if ($object->isInitialized('driverOpts') && null !== $object->getDriverOpts()) {
             $values_2 = array();
             foreach ($object->getDriverOpts() as $key => $value_2) {
                 $values_2[$key] = $value_2;

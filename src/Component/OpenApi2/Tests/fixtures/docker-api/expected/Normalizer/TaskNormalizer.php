@@ -103,54 +103,54 @@ class TaskNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getID()) {
+        if ($object->isInitialized('iD') && null !== $object->getID()) {
             $data['ID'] = $object->getID();
         }
-        if (null !== $object->getVersion()) {
+        if ($object->isInitialized('version') && null !== $object->getVersion()) {
             $data['Version'] = $this->normalizer->normalize($object->getVersion(), 'json', $context);
         }
-        if (null !== $object->getCreatedAt()) {
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['CreatedAt'] = $object->getCreatedAt();
         }
-        if (null !== $object->getUpdatedAt()) {
+        if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
             $data['UpdatedAt'] = $object->getUpdatedAt();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['Name'] = $object->getName();
         }
-        if (null !== $object->getLabels()) {
+        if ($object->isInitialized('labels') && null !== $object->getLabels()) {
             $values = array();
             foreach ($object->getLabels() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['Labels'] = $values;
         }
-        if (null !== $object->getSpec()) {
+        if ($object->isInitialized('spec') && null !== $object->getSpec()) {
             $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
         }
-        if (null !== $object->getServiceID()) {
+        if ($object->isInitialized('serviceID') && null !== $object->getServiceID()) {
             $data['ServiceID'] = $object->getServiceID();
         }
-        if (null !== $object->getSlot()) {
+        if ($object->isInitialized('slot') && null !== $object->getSlot()) {
             $data['Slot'] = $object->getSlot();
         }
-        if (null !== $object->getNodeID()) {
+        if ($object->isInitialized('nodeID') && null !== $object->getNodeID()) {
             $data['NodeID'] = $object->getNodeID();
         }
-        if (null !== $object->getAssignedGenericResources()) {
+        if ($object->isInitialized('assignedGenericResources') && null !== $object->getAssignedGenericResources()) {
             $values_1 = array();
             foreach ($object->getAssignedGenericResources() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['AssignedGenericResources'] = $values_1;
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['Status'] = $this->normalizer->normalize($object->getStatus(), 'json', $context);
         }
-        if (null !== $object->getDesiredState()) {
+        if ($object->isInitialized('desiredState') && null !== $object->getDesiredState()) {
             $data['DesiredState'] = $object->getDesiredState();
         }
-        if (null !== $object->getJobIteration()) {
+        if ($object->isInitialized('jobIteration') && null !== $object->getJobIteration()) {
             $data['JobIteration'] = $this->normalizer->normalize($object->getJobIteration(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

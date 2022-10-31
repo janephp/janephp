@@ -5,6 +5,14 @@ namespace Github\Model;
 class PullRequestMergeResult extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class PullRequestMergeResult extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -61,6 +70,7 @@ class PullRequestMergeResult extends \ArrayObject
      */
     public function setMerged(bool $merged) : self
     {
+        $this->initialized['merged'] = true;
         $this->merged = $merged;
         return $this;
     }
@@ -82,6 +92,7 @@ class PullRequestMergeResult extends \ArrayObject
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }

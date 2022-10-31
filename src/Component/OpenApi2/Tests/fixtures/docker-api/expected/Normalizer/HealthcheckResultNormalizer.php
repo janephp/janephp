@@ -65,16 +65,16 @@ class HealthcheckResultNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getStart()) {
+        if ($object->isInitialized('start') && null !== $object->getStart()) {
             $data['Start'] = $object->getStart()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getEnd()) {
+        if ($object->isInitialized('end') && null !== $object->getEnd()) {
             $data['End'] = $object->getEnd();
         }
-        if (null !== $object->getExitCode()) {
+        if ($object->isInitialized('exitCode') && null !== $object->getExitCode()) {
             $data['ExitCode'] = $object->getExitCode();
         }
-        if (null !== $object->getOutput()) {
+        if ($object->isInitialized('output') && null !== $object->getOutput()) {
             $data['Output'] = $object->getOutput();
         }
         if (!($context['skip_validation'] ?? false)) {

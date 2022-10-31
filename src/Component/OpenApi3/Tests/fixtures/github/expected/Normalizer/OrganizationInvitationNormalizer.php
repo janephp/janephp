@@ -107,34 +107,34 @@ class OrganizationInvitationNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getLogin()) {
+        if ($object->isInitialized('login') && null !== $object->getLogin()) {
             $data['login'] = $object->getLogin();
         }
-        if (null !== $object->getEmail()) {
+        if ($object->isInitialized('email') && null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
-        if (null !== $object->getRole()) {
+        if ($object->isInitialized('role') && null !== $object->getRole()) {
             $data['role'] = $object->getRole();
         }
-        if (null !== $object->getCreatedAt()) {
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt();
         }
-        if (null !== $object->getInviter()) {
+        if ($object->isInitialized('inviter') && null !== $object->getInviter()) {
             $data['inviter'] = $this->normalizer->normalize($object->getInviter(), 'json', $context);
         }
-        if (null !== $object->getTeamCount()) {
+        if ($object->isInitialized('teamCount') && null !== $object->getTeamCount()) {
             $data['team_count'] = $object->getTeamCount();
         }
-        if (null !== $object->getInvitationTeamUrl()) {
+        if ($object->isInitialized('invitationTeamUrl') && null !== $object->getInvitationTeamUrl()) {
             $data['invitation_team_url'] = $object->getInvitationTeamUrl();
         }
-        if (null !== $object->getNodeId()) {
+        if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
-        if (null !== $object->getInvitationTeamsUrl()) {
+        if ($object->isInitialized('invitationTeamsUrl') && null !== $object->getInvitationTeamsUrl()) {
             $data['invitation_teams_url'] = $object->getInvitationTeamsUrl();
         }
         foreach ($object as $key => $value) {

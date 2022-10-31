@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentDetail
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * The ID of the content schema. The SchemaType of the specified schema must be Content.
     The schema specifies the structure of the Content dictionary.
     *
@@ -138,6 +146,7 @@ class ContentDetail
     */
     public function setContentSchemaId(string $contentSchemaId) : self
     {
+        $this->initialized['contentSchemaId'] = true;
         $this->contentSchemaId = $contentSchemaId;
         return $this;
     }
@@ -161,6 +170,7 @@ class ContentDetail
     */
     public function setLayerSchemaIds(?array $layerSchemaIds) : self
     {
+        $this->initialized['layerSchemaIds'] = true;
         $this->layerSchemaIds = $layerSchemaIds;
         return $this;
     }
@@ -182,6 +192,7 @@ class ContentDetail
      */
     public function setBrokenReferenceIds(?array $brokenReferenceIds) : self
     {
+        $this->initialized['brokenReferenceIds'] = true;
         $this->brokenReferenceIds = $brokenReferenceIds;
         return $this;
     }
@@ -205,6 +216,7 @@ class ContentDetail
     */
     public function setBrokenIndirectReferenceIds(?array $brokenIndirectReferenceIds) : self
     {
+        $this->initialized['brokenIndirectReferenceIds'] = true;
         $this->brokenIndirectReferenceIds = $brokenIndirectReferenceIds;
         return $this;
     }
@@ -226,6 +238,7 @@ class ContentDetail
      */
     public function setBrokenRelationTargetIds(?array $brokenRelationTargetIds) : self
     {
+        $this->initialized['brokenRelationTargetIds'] = true;
         $this->brokenRelationTargetIds = $brokenRelationTargetIds;
         return $this;
     }
@@ -249,6 +262,7 @@ class ContentDetail
     */
     public function setContent(?iterable $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }
@@ -272,6 +286,7 @@ class ContentDetail
     */
     public function setMetadata(?iterable $metadata) : self
     {
+        $this->initialized['metadata'] = true;
         $this->metadata = $metadata;
         return $this;
     }
@@ -293,6 +308,7 @@ class ContentDetail
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -314,6 +330,7 @@ class ContentDetail
      */
     public function setContentPermissionSetIds(?array $contentPermissionSetIds) : self
     {
+        $this->initialized['contentPermissionSetIds'] = true;
         $this->contentPermissionSetIds = $contentPermissionSetIds;
         return $this;
     }
@@ -337,6 +354,7 @@ class ContentDetail
     */
     public function setOutputs(?array $outputs) : self
     {
+        $this->initialized['outputs'] = true;
         $this->outputs = $outputs;
         return $this;
     }
@@ -358,6 +376,7 @@ class ContentDetail
      */
     public function setAudit($audit) : self
     {
+        $this->initialized['audit'] = true;
         $this->audit = $audit;
         return $this;
     }
@@ -379,6 +398,7 @@ class ContentDetail
      */
     public function setOwnerTokenId(string $ownerTokenId) : self
     {
+        $this->initialized['ownerTokenId'] = true;
         $this->ownerTokenId = $ownerTokenId;
         return $this;
     }
@@ -400,6 +420,7 @@ class ContentDetail
      */
     public function setOwner($owner) : self
     {
+        $this->initialized['owner'] = true;
         $this->owner = $owner;
         return $this;
     }
@@ -421,6 +442,7 @@ class ContentDetail
      */
     public function setContentType($contentType) : self
     {
+        $this->initialized['contentType'] = true;
         $this->contentType = $contentType;
         return $this;
     }
@@ -442,6 +464,7 @@ class ContentDetail
      */
     public function setDisplayValues($displayValues) : self
     {
+        $this->initialized['displayValues'] = true;
         $this->displayValues = $displayValues;
         return $this;
     }
@@ -463,6 +486,7 @@ class ContentDetail
      */
     public function setLifeCycle($lifeCycle) : self
     {
+        $this->initialized['lifeCycle'] = true;
         $this->lifeCycle = $lifeCycle;
         return $this;
     }
@@ -484,6 +508,7 @@ class ContentDetail
      */
     public function setContentRights(?array $contentRights) : self
     {
+        $this->initialized['contentRights'] = true;
         $this->contentRights = $contentRights;
         return $this;
     }
@@ -505,6 +530,7 @@ class ContentDetail
      */
     public function setActivity($activity) : self
     {
+        $this->initialized['activity'] = true;
         $this->activity = $activity;
         return $this;
     }

@@ -59,10 +59,10 @@ class TaskSpecContainerSpecPrivilegesNormalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCredentialSpec()) {
+        if ($object->isInitialized('credentialSpec') && null !== $object->getCredentialSpec()) {
             $data['CredentialSpec'] = $this->normalizer->normalize($object->getCredentialSpec(), 'json', $context);
         }
-        if (null !== $object->getSELinuxContext()) {
+        if ($object->isInitialized('sELinuxContext') && null !== $object->getSELinuxContext()) {
             $data['SELinuxContext'] = $this->normalizer->normalize($object->getSELinuxContext(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

@@ -78,7 +78,7 @@ class BranchProtectionRequiredStatusChecksNormalizer implements DenormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
         $data['enforcement_level'] = $object->getEnforcementLevel();
@@ -87,7 +87,7 @@ class BranchProtectionRequiredStatusChecksNormalizer implements DenormalizerInte
             $values[] = $value;
         }
         $data['contexts'] = $values;
-        if (null !== $object->getContextsUrl()) {
+        if ($object->isInitialized('contextsUrl') && null !== $object->getContextsUrl()) {
             $data['contexts_url'] = $object->getContextsUrl();
         }
         foreach ($object as $key => $value_1) {

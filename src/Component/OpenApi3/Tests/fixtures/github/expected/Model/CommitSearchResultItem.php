@@ -5,6 +5,14 @@ namespace Github\Model;
 class CommitSearchResultItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -94,6 +102,7 @@ class CommitSearchResultItem extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -115,6 +124,7 @@ class CommitSearchResultItem extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -136,6 +146,7 @@ class CommitSearchResultItem extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -157,6 +168,7 @@ class CommitSearchResultItem extends \ArrayObject
      */
     public function setCommentsUrl(string $commentsUrl) : self
     {
+        $this->initialized['commentsUrl'] = true;
         $this->commentsUrl = $commentsUrl;
         return $this;
     }
@@ -178,6 +190,7 @@ class CommitSearchResultItem extends \ArrayObject
      */
     public function setCommit(CommitSearchResultItemCommit $commit) : self
     {
+        $this->initialized['commit'] = true;
         $this->commit = $commit;
         return $this;
     }
@@ -199,6 +212,7 @@ class CommitSearchResultItem extends \ArrayObject
      */
     public function setAuthor(?CommitSearchResultItemAuthor $author) : self
     {
+        $this->initialized['author'] = true;
         $this->author = $author;
         return $this;
     }
@@ -220,6 +234,7 @@ class CommitSearchResultItem extends \ArrayObject
      */
     public function setCommitter(?CommitSearchResultItemCommitter $committer) : self
     {
+        $this->initialized['committer'] = true;
         $this->committer = $committer;
         return $this;
     }
@@ -241,6 +256,7 @@ class CommitSearchResultItem extends \ArrayObject
      */
     public function setParents(array $parents) : self
     {
+        $this->initialized['parents'] = true;
         $this->parents = $parents;
         return $this;
     }
@@ -262,6 +278,7 @@ class CommitSearchResultItem extends \ArrayObject
      */
     public function setRepository(MinimalRepository $repository) : self
     {
+        $this->initialized['repository'] = true;
         $this->repository = $repository;
         return $this;
     }
@@ -283,6 +300,7 @@ class CommitSearchResultItem extends \ArrayObject
      */
     public function setScore(int $score) : self
     {
+        $this->initialized['score'] = true;
         $this->score = $score;
         return $this;
     }
@@ -304,6 +322,7 @@ class CommitSearchResultItem extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -325,6 +344,7 @@ class CommitSearchResultItem extends \ArrayObject
      */
     public function setTextMatches(array $textMatches) : self
     {
+        $this->initialized['textMatches'] = true;
         $this->textMatches = $textMatches;
         return $this;
     }

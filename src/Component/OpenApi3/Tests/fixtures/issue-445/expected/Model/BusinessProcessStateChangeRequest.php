@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessProcessStateChangeRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The new state of the business process.
      *
      * @var string
@@ -40,6 +48,7 @@ class BusinessProcessStateChangeRequest
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -61,6 +70,7 @@ class BusinessProcessStateChangeRequest
      */
     public function setLifeCycle($lifeCycle) : self
     {
+        $this->initialized['lifeCycle'] = true;
         $this->lifeCycle = $lifeCycle;
         return $this;
     }
@@ -82,6 +92,7 @@ class BusinessProcessStateChangeRequest
      */
     public function setNotification($notification) : self
     {
+        $this->initialized['notification'] = true;
         $this->notification = $notification;
         return $this;
     }

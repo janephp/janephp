@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string[]
@@ -34,6 +42,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody extends \ArrayObject
      */
     public function setPortfolios(array $portfolios) : self
     {
+        $this->initialized['portfolios'] = true;
         $this->portfolios = $portfolios;
         return $this;
     }
@@ -55,6 +64,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody extends \ArrayObject
      */
     public function setCompanies(array $companies) : self
     {
+        $this->initialized['companies'] = true;
         $this->companies = $companies;
         return $this;
     }

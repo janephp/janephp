@@ -87,7 +87,7 @@ class ActorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $data = array();
         $data['id'] = $object->getId();
         $data['login'] = $object->getLogin();
-        if (null !== $object->getDisplayLogin()) {
+        if ($object->isInitialized('displayLogin') && null !== $object->getDisplayLogin()) {
             $data['display_login'] = $object->getDisplayLogin();
         }
         $data['gravatar_id'] = $object->getGravatarId();

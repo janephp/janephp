@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class OutputDataVideo extends OutputDataBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Duration of the video in seconds.
      *
      * @var float
@@ -46,6 +54,7 @@ class OutputDataVideo extends OutputDataBase
      */
     public function setDurationInSeconds(float $durationInSeconds) : self
     {
+        $this->initialized['durationInSeconds'] = true;
         $this->durationInSeconds = $durationInSeconds;
         return $this;
     }
@@ -67,6 +76,7 @@ class OutputDataVideo extends OutputDataBase
      */
     public function setWidth(int $width) : self
     {
+        $this->initialized['width'] = true;
         $this->width = $width;
         return $this;
     }
@@ -88,6 +98,7 @@ class OutputDataVideo extends OutputDataBase
      */
     public function setHeight(int $height) : self
     {
+        $this->initialized['height'] = true;
         $this->height = $height;
         return $this;
     }
@@ -109,6 +120,7 @@ class OutputDataVideo extends OutputDataBase
      */
     public function setSprites(?array $sprites) : self
     {
+        $this->initialized['sprites'] = true;
         $this->sprites = $sprites;
         return $this;
     }

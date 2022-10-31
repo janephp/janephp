@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoGitCommitsPostBodyAuthor extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The name of the author (or committer) of the commit
      *
      * @var string
@@ -40,6 +48,7 @@ class ReposOwnerRepoGitCommitsPostBodyAuthor extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -61,6 +70,7 @@ class ReposOwnerRepoGitCommitsPostBodyAuthor extends \ArrayObject
      */
     public function setEmail(string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -82,6 +92,7 @@ class ReposOwnerRepoGitCommitsPostBodyAuthor extends \ArrayObject
      */
     public function setDate(string $date) : self
     {
+        $this->initialized['date'] = true;
         $this->date = $date;
         return $this;
     }

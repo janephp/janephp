@@ -71,10 +71,10 @@ class ReposOwnerRepoLabelsPostBodyNormalizer implements DenormalizerInterface, N
     {
         $data = array();
         $data['name'] = $object->getName();
-        if (null !== $object->getColor()) {
+        if ($object->isInitialized('color') && null !== $object->getColor()) {
             $data['color'] = $object->getColor();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
         foreach ($object as $key => $value) {

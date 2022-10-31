@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportAdditionalInformationMortgageSummary extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var float
@@ -34,6 +42,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageSummary e
      */
     public function setOutstanding(float $outstanding) : self
     {
+        $this->initialized['outstanding'] = true;
         $this->outstanding = $outstanding;
         return $this;
     }
@@ -55,6 +64,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageSummary e
      */
     public function setSatisfied(float $satisfied) : self
     {
+        $this->initialized['satisfied'] = true;
         $this->satisfied = $satisfied;
         return $this;
     }

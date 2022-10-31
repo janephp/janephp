@@ -62,7 +62,7 @@ class DefaultUserFieldsEntitiesUrlNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrls()) {
+        if ($object->isInitialized('urls') && null !== $object->getUrls()) {
             $values = array();
             foreach ($object->getUrls() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

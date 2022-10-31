@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class TaskSpecContainerSpecSecretsItemFile
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Name represents the final filename in the filesystem.
      *
      * @var string
@@ -46,6 +54,7 @@ class TaskSpecContainerSpecSecretsItemFile
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -67,6 +76,7 @@ class TaskSpecContainerSpecSecretsItemFile
      */
     public function setUID(string $uID) : self
     {
+        $this->initialized['uID'] = true;
         $this->uID = $uID;
         return $this;
     }
@@ -88,6 +98,7 @@ class TaskSpecContainerSpecSecretsItemFile
      */
     public function setGID(string $gID) : self
     {
+        $this->initialized['gID'] = true;
         $this->gID = $gID;
         return $this;
     }
@@ -109,6 +120,7 @@ class TaskSpecContainerSpecSecretsItemFile
      */
     public function setMode(int $mode) : self
     {
+        $this->initialized['mode'] = true;
         $this->mode = $mode;
         return $this;
     }

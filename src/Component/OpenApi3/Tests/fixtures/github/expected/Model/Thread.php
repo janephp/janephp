@@ -5,6 +5,14 @@ namespace Github\Model;
 class Thread extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -76,6 +84,7 @@ class Thread extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -97,6 +106,7 @@ class Thread extends \ArrayObject
      */
     public function setRepository(MinimalRepository $repository) : self
     {
+        $this->initialized['repository'] = true;
         $this->repository = $repository;
         return $this;
     }
@@ -118,6 +128,7 @@ class Thread extends \ArrayObject
      */
     public function setSubject(ThreadSubject $subject) : self
     {
+        $this->initialized['subject'] = true;
         $this->subject = $subject;
         return $this;
     }
@@ -139,6 +150,7 @@ class Thread extends \ArrayObject
      */
     public function setReason(string $reason) : self
     {
+        $this->initialized['reason'] = true;
         $this->reason = $reason;
         return $this;
     }
@@ -160,6 +172,7 @@ class Thread extends \ArrayObject
      */
     public function setUnread(bool $unread) : self
     {
+        $this->initialized['unread'] = true;
         $this->unread = $unread;
         return $this;
     }
@@ -181,6 +194,7 @@ class Thread extends \ArrayObject
      */
     public function setUpdatedAt(string $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -202,6 +216,7 @@ class Thread extends \ArrayObject
      */
     public function setLastReadAt(?string $lastReadAt) : self
     {
+        $this->initialized['lastReadAt'] = true;
         $this->lastReadAt = $lastReadAt;
         return $this;
     }
@@ -223,6 +238,7 @@ class Thread extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -244,6 +260,7 @@ class Thread extends \ArrayObject
      */
     public function setSubscriptionUrl(string $subscriptionUrl) : self
     {
+        $this->initialized['subscriptionUrl'] = true;
         $this->subscriptionUrl = $subscriptionUrl;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ServiceUpdateStatus
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class ServiceUpdateStatus
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -67,6 +76,7 @@ class ServiceUpdateStatus
      */
     public function setStartedAt(string $startedAt) : self
     {
+        $this->initialized['startedAt'] = true;
         $this->startedAt = $startedAt;
         return $this;
     }
@@ -88,6 +98,7 @@ class ServiceUpdateStatus
      */
     public function setCompletedAt(string $completedAt) : self
     {
+        $this->initialized['completedAt'] = true;
         $this->completedAt = $completedAt;
         return $this;
     }
@@ -109,6 +120,7 @@ class ServiceUpdateStatus
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }

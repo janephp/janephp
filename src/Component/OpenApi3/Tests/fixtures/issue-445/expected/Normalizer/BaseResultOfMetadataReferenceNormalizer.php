@@ -75,7 +75,7 @@ class BaseResultOfMetadataReferenceNormalizer implements DenormalizerInterface, 
         }
         $data['results'] = $values;
         $data['elapsedMilliseconds'] = $object->getElapsedMilliseconds();
-        if (null !== $object->getPageToken()) {
+        if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
             $data['pageToken'] = $object->getPageToken();
         }
         return $data;

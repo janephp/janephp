@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportNegativeInformation extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var GbCompanyReportExampleResponseReportNegativeInformationCcjSummary
@@ -34,6 +42,7 @@ class GbCompanyReportExampleResponseReportNegativeInformation extends \ArrayObje
      */
     public function setCcjSummary(GbCompanyReportExampleResponseReportNegativeInformationCcjSummary $ccjSummary) : self
     {
+        $this->initialized['ccjSummary'] = true;
         $this->ccjSummary = $ccjSummary;
         return $this;
     }
@@ -55,6 +64,7 @@ class GbCompanyReportExampleResponseReportNegativeInformation extends \ArrayObje
      */
     public function setCountyCourtJudgements(GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgements $countyCourtJudgements) : self
     {
+        $this->initialized['countyCourtJudgements'] = true;
         $this->countyCourtJudgements = $countyCourtJudgements;
         return $this;
     }

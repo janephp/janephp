@@ -5,6 +5,14 @@ namespace Github\Model;
 class OrgMembership extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -64,6 +72,7 @@ class OrgMembership extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -85,6 +94,7 @@ class OrgMembership extends \ArrayObject
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -106,6 +116,7 @@ class OrgMembership extends \ArrayObject
      */
     public function setRole(string $role) : self
     {
+        $this->initialized['role'] = true;
         $this->role = $role;
         return $this;
     }
@@ -127,6 +138,7 @@ class OrgMembership extends \ArrayObject
      */
     public function setOrganizationUrl(string $organizationUrl) : self
     {
+        $this->initialized['organizationUrl'] = true;
         $this->organizationUrl = $organizationUrl;
         return $this;
     }
@@ -148,6 +160,7 @@ class OrgMembership extends \ArrayObject
      */
     public function setOrganization(OrganizationSimple $organization) : self
     {
+        $this->initialized['organization'] = true;
         $this->organization = $organization;
         return $this;
     }
@@ -169,6 +182,7 @@ class OrgMembership extends \ArrayObject
      */
     public function setUser(?OrgMembershipUser $user) : self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
     }
@@ -190,6 +204,7 @@ class OrgMembership extends \ArrayObject
      */
     public function setPermissions(OrgMembershipPermissions $permissions) : self
     {
+        $this->initialized['permissions'] = true;
         $this->permissions = $permissions;
         return $this;
     }

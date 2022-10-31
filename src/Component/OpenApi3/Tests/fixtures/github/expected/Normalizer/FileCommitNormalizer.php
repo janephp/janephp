@@ -69,10 +69,10 @@ class FileCommitNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getContent()) {
+        if ($object->isInitialized('content') && null !== $object->getContent()) {
             $data['content'] = $this->normalizer->normalize($object->getContent(), 'json', $context);
         }
-        if (null !== $object->getCommit()) {
+        if ($object->isInitialized('commit') && null !== $object->getCommit()) {
             $data['commit'] = $this->normalizer->normalize($object->getCommit(), 'json', $context);
         }
         foreach ($object as $key => $value) {

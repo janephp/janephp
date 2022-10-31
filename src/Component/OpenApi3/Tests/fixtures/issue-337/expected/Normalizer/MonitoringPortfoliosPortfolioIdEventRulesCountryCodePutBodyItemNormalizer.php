@@ -76,13 +76,13 @@ class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItemNormalizer 
         $data = array();
         $data['ruleCode'] = $object->getRuleCode();
         $data['isActive'] = $object->getIsActive();
-        if (null !== $object->getParam0()) {
+        if ($object->isInitialized('param0') && null !== $object->getParam0()) {
             $data['param0'] = $object->getParam0();
         }
-        if (null !== $object->getParam1()) {
+        if ($object->isInitialized('param1') && null !== $object->getParam1()) {
             $data['param1'] = $object->getParam1();
         }
-        if (null !== $object->getParam2()) {
+        if ($object->isInitialized('param2') && null !== $object->getParam2()) {
             $data['param2...'] = $object->getParam2();
         }
         foreach ($object as $key => $value) {

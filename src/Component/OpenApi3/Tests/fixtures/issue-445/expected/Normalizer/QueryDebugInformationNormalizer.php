@@ -73,16 +73,16 @@ class QueryDebugInformationNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getGeneral()) {
+        if ($object->isInitialized('general') && null !== $object->getGeneral()) {
             $data['general'] = $object->getGeneral();
         }
-        if (null !== $object->getAuditTrail()) {
+        if ($object->isInitialized('auditTrail') && null !== $object->getAuditTrail()) {
             $data['auditTrail'] = $object->getAuditTrail();
         }
-        if (null !== $object->getRequest()) {
+        if ($object->isInitialized('request') && null !== $object->getRequest()) {
             $data['request'] = $object->getRequest();
         }
-        if (null !== $object->getResponse()) {
+        if ($object->isInitialized('response') && null !== $object->getResponse()) {
             $data['response'] = $object->getResponse();
         }
         return $data;

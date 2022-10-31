@@ -62,13 +62,13 @@ class DeviceMappingNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPathOnHost()) {
+        if ($object->isInitialized('pathOnHost') && null !== $object->getPathOnHost()) {
             $data['PathOnHost'] = $object->getPathOnHost();
         }
-        if (null !== $object->getPathInContainer()) {
+        if ($object->isInitialized('pathInContainer') && null !== $object->getPathInContainer()) {
             $data['PathInContainer'] = $object->getPathInContainer();
         }
-        if (null !== $object->getCgroupPermissions()) {
+        if ($object->isInitialized('cgroupPermissions') && null !== $object->getCgroupPermissions()) {
             $data['CgroupPermissions'] = $object->getCgroupPermissions();
         }
         if (!($context['skip_validation'] ?? false)) {

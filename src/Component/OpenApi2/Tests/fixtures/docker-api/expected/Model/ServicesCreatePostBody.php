@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ServicesCreatePostBody
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Name of the service.
      *
      * @var string
@@ -70,6 +78,7 @@ class ServicesCreatePostBody
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -91,6 +100,7 @@ class ServicesCreatePostBody
      */
     public function setLabels(iterable $labels) : self
     {
+        $this->initialized['labels'] = true;
         $this->labels = $labels;
         return $this;
     }
@@ -112,6 +122,7 @@ class ServicesCreatePostBody
      */
     public function setTaskTemplate(TaskSpec $taskTemplate) : self
     {
+        $this->initialized['taskTemplate'] = true;
         $this->taskTemplate = $taskTemplate;
         return $this;
     }
@@ -133,6 +144,7 @@ class ServicesCreatePostBody
      */
     public function setMode(ServiceSpecMode $mode) : self
     {
+        $this->initialized['mode'] = true;
         $this->mode = $mode;
         return $this;
     }
@@ -154,6 +166,7 @@ class ServicesCreatePostBody
      */
     public function setUpdateConfig(ServiceSpecUpdateConfig $updateConfig) : self
     {
+        $this->initialized['updateConfig'] = true;
         $this->updateConfig = $updateConfig;
         return $this;
     }
@@ -175,6 +188,7 @@ class ServicesCreatePostBody
      */
     public function setRollbackConfig(ServiceSpecRollbackConfig $rollbackConfig) : self
     {
+        $this->initialized['rollbackConfig'] = true;
         $this->rollbackConfig = $rollbackConfig;
         return $this;
     }
@@ -196,6 +210,7 @@ class ServicesCreatePostBody
      */
     public function setNetworks(array $networks) : self
     {
+        $this->initialized['networks'] = true;
         $this->networks = $networks;
         return $this;
     }
@@ -217,6 +232,7 @@ class ServicesCreatePostBody
      */
     public function setEndpointSpec(EndpointSpec $endpointSpec) : self
     {
+        $this->initialized['endpointSpec'] = true;
         $this->endpointSpec = $endpointSpec;
         return $this;
     }

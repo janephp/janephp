@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class IndexFieldsSearchBySchemaIdsRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The IDs of the schemas for which the indexed fields should be returned.
      *
      * @var string[]|null
@@ -36,6 +44,7 @@ class IndexFieldsSearchBySchemaIdsRequest
      */
     public function setSchemaIds(?array $schemaIds) : self
     {
+        $this->initialized['schemaIds'] = true;
         $this->schemaIds = $schemaIds;
         return $this;
     }
@@ -61,6 +70,7 @@ class IndexFieldsSearchBySchemaIdsRequest
     */
     public function setSearchMode($searchMode) : self
     {
+        $this->initialized['searchMode'] = true;
         $this->searchMode = $searchMode;
         return $this;
     }

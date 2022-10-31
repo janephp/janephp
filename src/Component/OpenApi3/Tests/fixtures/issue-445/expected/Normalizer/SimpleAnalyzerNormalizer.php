@@ -70,10 +70,10 @@ class SimpleAnalyzerNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $data = array();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getFieldSuffix()) {
+        if ($object->isInitialized('fieldSuffix') && null !== $object->getFieldSuffix()) {
             $data['fieldSuffix'] = $object->getFieldSuffix();
         }
         foreach ($object as $key => $value) {

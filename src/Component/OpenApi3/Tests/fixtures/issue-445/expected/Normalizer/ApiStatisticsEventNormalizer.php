@@ -75,7 +75,7 @@ class ApiStatisticsEventNormalizer implements DenormalizerInterface, NormalizerI
         $data = array();
         $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
         $data['kind'] = $object->getKind();
-        if (null !== $object->getRequestsPerClient()) {
+        if ($object->isInitialized('requestsPerClient') && null !== $object->getRequestsPerClient()) {
             $values = array();
             foreach ($object->getRequestsPerClient() as $key => $value) {
                 $values[$key] = $value;

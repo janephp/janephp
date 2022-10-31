@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ShareDataBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The URL to access the share.
      *
      * @var string
@@ -32,6 +40,7 @@ class ShareDataBase
      */
     public function setUrl(string $url)
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
     }
     /**
@@ -50,6 +59,7 @@ class ShareDataBase
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class GistsPostBodyFilesItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Content of the file
      *
      * @var string
@@ -28,6 +36,7 @@ class GistsPostBodyFilesItem extends \ArrayObject
      */
     public function setContent(string $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }

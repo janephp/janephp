@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -76,6 +84,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
      */
     public function setBusinessName(string $businessName) : self
     {
+        $this->initialized['businessName'] = true;
         $this->businessName = $businessName;
         return $this;
     }
@@ -97,6 +106,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
      */
     public function setRegisteredCompanyName(string $registeredCompanyName) : self
     {
+        $this->initialized['registeredCompanyName'] = true;
         $this->registeredCompanyName = $registeredCompanyName;
         return $this;
     }
@@ -118,6 +128,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
      */
     public function setCompanyRegistrationNumber(string $companyRegistrationNumber) : self
     {
+        $this->initialized['companyRegistrationNumber'] = true;
         $this->companyRegistrationNumber = $companyRegistrationNumber;
         return $this;
     }
@@ -139,6 +150,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
      */
     public function setCountry(string $country) : self
     {
+        $this->initialized['country'] = true;
         $this->country = $country;
         return $this;
     }
@@ -160,6 +172,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
      */
     public function setCompanyRegistrationDate(string $companyRegistrationDate) : self
     {
+        $this->initialized['companyRegistrationDate'] = true;
         $this->companyRegistrationDate = $companyRegistrationDate;
         return $this;
     }
@@ -181,6 +194,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
      */
     public function setLegalForm(GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationLegalForm $legalForm) : self
     {
+        $this->initialized['legalForm'] = true;
         $this->legalForm = $legalForm;
         return $this;
     }
@@ -202,6 +216,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
      */
     public function setCompanyStatus(GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationCompanyStatus $companyStatus) : self
     {
+        $this->initialized['companyStatus'] = true;
         $this->companyStatus = $companyStatus;
         return $this;
     }
@@ -223,6 +238,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
      */
     public function setPrincipalActivity(GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationPrincipalActivity $principalActivity) : self
     {
+        $this->initialized['principalActivity'] = true;
         $this->principalActivity = $principalActivity;
         return $this;
     }
@@ -244,6 +260,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
      */
     public function setContactAddress(GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationContactAddress $contactAddress) : self
     {
+        $this->initialized['contactAddress'] = true;
         $this->contactAddress = $contactAddress;
         return $this;
     }

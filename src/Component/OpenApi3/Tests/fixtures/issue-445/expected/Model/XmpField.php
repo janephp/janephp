@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class XmpField
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Path of the field in XMP.
      *
      * @var string|null
@@ -40,6 +48,7 @@ class XmpField
      */
     public function setPath(?string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -61,6 +70,7 @@ class XmpField
      */
     public function setIsWritable(bool $isWritable) : self
     {
+        $this->initialized['isWritable'] = true;
         $this->isWritable = $isWritable;
         return $this;
     }
@@ -82,6 +92,7 @@ class XmpField
      */
     public function setDataType($dataType) : self
     {
+        $this->initialized['dataType'] = true;
         $this->dataType = $dataType;
         return $this;
     }

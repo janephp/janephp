@@ -5,6 +5,14 @@ namespace Github\Model;
 class Feed extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -76,6 +84,7 @@ class Feed extends \ArrayObject
      */
     public function setTimelineUrl(string $timelineUrl) : self
     {
+        $this->initialized['timelineUrl'] = true;
         $this->timelineUrl = $timelineUrl;
         return $this;
     }
@@ -97,6 +106,7 @@ class Feed extends \ArrayObject
      */
     public function setUserUrl(string $userUrl) : self
     {
+        $this->initialized['userUrl'] = true;
         $this->userUrl = $userUrl;
         return $this;
     }
@@ -118,6 +128,7 @@ class Feed extends \ArrayObject
      */
     public function setCurrentUserPublicUrl(string $currentUserPublicUrl) : self
     {
+        $this->initialized['currentUserPublicUrl'] = true;
         $this->currentUserPublicUrl = $currentUserPublicUrl;
         return $this;
     }
@@ -139,6 +150,7 @@ class Feed extends \ArrayObject
      */
     public function setCurrentUserUrl(string $currentUserUrl) : self
     {
+        $this->initialized['currentUserUrl'] = true;
         $this->currentUserUrl = $currentUserUrl;
         return $this;
     }
@@ -160,6 +172,7 @@ class Feed extends \ArrayObject
      */
     public function setCurrentUserActorUrl(string $currentUserActorUrl) : self
     {
+        $this->initialized['currentUserActorUrl'] = true;
         $this->currentUserActorUrl = $currentUserActorUrl;
         return $this;
     }
@@ -181,6 +194,7 @@ class Feed extends \ArrayObject
      */
     public function setCurrentUserOrganizationUrl(string $currentUserOrganizationUrl) : self
     {
+        $this->initialized['currentUserOrganizationUrl'] = true;
         $this->currentUserOrganizationUrl = $currentUserOrganizationUrl;
         return $this;
     }
@@ -202,6 +216,7 @@ class Feed extends \ArrayObject
      */
     public function setCurrentUserOrganizationUrls(array $currentUserOrganizationUrls) : self
     {
+        $this->initialized['currentUserOrganizationUrls'] = true;
         $this->currentUserOrganizationUrls = $currentUserOrganizationUrls;
         return $this;
     }
@@ -223,6 +238,7 @@ class Feed extends \ArrayObject
      */
     public function setSecurityAdvisoriesUrl(string $securityAdvisoriesUrl) : self
     {
+        $this->initialized['securityAdvisoriesUrl'] = true;
         $this->securityAdvisoriesUrl = $securityAdvisoriesUrl;
         return $this;
     }
@@ -244,6 +260,7 @@ class Feed extends \ArrayObject
      */
     public function setLinks(FeedLinks $links) : self
     {
+        $this->initialized['links'] = true;
         $this->links = $links;
         return $this;
     }

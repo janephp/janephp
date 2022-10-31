@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentDeleteManyRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * IDs of the contents to delete.
      *
      * @var string[]
@@ -40,6 +48,7 @@ class ContentDeleteManyRequest
      */
     public function setContentIds(array $contentIds) : self
     {
+        $this->initialized['contentIds'] = true;
         $this->contentIds = $contentIds;
         return $this;
     }
@@ -61,6 +70,7 @@ class ContentDeleteManyRequest
      */
     public function setForceReferenceRemoval(bool $forceReferenceRemoval) : self
     {
+        $this->initialized['forceReferenceRemoval'] = true;
         $this->forceReferenceRemoval = $forceReferenceRemoval;
         return $this;
     }
@@ -82,6 +92,7 @@ class ContentDeleteManyRequest
      */
     public function setNotifyProgress(bool $notifyProgress) : self
     {
+        $this->initialized['notifyProgress'] = true;
         $this->notifyProgress = $notifyProgress;
         return $this;
     }

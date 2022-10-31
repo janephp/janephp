@@ -106,24 +106,24 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getIsbn()) {
+        if ($object->isInitialized('isbn') && null !== $object->getIsbn()) {
             $data['isbn'] = $object->getIsbn();
         }
         $data['title'] = $object->getTitle();
         $data['description'] = $object->getDescription();
         $data['author'] = $object->getAuthor();
         $data['publicationDate'] = $object->getPublicationDate()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getReviews()) {
+        if ($object->isInitialized('reviews') && null !== $object->getReviews()) {
             $values = array();
             foreach ($object->getReviews() as $value) {
                 $values[] = $value;
             }
             $data['reviews'] = $values;
         }
-        if (null !== $object->getCover()) {
+        if ($object->isInitialized('cover') && null !== $object->getCover()) {
             $data['cover'] = $object->getCover();
         }
-        if (null !== $object->getArchivedAt()) {
+        if ($object->isInitialized('archivedAt') && null !== $object->getArchivedAt()) {
             $data['archivedAt'] = $object->getArchivedAt()->format('Y-m-d\\TH:i:sP');
         }
         foreach ($object as $key => $value_1) {

@@ -80,16 +80,16 @@ class PortfolioRequestNormalizer implements DenormalizerInterface, NormalizerInt
         $data = array();
         $data['name'] = $object->getName();
         $data['isDefault'] = $object->getIsDefault();
-        if (null !== $object->getEmails()) {
+        if ($object->isInitialized('emails') && null !== $object->getEmails()) {
             $data['emails'] = $this->normalizer->normalize($object->getEmails(), 'json', $context);
         }
-        if (null !== $object->getEmailSubject()) {
+        if ($object->isInitialized('emailSubject') && null !== $object->getEmailSubject()) {
             $data['emailSubject'] = $object->getEmailSubject();
         }
-        if (null !== $object->getEmailLanguage()) {
+        if ($object->isInitialized('emailLanguage') && null !== $object->getEmailLanguage()) {
             $data['emailLanguage'] = $object->getEmailLanguage();
         }
-        if (null !== $object->getFrequency()) {
+        if ($object->isInitialized('frequency') && null !== $object->getFrequency()) {
             $data['frequency'] = $object->getFrequency();
         }
         foreach ($object as $key => $value) {

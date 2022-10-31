@@ -5,6 +5,14 @@ namespace Github\Model;
 class TeamMembership extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class TeamMembership extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -61,6 +70,7 @@ class TeamMembership extends \ArrayObject
      */
     public function setRole(string $role) : self
     {
+        $this->initialized['role'] = true;
         $this->role = $role;
         return $this;
     }
@@ -82,6 +92,7 @@ class TeamMembership extends \ArrayObject
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }

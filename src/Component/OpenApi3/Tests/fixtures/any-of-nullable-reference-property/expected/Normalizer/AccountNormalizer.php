@@ -98,23 +98,23 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFirstname()) {
+        if ($object->isInitialized('firstname') && null !== $object->getFirstname()) {
             $data['firstname'] = $object->getFirstname();
         }
-        if (null !== $object->getLastname()) {
+        if ($object->isInitialized('lastname') && null !== $object->getLastname()) {
             $data['lastname'] = $object->getLastname();
         }
-        if (null !== $object->getCountryOfBirth()) {
+        if ($object->isInitialized('countryOfBirth') && null !== $object->getCountryOfBirth()) {
             $value = $object->getCountryOfBirth();
             if (is_object($object->getCountryOfBirth())) {
                 $value = $this->normalizer->normalize($object->getCountryOfBirth(), 'json', $context);
             }
             $data['countryOfBirth'] = $value;
         }
-        if (null !== $object->getCountry()) {
+        if ($object->isInitialized('country') && null !== $object->getCountry()) {
             $data['country'] = $this->normalizer->normalize($object->getCountry(), 'json', $context);
         }
-        if (null !== $object->getNationality()) {
+        if ($object->isInitialized('nationality') && null !== $object->getNationality()) {
             $value_1 = $object->getNationality();
             if (is_object($object->getNationality())) {
                 $value_1 = $this->normalizer->normalize($object->getNationality(), 'json', $context);

@@ -92,17 +92,17 @@ class DocumentHistorySearchRequestNormalizer implements DenormalizerInterface, N
         $data['from'] = $object->getFrom()->format('Y-m-d\\TH:i:sP');
         $data['to'] = $object->getTo()->format('Y-m-d\\TH:i:sP');
         $data['limit'] = $object->getLimit();
-        if (null !== $object->getPageToken()) {
+        if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
             $data['pageToken'] = $object->getPageToken();
         }
-        if (null !== $object->getDocumentId()) {
+        if ($object->isInitialized('documentId') && null !== $object->getDocumentId()) {
             $data['documentId'] = $object->getDocumentId();
         }
         $data['documentVersion'] = $object->getDocumentVersion();
-        if (null !== $object->getDocumentType()) {
+        if ($object->isInitialized('documentType') && null !== $object->getDocumentType()) {
             $data['documentType'] = $object->getDocumentType();
         }
-        if (null !== $object->getSort()) {
+        if ($object->isInitialized('sort') && null !== $object->getSort()) {
             $values = array();
             foreach ($object->getSort() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

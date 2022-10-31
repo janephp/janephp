@@ -5,6 +5,14 @@ namespace Jane\Component\JsonSchema\Tests\Expected\Model;
 class Test
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var \DateTime
@@ -40,6 +48,7 @@ class Test
      */
     public function setDate(\DateTime $date) : self
     {
+        $this->initialized['date'] = true;
         $this->date = $date;
         return $this;
     }
@@ -61,6 +70,7 @@ class Test
      */
     public function setDateOrNull(?\DateTime $dateOrNull) : self
     {
+        $this->initialized['dateOrNull'] = true;
         $this->dateOrNull = $dateOrNull;
         return $this;
     }
@@ -82,6 +92,7 @@ class Test
      */
     public function setDateOrNullOrInt($dateOrNullOrInt) : self
     {
+        $this->initialized['dateOrNullOrInt'] = true;
         $this->dateOrNullOrInt = $dateOrNullOrInt;
         return $this;
     }

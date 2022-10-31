@@ -5,6 +5,14 @@ namespace Github\Model;
 class ProjectsColumnsCardsCardIdMovesPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The position of the card in a column
      *
      * @var string
@@ -34,6 +42,7 @@ class ProjectsColumnsCardsCardIdMovesPostBody extends \ArrayObject
      */
     public function setPosition(string $position) : self
     {
+        $this->initialized['position'] = true;
         $this->position = $position;
         return $this;
     }
@@ -55,6 +64,7 @@ class ProjectsColumnsCardsCardIdMovesPostBody extends \ArrayObject
      */
     public function setColumnId(int $columnId) : self
     {
+        $this->initialized['columnId'] = true;
         $this->columnId = $columnId;
         return $this;
     }

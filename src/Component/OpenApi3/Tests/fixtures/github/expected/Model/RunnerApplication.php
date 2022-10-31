@@ -5,6 +5,14 @@ namespace Github\Model;
 class RunnerApplication extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class RunnerApplication extends \ArrayObject
      */
     public function setOs(string $os) : self
     {
+        $this->initialized['os'] = true;
         $this->os = $os;
         return $this;
     }
@@ -67,6 +76,7 @@ class RunnerApplication extends \ArrayObject
      */
     public function setArchitecture(string $architecture) : self
     {
+        $this->initialized['architecture'] = true;
         $this->architecture = $architecture;
         return $this;
     }
@@ -88,6 +98,7 @@ class RunnerApplication extends \ArrayObject
      */
     public function setDownloadUrl(string $downloadUrl) : self
     {
+        $this->initialized['downloadUrl'] = true;
         $this->downloadUrl = $downloadUrl;
         return $this;
     }
@@ -109,6 +120,7 @@ class RunnerApplication extends \ArrayObject
      */
     public function setFilename(string $filename) : self
     {
+        $this->initialized['filename'] = true;
         $this->filename = $filename;
         return $this;
     }

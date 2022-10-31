@@ -269,25 +269,25 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         $data['public_members_url'] = $object->getPublicMembersUrl();
         $data['avatar_url'] = $object->getAvatarUrl();
         $data['description'] = $object->getDescription();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getCompany()) {
+        if ($object->isInitialized('company') && null !== $object->getCompany()) {
             $data['company'] = $object->getCompany();
         }
-        if (null !== $object->getBlog()) {
+        if ($object->isInitialized('blog') && null !== $object->getBlog()) {
             $data['blog'] = $object->getBlog();
         }
-        if (null !== $object->getLocation()) {
+        if ($object->isInitialized('location') && null !== $object->getLocation()) {
             $data['location'] = $object->getLocation();
         }
-        if (null !== $object->getEmail()) {
+        if ($object->isInitialized('email') && null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
-        if (null !== $object->getTwitterUsername()) {
+        if ($object->isInitialized('twitterUsername') && null !== $object->getTwitterUsername()) {
             $data['twitter_username'] = $object->getTwitterUsername();
         }
-        if (null !== $object->getIsVerified()) {
+        if ($object->isInitialized('isVerified') && null !== $object->getIsVerified()) {
             $data['is_verified'] = $object->getIsVerified();
         }
         $data['has_organization_projects'] = $object->getHasOrganizationProjects();
@@ -299,46 +299,46 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         $data['html_url'] = $object->getHtmlUrl();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['type'] = $object->getType();
-        if (null !== $object->getTotalPrivateRepos()) {
+        if ($object->isInitialized('totalPrivateRepos') && null !== $object->getTotalPrivateRepos()) {
             $data['total_private_repos'] = $object->getTotalPrivateRepos();
         }
-        if (null !== $object->getOwnedPrivateRepos()) {
+        if ($object->isInitialized('ownedPrivateRepos') && null !== $object->getOwnedPrivateRepos()) {
             $data['owned_private_repos'] = $object->getOwnedPrivateRepos();
         }
-        if (null !== $object->getPrivateGists()) {
+        if ($object->isInitialized('privateGists') && null !== $object->getPrivateGists()) {
             $data['private_gists'] = $object->getPrivateGists();
         }
-        if (null !== $object->getDiskUsage()) {
+        if ($object->isInitialized('diskUsage') && null !== $object->getDiskUsage()) {
             $data['disk_usage'] = $object->getDiskUsage();
         }
-        if (null !== $object->getCollaborators()) {
+        if ($object->isInitialized('collaborators') && null !== $object->getCollaborators()) {
             $data['collaborators'] = $object->getCollaborators();
         }
-        if (null !== $object->getBillingEmail()) {
+        if ($object->isInitialized('billingEmail') && null !== $object->getBillingEmail()) {
             $data['billing_email'] = $object->getBillingEmail();
         }
-        if (null !== $object->getPlan()) {
+        if ($object->isInitialized('plan') && null !== $object->getPlan()) {
             $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
         }
-        if (null !== $object->getDefaultRepositoryPermission()) {
+        if ($object->isInitialized('defaultRepositoryPermission') && null !== $object->getDefaultRepositoryPermission()) {
             $data['default_repository_permission'] = $object->getDefaultRepositoryPermission();
         }
-        if (null !== $object->getMembersCanCreateRepositories()) {
+        if ($object->isInitialized('membersCanCreateRepositories') && null !== $object->getMembersCanCreateRepositories()) {
             $data['members_can_create_repositories'] = $object->getMembersCanCreateRepositories();
         }
-        if (null !== $object->getTwoFactorRequirementEnabled()) {
+        if ($object->isInitialized('twoFactorRequirementEnabled') && null !== $object->getTwoFactorRequirementEnabled()) {
             $data['two_factor_requirement_enabled'] = $object->getTwoFactorRequirementEnabled();
         }
-        if (null !== $object->getMembersAllowedRepositoryCreationType()) {
+        if ($object->isInitialized('membersAllowedRepositoryCreationType') && null !== $object->getMembersAllowedRepositoryCreationType()) {
             $data['members_allowed_repository_creation_type'] = $object->getMembersAllowedRepositoryCreationType();
         }
-        if (null !== $object->getMembersCanCreatePublicRepositories()) {
+        if ($object->isInitialized('membersCanCreatePublicRepositories') && null !== $object->getMembersCanCreatePublicRepositories()) {
             $data['members_can_create_public_repositories'] = $object->getMembersCanCreatePublicRepositories();
         }
-        if (null !== $object->getMembersCanCreatePrivateRepositories()) {
+        if ($object->isInitialized('membersCanCreatePrivateRepositories') && null !== $object->getMembersCanCreatePrivateRepositories()) {
             $data['members_can_create_private_repositories'] = $object->getMembersCanCreatePrivateRepositories();
         }
-        if (null !== $object->getMembersCanCreateInternalRepositories()) {
+        if ($object->isInitialized('membersCanCreateInternalRepositories') && null !== $object->getMembersCanCreateInternalRepositories()) {
             $data['members_can_create_internal_repositories'] = $object->getMembersCanCreateInternalRepositories();
         }
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');

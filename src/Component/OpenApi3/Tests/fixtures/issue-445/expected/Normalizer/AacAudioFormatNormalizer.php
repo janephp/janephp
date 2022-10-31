@@ -88,19 +88,19 @@ class AacAudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $data = array();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getExtension()) {
+        if ($object->isInitialized('extension') && null !== $object->getExtension()) {
             $data['extension'] = $object->getExtension();
         }
-        if (null !== $object->getProfile()) {
+        if ($object->isInitialized('profile') && null !== $object->getProfile()) {
             $data['profile'] = $object->getProfile();
         }
-        if (null !== $object->getCoder()) {
+        if ($object->isInitialized('coder') && null !== $object->getCoder()) {
             $data['coder'] = $object->getCoder();
         }
-        if (null !== $object->getBitrate()) {
+        if ($object->isInitialized('bitrate') && null !== $object->getBitrate()) {
             $data['bitrate'] = $object->getBitrate();
         }
-        if (null !== $object->getVariableBitRate()) {
+        if ($object->isInitialized('variableBitRate') && null !== $object->getVariableBitRate()) {
             $data['variableBitRate'] = $object->getVariableBitRate();
         }
         foreach ($object as $key => $value) {

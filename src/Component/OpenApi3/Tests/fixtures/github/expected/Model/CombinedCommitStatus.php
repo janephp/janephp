@@ -5,6 +5,14 @@ namespace Github\Model;
 class CombinedCommitStatus extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -64,6 +72,7 @@ class CombinedCommitStatus extends \ArrayObject
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -85,6 +94,7 @@ class CombinedCommitStatus extends \ArrayObject
      */
     public function setStatuses(array $statuses) : self
     {
+        $this->initialized['statuses'] = true;
         $this->statuses = $statuses;
         return $this;
     }
@@ -106,6 +116,7 @@ class CombinedCommitStatus extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -127,6 +138,7 @@ class CombinedCommitStatus extends \ArrayObject
      */
     public function setTotalCount(int $totalCount) : self
     {
+        $this->initialized['totalCount'] = true;
         $this->totalCount = $totalCount;
         return $this;
     }
@@ -148,6 +160,7 @@ class CombinedCommitStatus extends \ArrayObject
      */
     public function setRepository(MinimalRepository $repository) : self
     {
+        $this->initialized['repository'] = true;
         $this->repository = $repository;
         return $this;
     }
@@ -169,6 +182,7 @@ class CombinedCommitStatus extends \ArrayObject
      */
     public function setCommitUrl(string $commitUrl) : self
     {
+        $this->initialized['commitUrl'] = true;
         $this->commitUrl = $commitUrl;
         return $this;
     }
@@ -190,6 +204,7 @@ class CombinedCommitStatus extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }

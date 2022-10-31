@@ -113,38 +113,38 @@ class ListItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAudit()) {
+        if ($object->isInitialized('audit') && null !== $object->getAudit()) {
             $data['audit'] = $object->getAudit();
         }
         $data['id'] = $object->getId();
-        if (null !== $object->getContentSchemaId()) {
+        if ($object->isInitialized('contentSchemaId') && null !== $object->getContentSchemaId()) {
             $data['contentSchemaId'] = $object->getContentSchemaId();
         }
-        if (null !== $object->getDisplayValues()) {
+        if ($object->isInitialized('displayValues') && null !== $object->getDisplayValues()) {
             $data['displayValues'] = $object->getDisplayValues();
         }
-        if (null !== $object->getContent()) {
+        if ($object->isInitialized('content') && null !== $object->getContent()) {
             $values = array();
             foreach ($object->getContent() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['content'] = $values;
         }
-        if (null !== $object->getBrokenReferenceIds()) {
+        if ($object->isInitialized('brokenReferenceIds') && null !== $object->getBrokenReferenceIds()) {
             $values_1 = array();
             foreach ($object->getBrokenReferenceIds() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['brokenReferenceIds'] = $values_1;
         }
-        if (null !== $object->getBrokenRelationTargetIds()) {
+        if ($object->isInitialized('brokenRelationTargetIds') && null !== $object->getBrokenRelationTargetIds()) {
             $values_2 = array();
             foreach ($object->getBrokenRelationTargetIds() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['brokenRelationTargetIds'] = $values_2;
         }
-        if (null !== $object->getBrokenIndirectReferenceIds()) {
+        if ($object->isInitialized('brokenIndirectReferenceIds') && null !== $object->getBrokenIndirectReferenceIds()) {
             $values_3 = array();
             foreach ($object->getBrokenIndirectReferenceIds() as $value_3) {
                 $values_3[] = $value_3;

@@ -189,25 +189,25 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['public_members_url'] = $object->getPublicMembersUrl();
         $data['avatar_url'] = $object->getAvatarUrl();
         $data['description'] = $object->getDescription();
-        if (null !== $object->getBlog()) {
+        if ($object->isInitialized('blog') && null !== $object->getBlog()) {
             $data['blog'] = $object->getBlog();
         }
         $data['html_url'] = $object->getHtmlUrl();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getCompany()) {
+        if ($object->isInitialized('company') && null !== $object->getCompany()) {
             $data['company'] = $object->getCompany();
         }
-        if (null !== $object->getLocation()) {
+        if ($object->isInitialized('location') && null !== $object->getLocation()) {
             $data['location'] = $object->getLocation();
         }
-        if (null !== $object->getEmail()) {
+        if ($object->isInitialized('email') && null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
         $data['has_organization_projects'] = $object->getHasOrganizationProjects();
         $data['has_repository_projects'] = $object->getHasRepositoryProjects();
-        if (null !== $object->getIsVerified()) {
+        if ($object->isInitialized('isVerified') && null !== $object->getIsVerified()) {
             $data['is_verified'] = $object->getIsVerified();
         }
         $data['public_repos'] = $object->getPublicRepos();
@@ -217,7 +217,7 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['type'] = $object->getType();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getPlan()) {
+        if ($object->isInitialized('plan') && null !== $object->getPlan()) {
             $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
         }
         foreach ($object as $key => $value) {

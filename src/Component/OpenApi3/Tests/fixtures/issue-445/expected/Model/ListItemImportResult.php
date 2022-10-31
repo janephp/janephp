@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ListItemImportResult
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Number of list items imported
      *
      * @var int
@@ -52,6 +60,7 @@ class ListItemImportResult
      */
     public function setImportedListItemCount(int $importedListItemCount) : self
     {
+        $this->initialized['importedListItemCount'] = true;
         $this->importedListItemCount = $importedListItemCount;
         return $this;
     }
@@ -73,6 +82,7 @@ class ListItemImportResult
      */
     public function setSkippedListItemCount(int $skippedListItemCount) : self
     {
+        $this->initialized['skippedListItemCount'] = true;
         $this->skippedListItemCount = $skippedListItemCount;
         return $this;
     }
@@ -94,6 +104,7 @@ class ListItemImportResult
      */
     public function setTotalListItemCount(int $totalListItemCount) : self
     {
+        $this->initialized['totalListItemCount'] = true;
         $this->totalListItemCount = $totalListItemCount;
         return $this;
     }
@@ -115,6 +126,7 @@ class ListItemImportResult
      */
     public function setSkippedListItemIds(?array $skippedListItemIds) : self
     {
+        $this->initialized['skippedListItemIds'] = true;
         $this->skippedListItemIds = $skippedListItemIds;
         return $this;
     }
@@ -136,6 +148,7 @@ class ListItemImportResult
      */
     public function setImportedListItemIds(?array $importedListItemIds) : self
     {
+        $this->initialized['importedListItemIds'] = true;
         $this->importedListItemIds = $importedListItemIds;
         return $this;
     }

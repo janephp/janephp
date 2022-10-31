@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportCompanySummaryCreditRating extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRating extends \Ar
      */
     public function setCommonValue(string $commonValue) : self
     {
+        $this->initialized['commonValue'] = true;
         $this->commonValue = $commonValue;
         return $this;
     }
@@ -73,6 +82,7 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRating extends \Ar
      */
     public function setCommonDescription(string $commonDescription) : self
     {
+        $this->initialized['commonDescription'] = true;
         $this->commonDescription = $commonDescription;
         return $this;
     }
@@ -94,6 +104,7 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRating extends \Ar
      */
     public function setCreditLimit(GbCompanyReportExampleResponseReportCompanySummaryCreditRatingCreditLimit $creditLimit) : self
     {
+        $this->initialized['creditLimit'] = true;
         $this->creditLimit = $creditLimit;
         return $this;
     }
@@ -115,6 +126,7 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRating extends \Ar
      */
     public function setProviderValue(GbCompanyReportExampleResponseReportCompanySummaryCreditRatingProviderValue $providerValue) : self
     {
+        $this->initialized['providerValue'] = true;
         $this->providerValue = $providerValue;
         return $this;
     }
@@ -136,6 +148,7 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRating extends \Ar
      */
     public function setProviderDescription(string $providerDescription) : self
     {
+        $this->initialized['providerDescription'] = true;
         $this->providerDescription = $providerDescription;
         return $this;
     }

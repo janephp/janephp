@@ -83,19 +83,19 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfigNormalizer implements Denormalizer
     {
         $data = array();
         $data['url'] = $object->getUrl();
-        if (null !== $object->getContentType()) {
+        if ($object->isInitialized('contentType') && null !== $object->getContentType()) {
             $data['content_type'] = $object->getContentType();
         }
-        if (null !== $object->getSecret()) {
+        if ($object->isInitialized('secret') && null !== $object->getSecret()) {
             $data['secret'] = $object->getSecret();
         }
-        if (null !== $object->getInsecureSsl()) {
+        if ($object->isInitialized('insecureSsl') && null !== $object->getInsecureSsl()) {
             $data['insecure_ssl'] = $object->getInsecureSsl();
         }
-        if (null !== $object->getAddress()) {
+        if ($object->isInitialized('address') && null !== $object->getAddress()) {
             $data['address'] = $object->getAddress();
         }
-        if (null !== $object->getRoom()) {
+        if ($object->isInitialized('room') && null !== $object->getRoom()) {
             $data['room'] = $object->getRoom();
         }
         foreach ($object as $key => $value) {

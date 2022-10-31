@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class DetailedUser extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -118,6 +126,7 @@ class DetailedUser extends \ArrayObject
      */
     public function setFormat(string $format) : self
     {
+        $this->initialized['format'] = true;
         $this->format = $format;
         return $this;
     }
@@ -139,6 +148,7 @@ class DetailedUser extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -160,6 +170,7 @@ class DetailedUser extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -181,6 +192,7 @@ class DetailedUser extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -202,6 +214,7 @@ class DetailedUser extends \ArrayObject
      */
     public function setUsername(string $username) : self
     {
+        $this->initialized['username'] = true;
         $this->username = $username;
         return $this;
     }
@@ -223,6 +236,7 @@ class DetailedUser extends \ArrayObject
      */
     public function setProtected(bool $protected) : self
     {
+        $this->initialized['protected'] = true;
         $this->protected = $protected;
         return $this;
     }
@@ -244,6 +258,7 @@ class DetailedUser extends \ArrayObject
      */
     public function setVerified(bool $verified) : self
     {
+        $this->initialized['verified'] = true;
         $this->verified = $verified;
         return $this;
     }
@@ -265,6 +280,7 @@ class DetailedUser extends \ArrayObject
      */
     public function setWithheld(UserWithheld $withheld) : self
     {
+        $this->initialized['withheld'] = true;
         $this->withheld = $withheld;
         return $this;
     }
@@ -286,6 +302,7 @@ class DetailedUser extends \ArrayObject
      */
     public function setProfileImageUrl(string $profileImageUrl) : self
     {
+        $this->initialized['profileImageUrl'] = true;
         $this->profileImageUrl = $profileImageUrl;
         return $this;
     }
@@ -307,6 +324,7 @@ class DetailedUser extends \ArrayObject
      */
     public function setLocation(string $location) : self
     {
+        $this->initialized['location'] = true;
         $this->location = $location;
         return $this;
     }
@@ -328,6 +346,7 @@ class DetailedUser extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -349,6 +368,7 @@ class DetailedUser extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -370,6 +390,7 @@ class DetailedUser extends \ArrayObject
      */
     public function setEntities(DefaultUserFieldsEntities $entities) : self
     {
+        $this->initialized['entities'] = true;
         $this->entities = $entities;
         return $this;
     }
@@ -391,6 +412,7 @@ class DetailedUser extends \ArrayObject
      */
     public function setMostRecentTweetId(string $mostRecentTweetId) : self
     {
+        $this->initialized['mostRecentTweetId'] = true;
         $this->mostRecentTweetId = $mostRecentTweetId;
         return $this;
     }
@@ -412,6 +434,7 @@ class DetailedUser extends \ArrayObject
      */
     public function setPinnedTweetId(string $pinnedTweetId) : self
     {
+        $this->initialized['pinnedTweetId'] = true;
         $this->pinnedTweetId = $pinnedTweetId;
         return $this;
     }
@@ -433,6 +456,7 @@ class DetailedUser extends \ArrayObject
      */
     public function setStats(DetailedUserFieldsStats $stats) : self
     {
+        $this->initialized['stats'] = true;
         $this->stats = $stats;
         return $this;
     }

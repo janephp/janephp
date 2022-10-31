@@ -55,7 +55,7 @@ class UserDeleteRequestNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getOwnerTokenTransferUserId()) {
+        if ($object->isInitialized('ownerTokenTransferUserId') && null !== $object->getOwnerTokenTransferUserId()) {
             $data['ownerTokenTransferUserId'] = $object->getOwnerTokenTransferUserId();
         }
         return $data;

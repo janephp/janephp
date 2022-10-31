@@ -74,16 +74,16 @@ class ReposOwnerRepoPullsPullNumberMergePutBodyNormalizer implements Denormalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCommitTitle()) {
+        if ($object->isInitialized('commitTitle') && null !== $object->getCommitTitle()) {
             $data['commit_title'] = $object->getCommitTitle();
         }
-        if (null !== $object->getCommitMessage()) {
+        if ($object->isInitialized('commitMessage') && null !== $object->getCommitMessage()) {
             $data['commit_message'] = $object->getCommitMessage();
         }
-        if (null !== $object->getSha()) {
+        if ($object->isInitialized('sha') && null !== $object->getSha()) {
             $data['sha'] = $object->getSha();
         }
-        if (null !== $object->getMergeMethod()) {
+        if ($object->isInitialized('mergeMethod') && null !== $object->getMergeMethod()) {
             $data['merge_method'] = $object->getMergeMethod();
         }
         foreach ($object as $key => $value) {

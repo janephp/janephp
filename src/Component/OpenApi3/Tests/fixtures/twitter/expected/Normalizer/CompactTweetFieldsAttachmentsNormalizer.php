@@ -70,14 +70,14 @@ class CompactTweetFieldsAttachmentsNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMediaKeys()) {
+        if ($object->isInitialized('mediaKeys') && null !== $object->getMediaKeys()) {
             $values = array();
             foreach ($object->getMediaKeys() as $value) {
                 $values[] = $value;
             }
             $data['media_keys'] = $values;
         }
-        if (null !== $object->getPollIds()) {
+        if ($object->isInitialized('pollIds') && null !== $object->getPollIds()) {
             $values_1 = array();
             foreach ($object->getPollIds() as $value_1) {
                 $values_1[] = $value_1;

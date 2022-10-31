@@ -78,19 +78,19 @@ class BaseGistFilesItemNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFilename()) {
+        if ($object->isInitialized('filename') && null !== $object->getFilename()) {
             $data['filename'] = $object->getFilename();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getLanguage()) {
+        if ($object->isInitialized('language') && null !== $object->getLanguage()) {
             $data['language'] = $object->getLanguage();
         }
-        if (null !== $object->getRawUrl()) {
+        if ($object->isInitialized('rawUrl') && null !== $object->getRawUrl()) {
             $data['raw_url'] = $object->getRawUrl();
         }
-        if (null !== $object->getSize()) {
+        if ($object->isInitialized('size') && null !== $object->getSize()) {
             $data['size'] = $object->getSize();
         }
         foreach ($object as $key => $value) {

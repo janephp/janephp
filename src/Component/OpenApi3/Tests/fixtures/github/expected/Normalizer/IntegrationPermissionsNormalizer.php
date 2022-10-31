@@ -78,19 +78,19 @@ class IntegrationPermissionsNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getIssues()) {
+        if ($object->isInitialized('issues') && null !== $object->getIssues()) {
             $data['issues'] = $object->getIssues();
         }
-        if (null !== $object->getChecks()) {
+        if ($object->isInitialized('checks') && null !== $object->getChecks()) {
             $data['checks'] = $object->getChecks();
         }
-        if (null !== $object->getMetadata()) {
+        if ($object->isInitialized('metadata') && null !== $object->getMetadata()) {
             $data['metadata'] = $object->getMetadata();
         }
-        if (null !== $object->getContents()) {
+        if ($object->isInitialized('contents') && null !== $object->getContents()) {
             $data['contents'] = $object->getContents();
         }
-        if (null !== $object->getDeployments()) {
+        if ($object->isInitialized('deployments') && null !== $object->getDeployments()) {
             $data['deployments'] = $object->getDeployments();
         }
         foreach ($object as $key => $value) {

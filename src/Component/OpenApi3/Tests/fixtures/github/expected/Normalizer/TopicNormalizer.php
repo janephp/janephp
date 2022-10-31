@@ -66,7 +66,7 @@ class TopicNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNames()) {
+        if ($object->isInitialized('names') && null !== $object->getNames()) {
             $values = array();
             foreach ($object->getNames() as $value) {
                 $values[] = $value;

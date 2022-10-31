@@ -79,16 +79,16 @@ class ProtectedBranchRequiredPullRequestReviewsNormalizer implements Denormalize
     {
         $data = array();
         $data['url'] = $object->getUrl();
-        if (null !== $object->getDismissStaleReviews()) {
+        if ($object->isInitialized('dismissStaleReviews') && null !== $object->getDismissStaleReviews()) {
             $data['dismiss_stale_reviews'] = $object->getDismissStaleReviews();
         }
-        if (null !== $object->getRequireCodeOwnerReviews()) {
+        if ($object->isInitialized('requireCodeOwnerReviews') && null !== $object->getRequireCodeOwnerReviews()) {
             $data['require_code_owner_reviews'] = $object->getRequireCodeOwnerReviews();
         }
-        if (null !== $object->getRequiredApprovingReviewCount()) {
+        if ($object->isInitialized('requiredApprovingReviewCount') && null !== $object->getRequiredApprovingReviewCount()) {
             $data['required_approving_review_count'] = $object->getRequiredApprovingReviewCount();
         }
-        if (null !== $object->getDismissalRestrictions()) {
+        if ($object->isInitialized('dismissalRestrictions') && null !== $object->getDismissalRestrictions()) {
             $data['dismissal_restrictions'] = $this->normalizer->normalize($object->getDismissalRestrictions(), 'json', $context);
         }
         foreach ($object as $key => $value) {

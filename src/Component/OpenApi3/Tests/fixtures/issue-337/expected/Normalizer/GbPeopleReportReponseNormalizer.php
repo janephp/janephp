@@ -82,25 +82,25 @@ class GbPeopleReportReponseNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCorrelationId()) {
+        if ($object->isInitialized('correlationId') && null !== $object->getCorrelationId()) {
             $data['correlationId'] = $object->getCorrelationId();
         }
-        if (null !== $object->getOrderId()) {
+        if ($object->isInitialized('orderId') && null !== $object->getOrderId()) {
             $data['orderId'] = $object->getOrderId();
         }
-        if (null !== $object->getDirectorId()) {
+        if ($object->isInitialized('directorId') && null !== $object->getDirectorId()) {
             $data['directorId'] = $object->getDirectorId();
         }
-        if (null !== $object->getDateOfOrder()) {
+        if ($object->isInitialized('dateOfOrder') && null !== $object->getDateOfOrder()) {
             $data['dateOfOrder'] = $object->getDateOfOrder();
         }
-        if (null !== $object->getLanguage()) {
+        if ($object->isInitialized('language') && null !== $object->getLanguage()) {
             $data['language'] = $object->getLanguage();
         }
-        if (null !== $object->getUserId()) {
+        if ($object->isInitialized('userId') && null !== $object->getUserId()) {
             $data['userId'] = $object->getUserId();
         }
-        if (null !== $object->getReport()) {
+        if ($object->isInitialized('report') && null !== $object->getReport()) {
             $data['report'] = $this->normalizer->normalize($object->getReport(), 'json', $context);
         }
         foreach ($object as $key => $value) {

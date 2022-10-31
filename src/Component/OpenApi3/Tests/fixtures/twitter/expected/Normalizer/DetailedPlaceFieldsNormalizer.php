@@ -58,7 +58,7 @@ class DetailedPlaceFieldsNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getGeo()) {
+        if ($object->isInitialized('geo') && null !== $object->getGeo()) {
             $data['geo'] = $this->normalizer->normalize($object->getGeo(), 'json', $context);
         }
         foreach ($object as $key => $value) {

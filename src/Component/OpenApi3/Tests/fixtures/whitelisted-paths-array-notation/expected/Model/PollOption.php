@@ -5,6 +5,14 @@ namespace Jane\OpenApi3\Tests\Expected\Model;
 class PollOption extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Position of this choice in the poll.
      *
      * @var int
@@ -40,6 +48,7 @@ class PollOption extends \ArrayObject
      */
     public function setPosition(int $position) : self
     {
+        $this->initialized['position'] = true;
         $this->position = $position;
         return $this;
     }
@@ -61,6 +70,7 @@ class PollOption extends \ArrayObject
      */
     public function setLabel(string $label) : self
     {
+        $this->initialized['label'] = true;
         $this->label = $label;
         return $this;
     }
@@ -82,6 +92,7 @@ class PollOption extends \ArrayObject
      */
     public function setVotes(int $votes) : self
     {
+        $this->initialized['votes'] = true;
         $this->votes = $votes;
         return $this;
     }

@@ -85,10 +85,10 @@ class NullableNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getOnlyNull()) {
+        if ($object->isInitialized('onlyNull') && null !== $object->getOnlyNull()) {
             $data['onlyNull'] = $object->getOnlyNull();
         }
-        if (null !== $object->getNullOrString()) {
+        if ($object->isInitialized('nullOrString') && null !== $object->getNullOrString()) {
             $value = $object->getNullOrString();
             if (is_string($object->getNullOrString())) {
                 $value = $object->getNullOrString();

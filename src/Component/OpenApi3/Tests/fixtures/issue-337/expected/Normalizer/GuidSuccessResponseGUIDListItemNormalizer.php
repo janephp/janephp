@@ -70,16 +70,16 @@ class GuidSuccessResponseGUIDListItemNormalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFriendlyName()) {
+        if ($object->isInitialized('friendlyName') && null !== $object->getFriendlyName()) {
             $data['friendlyName'] = $object->getFriendlyName();
         }
-        if (null !== $object->getGUID()) {
+        if ($object->isInitialized('gUID') && null !== $object->getGUID()) {
             $data['GUID'] = $object->getGUID();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getServiceLine()) {
+        if ($object->isInitialized('serviceLine') && null !== $object->getServiceLine()) {
             $data['serviceLine'] = $object->getServiceLine();
         }
         foreach ($object as $key => $value) {

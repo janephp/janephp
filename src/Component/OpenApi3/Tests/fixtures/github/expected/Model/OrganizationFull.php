@@ -5,6 +5,14 @@ namespace Github\Model;
 class OrganizationFull extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -280,6 +288,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setLogin(string $login) : self
     {
+        $this->initialized['login'] = true;
         $this->login = $login;
         return $this;
     }
@@ -301,6 +310,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -322,6 +332,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -343,6 +354,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -364,6 +376,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setReposUrl(string $reposUrl) : self
     {
+        $this->initialized['reposUrl'] = true;
         $this->reposUrl = $reposUrl;
         return $this;
     }
@@ -385,6 +398,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setEventsUrl(string $eventsUrl) : self
     {
+        $this->initialized['eventsUrl'] = true;
         $this->eventsUrl = $eventsUrl;
         return $this;
     }
@@ -406,6 +420,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setHooksUrl(string $hooksUrl) : self
     {
+        $this->initialized['hooksUrl'] = true;
         $this->hooksUrl = $hooksUrl;
         return $this;
     }
@@ -427,6 +442,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setIssuesUrl(string $issuesUrl) : self
     {
+        $this->initialized['issuesUrl'] = true;
         $this->issuesUrl = $issuesUrl;
         return $this;
     }
@@ -448,6 +464,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setMembersUrl(string $membersUrl) : self
     {
+        $this->initialized['membersUrl'] = true;
         $this->membersUrl = $membersUrl;
         return $this;
     }
@@ -469,6 +486,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setPublicMembersUrl(string $publicMembersUrl) : self
     {
+        $this->initialized['publicMembersUrl'] = true;
         $this->publicMembersUrl = $publicMembersUrl;
         return $this;
     }
@@ -490,6 +508,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setAvatarUrl(string $avatarUrl) : self
     {
+        $this->initialized['avatarUrl'] = true;
         $this->avatarUrl = $avatarUrl;
         return $this;
     }
@@ -511,6 +530,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -532,6 +552,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -553,6 +574,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setCompany(string $company) : self
     {
+        $this->initialized['company'] = true;
         $this->company = $company;
         return $this;
     }
@@ -574,6 +596,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setBlog(string $blog) : self
     {
+        $this->initialized['blog'] = true;
         $this->blog = $blog;
         return $this;
     }
@@ -595,6 +618,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setLocation(string $location) : self
     {
+        $this->initialized['location'] = true;
         $this->location = $location;
         return $this;
     }
@@ -616,6 +640,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setEmail(string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -637,6 +662,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setTwitterUsername(?string $twitterUsername) : self
     {
+        $this->initialized['twitterUsername'] = true;
         $this->twitterUsername = $twitterUsername;
         return $this;
     }
@@ -658,6 +684,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setIsVerified(bool $isVerified) : self
     {
+        $this->initialized['isVerified'] = true;
         $this->isVerified = $isVerified;
         return $this;
     }
@@ -679,6 +706,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setHasOrganizationProjects(bool $hasOrganizationProjects) : self
     {
+        $this->initialized['hasOrganizationProjects'] = true;
         $this->hasOrganizationProjects = $hasOrganizationProjects;
         return $this;
     }
@@ -700,6 +728,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setHasRepositoryProjects(bool $hasRepositoryProjects) : self
     {
+        $this->initialized['hasRepositoryProjects'] = true;
         $this->hasRepositoryProjects = $hasRepositoryProjects;
         return $this;
     }
@@ -721,6 +750,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setPublicRepos(int $publicRepos) : self
     {
+        $this->initialized['publicRepos'] = true;
         $this->publicRepos = $publicRepos;
         return $this;
     }
@@ -742,6 +772,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setPublicGists(int $publicGists) : self
     {
+        $this->initialized['publicGists'] = true;
         $this->publicGists = $publicGists;
         return $this;
     }
@@ -763,6 +794,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setFollowers(int $followers) : self
     {
+        $this->initialized['followers'] = true;
         $this->followers = $followers;
         return $this;
     }
@@ -784,6 +816,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setFollowing(int $following) : self
     {
+        $this->initialized['following'] = true;
         $this->following = $following;
         return $this;
     }
@@ -805,6 +838,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -826,6 +860,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -847,6 +882,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -868,6 +904,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setTotalPrivateRepos(int $totalPrivateRepos) : self
     {
+        $this->initialized['totalPrivateRepos'] = true;
         $this->totalPrivateRepos = $totalPrivateRepos;
         return $this;
     }
@@ -889,6 +926,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setOwnedPrivateRepos(int $ownedPrivateRepos) : self
     {
+        $this->initialized['ownedPrivateRepos'] = true;
         $this->ownedPrivateRepos = $ownedPrivateRepos;
         return $this;
     }
@@ -910,6 +948,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setPrivateGists(?int $privateGists) : self
     {
+        $this->initialized['privateGists'] = true;
         $this->privateGists = $privateGists;
         return $this;
     }
@@ -931,6 +970,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setDiskUsage(?int $diskUsage) : self
     {
+        $this->initialized['diskUsage'] = true;
         $this->diskUsage = $diskUsage;
         return $this;
     }
@@ -952,6 +992,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setCollaborators(?int $collaborators) : self
     {
+        $this->initialized['collaborators'] = true;
         $this->collaborators = $collaborators;
         return $this;
     }
@@ -973,6 +1014,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setBillingEmail(?string $billingEmail) : self
     {
+        $this->initialized['billingEmail'] = true;
         $this->billingEmail = $billingEmail;
         return $this;
     }
@@ -994,6 +1036,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setPlan(OrganizationFullPlan $plan) : self
     {
+        $this->initialized['plan'] = true;
         $this->plan = $plan;
         return $this;
     }
@@ -1015,6 +1058,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setDefaultRepositoryPermission(?string $defaultRepositoryPermission) : self
     {
+        $this->initialized['defaultRepositoryPermission'] = true;
         $this->defaultRepositoryPermission = $defaultRepositoryPermission;
         return $this;
     }
@@ -1036,6 +1080,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setMembersCanCreateRepositories(?bool $membersCanCreateRepositories) : self
     {
+        $this->initialized['membersCanCreateRepositories'] = true;
         $this->membersCanCreateRepositories = $membersCanCreateRepositories;
         return $this;
     }
@@ -1057,6 +1102,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setTwoFactorRequirementEnabled(?bool $twoFactorRequirementEnabled) : self
     {
+        $this->initialized['twoFactorRequirementEnabled'] = true;
         $this->twoFactorRequirementEnabled = $twoFactorRequirementEnabled;
         return $this;
     }
@@ -1078,6 +1124,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setMembersAllowedRepositoryCreationType(string $membersAllowedRepositoryCreationType) : self
     {
+        $this->initialized['membersAllowedRepositoryCreationType'] = true;
         $this->membersAllowedRepositoryCreationType = $membersAllowedRepositoryCreationType;
         return $this;
     }
@@ -1099,6 +1146,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setMembersCanCreatePublicRepositories(bool $membersCanCreatePublicRepositories) : self
     {
+        $this->initialized['membersCanCreatePublicRepositories'] = true;
         $this->membersCanCreatePublicRepositories = $membersCanCreatePublicRepositories;
         return $this;
     }
@@ -1120,6 +1168,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setMembersCanCreatePrivateRepositories(bool $membersCanCreatePrivateRepositories) : self
     {
+        $this->initialized['membersCanCreatePrivateRepositories'] = true;
         $this->membersCanCreatePrivateRepositories = $membersCanCreatePrivateRepositories;
         return $this;
     }
@@ -1141,6 +1190,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setMembersCanCreateInternalRepositories(bool $membersCanCreateInternalRepositories) : self
     {
+        $this->initialized['membersCanCreateInternalRepositories'] = true;
         $this->membersCanCreateInternalRepositories = $membersCanCreateInternalRepositories;
         return $this;
     }
@@ -1162,6 +1212,7 @@ class OrganizationFull extends \ArrayObject
      */
     public function setUpdatedAt(\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }

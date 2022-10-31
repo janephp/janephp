@@ -5,6 +5,14 @@ namespace Github\Model;
 class WorkflowUsageBillableMACOS extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -28,6 +36,7 @@ class WorkflowUsageBillableMACOS extends \ArrayObject
      */
     public function setTotalMs(int $totalMs) : self
     {
+        $this->initialized['totalMs'] = true;
         $this->totalMs = $totalMs;
         return $this;
     }

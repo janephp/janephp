@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UserRoleEditable
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Language specific user role names.
      *
      * @var mixed
@@ -34,6 +42,7 @@ class UserRoleEditable
      */
     public function setNames($names) : self
     {
+        $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }
@@ -55,6 +64,7 @@ class UserRoleEditable
      */
     public function setUserRights(array $userRights) : self
     {
+        $this->initialized['userRights'] = true;
         $this->userRights = $userRights;
         return $this;
     }

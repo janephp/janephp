@@ -62,7 +62,7 @@ class ListItemUpdateRequestNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getContent()) {
+        if ($object->isInitialized('content') && null !== $object->getContent()) {
             $values = array();
             foreach ($object->getContent() as $key => $value) {
                 $values[$key] = $value;

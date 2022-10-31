@@ -93,7 +93,7 @@ class PullRequestBaseRepoLicenseNormalizer implements DenormalizerInterface, Nor
         $data['url'] = $object->getUrl();
         $data['spdx_id'] = $object->getSpdxId();
         $data['node_id'] = $object->getNodeId();
-        if (null !== $object->getHtmlUrl()) {
+        if ($object->isInitialized('htmlUrl') && null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
         foreach ($object as $key => $value) {

@@ -122,34 +122,34 @@ class UserUpdateRequestNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getFirstName()) {
+        if ($object->isInitialized('firstName') && null !== $object->getFirstName()) {
             $data['firstName'] = $object->getFirstName();
         }
-        if (null !== $object->getLastName()) {
+        if ($object->isInitialized('lastName') && null !== $object->getLastName()) {
             $data['lastName'] = $object->getLastName();
         }
         $data['emailAddress'] = $object->getEmailAddress();
         $data['isDeleted'] = $object->getIsDeleted();
-        if (null !== $object->getUserRoles()) {
+        if ($object->isInitialized('userRoles') && null !== $object->getUserRoles()) {
             $values = array();
             foreach ($object->getUserRoles() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['userRoles'] = $values;
         }
-        if (null !== $object->getComment()) {
+        if ($object->isInitialized('comment') && null !== $object->getComment()) {
             $data['comment'] = $object->getComment();
         }
-        if (null !== $object->getLanguageCode()) {
+        if ($object->isInitialized('languageCode') && null !== $object->getLanguageCode()) {
             $data['languageCode'] = $object->getLanguageCode();
         }
-        if (null !== $object->getAddress()) {
+        if ($object->isInitialized('address') && null !== $object->getAddress()) {
             $data['address'] = $object->getAddress();
         }
-        if (null !== $object->getIdentityProviderId()) {
+        if ($object->isInitialized('identityProviderId') && null !== $object->getIdentityProviderId()) {
             $data['identityProviderId'] = $object->getIdentityProviderId();
         }
         foreach ($object as $key => $value_1) {

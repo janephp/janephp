@@ -5,6 +5,14 @@ namespace Github\Model;
 class ProtectedBranchRequiredPullRequestReviews extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class ProtectedBranchRequiredPullRequestReviews extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -73,6 +82,7 @@ class ProtectedBranchRequiredPullRequestReviews extends \ArrayObject
      */
     public function setDismissStaleReviews(bool $dismissStaleReviews) : self
     {
+        $this->initialized['dismissStaleReviews'] = true;
         $this->dismissStaleReviews = $dismissStaleReviews;
         return $this;
     }
@@ -94,6 +104,7 @@ class ProtectedBranchRequiredPullRequestReviews extends \ArrayObject
      */
     public function setRequireCodeOwnerReviews(bool $requireCodeOwnerReviews) : self
     {
+        $this->initialized['requireCodeOwnerReviews'] = true;
         $this->requireCodeOwnerReviews = $requireCodeOwnerReviews;
         return $this;
     }
@@ -115,6 +126,7 @@ class ProtectedBranchRequiredPullRequestReviews extends \ArrayObject
      */
     public function setRequiredApprovingReviewCount(int $requiredApprovingReviewCount) : self
     {
+        $this->initialized['requiredApprovingReviewCount'] = true;
         $this->requiredApprovingReviewCount = $requiredApprovingReviewCount;
         return $this;
     }
@@ -136,6 +148,7 @@ class ProtectedBranchRequiredPullRequestReviews extends \ArrayObject
      */
     public function setDismissalRestrictions(ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions $dismissalRestrictions) : self
     {
+        $this->initialized['dismissalRestrictions'] = true;
         $this->dismissalRestrictions = $dismissalRestrictions;
         return $this;
     }

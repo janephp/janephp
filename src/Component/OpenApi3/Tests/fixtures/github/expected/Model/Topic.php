@@ -5,6 +5,14 @@ namespace Github\Model;
 class Topic extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string[]
@@ -28,6 +36,7 @@ class Topic extends \ArrayObject
      */
     public function setNames(array $names) : self
     {
+        $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }

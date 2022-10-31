@@ -5,6 +5,14 @@ namespace Github\Model;
 class ParticipationStats extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int[]
@@ -34,6 +42,7 @@ class ParticipationStats extends \ArrayObject
      */
     public function setAll(array $all) : self
     {
+        $this->initialized['all'] = true;
         $this->all = $all;
         return $this;
     }
@@ -55,6 +64,7 @@ class ParticipationStats extends \ArrayObject
      */
     public function setOwner(array $owner) : self
     {
+        $this->initialized['owner'] = true;
         $this->owner = $owner;
         return $this;
     }

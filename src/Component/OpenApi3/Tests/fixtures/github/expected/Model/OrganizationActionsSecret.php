@@ -5,6 +5,14 @@ namespace Github\Model;
 class OrganizationActionsSecret extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The name of the secret.
      *
      * @var string
@@ -52,6 +60,7 @@ class OrganizationActionsSecret extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -73,6 +82,7 @@ class OrganizationActionsSecret extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -94,6 +104,7 @@ class OrganizationActionsSecret extends \ArrayObject
      */
     public function setUpdatedAt(\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -115,6 +126,7 @@ class OrganizationActionsSecret extends \ArrayObject
      */
     public function setVisibility(string $visibility) : self
     {
+        $this->initialized['visibility'] = true;
         $this->visibility = $visibility;
         return $this;
     }
@@ -136,6 +148,7 @@ class OrganizationActionsSecret extends \ArrayObject
      */
     public function setSelectedRepositoriesUrl(string $selectedRepositoriesUrl) : self
     {
+        $this->initialized['selectedRepositoriesUrl'] = true;
         $this->selectedRepositoriesUrl = $selectedRepositoriesUrl;
         return $this;
     }

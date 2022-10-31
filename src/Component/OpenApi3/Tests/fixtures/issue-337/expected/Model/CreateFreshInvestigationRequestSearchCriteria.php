@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -64,6 +72,7 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -85,6 +94,7 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
      */
     public function setAdditionalInfo(string $additionalInfo) : self
     {
+        $this->initialized['additionalInfo'] = true;
         $this->additionalInfo = $additionalInfo;
         return $this;
     }
@@ -106,6 +116,7 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
      */
     public function setTelephoneNumber(string $telephoneNumber) : self
     {
+        $this->initialized['telephoneNumber'] = true;
         $this->telephoneNumber = $telephoneNumber;
         return $this;
     }
@@ -127,6 +138,7 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
      */
     public function setAddress(CreateFreshInvestigationRequestSearchCriteriaAddress $address) : self
     {
+        $this->initialized['address'] = true;
         $this->address = $address;
         return $this;
     }
@@ -148,6 +160,7 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
      */
     public function setRegNo(string $regNo) : self
     {
+        $this->initialized['regNo'] = true;
         $this->regNo = $regNo;
         return $this;
     }
@@ -169,6 +182,7 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
      */
     public function setVatNo(string $vatNo) : self
     {
+        $this->initialized['vatNo'] = true;
         $this->vatNo = $vatNo;
         return $this;
     }
@@ -190,6 +204,7 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
      */
     public function setCountryCode(string $countryCode) : self
     {
+        $this->initialized['countryCode'] = true;
         $this->countryCode = $countryCode;
         return $this;
     }

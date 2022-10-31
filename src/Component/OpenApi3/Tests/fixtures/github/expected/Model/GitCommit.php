@@ -5,6 +5,14 @@ namespace Github\Model;
 class GitCommit extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * SHA for the commit
      *
      * @var string
@@ -82,6 +90,7 @@ class GitCommit extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -103,6 +112,7 @@ class GitCommit extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -124,6 +134,7 @@ class GitCommit extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -145,6 +156,7 @@ class GitCommit extends \ArrayObject
      */
     public function setAuthor(GitCommitAuthor $author) : self
     {
+        $this->initialized['author'] = true;
         $this->author = $author;
         return $this;
     }
@@ -166,6 +178,7 @@ class GitCommit extends \ArrayObject
      */
     public function setCommitter(GitCommitCommitter $committer) : self
     {
+        $this->initialized['committer'] = true;
         $this->committer = $committer;
         return $this;
     }
@@ -187,6 +200,7 @@ class GitCommit extends \ArrayObject
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -208,6 +222,7 @@ class GitCommit extends \ArrayObject
      */
     public function setTree(GitCommitTree $tree) : self
     {
+        $this->initialized['tree'] = true;
         $this->tree = $tree;
         return $this;
     }
@@ -229,6 +244,7 @@ class GitCommit extends \ArrayObject
      */
     public function setParents(array $parents) : self
     {
+        $this->initialized['parents'] = true;
         $this->parents = $parents;
         return $this;
     }
@@ -250,6 +266,7 @@ class GitCommit extends \ArrayObject
      */
     public function setVerification(GitCommitVerification $verification) : self
     {
+        $this->initialized['verification'] = true;
         $this->verification = $verification;
         return $this;
     }
@@ -271,6 +288,7 @@ class GitCommit extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }

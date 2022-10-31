@@ -90,7 +90,7 @@ class CompactUserNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFormat()) {
+        if ($object->isInitialized('format') && null !== $object->getFormat()) {
             $data['format'] = $object->getFormat();
         }
         $data['id'] = $object->getId();
@@ -99,10 +99,10 @@ class CompactUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['username'] = $object->getUsername();
         $data['protected'] = $object->getProtected();
         $data['verified'] = $object->getVerified();
-        if (null !== $object->getWithheld()) {
+        if ($object->isInitialized('withheld') && null !== $object->getWithheld()) {
             $data['withheld'] = $this->normalizer->normalize($object->getWithheld(), 'json', $context);
         }
-        if (null !== $object->getProfileImageUrl()) {
+        if ($object->isInitialized('profileImageUrl') && null !== $object->getProfileImageUrl()) {
             $data['profile_image_url'] = $object->getProfileImageUrl();
         }
         foreach ($object as $key => $value) {

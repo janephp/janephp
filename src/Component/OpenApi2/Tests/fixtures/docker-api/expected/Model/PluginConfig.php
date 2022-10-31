@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class PluginConfig
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Docker Version used to create the plugin
      *
      * @var string
@@ -118,6 +126,7 @@ class PluginConfig
      */
     public function setDockerVersion(string $dockerVersion) : self
     {
+        $this->initialized['dockerVersion'] = true;
         $this->dockerVersion = $dockerVersion;
         return $this;
     }
@@ -139,6 +148,7 @@ class PluginConfig
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -160,6 +170,7 @@ class PluginConfig
      */
     public function setDocumentation(string $documentation) : self
     {
+        $this->initialized['documentation'] = true;
         $this->documentation = $documentation;
         return $this;
     }
@@ -181,6 +192,7 @@ class PluginConfig
      */
     public function setInterface(PluginConfigInterface $interface) : self
     {
+        $this->initialized['interface'] = true;
         $this->interface = $interface;
         return $this;
     }
@@ -202,6 +214,7 @@ class PluginConfig
      */
     public function setEntrypoint(array $entrypoint) : self
     {
+        $this->initialized['entrypoint'] = true;
         $this->entrypoint = $entrypoint;
         return $this;
     }
@@ -223,6 +236,7 @@ class PluginConfig
      */
     public function setWorkDir(string $workDir) : self
     {
+        $this->initialized['workDir'] = true;
         $this->workDir = $workDir;
         return $this;
     }
@@ -244,6 +258,7 @@ class PluginConfig
      */
     public function setUser(PluginConfigUser $user) : self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
     }
@@ -265,6 +280,7 @@ class PluginConfig
      */
     public function setNetwork(PluginConfigNetwork $network) : self
     {
+        $this->initialized['network'] = true;
         $this->network = $network;
         return $this;
     }
@@ -286,6 +302,7 @@ class PluginConfig
      */
     public function setLinux(PluginConfigLinux $linux) : self
     {
+        $this->initialized['linux'] = true;
         $this->linux = $linux;
         return $this;
     }
@@ -307,6 +324,7 @@ class PluginConfig
      */
     public function setPropagatedMount(string $propagatedMount) : self
     {
+        $this->initialized['propagatedMount'] = true;
         $this->propagatedMount = $propagatedMount;
         return $this;
     }
@@ -328,6 +346,7 @@ class PluginConfig
      */
     public function setIpcHost(bool $ipcHost) : self
     {
+        $this->initialized['ipcHost'] = true;
         $this->ipcHost = $ipcHost;
         return $this;
     }
@@ -349,6 +368,7 @@ class PluginConfig
      */
     public function setPidHost(bool $pidHost) : self
     {
+        $this->initialized['pidHost'] = true;
         $this->pidHost = $pidHost;
         return $this;
     }
@@ -370,6 +390,7 @@ class PluginConfig
      */
     public function setMounts(array $mounts) : self
     {
+        $this->initialized['mounts'] = true;
         $this->mounts = $mounts;
         return $this;
     }
@@ -391,6 +412,7 @@ class PluginConfig
      */
     public function setEnv(array $env) : self
     {
+        $this->initialized['env'] = true;
         $this->env = $env;
         return $this;
     }
@@ -412,6 +434,7 @@ class PluginConfig
      */
     public function setArgs(PluginConfigArgs $args) : self
     {
+        $this->initialized['args'] = true;
         $this->args = $args;
         return $this;
     }
@@ -433,6 +456,7 @@ class PluginConfig
      */
     public function setRootfs(PluginConfigRootfs $rootfs) : self
     {
+        $this->initialized['rootfs'] = true;
         $this->rootfs = $rootfs;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UserRoleAssignment
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * User role assigned.
      *
      * @var mixed|null
@@ -34,6 +42,7 @@ class UserRoleAssignment
      */
     public function setUserRole($userRole) : self
     {
+        $this->initialized['userRole'] = true;
         $this->userRole = $userRole;
         return $this;
     }
@@ -55,6 +64,7 @@ class UserRoleAssignment
      */
     public function setIsFederated(bool $isFederated) : self
     {
+        $this->initialized['isFederated'] = true;
         $this->isFederated = $isFederated;
         return $this;
     }

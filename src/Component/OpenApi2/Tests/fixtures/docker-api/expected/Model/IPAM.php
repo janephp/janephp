@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class IPAM
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Name of the IPAM driver to use.
      *
      * @var string
@@ -45,6 +53,7 @@ class IPAM
      */
     public function setDriver(string $driver) : self
     {
+        $this->initialized['driver'] = true;
         $this->driver = $driver;
         return $this;
     }
@@ -76,6 +85,7 @@ class IPAM
     */
     public function setConfig(array $config) : self
     {
+        $this->initialized['config'] = true;
         $this->config = $config;
         return $this;
     }
@@ -97,6 +107,7 @@ class IPAM
      */
     public function setOptions(iterable $options) : self
     {
+        $this->initialized['options'] = true;
         $this->options = $options;
         return $this;
     }

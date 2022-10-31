@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class TaskStatus
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class TaskStatus
      */
     public function setTimestamp(string $timestamp) : self
     {
+        $this->initialized['timestamp'] = true;
         $this->timestamp = $timestamp;
         return $this;
     }
@@ -73,6 +82,7 @@ class TaskStatus
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -94,6 +104,7 @@ class TaskStatus
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -115,6 +126,7 @@ class TaskStatus
      */
     public function setErr(string $err) : self
     {
+        $this->initialized['err'] = true;
         $this->err = $err;
         return $this;
     }
@@ -136,6 +148,7 @@ class TaskStatus
      */
     public function setContainerStatus(TaskStatusContainerStatus $containerStatus) : self
     {
+        $this->initialized['containerStatus'] = true;
         $this->containerStatus = $containerStatus;
         return $this;
     }

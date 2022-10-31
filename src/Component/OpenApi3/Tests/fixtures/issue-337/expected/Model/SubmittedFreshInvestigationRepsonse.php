@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class SubmittedFreshInvestigationRepsonse extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class SubmittedFreshInvestigationRepsonse extends \ArrayObject
      */
     public function setCorrelationId(string $correlationId) : self
     {
+        $this->initialized['correlationId'] = true;
         $this->correlationId = $correlationId;
         return $this;
     }
@@ -67,6 +76,7 @@ class SubmittedFreshInvestigationRepsonse extends \ArrayObject
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -88,6 +98,7 @@ class SubmittedFreshInvestigationRepsonse extends \ArrayObject
      */
     public function setOrderID(string $orderID) : self
     {
+        $this->initialized['orderID'] = true;
         $this->orderID = $orderID;
         return $this;
     }
@@ -109,6 +120,7 @@ class SubmittedFreshInvestigationRepsonse extends \ArrayObject
      */
     public function setTransactionID(string $transactionID) : self
     {
+        $this->initialized['transactionID'] = true;
         $this->transactionID = $transactionID;
         return $this;
     }

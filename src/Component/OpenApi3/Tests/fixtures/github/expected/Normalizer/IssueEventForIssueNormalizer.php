@@ -151,67 +151,67 @@ class IssueEventForIssueNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getNodeId()) {
+        if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getActor()) {
+        if ($object->isInitialized('actor') && null !== $object->getActor()) {
             $data['actor'] = $this->normalizer->normalize($object->getActor(), 'json', $context);
         }
-        if (null !== $object->getEvent()) {
+        if ($object->isInitialized('event') && null !== $object->getEvent()) {
             $data['event'] = $object->getEvent();
         }
-        if (null !== $object->getCommitId()) {
+        if ($object->isInitialized('commitId') && null !== $object->getCommitId()) {
             $data['commit_id'] = $object->getCommitId();
         }
-        if (null !== $object->getCommitUrl()) {
+        if ($object->isInitialized('commitUrl') && null !== $object->getCommitUrl()) {
             $data['commit_url'] = $object->getCommitUrl();
         }
-        if (null !== $object->getCreatedAt()) {
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt();
         }
-        if (null !== $object->getSha()) {
+        if ($object->isInitialized('sha') && null !== $object->getSha()) {
             $data['sha'] = $object->getSha();
         }
-        if (null !== $object->getHtmlUrl()) {
+        if ($object->isInitialized('htmlUrl') && null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
-        if (null !== $object->getMessage()) {
+        if ($object->isInitialized('message') && null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
-        if (null !== $object->getIssueUrl()) {
+        if ($object->isInitialized('issueUrl') && null !== $object->getIssueUrl()) {
             $data['issue_url'] = $object->getIssueUrl();
         }
-        if (null !== $object->getUpdatedAt()) {
+        if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt();
         }
-        if (null !== $object->getAuthorAssociation()) {
+        if ($object->isInitialized('authorAssociation') && null !== $object->getAuthorAssociation()) {
             $data['author_association'] = $object->getAuthorAssociation();
         }
-        if (null !== $object->getBody()) {
+        if ($object->isInitialized('body') && null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
-        if (null !== $object->getLockReason()) {
+        if ($object->isInitialized('lockReason') && null !== $object->getLockReason()) {
             $data['lock_reason'] = $object->getLockReason();
         }
-        if (null !== $object->getSubmittedAt()) {
+        if ($object->isInitialized('submittedAt') && null !== $object->getSubmittedAt()) {
             $data['submitted_at'] = $object->getSubmittedAt();
         }
-        if (null !== $object->getState()) {
+        if ($object->isInitialized('state') && null !== $object->getState()) {
             $data['state'] = $object->getState();
         }
-        if (null !== $object->getPullRequestUrl()) {
+        if ($object->isInitialized('pullRequestUrl') && null !== $object->getPullRequestUrl()) {
             $data['pull_request_url'] = $object->getPullRequestUrl();
         }
-        if (null !== $object->getBodyHtml()) {
+        if ($object->isInitialized('bodyHtml') && null !== $object->getBodyHtml()) {
             $data['body_html'] = $object->getBodyHtml();
         }
-        if (null !== $object->getBodyText()) {
+        if ($object->isInitialized('bodyText') && null !== $object->getBodyText()) {
             $data['body_text'] = $object->getBodyText();
         }
         foreach ($object as $key => $value) {

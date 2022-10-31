@@ -80,11 +80,11 @@ class TransferNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['name'] = $object->getName();
         $data['state'] = $object->getState();
         $data['transferType'] = $object->getTransferType();
-        if (null !== $object->getBusinessProcessId()) {
+        if ($object->isInitialized('businessProcessId') && null !== $object->getBusinessProcessId()) {
             $data['businessProcessId'] = $object->getBusinessProcessId();
         }
         $data['fileTransferCount'] = $object->getFileTransferCount();
-        if (null !== $object->getCollectionId()) {
+        if ($object->isInitialized('collectionId') && null !== $object->getCollectionId()) {
             $data['collectionId'] = $object->getCollectionId();
         }
         return $data;

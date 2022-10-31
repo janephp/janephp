@@ -58,7 +58,7 @@ class MessageM70047PostBodyNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBar()) {
+        if ($object->isInitialized('bar') && null !== $object->getBar()) {
             $data['bar'] = $object->getBar();
         }
         foreach ($object as $key => $value) {

@@ -78,13 +78,13 @@ class FileTransferNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data = array();
         $data['id'] = $object->getId();
         $data['name'] = $object->getName();
-        if (null !== $object->getIdentifier()) {
+        if ($object->isInitialized('identifier') && null !== $object->getIdentifier()) {
             $data['identifier'] = $object->getIdentifier();
         }
         $data['requestId'] = $object->getRequestId();
         $data['transferId'] = $object->getTransferId();
         $data['state'] = $object->getState();
-        if (null !== $object->getContentId()) {
+        if ($object->isInitialized('contentId') && null !== $object->getContentId()) {
             $data['contentId'] = $object->getContentId();
         }
         return $data;

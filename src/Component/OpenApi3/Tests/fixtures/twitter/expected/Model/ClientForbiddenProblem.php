@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class ClientForbiddenProblem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class ClientForbiddenProblem extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -73,6 +82,7 @@ class ClientForbiddenProblem extends \ArrayObject
      */
     public function setReason(string $reason) : self
     {
+        $this->initialized['reason'] = true;
         $this->reason = $reason;
         return $this;
     }
@@ -94,6 +104,7 @@ class ClientForbiddenProblem extends \ArrayObject
      */
     public function setRegistrationUrl(string $registrationUrl) : self
     {
+        $this->initialized['registrationUrl'] = true;
         $this->registrationUrl = $registrationUrl;
         return $this;
     }
@@ -115,6 +126,7 @@ class ClientForbiddenProblem extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -136,6 +148,7 @@ class ClientForbiddenProblem extends \ArrayObject
      */
     public function setDetail(string $detail) : self
     {
+        $this->initialized['detail'] = true;
         $this->detail = $detail;
         return $this;
     }

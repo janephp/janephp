@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class Pet extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -32,6 +40,7 @@ class Pet extends \ArrayObject
      */
     public function setName(string $name)
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
     }
     /**
@@ -50,6 +59,7 @@ class Pet extends \ArrayObject
      */
     public function setPetType(string $petType)
     {
+        $this->initialized['petType'] = true;
         $this->petType = $petType;
     }
 }

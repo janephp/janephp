@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class Task
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the task.
      *
      * @var string
@@ -128,6 +136,7 @@ class Task
      */
     public function setID(string $iD) : self
     {
+        $this->initialized['iD'] = true;
         $this->iD = $iD;
         return $this;
     }
@@ -169,6 +178,7 @@ class Task
     */
     public function setVersion(ObjectVersion $version) : self
     {
+        $this->initialized['version'] = true;
         $this->version = $version;
         return $this;
     }
@@ -190,6 +200,7 @@ class Task
      */
     public function setCreatedAt(string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -211,6 +222,7 @@ class Task
      */
     public function setUpdatedAt(string $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -232,6 +244,7 @@ class Task
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -253,6 +266,7 @@ class Task
      */
     public function setLabels(iterable $labels) : self
     {
+        $this->initialized['labels'] = true;
         $this->labels = $labels;
         return $this;
     }
@@ -274,6 +288,7 @@ class Task
      */
     public function setSpec(TaskSpec $spec) : self
     {
+        $this->initialized['spec'] = true;
         $this->spec = $spec;
         return $this;
     }
@@ -295,6 +310,7 @@ class Task
      */
     public function setServiceID(string $serviceID) : self
     {
+        $this->initialized['serviceID'] = true;
         $this->serviceID = $serviceID;
         return $this;
     }
@@ -316,6 +332,7 @@ class Task
      */
     public function setSlot(int $slot) : self
     {
+        $this->initialized['slot'] = true;
         $this->slot = $slot;
         return $this;
     }
@@ -337,6 +354,7 @@ class Task
      */
     public function setNodeID(string $nodeID) : self
     {
+        $this->initialized['nodeID'] = true;
         $this->nodeID = $nodeID;
         return $this;
     }
@@ -362,6 +380,7 @@ class Task
     */
     public function setAssignedGenericResources(array $assignedGenericResources) : self
     {
+        $this->initialized['assignedGenericResources'] = true;
         $this->assignedGenericResources = $assignedGenericResources;
         return $this;
     }
@@ -383,6 +402,7 @@ class Task
      */
     public function setStatus(TaskStatus $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -404,6 +424,7 @@ class Task
      */
     public function setDesiredState(string $desiredState) : self
     {
+        $this->initialized['desiredState'] = true;
         $this->desiredState = $desiredState;
         return $this;
     }
@@ -445,6 +466,7 @@ class Task
     */
     public function setJobIteration(ObjectVersion $jobIteration) : self
     {
+        $this->initialized['jobIteration'] = true;
         $this->jobIteration = $jobIteration;
         return $this;
     }

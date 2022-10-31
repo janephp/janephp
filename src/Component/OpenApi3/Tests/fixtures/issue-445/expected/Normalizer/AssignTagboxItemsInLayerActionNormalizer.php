@@ -83,17 +83,17 @@ class AssignTagboxItemsInLayerActionNormalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getNamedCache()) {
+        if ($object->isInitialized('namedCache') && null !== $object->getNamedCache()) {
             $data['namedCache'] = $object->getNamedCache();
         }
-        if (null !== $object->getRefIds()) {
+        if ($object->isInitialized('refIds') && null !== $object->getRefIds()) {
             $data['refIds'] = $object->getRefIds();
         }
-        if (null !== $object->getReplace()) {
+        if ($object->isInitialized('replace') && null !== $object->getReplace()) {
             $data['replace'] = $object->getReplace();
         }
         foreach ($object as $key => $value) {

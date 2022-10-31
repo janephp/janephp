@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoPullsPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The title of the new pull request.
      *
      * @var string
@@ -64,6 +72,7 @@ class ReposOwnerRepoPullsPostBody extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -85,6 +94,7 @@ class ReposOwnerRepoPullsPostBody extends \ArrayObject
      */
     public function setHead(string $head) : self
     {
+        $this->initialized['head'] = true;
         $this->head = $head;
         return $this;
     }
@@ -106,6 +116,7 @@ class ReposOwnerRepoPullsPostBody extends \ArrayObject
      */
     public function setBase(string $base) : self
     {
+        $this->initialized['base'] = true;
         $this->base = $base;
         return $this;
     }
@@ -127,6 +138,7 @@ class ReposOwnerRepoPullsPostBody extends \ArrayObject
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }
@@ -148,6 +160,7 @@ class ReposOwnerRepoPullsPostBody extends \ArrayObject
      */
     public function setMaintainerCanModify(bool $maintainerCanModify) : self
     {
+        $this->initialized['maintainerCanModify'] = true;
         $this->maintainerCanModify = $maintainerCanModify;
         return $this;
     }
@@ -169,6 +182,7 @@ class ReposOwnerRepoPullsPostBody extends \ArrayObject
      */
     public function setDraft(bool $draft) : self
     {
+        $this->initialized['draft'] = true;
         $this->draft = $draft;
         return $this;
     }
@@ -190,6 +204,7 @@ class ReposOwnerRepoPullsPostBody extends \ArrayObject
      */
     public function setIssue(int $issue) : self
     {
+        $this->initialized['issue'] = true;
         $this->issue = $issue;
         return $this;
     }

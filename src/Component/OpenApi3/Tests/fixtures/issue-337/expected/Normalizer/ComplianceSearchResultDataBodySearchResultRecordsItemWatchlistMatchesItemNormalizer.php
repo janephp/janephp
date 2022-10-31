@@ -158,82 +158,82 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemN
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAcceptListID()) {
+        if ($object->isInitialized('acceptListID') && null !== $object->getAcceptListID()) {
             $data['acceptListID'] = $object->getAcceptListID();
         }
-        if (null !== $object->getAddedToAcceptList()) {
+        if ($object->isInitialized('addedToAcceptList') && null !== $object->getAddedToAcceptList()) {
             $data['addedToAcceptList'] = $object->getAddedToAcceptList();
         }
-        if (null !== $object->getAddressName()) {
+        if ($object->isInitialized('addressName') && null !== $object->getAddressName()) {
             $data['addressName'] = $object->getAddressName();
         }
-        if (null !== $object->getAutoFalsePositive()) {
+        if ($object->isInitialized('autoFalsePositive') && null !== $object->getAutoFalsePositive()) {
             $data['autoFalsePositive'] = $object->getAutoFalsePositive();
         }
-        if (null !== $object->getBestAddressIsPartial()) {
+        if ($object->isInitialized('bestAddressIsPartial') && null !== $object->getBestAddressIsPartial()) {
             $data['bestAddressIsPartial'] = $object->getBestAddressIsPartial();
         }
-        if (null !== $object->getBestCountryScore()) {
+        if ($object->isInitialized('bestCountryScore') && null !== $object->getBestCountryScore()) {
             $data['bestCountryScore'] = $object->getBestCountryScore();
         }
-        if (null !== $object->getBestCountryType()) {
+        if ($object->isInitialized('bestCountryType') && null !== $object->getBestCountryType()) {
             $data['bestCountryType'] = $object->getBestCountryType();
         }
-        if (null !== $object->getBestDOBIsPartial()) {
+        if ($object->isInitialized('bestDOBIsPartial') && null !== $object->getBestDOBIsPartial()) {
             $data['bestDOBIsPartial'] = $object->getBestDOBIsPartial();
         }
-        if (null !== $object->getBestName()) {
+        if ($object->isInitialized('bestName') && null !== $object->getBestName()) {
             $data['bestName'] = $object->getBestName();
         }
-        if (null !== $object->getBestNameScore()) {
+        if ($object->isInitialized('bestNameScore') && null !== $object->getBestNameScore()) {
             $data['bestNameScore'] = $object->getBestNameScore();
         }
-        if (null !== $object->getCheckSum()) {
+        if ($object->isInitialized('checkSum') && null !== $object->getCheckSum()) {
             $data['checkSum'] = $object->getCheckSum();
         }
-        if (null !== $object->getConflicts()) {
+        if ($object->isInitialized('conflicts') && null !== $object->getConflicts()) {
             $data['conflicts'] = $this->normalizer->normalize($object->getConflicts(), 'json', $context);
         }
-        if (null !== $object->getEntityDetails()) {
+        if ($object->isInitialized('entityDetails') && null !== $object->getEntityDetails()) {
             $data['entityDetails'] = $this->normalizer->normalize($object->getEntityDetails(), 'json', $context);
         }
-        if (null !== $object->getEntityName()) {
+        if ($object->isInitialized('entityName') && null !== $object->getEntityName()) {
             $data['entityName'] = $object->getEntityName();
         }
-        if (null !== $object->getEntityScore()) {
+        if ($object->isInitialized('entityScore') && null !== $object->getEntityScore()) {
             $data['entityScore'] = $object->getEntityScore();
         }
-        if (null !== $object->getEntityUniqueID()) {
+        if ($object->isInitialized('entityUniqueID') && null !== $object->getEntityUniqueID()) {
             $data['entityUniqueID'] = $object->getEntityUniqueID();
         }
-        if (null !== $object->getFalsePositive()) {
+        if ($object->isInitialized('falsePositive') && null !== $object->getFalsePositive()) {
             $data['falsePositive'] = $object->getFalsePositive();
         }
-        if (null !== $object->getFile()) {
+        if ($object->isInitialized('file') && null !== $object->getFile()) {
             $data['file'] = $this->normalizer->normalize($object->getFile(), 'json', $context);
         }
-        if (null !== $object->getGatewayOFACScreeningIndicatorMatch()) {
+        if ($object->isInitialized('gatewayOFACScreeningIndicatorMatch') && null !== $object->getGatewayOFACScreeningIndicatorMatch()) {
             $data['gatewayOFACScreeningIndicatorMatch'] = $object->getGatewayOFACScreeningIndicatorMatch();
         }
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getMatchReAlert()) {
+        if ($object->isInitialized('matchReAlert') && null !== $object->getMatchReAlert()) {
             $data['matchReAlert'] = $object->getMatchReAlert();
         }
-        if (null !== $object->getPreviousResultID()) {
+        if ($object->isInitialized('previousResultID') && null !== $object->getPreviousResultID()) {
             $data['previousResultID'] = $object->getPreviousResultID();
         }
-        if (null !== $object->getReasonListed()) {
+        if ($object->isInitialized('reasonListed') && null !== $object->getReasonListed()) {
             $data['reasonListed'] = $object->getReasonListed();
         }
-        if (null !== $object->getResultDate()) {
+        if ($object->isInitialized('resultDate') && null !== $object->getResultDate()) {
             $data['resultDate'] = $object->getResultDate();
         }
-        if (null !== $object->getSecondaryOFACScreeningIndicatorMatch()) {
+        if ($object->isInitialized('secondaryOFACScreeningIndicatorMatch') && null !== $object->getSecondaryOFACScreeningIndicatorMatch()) {
             $data['secondaryOFACScreeningIndicatorMatch'] = $object->getSecondaryOFACScreeningIndicatorMatch();
         }
-        if (null !== $object->getTrueMatch()) {
+        if ($object->isInitialized('trueMatch') && null !== $object->getTrueMatch()) {
             $data['trueMatch'] = $object->getTrueMatch();
         }
         foreach ($object as $key => $value) {

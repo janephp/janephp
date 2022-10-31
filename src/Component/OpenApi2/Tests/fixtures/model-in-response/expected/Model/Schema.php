@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi2\Tests\Expected\Model;
 class Schema
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -64,6 +72,7 @@ class Schema
      */
     public function setStringProperty(string $stringProperty) : self
     {
+        $this->initialized['stringProperty'] = true;
         $this->stringProperty = $stringProperty;
         return $this;
     }
@@ -85,6 +94,7 @@ class Schema
      */
     public function setIntegerProperty(int $integerProperty) : self
     {
+        $this->initialized['integerProperty'] = true;
         $this->integerProperty = $integerProperty;
         return $this;
     }
@@ -106,6 +116,7 @@ class Schema
      */
     public function setFloatProperty(float $floatProperty) : self
     {
+        $this->initialized['floatProperty'] = true;
         $this->floatProperty = $floatProperty;
         return $this;
     }
@@ -127,6 +138,7 @@ class Schema
      */
     public function setArrayProperty(array $arrayProperty) : self
     {
+        $this->initialized['arrayProperty'] = true;
         $this->arrayProperty = $arrayProperty;
         return $this;
     }
@@ -148,6 +160,7 @@ class Schema
      */
     public function setMapProperty(iterable $mapProperty) : self
     {
+        $this->initialized['mapProperty'] = true;
         $this->mapProperty = $mapProperty;
         return $this;
     }
@@ -169,6 +182,7 @@ class Schema
      */
     public function setObjectProperty(SchemaObjectProperty $objectProperty) : self
     {
+        $this->initialized['objectProperty'] = true;
         $this->objectProperty = $objectProperty;
         return $this;
     }
@@ -190,6 +204,7 @@ class Schema
      */
     public function setObjectRefProperty(Schema $objectRefProperty) : self
     {
+        $this->initialized['objectRefProperty'] = true;
         $this->objectRefProperty = $objectRefProperty;
         return $this;
     }

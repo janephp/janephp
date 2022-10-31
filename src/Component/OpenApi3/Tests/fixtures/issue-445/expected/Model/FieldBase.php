@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class FieldBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The field ID. It can be a slug; it must be unique within the schema hierarchy (ancestors / descendants); it must be begin with lower case.
      *
      * @var string
@@ -86,6 +94,7 @@ class FieldBase
      */
     public function setId(string $id)
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
     }
     /**
@@ -104,6 +113,7 @@ class FieldBase
      */
     public function setIndexId(?string $indexId)
     {
+        $this->initialized['indexId'] = true;
         $this->indexId = $indexId;
     }
     /**
@@ -122,6 +132,7 @@ class FieldBase
      */
     public function setFieldNamespace(?string $fieldNamespace)
     {
+        $this->initialized['fieldNamespace'] = true;
         $this->fieldNamespace = $fieldNamespace;
     }
     /**
@@ -140,6 +151,7 @@ class FieldBase
      */
     public function setNames($names)
     {
+        $this->initialized['names'] = true;
         $this->names = $names;
     }
     /**
@@ -158,6 +170,7 @@ class FieldBase
      */
     public function setDescriptions($descriptions)
     {
+        $this->initialized['descriptions'] = true;
         $this->descriptions = $descriptions;
     }
     /**
@@ -176,6 +189,7 @@ class FieldBase
      */
     public function setRequired(bool $required)
     {
+        $this->initialized['required'] = true;
         $this->required = $required;
     }
     /**
@@ -194,6 +208,7 @@ class FieldBase
      */
     public function setFixed(bool $fixed)
     {
+        $this->initialized['fixed'] = true;
         $this->fixed = $fixed;
     }
     /**
@@ -212,6 +227,7 @@ class FieldBase
      */
     public function setIndex(bool $index)
     {
+        $this->initialized['index'] = true;
         $this->index = $index;
     }
     /**
@@ -230,6 +246,7 @@ class FieldBase
      */
     public function setSimpleSearch(bool $simpleSearch)
     {
+        $this->initialized['simpleSearch'] = true;
         $this->simpleSearch = $simpleSearch;
     }
     /**
@@ -248,6 +265,7 @@ class FieldBase
      */
     public function setSortable(bool $sortable)
     {
+        $this->initialized['sortable'] = true;
         $this->sortable = $sortable;
     }
     /**
@@ -266,6 +284,7 @@ class FieldBase
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

@@ -62,7 +62,7 @@ class TopicSearchResultItemAliasesItemNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTopicRelation()) {
+        if ($object->isInitialized('topicRelation') && null !== $object->getTopicRelation()) {
             $data['topic_relation'] = $this->normalizer->normalize($object->getTopicRelation(), 'json', $context);
         }
         foreach ($object as $key => $value) {

@@ -111,33 +111,33 @@ class IdentityProviderNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getClaimMapping()) {
+        if ($object->isInitialized('claimMapping') && null !== $object->getClaimMapping()) {
             $values = array();
             foreach ($object->getClaimMapping() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['claimMapping'] = $values;
         }
-        if (null !== $object->getGroupClaimType()) {
+        if ($object->isInitialized('groupClaimType') && null !== $object->getGroupClaimType()) {
             $data['groupClaimType'] = $object->getGroupClaimType();
         }
-        if (null !== $object->getGroupMapping()) {
+        if ($object->isInitialized('groupMapping') && null !== $object->getGroupMapping()) {
             $values_1 = array();
             foreach ($object->getGroupMapping() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['groupMapping'] = $values_1;
         }
-        if (null !== $object->getFallbackUserRoleId()) {
+        if ($object->isInitialized('fallbackUserRoleId') && null !== $object->getFallbackUserRoleId()) {
             $data['fallbackUserRoleId'] = $object->getFallbackUserRoleId();
         }
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getDisplayName()) {
+        if ($object->isInitialized('displayName') && null !== $object->getDisplayName()) {
             $data['displayName'] = $object->getDisplayName();
         }
         foreach ($object as $key => $value_2) {

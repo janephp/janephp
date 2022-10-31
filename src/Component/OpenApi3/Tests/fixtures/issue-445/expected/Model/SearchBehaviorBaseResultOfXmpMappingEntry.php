@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SearchBehaviorBaseResultOfXmpMappingEntry extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The total number of matching documents.
      *
      * @var int
@@ -64,6 +72,7 @@ class SearchBehaviorBaseResultOfXmpMappingEntry extends \ArrayObject
      */
     public function setTotalResults(int $totalResults) : self
     {
+        $this->initialized['totalResults'] = true;
         $this->totalResults = $totalResults;
         return $this;
     }
@@ -85,6 +94,7 @@ class SearchBehaviorBaseResultOfXmpMappingEntry extends \ArrayObject
      */
     public function setResults(array $results) : self
     {
+        $this->initialized['results'] = true;
         $this->results = $results;
         return $this;
     }
@@ -106,6 +116,7 @@ class SearchBehaviorBaseResultOfXmpMappingEntry extends \ArrayObject
      */
     public function setElapsedMilliseconds(int $elapsedMilliseconds) : self
     {
+        $this->initialized['elapsedMilliseconds'] = true;
         $this->elapsedMilliseconds = $elapsedMilliseconds;
         return $this;
     }
@@ -127,6 +138,7 @@ class SearchBehaviorBaseResultOfXmpMappingEntry extends \ArrayObject
      */
     public function setPageToken(?string $pageToken) : self
     {
+        $this->initialized['pageToken'] = true;
         $this->pageToken = $pageToken;
         return $this;
     }
@@ -148,6 +160,7 @@ class SearchBehaviorBaseResultOfXmpMappingEntry extends \ArrayObject
      */
     public function setSearchString(?string $searchString) : self
     {
+        $this->initialized['searchString'] = true;
         $this->searchString = $searchString;
         return $this;
     }
@@ -169,6 +182,7 @@ class SearchBehaviorBaseResultOfXmpMappingEntry extends \ArrayObject
      */
     public function setIsSearchStringRewritten(bool $isSearchStringRewritten) : self
     {
+        $this->initialized['isSearchStringRewritten'] = true;
         $this->isSearchStringRewritten = $isSearchStringRewritten;
         return $this;
     }
@@ -190,6 +204,7 @@ class SearchBehaviorBaseResultOfXmpMappingEntry extends \ArrayObject
      */
     public function setQueryDebugInformation(?array $queryDebugInformation) : self
     {
+        $this->initialized['queryDebugInformation'] = true;
         $this->queryDebugInformation = $queryDebugInformation;
         return $this;
     }

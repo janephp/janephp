@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class LiveStreamSearchRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Sets the start date and time for results based on Timestamp attribute.
      *
      * @var \DateTime
@@ -58,6 +66,7 @@ class LiveStreamSearchRequest
      */
     public function setFrom(\DateTime $from) : self
     {
+        $this->initialized['from'] = true;
         $this->from = $from;
         return $this;
     }
@@ -79,6 +88,7 @@ class LiveStreamSearchRequest
      */
     public function setTo(\DateTime $to) : self
     {
+        $this->initialized['to'] = true;
         $this->to = $to;
         return $this;
     }
@@ -100,6 +110,7 @@ class LiveStreamSearchRequest
      */
     public function setScopeType(?string $scopeType) : self
     {
+        $this->initialized['scopeType'] = true;
         $this->scopeType = $scopeType;
         return $this;
     }
@@ -121,6 +132,7 @@ class LiveStreamSearchRequest
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }
@@ -142,6 +154,7 @@ class LiveStreamSearchRequest
      */
     public function setLimit(int $limit) : self
     {
+        $this->initialized['limit'] = true;
         $this->limit = $limit;
         return $this;
     }
@@ -163,6 +176,7 @@ class LiveStreamSearchRequest
      */
     public function setPageToken(?string $pageToken) : self
     {
+        $this->initialized['pageToken'] = true;
         $this->pageToken = $pageToken;
         return $this;
     }

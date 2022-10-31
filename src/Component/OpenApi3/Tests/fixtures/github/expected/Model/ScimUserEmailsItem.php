@@ -5,6 +5,14 @@ namespace Github\Model;
 class ScimUserEmailsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class ScimUserEmailsItem extends \ArrayObject
      */
     public function setValue(string $value) : self
     {
+        $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
     }
@@ -55,6 +64,7 @@ class ScimUserEmailsItem extends \ArrayObject
      */
     public function setPrimary(bool $primary) : self
     {
+        $this->initialized['primary'] = true;
         $this->primary = $primary;
         return $this;
     }

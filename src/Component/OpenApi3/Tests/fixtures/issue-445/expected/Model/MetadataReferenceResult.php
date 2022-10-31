@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class MetadataReferenceResult extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The total number of matching documents.
      *
      * @var int
@@ -52,6 +60,7 @@ class MetadataReferenceResult extends \ArrayObject
      */
     public function setTotalResults(int $totalResults) : self
     {
+        $this->initialized['totalResults'] = true;
         $this->totalResults = $totalResults;
         return $this;
     }
@@ -73,6 +82,7 @@ class MetadataReferenceResult extends \ArrayObject
      */
     public function setResults(array $results) : self
     {
+        $this->initialized['results'] = true;
         $this->results = $results;
         return $this;
     }
@@ -94,6 +104,7 @@ class MetadataReferenceResult extends \ArrayObject
      */
     public function setElapsedMilliseconds(int $elapsedMilliseconds) : self
     {
+        $this->initialized['elapsedMilliseconds'] = true;
         $this->elapsedMilliseconds = $elapsedMilliseconds;
         return $this;
     }
@@ -115,6 +126,7 @@ class MetadataReferenceResult extends \ArrayObject
      */
     public function setPageToken(?string $pageToken) : self
     {
+        $this->initialized['pageToken'] = true;
         $this->pageToken = $pageToken;
         return $this;
     }
@@ -136,6 +148,7 @@ class MetadataReferenceResult extends \ArrayObject
      */
     public function setIsReferencedByRestrictedItem(?bool $isReferencedByRestrictedItem) : self
     {
+        $this->initialized['isReferencedByRestrictedItem'] = true;
         $this->isReferencedByRestrictedItem = $isReferencedByRestrictedItem;
         return $this;
     }

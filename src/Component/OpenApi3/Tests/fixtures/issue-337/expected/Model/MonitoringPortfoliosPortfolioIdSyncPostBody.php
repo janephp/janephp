@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class MonitoringPortfoliosPortfolioIdSyncPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class MonitoringPortfoliosPortfolioIdSyncPostBody extends \ArrayObject
      */
     public function setImportCsv(string $importCsv) : self
     {
+        $this->initialized['importCsv'] = true;
         $this->importCsv = $importCsv;
         return $this;
     }
@@ -55,6 +64,7 @@ class MonitoringPortfoliosPortfolioIdSyncPostBody extends \ArrayObject
      */
     public function setEmail(string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The name of the repository.
      *
      * @var string
@@ -113,6 +121,7 @@ class ReposOwnerRepoPatchBody extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -134,6 +143,7 @@ class ReposOwnerRepoPatchBody extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -155,6 +165,7 @@ class ReposOwnerRepoPatchBody extends \ArrayObject
      */
     public function setHomepage(string $homepage) : self
     {
+        $this->initialized['homepage'] = true;
         $this->homepage = $homepage;
         return $this;
     }
@@ -178,6 +189,7 @@ class ReposOwnerRepoPatchBody extends \ArrayObject
     */
     public function setPrivate(bool $private) : self
     {
+        $this->initialized['private'] = true;
         $this->private = $private;
         return $this;
     }
@@ -199,6 +211,7 @@ class ReposOwnerRepoPatchBody extends \ArrayObject
      */
     public function setVisibility(string $visibility) : self
     {
+        $this->initialized['visibility'] = true;
         $this->visibility = $visibility;
         return $this;
     }
@@ -220,6 +233,7 @@ class ReposOwnerRepoPatchBody extends \ArrayObject
      */
     public function setHasIssues(bool $hasIssues) : self
     {
+        $this->initialized['hasIssues'] = true;
         $this->hasIssues = $hasIssues;
         return $this;
     }
@@ -241,6 +255,7 @@ class ReposOwnerRepoPatchBody extends \ArrayObject
      */
     public function setHasProjects(bool $hasProjects) : self
     {
+        $this->initialized['hasProjects'] = true;
         $this->hasProjects = $hasProjects;
         return $this;
     }
@@ -262,6 +277,7 @@ class ReposOwnerRepoPatchBody extends \ArrayObject
      */
     public function setHasWiki(bool $hasWiki) : self
     {
+        $this->initialized['hasWiki'] = true;
         $this->hasWiki = $hasWiki;
         return $this;
     }
@@ -283,6 +299,7 @@ class ReposOwnerRepoPatchBody extends \ArrayObject
      */
     public function setIsTemplate(bool $isTemplate) : self
     {
+        $this->initialized['isTemplate'] = true;
         $this->isTemplate = $isTemplate;
         return $this;
     }
@@ -304,6 +321,7 @@ class ReposOwnerRepoPatchBody extends \ArrayObject
      */
     public function setDefaultBranch(string $defaultBranch) : self
     {
+        $this->initialized['defaultBranch'] = true;
         $this->defaultBranch = $defaultBranch;
         return $this;
     }
@@ -325,6 +343,7 @@ class ReposOwnerRepoPatchBody extends \ArrayObject
      */
     public function setAllowSquashMerge(bool $allowSquashMerge) : self
     {
+        $this->initialized['allowSquashMerge'] = true;
         $this->allowSquashMerge = $allowSquashMerge;
         return $this;
     }
@@ -346,6 +365,7 @@ class ReposOwnerRepoPatchBody extends \ArrayObject
      */
     public function setAllowMergeCommit(bool $allowMergeCommit) : self
     {
+        $this->initialized['allowMergeCommit'] = true;
         $this->allowMergeCommit = $allowMergeCommit;
         return $this;
     }
@@ -367,6 +387,7 @@ class ReposOwnerRepoPatchBody extends \ArrayObject
      */
     public function setAllowRebaseMerge(bool $allowRebaseMerge) : self
     {
+        $this->initialized['allowRebaseMerge'] = true;
         $this->allowRebaseMerge = $allowRebaseMerge;
         return $this;
     }
@@ -388,6 +409,7 @@ class ReposOwnerRepoPatchBody extends \ArrayObject
      */
     public function setDeleteBranchOnMerge(bool $deleteBranchOnMerge) : self
     {
+        $this->initialized['deleteBranchOnMerge'] = true;
         $this->deleteBranchOnMerge = $deleteBranchOnMerge;
         return $this;
     }
@@ -409,6 +431,7 @@ class ReposOwnerRepoPatchBody extends \ArrayObject
      */
     public function setArchived(bool $archived) : self
     {
+        $this->initialized['archived'] = true;
         $this->archived = $archived;
         return $this;
     }

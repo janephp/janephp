@@ -62,7 +62,7 @@ class ProjectsProjectIdCollaboratorsUsernamePutBodyNormalizer implements Denorma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPermission()) {
+        if ($object->isInitialized('permission') && null !== $object->getPermission()) {
             $data['permission'] = $object->getPermission();
         }
         foreach ($object as $key => $value) {

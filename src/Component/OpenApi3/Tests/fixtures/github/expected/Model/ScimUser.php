@@ -5,6 +5,14 @@ namespace Github\Model;
 class ScimUser extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * SCIM schema used.
      *
      * @var string[]
@@ -88,6 +96,7 @@ class ScimUser extends \ArrayObject
      */
     public function setSchemas(array $schemas) : self
     {
+        $this->initialized['schemas'] = true;
         $this->schemas = $schemas;
         return $this;
     }
@@ -109,6 +118,7 @@ class ScimUser extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -130,6 +140,7 @@ class ScimUser extends \ArrayObject
      */
     public function setExternalId(?string $externalId) : self
     {
+        $this->initialized['externalId'] = true;
         $this->externalId = $externalId;
         return $this;
     }
@@ -151,6 +162,7 @@ class ScimUser extends \ArrayObject
      */
     public function setUserName(?string $userName) : self
     {
+        $this->initialized['userName'] = true;
         $this->userName = $userName;
         return $this;
     }
@@ -172,6 +184,7 @@ class ScimUser extends \ArrayObject
      */
     public function setName(ScimUserName $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -193,6 +206,7 @@ class ScimUser extends \ArrayObject
      */
     public function setEmails(array $emails) : self
     {
+        $this->initialized['emails'] = true;
         $this->emails = $emails;
         return $this;
     }
@@ -214,6 +228,7 @@ class ScimUser extends \ArrayObject
      */
     public function setActive(bool $active) : self
     {
+        $this->initialized['active'] = true;
         $this->active = $active;
         return $this;
     }
@@ -235,6 +250,7 @@ class ScimUser extends \ArrayObject
      */
     public function setMeta(ScimUserMeta $meta) : self
     {
+        $this->initialized['meta'] = true;
         $this->meta = $meta;
         return $this;
     }
@@ -256,6 +272,7 @@ class ScimUser extends \ArrayObject
      */
     public function setOrganizationId(int $organizationId) : self
     {
+        $this->initialized['organizationId'] = true;
         $this->organizationId = $organizationId;
         return $this;
     }
@@ -277,6 +294,7 @@ class ScimUser extends \ArrayObject
      */
     public function setOperations(array $operations) : self
     {
+        $this->initialized['operations'] = true;
         $this->operations = $operations;
         return $this;
     }
@@ -298,6 +316,7 @@ class ScimUser extends \ArrayObject
      */
     public function setGroups(array $groups) : self
     {
+        $this->initialized['groups'] = true;
         $this->groups = $groups;
         return $this;
     }

@@ -58,7 +58,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationL
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
         foreach ($object as $key => $value) {

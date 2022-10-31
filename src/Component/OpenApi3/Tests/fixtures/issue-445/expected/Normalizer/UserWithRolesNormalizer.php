@@ -95,7 +95,7 @@ class UserWithRolesNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUserRoleIds()) {
+        if ($object->isInitialized('userRoleIds') && null !== $object->getUserRoleIds()) {
             $values = array();
             foreach ($object->getUserRoleIds() as $value) {
                 $values[] = $value;
@@ -103,10 +103,10 @@ class UserWithRolesNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['userRoleIds'] = $values;
         }
         $data['id'] = $object->getId();
-        if (null !== $object->getFirstName()) {
+        if ($object->isInitialized('firstName') && null !== $object->getFirstName()) {
             $data['firstName'] = $object->getFirstName();
         }
-        if (null !== $object->getLastName()) {
+        if ($object->isInitialized('lastName') && null !== $object->getLastName()) {
             $data['lastName'] = $object->getLastName();
         }
         $data['emailAddress'] = $object->getEmailAddress();

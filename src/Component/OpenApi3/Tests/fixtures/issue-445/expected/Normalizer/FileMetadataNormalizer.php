@@ -109,34 +109,34 @@ class FileMetadataNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNames()) {
+        if ($object->isInitialized('names') && null !== $object->getNames()) {
             $data['names'] = $object->getNames();
         }
-        if (null !== $object->getDescriptions()) {
+        if ($object->isInitialized('descriptions') && null !== $object->getDescriptions()) {
             $data['descriptions'] = $object->getDescriptions();
         }
-        if (null !== $object->getFileExtension()) {
+        if ($object->isInitialized('fileExtension') && null !== $object->getFileExtension()) {
             $data['fileExtension'] = $object->getFileExtension();
         }
-        if (null !== $object->getFileName()) {
+        if ($object->isInitialized('fileName') && null !== $object->getFileName()) {
             $data['fileName'] = $object->getFileName();
         }
-        if (null !== $object->getFilePath()) {
+        if ($object->isInitialized('filePath') && null !== $object->getFilePath()) {
             $data['filePath'] = $object->getFilePath();
         }
-        if (null !== $object->getFileSizeInBytes()) {
+        if ($object->isInitialized('fileSizeInBytes') && null !== $object->getFileSizeInBytes()) {
             $data['fileSizeInBytes'] = $object->getFileSizeInBytes();
         }
-        if (null !== $object->getSha1Hash()) {
+        if ($object->isInitialized('sha1Hash') && null !== $object->getSha1Hash()) {
             $data['sha1Hash'] = $object->getSha1Hash();
         }
-        if (null !== $object->getXmpMetadata()) {
+        if ($object->isInitialized('xmpMetadata') && null !== $object->getXmpMetadata()) {
             $data['xmpMetadata'] = $object->getXmpMetadata();
         }
-        if (null !== $object->getExifMetadata()) {
+        if ($object->isInitialized('exifMetadata') && null !== $object->getExifMetadata()) {
             $data['exifMetadata'] = $object->getExifMetadata();
         }
-        if (null !== $object->getLanguage()) {
+        if ($object->isInitialized('language') && null !== $object->getLanguage()) {
             $data['language'] = $object->getLanguage();
         }
         return $data;

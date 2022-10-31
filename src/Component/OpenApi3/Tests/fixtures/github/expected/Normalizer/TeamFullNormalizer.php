@@ -143,13 +143,13 @@ class TeamFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['name'] = $object->getName();
         $data['slug'] = $object->getSlug();
         $data['description'] = $object->getDescription();
-        if (null !== $object->getPrivacy()) {
+        if ($object->isInitialized('privacy') && null !== $object->getPrivacy()) {
             $data['privacy'] = $object->getPrivacy();
         }
         $data['permission'] = $object->getPermission();
         $data['members_url'] = $object->getMembersUrl();
         $data['repositories_url'] = $object->getRepositoriesUrl();
-        if (null !== $object->getParent()) {
+        if ($object->isInitialized('parent') && null !== $object->getParent()) {
             $data['parent'] = $this->normalizer->normalize($object->getParent(), 'json', $context);
         }
         $data['members_count'] = $object->getMembersCount();
@@ -157,7 +157,7 @@ class TeamFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['organization'] = $this->normalizer->normalize($object->getOrganization(), 'json', $context);
-        if (null !== $object->getLdapDn()) {
+        if ($object->isInitialized('ldapDn') && null !== $object->getLdapDn()) {
             $data['ldap_dn'] = $object->getLdapDn();
         }
         foreach ($object as $key => $value) {

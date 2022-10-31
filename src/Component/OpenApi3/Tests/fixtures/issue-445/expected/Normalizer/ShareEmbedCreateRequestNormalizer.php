@@ -100,10 +100,10 @@ class ShareEmbedCreateRequestNormalizer implements DenormalizerInterface, Normal
     {
         $data = array();
         $data['name'] = $object->getName();
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getExpirationDate()) {
+        if ($object->isInitialized('expirationDate') && null !== $object->getExpirationDate()) {
             $data['expirationDate'] = $object->getExpirationDate()->format('Y-m-d\\TH:i:sP');
         }
         $values = array();
@@ -111,7 +111,7 @@ class ShareEmbedCreateRequestNormalizer implements DenormalizerInterface, Normal
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['contents'] = $values;
-        if (null !== $object->getLayerSchemaIds()) {
+        if ($object->isInitialized('layerSchemaIds') && null !== $object->getLayerSchemaIds()) {
             $values_1 = array();
             foreach ($object->getLayerSchemaIds() as $value_1) {
                 $values_1[] = $value_1;

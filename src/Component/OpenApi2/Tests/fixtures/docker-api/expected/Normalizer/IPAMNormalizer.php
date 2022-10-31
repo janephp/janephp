@@ -74,10 +74,10 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDriver()) {
+        if ($object->isInitialized('driver') && null !== $object->getDriver()) {
             $data['Driver'] = $object->getDriver();
         }
-        if (null !== $object->getConfig()) {
+        if ($object->isInitialized('config') && null !== $object->getConfig()) {
             $values = array();
             foreach ($object->getConfig() as $value) {
                 $values_1 = array();
@@ -88,7 +88,7 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $data['Config'] = $values;
         }
-        if (null !== $object->getOptions()) {
+        if ($object->isInitialized('options') && null !== $object->getOptions()) {
             $values_2 = array();
             foreach ($object->getOptions() as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;

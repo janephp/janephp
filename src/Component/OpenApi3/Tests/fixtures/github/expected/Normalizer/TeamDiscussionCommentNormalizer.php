@@ -128,7 +128,7 @@ class TeamDiscussionCommentNormalizer implements DenormalizerInterface, Normaliz
         $data['number'] = $object->getNumber();
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['url'] = $object->getUrl();
-        if (null !== $object->getReactions()) {
+        if ($object->isInitialized('reactions') && null !== $object->getReactions()) {
             $data['reactions'] = $this->normalizer->normalize($object->getReactions(), 'json', $context);
         }
         foreach ($object as $key => $value) {

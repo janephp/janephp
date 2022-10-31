@@ -97,18 +97,18 @@ class ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItemNormalizer implements 
         $data['path'] = $object->getPath();
         $data['start_line'] = $object->getStartLine();
         $data['end_line'] = $object->getEndLine();
-        if (null !== $object->getStartColumn()) {
+        if ($object->isInitialized('startColumn') && null !== $object->getStartColumn()) {
             $data['start_column'] = $object->getStartColumn();
         }
-        if (null !== $object->getEndColumn()) {
+        if ($object->isInitialized('endColumn') && null !== $object->getEndColumn()) {
             $data['end_column'] = $object->getEndColumn();
         }
         $data['annotation_level'] = $object->getAnnotationLevel();
         $data['message'] = $object->getMessage();
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getRawDetails()) {
+        if ($object->isInitialized('rawDetails') && null !== $object->getRawDetails()) {
             $data['raw_details'] = $object->getRawDetails();
         }
         foreach ($object as $key => $value) {

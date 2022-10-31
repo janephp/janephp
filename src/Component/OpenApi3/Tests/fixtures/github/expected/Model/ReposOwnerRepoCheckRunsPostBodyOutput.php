@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoCheckRunsPostBodyOutput extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The title of the check run.
      *
      * @var string
@@ -52,6 +60,7 @@ class ReposOwnerRepoCheckRunsPostBodyOutput extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -73,6 +82,7 @@ class ReposOwnerRepoCheckRunsPostBodyOutput extends \ArrayObject
      */
     public function setSummary(string $summary) : self
     {
+        $this->initialized['summary'] = true;
         $this->summary = $summary;
         return $this;
     }
@@ -94,6 +104,7 @@ class ReposOwnerRepoCheckRunsPostBodyOutput extends \ArrayObject
      */
     public function setText(string $text) : self
     {
+        $this->initialized['text'] = true;
         $this->text = $text;
         return $this;
     }
@@ -115,6 +126,7 @@ class ReposOwnerRepoCheckRunsPostBodyOutput extends \ArrayObject
      */
     public function setAnnotations(array $annotations) : self
     {
+        $this->initialized['annotations'] = true;
         $this->annotations = $annotations;
         return $this;
     }
@@ -136,6 +148,7 @@ class ReposOwnerRepoCheckRunsPostBodyOutput extends \ArrayObject
      */
     public function setImages(array $images) : self
     {
+        $this->initialized['images'] = true;
         $this->images = $images;
         return $this;
     }

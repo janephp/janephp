@@ -127,43 +127,43 @@ class ShareSearchRequestNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSearchString()) {
+        if ($object->isInitialized('searchString') && null !== $object->getSearchString()) {
             $data['searchString'] = $object->getSearchString();
         }
-        if (null !== $object->getSearchBehaviors()) {
+        if ($object->isInitialized('searchBehaviors') && null !== $object->getSearchBehaviors()) {
             $values = array();
             foreach ($object->getSearchBehaviors() as $value) {
                 $values[] = $value;
             }
             $data['searchBehaviors'] = $values;
         }
-        if (null !== $object->getFilter()) {
+        if ($object->isInitialized('filter') && null !== $object->getFilter()) {
             $data['filter'] = $object->getFilter();
         }
-        if (null !== $object->getAggregationFilters()) {
+        if ($object->isInitialized('aggregationFilters') && null !== $object->getAggregationFilters()) {
             $values_1 = array();
             foreach ($object->getAggregationFilters() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['aggregationFilters'] = $values_1;
         }
-        if (null !== $object->getLimit()) {
+        if ($object->isInitialized('limit') && null !== $object->getLimit()) {
             $data['limit'] = $object->getLimit();
         }
-        if (null !== $object->getSort()) {
+        if ($object->isInitialized('sort') && null !== $object->getSort()) {
             $values_2 = array();
             foreach ($object->getSort() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['sort'] = $values_2;
         }
-        if (null !== $object->getPageToken()) {
+        if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
             $data['pageToken'] = $object->getPageToken();
         }
-        if (null !== $object->getDebugMode()) {
+        if ($object->isInitialized('debugMode') && null !== $object->getDebugMode()) {
             $data['debugMode'] = $object->getDebugMode();
         }
-        if (null !== $object->getAggregators()) {
+        if ($object->isInitialized('aggregators') && null !== $object->getAggregators()) {
             $values_3 = array();
             foreach ($object->getAggregators() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);

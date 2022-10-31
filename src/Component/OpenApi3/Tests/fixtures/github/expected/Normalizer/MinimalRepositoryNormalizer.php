@@ -444,7 +444,7 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         $data['git_commits_url'] = $object->getGitCommitsUrl();
         $data['git_refs_url'] = $object->getGitRefsUrl();
         $data['git_tags_url'] = $object->getGitTagsUrl();
-        if (null !== $object->getGitUrl()) {
+        if ($object->isInitialized('gitUrl') && null !== $object->getGitUrl()) {
             $data['git_url'] = $object->getGitUrl();
         }
         $data['issue_comment_url'] = $object->getIssueCommentUrl();
@@ -458,7 +458,7 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         $data['notifications_url'] = $object->getNotificationsUrl();
         $data['pulls_url'] = $object->getPullsUrl();
         $data['releases_url'] = $object->getReleasesUrl();
-        if (null !== $object->getSshUrl()) {
+        if ($object->isInitialized('sshUrl') && null !== $object->getSshUrl()) {
             $data['ssh_url'] = $object->getSshUrl();
         }
         $data['stargazers_url'] = $object->getStargazersUrl();
@@ -468,111 +468,111 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         $data['tags_url'] = $object->getTagsUrl();
         $data['teams_url'] = $object->getTeamsUrl();
         $data['trees_url'] = $object->getTreesUrl();
-        if (null !== $object->getCloneUrl()) {
+        if ($object->isInitialized('cloneUrl') && null !== $object->getCloneUrl()) {
             $data['clone_url'] = $object->getCloneUrl();
         }
-        if (null !== $object->getMirrorUrl()) {
+        if ($object->isInitialized('mirrorUrl') && null !== $object->getMirrorUrl()) {
             $data['mirror_url'] = $object->getMirrorUrl();
         }
         $data['hooks_url'] = $object->getHooksUrl();
-        if (null !== $object->getSvnUrl()) {
+        if ($object->isInitialized('svnUrl') && null !== $object->getSvnUrl()) {
             $data['svn_url'] = $object->getSvnUrl();
         }
-        if (null !== $object->getHomepage()) {
+        if ($object->isInitialized('homepage') && null !== $object->getHomepage()) {
             $data['homepage'] = $object->getHomepage();
         }
-        if (null !== $object->getLanguage()) {
+        if ($object->isInitialized('language') && null !== $object->getLanguage()) {
             $data['language'] = $object->getLanguage();
         }
-        if (null !== $object->getForksCount()) {
+        if ($object->isInitialized('forksCount') && null !== $object->getForksCount()) {
             $data['forks_count'] = $object->getForksCount();
         }
-        if (null !== $object->getStargazersCount()) {
+        if ($object->isInitialized('stargazersCount') && null !== $object->getStargazersCount()) {
             $data['stargazers_count'] = $object->getStargazersCount();
         }
-        if (null !== $object->getWatchersCount()) {
+        if ($object->isInitialized('watchersCount') && null !== $object->getWatchersCount()) {
             $data['watchers_count'] = $object->getWatchersCount();
         }
-        if (null !== $object->getSize()) {
+        if ($object->isInitialized('size') && null !== $object->getSize()) {
             $data['size'] = $object->getSize();
         }
-        if (null !== $object->getDefaultBranch()) {
+        if ($object->isInitialized('defaultBranch') && null !== $object->getDefaultBranch()) {
             $data['default_branch'] = $object->getDefaultBranch();
         }
-        if (null !== $object->getOpenIssuesCount()) {
+        if ($object->isInitialized('openIssuesCount') && null !== $object->getOpenIssuesCount()) {
             $data['open_issues_count'] = $object->getOpenIssuesCount();
         }
-        if (null !== $object->getIsTemplate()) {
+        if ($object->isInitialized('isTemplate') && null !== $object->getIsTemplate()) {
             $data['is_template'] = $object->getIsTemplate();
         }
-        if (null !== $object->getTopics()) {
+        if ($object->isInitialized('topics') && null !== $object->getTopics()) {
             $values = array();
             foreach ($object->getTopics() as $value) {
                 $values[] = $value;
             }
             $data['topics'] = $values;
         }
-        if (null !== $object->getHasIssues()) {
+        if ($object->isInitialized('hasIssues') && null !== $object->getHasIssues()) {
             $data['has_issues'] = $object->getHasIssues();
         }
-        if (null !== $object->getHasProjects()) {
+        if ($object->isInitialized('hasProjects') && null !== $object->getHasProjects()) {
             $data['has_projects'] = $object->getHasProjects();
         }
-        if (null !== $object->getHasWiki()) {
+        if ($object->isInitialized('hasWiki') && null !== $object->getHasWiki()) {
             $data['has_wiki'] = $object->getHasWiki();
         }
-        if (null !== $object->getHasPages()) {
+        if ($object->isInitialized('hasPages') && null !== $object->getHasPages()) {
             $data['has_pages'] = $object->getHasPages();
         }
-        if (null !== $object->getHasDownloads()) {
+        if ($object->isInitialized('hasDownloads') && null !== $object->getHasDownloads()) {
             $data['has_downloads'] = $object->getHasDownloads();
         }
-        if (null !== $object->getArchived()) {
+        if ($object->isInitialized('archived') && null !== $object->getArchived()) {
             $data['archived'] = $object->getArchived();
         }
-        if (null !== $object->getDisabled()) {
+        if ($object->isInitialized('disabled') && null !== $object->getDisabled()) {
             $data['disabled'] = $object->getDisabled();
         }
-        if (null !== $object->getVisibility()) {
+        if ($object->isInitialized('visibility') && null !== $object->getVisibility()) {
             $data['visibility'] = $object->getVisibility();
         }
-        if (null !== $object->getPushedAt()) {
+        if ($object->isInitialized('pushedAt') && null !== $object->getPushedAt()) {
             $data['pushed_at'] = $object->getPushedAt()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getCreatedAt()) {
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getUpdatedAt()) {
+        if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getPermissions()) {
+        if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
-        if (null !== $object->getTemplateRepository()) {
+        if ($object->isInitialized('templateRepository') && null !== $object->getTemplateRepository()) {
             $data['template_repository'] = $object->getTemplateRepository();
         }
-        if (null !== $object->getTempCloneToken()) {
+        if ($object->isInitialized('tempCloneToken') && null !== $object->getTempCloneToken()) {
             $data['temp_clone_token'] = $object->getTempCloneToken();
         }
-        if (null !== $object->getDeleteBranchOnMerge()) {
+        if ($object->isInitialized('deleteBranchOnMerge') && null !== $object->getDeleteBranchOnMerge()) {
             $data['delete_branch_on_merge'] = $object->getDeleteBranchOnMerge();
         }
-        if (null !== $object->getSubscribersCount()) {
+        if ($object->isInitialized('subscribersCount') && null !== $object->getSubscribersCount()) {
             $data['subscribers_count'] = $object->getSubscribersCount();
         }
-        if (null !== $object->getNetworkCount()) {
+        if ($object->isInitialized('networkCount') && null !== $object->getNetworkCount()) {
             $data['network_count'] = $object->getNetworkCount();
         }
-        if (null !== $object->getLicense()) {
+        if ($object->isInitialized('license') && null !== $object->getLicense()) {
             $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
         }
-        if (null !== $object->getForks()) {
+        if ($object->isInitialized('forks') && null !== $object->getForks()) {
             $data['forks'] = $object->getForks();
         }
-        if (null !== $object->getOpenIssues()) {
+        if ($object->isInitialized('openIssues') && null !== $object->getOpenIssues()) {
             $data['open_issues'] = $object->getOpenIssues();
         }
-        if (null !== $object->getWatchers()) {
+        if ($object->isInitialized('watchers') && null !== $object->getWatchers()) {
             $data['watchers'] = $object->getWatchers();
         }
         foreach ($object as $key => $value_1) {

@@ -229,7 +229,7 @@ class IssueNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $data['number'] = $object->getNumber();
         $data['state'] = $object->getState();
         $data['title'] = $object->getTitle();
-        if (null !== $object->getBody()) {
+        if ($object->isInitialized('body') && null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
@@ -239,7 +239,7 @@ class IssueNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $data['labels'] = $values;
         $data['assignee'] = $this->normalizer->normalize($object->getAssignee(), 'json', $context);
-        if (null !== $object->getAssignees()) {
+        if ($object->isInitialized('assignees') && null !== $object->getAssignees()) {
             $values_1 = array();
             foreach ($object->getAssignees() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
@@ -248,36 +248,36 @@ class IssueNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $data['milestone'] = $this->normalizer->normalize($object->getMilestone(), 'json', $context);
         $data['locked'] = $object->getLocked();
-        if (null !== $object->getActiveLockReason()) {
+        if ($object->isInitialized('activeLockReason') && null !== $object->getActiveLockReason()) {
             $data['active_lock_reason'] = $object->getActiveLockReason();
         }
         $data['comments'] = $object->getComments();
-        if (null !== $object->getPullRequest()) {
+        if ($object->isInitialized('pullRequest') && null !== $object->getPullRequest()) {
             $data['pull_request'] = $this->normalizer->normalize($object->getPullRequest(), 'json', $context);
         }
         $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:sP');
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getClosedBy()) {
+        if ($object->isInitialized('closedBy') && null !== $object->getClosedBy()) {
             $data['closed_by'] = $this->normalizer->normalize($object->getClosedBy(), 'json', $context);
         }
-        if (null !== $object->getBodyHtml()) {
+        if ($object->isInitialized('bodyHtml') && null !== $object->getBodyHtml()) {
             $data['body_html'] = $object->getBodyHtml();
         }
-        if (null !== $object->getBodyText()) {
+        if ($object->isInitialized('bodyText') && null !== $object->getBodyText()) {
             $data['body_text'] = $object->getBodyText();
         }
-        if (null !== $object->getTimelineUrl()) {
+        if ($object->isInitialized('timelineUrl') && null !== $object->getTimelineUrl()) {
             $data['timeline_url'] = $object->getTimelineUrl();
         }
-        if (null !== $object->getRepository()) {
+        if ($object->isInitialized('repository') && null !== $object->getRepository()) {
             $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
         }
-        if (null !== $object->getPerformedViaGithubApp()) {
+        if ($object->isInitialized('performedViaGithubApp') && null !== $object->getPerformedViaGithubApp()) {
             $data['performed_via_github_app'] = $this->normalizer->normalize($object->getPerformedViaGithubApp(), 'json', $context);
         }
         $data['author_association'] = $object->getAuthorAssociation();
-        if (null !== $object->getReactions()) {
+        if ($object->isInitialized('reactions') && null !== $object->getReactions()) {
             $data['reactions'] = $this->normalizer->normalize($object->getReactions(), 'json', $context);
         }
         foreach ($object as $key => $value_2) {

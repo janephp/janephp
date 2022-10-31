@@ -5,6 +5,14 @@ namespace Github\Model;
 class Actor extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -58,6 +66,7 @@ class Actor extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -79,6 +88,7 @@ class Actor extends \ArrayObject
      */
     public function setLogin(string $login) : self
     {
+        $this->initialized['login'] = true;
         $this->login = $login;
         return $this;
     }
@@ -100,6 +110,7 @@ class Actor extends \ArrayObject
      */
     public function setDisplayLogin(string $displayLogin) : self
     {
+        $this->initialized['displayLogin'] = true;
         $this->displayLogin = $displayLogin;
         return $this;
     }
@@ -121,6 +132,7 @@ class Actor extends \ArrayObject
      */
     public function setGravatarId(?string $gravatarId) : self
     {
+        $this->initialized['gravatarId'] = true;
         $this->gravatarId = $gravatarId;
         return $this;
     }
@@ -142,6 +154,7 @@ class Actor extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -163,6 +176,7 @@ class Actor extends \ArrayObject
      */
     public function setAvatarUrl(string $avatarUrl) : self
     {
+        $this->initialized['avatarUrl'] = true;
         $this->avatarUrl = $avatarUrl;
         return $this;
     }

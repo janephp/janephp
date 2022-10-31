@@ -86,27 +86,27 @@ class ProtectedBranchPullRequestReviewDismissalRestrictionsNormalizer implements
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUsers()) {
+        if ($object->isInitialized('users') && null !== $object->getUsers()) {
             $values = array();
             foreach ($object->getUsers() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['users'] = $values;
         }
-        if (null !== $object->getTeams()) {
+        if ($object->isInitialized('teams') && null !== $object->getTeams()) {
             $values_1 = array();
             foreach ($object->getTeams() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['teams'] = $values_1;
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getUsersUrl()) {
+        if ($object->isInitialized('usersUrl') && null !== $object->getUsersUrl()) {
             $data['users_url'] = $object->getUsersUrl();
         }
-        if (null !== $object->getTeamsUrl()) {
+        if ($object->isInitialized('teamsUrl') && null !== $object->getTeamsUrl()) {
             $data['teams_url'] = $object->getTeamsUrl();
         }
         foreach ($object as $key => $value_2) {

@@ -93,10 +93,10 @@ class XmpMappingEntryCreateRequestNormalizer implements DenormalizerInterface, N
         $data['stopProcessing'] = $object->getStopProcessing();
         $data['xmpPath'] = $object->getXmpPath();
         $data['metadataPath'] = $object->getMetadataPath();
-        if (null !== $object->getConfiguration()) {
+        if ($object->isInitialized('configuration') && null !== $object->getConfiguration()) {
             $data['configuration'] = $object->getConfiguration();
         }
-        if (null !== $object->getRequestId()) {
+        if ($object->isInitialized('requestId') && null !== $object->getRequestId()) {
             $data['requestId'] = $object->getRequestId();
         }
         foreach ($object as $key => $value) {

@@ -66,10 +66,10 @@ class ReposOwnerRepoActionsSecretsSecretNamePutBodyNormalizer implements Denorma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getEncryptedValue()) {
+        if ($object->isInitialized('encryptedValue') && null !== $object->getEncryptedValue()) {
             $data['encrypted_value'] = $object->getEncryptedValue();
         }
-        if (null !== $object->getKeyId()) {
+        if ($object->isInitialized('keyId') && null !== $object->getKeyId()) {
             $data['key_id'] = $object->getKeyId();
         }
         foreach ($object as $key => $value) {

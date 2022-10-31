@@ -94,34 +94,34 @@ class PeopleSearchSuccessResultDirectorsItemNormalizer implements DenormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPeopleId()) {
+        if ($object->isInitialized('peopleId') && null !== $object->getPeopleId()) {
             $data['peopleId'] = $object->getPeopleId();
         }
-        if (null !== $object->getFirstName()) {
+        if ($object->isInitialized('firstName') && null !== $object->getFirstName()) {
             $data['firstName'] = $object->getFirstName();
         }
-        if (null !== $object->getLastName()) {
+        if ($object->isInitialized('lastName') && null !== $object->getLastName()) {
             $data['lastName'] = $object->getLastName();
         }
-        if (null !== $object->getCountry()) {
+        if ($object->isInitialized('country') && null !== $object->getCountry()) {
             $data['country'] = $object->getCountry();
         }
-        if (null !== $object->getCompany()) {
+        if ($object->isInitialized('company') && null !== $object->getCompany()) {
             $data['company'] = $this->normalizer->normalize($object->getCompany(), 'json', $context);
         }
-        if (null !== $object->getAddress()) {
+        if ($object->isInitialized('address') && null !== $object->getAddress()) {
             $data['address'] = $this->normalizer->normalize($object->getAddress(), 'json', $context);
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        if (null !== $object->getDateOfLatestChange()) {
+        if ($object->isInitialized('dateOfLatestChange') && null !== $object->getDateOfLatestChange()) {
             $data['dateOfLatestChange'] = $object->getDateOfLatestChange();
         }
-        if (null !== $object->getDateOfBirth()) {
+        if ($object->isInitialized('dateOfBirth') && null !== $object->getDateOfBirth()) {
             $data['dateOfBirth'] = $object->getDateOfBirth();
         }
-        if (null !== $object->getLocalDirectorNumber()) {
+        if ($object->isInitialized('localDirectorNumber') && null !== $object->getLocalDirectorNumber()) {
             $data['localDirectorNumber'] = $object->getLocalDirectorNumber();
         }
         foreach ($object as $key => $value) {

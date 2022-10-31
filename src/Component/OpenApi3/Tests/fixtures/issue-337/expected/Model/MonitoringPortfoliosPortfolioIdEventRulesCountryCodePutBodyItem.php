@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem extends \A
      */
     public function setRuleCode(string $ruleCode) : self
     {
+        $this->initialized['ruleCode'] = true;
         $this->ruleCode = $ruleCode;
         return $this;
     }
@@ -73,6 +82,7 @@ class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem extends \A
      */
     public function setIsActive(string $isActive) : self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
         return $this;
     }
@@ -94,6 +104,7 @@ class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem extends \A
      */
     public function setParam0(string $param0) : self
     {
+        $this->initialized['param0'] = true;
         $this->param0 = $param0;
         return $this;
     }
@@ -115,6 +126,7 @@ class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem extends \A
      */
     public function setParam1(string $param1) : self
     {
+        $this->initialized['param1'] = true;
         $this->param1 = $param1;
         return $this;
     }
@@ -136,6 +148,7 @@ class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem extends \A
      */
     public function setParam2(string $param2) : self
     {
+        $this->initialized['param2'] = true;
         $this->param2 = $param2;
         return $this;
     }

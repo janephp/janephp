@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class PrefixFilter extends FilterBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
     (i.e. personLayer.address.street).
     *
@@ -37,6 +45,7 @@ class PrefixFilter extends FilterBase
     */
     public function setField(string $field) : self
     {
+        $this->initialized['field'] = true;
         $this->field = $field;
         return $this;
     }
@@ -58,6 +67,7 @@ class PrefixFilter extends FilterBase
      */
     public function setPrefix(string $prefix) : self
     {
+        $this->initialized['prefix'] = true;
         $this->prefix = $prefix;
         return $this;
     }

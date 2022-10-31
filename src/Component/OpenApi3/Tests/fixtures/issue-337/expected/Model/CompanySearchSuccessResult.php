@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class CompanySearchSuccessResult extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var float
@@ -34,6 +42,7 @@ class CompanySearchSuccessResult extends \ArrayObject
      */
     public function setTotalSize(float $totalSize) : self
     {
+        $this->initialized['totalSize'] = true;
         $this->totalSize = $totalSize;
         return $this;
     }
@@ -55,6 +64,7 @@ class CompanySearchSuccessResult extends \ArrayObject
      */
     public function setCompanies(array $companies) : self
     {
+        $this->initialized['companies'] = true;
         $this->companies = $companies;
         return $this;
     }

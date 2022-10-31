@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentDetailViewEvent extends ApplicationEvent
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string[]|null
@@ -28,6 +36,7 @@ class ContentDetailViewEvent extends ApplicationEvent
      */
     public function setContentIds(?array $contentIds) : self
     {
+        $this->initialized['contentIds'] = true;
         $this->contentIds = $contentIds;
         return $this;
     }

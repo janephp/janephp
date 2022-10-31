@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class SwarmUnlockkeyGetResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The swarm's unlock key.
      *
      * @var string
@@ -28,6 +36,7 @@ class SwarmUnlockkeyGetResponse200
      */
     public function setUnlockKey(string $unlockKey) : self
     {
+        $this->initialized['unlockKey'] = true;
         $this->unlockKey = $unlockKey;
         return $this;
     }

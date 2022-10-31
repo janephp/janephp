@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoPullsPullNumberReviewsPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The SHA of the commit that needs a review. Not using the latest commit SHA may render your review comment outdated if a subsequent commit modifies the line you specify as the `position`. Defaults to the most recent commit in the pull request when you do not specify a value.
      *
      * @var string
@@ -46,6 +54,7 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBody extends \ArrayObject
      */
     public function setCommitId(string $commitId) : self
     {
+        $this->initialized['commitId'] = true;
         $this->commitId = $commitId;
         return $this;
     }
@@ -67,6 +76,7 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBody extends \ArrayObject
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }
@@ -88,6 +98,7 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBody extends \ArrayObject
      */
     public function setEvent(string $event) : self
     {
+        $this->initialized['event'] = true;
         $this->event = $event;
         return $this;
     }
@@ -109,6 +120,7 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBody extends \ArrayObject
      */
     public function setComments(array $comments) : self
     {
+        $this->initialized['comments'] = true;
         $this->comments = $comments;
         return $this;
     }

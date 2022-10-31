@@ -5,6 +5,14 @@ namespace Github\Model;
 class GistsGistIdPatchBodyFilesItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The new content of the file
      *
      * @var string
@@ -34,6 +42,7 @@ class GistsGistIdPatchBodyFilesItem extends \ArrayObject
      */
     public function setContent(string $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }
@@ -55,6 +64,7 @@ class GistsGistIdPatchBodyFilesItem extends \ArrayObject
      */
     public function setFilename(?string $filename) : self
     {
+        $this->initialized['filename'] = true;
         $this->filename = $filename;
         return $this;
     }

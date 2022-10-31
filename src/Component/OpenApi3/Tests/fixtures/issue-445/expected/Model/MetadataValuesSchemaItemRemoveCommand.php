@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class MetadataValuesSchemaItemRemoveCommand extends MetadataValuesChangeCommandBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * The path of the field relative to the Content or Layer schema values defined by the schemaId property.
     (i.e. add a team (existing list item) to the work information of a person: fieldPath = "workInfo.teams", schemaId = "PersonLayer").
     *
@@ -43,6 +51,7 @@ class MetadataValuesSchemaItemRemoveCommand extends MetadataValuesChangeCommandB
     */
     public function setFieldPath(string $fieldPath) : self
     {
+        $this->initialized['fieldPath'] = true;
         $this->fieldPath = $fieldPath;
         return $this;
     }
@@ -64,6 +73,7 @@ class MetadataValuesSchemaItemRemoveCommand extends MetadataValuesChangeCommandB
      */
     public function setFieldNamespace(string $fieldNamespace) : self
     {
+        $this->initialized['fieldNamespace'] = true;
         $this->fieldNamespace = $fieldNamespace;
         return $this;
     }
@@ -85,6 +95,7 @@ class MetadataValuesSchemaItemRemoveCommand extends MetadataValuesChangeCommandB
      */
     public function setReferenceId(string $referenceId) : self
     {
+        $this->initialized['referenceId'] = true;
         $this->referenceId = $referenceId;
         return $this;
     }

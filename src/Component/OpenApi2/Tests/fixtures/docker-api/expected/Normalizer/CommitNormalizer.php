@@ -59,10 +59,10 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getID()) {
+        if ($object->isInitialized('iD') && null !== $object->getID()) {
             $data['ID'] = $object->getID();
         }
-        if (null !== $object->getExpected()) {
+        if ($object->isInitialized('expected') && null !== $object->getExpected()) {
             $data['Expected'] = $object->getExpected();
         }
         if (!($context['skip_validation'] ?? false)) {

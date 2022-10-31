@@ -75,10 +75,10 @@ class UsageCapExceededProblemNormalizer implements DenormalizerInterface, Normal
     {
         $data = array();
         $data['type'] = $object->getType();
-        if (null !== $object->getPeriod()) {
+        if ($object->isInitialized('period') && null !== $object->getPeriod()) {
             $data['period'] = $object->getPeriod();
         }
-        if (null !== $object->getScope()) {
+        if ($object->isInitialized('scope') && null !== $object->getScope()) {
             $data['scope'] = $object->getScope();
         }
         $data['title'] = $object->getTitle();

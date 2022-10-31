@@ -5,6 +5,14 @@ namespace Github\Model;
 class RepositoryPermissions extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -52,6 +60,7 @@ class RepositoryPermissions extends \ArrayObject
      */
     public function setAdmin(bool $admin) : self
     {
+        $this->initialized['admin'] = true;
         $this->admin = $admin;
         return $this;
     }
@@ -73,6 +82,7 @@ class RepositoryPermissions extends \ArrayObject
      */
     public function setPull(bool $pull) : self
     {
+        $this->initialized['pull'] = true;
         $this->pull = $pull;
         return $this;
     }
@@ -94,6 +104,7 @@ class RepositoryPermissions extends \ArrayObject
      */
     public function setTriage(bool $triage) : self
     {
+        $this->initialized['triage'] = true;
         $this->triage = $triage;
         return $this;
     }
@@ -115,6 +126,7 @@ class RepositoryPermissions extends \ArrayObject
      */
     public function setPush(bool $push) : self
     {
+        $this->initialized['push'] = true;
         $this->push = $push;
         return $this;
     }
@@ -136,6 +148,7 @@ class RepositoryPermissions extends \ArrayObject
      */
     public function setMaintain(bool $maintain) : self
     {
+        $this->initialized['maintain'] = true;
         $this->maintain = $maintain;
         return $this;
     }

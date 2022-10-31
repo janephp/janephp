@@ -5,6 +5,14 @@ namespace Jane\Component\JsonSchema\JsonSchema\Model;
 class JsonSchema
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var JsonSchema[]|bool[]|null
@@ -376,6 +384,7 @@ class JsonSchema
      */
     public function setDefinitions(?iterable $definitions) : self
     {
+        $this->initialized['definitions'] = true;
         $this->definitions = $definitions;
         return $this;
     }
@@ -397,6 +406,7 @@ class JsonSchema
      */
     public function setDependencies(?iterable $dependencies) : self
     {
+        $this->initialized['dependencies'] = true;
         $this->dependencies = $dependencies;
         return $this;
     }
@@ -418,6 +428,7 @@ class JsonSchema
      */
     public function setAdditionalItems($additionalItems) : self
     {
+        $this->initialized['additionalItems'] = true;
         $this->additionalItems = $additionalItems;
         return $this;
     }
@@ -439,6 +450,7 @@ class JsonSchema
      */
     public function setUnevaluatedItems($unevaluatedItems) : self
     {
+        $this->initialized['unevaluatedItems'] = true;
         $this->unevaluatedItems = $unevaluatedItems;
         return $this;
     }
@@ -460,6 +472,7 @@ class JsonSchema
      */
     public function setItems($items) : self
     {
+        $this->initialized['items'] = true;
         $this->items = $items;
         return $this;
     }
@@ -481,6 +494,7 @@ class JsonSchema
      */
     public function setContains($contains) : self
     {
+        $this->initialized['contains'] = true;
         $this->contains = $contains;
         return $this;
     }
@@ -502,6 +516,7 @@ class JsonSchema
      */
     public function setAdditionalProperties($additionalProperties) : self
     {
+        $this->initialized['additionalProperties'] = true;
         $this->additionalProperties = $additionalProperties;
         return $this;
     }
@@ -523,6 +538,7 @@ class JsonSchema
      */
     public function setUnevaluatedProperties(?iterable $unevaluatedProperties) : self
     {
+        $this->initialized['unevaluatedProperties'] = true;
         $this->unevaluatedProperties = $unevaluatedProperties;
         return $this;
     }
@@ -544,6 +560,7 @@ class JsonSchema
      */
     public function setProperties(?iterable $properties) : self
     {
+        $this->initialized['properties'] = true;
         $this->properties = $properties;
         return $this;
     }
@@ -565,6 +582,7 @@ class JsonSchema
      */
     public function setPatternProperties(?iterable $patternProperties) : self
     {
+        $this->initialized['patternProperties'] = true;
         $this->patternProperties = $patternProperties;
         return $this;
     }
@@ -586,6 +604,7 @@ class JsonSchema
      */
     public function setDependentSchemas(?iterable $dependentSchemas) : self
     {
+        $this->initialized['dependentSchemas'] = true;
         $this->dependentSchemas = $dependentSchemas;
         return $this;
     }
@@ -607,6 +626,7 @@ class JsonSchema
      */
     public function setPropertyNames($propertyNames) : self
     {
+        $this->initialized['propertyNames'] = true;
         $this->propertyNames = $propertyNames;
         return $this;
     }
@@ -628,6 +648,7 @@ class JsonSchema
      */
     public function setIf($if) : self
     {
+        $this->initialized['if'] = true;
         $this->if = $if;
         return $this;
     }
@@ -649,6 +670,7 @@ class JsonSchema
      */
     public function setThen($then) : self
     {
+        $this->initialized['then'] = true;
         $this->then = $then;
         return $this;
     }
@@ -670,6 +692,7 @@ class JsonSchema
      */
     public function setElse($else) : self
     {
+        $this->initialized['else'] = true;
         $this->else = $else;
         return $this;
     }
@@ -691,6 +714,7 @@ class JsonSchema
      */
     public function setAllOf(?array $allOf) : self
     {
+        $this->initialized['allOf'] = true;
         $this->allOf = $allOf;
         return $this;
     }
@@ -712,6 +736,7 @@ class JsonSchema
      */
     public function setAnyOf(?array $anyOf) : self
     {
+        $this->initialized['anyOf'] = true;
         $this->anyOf = $anyOf;
         return $this;
     }
@@ -733,6 +758,7 @@ class JsonSchema
      */
     public function setOneOf(?array $oneOf) : self
     {
+        $this->initialized['oneOf'] = true;
         $this->oneOf = $oneOf;
         return $this;
     }
@@ -754,6 +780,7 @@ class JsonSchema
      */
     public function setNot($not) : self
     {
+        $this->initialized['not'] = true;
         $this->not = $not;
         return $this;
     }
@@ -775,6 +802,7 @@ class JsonSchema
      */
     public function setContentMediaType(?string $contentMediaType) : self
     {
+        $this->initialized['contentMediaType'] = true;
         $this->contentMediaType = $contentMediaType;
         return $this;
     }
@@ -796,6 +824,7 @@ class JsonSchema
      */
     public function setContentEncoding(?string $contentEncoding) : self
     {
+        $this->initialized['contentEncoding'] = true;
         $this->contentEncoding = $contentEncoding;
         return $this;
     }
@@ -817,6 +846,7 @@ class JsonSchema
      */
     public function setContentSchema($contentSchema) : self
     {
+        $this->initialized['contentSchema'] = true;
         $this->contentSchema = $contentSchema;
         return $this;
     }
@@ -838,6 +868,7 @@ class JsonSchema
      */
     public function setDollarId(?string $dollarId) : self
     {
+        $this->initialized['dollarId'] = true;
         $this->dollarId = $dollarId;
         return $this;
     }
@@ -859,6 +890,7 @@ class JsonSchema
      */
     public function setDollarSchema(?string $dollarSchema) : self
     {
+        $this->initialized['dollarSchema'] = true;
         $this->dollarSchema = $dollarSchema;
         return $this;
     }
@@ -880,6 +912,7 @@ class JsonSchema
      */
     public function setDollarAnchor(?string $dollarAnchor) : self
     {
+        $this->initialized['dollarAnchor'] = true;
         $this->dollarAnchor = $dollarAnchor;
         return $this;
     }
@@ -901,6 +934,7 @@ class JsonSchema
      */
     public function setDollarRef(?string $dollarRef) : self
     {
+        $this->initialized['dollarRef'] = true;
         $this->dollarRef = $dollarRef;
         return $this;
     }
@@ -922,6 +956,7 @@ class JsonSchema
      */
     public function setDollarRecursiveRef(?string $dollarRecursiveRef) : self
     {
+        $this->initialized['dollarRecursiveRef'] = true;
         $this->dollarRecursiveRef = $dollarRecursiveRef;
         return $this;
     }
@@ -943,6 +978,7 @@ class JsonSchema
      */
     public function setDollarRecursiveAnchor(?bool $dollarRecursiveAnchor) : self
     {
+        $this->initialized['dollarRecursiveAnchor'] = true;
         $this->dollarRecursiveAnchor = $dollarRecursiveAnchor;
         return $this;
     }
@@ -964,6 +1000,7 @@ class JsonSchema
      */
     public function setDollarVocabulary(?iterable $dollarVocabulary) : self
     {
+        $this->initialized['dollarVocabulary'] = true;
         $this->dollarVocabulary = $dollarVocabulary;
         return $this;
     }
@@ -985,6 +1022,7 @@ class JsonSchema
      */
     public function setDollarComment(?string $dollarComment) : self
     {
+        $this->initialized['dollarComment'] = true;
         $this->dollarComment = $dollarComment;
         return $this;
     }
@@ -1006,6 +1044,7 @@ class JsonSchema
      */
     public function setDollarDefs(?iterable $dollarDefs) : self
     {
+        $this->initialized['dollarDefs'] = true;
         $this->dollarDefs = $dollarDefs;
         return $this;
     }
@@ -1027,6 +1066,7 @@ class JsonSchema
      */
     public function setFormat(?string $format) : self
     {
+        $this->initialized['format'] = true;
         $this->format = $format;
         return $this;
     }
@@ -1048,6 +1088,7 @@ class JsonSchema
      */
     public function setTitle(?string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -1069,6 +1110,7 @@ class JsonSchema
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -1090,6 +1132,7 @@ class JsonSchema
      */
     public function setDefault($default) : self
     {
+        $this->initialized['default'] = true;
         $this->default = $default;
         return $this;
     }
@@ -1111,6 +1154,7 @@ class JsonSchema
      */
     public function setDeprecated(?bool $deprecated) : self
     {
+        $this->initialized['deprecated'] = true;
         $this->deprecated = $deprecated;
         return $this;
     }
@@ -1132,6 +1176,7 @@ class JsonSchema
      */
     public function setReadOnly(?bool $readOnly) : self
     {
+        $this->initialized['readOnly'] = true;
         $this->readOnly = $readOnly;
         return $this;
     }
@@ -1153,6 +1198,7 @@ class JsonSchema
      */
     public function setWriteOnly(?bool $writeOnly) : self
     {
+        $this->initialized['writeOnly'] = true;
         $this->writeOnly = $writeOnly;
         return $this;
     }
@@ -1174,6 +1220,7 @@ class JsonSchema
      */
     public function setExamples(?array $examples) : self
     {
+        $this->initialized['examples'] = true;
         $this->examples = $examples;
         return $this;
     }
@@ -1195,6 +1242,7 @@ class JsonSchema
      */
     public function setMultipleOf(?float $multipleOf) : self
     {
+        $this->initialized['multipleOf'] = true;
         $this->multipleOf = $multipleOf;
         return $this;
     }
@@ -1216,6 +1264,7 @@ class JsonSchema
      */
     public function setMaximum(?float $maximum) : self
     {
+        $this->initialized['maximum'] = true;
         $this->maximum = $maximum;
         return $this;
     }
@@ -1237,6 +1286,7 @@ class JsonSchema
      */
     public function setExclusiveMaximum(?float $exclusiveMaximum) : self
     {
+        $this->initialized['exclusiveMaximum'] = true;
         $this->exclusiveMaximum = $exclusiveMaximum;
         return $this;
     }
@@ -1258,6 +1308,7 @@ class JsonSchema
      */
     public function setMinimum(?float $minimum) : self
     {
+        $this->initialized['minimum'] = true;
         $this->minimum = $minimum;
         return $this;
     }
@@ -1279,6 +1330,7 @@ class JsonSchema
      */
     public function setExclusiveMinimum(?float $exclusiveMinimum) : self
     {
+        $this->initialized['exclusiveMinimum'] = true;
         $this->exclusiveMinimum = $exclusiveMinimum;
         return $this;
     }
@@ -1300,6 +1352,7 @@ class JsonSchema
      */
     public function setMaxLength(?int $maxLength) : self
     {
+        $this->initialized['maxLength'] = true;
         $this->maxLength = $maxLength;
         return $this;
     }
@@ -1321,6 +1374,7 @@ class JsonSchema
      */
     public function setMinLength(?int $minLength) : self
     {
+        $this->initialized['minLength'] = true;
         $this->minLength = $minLength;
         return $this;
     }
@@ -1342,6 +1396,7 @@ class JsonSchema
      */
     public function setPattern(?string $pattern) : self
     {
+        $this->initialized['pattern'] = true;
         $this->pattern = $pattern;
         return $this;
     }
@@ -1363,6 +1418,7 @@ class JsonSchema
      */
     public function setMaxItems(?int $maxItems) : self
     {
+        $this->initialized['maxItems'] = true;
         $this->maxItems = $maxItems;
         return $this;
     }
@@ -1384,6 +1440,7 @@ class JsonSchema
      */
     public function setMinItems(?int $minItems) : self
     {
+        $this->initialized['minItems'] = true;
         $this->minItems = $minItems;
         return $this;
     }
@@ -1405,6 +1462,7 @@ class JsonSchema
      */
     public function setUniqueItems(?bool $uniqueItems) : self
     {
+        $this->initialized['uniqueItems'] = true;
         $this->uniqueItems = $uniqueItems;
         return $this;
     }
@@ -1426,6 +1484,7 @@ class JsonSchema
      */
     public function setMaxContains(?int $maxContains) : self
     {
+        $this->initialized['maxContains'] = true;
         $this->maxContains = $maxContains;
         return $this;
     }
@@ -1447,6 +1506,7 @@ class JsonSchema
      */
     public function setMinContains(?int $minContains) : self
     {
+        $this->initialized['minContains'] = true;
         $this->minContains = $minContains;
         return $this;
     }
@@ -1468,6 +1528,7 @@ class JsonSchema
      */
     public function setMaxProperties(?int $maxProperties) : self
     {
+        $this->initialized['maxProperties'] = true;
         $this->maxProperties = $maxProperties;
         return $this;
     }
@@ -1489,6 +1550,7 @@ class JsonSchema
      */
     public function setMinProperties(?int $minProperties) : self
     {
+        $this->initialized['minProperties'] = true;
         $this->minProperties = $minProperties;
         return $this;
     }
@@ -1510,6 +1572,7 @@ class JsonSchema
      */
     public function setRequired(?array $required) : self
     {
+        $this->initialized['required'] = true;
         $this->required = $required;
         return $this;
     }
@@ -1531,6 +1594,7 @@ class JsonSchema
      */
     public function setDependentRequired(?iterable $dependentRequired) : self
     {
+        $this->initialized['dependentRequired'] = true;
         $this->dependentRequired = $dependentRequired;
         return $this;
     }
@@ -1552,6 +1616,7 @@ class JsonSchema
      */
     public function setConst(?string $const) : self
     {
+        $this->initialized['const'] = true;
         $this->const = $const;
         return $this;
     }
@@ -1573,6 +1638,7 @@ class JsonSchema
      */
     public function setEnum(?array $enum) : self
     {
+        $this->initialized['enum'] = true;
         $this->enum = $enum;
         return $this;
     }
@@ -1594,6 +1660,7 @@ class JsonSchema
      */
     public function setType($type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }

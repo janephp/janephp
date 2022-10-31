@@ -5,6 +5,14 @@ namespace Github\Model;
 class CheckSuitePreference extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var CheckSuitePreferencePreferences
@@ -34,6 +42,7 @@ class CheckSuitePreference extends \ArrayObject
      */
     public function setPreferences(CheckSuitePreferencePreferences $preferences) : self
     {
+        $this->initialized['preferences'] = true;
         $this->preferences = $preferences;
         return $this;
     }
@@ -55,6 +64,7 @@ class CheckSuitePreference extends \ArrayObject
      */
     public function setRepository(Repository $repository) : self
     {
+        $this->initialized['repository'] = true;
         $this->repository = $repository;
         return $this;
     }

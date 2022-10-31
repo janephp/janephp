@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class FieldStringArray extends FieldBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * A DotLiquid template. If set, it transforms the field in a calculated field, so that its value is calculated based on this template.
      *
      * @var string|null
@@ -90,6 +98,7 @@ class FieldStringArray extends FieldBase
      */
     public function setTemplate(?string $template) : self
     {
+        $this->initialized['template'] = true;
         $this->template = $template;
         return $this;
     }
@@ -111,6 +120,7 @@ class FieldStringArray extends FieldBase
      */
     public function setPattern(?string $pattern) : self
     {
+        $this->initialized['pattern'] = true;
         $this->pattern = $pattern;
         return $this;
     }
@@ -132,6 +142,7 @@ class FieldStringArray extends FieldBase
      */
     public function setMinimumLength(?int $minimumLength) : self
     {
+        $this->initialized['minimumLength'] = true;
         $this->minimumLength = $minimumLength;
         return $this;
     }
@@ -153,6 +164,7 @@ class FieldStringArray extends FieldBase
      */
     public function setMaximumLength(?int $maximumLength) : self
     {
+        $this->initialized['maximumLength'] = true;
         $this->maximumLength = $maximumLength;
         return $this;
     }
@@ -176,6 +188,7 @@ class FieldStringArray extends FieldBase
     */
     public function setIndexAnalyzers(?array $indexAnalyzers) : self
     {
+        $this->initialized['indexAnalyzers'] = true;
         $this->indexAnalyzers = $indexAnalyzers;
         return $this;
     }
@@ -199,6 +212,7 @@ class FieldStringArray extends FieldBase
     */
     public function setSimpleSearchAnalyzers(?array $simpleSearchAnalyzers) : self
     {
+        $this->initialized['simpleSearchAnalyzers'] = true;
         $this->simpleSearchAnalyzers = $simpleSearchAnalyzers;
         return $this;
     }
@@ -220,6 +234,7 @@ class FieldStringArray extends FieldBase
      */
     public function setMultiLine(bool $multiLine) : self
     {
+        $this->initialized['multiLine'] = true;
         $this->multiLine = $multiLine;
         return $this;
     }
@@ -241,6 +256,7 @@ class FieldStringArray extends FieldBase
      */
     public function setGrantedValues(?array $grantedValues) : self
     {
+        $this->initialized['grantedValues'] = true;
         $this->grantedValues = $grantedValues;
         return $this;
     }
@@ -262,6 +278,7 @@ class FieldStringArray extends FieldBase
      */
     public function setBoost(float $boost) : self
     {
+        $this->initialized['boost'] = true;
         $this->boost = $boost;
         return $this;
     }
@@ -283,6 +300,7 @@ class FieldStringArray extends FieldBase
      */
     public function setMaximumItems(?int $maximumItems) : self
     {
+        $this->initialized['maximumItems'] = true;
         $this->maximumItems = $maximumItems;
         return $this;
     }
@@ -304,6 +322,7 @@ class FieldStringArray extends FieldBase
      */
     public function setMinimumItems(?int $minimumItems) : self
     {
+        $this->initialized['minimumItems'] = true;
         $this->minimumItems = $minimumItems;
         return $this;
     }

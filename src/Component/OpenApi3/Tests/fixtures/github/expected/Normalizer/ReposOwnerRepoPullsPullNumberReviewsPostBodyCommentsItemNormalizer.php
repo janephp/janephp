@@ -87,20 +87,20 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItemNormalizer impleme
     {
         $data = array();
         $data['path'] = $object->getPath();
-        if (null !== $object->getPosition()) {
+        if ($object->isInitialized('position') && null !== $object->getPosition()) {
             $data['position'] = $object->getPosition();
         }
         $data['body'] = $object->getBody();
-        if (null !== $object->getLine()) {
+        if ($object->isInitialized('line') && null !== $object->getLine()) {
             $data['line'] = $object->getLine();
         }
-        if (null !== $object->getSide()) {
+        if ($object->isInitialized('side') && null !== $object->getSide()) {
             $data['side'] = $object->getSide();
         }
-        if (null !== $object->getStartLine()) {
+        if ($object->isInitialized('startLine') && null !== $object->getStartLine()) {
             $data['start_line'] = $object->getStartLine();
         }
-        if (null !== $object->getStartSide()) {
+        if ($object->isInitialized('startSide') && null !== $object->getStartSide()) {
             $data['start_side'] = $object->getStartSide();
         }
         foreach ($object as $key => $value) {

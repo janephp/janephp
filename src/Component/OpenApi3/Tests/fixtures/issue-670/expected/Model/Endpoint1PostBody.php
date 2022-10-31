@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class Endpoint1PostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -28,6 +36,7 @@ class Endpoint1PostBody extends \ArrayObject
      */
     public function setPostField1(string $postField1) : self
     {
+        $this->initialized['postField1'] = true;
         $this->postField1 = $postField1;
         return $this;
     }

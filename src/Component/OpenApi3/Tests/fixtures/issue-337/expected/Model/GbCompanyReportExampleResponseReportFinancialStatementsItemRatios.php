@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportFinancialStatementsItemRatios extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var float
@@ -106,6 +114,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatios extends 
      */
     public function setPreTaxProfitMargin(float $preTaxProfitMargin) : self
     {
+        $this->initialized['preTaxProfitMargin'] = true;
         $this->preTaxProfitMargin = $preTaxProfitMargin;
         return $this;
     }
@@ -127,6 +136,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatios extends 
      */
     public function setReturnOnCapitalEmployed(float $returnOnCapitalEmployed) : self
     {
+        $this->initialized['returnOnCapitalEmployed'] = true;
         $this->returnOnCapitalEmployed = $returnOnCapitalEmployed;
         return $this;
     }
@@ -148,6 +158,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatios extends 
      */
     public function setReturnOnTotalAssetsEmployed(float $returnOnTotalAssetsEmployed) : self
     {
+        $this->initialized['returnOnTotalAssetsEmployed'] = true;
         $this->returnOnTotalAssetsEmployed = $returnOnTotalAssetsEmployed;
         return $this;
     }
@@ -169,6 +180,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatios extends 
      */
     public function setReturnOnNetAssetsEmployed(float $returnOnNetAssetsEmployed) : self
     {
+        $this->initialized['returnOnNetAssetsEmployed'] = true;
         $this->returnOnNetAssetsEmployed = $returnOnNetAssetsEmployed;
         return $this;
     }
@@ -190,6 +202,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatios extends 
      */
     public function setSalesOrNetWorkingCapital(float $salesOrNetWorkingCapital) : self
     {
+        $this->initialized['salesOrNetWorkingCapital'] = true;
         $this->salesOrNetWorkingCapital = $salesOrNetWorkingCapital;
         return $this;
     }
@@ -211,6 +224,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatios extends 
      */
     public function setStockTurnoverRatio(float $stockTurnoverRatio) : self
     {
+        $this->initialized['stockTurnoverRatio'] = true;
         $this->stockTurnoverRatio = $stockTurnoverRatio;
         return $this;
     }
@@ -232,6 +246,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatios extends 
      */
     public function setDebtorDays(float $debtorDays) : self
     {
+        $this->initialized['debtorDays'] = true;
         $this->debtorDays = $debtorDays;
         return $this;
     }
@@ -253,6 +268,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatios extends 
      */
     public function setCreditorDays(float $creditorDays) : self
     {
+        $this->initialized['creditorDays'] = true;
         $this->creditorDays = $creditorDays;
         return $this;
     }
@@ -274,6 +290,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatios extends 
      */
     public function setCurrentRatio(float $currentRatio) : self
     {
+        $this->initialized['currentRatio'] = true;
         $this->currentRatio = $currentRatio;
         return $this;
     }
@@ -295,6 +312,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatios extends 
      */
     public function setLiquidityRatioOrAcidTest(float $liquidityRatioOrAcidTest) : self
     {
+        $this->initialized['liquidityRatioOrAcidTest'] = true;
         $this->liquidityRatioOrAcidTest = $liquidityRatioOrAcidTest;
         return $this;
     }
@@ -316,6 +334,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatios extends 
      */
     public function setCurrentDebtRatio(float $currentDebtRatio) : self
     {
+        $this->initialized['currentDebtRatio'] = true;
         $this->currentDebtRatio = $currentDebtRatio;
         return $this;
     }
@@ -337,6 +356,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatios extends 
      */
     public function setGearing(float $gearing) : self
     {
+        $this->initialized['gearing'] = true;
         $this->gearing = $gearing;
         return $this;
     }
@@ -358,6 +378,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatios extends 
      */
     public function setEquityInPercentage(float $equityInPercentage) : self
     {
+        $this->initialized['equityInPercentage'] = true;
         $this->equityInPercentage = $equityInPercentage;
         return $this;
     }
@@ -379,6 +400,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatios extends 
      */
     public function setTotalDebtRatio(float $totalDebtRatio) : self
     {
+        $this->initialized['totalDebtRatio'] = true;
         $this->totalDebtRatio = $totalDebtRatio;
         return $this;
     }

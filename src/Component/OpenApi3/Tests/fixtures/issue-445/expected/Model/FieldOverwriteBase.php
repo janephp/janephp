@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class FieldOverwriteBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The field's ID whose information need to be overwritten.
      *
      * @var string|null
@@ -45,6 +53,7 @@ class FieldOverwriteBase
      */
     public function setId(?string $id)
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
     }
     /**
@@ -65,6 +74,7 @@ class FieldOverwriteBase
     */
     public function setRequired(bool $required)
     {
+        $this->initialized['required'] = true;
         $this->required = $required;
     }
     /**
@@ -83,6 +93,7 @@ class FieldOverwriteBase
      */
     public function setOverwriteRequired(bool $overwriteRequired)
     {
+        $this->initialized['overwriteRequired'] = true;
         $this->overwriteRequired = $overwriteRequired;
     }
     /**
@@ -101,6 +112,7 @@ class FieldOverwriteBase
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

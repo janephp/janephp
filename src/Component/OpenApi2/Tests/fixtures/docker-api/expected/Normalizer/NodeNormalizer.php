@@ -80,28 +80,28 @@ class NodeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getID()) {
+        if ($object->isInitialized('iD') && null !== $object->getID()) {
             $data['ID'] = $object->getID();
         }
-        if (null !== $object->getVersion()) {
+        if ($object->isInitialized('version') && null !== $object->getVersion()) {
             $data['Version'] = $this->normalizer->normalize($object->getVersion(), 'json', $context);
         }
-        if (null !== $object->getCreatedAt()) {
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['CreatedAt'] = $object->getCreatedAt();
         }
-        if (null !== $object->getUpdatedAt()) {
+        if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
             $data['UpdatedAt'] = $object->getUpdatedAt();
         }
-        if (null !== $object->getSpec()) {
+        if ($object->isInitialized('spec') && null !== $object->getSpec()) {
             $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['Description'] = $this->normalizer->normalize($object->getDescription(), 'json', $context);
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['Status'] = $this->normalizer->normalize($object->getStatus(), 'json', $context);
         }
-        if (null !== $object->getManagerStatus()) {
+        if ($object->isInitialized('managerStatus') && null !== $object->getManagerStatus()) {
             $data['ManagerStatus'] = $this->normalizer->normalize($object->getManagerStatus(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

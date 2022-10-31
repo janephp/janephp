@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class AccessCountriesResponseCountryAccessItemCreditsafeConnectOnlineReportsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -64,6 +72,7 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectOnlineReportsItem
      */
     public function setCountryName(string $countryName) : self
     {
+        $this->initialized['countryName'] = true;
         $this->countryName = $countryName;
         return $this;
     }
@@ -85,6 +94,7 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectOnlineReportsItem
      */
     public function setTemplateName(string $templateName) : self
     {
+        $this->initialized['templateName'] = true;
         $this->templateName = $templateName;
         return $this;
     }
@@ -106,6 +116,7 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectOnlineReportsItem
      */
     public function setCountryIso2(string $countryIso2) : self
     {
+        $this->initialized['countryIso2'] = true;
         $this->countryIso2 = $countryIso2;
         return $this;
     }
@@ -127,6 +138,7 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectOnlineReportsItem
      */
     public function setStartDate(string $startDate) : self
     {
+        $this->initialized['startDate'] = true;
         $this->startDate = $startDate;
         return $this;
     }
@@ -148,6 +160,7 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectOnlineReportsItem
      */
     public function setExpireDate(string $expireDate) : self
     {
+        $this->initialized['expireDate'] = true;
         $this->expireDate = $expireDate;
         return $this;
     }
@@ -169,6 +182,7 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectOnlineReportsItem
      */
     public function setPaid(int $paid) : self
     {
+        $this->initialized['paid'] = true;
         $this->paid = $paid;
         return $this;
     }
@@ -190,6 +204,7 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectOnlineReportsItem
      */
     public function setUsed(int $used) : self
     {
+        $this->initialized['used'] = true;
         $this->used = $used;
         return $this;
     }

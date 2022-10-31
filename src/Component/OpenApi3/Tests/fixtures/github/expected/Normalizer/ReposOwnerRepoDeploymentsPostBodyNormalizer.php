@@ -106,35 +106,35 @@ class ReposOwnerRepoDeploymentsPostBodyNormalizer implements DenormalizerInterfa
     {
         $data = array();
         $data['ref'] = $object->getRef();
-        if (null !== $object->getTask()) {
+        if ($object->isInitialized('task') && null !== $object->getTask()) {
             $data['task'] = $object->getTask();
         }
-        if (null !== $object->getAutoMerge()) {
+        if ($object->isInitialized('autoMerge') && null !== $object->getAutoMerge()) {
             $data['auto_merge'] = $object->getAutoMerge();
         }
-        if (null !== $object->getRequiredContexts()) {
+        if ($object->isInitialized('requiredContexts') && null !== $object->getRequiredContexts()) {
             $values = array();
             foreach ($object->getRequiredContexts() as $value) {
                 $values[] = $value;
             }
             $data['required_contexts'] = $values;
         }
-        if (null !== $object->getPayload()) {
+        if ($object->isInitialized('payload') && null !== $object->getPayload()) {
             $data['payload'] = $object->getPayload();
         }
-        if (null !== $object->getEnvironment()) {
+        if ($object->isInitialized('environment') && null !== $object->getEnvironment()) {
             $data['environment'] = $object->getEnvironment();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getTransientEnvironment()) {
+        if ($object->isInitialized('transientEnvironment') && null !== $object->getTransientEnvironment()) {
             $data['transient_environment'] = $object->getTransientEnvironment();
         }
-        if (null !== $object->getProductionEnvironment()) {
+        if ($object->isInitialized('productionEnvironment') && null !== $object->getProductionEnvironment()) {
             $data['production_environment'] = $object->getProductionEnvironment();
         }
-        if (null !== $object->getCreatedAt()) {
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt();
         }
         foreach ($object as $key => $value_1) {

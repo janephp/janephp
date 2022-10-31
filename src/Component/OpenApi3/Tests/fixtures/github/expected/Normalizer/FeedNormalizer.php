@@ -100,26 +100,26 @@ class FeedNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $data = array();
         $data['timeline_url'] = $object->getTimelineUrl();
         $data['user_url'] = $object->getUserUrl();
-        if (null !== $object->getCurrentUserPublicUrl()) {
+        if ($object->isInitialized('currentUserPublicUrl') && null !== $object->getCurrentUserPublicUrl()) {
             $data['current_user_public_url'] = $object->getCurrentUserPublicUrl();
         }
-        if (null !== $object->getCurrentUserUrl()) {
+        if ($object->isInitialized('currentUserUrl') && null !== $object->getCurrentUserUrl()) {
             $data['current_user_url'] = $object->getCurrentUserUrl();
         }
-        if (null !== $object->getCurrentUserActorUrl()) {
+        if ($object->isInitialized('currentUserActorUrl') && null !== $object->getCurrentUserActorUrl()) {
             $data['current_user_actor_url'] = $object->getCurrentUserActorUrl();
         }
-        if (null !== $object->getCurrentUserOrganizationUrl()) {
+        if ($object->isInitialized('currentUserOrganizationUrl') && null !== $object->getCurrentUserOrganizationUrl()) {
             $data['current_user_organization_url'] = $object->getCurrentUserOrganizationUrl();
         }
-        if (null !== $object->getCurrentUserOrganizationUrls()) {
+        if ($object->isInitialized('currentUserOrganizationUrls') && null !== $object->getCurrentUserOrganizationUrls()) {
             $values = array();
             foreach ($object->getCurrentUserOrganizationUrls() as $value) {
                 $values[] = $value;
             }
             $data['current_user_organization_urls'] = $values;
         }
-        if (null !== $object->getSecurityAdvisoriesUrl()) {
+        if ($object->isInitialized('securityAdvisoriesUrl') && null !== $object->getSecurityAdvisoriesUrl()) {
             $data['security_advisories_url'] = $object->getSecurityAdvisoriesUrl();
         }
         $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);

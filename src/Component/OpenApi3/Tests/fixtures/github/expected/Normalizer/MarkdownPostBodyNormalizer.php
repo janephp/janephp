@@ -71,10 +71,10 @@ class MarkdownPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $data = array();
         $data['text'] = $object->getText();
-        if (null !== $object->getMode()) {
+        if ($object->isInitialized('mode') && null !== $object->getMode()) {
             $data['mode'] = $object->getMode();
         }
-        if (null !== $object->getContext()) {
+        if ($object->isInitialized('context') && null !== $object->getContext()) {
             $data['context'] = $object->getContext();
         }
         foreach ($object as $key => $value) {

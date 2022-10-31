@@ -70,14 +70,14 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyNormalizer implements 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPortfolios()) {
+        if ($object->isInitialized('portfolios') && null !== $object->getPortfolios()) {
             $values = array();
             foreach ($object->getPortfolios() as $value) {
                 $values[] = $value;
             }
             $data['portfolios'] = $values;
         }
-        if (null !== $object->getCompanies()) {
+        if ($object->isInitialized('companies') && null !== $object->getCompanies()) {
             $values_1 = array();
             foreach ($object->getCompanies() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

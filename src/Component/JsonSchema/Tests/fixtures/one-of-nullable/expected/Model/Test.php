@@ -5,6 +5,14 @@ namespace Jane\Component\JsonSchema\Tests\Expected\Model;
 class Test
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var null|Id
@@ -28,6 +36,7 @@ class Test
      */
     public function setId(?Id $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }

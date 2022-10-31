@@ -123,32 +123,32 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getTriggerPoint()) {
+        if ($object->isInitialized('triggerPoint') && null !== $object->getTriggerPoint()) {
             $data['triggerPoint'] = $object->getTriggerPoint();
         }
         $data['isEnabled'] = $object->getIsEnabled();
-        if (null !== $object->getNames()) {
+        if ($object->isInitialized('names') && null !== $object->getNames()) {
             $data['names'] = $object->getNames();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
         $data['enableTracing'] = $object->getEnableTracing();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getCondition()) {
+        if ($object->isInitialized('condition') && null !== $object->getCondition()) {
             $data['condition'] = $object->getCondition();
         }
-        if (null !== $object->getTransformationGroups()) {
+        if ($object->isInitialized('transformationGroups') && null !== $object->getTransformationGroups()) {
             $values = array();
             foreach ($object->getTransformationGroups() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['transformationGroups'] = $values;
         }
-        if (null !== $object->getActions()) {
+        if ($object->isInitialized('actions') && null !== $object->getActions()) {
             $values_1 = array();
             foreach ($object->getActions() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

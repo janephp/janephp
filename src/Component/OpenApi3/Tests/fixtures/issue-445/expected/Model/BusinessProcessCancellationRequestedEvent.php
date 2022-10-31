@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessProcessCancellationRequestedEvent extends ApplicationEvent
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -28,6 +36,7 @@ class BusinessProcessCancellationRequestedEvent extends ApplicationEvent
      */
     public function setBusinessProcessId(?string $businessProcessId) : self
     {
+        $this->initialized['businessProcessId'] = true;
         $this->businessProcessId = $businessProcessId;
         return $this;
     }

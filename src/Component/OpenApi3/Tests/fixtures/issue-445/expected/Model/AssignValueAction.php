@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class AssignValueAction extends BusinessRuleAction
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Path to the object the value should be inserted in.
      *
      * @var string|null
@@ -48,6 +56,7 @@ class AssignValueAction extends BusinessRuleAction
      */
     public function setPath(?string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -69,6 +78,7 @@ class AssignValueAction extends BusinessRuleAction
      */
     public function setFieldId(?string $fieldId) : self
     {
+        $this->initialized['fieldId'] = true;
         $this->fieldId = $fieldId;
         return $this;
     }
@@ -90,6 +100,7 @@ class AssignValueAction extends BusinessRuleAction
      */
     public function setValue($value) : self
     {
+        $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
     }
@@ -115,6 +126,7 @@ class AssignValueAction extends BusinessRuleAction
     */
     public function setReplace(bool $replace) : self
     {
+        $this->initialized['replace'] = true;
         $this->replace = $replace;
         return $this;
     }

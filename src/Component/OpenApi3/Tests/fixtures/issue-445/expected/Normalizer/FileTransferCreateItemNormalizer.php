@@ -83,21 +83,21 @@ class FileTransferCreateItemNormalizer implements DenormalizerInterface, Normali
     {
         $data = array();
         $data['fileId'] = $object->getFileId();
-        if (null !== $object->getLayerSchemaIds()) {
+        if ($object->isInitialized('layerSchemaIds') && null !== $object->getLayerSchemaIds()) {
             $values = array();
             foreach ($object->getLayerSchemaIds() as $value) {
                 $values[] = $value;
             }
             $data['layerSchemaIds'] = $values;
         }
-        if (null !== $object->getMetadata()) {
+        if ($object->isInitialized('metadata') && null !== $object->getMetadata()) {
             $values_1 = array();
             foreach ($object->getMetadata() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $data['metadata'] = $values_1;
         }
-        if (null !== $object->getContentPermissionSetIds()) {
+        if ($object->isInitialized('contentPermissionSetIds') && null !== $object->getContentPermissionSetIds()) {
             $values_2 = array();
             foreach ($object->getContentPermissionSetIds() as $value_2) {
                 $values_2[] = $value_2;

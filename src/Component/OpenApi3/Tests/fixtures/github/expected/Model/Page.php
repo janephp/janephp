@@ -5,6 +5,14 @@ namespace Github\Model;
 class Page extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The API address for accessing this Page resource.
      *
      * @var string
@@ -58,6 +66,7 @@ class Page extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -79,6 +88,7 @@ class Page extends \ArrayObject
      */
     public function setStatus(?string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -100,6 +110,7 @@ class Page extends \ArrayObject
      */
     public function setCname(?string $cname) : self
     {
+        $this->initialized['cname'] = true;
         $this->cname = $cname;
         return $this;
     }
@@ -121,6 +132,7 @@ class Page extends \ArrayObject
      */
     public function setCustom404(bool $custom404) : self
     {
+        $this->initialized['custom404'] = true;
         $this->custom404 = $custom404;
         return $this;
     }
@@ -142,6 +154,7 @@ class Page extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -163,6 +176,7 @@ class Page extends \ArrayObject
      */
     public function setSource(PagesSourceHash $source) : self
     {
+        $this->initialized['source'] = true;
         $this->source = $source;
         return $this;
     }

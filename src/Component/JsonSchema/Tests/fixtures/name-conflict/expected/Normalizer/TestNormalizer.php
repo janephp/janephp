@@ -56,7 +56,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     {
         $data = array();
         $data['msgref'] = $object->getMsgref();
-        if (null !== $object->getMsgRef2()) {
+        if ($object->isInitialized('msgRef2') && null !== $object->getMsgRef2()) {
             $data['msg_ref'] = $object->getMsgRef2();
         }
         return $data;

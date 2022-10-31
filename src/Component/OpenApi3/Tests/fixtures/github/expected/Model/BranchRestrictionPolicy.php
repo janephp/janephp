@@ -5,6 +5,14 @@ namespace Github\Model;
 class BranchRestrictionPolicy extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -64,6 +72,7 @@ class BranchRestrictionPolicy extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -85,6 +94,7 @@ class BranchRestrictionPolicy extends \ArrayObject
      */
     public function setUsersUrl(string $usersUrl) : self
     {
+        $this->initialized['usersUrl'] = true;
         $this->usersUrl = $usersUrl;
         return $this;
     }
@@ -106,6 +116,7 @@ class BranchRestrictionPolicy extends \ArrayObject
      */
     public function setTeamsUrl(string $teamsUrl) : self
     {
+        $this->initialized['teamsUrl'] = true;
         $this->teamsUrl = $teamsUrl;
         return $this;
     }
@@ -127,6 +138,7 @@ class BranchRestrictionPolicy extends \ArrayObject
      */
     public function setAppsUrl(string $appsUrl) : self
     {
+        $this->initialized['appsUrl'] = true;
         $this->appsUrl = $appsUrl;
         return $this;
     }
@@ -148,6 +160,7 @@ class BranchRestrictionPolicy extends \ArrayObject
      */
     public function setUsers(array $users) : self
     {
+        $this->initialized['users'] = true;
         $this->users = $users;
         return $this;
     }
@@ -169,6 +182,7 @@ class BranchRestrictionPolicy extends \ArrayObject
      */
     public function setTeams(array $teams) : self
     {
+        $this->initialized['teams'] = true;
         $this->teams = $teams;
         return $this;
     }
@@ -190,6 +204,7 @@ class BranchRestrictionPolicy extends \ArrayObject
      */
     public function setApps(array $apps) : self
     {
+        $this->initialized['apps'] = true;
         $this->apps = $apps;
         return $this;
     }

@@ -70,10 +70,10 @@ class ReposOwnerRepoTransferPostBodyNormalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNewOwner()) {
+        if ($object->isInitialized('newOwner') && null !== $object->getNewOwner()) {
             $data['new_owner'] = $object->getNewOwner();
         }
-        if (null !== $object->getTeamIds()) {
+        if ($object->isInitialized('teamIds') && null !== $object->getTeamIds()) {
             $values = array();
             foreach ($object->getTeamIds() as $value) {
                 $values[] = $value;

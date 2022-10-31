@@ -94,33 +94,33 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAddedToAcceptList()) {
+        if ($object->isInitialized('addedToAcceptList') && null !== $object->getAddedToAcceptList()) {
             $data['addedToAcceptList'] = $object->getAddedToAcceptList();
         }
-        if (null !== $object->getAlertState()) {
+        if ($object->isInitialized('alertState') && null !== $object->getAlertState()) {
             $data['alertState'] = $object->getAlertState();
         }
-        if (null !== $object->getAssignedTo()) {
+        if ($object->isInitialized('assignedTo') && null !== $object->getAssignedTo()) {
             $values = array();
             foreach ($object->getAssignedTo() as $value) {
                 $values[] = $value;
             }
             $data['assignedTo'] = $values;
         }
-        if (null !== $object->getAssignmentType()) {
+        if ($object->isInitialized('assignmentType') && null !== $object->getAssignmentType()) {
             $data['assignmentType'] = $object->getAssignmentType();
         }
-        if (null !== $object->getDivision()) {
+        if ($object->isInitialized('division') && null !== $object->getDivision()) {
             $data['division'] = $object->getDivision();
         }
-        if (null !== $object->getHistory()) {
+        if ($object->isInitialized('history') && null !== $object->getHistory()) {
             $values_1 = array();
             foreach ($object->getHistory() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['history'] = $values_1;
         }
-        if (null !== $object->getMatchStates()) {
+        if ($object->isInitialized('matchStates') && null !== $object->getMatchStates()) {
             $values_2 = array();
             foreach ($object->getMatchStates() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);

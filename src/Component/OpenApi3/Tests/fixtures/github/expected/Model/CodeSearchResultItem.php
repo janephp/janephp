@@ -5,6 +5,14 @@ namespace Github\Model;
 class CodeSearchResultItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -100,6 +108,7 @@ class CodeSearchResultItem extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -121,6 +130,7 @@ class CodeSearchResultItem extends \ArrayObject
      */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -142,6 +152,7 @@ class CodeSearchResultItem extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -163,6 +174,7 @@ class CodeSearchResultItem extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -184,6 +196,7 @@ class CodeSearchResultItem extends \ArrayObject
      */
     public function setGitUrl(string $gitUrl) : self
     {
+        $this->initialized['gitUrl'] = true;
         $this->gitUrl = $gitUrl;
         return $this;
     }
@@ -205,6 +218,7 @@ class CodeSearchResultItem extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -226,6 +240,7 @@ class CodeSearchResultItem extends \ArrayObject
      */
     public function setRepository(MinimalRepository $repository) : self
     {
+        $this->initialized['repository'] = true;
         $this->repository = $repository;
         return $this;
     }
@@ -247,6 +262,7 @@ class CodeSearchResultItem extends \ArrayObject
      */
     public function setScore(int $score) : self
     {
+        $this->initialized['score'] = true;
         $this->score = $score;
         return $this;
     }
@@ -268,6 +284,7 @@ class CodeSearchResultItem extends \ArrayObject
      */
     public function setFileSize(int $fileSize) : self
     {
+        $this->initialized['fileSize'] = true;
         $this->fileSize = $fileSize;
         return $this;
     }
@@ -289,6 +306,7 @@ class CodeSearchResultItem extends \ArrayObject
      */
     public function setLanguage(?string $language) : self
     {
+        $this->initialized['language'] = true;
         $this->language = $language;
         return $this;
     }
@@ -310,6 +328,7 @@ class CodeSearchResultItem extends \ArrayObject
      */
     public function setLastModifiedAt(\DateTime $lastModifiedAt) : self
     {
+        $this->initialized['lastModifiedAt'] = true;
         $this->lastModifiedAt = $lastModifiedAt;
         return $this;
     }
@@ -331,6 +350,7 @@ class CodeSearchResultItem extends \ArrayObject
      */
     public function setLineNumbers(array $lineNumbers) : self
     {
+        $this->initialized['lineNumbers'] = true;
         $this->lineNumbers = $lineNumbers;
         return $this;
     }
@@ -352,6 +372,7 @@ class CodeSearchResultItem extends \ArrayObject
      */
     public function setTextMatches(array $textMatches) : self
     {
+        $this->initialized['textMatches'] = true;
         $this->textMatches = $textMatches;
         return $this;
     }

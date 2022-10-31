@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class CompactUser extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -76,6 +84,7 @@ class CompactUser extends \ArrayObject
      */
     public function setFormat(string $format) : self
     {
+        $this->initialized['format'] = true;
         $this->format = $format;
         return $this;
     }
@@ -97,6 +106,7 @@ class CompactUser extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -118,6 +128,7 @@ class CompactUser extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -139,6 +150,7 @@ class CompactUser extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -160,6 +172,7 @@ class CompactUser extends \ArrayObject
      */
     public function setUsername(string $username) : self
     {
+        $this->initialized['username'] = true;
         $this->username = $username;
         return $this;
     }
@@ -181,6 +194,7 @@ class CompactUser extends \ArrayObject
      */
     public function setProtected(bool $protected) : self
     {
+        $this->initialized['protected'] = true;
         $this->protected = $protected;
         return $this;
     }
@@ -202,6 +216,7 @@ class CompactUser extends \ArrayObject
      */
     public function setVerified(bool $verified) : self
     {
+        $this->initialized['verified'] = true;
         $this->verified = $verified;
         return $this;
     }
@@ -223,6 +238,7 @@ class CompactUser extends \ArrayObject
      */
     public function setWithheld(UserWithheld $withheld) : self
     {
+        $this->initialized['withheld'] = true;
         $this->withheld = $withheld;
         return $this;
     }
@@ -244,6 +260,7 @@ class CompactUser extends \ArrayObject
      */
     public function setProfileImageUrl(string $profileImageUrl) : self
     {
+        $this->initialized['profileImageUrl'] = true;
         $this->profileImageUrl = $profileImageUrl;
         return $this;
     }

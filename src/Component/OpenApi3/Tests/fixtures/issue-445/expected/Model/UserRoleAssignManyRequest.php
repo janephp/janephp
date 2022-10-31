@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UserRoleAssignManyRequest extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * User IDs.
      *
      * @var string[]
@@ -41,6 +49,7 @@ class UserRoleAssignManyRequest extends \ArrayObject
      */
     public function setUserIds(array $userIds) : self
     {
+        $this->initialized['userIds'] = true;
         $this->userIds = $userIds;
         return $this;
     }
@@ -62,6 +71,7 @@ class UserRoleAssignManyRequest extends \ArrayObject
      */
     public function setUserRoleIds(array $userRoleIds) : self
     {
+        $this->initialized['userRoleIds'] = true;
         $this->userRoleIds = $userRoleIds;
         return $this;
     }
@@ -85,6 +95,7 @@ class UserRoleAssignManyRequest extends \ArrayObject
     */
     public function setOperation($operation) : self
     {
+        $this->initialized['operation'] = true;
         $this->operation = $operation;
         return $this;
     }

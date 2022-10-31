@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class AssignTagboxItemsAction extends BusinessRuleAction
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Path to the object the tagbox is contained in.
      *
      * @var string|null
@@ -47,6 +55,7 @@ class AssignTagboxItemsAction extends BusinessRuleAction
      */
     public function setPath(?string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -68,6 +77,7 @@ class AssignTagboxItemsAction extends BusinessRuleAction
      */
     public function setFieldId(?string $fieldId) : self
     {
+        $this->initialized['fieldId'] = true;
         $this->fieldId = $fieldId;
         return $this;
     }
@@ -89,6 +99,7 @@ class AssignTagboxItemsAction extends BusinessRuleAction
      */
     public function setRefIds($refIds) : self
     {
+        $this->initialized['refIds'] = true;
         $this->refIds = $refIds;
         return $this;
     }
@@ -112,6 +123,7 @@ class AssignTagboxItemsAction extends BusinessRuleAction
     */
     public function setReplace(bool $replace) : self
     {
+        $this->initialized['replace'] = true;
         $this->replace = $replace;
         return $this;
     }

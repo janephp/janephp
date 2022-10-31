@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ApplicationEvent
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var \DateTime
@@ -32,6 +40,7 @@ class ApplicationEvent
      */
     public function setTimestamp(\DateTime $timestamp)
     {
+        $this->initialized['timestamp'] = true;
         $this->timestamp = $timestamp;
     }
     /**
@@ -50,6 +59,7 @@ class ApplicationEvent
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

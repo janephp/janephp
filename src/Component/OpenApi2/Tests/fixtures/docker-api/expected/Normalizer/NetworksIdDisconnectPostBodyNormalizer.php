@@ -59,10 +59,10 @@ class NetworksIdDisconnectPostBodyNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getContainer()) {
+        if ($object->isInitialized('container') && null !== $object->getContainer()) {
             $data['Container'] = $object->getContainer();
         }
-        if (null !== $object->getForce()) {
+        if ($object->isInitialized('force') && null !== $object->getForce()) {
             $data['Force'] = $object->getForce();
         }
         if (!($context['skip_validation'] ?? false)) {

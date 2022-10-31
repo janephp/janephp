@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class EndpointSettings
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * EndpointIPAMConfig represents an endpoint's IPAM configuration.
      *
      * @var EndpointIPAMConfig|null
@@ -102,6 +110,7 @@ class EndpointSettings
      */
     public function setIPAMConfig(?EndpointIPAMConfig $iPAMConfig) : self
     {
+        $this->initialized['iPAMConfig'] = true;
         $this->iPAMConfig = $iPAMConfig;
         return $this;
     }
@@ -123,6 +132,7 @@ class EndpointSettings
      */
     public function setLinks(array $links) : self
     {
+        $this->initialized['links'] = true;
         $this->links = $links;
         return $this;
     }
@@ -144,6 +154,7 @@ class EndpointSettings
      */
     public function setAliases(array $aliases) : self
     {
+        $this->initialized['aliases'] = true;
         $this->aliases = $aliases;
         return $this;
     }
@@ -165,6 +176,7 @@ class EndpointSettings
      */
     public function setNetworkID(string $networkID) : self
     {
+        $this->initialized['networkID'] = true;
         $this->networkID = $networkID;
         return $this;
     }
@@ -186,6 +198,7 @@ class EndpointSettings
      */
     public function setEndpointID(string $endpointID) : self
     {
+        $this->initialized['endpointID'] = true;
         $this->endpointID = $endpointID;
         return $this;
     }
@@ -207,6 +220,7 @@ class EndpointSettings
      */
     public function setGateway(string $gateway) : self
     {
+        $this->initialized['gateway'] = true;
         $this->gateway = $gateway;
         return $this;
     }
@@ -228,6 +242,7 @@ class EndpointSettings
      */
     public function setIPAddress(string $iPAddress) : self
     {
+        $this->initialized['iPAddress'] = true;
         $this->iPAddress = $iPAddress;
         return $this;
     }
@@ -249,6 +264,7 @@ class EndpointSettings
      */
     public function setIPPrefixLen(int $iPPrefixLen) : self
     {
+        $this->initialized['iPPrefixLen'] = true;
         $this->iPPrefixLen = $iPPrefixLen;
         return $this;
     }
@@ -270,6 +286,7 @@ class EndpointSettings
      */
     public function setIPv6Gateway(string $iPv6Gateway) : self
     {
+        $this->initialized['iPv6Gateway'] = true;
         $this->iPv6Gateway = $iPv6Gateway;
         return $this;
     }
@@ -291,6 +308,7 @@ class EndpointSettings
      */
     public function setGlobalIPv6Address(string $globalIPv6Address) : self
     {
+        $this->initialized['globalIPv6Address'] = true;
         $this->globalIPv6Address = $globalIPv6Address;
         return $this;
     }
@@ -312,6 +330,7 @@ class EndpointSettings
      */
     public function setGlobalIPv6PrefixLen(int $globalIPv6PrefixLen) : self
     {
+        $this->initialized['globalIPv6PrefixLen'] = true;
         $this->globalIPv6PrefixLen = $globalIPv6PrefixLen;
         return $this;
     }
@@ -333,6 +352,7 @@ class EndpointSettings
      */
     public function setMacAddress(string $macAddress) : self
     {
+        $this->initialized['macAddress'] = true;
         $this->macAddress = $macAddress;
         return $this;
     }
@@ -358,6 +378,7 @@ class EndpointSettings
     */
     public function setDriverOpts(?iterable $driverOpts) : self
     {
+        $this->initialized['driverOpts'] = true;
         $this->driverOpts = $driverOpts;
         return $this;
     }

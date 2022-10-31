@@ -78,18 +78,18 @@ class ReposOwnerRepoHooksPostBodyNormalizer implements DenormalizerInterface, No
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
         $data['config'] = $this->normalizer->normalize($object->getConfig(), 'json', $context);
-        if (null !== $object->getEvents()) {
+        if ($object->isInitialized('events') && null !== $object->getEvents()) {
             $values = array();
             foreach ($object->getEvents() as $value) {
                 $values[] = $value;
             }
             $data['events'] = $values;
         }
-        if (null !== $object->getActive()) {
+        if ($object->isInitialized('active') && null !== $object->getActive()) {
             $data['active'] = $object->getActive();
         }
         foreach ($object as $key => $value_1) {

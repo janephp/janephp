@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetails extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAdditionalInfoItem[]
@@ -82,6 +90,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
      */
     public function setAdditionalInfo(array $additionalInfo) : self
     {
+        $this->initialized['additionalInfo'] = true;
         $this->additionalInfo = $additionalInfo;
         return $this;
     }
@@ -103,6 +112,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
      */
     public function setAddresses(array $addresses) : self
     {
+        $this->initialized['addresses'] = true;
         $this->addresses = $addresses;
         return $this;
     }
@@ -124,6 +134,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
      */
     public function setAkAs(array $akAs) : self
     {
+        $this->initialized['akAs'] = true;
         $this->akAs = $akAs;
         return $this;
     }
@@ -145,6 +156,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
      */
     public function setComments(string $comments) : self
     {
+        $this->initialized['comments'] = true;
         $this->comments = $comments;
         return $this;
     }
@@ -166,6 +178,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
      */
     public function setDateListed(string $dateListed) : self
     {
+        $this->initialized['dateListed'] = true;
         $this->dateListed = $dateListed;
         return $this;
     }
@@ -187,6 +200,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
      */
     public function setEntityType(string $entityType) : self
     {
+        $this->initialized['entityType'] = true;
         $this->entityType = $entityType;
         return $this;
     }
@@ -208,6 +222,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
      */
     public function setIDs(array $iDs) : self
     {
+        $this->initialized['iDs'] = true;
         $this->iDs = $iDs;
         return $this;
     }
@@ -229,6 +244,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
      */
     public function setListReferenceNumber(string $listReferenceNumber) : self
     {
+        $this->initialized['listReferenceNumber'] = true;
         $this->listReferenceNumber = $listReferenceNumber;
         return $this;
     }
@@ -250,6 +266,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
      */
     public function setName(ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsName $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -271,6 +288,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
      */
     public function setReasonListed(string $reasonListed) : self
     {
+        $this->initialized['reasonListed'] = true;
         $this->reasonListed = $reasonListed;
         return $this;
     }

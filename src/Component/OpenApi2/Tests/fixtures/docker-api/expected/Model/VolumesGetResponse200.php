@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class VolumesGetResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * List of volumes
      *
      * @var Volume[]
@@ -34,6 +42,7 @@ class VolumesGetResponse200
      */
     public function setVolumes(array $volumes) : self
     {
+        $this->initialized['volumes'] = true;
         $this->volumes = $volumes;
         return $this;
     }
@@ -55,6 +64,7 @@ class VolumesGetResponse200
      */
     public function setWarnings(array $warnings) : self
     {
+        $this->initialized['warnings'] = true;
         $this->warnings = $warnings;
         return $this;
     }

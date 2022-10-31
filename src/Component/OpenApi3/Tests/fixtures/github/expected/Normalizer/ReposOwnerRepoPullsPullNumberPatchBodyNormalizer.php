@@ -78,19 +78,19 @@ class ReposOwnerRepoPullsPullNumberPatchBodyNormalizer implements DenormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getBody()) {
+        if ($object->isInitialized('body') && null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
-        if (null !== $object->getState()) {
+        if ($object->isInitialized('state') && null !== $object->getState()) {
             $data['state'] = $object->getState();
         }
-        if (null !== $object->getBase()) {
+        if ($object->isInitialized('base') && null !== $object->getBase()) {
             $data['base'] = $object->getBase();
         }
-        if (null !== $object->getMaintainerCanModify()) {
+        if ($object->isInitialized('maintainerCanModify') && null !== $object->getMaintainerCanModify()) {
             $data['maintainer_can_modify'] = $object->getMaintainerCanModify();
         }
         foreach ($object as $key => $value) {

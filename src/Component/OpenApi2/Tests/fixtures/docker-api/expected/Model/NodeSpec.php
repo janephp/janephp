@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class NodeSpec
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Name for the node.
      *
      * @var string
@@ -46,6 +54,7 @@ class NodeSpec
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -67,6 +76,7 @@ class NodeSpec
      */
     public function setLabels(iterable $labels) : self
     {
+        $this->initialized['labels'] = true;
         $this->labels = $labels;
         return $this;
     }
@@ -88,6 +98,7 @@ class NodeSpec
      */
     public function setRole(string $role) : self
     {
+        $this->initialized['role'] = true;
         $this->role = $role;
         return $this;
     }
@@ -109,6 +120,7 @@ class NodeSpec
      */
     public function setAvailability(string $availability) : self
     {
+        $this->initialized['availability'] = true;
         $this->availability = $availability;
         return $this;
     }

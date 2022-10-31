@@ -5,6 +5,14 @@ namespace Github\Model;
 class OrganizationSimple extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -94,6 +102,7 @@ class OrganizationSimple extends \ArrayObject
      */
     public function setLogin(string $login) : self
     {
+        $this->initialized['login'] = true;
         $this->login = $login;
         return $this;
     }
@@ -115,6 +124,7 @@ class OrganizationSimple extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -136,6 +146,7 @@ class OrganizationSimple extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -157,6 +168,7 @@ class OrganizationSimple extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -178,6 +190,7 @@ class OrganizationSimple extends \ArrayObject
      */
     public function setReposUrl(string $reposUrl) : self
     {
+        $this->initialized['reposUrl'] = true;
         $this->reposUrl = $reposUrl;
         return $this;
     }
@@ -199,6 +212,7 @@ class OrganizationSimple extends \ArrayObject
      */
     public function setEventsUrl(string $eventsUrl) : self
     {
+        $this->initialized['eventsUrl'] = true;
         $this->eventsUrl = $eventsUrl;
         return $this;
     }
@@ -220,6 +234,7 @@ class OrganizationSimple extends \ArrayObject
      */
     public function setHooksUrl(string $hooksUrl) : self
     {
+        $this->initialized['hooksUrl'] = true;
         $this->hooksUrl = $hooksUrl;
         return $this;
     }
@@ -241,6 +256,7 @@ class OrganizationSimple extends \ArrayObject
      */
     public function setIssuesUrl(string $issuesUrl) : self
     {
+        $this->initialized['issuesUrl'] = true;
         $this->issuesUrl = $issuesUrl;
         return $this;
     }
@@ -262,6 +278,7 @@ class OrganizationSimple extends \ArrayObject
      */
     public function setMembersUrl(string $membersUrl) : self
     {
+        $this->initialized['membersUrl'] = true;
         $this->membersUrl = $membersUrl;
         return $this;
     }
@@ -283,6 +300,7 @@ class OrganizationSimple extends \ArrayObject
      */
     public function setPublicMembersUrl(string $publicMembersUrl) : self
     {
+        $this->initialized['publicMembersUrl'] = true;
         $this->publicMembersUrl = $publicMembersUrl;
         return $this;
     }
@@ -304,6 +322,7 @@ class OrganizationSimple extends \ArrayObject
      */
     public function setAvatarUrl(string $avatarUrl) : self
     {
+        $this->initialized['avatarUrl'] = true;
         $this->avatarUrl = $avatarUrl;
         return $this;
     }
@@ -325,6 +344,7 @@ class OrganizationSimple extends \ArrayObject
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }

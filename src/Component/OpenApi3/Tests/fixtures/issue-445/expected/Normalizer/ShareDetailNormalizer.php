@@ -117,7 +117,7 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data = array();
         $data['id'] = $object->getId();
         $data['name'] = $object->getName();
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
         $data['creator'] = $object->getCreator();
@@ -127,23 +127,23 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['contentSelections'] = $values;
-        if (null !== $object->getLayerSchemaIds()) {
+        if ($object->isInitialized('layerSchemaIds') && null !== $object->getLayerSchemaIds()) {
             $values_1 = array();
             foreach ($object->getLayerSchemaIds() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['layerSchemaIds'] = $values_1;
         }
-        if (null !== $object->getData()) {
+        if ($object->isInitialized('data') && null !== $object->getData()) {
             $data['data'] = $object->getData();
         }
-        if (null !== $object->getExpirationDate()) {
+        if ($object->isInitialized('expirationDate') && null !== $object->getExpirationDate()) {
             $data['expirationDate'] = $object->getExpirationDate()->format('Y-m-d\\TH:i:sP');
         }
         $data['expired'] = $object->getExpired();
         $data['outputAccess'] = $object->getOutputAccess();
         $data['shareType'] = $object->getShareType();
-        if (null !== $object->getSchemas()) {
+        if ($object->isInitialized('schemas') && null !== $object->getSchemas()) {
             $values_2 = array();
             foreach ($object->getSchemas() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);

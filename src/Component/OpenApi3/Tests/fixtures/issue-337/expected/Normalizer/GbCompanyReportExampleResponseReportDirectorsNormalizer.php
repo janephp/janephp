@@ -70,14 +70,14 @@ class GbCompanyReportExampleResponseReportDirectorsNormalizer implements Denorma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCurrentDirectors()) {
+        if ($object->isInitialized('currentDirectors') && null !== $object->getCurrentDirectors()) {
             $values = array();
             foreach ($object->getCurrentDirectors() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['currentDirectors'] = $values;
         }
-        if (null !== $object->getPreviousDirectors()) {
+        if ($object->isInitialized('previousDirectors') && null !== $object->getPreviousDirectors()) {
             $values_1 = array();
             foreach ($object->getPreviousDirectors() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

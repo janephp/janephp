@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class IdentityProvider extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Mapping of identity provider claims to user attributes
      *
      * @var IdpClaimToUserAttributeMapping[]|null
@@ -64,6 +72,7 @@ class IdentityProvider extends \ArrayObject
      */
     public function setClaimMapping(?array $claimMapping) : self
     {
+        $this->initialized['claimMapping'] = true;
         $this->claimMapping = $claimMapping;
         return $this;
     }
@@ -85,6 +94,7 @@ class IdentityProvider extends \ArrayObject
      */
     public function setGroupClaimType(?string $groupClaimType) : self
     {
+        $this->initialized['groupClaimType'] = true;
         $this->groupClaimType = $groupClaimType;
         return $this;
     }
@@ -106,6 +116,7 @@ class IdentityProvider extends \ArrayObject
      */
     public function setGroupMapping(?array $groupMapping) : self
     {
+        $this->initialized['groupMapping'] = true;
         $this->groupMapping = $groupMapping;
         return $this;
     }
@@ -127,6 +138,7 @@ class IdentityProvider extends \ArrayObject
      */
     public function setFallbackUserRoleId(?string $fallbackUserRoleId) : self
     {
+        $this->initialized['fallbackUserRoleId'] = true;
         $this->fallbackUserRoleId = $fallbackUserRoleId;
         return $this;
     }
@@ -148,6 +160,7 @@ class IdentityProvider extends \ArrayObject
      */
     public function setId(?string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -169,6 +182,7 @@ class IdentityProvider extends \ArrayObject
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -190,6 +204,7 @@ class IdentityProvider extends \ArrayObject
      */
     public function setDisplayName(?string $displayName) : self
     {
+        $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
         return $this;
     }

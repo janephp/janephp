@@ -62,7 +62,7 @@ class ReposOwnerRepoIssuesIssueNumberLockPutBodyNormalizer implements Denormaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLockReason()) {
+        if ($object->isInitialized('lockReason') && null !== $object->getLockReason()) {
             $data['lock_reason'] = $object->getLockReason();
         }
         foreach ($object as $key => $value) {

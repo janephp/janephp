@@ -66,7 +66,7 @@ class CheckSuitePreferencePreferencesNormalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAutoTriggerChecks()) {
+        if ($object->isInitialized('autoTriggerChecks') && null !== $object->getAutoTriggerChecks()) {
             $values = array();
             foreach ($object->getAutoTriggerChecks() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

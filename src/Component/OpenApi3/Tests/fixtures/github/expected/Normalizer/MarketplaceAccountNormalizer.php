@@ -95,14 +95,14 @@ class MarketplaceAccountNormalizer implements DenormalizerInterface, NormalizerI
         $data['url'] = $object->getUrl();
         $data['id'] = $object->getId();
         $data['type'] = $object->getType();
-        if (null !== $object->getNodeId()) {
+        if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
         $data['login'] = $object->getLogin();
-        if (null !== $object->getEmail()) {
+        if ($object->isInitialized('email') && null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
-        if (null !== $object->getOrganizationBillingEmail()) {
+        if ($object->isInitialized('organizationBillingEmail') && null !== $object->getOrganizationBillingEmail()) {
             $data['organization_billing_email'] = $object->getOrganizationBillingEmail();
         }
         foreach ($object as $key => $value) {

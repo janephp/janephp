@@ -67,7 +67,7 @@ class ListItemManyReferencesRequestNormalizer implements DenormalizerInterface, 
             $values[] = $value;
         }
         $data['listItemIds'] = $values;
-        if (null !== $object->getReferences()) {
+        if ($object->isInitialized('references') && null !== $object->getReferences()) {
             $data['references'] = $object->getReferences();
         }
         return $data;

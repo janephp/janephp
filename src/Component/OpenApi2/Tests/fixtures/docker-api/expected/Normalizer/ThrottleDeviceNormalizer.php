@@ -59,10 +59,10 @@ class ThrottleDeviceNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPath()) {
+        if ($object->isInitialized('path') && null !== $object->getPath()) {
             $data['Path'] = $object->getPath();
         }
-        if (null !== $object->getRate()) {
+        if ($object->isInitialized('rate') && null !== $object->getRate()) {
             $data['Rate'] = $object->getRate();
         }
         if (!($context['skip_validation'] ?? false)) {

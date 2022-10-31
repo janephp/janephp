@@ -110,50 +110,50 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAdditionalInfo()) {
+        if ($object->isInitialized('additionalInfo') && null !== $object->getAdditionalInfo()) {
             $values = array();
             foreach ($object->getAdditionalInfo() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['additionalInfo'] = $values;
         }
-        if (null !== $object->getAddresses()) {
+        if ($object->isInitialized('addresses') && null !== $object->getAddresses()) {
             $values_1 = array();
             foreach ($object->getAddresses() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['addresses'] = $values_1;
         }
-        if (null !== $object->getAkAs()) {
+        if ($object->isInitialized('akAs') && null !== $object->getAkAs()) {
             $values_2 = array();
             foreach ($object->getAkAs() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['akAs'] = $values_2;
         }
-        if (null !== $object->getComments()) {
+        if ($object->isInitialized('comments') && null !== $object->getComments()) {
             $data['comments'] = $object->getComments();
         }
-        if (null !== $object->getDateListed()) {
+        if ($object->isInitialized('dateListed') && null !== $object->getDateListed()) {
             $data['dateListed'] = $object->getDateListed();
         }
-        if (null !== $object->getEntityType()) {
+        if ($object->isInitialized('entityType') && null !== $object->getEntityType()) {
             $data['entityType'] = $object->getEntityType();
         }
-        if (null !== $object->getIDs()) {
+        if ($object->isInitialized('iDs') && null !== $object->getIDs()) {
             $values_3 = array();
             foreach ($object->getIDs() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $data['iDs'] = $values_3;
         }
-        if (null !== $object->getListReferenceNumber()) {
+        if ($object->isInitialized('listReferenceNumber') && null !== $object->getListReferenceNumber()) {
             $data['listReferenceNumber'] = $object->getListReferenceNumber();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
         }
-        if (null !== $object->getReasonListed()) {
+        if ($object->isInitialized('reasonListed') && null !== $object->getReasonListed()) {
             $data['reasonListed'] = $object->getReasonListed();
         }
         foreach ($object as $key => $value_4) {

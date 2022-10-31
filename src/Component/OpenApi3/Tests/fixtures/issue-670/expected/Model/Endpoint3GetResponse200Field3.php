@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class Endpoint3GetResponse200Field3 extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -28,6 +36,7 @@ class Endpoint3GetResponse200Field3 extends \ArrayObject
      */
     public function setSubField3(string $subField3) : self
     {
+        $this->initialized['subField3'] = true;
         $this->subField3 = $subField3;
         return $this;
     }

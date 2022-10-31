@@ -5,6 +5,14 @@ namespace Github\Model;
 class GpgKeySubkeysItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -100,6 +108,7 @@ class GpgKeySubkeysItem extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -121,6 +130,7 @@ class GpgKeySubkeysItem extends \ArrayObject
      */
     public function setPrimaryKeyId(int $primaryKeyId) : self
     {
+        $this->initialized['primaryKeyId'] = true;
         $this->primaryKeyId = $primaryKeyId;
         return $this;
     }
@@ -142,6 +152,7 @@ class GpgKeySubkeysItem extends \ArrayObject
      */
     public function setKeyId(string $keyId) : self
     {
+        $this->initialized['keyId'] = true;
         $this->keyId = $keyId;
         return $this;
     }
@@ -163,6 +174,7 @@ class GpgKeySubkeysItem extends \ArrayObject
      */
     public function setPublicKey(string $publicKey) : self
     {
+        $this->initialized['publicKey'] = true;
         $this->publicKey = $publicKey;
         return $this;
     }
@@ -184,6 +196,7 @@ class GpgKeySubkeysItem extends \ArrayObject
      */
     public function setEmails(array $emails) : self
     {
+        $this->initialized['emails'] = true;
         $this->emails = $emails;
         return $this;
     }
@@ -205,6 +218,7 @@ class GpgKeySubkeysItem extends \ArrayObject
      */
     public function setSubkeys(array $subkeys) : self
     {
+        $this->initialized['subkeys'] = true;
         $this->subkeys = $subkeys;
         return $this;
     }
@@ -226,6 +240,7 @@ class GpgKeySubkeysItem extends \ArrayObject
      */
     public function setCanSign(bool $canSign) : self
     {
+        $this->initialized['canSign'] = true;
         $this->canSign = $canSign;
         return $this;
     }
@@ -247,6 +262,7 @@ class GpgKeySubkeysItem extends \ArrayObject
      */
     public function setCanEncryptComms(bool $canEncryptComms) : self
     {
+        $this->initialized['canEncryptComms'] = true;
         $this->canEncryptComms = $canEncryptComms;
         return $this;
     }
@@ -268,6 +284,7 @@ class GpgKeySubkeysItem extends \ArrayObject
      */
     public function setCanEncryptStorage(bool $canEncryptStorage) : self
     {
+        $this->initialized['canEncryptStorage'] = true;
         $this->canEncryptStorage = $canEncryptStorage;
         return $this;
     }
@@ -289,6 +306,7 @@ class GpgKeySubkeysItem extends \ArrayObject
      */
     public function setCanCertify(bool $canCertify) : self
     {
+        $this->initialized['canCertify'] = true;
         $this->canCertify = $canCertify;
         return $this;
     }
@@ -310,6 +328,7 @@ class GpgKeySubkeysItem extends \ArrayObject
      */
     public function setCreatedAt(string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -331,6 +350,7 @@ class GpgKeySubkeysItem extends \ArrayObject
      */
     public function setExpiresAt(?string $expiresAt) : self
     {
+        $this->initialized['expiresAt'] = true;
         $this->expiresAt = $expiresAt;
         return $this;
     }
@@ -352,6 +372,7 @@ class GpgKeySubkeysItem extends \ArrayObject
      */
     public function setRawKey(?string $rawKey) : self
     {
+        $this->initialized['rawKey'] = true;
         $this->rawKey = $rawKey;
         return $this;
     }

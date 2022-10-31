@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessProcessDetailsDataSchemaImport extends BusinessProcessDetailsDataBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Result information of a schema import operation
      *
      * @var mixed|null
@@ -34,6 +42,7 @@ class BusinessProcessDetailsDataSchemaImport extends BusinessProcessDetailsDataB
      */
     public function setSchemaImportResult($schemaImportResult) : self
     {
+        $this->initialized['schemaImportResult'] = true;
         $this->schemaImportResult = $schemaImportResult;
         return $this;
     }
@@ -55,6 +64,7 @@ class BusinessProcessDetailsDataSchemaImport extends BusinessProcessDetailsDataB
      */
     public function setListItemImportResult($listItemImportResult) : self
     {
+        $this->initialized['listItemImportResult'] = true;
         $this->listItemImportResult = $listItemImportResult;
         return $this;
     }

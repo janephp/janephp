@@ -5,6 +5,14 @@ namespace Github\Model;
 class HookConfig extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -82,6 +90,7 @@ class HookConfig extends \ArrayObject
      */
     public function setEmail(string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -103,6 +112,7 @@ class HookConfig extends \ArrayObject
      */
     public function setPassword(string $password) : self
     {
+        $this->initialized['password'] = true;
         $this->password = $password;
         return $this;
     }
@@ -124,6 +134,7 @@ class HookConfig extends \ArrayObject
      */
     public function setRoom(string $room) : self
     {
+        $this->initialized['room'] = true;
         $this->room = $room;
         return $this;
     }
@@ -145,6 +156,7 @@ class HookConfig extends \ArrayObject
      */
     public function setSubdomain(string $subdomain) : self
     {
+        $this->initialized['subdomain'] = true;
         $this->subdomain = $subdomain;
         return $this;
     }
@@ -166,6 +178,7 @@ class HookConfig extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -187,6 +200,7 @@ class HookConfig extends \ArrayObject
      */
     public function setInsecureSsl(string $insecureSsl) : self
     {
+        $this->initialized['insecureSsl'] = true;
         $this->insecureSsl = $insecureSsl;
         return $this;
     }
@@ -208,6 +222,7 @@ class HookConfig extends \ArrayObject
      */
     public function setContentType(string $contentType) : self
     {
+        $this->initialized['contentType'] = true;
         $this->contentType = $contentType;
         return $this;
     }
@@ -229,6 +244,7 @@ class HookConfig extends \ArrayObject
      */
     public function setDigest(string $digest) : self
     {
+        $this->initialized['digest'] = true;
         $this->digest = $digest;
         return $this;
     }
@@ -250,6 +266,7 @@ class HookConfig extends \ArrayObject
      */
     public function setSecret(string $secret) : self
     {
+        $this->initialized['secret'] = true;
         $this->secret = $secret;
         return $this;
     }
@@ -271,6 +288,7 @@ class HookConfig extends \ArrayObject
      */
     public function setToken(string $token) : self
     {
+        $this->initialized['token'] = true;
         $this->token = $token;
         return $this;
     }

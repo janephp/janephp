@@ -218,7 +218,7 @@ class GetResponse200Normalizer implements DenormalizerInterface, NormalizerInter
         $data['current_user_repositories_url'] = $object->getCurrentUserRepositoriesUrl();
         $data['starred_url'] = $object->getStarredUrl();
         $data['starred_gists_url'] = $object->getStarredGistsUrl();
-        if (null !== $object->getTopicSearchUrl()) {
+        if ($object->isInitialized('topicSearchUrl') && null !== $object->getTopicSearchUrl()) {
             $data['topic_search_url'] = $object->getTopicSearchUrl();
         }
         $data['user_url'] = $object->getUserUrl();

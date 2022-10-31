@@ -92,28 +92,28 @@ class OutputResetRetryAttemptsRequestNormalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getOutputIds()) {
+        if ($object->isInitialized('outputIds') && null !== $object->getOutputIds()) {
             $values = array();
             foreach ($object->getOutputIds() as $value) {
                 $values[] = $value;
             }
             $data['outputIds'] = $values;
         }
-        if (null !== $object->getContentIds()) {
+        if ($object->isInitialized('contentIds') && null !== $object->getContentIds()) {
             $values_1 = array();
             foreach ($object->getContentIds() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['contentIds'] = $values_1;
         }
-        if (null !== $object->getFileExtensions()) {
+        if ($object->isInitialized('fileExtensions') && null !== $object->getFileExtensions()) {
             $values_2 = array();
             foreach ($object->getFileExtensions() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['fileExtensions'] = $values_2;
         }
-        if (null !== $object->getOutputFormatIds()) {
+        if ($object->isInitialized('outputFormatIds') && null !== $object->getOutputFormatIds()) {
             $values_3 = array();
             foreach ($object->getOutputFormatIds() as $value_3) {
                 $values_3[] = $value_3;

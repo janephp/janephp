@@ -70,16 +70,16 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getComments()) {
+        if ($object->isInitialized('comments') && null !== $object->getComments()) {
             $data['comments'] = $object->getComments();
         }
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getValue()) {
+        if ($object->isInitialized('value') && null !== $object->getValue()) {
             $data['value'] = $object->getValue();
         }
         foreach ($object as $key => $value) {

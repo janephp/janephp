@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentDownloadEvent extends ApplicationEvent
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var DownloadTrackingInfo[]|null
@@ -46,6 +54,7 @@ class ContentDownloadEvent extends ApplicationEvent
      */
     public function setDownloadInfos(?array $downloadInfos) : self
     {
+        $this->initialized['downloadInfos'] = true;
         $this->downloadInfos = $downloadInfos;
         return $this;
     }
@@ -67,6 +76,7 @@ class ContentDownloadEvent extends ApplicationEvent
      */
     public function setFileSize(int $fileSize) : self
     {
+        $this->initialized['fileSize'] = true;
         $this->fileSize = $fileSize;
         return $this;
     }
@@ -88,6 +98,7 @@ class ContentDownloadEvent extends ApplicationEvent
      */
     public function setShareToken(?string $shareToken) : self
     {
+        $this->initialized['shareToken'] = true;
         $this->shareToken = $shareToken;
         return $this;
     }
@@ -109,6 +120,7 @@ class ContentDownloadEvent extends ApplicationEvent
      */
     public function setRange(?string $range) : self
     {
+        $this->initialized['range'] = true;
         $this->range = $range;
         return $this;
     }

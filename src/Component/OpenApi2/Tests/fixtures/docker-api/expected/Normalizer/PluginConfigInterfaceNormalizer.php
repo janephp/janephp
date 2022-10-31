@@ -72,7 +72,7 @@ class PluginConfigInterfaceNormalizer implements DenormalizerInterface, Normaliz
         }
         $data['Types'] = $values;
         $data['Socket'] = $object->getSocket();
-        if (null !== $object->getProtocolScheme()) {
+        if ($object->isInitialized('protocolScheme') && null !== $object->getProtocolScheme()) {
             $data['ProtocolScheme'] = $object->getProtocolScheme();
         }
         if (!($context['skip_validation'] ?? false)) {

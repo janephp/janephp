@@ -5,6 +5,14 @@ namespace Github\Model;
 class MarketplaceListingPlan extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -100,6 +108,7 @@ class MarketplaceListingPlan extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -121,6 +130,7 @@ class MarketplaceListingPlan extends \ArrayObject
      */
     public function setAccountsUrl(string $accountsUrl) : self
     {
+        $this->initialized['accountsUrl'] = true;
         $this->accountsUrl = $accountsUrl;
         return $this;
     }
@@ -142,6 +152,7 @@ class MarketplaceListingPlan extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -163,6 +174,7 @@ class MarketplaceListingPlan extends \ArrayObject
      */
     public function setNumber(int $number) : self
     {
+        $this->initialized['number'] = true;
         $this->number = $number;
         return $this;
     }
@@ -184,6 +196,7 @@ class MarketplaceListingPlan extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -205,6 +218,7 @@ class MarketplaceListingPlan extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -226,6 +240,7 @@ class MarketplaceListingPlan extends \ArrayObject
      */
     public function setMonthlyPriceInCents(int $monthlyPriceInCents) : self
     {
+        $this->initialized['monthlyPriceInCents'] = true;
         $this->monthlyPriceInCents = $monthlyPriceInCents;
         return $this;
     }
@@ -247,6 +262,7 @@ class MarketplaceListingPlan extends \ArrayObject
      */
     public function setYearlyPriceInCents(int $yearlyPriceInCents) : self
     {
+        $this->initialized['yearlyPriceInCents'] = true;
         $this->yearlyPriceInCents = $yearlyPriceInCents;
         return $this;
     }
@@ -268,6 +284,7 @@ class MarketplaceListingPlan extends \ArrayObject
      */
     public function setPriceModel(string $priceModel) : self
     {
+        $this->initialized['priceModel'] = true;
         $this->priceModel = $priceModel;
         return $this;
     }
@@ -289,6 +306,7 @@ class MarketplaceListingPlan extends \ArrayObject
      */
     public function setHasFreeTrial(bool $hasFreeTrial) : self
     {
+        $this->initialized['hasFreeTrial'] = true;
         $this->hasFreeTrial = $hasFreeTrial;
         return $this;
     }
@@ -310,6 +328,7 @@ class MarketplaceListingPlan extends \ArrayObject
      */
     public function setUnitName(?string $unitName) : self
     {
+        $this->initialized['unitName'] = true;
         $this->unitName = $unitName;
         return $this;
     }
@@ -331,6 +350,7 @@ class MarketplaceListingPlan extends \ArrayObject
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -352,6 +372,7 @@ class MarketplaceListingPlan extends \ArrayObject
      */
     public function setBullets(array $bullets) : self
     {
+        $this->initialized['bullets'] = true;
         $this->bullets = $bullets;
         return $this;
     }

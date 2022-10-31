@@ -71,10 +71,10 @@ class ScimV2OrganizationsOrgUsersPostBodyEmailsItemNormalizer implements Denorma
     {
         $data = array();
         $data['value'] = $object->getValue();
-        if (null !== $object->getPrimary()) {
+        if ($object->isInitialized('primary') && null !== $object->getPrimary()) {
             $data['primary'] = $object->getPrimary();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
         foreach ($object as $key => $value) {

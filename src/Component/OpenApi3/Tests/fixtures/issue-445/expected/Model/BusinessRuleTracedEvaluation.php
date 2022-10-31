@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessRuleTracedEvaluation
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Indicates if the rule was found to be executable.
      *
      * @var bool
@@ -52,6 +60,7 @@ class BusinessRuleTracedEvaluation
      */
     public function setConditionSatisfied(bool $conditionSatisfied) : self
     {
+        $this->initialized['conditionSatisfied'] = true;
         $this->conditionSatisfied = $conditionSatisfied;
         return $this;
     }
@@ -73,6 +82,7 @@ class BusinessRuleTracedEvaluation
      */
     public function setConditions(?array $conditions) : self
     {
+        $this->initialized['conditions'] = true;
         $this->conditions = $conditions;
         return $this;
     }
@@ -94,6 +104,7 @@ class BusinessRuleTracedEvaluation
      */
     public function setTransformationGroups(?array $transformationGroups) : self
     {
+        $this->initialized['transformationGroups'] = true;
         $this->transformationGroups = $transformationGroups;
         return $this;
     }
@@ -115,6 +126,7 @@ class BusinessRuleTracedEvaluation
      */
     public function setActions(?array $actions) : self
     {
+        $this->initialized['actions'] = true;
         $this->actions = $actions;
         return $this;
     }
@@ -136,6 +148,7 @@ class BusinessRuleTracedEvaluation
      */
     public function setVariables(?iterable $variables) : self
     {
+        $this->initialized['variables'] = true;
         $this->variables = $variables;
         return $this;
     }

@@ -82,25 +82,25 @@ class GbPeopleReportReponseReportOtherAddressesItemNormalizer implements Denorma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getSimpleValue()) {
+        if ($object->isInitialized('simpleValue') && null !== $object->getSimpleValue()) {
             $data['simpleValue'] = $object->getSimpleValue();
         }
-        if (null !== $object->getStreet()) {
+        if ($object->isInitialized('street') && null !== $object->getStreet()) {
             $data['street'] = $object->getStreet();
         }
-        if (null !== $object->getCity()) {
+        if ($object->isInitialized('city') && null !== $object->getCity()) {
             $data['city'] = $object->getCity();
         }
-        if (null !== $object->getPostalCode()) {
+        if ($object->isInitialized('postalCode') && null !== $object->getPostalCode()) {
             $data['postalCode'] = $object->getPostalCode();
         }
-        if (null !== $object->getProvince()) {
+        if ($object->isInitialized('province') && null !== $object->getProvince()) {
             $data['province'] = $object->getProvince();
         }
-        if (null !== $object->getCountry()) {
+        if ($object->isInitialized('country') && null !== $object->getCountry()) {
             $data['country'] = $object->getCountry();
         }
         foreach ($object as $key => $value) {

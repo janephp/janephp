@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ImageMetadata
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -28,6 +36,7 @@ class ImageMetadata
      */
     public function setLastTagTime(string $lastTagTime) : self
     {
+        $this->initialized['lastTagTime'] = true;
         $this->lastTagTime = $lastTagTime;
         return $this;
     }

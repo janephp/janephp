@@ -67,7 +67,7 @@ class OrgsOrgProjectsPostBodyNormalizer implements DenormalizerInterface, Normal
     {
         $data = array();
         $data['name'] = $object->getName();
-        if (null !== $object->getBody()) {
+        if ($object->isInitialized('body') && null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
         foreach ($object as $key => $value) {

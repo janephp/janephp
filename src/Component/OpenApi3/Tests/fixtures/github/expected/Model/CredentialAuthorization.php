@@ -5,6 +5,14 @@ namespace Github\Model;
 class CredentialAuthorization extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * User login that owns the underlying credential.
      *
      * @var string
@@ -70,6 +78,7 @@ class CredentialAuthorization extends \ArrayObject
      */
     public function setLogin(string $login) : self
     {
+        $this->initialized['login'] = true;
         $this->login = $login;
         return $this;
     }
@@ -91,6 +100,7 @@ class CredentialAuthorization extends \ArrayObject
      */
     public function setCredentialId(int $credentialId) : self
     {
+        $this->initialized['credentialId'] = true;
         $this->credentialId = $credentialId;
         return $this;
     }
@@ -112,6 +122,7 @@ class CredentialAuthorization extends \ArrayObject
      */
     public function setCredentialType(string $credentialType) : self
     {
+        $this->initialized['credentialType'] = true;
         $this->credentialType = $credentialType;
         return $this;
     }
@@ -133,6 +144,7 @@ class CredentialAuthorization extends \ArrayObject
      */
     public function setTokenLastEight(string $tokenLastEight) : self
     {
+        $this->initialized['tokenLastEight'] = true;
         $this->tokenLastEight = $tokenLastEight;
         return $this;
     }
@@ -154,6 +166,7 @@ class CredentialAuthorization extends \ArrayObject
      */
     public function setCredentialAuthorizedAt(\DateTime $credentialAuthorizedAt) : self
     {
+        $this->initialized['credentialAuthorizedAt'] = true;
         $this->credentialAuthorizedAt = $credentialAuthorizedAt;
         return $this;
     }
@@ -175,6 +188,7 @@ class CredentialAuthorization extends \ArrayObject
      */
     public function setScopes(array $scopes) : self
     {
+        $this->initialized['scopes'] = true;
         $this->scopes = $scopes;
         return $this;
     }
@@ -196,6 +210,7 @@ class CredentialAuthorization extends \ArrayObject
      */
     public function setFingerprint(string $fingerprint) : self
     {
+        $this->initialized['fingerprint'] = true;
         $this->fingerprint = $fingerprint;
         return $this;
     }
@@ -217,6 +232,7 @@ class CredentialAuthorization extends \ArrayObject
      */
     public function setCredentialAccessedAt(?\DateTime $credentialAccessedAt) : self
     {
+        $this->initialized['credentialAccessedAt'] = true;
         $this->credentialAccessedAt = $credentialAccessedAt;
         return $this;
     }

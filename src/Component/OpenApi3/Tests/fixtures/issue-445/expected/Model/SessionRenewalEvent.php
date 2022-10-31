@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SessionRenewalEvent extends ApplicationEvent
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * User authorization state
      *
      * @var string
@@ -28,6 +36,7 @@ class SessionRenewalEvent extends ApplicationEvent
      */
     public function setAuthorizationState(string $authorizationState) : self
     {
+        $this->initialized['authorizationState'] = true;
         $this->authorizationState = $authorizationState;
         return $this;
     }

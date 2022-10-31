@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class FieldExistsResponse
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Indicates if a field with the specified ID currently exists.
      *
      * @var bool
@@ -43,6 +51,7 @@ class FieldExistsResponse
      */
     public function setExists(bool $exists) : self
     {
+        $this->initialized['exists'] = true;
         $this->exists = $exists;
         return $this;
     }
@@ -66,6 +75,7 @@ class FieldExistsResponse
     */
     public function setPreviouslyUsed(bool $previouslyUsed) : self
     {
+        $this->initialized['previouslyUsed'] = true;
         $this->previouslyUsed = $previouslyUsed;
         return $this;
     }
@@ -91,6 +101,7 @@ class FieldExistsResponse
     */
     public function setSchemaId(?string $schemaId) : self
     {
+        $this->initialized['schemaId'] = true;
         $this->schemaId = $schemaId;
         return $this;
     }

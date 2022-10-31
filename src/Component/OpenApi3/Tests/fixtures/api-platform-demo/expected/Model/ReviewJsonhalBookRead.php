@@ -5,6 +5,14 @@ namespace ApiPlatform\Demo\Model;
 class ReviewJsonhalBookRead extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var ReviewJsonhalBookReadLinks
@@ -40,6 +48,7 @@ class ReviewJsonhalBookRead extends \ArrayObject
      */
     public function setLinks(ReviewJsonhalBookReadLinks $links) : self
     {
+        $this->initialized['links'] = true;
         $this->links = $links;
         return $this;
     }
@@ -61,6 +70,7 @@ class ReviewJsonhalBookRead extends \ArrayObject
      */
     public function setId(?string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -82,6 +92,7 @@ class ReviewJsonhalBookRead extends \ArrayObject
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * The permission to grant to the team for this project. Can be one of:  
     \* `read` - team members can read, but not write to or administer this project.  
     \* `write` - team members can read and write, but not administer this project.  
@@ -40,6 +48,7 @@ class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody extends \ArrayObject
     */
     public function setPermission(string $permission) : self
     {
+        $this->initialized['permission'] = true;
         $this->permission = $permission;
         return $this;
     }

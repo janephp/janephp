@@ -5,6 +5,14 @@ namespace ApiPlatform\Demo\Model;
 class ReviewReviewWrite extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The actual body of the review.
      *
      * @var string
@@ -60,6 +68,7 @@ class ReviewReviewWrite extends \ArrayObject
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }
@@ -81,6 +90,7 @@ class ReviewReviewWrite extends \ArrayObject
      */
     public function setRating(int $rating) : self
     {
+        $this->initialized['rating'] = true;
         $this->rating = $rating;
         return $this;
     }
@@ -106,6 +116,7 @@ class ReviewReviewWrite extends \ArrayObject
      */
     public function setLetter(?string $letter) : self
     {
+        $this->initialized['letter'] = true;
         $this->letter = $letter;
         return $this;
     }
@@ -127,6 +138,7 @@ class ReviewReviewWrite extends \ArrayObject
      */
     public function setBook(string $book) : self
     {
+        $this->initialized['book'] = true;
         $this->book = $book;
         return $this;
     }
@@ -148,6 +160,7 @@ class ReviewReviewWrite extends \ArrayObject
      */
     public function setAuthor(?string $author) : self
     {
+        $this->initialized['author'] = true;
         $this->author = $author;
         return $this;
     }
@@ -169,6 +182,7 @@ class ReviewReviewWrite extends \ArrayObject
      */
     public function setPublicationDate(?\DateTime $publicationDate) : self
     {
+        $this->initialized['publicationDate'] = true;
         $this->publicationDate = $publicationDate;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SchemaOwnershipTransferManyRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The schema ids.
      *
      * @var string[]|null
@@ -34,6 +42,7 @@ class SchemaOwnershipTransferManyRequest
      */
     public function setSchemaIds(?array $schemaIds) : self
     {
+        $this->initialized['schemaIds'] = true;
         $this->schemaIds = $schemaIds;
         return $this;
     }
@@ -55,6 +64,7 @@ class SchemaOwnershipTransferManyRequest
      */
     public function setTransferUserId(?string $transferUserId) : self
     {
+        $this->initialized['transferUserId'] = true;
         $this->transferUserId = $transferUserId;
         return $this;
     }

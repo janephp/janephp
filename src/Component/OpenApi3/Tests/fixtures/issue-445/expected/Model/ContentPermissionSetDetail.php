@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentPermissionSetDetail extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The permission set ID.
      *
      * @var string
@@ -64,6 +72,7 @@ class ContentPermissionSetDetail extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -85,6 +94,7 @@ class ContentPermissionSetDetail extends \ArrayObject
      */
     public function setNames($names) : self
     {
+        $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }
@@ -106,6 +116,7 @@ class ContentPermissionSetDetail extends \ArrayObject
      */
     public function setUserRolesRights(?array $userRolesRights) : self
     {
+        $this->initialized['userRolesRights'] = true;
         $this->userRolesRights = $userRolesRights;
         return $this;
     }
@@ -127,6 +138,7 @@ class ContentPermissionSetDetail extends \ArrayObject
      */
     public function setUserRolesPermissionSetRights(?array $userRolesPermissionSetRights) : self
     {
+        $this->initialized['userRolesPermissionSetRights'] = true;
         $this->userRolesPermissionSetRights = $userRolesPermissionSetRights;
         return $this;
     }
@@ -148,6 +160,7 @@ class ContentPermissionSetDetail extends \ArrayObject
      */
     public function setExclusive(bool $exclusive) : self
     {
+        $this->initialized['exclusive'] = true;
         $this->exclusive = $exclusive;
         return $this;
     }
@@ -169,6 +182,7 @@ class ContentPermissionSetDetail extends \ArrayObject
      */
     public function setOwnerTokenId(string $ownerTokenId) : self
     {
+        $this->initialized['ownerTokenId'] = true;
         $this->ownerTokenId = $ownerTokenId;
         return $this;
     }
@@ -190,6 +204,7 @@ class ContentPermissionSetDetail extends \ArrayObject
      */
     public function setAudit($audit) : self
     {
+        $this->initialized['audit'] = true;
         $this->audit = $audit;
         return $this;
     }

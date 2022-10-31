@@ -81,19 +81,19 @@ class GistFullhistoryItemNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getVersion()) {
+        if ($object->isInitialized('version') && null !== $object->getVersion()) {
             $data['version'] = $object->getVersion();
         }
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         }
-        if (null !== $object->getChangeStatus()) {
+        if ($object->isInitialized('changeStatus') && null !== $object->getChangeStatus()) {
             $data['change_status'] = $this->normalizer->normalize($object->getChangeStatus(), 'json', $context);
         }
-        if (null !== $object->getCommittedAt()) {
+        if ($object->isInitialized('committedAt') && null !== $object->getCommittedAt()) {
             $data['committed_at'] = $object->getCommittedAt();
         }
         foreach ($object as $key => $value) {

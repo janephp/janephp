@@ -66,10 +66,10 @@ class ListFreshInvestigationResponseNormalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTotalCount()) {
+        if ($object->isInitialized('totalCount') && null !== $object->getTotalCount()) {
             $data['totalCount'] = $object->getTotalCount();
         }
-        if (null !== $object->getOrders()) {
+        if ($object->isInitialized('orders') && null !== $object->getOrders()) {
             $values = array();
             foreach ($object->getOrders() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

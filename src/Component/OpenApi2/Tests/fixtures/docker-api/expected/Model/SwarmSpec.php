@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class SwarmSpec
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Name of the swarm.
      *
      * @var string
@@ -70,6 +78,7 @@ class SwarmSpec
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -91,6 +100,7 @@ class SwarmSpec
      */
     public function setLabels(iterable $labels) : self
     {
+        $this->initialized['labels'] = true;
         $this->labels = $labels;
         return $this;
     }
@@ -112,6 +122,7 @@ class SwarmSpec
      */
     public function setOrchestration(?SwarmSpecOrchestration $orchestration) : self
     {
+        $this->initialized['orchestration'] = true;
         $this->orchestration = $orchestration;
         return $this;
     }
@@ -133,6 +144,7 @@ class SwarmSpec
      */
     public function setRaft(SwarmSpecRaft $raft) : self
     {
+        $this->initialized['raft'] = true;
         $this->raft = $raft;
         return $this;
     }
@@ -154,6 +166,7 @@ class SwarmSpec
      */
     public function setDispatcher(?SwarmSpecDispatcher $dispatcher) : self
     {
+        $this->initialized['dispatcher'] = true;
         $this->dispatcher = $dispatcher;
         return $this;
     }
@@ -175,6 +188,7 @@ class SwarmSpec
      */
     public function setCAConfig(?SwarmSpecCAConfig $cAConfig) : self
     {
+        $this->initialized['cAConfig'] = true;
         $this->cAConfig = $cAConfig;
         return $this;
     }
@@ -196,6 +210,7 @@ class SwarmSpec
      */
     public function setEncryptionConfig(SwarmSpecEncryptionConfig $encryptionConfig) : self
     {
+        $this->initialized['encryptionConfig'] = true;
         $this->encryptionConfig = $encryptionConfig;
         return $this;
     }
@@ -217,6 +232,7 @@ class SwarmSpec
      */
     public function setTaskDefaults(SwarmSpecTaskDefaults $taskDefaults) : self
     {
+        $this->initialized['taskDefaults'] = true;
         $this->taskDefaults = $taskDefaults;
         return $this;
     }

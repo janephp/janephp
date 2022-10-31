@@ -98,34 +98,34 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemNormalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getFirstName()) {
+        if ($object->isInitialized('firstName') && null !== $object->getFirstName()) {
             $data['firstName'] = $object->getFirstName();
         }
-        if (null !== $object->getSurname()) {
+        if ($object->isInitialized('surname') && null !== $object->getSurname()) {
             $data['surname'] = $object->getSurname();
         }
-        if (null !== $object->getAddress()) {
+        if ($object->isInitialized('address') && null !== $object->getAddress()) {
             $data['address'] = $this->normalizer->normalize($object->getAddress(), 'json', $context);
         }
-        if (null !== $object->getGender()) {
+        if ($object->isInitialized('gender') && null !== $object->getGender()) {
             $data['gender'] = $object->getGender();
         }
-        if (null !== $object->getDateOfBirth()) {
+        if ($object->isInitialized('dateOfBirth') && null !== $object->getDateOfBirth()) {
             $data['dateOfBirth'] = $object->getDateOfBirth();
         }
-        if (null !== $object->getDirectorType()) {
+        if ($object->isInitialized('directorType') && null !== $object->getDirectorType()) {
             $data['directorType'] = $object->getDirectorType();
         }
-        if (null !== $object->getPositions()) {
+        if ($object->isInitialized('positions') && null !== $object->getPositions()) {
             $values = array();
             foreach ($object->getPositions() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

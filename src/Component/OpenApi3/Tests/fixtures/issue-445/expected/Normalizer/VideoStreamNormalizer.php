@@ -142,44 +142,44 @@ class VideoStreamNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBitRate()) {
+        if ($object->isInitialized('bitRate') && null !== $object->getBitRate()) {
             $data['bitRate'] = $object->getBitRate();
         }
-        if (null !== $object->getCodec()) {
+        if ($object->isInitialized('codec') && null !== $object->getCodec()) {
             $data['codec'] = $object->getCodec();
         }
-        if (null !== $object->getDisplayAspectRatio()) {
+        if ($object->isInitialized('displayAspectRatio') && null !== $object->getDisplayAspectRatio()) {
             $data['displayAspectRatio'] = $object->getDisplayAspectRatio();
         }
         $data['durationInSeconds'] = $object->getDurationInSeconds();
-        if (null !== $object->getFormat()) {
+        if ($object->isInitialized('format') && null !== $object->getFormat()) {
             $data['format'] = $object->getFormat();
         }
-        if (null !== $object->getFrameCount()) {
+        if ($object->isInitialized('frameCount') && null !== $object->getFrameCount()) {
             $data['frameCount'] = $object->getFrameCount();
         }
-        if (null !== $object->getFrameRate()) {
+        if ($object->isInitialized('frameRate') && null !== $object->getFrameRate()) {
             $data['frameRate'] = $object->getFrameRate();
         }
-        if (null !== $object->getHeight()) {
+        if ($object->isInitialized('height') && null !== $object->getHeight()) {
             $data['height'] = $object->getHeight();
         }
-        if (null !== $object->getLanguage()) {
+        if ($object->isInitialized('language') && null !== $object->getLanguage()) {
             $data['language'] = $object->getLanguage();
         }
-        if (null !== $object->getPixelAspectRatio()) {
+        if ($object->isInitialized('pixelAspectRatio') && null !== $object->getPixelAspectRatio()) {
             $data['pixelAspectRatio'] = $object->getPixelAspectRatio();
         }
-        if (null !== $object->getResolution()) {
+        if ($object->isInitialized('resolution') && null !== $object->getResolution()) {
             $data['resolution'] = $object->getResolution();
         }
-        if (null !== $object->getStreamSize()) {
+        if ($object->isInitialized('streamSize') && null !== $object->getStreamSize()) {
             $data['streamSize'] = $object->getStreamSize();
         }
-        if (null !== $object->getWidth()) {
+        if ($object->isInitialized('width') && null !== $object->getWidth()) {
             $data['width'] = $object->getWidth();
         }
-        if (null !== $object->getRotation()) {
+        if ($object->isInitialized('rotation') && null !== $object->getRotation()) {
             $data['rotation'] = $object->getRotation();
         }
         return $data;

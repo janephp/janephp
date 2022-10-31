@@ -136,76 +136,76 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getClient()) {
+        if ($object->isInitialized('client') && null !== $object->getClient()) {
             $data['client'] = $this->normalizer->normalize($object->getClient(), 'json', $context);
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getCode()) {
+        if ($object->isInitialized('code') && null !== $object->getCode()) {
             $data['code'] = $object->getCode();
         }
-        if (null !== $object->getIsActive()) {
+        if ($object->isInitialized('isActive') && null !== $object->getIsActive()) {
             $data['is_active'] = $object->getIsActive();
         }
-        if (null !== $object->getIsBillable()) {
+        if ($object->isInitialized('isBillable') && null !== $object->getIsBillable()) {
             $data['is_billable'] = $object->getIsBillable();
         }
-        if (null !== $object->getIsFixedFee()) {
+        if ($object->isInitialized('isFixedFee') && null !== $object->getIsFixedFee()) {
             $data['is_fixed_fee'] = $object->getIsFixedFee();
         }
-        if (null !== $object->getBillBy()) {
+        if ($object->isInitialized('billBy') && null !== $object->getBillBy()) {
             $data['bill_by'] = $object->getBillBy();
         }
-        if (null !== $object->getHourlyRate()) {
+        if ($object->isInitialized('hourlyRate') && null !== $object->getHourlyRate()) {
             $data['hourly_rate'] = $object->getHourlyRate();
         }
-        if (null !== $object->getBudget()) {
+        if ($object->isInitialized('budget') && null !== $object->getBudget()) {
             $data['budget'] = $object->getBudget();
         }
-        if (null !== $object->getBudgetBy()) {
+        if ($object->isInitialized('budgetBy') && null !== $object->getBudgetBy()) {
             $data['budget_by'] = $object->getBudgetBy();
         }
-        if (null !== $object->getBudgetIsMonthly()) {
+        if ($object->isInitialized('budgetIsMonthly') && null !== $object->getBudgetIsMonthly()) {
             $data['budget_is_monthly'] = $object->getBudgetIsMonthly();
         }
-        if (null !== $object->getNotifyWhenOverBudget()) {
+        if ($object->isInitialized('notifyWhenOverBudget') && null !== $object->getNotifyWhenOverBudget()) {
             $data['notify_when_over_budget'] = $object->getNotifyWhenOverBudget();
         }
-        if (null !== $object->getOverBudgetNotificationPercentage()) {
+        if ($object->isInitialized('overBudgetNotificationPercentage') && null !== $object->getOverBudgetNotificationPercentage()) {
             $data['over_budget_notification_percentage'] = $object->getOverBudgetNotificationPercentage();
         }
-        if (null !== $object->getOverBudgetNotificationDate()) {
+        if ($object->isInitialized('overBudgetNotificationDate') && null !== $object->getOverBudgetNotificationDate()) {
             $data['over_budget_notification_date'] = $object->getOverBudgetNotificationDate()->format('Y-m-d');
         }
-        if (null !== $object->getShowBudgetToAll()) {
+        if ($object->isInitialized('showBudgetToAll') && null !== $object->getShowBudgetToAll()) {
             $data['show_budget_to_all'] = $object->getShowBudgetToAll();
         }
-        if (null !== $object->getCostBudget()) {
+        if ($object->isInitialized('costBudget') && null !== $object->getCostBudget()) {
             $data['cost_budget'] = $object->getCostBudget();
         }
-        if (null !== $object->getCostBudgetIncludeExpenses()) {
+        if ($object->isInitialized('costBudgetIncludeExpenses') && null !== $object->getCostBudgetIncludeExpenses()) {
             $data['cost_budget_include_expenses'] = $object->getCostBudgetIncludeExpenses();
         }
-        if (null !== $object->getFee()) {
+        if ($object->isInitialized('fee') && null !== $object->getFee()) {
             $data['fee'] = $object->getFee();
         }
-        if (null !== $object->getNotes()) {
+        if ($object->isInitialized('notes') && null !== $object->getNotes()) {
             $data['notes'] = $object->getNotes();
         }
-        if (null !== $object->getStartsOn()) {
+        if ($object->isInitialized('startsOn') && null !== $object->getStartsOn()) {
             $data['starts_on'] = $object->getStartsOn()->format('Y-m-d');
         }
-        if (null !== $object->getEndsOn()) {
+        if ($object->isInitialized('endsOn') && null !== $object->getEndsOn()) {
             $data['ends_on'] = $object->getEndsOn()->format('Y-m-d');
         }
-        if (null !== $object->getCreatedAt()) {
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getUpdatedAt()) {
+        if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         }
         return $data;

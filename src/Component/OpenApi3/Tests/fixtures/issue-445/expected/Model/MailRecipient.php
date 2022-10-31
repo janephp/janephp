@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class MailRecipient
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * User information including email.
      *
      * @var mixed
@@ -40,6 +48,7 @@ class MailRecipient
      */
     public function setUserEmail($userEmail) : self
     {
+        $this->initialized['userEmail'] = true;
         $this->userEmail = $userEmail;
         return $this;
     }
@@ -61,6 +70,7 @@ class MailRecipient
      */
     public function setToken(?string $token) : self
     {
+        $this->initialized['token'] = true;
         $this->token = $token;
         return $this;
     }
@@ -82,6 +92,7 @@ class MailRecipient
      */
     public function setUrl(?string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }

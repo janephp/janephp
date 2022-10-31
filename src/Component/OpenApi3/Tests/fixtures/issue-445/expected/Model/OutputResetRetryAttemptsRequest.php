@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class OutputResetRetryAttemptsRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * List of output IDs you want to filter on. If this field is not empty, the other will be ignored.
      *
      * @var string[]|null
@@ -52,6 +60,7 @@ class OutputResetRetryAttemptsRequest
      */
     public function setOutputIds(?array $outputIds) : self
     {
+        $this->initialized['outputIds'] = true;
         $this->outputIds = $outputIds;
         return $this;
     }
@@ -73,6 +82,7 @@ class OutputResetRetryAttemptsRequest
      */
     public function setContentIds(?array $contentIds) : self
     {
+        $this->initialized['contentIds'] = true;
         $this->contentIds = $contentIds;
         return $this;
     }
@@ -94,6 +104,7 @@ class OutputResetRetryAttemptsRequest
      */
     public function setFileExtensions(?array $fileExtensions) : self
     {
+        $this->initialized['fileExtensions'] = true;
         $this->fileExtensions = $fileExtensions;
         return $this;
     }
@@ -115,6 +126,7 @@ class OutputResetRetryAttemptsRequest
      */
     public function setOutputFormatIds(?array $outputFormatIds) : self
     {
+        $this->initialized['outputFormatIds'] = true;
         $this->outputFormatIds = $outputFormatIds;
         return $this;
     }
@@ -136,6 +148,7 @@ class OutputResetRetryAttemptsRequest
      */
     public function setIncludeCompleted(bool $includeCompleted) : self
     {
+        $this->initialized['includeCompleted'] = true;
         $this->includeCompleted = $includeCompleted;
         return $this;
     }

@@ -72,11 +72,11 @@ class UnassignContentPermissionSetsActionNormalizer implements DenormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getPermissionSetIds()) {
+        if ($object->isInitialized('permissionSetIds') && null !== $object->getPermissionSetIds()) {
             $data['permissionSetIds'] = $object->getPermissionSetIds();
         }
         foreach ($object as $key => $value) {

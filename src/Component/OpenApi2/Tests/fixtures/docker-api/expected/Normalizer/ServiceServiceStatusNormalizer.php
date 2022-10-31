@@ -62,13 +62,13 @@ class ServiceServiceStatusNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRunningTasks()) {
+        if ($object->isInitialized('runningTasks') && null !== $object->getRunningTasks()) {
             $data['RunningTasks'] = $object->getRunningTasks();
         }
-        if (null !== $object->getDesiredTasks()) {
+        if ($object->isInitialized('desiredTasks') && null !== $object->getDesiredTasks()) {
             $data['DesiredTasks'] = $object->getDesiredTasks();
         }
-        if (null !== $object->getCompletedTasks()) {
+        if ($object->isInitialized('completedTasks') && null !== $object->getCompletedTasks()) {
             $data['CompletedTasks'] = $object->getCompletedTasks();
         }
         if (!($context['skip_validation'] ?? false)) {

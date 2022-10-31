@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class OutputFormatRenderingSpecification
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Which output format should be used as a source of data.
      *
      * @var mixed|null
@@ -34,6 +42,7 @@ class OutputFormatRenderingSpecification
      */
     public function setSourceOutputFormats($sourceOutputFormats) : self
     {
+        $this->initialized['sourceOutputFormats'] = true;
         $this->sourceOutputFormats = $sourceOutputFormats;
         return $this;
     }
@@ -55,6 +64,7 @@ class OutputFormatRenderingSpecification
      */
     public function setFormat($format) : self
     {
+        $this->initialized['format'] = true;
         $this->format = $format;
         return $this;
     }

@@ -69,13 +69,13 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemAdditionalDataNormaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getOccupation()) {
+        if ($object->isInitialized('occupation') && null !== $object->getOccupation()) {
             $data['occupation'] = $object->getOccupation();
         }
-        if (null !== $object->getStatusDescription()) {
+        if ($object->isInitialized('statusDescription') && null !== $object->getStatusDescription()) {
             $data['statusDescription'] = $object->getStatusDescription();
         }
-        if (null !== $object->getGearing()) {
+        if ($object->isInitialized('gearing') && null !== $object->getGearing()) {
             $data['gearing'] = $object->getGearing();
         }
         foreach ($object as $key => $value) {

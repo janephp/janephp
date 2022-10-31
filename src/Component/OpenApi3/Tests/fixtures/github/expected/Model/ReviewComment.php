@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReviewComment extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -184,6 +192,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -205,6 +214,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setPullRequestReviewId(?int $pullRequestReviewId) : self
     {
+        $this->initialized['pullRequestReviewId'] = true;
         $this->pullRequestReviewId = $pullRequestReviewId;
         return $this;
     }
@@ -226,6 +236,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -247,6 +258,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -268,6 +280,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setDiffHunk(string $diffHunk) : self
     {
+        $this->initialized['diffHunk'] = true;
         $this->diffHunk = $diffHunk;
         return $this;
     }
@@ -289,6 +302,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -310,6 +324,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setPosition(?int $position) : self
     {
+        $this->initialized['position'] = true;
         $this->position = $position;
         return $this;
     }
@@ -331,6 +346,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setOriginalPosition(int $originalPosition) : self
     {
+        $this->initialized['originalPosition'] = true;
         $this->originalPosition = $originalPosition;
         return $this;
     }
@@ -352,6 +368,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setCommitId(string $commitId) : self
     {
+        $this->initialized['commitId'] = true;
         $this->commitId = $commitId;
         return $this;
     }
@@ -373,6 +390,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setOriginalCommitId(string $originalCommitId) : self
     {
+        $this->initialized['originalCommitId'] = true;
         $this->originalCommitId = $originalCommitId;
         return $this;
     }
@@ -394,6 +412,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setInReplyToId(int $inReplyToId) : self
     {
+        $this->initialized['inReplyToId'] = true;
         $this->inReplyToId = $inReplyToId;
         return $this;
     }
@@ -415,6 +434,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setUser(?ReviewCommentUser $user) : self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
     }
@@ -436,6 +456,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }
@@ -457,6 +478,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -478,6 +500,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setUpdatedAt(\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -499,6 +522,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -520,6 +544,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setPullRequestUrl(string $pullRequestUrl) : self
     {
+        $this->initialized['pullRequestUrl'] = true;
         $this->pullRequestUrl = $pullRequestUrl;
         return $this;
     }
@@ -541,6 +566,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setAuthorAssociation(string $authorAssociation) : self
     {
+        $this->initialized['authorAssociation'] = true;
         $this->authorAssociation = $authorAssociation;
         return $this;
     }
@@ -562,6 +588,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setLinks(ReviewCommentLinks $links) : self
     {
+        $this->initialized['links'] = true;
         $this->links = $links;
         return $this;
     }
@@ -583,6 +610,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setBodyText(string $bodyText) : self
     {
+        $this->initialized['bodyText'] = true;
         $this->bodyText = $bodyText;
         return $this;
     }
@@ -604,6 +632,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setBodyHtml(string $bodyHtml) : self
     {
+        $this->initialized['bodyHtml'] = true;
         $this->bodyHtml = $bodyHtml;
         return $this;
     }
@@ -625,6 +654,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setSide(string $side) : self
     {
+        $this->initialized['side'] = true;
         $this->side = $side;
         return $this;
     }
@@ -646,6 +676,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setStartSide(?string $startSide) : self
     {
+        $this->initialized['startSide'] = true;
         $this->startSide = $startSide;
         return $this;
     }
@@ -667,6 +698,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setLine(int $line) : self
     {
+        $this->initialized['line'] = true;
         $this->line = $line;
         return $this;
     }
@@ -688,6 +720,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setOriginalLine(int $originalLine) : self
     {
+        $this->initialized['originalLine'] = true;
         $this->originalLine = $originalLine;
         return $this;
     }
@@ -709,6 +742,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setStartLine(?int $startLine) : self
     {
+        $this->initialized['startLine'] = true;
         $this->startLine = $startLine;
         return $this;
     }
@@ -730,6 +764,7 @@ class ReviewComment extends \ArrayObject
      */
     public function setOriginalStartLine(?int $originalStartLine) : self
     {
+        $this->initialized['originalStartLine'] = true;
         $this->originalStartLine = $originalStartLine;
         return $this;
     }

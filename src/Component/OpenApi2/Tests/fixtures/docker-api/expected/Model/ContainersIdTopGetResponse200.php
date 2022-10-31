@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ContainersIdTopGetResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ps column titles
      *
      * @var string[]
@@ -36,6 +44,7 @@ class ContainersIdTopGetResponse200
      */
     public function setTitles(array $titles) : self
     {
+        $this->initialized['titles'] = true;
         $this->titles = $titles;
         return $this;
     }
@@ -61,6 +70,7 @@ class ContainersIdTopGetResponse200
     */
     public function setProcesses(array $processes) : self
     {
+        $this->initialized['processes'] = true;
         $this->processes = $processes;
         return $this;
     }

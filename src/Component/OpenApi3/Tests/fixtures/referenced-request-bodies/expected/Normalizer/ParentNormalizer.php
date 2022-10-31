@@ -66,10 +66,10 @@ class ParentNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getChild()) {
+        if ($object->isInitialized('child') && null !== $object->getChild()) {
             $values = array();
             foreach ($object->getChild() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

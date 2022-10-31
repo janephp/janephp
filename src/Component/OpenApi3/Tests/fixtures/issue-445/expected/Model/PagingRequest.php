@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class PagingRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Limits the number of the returned schemas. Defaults to 0.
      *
      * @var int
@@ -34,6 +42,7 @@ class PagingRequest
      */
     public function setLimit(int $limit) : self
     {
+        $this->initialized['limit'] = true;
         $this->limit = $limit;
         return $this;
     }
@@ -55,6 +64,7 @@ class PagingRequest
      */
     public function setPageToken(?string $pageToken) : self
     {
+        $this->initialized['pageToken'] = true;
         $this->pageToken = $pageToken;
         return $this;
     }

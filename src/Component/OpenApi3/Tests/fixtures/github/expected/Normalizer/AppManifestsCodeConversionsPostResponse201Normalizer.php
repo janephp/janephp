@@ -137,7 +137,7 @@ class AppManifestsCodeConversionsPostResponse201Normalizer implements Denormaliz
     {
         $data = array();
         $data['id'] = $object->getId();
-        if (null !== $object->getSlug()) {
+        if ($object->isInitialized('slug') && null !== $object->getSlug()) {
             $data['slug'] = $object->getSlug();
         }
         $data['node_id'] = $object->getNodeId();
@@ -154,7 +154,7 @@ class AppManifestsCodeConversionsPostResponse201Normalizer implements Denormaliz
             $values[] = $value;
         }
         $data['events'] = $values;
-        if (null !== $object->getInstallationsCount()) {
+        if ($object->isInitialized('installationsCount') && null !== $object->getInstallationsCount()) {
             $data['installations_count'] = $object->getInstallationsCount();
         }
         $data['client_id'] = $object->getClientId();

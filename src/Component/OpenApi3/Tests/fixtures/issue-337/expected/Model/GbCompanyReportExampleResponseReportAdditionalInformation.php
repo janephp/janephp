@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var GbCompanyReportExampleResponseReportAdditionalInformationCompanyHistoryItem[]
@@ -64,6 +72,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
      */
     public function setCompanyHistory(array $companyHistory) : self
     {
+        $this->initialized['companyHistory'] = true;
         $this->companyHistory = $companyHistory;
         return $this;
     }
@@ -85,6 +94,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
      */
     public function setMortgageSummary(GbCompanyReportExampleResponseReportAdditionalInformationMortgageSummary $mortgageSummary) : self
     {
+        $this->initialized['mortgageSummary'] = true;
         $this->mortgageSummary = $mortgageSummary;
         return $this;
     }
@@ -106,6 +116,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
      */
     public function setMortgageDetails(array $mortgageDetails) : self
     {
+        $this->initialized['mortgageDetails'] = true;
         $this->mortgageDetails = $mortgageDetails;
         return $this;
     }
@@ -127,6 +138,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
      */
     public function setCommentaries(array $commentaries) : self
     {
+        $this->initialized['commentaries'] = true;
         $this->commentaries = $commentaries;
         return $this;
     }
@@ -148,6 +160,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
      */
     public function setRatingHistory(array $ratingHistory) : self
     {
+        $this->initialized['ratingHistory'] = true;
         $this->ratingHistory = $ratingHistory;
         return $this;
     }
@@ -169,6 +182,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
      */
     public function setCreditLimitHistory(array $creditLimitHistory) : self
     {
+        $this->initialized['creditLimitHistory'] = true;
         $this->creditLimitHistory = $creditLimitHistory;
         return $this;
     }
@@ -190,6 +204,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
      */
     public function setBadDebtDetails(array $badDebtDetails) : self
     {
+        $this->initialized['badDebtDetails'] = true;
         $this->badDebtDetails = $badDebtDetails;
         return $this;
     }

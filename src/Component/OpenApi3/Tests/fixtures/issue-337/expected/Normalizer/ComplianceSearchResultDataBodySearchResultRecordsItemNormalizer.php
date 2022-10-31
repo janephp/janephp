@@ -74,19 +74,19 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemNormalizer implements
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRecord()) {
+        if ($object->isInitialized('record') && null !== $object->getRecord()) {
             $data['record'] = $object->getRecord();
         }
-        if (null !== $object->getRecordDetails()) {
+        if ($object->isInitialized('recordDetails') && null !== $object->getRecordDetails()) {
             $data['recordDetails'] = $this->normalizer->normalize($object->getRecordDetails(), 'json', $context);
         }
-        if (null !== $object->getResultID()) {
+        if ($object->isInitialized('resultID') && null !== $object->getResultID()) {
             $data['resultID'] = $object->getResultID();
         }
-        if (null !== $object->getRunID()) {
+        if ($object->isInitialized('runID') && null !== $object->getRunID()) {
             $data['runID'] = $object->getRunID();
         }
-        if (null !== $object->getWatchlist()) {
+        if ($object->isInitialized('watchlist') && null !== $object->getWatchlist()) {
             $data['watchlist'] = $this->normalizer->normalize($object->getWatchlist(), 'json', $context);
         }
         foreach ($object as $key => $value) {

@@ -68,7 +68,7 @@ class PatchableEntityNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNullableProperty()) {
+        if ($object->isInitialized('nullableProperty') && null !== $object->getNullableProperty()) {
             $data['nullable_property'] = $object->getNullableProperty();
         }
         $data['nullable_and_required_property'] = $object->getNullableAndRequiredProperty();

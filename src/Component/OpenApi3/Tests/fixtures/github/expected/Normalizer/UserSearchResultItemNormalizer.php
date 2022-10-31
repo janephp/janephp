@@ -243,54 +243,54 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         $data['gists_url'] = $object->getGistsUrl();
         $data['starred_url'] = $object->getStarredUrl();
         $data['events_url'] = $object->getEventsUrl();
-        if (null !== $object->getPublicRepos()) {
+        if ($object->isInitialized('publicRepos') && null !== $object->getPublicRepos()) {
             $data['public_repos'] = $object->getPublicRepos();
         }
-        if (null !== $object->getPublicGists()) {
+        if ($object->isInitialized('publicGists') && null !== $object->getPublicGists()) {
             $data['public_gists'] = $object->getPublicGists();
         }
-        if (null !== $object->getFollowers()) {
+        if ($object->isInitialized('followers') && null !== $object->getFollowers()) {
             $data['followers'] = $object->getFollowers();
         }
-        if (null !== $object->getFollowing()) {
+        if ($object->isInitialized('following') && null !== $object->getFollowing()) {
             $data['following'] = $object->getFollowing();
         }
-        if (null !== $object->getCreatedAt()) {
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getUpdatedAt()) {
+        if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getBio()) {
+        if ($object->isInitialized('bio') && null !== $object->getBio()) {
             $data['bio'] = $object->getBio();
         }
-        if (null !== $object->getEmail()) {
+        if ($object->isInitialized('email') && null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
-        if (null !== $object->getLocation()) {
+        if ($object->isInitialized('location') && null !== $object->getLocation()) {
             $data['location'] = $object->getLocation();
         }
         $data['site_admin'] = $object->getSiteAdmin();
-        if (null !== $object->getHireable()) {
+        if ($object->isInitialized('hireable') && null !== $object->getHireable()) {
             $data['hireable'] = $object->getHireable();
         }
-        if (null !== $object->getTextMatches()) {
+        if ($object->isInitialized('textMatches') && null !== $object->getTextMatches()) {
             $values = array();
             foreach ($object->getTextMatches() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['text_matches'] = $values;
         }
-        if (null !== $object->getBlog()) {
+        if ($object->isInitialized('blog') && null !== $object->getBlog()) {
             $data['blog'] = $object->getBlog();
         }
-        if (null !== $object->getCompany()) {
+        if ($object->isInitialized('company') && null !== $object->getCompany()) {
             $data['company'] = $object->getCompany();
         }
-        if (null !== $object->getSuspendedAt()) {
+        if ($object->isInitialized('suspendedAt') && null !== $object->getSuspendedAt()) {
             $data['suspended_at'] = $object->getSuspendedAt()->format('Y-m-d\\TH:i:sP');
         }
         foreach ($object as $key => $value_1) {

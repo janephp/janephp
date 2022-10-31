@@ -5,6 +5,14 @@ namespace Github\Model;
 class Event extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -70,6 +78,7 @@ class Event extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -91,6 +100,7 @@ class Event extends \ArrayObject
      */
     public function setType(?string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -112,6 +122,7 @@ class Event extends \ArrayObject
      */
     public function setActor(Actor $actor) : self
     {
+        $this->initialized['actor'] = true;
         $this->actor = $actor;
         return $this;
     }
@@ -133,6 +144,7 @@ class Event extends \ArrayObject
      */
     public function setRepo(EventRepo $repo) : self
     {
+        $this->initialized['repo'] = true;
         $this->repo = $repo;
         return $this;
     }
@@ -154,6 +166,7 @@ class Event extends \ArrayObject
      */
     public function setOrg(Actor $org) : self
     {
+        $this->initialized['org'] = true;
         $this->org = $org;
         return $this;
     }
@@ -175,6 +188,7 @@ class Event extends \ArrayObject
      */
     public function setPayload(EventPayload $payload) : self
     {
+        $this->initialized['payload'] = true;
         $this->payload = $payload;
         return $this;
     }
@@ -196,6 +210,7 @@ class Event extends \ArrayObject
      */
     public function setPublic(bool $public) : self
     {
+        $this->initialized['public'] = true;
         $this->public = $public;
         return $this;
     }
@@ -217,6 +232,7 @@ class Event extends \ArrayObject
      */
     public function setCreatedAt(?\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }

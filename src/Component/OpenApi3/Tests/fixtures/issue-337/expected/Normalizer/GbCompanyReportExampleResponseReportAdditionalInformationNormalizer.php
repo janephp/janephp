@@ -106,45 +106,45 @@ class GbCompanyReportExampleResponseReportAdditionalInformationNormalizer implem
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCompanyHistory()) {
+        if ($object->isInitialized('companyHistory') && null !== $object->getCompanyHistory()) {
             $values = array();
             foreach ($object->getCompanyHistory() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['companyHistory'] = $values;
         }
-        if (null !== $object->getMortgageSummary()) {
+        if ($object->isInitialized('mortgageSummary') && null !== $object->getMortgageSummary()) {
             $data['mortgageSummary'] = $this->normalizer->normalize($object->getMortgageSummary(), 'json', $context);
         }
-        if (null !== $object->getMortgageDetails()) {
+        if ($object->isInitialized('mortgageDetails') && null !== $object->getMortgageDetails()) {
             $values_1 = array();
             foreach ($object->getMortgageDetails() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['mortgageDetails'] = $values_1;
         }
-        if (null !== $object->getCommentaries()) {
+        if ($object->isInitialized('commentaries') && null !== $object->getCommentaries()) {
             $values_2 = array();
             foreach ($object->getCommentaries() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['commentaries'] = $values_2;
         }
-        if (null !== $object->getRatingHistory()) {
+        if ($object->isInitialized('ratingHistory') && null !== $object->getRatingHistory()) {
             $values_3 = array();
             foreach ($object->getRatingHistory() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $data['ratingHistory'] = $values_3;
         }
-        if (null !== $object->getCreditLimitHistory()) {
+        if ($object->isInitialized('creditLimitHistory') && null !== $object->getCreditLimitHistory()) {
             $values_4 = array();
             foreach ($object->getCreditLimitHistory() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $data['creditLimitHistory'] = $values_4;
         }
-        if (null !== $object->getBadDebtDetails()) {
+        if ($object->isInitialized('badDebtDetails') && null !== $object->getBadDebtDetails()) {
             $values_5 = array();
             foreach ($object->getBadDebtDetails() as $value_5) {
                 $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);

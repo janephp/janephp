@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class DetailedUserFields extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * A list of metrics for this user
      *
      * @var DetailedUserFieldsStats
@@ -28,6 +36,7 @@ class DetailedUserFields extends \ArrayObject
      */
     public function setStats(DetailedUserFieldsStats $stats) : self
     {
+        $this->initialized['stats'] = true;
         $this->stats = $stats;
         return $this;
     }

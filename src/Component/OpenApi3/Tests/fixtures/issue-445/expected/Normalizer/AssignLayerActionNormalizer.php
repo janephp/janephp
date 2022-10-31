@@ -83,14 +83,14 @@ class AssignLayerActionNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getLayerId()) {
+        if ($object->isInitialized('layerId') && null !== $object->getLayerId()) {
             $data['layerId'] = $object->getLayerId();
         }
-        if (null !== $object->getDefaultValues()) {
+        if ($object->isInitialized('defaultValues') && null !== $object->getDefaultValues()) {
             $values = array();
             foreach ($object->getDefaultValues() as $key => $value) {
                 $values[$key] = $value;

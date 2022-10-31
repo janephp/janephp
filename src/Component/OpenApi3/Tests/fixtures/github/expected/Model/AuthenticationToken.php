@@ -5,6 +5,14 @@ namespace Github\Model;
 class AuthenticationToken extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The token used for authentication
      *
      * @var string
@@ -58,6 +66,7 @@ class AuthenticationToken extends \ArrayObject
      */
     public function setToken(string $token) : self
     {
+        $this->initialized['token'] = true;
         $this->token = $token;
         return $this;
     }
@@ -79,6 +88,7 @@ class AuthenticationToken extends \ArrayObject
      */
     public function setExpiresAt(\DateTime $expiresAt) : self
     {
+        $this->initialized['expiresAt'] = true;
         $this->expiresAt = $expiresAt;
         return $this;
     }
@@ -100,6 +110,7 @@ class AuthenticationToken extends \ArrayObject
      */
     public function setPermissions(iterable $permissions) : self
     {
+        $this->initialized['permissions'] = true;
         $this->permissions = $permissions;
         return $this;
     }
@@ -121,6 +132,7 @@ class AuthenticationToken extends \ArrayObject
      */
     public function setRepositories(array $repositories) : self
     {
+        $this->initialized['repositories'] = true;
         $this->repositories = $repositories;
         return $this;
     }
@@ -142,6 +154,7 @@ class AuthenticationToken extends \ArrayObject
      */
     public function setSingleFile(?string $singleFile) : self
     {
+        $this->initialized['singleFile'] = true;
         $this->singleFile = $singleFile;
         return $this;
     }
@@ -163,6 +176,7 @@ class AuthenticationToken extends \ArrayObject
      */
     public function setRepositorySelection(string $repositorySelection) : self
     {
+        $this->initialized['repositorySelection'] = true;
         $this->repositorySelection = $repositorySelection;
         return $this;
     }

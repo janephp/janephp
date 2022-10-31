@@ -180,13 +180,13 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['single_file_name'] = $object->getSingleFileName();
         $data['app_slug'] = $object->getAppSlug();
-        if (null !== $object->getSuspendedBy()) {
+        if ($object->isInitialized('suspendedBy') && null !== $object->getSuspendedBy()) {
             $data['suspended_by'] = $this->normalizer->normalize($object->getSuspendedBy(), 'json', $context);
         }
-        if (null !== $object->getSuspendedAt()) {
+        if ($object->isInitialized('suspendedAt') && null !== $object->getSuspendedAt()) {
             $data['suspended_at'] = $object->getSuspendedAt()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getContactEmail()) {
+        if ($object->isInitialized('contactEmail') && null !== $object->getContactEmail()) {
             $data['contact_email'] = $object->getContactEmail();
         }
         foreach ($object as $key => $value_2) {

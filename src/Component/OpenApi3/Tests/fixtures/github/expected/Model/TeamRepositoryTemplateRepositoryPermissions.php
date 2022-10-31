@@ -5,6 +5,14 @@ namespace Github\Model;
 class TeamRepositoryTemplateRepositoryPermissions extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -40,6 +48,7 @@ class TeamRepositoryTemplateRepositoryPermissions extends \ArrayObject
      */
     public function setAdmin(bool $admin) : self
     {
+        $this->initialized['admin'] = true;
         $this->admin = $admin;
         return $this;
     }
@@ -61,6 +70,7 @@ class TeamRepositoryTemplateRepositoryPermissions extends \ArrayObject
      */
     public function setPush(bool $push) : self
     {
+        $this->initialized['push'] = true;
         $this->push = $push;
         return $this;
     }
@@ -82,6 +92,7 @@ class TeamRepositoryTemplateRepositoryPermissions extends \ArrayObject
      */
     public function setPull(bool $pull) : self
     {
+        $this->initialized['pull'] = true;
         $this->pull = $pull;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class OCIPlatform
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The CPU architecture, for example `amd64` or `ppc64`.
      *
      * @var string
@@ -58,6 +66,7 @@ class OCIPlatform
      */
     public function setArchitecture(string $architecture) : self
     {
+        $this->initialized['architecture'] = true;
         $this->architecture = $architecture;
         return $this;
     }
@@ -79,6 +88,7 @@ class OCIPlatform
      */
     public function setOs(string $os) : self
     {
+        $this->initialized['os'] = true;
         $this->os = $os;
         return $this;
     }
@@ -104,6 +114,7 @@ class OCIPlatform
     */
     public function setOsVersion(string $osVersion) : self
     {
+        $this->initialized['osVersion'] = true;
         $this->osVersion = $osVersion;
         return $this;
     }
@@ -129,6 +140,7 @@ class OCIPlatform
     */
     public function setOsFeatures(array $osFeatures) : self
     {
+        $this->initialized['osFeatures'] = true;
         $this->osFeatures = $osFeatures;
         return $this;
     }
@@ -154,6 +166,7 @@ class OCIPlatform
     */
     public function setVariant(string $variant) : self
     {
+        $this->initialized['variant'] = true;
         $this->variant = $variant;
         return $this;
     }

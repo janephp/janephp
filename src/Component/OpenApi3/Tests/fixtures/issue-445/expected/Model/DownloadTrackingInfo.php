@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class DownloadTrackingInfo
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -52,6 +60,7 @@ class DownloadTrackingInfo
      */
     public function setContentId(?string $contentId) : self
     {
+        $this->initialized['contentId'] = true;
         $this->contentId = $contentId;
         return $this;
     }
@@ -73,6 +82,7 @@ class DownloadTrackingInfo
      */
     public function setOutputFormatId(?string $outputFormatId) : self
     {
+        $this->initialized['outputFormatId'] = true;
         $this->outputFormatId = $outputFormatId;
         return $this;
     }
@@ -94,6 +104,7 @@ class DownloadTrackingInfo
      */
     public function setWidth(?int $width) : self
     {
+        $this->initialized['width'] = true;
         $this->width = $width;
         return $this;
     }
@@ -115,6 +126,7 @@ class DownloadTrackingInfo
      */
     public function setHeight(?int $height) : self
     {
+        $this->initialized['height'] = true;
         $this->height = $height;
         return $this;
     }
@@ -136,6 +148,7 @@ class DownloadTrackingInfo
      */
     public function setContentDisposition(string $contentDisposition) : self
     {
+        $this->initialized['contentDisposition'] = true;
         $this->contentDisposition = $contentDisposition;
         return $this;
     }

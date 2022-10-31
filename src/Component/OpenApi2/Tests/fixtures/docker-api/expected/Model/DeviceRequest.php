@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class DeviceRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -54,6 +62,7 @@ class DeviceRequest
      */
     public function setDriver(string $driver) : self
     {
+        $this->initialized['driver'] = true;
         $this->driver = $driver;
         return $this;
     }
@@ -75,6 +84,7 @@ class DeviceRequest
      */
     public function setCount(int $count) : self
     {
+        $this->initialized['count'] = true;
         $this->count = $count;
         return $this;
     }
@@ -96,6 +106,7 @@ class DeviceRequest
      */
     public function setDeviceIDs(array $deviceIDs) : self
     {
+        $this->initialized['deviceIDs'] = true;
         $this->deviceIDs = $deviceIDs;
         return $this;
     }
@@ -117,6 +128,7 @@ class DeviceRequest
      */
     public function setCapabilities(array $capabilities) : self
     {
+        $this->initialized['capabilities'] = true;
         $this->capabilities = $capabilities;
         return $this;
     }
@@ -142,6 +154,7 @@ class DeviceRequest
     */
     public function setOptions(iterable $options) : self
     {
+        $this->initialized['options'] = true;
         $this->options = $options;
         return $this;
     }

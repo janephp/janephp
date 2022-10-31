@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class LayerAssignedCondition extends BusinessRuleCondition
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Layer id to match on.
      *
      * @var string|null
@@ -28,6 +36,7 @@ class LayerAssignedCondition extends BusinessRuleCondition
      */
     public function setLayerId(?string $layerId) : self
     {
+        $this->initialized['layerId'] = true;
         $this->layerId = $layerId;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class OrgsOrgPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Billing email address. This address is not publicized.
      *
      * @var string
@@ -139,6 +147,7 @@ class OrgsOrgPatchBody extends \ArrayObject
      */
     public function setBillingEmail(string $billingEmail) : self
     {
+        $this->initialized['billingEmail'] = true;
         $this->billingEmail = $billingEmail;
         return $this;
     }
@@ -160,6 +169,7 @@ class OrgsOrgPatchBody extends \ArrayObject
      */
     public function setCompany(string $company) : self
     {
+        $this->initialized['company'] = true;
         $this->company = $company;
         return $this;
     }
@@ -181,6 +191,7 @@ class OrgsOrgPatchBody extends \ArrayObject
      */
     public function setEmail(string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -202,6 +213,7 @@ class OrgsOrgPatchBody extends \ArrayObject
      */
     public function setTwitterUsername(string $twitterUsername) : self
     {
+        $this->initialized['twitterUsername'] = true;
         $this->twitterUsername = $twitterUsername;
         return $this;
     }
@@ -223,6 +235,7 @@ class OrgsOrgPatchBody extends \ArrayObject
      */
     public function setLocation(string $location) : self
     {
+        $this->initialized['location'] = true;
         $this->location = $location;
         return $this;
     }
@@ -244,6 +257,7 @@ class OrgsOrgPatchBody extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -265,6 +279,7 @@ class OrgsOrgPatchBody extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -286,6 +301,7 @@ class OrgsOrgPatchBody extends \ArrayObject
      */
     public function setHasOrganizationProjects(bool $hasOrganizationProjects) : self
     {
+        $this->initialized['hasOrganizationProjects'] = true;
         $this->hasOrganizationProjects = $hasOrganizationProjects;
         return $this;
     }
@@ -307,6 +323,7 @@ class OrgsOrgPatchBody extends \ArrayObject
      */
     public function setHasRepositoryProjects(bool $hasRepositoryProjects) : self
     {
+        $this->initialized['hasRepositoryProjects'] = true;
         $this->hasRepositoryProjects = $hasRepositoryProjects;
         return $this;
     }
@@ -336,6 +353,7 @@ class OrgsOrgPatchBody extends \ArrayObject
     */
     public function setDefaultRepositoryPermission(string $defaultRepositoryPermission) : self
     {
+        $this->initialized['defaultRepositoryPermission'] = true;
         $this->defaultRepositoryPermission = $defaultRepositoryPermission;
         return $this;
     }
@@ -365,6 +383,7 @@ class OrgsOrgPatchBody extends \ArrayObject
     */
     public function setMembersCanCreateRepositories(bool $membersCanCreateRepositories) : self
     {
+        $this->initialized['membersCanCreateRepositories'] = true;
         $this->membersCanCreateRepositories = $membersCanCreateRepositories;
         return $this;
     }
@@ -392,6 +411,7 @@ class OrgsOrgPatchBody extends \ArrayObject
     */
     public function setMembersCanCreateInternalRepositories(bool $membersCanCreateInternalRepositories) : self
     {
+        $this->initialized['membersCanCreateInternalRepositories'] = true;
         $this->membersCanCreateInternalRepositories = $membersCanCreateInternalRepositories;
         return $this;
     }
@@ -419,6 +439,7 @@ class OrgsOrgPatchBody extends \ArrayObject
     */
     public function setMembersCanCreatePrivateRepositories(bool $membersCanCreatePrivateRepositories) : self
     {
+        $this->initialized['membersCanCreatePrivateRepositories'] = true;
         $this->membersCanCreatePrivateRepositories = $membersCanCreatePrivateRepositories;
         return $this;
     }
@@ -446,6 +467,7 @@ class OrgsOrgPatchBody extends \ArrayObject
     */
     public function setMembersCanCreatePublicRepositories(bool $membersCanCreatePublicRepositories) : self
     {
+        $this->initialized['membersCanCreatePublicRepositories'] = true;
         $this->membersCanCreatePublicRepositories = $membersCanCreatePublicRepositories;
         return $this;
     }
@@ -475,6 +497,7 @@ class OrgsOrgPatchBody extends \ArrayObject
     */
     public function setMembersAllowedRepositoryCreationType(string $membersAllowedRepositoryCreationType) : self
     {
+        $this->initialized['membersAllowedRepositoryCreationType'] = true;
         $this->membersAllowedRepositoryCreationType = $membersAllowedRepositoryCreationType;
         return $this;
     }
@@ -496,6 +519,7 @@ class OrgsOrgPatchBody extends \ArrayObject
      */
     public function setBlog(string $blog) : self
     {
+        $this->initialized['blog'] = true;
         $this->blog = $blog;
         return $this;
     }

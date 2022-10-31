@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class TaskSpecPluginSpec
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The name or 'alias' to use for the plugin.
      *
      * @var string
@@ -46,6 +54,7 @@ class TaskSpecPluginSpec
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -67,6 +76,7 @@ class TaskSpecPluginSpec
      */
     public function setRemote(string $remote) : self
     {
+        $this->initialized['remote'] = true;
         $this->remote = $remote;
         return $this;
     }
@@ -88,6 +98,7 @@ class TaskSpecPluginSpec
      */
     public function setDisabled(bool $disabled) : self
     {
+        $this->initialized['disabled'] = true;
         $this->disabled = $disabled;
         return $this;
     }
@@ -109,6 +120,7 @@ class TaskSpecPluginSpec
      */
     public function setPluginPrivilege(array $pluginPrivilege) : self
     {
+        $this->initialized['pluginPrivilege'] = true;
         $this->pluginPrivilege = $pluginPrivilege;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace ApiPlatform\Demo\Model;
 class BookJsonhal extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var BookJsonhalLinks
@@ -82,6 +90,7 @@ class BookJsonhal extends \ArrayObject
      */
     public function setLinks(BookJsonhalLinks $links) : self
     {
+        $this->initialized['links'] = true;
         $this->links = $links;
         return $this;
     }
@@ -103,6 +112,7 @@ class BookJsonhal extends \ArrayObject
      */
     public function setId(?string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -124,6 +134,7 @@ class BookJsonhal extends \ArrayObject
      */
     public function setIsbn(?string $isbn) : self
     {
+        $this->initialized['isbn'] = true;
         $this->isbn = $isbn;
         return $this;
     }
@@ -145,6 +156,7 @@ class BookJsonhal extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -166,6 +178,7 @@ class BookJsonhal extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -187,6 +200,7 @@ class BookJsonhal extends \ArrayObject
      */
     public function setAuthor(string $author) : self
     {
+        $this->initialized['author'] = true;
         $this->author = $author;
         return $this;
     }
@@ -208,6 +222,7 @@ class BookJsonhal extends \ArrayObject
      */
     public function setPublicationDate(\DateTime $publicationDate) : self
     {
+        $this->initialized['publicationDate'] = true;
         $this->publicationDate = $publicationDate;
         return $this;
     }
@@ -229,6 +244,7 @@ class BookJsonhal extends \ArrayObject
      */
     public function setReviews(array $reviews) : self
     {
+        $this->initialized['reviews'] = true;
         $this->reviews = $reviews;
         return $this;
     }
@@ -250,6 +266,7 @@ class BookJsonhal extends \ArrayObject
      */
     public function setCover(?string $cover) : self
     {
+        $this->initialized['cover'] = true;
         $this->cover = $cover;
         return $this;
     }
@@ -271,6 +288,7 @@ class BookJsonhal extends \ArrayObject
      */
     public function setArchivedAt(?\DateTime $archivedAt) : self
     {
+        $this->initialized['archivedAt'] = true;
         $this->archivedAt = $archivedAt;
         return $this;
     }

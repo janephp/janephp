@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class TaskSpecContainerSpecConfigsItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * File represents a specific target that is backed by a file.
     
     <p><br /><p>
@@ -73,6 +81,7 @@ class TaskSpecContainerSpecConfigsItem
     */
     public function setFile(TaskSpecContainerSpecConfigsItemFile $file) : self
     {
+        $this->initialized['file'] = true;
         $this->file = $file;
         return $this;
     }
@@ -108,6 +117,7 @@ class TaskSpecContainerSpecConfigsItem
     */
     public function setRuntime($runtime) : self
     {
+        $this->initialized['runtime'] = true;
         $this->runtime = $runtime;
         return $this;
     }
@@ -133,6 +143,7 @@ class TaskSpecContainerSpecConfigsItem
     */
     public function setConfigID(string $configID) : self
     {
+        $this->initialized['configID'] = true;
         $this->configID = $configID;
         return $this;
     }
@@ -160,6 +171,7 @@ class TaskSpecContainerSpecConfigsItem
     */
     public function setConfigName(string $configName) : self
     {
+        $this->initialized['configName'] = true;
         $this->configName = $configName;
         return $this;
     }

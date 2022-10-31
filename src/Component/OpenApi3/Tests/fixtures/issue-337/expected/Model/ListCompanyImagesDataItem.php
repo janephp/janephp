@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class ListCompanyImagesDataItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -94,6 +102,7 @@ class ListCompanyImagesDataItem extends \ArrayObject
      */
     public function setImageId(string $imageId) : self
     {
+        $this->initialized['imageId'] = true;
         $this->imageId = $imageId;
         return $this;
     }
@@ -115,6 +124,7 @@ class ListCompanyImagesDataItem extends \ArrayObject
      */
     public function setCompany(ListCompanyImagesDataItemCompany $company) : self
     {
+        $this->initialized['company'] = true;
         $this->company = $company;
         return $this;
     }
@@ -136,6 +146,7 @@ class ListCompanyImagesDataItem extends \ArrayObject
      */
     public function setDocument(ListCompanyImagesDataItemDocument $document) : self
     {
+        $this->initialized['document'] = true;
         $this->document = $document;
         return $this;
     }
@@ -157,6 +168,7 @@ class ListCompanyImagesDataItem extends \ArrayObject
      */
     public function setFormat(string $format) : self
     {
+        $this->initialized['format'] = true;
         $this->format = $format;
         return $this;
     }
@@ -178,6 +190,7 @@ class ListCompanyImagesDataItem extends \ArrayObject
      */
     public function setSource(string $source) : self
     {
+        $this->initialized['source'] = true;
         $this->source = $source;
         return $this;
     }
@@ -199,6 +212,7 @@ class ListCompanyImagesDataItem extends \ArrayObject
      */
     public function setFilingDate(string $filingDate) : self
     {
+        $this->initialized['filingDate'] = true;
         $this->filingDate = $filingDate;
         return $this;
     }
@@ -220,6 +234,7 @@ class ListCompanyImagesDataItem extends \ArrayObject
      */
     public function setUploadDate(string $uploadDate) : self
     {
+        $this->initialized['uploadDate'] = true;
         $this->uploadDate = $uploadDate;
         return $this;
     }
@@ -241,6 +256,7 @@ class ListCompanyImagesDataItem extends \ArrayObject
      */
     public function setAccountingDate(string $accountingDate) : self
     {
+        $this->initialized['accountingDate'] = true;
         $this->accountingDate = $accountingDate;
         return $this;
     }
@@ -262,6 +278,7 @@ class ListCompanyImagesDataItem extends \ArrayObject
      */
     public function setLanguage(string $language) : self
     {
+        $this->initialized['language'] = true;
         $this->language = $language;
         return $this;
     }
@@ -283,6 +300,7 @@ class ListCompanyImagesDataItem extends \ArrayObject
      */
     public function setComments(string $comments) : self
     {
+        $this->initialized['comments'] = true;
         $this->comments = $comments;
         return $this;
     }
@@ -304,6 +322,7 @@ class ListCompanyImagesDataItem extends \ArrayObject
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -325,6 +344,7 @@ class ListCompanyImagesDataItem extends \ArrayObject
      */
     public function setLocalProperties(ListCompanyImagesDataItemLocalProperties $localProperties) : self
     {
+        $this->initialized['localProperties'] = true;
         $this->localProperties = $localProperties;
         return $this;
     }

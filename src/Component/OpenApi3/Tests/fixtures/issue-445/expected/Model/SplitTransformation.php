@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SplitTransformation extends BusinessRuleTransformation
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Separators to use, supports variables, an array of strings including escape sequences or null to split on any white space character.
      *
      * @var mixed|null
@@ -40,6 +48,7 @@ class SplitTransformation extends BusinessRuleTransformation
      */
     public function setSeparators($separators) : self
     {
+        $this->initialized['separators'] = true;
         $this->separators = $separators;
         return $this;
     }
@@ -61,6 +70,7 @@ class SplitTransformation extends BusinessRuleTransformation
      */
     public function setKeepEmpty(bool $keepEmpty) : self
     {
+        $this->initialized['keepEmpty'] = true;
         $this->keepEmpty = $keepEmpty;
         return $this;
     }
@@ -82,6 +92,7 @@ class SplitTransformation extends BusinessRuleTransformation
      */
     public function setTrim(bool $trim) : self
     {
+        $this->initialized['trim'] = true;
         $this->trim = $trim;
         return $this;
     }

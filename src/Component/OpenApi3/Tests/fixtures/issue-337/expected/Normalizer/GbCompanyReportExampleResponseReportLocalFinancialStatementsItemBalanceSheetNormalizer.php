@@ -222,76 +222,76 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceShe
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTangibleAssets()) {
+        if ($object->isInitialized('tangibleAssets') && null !== $object->getTangibleAssets()) {
             $data['tangibleAssets'] = $object->getTangibleAssets();
         }
-        if (null !== $object->getIntangibleAssets()) {
+        if ($object->isInitialized('intangibleAssets') && null !== $object->getIntangibleAssets()) {
             $data['intangibleAssets'] = $object->getIntangibleAssets();
         }
-        if (null !== $object->getTotalFixedAssets()) {
+        if ($object->isInitialized('totalFixedAssets') && null !== $object->getTotalFixedAssets()) {
             $data['totalFixedAssets'] = $object->getTotalFixedAssets();
         }
-        if (null !== $object->getStock()) {
+        if ($object->isInitialized('stock') && null !== $object->getStock()) {
             $data['stock'] = $object->getStock();
         }
-        if (null !== $object->getTradeDebtors()) {
+        if ($object->isInitialized('tradeDebtors') && null !== $object->getTradeDebtors()) {
             $data['tradeDebtors'] = $object->getTradeDebtors();
         }
-        if (null !== $object->getOtherDebtors()) {
+        if ($object->isInitialized('otherDebtors') && null !== $object->getOtherDebtors()) {
             $data['otherDebtors'] = $object->getOtherDebtors();
         }
-        if (null !== $object->getCash()) {
+        if ($object->isInitialized('cash') && null !== $object->getCash()) {
             $data['cash'] = $object->getCash();
         }
-        if (null !== $object->getMiscCurrentAssets()) {
+        if ($object->isInitialized('miscCurrentAssets') && null !== $object->getMiscCurrentAssets()) {
             $data['miscCurrentAssets'] = $object->getMiscCurrentAssets();
         }
-        if (null !== $object->getTotalCurrentAssets()) {
+        if ($object->isInitialized('totalCurrentAssets') && null !== $object->getTotalCurrentAssets()) {
             $data['totalCurrentAssets'] = $object->getTotalCurrentAssets();
         }
-        if (null !== $object->getTotalAssets()) {
+        if ($object->isInitialized('totalAssets') && null !== $object->getTotalAssets()) {
             $data['totalAssets'] = $object->getTotalAssets();
         }
-        if (null !== $object->getTradeCreditors()) {
+        if ($object->isInitialized('tradeCreditors') && null !== $object->getTradeCreditors()) {
             $data['tradeCreditors'] = $object->getTradeCreditors();
         }
-        if (null !== $object->getBankBorrowingsCurrent()) {
+        if ($object->isInitialized('bankBorrowingsCurrent') && null !== $object->getBankBorrowingsCurrent()) {
             $data['bankBorrowingsCurrent'] = $object->getBankBorrowingsCurrent();
         }
-        if (null !== $object->getOtherShortTermFinance()) {
+        if ($object->isInitialized('otherShortTermFinance') && null !== $object->getOtherShortTermFinance()) {
             $data['otherShortTermFinance'] = $object->getOtherShortTermFinance();
         }
-        if (null !== $object->getMiscCurrentLiabilities()) {
+        if ($object->isInitialized('miscCurrentLiabilities') && null !== $object->getMiscCurrentLiabilities()) {
             $data['miscCurrentLiabilities'] = $object->getMiscCurrentLiabilities();
         }
-        if (null !== $object->getTotalCurrentLiabilities()) {
+        if ($object->isInitialized('totalCurrentLiabilities') && null !== $object->getTotalCurrentLiabilities()) {
             $data['totalCurrentLiabilities'] = $object->getTotalCurrentLiabilities();
         }
-        if (null !== $object->getOtherLongTermFinance()) {
+        if ($object->isInitialized('otherLongTermFinance') && null !== $object->getOtherLongTermFinance()) {
             $data['otherLongTermFinance'] = $object->getOtherLongTermFinance();
         }
-        if (null !== $object->getTotalLongTermLiabilities()) {
+        if ($object->isInitialized('totalLongTermLiabilities') && null !== $object->getTotalLongTermLiabilities()) {
             $data['totalLongTermLiabilities'] = $object->getTotalLongTermLiabilities();
         }
-        if (null !== $object->getTotalLiabilities()) {
+        if ($object->isInitialized('totalLiabilities') && null !== $object->getTotalLiabilities()) {
             $data['totalLiabilities'] = $object->getTotalLiabilities();
         }
-        if (null !== $object->getNetAssets()) {
+        if ($object->isInitialized('netAssets') && null !== $object->getNetAssets()) {
             $data['netAssets'] = $object->getNetAssets();
         }
-        if (null !== $object->getIssuedShareCapital()) {
+        if ($object->isInitialized('issuedShareCapital') && null !== $object->getIssuedShareCapital()) {
             $data['issuedShareCapital'] = $object->getIssuedShareCapital();
         }
-        if (null !== $object->getRevaluationReserve()) {
+        if ($object->isInitialized('revaluationReserve') && null !== $object->getRevaluationReserve()) {
             $data['revaluationReserve'] = $object->getRevaluationReserve();
         }
-        if (null !== $object->getRevenueReserves()) {
+        if ($object->isInitialized('revenueReserves') && null !== $object->getRevenueReserves()) {
             $data['revenueReserves'] = $object->getRevenueReserves();
         }
-        if (null !== $object->getOtherReserves()) {
+        if ($object->isInitialized('otherReserves') && null !== $object->getOtherReserves()) {
             $data['otherReserves'] = $object->getOtherReserves();
         }
-        if (null !== $object->getTotalShareholdersEquity()) {
+        if ($object->isInitialized('totalShareholdersEquity') && null !== $object->getTotalShareholdersEquity()) {
             $data['totalShareholdersEquity'] = $object->getTotalShareholdersEquity();
         }
         foreach ($object as $key => $value) {

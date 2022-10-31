@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class SwarmInfo
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Unique identifier of for this node in the swarm.
      *
      * @var string
@@ -80,6 +88,7 @@ class SwarmInfo
      */
     public function setNodeID(string $nodeID) : self
     {
+        $this->initialized['nodeID'] = true;
         $this->nodeID = $nodeID;
         return $this;
     }
@@ -105,6 +114,7 @@ class SwarmInfo
     */
     public function setNodeAddr(string $nodeAddr) : self
     {
+        $this->initialized['nodeAddr'] = true;
         $this->nodeAddr = $nodeAddr;
         return $this;
     }
@@ -126,6 +136,7 @@ class SwarmInfo
      */
     public function setLocalNodeState(string $localNodeState) : self
     {
+        $this->initialized['localNodeState'] = true;
         $this->localNodeState = $localNodeState;
         return $this;
     }
@@ -147,6 +158,7 @@ class SwarmInfo
      */
     public function setControlAvailable(bool $controlAvailable) : self
     {
+        $this->initialized['controlAvailable'] = true;
         $this->controlAvailable = $controlAvailable;
         return $this;
     }
@@ -168,6 +180,7 @@ class SwarmInfo
      */
     public function setError(string $error) : self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
         return $this;
     }
@@ -189,6 +202,7 @@ class SwarmInfo
      */
     public function setRemoteManagers(?array $remoteManagers) : self
     {
+        $this->initialized['remoteManagers'] = true;
         $this->remoteManagers = $remoteManagers;
         return $this;
     }
@@ -210,6 +224,7 @@ class SwarmInfo
      */
     public function setNodes(?int $nodes) : self
     {
+        $this->initialized['nodes'] = true;
         $this->nodes = $nodes;
         return $this;
     }
@@ -231,6 +246,7 @@ class SwarmInfo
      */
     public function setManagers(?int $managers) : self
     {
+        $this->initialized['managers'] = true;
         $this->managers = $managers;
         return $this;
     }
@@ -256,6 +272,7 @@ class SwarmInfo
     */
     public function setCluster(?ClusterInfo $cluster) : self
     {
+        $this->initialized['cluster'] = true;
         $this->cluster = $cluster;
         return $this;
     }

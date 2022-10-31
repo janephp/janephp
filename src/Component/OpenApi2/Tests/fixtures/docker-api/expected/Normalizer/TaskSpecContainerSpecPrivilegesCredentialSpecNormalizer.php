@@ -62,13 +62,13 @@ class TaskSpecContainerSpecPrivilegesCredentialSpecNormalizer implements Denorma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getConfig()) {
+        if ($object->isInitialized('config') && null !== $object->getConfig()) {
             $data['Config'] = $object->getConfig();
         }
-        if (null !== $object->getFile()) {
+        if ($object->isInitialized('file') && null !== $object->getFile()) {
             $data['File'] = $object->getFile();
         }
-        if (null !== $object->getRegistry()) {
+        if ($object->isInitialized('registry') && null !== $object->getRegistry()) {
             $data['Registry'] = $object->getRegistry();
         }
         if (!($context['skip_validation'] ?? false)) {

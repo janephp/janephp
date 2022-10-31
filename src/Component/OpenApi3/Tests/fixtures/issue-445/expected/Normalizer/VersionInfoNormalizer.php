@@ -73,16 +73,16 @@ class VersionInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFileVersion()) {
+        if ($object->isInitialized('fileVersion') && null !== $object->getFileVersion()) {
             $data['fileVersion'] = $object->getFileVersion();
         }
-        if (null !== $object->getFileProductVersion()) {
+        if ($object->isInitialized('fileProductVersion') && null !== $object->getFileProductVersion()) {
             $data['fileProductVersion'] = $object->getFileProductVersion();
         }
-        if (null !== $object->getContractVersion()) {
+        if ($object->isInitialized('contractVersion') && null !== $object->getContractVersion()) {
             $data['contractVersion'] = $object->getContractVersion();
         }
-        if (null !== $object->getRelease()) {
+        if ($object->isInitialized('release') && null !== $object->getRelease()) {
             $data['release'] = $object->getRelease();
         }
         return $data;

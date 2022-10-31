@@ -66,7 +66,7 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyNormalizer implements Denormal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLabels()) {
+        if ($object->isInitialized('labels') && null !== $object->getLabels()) {
             $values = array();
             foreach ($object->getLabels() as $value) {
                 $values[] = $value;

@@ -446,7 +446,7 @@ class FullRepositoryTemplateRepositoryNormalizer implements DenormalizerInterfac
         $data['full_name'] = $object->getFullName();
         $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
         $data['forks'] = $object->getForks();
-        if (null !== $object->getPermissions()) {
+        if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
         $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
@@ -504,10 +504,10 @@ class FullRepositoryTemplateRepositoryNormalizer implements DenormalizerInterfac
         $data['size'] = $object->getSize();
         $data['default_branch'] = $object->getDefaultBranch();
         $data['open_issues_count'] = $object->getOpenIssuesCount();
-        if (null !== $object->getIsTemplate()) {
+        if ($object->isInitialized('isTemplate') && null !== $object->getIsTemplate()) {
             $data['is_template'] = $object->getIsTemplate();
         }
-        if (null !== $object->getTopics()) {
+        if ($object->isInitialized('topics') && null !== $object->getTopics()) {
             $values = array();
             foreach ($object->getTopics() as $value) {
                 $values[] = $value;
@@ -521,42 +521,42 @@ class FullRepositoryTemplateRepositoryNormalizer implements DenormalizerInterfac
         $data['has_downloads'] = $object->getHasDownloads();
         $data['archived'] = $object->getArchived();
         $data['disabled'] = $object->getDisabled();
-        if (null !== $object->getVisibility()) {
+        if ($object->isInitialized('visibility') && null !== $object->getVisibility()) {
             $data['visibility'] = $object->getVisibility();
         }
         $data['pushed_at'] = $object->getPushedAt()->format('Y-m-d\\TH:i:sP');
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getAllowRebaseMerge()) {
+        if ($object->isInitialized('allowRebaseMerge') && null !== $object->getAllowRebaseMerge()) {
             $data['allow_rebase_merge'] = $object->getAllowRebaseMerge();
         }
-        if (null !== $object->getTemplateRepository()) {
+        if ($object->isInitialized('templateRepository') && null !== $object->getTemplateRepository()) {
             $data['template_repository'] = $this->normalizer->normalize($object->getTemplateRepository(), 'json', $context);
         }
-        if (null !== $object->getTempCloneToken()) {
+        if ($object->isInitialized('tempCloneToken') && null !== $object->getTempCloneToken()) {
             $data['temp_clone_token'] = $object->getTempCloneToken();
         }
-        if (null !== $object->getAllowSquashMerge()) {
+        if ($object->isInitialized('allowSquashMerge') && null !== $object->getAllowSquashMerge()) {
             $data['allow_squash_merge'] = $object->getAllowSquashMerge();
         }
-        if (null !== $object->getDeleteBranchOnMerge()) {
+        if ($object->isInitialized('deleteBranchOnMerge') && null !== $object->getDeleteBranchOnMerge()) {
             $data['delete_branch_on_merge'] = $object->getDeleteBranchOnMerge();
         }
-        if (null !== $object->getAllowMergeCommit()) {
+        if ($object->isInitialized('allowMergeCommit') && null !== $object->getAllowMergeCommit()) {
             $data['allow_merge_commit'] = $object->getAllowMergeCommit();
         }
-        if (null !== $object->getSubscribersCount()) {
+        if ($object->isInitialized('subscribersCount') && null !== $object->getSubscribersCount()) {
             $data['subscribers_count'] = $object->getSubscribersCount();
         }
-        if (null !== $object->getNetworkCount()) {
+        if ($object->isInitialized('networkCount') && null !== $object->getNetworkCount()) {
             $data['network_count'] = $object->getNetworkCount();
         }
         $data['open_issues'] = $object->getOpenIssues();
         $data['watchers'] = $object->getWatchers();
-        if (null !== $object->getMasterBranch()) {
+        if ($object->isInitialized('masterBranch') && null !== $object->getMasterBranch()) {
             $data['master_branch'] = $object->getMasterBranch();
         }
-        if (null !== $object->getStarredAt()) {
+        if ($object->isInitialized('starredAt') && null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
         foreach ($object as $key => $value_1) {

@@ -58,7 +58,7 @@ class Endpoint3GetResponse200Normalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getField3()) {
+        if ($object->isInitialized('field3') && null !== $object->getField3()) {
             $data['field-3'] = $this->normalizer->normalize($object->getField3(), 'json', $context);
         }
         foreach ($object as $key => $value) {

@@ -72,7 +72,7 @@ class ReposOwnerRepoGitRefsPostBodyNormalizer implements DenormalizerInterface, 
         $data = array();
         $data['ref'] = $object->getRef();
         $data['sha'] = $object->getSha();
-        if (null !== $object->getKey()) {
+        if ($object->isInitialized('key') && null !== $object->getKey()) {
             $data['key'] = $object->getKey();
         }
         foreach ($object as $key => $value) {

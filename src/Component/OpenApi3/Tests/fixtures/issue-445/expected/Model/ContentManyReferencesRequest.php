@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentManyReferencesRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The IDs of the contents whose references need to be retrieved.
      *
      * @var string[]
@@ -40,6 +48,7 @@ class ContentManyReferencesRequest
      */
     public function setContentIds(array $contentIds) : self
     {
+        $this->initialized['contentIds'] = true;
         $this->contentIds = $contentIds;
         return $this;
     }
@@ -61,6 +70,7 @@ class ContentManyReferencesRequest
      */
     public function setReferences($references) : self
     {
+        $this->initialized['references'] = true;
         $this->references = $references;
         return $this;
     }
@@ -82,6 +92,7 @@ class ContentManyReferencesRequest
      */
     public function setShares($shares) : self
     {
+        $this->initialized['shares'] = true;
         $this->shares = $shares;
         return $this;
     }

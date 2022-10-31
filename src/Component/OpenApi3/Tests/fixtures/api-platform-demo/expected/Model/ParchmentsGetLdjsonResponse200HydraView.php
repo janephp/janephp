@@ -5,6 +5,14 @@ namespace ApiPlatform\Demo\Model;
 class ParchmentsGetLdjsonResponse200HydraView extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -58,6 +66,7 @@ class ParchmentsGetLdjsonResponse200HydraView extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -79,6 +88,7 @@ class ParchmentsGetLdjsonResponse200HydraView extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -100,6 +110,7 @@ class ParchmentsGetLdjsonResponse200HydraView extends \ArrayObject
      */
     public function setHydraFirst(string $hydraFirst) : self
     {
+        $this->initialized['hydraFirst'] = true;
         $this->hydraFirst = $hydraFirst;
         return $this;
     }
@@ -121,6 +132,7 @@ class ParchmentsGetLdjsonResponse200HydraView extends \ArrayObject
      */
     public function setHydraLast(string $hydraLast) : self
     {
+        $this->initialized['hydraLast'] = true;
         $this->hydraLast = $hydraLast;
         return $this;
     }
@@ -142,6 +154,7 @@ class ParchmentsGetLdjsonResponse200HydraView extends \ArrayObject
      */
     public function setHydraPrevious(string $hydraPrevious) : self
     {
+        $this->initialized['hydraPrevious'] = true;
         $this->hydraPrevious = $hydraPrevious;
         return $this;
     }
@@ -163,6 +176,7 @@ class ParchmentsGetLdjsonResponse200HydraView extends \ArrayObject
      */
     public function setHydraNext(string $hydraNext) : self
     {
+        $this->initialized['hydraNext'] = true;
         $this->hydraNext = $hydraNext;
         return $this;
     }

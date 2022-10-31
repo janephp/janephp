@@ -74,19 +74,19 @@ class PeopleSearchSuccessResultDirectorsItemCompanyNormalizer implements Denorma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getCompanyName()) {
+        if ($object->isInitialized('companyName') && null !== $object->getCompanyName()) {
             $data['companyName'] = $object->getCompanyName();
         }
-        if (null !== $object->getCompanyNumber()) {
+        if ($object->isInitialized('companyNumber') && null !== $object->getCompanyNumber()) {
             $data['companyNumber'] = $object->getCompanyNumber();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getRegNo()) {
+        if ($object->isInitialized('regNo') && null !== $object->getRegNo()) {
             $data['regNo'] = $object->getRegNo();
         }
         foreach ($object as $key => $value) {

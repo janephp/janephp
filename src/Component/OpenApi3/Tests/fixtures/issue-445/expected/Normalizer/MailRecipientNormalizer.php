@@ -65,10 +65,10 @@ class MailRecipientNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $data = array();
         $data['userEmail'] = $object->getUserEmail();
-        if (null !== $object->getToken()) {
+        if ($object->isInitialized('token') && null !== $object->getToken()) {
             $data['token'] = $object->getToken();
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
         return $data;

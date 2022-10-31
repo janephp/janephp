@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class FieldDate extends FieldBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The date format structure.
      *
      * @var string|null
@@ -34,6 +42,7 @@ class FieldDate extends FieldBase
      */
     public function setFormat(?string $format) : self
     {
+        $this->initialized['format'] = true;
         $this->format = $format;
         return $this;
     }
@@ -55,6 +64,7 @@ class FieldDate extends FieldBase
      */
     public function setBoost(float $boost) : self
     {
+        $this->initialized['boost'] = true;
         $this->boost = $boost;
         return $this;
     }

@@ -56,7 +56,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFoo()) {
+        if ($object->isInitialized('foo') && null !== $object->getFoo()) {
             $values = array();
             foreach ($object->getFoo() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

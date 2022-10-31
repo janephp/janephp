@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class Service
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -92,6 +100,7 @@ class Service
      */
     public function setID(string $iD) : self
     {
+        $this->initialized['iD'] = true;
         $this->iD = $iD;
         return $this;
     }
@@ -133,6 +142,7 @@ class Service
     */
     public function setVersion(ObjectVersion $version) : self
     {
+        $this->initialized['version'] = true;
         $this->version = $version;
         return $this;
     }
@@ -154,6 +164,7 @@ class Service
      */
     public function setCreatedAt(string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -175,6 +186,7 @@ class Service
      */
     public function setUpdatedAt(string $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -196,6 +208,7 @@ class Service
      */
     public function setSpec(ServiceSpec $spec) : self
     {
+        $this->initialized['spec'] = true;
         $this->spec = $spec;
         return $this;
     }
@@ -217,6 +230,7 @@ class Service
      */
     public function setEndpoint(ServiceEndpoint $endpoint) : self
     {
+        $this->initialized['endpoint'] = true;
         $this->endpoint = $endpoint;
         return $this;
     }
@@ -238,6 +252,7 @@ class Service
      */
     public function setUpdateStatus(ServiceUpdateStatus $updateStatus) : self
     {
+        $this->initialized['updateStatus'] = true;
         $this->updateStatus = $updateStatus;
         return $this;
     }
@@ -263,6 +278,7 @@ class Service
     */
     public function setServiceStatus(ServiceServiceStatus $serviceStatus) : self
     {
+        $this->initialized['serviceStatus'] = true;
         $this->serviceStatus = $serviceStatus;
         return $this;
     }
@@ -292,6 +308,7 @@ class Service
     */
     public function setJobStatus(ServiceJobStatus $jobStatus) : self
     {
+        $this->initialized['jobStatus'] = true;
         $this->jobStatus = $jobStatus;
         return $this;
     }

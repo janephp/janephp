@@ -80,13 +80,13 @@ class UnsharpenMaskActionNormalizer implements DenormalizerInterface, Normalizer
     {
         $data = array();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getAmount()) {
+        if ($object->isInitialized('amount') && null !== $object->getAmount()) {
             $data['amount'] = $object->getAmount();
         }
-        if (null !== $object->getRadius()) {
+        if ($object->isInitialized('radius') && null !== $object->getRadius()) {
             $data['radius'] = $object->getRadius();
         }
-        if (null !== $object->getThreshold()) {
+        if ($object->isInitialized('threshold') && null !== $object->getThreshold()) {
             $data['threshold'] = $object->getThreshold();
         }
         foreach ($object as $key => $value) {

@@ -114,38 +114,38 @@ class BusinessRuleTraceLogSearchRequestNormalizer implements DenormalizerInterfa
     {
         $data = array();
         $data['debugMode'] = $object->getDebugMode();
-        if (null !== $object->getAggregationFilters()) {
+        if ($object->isInitialized('aggregationFilters') && null !== $object->getAggregationFilters()) {
             $values = array();
             foreach ($object->getAggregationFilters() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['aggregationFilters'] = $values;
         }
-        if (null !== $object->getAggregators()) {
+        if ($object->isInitialized('aggregators') && null !== $object->getAggregators()) {
             $values_1 = array();
             foreach ($object->getAggregators() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['aggregators'] = $values_1;
         }
-        if (null !== $object->getFilter()) {
+        if ($object->isInitialized('filter') && null !== $object->getFilter()) {
             $data['filter'] = $object->getFilter();
         }
         $data['limit'] = $object->getLimit();
-        if (null !== $object->getPageToken()) {
+        if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
             $data['pageToken'] = $object->getPageToken();
         }
-        if (null !== $object->getSearchString()) {
+        if ($object->isInitialized('searchString') && null !== $object->getSearchString()) {
             $data['searchString'] = $object->getSearchString();
         }
-        if (null !== $object->getSearchBehaviors()) {
+        if ($object->isInitialized('searchBehaviors') && null !== $object->getSearchBehaviors()) {
             $values_2 = array();
             foreach ($object->getSearchBehaviors() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['searchBehaviors'] = $values_2;
         }
-        if (null !== $object->getSort()) {
+        if ($object->isInitialized('sort') && null !== $object->getSort()) {
             $values_3 = array();
             foreach ($object->getSort() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);

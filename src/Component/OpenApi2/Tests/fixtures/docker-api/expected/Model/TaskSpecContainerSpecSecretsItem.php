@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class TaskSpecContainerSpecSecretsItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * File represents a specific target that is backed by a file.
      *
      * @var TaskSpecContainerSpecSecretsItemFile
@@ -45,6 +53,7 @@ class TaskSpecContainerSpecSecretsItem
      */
     public function setFile(TaskSpecContainerSpecSecretsItemFile $file) : self
     {
+        $this->initialized['file'] = true;
         $this->file = $file;
         return $this;
     }
@@ -70,6 +79,7 @@ class TaskSpecContainerSpecSecretsItem
     */
     public function setSecretID(string $secretID) : self
     {
+        $this->initialized['secretID'] = true;
         $this->secretID = $secretID;
         return $this;
     }
@@ -97,6 +107,7 @@ class TaskSpecContainerSpecSecretsItem
     */
     public function setSecretName(string $secretName) : self
     {
+        $this->initialized['secretName'] = true;
         $this->secretName = $secretName;
         return $this;
     }

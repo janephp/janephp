@@ -63,7 +63,7 @@ class BusinessProcessStateChangeRequestNormalizer implements DenormalizerInterfa
         $data = array();
         $data['state'] = $object->getState();
         $data['lifeCycle'] = $object->getLifeCycle();
-        if (null !== $object->getNotification()) {
+        if ($object->isInitialized('notification') && null !== $object->getNotification()) {
             $data['notification'] = $object->getNotification();
         }
         return $data;

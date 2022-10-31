@@ -5,6 +5,14 @@ namespace Github\Model;
 class CheckRun extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The id of the check.
      *
      * @var int
@@ -118,6 +126,7 @@ class CheckRun extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -139,6 +148,7 @@ class CheckRun extends \ArrayObject
      */
     public function setHeadSha(string $headSha) : self
     {
+        $this->initialized['headSha'] = true;
         $this->headSha = $headSha;
         return $this;
     }
@@ -160,6 +170,7 @@ class CheckRun extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -181,6 +192,7 @@ class CheckRun extends \ArrayObject
      */
     public function setExternalId(?string $externalId) : self
     {
+        $this->initialized['externalId'] = true;
         $this->externalId = $externalId;
         return $this;
     }
@@ -202,6 +214,7 @@ class CheckRun extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -223,6 +236,7 @@ class CheckRun extends \ArrayObject
      */
     public function setHtmlUrl(?string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -244,6 +258,7 @@ class CheckRun extends \ArrayObject
      */
     public function setDetailsUrl(?string $detailsUrl) : self
     {
+        $this->initialized['detailsUrl'] = true;
         $this->detailsUrl = $detailsUrl;
         return $this;
     }
@@ -265,6 +280,7 @@ class CheckRun extends \ArrayObject
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -286,6 +302,7 @@ class CheckRun extends \ArrayObject
      */
     public function setConclusion(?string $conclusion) : self
     {
+        $this->initialized['conclusion'] = true;
         $this->conclusion = $conclusion;
         return $this;
     }
@@ -307,6 +324,7 @@ class CheckRun extends \ArrayObject
      */
     public function setStartedAt(?\DateTime $startedAt) : self
     {
+        $this->initialized['startedAt'] = true;
         $this->startedAt = $startedAt;
         return $this;
     }
@@ -328,6 +346,7 @@ class CheckRun extends \ArrayObject
      */
     public function setCompletedAt(?\DateTime $completedAt) : self
     {
+        $this->initialized['completedAt'] = true;
         $this->completedAt = $completedAt;
         return $this;
     }
@@ -349,6 +368,7 @@ class CheckRun extends \ArrayObject
      */
     public function setOutput(CheckRunOutput $output) : self
     {
+        $this->initialized['output'] = true;
         $this->output = $output;
         return $this;
     }
@@ -370,6 +390,7 @@ class CheckRun extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -391,6 +412,7 @@ class CheckRun extends \ArrayObject
      */
     public function setCheckSuite(?CheckRunCheckSuite $checkSuite) : self
     {
+        $this->initialized['checkSuite'] = true;
         $this->checkSuite = $checkSuite;
         return $this;
     }
@@ -412,6 +434,7 @@ class CheckRun extends \ArrayObject
      */
     public function setApp(?CheckRunApp $app) : self
     {
+        $this->initialized['app'] = true;
         $this->app = $app;
         return $this;
     }
@@ -433,6 +456,7 @@ class CheckRun extends \ArrayObject
      */
     public function setPullRequests($pullRequests) : self
     {
+        $this->initialized['pullRequests'] = true;
         $this->pullRequests = $pullRequests;
         return $this;
     }

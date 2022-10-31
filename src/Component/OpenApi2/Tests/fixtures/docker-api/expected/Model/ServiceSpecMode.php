@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ServiceSpecMode
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var ServiceSpecModeReplicated
@@ -50,6 +58,7 @@ class ServiceSpecMode
      */
     public function setReplicated(ServiceSpecModeReplicated $replicated) : self
     {
+        $this->initialized['replicated'] = true;
         $this->replicated = $replicated;
         return $this;
     }
@@ -71,6 +80,7 @@ class ServiceSpecMode
      */
     public function setGlobal($global) : self
     {
+        $this->initialized['global'] = true;
         $this->global = $global;
         return $this;
     }
@@ -96,6 +106,7 @@ class ServiceSpecMode
     */
     public function setReplicatedJob(ServiceSpecModeReplicatedJob $replicatedJob) : self
     {
+        $this->initialized['replicatedJob'] = true;
         $this->replicatedJob = $replicatedJob;
         return $this;
     }
@@ -121,6 +132,7 @@ class ServiceSpecMode
     */
     public function setGlobalJob($globalJob) : self
     {
+        $this->initialized['globalJob'] = true;
         $this->globalJob = $globalJob;
         return $this;
     }

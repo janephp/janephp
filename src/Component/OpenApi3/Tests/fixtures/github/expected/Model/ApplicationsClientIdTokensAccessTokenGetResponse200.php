@@ -5,6 +5,14 @@ namespace Github\Model;
 class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -106,6 +114,7 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -127,6 +136,7 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -148,6 +158,7 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
      */
     public function setScopes(?array $scopes) : self
     {
+        $this->initialized['scopes'] = true;
         $this->scopes = $scopes;
         return $this;
     }
@@ -169,6 +180,7 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
      */
     public function setToken(string $token) : self
     {
+        $this->initialized['token'] = true;
         $this->token = $token;
         return $this;
     }
@@ -190,6 +202,7 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
      */
     public function setTokenLastEight(?string $tokenLastEight) : self
     {
+        $this->initialized['tokenLastEight'] = true;
         $this->tokenLastEight = $tokenLastEight;
         return $this;
     }
@@ -211,6 +224,7 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
      */
     public function setHashedToken(?string $hashedToken) : self
     {
+        $this->initialized['hashedToken'] = true;
         $this->hashedToken = $hashedToken;
         return $this;
     }
@@ -232,6 +246,7 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
      */
     public function setApp(AuthorizationApp $app) : self
     {
+        $this->initialized['app'] = true;
         $this->app = $app;
         return $this;
     }
@@ -253,6 +268,7 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
      */
     public function setNote(?string $note) : self
     {
+        $this->initialized['note'] = true;
         $this->note = $note;
         return $this;
     }
@@ -274,6 +290,7 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
      */
     public function setNoteUrl(?string $noteUrl) : self
     {
+        $this->initialized['noteUrl'] = true;
         $this->noteUrl = $noteUrl;
         return $this;
     }
@@ -295,6 +312,7 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
      */
     public function setUpdatedAt(\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -316,6 +334,7 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -337,6 +356,7 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
      */
     public function setFingerprint(?string $fingerprint) : self
     {
+        $this->initialized['fingerprint'] = true;
         $this->fingerprint = $fingerprint;
         return $this;
     }
@@ -358,6 +378,7 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
      */
     public function setUser(?AuthorizationUser $user) : self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
     }
@@ -379,6 +400,7 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
      */
     public function setInstallation(?AuthorizationInstallation $installation) : self
     {
+        $this->initialized['installation'] = true;
         $this->installation = $installation;
         return $this;
     }

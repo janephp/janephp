@@ -159,49 +159,49 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLossNo
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRevenue()) {
+        if ($object->isInitialized('revenue') && null !== $object->getRevenue()) {
             $data['revenue'] = $object->getRevenue();
         }
-        if (null !== $object->getOperatingCosts()) {
+        if ($object->isInitialized('operatingCosts') && null !== $object->getOperatingCosts()) {
             $data['operatingCosts'] = $object->getOperatingCosts();
         }
-        if (null !== $object->getOperatingProfit()) {
+        if ($object->isInitialized('operatingProfit') && null !== $object->getOperatingProfit()) {
             $data['operatingProfit'] = $object->getOperatingProfit();
         }
-        if (null !== $object->getWagesAndSalaries()) {
+        if ($object->isInitialized('wagesAndSalaries') && null !== $object->getWagesAndSalaries()) {
             $data['wagesAndSalaries'] = $object->getWagesAndSalaries();
         }
-        if (null !== $object->getPensionCosts()) {
+        if ($object->isInitialized('pensionCosts') && null !== $object->getPensionCosts()) {
             $data['pensionCosts'] = $object->getPensionCosts();
         }
-        if (null !== $object->getDepreciation()) {
+        if ($object->isInitialized('depreciation') && null !== $object->getDepreciation()) {
             $data['depreciation'] = $object->getDepreciation();
         }
-        if (null !== $object->getAmortisation()) {
+        if ($object->isInitialized('amortisation') && null !== $object->getAmortisation()) {
             $data['amortisation'] = $object->getAmortisation();
         }
-        if (null !== $object->getFinancialExpenses()) {
+        if ($object->isInitialized('financialExpenses') && null !== $object->getFinancialExpenses()) {
             $data['financialExpenses'] = $object->getFinancialExpenses();
         }
-        if (null !== $object->getProfitBeforeTax()) {
+        if ($object->isInitialized('profitBeforeTax') && null !== $object->getProfitBeforeTax()) {
             $data['profitBeforeTax'] = $object->getProfitBeforeTax();
         }
-        if (null !== $object->getTax()) {
+        if ($object->isInitialized('tax') && null !== $object->getTax()) {
             $data['tax'] = $object->getTax();
         }
-        if (null !== $object->getProfitAfterTax()) {
+        if ($object->isInitialized('profitAfterTax') && null !== $object->getProfitAfterTax()) {
             $data['profitAfterTax'] = $object->getProfitAfterTax();
         }
-        if (null !== $object->getDividends()) {
+        if ($object->isInitialized('dividends') && null !== $object->getDividends()) {
             $data['dividends'] = $object->getDividends();
         }
-        if (null !== $object->getMinorityInterests()) {
+        if ($object->isInitialized('minorityInterests') && null !== $object->getMinorityInterests()) {
             $data['minorityInterests'] = $object->getMinorityInterests();
         }
-        if (null !== $object->getOtherAppropriations()) {
+        if ($object->isInitialized('otherAppropriations') && null !== $object->getOtherAppropriations()) {
             $data['otherAppropriations'] = $object->getOtherAppropriations();
         }
-        if (null !== $object->getRetainedProfit()) {
+        if ($object->isInitialized('retainedProfit') && null !== $object->getRetainedProfit()) {
             $data['retainedProfit'] = $object->getRetainedProfit();
         }
         foreach ($object as $key => $value) {

@@ -66,13 +66,13 @@ class ResourceObjectNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNanoCPUs()) {
+        if ($object->isInitialized('nanoCPUs') && null !== $object->getNanoCPUs()) {
             $data['NanoCPUs'] = $object->getNanoCPUs();
         }
-        if (null !== $object->getMemoryBytes()) {
+        if ($object->isInitialized('memoryBytes') && null !== $object->getMemoryBytes()) {
             $data['MemoryBytes'] = $object->getMemoryBytes();
         }
-        if (null !== $object->getGenericResources()) {
+        if ($object->isInitialized('genericResources') && null !== $object->getGenericResources()) {
             $values = array();
             foreach ($object->getGenericResources() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

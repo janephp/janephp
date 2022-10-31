@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class NodeDescription
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -56,6 +64,7 @@ class NodeDescription
      */
     public function setHostname(string $hostname) : self
     {
+        $this->initialized['hostname'] = true;
         $this->hostname = $hostname;
         return $this;
     }
@@ -77,6 +86,7 @@ class NodeDescription
      */
     public function setPlatform(Platform $platform) : self
     {
+        $this->initialized['platform'] = true;
         $this->platform = $platform;
         return $this;
     }
@@ -102,6 +112,7 @@ class NodeDescription
     */
     public function setResources(ResourceObject $resources) : self
     {
+        $this->initialized['resources'] = true;
         $this->resources = $resources;
         return $this;
     }
@@ -123,6 +134,7 @@ class NodeDescription
      */
     public function setEngine(EngineDescription $engine) : self
     {
+        $this->initialized['engine'] = true;
         $this->engine = $engine;
         return $this;
     }
@@ -148,6 +160,7 @@ class NodeDescription
     */
     public function setTLSInfo(TLSInfo $tLSInfo) : self
     {
+        $this->initialized['tLSInfo'] = true;
         $this->tLSInfo = $tLSInfo;
         return $this;
     }

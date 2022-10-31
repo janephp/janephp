@@ -62,7 +62,7 @@ class IndexFieldsSearchBySchemaIdsRequestNormalizer implements DenormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSchemaIds()) {
+        if ($object->isInitialized('schemaIds') && null !== $object->getSchemaIds()) {
             $values = array();
             foreach ($object->getSchemaIds() as $value) {
                 $values[] = $value;

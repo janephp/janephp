@@ -78,13 +78,13 @@ class VideoNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getPreviewImageUrl()) {
+        if ($object->isInitialized('previewImageUrl') && null !== $object->getPreviewImageUrl()) {
             $data['preview_image_url'] = $object->getPreviewImageUrl();
         }
-        if (null !== $object->getDurationMs()) {
+        if ($object->isInitialized('durationMs') && null !== $object->getDurationMs()) {
             $data['duration_ms'] = $object->getDurationMs();
         }
         $data['media_key'] = $object->getMediaKey();

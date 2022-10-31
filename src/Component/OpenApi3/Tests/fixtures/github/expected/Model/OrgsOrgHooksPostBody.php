@@ -5,6 +5,14 @@ namespace Github\Model;
 class OrgsOrgHooksPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Must be passed as "web".
      *
      * @var string
@@ -46,6 +54,7 @@ class OrgsOrgHooksPostBody extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -67,6 +76,7 @@ class OrgsOrgHooksPostBody extends \ArrayObject
      */
     public function setConfig(OrgsOrgHooksPostBodyConfig $config) : self
     {
+        $this->initialized['config'] = true;
         $this->config = $config;
         return $this;
     }
@@ -88,6 +98,7 @@ class OrgsOrgHooksPostBody extends \ArrayObject
      */
     public function setEvents(array $events) : self
     {
+        $this->initialized['events'] = true;
         $this->events = $events;
         return $this;
     }
@@ -109,6 +120,7 @@ class OrgsOrgHooksPostBody extends \ArrayObject
      */
     public function setActive(bool $active) : self
     {
+        $this->initialized['active'] = true;
         $this->active = $active;
         return $this;
     }

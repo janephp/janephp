@@ -5,6 +5,14 @@ namespace Github\Model;
 class FileCommit extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var FileCommitContent|null
@@ -34,6 +42,7 @@ class FileCommit extends \ArrayObject
      */
     public function setContent(?FileCommitContent $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }
@@ -55,6 +64,7 @@ class FileCommit extends \ArrayObject
      */
     public function setCommit(FileCommitCommit $commit) : self
     {
+        $this->initialized['commit'] = true;
         $this->commit = $commit;
         return $this;
     }

@@ -143,42 +143,42 @@ class TermsEnumAggregatorNormalizer implements DenormalizerInterface, Normalizer
     {
         $data = array();
         $data['name'] = $object->getName();
-        if (null !== $object->getNames()) {
+        if ($object->isInitialized('names') && null !== $object->getNames()) {
             $data['names'] = $object->getNames();
         }
-        if (null !== $object->getAggregators()) {
+        if ($object->isInitialized('aggregators') && null !== $object->getAggregators()) {
             $values = array();
             foreach ($object->getAggregators() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['aggregators'] = $values;
         }
-        if (null !== $object->getFilter()) {
+        if ($object->isInitialized('filter') && null !== $object->getFilter()) {
             $data['filter'] = $object->getFilter();
         }
         $data['kind'] = $object->getKind();
         $data['field'] = $object->getField();
-        if (null !== $object->getSize()) {
+        if ($object->isInitialized('size') && null !== $object->getSize()) {
             $data['size'] = $object->getSize();
         }
-        if (null !== $object->getIncludes()) {
+        if ($object->isInitialized('includes') && null !== $object->getIncludes()) {
             $values_1 = array();
             foreach ($object->getIncludes() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['includes'] = $values_1;
         }
-        if (null !== $object->getExcludes()) {
+        if ($object->isInitialized('excludes') && null !== $object->getExcludes()) {
             $values_2 = array();
             foreach ($object->getExcludes() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['excludes'] = $values_2;
         }
-        if (null !== $object->getSearchString()) {
+        if ($object->isInitialized('searchString') && null !== $object->getSearchString()) {
             $data['searchString'] = $object->getSearchString();
         }
-        if (null !== $object->getSearchFields()) {
+        if ($object->isInitialized('searchFields') && null !== $object->getSearchFields()) {
             $values_3 = array();
             foreach ($object->getSearchFields() as $value_3) {
                 $values_3[] = $value_3;

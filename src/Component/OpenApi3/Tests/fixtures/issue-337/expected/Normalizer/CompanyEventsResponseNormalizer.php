@@ -73,17 +73,17 @@ class CompanyEventsResponseNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTotalCount()) {
+        if ($object->isInitialized('totalCount') && null !== $object->getTotalCount()) {
             $data['totalCount'] = $object->getTotalCount();
         }
-        if (null !== $object->getData()) {
+        if ($object->isInitialized('data') && null !== $object->getData()) {
             $values = array();
             foreach ($object->getData() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['data'] = $values;
         }
-        if (null !== $object->getPaging()) {
+        if ($object->isInitialized('paging') && null !== $object->getPaging()) {
             $data['paging'] = $this->normalizer->normalize($object->getPaging(), 'json', $context);
         }
         foreach ($object as $key => $value_1) {

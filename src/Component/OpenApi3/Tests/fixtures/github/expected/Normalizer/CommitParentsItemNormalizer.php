@@ -72,7 +72,7 @@ class CommitParentsItemNormalizer implements DenormalizerInterface, NormalizerIn
         $data = array();
         $data['sha'] = $object->getSha();
         $data['url'] = $object->getUrl();
-        if (null !== $object->getHtmlUrl()) {
+        if ($object->isInitialized('htmlUrl') && null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
         foreach ($object as $key => $value) {

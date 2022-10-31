@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoInvitationsInvitationIdPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.
      *
      * @var string
@@ -28,6 +36,7 @@ class ReposOwnerRepoInvitationsInvitationIdPatchBody extends \ArrayObject
      */
     public function setPermissions(string $permissions) : self
     {
+        $this->initialized['permissions'] = true;
         $this->permissions = $permissions;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class PorterLargeFile extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class PorterLargeFile extends \ArrayObject
      */
     public function setRefName(string $refName) : self
     {
+        $this->initialized['refName'] = true;
         $this->refName = $refName;
         return $this;
     }
@@ -67,6 +76,7 @@ class PorterLargeFile extends \ArrayObject
      */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -88,6 +98,7 @@ class PorterLargeFile extends \ArrayObject
      */
     public function setOid(string $oid) : self
     {
+        $this->initialized['oid'] = true;
         $this->oid = $oid;
         return $this;
     }
@@ -109,6 +120,7 @@ class PorterLargeFile extends \ArrayObject
      */
     public function setSize(int $size) : self
     {
+        $this->initialized['size'] = true;
         $this->size = $size;
         return $this;
     }

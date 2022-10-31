@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class AccessCountriesResponseCountryAccessItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Country usage for Company Reports service
      *
      * @var AccessCountriesResponseCountryAccessItemCreditsafeConnectOnlineReportsItem[]
@@ -64,6 +72,7 @@ class AccessCountriesResponseCountryAccessItem extends \ArrayObject
      */
     public function setCreditsafeConnectOnlineReports(array $creditsafeConnectOnlineReports) : self
     {
+        $this->initialized['creditsafeConnectOnlineReports'] = true;
         $this->creditsafeConnectOnlineReports = $creditsafeConnectOnlineReports;
         return $this;
     }
@@ -85,6 +94,7 @@ class AccessCountriesResponseCountryAccessItem extends \ArrayObject
      */
     public function setCreditsafeConnectOfflineReports(array $creditsafeConnectOfflineReports) : self
     {
+        $this->initialized['creditsafeConnectOfflineReports'] = true;
         $this->creditsafeConnectOfflineReports = $creditsafeConnectOfflineReports;
         return $this;
     }
@@ -106,6 +116,7 @@ class AccessCountriesResponseCountryAccessItem extends \ArrayObject
      */
     public function setCreditsafeConnectMonitoring(array $creditsafeConnectMonitoring) : self
     {
+        $this->initialized['creditsafeConnectMonitoring'] = true;
         $this->creditsafeConnectMonitoring = $creditsafeConnectMonitoring;
         return $this;
     }
@@ -127,6 +138,7 @@ class AccessCountriesResponseCountryAccessItem extends \ArrayObject
      */
     public function setCreditsafeConnectDirectorReports(array $creditsafeConnectDirectorReports) : self
     {
+        $this->initialized['creditsafeConnectDirectorReports'] = true;
         $this->creditsafeConnectDirectorReports = $creditsafeConnectDirectorReports;
         return $this;
     }
@@ -148,6 +160,7 @@ class AccessCountriesResponseCountryAccessItem extends \ArrayObject
      */
     public function setCreditsafeConnectImageDocuments(array $creditsafeConnectImageDocuments) : self
     {
+        $this->initialized['creditsafeConnectImageDocuments'] = true;
         $this->creditsafeConnectImageDocuments = $creditsafeConnectImageDocuments;
         return $this;
     }
@@ -169,6 +182,7 @@ class AccessCountriesResponseCountryAccessItem extends \ArrayObject
      */
     public function setCreditsafeConnectBankValidation(array $creditsafeConnectBankValidation) : self
     {
+        $this->initialized['creditsafeConnectBankValidation'] = true;
         $this->creditsafeConnectBankValidation = $creditsafeConnectBankValidation;
         return $this;
     }
@@ -190,6 +204,7 @@ class AccessCountriesResponseCountryAccessItem extends \ArrayObject
      */
     public function setCreditsafeConnectBankVerification(array $creditsafeConnectBankVerification) : self
     {
+        $this->initialized['creditsafeConnectBankVerification'] = true;
         $this->creditsafeConnectBankVerification = $creditsafeConnectBankVerification;
         return $this;
     }

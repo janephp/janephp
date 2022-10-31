@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SchemaImportRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of the file transfer identifying the file previously uploaded.
      *
      * @var string
@@ -40,6 +48,7 @@ class SchemaImportRequest
      */
     public function setFileTransferId(string $fileTransferId) : self
     {
+        $this->initialized['fileTransferId'] = true;
         $this->fileTransferId = $fileTransferId;
         return $this;
     }
@@ -61,6 +70,7 @@ class SchemaImportRequest
      */
     public function setAllowMissingDependencies(bool $allowMissingDependencies) : self
     {
+        $this->initialized['allowMissingDependencies'] = true;
         $this->allowMissingDependencies = $allowMissingDependencies;
         return $this;
     }
@@ -82,6 +92,7 @@ class SchemaImportRequest
      */
     public function setImportListItems(bool $importListItems) : self
     {
+        $this->initialized['importListItems'] = true;
         $this->importListItems = $importListItems;
         return $this;
     }

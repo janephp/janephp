@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoForksPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Optional parameter to specify the organization name if forking into an organization.
      *
      * @var string
@@ -28,6 +36,7 @@ class ReposOwnerRepoForksPostBody extends \ArrayObject
      */
     public function setOrganization(string $organization) : self
     {
+        $this->initialized['organization'] = true;
         $this->organization = $organization;
         return $this;
     }

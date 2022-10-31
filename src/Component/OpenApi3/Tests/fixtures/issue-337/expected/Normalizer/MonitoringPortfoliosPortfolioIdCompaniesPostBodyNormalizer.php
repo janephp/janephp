@@ -71,13 +71,13 @@ class MonitoringPortfoliosPortfolioIdCompaniesPostBodyNormalizer implements Deno
     {
         $data = array();
         $data['id'] = $object->getId();
-        if (null !== $object->getPersonalReference()) {
+        if ($object->isInitialized('personalReference') && null !== $object->getPersonalReference()) {
             $data['personalReference'] = $object->getPersonalReference();
         }
-        if (null !== $object->getFreeText()) {
+        if ($object->isInitialized('freeText') && null !== $object->getFreeText()) {
             $data['freeText'] = $object->getFreeText();
         }
-        if (null !== $object->getPersonalLimit()) {
+        if ($object->isInitialized('personalLimit') && null !== $object->getPersonalLimit()) {
             $data['personalLimit'] = $object->getPersonalLimit();
         }
         foreach ($object as $key => $value) {

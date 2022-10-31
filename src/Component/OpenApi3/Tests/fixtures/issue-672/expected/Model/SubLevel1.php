@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class SubLevel1 extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var SubLevel2
@@ -28,6 +36,7 @@ class SubLevel1 extends \ArrayObject
      */
     public function setSubLevel2(SubLevel2 $subLevel2) : self
     {
+        $this->initialized['subLevel2'] = true;
         $this->subLevel2 = $subLevel2;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi2\Tests\Expected\Model;
 class Dog extends Pet
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * the size of the pack the dog is from
      *
      * @var int
@@ -28,6 +36,7 @@ class Dog extends Pet
      */
     public function setPackSize(int $packSize) : self
     {
+        $this->initialized['packSize'] = true;
         $this->packSize = $packSize;
         return $this;
     }

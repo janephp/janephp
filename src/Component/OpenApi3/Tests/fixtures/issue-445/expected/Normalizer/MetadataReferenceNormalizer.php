@@ -69,10 +69,10 @@ class MetadataReferenceNormalizer implements DenormalizerInterface, NormalizerIn
         $data = array();
         $data['targetMetadataItemId'] = $object->getTargetMetadataItemId();
         $data['isRestricted'] = $object->getIsRestricted();
-        if (null !== $object->getSourceMetadataItemId()) {
+        if ($object->isInitialized('sourceMetadataItemId') && null !== $object->getSourceMetadataItemId()) {
             $data['sourceMetadataItemId'] = $object->getSourceMetadataItemId();
         }
-        if (null !== $object->getSourceDocType()) {
+        if ($object->isInitialized('sourceDocType') && null !== $object->getSourceDocType()) {
             $data['sourceDocType'] = $object->getSourceDocType();
         }
         return $data;

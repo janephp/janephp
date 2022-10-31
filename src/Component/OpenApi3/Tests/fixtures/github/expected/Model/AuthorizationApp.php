@@ -5,6 +5,14 @@ namespace Github\Model;
 class AuthorizationApp extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class AuthorizationApp extends \ArrayObject
      */
     public function setClientId(string $clientId) : self
     {
+        $this->initialized['clientId'] = true;
         $this->clientId = $clientId;
         return $this;
     }
@@ -61,6 +70,7 @@ class AuthorizationApp extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -82,6 +92,7 @@ class AuthorizationApp extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }

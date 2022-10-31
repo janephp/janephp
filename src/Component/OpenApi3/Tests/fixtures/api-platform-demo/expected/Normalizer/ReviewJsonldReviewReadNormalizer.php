@@ -108,14 +108,14 @@ class ReviewJsonldReviewReadNormalizer implements DenormalizerInterface, Normali
         $data = array();
         $data['body'] = $object->getBody();
         $data['rating'] = $object->getRating();
-        if (null !== $object->getLetter()) {
+        if ($object->isInitialized('letter') && null !== $object->getLetter()) {
             $data['letter'] = $object->getLetter();
         }
         $data['book'] = $this->normalizer->normalize($object->getBook(), 'json', $context);
-        if (null !== $object->getAuthor()) {
+        if ($object->isInitialized('author') && null !== $object->getAuthor()) {
             $data['author'] = $object->getAuthor();
         }
-        if (null !== $object->getPublicationDate()) {
+        if ($object->isInitialized('publicationDate') && null !== $object->getPublicationDate()) {
             $data['publicationDate'] = $object->getPublicationDate()->format('Y-m-d\\TH:i:sP');
         }
         foreach ($object as $key => $value) {

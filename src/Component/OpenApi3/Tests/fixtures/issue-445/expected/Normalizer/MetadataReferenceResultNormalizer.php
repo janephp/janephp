@@ -91,10 +91,10 @@ class MetadataReferenceResultNormalizer implements DenormalizerInterface, Normal
         }
         $data['results'] = $values;
         $data['elapsedMilliseconds'] = $object->getElapsedMilliseconds();
-        if (null !== $object->getPageToken()) {
+        if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
             $data['pageToken'] = $object->getPageToken();
         }
-        if (null !== $object->getIsReferencedByRestrictedItem()) {
+        if ($object->isInitialized('isReferencedByRestrictedItem') && null !== $object->getIsReferencedByRestrictedItem()) {
             $data['isReferencedByRestrictedItem'] = $object->getIsReferencedByRestrictedItem();
         }
         foreach ($object as $key => $value_1) {

@@ -66,13 +66,13 @@ class EndpointIPAMConfigNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getIPv4Address()) {
+        if ($object->isInitialized('iPv4Address') && null !== $object->getIPv4Address()) {
             $data['IPv4Address'] = $object->getIPv4Address();
         }
-        if (null !== $object->getIPv6Address()) {
+        if ($object->isInitialized('iPv6Address') && null !== $object->getIPv6Address()) {
             $data['IPv6Address'] = $object->getIPv6Address();
         }
-        if (null !== $object->getLinkLocalIPs()) {
+        if ($object->isInitialized('linkLocalIPs') && null !== $object->getLinkLocalIPs()) {
             $values = array();
             foreach ($object->getLinkLocalIPs() as $value) {
                 $values[] = $value;

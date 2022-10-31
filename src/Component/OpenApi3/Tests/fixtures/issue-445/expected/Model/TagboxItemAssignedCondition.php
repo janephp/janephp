@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class TagboxItemAssignedCondition extends BusinessRuleCondition
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * JSON path to the field
      *
      * @var string|null
@@ -34,6 +42,7 @@ class TagboxItemAssignedCondition extends BusinessRuleCondition
      */
     public function setFieldPath(?string $fieldPath) : self
     {
+        $this->initialized['fieldPath'] = true;
         $this->fieldPath = $fieldPath;
         return $this;
     }
@@ -55,6 +64,7 @@ class TagboxItemAssignedCondition extends BusinessRuleCondition
      */
     public function setRefId(?string $refId) : self
     {
+        $this->initialized['refId'] = true;
         $this->refId = $refId;
         return $this;
     }

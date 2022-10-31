@@ -63,14 +63,14 @@ class ContainersPrunePostResponse200Normalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getContainersDeleted()) {
+        if ($object->isInitialized('containersDeleted') && null !== $object->getContainersDeleted()) {
             $values = array();
             foreach ($object->getContainersDeleted() as $value) {
                 $values[] = $value;
             }
             $data['ContainersDeleted'] = $values;
         }
-        if (null !== $object->getSpaceReclaimed()) {
+        if ($object->isInitialized('spaceReclaimed') && null !== $object->getSpaceReclaimed()) {
             $data['SpaceReclaimed'] = $object->getSpaceReclaimed();
         }
         if (!($context['skip_validation'] ?? false)) {

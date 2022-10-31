@@ -86,26 +86,26 @@ class InstallationTokenNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getToken()) {
+        if ($object->isInitialized('token') && null !== $object->getToken()) {
             $data['token'] = $object->getToken();
         }
-        if (null !== $object->getExpiresAt()) {
+        if ($object->isInitialized('expiresAt') && null !== $object->getExpiresAt()) {
             $data['expires_at'] = $object->getExpiresAt();
         }
-        if (null !== $object->getPermissions()) {
+        if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
-        if (null !== $object->getRepositorySelection()) {
+        if ($object->isInitialized('repositorySelection') && null !== $object->getRepositorySelection()) {
             $data['repository_selection'] = $object->getRepositorySelection();
         }
-        if (null !== $object->getRepositories()) {
+        if ($object->isInitialized('repositories') && null !== $object->getRepositories()) {
             $values = array();
             foreach ($object->getRepositories() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['repositories'] = $values;
         }
-        if (null !== $object->getSingleFile()) {
+        if ($object->isInitialized('singleFile') && null !== $object->getSingleFile()) {
             $data['single_file'] = $object->getSingleFile();
         }
         foreach ($object as $key => $value_1) {

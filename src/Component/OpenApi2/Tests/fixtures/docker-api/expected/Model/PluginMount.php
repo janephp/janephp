@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class PluginMount
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -64,6 +72,7 @@ class PluginMount
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -85,6 +94,7 @@ class PluginMount
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -106,6 +116,7 @@ class PluginMount
      */
     public function setSettable(array $settable) : self
     {
+        $this->initialized['settable'] = true;
         $this->settable = $settable;
         return $this;
     }
@@ -127,6 +138,7 @@ class PluginMount
      */
     public function setSource(string $source) : self
     {
+        $this->initialized['source'] = true;
         $this->source = $source;
         return $this;
     }
@@ -148,6 +160,7 @@ class PluginMount
      */
     public function setDestination(string $destination) : self
     {
+        $this->initialized['destination'] = true;
         $this->destination = $destination;
         return $this;
     }
@@ -169,6 +182,7 @@ class PluginMount
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -190,6 +204,7 @@ class PluginMount
      */
     public function setOptions(array $options) : self
     {
+        $this->initialized['options'] = true;
         $this->options = $options;
         return $this;
     }

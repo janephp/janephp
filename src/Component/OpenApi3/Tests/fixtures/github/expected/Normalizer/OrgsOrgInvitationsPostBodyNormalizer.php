@@ -78,16 +78,16 @@ class OrgsOrgInvitationsPostBodyNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getInviteeId()) {
+        if ($object->isInitialized('inviteeId') && null !== $object->getInviteeId()) {
             $data['invitee_id'] = $object->getInviteeId();
         }
-        if (null !== $object->getEmail()) {
+        if ($object->isInitialized('email') && null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
-        if (null !== $object->getRole()) {
+        if ($object->isInitialized('role') && null !== $object->getRole()) {
             $data['role'] = $object->getRole();
         }
-        if (null !== $object->getTeamIds()) {
+        if ($object->isInitialized('teamIds') && null !== $object->getTeamIds()) {
             $values = array();
             foreach ($object->getTeamIds() as $value) {
                 $values[] = $value;

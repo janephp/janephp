@@ -69,20 +69,20 @@ class SwarmSpecCAConfigExternalCAsItemNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getProtocol()) {
+        if ($object->isInitialized('protocol') && null !== $object->getProtocol()) {
             $data['Protocol'] = $object->getProtocol();
         }
-        if (null !== $object->getURL()) {
+        if ($object->isInitialized('uRL') && null !== $object->getURL()) {
             $data['URL'] = $object->getURL();
         }
-        if (null !== $object->getOptions()) {
+        if ($object->isInitialized('options') && null !== $object->getOptions()) {
             $values = array();
             foreach ($object->getOptions() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['Options'] = $values;
         }
-        if (null !== $object->getCACert()) {
+        if ($object->isInitialized('cACert') && null !== $object->getCACert()) {
             $data['CACert'] = $object->getCACert();
         }
         if (!($context['skip_validation'] ?? false)) {

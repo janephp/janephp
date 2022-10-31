@@ -94,34 +94,34 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemNormalizer implements 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCompanyName()) {
+        if ($object->isInitialized('companyName') && null !== $object->getCompanyName()) {
             $data['companyName'] = $object->getCompanyName();
         }
-        if (null !== $object->getCompanyNumber()) {
+        if ($object->isInitialized('companyNumber') && null !== $object->getCompanyNumber()) {
             $data['companyNumber'] = $object->getCompanyNumber();
         }
-        if (null !== $object->getCompanyRegistrationNumber()) {
+        if ($object->isInitialized('companyRegistrationNumber') && null !== $object->getCompanyRegistrationNumber()) {
             $data['companyRegistrationNumber'] = $object->getCompanyRegistrationNumber();
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        if (null !== $object->getPosition()) {
+        if ($object->isInitialized('position') && null !== $object->getPosition()) {
             $data['position'] = $this->normalizer->normalize($object->getPosition(), 'json', $context);
         }
-        if (null !== $object->getCompanyRegistrationDate()) {
+        if ($object->isInitialized('companyRegistrationDate') && null !== $object->getCompanyRegistrationDate()) {
             $data['companyRegistrationDate'] = $object->getCompanyRegistrationDate();
         }
-        if (null !== $object->getNetWorth()) {
+        if ($object->isInitialized('netWorth') && null !== $object->getNetWorth()) {
             $data['netWorth'] = $this->normalizer->normalize($object->getNetWorth(), 'json', $context);
         }
-        if (null !== $object->getLegalCount()) {
+        if ($object->isInitialized('legalCount') && null !== $object->getLegalCount()) {
             $data['legalCount'] = $object->getLegalCount();
         }
-        if (null !== $object->getCreditScore()) {
+        if ($object->isInitialized('creditScore') && null !== $object->getCreditScore()) {
             $data['creditScore'] = $this->normalizer->normalize($object->getCreditScore(), 'json', $context);
         }
-        if (null !== $object->getAdditionalData()) {
+        if ($object->isInitialized('additionalData') && null !== $object->getAdditionalData()) {
             $data['additionalData'] = $this->normalizer->normalize($object->getAdditionalData(), 'json', $context);
         }
         foreach ($object as $key => $value) {

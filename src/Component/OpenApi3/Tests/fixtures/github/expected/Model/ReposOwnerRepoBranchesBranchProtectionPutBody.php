@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoBranchesBranchProtectionPutBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Require status checks to pass before merging. Set to `null` to disable.
      *
      * @var ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecks|null
@@ -64,6 +72,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBody extends \ArrayObject
      */
     public function setRequiredStatusChecks(?ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecks $requiredStatusChecks) : self
     {
+        $this->initialized['requiredStatusChecks'] = true;
         $this->requiredStatusChecks = $requiredStatusChecks;
         return $this;
     }
@@ -85,6 +94,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBody extends \ArrayObject
      */
     public function setEnforceAdmins(?bool $enforceAdmins) : self
     {
+        $this->initialized['enforceAdmins'] = true;
         $this->enforceAdmins = $enforceAdmins;
         return $this;
     }
@@ -106,6 +116,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBody extends \ArrayObject
      */
     public function setRequiredPullRequestReviews(?ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviews $requiredPullRequestReviews) : self
     {
+        $this->initialized['requiredPullRequestReviews'] = true;
         $this->requiredPullRequestReviews = $requiredPullRequestReviews;
         return $this;
     }
@@ -127,6 +138,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBody extends \ArrayObject
      */
     public function setRestrictions(?ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictions $restrictions) : self
     {
+        $this->initialized['restrictions'] = true;
         $this->restrictions = $restrictions;
         return $this;
     }
@@ -148,6 +160,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBody extends \ArrayObject
      */
     public function setRequiredLinearHistory(bool $requiredLinearHistory) : self
     {
+        $this->initialized['requiredLinearHistory'] = true;
         $this->requiredLinearHistory = $requiredLinearHistory;
         return $this;
     }
@@ -169,6 +182,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBody extends \ArrayObject
      */
     public function setAllowForcePushes(?bool $allowForcePushes) : self
     {
+        $this->initialized['allowForcePushes'] = true;
         $this->allowForcePushes = $allowForcePushes;
         return $this;
     }
@@ -190,6 +204,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBody extends \ArrayObject
      */
     public function setAllowDeletions(bool $allowDeletions) : self
     {
+        $this->initialized['allowDeletions'] = true;
         $this->allowDeletions = $allowDeletions;
         return $this;
     }

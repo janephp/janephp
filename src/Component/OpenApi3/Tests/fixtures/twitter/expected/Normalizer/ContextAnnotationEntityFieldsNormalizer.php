@@ -67,10 +67,10 @@ class ContextAnnotationEntityFieldsNormalizer implements DenormalizerInterface, 
     {
         $data = array();
         $data['id'] = $object->getId();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
         foreach ($object as $key => $value) {

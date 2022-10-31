@@ -79,7 +79,7 @@ class UserRoleCreateRequestNormalizer implements DenormalizerInterface, Normaliz
             $values[] = $value;
         }
         $data['userRights'] = $values;
-        if (null !== $object->getRequestId()) {
+        if ($object->isInitialized('requestId') && null !== $object->getRequestId()) {
             $data['requestId'] = $object->getRequestId();
         }
         foreach ($object as $key => $value_1) {

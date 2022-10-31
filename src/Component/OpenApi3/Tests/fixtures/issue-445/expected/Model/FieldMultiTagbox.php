@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class FieldMultiTagbox extends FieldBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the schema to be used as tagbox (it must be of type List).
      *
      * @var string
@@ -65,6 +73,7 @@ class FieldMultiTagbox extends FieldBase
      */
     public function setSchemaId(string $schemaId) : self
     {
+        $this->initialized['schemaId'] = true;
         $this->schemaId = $schemaId;
         return $this;
     }
@@ -86,6 +95,7 @@ class FieldMultiTagbox extends FieldBase
      */
     public function setSchemaIndexingInfo($schemaIndexingInfo) : self
     {
+        $this->initialized['schemaIndexingInfo'] = true;
         $this->schemaIndexingInfo = $schemaIndexingInfo;
         return $this;
     }
@@ -107,6 +117,7 @@ class FieldMultiTagbox extends FieldBase
      */
     public function setMaximumItems(?int $maximumItems) : self
     {
+        $this->initialized['maximumItems'] = true;
         $this->maximumItems = $maximumItems;
         return $this;
     }
@@ -128,6 +139,7 @@ class FieldMultiTagbox extends FieldBase
      */
     public function setMinimumItems(?int $minimumItems) : self
     {
+        $this->initialized['minimumItems'] = true;
         $this->minimumItems = $minimumItems;
         return $this;
     }
@@ -149,6 +161,7 @@ class FieldMultiTagbox extends FieldBase
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }
@@ -170,6 +183,7 @@ class FieldMultiTagbox extends FieldBase
      */
     public function setListItemCreateTemplate(?string $listItemCreateTemplate) : self
     {
+        $this->initialized['listItemCreateTemplate'] = true;
         $this->listItemCreateTemplate = $listItemCreateTemplate;
         return $this;
     }
@@ -193,6 +207,7 @@ class FieldMultiTagbox extends FieldBase
     */
     public function setViewModeDisplayPatternType($viewModeDisplayPatternType) : self
     {
+        $this->initialized['viewModeDisplayPatternType'] = true;
         $this->viewModeDisplayPatternType = $viewModeDisplayPatternType;
         return $this;
     }

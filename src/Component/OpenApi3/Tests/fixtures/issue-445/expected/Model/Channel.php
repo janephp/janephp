@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class Channel
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of channel.
      *
      * @var string
@@ -100,6 +108,7 @@ class Channel
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -121,6 +130,7 @@ class Channel
      */
     public function setSortOrder(int $sortOrder) : self
     {
+        $this->initialized['sortOrder'] = true;
         $this->sortOrder = $sortOrder;
         return $this;
     }
@@ -142,6 +152,7 @@ class Channel
      */
     public function setSearchIndexId(string $searchIndexId) : self
     {
+        $this->initialized['searchIndexId'] = true;
         $this->searchIndexId = $searchIndexId;
         return $this;
     }
@@ -163,6 +174,7 @@ class Channel
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }
@@ -184,6 +196,7 @@ class Channel
      */
     public function setNames($names) : self
     {
+        $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }
@@ -205,6 +218,7 @@ class Channel
      */
     public function setSort(array $sort) : self
     {
+        $this->initialized['sort'] = true;
         $this->sort = $sort;
         return $this;
     }
@@ -226,6 +240,7 @@ class Channel
      */
     public function setSortFields(array $sortFields) : self
     {
+        $this->initialized['sortFields'] = true;
         $this->sortFields = $sortFields;
         return $this;
     }
@@ -247,6 +262,7 @@ class Channel
      */
     public function setAggregations(array $aggregations) : self
     {
+        $this->initialized['aggregations'] = true;
         $this->aggregations = $aggregations;
         return $this;
     }
@@ -268,6 +284,7 @@ class Channel
      */
     public function setExtendedSimpleSearchFields(array $extendedSimpleSearchFields) : self
     {
+        $this->initialized['extendedSimpleSearchFields'] = true;
         $this->extendedSimpleSearchFields = $extendedSimpleSearchFields;
         return $this;
     }
@@ -289,6 +306,7 @@ class Channel
      */
     public function setGrantedUserRoleIds(array $grantedUserRoleIds) : self
     {
+        $this->initialized['grantedUserRoleIds'] = true;
         $this->grantedUserRoleIds = $grantedUserRoleIds;
         return $this;
     }
@@ -310,6 +328,7 @@ class Channel
      */
     public function setMissingResultsDisplayPatterns($missingResultsDisplayPatterns) : self
     {
+        $this->initialized['missingResultsDisplayPatterns'] = true;
         $this->missingResultsDisplayPatterns = $missingResultsDisplayPatterns;
         return $this;
     }
@@ -331,6 +350,7 @@ class Channel
      */
     public function setAudit($audit) : self
     {
+        $this->initialized['audit'] = true;
         $this->audit = $audit;
         return $this;
     }
@@ -352,6 +372,7 @@ class Channel
      */
     public function setViewForAll(bool $viewForAll) : self
     {
+        $this->initialized['viewForAll'] = true;
         $this->viewForAll = $viewForAll;
         return $this;
     }

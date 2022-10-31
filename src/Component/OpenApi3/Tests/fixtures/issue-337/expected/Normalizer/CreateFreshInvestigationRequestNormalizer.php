@@ -70,16 +70,16 @@ class CreateFreshInvestigationRequestNormalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getConsent()) {
+        if ($object->isInitialized('consent') && null !== $object->getConsent()) {
             $data['consent'] = $object->getConsent();
         }
-        if (null !== $object->getContactInfo()) {
+        if ($object->isInitialized('contactInfo') && null !== $object->getContactInfo()) {
             $data['contactInfo'] = $this->normalizer->normalize($object->getContactInfo(), 'json', $context);
         }
-        if (null !== $object->getChargeReference()) {
+        if ($object->isInitialized('chargeReference') && null !== $object->getChargeReference()) {
             $data['chargeReference'] = $object->getChargeReference();
         }
-        if (null !== $object->getSearchCriteria()) {
+        if ($object->isInitialized('searchCriteria') && null !== $object->getSearchCriteria()) {
             $data['searchCriteria'] = $this->normalizer->normalize($object->getSearchCriteria(), 'json', $context);
         }
         foreach ($object as $key => $value) {

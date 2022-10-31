@@ -82,16 +82,16 @@ class PagingNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSize()) {
+        if ($object->isInitialized('size') && null !== $object->getSize()) {
             $data['size'] = $object->getSize();
         }
-        if (null !== $object->getPrev()) {
+        if ($object->isInitialized('prev') && null !== $object->getPrev()) {
             $data['prev'] = $object->getPrev();
         }
-        if (null !== $object->getNext()) {
+        if ($object->isInitialized('next') && null !== $object->getNext()) {
             $data['next'] = $object->getNext();
         }
-        if (null !== $object->getLast()) {
+        if ($object->isInitialized('last') && null !== $object->getLast()) {
             $data['last'] = $object->getLast();
         }
         foreach ($object as $key => $value) {

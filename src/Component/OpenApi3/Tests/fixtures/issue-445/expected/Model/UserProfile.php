@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UserProfile
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of the user.
      *
      * @var string|null
@@ -106,6 +114,7 @@ class UserProfile
      */
     public function setId(?string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -127,6 +136,7 @@ class UserProfile
      */
     public function setEmailAddress(?string $emailAddress) : self
     {
+        $this->initialized['emailAddress'] = true;
         $this->emailAddress = $emailAddress;
         return $this;
     }
@@ -148,6 +158,7 @@ class UserProfile
      */
     public function setFirstName(?string $firstName) : self
     {
+        $this->initialized['firstName'] = true;
         $this->firstName = $firstName;
         return $this;
     }
@@ -169,6 +180,7 @@ class UserProfile
      */
     public function setLastName(?string $lastName) : self
     {
+        $this->initialized['lastName'] = true;
         $this->lastName = $lastName;
         return $this;
     }
@@ -190,6 +202,7 @@ class UserProfile
      */
     public function setLanguageCode(?string $languageCode) : self
     {
+        $this->initialized['languageCode'] = true;
         $this->languageCode = $languageCode;
         return $this;
     }
@@ -211,6 +224,7 @@ class UserProfile
      */
     public function setAddress($address) : self
     {
+        $this->initialized['address'] = true;
         $this->address = $address;
         return $this;
     }
@@ -232,6 +246,7 @@ class UserProfile
      */
     public function setAuthorizationState($authorizationState) : self
     {
+        $this->initialized['authorizationState'] = true;
         $this->authorizationState = $authorizationState;
         return $this;
     }
@@ -253,6 +268,7 @@ class UserProfile
      */
     public function setIsLocked(bool $isLocked) : self
     {
+        $this->initialized['isLocked'] = true;
         $this->isLocked = $isLocked;
         return $this;
     }
@@ -274,6 +290,7 @@ class UserProfile
      */
     public function setUserRights(?array $userRights) : self
     {
+        $this->initialized['userRights'] = true;
         $this->userRights = $userRights;
         return $this;
     }
@@ -295,6 +312,7 @@ class UserProfile
      */
     public function setUserRoleIds(?array $userRoleIds) : self
     {
+        $this->initialized['userRoleIds'] = true;
         $this->userRoleIds = $userRoleIds;
         return $this;
     }
@@ -316,6 +334,7 @@ class UserProfile
      */
     public function setTermsConsentExpired(bool $termsConsentExpired) : self
     {
+        $this->initialized['termsConsentExpired'] = true;
         $this->termsConsentExpired = $termsConsentExpired;
         return $this;
     }
@@ -337,6 +356,7 @@ class UserProfile
      */
     public function setSystemUserRoles(?array $systemUserRoles) : self
     {
+        $this->initialized['systemUserRoles'] = true;
         $this->systemUserRoles = $systemUserRoles;
         return $this;
     }
@@ -358,6 +378,7 @@ class UserProfile
      */
     public function setIsDeveloper(bool $isDeveloper) : self
     {
+        $this->initialized['isDeveloper'] = true;
         $this->isDeveloper = $isDeveloper;
         return $this;
     }
@@ -379,6 +400,7 @@ class UserProfile
      */
     public function setIsFederated(bool $isFederated) : self
     {
+        $this->initialized['isFederated'] = true;
         $this->isFederated = $isFederated;
         return $this;
     }

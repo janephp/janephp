@@ -132,16 +132,16 @@ class FieldDictionaryArrayNormalizer implements DenormalizerInterface, Normalize
     {
         $data = array();
         $data['id'] = $object->getId();
-        if (null !== $object->getIndexId()) {
+        if ($object->isInitialized('indexId') && null !== $object->getIndexId()) {
             $data['indexId'] = $object->getIndexId();
         }
-        if (null !== $object->getFieldNamespace()) {
+        if ($object->isInitialized('fieldNamespace') && null !== $object->getFieldNamespace()) {
             $data['fieldNamespace'] = $object->getFieldNamespace();
         }
-        if (null !== $object->getNames()) {
+        if ($object->isInitialized('names') && null !== $object->getNames()) {
             $data['names'] = $object->getNames();
         }
-        if (null !== $object->getDescriptions()) {
+        if ($object->isInitialized('descriptions') && null !== $object->getDescriptions()) {
             $data['descriptions'] = $object->getDescriptions();
         }
         $data['required'] = $object->getRequired();
@@ -150,13 +150,13 @@ class FieldDictionaryArrayNormalizer implements DenormalizerInterface, Normalize
         $data['simpleSearch'] = $object->getSimpleSearch();
         $data['sortable'] = $object->getSortable();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getBoost()) {
+        if ($object->isInitialized('boost') && null !== $object->getBoost()) {
             $data['boost'] = $object->getBoost();
         }
-        if (null !== $object->getMaximumItems()) {
+        if ($object->isInitialized('maximumItems') && null !== $object->getMaximumItems()) {
             $data['maximumItems'] = $object->getMaximumItems();
         }
-        if (null !== $object->getMinimumItems()) {
+        if ($object->isInitialized('minimumItems') && null !== $object->getMinimumItems()) {
             $data['minimumItems'] = $object->getMinimumItems();
         }
         foreach ($object as $key => $value) {

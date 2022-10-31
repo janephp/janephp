@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class DetailedTweet extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -118,6 +126,7 @@ class DetailedTweet extends \ArrayObject
      */
     public function setFormat(string $format) : self
     {
+        $this->initialized['format'] = true;
         $this->format = $format;
         return $this;
     }
@@ -139,6 +148,7 @@ class DetailedTweet extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -160,6 +170,7 @@ class DetailedTweet extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -181,6 +192,7 @@ class DetailedTweet extends \ArrayObject
      */
     public function setText(string $text) : self
     {
+        $this->initialized['text'] = true;
         $this->text = $text;
         return $this;
     }
@@ -202,6 +214,7 @@ class DetailedTweet extends \ArrayObject
      */
     public function setAuthorId(string $authorId) : self
     {
+        $this->initialized['authorId'] = true;
         $this->authorId = $authorId;
         return $this;
     }
@@ -223,6 +236,7 @@ class DetailedTweet extends \ArrayObject
      */
     public function setInReplyToUserId(string $inReplyToUserId) : self
     {
+        $this->initialized['inReplyToUserId'] = true;
         $this->inReplyToUserId = $inReplyToUserId;
         return $this;
     }
@@ -244,6 +258,7 @@ class DetailedTweet extends \ArrayObject
      */
     public function setReferencedTweets(array $referencedTweets) : self
     {
+        $this->initialized['referencedTweets'] = true;
         $this->referencedTweets = $referencedTweets;
         return $this;
     }
@@ -265,6 +280,7 @@ class DetailedTweet extends \ArrayObject
      */
     public function setAttachments(CompactTweetFieldsAttachments $attachments) : self
     {
+        $this->initialized['attachments'] = true;
         $this->attachments = $attachments;
         return $this;
     }
@@ -286,6 +302,7 @@ class DetailedTweet extends \ArrayObject
      */
     public function setWithheld(TweetWithheld $withheld) : self
     {
+        $this->initialized['withheld'] = true;
         $this->withheld = $withheld;
         return $this;
     }
@@ -307,6 +324,7 @@ class DetailedTweet extends \ArrayObject
      */
     public function setGeo(DefaultTweetFieldsGeo $geo) : self
     {
+        $this->initialized['geo'] = true;
         $this->geo = $geo;
         return $this;
     }
@@ -328,6 +346,7 @@ class DetailedTweet extends \ArrayObject
      */
     public function setEntities(FullTextEntities $entities) : self
     {
+        $this->initialized['entities'] = true;
         $this->entities = $entities;
         return $this;
     }
@@ -349,6 +368,7 @@ class DetailedTweet extends \ArrayObject
      */
     public function setStats(DetailedTweetFieldsStats $stats) : self
     {
+        $this->initialized['stats'] = true;
         $this->stats = $stats;
         return $this;
     }
@@ -370,6 +390,7 @@ class DetailedTweet extends \ArrayObject
      */
     public function setContextAnnotation(array $contextAnnotation) : self
     {
+        $this->initialized['contextAnnotation'] = true;
         $this->contextAnnotation = $contextAnnotation;
         return $this;
     }
@@ -391,6 +412,7 @@ class DetailedTweet extends \ArrayObject
      */
     public function setPossiblySensitive(bool $possiblySensitive) : self
     {
+        $this->initialized['possiblySensitive'] = true;
         $this->possiblySensitive = $possiblySensitive;
         return $this;
     }
@@ -412,6 +434,7 @@ class DetailedTweet extends \ArrayObject
      */
     public function setLang(string $lang) : self
     {
+        $this->initialized['lang'] = true;
         $this->lang = $lang;
         return $this;
     }
@@ -433,6 +456,7 @@ class DetailedTweet extends \ArrayObject
      */
     public function setSource(string $source) : self
     {
+        $this->initialized['source'] = true;
         $this->source = $source;
         return $this;
     }

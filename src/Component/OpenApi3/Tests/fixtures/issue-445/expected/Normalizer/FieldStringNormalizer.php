@@ -183,16 +183,16 @@ class FieldStringNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $data = array();
         $data['id'] = $object->getId();
-        if (null !== $object->getIndexId()) {
+        if ($object->isInitialized('indexId') && null !== $object->getIndexId()) {
             $data['indexId'] = $object->getIndexId();
         }
-        if (null !== $object->getFieldNamespace()) {
+        if ($object->isInitialized('fieldNamespace') && null !== $object->getFieldNamespace()) {
             $data['fieldNamespace'] = $object->getFieldNamespace();
         }
-        if (null !== $object->getNames()) {
+        if ($object->isInitialized('names') && null !== $object->getNames()) {
             $data['names'] = $object->getNames();
         }
-        if (null !== $object->getDescriptions()) {
+        if ($object->isInitialized('descriptions') && null !== $object->getDescriptions()) {
             $data['descriptions'] = $object->getDescriptions();
         }
         $data['required'] = $object->getRequired();
@@ -201,43 +201,43 @@ class FieldStringNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['simpleSearch'] = $object->getSimpleSearch();
         $data['sortable'] = $object->getSortable();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getTemplate()) {
+        if ($object->isInitialized('template') && null !== $object->getTemplate()) {
             $data['template'] = $object->getTemplate();
         }
-        if (null !== $object->getPattern()) {
+        if ($object->isInitialized('pattern') && null !== $object->getPattern()) {
             $data['pattern'] = $object->getPattern();
         }
-        if (null !== $object->getMinimumLength()) {
+        if ($object->isInitialized('minimumLength') && null !== $object->getMinimumLength()) {
             $data['minimumLength'] = $object->getMinimumLength();
         }
-        if (null !== $object->getMaximumLength()) {
+        if ($object->isInitialized('maximumLength') && null !== $object->getMaximumLength()) {
             $data['maximumLength'] = $object->getMaximumLength();
         }
-        if (null !== $object->getIndexAnalyzers()) {
+        if ($object->isInitialized('indexAnalyzers') && null !== $object->getIndexAnalyzers()) {
             $values = array();
             foreach ($object->getIndexAnalyzers() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['indexAnalyzers'] = $values;
         }
-        if (null !== $object->getSimpleSearchAnalyzers()) {
+        if ($object->isInitialized('simpleSearchAnalyzers') && null !== $object->getSimpleSearchAnalyzers()) {
             $values_1 = array();
             foreach ($object->getSimpleSearchAnalyzers() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['simpleSearchAnalyzers'] = $values_1;
         }
-        if (null !== $object->getMultiLine()) {
+        if ($object->isInitialized('multiLine') && null !== $object->getMultiLine()) {
             $data['multiLine'] = $object->getMultiLine();
         }
-        if (null !== $object->getGrantedValues()) {
+        if ($object->isInitialized('grantedValues') && null !== $object->getGrantedValues()) {
             $values_2 = array();
             foreach ($object->getGrantedValues() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['grantedValues'] = $values_2;
         }
-        if (null !== $object->getBoost()) {
+        if ($object->isInitialized('boost') && null !== $object->getBoost()) {
             $data['boost'] = $object->getBoost();
         }
         foreach ($object as $key => $value_3) {

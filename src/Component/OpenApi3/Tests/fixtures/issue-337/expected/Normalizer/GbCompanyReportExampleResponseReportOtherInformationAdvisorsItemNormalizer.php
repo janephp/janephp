@@ -58,7 +58,7 @@ class GbCompanyReportExampleResponseReportOtherInformationAdvisorsItemNormalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAuditorName()) {
+        if ($object->isInitialized('auditorName') && null !== $object->getAuditorName()) {
             $data['auditorName'] = $object->getAuditorName();
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace Github\Model;
 class UserPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The new name of the user.
      *
      * @var string
@@ -70,6 +78,7 @@ class UserPatchBody extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -91,6 +100,7 @@ class UserPatchBody extends \ArrayObject
      */
     public function setEmail(string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -112,6 +122,7 @@ class UserPatchBody extends \ArrayObject
      */
     public function setBlog(string $blog) : self
     {
+        $this->initialized['blog'] = true;
         $this->blog = $blog;
         return $this;
     }
@@ -133,6 +144,7 @@ class UserPatchBody extends \ArrayObject
      */
     public function setTwitterUsername(?string $twitterUsername) : self
     {
+        $this->initialized['twitterUsername'] = true;
         $this->twitterUsername = $twitterUsername;
         return $this;
     }
@@ -154,6 +166,7 @@ class UserPatchBody extends \ArrayObject
      */
     public function setCompany(string $company) : self
     {
+        $this->initialized['company'] = true;
         $this->company = $company;
         return $this;
     }
@@ -175,6 +188,7 @@ class UserPatchBody extends \ArrayObject
      */
     public function setLocation(string $location) : self
     {
+        $this->initialized['location'] = true;
         $this->location = $location;
         return $this;
     }
@@ -196,6 +210,7 @@ class UserPatchBody extends \ArrayObject
      */
     public function setHireable(bool $hireable) : self
     {
+        $this->initialized['hireable'] = true;
         $this->hireable = $hireable;
         return $this;
     }
@@ -217,6 +232,7 @@ class UserPatchBody extends \ArrayObject
      */
     public function setBio(string $bio) : self
     {
+        $this->initialized['bio'] = true;
         $this->bio = $bio;
         return $this;
     }

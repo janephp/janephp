@@ -67,7 +67,7 @@ class ProjectsColumnsCardsCardIdMovesPostBodyNormalizer implements DenormalizerI
     {
         $data = array();
         $data['position'] = $object->getPosition();
-        if (null !== $object->getColumnId()) {
+        if ($object->isInitialized('columnId') && null !== $object->getColumnId()) {
             $data['column_id'] = $object->getColumnId();
         }
         foreach ($object as $key => $value) {

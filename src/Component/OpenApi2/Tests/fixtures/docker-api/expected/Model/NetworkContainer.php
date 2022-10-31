@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class NetworkContainer
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class NetworkContainer
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -73,6 +82,7 @@ class NetworkContainer
      */
     public function setEndpointID(string $endpointID) : self
     {
+        $this->initialized['endpointID'] = true;
         $this->endpointID = $endpointID;
         return $this;
     }
@@ -94,6 +104,7 @@ class NetworkContainer
      */
     public function setMacAddress(string $macAddress) : self
     {
+        $this->initialized['macAddress'] = true;
         $this->macAddress = $macAddress;
         return $this;
     }
@@ -115,6 +126,7 @@ class NetworkContainer
      */
     public function setIPv4Address(string $iPv4Address) : self
     {
+        $this->initialized['iPv4Address'] = true;
         $this->iPv4Address = $iPv4Address;
         return $this;
     }
@@ -136,6 +148,7 @@ class NetworkContainer
      */
     public function setIPv6Address(string $iPv6Address) : self
     {
+        $this->initialized['iPv6Address'] = true;
         $this->iPv6Address = $iPv6Address;
         return $this;
     }

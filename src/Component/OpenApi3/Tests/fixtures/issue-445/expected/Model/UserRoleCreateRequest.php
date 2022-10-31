@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UserRoleCreateRequest extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Language specific user role names.
      *
      * @var mixed
@@ -42,6 +50,7 @@ class UserRoleCreateRequest extends \ArrayObject
      */
     public function setNames($names) : self
     {
+        $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }
@@ -63,6 +72,7 @@ class UserRoleCreateRequest extends \ArrayObject
      */
     public function setUserRights(array $userRights) : self
     {
+        $this->initialized['userRights'] = true;
         $this->userRights = $userRights;
         return $this;
     }
@@ -88,6 +98,7 @@ class UserRoleCreateRequest extends \ArrayObject
     */
     public function setRequestId(?string $requestId) : self
     {
+        $this->initialized['requestId'] = true;
         $this->requestId = $requestId;
         return $this;
     }

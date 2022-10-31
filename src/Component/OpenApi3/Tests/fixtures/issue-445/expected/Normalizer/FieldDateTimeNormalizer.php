@@ -129,16 +129,16 @@ class FieldDateTimeNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $data = array();
         $data['id'] = $object->getId();
-        if (null !== $object->getIndexId()) {
+        if ($object->isInitialized('indexId') && null !== $object->getIndexId()) {
             $data['indexId'] = $object->getIndexId();
         }
-        if (null !== $object->getFieldNamespace()) {
+        if ($object->isInitialized('fieldNamespace') && null !== $object->getFieldNamespace()) {
             $data['fieldNamespace'] = $object->getFieldNamespace();
         }
-        if (null !== $object->getNames()) {
+        if ($object->isInitialized('names') && null !== $object->getNames()) {
             $data['names'] = $object->getNames();
         }
-        if (null !== $object->getDescriptions()) {
+        if ($object->isInitialized('descriptions') && null !== $object->getDescriptions()) {
             $data['descriptions'] = $object->getDescriptions();
         }
         $data['required'] = $object->getRequired();
@@ -147,13 +147,13 @@ class FieldDateTimeNormalizer implements DenormalizerInterface, NormalizerInterf
         $data['simpleSearch'] = $object->getSimpleSearch();
         $data['sortable'] = $object->getSortable();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getFormat()) {
+        if ($object->isInitialized('format') && null !== $object->getFormat()) {
             $data['format'] = $object->getFormat();
         }
-        if (null !== $object->getBoost()) {
+        if ($object->isInitialized('boost') && null !== $object->getBoost()) {
             $data['boost'] = $object->getBoost();
         }
-        if (null !== $object->getInitializeOnItemCreation()) {
+        if ($object->isInitialized('initializeOnItemCreation') && null !== $object->getInitializeOnItemCreation()) {
             $data['initializeOnItemCreation'] = $object->getInitializeOnItemCreation();
         }
         foreach ($object as $key => $value) {

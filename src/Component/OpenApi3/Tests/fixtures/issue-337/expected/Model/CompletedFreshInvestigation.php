@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class CompletedFreshInvestigation extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -82,6 +90,7 @@ class CompletedFreshInvestigation extends \ArrayObject
      */
     public function setChargeReference(string $chargeReference) : self
     {
+        $this->initialized['chargeReference'] = true;
         $this->chargeReference = $chargeReference;
         return $this;
     }
@@ -103,6 +112,7 @@ class CompletedFreshInvestigation extends \ArrayObject
      */
     public function setContactDetails(CompletedFreshInvestigationContactDetails $contactDetails) : self
     {
+        $this->initialized['contactDetails'] = true;
         $this->contactDetails = $contactDetails;
         return $this;
     }
@@ -124,6 +134,7 @@ class CompletedFreshInvestigation extends \ArrayObject
      */
     public function setCreationDate(string $creationDate) : self
     {
+        $this->initialized['creationDate'] = true;
         $this->creationDate = $creationDate;
         return $this;
     }
@@ -145,6 +156,7 @@ class CompletedFreshInvestigation extends \ArrayObject
      */
     public function setLastStatusChangeDate(string $lastStatusChangeDate) : self
     {
+        $this->initialized['lastStatusChangeDate'] = true;
         $this->lastStatusChangeDate = $lastStatusChangeDate;
         return $this;
     }
@@ -166,6 +178,7 @@ class CompletedFreshInvestigation extends \ArrayObject
      */
     public function setOrderID(int $orderID) : self
     {
+        $this->initialized['orderID'] = true;
         $this->orderID = $orderID;
         return $this;
     }
@@ -187,6 +200,7 @@ class CompletedFreshInvestigation extends \ArrayObject
      */
     public function setReportDate(string $reportDate) : self
     {
+        $this->initialized['reportDate'] = true;
         $this->reportDate = $reportDate;
         return $this;
     }
@@ -208,6 +222,7 @@ class CompletedFreshInvestigation extends \ArrayObject
      */
     public function setSearchCriteria(CompletedFreshInvestigationSearchCriteria $searchCriteria) : self
     {
+        $this->initialized['searchCriteria'] = true;
         $this->searchCriteria = $searchCriteria;
         return $this;
     }
@@ -229,6 +244,7 @@ class CompletedFreshInvestigation extends \ArrayObject
      */
     public function setSections(array $sections) : self
     {
+        $this->initialized['sections'] = true;
         $this->sections = $sections;
         return $this;
     }
@@ -250,6 +266,7 @@ class CompletedFreshInvestigation extends \ArrayObject
      */
     public function setStatus(CompletedFreshInvestigationStatus $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -271,6 +288,7 @@ class CompletedFreshInvestigation extends \ArrayObject
      */
     public function setTransactionID(int $transactionID) : self
     {
+        $this->initialized['transactionID'] = true;
         $this->transactionID = $transactionID;
         return $this;
     }

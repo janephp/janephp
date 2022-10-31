@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbPeopleReportReponseReportDirectorSummary extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -40,6 +48,7 @@ class GbPeopleReportReponseReportDirectorSummary extends \ArrayObject
      */
     public function setCurrentAppointments(int $currentAppointments) : self
     {
+        $this->initialized['currentAppointments'] = true;
         $this->currentAppointments = $currentAppointments;
         return $this;
     }
@@ -61,6 +70,7 @@ class GbPeopleReportReponseReportDirectorSummary extends \ArrayObject
      */
     public function setInactiveAppointments(int $inactiveAppointments) : self
     {
+        $this->initialized['inactiveAppointments'] = true;
         $this->inactiveAppointments = $inactiveAppointments;
         return $this;
     }
@@ -82,6 +92,7 @@ class GbPeopleReportReponseReportDirectorSummary extends \ArrayObject
      */
     public function setPreviousAppointments(int $previousAppointments) : self
     {
+        $this->initialized['previousAppointments'] = true;
         $this->previousAppointments = $previousAppointments;
         return $this;
     }

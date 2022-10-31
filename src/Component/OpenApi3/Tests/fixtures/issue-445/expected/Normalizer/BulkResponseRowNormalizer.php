@@ -75,12 +75,12 @@ class BulkResponseRowNormalizer implements DenormalizerInterface, NormalizerInte
         $data = array();
         $data['id'] = $object->getId();
         $data['version'] = $object->getVersion();
-        if (null !== $object->getError()) {
+        if ($object->isInitialized('error') && null !== $object->getError()) {
             $data['error'] = $object->getError();
         }
         $data['succeeded'] = $object->getSucceeded();
         $data['status'] = $object->getStatus();
-        if (null !== $object->getRequestId()) {
+        if ($object->isInitialized('requestId') && null !== $object->getRequestId()) {
             $data['requestId'] = $object->getRequestId();
         }
         return $data;

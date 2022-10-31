@@ -5,6 +5,14 @@ namespace Github\Model;
 class UserMigrationsPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Lock the repositories being migrated at the start of the migration
      *
      * @var bool
@@ -46,6 +54,7 @@ class UserMigrationsPostBody extends \ArrayObject
      */
     public function setLockRepositories(bool $lockRepositories) : self
     {
+        $this->initialized['lockRepositories'] = true;
         $this->lockRepositories = $lockRepositories;
         return $this;
     }
@@ -67,6 +76,7 @@ class UserMigrationsPostBody extends \ArrayObject
      */
     public function setExcludeAttachments(bool $excludeAttachments) : self
     {
+        $this->initialized['excludeAttachments'] = true;
         $this->excludeAttachments = $excludeAttachments;
         return $this;
     }
@@ -88,6 +98,7 @@ class UserMigrationsPostBody extends \ArrayObject
      */
     public function setExclude(array $exclude) : self
     {
+        $this->initialized['exclude'] = true;
         $this->exclude = $exclude;
         return $this;
     }
@@ -109,6 +120,7 @@ class UserMigrationsPostBody extends \ArrayObject
      */
     public function setRepositories(array $repositories) : self
     {
+        $this->initialized['repositories'] = true;
         $this->repositories = $repositories;
         return $this;
     }

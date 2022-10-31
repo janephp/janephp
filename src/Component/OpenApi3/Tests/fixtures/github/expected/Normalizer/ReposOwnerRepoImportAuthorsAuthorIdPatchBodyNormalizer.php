@@ -70,13 +70,13 @@ class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyNormalizer implements Denormal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getEmail()) {
+        if ($object->isInitialized('email') && null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getRemoteId()) {
+        if ($object->isInitialized('remoteId') && null !== $object->getRemoteId()) {
             $data['remote_id'] = $object->getRemoteId();
         }
         foreach ($object as $key => $value) {

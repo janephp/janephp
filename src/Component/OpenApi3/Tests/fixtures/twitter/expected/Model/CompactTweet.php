@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class CompactTweet extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -76,6 +84,7 @@ class CompactTweet extends \ArrayObject
      */
     public function setFormat(string $format) : self
     {
+        $this->initialized['format'] = true;
         $this->format = $format;
         return $this;
     }
@@ -97,6 +106,7 @@ class CompactTweet extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -118,6 +128,7 @@ class CompactTweet extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -139,6 +150,7 @@ class CompactTweet extends \ArrayObject
      */
     public function setText(string $text) : self
     {
+        $this->initialized['text'] = true;
         $this->text = $text;
         return $this;
     }
@@ -160,6 +172,7 @@ class CompactTweet extends \ArrayObject
      */
     public function setAuthorId(string $authorId) : self
     {
+        $this->initialized['authorId'] = true;
         $this->authorId = $authorId;
         return $this;
     }
@@ -181,6 +194,7 @@ class CompactTweet extends \ArrayObject
      */
     public function setInReplyToUserId(string $inReplyToUserId) : self
     {
+        $this->initialized['inReplyToUserId'] = true;
         $this->inReplyToUserId = $inReplyToUserId;
         return $this;
     }
@@ -202,6 +216,7 @@ class CompactTweet extends \ArrayObject
      */
     public function setReferencedTweets(array $referencedTweets) : self
     {
+        $this->initialized['referencedTweets'] = true;
         $this->referencedTweets = $referencedTweets;
         return $this;
     }
@@ -223,6 +238,7 @@ class CompactTweet extends \ArrayObject
      */
     public function setAttachments(CompactTweetFieldsAttachments $attachments) : self
     {
+        $this->initialized['attachments'] = true;
         $this->attachments = $attachments;
         return $this;
     }
@@ -244,6 +260,7 @@ class CompactTweet extends \ArrayObject
      */
     public function setWithheld(TweetWithheld $withheld) : self
     {
+        $this->initialized['withheld'] = true;
         $this->withheld = $withheld;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoActionsSecretsSecretNamePutBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://developer.github.com/v3/actions/secrets/#get-a-repository-public-key) endpoint.
      *
      * @var string
@@ -34,6 +42,7 @@ class ReposOwnerRepoActionsSecretsSecretNamePutBody extends \ArrayObject
      */
     public function setEncryptedValue(string $encryptedValue) : self
     {
+        $this->initialized['encryptedValue'] = true;
         $this->encryptedValue = $encryptedValue;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReposOwnerRepoActionsSecretsSecretNamePutBody extends \ArrayObject
      */
     public function setKeyId(string $keyId) : self
     {
+        $this->initialized['keyId'] = true;
         $this->keyId = $keyId;
         return $this;
     }

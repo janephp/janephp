@@ -77,28 +77,28 @@ class MountNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTarget()) {
+        if ($object->isInitialized('target') && null !== $object->getTarget()) {
             $data['Target'] = $object->getTarget();
         }
-        if (null !== $object->getSource()) {
+        if ($object->isInitialized('source') && null !== $object->getSource()) {
             $data['Source'] = $object->getSource();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['Type'] = $object->getType();
         }
-        if (null !== $object->getReadOnly()) {
+        if ($object->isInitialized('readOnly') && null !== $object->getReadOnly()) {
             $data['ReadOnly'] = $object->getReadOnly();
         }
-        if (null !== $object->getConsistency()) {
+        if ($object->isInitialized('consistency') && null !== $object->getConsistency()) {
             $data['Consistency'] = $object->getConsistency();
         }
-        if (null !== $object->getBindOptions()) {
+        if ($object->isInitialized('bindOptions') && null !== $object->getBindOptions()) {
             $data['BindOptions'] = $this->normalizer->normalize($object->getBindOptions(), 'json', $context);
         }
-        if (null !== $object->getVolumeOptions()) {
+        if ($object->isInitialized('volumeOptions') && null !== $object->getVolumeOptions()) {
             $data['VolumeOptions'] = $this->normalizer->normalize($object->getVolumeOptions(), 'json', $context);
         }
-        if (null !== $object->getTmpfsOptions()) {
+        if ($object->isInitialized('tmpfsOptions') && null !== $object->getTmpfsOptions()) {
             $data['TmpfsOptions'] = $this->normalizer->normalize($object->getTmpfsOptions(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

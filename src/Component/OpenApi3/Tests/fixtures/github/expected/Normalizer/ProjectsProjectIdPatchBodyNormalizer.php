@@ -81,19 +81,19 @@ class ProjectsProjectIdPatchBodyNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getBody()) {
+        if ($object->isInitialized('body') && null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
-        if (null !== $object->getState()) {
+        if ($object->isInitialized('state') && null !== $object->getState()) {
             $data['state'] = $object->getState();
         }
-        if (null !== $object->getOrganizationPermission()) {
+        if ($object->isInitialized('organizationPermission') && null !== $object->getOrganizationPermission()) {
             $data['organization_permission'] = $object->getOrganizationPermission();
         }
-        if (null !== $object->getPrivate()) {
+        if ($object->isInitialized('private') && null !== $object->getPrivate()) {
             $data['private'] = $object->getPrivate();
         }
         foreach ($object as $key => $value) {

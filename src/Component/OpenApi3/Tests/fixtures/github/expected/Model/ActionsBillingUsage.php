@@ -5,6 +5,14 @@ namespace Github\Model;
 class ActionsBillingUsage extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The sum of the free and paid GitHub Actions minutes used.
      *
      * @var int
@@ -46,6 +54,7 @@ class ActionsBillingUsage extends \ArrayObject
      */
     public function setTotalMinutesUsed(int $totalMinutesUsed) : self
     {
+        $this->initialized['totalMinutesUsed'] = true;
         $this->totalMinutesUsed = $totalMinutesUsed;
         return $this;
     }
@@ -67,6 +76,7 @@ class ActionsBillingUsage extends \ArrayObject
      */
     public function setTotalPaidMinutesUsed(int $totalPaidMinutesUsed) : self
     {
+        $this->initialized['totalPaidMinutesUsed'] = true;
         $this->totalPaidMinutesUsed = $totalPaidMinutesUsed;
         return $this;
     }
@@ -88,6 +98,7 @@ class ActionsBillingUsage extends \ArrayObject
      */
     public function setIncludedMinutes(int $includedMinutes) : self
     {
+        $this->initialized['includedMinutes'] = true;
         $this->includedMinutes = $includedMinutes;
         return $this;
     }
@@ -109,6 +120,7 @@ class ActionsBillingUsage extends \ArrayObject
      */
     public function setMinutesUsedBreakdown(ActionsBillingUsageMinutesUsedBreakdown $minutesUsedBreakdown) : self
     {
+        $this->initialized['minutesUsedBreakdown'] = true;
         $this->minutesUsedBreakdown = $minutesUsedBreakdown;
         return $this;
     }

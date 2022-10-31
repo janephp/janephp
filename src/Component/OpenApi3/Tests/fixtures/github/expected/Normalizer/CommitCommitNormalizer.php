@@ -98,7 +98,7 @@ class CommitCommitNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['message'] = $object->getMessage();
         $data['comment_count'] = $object->getCommentCount();
         $data['tree'] = $this->normalizer->normalize($object->getTree(), 'json', $context);
-        if (null !== $object->getVerification()) {
+        if ($object->isInitialized('verification') && null !== $object->getVerification()) {
             $data['verification'] = $this->normalizer->normalize($object->getVerification(), 'json', $context);
         }
         foreach ($object as $key => $value) {

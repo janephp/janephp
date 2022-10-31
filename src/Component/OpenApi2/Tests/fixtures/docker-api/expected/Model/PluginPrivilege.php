@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class PluginPrivilege
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class PluginPrivilege
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -61,6 +70,7 @@ class PluginPrivilege
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -82,6 +92,7 @@ class PluginPrivilege
      */
     public function setValue(array $value) : self
     {
+        $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoPullsPullNumberPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The title of the pull request.
      *
      * @var string
@@ -52,6 +60,7 @@ class ReposOwnerRepoPullsPullNumberPatchBody extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -73,6 +82,7 @@ class ReposOwnerRepoPullsPullNumberPatchBody extends \ArrayObject
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }
@@ -94,6 +104,7 @@ class ReposOwnerRepoPullsPullNumberPatchBody extends \ArrayObject
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -115,6 +126,7 @@ class ReposOwnerRepoPullsPullNumberPatchBody extends \ArrayObject
      */
     public function setBase(string $base) : self
     {
+        $this->initialized['base'] = true;
         $this->base = $base;
         return $this;
     }
@@ -136,6 +148,7 @@ class ReposOwnerRepoPullsPullNumberPatchBody extends \ArrayObject
      */
     public function setMaintainerCanModify(bool $maintainerCanModify) : self
     {
+        $this->initialized['maintainerCanModify'] = true;
         $this->maintainerCanModify = $maintainerCanModify;
         return $this;
     }

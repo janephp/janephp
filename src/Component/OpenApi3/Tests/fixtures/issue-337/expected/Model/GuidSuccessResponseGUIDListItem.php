@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GuidSuccessResponseGUIDListItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class GuidSuccessResponseGUIDListItem extends \ArrayObject
      */
     public function setFriendlyName(string $friendlyName) : self
     {
+        $this->initialized['friendlyName'] = true;
         $this->friendlyName = $friendlyName;
         return $this;
     }
@@ -67,6 +76,7 @@ class GuidSuccessResponseGUIDListItem extends \ArrayObject
      */
     public function setGUID(string $gUID) : self
     {
+        $this->initialized['gUID'] = true;
         $this->gUID = $gUID;
         return $this;
     }
@@ -88,6 +98,7 @@ class GuidSuccessResponseGUIDListItem extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -109,6 +120,7 @@ class GuidSuccessResponseGUIDListItem extends \ArrayObject
      */
     public function setServiceLine(string $serviceLine) : self
     {
+        $this->initialized['serviceLine'] = true;
         $this->serviceLine = $serviceLine;
         return $this;
     }

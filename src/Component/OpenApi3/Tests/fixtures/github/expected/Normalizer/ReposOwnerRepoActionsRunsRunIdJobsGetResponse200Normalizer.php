@@ -70,10 +70,10 @@ class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Normalizer implements Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTotalCount()) {
+        if ($object->isInitialized('totalCount') && null !== $object->getTotalCount()) {
             $data['total_count'] = $object->getTotalCount();
         }
-        if (null !== $object->getJobs()) {
+        if ($object->isInitialized('jobs') && null !== $object->getJobs()) {
             $values = array();
             foreach ($object->getJobs() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

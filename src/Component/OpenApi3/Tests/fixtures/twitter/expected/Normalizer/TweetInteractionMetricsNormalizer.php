@@ -78,7 +78,7 @@ class TweetInteractionMetricsNormalizer implements DenormalizerInterface, Normal
         $data['retweet_count'] = $object->getRetweetCount();
         $data['quote_count'] = $object->getQuoteCount();
         $data['reply_count'] = $object->getReplyCount();
-        if (null !== $object->getImpressionCount()) {
+        if ($object->isInitialized('impressionCount') && null !== $object->getImpressionCount()) {
             $data['impression_count'] = $object->getImpressionCount();
         }
         foreach ($object as $key => $value) {

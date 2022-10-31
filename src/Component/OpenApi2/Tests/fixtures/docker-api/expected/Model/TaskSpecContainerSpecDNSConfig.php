@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class TaskSpecContainerSpecDNSConfig
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The IP addresses of the name servers.
      *
      * @var string[]
@@ -42,6 +50,7 @@ class TaskSpecContainerSpecDNSConfig
      */
     public function setNameservers(array $nameservers) : self
     {
+        $this->initialized['nameservers'] = true;
         $this->nameservers = $nameservers;
         return $this;
     }
@@ -63,6 +72,7 @@ class TaskSpecContainerSpecDNSConfig
      */
     public function setSearch(array $search) : self
     {
+        $this->initialized['search'] = true;
         $this->search = $search;
         return $this;
     }
@@ -88,6 +98,7 @@ class TaskSpecContainerSpecDNSConfig
     */
     public function setOptions(array $options) : self
     {
+        $this->initialized['options'] = true;
         $this->options = $options;
         return $this;
     }

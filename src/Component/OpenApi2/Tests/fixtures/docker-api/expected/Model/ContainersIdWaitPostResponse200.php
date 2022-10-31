@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ContainersIdWaitPostResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Exit code of the container
      *
      * @var int
@@ -34,6 +42,7 @@ class ContainersIdWaitPostResponse200
      */
     public function setStatusCode(int $statusCode) : self
     {
+        $this->initialized['statusCode'] = true;
         $this->statusCode = $statusCode;
         return $this;
     }
@@ -55,6 +64,7 @@ class ContainersIdWaitPostResponse200
      */
     public function setError(ContainersIdWaitPostResponse200Error $error) : self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
         return $this;
     }

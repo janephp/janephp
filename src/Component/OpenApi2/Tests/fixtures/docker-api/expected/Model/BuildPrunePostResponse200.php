@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class BuildPrunePostResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string[]
@@ -34,6 +42,7 @@ class BuildPrunePostResponse200
      */
     public function setCachesDeleted(array $cachesDeleted) : self
     {
+        $this->initialized['cachesDeleted'] = true;
         $this->cachesDeleted = $cachesDeleted;
         return $this;
     }
@@ -55,6 +64,7 @@ class BuildPrunePostResponse200
      */
     public function setSpaceReclaimed(int $spaceReclaimed) : self
     {
+        $this->initialized['spaceReclaimed'] = true;
         $this->spaceReclaimed = $spaceReclaimed;
         return $this;
     }

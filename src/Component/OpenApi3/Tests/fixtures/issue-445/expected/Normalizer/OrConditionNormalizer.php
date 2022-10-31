@@ -76,11 +76,11 @@ class OrConditionNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getConditions()) {
+        if ($object->isInitialized('conditions') && null !== $object->getConditions()) {
             $values = array();
             foreach ($object->getConditions() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

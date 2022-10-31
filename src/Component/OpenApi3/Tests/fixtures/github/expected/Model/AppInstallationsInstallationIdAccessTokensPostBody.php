@@ -5,6 +5,14 @@ namespace Github\Model;
 class AppInstallationsInstallationIdAccessTokensPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * List of repository names that the token should have access to
      *
      * @var string[]
@@ -40,6 +48,7 @@ class AppInstallationsInstallationIdAccessTokensPostBody extends \ArrayObject
      */
     public function setRepositories(array $repositories) : self
     {
+        $this->initialized['repositories'] = true;
         $this->repositories = $repositories;
         return $this;
     }
@@ -61,6 +70,7 @@ class AppInstallationsInstallationIdAccessTokensPostBody extends \ArrayObject
      */
     public function setRepositoryIds(array $repositoryIds) : self
     {
+        $this->initialized['repositoryIds'] = true;
         $this->repositoryIds = $repositoryIds;
         return $this;
     }
@@ -82,6 +92,7 @@ class AppInstallationsInstallationIdAccessTokensPostBody extends \ArrayObject
      */
     public function setPermissions(AppInstallationsInstallationIdAccessTokensPostBodyPermissions $permissions) : self
     {
+        $this->initialized['permissions'] = true;
         $this->permissions = $permissions;
         return $this;
     }

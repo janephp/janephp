@@ -56,7 +56,7 @@ class SwarmSpecTaskDefaultsNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLogDriver()) {
+        if ($object->isInitialized('logDriver') && null !== $object->getLogDriver()) {
             $data['LogDriver'] = $this->normalizer->normalize($object->getLogDriver(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

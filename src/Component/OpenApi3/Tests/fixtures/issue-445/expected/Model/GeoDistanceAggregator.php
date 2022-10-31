@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class GeoDistanceAggregator extends AggregatorBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The field's ID to execute the aggregation on.
      *
      * @var string
@@ -40,6 +48,7 @@ class GeoDistanceAggregator extends AggregatorBase
      */
     public function setField(string $field) : self
     {
+        $this->initialized['field'] = true;
         $this->field = $field;
         return $this;
     }
@@ -61,6 +70,7 @@ class GeoDistanceAggregator extends AggregatorBase
      */
     public function setLocation($location) : self
     {
+        $this->initialized['location'] = true;
         $this->location = $location;
         return $this;
     }
@@ -82,6 +92,7 @@ class GeoDistanceAggregator extends AggregatorBase
      */
     public function setRanges(array $ranges) : self
     {
+        $this->initialized['ranges'] = true;
         $this->ranges = $ranges;
         return $this;
     }

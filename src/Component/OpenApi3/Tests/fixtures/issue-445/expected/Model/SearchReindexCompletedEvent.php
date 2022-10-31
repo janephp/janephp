@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SearchReindexCompletedEvent extends ApplicationEvent
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class SearchReindexCompletedEvent extends ApplicationEvent
      */
     public function setSearchIndex(string $searchIndex) : self
     {
+        $this->initialized['searchIndex'] = true;
         $this->searchIndex = $searchIndex;
         return $this;
     }
@@ -61,6 +70,7 @@ class SearchReindexCompletedEvent extends ApplicationEvent
      */
     public function setItems(int $items) : self
     {
+        $this->initialized['items'] = true;
         $this->items = $items;
         return $this;
     }
@@ -82,6 +92,7 @@ class SearchReindexCompletedEvent extends ApplicationEvent
      */
     public function setDuration(string $duration) : self
     {
+        $this->initialized['duration'] = true;
         $this->duration = $duration;
         return $this;
     }

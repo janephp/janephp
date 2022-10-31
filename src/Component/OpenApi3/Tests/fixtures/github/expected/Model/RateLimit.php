@@ -5,6 +5,14 @@ namespace Github\Model;
 class RateLimit extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -40,6 +48,7 @@ class RateLimit extends \ArrayObject
      */
     public function setLimit(int $limit) : self
     {
+        $this->initialized['limit'] = true;
         $this->limit = $limit;
         return $this;
     }
@@ -61,6 +70,7 @@ class RateLimit extends \ArrayObject
      */
     public function setRemaining(int $remaining) : self
     {
+        $this->initialized['remaining'] = true;
         $this->remaining = $remaining;
         return $this;
     }
@@ -82,6 +92,7 @@ class RateLimit extends \ArrayObject
      */
     public function setReset(int $reset) : self
     {
+        $this->initialized['reset'] = true;
         $this->reset = $reset;
         return $this;
     }

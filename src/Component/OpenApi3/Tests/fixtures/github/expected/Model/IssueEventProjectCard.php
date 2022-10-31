@@ -5,6 +5,14 @@ namespace Github\Model;
 class IssueEventProjectCard extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -58,6 +66,7 @@ class IssueEventProjectCard extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -79,6 +88,7 @@ class IssueEventProjectCard extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -100,6 +110,7 @@ class IssueEventProjectCard extends \ArrayObject
      */
     public function setProjectUrl(string $projectUrl) : self
     {
+        $this->initialized['projectUrl'] = true;
         $this->projectUrl = $projectUrl;
         return $this;
     }
@@ -121,6 +132,7 @@ class IssueEventProjectCard extends \ArrayObject
      */
     public function setProjectId(int $projectId) : self
     {
+        $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
         return $this;
     }
@@ -142,6 +154,7 @@ class IssueEventProjectCard extends \ArrayObject
      */
     public function setColumnName(string $columnName) : self
     {
+        $this->initialized['columnName'] = true;
         $this->columnName = $columnName;
         return $this;
     }
@@ -163,6 +176,7 @@ class IssueEventProjectCard extends \ArrayObject
      */
     public function setPreviousColumnName(string $previousColumnName) : self
     {
+        $this->initialized['previousColumnName'] = true;
         $this->previousColumnName = $previousColumnName;
         return $this;
     }

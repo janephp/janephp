@@ -82,16 +82,16 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlowNo
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNetCashFlowFromOperations()) {
+        if ($object->isInitialized('netCashFlowFromOperations') && null !== $object->getNetCashFlowFromOperations()) {
             $data['netCashFlowFromOperations'] = $object->getNetCashFlowFromOperations();
         }
-        if (null !== $object->getNetCashFlowBeforeFinancing()) {
+        if ($object->isInitialized('netCashFlowBeforeFinancing') && null !== $object->getNetCashFlowBeforeFinancing()) {
             $data['netCashFlowBeforeFinancing'] = $object->getNetCashFlowBeforeFinancing();
         }
-        if (null !== $object->getNetCashFlowFromFinancing()) {
+        if ($object->isInitialized('netCashFlowFromFinancing') && null !== $object->getNetCashFlowFromFinancing()) {
             $data['netCashFlowFromFinancing'] = $object->getNetCashFlowFromFinancing();
         }
-        if (null !== $object->getIncreaseInCash()) {
+        if ($object->isInitialized('increaseInCash') && null !== $object->getIncreaseInCash()) {
             $data['increaseInCash'] = $object->getIncreaseInCash();
         }
         foreach ($object as $key => $value) {

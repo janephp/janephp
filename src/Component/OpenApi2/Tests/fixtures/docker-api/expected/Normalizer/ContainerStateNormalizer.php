@@ -89,40 +89,40 @@ class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['Status'] = $object->getStatus();
         }
-        if (null !== $object->getRunning()) {
+        if ($object->isInitialized('running') && null !== $object->getRunning()) {
             $data['Running'] = $object->getRunning();
         }
-        if (null !== $object->getPaused()) {
+        if ($object->isInitialized('paused') && null !== $object->getPaused()) {
             $data['Paused'] = $object->getPaused();
         }
-        if (null !== $object->getRestarting()) {
+        if ($object->isInitialized('restarting') && null !== $object->getRestarting()) {
             $data['Restarting'] = $object->getRestarting();
         }
-        if (null !== $object->getOOMKilled()) {
+        if ($object->isInitialized('oOMKilled') && null !== $object->getOOMKilled()) {
             $data['OOMKilled'] = $object->getOOMKilled();
         }
-        if (null !== $object->getDead()) {
+        if ($object->isInitialized('dead') && null !== $object->getDead()) {
             $data['Dead'] = $object->getDead();
         }
-        if (null !== $object->getPid()) {
+        if ($object->isInitialized('pid') && null !== $object->getPid()) {
             $data['Pid'] = $object->getPid();
         }
-        if (null !== $object->getExitCode()) {
+        if ($object->isInitialized('exitCode') && null !== $object->getExitCode()) {
             $data['ExitCode'] = $object->getExitCode();
         }
-        if (null !== $object->getError()) {
+        if ($object->isInitialized('error') && null !== $object->getError()) {
             $data['Error'] = $object->getError();
         }
-        if (null !== $object->getStartedAt()) {
+        if ($object->isInitialized('startedAt') && null !== $object->getStartedAt()) {
             $data['StartedAt'] = $object->getStartedAt();
         }
-        if (null !== $object->getFinishedAt()) {
+        if ($object->isInitialized('finishedAt') && null !== $object->getFinishedAt()) {
             $data['FinishedAt'] = $object->getFinishedAt();
         }
-        if (null !== $object->getHealth()) {
+        if ($object->isInitialized('health') && null !== $object->getHealth()) {
             $data['Health'] = $this->normalizer->normalize($object->getHealth(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

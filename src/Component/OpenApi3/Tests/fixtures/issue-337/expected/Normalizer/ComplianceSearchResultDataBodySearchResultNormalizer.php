@@ -66,14 +66,14 @@ class ComplianceSearchResultDataBodySearchResultNormalizer implements Denormaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRecords()) {
+        if ($object->isInitialized('records') && null !== $object->getRecords()) {
             $values = array();
             foreach ($object->getRecords() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['records'] = $values;
         }
-        if (null !== $object->getSearchEngineVersion()) {
+        if ($object->isInitialized('searchEngineVersion') && null !== $object->getSearchEngineVersion()) {
             $data['searchEngineVersion'] = $object->getSearchEngineVersion();
         }
         foreach ($object as $key => $value_1) {

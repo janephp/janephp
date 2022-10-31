@@ -70,11 +70,11 @@ class ReposOwnerRepoKeysPostBodyNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
         $data['key'] = $object->getKey();
-        if (null !== $object->getReadOnly()) {
+        if ($object->isInitialized('readOnly') && null !== $object->getReadOnly()) {
             $data['read_only'] = $object->getReadOnly();
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -64,6 +72,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
      */
     public function setMortgageType(string $mortgageType) : self
     {
+        $this->initialized['mortgageType'] = true;
         $this->mortgageType = $mortgageType;
         return $this;
     }
@@ -85,6 +94,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
      */
     public function setDateChargeCreated(string $dateChargeCreated) : self
     {
+        $this->initialized['dateChargeCreated'] = true;
         $this->dateChargeCreated = $dateChargeCreated;
         return $this;
     }
@@ -106,6 +116,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
      */
     public function setDateChargeRegistered(string $dateChargeRegistered) : self
     {
+        $this->initialized['dateChargeRegistered'] = true;
         $this->dateChargeRegistered = $dateChargeRegistered;
         return $this;
     }
@@ -127,6 +138,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -148,6 +160,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
      */
     public function setPersonsEntitled(string $personsEntitled) : self
     {
+        $this->initialized['personsEntitled'] = true;
         $this->personsEntitled = $personsEntitled;
         return $this;
     }
@@ -169,6 +182,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
      */
     public function setAmountSecured(string $amountSecured) : self
     {
+        $this->initialized['amountSecured'] = true;
         $this->amountSecured = $amountSecured;
         return $this;
     }
@@ -190,6 +204,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
      */
     public function setDetails(string $details) : self
     {
+        $this->initialized['details'] = true;
         $this->details = $details;
         return $this;
     }

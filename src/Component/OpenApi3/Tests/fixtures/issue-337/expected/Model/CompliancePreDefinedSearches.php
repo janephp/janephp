@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class CompliancePreDefinedSearches extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -34,6 +42,7 @@ class CompliancePreDefinedSearches extends \ArrayObject
      */
     public function setTotalSize(int $totalSize) : self
     {
+        $this->initialized['totalSize'] = true;
         $this->totalSize = $totalSize;
         return $this;
     }
@@ -55,6 +64,7 @@ class CompliancePreDefinedSearches extends \ArrayObject
      */
     public function setPredefinedSearches(array $predefinedSearches) : self
     {
+        $this->initialized['predefinedSearches'] = true;
         $this->predefinedSearches = $predefinedSearches;
         return $this;
     }

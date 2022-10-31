@@ -5,6 +5,14 @@ namespace Github\Model;
 class OrgsOrgTeamsTeamSlugPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The name of the team.
      *
      * @var string
@@ -60,6 +68,7 @@ class OrgsOrgTeamsTeamSlugPatchBody extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -81,6 +90,7 @@ class OrgsOrgTeamsTeamSlugPatchBody extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -112,6 +122,7 @@ class OrgsOrgTeamsTeamSlugPatchBody extends \ArrayObject
     */
     public function setPrivacy(string $privacy) : self
     {
+        $this->initialized['privacy'] = true;
         $this->privacy = $privacy;
         return $this;
     }
@@ -139,6 +150,7 @@ class OrgsOrgTeamsTeamSlugPatchBody extends \ArrayObject
     */
     public function setPermission(string $permission) : self
     {
+        $this->initialized['permission'] = true;
         $this->permission = $permission;
         return $this;
     }
@@ -160,6 +172,7 @@ class OrgsOrgTeamsTeamSlugPatchBody extends \ArrayObject
      */
     public function setParentTeamId(int $parentTeamId) : self
     {
+        $this->initialized['parentTeamId'] = true;
         $this->parentTeamId = $parentTeamId;
         return $this;
     }

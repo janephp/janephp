@@ -70,13 +70,13 @@ class FileCommitContentLinksNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSelf()) {
+        if ($object->isInitialized('self') && null !== $object->getSelf()) {
             $data['self'] = $object->getSelf();
         }
-        if (null !== $object->getGit()) {
+        if ($object->isInitialized('git') && null !== $object->getGit()) {
             $data['git'] = $object->getGit();
         }
-        if (null !== $object->getHtml()) {
+        if ($object->isInitialized('html') && null !== $object->getHtml()) {
             $data['html'] = $object->getHtml();
         }
         foreach ($object as $key => $value) {

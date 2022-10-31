@@ -58,7 +58,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRegistered()) {
+        if ($object->isInitialized('registered') && null !== $object->getRegistered()) {
             $data['registered'] = $this->normalizer->normalize($object->getRegistered(), 'json', $context);
         }
         foreach ($object as $key => $value) {

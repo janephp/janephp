@@ -70,16 +70,16 @@ class TweetSearchResponseMetaNormalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNewestId()) {
+        if ($object->isInitialized('newestId') && null !== $object->getNewestId()) {
             $data['newest_id'] = $object->getNewestId();
         }
-        if (null !== $object->getOldestId()) {
+        if ($object->isInitialized('oldestId') && null !== $object->getOldestId()) {
             $data['oldest_id'] = $object->getOldestId();
         }
-        if (null !== $object->getNextToken()) {
+        if ($object->isInitialized('nextToken') && null !== $object->getNextToken()) {
             $data['next_token'] = $object->getNextToken();
         }
-        if (null !== $object->getResultCount()) {
+        if ($object->isInitialized('resultCount') && null !== $object->getResultCount()) {
             $data['result_count'] = $object->getResultCount();
         }
         foreach ($object as $key => $value) {

@@ -63,10 +63,10 @@ class EventActorNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getID()) {
+        if ($object->isInitialized('iD') && null !== $object->getID()) {
             $data['ID'] = $object->getID();
         }
-        if (null !== $object->getAttributes()) {
+        if ($object->isInitialized('attributes') && null !== $object->getAttributes()) {
             $values = array();
             foreach ($object->getAttributes() as $key => $value) {
                 $values[$key] = $value;

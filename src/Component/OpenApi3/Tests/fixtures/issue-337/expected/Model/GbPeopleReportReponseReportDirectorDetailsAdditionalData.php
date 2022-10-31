@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbPeopleReportReponseReportDirectorDetailsAdditionalData extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -34,6 +42,7 @@ class GbPeopleReportReponseReportDirectorDetailsAdditionalData extends \ArrayObj
      */
     public function setDisqualified(bool $disqualified) : self
     {
+        $this->initialized['disqualified'] = true;
         $this->disqualified = $disqualified;
         return $this;
     }
@@ -55,6 +64,7 @@ class GbPeopleReportReponseReportDirectorDetailsAdditionalData extends \ArrayObj
      */
     public function setDisqualifiedException(bool $disqualifiedException) : self
     {
+        $this->initialized['disqualifiedException'] = true;
         $this->disqualifiedException = $disqualifiedException;
         return $this;
     }

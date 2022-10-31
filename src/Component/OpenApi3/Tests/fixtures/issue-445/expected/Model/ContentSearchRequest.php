@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentSearchRequest extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Limits the search by using a query string filter. The Lucene query string syntax is supported.
      *
      * @var string|null
@@ -139,6 +147,7 @@ class ContentSearchRequest extends \ArrayObject
      */
     public function setSearchString(?string $searchString) : self
     {
+        $this->initialized['searchString'] = true;
         $this->searchString = $searchString;
         return $this;
     }
@@ -160,6 +169,7 @@ class ContentSearchRequest extends \ArrayObject
      */
     public function setSearchBehaviors(?array $searchBehaviors) : self
     {
+        $this->initialized['searchBehaviors'] = true;
         $this->searchBehaviors = $searchBehaviors;
         return $this;
     }
@@ -181,6 +191,7 @@ class ContentSearchRequest extends \ArrayObject
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }
@@ -212,6 +223,7 @@ class ContentSearchRequest extends \ArrayObject
     */
     public function setAggregationFilters(?array $aggregationFilters) : self
     {
+        $this->initialized['aggregationFilters'] = true;
         $this->aggregationFilters = $aggregationFilters;
         return $this;
     }
@@ -235,6 +247,7 @@ class ContentSearchRequest extends \ArrayObject
     */
     public function setChannelId(?string $channelId) : self
     {
+        $this->initialized['channelId'] = true;
         $this->channelId = $channelId;
         return $this;
     }
@@ -258,6 +271,7 @@ class ContentSearchRequest extends \ArrayObject
     */
     public function setSearchLanguages(?array $searchLanguages) : self
     {
+        $this->initialized['searchLanguages'] = true;
         $this->searchLanguages = $searchLanguages;
         return $this;
     }
@@ -279,6 +293,7 @@ class ContentSearchRequest extends \ArrayObject
      */
     public function setCollectionId(?string $collectionId) : self
     {
+        $this->initialized['collectionId'] = true;
         $this->collectionId = $collectionId;
         return $this;
     }
@@ -300,6 +315,7 @@ class ContentSearchRequest extends \ArrayObject
      */
     public function setLifeCycleFilter($lifeCycleFilter) : self
     {
+        $this->initialized['lifeCycleFilter'] = true;
         $this->lifeCycleFilter = $lifeCycleFilter;
         return $this;
     }
@@ -321,6 +337,7 @@ class ContentSearchRequest extends \ArrayObject
      */
     public function setBrokenDependenciesFilter($brokenDependenciesFilter) : self
     {
+        $this->initialized['brokenDependenciesFilter'] = true;
         $this->brokenDependenciesFilter = $brokenDependenciesFilter;
         return $this;
     }
@@ -342,6 +359,7 @@ class ContentSearchRequest extends \ArrayObject
      */
     public function setSearchType($searchType) : self
     {
+        $this->initialized['searchType'] = true;
         $this->searchType = $searchType;
         return $this;
     }
@@ -363,6 +381,7 @@ class ContentSearchRequest extends \ArrayObject
      */
     public function setDisplayPatternIds(?array $displayPatternIds) : self
     {
+        $this->initialized['displayPatternIds'] = true;
         $this->displayPatternIds = $displayPatternIds;
         return $this;
     }
@@ -384,6 +403,7 @@ class ContentSearchRequest extends \ArrayObject
      */
     public function setSort(?array $sort) : self
     {
+        $this->initialized['sort'] = true;
         $this->sort = $sort;
         return $this;
     }
@@ -405,6 +425,7 @@ class ContentSearchRequest extends \ArrayObject
      */
     public function setLimit(int $limit) : self
     {
+        $this->initialized['limit'] = true;
         $this->limit = $limit;
         return $this;
     }
@@ -426,6 +447,7 @@ class ContentSearchRequest extends \ArrayObject
      */
     public function setPageToken(?string $pageToken) : self
     {
+        $this->initialized['pageToken'] = true;
         $this->pageToken = $pageToken;
         return $this;
     }
@@ -447,6 +469,7 @@ class ContentSearchRequest extends \ArrayObject
      */
     public function setRightsFilter(?array $rightsFilter) : self
     {
+        $this->initialized['rightsFilter'] = true;
         $this->rightsFilter = $rightsFilter;
         return $this;
     }
@@ -470,6 +493,7 @@ class ContentSearchRequest extends \ArrayObject
     */
     public function setRightsAggregations(?array $rightsAggregations) : self
     {
+        $this->initialized['rightsAggregations'] = true;
         $this->rightsAggregations = $rightsAggregations;
         return $this;
     }
@@ -493,6 +517,7 @@ class ContentSearchRequest extends \ArrayObject
     */
     public function setDebugMode(bool $debugMode) : self
     {
+        $this->initialized['debugMode'] = true;
         $this->debugMode = $debugMode;
         return $this;
     }
@@ -514,6 +539,7 @@ class ContentSearchRequest extends \ArrayObject
      */
     public function setAggregators(?array $aggregators) : self
     {
+        $this->initialized['aggregators'] = true;
         $this->aggregators = $aggregators;
         return $this;
     }

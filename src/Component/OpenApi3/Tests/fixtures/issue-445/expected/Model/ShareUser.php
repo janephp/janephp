@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ShareUser
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Name of user
      *
      * @var string
@@ -34,6 +42,7 @@ class ShareUser
      */
     public function setDisplayName(string $displayName) : self
     {
+        $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
         return $this;
     }
@@ -55,6 +64,7 @@ class ShareUser
      */
     public function setEmailHash(string $emailHash) : self
     {
+        $this->initialized['emailHash'] = true;
         $this->emailHash = $emailHash;
         return $this;
     }

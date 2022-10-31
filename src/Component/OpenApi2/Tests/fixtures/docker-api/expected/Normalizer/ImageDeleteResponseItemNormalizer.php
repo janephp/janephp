@@ -59,10 +59,10 @@ class ImageDeleteResponseItemNormalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUntagged()) {
+        if ($object->isInitialized('untagged') && null !== $object->getUntagged()) {
             $data['Untagged'] = $object->getUntagged();
         }
-        if (null !== $object->getDeleted()) {
+        if ($object->isInitialized('deleted') && null !== $object->getDeleted()) {
             $data['Deleted'] = $object->getDeleted();
         }
         if (!($context['skip_validation'] ?? false)) {

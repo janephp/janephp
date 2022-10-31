@@ -74,16 +74,16 @@ class BooksGetLdjsonResponse200HydraSearchNormalizer implements DenormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['@type'] = $object->getType();
         }
-        if (null !== $object->getHydraTemplate()) {
+        if ($object->isInitialized('hydraTemplate') && null !== $object->getHydraTemplate()) {
             $data['hydra:template'] = $object->getHydraTemplate();
         }
-        if (null !== $object->getHydraVariableRepresentation()) {
+        if ($object->isInitialized('hydraVariableRepresentation') && null !== $object->getHydraVariableRepresentation()) {
             $data['hydra:variableRepresentation'] = $object->getHydraVariableRepresentation();
         }
-        if (null !== $object->getHydraMapping()) {
+        if ($object->isInitialized('hydraMapping') && null !== $object->getHydraMapping()) {
             $values = array();
             foreach ($object->getHydraMapping() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

@@ -66,10 +66,10 @@ class NotificationsPutBodyNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLastReadAt()) {
+        if ($object->isInitialized('lastReadAt') && null !== $object->getLastReadAt()) {
             $data['last_read_at'] = $object->getLastReadAt()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getRead()) {
+        if ($object->isInitialized('read') && null !== $object->getRead()) {
             $data['read'] = $object->getRead();
         }
         foreach ($object as $key => $value) {

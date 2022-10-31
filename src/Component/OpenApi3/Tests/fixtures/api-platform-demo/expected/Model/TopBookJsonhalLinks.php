@@ -5,6 +5,14 @@ namespace ApiPlatform\Demo\Model;
 class TopBookJsonhalLinks extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var TopBookJsonhalLinksSelf
@@ -28,6 +36,7 @@ class TopBookJsonhalLinks extends \ArrayObject
      */
     public function setSelf(TopBookJsonhalLinksSelf $self) : self
     {
+        $this->initialized['self'] = true;
         $this->self = $self;
         return $this;
     }

@@ -97,7 +97,7 @@ class GitTagNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $data['message'] = $object->getMessage();
         $data['tagger'] = $this->normalizer->normalize($object->getTagger(), 'json', $context);
         $data['object'] = $this->normalizer->normalize($object->getObject(), 'json', $context);
-        if (null !== $object->getVerification()) {
+        if ($object->isInitialized('verification') && null !== $object->getVerification()) {
             $data['verification'] = $this->normalizer->normalize($object->getVerification(), 'json', $context);
         }
         foreach ($object as $key => $value) {

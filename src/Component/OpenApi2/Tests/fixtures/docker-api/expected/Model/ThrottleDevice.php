@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ThrottleDevice
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Device path
      *
      * @var string
@@ -34,6 +42,7 @@ class ThrottleDevice
      */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -55,6 +64,7 @@ class ThrottleDevice
      */
     public function setRate(int $rate) : self
     {
+        $this->initialized['rate'] = true;
         $this->rate = $rate;
         return $this;
     }

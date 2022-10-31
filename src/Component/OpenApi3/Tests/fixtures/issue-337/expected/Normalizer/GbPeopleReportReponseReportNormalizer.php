@@ -78,23 +78,23 @@ class GbPeopleReportReponseReportNormalizer implements DenormalizerInterface, No
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDirectorId()) {
+        if ($object->isInitialized('directorId') && null !== $object->getDirectorId()) {
             $data['directorId'] = $object->getDirectorId();
         }
-        if (null !== $object->getDirectorSummary()) {
+        if ($object->isInitialized('directorSummary') && null !== $object->getDirectorSummary()) {
             $data['directorSummary'] = $this->normalizer->normalize($object->getDirectorSummary(), 'json', $context);
         }
-        if (null !== $object->getDirectorDetails()) {
+        if ($object->isInitialized('directorDetails') && null !== $object->getDirectorDetails()) {
             $data['directorDetails'] = $this->normalizer->normalize($object->getDirectorDetails(), 'json', $context);
         }
-        if (null !== $object->getOtherAddresses()) {
+        if ($object->isInitialized('otherAddresses') && null !== $object->getOtherAddresses()) {
             $values = array();
             foreach ($object->getOtherAddresses() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['otherAddresses'] = $values;
         }
-        if (null !== $object->getDirectorships()) {
+        if ($object->isInitialized('directorships') && null !== $object->getDirectorships()) {
             $data['directorships'] = $this->normalizer->normalize($object->getDirectorships(), 'json', $context);
         }
         foreach ($object as $key => $value_1) {

@@ -97,34 +97,34 @@ class AuthorizationsAuthorizationIdPatchBodyNormalizer implements DenormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getScopes()) {
+        if ($object->isInitialized('scopes') && null !== $object->getScopes()) {
             $values = array();
             foreach ($object->getScopes() as $value) {
                 $values[] = $value;
             }
             $data['scopes'] = $values;
         }
-        if (null !== $object->getAddScopes()) {
+        if ($object->isInitialized('addScopes') && null !== $object->getAddScopes()) {
             $values_1 = array();
             foreach ($object->getAddScopes() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['add_scopes'] = $values_1;
         }
-        if (null !== $object->getRemoveScopes()) {
+        if ($object->isInitialized('removeScopes') && null !== $object->getRemoveScopes()) {
             $values_2 = array();
             foreach ($object->getRemoveScopes() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['remove_scopes'] = $values_2;
         }
-        if (null !== $object->getNote()) {
+        if ($object->isInitialized('note') && null !== $object->getNote()) {
             $data['note'] = $object->getNote();
         }
-        if (null !== $object->getNoteUrl()) {
+        if ($object->isInitialized('noteUrl') && null !== $object->getNoteUrl()) {
             $data['note_url'] = $object->getNoteUrl();
         }
-        if (null !== $object->getFingerprint()) {
+        if ($object->isInitialized('fingerprint') && null !== $object->getFingerprint()) {
             $data['fingerprint'] = $object->getFingerprint();
         }
         foreach ($object as $key => $value_3) {

@@ -73,14 +73,14 @@ class BusinessRuleConfigurationUpdateRequestNormalizer implements DenormalizerIn
     {
         $data = array();
         $data['disableRuleEngine'] = $object->getDisableRuleEngine();
-        if (null !== $object->getRules()) {
+        if ($object->isInitialized('rules') && null !== $object->getRules()) {
             $values = array();
             foreach ($object->getRules() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['rules'] = $values;
         }
-        if (null !== $object->getCaches()) {
+        if ($object->isInitialized('caches') && null !== $object->getCaches()) {
             $values_1 = array();
             foreach ($object->getCaches() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

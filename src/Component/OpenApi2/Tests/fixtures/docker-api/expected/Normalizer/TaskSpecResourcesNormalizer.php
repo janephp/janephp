@@ -59,10 +59,10 @@ class TaskSpecResourcesNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLimits()) {
+        if ($object->isInitialized('limits') && null !== $object->getLimits()) {
             $data['Limits'] = $this->normalizer->normalize($object->getLimits(), 'json', $context);
         }
-        if (null !== $object->getReservation()) {
+        if ($object->isInitialized('reservation') && null !== $object->getReservation()) {
             $data['Reservation'] = $this->normalizer->normalize($object->getReservation(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class PluginConfigInterface
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var PluginInterfaceType[]
@@ -40,6 +48,7 @@ class PluginConfigInterface
      */
     public function setTypes(array $types) : self
     {
+        $this->initialized['types'] = true;
         $this->types = $types;
         return $this;
     }
@@ -61,6 +70,7 @@ class PluginConfigInterface
      */
     public function setSocket(string $socket) : self
     {
+        $this->initialized['socket'] = true;
         $this->socket = $socket;
         return $this;
     }
@@ -82,6 +92,7 @@ class PluginConfigInterface
      */
     public function setProtocolScheme(string $protocolScheme) : self
     {
+        $this->initialized['protocolScheme'] = true;
         $this->protocolScheme = $protocolScheme;
         return $this;
     }

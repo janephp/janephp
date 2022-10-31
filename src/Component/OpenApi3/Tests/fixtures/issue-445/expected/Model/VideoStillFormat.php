@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class VideoStillFormat extends FormatBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -34,6 +42,7 @@ class VideoStillFormat extends FormatBase
      */
     public function setExtension(?string $extension) : self
     {
+        $this->initialized['extension'] = true;
         $this->extension = $extension;
         return $this;
     }
@@ -55,6 +64,7 @@ class VideoStillFormat extends FormatBase
      */
     public function setPositionInSeconds(int $positionInSeconds) : self
     {
+        $this->initialized['positionInSeconds'] = true;
         $this->positionInSeconds = $positionInSeconds;
         return $this;
     }

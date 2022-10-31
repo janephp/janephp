@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoReleasesAssetsAssetIdPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The file name of the asset.
      *
      * @var string
@@ -40,6 +48,7 @@ class ReposOwnerRepoReleasesAssetsAssetIdPatchBody extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -61,6 +70,7 @@ class ReposOwnerRepoReleasesAssetsAssetIdPatchBody extends \ArrayObject
      */
     public function setLabel(string $label) : self
     {
+        $this->initialized['label'] = true;
         $this->label = $label;
         return $this;
     }
@@ -82,6 +92,7 @@ class ReposOwnerRepoReleasesAssetsAssetIdPatchBody extends \ArrayObject
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }

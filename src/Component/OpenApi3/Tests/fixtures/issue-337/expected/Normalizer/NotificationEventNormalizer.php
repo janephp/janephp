@@ -95,28 +95,28 @@ class NotificationEventNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCompany()) {
+        if ($object->isInitialized('company') && null !== $object->getCompany()) {
             $data['company'] = $this->normalizer->normalize($object->getCompany(), 'json', $context);
         }
-        if (null !== $object->getEventId()) {
+        if ($object->isInitialized('eventId') && null !== $object->getEventId()) {
             $data['eventId'] = $object->getEventId();
         }
-        if (null !== $object->getEventDate()) {
+        if ($object->isInitialized('eventDate') && null !== $object->getEventDate()) {
             $data['eventDate'] = $object->getEventDate()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getNewValue()) {
+        if ($object->isInitialized('newValue') && null !== $object->getNewValue()) {
             $data['newValue'] = $object->getNewValue();
         }
-        if (null !== $object->getOldValue()) {
+        if ($object->isInitialized('oldValue') && null !== $object->getOldValue()) {
             $data['oldValue'] = $object->getOldValue();
         }
-        if (null !== $object->getNotificationEventId()) {
+        if ($object->isInitialized('notificationEventId') && null !== $object->getNotificationEventId()) {
             $data['notificationEventId'] = $object->getNotificationEventId();
         }
-        if (null !== $object->getRuleCode()) {
+        if ($object->isInitialized('ruleCode') && null !== $object->getRuleCode()) {
             $data['ruleCode'] = $object->getRuleCode();
         }
-        if (null !== $object->getRuleName()) {
+        if ($object->isInitialized('ruleName') && null !== $object->getRuleName()) {
             $data['ruleName'] = $object->getRuleName();
         }
         foreach ($object as $key => $value) {

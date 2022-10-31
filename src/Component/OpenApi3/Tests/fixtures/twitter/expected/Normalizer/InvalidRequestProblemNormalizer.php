@@ -75,7 +75,7 @@ class InvalidRequestProblemNormalizer implements DenormalizerInterface, Normaliz
     {
         $data = array();
         $data['type'] = $object->getType();
-        if (null !== $object->getErrors()) {
+        if ($object->isInitialized('errors') && null !== $object->getErrors()) {
             $values = array();
             foreach ($object->getErrors() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class DetailedPlaceFields extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var Geo
@@ -28,6 +36,7 @@ class DetailedPlaceFields extends \ArrayObject
      */
     public function setGeo(Geo $geo) : self
     {
+        $this->initialized['geo'] = true;
         $this->geo = $geo;
         return $this;
     }

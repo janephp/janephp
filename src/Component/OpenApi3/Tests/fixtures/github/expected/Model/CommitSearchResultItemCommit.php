@@ -5,6 +5,14 @@ namespace Github\Model;
 class CommitSearchResultItemCommit extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var CommitSearchResultItemCommitAuthor
@@ -64,6 +72,7 @@ class CommitSearchResultItemCommit extends \ArrayObject
      */
     public function setAuthor(CommitSearchResultItemCommitAuthor $author) : self
     {
+        $this->initialized['author'] = true;
         $this->author = $author;
         return $this;
     }
@@ -85,6 +94,7 @@ class CommitSearchResultItemCommit extends \ArrayObject
      */
     public function setCommitter(?CommitSearchResultItemCommitCommitter $committer) : self
     {
+        $this->initialized['committer'] = true;
         $this->committer = $committer;
         return $this;
     }
@@ -106,6 +116,7 @@ class CommitSearchResultItemCommit extends \ArrayObject
      */
     public function setCommentCount(int $commentCount) : self
     {
+        $this->initialized['commentCount'] = true;
         $this->commentCount = $commentCount;
         return $this;
     }
@@ -127,6 +138,7 @@ class CommitSearchResultItemCommit extends \ArrayObject
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -148,6 +160,7 @@ class CommitSearchResultItemCommit extends \ArrayObject
      */
     public function setTree(CommitSearchResultItemCommitTree $tree) : self
     {
+        $this->initialized['tree'] = true;
         $this->tree = $tree;
         return $this;
     }
@@ -169,6 +182,7 @@ class CommitSearchResultItemCommit extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -190,6 +204,7 @@ class CommitSearchResultItemCommit extends \ArrayObject
      */
     public function setVerification(Verification $verification) : self
     {
+        $this->initialized['verification'] = true;
         $this->verification = $verification;
         return $this;
     }

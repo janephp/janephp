@@ -5,6 +5,14 @@ namespace Jane\OpenApi3\Tests\Expected\Model;
 class Poll extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Unique identifier of this poll.
      *
      * @var string
@@ -52,6 +60,7 @@ class Poll extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -73,6 +82,7 @@ class Poll extends \ArrayObject
      */
     public function setOptions(array $options) : self
     {
+        $this->initialized['options'] = true;
         $this->options = $options;
         return $this;
     }
@@ -94,6 +104,7 @@ class Poll extends \ArrayObject
      */
     public function setVotingStatus(string $votingStatus) : self
     {
+        $this->initialized['votingStatus'] = true;
         $this->votingStatus = $votingStatus;
         return $this;
     }
@@ -115,6 +126,7 @@ class Poll extends \ArrayObject
      */
     public function setEndDatetime(\DateTime $endDatetime) : self
     {
+        $this->initialized['endDatetime'] = true;
         $this->endDatetime = $endDatetime;
         return $this;
     }
@@ -136,6 +148,7 @@ class Poll extends \ArrayObject
      */
     public function setDurationMinutes(int $durationMinutes) : self
     {
+        $this->initialized['durationMinutes'] = true;
         $this->durationMinutes = $durationMinutes;
         return $this;
     }

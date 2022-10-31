@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SchemaCreateRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The schema ID. It can be a slug, but must be unique throughout the whole customer setup.
      *
      * @var string
@@ -110,6 +118,7 @@ class SchemaCreateRequest
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -131,6 +140,7 @@ class SchemaCreateRequest
      */
     public function setParentSchemaId(?string $parentSchemaId) : self
     {
+        $this->initialized['parentSchemaId'] = true;
         $this->parentSchemaId = $parentSchemaId;
         return $this;
     }
@@ -152,6 +162,7 @@ class SchemaCreateRequest
      */
     public function setTypes(?array $types) : self
     {
+        $this->initialized['types'] = true;
         $this->types = $types;
         return $this;
     }
@@ -173,6 +184,7 @@ class SchemaCreateRequest
      */
     public function setNames($names) : self
     {
+        $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }
@@ -194,6 +206,7 @@ class SchemaCreateRequest
      */
     public function setDescriptions($descriptions) : self
     {
+        $this->initialized['descriptions'] = true;
         $this->descriptions = $descriptions;
         return $this;
     }
@@ -215,6 +228,7 @@ class SchemaCreateRequest
      */
     public function setDisplayPatterns(array $displayPatterns) : self
     {
+        $this->initialized['displayPatterns'] = true;
         $this->displayPatterns = $displayPatterns;
         return $this;
     }
@@ -236,6 +250,7 @@ class SchemaCreateRequest
      */
     public function setFields(?array $fields) : self
     {
+        $this->initialized['fields'] = true;
         $this->fields = $fields;
         return $this;
     }
@@ -259,6 +274,7 @@ class SchemaCreateRequest
     */
     public function setFieldsOverwrite(?array $fieldsOverwrite) : self
     {
+        $this->initialized['fieldsOverwrite'] = true;
         $this->fieldsOverwrite = $fieldsOverwrite;
         return $this;
     }
@@ -282,6 +298,7 @@ class SchemaCreateRequest
     */
     public function setAggregations(?array $aggregations) : self
     {
+        $this->initialized['aggregations'] = true;
         $this->aggregations = $aggregations;
         return $this;
     }
@@ -305,6 +322,7 @@ class SchemaCreateRequest
     */
     public function setSort(?array $sort) : self
     {
+        $this->initialized['sort'] = true;
         $this->sort = $sort;
         return $this;
     }
@@ -326,6 +344,7 @@ class SchemaCreateRequest
      */
     public function setViewForAll(bool $viewForAll) : self
     {
+        $this->initialized['viewForAll'] = true;
         $this->viewForAll = $viewForAll;
         return $this;
     }
@@ -347,6 +366,7 @@ class SchemaCreateRequest
      */
     public function setSchemaPermissionSetIds(?array $schemaPermissionSetIds) : self
     {
+        $this->initialized['schemaPermissionSetIds'] = true;
         $this->schemaPermissionSetIds = $schemaPermissionSetIds;
         return $this;
     }
@@ -368,6 +388,7 @@ class SchemaCreateRequest
      */
     public function setLayerSchemaIds(?array $layerSchemaIds) : self
     {
+        $this->initialized['layerSchemaIds'] = true;
         $this->layerSchemaIds = $layerSchemaIds;
         return $this;
     }
@@ -391,6 +412,7 @@ class SchemaCreateRequest
     */
     public function setReferencedInContentSchemaIds(?array $referencedInContentSchemaIds) : self
     {
+        $this->initialized['referencedInContentSchemaIds'] = true;
         $this->referencedInContentSchemaIds = $referencedInContentSchemaIds;
         return $this;
     }

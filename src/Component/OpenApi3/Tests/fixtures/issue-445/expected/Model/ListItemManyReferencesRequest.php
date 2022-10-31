@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ListItemManyReferencesRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The IDs of the list items whose references need to be retrieved.
      *
      * @var string[]
@@ -34,6 +42,7 @@ class ListItemManyReferencesRequest
      */
     public function setListItemIds(array $listItemIds) : self
     {
+        $this->initialized['listItemIds'] = true;
         $this->listItemIds = $listItemIds;
         return $this;
     }
@@ -55,6 +64,7 @@ class ListItemManyReferencesRequest
      */
     public function setReferences($references) : self
     {
+        $this->initialized['references'] = true;
         $this->references = $references;
         return $this;
     }

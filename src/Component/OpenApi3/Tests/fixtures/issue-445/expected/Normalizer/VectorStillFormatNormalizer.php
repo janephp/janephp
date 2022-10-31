@@ -73,10 +73,10 @@ class VectorStillFormatNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $data = array();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getExtension()) {
+        if ($object->isInitialized('extension') && null !== $object->getExtension()) {
             $data['extension'] = $object->getExtension();
         }
-        if (null !== $object->getResizeAction()) {
+        if ($object->isInitialized('resizeAction') && null !== $object->getResizeAction()) {
             $data['resizeAction'] = $object->getResizeAction();
         }
         foreach ($object as $key => $value) {

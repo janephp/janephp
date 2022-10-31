@@ -77,19 +77,19 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCcjDate()) {
+        if ($object->isInitialized('ccjDate') && null !== $object->getCcjDate()) {
             $data['ccjDate'] = $object->getCcjDate();
         }
-        if (null !== $object->getCourt()) {
+        if ($object->isInitialized('court') && null !== $object->getCourt()) {
             $data['court'] = $object->getCourt();
         }
-        if (null !== $object->getCcjAmount()) {
+        if ($object->isInitialized('ccjAmount') && null !== $object->getCcjAmount()) {
             $data['ccjAmount'] = $object->getCcjAmount();
         }
-        if (null !== $object->getCaseNumber()) {
+        if ($object->isInitialized('caseNumber') && null !== $object->getCaseNumber()) {
             $data['caseNumber'] = $object->getCaseNumber();
         }
-        if (null !== $object->getCcjStatus()) {
+        if ($object->isInitialized('ccjStatus') && null !== $object->getCcjStatus()) {
             $data['ccjStatus'] = $object->getCcjStatus();
         }
         foreach ($object as $key => $value) {

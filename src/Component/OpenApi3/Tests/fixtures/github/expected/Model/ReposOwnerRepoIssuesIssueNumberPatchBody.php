@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoIssuesIssueNumberPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The title of the issue.
      *
      * @var string
@@ -64,6 +72,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -85,6 +94,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody extends \ArrayObject
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }
@@ -106,6 +116,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody extends \ArrayObject
      */
     public function setAssignee(string $assignee) : self
     {
+        $this->initialized['assignee'] = true;
         $this->assignee = $assignee;
         return $this;
     }
@@ -127,6 +138,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody extends \ArrayObject
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -148,6 +160,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody extends \ArrayObject
      */
     public function setMilestone(?int $milestone) : self
     {
+        $this->initialized['milestone'] = true;
         $this->milestone = $milestone;
         return $this;
     }
@@ -169,6 +182,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody extends \ArrayObject
      */
     public function setLabels(array $labels) : self
     {
+        $this->initialized['labels'] = true;
         $this->labels = $labels;
         return $this;
     }
@@ -190,6 +204,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody extends \ArrayObject
      */
     public function setAssignees(array $assignees) : self
     {
+        $this->initialized['assignees'] = true;
         $this->assignees = $assignees;
         return $this;
     }

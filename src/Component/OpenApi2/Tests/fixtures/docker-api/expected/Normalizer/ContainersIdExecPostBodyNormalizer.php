@@ -91,42 +91,42 @@ class ContainersIdExecPostBodyNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAttachStdin()) {
+        if ($object->isInitialized('attachStdin') && null !== $object->getAttachStdin()) {
             $data['AttachStdin'] = $object->getAttachStdin();
         }
-        if (null !== $object->getAttachStdout()) {
+        if ($object->isInitialized('attachStdout') && null !== $object->getAttachStdout()) {
             $data['AttachStdout'] = $object->getAttachStdout();
         }
-        if (null !== $object->getAttachStderr()) {
+        if ($object->isInitialized('attachStderr') && null !== $object->getAttachStderr()) {
             $data['AttachStderr'] = $object->getAttachStderr();
         }
-        if (null !== $object->getDetachKeys()) {
+        if ($object->isInitialized('detachKeys') && null !== $object->getDetachKeys()) {
             $data['DetachKeys'] = $object->getDetachKeys();
         }
-        if (null !== $object->getTty()) {
+        if ($object->isInitialized('tty') && null !== $object->getTty()) {
             $data['Tty'] = $object->getTty();
         }
-        if (null !== $object->getEnv()) {
+        if ($object->isInitialized('env') && null !== $object->getEnv()) {
             $values = array();
             foreach ($object->getEnv() as $value) {
                 $values[] = $value;
             }
             $data['Env'] = $values;
         }
-        if (null !== $object->getCmd()) {
+        if ($object->isInitialized('cmd') && null !== $object->getCmd()) {
             $values_1 = array();
             foreach ($object->getCmd() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['Cmd'] = $values_1;
         }
-        if (null !== $object->getPrivileged()) {
+        if ($object->isInitialized('privileged') && null !== $object->getPrivileged()) {
             $data['Privileged'] = $object->getPrivileged();
         }
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $data['User'] = $object->getUser();
         }
-        if (null !== $object->getWorkingDir()) {
+        if ($object->isInitialized('workingDir') && null !== $object->getWorkingDir()) {
             $data['WorkingDir'] = $object->getWorkingDir();
         }
         if (!($context['skip_validation'] ?? false)) {

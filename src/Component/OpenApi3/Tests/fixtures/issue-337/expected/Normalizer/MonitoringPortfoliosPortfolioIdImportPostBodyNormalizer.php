@@ -63,7 +63,7 @@ class MonitoringPortfoliosPortfolioIdImportPostBodyNormalizer implements Denorma
     {
         $data = array();
         $data['importCsv'] = $object->getImportCsv();
-        if (null !== $object->getEmail()) {
+        if ($object->isInitialized('email') && null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
         foreach ($object as $key => $value) {

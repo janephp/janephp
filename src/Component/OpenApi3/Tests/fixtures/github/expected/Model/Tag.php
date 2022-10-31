@@ -5,6 +5,14 @@ namespace Github\Model;
 class Tag extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class Tag extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -73,6 +82,7 @@ class Tag extends \ArrayObject
      */
     public function setCommit(TagCommit $commit) : self
     {
+        $this->initialized['commit'] = true;
         $this->commit = $commit;
         return $this;
     }
@@ -94,6 +104,7 @@ class Tag extends \ArrayObject
      */
     public function setZipballUrl(string $zipballUrl) : self
     {
+        $this->initialized['zipballUrl'] = true;
         $this->zipballUrl = $zipballUrl;
         return $this;
     }
@@ -115,6 +126,7 @@ class Tag extends \ArrayObject
      */
     public function setTarballUrl(string $tarballUrl) : self
     {
+        $this->initialized['tarballUrl'] = true;
         $this->tarballUrl = $tarballUrl;
         return $this;
     }
@@ -136,6 +148,7 @@ class Tag extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }

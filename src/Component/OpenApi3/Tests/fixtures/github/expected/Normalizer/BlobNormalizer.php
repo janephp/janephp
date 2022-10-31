@@ -95,7 +95,7 @@ class BlobNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $data['sha'] = $object->getSha();
         $data['size'] = $object->getSize();
         $data['node_id'] = $object->getNodeId();
-        if (null !== $object->getHighlightedContent()) {
+        if ($object->isInitialized('highlightedContent') && null !== $object->getHighlightedContent()) {
             $data['highlighted_content'] = $object->getHighlightedContent();
         }
         foreach ($object as $key => $value) {

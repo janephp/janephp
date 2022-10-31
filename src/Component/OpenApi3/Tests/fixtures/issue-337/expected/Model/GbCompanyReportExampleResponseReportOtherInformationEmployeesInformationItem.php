@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var float
@@ -34,6 +42,7 @@ class GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationIt
      */
     public function setYear(float $year) : self
     {
+        $this->initialized['year'] = true;
         $this->year = $year;
         return $this;
     }
@@ -55,6 +64,7 @@ class GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationIt
      */
     public function setNumberOfEmployees(string $numberOfEmployees) : self
     {
+        $this->initialized['numberOfEmployees'] = true;
         $this->numberOfEmployees = $numberOfEmployees;
         return $this;
     }

@@ -66,7 +66,7 @@ class PermissionSetOwnershipTransferItemNormalizer implements DenormalizerInterf
     {
         $data = array();
         $data['transferUserId'] = $object->getTransferUserId();
-        if (null !== $object->getPermissionSetId()) {
+        if ($object->isInitialized('permissionSetId') && null !== $object->getPermissionSetId()) {
             $data['permissionSetId'] = $object->getPermissionSetId();
         }
         foreach ($object as $key => $value) {

@@ -115,28 +115,28 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $data = array();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getWatermarkFilePath()) {
+        if ($object->isInitialized('watermarkFilePath') && null !== $object->getWatermarkFilePath()) {
             $data['watermarkFilePath'] = $object->getWatermarkFilePath();
         }
-        if (null !== $object->getMarginLeft()) {
+        if ($object->isInitialized('marginLeft') && null !== $object->getMarginLeft()) {
             $data['marginLeft'] = $object->getMarginLeft();
         }
-        if (null !== $object->getMarginTop()) {
+        if ($object->isInitialized('marginTop') && null !== $object->getMarginTop()) {
             $data['marginTop'] = $object->getMarginTop();
         }
-        if (null !== $object->getMarginRight()) {
+        if ($object->isInitialized('marginRight') && null !== $object->getMarginRight()) {
             $data['marginRight'] = $object->getMarginRight();
         }
-        if (null !== $object->getMarginBottom()) {
+        if ($object->isInitialized('marginBottom') && null !== $object->getMarginBottom()) {
             $data['marginBottom'] = $object->getMarginBottom();
         }
-        if (null !== $object->getOpacity()) {
+        if ($object->isInitialized('opacity') && null !== $object->getOpacity()) {
             $data['opacity'] = $object->getOpacity();
         }
-        if (null !== $object->getWidthRatio()) {
+        if ($object->isInitialized('widthRatio') && null !== $object->getWidthRatio()) {
             $data['widthRatio'] = $object->getWidthRatio();
         }
-        if (null !== $object->getHeightRatio()) {
+        if ($object->isInitialized('heightRatio') && null !== $object->getHeightRatio()) {
             $data['heightRatio'] = $object->getHeightRatio();
         }
         foreach ($object as $key => $value) {

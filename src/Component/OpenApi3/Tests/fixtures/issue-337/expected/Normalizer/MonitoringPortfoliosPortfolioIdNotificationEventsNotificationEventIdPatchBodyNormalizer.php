@@ -58,7 +58,7 @@ class MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchB
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getIsProcessed()) {
+        if ($object->isInitialized('isProcessed') && null !== $object->getIsProcessed()) {
             $data['isProcessed'] = $object->getIsProcessed();
         }
         foreach ($object as $key => $value) {

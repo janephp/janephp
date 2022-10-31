@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoPullsPullNumberMergePutResponse409 extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class ReposOwnerRepoPullsPullNumberMergePutResponse409 extends \ArrayObject
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReposOwnerRepoPullsPullNumberMergePutResponse409 extends \ArrayObject
      */
     public function setDocumentationUrl(string $documentationUrl) : self
     {
+        $this->initialized['documentationUrl'] = true;
         $this->documentationUrl = $documentationUrl;
         return $this;
     }

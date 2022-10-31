@@ -63,10 +63,10 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
         $data = array();
         $data['first'] = $object->getFirst();
         $data['last'] = $object->getLast();
-        if (null !== $object->getPrevious()) {
+        if ($object->isInitialized('previous') && null !== $object->getPrevious()) {
             $data['previous'] = $object->getPrevious();
         }
-        if (null !== $object->getNext()) {
+        if ($object->isInitialized('next') && null !== $object->getNext()) {
             $data['next'] = $object->getNext();
         }
         return $data;

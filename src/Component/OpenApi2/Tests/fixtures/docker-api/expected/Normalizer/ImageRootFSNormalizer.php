@@ -67,14 +67,14 @@ class ImageRootFSNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $data = array();
         $data['Type'] = $object->getType();
-        if (null !== $object->getLayers()) {
+        if ($object->isInitialized('layers') && null !== $object->getLayers()) {
             $values = array();
             foreach ($object->getLayers() as $value) {
                 $values[] = $value;
             }
             $data['Layers'] = $values;
         }
-        if (null !== $object->getBaseLayer()) {
+        if ($object->isInitialized('baseLayer') && null !== $object->getBaseLayer()) {
             $data['BaseLayer'] = $object->getBaseLayer();
         }
         if (!($context['skip_validation'] ?? false)) {

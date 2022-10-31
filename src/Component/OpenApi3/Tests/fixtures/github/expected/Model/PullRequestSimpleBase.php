@@ -5,6 +5,14 @@ namespace Github\Model;
 class PullRequestSimpleBase extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class PullRequestSimpleBase extends \ArrayObject
      */
     public function setLabel(string $label) : self
     {
+        $this->initialized['label'] = true;
         $this->label = $label;
         return $this;
     }
@@ -73,6 +82,7 @@ class PullRequestSimpleBase extends \ArrayObject
      */
     public function setRef(string $ref) : self
     {
+        $this->initialized['ref'] = true;
         $this->ref = $ref;
         return $this;
     }
@@ -94,6 +104,7 @@ class PullRequestSimpleBase extends \ArrayObject
      */
     public function setRepo(Repository $repo) : self
     {
+        $this->initialized['repo'] = true;
         $this->repo = $repo;
         return $this;
     }
@@ -115,6 +126,7 @@ class PullRequestSimpleBase extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -136,6 +148,7 @@ class PullRequestSimpleBase extends \ArrayObject
      */
     public function setUser(?PullRequestSimpleBaseUser $user) : self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
     }

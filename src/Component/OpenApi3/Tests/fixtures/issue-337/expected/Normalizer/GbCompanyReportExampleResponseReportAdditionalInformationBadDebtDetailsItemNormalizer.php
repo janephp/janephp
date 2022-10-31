@@ -70,16 +70,16 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getStatementDate()) {
+        if ($object->isInitialized('statementDate') && null !== $object->getStatementDate()) {
             $data['statementDate'] = $object->getStatementDate();
         }
-        if (null !== $object->getRegistrationNumber()) {
+        if ($object->isInitialized('registrationNumber') && null !== $object->getRegistrationNumber()) {
             $data['registrationNumber'] = $object->getRegistrationNumber();
         }
-        if (null !== $object->getCompanyName()) {
+        if ($object->isInitialized('companyName') && null !== $object->getCompanyName()) {
             $data['companyName'] = $object->getCompanyName();
         }
-        if (null !== $object->getAmount()) {
+        if ($object->isInitialized('amount') && null !== $object->getAmount()) {
             $data['amount'] = $this->normalizer->normalize($object->getAmount(), 'json', $context);
         }
         foreach ($object as $key => $value) {

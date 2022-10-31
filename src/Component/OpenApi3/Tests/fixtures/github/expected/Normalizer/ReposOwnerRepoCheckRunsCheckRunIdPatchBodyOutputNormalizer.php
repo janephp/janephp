@@ -86,21 +86,21 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputNormalizer implements Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
         $data['summary'] = $object->getSummary();
-        if (null !== $object->getText()) {
+        if ($object->isInitialized('text') && null !== $object->getText()) {
             $data['text'] = $object->getText();
         }
-        if (null !== $object->getAnnotations()) {
+        if ($object->isInitialized('annotations') && null !== $object->getAnnotations()) {
             $values = array();
             foreach ($object->getAnnotations() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['annotations'] = $values;
         }
-        if (null !== $object->getImages()) {
+        if ($object->isInitialized('images') && null !== $object->getImages()) {
             $values_1 = array();
             foreach ($object->getImages() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class CompletedFreshInvestigationSearchCriteriaAddress extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class CompletedFreshInvestigationSearchCriteriaAddress extends \ArrayObject
      */
     public function setCity(string $city) : self
     {
+        $this->initialized['city'] = true;
         $this->city = $city;
         return $this;
     }
@@ -61,6 +70,7 @@ class CompletedFreshInvestigationSearchCriteriaAddress extends \ArrayObject
      */
     public function setPostcode(string $postcode) : self
     {
+        $this->initialized['postcode'] = true;
         $this->postcode = $postcode;
         return $this;
     }
@@ -82,6 +92,7 @@ class CompletedFreshInvestigationSearchCriteriaAddress extends \ArrayObject
      */
     public function setSimple(string $simple) : self
     {
+        $this->initialized['simple'] = true;
         $this->simple = $simple;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Jane\Component\JsonSchema\Tests\Expected\Model;
 class Test
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -64,6 +72,7 @@ class Test
      */
     public function setString(?string $string) : self
     {
+        $this->initialized['string'] = true;
         $this->string = $string;
         return $this;
     }
@@ -85,6 +94,7 @@ class Test
      */
     public function setBool(?bool $bool) : self
     {
+        $this->initialized['bool'] = true;
         $this->bool = $bool;
         return $this;
     }
@@ -106,6 +116,7 @@ class Test
      */
     public function setInteger(?int $integer) : self
     {
+        $this->initialized['integer'] = true;
         $this->integer = $integer;
         return $this;
     }
@@ -127,6 +138,7 @@ class Test
      */
     public function setFloat(?float $float) : self
     {
+        $this->initialized['float'] = true;
         $this->float = $float;
         return $this;
     }
@@ -148,6 +160,7 @@ class Test
      */
     public function setArray(?array $array) : self
     {
+        $this->initialized['array'] = true;
         $this->array = $array;
         return $this;
     }
@@ -169,6 +182,7 @@ class Test
      */
     public function setObject(?array $object) : self
     {
+        $this->initialized['object'] = true;
         $this->object = $object;
         return $this;
     }
@@ -190,6 +204,7 @@ class Test
      */
     public function setSubObject(?TestSubObject $subObject) : self
     {
+        $this->initialized['subObject'] = true;
         $this->subObject = $subObject;
         return $this;
     }

@@ -90,20 +90,20 @@ class AssignTagboxItemsActionNormalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getPath()) {
+        if ($object->isInitialized('path') && null !== $object->getPath()) {
             $data['path'] = $object->getPath();
         }
-        if (null !== $object->getFieldId()) {
+        if ($object->isInitialized('fieldId') && null !== $object->getFieldId()) {
             $data['fieldId'] = $object->getFieldId();
         }
-        if (null !== $object->getRefIds()) {
+        if ($object->isInitialized('refIds') && null !== $object->getRefIds()) {
             $data['refIds'] = $object->getRefIds();
         }
-        if (null !== $object->getReplace()) {
+        if ($object->isInitialized('replace') && null !== $object->getReplace()) {
             $data['replace'] = $object->getReplace();
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class DocumentChange
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -52,6 +60,7 @@ class DocumentChange
      */
     public function setDocumentName(?string $documentName) : self
     {
+        $this->initialized['documentName'] = true;
         $this->documentName = $documentName;
         return $this;
     }
@@ -73,6 +82,7 @@ class DocumentChange
      */
     public function setDocumentId(?string $documentId) : self
     {
+        $this->initialized['documentId'] = true;
         $this->documentId = $documentId;
         return $this;
     }
@@ -94,6 +104,7 @@ class DocumentChange
      */
     public function setVersion(int $version) : self
     {
+        $this->initialized['version'] = true;
         $this->version = $version;
         return $this;
     }
@@ -115,6 +126,7 @@ class DocumentChange
      */
     public function setAction(?string $action) : self
     {
+        $this->initialized['action'] = true;
         $this->action = $action;
         return $this;
     }
@@ -136,6 +148,7 @@ class DocumentChange
      */
     public function setTimeStamp(\DateTime $timeStamp) : self
     {
+        $this->initialized['timeStamp'] = true;
         $this->timeStamp = $timeStamp;
         return $this;
     }

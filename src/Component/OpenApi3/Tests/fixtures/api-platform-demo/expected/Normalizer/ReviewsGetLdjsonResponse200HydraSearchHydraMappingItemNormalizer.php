@@ -73,16 +73,16 @@ class ReviewsGetLdjsonResponse200HydraSearchHydraMappingItemNormalizer implement
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['@type'] = $object->getType();
         }
-        if (null !== $object->getVariable()) {
+        if ($object->isInitialized('variable') && null !== $object->getVariable()) {
             $data['variable'] = $object->getVariable();
         }
-        if (null !== $object->getProperty()) {
+        if ($object->isInitialized('property') && null !== $object->getProperty()) {
             $data['property'] = $object->getProperty();
         }
-        if (null !== $object->getRequired()) {
+        if ($object->isInitialized('required') && null !== $object->getRequired()) {
             $data['required'] = $object->getRequired();
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace Jane\OpenApi2\Tests\Expected\Model;
 class PaginationLinks
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * First page
      *
      * @var string
@@ -46,6 +54,7 @@ class PaginationLinks
      */
     public function setFirst(string $first) : self
     {
+        $this->initialized['first'] = true;
         $this->first = $first;
         return $this;
     }
@@ -67,6 +76,7 @@ class PaginationLinks
      */
     public function setLast(string $last) : self
     {
+        $this->initialized['last'] = true;
         $this->last = $last;
         return $this;
     }
@@ -88,6 +98,7 @@ class PaginationLinks
      */
     public function setPrevious(string $previous) : self
     {
+        $this->initialized['previous'] = true;
         $this->previous = $previous;
         return $this;
     }
@@ -109,6 +120,7 @@ class PaginationLinks
      */
     public function setNext(string $next) : self
     {
+        $this->initialized['next'] = true;
         $this->next = $next;
         return $this;
     }

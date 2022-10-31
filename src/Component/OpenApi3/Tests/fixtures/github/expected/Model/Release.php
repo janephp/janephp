@@ -5,6 +5,14 @@ namespace Github\Model;
 class Release extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -142,6 +150,7 @@ class Release extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -163,6 +172,7 @@ class Release extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -184,6 +194,7 @@ class Release extends \ArrayObject
      */
     public function setAssetsUrl(string $assetsUrl) : self
     {
+        $this->initialized['assetsUrl'] = true;
         $this->assetsUrl = $assetsUrl;
         return $this;
     }
@@ -205,6 +216,7 @@ class Release extends \ArrayObject
      */
     public function setUploadUrl(string $uploadUrl) : self
     {
+        $this->initialized['uploadUrl'] = true;
         $this->uploadUrl = $uploadUrl;
         return $this;
     }
@@ -226,6 +238,7 @@ class Release extends \ArrayObject
      */
     public function setTarballUrl(?string $tarballUrl) : self
     {
+        $this->initialized['tarballUrl'] = true;
         $this->tarballUrl = $tarballUrl;
         return $this;
     }
@@ -247,6 +260,7 @@ class Release extends \ArrayObject
      */
     public function setZipballUrl(?string $zipballUrl) : self
     {
+        $this->initialized['zipballUrl'] = true;
         $this->zipballUrl = $zipballUrl;
         return $this;
     }
@@ -268,6 +282,7 @@ class Release extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -289,6 +304,7 @@ class Release extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -310,6 +326,7 @@ class Release extends \ArrayObject
      */
     public function setTagName(string $tagName) : self
     {
+        $this->initialized['tagName'] = true;
         $this->tagName = $tagName;
         return $this;
     }
@@ -331,6 +348,7 @@ class Release extends \ArrayObject
      */
     public function setTargetCommitish(string $targetCommitish) : self
     {
+        $this->initialized['targetCommitish'] = true;
         $this->targetCommitish = $targetCommitish;
         return $this;
     }
@@ -352,6 +370,7 @@ class Release extends \ArrayObject
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -373,6 +392,7 @@ class Release extends \ArrayObject
      */
     public function setBody(?string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }
@@ -394,6 +414,7 @@ class Release extends \ArrayObject
      */
     public function setDraft(bool $draft) : self
     {
+        $this->initialized['draft'] = true;
         $this->draft = $draft;
         return $this;
     }
@@ -415,6 +436,7 @@ class Release extends \ArrayObject
      */
     public function setPrerelease(bool $prerelease) : self
     {
+        $this->initialized['prerelease'] = true;
         $this->prerelease = $prerelease;
         return $this;
     }
@@ -436,6 +458,7 @@ class Release extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -457,6 +480,7 @@ class Release extends \ArrayObject
      */
     public function setPublishedAt(?\DateTime $publishedAt) : self
     {
+        $this->initialized['publishedAt'] = true;
         $this->publishedAt = $publishedAt;
         return $this;
     }
@@ -478,6 +502,7 @@ class Release extends \ArrayObject
      */
     public function setAuthor(?SimpleUser $author) : self
     {
+        $this->initialized['author'] = true;
         $this->author = $author;
         return $this;
     }
@@ -499,6 +524,7 @@ class Release extends \ArrayObject
      */
     public function setAssets(array $assets) : self
     {
+        $this->initialized['assets'] = true;
         $this->assets = $assets;
         return $this;
     }
@@ -520,6 +546,7 @@ class Release extends \ArrayObject
      */
     public function setBodyHtml(string $bodyHtml) : self
     {
+        $this->initialized['bodyHtml'] = true;
         $this->bodyHtml = $bodyHtml;
         return $this;
     }
@@ -541,6 +568,7 @@ class Release extends \ArrayObject
      */
     public function setBodyText(string $bodyText) : self
     {
+        $this->initialized['bodyText'] = true;
         $this->bodyText = $bodyText;
         return $this;
     }

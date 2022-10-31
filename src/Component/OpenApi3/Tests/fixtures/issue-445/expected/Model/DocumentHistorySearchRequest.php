@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class DocumentHistorySearchRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Limits the start date of the search request. By default no limitation set.
      *
      * @var \DateTime
@@ -70,6 +78,7 @@ class DocumentHistorySearchRequest
      */
     public function setFrom(\DateTime $from) : self
     {
+        $this->initialized['from'] = true;
         $this->from = $from;
         return $this;
     }
@@ -91,6 +100,7 @@ class DocumentHistorySearchRequest
      */
     public function setTo(\DateTime $to) : self
     {
+        $this->initialized['to'] = true;
         $this->to = $to;
         return $this;
     }
@@ -112,6 +122,7 @@ class DocumentHistorySearchRequest
      */
     public function setLimit(int $limit) : self
     {
+        $this->initialized['limit'] = true;
         $this->limit = $limit;
         return $this;
     }
@@ -133,6 +144,7 @@ class DocumentHistorySearchRequest
      */
     public function setPageToken(?string $pageToken) : self
     {
+        $this->initialized['pageToken'] = true;
         $this->pageToken = $pageToken;
         return $this;
     }
@@ -154,6 +166,7 @@ class DocumentHistorySearchRequest
      */
     public function setDocumentId(?string $documentId) : self
     {
+        $this->initialized['documentId'] = true;
         $this->documentId = $documentId;
         return $this;
     }
@@ -175,6 +188,7 @@ class DocumentHistorySearchRequest
      */
     public function setDocumentVersion(int $documentVersion) : self
     {
+        $this->initialized['documentVersion'] = true;
         $this->documentVersion = $documentVersion;
         return $this;
     }
@@ -196,6 +210,7 @@ class DocumentHistorySearchRequest
      */
     public function setDocumentType(?string $documentType) : self
     {
+        $this->initialized['documentType'] = true;
         $this->documentType = $documentType;
         return $this;
     }
@@ -217,6 +232,7 @@ class DocumentHistorySearchRequest
      */
     public function setSort(?array $sort) : self
     {
+        $this->initialized['sort'] = true;
         $this->sort = $sort;
         return $this;
     }

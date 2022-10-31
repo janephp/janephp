@@ -5,6 +5,14 @@ namespace ApiPlatform\Demo\Model;
 class ReviewsGetLdjsonResponse200HydraSearch extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class ReviewsGetLdjsonResponse200HydraSearch extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -67,6 +76,7 @@ class ReviewsGetLdjsonResponse200HydraSearch extends \ArrayObject
      */
     public function setHydraTemplate(string $hydraTemplate) : self
     {
+        $this->initialized['hydraTemplate'] = true;
         $this->hydraTemplate = $hydraTemplate;
         return $this;
     }
@@ -88,6 +98,7 @@ class ReviewsGetLdjsonResponse200HydraSearch extends \ArrayObject
      */
     public function setHydraVariableRepresentation(string $hydraVariableRepresentation) : self
     {
+        $this->initialized['hydraVariableRepresentation'] = true;
         $this->hydraVariableRepresentation = $hydraVariableRepresentation;
         return $this;
     }
@@ -109,6 +120,7 @@ class ReviewsGetLdjsonResponse200HydraSearch extends \ArrayObject
      */
     public function setHydraMapping(array $hydraMapping) : self
     {
+        $this->initialized['hydraMapping'] = true;
         $this->hydraMapping = $hydraMapping;
         return $this;
     }

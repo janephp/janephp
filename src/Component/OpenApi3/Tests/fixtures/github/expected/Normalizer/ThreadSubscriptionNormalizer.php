@@ -97,10 +97,10 @@ class ThreadSubscriptionNormalizer implements DenormalizerInterface, NormalizerI
         $data['reason'] = $object->getReason();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['url'] = $object->getUrl();
-        if (null !== $object->getThreadUrl()) {
+        if ($object->isInitialized('threadUrl') && null !== $object->getThreadUrl()) {
             $data['thread_url'] = $object->getThreadUrl();
         }
-        if (null !== $object->getRepositoryUrl()) {
+        if ($object->isInitialized('repositoryUrl') && null !== $object->getRepositoryUrl()) {
             $data['repository_url'] = $object->getRepositoryUrl();
         }
         foreach ($object as $key => $value) {

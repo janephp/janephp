@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Require branches to be up to date before merging.
      *
      * @var bool
@@ -34,6 +42,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody extend
      */
     public function setStrict(bool $strict) : self
     {
+        $this->initialized['strict'] = true;
         $this->strict = $strict;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody extend
      */
     public function setContexts(array $contexts) : self
     {
+        $this->initialized['contexts'] = true;
         $this->contexts = $contexts;
         return $this;
     }

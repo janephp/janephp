@@ -5,6 +5,14 @@ namespace Github\Model;
 class PagesSourceHash extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class PagesSourceHash extends \ArrayObject
      */
     public function setBranch(string $branch) : self
     {
+        $this->initialized['branch'] = true;
         $this->branch = $branch;
         return $this;
     }
@@ -55,6 +64,7 @@ class PagesSourceHash extends \ArrayObject
      */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }

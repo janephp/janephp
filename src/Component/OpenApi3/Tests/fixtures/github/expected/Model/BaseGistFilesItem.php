@@ -5,6 +5,14 @@ namespace Github\Model;
 class BaseGistFilesItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class BaseGistFilesItem extends \ArrayObject
      */
     public function setFilename(string $filename) : self
     {
+        $this->initialized['filename'] = true;
         $this->filename = $filename;
         return $this;
     }
@@ -73,6 +82,7 @@ class BaseGistFilesItem extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -94,6 +104,7 @@ class BaseGistFilesItem extends \ArrayObject
      */
     public function setLanguage(string $language) : self
     {
+        $this->initialized['language'] = true;
         $this->language = $language;
         return $this;
     }
@@ -115,6 +126,7 @@ class BaseGistFilesItem extends \ArrayObject
      */
     public function setRawUrl(string $rawUrl) : self
     {
+        $this->initialized['rawUrl'] = true;
         $this->rawUrl = $rawUrl;
         return $this;
     }
@@ -136,6 +148,7 @@ class BaseGistFilesItem extends \ArrayObject
      */
     public function setSize(int $size) : self
     {
+        $this->initialized['size'] = true;
         $this->size = $size;
         return $this;
     }

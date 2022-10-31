@@ -66,13 +66,13 @@ class HealthNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['Status'] = $object->getStatus();
         }
-        if (null !== $object->getFailingStreak()) {
+        if ($object->isInitialized('failingStreak') && null !== $object->getFailingStreak()) {
             $data['FailingStreak'] = $object->getFailingStreak();
         }
-        if (null !== $object->getLog()) {
+        if ($object->isInitialized('log') && null !== $object->getLog()) {
             $values = array();
             foreach ($object->getLog() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

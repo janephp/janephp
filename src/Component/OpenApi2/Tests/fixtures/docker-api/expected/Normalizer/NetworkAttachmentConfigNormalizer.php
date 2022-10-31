@@ -70,17 +70,17 @@ class NetworkAttachmentConfigNormalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTarget()) {
+        if ($object->isInitialized('target') && null !== $object->getTarget()) {
             $data['Target'] = $object->getTarget();
         }
-        if (null !== $object->getAliases()) {
+        if ($object->isInitialized('aliases') && null !== $object->getAliases()) {
             $values = array();
             foreach ($object->getAliases() as $value) {
                 $values[] = $value;
             }
             $data['Aliases'] = $values;
         }
-        if (null !== $object->getDriverOpts()) {
+        if ($object->isInitialized('driverOpts') && null !== $object->getDriverOpts()) {
             $values_1 = array();
             foreach ($object->getDriverOpts() as $key => $value_1) {
                 $values_1[$key] = $value_1;

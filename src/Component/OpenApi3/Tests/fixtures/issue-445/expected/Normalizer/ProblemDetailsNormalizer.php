@@ -89,22 +89,22 @@ class ProblemDetailsNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        if (null !== $object->getDetail()) {
+        if ($object->isInitialized('detail') && null !== $object->getDetail()) {
             $data['detail'] = $object->getDetail();
         }
-        if (null !== $object->getInstance()) {
+        if ($object->isInitialized('instance') && null !== $object->getInstance()) {
             $data['instance'] = $object->getInstance();
         }
-        if (null !== $object->getExtensions()) {
+        if ($object->isInitialized('extensions') && null !== $object->getExtensions()) {
             $values = array();
             foreach ($object->getExtensions() as $key => $value) {
                 $values[$key] = $value;

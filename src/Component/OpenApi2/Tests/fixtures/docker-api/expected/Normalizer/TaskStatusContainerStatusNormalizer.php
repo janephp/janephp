@@ -62,13 +62,13 @@ class TaskStatusContainerStatusNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getContainerID()) {
+        if ($object->isInitialized('containerID') && null !== $object->getContainerID()) {
             $data['ContainerID'] = $object->getContainerID();
         }
-        if (null !== $object->getPID()) {
+        if ($object->isInitialized('pID') && null !== $object->getPID()) {
             $data['PID'] = $object->getPID();
         }
-        if (null !== $object->getExitCode()) {
+        if ($object->isInitialized('exitCode') && null !== $object->getExitCode()) {
             $data['ExitCode'] = $object->getExitCode();
         }
         if (!($context['skip_validation'] ?? false)) {

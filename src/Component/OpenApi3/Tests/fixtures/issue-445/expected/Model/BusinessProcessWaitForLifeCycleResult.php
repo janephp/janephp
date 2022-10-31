@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessProcessWaitForLifeCycleResult
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The life cycle that was hit.
      *
      * @var mixed|null
@@ -34,6 +42,7 @@ class BusinessProcessWaitForLifeCycleResult
      */
     public function setLifeCycleHit($lifeCycleHit) : self
     {
+        $this->initialized['lifeCycleHit'] = true;
         $this->lifeCycleHit = $lifeCycleHit;
         return $this;
     }
@@ -55,6 +64,7 @@ class BusinessProcessWaitForLifeCycleResult
      */
     public function setBusinessProcess($businessProcess) : self
     {
+        $this->initialized['businessProcess'] = true;
         $this->businessProcess = $businessProcess;
         return $this;
     }

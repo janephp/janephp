@@ -130,42 +130,42 @@ class SortableFieldThresholdExceededExceptionNormalizer implements DenormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceLevel()) {
+        if ($object->isInitialized('traceLevel') && null !== $object->getTraceLevel()) {
             $data['traceLevel'] = $object->getTraceLevel();
         }
-        if (null !== $object->getTraceId()) {
+        if ($object->isInitialized('traceId') && null !== $object->getTraceId()) {
             $data['traceId'] = $object->getTraceId();
         }
-        if (null !== $object->getTraceJobId()) {
+        if ($object->isInitialized('traceJobId') && null !== $object->getTraceJobId()) {
             $data['traceJobId'] = $object->getTraceJobId();
         }
-        if (null !== $object->getHttpStatusCode()) {
+        if ($object->isInitialized('httpStatusCode') && null !== $object->getHttpStatusCode()) {
             $data['httpStatusCode'] = $object->getHttpStatusCode();
         }
-        if (null !== $object->getExceptionMessage()) {
+        if ($object->isInitialized('exceptionMessage') && null !== $object->getExceptionMessage()) {
             $data['exceptionMessage'] = $object->getExceptionMessage();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getCustomerId()) {
+        if ($object->isInitialized('customerId') && null !== $object->getCustomerId()) {
             $data['customerId'] = $object->getCustomerId();
         }
-        if (null !== $object->getCustomerAlias()) {
+        if ($object->isInitialized('customerAlias') && null !== $object->getCustomerAlias()) {
             $data['customerAlias'] = $object->getCustomerAlias();
         }
-        if (null !== $object->getUserId()) {
+        if ($object->isInitialized('userId') && null !== $object->getUserId()) {
             $data['userId'] = $object->getUserId();
         }
-        if (null !== $object->getSchemaIds()) {
+        if ($object->isInitialized('schemaIds') && null !== $object->getSchemaIds()) {
             $values = array();
             foreach ($object->getSchemaIds() as $value) {
                 $values[] = $value;
             }
             $data['schemaIds'] = $values;
         }
-        if (null !== $object->getSortableFieldCount()) {
+        if ($object->isInitialized('sortableFieldCount') && null !== $object->getSortableFieldCount()) {
             $data['sortableFieldCount'] = $object->getSortableFieldCount();
         }
-        if (null !== $object->getSortableFieldThreshold()) {
+        if ($object->isInitialized('sortableFieldThreshold') && null !== $object->getSortableFieldThreshold()) {
             $data['sortableFieldThreshold'] = $object->getSortableFieldThreshold();
         }
         foreach ($object as $key => $value_1) {

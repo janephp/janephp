@@ -75,13 +75,13 @@ class ReposOwnerRepoCommitsCommitShaCommentsPostBodyNormalizer implements Denorm
     {
         $data = array();
         $data['body'] = $object->getBody();
-        if (null !== $object->getPath()) {
+        if ($object->isInitialized('path') && null !== $object->getPath()) {
             $data['path'] = $object->getPath();
         }
-        if (null !== $object->getPosition()) {
+        if ($object->isInitialized('position') && null !== $object->getPosition()) {
             $data['position'] = $object->getPosition();
         }
-        if (null !== $object->getLine()) {
+        if ($object->isInitialized('line') && null !== $object->getLine()) {
             $data['line'] = $object->getLine();
         }
         foreach ($object as $key => $value) {

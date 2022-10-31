@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class AssignContentPermissionSetsAction extends BusinessRuleAction
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * IDs of the permission sets to assign.
      *
      * @var mixed|null
@@ -34,6 +42,7 @@ class AssignContentPermissionSetsAction extends BusinessRuleAction
      */
     public function setPermissionSetIds($permissionSetIds) : self
     {
+        $this->initialized['permissionSetIds'] = true;
         $this->permissionSetIds = $permissionSetIds;
         return $this;
     }
@@ -55,6 +64,7 @@ class AssignContentPermissionSetsAction extends BusinessRuleAction
      */
     public function setReplace(bool $replace) : self
     {
+        $this->initialized['replace'] = true;
         $this->replace = $replace;
         return $this;
     }

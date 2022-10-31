@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class FileTransferDeleteRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of transfer.
      *
      * @var string
@@ -34,6 +42,7 @@ class FileTransferDeleteRequest
      */
     public function setTransferId(string $transferId) : self
     {
+        $this->initialized['transferId'] = true;
         $this->transferId = $transferId;
         return $this;
     }
@@ -55,6 +64,7 @@ class FileTransferDeleteRequest
      */
     public function setFileTransferIds(array $fileTransferIds) : self
     {
+        $this->initialized['fileTransferIds'] = true;
         $this->fileTransferIds = $fileTransferIds;
         return $this;
     }

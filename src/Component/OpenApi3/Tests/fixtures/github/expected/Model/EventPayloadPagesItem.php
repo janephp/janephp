@@ -5,6 +5,14 @@ namespace Github\Model;
 class EventPayloadPagesItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -58,6 +66,7 @@ class EventPayloadPagesItem extends \ArrayObject
      */
     public function setPageName(string $pageName) : self
     {
+        $this->initialized['pageName'] = true;
         $this->pageName = $pageName;
         return $this;
     }
@@ -79,6 +88,7 @@ class EventPayloadPagesItem extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -100,6 +110,7 @@ class EventPayloadPagesItem extends \ArrayObject
      */
     public function setSummary(?string $summary) : self
     {
+        $this->initialized['summary'] = true;
         $this->summary = $summary;
         return $this;
     }
@@ -121,6 +132,7 @@ class EventPayloadPagesItem extends \ArrayObject
      */
     public function setAction(string $action) : self
     {
+        $this->initialized['action'] = true;
         $this->action = $action;
         return $this;
     }
@@ -142,6 +154,7 @@ class EventPayloadPagesItem extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -163,6 +176,7 @@ class EventPayloadPagesItem extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }

@@ -78,16 +78,16 @@ class EventPayloadNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAction()) {
+        if ($object->isInitialized('action') && null !== $object->getAction()) {
             $data['action'] = $object->getAction();
         }
-        if (null !== $object->getIssue()) {
+        if ($object->isInitialized('issue') && null !== $object->getIssue()) {
             $data['issue'] = $this->normalizer->normalize($object->getIssue(), 'json', $context);
         }
-        if (null !== $object->getComment()) {
+        if ($object->isInitialized('comment') && null !== $object->getComment()) {
             $data['comment'] = $this->normalizer->normalize($object->getComment(), 'json', $context);
         }
-        if (null !== $object->getPages()) {
+        if ($object->isInitialized('pages') && null !== $object->getPages()) {
             $values = array();
             foreach ($object->getPages() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

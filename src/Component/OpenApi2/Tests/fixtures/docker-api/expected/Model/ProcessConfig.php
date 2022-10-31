@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ProcessConfig
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -52,6 +60,7 @@ class ProcessConfig
      */
     public function setPrivileged(bool $privileged) : self
     {
+        $this->initialized['privileged'] = true;
         $this->privileged = $privileged;
         return $this;
     }
@@ -73,6 +82,7 @@ class ProcessConfig
      */
     public function setUser(string $user) : self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
     }
@@ -94,6 +104,7 @@ class ProcessConfig
      */
     public function setTty(bool $tty) : self
     {
+        $this->initialized['tty'] = true;
         $this->tty = $tty;
         return $this;
     }
@@ -115,6 +126,7 @@ class ProcessConfig
      */
     public function setEntrypoint(string $entrypoint) : self
     {
+        $this->initialized['entrypoint'] = true;
         $this->entrypoint = $entrypoint;
         return $this;
     }
@@ -136,6 +148,7 @@ class ProcessConfig
      */
     public function setArguments(array $arguments) : self
     {
+        $this->initialized['arguments'] = true;
         $this->arguments = $arguments;
         return $this;
     }

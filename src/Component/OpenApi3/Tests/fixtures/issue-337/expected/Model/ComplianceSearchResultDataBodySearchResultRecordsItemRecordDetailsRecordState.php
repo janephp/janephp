@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordState extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -64,6 +72,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
      */
     public function setAddedToAcceptList(bool $addedToAcceptList) : self
     {
+        $this->initialized['addedToAcceptList'] = true;
         $this->addedToAcceptList = $addedToAcceptList;
         return $this;
     }
@@ -85,6 +94,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
      */
     public function setAlertState(string $alertState) : self
     {
+        $this->initialized['alertState'] = true;
         $this->alertState = $alertState;
         return $this;
     }
@@ -106,6 +116,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
      */
     public function setAssignedTo(array $assignedTo) : self
     {
+        $this->initialized['assignedTo'] = true;
         $this->assignedTo = $assignedTo;
         return $this;
     }
@@ -127,6 +138,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
      */
     public function setAssignmentType(string $assignmentType) : self
     {
+        $this->initialized['assignmentType'] = true;
         $this->assignmentType = $assignmentType;
         return $this;
     }
@@ -148,6 +160,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
      */
     public function setDivision(string $division) : self
     {
+        $this->initialized['division'] = true;
         $this->division = $division;
         return $this;
     }
@@ -169,6 +182,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
      */
     public function setHistory(array $history) : self
     {
+        $this->initialized['history'] = true;
         $this->history = $history;
         return $this;
     }
@@ -190,6 +204,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
      */
     public function setMatchStates(array $matchStates) : self
     {
+        $this->initialized['matchStates'] = true;
         $this->matchStates = $matchStates;
         return $this;
     }

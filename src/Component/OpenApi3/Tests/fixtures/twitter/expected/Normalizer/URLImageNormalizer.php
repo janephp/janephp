@@ -66,13 +66,13 @@ class URLImageNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getHeight()) {
+        if ($object->isInitialized('height') && null !== $object->getHeight()) {
             $data['height'] = $object->getHeight();
         }
-        if (null !== $object->getWidth()) {
+        if ($object->isInitialized('width') && null !== $object->getWidth()) {
             $data['width'] = $object->getWidth();
         }
         foreach ($object as $key => $value) {

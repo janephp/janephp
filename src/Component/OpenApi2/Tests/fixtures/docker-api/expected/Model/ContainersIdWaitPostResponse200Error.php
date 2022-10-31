@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ContainersIdWaitPostResponse200Error
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Details of an error
      *
      * @var string
@@ -28,6 +36,7 @@ class ContainersIdWaitPostResponse200Error
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }

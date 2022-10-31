@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class TaggingOptionsBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Override for the output format ID to tag.
      *
      * @var string|null
@@ -56,6 +64,7 @@ class TaggingOptionsBase
      */
     public function setTagOutputFormatId(?string $tagOutputFormatId)
     {
+        $this->initialized['tagOutputFormatId'] = true;
         $this->tagOutputFormatId = $tagOutputFormatId;
     }
     /**
@@ -74,6 +83,7 @@ class TaggingOptionsBase
      */
     public function setKeywordLookupCacheName(?string $keywordLookupCacheName)
     {
+        $this->initialized['keywordLookupCacheName'] = true;
         $this->keywordLookupCacheName = $keywordLookupCacheName;
     }
     /**
@@ -92,6 +102,7 @@ class TaggingOptionsBase
      */
     public function setTaggingLayerId(?string $taggingLayerId)
     {
+        $this->initialized['taggingLayerId'] = true;
         $this->taggingLayerId = $taggingLayerId;
     }
     /**
@@ -110,6 +121,7 @@ class TaggingOptionsBase
      */
     public function setFoundTagsFieldId(?string $foundTagsFieldId)
     {
+        $this->initialized['foundTagsFieldId'] = true;
         $this->foundTagsFieldId = $foundTagsFieldId;
     }
     /**
@@ -128,6 +140,7 @@ class TaggingOptionsBase
      */
     public function setMissingKeywordsFieldId(?string $missingKeywordsFieldId)
     {
+        $this->initialized['missingKeywordsFieldId'] = true;
         $this->missingKeywordsFieldId = $missingKeywordsFieldId;
     }
     /**
@@ -146,6 +159,7 @@ class TaggingOptionsBase
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

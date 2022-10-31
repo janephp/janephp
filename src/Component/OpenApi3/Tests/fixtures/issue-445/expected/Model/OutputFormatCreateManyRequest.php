@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class OutputFormatCreateManyRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Output format items to be created.
      *
      * @var OutputFormat[]|null
@@ -28,6 +36,7 @@ class OutputFormatCreateManyRequest
      */
     public function setItems(?array $items) : self
     {
+        $this->initialized['items'] = true;
         $this->items = $items;
         return $this;
     }

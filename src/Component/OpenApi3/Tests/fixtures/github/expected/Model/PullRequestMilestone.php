@@ -5,6 +5,14 @@ namespace Github\Model;
 class PullRequestMilestone extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -118,6 +126,7 @@ class PullRequestMilestone extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -139,6 +148,7 @@ class PullRequestMilestone extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -160,6 +170,7 @@ class PullRequestMilestone extends \ArrayObject
      */
     public function setLabelsUrl(string $labelsUrl) : self
     {
+        $this->initialized['labelsUrl'] = true;
         $this->labelsUrl = $labelsUrl;
         return $this;
     }
@@ -181,6 +192,7 @@ class PullRequestMilestone extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -202,6 +214,7 @@ class PullRequestMilestone extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -223,6 +236,7 @@ class PullRequestMilestone extends \ArrayObject
      */
     public function setNumber(int $number) : self
     {
+        $this->initialized['number'] = true;
         $this->number = $number;
         return $this;
     }
@@ -244,6 +258,7 @@ class PullRequestMilestone extends \ArrayObject
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -265,6 +280,7 @@ class PullRequestMilestone extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -286,6 +302,7 @@ class PullRequestMilestone extends \ArrayObject
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -307,6 +324,7 @@ class PullRequestMilestone extends \ArrayObject
      */
     public function setCreator(?MilestoneCreator $creator) : self
     {
+        $this->initialized['creator'] = true;
         $this->creator = $creator;
         return $this;
     }
@@ -328,6 +346,7 @@ class PullRequestMilestone extends \ArrayObject
      */
     public function setOpenIssues(int $openIssues) : self
     {
+        $this->initialized['openIssues'] = true;
         $this->openIssues = $openIssues;
         return $this;
     }
@@ -349,6 +368,7 @@ class PullRequestMilestone extends \ArrayObject
      */
     public function setClosedIssues(int $closedIssues) : self
     {
+        $this->initialized['closedIssues'] = true;
         $this->closedIssues = $closedIssues;
         return $this;
     }
@@ -370,6 +390,7 @@ class PullRequestMilestone extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -391,6 +412,7 @@ class PullRequestMilestone extends \ArrayObject
      */
     public function setUpdatedAt(\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -412,6 +434,7 @@ class PullRequestMilestone extends \ArrayObject
      */
     public function setClosedAt(?\DateTime $closedAt) : self
     {
+        $this->initialized['closedAt'] = true;
         $this->closedAt = $closedAt;
         return $this;
     }
@@ -433,6 +456,7 @@ class PullRequestMilestone extends \ArrayObject
      */
     public function setDueOn(?\DateTime $dueOn) : self
     {
+        $this->initialized['dueOn'] = true;
         $this->dueOn = $dueOn;
         return $this;
     }

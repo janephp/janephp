@@ -72,11 +72,11 @@ class ContentPermissionSetUnassignedConditionNormalizer implements DenormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getPermissionSetId()) {
+        if ($object->isInitialized('permissionSetId') && null !== $object->getPermissionSetId()) {
             $data['permissionSetId'] = $object->getPermissionSetId();
         }
         foreach ($object as $key => $value) {

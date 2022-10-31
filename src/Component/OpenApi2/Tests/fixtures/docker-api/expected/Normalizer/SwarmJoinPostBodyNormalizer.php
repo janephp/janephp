@@ -72,23 +72,23 @@ class SwarmJoinPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getListenAddr()) {
+        if ($object->isInitialized('listenAddr') && null !== $object->getListenAddr()) {
             $data['ListenAddr'] = $object->getListenAddr();
         }
-        if (null !== $object->getAdvertiseAddr()) {
+        if ($object->isInitialized('advertiseAddr') && null !== $object->getAdvertiseAddr()) {
             $data['AdvertiseAddr'] = $object->getAdvertiseAddr();
         }
-        if (null !== $object->getDataPathAddr()) {
+        if ($object->isInitialized('dataPathAddr') && null !== $object->getDataPathAddr()) {
             $data['DataPathAddr'] = $object->getDataPathAddr();
         }
-        if (null !== $object->getRemoteAddrs()) {
+        if ($object->isInitialized('remoteAddrs') && null !== $object->getRemoteAddrs()) {
             $values = array();
             foreach ($object->getRemoteAddrs() as $value) {
                 $values[] = $value;
             }
             $data['RemoteAddrs'] = $values;
         }
-        if (null !== $object->getJoinToken()) {
+        if ($object->isInitialized('joinToken') && null !== $object->getJoinToken()) {
             $data['JoinToken'] = $object->getJoinToken();
         }
         if (!($context['skip_validation'] ?? false)) {

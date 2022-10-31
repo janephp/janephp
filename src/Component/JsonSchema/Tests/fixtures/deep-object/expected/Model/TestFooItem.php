@@ -5,6 +5,14 @@ namespace Jane\Component\JsonSchema\Tests\Expected\Model;
 class TestFooItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -28,6 +36,7 @@ class TestFooItem
      */
     public function setBar(string $bar) : self
     {
+        $this->initialized['bar'] = true;
         $this->bar = $bar;
         return $this;
     }

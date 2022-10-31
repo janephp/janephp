@@ -65,7 +65,7 @@ class DocumentNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAttributes()) {
+        if ($object->isInitialized('attributes') && null !== $object->getAttributes()) {
             $value = $object->getAttributes();
             if (is_array($object->getAttributes())) {
                 $values = array();

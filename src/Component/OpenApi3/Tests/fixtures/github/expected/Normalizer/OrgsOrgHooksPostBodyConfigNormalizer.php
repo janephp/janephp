@@ -83,19 +83,19 @@ class OrgsOrgHooksPostBodyConfigNormalizer implements DenormalizerInterface, Nor
     {
         $data = array();
         $data['url'] = $object->getUrl();
-        if (null !== $object->getContentType()) {
+        if ($object->isInitialized('contentType') && null !== $object->getContentType()) {
             $data['content_type'] = $object->getContentType();
         }
-        if (null !== $object->getSecret()) {
+        if ($object->isInitialized('secret') && null !== $object->getSecret()) {
             $data['secret'] = $object->getSecret();
         }
-        if (null !== $object->getInsecureSsl()) {
+        if ($object->isInitialized('insecureSsl') && null !== $object->getInsecureSsl()) {
             $data['insecure_ssl'] = $object->getInsecureSsl();
         }
-        if (null !== $object->getUsername()) {
+        if ($object->isInitialized('username') && null !== $object->getUsername()) {
             $data['username'] = $object->getUsername();
         }
-        if (null !== $object->getPassword()) {
+        if ($object->isInitialized('password') && null !== $object->getPassword()) {
             $data['password'] = $object->getPassword();
         }
         foreach ($object as $key => $value) {

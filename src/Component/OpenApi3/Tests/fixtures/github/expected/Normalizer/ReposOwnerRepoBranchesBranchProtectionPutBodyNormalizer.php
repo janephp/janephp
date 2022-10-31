@@ -105,13 +105,13 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
         $data['enforce_admins'] = $object->getEnforceAdmins();
         $data['required_pull_request_reviews'] = $this->normalizer->normalize($object->getRequiredPullRequestReviews(), 'json', $context);
         $data['restrictions'] = $this->normalizer->normalize($object->getRestrictions(), 'json', $context);
-        if (null !== $object->getRequiredLinearHistory()) {
+        if ($object->isInitialized('requiredLinearHistory') && null !== $object->getRequiredLinearHistory()) {
             $data['required_linear_history'] = $object->getRequiredLinearHistory();
         }
-        if (null !== $object->getAllowForcePushes()) {
+        if ($object->isInitialized('allowForcePushes') && null !== $object->getAllowForcePushes()) {
             $data['allow_force_pushes'] = $object->getAllowForcePushes();
         }
-        if (null !== $object->getAllowDeletions()) {
+        if ($object->isInitialized('allowDeletions') && null !== $object->getAllowDeletions()) {
             $data['allow_deletions'] = $object->getAllowDeletions();
         }
         foreach ($object as $key => $value) {

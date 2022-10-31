@@ -5,6 +5,14 @@ namespace Github\Model;
 class InstallationPermissions extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -70,6 +78,7 @@ class InstallationPermissions extends \ArrayObject
      */
     public function setDeployments(string $deployments) : self
     {
+        $this->initialized['deployments'] = true;
         $this->deployments = $deployments;
         return $this;
     }
@@ -91,6 +100,7 @@ class InstallationPermissions extends \ArrayObject
      */
     public function setChecks(string $checks) : self
     {
+        $this->initialized['checks'] = true;
         $this->checks = $checks;
         return $this;
     }
@@ -112,6 +122,7 @@ class InstallationPermissions extends \ArrayObject
      */
     public function setMetadata(string $metadata) : self
     {
+        $this->initialized['metadata'] = true;
         $this->metadata = $metadata;
         return $this;
     }
@@ -133,6 +144,7 @@ class InstallationPermissions extends \ArrayObject
      */
     public function setContents(string $contents) : self
     {
+        $this->initialized['contents'] = true;
         $this->contents = $contents;
         return $this;
     }
@@ -154,6 +166,7 @@ class InstallationPermissions extends \ArrayObject
      */
     public function setPullRequests(string $pullRequests) : self
     {
+        $this->initialized['pullRequests'] = true;
         $this->pullRequests = $pullRequests;
         return $this;
     }
@@ -175,6 +188,7 @@ class InstallationPermissions extends \ArrayObject
      */
     public function setStatuses(string $statuses) : self
     {
+        $this->initialized['statuses'] = true;
         $this->statuses = $statuses;
         return $this;
     }
@@ -196,6 +210,7 @@ class InstallationPermissions extends \ArrayObject
      */
     public function setIssues(string $issues) : self
     {
+        $this->initialized['issues'] = true;
         $this->issues = $issues;
         return $this;
     }
@@ -217,6 +232,7 @@ class InstallationPermissions extends \ArrayObject
      */
     public function setOrganizationAdministration(string $organizationAdministration) : self
     {
+        $this->initialized['organizationAdministration'] = true;
         $this->organizationAdministration = $organizationAdministration;
         return $this;
     }

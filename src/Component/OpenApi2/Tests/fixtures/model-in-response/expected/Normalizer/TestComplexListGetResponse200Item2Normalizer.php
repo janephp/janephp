@@ -58,13 +58,13 @@ class TestComplexListGetResponse200Item2Normalizer implements DenormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getImage32()) {
+        if ($object->isInitialized('image32') && null !== $object->getImage32()) {
             $data['image_32'] = $object->getImage32();
         }
-        if (null !== $object->getImage64()) {
+        if ($object->isInitialized('image64') && null !== $object->getImage64()) {
             $data['image_64'] = $object->getImage64();
         }
-        if (null !== $object->getImage128()) {
+        if ($object->isInitialized('image128') && null !== $object->getImage128()) {
             $data['image_128'] = $object->getImage128();
         }
         return $data;

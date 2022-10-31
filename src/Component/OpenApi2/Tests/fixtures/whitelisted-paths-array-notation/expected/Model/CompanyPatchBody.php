@@ -5,6 +5,14 @@ namespace Jane\OpenApi2\Tests\Expected\Model;
 class CompanyPatchBody
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Whether time is tracked via duration or start and end times.
      *
      * @var bool
@@ -34,6 +42,7 @@ class CompanyPatchBody
      */
     public function setWantsTimestampTimers(bool $wantsTimestampTimers) : self
     {
+        $this->initialized['wantsTimestampTimers'] = true;
         $this->wantsTimestampTimers = $wantsTimestampTimers;
         return $this;
     }
@@ -55,6 +64,7 @@ class CompanyPatchBody
      */
     public function setWeeklyCapacity(int $weeklyCapacity) : self
     {
+        $this->initialized['weeklyCapacity'] = true;
         $this->weeklyCapacity = $weeklyCapacity;
         return $this;
     }

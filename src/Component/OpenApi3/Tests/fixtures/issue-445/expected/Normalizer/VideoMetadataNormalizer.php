@@ -182,62 +182,62 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNames()) {
+        if ($object->isInitialized('names') && null !== $object->getNames()) {
             $data['names'] = $object->getNames();
         }
-        if (null !== $object->getDescriptions()) {
+        if ($object->isInitialized('descriptions') && null !== $object->getDescriptions()) {
             $data['descriptions'] = $object->getDescriptions();
         }
-        if (null !== $object->getFileExtension()) {
+        if ($object->isInitialized('fileExtension') && null !== $object->getFileExtension()) {
             $data['fileExtension'] = $object->getFileExtension();
         }
-        if (null !== $object->getFileName()) {
+        if ($object->isInitialized('fileName') && null !== $object->getFileName()) {
             $data['fileName'] = $object->getFileName();
         }
-        if (null !== $object->getFilePath()) {
+        if ($object->isInitialized('filePath') && null !== $object->getFilePath()) {
             $data['filePath'] = $object->getFilePath();
         }
-        if (null !== $object->getFileSizeInBytes()) {
+        if ($object->isInitialized('fileSizeInBytes') && null !== $object->getFileSizeInBytes()) {
             $data['fileSizeInBytes'] = $object->getFileSizeInBytes();
         }
-        if (null !== $object->getSha1Hash()) {
+        if ($object->isInitialized('sha1Hash') && null !== $object->getSha1Hash()) {
             $data['sha1Hash'] = $object->getSha1Hash();
         }
-        if (null !== $object->getXmpMetadata()) {
+        if ($object->isInitialized('xmpMetadata') && null !== $object->getXmpMetadata()) {
             $data['xmpMetadata'] = $object->getXmpMetadata();
         }
-        if (null !== $object->getExifMetadata()) {
+        if ($object->isInitialized('exifMetadata') && null !== $object->getExifMetadata()) {
             $data['exifMetadata'] = $object->getExifMetadata();
         }
-        if (null !== $object->getLanguage()) {
+        if ($object->isInitialized('language') && null !== $object->getLanguage()) {
             $data['language'] = $object->getLanguage();
         }
-        if (null !== $object->getWidth()) {
+        if ($object->isInitialized('width') && null !== $object->getWidth()) {
             $data['width'] = $object->getWidth();
         }
-        if (null !== $object->getHeight()) {
+        if ($object->isInitialized('height') && null !== $object->getHeight()) {
             $data['height'] = $object->getHeight();
         }
-        if (null !== $object->getDurationInSeconds()) {
+        if ($object->isInitialized('durationInSeconds') && null !== $object->getDurationInSeconds()) {
             $data['durationInSeconds'] = $object->getDurationInSeconds();
         }
-        if (null !== $object->getFormat()) {
+        if ($object->isInitialized('format') && null !== $object->getFormat()) {
             $data['format'] = $object->getFormat();
         }
-        if (null !== $object->getCodec()) {
+        if ($object->isInitialized('codec') && null !== $object->getCodec()) {
             $data['codec'] = $object->getCodec();
         }
-        if (null !== $object->getOverallBitrate()) {
+        if ($object->isInitialized('overallBitrate') && null !== $object->getOverallBitrate()) {
             $data['overallBitrate'] = $object->getOverallBitrate();
         }
-        if (null !== $object->getVideoStreams()) {
+        if ($object->isInitialized('videoStreams') && null !== $object->getVideoStreams()) {
             $values = array();
             foreach ($object->getVideoStreams() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['videoStreams'] = $values;
         }
-        if (null !== $object->getAudioStreams()) {
+        if ($object->isInitialized('audioStreams') && null !== $object->getAudioStreams()) {
             $values_1 = array();
             foreach ($object->getAudioStreams() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

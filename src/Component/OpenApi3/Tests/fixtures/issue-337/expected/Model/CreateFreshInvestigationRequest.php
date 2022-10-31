@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class CreateFreshInvestigationRequest extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -46,6 +54,7 @@ class CreateFreshInvestigationRequest extends \ArrayObject
      */
     public function setConsent(bool $consent) : self
     {
+        $this->initialized['consent'] = true;
         $this->consent = $consent;
         return $this;
     }
@@ -67,6 +76,7 @@ class CreateFreshInvestigationRequest extends \ArrayObject
      */
     public function setContactInfo(CreateFreshInvestigationRequestContactInfo $contactInfo) : self
     {
+        $this->initialized['contactInfo'] = true;
         $this->contactInfo = $contactInfo;
         return $this;
     }
@@ -88,6 +98,7 @@ class CreateFreshInvestigationRequest extends \ArrayObject
      */
     public function setChargeReference(string $chargeReference) : self
     {
+        $this->initialized['chargeReference'] = true;
         $this->chargeReference = $chargeReference;
         return $this;
     }
@@ -109,6 +120,7 @@ class CreateFreshInvestigationRequest extends \ArrayObject
      */
     public function setSearchCriteria(CreateFreshInvestigationRequestSearchCriteria $searchCriteria) : self
     {
+        $this->initialized['searchCriteria'] = true;
         $this->searchCriteria = $searchCriteria;
         return $this;
     }

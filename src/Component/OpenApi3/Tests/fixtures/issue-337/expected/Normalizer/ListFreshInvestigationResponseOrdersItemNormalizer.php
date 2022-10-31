@@ -94,34 +94,34 @@ class ListFreshInvestigationResponseOrdersItemNormalizer implements Denormalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getOrderID()) {
+        if ($object->isInitialized('orderID') && null !== $object->getOrderID()) {
             $data['orderID'] = $object->getOrderID();
         }
-        if (null !== $object->getUserID()) {
+        if ($object->isInitialized('userID') && null !== $object->getUserID()) {
             $data['userID'] = $object->getUserID();
         }
-        if (null !== $object->getCreationDate()) {
+        if ($object->isInitialized('creationDate') && null !== $object->getCreationDate()) {
             $data['creationDate'] = $object->getCreationDate();
         }
-        if (null !== $object->getLastStatusChangeDate()) {
+        if ($object->isInitialized('lastStatusChangeDate') && null !== $object->getLastStatusChangeDate()) {
             $data['lastStatusChangeDate'] = $object->getLastStatusChangeDate();
         }
-        if (null !== $object->getTransactionID()) {
+        if ($object->isInitialized('transactionID') && null !== $object->getTransactionID()) {
             $data['transactionID'] = $object->getTransactionID();
         }
-        if (null !== $object->getChargeReference()) {
+        if ($object->isInitialized('chargeReference') && null !== $object->getChargeReference()) {
             $data['chargeReference'] = $object->getChargeReference();
         }
-        if (null !== $object->getContactDetails()) {
+        if ($object->isInitialized('contactDetails') && null !== $object->getContactDetails()) {
             $data['contactDetails'] = $this->normalizer->normalize($object->getContactDetails(), 'json', $context);
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $this->normalizer->normalize($object->getStatus(), 'json', $context);
         }
-        if (null !== $object->getConsent()) {
+        if ($object->isInitialized('consent') && null !== $object->getConsent()) {
             $data['consent'] = $object->getConsent();
         }
-        if (null !== $object->getSearchCriteria()) {
+        if ($object->isInitialized('searchCriteria') && null !== $object->getSearchCriteria()) {
             $data['searchCriteria'] = $this->normalizer->normalize($object->getSearchCriteria(), 'json', $context);
         }
         foreach ($object as $key => $value) {

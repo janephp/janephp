@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UserInviteManyRequest extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * User IDs.
      *
      * @var string[]
@@ -28,6 +36,7 @@ class UserInviteManyRequest extends \ArrayObject
      */
     public function setUserIds(array $userIds) : self
     {
+        $this->initialized['userIds'] = true;
         $this->userIds = $userIds;
         return $this;
     }

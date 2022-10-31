@@ -5,6 +5,14 @@ namespace Github\Model;
 class DeploymentStatus extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -112,6 +120,7 @@ class DeploymentStatus extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -133,6 +142,7 @@ class DeploymentStatus extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -154,6 +164,7 @@ class DeploymentStatus extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -175,6 +186,7 @@ class DeploymentStatus extends \ArrayObject
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -196,6 +208,7 @@ class DeploymentStatus extends \ArrayObject
      */
     public function setCreator(?DeploymentStatusCreator $creator) : self
     {
+        $this->initialized['creator'] = true;
         $this->creator = $creator;
         return $this;
     }
@@ -217,6 +230,7 @@ class DeploymentStatus extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -238,6 +252,7 @@ class DeploymentStatus extends \ArrayObject
      */
     public function setEnvironment(string $environment) : self
     {
+        $this->initialized['environment'] = true;
         $this->environment = $environment;
         return $this;
     }
@@ -259,6 +274,7 @@ class DeploymentStatus extends \ArrayObject
      */
     public function setTargetUrl(string $targetUrl) : self
     {
+        $this->initialized['targetUrl'] = true;
         $this->targetUrl = $targetUrl;
         return $this;
     }
@@ -280,6 +296,7 @@ class DeploymentStatus extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -301,6 +318,7 @@ class DeploymentStatus extends \ArrayObject
      */
     public function setUpdatedAt(\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -322,6 +340,7 @@ class DeploymentStatus extends \ArrayObject
      */
     public function setDeploymentUrl(string $deploymentUrl) : self
     {
+        $this->initialized['deploymentUrl'] = true;
         $this->deploymentUrl = $deploymentUrl;
         return $this;
     }
@@ -343,6 +362,7 @@ class DeploymentStatus extends \ArrayObject
      */
     public function setRepositoryUrl(string $repositoryUrl) : self
     {
+        $this->initialized['repositoryUrl'] = true;
         $this->repositoryUrl = $repositoryUrl;
         return $this;
     }
@@ -364,6 +384,7 @@ class DeploymentStatus extends \ArrayObject
      */
     public function setEnvironmentUrl(string $environmentUrl) : self
     {
+        $this->initialized['environmentUrl'] = true;
         $this->environmentUrl = $environmentUrl;
         return $this;
     }
@@ -385,6 +406,7 @@ class DeploymentStatus extends \ArrayObject
      */
     public function setLogUrl(string $logUrl) : self
     {
+        $this->initialized['logUrl'] = true;
         $this->logUrl = $logUrl;
         return $this;
     }
@@ -406,6 +428,7 @@ class DeploymentStatus extends \ArrayObject
      */
     public function setPerformedViaGithubApp(?DeploymentStatusPerformedViaGithubApp $performedViaGithubApp) : self
     {
+        $this->initialized['performedViaGithubApp'] = true;
         $this->performedViaGithubApp = $performedViaGithubApp;
         return $this;
     }

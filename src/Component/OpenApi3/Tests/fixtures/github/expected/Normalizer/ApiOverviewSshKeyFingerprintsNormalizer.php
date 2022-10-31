@@ -74,16 +74,16 @@ class ApiOverviewSshKeyFingerprintsNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMD5RSA()) {
+        if ($object->isInitialized('mD5RSA') && null !== $object->getMD5RSA()) {
             $data['MD5_RSA'] = $object->getMD5RSA();
         }
-        if (null !== $object->getMD5DSA()) {
+        if ($object->isInitialized('mD5DSA') && null !== $object->getMD5DSA()) {
             $data['MD5_DSA'] = $object->getMD5DSA();
         }
-        if (null !== $object->getSHA256RSA()) {
+        if ($object->isInitialized('sHA256RSA') && null !== $object->getSHA256RSA()) {
             $data['SHA256_RSA'] = $object->getSHA256RSA();
         }
-        if (null !== $object->getSHA256DSA()) {
+        if ($object->isInitialized('sHA256DSA') && null !== $object->getSHA256DSA()) {
             $data['SHA256_DSA'] = $object->getSHA256DSA();
         }
         foreach ($object as $key => $value) {

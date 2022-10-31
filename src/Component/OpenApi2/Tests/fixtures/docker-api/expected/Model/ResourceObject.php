@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ResourceObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -42,6 +50,7 @@ class ResourceObject
      */
     public function setNanoCPUs(int $nanoCPUs) : self
     {
+        $this->initialized['nanoCPUs'] = true;
         $this->nanoCPUs = $nanoCPUs;
         return $this;
     }
@@ -63,6 +72,7 @@ class ResourceObject
      */
     public function setMemoryBytes(int $memoryBytes) : self
     {
+        $this->initialized['memoryBytes'] = true;
         $this->memoryBytes = $memoryBytes;
         return $this;
     }
@@ -88,6 +98,7 @@ class ResourceObject
     */
     public function setGenericResources(array $genericResources) : self
     {
+        $this->initialized['genericResources'] = true;
         $this->genericResources = $genericResources;
         return $this;
     }

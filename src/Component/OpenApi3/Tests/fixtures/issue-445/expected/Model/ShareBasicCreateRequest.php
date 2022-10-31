@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ShareBasicCreateRequest extends ShareBaseCreateRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * List of external mail recipients which are no Picturepark users.
      *
      * @var UserEmail[]|null
@@ -40,6 +48,7 @@ class ShareBasicCreateRequest extends ShareBaseCreateRequest
      */
     public function setRecipientEmails(?array $recipientEmails) : self
     {
+        $this->initialized['recipientEmails'] = true;
         $this->recipientEmails = $recipientEmails;
         return $this;
     }
@@ -61,6 +70,7 @@ class ShareBasicCreateRequest extends ShareBaseCreateRequest
      */
     public function setLanguageCode(string $languageCode) : self
     {
+        $this->initialized['languageCode'] = true;
         $this->languageCode = $languageCode;
         return $this;
     }
@@ -82,6 +92,7 @@ class ShareBasicCreateRequest extends ShareBaseCreateRequest
      */
     public function setSuppressNotifications(bool $suppressNotifications) : self
     {
+        $this->initialized['suppressNotifications'] = true;
         $this->suppressNotifications = $suppressNotifications;
         return $this;
     }

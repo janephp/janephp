@@ -71,7 +71,7 @@ class SharePageViewEventNormalizer implements DenormalizerInterface, NormalizerI
         $data = array();
         $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
         $data['kind'] = $object->getKind();
-        if (null !== $object->getShareToken()) {
+        if ($object->isInitialized('shareToken') && null !== $object->getShareToken()) {
             $data['shareToken'] = $object->getShareToken();
         }
         foreach ($object as $key => $value) {

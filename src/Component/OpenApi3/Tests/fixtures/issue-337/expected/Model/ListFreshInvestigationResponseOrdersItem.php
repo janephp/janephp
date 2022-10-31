@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -82,6 +90,7 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
      */
     public function setOrderID(int $orderID) : self
     {
+        $this->initialized['orderID'] = true;
         $this->orderID = $orderID;
         return $this;
     }
@@ -103,6 +112,7 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
      */
     public function setUserID(string $userID) : self
     {
+        $this->initialized['userID'] = true;
         $this->userID = $userID;
         return $this;
     }
@@ -124,6 +134,7 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
      */
     public function setCreationDate(string $creationDate) : self
     {
+        $this->initialized['creationDate'] = true;
         $this->creationDate = $creationDate;
         return $this;
     }
@@ -145,6 +156,7 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
      */
     public function setLastStatusChangeDate(string $lastStatusChangeDate) : self
     {
+        $this->initialized['lastStatusChangeDate'] = true;
         $this->lastStatusChangeDate = $lastStatusChangeDate;
         return $this;
     }
@@ -166,6 +178,7 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
      */
     public function setTransactionID(int $transactionID) : self
     {
+        $this->initialized['transactionID'] = true;
         $this->transactionID = $transactionID;
         return $this;
     }
@@ -187,6 +200,7 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
      */
     public function setChargeReference(string $chargeReference) : self
     {
+        $this->initialized['chargeReference'] = true;
         $this->chargeReference = $chargeReference;
         return $this;
     }
@@ -208,6 +222,7 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
      */
     public function setContactDetails(ListFreshInvestigationResponseOrdersItemContactDetails $contactDetails) : self
     {
+        $this->initialized['contactDetails'] = true;
         $this->contactDetails = $contactDetails;
         return $this;
     }
@@ -229,6 +244,7 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
      */
     public function setStatus(ListFreshInvestigationResponseOrdersItemStatus $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -250,6 +266,7 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
      */
     public function setConsent(bool $consent) : self
     {
+        $this->initialized['consent'] = true;
         $this->consent = $consent;
         return $this;
     }
@@ -271,6 +288,7 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
      */
     public function setSearchCriteria(ListFreshInvestigationResponseOrdersItemSearchCriteria $searchCriteria) : self
     {
+        $this->initialized['searchCriteria'] = true;
         $this->searchCriteria = $searchCriteria;
         return $this;
     }

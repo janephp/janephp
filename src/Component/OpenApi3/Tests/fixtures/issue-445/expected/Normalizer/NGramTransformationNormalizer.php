@@ -80,17 +80,17 @@ class NGramTransformationNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getSize()) {
+        if ($object->isInitialized('size') && null !== $object->getSize()) {
             $data['size'] = $object->getSize();
         }
-        if (null !== $object->getMinWordLength()) {
+        if ($object->isInitialized('minWordLength') && null !== $object->getMinWordLength()) {
             $data['minWordLength'] = $object->getMinWordLength();
         }
-        if (null !== $object->getMaxWordLength()) {
+        if ($object->isInitialized('maxWordLength') && null !== $object->getMaxWordLength()) {
             $data['maxWordLength'] = $object->getMaxWordLength();
         }
         foreach ($object as $key => $value) {

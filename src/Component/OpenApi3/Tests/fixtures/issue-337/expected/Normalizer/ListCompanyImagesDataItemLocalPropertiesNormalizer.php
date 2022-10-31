@@ -58,7 +58,7 @@ class ListCompanyImagesDataItemLocalPropertiesNormalizer implements Denormalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAccountRefNumber()) {
+        if ($object->isInitialized('accountRefNumber') && null !== $object->getAccountRefNumber()) {
             $data['accountRefNumber'] = $object->getAccountRefNumber();
         }
         foreach ($object as $key => $value) {

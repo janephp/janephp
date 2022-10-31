@@ -60,7 +60,7 @@ class ContainerSummaryNetworkSettingsNormalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNetworks()) {
+        if ($object->isInitialized('networks') && null !== $object->getNetworks()) {
             $values = array();
             foreach ($object->getNetworks() as $key => $value) {
                 $values[$key] = $this->normalizer->normalize($value, 'json', $context);

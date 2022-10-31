@@ -67,7 +67,7 @@ class ScimUserEmailsItemNormalizer implements DenormalizerInterface, NormalizerI
     {
         $data = array();
         $data['value'] = $object->getValue();
-        if (null !== $object->getPrimary()) {
+        if ($object->isInitialized('primary') && null !== $object->getPrimary()) {
             $data['primary'] = $object->getPrimary();
         }
         foreach ($object as $key => $value) {

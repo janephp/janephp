@@ -62,7 +62,7 @@ class ApplicationsClientIdTokenDeleteBodyNormalizer implements DenormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAccessToken()) {
+        if ($object->isInitialized('accessToken') && null !== $object->getAccessToken()) {
             $data['access_token'] = $object->getAccessToken();
         }
         foreach ($object as $key => $value) {

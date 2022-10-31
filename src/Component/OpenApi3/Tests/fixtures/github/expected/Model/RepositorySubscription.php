@@ -5,6 +5,14 @@ namespace Github\Model;
 class RepositorySubscription extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Determines if notifications should be received from this repository.
      *
      * @var bool
@@ -58,6 +66,7 @@ class RepositorySubscription extends \ArrayObject
      */
     public function setSubscribed(bool $subscribed) : self
     {
+        $this->initialized['subscribed'] = true;
         $this->subscribed = $subscribed;
         return $this;
     }
@@ -79,6 +88,7 @@ class RepositorySubscription extends \ArrayObject
      */
     public function setIgnored(bool $ignored) : self
     {
+        $this->initialized['ignored'] = true;
         $this->ignored = $ignored;
         return $this;
     }
@@ -100,6 +110,7 @@ class RepositorySubscription extends \ArrayObject
      */
     public function setReason(?string $reason) : self
     {
+        $this->initialized['reason'] = true;
         $this->reason = $reason;
         return $this;
     }
@@ -121,6 +132,7 @@ class RepositorySubscription extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -142,6 +154,7 @@ class RepositorySubscription extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -163,6 +176,7 @@ class RepositorySubscription extends \ArrayObject
      */
     public function setRepositoryUrl(string $repositoryUrl) : self
     {
+        $this->initialized['repositoryUrl'] = true;
         $this->repositoryUrl = $repositoryUrl;
         return $this;
     }

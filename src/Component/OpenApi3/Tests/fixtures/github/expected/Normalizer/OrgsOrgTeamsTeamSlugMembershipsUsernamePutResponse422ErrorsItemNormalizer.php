@@ -70,13 +70,13 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItemNormalizer 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCode()) {
+        if ($object->isInitialized('code') && null !== $object->getCode()) {
             $data['code'] = $object->getCode();
         }
-        if (null !== $object->getField()) {
+        if ($object->isInitialized('field') && null !== $object->getField()) {
             $data['field'] = $object->getField();
         }
-        if (null !== $object->getResource()) {
+        if ($object->isInitialized('resource') && null !== $object->getResource()) {
             $data['resource'] = $object->getResource();
         }
         foreach ($object as $key => $value) {

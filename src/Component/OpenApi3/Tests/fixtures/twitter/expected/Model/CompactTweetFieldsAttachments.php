@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class CompactTweetFieldsAttachments extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * A list of Media Keys for each one of the media attachments (if media are attached).
      *
      * @var string[]
@@ -34,6 +42,7 @@ class CompactTweetFieldsAttachments extends \ArrayObject
      */
     public function setMediaKeys(array $mediaKeys) : self
     {
+        $this->initialized['mediaKeys'] = true;
         $this->mediaKeys = $mediaKeys;
         return $this;
     }
@@ -55,6 +64,7 @@ class CompactTweetFieldsAttachments extends \ArrayObject
      */
     public function setPollIds(array $pollIds) : self
     {
+        $this->initialized['pollIds'] = true;
         $this->pollIds = $pollIds;
         return $this;
     }

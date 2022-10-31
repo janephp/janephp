@@ -59,10 +59,10 @@ class ProgressDetailNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCurrent()) {
+        if ($object->isInitialized('current') && null !== $object->getCurrent()) {
             $data['current'] = $object->getCurrent();
         }
-        if (null !== $object->getTotal()) {
+        if ($object->isInitialized('total') && null !== $object->getTotal()) {
             $data['total'] = $object->getTotal();
         }
         if (!($context['skip_validation'] ?? false)) {

@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ImageRootFS
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class ImageRootFS
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -61,6 +70,7 @@ class ImageRootFS
      */
     public function setLayers(array $layers) : self
     {
+        $this->initialized['layers'] = true;
         $this->layers = $layers;
         return $this;
     }
@@ -82,6 +92,7 @@ class ImageRootFS
      */
     public function setBaseLayer(string $baseLayer) : self
     {
+        $this->initialized['baseLayer'] = true;
         $this->baseLayer = $baseLayer;
         return $this;
     }

@@ -98,34 +98,34 @@ class FileCommitContentNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getPath()) {
+        if ($object->isInitialized('path') && null !== $object->getPath()) {
             $data['path'] = $object->getPath();
         }
-        if (null !== $object->getSha()) {
+        if ($object->isInitialized('sha') && null !== $object->getSha()) {
             $data['sha'] = $object->getSha();
         }
-        if (null !== $object->getSize()) {
+        if ($object->isInitialized('size') && null !== $object->getSize()) {
             $data['size'] = $object->getSize();
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getHtmlUrl()) {
+        if ($object->isInitialized('htmlUrl') && null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
-        if (null !== $object->getGitUrl()) {
+        if ($object->isInitialized('gitUrl') && null !== $object->getGitUrl()) {
             $data['git_url'] = $object->getGitUrl();
         }
-        if (null !== $object->getDownloadUrl()) {
+        if ($object->isInitialized('downloadUrl') && null !== $object->getDownloadUrl()) {
             $data['download_url'] = $object->getDownloadUrl();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getLinks()) {
+        if ($object->isInitialized('links') && null !== $object->getLinks()) {
             $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         }
         foreach ($object as $key => $value) {

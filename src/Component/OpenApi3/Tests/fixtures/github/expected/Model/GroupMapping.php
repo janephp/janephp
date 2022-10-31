@@ -5,6 +5,14 @@ namespace Github\Model;
 class GroupMapping extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Array of groups to be mapped to this team
      *
      * @var GroupMappingGroupsItem[]
@@ -58,6 +66,7 @@ class GroupMapping extends \ArrayObject
      */
     public function setGroups(array $groups) : self
     {
+        $this->initialized['groups'] = true;
         $this->groups = $groups;
         return $this;
     }
@@ -79,6 +88,7 @@ class GroupMapping extends \ArrayObject
      */
     public function setGroupId(string $groupId) : self
     {
+        $this->initialized['groupId'] = true;
         $this->groupId = $groupId;
         return $this;
     }
@@ -100,6 +110,7 @@ class GroupMapping extends \ArrayObject
      */
     public function setGroupName(string $groupName) : self
     {
+        $this->initialized['groupName'] = true;
         $this->groupName = $groupName;
         return $this;
     }
@@ -121,6 +132,7 @@ class GroupMapping extends \ArrayObject
      */
     public function setGroupDescription(string $groupDescription) : self
     {
+        $this->initialized['groupDescription'] = true;
         $this->groupDescription = $groupDescription;
         return $this;
     }
@@ -142,6 +154,7 @@ class GroupMapping extends \ArrayObject
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -163,6 +176,7 @@ class GroupMapping extends \ArrayObject
      */
     public function setSyncedAt(string $syncedAt) : self
     {
+        $this->initialized['syncedAt'] = true;
         $this->syncedAt = $syncedAt;
         return $this;
     }

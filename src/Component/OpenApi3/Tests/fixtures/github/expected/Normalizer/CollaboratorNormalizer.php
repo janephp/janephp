@@ -155,7 +155,7 @@ class CollaboratorNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['received_events_url'] = $object->getReceivedEventsUrl();
         $data['type'] = $object->getType();
         $data['site_admin'] = $object->getSiteAdmin();
-        if (null !== $object->getPermissions()) {
+        if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
         foreach ($object as $key => $value) {

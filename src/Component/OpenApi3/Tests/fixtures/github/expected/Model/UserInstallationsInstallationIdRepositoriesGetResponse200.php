@@ -5,6 +5,14 @@ namespace Github\Model;
 class UserInstallationsInstallationIdRepositoriesGetResponse200 extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -40,6 +48,7 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200 extends \ArrayOb
      */
     public function setTotalCount(int $totalCount) : self
     {
+        $this->initialized['totalCount'] = true;
         $this->totalCount = $totalCount;
         return $this;
     }
@@ -61,6 +70,7 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200 extends \ArrayOb
      */
     public function setRepositorySelection(string $repositorySelection) : self
     {
+        $this->initialized['repositorySelection'] = true;
         $this->repositorySelection = $repositorySelection;
         return $this;
     }
@@ -82,6 +92,7 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200 extends \ArrayOb
      */
     public function setRepositories(array $repositories) : self
     {
+        $this->initialized['repositories'] = true;
         $this->repositories = $repositories;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -67,6 +76,7 @@ class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
      */
     public function setImageType(string $imageType) : self
     {
+        $this->initialized['imageType'] = true;
         $this->imageType = $imageType;
         return $this;
     }
@@ -88,6 +98,7 @@ class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -109,6 +120,7 @@ class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
      */
     public function setAvailableFormats(array $availableFormats) : self
     {
+        $this->initialized['availableFormats'] = true;
         $this->availableFormats = $availableFormats;
         return $this;
     }

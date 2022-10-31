@@ -5,6 +5,14 @@ namespace ApiPlatform\Demo\Model;
 class ParchmentsGetHaljsonResponse200Links extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var ParchmentsGetHaljsonResponse200LinksSelf
@@ -52,6 +60,7 @@ class ParchmentsGetHaljsonResponse200Links extends \ArrayObject
      */
     public function setSelf(ParchmentsGetHaljsonResponse200LinksSelf $self) : self
     {
+        $this->initialized['self'] = true;
         $this->self = $self;
         return $this;
     }
@@ -73,6 +82,7 @@ class ParchmentsGetHaljsonResponse200Links extends \ArrayObject
      */
     public function setFirst(ParchmentsGetHaljsonResponse200LinksFirst $first) : self
     {
+        $this->initialized['first'] = true;
         $this->first = $first;
         return $this;
     }
@@ -94,6 +104,7 @@ class ParchmentsGetHaljsonResponse200Links extends \ArrayObject
      */
     public function setLast(ParchmentsGetHaljsonResponse200LinksLast $last) : self
     {
+        $this->initialized['last'] = true;
         $this->last = $last;
         return $this;
     }
@@ -115,6 +126,7 @@ class ParchmentsGetHaljsonResponse200Links extends \ArrayObject
      */
     public function setNext(ParchmentsGetHaljsonResponse200LinksNext $next) : self
     {
+        $this->initialized['next'] = true;
         $this->next = $next;
         return $this;
     }
@@ -136,6 +148,7 @@ class ParchmentsGetHaljsonResponse200Links extends \ArrayObject
      */
     public function setPrevious(ParchmentsGetHaljsonResponse200LinksPrevious $previous) : self
     {
+        $this->initialized['previous'] = true;
         $this->previous = $previous;
         return $this;
     }

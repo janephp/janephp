@@ -69,16 +69,16 @@ class TaskSpecPluginSpecNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['Name'] = $object->getName();
         }
-        if (null !== $object->getRemote()) {
+        if ($object->isInitialized('remote') && null !== $object->getRemote()) {
             $data['Remote'] = $object->getRemote();
         }
-        if (null !== $object->getDisabled()) {
+        if ($object->isInitialized('disabled') && null !== $object->getDisabled()) {
             $data['Disabled'] = $object->getDisabled();
         }
-        if (null !== $object->getPluginPrivilege()) {
+        if ($object->isInitialized('pluginPrivilege') && null !== $object->getPluginPrivilege()) {
             $values = array();
             foreach ($object->getPluginPrivilege() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

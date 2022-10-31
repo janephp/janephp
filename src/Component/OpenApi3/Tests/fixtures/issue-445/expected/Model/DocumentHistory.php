@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class DocumentHistory
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -76,6 +84,7 @@ class DocumentHistory
      */
     public function setDocumentId(?string $documentId) : self
     {
+        $this->initialized['documentId'] = true;
         $this->documentId = $documentId;
         return $this;
     }
@@ -97,6 +106,7 @@ class DocumentHistory
      */
     public function setDocumentVersion(int $documentVersion) : self
     {
+        $this->initialized['documentVersion'] = true;
         $this->documentVersion = $documentVersion;
         return $this;
     }
@@ -118,6 +128,7 @@ class DocumentHistory
      */
     public function setDocumentType(?string $documentType) : self
     {
+        $this->initialized['documentType'] = true;
         $this->documentType = $documentType;
         return $this;
     }
@@ -139,6 +150,7 @@ class DocumentHistory
      */
     public function setDocumentDate(\DateTime $documentDate) : self
     {
+        $this->initialized['documentDate'] = true;
         $this->documentDate = $documentDate;
         return $this;
     }
@@ -160,6 +172,7 @@ class DocumentHistory
      */
     public function setDocument(?string $document) : self
     {
+        $this->initialized['document'] = true;
         $this->document = $document;
         return $this;
     }
@@ -181,6 +194,7 @@ class DocumentHistory
      */
     public function setTimestamp(\DateTime $timestamp) : self
     {
+        $this->initialized['timestamp'] = true;
         $this->timestamp = $timestamp;
         return $this;
     }
@@ -202,6 +216,7 @@ class DocumentHistory
      */
     public function setAudit($audit) : self
     {
+        $this->initialized['audit'] = true;
         $this->audit = $audit;
         return $this;
     }
@@ -223,6 +238,7 @@ class DocumentHistory
      */
     public function setDeleted(bool $deleted) : self
     {
+        $this->initialized['deleted'] = true;
         $this->deleted = $deleted;
         return $this;
     }
@@ -244,6 +260,7 @@ class DocumentHistory
      */
     public function setAction(string $action) : self
     {
+        $this->initialized['action'] = true;
         $this->action = $action;
         return $this;
     }

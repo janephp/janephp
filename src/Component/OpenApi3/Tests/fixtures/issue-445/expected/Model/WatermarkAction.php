@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class WatermarkAction extends ImageActionBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Identifies the image to be used as watermark
      *
      * @var string|null
@@ -70,6 +78,7 @@ class WatermarkAction extends ImageActionBase
      */
     public function setWatermarkFilePath(?string $watermarkFilePath) : self
     {
+        $this->initialized['watermarkFilePath'] = true;
         $this->watermarkFilePath = $watermarkFilePath;
         return $this;
     }
@@ -91,6 +100,7 @@ class WatermarkAction extends ImageActionBase
      */
     public function setMarginLeft(?int $marginLeft) : self
     {
+        $this->initialized['marginLeft'] = true;
         $this->marginLeft = $marginLeft;
         return $this;
     }
@@ -112,6 +122,7 @@ class WatermarkAction extends ImageActionBase
      */
     public function setMarginTop(?int $marginTop) : self
     {
+        $this->initialized['marginTop'] = true;
         $this->marginTop = $marginTop;
         return $this;
     }
@@ -133,6 +144,7 @@ class WatermarkAction extends ImageActionBase
      */
     public function setMarginRight(?int $marginRight) : self
     {
+        $this->initialized['marginRight'] = true;
         $this->marginRight = $marginRight;
         return $this;
     }
@@ -154,6 +166,7 @@ class WatermarkAction extends ImageActionBase
      */
     public function setMarginBottom(?int $marginBottom) : self
     {
+        $this->initialized['marginBottom'] = true;
         $this->marginBottom = $marginBottom;
         return $this;
     }
@@ -175,6 +188,7 @@ class WatermarkAction extends ImageActionBase
      */
     public function setOpacity(float $opacity) : self
     {
+        $this->initialized['opacity'] = true;
         $this->opacity = $opacity;
         return $this;
     }
@@ -196,6 +210,7 @@ class WatermarkAction extends ImageActionBase
      */
     public function setWidthRatio(float $widthRatio) : self
     {
+        $this->initialized['widthRatio'] = true;
         $this->widthRatio = $widthRatio;
         return $this;
     }
@@ -217,6 +232,7 @@ class WatermarkAction extends ImageActionBase
      */
     public function setHeightRatio(float $heightRatio) : self
     {
+        $this->initialized['heightRatio'] = true;
         $this->heightRatio = $heightRatio;
         return $this;
     }

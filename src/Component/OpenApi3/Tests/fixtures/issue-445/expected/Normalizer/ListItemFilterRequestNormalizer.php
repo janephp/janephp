@@ -87,21 +87,21 @@ class ListItemFilterRequestNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSearchString()) {
+        if ($object->isInitialized('searchString') && null !== $object->getSearchString()) {
             $data['searchString'] = $object->getSearchString();
         }
-        if (null !== $object->getFilter()) {
+        if ($object->isInitialized('filter') && null !== $object->getFilter()) {
             $data['filter'] = $object->getFilter();
         }
         $data['includeAllSchemaChildren'] = $object->getIncludeAllSchemaChildren();
-        if (null !== $object->getSchemaIds()) {
+        if ($object->isInitialized('schemaIds') && null !== $object->getSchemaIds()) {
             $values = array();
             foreach ($object->getSchemaIds() as $value) {
                 $values[] = $value;
             }
             $data['schemaIds'] = $values;
         }
-        if (null !== $object->getSearchLanguages()) {
+        if ($object->isInitialized('searchLanguages') && null !== $object->getSearchLanguages()) {
             $values_1 = array();
             foreach ($object->getSearchLanguages() as $value_1) {
                 $values_1[] = $value_1;

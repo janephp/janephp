@@ -5,6 +5,14 @@ namespace Github\Model;
 class ApplicationsClientIdGrantDeleteBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The OAuth access token used to authenticate to the GitHub API.
      *
      * @var string
@@ -28,6 +36,7 @@ class ApplicationsClientIdGrantDeleteBody extends \ArrayObject
      */
     public function setAccessToken(string $accessToken) : self
     {
+        $this->initialized['accessToken'] = true;
         $this->accessToken = $accessToken;
         return $this;
     }

@@ -66,7 +66,7 @@ class AudioStillFormatNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $data = array();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getExtension()) {
+        if ($object->isInitialized('extension') && null !== $object->getExtension()) {
             $data['extension'] = $object->getExtension();
         }
         foreach ($object as $key => $value) {

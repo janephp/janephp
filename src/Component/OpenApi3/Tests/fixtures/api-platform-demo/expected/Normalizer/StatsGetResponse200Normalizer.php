@@ -62,10 +62,10 @@ class StatsGetResponse200Normalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBooksCount()) {
+        if ($object->isInitialized('booksCount') && null !== $object->getBooksCount()) {
             $data['books_count'] = $object->getBooksCount();
         }
-        if (null !== $object->getTopbooksCount()) {
+        if ($object->isInitialized('topbooksCount') && null !== $object->getTopbooksCount()) {
             $data['topbooks_count'] = $object->getTopbooksCount();
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class VersionInfo
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The manual file version of Picturepark.Contract.dll.
      *
      * @var string|null
@@ -46,6 +54,7 @@ class VersionInfo
      */
     public function setFileVersion(?string $fileVersion) : self
     {
+        $this->initialized['fileVersion'] = true;
         $this->fileVersion = $fileVersion;
         return $this;
     }
@@ -67,6 +76,7 @@ class VersionInfo
      */
     public function setFileProductVersion(?string $fileProductVersion) : self
     {
+        $this->initialized['fileProductVersion'] = true;
         $this->fileProductVersion = $fileProductVersion;
         return $this;
     }
@@ -88,6 +98,7 @@ class VersionInfo
      */
     public function setContractVersion(?string $contractVersion) : self
     {
+        $this->initialized['contractVersion'] = true;
         $this->contractVersion = $contractVersion;
         return $this;
     }
@@ -109,6 +120,7 @@ class VersionInfo
      */
     public function setRelease(?string $release) : self
     {
+        $this->initialized['release'] = true;
         $this->release = $release;
         return $this;
     }

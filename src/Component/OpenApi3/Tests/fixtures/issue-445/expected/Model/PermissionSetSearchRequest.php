@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class PermissionSetSearchRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The string used to query the data. The Lucene query string syntax is supported.
      *
      * @var string|null
@@ -78,6 +86,7 @@ class PermissionSetSearchRequest
      */
     public function setSearchString(?string $searchString) : self
     {
+        $this->initialized['searchString'] = true;
         $this->searchString = $searchString;
         return $this;
     }
@@ -99,6 +108,7 @@ class PermissionSetSearchRequest
      */
     public function setSearchBehaviors(?array $searchBehaviors) : self
     {
+        $this->initialized['searchBehaviors'] = true;
         $this->searchBehaviors = $searchBehaviors;
         return $this;
     }
@@ -120,6 +130,7 @@ class PermissionSetSearchRequest
      */
     public function setSort(?array $sort) : self
     {
+        $this->initialized['sort'] = true;
         $this->sort = $sort;
         return $this;
     }
@@ -141,6 +152,7 @@ class PermissionSetSearchRequest
      */
     public function setLimit(int $limit) : self
     {
+        $this->initialized['limit'] = true;
         $this->limit = $limit;
         return $this;
     }
@@ -162,6 +174,7 @@ class PermissionSetSearchRequest
      */
     public function setPageToken(?string $pageToken) : self
     {
+        $this->initialized['pageToken'] = true;
         $this->pageToken = $pageToken;
         return $this;
     }
@@ -183,6 +196,7 @@ class PermissionSetSearchRequest
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }
@@ -204,6 +218,7 @@ class PermissionSetSearchRequest
      */
     public function setRightFilter($rightFilter) : self
     {
+        $this->initialized['rightFilter'] = true;
         $this->rightFilter = $rightFilter;
         return $this;
     }
@@ -227,6 +242,7 @@ class PermissionSetSearchRequest
     */
     public function setDebugMode(bool $debugMode) : self
     {
+        $this->initialized['debugMode'] = true;
         $this->debugMode = $debugMode;
         return $this;
     }
@@ -250,6 +266,7 @@ class PermissionSetSearchRequest
     */
     public function setSearchLanguages(?array $searchLanguages) : self
     {
+        $this->initialized['searchLanguages'] = true;
         $this->searchLanguages = $searchLanguages;
         return $this;
     }

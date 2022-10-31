@@ -5,6 +5,14 @@ namespace Github\Model;
 class RepositoryCollaboratorPermission extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class RepositoryCollaboratorPermission extends \ArrayObject
      */
     public function setPermission(string $permission) : self
     {
+        $this->initialized['permission'] = true;
         $this->permission = $permission;
         return $this;
     }
@@ -55,6 +64,7 @@ class RepositoryCollaboratorPermission extends \ArrayObject
      */
     public function setUser(?RepositoryCollaboratorPermissionUser $user) : self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
     }

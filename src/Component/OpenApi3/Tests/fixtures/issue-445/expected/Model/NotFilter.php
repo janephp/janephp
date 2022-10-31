@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class NotFilter extends FilterBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The filter to be negated.
      *
      * @var mixed
@@ -28,6 +36,7 @@ class NotFilter extends FilterBase
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }

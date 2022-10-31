@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The path of the file to add an annotation to. For example, `assets/css/main.css`.
      *
      * @var string
@@ -76,6 +84,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItem extends \A
      */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -97,6 +106,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItem extends \A
      */
     public function setStartLine(int $startLine) : self
     {
+        $this->initialized['startLine'] = true;
         $this->startLine = $startLine;
         return $this;
     }
@@ -118,6 +128,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItem extends \A
      */
     public function setEndLine(int $endLine) : self
     {
+        $this->initialized['endLine'] = true;
         $this->endLine = $endLine;
         return $this;
     }
@@ -139,6 +150,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItem extends \A
      */
     public function setStartColumn(int $startColumn) : self
     {
+        $this->initialized['startColumn'] = true;
         $this->startColumn = $startColumn;
         return $this;
     }
@@ -160,6 +172,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItem extends \A
      */
     public function setEndColumn(int $endColumn) : self
     {
+        $this->initialized['endColumn'] = true;
         $this->endColumn = $endColumn;
         return $this;
     }
@@ -181,6 +194,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItem extends \A
      */
     public function setAnnotationLevel(string $annotationLevel) : self
     {
+        $this->initialized['annotationLevel'] = true;
         $this->annotationLevel = $annotationLevel;
         return $this;
     }
@@ -202,6 +216,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItem extends \A
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -223,6 +238,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItem extends \A
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -244,6 +260,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItem extends \A
      */
     public function setRawDetails(string $rawDetails) : self
     {
+        $this->initialized['rawDetails'] = true;
         $this->rawDetails = $rawDetails;
         return $this;
     }

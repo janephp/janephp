@@ -74,16 +74,16 @@ class TopicSearchResultItemAliasesItemTopicRelationNormalizer implements Denorma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getTopicId()) {
+        if ($object->isInitialized('topicId') && null !== $object->getTopicId()) {
             $data['topic_id'] = $object->getTopicId();
         }
-        if (null !== $object->getRelationType()) {
+        if ($object->isInitialized('relationType') && null !== $object->getRelationType()) {
             $data['relation_type'] = $object->getRelationType();
         }
         foreach ($object as $key => $value) {

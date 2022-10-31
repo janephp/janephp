@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ServiceProviderCreateException extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -70,6 +78,7 @@ class ServiceProviderCreateException extends \ArrayObject
      */
     public function setTraceLevel(string $traceLevel) : self
     {
+        $this->initialized['traceLevel'] = true;
         $this->traceLevel = $traceLevel;
         return $this;
     }
@@ -91,6 +100,7 @@ class ServiceProviderCreateException extends \ArrayObject
      */
     public function setTraceId(?string $traceId) : self
     {
+        $this->initialized['traceId'] = true;
         $this->traceId = $traceId;
         return $this;
     }
@@ -112,6 +122,7 @@ class ServiceProviderCreateException extends \ArrayObject
      */
     public function setTraceJobId(?string $traceJobId) : self
     {
+        $this->initialized['traceJobId'] = true;
         $this->traceJobId = $traceJobId;
         return $this;
     }
@@ -133,6 +144,7 @@ class ServiceProviderCreateException extends \ArrayObject
      */
     public function setHttpStatusCode(int $httpStatusCode) : self
     {
+        $this->initialized['httpStatusCode'] = true;
         $this->httpStatusCode = $httpStatusCode;
         return $this;
     }
@@ -154,6 +166,7 @@ class ServiceProviderCreateException extends \ArrayObject
      */
     public function setExceptionMessage(?string $exceptionMessage) : self
     {
+        $this->initialized['exceptionMessage'] = true;
         $this->exceptionMessage = $exceptionMessage;
         return $this;
     }
@@ -175,6 +188,7 @@ class ServiceProviderCreateException extends \ArrayObject
      */
     public function setKind(string $kind) : self
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
         return $this;
     }
@@ -196,6 +210,7 @@ class ServiceProviderCreateException extends \ArrayObject
      */
     public function setExternalId(?string $externalId) : self
     {
+        $this->initialized['externalId'] = true;
         $this->externalId = $externalId;
         return $this;
     }
@@ -217,6 +232,7 @@ class ServiceProviderCreateException extends \ArrayObject
      */
     public function setDetailErrorMessage(?string $detailErrorMessage) : self
     {
+        $this->initialized['detailErrorMessage'] = true;
         $this->detailErrorMessage = $detailErrorMessage;
         return $this;
     }

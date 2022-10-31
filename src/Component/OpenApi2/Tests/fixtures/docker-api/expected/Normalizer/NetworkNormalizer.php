@@ -104,51 +104,51 @@ class NetworkNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['Name'] = $object->getName();
         }
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['Id'] = $object->getId();
         }
-        if (null !== $object->getCreated()) {
+        if ($object->isInitialized('created') && null !== $object->getCreated()) {
             $data['Created'] = $object->getCreated();
         }
-        if (null !== $object->getScope()) {
+        if ($object->isInitialized('scope') && null !== $object->getScope()) {
             $data['Scope'] = $object->getScope();
         }
-        if (null !== $object->getDriver()) {
+        if ($object->isInitialized('driver') && null !== $object->getDriver()) {
             $data['Driver'] = $object->getDriver();
         }
-        if (null !== $object->getEnableIPv6()) {
+        if ($object->isInitialized('enableIPv6') && null !== $object->getEnableIPv6()) {
             $data['EnableIPv6'] = $object->getEnableIPv6();
         }
-        if (null !== $object->getIPAM()) {
+        if ($object->isInitialized('iPAM') && null !== $object->getIPAM()) {
             $data['IPAM'] = $this->normalizer->normalize($object->getIPAM(), 'json', $context);
         }
-        if (null !== $object->getInternal()) {
+        if ($object->isInitialized('internal') && null !== $object->getInternal()) {
             $data['Internal'] = $object->getInternal();
         }
-        if (null !== $object->getAttachable()) {
+        if ($object->isInitialized('attachable') && null !== $object->getAttachable()) {
             $data['Attachable'] = $object->getAttachable();
         }
-        if (null !== $object->getIngress()) {
+        if ($object->isInitialized('ingress') && null !== $object->getIngress()) {
             $data['Ingress'] = $object->getIngress();
         }
-        if (null !== $object->getContainers()) {
+        if ($object->isInitialized('containers') && null !== $object->getContainers()) {
             $values = array();
             foreach ($object->getContainers() as $key => $value) {
                 $values[$key] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['Containers'] = $values;
         }
-        if (null !== $object->getOptions()) {
+        if ($object->isInitialized('options') && null !== $object->getOptions()) {
             $values_1 = array();
             foreach ($object->getOptions() as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
             $data['Options'] = $values_1;
         }
-        if (null !== $object->getLabels()) {
+        if ($object->isInitialized('labels') && null !== $object->getLabels()) {
             $values_2 = array();
             foreach ($object->getLabels() as $key_2 => $value_2) {
                 $values_2[$key_2] = $value_2;

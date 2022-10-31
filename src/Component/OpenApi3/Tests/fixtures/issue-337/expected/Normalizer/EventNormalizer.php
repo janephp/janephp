@@ -103,34 +103,34 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getEventId()) {
+        if ($object->isInitialized('eventId') && null !== $object->getEventId()) {
             $data['eventId'] = $object->getEventId();
         }
-        if (null !== $object->getCompanyId()) {
+        if ($object->isInitialized('companyId') && null !== $object->getCompanyId()) {
             $data['companyId'] = $object->getCompanyId();
         }
-        if (null !== $object->getPortfolioId()) {
+        if ($object->isInitialized('portfolioId') && null !== $object->getPortfolioId()) {
             $data['portfolioId'] = $object->getPortfolioId();
         }
-        if (null !== $object->getRuleName()) {
+        if ($object->isInitialized('ruleName') && null !== $object->getRuleName()) {
             $data['ruleName'] = $object->getRuleName();
         }
-        if (null !== $object->getLocalEventCode()) {
+        if ($object->isInitialized('localEventCode') && null !== $object->getLocalEventCode()) {
             $data['localEventCode'] = $object->getLocalEventCode();
         }
-        if (null !== $object->getGlobalEventCode()) {
+        if ($object->isInitialized('globalEventCode') && null !== $object->getGlobalEventCode()) {
             $data['globalEventCode'] = $object->getGlobalEventCode();
         }
-        if (null !== $object->getNewValue()) {
+        if ($object->isInitialized('newValue') && null !== $object->getNewValue()) {
             $data['newValue'] = $object->getNewValue();
         }
-        if (null !== $object->getOldValue()) {
+        if ($object->isInitialized('oldValue') && null !== $object->getOldValue()) {
             $data['oldValue'] = $object->getOldValue();
         }
-        if (null !== $object->getEventDate()) {
+        if ($object->isInitialized('eventDate') && null !== $object->getEventDate()) {
             $data['eventDate'] = $object->getEventDate()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getCreatedDate()) {
+        if ($object->isInitialized('createdDate') && null !== $object->getCreatedDate()) {
             $data['createdDate'] = $object->getCreatedDate()->format('Y-m-d\\TH:i:sP');
         }
         foreach ($object as $key => $value) {

@@ -179,62 +179,62 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
     {
         $data = array();
         $data['vcs'] = $object->getVcs();
-        if (null !== $object->getUseLfs()) {
+        if ($object->isInitialized('useLfs') && null !== $object->getUseLfs()) {
             $data['use_lfs'] = $object->getUseLfs();
         }
         $data['vcs_url'] = $object->getVcsUrl();
-        if (null !== $object->getSvcRoot()) {
+        if ($object->isInitialized('svcRoot') && null !== $object->getSvcRoot()) {
             $data['svc_root'] = $object->getSvcRoot();
         }
-        if (null !== $object->getTfvcProject()) {
+        if ($object->isInitialized('tfvcProject') && null !== $object->getTfvcProject()) {
             $data['tfvc_project'] = $object->getTfvcProject();
         }
         $data['status'] = $object->getStatus();
-        if (null !== $object->getStatusText()) {
+        if ($object->isInitialized('statusText') && null !== $object->getStatusText()) {
             $data['status_text'] = $object->getStatusText();
         }
-        if (null !== $object->getFailedStep()) {
+        if ($object->isInitialized('failedStep') && null !== $object->getFailedStep()) {
             $data['failed_step'] = $object->getFailedStep();
         }
-        if (null !== $object->getErrorMessage()) {
+        if ($object->isInitialized('errorMessage') && null !== $object->getErrorMessage()) {
             $data['error_message'] = $object->getErrorMessage();
         }
-        if (null !== $object->getImportPercent()) {
+        if ($object->isInitialized('importPercent') && null !== $object->getImportPercent()) {
             $data['import_percent'] = $object->getImportPercent();
         }
-        if (null !== $object->getCommitCount()) {
+        if ($object->isInitialized('commitCount') && null !== $object->getCommitCount()) {
             $data['commit_count'] = $object->getCommitCount();
         }
-        if (null !== $object->getPushPercent()) {
+        if ($object->isInitialized('pushPercent') && null !== $object->getPushPercent()) {
             $data['push_percent'] = $object->getPushPercent();
         }
-        if (null !== $object->getHasLargeFiles()) {
+        if ($object->isInitialized('hasLargeFiles') && null !== $object->getHasLargeFiles()) {
             $data['has_large_files'] = $object->getHasLargeFiles();
         }
-        if (null !== $object->getLargeFilesSize()) {
+        if ($object->isInitialized('largeFilesSize') && null !== $object->getLargeFilesSize()) {
             $data['large_files_size'] = $object->getLargeFilesSize();
         }
-        if (null !== $object->getLargeFilesCount()) {
+        if ($object->isInitialized('largeFilesCount') && null !== $object->getLargeFilesCount()) {
             $data['large_files_count'] = $object->getLargeFilesCount();
         }
-        if (null !== $object->getProjectChoices()) {
+        if ($object->isInitialized('projectChoices') && null !== $object->getProjectChoices()) {
             $values = array();
             foreach ($object->getProjectChoices() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['project_choices'] = $values;
         }
-        if (null !== $object->getMessage()) {
+        if ($object->isInitialized('message') && null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
-        if (null !== $object->getAuthorsCount()) {
+        if ($object->isInitialized('authorsCount') && null !== $object->getAuthorsCount()) {
             $data['authors_count'] = $object->getAuthorsCount();
         }
         $data['url'] = $object->getUrl();
         $data['html_url'] = $object->getHtmlUrl();
         $data['authors_url'] = $object->getAuthorsUrl();
         $data['repository_url'] = $object->getRepositoryUrl();
-        if (null !== $object->getSvnRoot()) {
+        if ($object->isInitialized('svnRoot') && null !== $object->getSvnRoot()) {
             $data['svn_root'] = $object->getSvnRoot();
         }
         foreach ($object as $key => $value_1) {

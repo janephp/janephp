@@ -174,43 +174,43 @@ class IssueEventNormalizer implements DenormalizerInterface, NormalizerInterface
         $data['commit_id'] = $object->getCommitId();
         $data['commit_url'] = $object->getCommitUrl();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getIssue()) {
+        if ($object->isInitialized('issue') && null !== $object->getIssue()) {
             $data['issue'] = $this->normalizer->normalize($object->getIssue(), 'json', $context);
         }
-        if (null !== $object->getLabel()) {
+        if ($object->isInitialized('label') && null !== $object->getLabel()) {
             $data['label'] = $this->normalizer->normalize($object->getLabel(), 'json', $context);
         }
-        if (null !== $object->getAssignee()) {
+        if ($object->isInitialized('assignee') && null !== $object->getAssignee()) {
             $data['assignee'] = $this->normalizer->normalize($object->getAssignee(), 'json', $context);
         }
-        if (null !== $object->getAssigner()) {
+        if ($object->isInitialized('assigner') && null !== $object->getAssigner()) {
             $data['assigner'] = $this->normalizer->normalize($object->getAssigner(), 'json', $context);
         }
-        if (null !== $object->getReviewRequester()) {
+        if ($object->isInitialized('reviewRequester') && null !== $object->getReviewRequester()) {
             $data['review_requester'] = $this->normalizer->normalize($object->getReviewRequester(), 'json', $context);
         }
-        if (null !== $object->getRequestedReviewer()) {
+        if ($object->isInitialized('requestedReviewer') && null !== $object->getRequestedReviewer()) {
             $data['requested_reviewer'] = $this->normalizer->normalize($object->getRequestedReviewer(), 'json', $context);
         }
-        if (null !== $object->getRequestedTeam()) {
+        if ($object->isInitialized('requestedTeam') && null !== $object->getRequestedTeam()) {
             $data['requested_team'] = $this->normalizer->normalize($object->getRequestedTeam(), 'json', $context);
         }
-        if (null !== $object->getDismissedReview()) {
+        if ($object->isInitialized('dismissedReview') && null !== $object->getDismissedReview()) {
             $data['dismissed_review'] = $this->normalizer->normalize($object->getDismissedReview(), 'json', $context);
         }
-        if (null !== $object->getMilestone()) {
+        if ($object->isInitialized('milestone') && null !== $object->getMilestone()) {
             $data['milestone'] = $this->normalizer->normalize($object->getMilestone(), 'json', $context);
         }
-        if (null !== $object->getProjectCard()) {
+        if ($object->isInitialized('projectCard') && null !== $object->getProjectCard()) {
             $data['project_card'] = $this->normalizer->normalize($object->getProjectCard(), 'json', $context);
         }
-        if (null !== $object->getRename()) {
+        if ($object->isInitialized('rename') && null !== $object->getRename()) {
             $data['rename'] = $this->normalizer->normalize($object->getRename(), 'json', $context);
         }
-        if (null !== $object->getAuthorAssociation()) {
+        if ($object->isInitialized('authorAssociation') && null !== $object->getAuthorAssociation()) {
             $data['author_association'] = $object->getAuthorAssociation();
         }
-        if (null !== $object->getLockReason()) {
+        if ($object->isInitialized('lockReason') && null !== $object->getLockReason()) {
             $data['lock_reason'] = $object->getLockReason();
         }
         foreach ($object as $key => $value) {

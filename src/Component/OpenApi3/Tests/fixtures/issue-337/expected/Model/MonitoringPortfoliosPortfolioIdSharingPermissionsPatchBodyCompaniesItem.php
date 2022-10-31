@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * A creditsafe user id.
      *
      * @var string
@@ -34,6 +42,7 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem ex
      */
     public function setCsUserId(string $csUserId) : self
     {
+        $this->initialized['csUserId'] = true;
         $this->csUserId = $csUserId;
         return $this;
     }
@@ -55,6 +64,7 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem ex
      */
     public function setPermissions(string $permissions) : self
     {
+        $this->initialized['permissions'] = true;
         $this->permissions = $permissions;
         return $this;
     }

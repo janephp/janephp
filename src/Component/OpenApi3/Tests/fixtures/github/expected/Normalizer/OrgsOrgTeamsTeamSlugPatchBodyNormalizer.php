@@ -79,16 +79,16 @@ class OrgsOrgTeamsTeamSlugPatchBodyNormalizer implements DenormalizerInterface, 
     {
         $data = array();
         $data['name'] = $object->getName();
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getPrivacy()) {
+        if ($object->isInitialized('privacy') && null !== $object->getPrivacy()) {
             $data['privacy'] = $object->getPrivacy();
         }
-        if (null !== $object->getPermission()) {
+        if ($object->isInitialized('permission') && null !== $object->getPermission()) {
             $data['permission'] = $object->getPermission();
         }
-        if (null !== $object->getParentTeamId()) {
+        if ($object->isInitialized('parentTeamId') && null !== $object->getParentTeamId()) {
             $data['parent_team_id'] = $object->getParentTeamId();
         }
         foreach ($object as $key => $value) {

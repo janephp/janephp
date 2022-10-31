@@ -69,10 +69,10 @@ class ProjectsColumnsCardsCardIdPatchBodyNormalizer implements DenormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNote()) {
+        if ($object->isInitialized('note') && null !== $object->getNote()) {
             $data['note'] = $object->getNote();
         }
-        if (null !== $object->getArchived()) {
+        if ($object->isInitialized('archived') && null !== $object->getArchived()) {
             $data['archived'] = $object->getArchived();
         }
         foreach ($object as $key => $value) {

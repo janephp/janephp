@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class AggregationResultItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Value matched.
      *
      * @var string
@@ -53,6 +61,7 @@ class AggregationResultItem
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -74,6 +83,7 @@ class AggregationResultItem
      */
     public function setCount(int $count) : self
     {
+        $this->initialized['count'] = true;
         $this->count = $count;
         return $this;
     }
@@ -97,6 +107,7 @@ class AggregationResultItem
     */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }
@@ -118,6 +129,7 @@ class AggregationResultItem
      */
     public function setActive(bool $active) : self
     {
+        $this->initialized['active'] = true;
         $this->active = $active;
         return $this;
     }
@@ -139,6 +151,7 @@ class AggregationResultItem
      */
     public function setAggregationResults(?array $aggregationResults) : self
     {
+        $this->initialized['aggregationResults'] = true;
         $this->aggregationResults = $aggregationResults;
         return $this;
     }

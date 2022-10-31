@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class NetworksIdDisconnectPostBody
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID or name of the container to disconnect from the network.
      *
      * @var string
@@ -34,6 +42,7 @@ class NetworksIdDisconnectPostBody
      */
     public function setContainer(string $container) : self
     {
+        $this->initialized['container'] = true;
         $this->container = $container;
         return $this;
     }
@@ -55,6 +64,7 @@ class NetworksIdDisconnectPostBody
      */
     public function setForce(bool $force) : self
     {
+        $this->initialized['force'] = true;
         $this->force = $force;
         return $this;
     }

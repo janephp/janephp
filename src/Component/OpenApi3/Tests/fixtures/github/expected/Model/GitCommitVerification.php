@@ -5,6 +5,14 @@ namespace Github\Model;
 class GitCommitVerification extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -46,6 +54,7 @@ class GitCommitVerification extends \ArrayObject
      */
     public function setVerified(bool $verified) : self
     {
+        $this->initialized['verified'] = true;
         $this->verified = $verified;
         return $this;
     }
@@ -67,6 +76,7 @@ class GitCommitVerification extends \ArrayObject
      */
     public function setReason(string $reason) : self
     {
+        $this->initialized['reason'] = true;
         $this->reason = $reason;
         return $this;
     }
@@ -88,6 +98,7 @@ class GitCommitVerification extends \ArrayObject
      */
     public function setSignature(?string $signature) : self
     {
+        $this->initialized['signature'] = true;
         $this->signature = $signature;
         return $this;
     }
@@ -109,6 +120,7 @@ class GitCommitVerification extends \ArrayObject
      */
     public function setPayload(?string $payload) : self
     {
+        $this->initialized['payload'] = true;
         $this->payload = $payload;
         return $this;
     }

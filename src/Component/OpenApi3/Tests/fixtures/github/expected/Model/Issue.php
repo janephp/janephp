@@ -5,6 +5,14 @@ namespace Github\Model;
 class Issue extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -214,6 +222,7 @@ class Issue extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -235,6 +244,7 @@ class Issue extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -256,6 +266,7 @@ class Issue extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -277,6 +288,7 @@ class Issue extends \ArrayObject
      */
     public function setRepositoryUrl(string $repositoryUrl) : self
     {
+        $this->initialized['repositoryUrl'] = true;
         $this->repositoryUrl = $repositoryUrl;
         return $this;
     }
@@ -298,6 +310,7 @@ class Issue extends \ArrayObject
      */
     public function setLabelsUrl(string $labelsUrl) : self
     {
+        $this->initialized['labelsUrl'] = true;
         $this->labelsUrl = $labelsUrl;
         return $this;
     }
@@ -319,6 +332,7 @@ class Issue extends \ArrayObject
      */
     public function setCommentsUrl(string $commentsUrl) : self
     {
+        $this->initialized['commentsUrl'] = true;
         $this->commentsUrl = $commentsUrl;
         return $this;
     }
@@ -340,6 +354,7 @@ class Issue extends \ArrayObject
      */
     public function setEventsUrl(string $eventsUrl) : self
     {
+        $this->initialized['eventsUrl'] = true;
         $this->eventsUrl = $eventsUrl;
         return $this;
     }
@@ -361,6 +376,7 @@ class Issue extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -382,6 +398,7 @@ class Issue extends \ArrayObject
      */
     public function setNumber(int $number) : self
     {
+        $this->initialized['number'] = true;
         $this->number = $number;
         return $this;
     }
@@ -403,6 +420,7 @@ class Issue extends \ArrayObject
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -424,6 +442,7 @@ class Issue extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -445,6 +464,7 @@ class Issue extends \ArrayObject
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }
@@ -466,6 +486,7 @@ class Issue extends \ArrayObject
      */
     public function setUser(?IssueUser $user) : self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
     }
@@ -487,6 +508,7 @@ class Issue extends \ArrayObject
      */
     public function setLabels(array $labels) : self
     {
+        $this->initialized['labels'] = true;
         $this->labels = $labels;
         return $this;
     }
@@ -508,6 +530,7 @@ class Issue extends \ArrayObject
      */
     public function setAssignee(?IssueAssignee $assignee) : self
     {
+        $this->initialized['assignee'] = true;
         $this->assignee = $assignee;
         return $this;
     }
@@ -529,6 +552,7 @@ class Issue extends \ArrayObject
      */
     public function setAssignees(?array $assignees) : self
     {
+        $this->initialized['assignees'] = true;
         $this->assignees = $assignees;
         return $this;
     }
@@ -550,6 +574,7 @@ class Issue extends \ArrayObject
      */
     public function setMilestone(?IssueMilestone $milestone) : self
     {
+        $this->initialized['milestone'] = true;
         $this->milestone = $milestone;
         return $this;
     }
@@ -571,6 +596,7 @@ class Issue extends \ArrayObject
      */
     public function setLocked(bool $locked) : self
     {
+        $this->initialized['locked'] = true;
         $this->locked = $locked;
         return $this;
     }
@@ -592,6 +618,7 @@ class Issue extends \ArrayObject
      */
     public function setActiveLockReason(?string $activeLockReason) : self
     {
+        $this->initialized['activeLockReason'] = true;
         $this->activeLockReason = $activeLockReason;
         return $this;
     }
@@ -613,6 +640,7 @@ class Issue extends \ArrayObject
      */
     public function setComments(int $comments) : self
     {
+        $this->initialized['comments'] = true;
         $this->comments = $comments;
         return $this;
     }
@@ -634,6 +662,7 @@ class Issue extends \ArrayObject
      */
     public function setPullRequest(IssuePullRequest $pullRequest) : self
     {
+        $this->initialized['pullRequest'] = true;
         $this->pullRequest = $pullRequest;
         return $this;
     }
@@ -655,6 +684,7 @@ class Issue extends \ArrayObject
      */
     public function setClosedAt(?\DateTime $closedAt) : self
     {
+        $this->initialized['closedAt'] = true;
         $this->closedAt = $closedAt;
         return $this;
     }
@@ -676,6 +706,7 @@ class Issue extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -697,6 +728,7 @@ class Issue extends \ArrayObject
      */
     public function setUpdatedAt(\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -718,6 +750,7 @@ class Issue extends \ArrayObject
      */
     public function setClosedBy(?IssueClosedBy $closedBy) : self
     {
+        $this->initialized['closedBy'] = true;
         $this->closedBy = $closedBy;
         return $this;
     }
@@ -739,6 +772,7 @@ class Issue extends \ArrayObject
      */
     public function setBodyHtml(string $bodyHtml) : self
     {
+        $this->initialized['bodyHtml'] = true;
         $this->bodyHtml = $bodyHtml;
         return $this;
     }
@@ -760,6 +794,7 @@ class Issue extends \ArrayObject
      */
     public function setBodyText(string $bodyText) : self
     {
+        $this->initialized['bodyText'] = true;
         $this->bodyText = $bodyText;
         return $this;
     }
@@ -781,6 +816,7 @@ class Issue extends \ArrayObject
      */
     public function setTimelineUrl(string $timelineUrl) : self
     {
+        $this->initialized['timelineUrl'] = true;
         $this->timelineUrl = $timelineUrl;
         return $this;
     }
@@ -802,6 +838,7 @@ class Issue extends \ArrayObject
      */
     public function setRepository(Repository $repository) : self
     {
+        $this->initialized['repository'] = true;
         $this->repository = $repository;
         return $this;
     }
@@ -823,6 +860,7 @@ class Issue extends \ArrayObject
      */
     public function setPerformedViaGithubApp(?IssuePerformedViaGithubApp $performedViaGithubApp) : self
     {
+        $this->initialized['performedViaGithubApp'] = true;
         $this->performedViaGithubApp = $performedViaGithubApp;
         return $this;
     }
@@ -844,6 +882,7 @@ class Issue extends \ArrayObject
      */
     public function setAuthorAssociation(string $authorAssociation) : self
     {
+        $this->initialized['authorAssociation'] = true;
         $this->authorAssociation = $authorAssociation;
         return $this;
     }
@@ -865,6 +904,7 @@ class Issue extends \ArrayObject
      */
     public function setReactions(ReactionRollup $reactions) : self
     {
+        $this->initialized['reactions'] = true;
         $this->reactions = $reactions;
         return $this;
     }

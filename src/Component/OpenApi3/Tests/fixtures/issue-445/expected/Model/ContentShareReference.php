@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentShareReference
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of the share.
      *
      * @var string|null
@@ -52,6 +60,7 @@ class ContentShareReference
      */
     public function setId(?string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -73,6 +82,7 @@ class ContentShareReference
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -94,6 +104,7 @@ class ContentShareReference
      */
     public function setAudit($audit) : self
     {
+        $this->initialized['audit'] = true;
         $this->audit = $audit;
         return $this;
     }
@@ -115,6 +126,7 @@ class ContentShareReference
      */
     public function setShareType($shareType) : self
     {
+        $this->initialized['shareType'] = true;
         $this->shareType = $shareType;
         return $this;
     }
@@ -136,6 +148,7 @@ class ContentShareReference
      */
     public function setEmailAddress(?string $emailAddress) : self
     {
+        $this->initialized['emailAddress'] = true;
         $this->emailAddress = $emailAddress;
         return $this;
     }

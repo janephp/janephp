@@ -72,11 +72,11 @@ class TakeArrayValueTransformationNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getIndex()) {
+        if ($object->isInitialized('index') && null !== $object->getIndex()) {
             $data['index'] = $object->getIndex();
         }
         foreach ($object as $key => $value) {

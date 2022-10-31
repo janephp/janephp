@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ProblemDetails
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -58,6 +66,7 @@ class ProblemDetails
      */
     public function setType(?string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -79,6 +88,7 @@ class ProblemDetails
      */
     public function setTitle(?string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -100,6 +110,7 @@ class ProblemDetails
      */
     public function setStatus(?int $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -121,6 +132,7 @@ class ProblemDetails
      */
     public function setDetail(?string $detail) : self
     {
+        $this->initialized['detail'] = true;
         $this->detail = $detail;
         return $this;
     }
@@ -142,6 +154,7 @@ class ProblemDetails
      */
     public function setInstance(?string $instance) : self
     {
+        $this->initialized['instance'] = true;
         $this->instance = $instance;
         return $this;
     }
@@ -163,6 +176,7 @@ class ProblemDetails
      */
     public function setExtensions(?iterable $extensions) : self
     {
+        $this->initialized['extensions'] = true;
         $this->extensions = $extensions;
         return $this;
     }

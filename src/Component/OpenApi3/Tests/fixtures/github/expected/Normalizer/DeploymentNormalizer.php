@@ -146,7 +146,7 @@ class DeploymentNormalizer implements DenormalizerInterface, NormalizerInterface
         $data['ref'] = $object->getRef();
         $data['task'] = $object->getTask();
         $data['payload'] = $this->normalizer->normalize($object->getPayload(), 'json', $context);
-        if (null !== $object->getOriginalEnvironment()) {
+        if ($object->isInitialized('originalEnvironment') && null !== $object->getOriginalEnvironment()) {
             $data['original_environment'] = $object->getOriginalEnvironment();
         }
         $data['environment'] = $object->getEnvironment();
@@ -156,13 +156,13 @@ class DeploymentNormalizer implements DenormalizerInterface, NormalizerInterface
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['statuses_url'] = $object->getStatusesUrl();
         $data['repository_url'] = $object->getRepositoryUrl();
-        if (null !== $object->getTransientEnvironment()) {
+        if ($object->isInitialized('transientEnvironment') && null !== $object->getTransientEnvironment()) {
             $data['transient_environment'] = $object->getTransientEnvironment();
         }
-        if (null !== $object->getProductionEnvironment()) {
+        if ($object->isInitialized('productionEnvironment') && null !== $object->getProductionEnvironment()) {
             $data['production_environment'] = $object->getProductionEnvironment();
         }
-        if (null !== $object->getPerformedViaGithubApp()) {
+        if ($object->isInitialized('performedViaGithubApp') && null !== $object->getPerformedViaGithubApp()) {
             $data['performed_via_github_app'] = $this->normalizer->normalize($object->getPerformedViaGithubApp(), 'json', $context);
         }
         foreach ($object as $key => $value) {

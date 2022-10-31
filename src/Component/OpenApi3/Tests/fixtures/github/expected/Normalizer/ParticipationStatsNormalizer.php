@@ -74,14 +74,14 @@ class ParticipationStatsNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAll()) {
+        if ($object->isInitialized('all') && null !== $object->getAll()) {
             $values = array();
             foreach ($object->getAll() as $value) {
                 $values[] = $value;
             }
             $data['all'] = $values;
         }
-        if (null !== $object->getOwner()) {
+        if ($object->isInitialized('owner') && null !== $object->getOwner()) {
             $values_1 = array();
             foreach ($object->getOwner() as $value_1) {
                 $values_1[] = $value_1;

@@ -77,28 +77,28 @@ class MountPointNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['Type'] = $object->getType();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['Name'] = $object->getName();
         }
-        if (null !== $object->getSource()) {
+        if ($object->isInitialized('source') && null !== $object->getSource()) {
             $data['Source'] = $object->getSource();
         }
-        if (null !== $object->getDestination()) {
+        if ($object->isInitialized('destination') && null !== $object->getDestination()) {
             $data['Destination'] = $object->getDestination();
         }
-        if (null !== $object->getDriver()) {
+        if ($object->isInitialized('driver') && null !== $object->getDriver()) {
             $data['Driver'] = $object->getDriver();
         }
-        if (null !== $object->getMode()) {
+        if ($object->isInitialized('mode') && null !== $object->getMode()) {
             $data['Mode'] = $object->getMode();
         }
-        if (null !== $object->getRW()) {
+        if ($object->isInitialized('rW') && null !== $object->getRW()) {
             $data['RW'] = $object->getRW();
         }
-        if (null !== $object->getPropagation()) {
+        if ($object->isInitialized('propagation') && null !== $object->getPropagation()) {
             $data['Propagation'] = $object->getPropagation();
         }
         if (!($context['skip_validation'] ?? false)) {

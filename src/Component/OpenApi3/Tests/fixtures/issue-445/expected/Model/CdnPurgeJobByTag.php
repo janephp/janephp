@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class CdnPurgeJobByTag extends CdnPurgeJobBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The tag that should be purged.
      *
      * @var string
@@ -28,6 +36,7 @@ class CdnPurgeJobByTag extends CdnPurgeJobBase
      */
     public function setTag(string $tag) : self
     {
+        $this->initialized['tag'] = true;
         $this->tag = $tag;
         return $this;
     }

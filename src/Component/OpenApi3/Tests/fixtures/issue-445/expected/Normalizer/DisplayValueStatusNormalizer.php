@@ -72,14 +72,14 @@ class DisplayValueStatusNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getContentOrLayerSchemaIds()) {
+        if ($object->isInitialized('contentOrLayerSchemaIds') && null !== $object->getContentOrLayerSchemaIds()) {
             $values = array();
             foreach ($object->getContentOrLayerSchemaIds() as $value) {
                 $values[] = $value;
             }
             $data['contentOrLayerSchemaIds'] = $values;
         }
-        if (null !== $object->getListSchemaIds()) {
+        if ($object->isInitialized('listSchemaIds') && null !== $object->getListSchemaIds()) {
             $values_1 = array();
             foreach ($object->getListSchemaIds() as $value_1) {
                 $values_1[] = $value_1;

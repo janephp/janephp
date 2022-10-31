@@ -5,6 +5,14 @@ namespace Github\Model;
 class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The [reaction type](https://developer.github.com/v3/reactions/#reaction-types) to add to the team discussion.
      *
      * @var string
@@ -28,6 +36,7 @@ class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody extends \ArrayObje
      */
     public function setContent(string $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }

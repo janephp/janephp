@@ -102,33 +102,33 @@ class BranchProtectionNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
         $data['required_status_checks'] = $this->normalizer->normalize($object->getRequiredStatusChecks(), 'json', $context);
-        if (null !== $object->getEnforceAdmins()) {
+        if ($object->isInitialized('enforceAdmins') && null !== $object->getEnforceAdmins()) {
             $data['enforce_admins'] = $this->normalizer->normalize($object->getEnforceAdmins(), 'json', $context);
         }
-        if (null !== $object->getRequiredPullRequestReviews()) {
+        if ($object->isInitialized('requiredPullRequestReviews') && null !== $object->getRequiredPullRequestReviews()) {
             $data['required_pull_request_reviews'] = $this->normalizer->normalize($object->getRequiredPullRequestReviews(), 'json', $context);
         }
-        if (null !== $object->getRestrictions()) {
+        if ($object->isInitialized('restrictions') && null !== $object->getRestrictions()) {
             $data['restrictions'] = $this->normalizer->normalize($object->getRestrictions(), 'json', $context);
         }
-        if (null !== $object->getRequiredLinearHistory()) {
+        if ($object->isInitialized('requiredLinearHistory') && null !== $object->getRequiredLinearHistory()) {
             $data['required_linear_history'] = $this->normalizer->normalize($object->getRequiredLinearHistory(), 'json', $context);
         }
-        if (null !== $object->getAllowForcePushes()) {
+        if ($object->isInitialized('allowForcePushes') && null !== $object->getAllowForcePushes()) {
             $data['allow_force_pushes'] = $this->normalizer->normalize($object->getAllowForcePushes(), 'json', $context);
         }
-        if (null !== $object->getAllowDeletions()) {
+        if ($object->isInitialized('allowDeletions') && null !== $object->getAllowDeletions()) {
             $data['allow_deletions'] = $this->normalizer->normalize($object->getAllowDeletions(), 'json', $context);
         }
         $data['enabled'] = $object->getEnabled();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getProtectionUrl()) {
+        if ($object->isInitialized('protectionUrl') && null !== $object->getProtectionUrl()) {
             $data['protection_url'] = $object->getProtectionUrl();
         }
         foreach ($object as $key => $value) {

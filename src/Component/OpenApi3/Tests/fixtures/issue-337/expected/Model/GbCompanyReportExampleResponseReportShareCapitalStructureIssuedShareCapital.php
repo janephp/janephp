@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportShareCapitalStructureIssuedShareCapital extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureIssuedShareCapita
      */
     public function setCurrency(string $currency) : self
     {
+        $this->initialized['currency'] = true;
         $this->currency = $currency;
         return $this;
     }
@@ -55,6 +64,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureIssuedShareCapita
      */
     public function setValue(float $value) : self
     {
+        $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
     }

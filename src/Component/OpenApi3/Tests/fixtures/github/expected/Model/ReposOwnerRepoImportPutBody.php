@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoImportPutBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The URL of the originating repository.
      *
      * @var string
@@ -52,6 +60,7 @@ class ReposOwnerRepoImportPutBody extends \ArrayObject
      */
     public function setVcsUrl(string $vcsUrl) : self
     {
+        $this->initialized['vcsUrl'] = true;
         $this->vcsUrl = $vcsUrl;
         return $this;
     }
@@ -73,6 +82,7 @@ class ReposOwnerRepoImportPutBody extends \ArrayObject
      */
     public function setVcs(string $vcs) : self
     {
+        $this->initialized['vcs'] = true;
         $this->vcs = $vcs;
         return $this;
     }
@@ -94,6 +104,7 @@ class ReposOwnerRepoImportPutBody extends \ArrayObject
      */
     public function setVcsUsername(string $vcsUsername) : self
     {
+        $this->initialized['vcsUsername'] = true;
         $this->vcsUsername = $vcsUsername;
         return $this;
     }
@@ -115,6 +126,7 @@ class ReposOwnerRepoImportPutBody extends \ArrayObject
      */
     public function setVcsPassword(string $vcsPassword) : self
     {
+        $this->initialized['vcsPassword'] = true;
         $this->vcsPassword = $vcsPassword;
         return $this;
     }
@@ -136,6 +148,7 @@ class ReposOwnerRepoImportPutBody extends \ArrayObject
      */
     public function setTfvcProject(string $tfvcProject) : self
     {
+        $this->initialized['tfvcProject'] = true;
         $this->tfvcProject = $tfvcProject;
         return $this;
     }

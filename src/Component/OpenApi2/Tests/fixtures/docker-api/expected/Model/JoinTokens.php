@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class JoinTokens
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The token workers can use to join the swarm.
      *
      * @var string
@@ -34,6 +42,7 @@ class JoinTokens
      */
     public function setWorker(string $worker) : self
     {
+        $this->initialized['worker'] = true;
         $this->worker = $worker;
         return $this;
     }
@@ -55,6 +64,7 @@ class JoinTokens
      */
     public function setManager(string $manager) : self
     {
+        $this->initialized['manager'] = true;
         $this->manager = $manager;
         return $this;
     }

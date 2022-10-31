@@ -5,6 +5,14 @@ namespace Github\Model;
 class ValidationErrorErrorsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -58,6 +66,7 @@ class ValidationErrorErrorsItem extends \ArrayObject
      */
     public function setResource(string $resource) : self
     {
+        $this->initialized['resource'] = true;
         $this->resource = $resource;
         return $this;
     }
@@ -79,6 +88,7 @@ class ValidationErrorErrorsItem extends \ArrayObject
      */
     public function setField(string $field) : self
     {
+        $this->initialized['field'] = true;
         $this->field = $field;
         return $this;
     }
@@ -100,6 +110,7 @@ class ValidationErrorErrorsItem extends \ArrayObject
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -121,6 +132,7 @@ class ValidationErrorErrorsItem extends \ArrayObject
      */
     public function setCode(string $code) : self
     {
+        $this->initialized['code'] = true;
         $this->code = $code;
         return $this;
     }
@@ -142,6 +154,7 @@ class ValidationErrorErrorsItem extends \ArrayObject
      */
     public function setIndex(int $index) : self
     {
+        $this->initialized['index'] = true;
         $this->index = $index;
         return $this;
     }
@@ -163,6 +176,7 @@ class ValidationErrorErrorsItem extends \ArrayObject
      */
     public function setValue($value) : self
     {
+        $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
     }

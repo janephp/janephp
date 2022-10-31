@@ -118,49 +118,49 @@ class ReposOwnerRepoPatchBodyNormalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getHomepage()) {
+        if ($object->isInitialized('homepage') && null !== $object->getHomepage()) {
             $data['homepage'] = $object->getHomepage();
         }
-        if (null !== $object->getPrivate()) {
+        if ($object->isInitialized('private') && null !== $object->getPrivate()) {
             $data['private'] = $object->getPrivate();
         }
-        if (null !== $object->getVisibility()) {
+        if ($object->isInitialized('visibility') && null !== $object->getVisibility()) {
             $data['visibility'] = $object->getVisibility();
         }
-        if (null !== $object->getHasIssues()) {
+        if ($object->isInitialized('hasIssues') && null !== $object->getHasIssues()) {
             $data['has_issues'] = $object->getHasIssues();
         }
-        if (null !== $object->getHasProjects()) {
+        if ($object->isInitialized('hasProjects') && null !== $object->getHasProjects()) {
             $data['has_projects'] = $object->getHasProjects();
         }
-        if (null !== $object->getHasWiki()) {
+        if ($object->isInitialized('hasWiki') && null !== $object->getHasWiki()) {
             $data['has_wiki'] = $object->getHasWiki();
         }
-        if (null !== $object->getIsTemplate()) {
+        if ($object->isInitialized('isTemplate') && null !== $object->getIsTemplate()) {
             $data['is_template'] = $object->getIsTemplate();
         }
-        if (null !== $object->getDefaultBranch()) {
+        if ($object->isInitialized('defaultBranch') && null !== $object->getDefaultBranch()) {
             $data['default_branch'] = $object->getDefaultBranch();
         }
-        if (null !== $object->getAllowSquashMerge()) {
+        if ($object->isInitialized('allowSquashMerge') && null !== $object->getAllowSquashMerge()) {
             $data['allow_squash_merge'] = $object->getAllowSquashMerge();
         }
-        if (null !== $object->getAllowMergeCommit()) {
+        if ($object->isInitialized('allowMergeCommit') && null !== $object->getAllowMergeCommit()) {
             $data['allow_merge_commit'] = $object->getAllowMergeCommit();
         }
-        if (null !== $object->getAllowRebaseMerge()) {
+        if ($object->isInitialized('allowRebaseMerge') && null !== $object->getAllowRebaseMerge()) {
             $data['allow_rebase_merge'] = $object->getAllowRebaseMerge();
         }
-        if (null !== $object->getDeleteBranchOnMerge()) {
+        if ($object->isInitialized('deleteBranchOnMerge') && null !== $object->getDeleteBranchOnMerge()) {
             $data['delete_branch_on_merge'] = $object->getDeleteBranchOnMerge();
         }
-        if (null !== $object->getArchived()) {
+        if ($object->isInitialized('archived') && null !== $object->getArchived()) {
             $data['archived'] = $object->getArchived();
         }
         foreach ($object as $key => $value) {

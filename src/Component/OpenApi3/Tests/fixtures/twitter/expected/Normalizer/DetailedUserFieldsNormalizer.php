@@ -58,7 +58,7 @@ class DetailedUserFieldsNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getStats()) {
+        if ($object->isInitialized('stats') && null !== $object->getStats()) {
             $data['stats'] = $this->normalizer->normalize($object->getStats(), 'json', $context);
         }
         foreach ($object as $key => $value) {

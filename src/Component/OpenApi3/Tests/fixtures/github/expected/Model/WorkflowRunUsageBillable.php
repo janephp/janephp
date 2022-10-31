@@ -5,6 +5,14 @@ namespace Github\Model;
 class WorkflowRunUsageBillable extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var WorkflowRunUsageBillableUBUNTU
@@ -40,6 +48,7 @@ class WorkflowRunUsageBillable extends \ArrayObject
      */
     public function setUBUNTU(WorkflowRunUsageBillableUBUNTU $uBUNTU) : self
     {
+        $this->initialized['uBUNTU'] = true;
         $this->uBUNTU = $uBUNTU;
         return $this;
     }
@@ -61,6 +70,7 @@ class WorkflowRunUsageBillable extends \ArrayObject
      */
     public function setMACOS(WorkflowRunUsageBillableMACOS $mACOS) : self
     {
+        $this->initialized['mACOS'] = true;
         $this->mACOS = $mACOS;
         return $this;
     }
@@ -82,6 +92,7 @@ class WorkflowRunUsageBillable extends \ArrayObject
      */
     public function setWINDOWS(WorkflowRunUsageBillableWINDOWS $wINDOWS) : self
     {
+        $this->initialized['wINDOWS'] = true;
         $this->wINDOWS = $wINDOWS;
         return $this;
     }

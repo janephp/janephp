@@ -114,29 +114,29 @@ class ClarifaiTaggingOptionsNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTagOutputFormatId()) {
+        if ($object->isInitialized('tagOutputFormatId') && null !== $object->getTagOutputFormatId()) {
             $data['tagOutputFormatId'] = $object->getTagOutputFormatId();
         }
-        if (null !== $object->getKeywordLookupCacheName()) {
+        if ($object->isInitialized('keywordLookupCacheName') && null !== $object->getKeywordLookupCacheName()) {
             $data['keywordLookupCacheName'] = $object->getKeywordLookupCacheName();
         }
-        if (null !== $object->getTaggingLayerId()) {
+        if ($object->isInitialized('taggingLayerId') && null !== $object->getTaggingLayerId()) {
             $data['taggingLayerId'] = $object->getTaggingLayerId();
         }
-        if (null !== $object->getFoundTagsFieldId()) {
+        if ($object->isInitialized('foundTagsFieldId') && null !== $object->getFoundTagsFieldId()) {
             $data['foundTagsFieldId'] = $object->getFoundTagsFieldId();
         }
-        if (null !== $object->getMissingKeywordsFieldId()) {
+        if ($object->isInitialized('missingKeywordsFieldId') && null !== $object->getMissingKeywordsFieldId()) {
             $data['missingKeywordsFieldId'] = $object->getMissingKeywordsFieldId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getModel()) {
+        if ($object->isInitialized('model') && null !== $object->getModel()) {
             $data['model'] = $object->getModel();
         }
-        if (null !== $object->getLanguage()) {
+        if ($object->isInitialized('language') && null !== $object->getLanguage()) {
             $data['language'] = $object->getLanguage();
         }
-        if (null !== $object->getMinimumValue()) {
+        if ($object->isInitialized('minimumValue') && null !== $object->getMinimumValue()) {
             $data['minimumValue'] = $object->getMinimumValue();
         }
         foreach ($object as $key => $value) {

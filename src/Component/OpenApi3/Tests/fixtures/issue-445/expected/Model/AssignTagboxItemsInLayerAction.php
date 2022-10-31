@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class AssignTagboxItemsInLayerAction extends BusinessRuleAction
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Named cache to use for lookup, should be of type SchemaTagboxFilterLookupNamedCacheConfiguration
      *
      * @var string|null
@@ -41,6 +49,7 @@ class AssignTagboxItemsInLayerAction extends BusinessRuleAction
      */
     public function setNamedCache(?string $namedCache) : self
     {
+        $this->initialized['namedCache'] = true;
         $this->namedCache = $namedCache;
         return $this;
     }
@@ -62,6 +71,7 @@ class AssignTagboxItemsInLayerAction extends BusinessRuleAction
      */
     public function setRefIds($refIds) : self
     {
+        $this->initialized['refIds'] = true;
         $this->refIds = $refIds;
         return $this;
     }
@@ -85,6 +95,7 @@ class AssignTagboxItemsInLayerAction extends BusinessRuleAction
     */
     public function setReplace(bool $replace) : self
     {
+        $this->initialized['replace'] = true;
         $this->replace = $replace;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportContactInformationMainAddress extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class GbCompanyReportExampleResponseReportContactInformationMainAddress extends 
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -61,6 +70,7 @@ class GbCompanyReportExampleResponseReportContactInformationMainAddress extends 
      */
     public function setSimpleValue(string $simpleValue) : self
     {
+        $this->initialized['simpleValue'] = true;
         $this->simpleValue = $simpleValue;
         return $this;
     }
@@ -82,6 +92,7 @@ class GbCompanyReportExampleResponseReportContactInformationMainAddress extends 
      */
     public function setPostalCode(string $postalCode) : self
     {
+        $this->initialized['postalCode'] = true;
         $this->postalCode = $postalCode;
         return $this;
     }

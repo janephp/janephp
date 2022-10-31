@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody extends \ArrayObject
      */
     public function setPersonalReference(string $personalReference) : self
     {
+        $this->initialized['personalReference'] = true;
         $this->personalReference = $personalReference;
         return $this;
     }
@@ -61,6 +70,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody extends \ArrayObject
      */
     public function setFreeText(string $freeText) : self
     {
+        $this->initialized['freeText'] = true;
         $this->freeText = $freeText;
         return $this;
     }
@@ -82,6 +92,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody extends \ArrayObject
      */
     public function setPersonalLimit(string $personalLimit) : self
     {
+        $this->initialized['personalLimit'] = true;
         $this->personalLimit = $personalLimit;
         return $this;
     }

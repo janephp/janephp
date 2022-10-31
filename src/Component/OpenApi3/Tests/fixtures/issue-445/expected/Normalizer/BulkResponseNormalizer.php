@@ -59,7 +59,7 @@ class BulkResponseNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRows()) {
+        if ($object->isInitialized('rows') && null !== $object->getRows()) {
             $values = array();
             foreach ($object->getRows() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

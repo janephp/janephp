@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UserAggregationRequest extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Limits the search by using a query string filter. The Lucene query string syntax is supported.
      *
      * @var string|null
@@ -82,6 +90,7 @@ class UserAggregationRequest extends \ArrayObject
      */
     public function setSearchString(?string $searchString) : self
     {
+        $this->initialized['searchString'] = true;
         $this->searchString = $searchString;
         return $this;
     }
@@ -103,6 +112,7 @@ class UserAggregationRequest extends \ArrayObject
      */
     public function setSearchBehaviors(?array $searchBehaviors) : self
     {
+        $this->initialized['searchBehaviors'] = true;
         $this->searchBehaviors = $searchBehaviors;
         return $this;
     }
@@ -124,6 +134,7 @@ class UserAggregationRequest extends \ArrayObject
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }
@@ -145,6 +156,7 @@ class UserAggregationRequest extends \ArrayObject
      */
     public function setLifeCycleFilter($lifeCycleFilter) : self
     {
+        $this->initialized['lifeCycleFilter'] = true;
         $this->lifeCycleFilter = $lifeCycleFilter;
         return $this;
     }
@@ -166,6 +178,7 @@ class UserAggregationRequest extends \ArrayObject
      */
     public function setUserRightsFilter(?array $userRightsFilter) : self
     {
+        $this->initialized['userRightsFilter'] = true;
         $this->userRightsFilter = $userRightsFilter;
         return $this;
     }
@@ -197,6 +210,7 @@ class UserAggregationRequest extends \ArrayObject
     */
     public function setAggregationFilters(?array $aggregationFilters) : self
     {
+        $this->initialized['aggregationFilters'] = true;
         $this->aggregationFilters = $aggregationFilters;
         return $this;
     }
@@ -218,6 +232,7 @@ class UserAggregationRequest extends \ArrayObject
      */
     public function setIncludeServiceUser(bool $includeServiceUser) : self
     {
+        $this->initialized['includeServiceUser'] = true;
         $this->includeServiceUser = $includeServiceUser;
         return $this;
     }
@@ -241,6 +256,7 @@ class UserAggregationRequest extends \ArrayObject
     */
     public function setEditableOnly(bool $editableOnly) : self
     {
+        $this->initialized['editableOnly'] = true;
         $this->editableOnly = $editableOnly;
         return $this;
     }
@@ -262,6 +278,7 @@ class UserAggregationRequest extends \ArrayObject
      */
     public function setAggregators(array $aggregators) : self
     {
+        $this->initialized['aggregators'] = true;
         $this->aggregators = $aggregators;
         return $this;
     }

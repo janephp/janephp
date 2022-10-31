@@ -5,6 +5,14 @@ namespace Github\Model;
 class WorkflowUsage extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var WorkflowUsageBillable
@@ -28,6 +36,7 @@ class WorkflowUsage extends \ArrayObject
      */
     public function setBillable(WorkflowUsageBillable $billable) : self
     {
+        $this->initialized['billable'] = true;
         $this->billable = $billable;
         return $this;
     }

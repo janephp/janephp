@@ -5,6 +5,14 @@ namespace Github\Model;
 class RepositoryInvitation extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Unique identifier of the repository invitation.
      *
      * @var int
@@ -76,6 +84,7 @@ class RepositoryInvitation extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -97,6 +106,7 @@ class RepositoryInvitation extends \ArrayObject
      */
     public function setRepository(MinimalRepository $repository) : self
     {
+        $this->initialized['repository'] = true;
         $this->repository = $repository;
         return $this;
     }
@@ -118,6 +128,7 @@ class RepositoryInvitation extends \ArrayObject
      */
     public function setInvitee(?RepositoryInvitationInvitee $invitee) : self
     {
+        $this->initialized['invitee'] = true;
         $this->invitee = $invitee;
         return $this;
     }
@@ -139,6 +150,7 @@ class RepositoryInvitation extends \ArrayObject
      */
     public function setInviter(?RepositoryInvitationInviter $inviter) : self
     {
+        $this->initialized['inviter'] = true;
         $this->inviter = $inviter;
         return $this;
     }
@@ -160,6 +172,7 @@ class RepositoryInvitation extends \ArrayObject
      */
     public function setPermissions(string $permissions) : self
     {
+        $this->initialized['permissions'] = true;
         $this->permissions = $permissions;
         return $this;
     }
@@ -181,6 +194,7 @@ class RepositoryInvitation extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -202,6 +216,7 @@ class RepositoryInvitation extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -223,6 +238,7 @@ class RepositoryInvitation extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -244,6 +260,7 @@ class RepositoryInvitation extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }

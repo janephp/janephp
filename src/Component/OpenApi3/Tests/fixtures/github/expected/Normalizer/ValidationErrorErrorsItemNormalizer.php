@@ -82,20 +82,20 @@ class ValidationErrorErrorsItemNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getResource()) {
+        if ($object->isInitialized('resource') && null !== $object->getResource()) {
             $data['resource'] = $object->getResource();
         }
-        if (null !== $object->getField()) {
+        if ($object->isInitialized('field') && null !== $object->getField()) {
             $data['field'] = $object->getField();
         }
-        if (null !== $object->getMessage()) {
+        if ($object->isInitialized('message') && null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
         $data['code'] = $object->getCode();
-        if (null !== $object->getIndex()) {
+        if ($object->isInitialized('index') && null !== $object->getIndex()) {
             $data['index'] = $object->getIndex();
         }
-        if (null !== $object->getValue()) {
+        if ($object->isInitialized('value') && null !== $object->getValue()) {
             $data['value'] = $object->getValue();
         }
         foreach ($object as $key => $value) {

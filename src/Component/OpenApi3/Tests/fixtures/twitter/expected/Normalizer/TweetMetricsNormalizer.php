@@ -68,7 +68,7 @@ class TweetMetricsNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data = array();
         $data['tweet_id'] = $object->getTweetId();
         $data['tweet'] = $this->normalizer->normalize($object->getTweet(), 'json', $context);
-        if (null !== $object->getVideo()) {
+        if ($object->isInitialized('video') && null !== $object->getVideo()) {
             $data['video'] = $this->normalizer->normalize($object->getVideo(), 'json', $context);
         }
         foreach ($object as $key => $value) {

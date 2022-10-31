@@ -70,10 +70,10 @@ class ReposOwnerRepoActionsArtifactsGetResponse200Normalizer implements Denormal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTotalCount()) {
+        if ($object->isInitialized('totalCount') && null !== $object->getTotalCount()) {
             $data['total_count'] = $object->getTotalCount();
         }
-        if (null !== $object->getArtifacts()) {
+        if ($object->isInitialized('artifacts') && null !== $object->getArtifacts()) {
             $values = array();
             foreach ($object->getArtifacts() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

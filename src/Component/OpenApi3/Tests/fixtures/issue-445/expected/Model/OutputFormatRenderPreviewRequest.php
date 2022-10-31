@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class OutputFormatRenderPreviewRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The content for which the format should be rendered
      *
      * @var string|null
@@ -34,6 +42,7 @@ class OutputFormatRenderPreviewRequest
      */
     public function setContentId(?string $contentId) : self
     {
+        $this->initialized['contentId'] = true;
         $this->contentId = $contentId;
         return $this;
     }
@@ -55,6 +64,7 @@ class OutputFormatRenderPreviewRequest
      */
     public function setOutputFormat($outputFormat) : self
     {
+        $this->initialized['outputFormat'] = true;
         $this->outputFormat = $outputFormat;
         return $this;
     }

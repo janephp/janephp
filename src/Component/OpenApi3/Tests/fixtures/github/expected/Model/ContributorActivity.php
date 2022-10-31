@@ -5,6 +5,14 @@ namespace Github\Model;
 class ContributorActivity extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var ContributorActivityAuthor|null
@@ -40,6 +48,7 @@ class ContributorActivity extends \ArrayObject
      */
     public function setAuthor(?ContributorActivityAuthor $author) : self
     {
+        $this->initialized['author'] = true;
         $this->author = $author;
         return $this;
     }
@@ -61,6 +70,7 @@ class ContributorActivity extends \ArrayObject
      */
     public function setTotal(int $total) : self
     {
+        $this->initialized['total'] = true;
         $this->total = $total;
         return $this;
     }
@@ -82,6 +92,7 @@ class ContributorActivity extends \ArrayObject
      */
     public function setWeeks(array $weeks) : self
     {
+        $this->initialized['weeks'] = true;
         $this->weeks = $weeks;
         return $this;
     }

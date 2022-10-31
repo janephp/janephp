@@ -68,10 +68,10 @@ class GbCompanyReportExampleResponseReportNegativeInformationCcjSummaryNormalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getExactRegistered()) {
+        if ($object->isInitialized('exactRegistered') && null !== $object->getExactRegistered()) {
             $data['exactRegistered'] = $object->getExactRegistered();
         }
-        if (null !== $object->getPossibleRegistered()) {
+        if ($object->isInitialized('possibleRegistered') && null !== $object->getPossibleRegistered()) {
             $data['possibleRegistered'] = $object->getPossibleRegistered();
         }
         foreach ($object as $key => $value) {

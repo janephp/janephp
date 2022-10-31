@@ -72,11 +72,11 @@ class TakeDictionaryValueTransformationNormalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getKey()) {
+        if ($object->isInitialized('key') && null !== $object->getKey()) {
             $data['key'] = $object->getKey();
         }
         foreach ($object as $key => $value) {

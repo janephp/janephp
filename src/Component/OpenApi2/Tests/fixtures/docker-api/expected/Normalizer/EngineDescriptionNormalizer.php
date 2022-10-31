@@ -70,17 +70,17 @@ class EngineDescriptionNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getEngineVersion()) {
+        if ($object->isInitialized('engineVersion') && null !== $object->getEngineVersion()) {
             $data['EngineVersion'] = $object->getEngineVersion();
         }
-        if (null !== $object->getLabels()) {
+        if ($object->isInitialized('labels') && null !== $object->getLabels()) {
             $values = array();
             foreach ($object->getLabels() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['Labels'] = $values;
         }
-        if (null !== $object->getPlugins()) {
+        if ($object->isInitialized('plugins') && null !== $object->getPlugins()) {
             $values_1 = array();
             foreach ($object->getPlugins() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

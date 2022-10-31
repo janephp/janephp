@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ContainerSummary
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of this container
      *
      * @var string
@@ -112,6 +120,7 @@ class ContainerSummary
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -133,6 +142,7 @@ class ContainerSummary
      */
     public function setNames(array $names) : self
     {
+        $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }
@@ -154,6 +164,7 @@ class ContainerSummary
      */
     public function setImage(string $image) : self
     {
+        $this->initialized['image'] = true;
         $this->image = $image;
         return $this;
     }
@@ -175,6 +186,7 @@ class ContainerSummary
      */
     public function setImageID(string $imageID) : self
     {
+        $this->initialized['imageID'] = true;
         $this->imageID = $imageID;
         return $this;
     }
@@ -196,6 +208,7 @@ class ContainerSummary
      */
     public function setCommand(string $command) : self
     {
+        $this->initialized['command'] = true;
         $this->command = $command;
         return $this;
     }
@@ -217,6 +230,7 @@ class ContainerSummary
      */
     public function setCreated(int $created) : self
     {
+        $this->initialized['created'] = true;
         $this->created = $created;
         return $this;
     }
@@ -238,6 +252,7 @@ class ContainerSummary
      */
     public function setPorts(array $ports) : self
     {
+        $this->initialized['ports'] = true;
         $this->ports = $ports;
         return $this;
     }
@@ -259,6 +274,7 @@ class ContainerSummary
      */
     public function setSizeRw(int $sizeRw) : self
     {
+        $this->initialized['sizeRw'] = true;
         $this->sizeRw = $sizeRw;
         return $this;
     }
@@ -280,6 +296,7 @@ class ContainerSummary
      */
     public function setSizeRootFs(int $sizeRootFs) : self
     {
+        $this->initialized['sizeRootFs'] = true;
         $this->sizeRootFs = $sizeRootFs;
         return $this;
     }
@@ -301,6 +318,7 @@ class ContainerSummary
      */
     public function setLabels(iterable $labels) : self
     {
+        $this->initialized['labels'] = true;
         $this->labels = $labels;
         return $this;
     }
@@ -322,6 +340,7 @@ class ContainerSummary
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -343,6 +362,7 @@ class ContainerSummary
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -364,6 +384,7 @@ class ContainerSummary
      */
     public function setHostConfig(ContainerSummaryHostConfig $hostConfig) : self
     {
+        $this->initialized['hostConfig'] = true;
         $this->hostConfig = $hostConfig;
         return $this;
     }
@@ -385,6 +406,7 @@ class ContainerSummary
      */
     public function setNetworkSettings(ContainerSummaryNetworkSettings $networkSettings) : self
     {
+        $this->initialized['networkSettings'] = true;
         $this->networkSettings = $networkSettings;
         return $this;
     }
@@ -406,6 +428,7 @@ class ContainerSummary
      */
     public function setMounts(array $mounts) : self
     {
+        $this->initialized['mounts'] = true;
         $this->mounts = $mounts;
         return $this;
     }

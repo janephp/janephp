@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class FileTransferOutput
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -40,6 +48,7 @@ class FileTransferOutput
      */
     public function setId(?string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -61,6 +70,7 @@ class FileTransferOutput
      */
     public function setFilePath(?string $filePath) : self
     {
+        $this->initialized['filePath'] = true;
         $this->filePath = $filePath;
         return $this;
     }
@@ -82,6 +92,7 @@ class FileTransferOutput
      */
     public function setOutputSource(string $outputSource) : self
     {
+        $this->initialized['outputSource'] = true;
         $this->outputSource = $outputSource;
         return $this;
     }

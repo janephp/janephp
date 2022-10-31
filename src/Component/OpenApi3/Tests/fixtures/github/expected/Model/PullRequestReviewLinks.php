@@ -5,6 +5,14 @@ namespace Github\Model;
 class PullRequestReviewLinks extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var PullRequestReviewLinksHtml
@@ -34,6 +42,7 @@ class PullRequestReviewLinks extends \ArrayObject
      */
     public function setHtml(PullRequestReviewLinksHtml $html) : self
     {
+        $this->initialized['html'] = true;
         $this->html = $html;
         return $this;
     }
@@ -55,6 +64,7 @@ class PullRequestReviewLinks extends \ArrayObject
      */
     public function setPullRequest(PullRequestReviewLinksPullRequest $pullRequest) : self
     {
+        $this->initialized['pullRequest'] = true;
         $this->pullRequest = $pullRequest;
         return $this;
     }

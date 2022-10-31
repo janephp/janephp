@@ -5,6 +5,14 @@ namespace Github\Model;
 class ProjectColumn extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -70,6 +78,7 @@ class ProjectColumn extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -91,6 +100,7 @@ class ProjectColumn extends \ArrayObject
      */
     public function setProjectUrl(string $projectUrl) : self
     {
+        $this->initialized['projectUrl'] = true;
         $this->projectUrl = $projectUrl;
         return $this;
     }
@@ -112,6 +122,7 @@ class ProjectColumn extends \ArrayObject
      */
     public function setCardsUrl(string $cardsUrl) : self
     {
+        $this->initialized['cardsUrl'] = true;
         $this->cardsUrl = $cardsUrl;
         return $this;
     }
@@ -133,6 +144,7 @@ class ProjectColumn extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -154,6 +166,7 @@ class ProjectColumn extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -175,6 +188,7 @@ class ProjectColumn extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -196,6 +210,7 @@ class ProjectColumn extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -217,6 +232,7 @@ class ProjectColumn extends \ArrayObject
      */
     public function setUpdatedAt(\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }

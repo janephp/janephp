@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class LiveStreamMessage extends Message
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -58,6 +66,7 @@ class LiveStreamMessage extends Message
      */
     public function setCustomerId(?string $customerId) : self
     {
+        $this->initialized['customerId'] = true;
         $this->customerId = $customerId;
         return $this;
     }
@@ -79,6 +88,7 @@ class LiveStreamMessage extends Message
      */
     public function setCustomerAlias(?string $customerAlias) : self
     {
+        $this->initialized['customerAlias'] = true;
         $this->customerAlias = $customerAlias;
         return $this;
     }
@@ -100,6 +110,7 @@ class LiveStreamMessage extends Message
      */
     public function setTimestamp(\DateTime $timestamp) : self
     {
+        $this->initialized['timestamp'] = true;
         $this->timestamp = $timestamp;
         return $this;
     }
@@ -121,6 +132,7 @@ class LiveStreamMessage extends Message
      */
     public function setScope(?string $scope) : self
     {
+        $this->initialized['scope'] = true;
         $this->scope = $scope;
         return $this;
     }
@@ -142,6 +154,7 @@ class LiveStreamMessage extends Message
      */
     public function setDocumentChange($documentChange) : self
     {
+        $this->initialized['documentChange'] = true;
         $this->documentChange = $documentChange;
         return $this;
     }
@@ -163,6 +176,7 @@ class LiveStreamMessage extends Message
      */
     public function setApplicationEvent($applicationEvent) : self
     {
+        $this->initialized['applicationEvent'] = true;
         $this->applicationEvent = $applicationEvent;
         return $this;
     }

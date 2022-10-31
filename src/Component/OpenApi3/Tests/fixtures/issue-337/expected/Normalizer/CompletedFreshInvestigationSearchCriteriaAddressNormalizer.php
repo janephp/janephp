@@ -66,13 +66,13 @@ class CompletedFreshInvestigationSearchCriteriaAddressNormalizer implements Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCity()) {
+        if ($object->isInitialized('city') && null !== $object->getCity()) {
             $data['city'] = $object->getCity();
         }
-        if (null !== $object->getPostcode()) {
+        if ($object->isInitialized('postcode') && null !== $object->getPostcode()) {
             $data['postcode'] = $object->getPostcode();
         }
-        if (null !== $object->getSimple()) {
+        if ($object->isInitialized('simple') && null !== $object->getSimple()) {
             $data['simple'] = $object->getSimple();
         }
         foreach ($object as $key => $value) {

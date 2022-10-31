@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class SwarmSpecTaskDefaults
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * The log driver to use for tasks created in the orchestrator if
     unspecified by a service.
     
@@ -43,6 +51,7 @@ class SwarmSpecTaskDefaults
     */
     public function setLogDriver(SwarmSpecTaskDefaultsLogDriver $logDriver) : self
     {
+        $this->initialized['logDriver'] = true;
         $this->logDriver = $logDriver;
         return $this;
     }

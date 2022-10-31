@@ -5,6 +5,14 @@ namespace Github\Model;
 class BranchShort extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class BranchShort extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -61,6 +70,7 @@ class BranchShort extends \ArrayObject
      */
     public function setCommit(BranchShortCommit $commit) : self
     {
+        $this->initialized['commit'] = true;
         $this->commit = $commit;
         return $this;
     }
@@ -82,6 +92,7 @@ class BranchShort extends \ArrayObject
      */
     public function setProtected(bool $protected) : self
     {
+        $this->initialized['protected'] = true;
         $this->protected = $protected;
         return $this;
     }

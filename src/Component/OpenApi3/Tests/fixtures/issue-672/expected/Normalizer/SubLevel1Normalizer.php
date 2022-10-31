@@ -58,7 +58,7 @@ class SubLevel1Normalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSubLevel2()) {
+        if ($object->isInitialized('subLevel2') && null !== $object->getSubLevel2()) {
             $data['subLevel-2'] = $this->normalizer->normalize($object->getSubLevel2(), 'json', $context);
         }
         foreach ($object as $key => $value) {

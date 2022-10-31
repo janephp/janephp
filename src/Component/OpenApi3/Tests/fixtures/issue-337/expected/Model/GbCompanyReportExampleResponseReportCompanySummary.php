@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportCompanySummary extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -76,6 +84,7 @@ class GbCompanyReportExampleResponseReportCompanySummary extends \ArrayObject
      */
     public function setBusinessName(string $businessName) : self
     {
+        $this->initialized['businessName'] = true;
         $this->businessName = $businessName;
         return $this;
     }
@@ -97,6 +106,7 @@ class GbCompanyReportExampleResponseReportCompanySummary extends \ArrayObject
      */
     public function setCountry(string $country) : self
     {
+        $this->initialized['country'] = true;
         $this->country = $country;
         return $this;
     }
@@ -118,6 +128,7 @@ class GbCompanyReportExampleResponseReportCompanySummary extends \ArrayObject
      */
     public function setCompanyNumber(string $companyNumber) : self
     {
+        $this->initialized['companyNumber'] = true;
         $this->companyNumber = $companyNumber;
         return $this;
     }
@@ -139,6 +150,7 @@ class GbCompanyReportExampleResponseReportCompanySummary extends \ArrayObject
      */
     public function setCompanyRegistrationNumber(string $companyRegistrationNumber) : self
     {
+        $this->initialized['companyRegistrationNumber'] = true;
         $this->companyRegistrationNumber = $companyRegistrationNumber;
         return $this;
     }
@@ -160,6 +172,7 @@ class GbCompanyReportExampleResponseReportCompanySummary extends \ArrayObject
      */
     public function setMainActivity(GbCompanyReportExampleResponseReportCompanySummaryMainActivity $mainActivity) : self
     {
+        $this->initialized['mainActivity'] = true;
         $this->mainActivity = $mainActivity;
         return $this;
     }
@@ -181,6 +194,7 @@ class GbCompanyReportExampleResponseReportCompanySummary extends \ArrayObject
      */
     public function setCompanyStatus(GbCompanyReportExampleResponseReportCompanySummaryCompanyStatus $companyStatus) : self
     {
+        $this->initialized['companyStatus'] = true;
         $this->companyStatus = $companyStatus;
         return $this;
     }
@@ -202,6 +216,7 @@ class GbCompanyReportExampleResponseReportCompanySummary extends \ArrayObject
      */
     public function setLatestTurnoverFigure(GbCompanyReportExampleResponseReportCompanySummaryLatestTurnoverFigure $latestTurnoverFigure) : self
     {
+        $this->initialized['latestTurnoverFigure'] = true;
         $this->latestTurnoverFigure = $latestTurnoverFigure;
         return $this;
     }
@@ -223,6 +238,7 @@ class GbCompanyReportExampleResponseReportCompanySummary extends \ArrayObject
      */
     public function setLatestShareholdersEquityFigure(GbCompanyReportExampleResponseReportCompanySummaryLatestShareholdersEquityFigure $latestShareholdersEquityFigure) : self
     {
+        $this->initialized['latestShareholdersEquityFigure'] = true;
         $this->latestShareholdersEquityFigure = $latestShareholdersEquityFigure;
         return $this;
     }
@@ -244,6 +260,7 @@ class GbCompanyReportExampleResponseReportCompanySummary extends \ArrayObject
      */
     public function setCreditRating(GbCompanyReportExampleResponseReportCompanySummaryCreditRating $creditRating) : self
     {
+        $this->initialized['creditRating'] = true;
         $this->creditRating = $creditRating;
         return $this;
     }

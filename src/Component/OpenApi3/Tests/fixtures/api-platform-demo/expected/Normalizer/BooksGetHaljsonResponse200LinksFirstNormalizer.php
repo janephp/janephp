@@ -58,7 +58,7 @@ class BooksGetHaljsonResponse200LinksFirstNormalizer implements DenormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getHref()) {
+        if ($object->isInitialized('href') && null !== $object->getHref()) {
             $data['href'] = $object->getHref();
         }
         foreach ($object as $key => $value) {

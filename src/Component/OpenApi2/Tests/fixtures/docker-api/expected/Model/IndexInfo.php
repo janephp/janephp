@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class IndexInfo
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Name of the registry, such as "docker.io".
      *
      * @var string
@@ -58,6 +66,7 @@ class IndexInfo
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -79,6 +88,7 @@ class IndexInfo
      */
     public function setMirrors(array $mirrors) : self
     {
+        $this->initialized['mirrors'] = true;
         $this->mirrors = $mirrors;
         return $this;
     }
@@ -124,6 +134,7 @@ class IndexInfo
     */
     public function setSecure(bool $secure) : self
     {
+        $this->initialized['secure'] = true;
         $this->secure = $secure;
         return $this;
     }
@@ -145,6 +156,7 @@ class IndexInfo
      */
     public function setOfficial(bool $official) : self
     {
+        $this->initialized['official'] = true;
         $this->official = $official;
         return $this;
     }

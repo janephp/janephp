@@ -5,6 +5,14 @@ namespace Github\Model;
 class FeedLinks extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Hypermedia Link with Type
      *
      * @var LinkWithType
@@ -70,6 +78,7 @@ class FeedLinks extends \ArrayObject
      */
     public function setTimeline(LinkWithType $timeline) : self
     {
+        $this->initialized['timeline'] = true;
         $this->timeline = $timeline;
         return $this;
     }
@@ -91,6 +100,7 @@ class FeedLinks extends \ArrayObject
      */
     public function setUser(LinkWithType $user) : self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
     }
@@ -112,6 +122,7 @@ class FeedLinks extends \ArrayObject
      */
     public function setSecurityAdvisories(LinkWithType $securityAdvisories) : self
     {
+        $this->initialized['securityAdvisories'] = true;
         $this->securityAdvisories = $securityAdvisories;
         return $this;
     }
@@ -133,6 +144,7 @@ class FeedLinks extends \ArrayObject
      */
     public function setCurrentUser(LinkWithType $currentUser) : self
     {
+        $this->initialized['currentUser'] = true;
         $this->currentUser = $currentUser;
         return $this;
     }
@@ -154,6 +166,7 @@ class FeedLinks extends \ArrayObject
      */
     public function setCurrentUserPublic(LinkWithType $currentUserPublic) : self
     {
+        $this->initialized['currentUserPublic'] = true;
         $this->currentUserPublic = $currentUserPublic;
         return $this;
     }
@@ -175,6 +188,7 @@ class FeedLinks extends \ArrayObject
      */
     public function setCurrentUserActor(LinkWithType $currentUserActor) : self
     {
+        $this->initialized['currentUserActor'] = true;
         $this->currentUserActor = $currentUserActor;
         return $this;
     }
@@ -196,6 +210,7 @@ class FeedLinks extends \ArrayObject
      */
     public function setCurrentUserOrganization(LinkWithType $currentUserOrganization) : self
     {
+        $this->initialized['currentUserOrganization'] = true;
         $this->currentUserOrganization = $currentUserOrganization;
         return $this;
     }
@@ -217,6 +232,7 @@ class FeedLinks extends \ArrayObject
      */
     public function setCurrentUserOrganizations(array $currentUserOrganizations) : self
     {
+        $this->initialized['currentUserOrganizations'] = true;
         $this->currentUserOrganizations = $currentUserOrganizations;
         return $this;
     }

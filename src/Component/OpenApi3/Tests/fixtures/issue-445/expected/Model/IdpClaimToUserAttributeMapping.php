@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class IdpClaimToUserAttributeMapping
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Claim type name coming from external identity provider
      *
      * @var string|null
@@ -34,6 +42,7 @@ class IdpClaimToUserAttributeMapping
      */
     public function setClaimType(?string $claimType) : self
     {
+        $this->initialized['claimType'] = true;
         $this->claimType = $claimType;
         return $this;
     }
@@ -55,6 +64,7 @@ class IdpClaimToUserAttributeMapping
      */
     public function setUserAttributePath(?string $userAttributePath) : self
     {
+        $this->initialized['userAttributePath'] = true;
         $this->userAttributePath = $userAttributePath;
         return $this;
     }

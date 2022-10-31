@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessProcessWaitForStateResult
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The state that was hit.
      *
      * @var string|null
@@ -34,6 +42,7 @@ class BusinessProcessWaitForStateResult
      */
     public function setStateHit(?string $stateHit) : self
     {
+        $this->initialized['stateHit'] = true;
         $this->stateHit = $stateHit;
         return $this;
     }
@@ -55,6 +64,7 @@ class BusinessProcessWaitForStateResult
      */
     public function setBusinessProcess($businessProcess) : self
     {
+        $this->initialized['businessProcess'] = true;
         $this->businessProcess = $businessProcess;
         return $this;
     }

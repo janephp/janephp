@@ -87,7 +87,7 @@ class IssueEventProjectCardNormalizer implements DenormalizerInterface, Normaliz
         $data['project_url'] = $object->getProjectUrl();
         $data['project_id'] = $object->getProjectId();
         $data['column_name'] = $object->getColumnName();
-        if (null !== $object->getPreviousColumnName()) {
+        if ($object->isInitialized('previousColumnName') && null !== $object->getPreviousColumnName()) {
             $data['previous_column_name'] = $object->getPreviousColumnName();
         }
         foreach ($object as $key => $value) {

@@ -86,28 +86,28 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAddressConflict()) {
+        if ($object->isInitialized('addressConflict') && null !== $object->getAddressConflict()) {
             $data['addressConflict'] = $object->getAddressConflict();
         }
-        if (null !== $object->getCitizenshipConflict()) {
+        if ($object->isInitialized('citizenshipConflict') && null !== $object->getCitizenshipConflict()) {
             $data['citizenshipConflict'] = $object->getCitizenshipConflict();
         }
-        if (null !== $object->getCountryConflict()) {
+        if ($object->isInitialized('countryConflict') && null !== $object->getCountryConflict()) {
             $data['countryConflict'] = $object->getCountryConflict();
         }
-        if (null !== $object->getDobConflict()) {
+        if ($object->isInitialized('dobConflict') && null !== $object->getDobConflict()) {
             $data['dobConflict'] = $object->getDobConflict();
         }
-        if (null !== $object->getEntityTypeConflict()) {
+        if ($object->isInitialized('entityTypeConflict') && null !== $object->getEntityTypeConflict()) {
             $data['entityTypeConflict'] = $object->getEntityTypeConflict();
         }
-        if (null !== $object->getGenderConflict()) {
+        if ($object->isInitialized('genderConflict') && null !== $object->getGenderConflict()) {
             $data['genderConflict'] = $object->getGenderConflict();
         }
-        if (null !== $object->getIdConflict()) {
+        if ($object->isInitialized('idConflict') && null !== $object->getIdConflict()) {
             $data['idConflict'] = $object->getIdConflict();
         }
-        if (null !== $object->getPhoneConflict()) {
+        if ($object->isInitialized('phoneConflict') && null !== $object->getPhoneConflict()) {
             $data['phoneConflict'] = $object->getPhoneConflict();
         }
         foreach ($object as $key => $value) {

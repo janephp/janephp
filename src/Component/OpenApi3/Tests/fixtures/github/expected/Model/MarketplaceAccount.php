@@ -5,6 +5,14 @@ namespace Github\Model;
 class MarketplaceAccount extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -64,6 +72,7 @@ class MarketplaceAccount extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -85,6 +94,7 @@ class MarketplaceAccount extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -106,6 +116,7 @@ class MarketplaceAccount extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -127,6 +138,7 @@ class MarketplaceAccount extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -148,6 +160,7 @@ class MarketplaceAccount extends \ArrayObject
      */
     public function setLogin(string $login) : self
     {
+        $this->initialized['login'] = true;
         $this->login = $login;
         return $this;
     }
@@ -169,6 +182,7 @@ class MarketplaceAccount extends \ArrayObject
      */
     public function setEmail(?string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -190,6 +204,7 @@ class MarketplaceAccount extends \ArrayObject
      */
     public function setOrganizationBillingEmail(?string $organizationBillingEmail) : self
     {
+        $this->initialized['organizationBillingEmail'] = true;
         $this->organizationBillingEmail = $organizationBillingEmail;
         return $this;
     }

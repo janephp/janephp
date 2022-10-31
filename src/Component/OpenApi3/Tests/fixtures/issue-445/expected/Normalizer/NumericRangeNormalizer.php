@@ -73,13 +73,13 @@ class NumericRangeNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNames()) {
+        if ($object->isInitialized('names') && null !== $object->getNames()) {
             $data['names'] = $object->getNames();
         }
-        if (null !== $object->getFrom()) {
+        if ($object->isInitialized('from') && null !== $object->getFrom()) {
             $data['from'] = $object->getFrom();
         }
-        if (null !== $object->getTo()) {
+        if ($object->isInitialized('to') && null !== $object->getTo()) {
             $data['to'] = $object->getTo();
         }
         return $data;

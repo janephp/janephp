@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessRuleTracedEvaluationCondition
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Trace reference ID of condition.
      *
      * @var string|null
@@ -40,6 +48,7 @@ class BusinessRuleTracedEvaluationCondition
      */
     public function setTraceRefId(?string $traceRefId) : self
     {
+        $this->initialized['traceRefId'] = true;
         $this->traceRefId = $traceRefId;
         return $this;
     }
@@ -61,6 +70,7 @@ class BusinessRuleTracedEvaluationCondition
      */
     public function setSatisfied(bool $satisfied) : self
     {
+        $this->initialized['satisfied'] = true;
         $this->satisfied = $satisfied;
         return $this;
     }
@@ -82,6 +92,7 @@ class BusinessRuleTracedEvaluationCondition
      */
     public function setReason(?string $reason) : self
     {
+        $this->initialized['reason'] = true;
         $this->reason = $reason;
         return $this;
     }

@@ -94,35 +94,35 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUsers()) {
+        if ($object->isInitialized('users') && null !== $object->getUsers()) {
             $values = array();
             foreach ($object->getUsers() as $value) {
                 $values[] = $value;
             }
             $data['users'] = $values;
         }
-        if (null !== $object->getTweets()) {
+        if ($object->isInitialized('tweets') && null !== $object->getTweets()) {
             $values_1 = array();
             foreach ($object->getTweets() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['tweets'] = $values_1;
         }
-        if (null !== $object->getPlaces()) {
+        if ($object->isInitialized('places') && null !== $object->getPlaces()) {
             $values_2 = array();
             foreach ($object->getPlaces() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['places'] = $values_2;
         }
-        if (null !== $object->getMedia()) {
+        if ($object->isInitialized('media') && null !== $object->getMedia()) {
             $values_3 = array();
             foreach ($object->getMedia() as $value_3) {
                 $values_3[] = $value_3;
             }
             $data['media'] = $values_3;
         }
-        if (null !== $object->getPolls()) {
+        if ($object->isInitialized('polls') && null !== $object->getPolls()) {
             $values_4 = array();
             foreach ($object->getPolls() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);

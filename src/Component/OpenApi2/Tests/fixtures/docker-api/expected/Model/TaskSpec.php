@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class TaskSpec
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * Plugin spec for the service.  *(Experimental release only.)*
     
     <p><br /></p>
@@ -132,6 +140,7 @@ class TaskSpec
     */
     public function setPluginSpec(TaskSpecPluginSpec $pluginSpec) : self
     {
+        $this->initialized['pluginSpec'] = true;
         $this->pluginSpec = $pluginSpec;
         return $this;
     }
@@ -169,6 +178,7 @@ class TaskSpec
     */
     public function setContainerSpec(TaskSpecContainerSpec $containerSpec) : self
     {
+        $this->initialized['containerSpec'] = true;
         $this->containerSpec = $containerSpec;
         return $this;
     }
@@ -208,6 +218,7 @@ class TaskSpec
     */
     public function setNetworkAttachmentSpec(TaskSpecNetworkAttachmentSpec $networkAttachmentSpec) : self
     {
+        $this->initialized['networkAttachmentSpec'] = true;
         $this->networkAttachmentSpec = $networkAttachmentSpec;
         return $this;
     }
@@ -233,6 +244,7 @@ class TaskSpec
     */
     public function setResources(TaskSpecResources $resources) : self
     {
+        $this->initialized['resources'] = true;
         $this->resources = $resources;
         return $this;
     }
@@ -258,6 +270,7 @@ class TaskSpec
     */
     public function setRestartPolicy(TaskSpecRestartPolicy $restartPolicy) : self
     {
+        $this->initialized['restartPolicy'] = true;
         $this->restartPolicy = $restartPolicy;
         return $this;
     }
@@ -279,6 +292,7 @@ class TaskSpec
      */
     public function setPlacement(TaskSpecPlacement $placement) : self
     {
+        $this->initialized['placement'] = true;
         $this->placement = $placement;
         return $this;
     }
@@ -304,6 +318,7 @@ class TaskSpec
     */
     public function setForceUpdate(int $forceUpdate) : self
     {
+        $this->initialized['forceUpdate'] = true;
         $this->forceUpdate = $forceUpdate;
         return $this;
     }
@@ -325,6 +340,7 @@ class TaskSpec
      */
     public function setRuntime(string $runtime) : self
     {
+        $this->initialized['runtime'] = true;
         $this->runtime = $runtime;
         return $this;
     }
@@ -346,6 +362,7 @@ class TaskSpec
      */
     public function setNetworks(array $networks) : self
     {
+        $this->initialized['networks'] = true;
         $this->networks = $networks;
         return $this;
     }
@@ -373,6 +390,7 @@ class TaskSpec
     */
     public function setLogDriver(TaskSpecLogDriver $logDriver) : self
     {
+        $this->initialized['logDriver'] = true;
         $this->logDriver = $logDriver;
         return $this;
     }

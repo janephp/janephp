@@ -79,14 +79,14 @@ class ContentRelationItemAssignedConditionNormalizer implements DenormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getContentId()) {
+        if ($object->isInitialized('contentId') && null !== $object->getContentId()) {
             $data['contentId'] = $object->getContentId();
         }
-        if (null !== $object->getFieldPath()) {
+        if ($object->isInitialized('fieldPath') && null !== $object->getFieldPath()) {
             $data['fieldPath'] = $object->getFieldPath();
         }
         foreach ($object as $key => $value) {

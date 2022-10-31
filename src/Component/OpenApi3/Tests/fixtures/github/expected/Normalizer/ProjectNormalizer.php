@@ -145,16 +145,16 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getOrganizationPermission()) {
+        if ($object->isInitialized('organizationPermission') && null !== $object->getOrganizationPermission()) {
             $data['organization_permission'] = $object->getOrganizationPermission();
         }
-        if (null !== $object->getPrivate()) {
+        if ($object->isInitialized('private') && null !== $object->getPrivate()) {
             $data['private'] = $object->getPrivate();
         }
-        if (null !== $object->getCardsUrl()) {
+        if ($object->isInitialized('cardsUrl') && null !== $object->getCardsUrl()) {
             $data['cards_url'] = $object->getCardsUrl();
         }
-        if (null !== $object->getPermissions()) {
+        if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
         foreach ($object as $key => $value) {

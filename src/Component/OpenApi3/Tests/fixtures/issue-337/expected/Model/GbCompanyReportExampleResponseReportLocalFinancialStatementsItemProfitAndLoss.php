@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndLoss extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var float
@@ -106,6 +114,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
      */
     public function setTurnover(float $turnover) : self
     {
+        $this->initialized['turnover'] = true;
         $this->turnover = $turnover;
         return $this;
     }
@@ -127,6 +136,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
      */
     public function setCostOfSales(float $costOfSales) : self
     {
+        $this->initialized['costOfSales'] = true;
         $this->costOfSales = $costOfSales;
         return $this;
     }
@@ -148,6 +158,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
      */
     public function setGrossProfit(float $grossProfit) : self
     {
+        $this->initialized['grossProfit'] = true;
         $this->grossProfit = $grossProfit;
         return $this;
     }
@@ -169,6 +180,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
      */
     public function setDepreciation(float $depreciation) : self
     {
+        $this->initialized['depreciation'] = true;
         $this->depreciation = $depreciation;
         return $this;
     }
@@ -190,6 +202,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
      */
     public function setAuditFees(float $auditFees) : self
     {
+        $this->initialized['auditFees'] = true;
         $this->auditFees = $auditFees;
         return $this;
     }
@@ -211,6 +224,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
      */
     public function setWagesAndSalaries(float $wagesAndSalaries) : self
     {
+        $this->initialized['wagesAndSalaries'] = true;
         $this->wagesAndSalaries = $wagesAndSalaries;
         return $this;
     }
@@ -232,6 +246,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
      */
     public function setDirectorsRemuneration(float $directorsRemuneration) : self
     {
+        $this->initialized['directorsRemuneration'] = true;
         $this->directorsRemuneration = $directorsRemuneration;
         return $this;
     }
@@ -253,6 +268,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
      */
     public function setOperatingProfit(float $operatingProfit) : self
     {
+        $this->initialized['operatingProfit'] = true;
         $this->operatingProfit = $operatingProfit;
         return $this;
     }
@@ -274,6 +290,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
      */
     public function setInterestExpense(float $interestExpense) : self
     {
+        $this->initialized['interestExpense'] = true;
         $this->interestExpense = $interestExpense;
         return $this;
     }
@@ -295,6 +312,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
      */
     public function setProfitBeforeTax(float $profitBeforeTax) : self
     {
+        $this->initialized['profitBeforeTax'] = true;
         $this->profitBeforeTax = $profitBeforeTax;
         return $this;
     }
@@ -316,6 +334,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
      */
     public function setTaxation(float $taxation) : self
     {
+        $this->initialized['taxation'] = true;
         $this->taxation = $taxation;
         return $this;
     }
@@ -337,6 +356,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
      */
     public function setProfitAfterTax(float $profitAfterTax) : self
     {
+        $this->initialized['profitAfterTax'] = true;
         $this->profitAfterTax = $profitAfterTax;
         return $this;
     }
@@ -358,6 +378,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
      */
     public function setDividends(float $dividends) : self
     {
+        $this->initialized['dividends'] = true;
         $this->dividends = $dividends;
         return $this;
     }
@@ -379,6 +400,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndL
      */
     public function setRetainedProfit(float $retainedProfit) : self
     {
+        $this->initialized['retainedProfit'] = true;
         $this->retainedProfit = $retainedProfit;
         return $this;
     }

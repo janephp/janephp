@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -82,6 +90,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem extends 
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -103,6 +112,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem extends 
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -124,6 +134,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem extends 
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -145,6 +156,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem extends 
      */
     public function setFirstName(string $firstName) : self
     {
+        $this->initialized['firstName'] = true;
         $this->firstName = $firstName;
         return $this;
     }
@@ -166,6 +178,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem extends 
      */
     public function setSurname(string $surname) : self
     {
+        $this->initialized['surname'] = true;
         $this->surname = $surname;
         return $this;
     }
@@ -187,6 +200,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem extends 
      */
     public function setAddress(GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemAddress $address) : self
     {
+        $this->initialized['address'] = true;
         $this->address = $address;
         return $this;
     }
@@ -208,6 +222,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem extends 
      */
     public function setGender(string $gender) : self
     {
+        $this->initialized['gender'] = true;
         $this->gender = $gender;
         return $this;
     }
@@ -229,6 +244,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem extends 
      */
     public function setDateOfBirth(string $dateOfBirth) : self
     {
+        $this->initialized['dateOfBirth'] = true;
         $this->dateOfBirth = $dateOfBirth;
         return $this;
     }
@@ -250,6 +266,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem extends 
      */
     public function setDirectorType(string $directorType) : self
     {
+        $this->initialized['directorType'] = true;
         $this->directorType = $directorType;
         return $this;
     }
@@ -271,6 +288,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem extends 
      */
     public function setPositions(array $positions) : self
     {
+        $this->initialized['positions'] = true;
         $this->positions = $positions;
         return $this;
     }

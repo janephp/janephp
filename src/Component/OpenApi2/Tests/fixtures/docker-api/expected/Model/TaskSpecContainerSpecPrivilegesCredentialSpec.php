@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class TaskSpecContainerSpecPrivilegesCredentialSpec
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * Load credential spec from a Swarm Config with the given ID.
     The specified config must also be present in the Configs
     field with the Runtime property set.
@@ -89,6 +97,7 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
     */
     public function setConfig(string $config) : self
     {
+        $this->initialized['config'] = true;
         $this->config = $config;
         return $this;
     }
@@ -134,6 +143,7 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
     */
     public function setFile(string $file) : self
     {
+        $this->initialized['file'] = true;
         $this->file = $file;
         return $this;
     }
@@ -175,6 +185,7 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
     */
     public function setRegistry(string $registry) : self
     {
+        $this->initialized['registry'] = true;
         $this->registry = $registry;
         return $this;
     }

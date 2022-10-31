@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The alternative text for the image.
      *
      * @var string
@@ -40,6 +48,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItem extends \ArrayO
      */
     public function setAlt(string $alt) : self
     {
+        $this->initialized['alt'] = true;
         $this->alt = $alt;
         return $this;
     }
@@ -61,6 +70,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItem extends \ArrayO
      */
     public function setImageUrl(string $imageUrl) : self
     {
+        $this->initialized['imageUrl'] = true;
         $this->imageUrl = $imageUrl;
         return $this;
     }
@@ -82,6 +92,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItem extends \ArrayO
      */
     public function setCaption(string $caption) : self
     {
+        $this->initialized['caption'] = true;
         $this->caption = $caption;
         return $this;
     }

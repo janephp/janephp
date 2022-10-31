@@ -74,16 +74,16 @@ class ScimUserMetaNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getResourceType()) {
+        if ($object->isInitialized('resourceType') && null !== $object->getResourceType()) {
             $data['resourceType'] = $object->getResourceType();
         }
-        if (null !== $object->getCreated()) {
+        if ($object->isInitialized('created') && null !== $object->getCreated()) {
             $data['created'] = $object->getCreated()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getLastModified()) {
+        if ($object->isInitialized('lastModified') && null !== $object->getLastModified()) {
             $data['lastModified'] = $object->getLastModified()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getLocation()) {
+        if ($object->isInitialized('location') && null !== $object->getLocation()) {
             $data['location'] = $object->getLocation();
         }
         foreach ($object as $key => $value) {

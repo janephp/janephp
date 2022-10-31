@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SystemStatus
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The status of the search indices.
      *
      * @var StatusOfSearchIndexState[]|null
@@ -40,6 +48,7 @@ class SystemStatus
      */
     public function setSearchIndicesStatus(?array $searchIndicesStatus) : self
     {
+        $this->initialized['searchIndicesStatus'] = true;
         $this->searchIndicesStatus = $searchIndicesStatus;
         return $this;
     }
@@ -61,6 +70,7 @@ class SystemStatus
      */
     public function setDisplayValuesStatus(?array $displayValuesStatus) : self
     {
+        $this->initialized['displayValuesStatus'] = true;
         $this->displayValuesStatus = $displayValuesStatus;
         return $this;
     }
@@ -82,6 +92,7 @@ class SystemStatus
      */
     public function setMetadataStatus(?array $metadataStatus) : self
     {
+        $this->initialized['metadataStatus'] = true;
         $this->metadataStatus = $metadataStatus;
         return $this;
     }

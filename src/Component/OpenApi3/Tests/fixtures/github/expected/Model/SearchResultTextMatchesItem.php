@@ -5,6 +5,14 @@ namespace Github\Model;
 class SearchResultTextMatchesItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class SearchResultTextMatchesItem extends \ArrayObject
      */
     public function setObjectUrl(string $objectUrl) : self
     {
+        $this->initialized['objectUrl'] = true;
         $this->objectUrl = $objectUrl;
         return $this;
     }
@@ -73,6 +82,7 @@ class SearchResultTextMatchesItem extends \ArrayObject
      */
     public function setObjectType(?string $objectType) : self
     {
+        $this->initialized['objectType'] = true;
         $this->objectType = $objectType;
         return $this;
     }
@@ -94,6 +104,7 @@ class SearchResultTextMatchesItem extends \ArrayObject
      */
     public function setProperty(string $property) : self
     {
+        $this->initialized['property'] = true;
         $this->property = $property;
         return $this;
     }
@@ -115,6 +126,7 @@ class SearchResultTextMatchesItem extends \ArrayObject
      */
     public function setFragment(string $fragment) : self
     {
+        $this->initialized['fragment'] = true;
         $this->fragment = $fragment;
         return $this;
     }
@@ -136,6 +148,7 @@ class SearchResultTextMatchesItem extends \ArrayObject
      */
     public function setMatches(array $matches) : self
     {
+        $this->initialized['matches'] = true;
         $this->matches = $matches;
         return $this;
     }

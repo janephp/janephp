@@ -74,17 +74,17 @@ class GbCompanyReportExampleResponseReportContactInformationNormalizer implement
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMainAddress()) {
+        if ($object->isInitialized('mainAddress') && null !== $object->getMainAddress()) {
             $data['mainAddress'] = $this->normalizer->normalize($object->getMainAddress(), 'json', $context);
         }
-        if (null !== $object->getOtherAddresses()) {
+        if ($object->isInitialized('otherAddresses') && null !== $object->getOtherAddresses()) {
             $values = array();
             foreach ($object->getOtherAddresses() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['otherAddresses'] = $values;
         }
-        if (null !== $object->getWebsites()) {
+        if ($object->isInitialized('websites') && null !== $object->getWebsites()) {
             $values_1 = array();
             foreach ($object->getWebsites() as $value_1) {
                 $values_1[] = $value_1;

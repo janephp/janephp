@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ShareContentDetail
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The id of the schema with schema type content.
      *
      * @var string
@@ -78,6 +86,7 @@ class ShareContentDetail
      */
     public function setContentSchemaId(string $contentSchemaId) : self
     {
+        $this->initialized['contentSchemaId'] = true;
         $this->contentSchemaId = $contentSchemaId;
         return $this;
     }
@@ -99,6 +108,7 @@ class ShareContentDetail
      */
     public function setLayerSchemaIds(?array $layerSchemaIds) : self
     {
+        $this->initialized['layerSchemaIds'] = true;
         $this->layerSchemaIds = $layerSchemaIds;
         return $this;
     }
@@ -122,6 +132,7 @@ class ShareContentDetail
     */
     public function setContent(iterable $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }
@@ -145,6 +156,7 @@ class ShareContentDetail
     */
     public function setMetadata(?iterable $metadata) : self
     {
+        $this->initialized['metadata'] = true;
         $this->metadata = $metadata;
         return $this;
     }
@@ -166,6 +178,7 @@ class ShareContentDetail
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -187,6 +200,7 @@ class ShareContentDetail
      */
     public function setOutputs(array $outputs) : self
     {
+        $this->initialized['outputs'] = true;
         $this->outputs = $outputs;
         return $this;
     }
@@ -208,6 +222,7 @@ class ShareContentDetail
      */
     public function setContentType($contentType) : self
     {
+        $this->initialized['contentType'] = true;
         $this->contentType = $contentType;
         return $this;
     }
@@ -229,6 +244,7 @@ class ShareContentDetail
      */
     public function setDisplayValues($displayValues) : self
     {
+        $this->initialized['displayValues'] = true;
         $this->displayValues = $displayValues;
         return $this;
     }
@@ -250,6 +266,7 @@ class ShareContentDetail
      */
     public function setIconUrl(?string $iconUrl) : self
     {
+        $this->initialized['iconUrl'] = true;
         $this->iconUrl = $iconUrl;
         return $this;
     }

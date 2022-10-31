@@ -95,30 +95,30 @@ class OrgsOrgTeamsPostBodyNormalizer implements DenormalizerInterface, Normalize
     {
         $data = array();
         $data['name'] = $object->getName();
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getMaintainers()) {
+        if ($object->isInitialized('maintainers') && null !== $object->getMaintainers()) {
             $values = array();
             foreach ($object->getMaintainers() as $value) {
                 $values[] = $value;
             }
             $data['maintainers'] = $values;
         }
-        if (null !== $object->getRepoNames()) {
+        if ($object->isInitialized('repoNames') && null !== $object->getRepoNames()) {
             $values_1 = array();
             foreach ($object->getRepoNames() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['repo_names'] = $values_1;
         }
-        if (null !== $object->getPrivacy()) {
+        if ($object->isInitialized('privacy') && null !== $object->getPrivacy()) {
             $data['privacy'] = $object->getPrivacy();
         }
-        if (null !== $object->getPermission()) {
+        if ($object->isInitialized('permission') && null !== $object->getPermission()) {
             $data['permission'] = $object->getPermission();
         }
-        if (null !== $object->getParentTeamId()) {
+        if ($object->isInitialized('parentTeamId') && null !== $object->getParentTeamId()) {
             $data['parent_team_id'] = $object->getParentTeamId();
         }
         foreach ($object as $key => $value_2) {

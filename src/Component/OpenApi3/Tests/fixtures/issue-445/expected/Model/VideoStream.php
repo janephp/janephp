@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class VideoStream
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -106,6 +114,7 @@ class VideoStream
      */
     public function setBitRate(?string $bitRate) : self
     {
+        $this->initialized['bitRate'] = true;
         $this->bitRate = $bitRate;
         return $this;
     }
@@ -127,6 +136,7 @@ class VideoStream
      */
     public function setCodec(?string $codec) : self
     {
+        $this->initialized['codec'] = true;
         $this->codec = $codec;
         return $this;
     }
@@ -148,6 +158,7 @@ class VideoStream
      */
     public function setDisplayAspectRatio(?string $displayAspectRatio) : self
     {
+        $this->initialized['displayAspectRatio'] = true;
         $this->displayAspectRatio = $displayAspectRatio;
         return $this;
     }
@@ -169,6 +180,7 @@ class VideoStream
      */
     public function setDurationInSeconds(float $durationInSeconds) : self
     {
+        $this->initialized['durationInSeconds'] = true;
         $this->durationInSeconds = $durationInSeconds;
         return $this;
     }
@@ -190,6 +202,7 @@ class VideoStream
      */
     public function setFormat(?string $format) : self
     {
+        $this->initialized['format'] = true;
         $this->format = $format;
         return $this;
     }
@@ -211,6 +224,7 @@ class VideoStream
      */
     public function setFrameCount(?int $frameCount) : self
     {
+        $this->initialized['frameCount'] = true;
         $this->frameCount = $frameCount;
         return $this;
     }
@@ -232,6 +246,7 @@ class VideoStream
      */
     public function setFrameRate(?float $frameRate) : self
     {
+        $this->initialized['frameRate'] = true;
         $this->frameRate = $frameRate;
         return $this;
     }
@@ -253,6 +268,7 @@ class VideoStream
      */
     public function setHeight(?int $height) : self
     {
+        $this->initialized['height'] = true;
         $this->height = $height;
         return $this;
     }
@@ -274,6 +290,7 @@ class VideoStream
      */
     public function setLanguage(?string $language) : self
     {
+        $this->initialized['language'] = true;
         $this->language = $language;
         return $this;
     }
@@ -295,6 +312,7 @@ class VideoStream
      */
     public function setPixelAspectRatio(?float $pixelAspectRatio) : self
     {
+        $this->initialized['pixelAspectRatio'] = true;
         $this->pixelAspectRatio = $pixelAspectRatio;
         return $this;
     }
@@ -316,6 +334,7 @@ class VideoStream
      */
     public function setResolution(?int $resolution) : self
     {
+        $this->initialized['resolution'] = true;
         $this->resolution = $resolution;
         return $this;
     }
@@ -337,6 +356,7 @@ class VideoStream
      */
     public function setStreamSize(?int $streamSize) : self
     {
+        $this->initialized['streamSize'] = true;
         $this->streamSize = $streamSize;
         return $this;
     }
@@ -358,6 +378,7 @@ class VideoStream
      */
     public function setWidth(?int $width) : self
     {
+        $this->initialized['width'] = true;
         $this->width = $width;
         return $this;
     }
@@ -379,6 +400,7 @@ class VideoStream
      */
     public function setRotation(?float $rotation) : self
     {
+        $this->initialized['rotation'] = true;
         $this->rotation = $rotation;
         return $this;
     }

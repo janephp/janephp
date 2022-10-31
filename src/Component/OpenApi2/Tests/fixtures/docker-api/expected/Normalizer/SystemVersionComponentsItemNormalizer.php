@@ -67,7 +67,7 @@ class SystemVersionComponentsItemNormalizer implements DenormalizerInterface, No
         $data = array();
         $data['Name'] = $object->getName();
         $data['Version'] = $object->getVersion();
-        if (null !== $object->getDetails()) {
+        if ($object->isInitialized('details') && null !== $object->getDetails()) {
             $data['Details'] = $object->getDetails();
         }
         if (!($context['skip_validation'] ?? false)) {

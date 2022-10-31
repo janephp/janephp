@@ -5,6 +5,14 @@ namespace Jane\Component\JsonSchema\Tests\Expected\Model;
 class Test
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Indicates the ID of the referenced original mail.
      *
      * @var string
@@ -34,6 +42,7 @@ class Test
      */
     public function setMsgref(string $msgref) : self
     {
+        $this->initialized['msgref'] = true;
         $this->msgref = $msgref;
         return $this;
     }
@@ -55,6 +64,7 @@ class Test
      */
     public function setMsgRef2(string $msgRef2) : self
     {
+        $this->initialized['msgRef2'] = true;
         $this->msgRef2 = $msgRef2;
         return $this;
     }

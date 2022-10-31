@@ -76,7 +76,7 @@ class ValidationErrorNormalizer implements DenormalizerInterface, NormalizerInte
         $data = array();
         $data['message'] = $object->getMessage();
         $data['documentation_url'] = $object->getDocumentationUrl();
-        if (null !== $object->getErrors()) {
+        if ($object->isInitialized('errors') && null !== $object->getErrors()) {
             $values = array();
             foreach ($object->getErrors() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

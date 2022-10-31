@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class FieldDateTime extends FieldBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The date time format structure.
      *
      * @var string|null
@@ -40,6 +48,7 @@ class FieldDateTime extends FieldBase
      */
     public function setFormat(?string $format) : self
     {
+        $this->initialized['format'] = true;
         $this->format = $format;
         return $this;
     }
@@ -61,6 +70,7 @@ class FieldDateTime extends FieldBase
      */
     public function setBoost(float $boost) : self
     {
+        $this->initialized['boost'] = true;
         $this->boost = $boost;
         return $this;
     }
@@ -82,6 +92,7 @@ class FieldDateTime extends FieldBase
      */
     public function setInitializeOnItemCreation(bool $initializeOnItemCreation) : self
     {
+        $this->initialized['initializeOnItemCreation'] = true;
         $this->initializeOnItemCreation = $initializeOnItemCreation;
         return $this;
     }

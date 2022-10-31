@@ -281,7 +281,7 @@ class PrivateUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['email'] = $object->getEmail();
         $data['hireable'] = $object->getHireable();
         $data['bio'] = $object->getBio();
-        if (null !== $object->getTwitterUsername()) {
+        if ($object->isInitialized('twitterUsername') && null !== $object->getTwitterUsername()) {
             $data['twitter_username'] = $object->getTwitterUsername();
         }
         $data['public_repos'] = $object->getPublicRepos();
@@ -296,16 +296,16 @@ class PrivateUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['disk_usage'] = $object->getDiskUsage();
         $data['collaborators'] = $object->getCollaborators();
         $data['two_factor_authentication'] = $object->getTwoFactorAuthentication();
-        if (null !== $object->getPlan()) {
+        if ($object->isInitialized('plan') && null !== $object->getPlan()) {
             $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
         }
-        if (null !== $object->getSuspendedAt()) {
+        if ($object->isInitialized('suspendedAt') && null !== $object->getSuspendedAt()) {
             $data['suspended_at'] = $object->getSuspendedAt()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getBusinessPlus()) {
+        if ($object->isInitialized('businessPlus') && null !== $object->getBusinessPlus()) {
             $data['business_plus'] = $object->getBusinessPlus();
         }
-        if (null !== $object->getLdapDn()) {
+        if ($object->isInitialized('ldapDn') && null !== $object->getLdapDn()) {
             $data['ldap_dn'] = $object->getLdapDn();
         }
         foreach ($object as $key => $value) {

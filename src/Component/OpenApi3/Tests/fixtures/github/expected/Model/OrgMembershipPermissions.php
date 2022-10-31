@@ -5,6 +5,14 @@ namespace Github\Model;
 class OrgMembershipPermissions extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -28,6 +36,7 @@ class OrgMembershipPermissions extends \ArrayObject
      */
     public function setCanCreateRepository(bool $canCreateRepository) : self
     {
+        $this->initialized['canCreateRepository'] = true;
         $this->canCreateRepository = $canCreateRepository;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class CreateFreshInvestigationRequestContactInfoCompany extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class CreateFreshInvestigationRequestContactInfoCompany extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -55,6 +64,7 @@ class CreateFreshInvestigationRequestContactInfoCompany extends \ArrayObject
      */
     public function setNumber(string $number) : self
     {
+        $this->initialized['number'] = true;
         $this->number = $number;
         return $this;
     }

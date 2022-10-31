@@ -58,7 +58,7 @@ class UserRoleAssignmentNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUserRole()) {
+        if ($object->isInitialized('userRole') && null !== $object->getUserRole()) {
             $data['userRole'] = $object->getUserRole();
         }
         $data['isFederated'] = $object->getIsFederated();

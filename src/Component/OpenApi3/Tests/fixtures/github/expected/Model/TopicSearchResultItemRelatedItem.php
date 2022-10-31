@@ -5,6 +5,14 @@ namespace Github\Model;
 class TopicSearchResultItemRelatedItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var TopicSearchResultItemRelatedItemTopicRelation
@@ -28,6 +36,7 @@ class TopicSearchResultItemRelatedItem extends \ArrayObject
      */
     public function setTopicRelation(TopicSearchResultItemRelatedItemTopicRelation $topicRelation) : self
     {
+        $this->initialized['topicRelation'] = true;
         $this->topicRelation = $topicRelation;
         return $this;
     }

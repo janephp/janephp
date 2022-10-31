@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ContainerState
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * String representation of the container state. Can be one of "created",
     "running", "paused", "restarting", "removing", "exited", or "dead".
     
@@ -110,6 +118,7 @@ class ContainerState
     */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -151,6 +160,7 @@ class ContainerState
     */
     public function setRunning(bool $running) : self
     {
+        $this->initialized['running'] = true;
         $this->running = $running;
         return $this;
     }
@@ -172,6 +182,7 @@ class ContainerState
      */
     public function setPaused(bool $paused) : self
     {
+        $this->initialized['paused'] = true;
         $this->paused = $paused;
         return $this;
     }
@@ -193,6 +204,7 @@ class ContainerState
      */
     public function setRestarting(bool $restarting) : self
     {
+        $this->initialized['restarting'] = true;
         $this->restarting = $restarting;
         return $this;
     }
@@ -214,6 +226,7 @@ class ContainerState
      */
     public function setOOMKilled(bool $oOMKilled) : self
     {
+        $this->initialized['oOMKilled'] = true;
         $this->oOMKilled = $oOMKilled;
         return $this;
     }
@@ -235,6 +248,7 @@ class ContainerState
      */
     public function setDead(bool $dead) : self
     {
+        $this->initialized['dead'] = true;
         $this->dead = $dead;
         return $this;
     }
@@ -256,6 +270,7 @@ class ContainerState
      */
     public function setPid(int $pid) : self
     {
+        $this->initialized['pid'] = true;
         $this->pid = $pid;
         return $this;
     }
@@ -277,6 +292,7 @@ class ContainerState
      */
     public function setExitCode(int $exitCode) : self
     {
+        $this->initialized['exitCode'] = true;
         $this->exitCode = $exitCode;
         return $this;
     }
@@ -298,6 +314,7 @@ class ContainerState
      */
     public function setError(string $error) : self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
         return $this;
     }
@@ -319,6 +336,7 @@ class ContainerState
      */
     public function setStartedAt(string $startedAt) : self
     {
+        $this->initialized['startedAt'] = true;
         $this->startedAt = $startedAt;
         return $this;
     }
@@ -340,6 +358,7 @@ class ContainerState
      */
     public function setFinishedAt(string $finishedAt) : self
     {
+        $this->initialized['finishedAt'] = true;
         $this->finishedAt = $finishedAt;
         return $this;
     }
@@ -361,6 +380,7 @@ class ContainerState
      */
     public function setHealth(Health $health) : self
     {
+        $this->initialized['health'] = true;
         $this->health = $health;
         return $this;
     }

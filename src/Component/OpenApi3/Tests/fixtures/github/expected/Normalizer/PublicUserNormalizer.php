@@ -225,7 +225,7 @@ class PublicUserNormalizer implements DenormalizerInterface, NormalizerInterface
         $data['email'] = $object->getEmail();
         $data['hireable'] = $object->getHireable();
         $data['bio'] = $object->getBio();
-        if (null !== $object->getTwitterUsername()) {
+        if ($object->isInitialized('twitterUsername') && null !== $object->getTwitterUsername()) {
             $data['twitter_username'] = $object->getTwitterUsername();
         }
         $data['public_repos'] = $object->getPublicRepos();
@@ -234,25 +234,25 @@ class PublicUserNormalizer implements DenormalizerInterface, NormalizerInterface
         $data['following'] = $object->getFollowing();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getPlan()) {
+        if ($object->isInitialized('plan') && null !== $object->getPlan()) {
             $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
         }
-        if (null !== $object->getSuspendedAt()) {
+        if ($object->isInitialized('suspendedAt') && null !== $object->getSuspendedAt()) {
             $data['suspended_at'] = $object->getSuspendedAt()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getPrivateGists()) {
+        if ($object->isInitialized('privateGists') && null !== $object->getPrivateGists()) {
             $data['private_gists'] = $object->getPrivateGists();
         }
-        if (null !== $object->getTotalPrivateRepos()) {
+        if ($object->isInitialized('totalPrivateRepos') && null !== $object->getTotalPrivateRepos()) {
             $data['total_private_repos'] = $object->getTotalPrivateRepos();
         }
-        if (null !== $object->getOwnedPrivateRepos()) {
+        if ($object->isInitialized('ownedPrivateRepos') && null !== $object->getOwnedPrivateRepos()) {
             $data['owned_private_repos'] = $object->getOwnedPrivateRepos();
         }
-        if (null !== $object->getDiskUsage()) {
+        if ($object->isInitialized('diskUsage') && null !== $object->getDiskUsage()) {
             $data['disk_usage'] = $object->getDiskUsage();
         }
-        if (null !== $object->getCollaborators()) {
+        if ($object->isInitialized('collaborators') && null !== $object->getCollaborators()) {
             $data['collaborators'] = $object->getCollaborators();
         }
         if (!($context['skip_validation'] ?? false)) {

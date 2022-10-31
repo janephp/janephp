@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -58,6 +66,7 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -79,6 +88,7 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
      */
     public function setVatNo(string $vatNo) : self
     {
+        $this->initialized['vatNo'] = true;
         $this->vatNo = $vatNo;
         return $this;
     }
@@ -100,6 +110,7 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
      */
     public function setRegNo(string $regNo) : self
     {
+        $this->initialized['regNo'] = true;
         $this->regNo = $regNo;
         return $this;
     }
@@ -121,6 +132,7 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
      */
     public function setAdditionalInfo(string $additionalInfo) : self
     {
+        $this->initialized['additionalInfo'] = true;
         $this->additionalInfo = $additionalInfo;
         return $this;
     }
@@ -142,6 +154,7 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
      */
     public function setAddress(ListFreshInvestigationResponseOrdersItemSearchCriteriaAddress $address) : self
     {
+        $this->initialized['address'] = true;
         $this->address = $address;
         return $this;
     }
@@ -163,6 +176,7 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
      */
     public function setCountryCode(string $countryCode) : self
     {
+        $this->initialized['countryCode'] = true;
         $this->countryCode = $countryCode;
         return $this;
     }

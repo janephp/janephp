@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The body text of the pull request review
      *
      * @var string
@@ -34,6 +42,7 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody extends \ArrayO
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody extends \ArrayO
      */
     public function setEvent(string $event) : self
     {
+        $this->initialized['event'] = true;
         $this->event = $event;
         return $this;
     }

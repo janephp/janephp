@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ResourcesBlkioWeightDeviceItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class ResourcesBlkioWeightDeviceItem
      */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -55,6 +64,7 @@ class ResourcesBlkioWeightDeviceItem
      */
     public function setWeight(int $weight) : self
     {
+        $this->initialized['weight'] = true;
         $this->weight = $weight;
         return $this;
     }

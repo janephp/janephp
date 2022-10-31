@@ -5,6 +5,14 @@ namespace Github\Model;
 class EventPayload extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class EventPayload extends \ArrayObject
      */
     public function setAction(string $action) : self
     {
+        $this->initialized['action'] = true;
         $this->action = $action;
         return $this;
     }
@@ -67,6 +76,7 @@ class EventPayload extends \ArrayObject
      */
     public function setIssue(IssueSimple $issue) : self
     {
+        $this->initialized['issue'] = true;
         $this->issue = $issue;
         return $this;
     }
@@ -88,6 +98,7 @@ class EventPayload extends \ArrayObject
      */
     public function setComment(IssueComment $comment) : self
     {
+        $this->initialized['comment'] = true;
         $this->comment = $comment;
         return $this;
     }
@@ -109,6 +120,7 @@ class EventPayload extends \ArrayObject
      */
     public function setPages(array $pages) : self
     {
+        $this->initialized['pages'] = true;
         $this->pages = $pages;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class PermissionSetOwnershipTransferManyRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Permission set ownership transfer requests.
      *
      * @var PermissionSetOwnershipTransferItem[]|null
@@ -28,6 +36,7 @@ class PermissionSetOwnershipTransferManyRequest
      */
     public function setItems(?array $items) : self
     {
+        $this->initialized['items'] = true;
         $this->items = $items;
         return $this;
     }

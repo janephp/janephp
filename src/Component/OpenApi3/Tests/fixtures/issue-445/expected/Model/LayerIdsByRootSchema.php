@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class LayerIdsByRootSchema
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -34,6 +42,7 @@ class LayerIdsByRootSchema
      */
     public function setRootSchemaId(?string $rootSchemaId) : self
     {
+        $this->initialized['rootSchemaId'] = true;
         $this->rootSchemaId = $rootSchemaId;
         return $this;
     }
@@ -55,6 +64,7 @@ class LayerIdsByRootSchema
      */
     public function setLayerSchemaIds(?array $layerSchemaIds) : self
     {
+        $this->initialized['layerSchemaIds'] = true;
         $this->layerSchemaIds = $layerSchemaIds;
         return $this;
     }

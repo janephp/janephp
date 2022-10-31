@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinancials extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -52,6 +60,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
      */
     public function setContingentLiabilities(bool $contingentLiabilities) : self
     {
+        $this->initialized['contingentLiabilities'] = true;
         $this->contingentLiabilities = $contingentLiabilities;
         return $this;
     }
@@ -73,6 +82,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
      */
     public function setBankOverdraftAndLTL(float $bankOverdraftAndLTL) : self
     {
+        $this->initialized['bankOverdraftAndLTL'] = true;
         $this->bankOverdraftAndLTL = $bankOverdraftAndLTL;
         return $this;
     }
@@ -94,6 +104,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
      */
     public function setWorkingCapital(float $workingCapital) : self
     {
+        $this->initialized['workingCapital'] = true;
         $this->workingCapital = $workingCapital;
         return $this;
     }
@@ -115,6 +126,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
      */
     public function setCapitalEmployed(float $capitalEmployed) : self
     {
+        $this->initialized['capitalEmployed'] = true;
         $this->capitalEmployed = $capitalEmployed;
         return $this;
     }
@@ -136,6 +148,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
      */
     public function setNetWorth(float $netWorth) : self
     {
+        $this->initialized['netWorth'] = true;
         $this->netWorth = $netWorth;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class GpgKeyEmailsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class GpgKeyEmailsItem extends \ArrayObject
      */
     public function setEmail(string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -55,6 +64,7 @@ class GpgKeyEmailsItem extends \ArrayObject
      */
     public function setVerified(bool $verified) : self
     {
+        $this->initialized['verified'] = true;
         $this->verified = $verified;
         return $this;
     }

@@ -59,7 +59,7 @@ class PagingRequestNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $data = array();
         $data['limit'] = $object->getLimit();
-        if (null !== $object->getPageToken()) {
+        if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
             $data['pageToken'] = $object->getPageToken();
         }
         return $data;

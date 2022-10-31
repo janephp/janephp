@@ -71,10 +71,10 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItemNormalizer imp
     {
         $data = array();
         $data['op'] = $object->getOp();
-        if (null !== $object->getPath()) {
+        if ($object->isInitialized('path') && null !== $object->getPath()) {
             $data['path'] = $object->getPath();
         }
-        if (null !== $object->getValue()) {
+        if ($object->isInitialized('value') && null !== $object->getValue()) {
             $data['value'] = $object->getValue();
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class Limit
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -40,6 +48,7 @@ class Limit
      */
     public function setNanoCPUs(int $nanoCPUs) : self
     {
+        $this->initialized['nanoCPUs'] = true;
         $this->nanoCPUs = $nanoCPUs;
         return $this;
     }
@@ -61,6 +70,7 @@ class Limit
      */
     public function setMemoryBytes(int $memoryBytes) : self
     {
+        $this->initialized['memoryBytes'] = true;
         $this->memoryBytes = $memoryBytes;
         return $this;
     }
@@ -82,6 +92,7 @@ class Limit
      */
     public function setPids(int $pids) : self
     {
+        $this->initialized['pids'] = true;
         $this->pids = $pids;
         return $this;
     }

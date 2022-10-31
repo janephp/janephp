@@ -65,16 +65,16 @@ class TaskSpecContainerSpecConfigsItemNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFile()) {
+        if ($object->isInitialized('file') && null !== $object->getFile()) {
             $data['File'] = $this->normalizer->normalize($object->getFile(), 'json', $context);
         }
-        if (null !== $object->getRuntime()) {
+        if ($object->isInitialized('runtime') && null !== $object->getRuntime()) {
             $data['Runtime'] = $object->getRuntime();
         }
-        if (null !== $object->getConfigID()) {
+        if ($object->isInitialized('configID') && null !== $object->getConfigID()) {
             $data['ConfigID'] = $object->getConfigID();
         }
-        if (null !== $object->getConfigName()) {
+        if ($object->isInitialized('configName') && null !== $object->getConfigName()) {
             $data['ConfigName'] = $object->getConfigName();
         }
         if (!($context['skip_validation'] ?? false)) {

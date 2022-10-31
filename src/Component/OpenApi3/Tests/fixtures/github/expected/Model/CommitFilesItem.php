@@ -5,6 +5,14 @@ namespace Github\Model;
 class CommitFilesItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -88,6 +96,7 @@ class CommitFilesItem extends \ArrayObject
      */
     public function setFilename(string $filename) : self
     {
+        $this->initialized['filename'] = true;
         $this->filename = $filename;
         return $this;
     }
@@ -109,6 +118,7 @@ class CommitFilesItem extends \ArrayObject
      */
     public function setAdditions(int $additions) : self
     {
+        $this->initialized['additions'] = true;
         $this->additions = $additions;
         return $this;
     }
@@ -130,6 +140,7 @@ class CommitFilesItem extends \ArrayObject
      */
     public function setDeletions(int $deletions) : self
     {
+        $this->initialized['deletions'] = true;
         $this->deletions = $deletions;
         return $this;
     }
@@ -151,6 +162,7 @@ class CommitFilesItem extends \ArrayObject
      */
     public function setChanges(int $changes) : self
     {
+        $this->initialized['changes'] = true;
         $this->changes = $changes;
         return $this;
     }
@@ -172,6 +184,7 @@ class CommitFilesItem extends \ArrayObject
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -193,6 +206,7 @@ class CommitFilesItem extends \ArrayObject
      */
     public function setRawUrl(string $rawUrl) : self
     {
+        $this->initialized['rawUrl'] = true;
         $this->rawUrl = $rawUrl;
         return $this;
     }
@@ -214,6 +228,7 @@ class CommitFilesItem extends \ArrayObject
      */
     public function setBlobUrl(string $blobUrl) : self
     {
+        $this->initialized['blobUrl'] = true;
         $this->blobUrl = $blobUrl;
         return $this;
     }
@@ -235,6 +250,7 @@ class CommitFilesItem extends \ArrayObject
      */
     public function setPatch(string $patch) : self
     {
+        $this->initialized['patch'] = true;
         $this->patch = $patch;
         return $this;
     }
@@ -256,6 +272,7 @@ class CommitFilesItem extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -277,6 +294,7 @@ class CommitFilesItem extends \ArrayObject
      */
     public function setContentsUrl(string $contentsUrl) : self
     {
+        $this->initialized['contentsUrl'] = true;
         $this->contentsUrl = $contentsUrl;
         return $this;
     }
@@ -298,6 +316,7 @@ class CommitFilesItem extends \ArrayObject
      */
     public function setPreviousFilename(string $previousFilename) : self
     {
+        $this->initialized['previousFilename'] = true;
         $this->previousFilename = $previousFilename;
         return $this;
     }

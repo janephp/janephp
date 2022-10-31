@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class CropAction extends ImageActionBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * X-Coordinate of top left point of the cropping rectangle.
      *
      * @var int
@@ -46,6 +54,7 @@ class CropAction extends ImageActionBase
      */
     public function setX(int $x) : self
     {
+        $this->initialized['x'] = true;
         $this->x = $x;
         return $this;
     }
@@ -67,6 +76,7 @@ class CropAction extends ImageActionBase
      */
     public function setY(int $y) : self
     {
+        $this->initialized['y'] = true;
         $this->y = $y;
         return $this;
     }
@@ -88,6 +98,7 @@ class CropAction extends ImageActionBase
      */
     public function setWidth(int $width) : self
     {
+        $this->initialized['width'] = true;
         $this->width = $width;
         return $this;
     }
@@ -109,6 +120,7 @@ class CropAction extends ImageActionBase
      */
     public function setHeight(int $height) : self
     {
+        $this->initialized['height'] = true;
         $this->height = $height;
         return $this;
     }

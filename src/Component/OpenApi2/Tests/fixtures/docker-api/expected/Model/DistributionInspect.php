@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class DistributionInspect
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * A descriptor struct containing digest, media type, and size, as defined in
     the [OCI Content Descriptors Specification](https://github.com/opencontainers/image-spec/blob/v1.0.1/descriptor.md).
     
@@ -40,6 +48,7 @@ class DistributionInspect
     */
     public function setDescriptor(OCIDescriptor $descriptor) : self
     {
+        $this->initialized['descriptor'] = true;
         $this->descriptor = $descriptor;
         return $this;
     }
@@ -61,6 +70,7 @@ class DistributionInspect
      */
     public function setPlatforms(array $platforms) : self
     {
+        $this->initialized['platforms'] = true;
         $this->platforms = $platforms;
         return $this;
     }

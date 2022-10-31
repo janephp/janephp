@@ -56,7 +56,7 @@ class SwarmUnlockPostBodyNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUnlockKey()) {
+        if ($object->isInitialized('unlockKey') && null !== $object->getUnlockKey()) {
             $data['UnlockKey'] = $object->getUnlockKey();
         }
         if (!($context['skip_validation'] ?? false)) {

@@ -101,26 +101,26 @@ class ServiceProviderDeleteExceptionNormalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceLevel()) {
+        if ($object->isInitialized('traceLevel') && null !== $object->getTraceLevel()) {
             $data['traceLevel'] = $object->getTraceLevel();
         }
-        if (null !== $object->getTraceId()) {
+        if ($object->isInitialized('traceId') && null !== $object->getTraceId()) {
             $data['traceId'] = $object->getTraceId();
         }
-        if (null !== $object->getTraceJobId()) {
+        if ($object->isInitialized('traceJobId') && null !== $object->getTraceJobId()) {
             $data['traceJobId'] = $object->getTraceJobId();
         }
-        if (null !== $object->getHttpStatusCode()) {
+        if ($object->isInitialized('httpStatusCode') && null !== $object->getHttpStatusCode()) {
             $data['httpStatusCode'] = $object->getHttpStatusCode();
         }
-        if (null !== $object->getExceptionMessage()) {
+        if ($object->isInitialized('exceptionMessage') && null !== $object->getExceptionMessage()) {
             $data['exceptionMessage'] = $object->getExceptionMessage();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getServiceProviderId()) {
+        if ($object->isInitialized('serviceProviderId') && null !== $object->getServiceProviderId()) {
             $data['serviceProviderId'] = $object->getServiceProviderId();
         }
-        if (null !== $object->getDetailedErrorMessage()) {
+        if ($object->isInitialized('detailedErrorMessage') && null !== $object->getDetailedErrorMessage()) {
             $data['detailedErrorMessage'] = $object->getDetailedErrorMessage();
         }
         foreach ($object as $key => $value) {

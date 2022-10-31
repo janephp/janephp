@@ -90,31 +90,31 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationN
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBusinessName()) {
+        if ($object->isInitialized('businessName') && null !== $object->getBusinessName()) {
             $data['businessName'] = $object->getBusinessName();
         }
-        if (null !== $object->getRegisteredCompanyName()) {
+        if ($object->isInitialized('registeredCompanyName') && null !== $object->getRegisteredCompanyName()) {
             $data['registeredCompanyName'] = $object->getRegisteredCompanyName();
         }
-        if (null !== $object->getCompanyRegistrationNumber()) {
+        if ($object->isInitialized('companyRegistrationNumber') && null !== $object->getCompanyRegistrationNumber()) {
             $data['companyRegistrationNumber'] = $object->getCompanyRegistrationNumber();
         }
-        if (null !== $object->getCountry()) {
+        if ($object->isInitialized('country') && null !== $object->getCountry()) {
             $data['country'] = $object->getCountry();
         }
-        if (null !== $object->getCompanyRegistrationDate()) {
+        if ($object->isInitialized('companyRegistrationDate') && null !== $object->getCompanyRegistrationDate()) {
             $data['companyRegistrationDate'] = $object->getCompanyRegistrationDate();
         }
-        if (null !== $object->getLegalForm()) {
+        if ($object->isInitialized('legalForm') && null !== $object->getLegalForm()) {
             $data['legalForm'] = $this->normalizer->normalize($object->getLegalForm(), 'json', $context);
         }
-        if (null !== $object->getCompanyStatus()) {
+        if ($object->isInitialized('companyStatus') && null !== $object->getCompanyStatus()) {
             $data['companyStatus'] = $this->normalizer->normalize($object->getCompanyStatus(), 'json', $context);
         }
-        if (null !== $object->getPrincipalActivity()) {
+        if ($object->isInitialized('principalActivity') && null !== $object->getPrincipalActivity()) {
             $data['principalActivity'] = $this->normalizer->normalize($object->getPrincipalActivity(), 'json', $context);
         }
-        if (null !== $object->getContactAddress()) {
+        if ($object->isInitialized('contactAddress') && null !== $object->getContactAddress()) {
             $data['contactAddress'] = $this->normalizer->normalize($object->getContactAddress(), 'json', $context);
         }
         foreach ($object as $key => $value) {

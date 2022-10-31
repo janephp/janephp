@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReferrerTraffic extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class ReferrerTraffic extends \ArrayObject
      */
     public function setReferrer(string $referrer) : self
     {
+        $this->initialized['referrer'] = true;
         $this->referrer = $referrer;
         return $this;
     }
@@ -61,6 +70,7 @@ class ReferrerTraffic extends \ArrayObject
      */
     public function setCount(int $count) : self
     {
+        $this->initialized['count'] = true;
         $this->count = $count;
         return $this;
     }
@@ -82,6 +92,7 @@ class ReferrerTraffic extends \ArrayObject
      */
     public function setUniques(int $uniques) : self
     {
+        $this->initialized['uniques'] = true;
         $this->uniques = $uniques;
         return $this;
     }

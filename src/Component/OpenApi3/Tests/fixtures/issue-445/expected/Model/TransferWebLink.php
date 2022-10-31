@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class TransferWebLink extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Replaced in favor of RequestId. Client generated identifier of the item.
      *
      * @deprecated
@@ -52,6 +60,7 @@ class TransferWebLink extends \ArrayObject
      */
     public function setIdentifier(?string $identifier) : self
     {
+        $this->initialized['identifier'] = true;
         $this->identifier = $identifier;
         return $this;
     }
@@ -73,6 +82,7 @@ class TransferWebLink extends \ArrayObject
      */
     public function setRequestId(?string $requestId) : self
     {
+        $this->initialized['requestId'] = true;
         $this->requestId = $requestId;
         return $this;
     }
@@ -94,6 +104,7 @@ class TransferWebLink extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -115,6 +126,7 @@ class TransferWebLink extends \ArrayObject
      */
     public function setFileName(?string $fileName) : self
     {
+        $this->initialized['fileName'] = true;
         $this->fileName = $fileName;
         return $this;
     }

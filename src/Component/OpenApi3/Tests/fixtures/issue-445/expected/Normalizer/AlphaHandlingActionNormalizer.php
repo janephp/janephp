@@ -70,10 +70,10 @@ class AlphaHandlingActionNormalizer implements DenormalizerInterface, Normalizer
     {
         $data = array();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getAlphaHandling()) {
+        if ($object->isInitialized('alphaHandling') && null !== $object->getAlphaHandling()) {
             $data['alphaHandling'] = $object->getAlphaHandling();
         }
-        if (null !== $object->getReplacementRgbColorHexCode()) {
+        if ($object->isInitialized('replacementRgbColorHexCode') && null !== $object->getReplacementRgbColorHexCode()) {
             $data['replacementRgbColorHexCode'] = $object->getReplacementRgbColorHexCode();
         }
         foreach ($object as $key => $value) {

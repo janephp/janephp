@@ -5,6 +5,14 @@ namespace Github\Model;
 class IssueEventDismissedReview extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class IssueEventDismissedReview extends \ArrayObject
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -67,6 +76,7 @@ class IssueEventDismissedReview extends \ArrayObject
      */
     public function setReviewId(int $reviewId) : self
     {
+        $this->initialized['reviewId'] = true;
         $this->reviewId = $reviewId;
         return $this;
     }
@@ -88,6 +98,7 @@ class IssueEventDismissedReview extends \ArrayObject
      */
     public function setDismissalMessage(?string $dismissalMessage) : self
     {
+        $this->initialized['dismissalMessage'] = true;
         $this->dismissalMessage = $dismissalMessage;
         return $this;
     }
@@ -109,6 +120,7 @@ class IssueEventDismissedReview extends \ArrayObject
      */
     public function setDismissalCommitId(?string $dismissalCommitId) : self
     {
+        $this->initialized['dismissalCommitId'] = true;
         $this->dismissalCommitId = $dismissalCommitId;
         return $this;
     }

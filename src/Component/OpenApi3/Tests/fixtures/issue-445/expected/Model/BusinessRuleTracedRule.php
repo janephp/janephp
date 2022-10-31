@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessRuleTracedRule
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Configuration of the rule as it was running. Enriched with trace ref IDs.
      *
      * @var mixed|null
@@ -34,6 +42,7 @@ class BusinessRuleTracedRule
      */
     public function setConfiguration($configuration) : self
     {
+        $this->initialized['configuration'] = true;
         $this->configuration = $configuration;
         return $this;
     }
@@ -55,6 +64,7 @@ class BusinessRuleTracedRule
      */
     public function setEvaluations(?array $evaluations) : self
     {
+        $this->initialized['evaluations'] = true;
         $this->evaluations = $evaluations;
         return $this;
     }

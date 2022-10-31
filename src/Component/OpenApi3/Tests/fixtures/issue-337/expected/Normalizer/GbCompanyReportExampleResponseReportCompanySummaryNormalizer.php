@@ -90,31 +90,31 @@ class GbCompanyReportExampleResponseReportCompanySummaryNormalizer implements De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBusinessName()) {
+        if ($object->isInitialized('businessName') && null !== $object->getBusinessName()) {
             $data['businessName'] = $object->getBusinessName();
         }
-        if (null !== $object->getCountry()) {
+        if ($object->isInitialized('country') && null !== $object->getCountry()) {
             $data['country'] = $object->getCountry();
         }
-        if (null !== $object->getCompanyNumber()) {
+        if ($object->isInitialized('companyNumber') && null !== $object->getCompanyNumber()) {
             $data['companyNumber'] = $object->getCompanyNumber();
         }
-        if (null !== $object->getCompanyRegistrationNumber()) {
+        if ($object->isInitialized('companyRegistrationNumber') && null !== $object->getCompanyRegistrationNumber()) {
             $data['companyRegistrationNumber'] = $object->getCompanyRegistrationNumber();
         }
-        if (null !== $object->getMainActivity()) {
+        if ($object->isInitialized('mainActivity') && null !== $object->getMainActivity()) {
             $data['mainActivity'] = $this->normalizer->normalize($object->getMainActivity(), 'json', $context);
         }
-        if (null !== $object->getCompanyStatus()) {
+        if ($object->isInitialized('companyStatus') && null !== $object->getCompanyStatus()) {
             $data['companyStatus'] = $this->normalizer->normalize($object->getCompanyStatus(), 'json', $context);
         }
-        if (null !== $object->getLatestTurnoverFigure()) {
+        if ($object->isInitialized('latestTurnoverFigure') && null !== $object->getLatestTurnoverFigure()) {
             $data['latestTurnoverFigure'] = $this->normalizer->normalize($object->getLatestTurnoverFigure(), 'json', $context);
         }
-        if (null !== $object->getLatestShareholdersEquityFigure()) {
+        if ($object->isInitialized('latestShareholdersEquityFigure') && null !== $object->getLatestShareholdersEquityFigure()) {
             $data['latestShareholdersEquityFigure'] = $this->normalizer->normalize($object->getLatestShareholdersEquityFigure(), 'json', $context);
         }
-        if (null !== $object->getCreditRating()) {
+        if ($object->isInitialized('creditRating') && null !== $object->getCreditRating()) {
             $data['creditRating'] = $this->normalizer->normalize($object->getCreditRating(), 'json', $context);
         }
         foreach ($object as $key => $value) {

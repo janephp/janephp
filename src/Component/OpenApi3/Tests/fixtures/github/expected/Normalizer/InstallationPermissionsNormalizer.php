@@ -90,28 +90,28 @@ class InstallationPermissionsNormalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDeployments()) {
+        if ($object->isInitialized('deployments') && null !== $object->getDeployments()) {
             $data['deployments'] = $object->getDeployments();
         }
-        if (null !== $object->getChecks()) {
+        if ($object->isInitialized('checks') && null !== $object->getChecks()) {
             $data['checks'] = $object->getChecks();
         }
-        if (null !== $object->getMetadata()) {
+        if ($object->isInitialized('metadata') && null !== $object->getMetadata()) {
             $data['metadata'] = $object->getMetadata();
         }
-        if (null !== $object->getContents()) {
+        if ($object->isInitialized('contents') && null !== $object->getContents()) {
             $data['contents'] = $object->getContents();
         }
-        if (null !== $object->getPullRequests()) {
+        if ($object->isInitialized('pullRequests') && null !== $object->getPullRequests()) {
             $data['pull_requests'] = $object->getPullRequests();
         }
-        if (null !== $object->getStatuses()) {
+        if ($object->isInitialized('statuses') && null !== $object->getStatuses()) {
             $data['statuses'] = $object->getStatuses();
         }
-        if (null !== $object->getIssues()) {
+        if ($object->isInitialized('issues') && null !== $object->getIssues()) {
             $data['issues'] = $object->getIssues();
         }
-        if (null !== $object->getOrganizationAdministration()) {
+        if ($object->isInitialized('organizationAdministration') && null !== $object->getOrganizationAdministration()) {
             $data['organization_administration'] = $object->getOrganizationAdministration();
         }
         foreach ($object as $key => $value) {

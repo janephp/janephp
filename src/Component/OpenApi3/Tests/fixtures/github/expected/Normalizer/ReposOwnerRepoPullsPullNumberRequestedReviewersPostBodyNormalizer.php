@@ -74,14 +74,14 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyNormalizer implemen
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getReviewers()) {
+        if ($object->isInitialized('reviewers') && null !== $object->getReviewers()) {
             $values = array();
             foreach ($object->getReviewers() as $value) {
                 $values[] = $value;
             }
             $data['reviewers'] = $values;
         }
-        if (null !== $object->getTeamReviewers()) {
+        if ($object->isInitialized('teamReviewers') && null !== $object->getTeamReviewers()) {
             $values_1 = array();
             foreach ($object->getTeamReviewers() as $value_1) {
                 $values_1[] = $value_1;

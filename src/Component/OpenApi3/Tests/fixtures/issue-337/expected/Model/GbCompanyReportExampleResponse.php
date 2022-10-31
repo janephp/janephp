@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponse extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -58,6 +66,7 @@ class GbCompanyReportExampleResponse extends \ArrayObject
      */
     public function setOrderId(string $orderId) : self
     {
+        $this->initialized['orderId'] = true;
         $this->orderId = $orderId;
         return $this;
     }
@@ -79,6 +88,7 @@ class GbCompanyReportExampleResponse extends \ArrayObject
      */
     public function setCompanyId(string $companyId) : self
     {
+        $this->initialized['companyId'] = true;
         $this->companyId = $companyId;
         return $this;
     }
@@ -100,6 +110,7 @@ class GbCompanyReportExampleResponse extends \ArrayObject
      */
     public function setDateOfOrder(string $dateOfOrder) : self
     {
+        $this->initialized['dateOfOrder'] = true;
         $this->dateOfOrder = $dateOfOrder;
         return $this;
     }
@@ -121,6 +132,7 @@ class GbCompanyReportExampleResponse extends \ArrayObject
      */
     public function setLanguage(string $language) : self
     {
+        $this->initialized['language'] = true;
         $this->language = $language;
         return $this;
     }
@@ -142,6 +154,7 @@ class GbCompanyReportExampleResponse extends \ArrayObject
      */
     public function setUserId(string $userId) : self
     {
+        $this->initialized['userId'] = true;
         $this->userId = $userId;
         return $this;
     }
@@ -163,6 +176,7 @@ class GbCompanyReportExampleResponse extends \ArrayObject
      */
     public function setReport(GbCompanyReportExampleResponseReport $report) : self
     {
+        $this->initialized['report'] = true;
         $this->report = $report;
         return $this;
     }

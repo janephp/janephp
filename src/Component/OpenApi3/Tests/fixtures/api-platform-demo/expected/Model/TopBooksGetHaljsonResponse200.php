@@ -5,6 +5,14 @@ namespace ApiPlatform\Demo\Model;
 class TopBooksGetHaljsonResponse200 extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var TopBookJsonhal[]
@@ -46,6 +54,7 @@ class TopBooksGetHaljsonResponse200 extends \ArrayObject
      */
     public function setEmbedded(array $embedded) : self
     {
+        $this->initialized['embedded'] = true;
         $this->embedded = $embedded;
         return $this;
     }
@@ -67,6 +76,7 @@ class TopBooksGetHaljsonResponse200 extends \ArrayObject
      */
     public function setTotalItems(int $totalItems) : self
     {
+        $this->initialized['totalItems'] = true;
         $this->totalItems = $totalItems;
         return $this;
     }
@@ -88,6 +98,7 @@ class TopBooksGetHaljsonResponse200 extends \ArrayObject
      */
     public function setItemsPerPage(int $itemsPerPage) : self
     {
+        $this->initialized['itemsPerPage'] = true;
         $this->itemsPerPage = $itemsPerPage;
         return $this;
     }
@@ -109,6 +120,7 @@ class TopBooksGetHaljsonResponse200 extends \ArrayObject
      */
     public function setLinks(TopBooksGetHaljsonResponse200Links $links) : self
     {
+        $this->initialized['links'] = true;
         $this->links = $links;
         return $this;
     }

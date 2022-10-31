@@ -90,7 +90,7 @@ class DefaultPlaceNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFormat()) {
+        if ($object->isInitialized('format') && null !== $object->getFormat()) {
             $data['format'] = $object->getFormat();
         }
         $data['id'] = $object->getId();
@@ -99,7 +99,7 @@ class DefaultPlaceNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['place_type'] = $object->getPlaceType();
         $data['full_name'] = $object->getFullName();
         $data['country'] = $object->getCountry();
-        if (null !== $object->getContainedWithin()) {
+        if ($object->isInitialized('containedWithin') && null !== $object->getContainedWithin()) {
             $values = array();
             foreach ($object->getContainedWithin() as $value) {
                 $values[] = $value;

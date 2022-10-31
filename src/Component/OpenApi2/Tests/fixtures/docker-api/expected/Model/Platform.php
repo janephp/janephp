@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class Platform
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * Architecture represents the hardware architecture (for example,
     `x86_64`).
     
@@ -40,6 +48,7 @@ class Platform
     */
     public function setArchitecture(string $architecture) : self
     {
+        $this->initialized['architecture'] = true;
         $this->architecture = $architecture;
         return $this;
     }
@@ -61,6 +70,7 @@ class Platform
      */
     public function setOS(string $oS) : self
     {
+        $this->initialized['oS'] = true;
         $this->oS = $oS;
         return $this;
     }

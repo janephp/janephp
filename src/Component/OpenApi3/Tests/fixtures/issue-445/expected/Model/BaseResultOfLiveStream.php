@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BaseResultOfLiveStream
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The total number of matching documents.
      *
      * @var int
@@ -46,6 +54,7 @@ class BaseResultOfLiveStream
      */
     public function setTotalResults(int $totalResults) : self
     {
+        $this->initialized['totalResults'] = true;
         $this->totalResults = $totalResults;
         return $this;
     }
@@ -67,6 +76,7 @@ class BaseResultOfLiveStream
      */
     public function setResults(array $results) : self
     {
+        $this->initialized['results'] = true;
         $this->results = $results;
         return $this;
     }
@@ -88,6 +98,7 @@ class BaseResultOfLiveStream
      */
     public function setElapsedMilliseconds(int $elapsedMilliseconds) : self
     {
+        $this->initialized['elapsedMilliseconds'] = true;
         $this->elapsedMilliseconds = $elapsedMilliseconds;
         return $this;
     }
@@ -109,6 +120,7 @@ class BaseResultOfLiveStream
      */
     public function setPageToken(?string $pageToken) : self
     {
+        $this->initialized['pageToken'] = true;
         $this->pageToken = $pageToken;
         return $this;
     }

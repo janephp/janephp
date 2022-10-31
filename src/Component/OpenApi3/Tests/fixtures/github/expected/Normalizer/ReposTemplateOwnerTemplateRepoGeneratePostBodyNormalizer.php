@@ -74,14 +74,14 @@ class ReposTemplateOwnerTemplateRepoGeneratePostBodyNormalizer implements Denorm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getOwner()) {
+        if ($object->isInitialized('owner') && null !== $object->getOwner()) {
             $data['owner'] = $object->getOwner();
         }
         $data['name'] = $object->getName();
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getPrivate()) {
+        if ($object->isInitialized('private') && null !== $object->getPrivate()) {
             $data['private'] = $object->getPrivate();
         }
         foreach ($object as $key => $value) {

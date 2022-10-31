@@ -84,16 +84,16 @@ class ReposOwnerRepoContentsPathPutBodyNormalizer implements DenormalizerInterfa
         $data = array();
         $data['message'] = $object->getMessage();
         $data['content'] = $object->getContent();
-        if (null !== $object->getSha()) {
+        if ($object->isInitialized('sha') && null !== $object->getSha()) {
             $data['sha'] = $object->getSha();
         }
-        if (null !== $object->getBranch()) {
+        if ($object->isInitialized('branch') && null !== $object->getBranch()) {
             $data['branch'] = $object->getBranch();
         }
-        if (null !== $object->getCommitter()) {
+        if ($object->isInitialized('committer') && null !== $object->getCommitter()) {
             $data['committer'] = $this->normalizer->normalize($object->getCommitter(), 'json', $context);
         }
-        if (null !== $object->getAuthor()) {
+        if ($object->isInitialized('author') && null !== $object->getAuthor()) {
             $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace Github\Model;
 class CommitComment extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -106,6 +114,7 @@ class CommitComment extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -127,6 +136,7 @@ class CommitComment extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -148,6 +158,7 @@ class CommitComment extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -169,6 +180,7 @@ class CommitComment extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -190,6 +202,7 @@ class CommitComment extends \ArrayObject
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }
@@ -211,6 +224,7 @@ class CommitComment extends \ArrayObject
      */
     public function setPath(?string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -232,6 +246,7 @@ class CommitComment extends \ArrayObject
      */
     public function setPosition(?int $position) : self
     {
+        $this->initialized['position'] = true;
         $this->position = $position;
         return $this;
     }
@@ -253,6 +268,7 @@ class CommitComment extends \ArrayObject
      */
     public function setLine(?int $line) : self
     {
+        $this->initialized['line'] = true;
         $this->line = $line;
         return $this;
     }
@@ -274,6 +290,7 @@ class CommitComment extends \ArrayObject
      */
     public function setCommitId(string $commitId) : self
     {
+        $this->initialized['commitId'] = true;
         $this->commitId = $commitId;
         return $this;
     }
@@ -295,6 +312,7 @@ class CommitComment extends \ArrayObject
      */
     public function setUser(?CommitCommentUser $user) : self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
     }
@@ -316,6 +334,7 @@ class CommitComment extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -337,6 +356,7 @@ class CommitComment extends \ArrayObject
      */
     public function setUpdatedAt(\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -358,6 +378,7 @@ class CommitComment extends \ArrayObject
      */
     public function setAuthorAssociation(string $authorAssociation) : self
     {
+        $this->initialized['authorAssociation'] = true;
         $this->authorAssociation = $authorAssociation;
         return $this;
     }
@@ -379,6 +400,7 @@ class CommitComment extends \ArrayObject
      */
     public function setReactions(ReactionRollup $reactions) : self
     {
+        $this->initialized['reactions'] = true;
         $this->reactions = $reactions;
         return $this;
     }

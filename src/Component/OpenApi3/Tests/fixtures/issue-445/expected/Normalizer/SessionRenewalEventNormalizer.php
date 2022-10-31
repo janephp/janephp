@@ -68,7 +68,7 @@ class SessionRenewalEventNormalizer implements DenormalizerInterface, Normalizer
         $data = array();
         $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
         $data['kind'] = $object->getKind();
-        if (null !== $object->getAuthorizationState()) {
+        if ($object->isInitialized('authorizationState') && null !== $object->getAuthorizationState()) {
             $data['authorizationState'] = $object->getAuthorizationState();
         }
         foreach ($object as $key => $value) {

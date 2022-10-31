@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class MatchRegexCondition extends BusinessRuleCondition
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * JSON path to the field
      *
      * @var string|null
@@ -40,6 +48,7 @@ class MatchRegexCondition extends BusinessRuleCondition
      */
     public function setFieldPath(?string $fieldPath) : self
     {
+        $this->initialized['fieldPath'] = true;
         $this->fieldPath = $fieldPath;
         return $this;
     }
@@ -61,6 +70,7 @@ class MatchRegexCondition extends BusinessRuleCondition
      */
     public function setRegex(?string $regex) : self
     {
+        $this->initialized['regex'] = true;
         $this->regex = $regex;
         return $this;
     }
@@ -82,6 +92,7 @@ class MatchRegexCondition extends BusinessRuleCondition
      */
     public function setStoreIn(?string $storeIn) : self
     {
+        $this->initialized['storeIn'] = true;
         $this->storeIn = $storeIn;
         return $this;
     }

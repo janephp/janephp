@@ -64,7 +64,7 @@ class DriverNormalizer implements DenormalizerInterface, NormalizerInterface, De
     {
         $data = array();
         $data['Name'] = $object->getName();
-        if (null !== $object->getOptions()) {
+        if ($object->isInitialized('options') && null !== $object->getOptions()) {
             $values = array();
             foreach ($object->getOptions() as $key => $value) {
                 $values[$key] = $value;

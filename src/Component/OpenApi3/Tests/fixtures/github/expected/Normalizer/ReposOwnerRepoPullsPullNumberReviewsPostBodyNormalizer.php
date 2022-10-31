@@ -78,16 +78,16 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyNormalizer implements Denormal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCommitId()) {
+        if ($object->isInitialized('commitId') && null !== $object->getCommitId()) {
             $data['commit_id'] = $object->getCommitId();
         }
-        if (null !== $object->getBody()) {
+        if ($object->isInitialized('body') && null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
-        if (null !== $object->getEvent()) {
+        if ($object->isInitialized('event') && null !== $object->getEvent()) {
             $data['event'] = $object->getEvent();
         }
-        if (null !== $object->getComments()) {
+        if ($object->isInitialized('comments') && null !== $object->getComments()) {
             $values = array();
             foreach ($object->getComments() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

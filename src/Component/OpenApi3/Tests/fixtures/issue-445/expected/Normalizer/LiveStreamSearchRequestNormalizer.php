@@ -78,14 +78,14 @@ class LiveStreamSearchRequestNormalizer implements DenormalizerInterface, Normal
         $data = array();
         $data['from'] = $object->getFrom()->format('Y-m-d\\TH:i:sP');
         $data['to'] = $object->getTo()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getScopeType()) {
+        if ($object->isInitialized('scopeType') && null !== $object->getScopeType()) {
             $data['scopeType'] = $object->getScopeType();
         }
-        if (null !== $object->getFilter()) {
+        if ($object->isInitialized('filter') && null !== $object->getFilter()) {
             $data['filter'] = $object->getFilter();
         }
         $data['limit'] = $object->getLimit();
-        if (null !== $object->getPageToken()) {
+        if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
             $data['pageToken'] = $object->getPageToken();
         }
         return $data;

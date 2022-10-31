@@ -5,6 +5,14 @@ namespace Github\Model;
 class FileCommitContent extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -82,6 +90,7 @@ class FileCommitContent extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -103,6 +112,7 @@ class FileCommitContent extends \ArrayObject
      */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -124,6 +134,7 @@ class FileCommitContent extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -145,6 +156,7 @@ class FileCommitContent extends \ArrayObject
      */
     public function setSize(int $size) : self
     {
+        $this->initialized['size'] = true;
         $this->size = $size;
         return $this;
     }
@@ -166,6 +178,7 @@ class FileCommitContent extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -187,6 +200,7 @@ class FileCommitContent extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -208,6 +222,7 @@ class FileCommitContent extends \ArrayObject
      */
     public function setGitUrl(string $gitUrl) : self
     {
+        $this->initialized['gitUrl'] = true;
         $this->gitUrl = $gitUrl;
         return $this;
     }
@@ -229,6 +244,7 @@ class FileCommitContent extends \ArrayObject
      */
     public function setDownloadUrl(string $downloadUrl) : self
     {
+        $this->initialized['downloadUrl'] = true;
         $this->downloadUrl = $downloadUrl;
         return $this;
     }
@@ -250,6 +266,7 @@ class FileCommitContent extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -271,6 +288,7 @@ class FileCommitContent extends \ArrayObject
      */
     public function setLinks(FileCommitContentLinks $links) : self
     {
+        $this->initialized['links'] = true;
         $this->links = $links;
         return $this;
     }

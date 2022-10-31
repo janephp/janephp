@@ -59,10 +59,10 @@ class PluginConfigUserNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUID()) {
+        if ($object->isInitialized('uID') && null !== $object->getUID()) {
             $data['UID'] = $object->getUID();
         }
-        if (null !== $object->getGID()) {
+        if ($object->isInitialized('gID') && null !== $object->getGID()) {
             $data['GID'] = $object->getGID();
         }
         if (!($context['skip_validation'] ?? false)) {

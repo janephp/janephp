@@ -119,10 +119,10 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
     {
         $data = array();
         $data['name'] = $object->getName();
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getExpirationDate()) {
+        if ($object->isInitialized('expirationDate') && null !== $object->getExpirationDate()) {
             $data['expirationDate'] = $object->getExpirationDate()->format('Y-m-d\\TH:i:sP');
         }
         $values = array();
@@ -130,7 +130,7 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['contents'] = $values;
-        if (null !== $object->getLayerSchemaIds()) {
+        if ($object->isInitialized('layerSchemaIds') && null !== $object->getLayerSchemaIds()) {
             $values_1 = array();
             foreach ($object->getLayerSchemaIds() as $value_1) {
                 $values_1[] = $value_1;
@@ -139,7 +139,7 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
         }
         $data['outputAccess'] = $object->getOutputAccess();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getRecipientEmails()) {
+        if ($object->isInitialized('recipientEmails') && null !== $object->getRecipientEmails()) {
             $values_2 = array();
             foreach ($object->getRecipientEmails() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
@@ -147,7 +147,7 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
             $data['recipientEmails'] = $values_2;
         }
         $data['languageCode'] = $object->getLanguageCode();
-        if (null !== $object->getSuppressNotifications()) {
+        if ($object->isInitialized('suppressNotifications') && null !== $object->getSuppressNotifications()) {
             $data['suppressNotifications'] = $object->getSuppressNotifications();
         }
         foreach ($object as $key => $value_3) {

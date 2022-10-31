@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class QueryDebugInformation
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -46,6 +54,7 @@ class QueryDebugInformation
      */
     public function setGeneral(?string $general) : self
     {
+        $this->initialized['general'] = true;
         $this->general = $general;
         return $this;
     }
@@ -67,6 +76,7 @@ class QueryDebugInformation
      */
     public function setAuditTrail(?string $auditTrail) : self
     {
+        $this->initialized['auditTrail'] = true;
         $this->auditTrail = $auditTrail;
         return $this;
     }
@@ -88,6 +98,7 @@ class QueryDebugInformation
      */
     public function setRequest($request) : self
     {
+        $this->initialized['request'] = true;
         $this->request = $request;
         return $this;
     }
@@ -109,6 +120,7 @@ class QueryDebugInformation
      */
     public function setResponse($response) : self
     {
+        $this->initialized['response'] = true;
         $this->response = $response;
         return $this;
     }

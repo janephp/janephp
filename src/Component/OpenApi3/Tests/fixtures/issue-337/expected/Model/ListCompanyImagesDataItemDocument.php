@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class ListCompanyImagesDataItemDocument extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class ListCompanyImagesDataItemDocument extends \ArrayObject
      */
     public function setImageType(string $imageType) : self
     {
+        $this->initialized['imageType'] = true;
         $this->imageType = $imageType;
         return $this;
     }
@@ -61,6 +70,7 @@ class ListCompanyImagesDataItemDocument extends \ArrayObject
      */
     public function setImageCode(string $imageCode) : self
     {
+        $this->initialized['imageCode'] = true;
         $this->imageCode = $imageCode;
         return $this;
     }
@@ -82,6 +92,7 @@ class ListCompanyImagesDataItemDocument extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }

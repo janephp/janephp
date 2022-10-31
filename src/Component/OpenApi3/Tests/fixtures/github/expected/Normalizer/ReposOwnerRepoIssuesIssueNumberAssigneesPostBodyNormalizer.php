@@ -66,7 +66,7 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyNormalizer implements Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAssignees()) {
+        if ($object->isInitialized('assignees') && null !== $object->getAssignees()) {
             $values = array();
             foreach ($object->getAssignees() as $value) {
                 $values[] = $value;

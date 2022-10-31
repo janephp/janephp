@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class OCIDescriptor
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The media type of the object this schema refers to.
      *
      * @var string
@@ -40,6 +48,7 @@ class OCIDescriptor
      */
     public function setMediaType(string $mediaType) : self
     {
+        $this->initialized['mediaType'] = true;
         $this->mediaType = $mediaType;
         return $this;
     }
@@ -61,6 +70,7 @@ class OCIDescriptor
      */
     public function setDigest(string $digest) : self
     {
+        $this->initialized['digest'] = true;
         $this->digest = $digest;
         return $this;
     }
@@ -82,6 +92,7 @@ class OCIDescriptor
      */
     public function setSize(int $size) : self
     {
+        $this->initialized['size'] = true;
         $this->size = $size;
         return $this;
     }

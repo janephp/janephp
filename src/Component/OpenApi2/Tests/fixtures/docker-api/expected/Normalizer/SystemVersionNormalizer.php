@@ -93,44 +93,44 @@ class SystemVersionNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPlatform()) {
+        if ($object->isInitialized('platform') && null !== $object->getPlatform()) {
             $data['Platform'] = $this->normalizer->normalize($object->getPlatform(), 'json', $context);
         }
-        if (null !== $object->getComponents()) {
+        if ($object->isInitialized('components') && null !== $object->getComponents()) {
             $values = array();
             foreach ($object->getComponents() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['Components'] = $values;
         }
-        if (null !== $object->getVersion()) {
+        if ($object->isInitialized('version') && null !== $object->getVersion()) {
             $data['Version'] = $object->getVersion();
         }
-        if (null !== $object->getApiVersion()) {
+        if ($object->isInitialized('apiVersion') && null !== $object->getApiVersion()) {
             $data['ApiVersion'] = $object->getApiVersion();
         }
-        if (null !== $object->getMinAPIVersion()) {
+        if ($object->isInitialized('minAPIVersion') && null !== $object->getMinAPIVersion()) {
             $data['MinAPIVersion'] = $object->getMinAPIVersion();
         }
-        if (null !== $object->getGitCommit()) {
+        if ($object->isInitialized('gitCommit') && null !== $object->getGitCommit()) {
             $data['GitCommit'] = $object->getGitCommit();
         }
-        if (null !== $object->getGoVersion()) {
+        if ($object->isInitialized('goVersion') && null !== $object->getGoVersion()) {
             $data['GoVersion'] = $object->getGoVersion();
         }
-        if (null !== $object->getOs()) {
+        if ($object->isInitialized('os') && null !== $object->getOs()) {
             $data['Os'] = $object->getOs();
         }
-        if (null !== $object->getArch()) {
+        if ($object->isInitialized('arch') && null !== $object->getArch()) {
             $data['Arch'] = $object->getArch();
         }
-        if (null !== $object->getKernelVersion()) {
+        if ($object->isInitialized('kernelVersion') && null !== $object->getKernelVersion()) {
             $data['KernelVersion'] = $object->getKernelVersion();
         }
-        if (null !== $object->getExperimental()) {
+        if ($object->isInitialized('experimental') && null !== $object->getExperimental()) {
             $data['Experimental'] = $object->getExperimental();
         }
-        if (null !== $object->getBuildTime()) {
+        if ($object->isInitialized('buildTime') && null !== $object->getBuildTime()) {
             $data['BuildTime'] = $object->getBuildTime();
         }
         if (!($context['skip_validation'] ?? false)) {

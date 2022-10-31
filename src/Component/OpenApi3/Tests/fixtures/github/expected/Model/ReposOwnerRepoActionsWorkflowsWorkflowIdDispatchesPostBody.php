@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The reference of the workflow run. The reference can be a branch, tag, or a commit SHA.
      *
      * @var string
@@ -34,6 +42,7 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody extends \ArrayO
      */
     public function setRef(string $ref) : self
     {
+        $this->initialized['ref'] = true;
         $this->ref = $ref;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody extends \ArrayO
      */
     public function setInputs(iterable $inputs) : self
     {
+        $this->initialized['inputs'] = true;
         $this->inputs = $inputs;
         return $this;
     }

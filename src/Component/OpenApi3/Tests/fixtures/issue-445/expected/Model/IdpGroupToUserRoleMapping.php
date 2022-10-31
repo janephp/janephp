@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class IdpGroupToUserRoleMapping
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Name of the group on external identity provider
      *
      * @var string|null
@@ -34,6 +42,7 @@ class IdpGroupToUserRoleMapping
      */
     public function setGroup(?string $group) : self
     {
+        $this->initialized['group'] = true;
         $this->group = $group;
         return $this;
     }
@@ -55,6 +64,7 @@ class IdpGroupToUserRoleMapping
      */
     public function setUserRoleId(?string $userRoleId) : self
     {
+        $this->initialized['userRoleId'] = true;
         $this->userRoleId = $userRoleId;
         return $this;
     }

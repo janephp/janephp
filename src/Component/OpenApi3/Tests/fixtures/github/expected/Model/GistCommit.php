@@ -5,6 +5,14 @@ namespace Github\Model;
 class GistCommit extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class GistCommit extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -73,6 +82,7 @@ class GistCommit extends \ArrayObject
      */
     public function setVersion(string $version) : self
     {
+        $this->initialized['version'] = true;
         $this->version = $version;
         return $this;
     }
@@ -94,6 +104,7 @@ class GistCommit extends \ArrayObject
      */
     public function setUser(?GistCommitUser $user) : self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
     }
@@ -115,6 +126,7 @@ class GistCommit extends \ArrayObject
      */
     public function setChangeStatus(GistCommitChangeStatus $changeStatus) : self
     {
+        $this->initialized['changeStatus'] = true;
         $this->changeStatus = $changeStatus;
         return $this;
     }
@@ -136,6 +148,7 @@ class GistCommit extends \ArrayObject
      */
     public function setCommittedAt(\DateTime $committedAt) : self
     {
+        $this->initialized['committedAt'] = true;
         $this->committedAt = $committedAt;
         return $this;
     }

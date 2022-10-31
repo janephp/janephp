@@ -66,10 +66,10 @@ class AccessCountriesResponseNormalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCorrelationId()) {
+        if ($object->isInitialized('correlationId') && null !== $object->getCorrelationId()) {
             $data['correlationId'] = $object->getCorrelationId();
         }
-        if (null !== $object->getCountryAccess()) {
+        if ($object->isInitialized('countryAccess') && null !== $object->getCountryAccess()) {
             $values = array();
             foreach ($object->getCountryAccess() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

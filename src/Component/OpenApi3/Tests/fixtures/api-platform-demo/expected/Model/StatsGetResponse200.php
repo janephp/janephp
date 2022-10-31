@@ -5,6 +5,14 @@ namespace ApiPlatform\Demo\Model;
 class StatsGetResponse200 extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -34,6 +42,7 @@ class StatsGetResponse200 extends \ArrayObject
      */
     public function setBooksCount(int $booksCount) : self
     {
+        $this->initialized['booksCount'] = true;
         $this->booksCount = $booksCount;
         return $this;
     }
@@ -55,6 +64,7 @@ class StatsGetResponse200 extends \ArrayObject
      */
     public function setTopbooksCount(int $topbooksCount) : self
     {
+        $this->initialized['topbooksCount'] = true;
         $this->topbooksCount = $topbooksCount;
         return $this;
     }

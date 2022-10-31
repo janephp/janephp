@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class AuthPostResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The status of the authentication
      *
      * @var string
@@ -34,6 +42,7 @@ class AuthPostResponse200
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -55,6 +64,7 @@ class AuthPostResponse200
      */
     public function setIdentityToken(string $identityToken) : self
     {
+        $this->initialized['identityToken'] = true;
         $this->identityToken = $identityToken;
         return $this;
     }

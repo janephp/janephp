@@ -5,6 +5,14 @@ namespace Github\Model;
 class PullRequestSimpleLinks extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Hypermedia Link
      *
      * @var Link
@@ -70,6 +78,7 @@ class PullRequestSimpleLinks extends \ArrayObject
      */
     public function setComments(Link $comments) : self
     {
+        $this->initialized['comments'] = true;
         $this->comments = $comments;
         return $this;
     }
@@ -91,6 +100,7 @@ class PullRequestSimpleLinks extends \ArrayObject
      */
     public function setCommits(Link $commits) : self
     {
+        $this->initialized['commits'] = true;
         $this->commits = $commits;
         return $this;
     }
@@ -112,6 +122,7 @@ class PullRequestSimpleLinks extends \ArrayObject
      */
     public function setStatuses(Link $statuses) : self
     {
+        $this->initialized['statuses'] = true;
         $this->statuses = $statuses;
         return $this;
     }
@@ -133,6 +144,7 @@ class PullRequestSimpleLinks extends \ArrayObject
      */
     public function setHtml(Link $html) : self
     {
+        $this->initialized['html'] = true;
         $this->html = $html;
         return $this;
     }
@@ -154,6 +166,7 @@ class PullRequestSimpleLinks extends \ArrayObject
      */
     public function setIssue(Link $issue) : self
     {
+        $this->initialized['issue'] = true;
         $this->issue = $issue;
         return $this;
     }
@@ -175,6 +188,7 @@ class PullRequestSimpleLinks extends \ArrayObject
      */
     public function setReviewComments(Link $reviewComments) : self
     {
+        $this->initialized['reviewComments'] = true;
         $this->reviewComments = $reviewComments;
         return $this;
     }
@@ -196,6 +210,7 @@ class PullRequestSimpleLinks extends \ArrayObject
      */
     public function setReviewComment(Link $reviewComment) : self
     {
+        $this->initialized['reviewComment'] = true;
         $this->reviewComment = $reviewComment;
         return $this;
     }
@@ -217,6 +232,7 @@ class PullRequestSimpleLinks extends \ArrayObject
      */
     public function setSelf(Link $self) : self
     {
+        $this->initialized['self'] = true;
         $this->self = $self;
         return $this;
     }

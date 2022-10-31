@@ -61,10 +61,10 @@ class OutputFormatRenderingSpecificationNormalizer implements DenormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSourceOutputFormats()) {
+        if ($object->isInitialized('sourceOutputFormats') && null !== $object->getSourceOutputFormats()) {
             $data['sourceOutputFormats'] = $object->getSourceOutputFormats();
         }
-        if (null !== $object->getFormat()) {
+        if ($object->isInitialized('format') && null !== $object->getFormat()) {
             $data['format'] = $object->getFormat();
         }
         return $data;

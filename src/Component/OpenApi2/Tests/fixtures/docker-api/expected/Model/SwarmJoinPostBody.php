@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class SwarmJoinPostBody
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * Listen address used for inter-manager communication if the node
     gets promoted to manager, as well as determining the networking
     interface used for the VXLAN Tunnel Endpoint (VTEP).
@@ -77,6 +85,7 @@ class SwarmJoinPostBody
     */
     public function setListenAddr(string $listenAddr) : self
     {
+        $this->initialized['listenAddr'] = true;
         $this->listenAddr = $listenAddr;
         return $this;
     }
@@ -110,6 +119,7 @@ class SwarmJoinPostBody
     */
     public function setAdvertiseAddr(string $advertiseAddr) : self
     {
+        $this->initialized['advertiseAddr'] = true;
         $this->advertiseAddr = $advertiseAddr;
         return $this;
     }
@@ -151,6 +161,7 @@ class SwarmJoinPostBody
     */
     public function setDataPathAddr(string $dataPathAddr) : self
     {
+        $this->initialized['dataPathAddr'] = true;
         $this->dataPathAddr = $dataPathAddr;
         return $this;
     }
@@ -172,6 +183,7 @@ class SwarmJoinPostBody
      */
     public function setRemoteAddrs(array $remoteAddrs) : self
     {
+        $this->initialized['remoteAddrs'] = true;
         $this->remoteAddrs = $remoteAddrs;
         return $this;
     }
@@ -193,6 +205,7 @@ class SwarmJoinPostBody
      */
     public function setJoinToken(string $joinToken) : self
     {
+        $this->initialized['joinToken'] = true;
         $this->joinToken = $joinToken;
         return $this;
     }

@@ -81,22 +81,22 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getSafeNumber()) {
+        if ($object->isInitialized('safeNumber') && null !== $object->getSafeNumber()) {
             $data['safeNumber'] = $object->getSafeNumber();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getCountryCode()) {
+        if ($object->isInitialized('countryCode') && null !== $object->getCountryCode()) {
             $data['countryCode'] = $object->getCountryCode();
         }
-        if (null !== $object->getPortfolioId()) {
+        if ($object->isInitialized('portfolioId') && null !== $object->getPortfolioId()) {
             $data['portfolioId'] = $object->getPortfolioId();
         }
-        if (null !== $object->getPortfolioName()) {
+        if ($object->isInitialized('portfolioName') && null !== $object->getPortfolioName()) {
             $data['portfolioName'] = $object->getPortfolioName();
         }
         foreach ($object as $key => $value) {

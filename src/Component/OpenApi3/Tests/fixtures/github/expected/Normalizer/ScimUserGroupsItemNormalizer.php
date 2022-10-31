@@ -66,10 +66,10 @@ class ScimUserGroupsItemNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getValue()) {
+        if ($object->isInitialized('value') && null !== $object->getValue()) {
             $data['value'] = $object->getValue();
         }
-        if (null !== $object->getDisplay()) {
+        if ($object->isInitialized('display') && null !== $object->getDisplay()) {
             $data['display'] = $object->getDisplay();
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentFieldsBatchUpdateRequest extends MetadataValuesChangeRequestBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The IDs of the contents whose fields need to be updated.
      *
      * @var string[]
@@ -28,6 +36,7 @@ class ContentFieldsBatchUpdateRequest extends MetadataValuesChangeRequestBase
      */
     public function setContentIds(array $contentIds) : self
     {
+        $this->initialized['contentIds'] = true;
         $this->contentIds = $contentIds;
         return $this;
     }

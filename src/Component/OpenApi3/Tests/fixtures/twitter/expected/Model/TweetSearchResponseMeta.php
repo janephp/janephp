@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class TweetSearchResponseMeta extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Most recent Tweet Id returned by search query
      *
      * @var string
@@ -46,6 +54,7 @@ class TweetSearchResponseMeta extends \ArrayObject
      */
     public function setNewestId(string $newestId) : self
     {
+        $this->initialized['newestId'] = true;
         $this->newestId = $newestId;
         return $this;
     }
@@ -67,6 +76,7 @@ class TweetSearchResponseMeta extends \ArrayObject
      */
     public function setOldestId(string $oldestId) : self
     {
+        $this->initialized['oldestId'] = true;
         $this->oldestId = $oldestId;
         return $this;
     }
@@ -88,6 +98,7 @@ class TweetSearchResponseMeta extends \ArrayObject
      */
     public function setNextToken(string $nextToken) : self
     {
+        $this->initialized['nextToken'] = true;
         $this->nextToken = $nextToken;
         return $this;
     }
@@ -109,6 +120,7 @@ class TweetSearchResponseMeta extends \ArrayObject
      */
     public function setResultCount(int $resultCount) : self
     {
+        $this->initialized['resultCount'] = true;
         $this->resultCount = $resultCount;
         return $this;
     }

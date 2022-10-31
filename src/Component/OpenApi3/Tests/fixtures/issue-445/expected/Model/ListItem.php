@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ListItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Audit information.
      *
      * @var mixed|null
@@ -76,6 +84,7 @@ class ListItem
      */
     public function setAudit($audit) : self
     {
+        $this->initialized['audit'] = true;
         $this->audit = $audit;
         return $this;
     }
@@ -97,6 +106,7 @@ class ListItem
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -118,6 +128,7 @@ class ListItem
      */
     public function setContentSchemaId(?string $contentSchemaId) : self
     {
+        $this->initialized['contentSchemaId'] = true;
         $this->contentSchemaId = $contentSchemaId;
         return $this;
     }
@@ -139,6 +150,7 @@ class ListItem
      */
     public function setDisplayValues($displayValues) : self
     {
+        $this->initialized['displayValues'] = true;
         $this->displayValues = $displayValues;
         return $this;
     }
@@ -160,6 +172,7 @@ class ListItem
      */
     public function setContent(?iterable $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }
@@ -181,6 +194,7 @@ class ListItem
      */
     public function setBrokenReferenceIds(?array $brokenReferenceIds) : self
     {
+        $this->initialized['brokenReferenceIds'] = true;
         $this->brokenReferenceIds = $brokenReferenceIds;
         return $this;
     }
@@ -202,6 +216,7 @@ class ListItem
      */
     public function setBrokenRelationTargetIds(?array $brokenRelationTargetIds) : self
     {
+        $this->initialized['brokenRelationTargetIds'] = true;
         $this->brokenRelationTargetIds = $brokenRelationTargetIds;
         return $this;
     }
@@ -223,6 +238,7 @@ class ListItem
      */
     public function setBrokenIndirectReferenceIds(?array $brokenIndirectReferenceIds) : self
     {
+        $this->initialized['brokenIndirectReferenceIds'] = true;
         $this->brokenIndirectReferenceIds = $brokenIndirectReferenceIds;
         return $this;
     }
@@ -244,6 +260,7 @@ class ListItem
      */
     public function setLifeCycle($lifeCycle) : self
     {
+        $this->initialized['lifeCycle'] = true;
         $this->lifeCycle = $lifeCycle;
         return $this;
     }

@@ -70,10 +70,10 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyNormali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getStrict()) {
+        if ($object->isInitialized('strict') && null !== $object->getStrict()) {
             $data['strict'] = $object->getStrict();
         }
-        if (null !== $object->getContexts()) {
+        if ($object->isInitialized('contexts') && null !== $object->getContexts()) {
             $values = array();
             foreach ($object->getContexts() as $value) {
                 $values[] = $value;

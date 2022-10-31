@@ -74,16 +74,16 @@ class ActionsBillingUsageNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTotalMinutesUsed()) {
+        if ($object->isInitialized('totalMinutesUsed') && null !== $object->getTotalMinutesUsed()) {
             $data['total_minutes_used'] = $object->getTotalMinutesUsed();
         }
-        if (null !== $object->getTotalPaidMinutesUsed()) {
+        if ($object->isInitialized('totalPaidMinutesUsed') && null !== $object->getTotalPaidMinutesUsed()) {
             $data['total_paid_minutes_used'] = $object->getTotalPaidMinutesUsed();
         }
-        if (null !== $object->getIncludedMinutes()) {
+        if ($object->isInitialized('includedMinutes') && null !== $object->getIncludedMinutes()) {
             $data['included_minutes'] = $object->getIncludedMinutes();
         }
-        if (null !== $object->getMinutesUsedBreakdown()) {
+        if ($object->isInitialized('minutesUsedBreakdown') && null !== $object->getMinutesUsedBreakdown()) {
             $data['minutes_used_breakdown'] = $this->normalizer->normalize($object->getMinutesUsedBreakdown(), 'json', $context);
         }
         foreach ($object as $key => $value) {

@@ -59,10 +59,10 @@ class ExecIdStartPostBodyNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDetach()) {
+        if ($object->isInitialized('detach') && null !== $object->getDetach()) {
             $data['Detach'] = $object->getDetach();
         }
-        if (null !== $object->getTty()) {
+        if ($object->isInitialized('tty') && null !== $object->getTty()) {
             $data['Tty'] = $object->getTty();
         }
         if (!($context['skip_validation'] ?? false)) {

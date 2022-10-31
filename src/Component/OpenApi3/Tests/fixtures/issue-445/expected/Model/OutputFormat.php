@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class OutputFormat extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Which output format should be used as a source of data.
      *
      * @var mixed|null
@@ -95,6 +103,7 @@ class OutputFormat extends \ArrayObject
      */
     public function setSourceOutputFormats($sourceOutputFormats) : self
     {
+        $this->initialized['sourceOutputFormats'] = true;
         $this->sourceOutputFormats = $sourceOutputFormats;
         return $this;
     }
@@ -116,6 +125,7 @@ class OutputFormat extends \ArrayObject
      */
     public function setFormat($format) : self
     {
+        $this->initialized['format'] = true;
         $this->format = $format;
         return $this;
     }
@@ -137,6 +147,7 @@ class OutputFormat extends \ArrayObject
      */
     public function setNames($names) : self
     {
+        $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }
@@ -158,6 +169,7 @@ class OutputFormat extends \ArrayObject
      */
     public function setRetentionTime(string $retentionTime) : self
     {
+        $this->initialized['retentionTime'] = true;
         $this->retentionTime = $retentionTime;
         return $this;
     }
@@ -181,6 +193,7 @@ class OutputFormat extends \ArrayObject
     */
     public function setDownloadFileNamePatterns($downloadFileNamePatterns) : self
     {
+        $this->initialized['downloadFileNamePatterns'] = true;
         $this->downloadFileNamePatterns = $downloadFileNamePatterns;
         return $this;
     }
@@ -202,6 +215,7 @@ class OutputFormat extends \ArrayObject
      */
     public function setViewForAll(bool $viewForAll) : self
     {
+        $this->initialized['viewForAll'] = true;
         $this->viewForAll = $viewForAll;
         return $this;
     }
@@ -223,6 +237,7 @@ class OutputFormat extends \ArrayObject
      */
     public function setEnableXmpWriteback(bool $enableXmpWriteback) : self
     {
+        $this->initialized['enableXmpWriteback'] = true;
         $this->enableXmpWriteback = $enableXmpWriteback;
         return $this;
     }
@@ -244,6 +259,7 @@ class OutputFormat extends \ArrayObject
      */
     public function setId(?string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -265,6 +281,7 @@ class OutputFormat extends \ArrayObject
      */
     public function setSystem(bool $system) : self
     {
+        $this->initialized['system'] = true;
         $this->system = $system;
         return $this;
     }
@@ -286,6 +303,7 @@ class OutputFormat extends \ArrayObject
      */
     public function setDynamic(bool $dynamic) : self
     {
+        $this->initialized['dynamic'] = true;
         $this->dynamic = $dynamic;
         return $this;
     }
@@ -307,6 +325,7 @@ class OutputFormat extends \ArrayObject
      */
     public function setDataExtraction(bool $dataExtraction) : self
     {
+        $this->initialized['dataExtraction'] = true;
         $this->dataExtraction = $dataExtraction;
         return $this;
     }
@@ -328,6 +347,7 @@ class OutputFormat extends \ArrayObject
      */
     public function setTemporary(bool $temporary) : self
     {
+        $this->initialized['temporary'] = true;
         $this->temporary = $temporary;
         return $this;
     }

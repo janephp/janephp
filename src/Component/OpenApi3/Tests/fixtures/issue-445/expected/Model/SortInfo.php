@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SortInfo
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The field's ID to sort on.
      *
      * @var string|null
@@ -34,6 +42,7 @@ class SortInfo
      */
     public function setField(?string $field) : self
     {
+        $this->initialized['field'] = true;
         $this->field = $field;
         return $this;
     }
@@ -55,6 +64,7 @@ class SortInfo
      */
     public function setDirection($direction) : self
     {
+        $this->initialized['direction'] = true;
         $this->direction = $direction;
         return $this;
     }

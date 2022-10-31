@@ -70,16 +70,16 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDate()) {
+        if ($object->isInitialized('date') && null !== $object->getDate()) {
             $data['date'] = $object->getDate();
         }
-        if (null !== $object->getEvent()) {
+        if ($object->isInitialized('event') && null !== $object->getEvent()) {
             $data['event'] = $object->getEvent();
         }
-        if (null !== $object->getNote()) {
+        if ($object->isInitialized('note') && null !== $object->getNote()) {
             $data['note'] = $object->getNote();
         }
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $data['user'] = $object->getUser();
         }
         foreach ($object as $key => $value) {

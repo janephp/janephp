@@ -83,14 +83,14 @@ class GeoPointWithinPolygonConditionNormalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getFieldPath()) {
+        if ($object->isInitialized('fieldPath') && null !== $object->getFieldPath()) {
             $data['fieldPath'] = $object->getFieldPath();
         }
-        if (null !== $object->getPolygon()) {
+        if ($object->isInitialized('polygon') && null !== $object->getPolygon()) {
             $values = array();
             foreach ($object->getPolygon() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

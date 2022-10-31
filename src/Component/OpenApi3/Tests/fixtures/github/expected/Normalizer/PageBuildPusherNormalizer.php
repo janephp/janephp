@@ -155,7 +155,7 @@ class PageBuildPusherNormalizer implements DenormalizerInterface, NormalizerInte
         $data['received_events_url'] = $object->getReceivedEventsUrl();
         $data['type'] = $object->getType();
         $data['site_admin'] = $object->getSiteAdmin();
-        if (null !== $object->getStarredAt()) {
+        if ($object->isInitialized('starredAt') && null !== $object->getStarredAt()) {
             $data['starred_at'] = $object->getStarredAt();
         }
         foreach ($object as $key => $value) {

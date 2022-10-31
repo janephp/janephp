@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoGitCommitsPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The commit message
      *
      * @var string
@@ -58,6 +66,7 @@ class ReposOwnerRepoGitCommitsPostBody extends \ArrayObject
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -79,6 +88,7 @@ class ReposOwnerRepoGitCommitsPostBody extends \ArrayObject
      */
     public function setTree(string $tree) : self
     {
+        $this->initialized['tree'] = true;
         $this->tree = $tree;
         return $this;
     }
@@ -100,6 +110,7 @@ class ReposOwnerRepoGitCommitsPostBody extends \ArrayObject
      */
     public function setParents(array $parents) : self
     {
+        $this->initialized['parents'] = true;
         $this->parents = $parents;
         return $this;
     }
@@ -121,6 +132,7 @@ class ReposOwnerRepoGitCommitsPostBody extends \ArrayObject
      */
     public function setAuthor(ReposOwnerRepoGitCommitsPostBodyAuthor $author) : self
     {
+        $this->initialized['author'] = true;
         $this->author = $author;
         return $this;
     }
@@ -142,6 +154,7 @@ class ReposOwnerRepoGitCommitsPostBody extends \ArrayObject
      */
     public function setCommitter(ReposOwnerRepoGitCommitsPostBodyCommitter $committer) : self
     {
+        $this->initialized['committer'] = true;
         $this->committer = $committer;
         return $this;
     }
@@ -163,6 +176,7 @@ class ReposOwnerRepoGitCommitsPostBody extends \ArrayObject
      */
     public function setSignature(string $signature) : self
     {
+        $this->initialized['signature'] = true;
         $this->signature = $signature;
         return $this;
     }
