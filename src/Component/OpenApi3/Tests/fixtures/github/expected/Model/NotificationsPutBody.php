@@ -5,6 +5,14 @@ namespace Github\Model;
 class NotificationsPutBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Describes the last point that notifications were checked.
      *
      * @var \DateTime
@@ -34,6 +42,7 @@ class NotificationsPutBody extends \ArrayObject
      */
     public function setLastReadAt(\DateTime $lastReadAt) : self
     {
+        $this->initialized['lastReadAt'] = true;
         $this->lastReadAt = $lastReadAt;
         return $this;
     }
@@ -55,6 +64,7 @@ class NotificationsPutBody extends \ArrayObject
      */
     public function setRead(bool $read) : self
     {
+        $this->initialized['read'] = true;
         $this->read = $read;
         return $this;
     }

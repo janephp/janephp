@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class Address
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * IP address.
      *
      * @var string
@@ -34,6 +42,7 @@ class Address
      */
     public function setAddr(string $addr) : self
     {
+        $this->initialized['addr'] = true;
         $this->addr = $addr;
         return $this;
     }
@@ -55,6 +64,7 @@ class Address
      */
     public function setPrefixLen(int $prefixLen) : self
     {
+        $this->initialized['prefixLen'] = true;
         $this->prefixLen = $prefixLen;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class UsageCapExceededProblem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class UsageCapExceededProblem extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -73,6 +82,7 @@ class UsageCapExceededProblem extends \ArrayObject
      */
     public function setPeriod(string $period) : self
     {
+        $this->initialized['period'] = true;
         $this->period = $period;
         return $this;
     }
@@ -94,6 +104,7 @@ class UsageCapExceededProblem extends \ArrayObject
      */
     public function setScope(string $scope) : self
     {
+        $this->initialized['scope'] = true;
         $this->scope = $scope;
         return $this;
     }
@@ -115,6 +126,7 @@ class UsageCapExceededProblem extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -136,6 +148,7 @@ class UsageCapExceededProblem extends \ArrayObject
      */
     public function setDetail(string $detail) : self
     {
+        $this->initialized['detail'] = true;
         $this->detail = $detail;
         return $this;
     }

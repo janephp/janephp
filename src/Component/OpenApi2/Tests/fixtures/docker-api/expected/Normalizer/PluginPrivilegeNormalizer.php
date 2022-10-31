@@ -66,13 +66,13 @@ class PluginPrivilegeNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['Name'] = $object->getName();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['Description'] = $object->getDescription();
         }
-        if (null !== $object->getValue()) {
+        if ($object->isInitialized('value') && null !== $object->getValue()) {
             $values = array();
             foreach ($object->getValue() as $value) {
                 $values[] = $value;

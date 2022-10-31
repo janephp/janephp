@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class CompactPlaceFields extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The identifier for this place
      *
      * @var string
@@ -40,6 +48,7 @@ class CompactPlaceFields extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -61,6 +70,7 @@ class CompactPlaceFields extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -82,6 +92,7 @@ class CompactPlaceFields extends \ArrayObject
      */
     public function setCountryCode(string $countryCode) : self
     {
+        $this->initialized['countryCode'] = true;
         $this->countryCode = $countryCode;
         return $this;
     }

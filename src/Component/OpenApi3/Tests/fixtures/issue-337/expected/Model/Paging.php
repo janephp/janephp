@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class Paging extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The maximum number of results returned per page.
      *
      * @var float
@@ -46,6 +54,7 @@ class Paging extends \ArrayObject
      */
     public function setSize(float $size) : self
     {
+        $this->initialized['size'] = true;
         $this->size = $size;
         return $this;
     }
@@ -67,6 +76,7 @@ class Paging extends \ArrayObject
      */
     public function setPrev(float $prev) : self
     {
+        $this->initialized['prev'] = true;
         $this->prev = $prev;
         return $this;
     }
@@ -88,6 +98,7 @@ class Paging extends \ArrayObject
      */
     public function setNext(float $next) : self
     {
+        $this->initialized['next'] = true;
         $this->next = $next;
         return $this;
     }
@@ -109,6 +120,7 @@ class Paging extends \ArrayObject
      */
     public function setLast(float $last) : self
     {
+        $this->initialized['last'] = true;
         $this->last = $last;
         return $this;
     }

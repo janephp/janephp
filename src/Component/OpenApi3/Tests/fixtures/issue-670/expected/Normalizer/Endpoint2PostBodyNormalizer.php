@@ -58,7 +58,7 @@ class Endpoint2PostBodyNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPostField2()) {
+        if ($object->isInitialized('postField2') && null !== $object->getPostField2()) {
             $data['post-field-2'] = $object->getPostField2();
         }
         foreach ($object as $key => $value) {

@@ -66,13 +66,13 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCred
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMaxValue()) {
+        if ($object->isInitialized('maxValue') && null !== $object->getMaxValue()) {
             $data['maxValue'] = $object->getMaxValue();
         }
-        if (null !== $object->getMinValue()) {
+        if ($object->isInitialized('minValue') && null !== $object->getMinValue()) {
             $data['minValue'] = $object->getMinValue();
         }
-        if (null !== $object->getValue()) {
+        if ($object->isInitialized('value') && null !== $object->getValue()) {
             $data['value'] = $object->getValue();
         }
         foreach ($object as $key => $value) {

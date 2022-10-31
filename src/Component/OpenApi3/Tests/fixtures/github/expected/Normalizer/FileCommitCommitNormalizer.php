@@ -102,38 +102,38 @@ class FileCommitCommitNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSha()) {
+        if ($object->isInitialized('sha') && null !== $object->getSha()) {
             $data['sha'] = $object->getSha();
         }
-        if (null !== $object->getNodeId()) {
+        if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getHtmlUrl()) {
+        if ($object->isInitialized('htmlUrl') && null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
-        if (null !== $object->getAuthor()) {
+        if ($object->isInitialized('author') && null !== $object->getAuthor()) {
             $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
         }
-        if (null !== $object->getCommitter()) {
+        if ($object->isInitialized('committer') && null !== $object->getCommitter()) {
             $data['committer'] = $this->normalizer->normalize($object->getCommitter(), 'json', $context);
         }
-        if (null !== $object->getMessage()) {
+        if ($object->isInitialized('message') && null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
-        if (null !== $object->getTree()) {
+        if ($object->isInitialized('tree') && null !== $object->getTree()) {
             $data['tree'] = $this->normalizer->normalize($object->getTree(), 'json', $context);
         }
-        if (null !== $object->getParents()) {
+        if ($object->isInitialized('parents') && null !== $object->getParents()) {
             $values = array();
             foreach ($object->getParents() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['parents'] = $values;
         }
-        if (null !== $object->getVerification()) {
+        if ($object->isInitialized('verification') && null !== $object->getVerification()) {
             $data['verification'] = $this->normalizer->normalize($object->getVerification(), 'json', $context);
         }
         foreach ($object as $key => $value_1) {

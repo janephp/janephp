@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class ResourceNotFoundProblem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -58,6 +66,7 @@ class ResourceNotFoundProblem extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -79,6 +88,7 @@ class ResourceNotFoundProblem extends \ArrayObject
      */
     public function setParameter(string $parameter) : self
     {
+        $this->initialized['parameter'] = true;
         $this->parameter = $parameter;
         return $this;
     }
@@ -100,6 +110,7 @@ class ResourceNotFoundProblem extends \ArrayObject
      */
     public function setValue($value) : self
     {
+        $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
     }
@@ -121,6 +132,7 @@ class ResourceNotFoundProblem extends \ArrayObject
      */
     public function setResourceType(string $resourceType) : self
     {
+        $this->initialized['resourceType'] = true;
         $this->resourceType = $resourceType;
         return $this;
     }
@@ -142,6 +154,7 @@ class ResourceNotFoundProblem extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -163,6 +176,7 @@ class ResourceNotFoundProblem extends \ArrayObject
      */
     public function setDetail(string $detail) : self
     {
+        $this->initialized['detail'] = true;
         $this->detail = $detail;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentAggregationOnChannelRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Limits the search by using a query string filter. The Lucene query string syntax is supported.
      *
      * @var string|null
@@ -89,6 +97,7 @@ class ContentAggregationOnChannelRequest
      */
     public function setSearchString(?string $searchString) : self
     {
+        $this->initialized['searchString'] = true;
         $this->searchString = $searchString;
         return $this;
     }
@@ -110,6 +119,7 @@ class ContentAggregationOnChannelRequest
      */
     public function setSearchBehaviors(?array $searchBehaviors) : self
     {
+        $this->initialized['searchBehaviors'] = true;
         $this->searchBehaviors = $searchBehaviors;
         return $this;
     }
@@ -131,6 +141,7 @@ class ContentAggregationOnChannelRequest
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }
@@ -162,6 +173,7 @@ class ContentAggregationOnChannelRequest
     */
     public function setAggregationFilters(?array $aggregationFilters) : self
     {
+        $this->initialized['aggregationFilters'] = true;
         $this->aggregationFilters = $aggregationFilters;
         return $this;
     }
@@ -185,6 +197,7 @@ class ContentAggregationOnChannelRequest
     */
     public function setChannelId(?string $channelId) : self
     {
+        $this->initialized['channelId'] = true;
         $this->channelId = $channelId;
         return $this;
     }
@@ -208,6 +221,7 @@ class ContentAggregationOnChannelRequest
     */
     public function setSearchLanguages(?array $searchLanguages) : self
     {
+        $this->initialized['searchLanguages'] = true;
         $this->searchLanguages = $searchLanguages;
         return $this;
     }
@@ -229,6 +243,7 @@ class ContentAggregationOnChannelRequest
      */
     public function setCollectionId(?string $collectionId) : self
     {
+        $this->initialized['collectionId'] = true;
         $this->collectionId = $collectionId;
         return $this;
     }
@@ -250,6 +265,7 @@ class ContentAggregationOnChannelRequest
      */
     public function setLifeCycleFilter($lifeCycleFilter) : self
     {
+        $this->initialized['lifeCycleFilter'] = true;
         $this->lifeCycleFilter = $lifeCycleFilter;
         return $this;
     }
@@ -271,6 +287,7 @@ class ContentAggregationOnChannelRequest
      */
     public function setBrokenDependenciesFilter($brokenDependenciesFilter) : self
     {
+        $this->initialized['brokenDependenciesFilter'] = true;
         $this->brokenDependenciesFilter = $brokenDependenciesFilter;
         return $this;
     }
@@ -292,6 +309,7 @@ class ContentAggregationOnChannelRequest
      */
     public function setSearchType($searchType) : self
     {
+        $this->initialized['searchType'] = true;
         $this->searchType = $searchType;
         return $this;
     }

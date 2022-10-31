@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class Runtime
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * Name and, optional, path, of the OCI executable binary.
     
     If the path is omitted, the daemon searches the host's `$PATH` for the
@@ -46,6 +54,7 @@ class Runtime
     */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -67,6 +76,7 @@ class Runtime
      */
     public function setRuntimeArgs(?array $runtimeArgs) : self
     {
+        $this->initialized['runtimeArgs'] = true;
         $this->runtimeArgs = $runtimeArgs;
         return $this;
     }

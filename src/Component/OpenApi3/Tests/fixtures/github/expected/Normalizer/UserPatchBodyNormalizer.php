@@ -93,28 +93,28 @@ class UserPatchBodyNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getEmail()) {
+        if ($object->isInitialized('email') && null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
-        if (null !== $object->getBlog()) {
+        if ($object->isInitialized('blog') && null !== $object->getBlog()) {
             $data['blog'] = $object->getBlog();
         }
-        if (null !== $object->getTwitterUsername()) {
+        if ($object->isInitialized('twitterUsername') && null !== $object->getTwitterUsername()) {
             $data['twitter_username'] = $object->getTwitterUsername();
         }
-        if (null !== $object->getCompany()) {
+        if ($object->isInitialized('company') && null !== $object->getCompany()) {
             $data['company'] = $object->getCompany();
         }
-        if (null !== $object->getLocation()) {
+        if ($object->isInitialized('location') && null !== $object->getLocation()) {
             $data['location'] = $object->getLocation();
         }
-        if (null !== $object->getHireable()) {
+        if ($object->isInitialized('hireable') && null !== $object->getHireable()) {
             $data['hireable'] = $object->getHireable();
         }
-        if (null !== $object->getBio()) {
+        if ($object->isInitialized('bio') && null !== $object->getBio()) {
             $data['bio'] = $object->getBio();
         }
         foreach ($object as $key => $value) {

@@ -62,10 +62,10 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItemN
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCommentaryText()) {
+        if ($object->isInitialized('commentaryText') && null !== $object->getCommentaryText()) {
             $data['commentaryText'] = $object->getCommentaryText();
         }
-        if (null !== $object->getPositiveNegative()) {
+        if ($object->isInitialized('positiveNegative') && null !== $object->getPositiveNegative()) {
             $data['positiveNegative'] = $object->getPositiveNegative();
         }
         foreach ($object as $key => $value) {

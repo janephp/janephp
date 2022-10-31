@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ShareDetail
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Share ID.
      *
      * @var string
@@ -100,6 +108,7 @@ class ShareDetail
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -121,6 +130,7 @@ class ShareDetail
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -142,6 +152,7 @@ class ShareDetail
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -163,6 +174,7 @@ class ShareDetail
      */
     public function setCreator($creator) : self
     {
+        $this->initialized['creator'] = true;
         $this->creator = $creator;
         return $this;
     }
@@ -184,6 +196,7 @@ class ShareDetail
      */
     public function setAudit($audit) : self
     {
+        $this->initialized['audit'] = true;
         $this->audit = $audit;
         return $this;
     }
@@ -205,6 +218,7 @@ class ShareDetail
      */
     public function setContentSelections(array $contentSelections) : self
     {
+        $this->initialized['contentSelections'] = true;
         $this->contentSelections = $contentSelections;
         return $this;
     }
@@ -226,6 +240,7 @@ class ShareDetail
      */
     public function setLayerSchemaIds(?array $layerSchemaIds) : self
     {
+        $this->initialized['layerSchemaIds'] = true;
         $this->layerSchemaIds = $layerSchemaIds;
         return $this;
     }
@@ -247,6 +262,7 @@ class ShareDetail
      */
     public function setData($data) : self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
         return $this;
     }
@@ -268,6 +284,7 @@ class ShareDetail
      */
     public function setExpirationDate(?\DateTime $expirationDate) : self
     {
+        $this->initialized['expirationDate'] = true;
         $this->expirationDate = $expirationDate;
         return $this;
     }
@@ -289,6 +306,7 @@ class ShareDetail
      */
     public function setExpired(bool $expired) : self
     {
+        $this->initialized['expired'] = true;
         $this->expired = $expired;
         return $this;
     }
@@ -310,6 +328,7 @@ class ShareDetail
      */
     public function setOutputAccess($outputAccess) : self
     {
+        $this->initialized['outputAccess'] = true;
         $this->outputAccess = $outputAccess;
         return $this;
     }
@@ -331,6 +350,7 @@ class ShareDetail
      */
     public function setShareType($shareType) : self
     {
+        $this->initialized['shareType'] = true;
         $this->shareType = $shareType;
         return $this;
     }
@@ -352,6 +372,7 @@ class ShareDetail
      */
     public function setSchemas(?array $schemas) : self
     {
+        $this->initialized['schemas'] = true;
         $this->schemas = $schemas;
         return $this;
     }

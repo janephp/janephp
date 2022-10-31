@@ -5,6 +5,14 @@ namespace Github\Model;
 class ShortBlob extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class ShortBlob extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -55,6 +64,7 @@ class ShortBlob extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }

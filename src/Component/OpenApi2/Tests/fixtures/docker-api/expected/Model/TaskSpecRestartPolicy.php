@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class TaskSpecRestartPolicy
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Condition for restart.
      *
      * @var string
@@ -50,6 +58,7 @@ class TaskSpecRestartPolicy
      */
     public function setCondition(string $condition) : self
     {
+        $this->initialized['condition'] = true;
         $this->condition = $condition;
         return $this;
     }
@@ -71,6 +80,7 @@ class TaskSpecRestartPolicy
      */
     public function setDelay(int $delay) : self
     {
+        $this->initialized['delay'] = true;
         $this->delay = $delay;
         return $this;
     }
@@ -96,6 +106,7 @@ class TaskSpecRestartPolicy
     */
     public function setMaxAttempts(int $maxAttempts) : self
     {
+        $this->initialized['maxAttempts'] = true;
         $this->maxAttempts = $maxAttempts;
         return $this;
     }
@@ -121,6 +132,7 @@ class TaskSpecRestartPolicy
     */
     public function setWindow(int $window) : self
     {
+        $this->initialized['window'] = true;
         $this->window = $window;
         return $this;
     }

@@ -75,10 +75,10 @@ class ClientForbiddenProblemNormalizer implements DenormalizerInterface, Normali
     {
         $data = array();
         $data['type'] = $object->getType();
-        if (null !== $object->getReason()) {
+        if ($object->isInitialized('reason') && null !== $object->getReason()) {
             $data['reason'] = $object->getReason();
         }
-        if (null !== $object->getRegistrationUrl()) {
+        if ($object->isInitialized('registrationUrl') && null !== $object->getRegistrationUrl()) {
             $data['registration_url'] = $object->getRegistrationUrl();
         }
         $data['title'] = $object->getTitle();

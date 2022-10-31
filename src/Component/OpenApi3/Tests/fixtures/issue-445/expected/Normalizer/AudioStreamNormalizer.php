@@ -118,37 +118,37 @@ class AudioStreamNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBitRate()) {
+        if ($object->isInitialized('bitRate') && null !== $object->getBitRate()) {
             $data['bitRate'] = $object->getBitRate();
         }
-        if (null !== $object->getBitRateMode()) {
+        if ($object->isInitialized('bitRateMode') && null !== $object->getBitRateMode()) {
             $data['bitRateMode'] = $object->getBitRateMode();
         }
-        if (null !== $object->getChannels()) {
+        if ($object->isInitialized('channels') && null !== $object->getChannels()) {
             $data['channels'] = $object->getChannels();
         }
-        if (null !== $object->getChannelPositions()) {
+        if ($object->isInitialized('channelPositions') && null !== $object->getChannelPositions()) {
             $data['channelPositions'] = $object->getChannelPositions();
         }
-        if (null !== $object->getCodec()) {
+        if ($object->isInitialized('codec') && null !== $object->getCodec()) {
             $data['codec'] = $object->getCodec();
         }
-        if (null !== $object->getDurationInSeconds()) {
+        if ($object->isInitialized('durationInSeconds') && null !== $object->getDurationInSeconds()) {
             $data['durationInSeconds'] = $object->getDurationInSeconds();
         }
-        if (null !== $object->getFormat()) {
+        if ($object->isInitialized('format') && null !== $object->getFormat()) {
             $data['format'] = $object->getFormat();
         }
-        if (null !== $object->getLanguage()) {
+        if ($object->isInitialized('language') && null !== $object->getLanguage()) {
             $data['language'] = $object->getLanguage();
         }
-        if (null !== $object->getResolution()) {
+        if ($object->isInitialized('resolution') && null !== $object->getResolution()) {
             $data['resolution'] = $object->getResolution();
         }
-        if (null !== $object->getSamplingRate()) {
+        if ($object->isInitialized('samplingRate') && null !== $object->getSamplingRate()) {
             $data['samplingRate'] = $object->getSamplingRate();
         }
-        if (null !== $object->getStreamSize()) {
+        if ($object->isInitialized('streamSize') && null !== $object->getStreamSize()) {
             $data['streamSize'] = $object->getStreamSize();
         }
         return $data;

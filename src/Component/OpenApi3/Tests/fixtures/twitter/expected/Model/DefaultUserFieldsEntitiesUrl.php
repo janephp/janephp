@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class DefaultUserFieldsEntitiesUrl extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var UrlEntity[]
@@ -28,6 +36,7 @@ class DefaultUserFieldsEntitiesUrl extends \ArrayObject
      */
     public function setUrls(array $urls) : self
     {
+        $this->initialized['urls'] = true;
         $this->urls = $urls;
         return $this;
     }

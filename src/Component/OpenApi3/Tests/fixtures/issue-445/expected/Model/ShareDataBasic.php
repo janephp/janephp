@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ShareDataBasic extends ShareDataBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * List of recipients added using email address
      *
      * @var MailRecipient[]
@@ -40,6 +48,7 @@ class ShareDataBasic extends ShareDataBase
      */
     public function setMailRecipients(array $mailRecipients) : self
     {
+        $this->initialized['mailRecipients'] = true;
         $this->mailRecipients = $mailRecipients;
         return $this;
     }
@@ -61,6 +70,7 @@ class ShareDataBasic extends ShareDataBase
      */
     public function setInternalRecipients(array $internalRecipients) : self
     {
+        $this->initialized['internalRecipients'] = true;
         $this->internalRecipients = $internalRecipients;
         return $this;
     }
@@ -82,6 +92,7 @@ class ShareDataBasic extends ShareDataBase
      */
     public function setLanguageCode(?string $languageCode) : self
     {
+        $this->initialized['languageCode'] = true;
         $this->languageCode = $languageCode;
         return $this;
     }

@@ -70,13 +70,13 @@ class TeamProjectPermissionsNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRead()) {
+        if ($object->isInitialized('read') && null !== $object->getRead()) {
             $data['read'] = $object->getRead();
         }
-        if (null !== $object->getWrite()) {
+        if ($object->isInitialized('write') && null !== $object->getWrite()) {
             $data['write'] = $object->getWrite();
         }
-        if (null !== $object->getAdmin()) {
+        if ($object->isInitialized('admin') && null !== $object->getAdmin()) {
             $data['admin'] = $object->getAdmin();
         }
         foreach ($object as $key => $value) {

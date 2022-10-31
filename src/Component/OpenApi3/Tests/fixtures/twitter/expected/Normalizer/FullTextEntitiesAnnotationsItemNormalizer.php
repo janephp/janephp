@@ -79,13 +79,13 @@ class FullTextEntitiesAnnotationsItemNormalizer implements DenormalizerInterface
         $data = array();
         $data['start'] = $object->getStart();
         $data['end'] = $object->getEnd();
-        if (null !== $object->getProbability()) {
+        if ($object->isInitialized('probability') && null !== $object->getProbability()) {
             $data['probability'] = $object->getProbability();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getNormalizedText()) {
+        if ($object->isInitialized('normalizedText') && null !== $object->getNormalizedText()) {
             $data['normalized_text'] = $object->getNormalizedText();
         }
         foreach ($object as $key => $value) {

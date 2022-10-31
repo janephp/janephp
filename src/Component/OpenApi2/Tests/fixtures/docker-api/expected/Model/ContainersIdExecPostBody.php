@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ContainersIdExecPostBody
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Attach to `stdin` of the exec command.
      *
      * @var bool
@@ -88,6 +96,7 @@ class ContainersIdExecPostBody
      */
     public function setAttachStdin(bool $attachStdin) : self
     {
+        $this->initialized['attachStdin'] = true;
         $this->attachStdin = $attachStdin;
         return $this;
     }
@@ -109,6 +118,7 @@ class ContainersIdExecPostBody
      */
     public function setAttachStdout(bool $attachStdout) : self
     {
+        $this->initialized['attachStdout'] = true;
         $this->attachStdout = $attachStdout;
         return $this;
     }
@@ -130,6 +140,7 @@ class ContainersIdExecPostBody
      */
     public function setAttachStderr(bool $attachStderr) : self
     {
+        $this->initialized['attachStderr'] = true;
         $this->attachStderr = $attachStderr;
         return $this;
     }
@@ -157,6 +168,7 @@ class ContainersIdExecPostBody
     */
     public function setDetachKeys(string $detachKeys) : self
     {
+        $this->initialized['detachKeys'] = true;
         $this->detachKeys = $detachKeys;
         return $this;
     }
@@ -178,6 +190,7 @@ class ContainersIdExecPostBody
      */
     public function setTty(bool $tty) : self
     {
+        $this->initialized['tty'] = true;
         $this->tty = $tty;
         return $this;
     }
@@ -199,6 +212,7 @@ class ContainersIdExecPostBody
      */
     public function setEnv(array $env) : self
     {
+        $this->initialized['env'] = true;
         $this->env = $env;
         return $this;
     }
@@ -220,6 +234,7 @@ class ContainersIdExecPostBody
      */
     public function setCmd(array $cmd) : self
     {
+        $this->initialized['cmd'] = true;
         $this->cmd = $cmd;
         return $this;
     }
@@ -241,6 +256,7 @@ class ContainersIdExecPostBody
      */
     public function setPrivileged(bool $privileged) : self
     {
+        $this->initialized['privileged'] = true;
         $this->privileged = $privileged;
         return $this;
     }
@@ -268,6 +284,7 @@ class ContainersIdExecPostBody
     */
     public function setUser(string $user) : self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
     }
@@ -289,6 +306,7 @@ class ContainersIdExecPostBody
      */
     public function setWorkingDir(string $workingDir) : self
     {
+        $this->initialized['workingDir'] = true;
         $this->workingDir = $workingDir;
         return $this;
     }

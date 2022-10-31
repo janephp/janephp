@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessRuleConfigurable extends BusinessRule
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The condition that makes this rule trigger.
      *
      * @var mixed|null
@@ -40,6 +48,7 @@ class BusinessRuleConfigurable extends BusinessRule
      */
     public function setCondition($condition) : self
     {
+        $this->initialized['condition'] = true;
         $this->condition = $condition;
         return $this;
     }
@@ -61,6 +70,7 @@ class BusinessRuleConfigurable extends BusinessRule
      */
     public function setTransformationGroups(?array $transformationGroups) : self
     {
+        $this->initialized['transformationGroups'] = true;
         $this->transformationGroups = $transformationGroups;
         return $this;
     }
@@ -82,6 +92,7 @@ class BusinessRuleConfigurable extends BusinessRule
      */
     public function setActions(?array $actions) : self
     {
+        $this->initialized['actions'] = true;
         $this->actions = $actions;
         return $this;
     }

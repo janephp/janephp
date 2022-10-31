@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class CompliancePreDefinedSearchesPredefinedSearchesItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class CompliancePreDefinedSearchesPredefinedSearchesItem extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -73,6 +82,7 @@ class CompliancePreDefinedSearchesPredefinedSearchesItem extends \ArrayObject
      */
     public function setCategoryName(string $categoryName) : self
     {
+        $this->initialized['categoryName'] = true;
         $this->categoryName = $categoryName;
         return $this;
     }
@@ -94,6 +104,7 @@ class CompliancePreDefinedSearchesPredefinedSearchesItem extends \ArrayObject
      */
     public function setProductName(string $productName) : self
     {
+        $this->initialized['productName'] = true;
         $this->productName = $productName;
         return $this;
     }
@@ -115,6 +126,7 @@ class CompliancePreDefinedSearchesPredefinedSearchesItem extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -136,6 +148,7 @@ class CompliancePreDefinedSearchesPredefinedSearchesItem extends \ArrayObject
      */
     public function setConfidence(int $confidence) : self
     {
+        $this->initialized['confidence'] = true;
         $this->confidence = $confidence;
         return $this;
     }

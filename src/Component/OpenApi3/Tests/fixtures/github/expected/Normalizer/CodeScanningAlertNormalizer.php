@@ -118,40 +118,40 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNumber()) {
+        if ($object->isInitialized('number') && null !== $object->getNumber()) {
             $data['number'] = $object->getNumber();
         }
-        if (null !== $object->getRuleId()) {
+        if ($object->isInitialized('ruleId') && null !== $object->getRuleId()) {
             $data['rule_id'] = $object->getRuleId();
         }
-        if (null !== $object->getRuleSeverity()) {
+        if ($object->isInitialized('ruleSeverity') && null !== $object->getRuleSeverity()) {
             $data['rule_severity'] = $object->getRuleSeverity();
         }
-        if (null !== $object->getRuleDescription()) {
+        if ($object->isInitialized('ruleDescription') && null !== $object->getRuleDescription()) {
             $data['rule_description'] = $object->getRuleDescription();
         }
-        if (null !== $object->getTool()) {
+        if ($object->isInitialized('tool') && null !== $object->getTool()) {
             $data['tool'] = $object->getTool();
         }
-        if (null !== $object->getCreatedAt()) {
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getOpen()) {
+        if ($object->isInitialized('open') && null !== $object->getOpen()) {
             $data['open'] = $object->getOpen();
         }
-        if (null !== $object->getClosedBy()) {
+        if ($object->isInitialized('closedBy') && null !== $object->getClosedBy()) {
             $data['closed_by'] = $this->normalizer->normalize($object->getClosedBy(), 'json', $context);
         }
-        if (null !== $object->getClosedAt()) {
+        if ($object->isInitialized('closedAt') && null !== $object->getClosedAt()) {
             $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getHtmlUrl()) {
+        if ($object->isInitialized('htmlUrl') && null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
-        if (null !== $object->getClosedReason()) {
+        if ($object->isInitialized('closedReason') && null !== $object->getClosedReason()) {
             $data['closed_reason'] = $object->getClosedReason();
         }
         foreach ($object as $key => $value) {

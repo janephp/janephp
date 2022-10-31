@@ -5,6 +5,14 @@ namespace Github\Model;
 class TeamRepository extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Unique identifier of the repository
      *
      * @var int
@@ -538,6 +546,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -559,6 +568,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -580,6 +590,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -601,6 +612,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setFullName(string $fullName) : self
     {
+        $this->initialized['fullName'] = true;
         $this->fullName = $fullName;
         return $this;
     }
@@ -622,6 +634,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setLicense(?TeamRepositoryLicense $license) : self
     {
+        $this->initialized['license'] = true;
         $this->license = $license;
         return $this;
     }
@@ -643,6 +656,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setForks(int $forks) : self
     {
+        $this->initialized['forks'] = true;
         $this->forks = $forks;
         return $this;
     }
@@ -664,6 +678,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setPermissions(TeamRepositoryPermissions $permissions) : self
     {
+        $this->initialized['permissions'] = true;
         $this->permissions = $permissions;
         return $this;
     }
@@ -685,6 +700,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setOwner(?TeamRepositoryOwner $owner) : self
     {
+        $this->initialized['owner'] = true;
         $this->owner = $owner;
         return $this;
     }
@@ -706,6 +722,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setPrivate(bool $private) : self
     {
+        $this->initialized['private'] = true;
         $this->private = $private;
         return $this;
     }
@@ -727,6 +744,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -748,6 +766,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -769,6 +788,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setFork(bool $fork) : self
     {
+        $this->initialized['fork'] = true;
         $this->fork = $fork;
         return $this;
     }
@@ -790,6 +810,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -811,6 +832,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setArchiveUrl(string $archiveUrl) : self
     {
+        $this->initialized['archiveUrl'] = true;
         $this->archiveUrl = $archiveUrl;
         return $this;
     }
@@ -832,6 +854,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setAssigneesUrl(string $assigneesUrl) : self
     {
+        $this->initialized['assigneesUrl'] = true;
         $this->assigneesUrl = $assigneesUrl;
         return $this;
     }
@@ -853,6 +876,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setBlobsUrl(string $blobsUrl) : self
     {
+        $this->initialized['blobsUrl'] = true;
         $this->blobsUrl = $blobsUrl;
         return $this;
     }
@@ -874,6 +898,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setBranchesUrl(string $branchesUrl) : self
     {
+        $this->initialized['branchesUrl'] = true;
         $this->branchesUrl = $branchesUrl;
         return $this;
     }
@@ -895,6 +920,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setCollaboratorsUrl(string $collaboratorsUrl) : self
     {
+        $this->initialized['collaboratorsUrl'] = true;
         $this->collaboratorsUrl = $collaboratorsUrl;
         return $this;
     }
@@ -916,6 +942,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setCommentsUrl(string $commentsUrl) : self
     {
+        $this->initialized['commentsUrl'] = true;
         $this->commentsUrl = $commentsUrl;
         return $this;
     }
@@ -937,6 +964,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setCommitsUrl(string $commitsUrl) : self
     {
+        $this->initialized['commitsUrl'] = true;
         $this->commitsUrl = $commitsUrl;
         return $this;
     }
@@ -958,6 +986,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setCompareUrl(string $compareUrl) : self
     {
+        $this->initialized['compareUrl'] = true;
         $this->compareUrl = $compareUrl;
         return $this;
     }
@@ -979,6 +1008,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setContentsUrl(string $contentsUrl) : self
     {
+        $this->initialized['contentsUrl'] = true;
         $this->contentsUrl = $contentsUrl;
         return $this;
     }
@@ -1000,6 +1030,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setContributorsUrl(string $contributorsUrl) : self
     {
+        $this->initialized['contributorsUrl'] = true;
         $this->contributorsUrl = $contributorsUrl;
         return $this;
     }
@@ -1021,6 +1052,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setDeploymentsUrl(string $deploymentsUrl) : self
     {
+        $this->initialized['deploymentsUrl'] = true;
         $this->deploymentsUrl = $deploymentsUrl;
         return $this;
     }
@@ -1042,6 +1074,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setDownloadsUrl(string $downloadsUrl) : self
     {
+        $this->initialized['downloadsUrl'] = true;
         $this->downloadsUrl = $downloadsUrl;
         return $this;
     }
@@ -1063,6 +1096,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setEventsUrl(string $eventsUrl) : self
     {
+        $this->initialized['eventsUrl'] = true;
         $this->eventsUrl = $eventsUrl;
         return $this;
     }
@@ -1084,6 +1118,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setForksUrl(string $forksUrl) : self
     {
+        $this->initialized['forksUrl'] = true;
         $this->forksUrl = $forksUrl;
         return $this;
     }
@@ -1105,6 +1140,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setGitCommitsUrl(string $gitCommitsUrl) : self
     {
+        $this->initialized['gitCommitsUrl'] = true;
         $this->gitCommitsUrl = $gitCommitsUrl;
         return $this;
     }
@@ -1126,6 +1162,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setGitRefsUrl(string $gitRefsUrl) : self
     {
+        $this->initialized['gitRefsUrl'] = true;
         $this->gitRefsUrl = $gitRefsUrl;
         return $this;
     }
@@ -1147,6 +1184,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setGitTagsUrl(string $gitTagsUrl) : self
     {
+        $this->initialized['gitTagsUrl'] = true;
         $this->gitTagsUrl = $gitTagsUrl;
         return $this;
     }
@@ -1168,6 +1206,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setGitUrl(string $gitUrl) : self
     {
+        $this->initialized['gitUrl'] = true;
         $this->gitUrl = $gitUrl;
         return $this;
     }
@@ -1189,6 +1228,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setIssueCommentUrl(string $issueCommentUrl) : self
     {
+        $this->initialized['issueCommentUrl'] = true;
         $this->issueCommentUrl = $issueCommentUrl;
         return $this;
     }
@@ -1210,6 +1250,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setIssueEventsUrl(string $issueEventsUrl) : self
     {
+        $this->initialized['issueEventsUrl'] = true;
         $this->issueEventsUrl = $issueEventsUrl;
         return $this;
     }
@@ -1231,6 +1272,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setIssuesUrl(string $issuesUrl) : self
     {
+        $this->initialized['issuesUrl'] = true;
         $this->issuesUrl = $issuesUrl;
         return $this;
     }
@@ -1252,6 +1294,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setKeysUrl(string $keysUrl) : self
     {
+        $this->initialized['keysUrl'] = true;
         $this->keysUrl = $keysUrl;
         return $this;
     }
@@ -1273,6 +1316,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setLabelsUrl(string $labelsUrl) : self
     {
+        $this->initialized['labelsUrl'] = true;
         $this->labelsUrl = $labelsUrl;
         return $this;
     }
@@ -1294,6 +1338,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setLanguagesUrl(string $languagesUrl) : self
     {
+        $this->initialized['languagesUrl'] = true;
         $this->languagesUrl = $languagesUrl;
         return $this;
     }
@@ -1315,6 +1360,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setMergesUrl(string $mergesUrl) : self
     {
+        $this->initialized['mergesUrl'] = true;
         $this->mergesUrl = $mergesUrl;
         return $this;
     }
@@ -1336,6 +1382,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setMilestonesUrl(string $milestonesUrl) : self
     {
+        $this->initialized['milestonesUrl'] = true;
         $this->milestonesUrl = $milestonesUrl;
         return $this;
     }
@@ -1357,6 +1404,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setNotificationsUrl(string $notificationsUrl) : self
     {
+        $this->initialized['notificationsUrl'] = true;
         $this->notificationsUrl = $notificationsUrl;
         return $this;
     }
@@ -1378,6 +1426,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setPullsUrl(string $pullsUrl) : self
     {
+        $this->initialized['pullsUrl'] = true;
         $this->pullsUrl = $pullsUrl;
         return $this;
     }
@@ -1399,6 +1448,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setReleasesUrl(string $releasesUrl) : self
     {
+        $this->initialized['releasesUrl'] = true;
         $this->releasesUrl = $releasesUrl;
         return $this;
     }
@@ -1420,6 +1470,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setSshUrl(string $sshUrl) : self
     {
+        $this->initialized['sshUrl'] = true;
         $this->sshUrl = $sshUrl;
         return $this;
     }
@@ -1441,6 +1492,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setStargazersUrl(string $stargazersUrl) : self
     {
+        $this->initialized['stargazersUrl'] = true;
         $this->stargazersUrl = $stargazersUrl;
         return $this;
     }
@@ -1462,6 +1514,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setStatusesUrl(string $statusesUrl) : self
     {
+        $this->initialized['statusesUrl'] = true;
         $this->statusesUrl = $statusesUrl;
         return $this;
     }
@@ -1483,6 +1536,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setSubscribersUrl(string $subscribersUrl) : self
     {
+        $this->initialized['subscribersUrl'] = true;
         $this->subscribersUrl = $subscribersUrl;
         return $this;
     }
@@ -1504,6 +1558,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setSubscriptionUrl(string $subscriptionUrl) : self
     {
+        $this->initialized['subscriptionUrl'] = true;
         $this->subscriptionUrl = $subscriptionUrl;
         return $this;
     }
@@ -1525,6 +1580,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setTagsUrl(string $tagsUrl) : self
     {
+        $this->initialized['tagsUrl'] = true;
         $this->tagsUrl = $tagsUrl;
         return $this;
     }
@@ -1546,6 +1602,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setTeamsUrl(string $teamsUrl) : self
     {
+        $this->initialized['teamsUrl'] = true;
         $this->teamsUrl = $teamsUrl;
         return $this;
     }
@@ -1567,6 +1624,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setTreesUrl(string $treesUrl) : self
     {
+        $this->initialized['treesUrl'] = true;
         $this->treesUrl = $treesUrl;
         return $this;
     }
@@ -1588,6 +1646,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setCloneUrl(string $cloneUrl) : self
     {
+        $this->initialized['cloneUrl'] = true;
         $this->cloneUrl = $cloneUrl;
         return $this;
     }
@@ -1609,6 +1668,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setMirrorUrl(?string $mirrorUrl) : self
     {
+        $this->initialized['mirrorUrl'] = true;
         $this->mirrorUrl = $mirrorUrl;
         return $this;
     }
@@ -1630,6 +1690,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setHooksUrl(string $hooksUrl) : self
     {
+        $this->initialized['hooksUrl'] = true;
         $this->hooksUrl = $hooksUrl;
         return $this;
     }
@@ -1651,6 +1712,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setSvnUrl(string $svnUrl) : self
     {
+        $this->initialized['svnUrl'] = true;
         $this->svnUrl = $svnUrl;
         return $this;
     }
@@ -1672,6 +1734,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setHomepage(?string $homepage) : self
     {
+        $this->initialized['homepage'] = true;
         $this->homepage = $homepage;
         return $this;
     }
@@ -1693,6 +1756,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setLanguage(?string $language) : self
     {
+        $this->initialized['language'] = true;
         $this->language = $language;
         return $this;
     }
@@ -1714,6 +1778,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setForksCount(int $forksCount) : self
     {
+        $this->initialized['forksCount'] = true;
         $this->forksCount = $forksCount;
         return $this;
     }
@@ -1735,6 +1800,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setStargazersCount(int $stargazersCount) : self
     {
+        $this->initialized['stargazersCount'] = true;
         $this->stargazersCount = $stargazersCount;
         return $this;
     }
@@ -1756,6 +1822,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setWatchersCount(int $watchersCount) : self
     {
+        $this->initialized['watchersCount'] = true;
         $this->watchersCount = $watchersCount;
         return $this;
     }
@@ -1777,6 +1844,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setSize(int $size) : self
     {
+        $this->initialized['size'] = true;
         $this->size = $size;
         return $this;
     }
@@ -1798,6 +1866,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setDefaultBranch(string $defaultBranch) : self
     {
+        $this->initialized['defaultBranch'] = true;
         $this->defaultBranch = $defaultBranch;
         return $this;
     }
@@ -1819,6 +1888,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setOpenIssuesCount(int $openIssuesCount) : self
     {
+        $this->initialized['openIssuesCount'] = true;
         $this->openIssuesCount = $openIssuesCount;
         return $this;
     }
@@ -1840,6 +1910,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setIsTemplate(bool $isTemplate) : self
     {
+        $this->initialized['isTemplate'] = true;
         $this->isTemplate = $isTemplate;
         return $this;
     }
@@ -1861,6 +1932,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setTopics(array $topics) : self
     {
+        $this->initialized['topics'] = true;
         $this->topics = $topics;
         return $this;
     }
@@ -1882,6 +1954,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setHasIssues(bool $hasIssues) : self
     {
+        $this->initialized['hasIssues'] = true;
         $this->hasIssues = $hasIssues;
         return $this;
     }
@@ -1903,6 +1976,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setHasProjects(bool $hasProjects) : self
     {
+        $this->initialized['hasProjects'] = true;
         $this->hasProjects = $hasProjects;
         return $this;
     }
@@ -1924,6 +1998,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setHasWiki(bool $hasWiki) : self
     {
+        $this->initialized['hasWiki'] = true;
         $this->hasWiki = $hasWiki;
         return $this;
     }
@@ -1945,6 +2020,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setHasPages(bool $hasPages) : self
     {
+        $this->initialized['hasPages'] = true;
         $this->hasPages = $hasPages;
         return $this;
     }
@@ -1966,6 +2042,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setHasDownloads(bool $hasDownloads) : self
     {
+        $this->initialized['hasDownloads'] = true;
         $this->hasDownloads = $hasDownloads;
         return $this;
     }
@@ -1987,6 +2064,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setArchived(bool $archived) : self
     {
+        $this->initialized['archived'] = true;
         $this->archived = $archived;
         return $this;
     }
@@ -2008,6 +2086,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setDisabled(bool $disabled) : self
     {
+        $this->initialized['disabled'] = true;
         $this->disabled = $disabled;
         return $this;
     }
@@ -2029,6 +2108,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setVisibility(string $visibility) : self
     {
+        $this->initialized['visibility'] = true;
         $this->visibility = $visibility;
         return $this;
     }
@@ -2050,6 +2130,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setPushedAt(?\DateTime $pushedAt) : self
     {
+        $this->initialized['pushedAt'] = true;
         $this->pushedAt = $pushedAt;
         return $this;
     }
@@ -2071,6 +2152,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setCreatedAt(?\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -2092,6 +2174,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setUpdatedAt(?\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -2113,6 +2196,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setAllowRebaseMerge(bool $allowRebaseMerge) : self
     {
+        $this->initialized['allowRebaseMerge'] = true;
         $this->allowRebaseMerge = $allowRebaseMerge;
         return $this;
     }
@@ -2134,6 +2218,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setTemplateRepository(?TeamRepositoryTemplateRepository $templateRepository) : self
     {
+        $this->initialized['templateRepository'] = true;
         $this->templateRepository = $templateRepository;
         return $this;
     }
@@ -2155,6 +2240,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setTempCloneToken(string $tempCloneToken) : self
     {
+        $this->initialized['tempCloneToken'] = true;
         $this->tempCloneToken = $tempCloneToken;
         return $this;
     }
@@ -2176,6 +2262,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setAllowSquashMerge(bool $allowSquashMerge) : self
     {
+        $this->initialized['allowSquashMerge'] = true;
         $this->allowSquashMerge = $allowSquashMerge;
         return $this;
     }
@@ -2197,6 +2284,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setDeleteBranchOnMerge(bool $deleteBranchOnMerge) : self
     {
+        $this->initialized['deleteBranchOnMerge'] = true;
         $this->deleteBranchOnMerge = $deleteBranchOnMerge;
         return $this;
     }
@@ -2218,6 +2306,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setAllowMergeCommit(bool $allowMergeCommit) : self
     {
+        $this->initialized['allowMergeCommit'] = true;
         $this->allowMergeCommit = $allowMergeCommit;
         return $this;
     }
@@ -2239,6 +2328,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setSubscribersCount(int $subscribersCount) : self
     {
+        $this->initialized['subscribersCount'] = true;
         $this->subscribersCount = $subscribersCount;
         return $this;
     }
@@ -2260,6 +2350,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setNetworkCount(int $networkCount) : self
     {
+        $this->initialized['networkCount'] = true;
         $this->networkCount = $networkCount;
         return $this;
     }
@@ -2281,6 +2372,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setOpenIssues(int $openIssues) : self
     {
+        $this->initialized['openIssues'] = true;
         $this->openIssues = $openIssues;
         return $this;
     }
@@ -2302,6 +2394,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setWatchers(int $watchers) : self
     {
+        $this->initialized['watchers'] = true;
         $this->watchers = $watchers;
         return $this;
     }
@@ -2323,6 +2416,7 @@ class TeamRepository extends \ArrayObject
      */
     public function setMasterBranch(string $masterBranch) : self
     {
+        $this->initialized['masterBranch'] = true;
         $this->masterBranch = $masterBranch;
         return $this;
     }

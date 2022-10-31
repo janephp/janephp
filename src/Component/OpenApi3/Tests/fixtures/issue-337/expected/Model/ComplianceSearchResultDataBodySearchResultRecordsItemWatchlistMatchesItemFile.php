@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemFile extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -58,6 +66,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemF
      */
     public function setBuild(string $build) : self
     {
+        $this->initialized['build'] = true;
         $this->build = $build;
         return $this;
     }
@@ -79,6 +88,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemF
      */
     public function setCustom(bool $custom) : self
     {
+        $this->initialized['custom'] = true;
         $this->custom = $custom;
         return $this;
     }
@@ -100,6 +110,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemF
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -121,6 +132,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemF
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -142,6 +154,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemF
      */
     public function setPublished(string $published) : self
     {
+        $this->initialized['published'] = true;
         $this->published = $published;
         return $this;
     }
@@ -163,6 +176,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemF
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }

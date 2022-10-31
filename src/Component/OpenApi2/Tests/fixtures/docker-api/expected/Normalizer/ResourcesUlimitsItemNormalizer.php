@@ -62,13 +62,13 @@ class ResourcesUlimitsItemNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['Name'] = $object->getName();
         }
-        if (null !== $object->getSoft()) {
+        if ($object->isInitialized('soft') && null !== $object->getSoft()) {
             $data['Soft'] = $object->getSoft();
         }
-        if (null !== $object->getHard()) {
+        if ($object->isInitialized('hard') && null !== $object->getHard()) {
             $data['Hard'] = $object->getHard();
         }
         if (!($context['skip_validation'] ?? false)) {

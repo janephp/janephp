@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ShareOutputBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Content ID.
      *
      * @var string
@@ -62,6 +70,7 @@ class ShareOutputBase
      */
     public function setContentId(string $contentId)
     {
+        $this->initialized['contentId'] = true;
         $this->contentId = $contentId;
     }
     /**
@@ -80,6 +89,7 @@ class ShareOutputBase
      */
     public function setOutputFormatId(string $outputFormatId)
     {
+        $this->initialized['outputFormatId'] = true;
         $this->outputFormatId = $outputFormatId;
     }
     /**
@@ -98,6 +108,7 @@ class ShareOutputBase
      */
     public function setViewUrl(?string $viewUrl)
     {
+        $this->initialized['viewUrl'] = true;
         $this->viewUrl = $viewUrl;
     }
     /**
@@ -116,6 +127,7 @@ class ShareOutputBase
      */
     public function setDownloadUrl(?string $downloadUrl)
     {
+        $this->initialized['downloadUrl'] = true;
         $this->downloadUrl = $downloadUrl;
     }
     /**
@@ -134,6 +146,7 @@ class ShareOutputBase
      */
     public function setDetail($detail)
     {
+        $this->initialized['detail'] = true;
         $this->detail = $detail;
     }
     /**
@@ -152,6 +165,7 @@ class ShareOutputBase
      */
     public function setDynamicRendering(bool $dynamicRendering)
     {
+        $this->initialized['dynamicRendering'] = true;
         $this->dynamicRendering = $dynamicRendering;
     }
     /**
@@ -170,6 +184,7 @@ class ShareOutputBase
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

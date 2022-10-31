@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SchemaSearchRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The string used to query the data. The Lucene query string syntax is supported.
      *
      * @var string|null
@@ -78,6 +86,7 @@ class SchemaSearchRequest
      */
     public function setSearchString(?string $searchString) : self
     {
+        $this->initialized['searchString'] = true;
         $this->searchString = $searchString;
         return $this;
     }
@@ -99,6 +108,7 @@ class SchemaSearchRequest
      */
     public function setSearchBehaviors(?array $searchBehaviors) : self
     {
+        $this->initialized['searchBehaviors'] = true;
         $this->searchBehaviors = $searchBehaviors;
         return $this;
     }
@@ -120,6 +130,7 @@ class SchemaSearchRequest
      */
     public function setSort(?array $sort) : self
     {
+        $this->initialized['sort'] = true;
         $this->sort = $sort;
         return $this;
     }
@@ -141,6 +152,7 @@ class SchemaSearchRequest
      */
     public function setLimit(int $limit) : self
     {
+        $this->initialized['limit'] = true;
         $this->limit = $limit;
         return $this;
     }
@@ -162,6 +174,7 @@ class SchemaSearchRequest
      */
     public function setPageToken(?string $pageToken) : self
     {
+        $this->initialized['pageToken'] = true;
         $this->pageToken = $pageToken;
         return $this;
     }
@@ -183,6 +196,7 @@ class SchemaSearchRequest
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }
@@ -206,6 +220,7 @@ class SchemaSearchRequest
     */
     public function setDebugMode(bool $debugMode) : self
     {
+        $this->initialized['debugMode'] = true;
         $this->debugMode = $debugMode;
         return $this;
     }
@@ -229,6 +244,7 @@ class SchemaSearchRequest
     */
     public function setSearchLanguages(?array $searchLanguages) : self
     {
+        $this->initialized['searchLanguages'] = true;
         $this->searchLanguages = $searchLanguages;
         return $this;
     }
@@ -250,6 +266,7 @@ class SchemaSearchRequest
      */
     public function setRightsFilter(?array $rightsFilter) : self
     {
+        $this->initialized['rightsFilter'] = true;
         $this->rightsFilter = $rightsFilter;
         return $this;
     }

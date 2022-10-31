@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class AuthConfig
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class AuthConfig
      */
     public function setUsername(string $username) : self
     {
+        $this->initialized['username'] = true;
         $this->username = $username;
         return $this;
     }
@@ -67,6 +76,7 @@ class AuthConfig
      */
     public function setPassword(string $password) : self
     {
+        $this->initialized['password'] = true;
         $this->password = $password;
         return $this;
     }
@@ -88,6 +98,7 @@ class AuthConfig
      */
     public function setEmail(string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -109,6 +120,7 @@ class AuthConfig
      */
     public function setServeraddress(string $serveraddress) : self
     {
+        $this->initialized['serveraddress'] = true;
         $this->serveraddress = $serveraddress;
         return $this;
     }

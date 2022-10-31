@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessProcessCreateRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Indicates if the system starting the business process supports cancellation.
      *
      * @var bool
@@ -41,6 +49,7 @@ class BusinessProcessCreateRequest
      */
     public function setSupportsCancellation(bool $supportsCancellation) : self
     {
+        $this->initialized['supportsCancellation'] = true;
         $this->supportsCancellation = $supportsCancellation;
         return $this;
     }
@@ -64,6 +73,7 @@ class BusinessProcessCreateRequest
     */
     public function setNotification($notification) : self
     {
+        $this->initialized['notification'] = true;
         $this->notification = $notification;
         return $this;
     }
@@ -85,6 +95,7 @@ class BusinessProcessCreateRequest
      */
     public function setInitialState(string $initialState) : self
     {
+        $this->initialized['initialState'] = true;
         $this->initialState = $initialState;
         return $this;
     }

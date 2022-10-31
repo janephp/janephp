@@ -102,37 +102,37 @@ class CommitFilesItemNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFilename()) {
+        if ($object->isInitialized('filename') && null !== $object->getFilename()) {
             $data['filename'] = $object->getFilename();
         }
-        if (null !== $object->getAdditions()) {
+        if ($object->isInitialized('additions') && null !== $object->getAdditions()) {
             $data['additions'] = $object->getAdditions();
         }
-        if (null !== $object->getDeletions()) {
+        if ($object->isInitialized('deletions') && null !== $object->getDeletions()) {
             $data['deletions'] = $object->getDeletions();
         }
-        if (null !== $object->getChanges()) {
+        if ($object->isInitialized('changes') && null !== $object->getChanges()) {
             $data['changes'] = $object->getChanges();
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        if (null !== $object->getRawUrl()) {
+        if ($object->isInitialized('rawUrl') && null !== $object->getRawUrl()) {
             $data['raw_url'] = $object->getRawUrl();
         }
-        if (null !== $object->getBlobUrl()) {
+        if ($object->isInitialized('blobUrl') && null !== $object->getBlobUrl()) {
             $data['blob_url'] = $object->getBlobUrl();
         }
-        if (null !== $object->getPatch()) {
+        if ($object->isInitialized('patch') && null !== $object->getPatch()) {
             $data['patch'] = $object->getPatch();
         }
-        if (null !== $object->getSha()) {
+        if ($object->isInitialized('sha') && null !== $object->getSha()) {
             $data['sha'] = $object->getSha();
         }
-        if (null !== $object->getContentsUrl()) {
+        if ($object->isInitialized('contentsUrl') && null !== $object->getContentsUrl()) {
             $data['contents_url'] = $object->getContentsUrl();
         }
-        if (null !== $object->getPreviousFilename()) {
+        if ($object->isInitialized('previousFilename') && null !== $object->getPreviousFilename()) {
             $data['previous_filename'] = $object->getPreviousFilename();
         }
         foreach ($object as $key => $value) {

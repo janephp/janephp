@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCreditRatingProviderValue extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCredi
      */
     public function setMaxValue(string $maxValue) : self
     {
+        $this->initialized['maxValue'] = true;
         $this->maxValue = $maxValue;
         return $this;
     }
@@ -61,6 +70,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCredi
      */
     public function setMinValue(string $minValue) : self
     {
+        $this->initialized['minValue'] = true;
         $this->minValue = $minValue;
         return $this;
     }
@@ -82,6 +92,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCredi
      */
     public function setValue(string $value) : self
     {
+        $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
     }

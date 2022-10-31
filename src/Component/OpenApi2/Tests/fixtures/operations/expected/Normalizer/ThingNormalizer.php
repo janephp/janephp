@@ -52,7 +52,7 @@ class ThingNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
         return $data;

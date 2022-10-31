@@ -61,10 +61,10 @@ class ContentReferencesRequestNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getReferences()) {
+        if ($object->isInitialized('references') && null !== $object->getReferences()) {
             $data['references'] = $object->getReferences();
         }
-        if (null !== $object->getShares()) {
+        if ($object->isInitialized('shares') && null !== $object->getShares()) {
             $data['shares'] = $object->getShares();
         }
         return $data;

@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoGitTreesPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure.
      *
      * @var ReposOwnerRepoGitTreesPostBodyTreeItem[]
@@ -34,6 +42,7 @@ class ReposOwnerRepoGitTreesPostBody extends \ArrayObject
      */
     public function setTree(array $tree) : self
     {
+        $this->initialized['tree'] = true;
         $this->tree = $tree;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReposOwnerRepoGitTreesPostBody extends \ArrayObject
      */
     public function setBaseTree(string $baseTree) : self
     {
+        $this->initialized['baseTree'] = true;
         $this->baseTree = $baseTree;
         return $this;
     }

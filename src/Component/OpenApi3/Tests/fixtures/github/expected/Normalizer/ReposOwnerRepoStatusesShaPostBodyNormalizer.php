@@ -75,13 +75,13 @@ class ReposOwnerRepoStatusesShaPostBodyNormalizer implements DenormalizerInterfa
     {
         $data = array();
         $data['state'] = $object->getState();
-        if (null !== $object->getTargetUrl()) {
+        if ($object->isInitialized('targetUrl') && null !== $object->getTargetUrl()) {
             $data['target_url'] = $object->getTargetUrl();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getContext()) {
+        if ($object->isInitialized('context') && null !== $object->getContext()) {
             $data['context'] = $object->getContext();
         }
         foreach ($object as $key => $value) {

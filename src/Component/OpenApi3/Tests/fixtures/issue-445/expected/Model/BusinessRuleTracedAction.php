@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessRuleTracedAction
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Trace reference ID of action
      *
      * @var string|null
@@ -40,6 +48,7 @@ class BusinessRuleTracedAction
      */
     public function setTraceRefId(?string $traceRefId) : self
     {
+        $this->initialized['traceRefId'] = true;
         $this->traceRefId = $traceRefId;
         return $this;
     }
@@ -61,6 +70,7 @@ class BusinessRuleTracedAction
      */
     public function setDocumentModified(bool $documentModified) : self
     {
+        $this->initialized['documentModified'] = true;
         $this->documentModified = $documentModified;
         return $this;
     }
@@ -82,6 +92,7 @@ class BusinessRuleTracedAction
      */
     public function setText(?string $text) : self
     {
+        $this->initialized['text'] = true;
         $this->text = $text;
         return $this;
     }

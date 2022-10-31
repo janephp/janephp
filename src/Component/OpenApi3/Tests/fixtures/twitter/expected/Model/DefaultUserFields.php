@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class DefaultUserFields extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The location specified in the user's profile, if the user provided one. As this is a freeform value, it may not indicate a valid location, but it may be fuzzily evaluated when performing searches with location queries.
      *
      * @var string
@@ -58,6 +66,7 @@ class DefaultUserFields extends \ArrayObject
      */
     public function setLocation(string $location) : self
     {
+        $this->initialized['location'] = true;
         $this->location = $location;
         return $this;
     }
@@ -79,6 +88,7 @@ class DefaultUserFields extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -100,6 +110,7 @@ class DefaultUserFields extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -121,6 +132,7 @@ class DefaultUserFields extends \ArrayObject
      */
     public function setEntities(DefaultUserFieldsEntities $entities) : self
     {
+        $this->initialized['entities'] = true;
         $this->entities = $entities;
         return $this;
     }
@@ -142,6 +154,7 @@ class DefaultUserFields extends \ArrayObject
      */
     public function setMostRecentTweetId(string $mostRecentTweetId) : self
     {
+        $this->initialized['mostRecentTweetId'] = true;
         $this->mostRecentTweetId = $mostRecentTweetId;
         return $this;
     }
@@ -163,6 +176,7 @@ class DefaultUserFields extends \ArrayObject
      */
     public function setPinnedTweetId(string $pinnedTweetId) : self
     {
+        $this->initialized['pinnedTweetId'] = true;
         $this->pinnedTweetId = $pinnedTweetId;
         return $this;
     }

@@ -70,14 +70,14 @@ class GbCompanyReportExampleResponseReportOtherInformationNormalizer implements 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAdvisors()) {
+        if ($object->isInitialized('advisors') && null !== $object->getAdvisors()) {
             $values = array();
             foreach ($object->getAdvisors() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['advisors'] = $values;
         }
-        if (null !== $object->getEmployeesInformation()) {
+        if ($object->isInitialized('employeesInformation') && null !== $object->getEmployeesInformation()) {
             $values_1 = array();
             foreach ($object->getEmployeesInformation() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

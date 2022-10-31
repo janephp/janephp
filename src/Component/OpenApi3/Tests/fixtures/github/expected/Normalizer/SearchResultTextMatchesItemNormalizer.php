@@ -85,19 +85,19 @@ class SearchResultTextMatchesItemNormalizer implements DenormalizerInterface, No
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getObjectUrl()) {
+        if ($object->isInitialized('objectUrl') && null !== $object->getObjectUrl()) {
             $data['object_url'] = $object->getObjectUrl();
         }
-        if (null !== $object->getObjectType()) {
+        if ($object->isInitialized('objectType') && null !== $object->getObjectType()) {
             $data['object_type'] = $object->getObjectType();
         }
-        if (null !== $object->getProperty()) {
+        if ($object->isInitialized('property') && null !== $object->getProperty()) {
             $data['property'] = $object->getProperty();
         }
-        if (null !== $object->getFragment()) {
+        if ($object->isInitialized('fragment') && null !== $object->getFragment()) {
             $data['fragment'] = $object->getFragment();
         }
-        if (null !== $object->getMatches()) {
+        if ($object->isInitialized('matches') && null !== $object->getMatches()) {
             $values = array();
             foreach ($object->getMatches() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

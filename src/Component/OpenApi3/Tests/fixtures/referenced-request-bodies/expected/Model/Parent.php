@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class Parent extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class Parent extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -55,6 +64,7 @@ class Parent extends \ArrayObject
      */
     public function setChild(array $child) : self
     {
+        $this->initialized['child'] = true;
         $this->child = $child;
         return $this;
     }

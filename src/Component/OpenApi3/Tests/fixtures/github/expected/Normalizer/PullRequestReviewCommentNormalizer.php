@@ -195,7 +195,7 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
         $data['original_position'] = $object->getOriginalPosition();
         $data['commit_id'] = $object->getCommitId();
         $data['original_commit_id'] = $object->getOriginalCommitId();
-        if (null !== $object->getInReplyToId()) {
+        if ($object->isInitialized('inReplyToId') && null !== $object->getInReplyToId()) {
             $data['in_reply_to_id'] = $object->getInReplyToId();
         }
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
@@ -206,31 +206,31 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
         $data['pull_request_url'] = $object->getPullRequestUrl();
         $data['author_association'] = $object->getAuthorAssociation();
         $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
-        if (null !== $object->getStartLine()) {
+        if ($object->isInitialized('startLine') && null !== $object->getStartLine()) {
             $data['start_line'] = $object->getStartLine();
         }
-        if (null !== $object->getOriginalStartLine()) {
+        if ($object->isInitialized('originalStartLine') && null !== $object->getOriginalStartLine()) {
             $data['original_start_line'] = $object->getOriginalStartLine();
         }
-        if (null !== $object->getStartSide()) {
+        if ($object->isInitialized('startSide') && null !== $object->getStartSide()) {
             $data['start_side'] = $object->getStartSide();
         }
-        if (null !== $object->getLine()) {
+        if ($object->isInitialized('line') && null !== $object->getLine()) {
             $data['line'] = $object->getLine();
         }
-        if (null !== $object->getOriginalLine()) {
+        if ($object->isInitialized('originalLine') && null !== $object->getOriginalLine()) {
             $data['original_line'] = $object->getOriginalLine();
         }
-        if (null !== $object->getSide()) {
+        if ($object->isInitialized('side') && null !== $object->getSide()) {
             $data['side'] = $object->getSide();
         }
-        if (null !== $object->getReactions()) {
+        if ($object->isInitialized('reactions') && null !== $object->getReactions()) {
             $data['reactions'] = $this->normalizer->normalize($object->getReactions(), 'json', $context);
         }
-        if (null !== $object->getBodyHtml()) {
+        if ($object->isInitialized('bodyHtml') && null !== $object->getBodyHtml()) {
             $data['body_html'] = $object->getBodyHtml();
         }
-        if (null !== $object->getBodyText()) {
+        if ($object->isInitialized('bodyText') && null !== $object->getBodyText()) {
             $data['body_text'] = $object->getBodyText();
         }
         foreach ($object as $key => $value) {

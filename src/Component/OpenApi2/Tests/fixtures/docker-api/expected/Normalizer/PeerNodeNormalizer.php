@@ -59,10 +59,10 @@ class PeerNodeNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNodeID()) {
+        if ($object->isInitialized('nodeID') && null !== $object->getNodeID()) {
             $data['NodeID'] = $object->getNodeID();
         }
-        if (null !== $object->getAddr()) {
+        if ($object->isInitialized('addr') && null !== $object->getAddr()) {
             $data['Addr'] = $object->getAddr();
         }
         if (!($context['skip_validation'] ?? false)) {

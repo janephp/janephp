@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessProcessState
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * State of the business process
      *
      * @var string
@@ -40,6 +48,7 @@ class BusinessProcessState
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -61,6 +70,7 @@ class BusinessProcessState
      */
     public function setTimestamp(\DateTime $timestamp) : self
     {
+        $this->initialized['timestamp'] = true;
         $this->timestamp = $timestamp;
         return $this;
     }
@@ -82,6 +92,7 @@ class BusinessProcessState
      */
     public function setError($error) : self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
         return $this;
     }

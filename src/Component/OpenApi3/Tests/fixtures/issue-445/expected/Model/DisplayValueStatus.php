@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class DisplayValueStatus
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The schema ids (of type Content or Layer) for which the re-rendering of the display values is needed.
      *
      * @var string[]|null
@@ -40,6 +48,7 @@ class DisplayValueStatus
      */
     public function setContentOrLayerSchemaIds(?array $contentOrLayerSchemaIds) : self
     {
+        $this->initialized['contentOrLayerSchemaIds'] = true;
         $this->contentOrLayerSchemaIds = $contentOrLayerSchemaIds;
         return $this;
     }
@@ -61,6 +70,7 @@ class DisplayValueStatus
      */
     public function setListSchemaIds(?array $listSchemaIds) : self
     {
+        $this->initialized['listSchemaIds'] = true;
         $this->listSchemaIds = $listSchemaIds;
         return $this;
     }
@@ -82,6 +92,7 @@ class DisplayValueStatus
      */
     public function setState($state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }

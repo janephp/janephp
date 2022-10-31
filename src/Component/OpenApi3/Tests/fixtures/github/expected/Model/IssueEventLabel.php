@@ -5,6 +5,14 @@ namespace Github\Model;
 class IssueEventLabel extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -34,6 +42,7 @@ class IssueEventLabel extends \ArrayObject
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -55,6 +64,7 @@ class IssueEventLabel extends \ArrayObject
      */
     public function setColor(?string $color) : self
     {
+        $this->initialized['color'] = true;
         $this->color = $color;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class ResponseForbiddenGistBlock extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class ResponseForbiddenGistBlock extends \ArrayObject
      */
     public function setReason(string $reason) : self
     {
+        $this->initialized['reason'] = true;
         $this->reason = $reason;
         return $this;
     }
@@ -61,6 +70,7 @@ class ResponseForbiddenGistBlock extends \ArrayObject
      */
     public function setCreatedAt(string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -82,6 +92,7 @@ class ResponseForbiddenGistBlock extends \ArrayObject
      */
     public function setHtmlUrl(?string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }

@@ -130,35 +130,35 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
         $data['retries'] = $object->getRetries();
         $data['priority'] = $object->getPriority();
         $data['deduplicate'] = $object->getDeduplicate();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getNodeId()) {
+        if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
             $data['nodeId'] = $object->getNodeId();
         }
-        if (null !== $object->getHostName()) {
+        if ($object->isInitialized('hostName') && null !== $object->getHostName()) {
             $data['hostName'] = $object->getHostName();
         }
-        if (null !== $object->getLastResponseTime()) {
+        if ($object->isInitialized('lastResponseTime') && null !== $object->getLastResponseTime()) {
             $data['lastResponseTime'] = $object->getLastResponseTime()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getServiceName()) {
+        if ($object->isInitialized('serviceName') && null !== $object->getServiceName()) {
             $data['serviceName'] = $object->getServiceName();
         }
-        if (null !== $object->getFileVersion()) {
+        if ($object->isInitialized('fileVersion') && null !== $object->getFileVersion()) {
             $data['fileVersion'] = $object->getFileVersion();
         }
-        if (null !== $object->getProductVersion()) {
+        if ($object->isInitialized('productVersion') && null !== $object->getProductVersion()) {
             $data['productVersion'] = $object->getProductVersion();
         }
-        if (null !== $object->getRelease()) {
+        if ($object->isInitialized('release') && null !== $object->getRelease()) {
             $data['release'] = $object->getRelease();
         }
-        if (null !== $object->getLogLevel()) {
+        if ($object->isInitialized('logLevel') && null !== $object->getLogLevel()) {
             $data['logLevel'] = $object->getLogLevel();
         }
         foreach ($object as $key => $value) {

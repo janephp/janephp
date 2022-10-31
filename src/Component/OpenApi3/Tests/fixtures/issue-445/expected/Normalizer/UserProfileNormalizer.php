@@ -130,34 +130,34 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getEmailAddress()) {
+        if ($object->isInitialized('emailAddress') && null !== $object->getEmailAddress()) {
             $data['emailAddress'] = $object->getEmailAddress();
         }
-        if (null !== $object->getFirstName()) {
+        if ($object->isInitialized('firstName') && null !== $object->getFirstName()) {
             $data['firstName'] = $object->getFirstName();
         }
-        if (null !== $object->getLastName()) {
+        if ($object->isInitialized('lastName') && null !== $object->getLastName()) {
             $data['lastName'] = $object->getLastName();
         }
-        if (null !== $object->getLanguageCode()) {
+        if ($object->isInitialized('languageCode') && null !== $object->getLanguageCode()) {
             $data['languageCode'] = $object->getLanguageCode();
         }
-        if (null !== $object->getAddress()) {
+        if ($object->isInitialized('address') && null !== $object->getAddress()) {
             $data['address'] = $object->getAddress();
         }
         $data['authorizationState'] = $object->getAuthorizationState();
         $data['isLocked'] = $object->getIsLocked();
-        if (null !== $object->getUserRights()) {
+        if ($object->isInitialized('userRights') && null !== $object->getUserRights()) {
             $values = array();
             foreach ($object->getUserRights() as $value) {
                 $values[] = $value;
             }
             $data['userRights'] = $values;
         }
-        if (null !== $object->getUserRoleIds()) {
+        if ($object->isInitialized('userRoleIds') && null !== $object->getUserRoleIds()) {
             $values_1 = array();
             foreach ($object->getUserRoleIds() as $value_1) {
                 $values_1[] = $value_1;
@@ -165,7 +165,7 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['userRoleIds'] = $values_1;
         }
         $data['termsConsentExpired'] = $object->getTermsConsentExpired();
-        if (null !== $object->getSystemUserRoles()) {
+        if ($object->isInitialized('systemUserRoles') && null !== $object->getSystemUserRoles()) {
             $values_2 = array();
             foreach ($object->getSystemUserRoles() as $value_2) {
                 $values_2[] = $value_2;

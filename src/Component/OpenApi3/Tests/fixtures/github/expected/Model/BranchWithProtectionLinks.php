@@ -5,6 +5,14 @@ namespace Github\Model;
 class BranchWithProtectionLinks extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class BranchWithProtectionLinks extends \ArrayObject
      */
     public function setHtml(string $html) : self
     {
+        $this->initialized['html'] = true;
         $this->html = $html;
         return $this;
     }
@@ -55,6 +64,7 @@ class BranchWithProtectionLinks extends \ArrayObject
      */
     public function setSelf(string $self) : self
     {
+        $this->initialized['self'] = true;
         $this->self = $self;
         return $this;
     }

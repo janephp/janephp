@@ -85,22 +85,22 @@ class UserProfileUpdateRequestNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getEmailAddress()) {
+        if ($object->isInitialized('emailAddress') && null !== $object->getEmailAddress()) {
             $data['emailAddress'] = $object->getEmailAddress();
         }
-        if (null !== $object->getFirstName()) {
+        if ($object->isInitialized('firstName') && null !== $object->getFirstName()) {
             $data['firstName'] = $object->getFirstName();
         }
-        if (null !== $object->getLastName()) {
+        if ($object->isInitialized('lastName') && null !== $object->getLastName()) {
             $data['lastName'] = $object->getLastName();
         }
-        if (null !== $object->getLanguageCode()) {
+        if ($object->isInitialized('languageCode') && null !== $object->getLanguageCode()) {
             $data['languageCode'] = $object->getLanguageCode();
         }
-        if (null !== $object->getAddress()) {
+        if ($object->isInitialized('address') && null !== $object->getAddress()) {
             $data['address'] = $object->getAddress();
         }
         return $data;

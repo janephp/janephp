@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class PortBinding
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Host IP address that the container's port is mapped to.
      *
      * @var string
@@ -34,6 +42,7 @@ class PortBinding
      */
     public function setHostIp(string $hostIp) : self
     {
+        $this->initialized['hostIp'] = true;
         $this->hostIp = $hostIp;
         return $this;
     }
@@ -55,6 +64,7 @@ class PortBinding
      */
     public function setHostPort(string $hostPort) : self
     {
+        $this->initialized['hostPort'] = true;
         $this->hostPort = $hostPort;
         return $this;
     }

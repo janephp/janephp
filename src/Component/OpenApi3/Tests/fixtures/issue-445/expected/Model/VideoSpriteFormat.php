@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class VideoSpriteFormat extends FormatBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Specifies the dimensions of a single frame in the sprite.
      *
      * @var mixed|null
@@ -46,6 +54,7 @@ class VideoSpriteFormat extends FormatBase
      */
     public function setSpriteResizeAction($spriteResizeAction) : self
     {
+        $this->initialized['spriteResizeAction'] = true;
         $this->spriteResizeAction = $spriteResizeAction;
         return $this;
     }
@@ -67,6 +76,7 @@ class VideoSpriteFormat extends FormatBase
      */
     public function setMaxNumberOfSprites(int $maxNumberOfSprites) : self
     {
+        $this->initialized['maxNumberOfSprites'] = true;
         $this->maxNumberOfSprites = $maxNumberOfSprites;
         return $this;
     }
@@ -88,6 +98,7 @@ class VideoSpriteFormat extends FormatBase
      */
     public function setQuality(int $quality) : self
     {
+        $this->initialized['quality'] = true;
         $this->quality = $quality;
         return $this;
     }
@@ -109,6 +120,7 @@ class VideoSpriteFormat extends FormatBase
      */
     public function setExtension(?string $extension) : self
     {
+        $this->initialized['extension'] = true;
         $this->extension = $extension;
         return $this;
     }

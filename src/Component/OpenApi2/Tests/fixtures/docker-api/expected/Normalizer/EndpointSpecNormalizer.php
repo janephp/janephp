@@ -63,10 +63,10 @@ class EndpointSpecNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMode()) {
+        if ($object->isInitialized('mode') && null !== $object->getMode()) {
             $data['Mode'] = $object->getMode();
         }
-        if (null !== $object->getPorts()) {
+        if ($object->isInitialized('ports') && null !== $object->getPorts()) {
             $values = array();
             foreach ($object->getPorts() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

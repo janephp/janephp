@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemAddress extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemAddress e
      */
     public function setSimpleValue(string $simpleValue) : self
     {
+        $this->initialized['simpleValue'] = true;
         $this->simpleValue = $simpleValue;
         return $this;
     }
@@ -55,6 +64,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemAddress e
      */
     public function setPostalCode(string $postalCode) : self
     {
+        $this->initialized['postalCode'] = true;
         $this->postalCode = $postalCode;
         return $this;
     }

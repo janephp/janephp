@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class EndpointPortConfig
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -61,6 +69,7 @@ class EndpointPortConfig
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -82,6 +91,7 @@ class EndpointPortConfig
      */
     public function setProtocol(string $protocol) : self
     {
+        $this->initialized['protocol'] = true;
         $this->protocol = $protocol;
         return $this;
     }
@@ -103,6 +113,7 @@ class EndpointPortConfig
      */
     public function setTargetPort(int $targetPort) : self
     {
+        $this->initialized['targetPort'] = true;
         $this->targetPort = $targetPort;
         return $this;
     }
@@ -124,6 +135,7 @@ class EndpointPortConfig
      */
     public function setPublishedPort(int $publishedPort) : self
     {
+        $this->initialized['publishedPort'] = true;
         $this->publishedPort = $publishedPort;
         return $this;
     }
@@ -163,6 +175,7 @@ class EndpointPortConfig
     */
     public function setPublishMode(string $publishMode) : self
     {
+        $this->initialized['publishMode'] = true;
         $this->publishMode = $publishMode;
         return $this;
     }

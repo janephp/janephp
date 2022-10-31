@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class NetworksCreatePostBody
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The network's name.
      *
      * @var string
@@ -93,6 +101,7 @@ class NetworksCreatePostBody
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -128,6 +137,7 @@ class NetworksCreatePostBody
     */
     public function setCheckDuplicate(bool $checkDuplicate) : self
     {
+        $this->initialized['checkDuplicate'] = true;
         $this->checkDuplicate = $checkDuplicate;
         return $this;
     }
@@ -149,6 +159,7 @@ class NetworksCreatePostBody
      */
     public function setDriver(string $driver) : self
     {
+        $this->initialized['driver'] = true;
         $this->driver = $driver;
         return $this;
     }
@@ -170,6 +181,7 @@ class NetworksCreatePostBody
      */
     public function setInternal(bool $internal) : self
     {
+        $this->initialized['internal'] = true;
         $this->internal = $internal;
         return $this;
     }
@@ -195,6 +207,7 @@ class NetworksCreatePostBody
     */
     public function setAttachable(bool $attachable) : self
     {
+        $this->initialized['attachable'] = true;
         $this->attachable = $attachable;
         return $this;
     }
@@ -220,6 +233,7 @@ class NetworksCreatePostBody
     */
     public function setIngress(bool $ingress) : self
     {
+        $this->initialized['ingress'] = true;
         $this->ingress = $ingress;
         return $this;
     }
@@ -241,6 +255,7 @@ class NetworksCreatePostBody
      */
     public function setIPAM(IPAM $iPAM) : self
     {
+        $this->initialized['iPAM'] = true;
         $this->iPAM = $iPAM;
         return $this;
     }
@@ -262,6 +277,7 @@ class NetworksCreatePostBody
      */
     public function setEnableIPv6(bool $enableIPv6) : self
     {
+        $this->initialized['enableIPv6'] = true;
         $this->enableIPv6 = $enableIPv6;
         return $this;
     }
@@ -283,6 +299,7 @@ class NetworksCreatePostBody
      */
     public function setOptions(iterable $options) : self
     {
+        $this->initialized['options'] = true;
         $this->options = $options;
         return $this;
     }
@@ -304,6 +321,7 @@ class NetworksCreatePostBody
      */
     public function setLabels(iterable $labels) : self
     {
+        $this->initialized['labels'] = true;
         $this->labels = $labels;
         return $this;
     }

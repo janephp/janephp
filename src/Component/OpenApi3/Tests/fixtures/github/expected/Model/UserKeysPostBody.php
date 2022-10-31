@@ -5,6 +5,14 @@ namespace Github\Model;
 class UserKeysPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * A descriptive name for the new key.
      *
      * @var string
@@ -34,6 +42,7 @@ class UserKeysPostBody extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -55,6 +64,7 @@ class UserKeysPostBody extends \ArrayObject
      */
     public function setKey(string $key) : self
     {
+        $this->initialized['key'] = true;
         $this->key = $key;
         return $this;
     }

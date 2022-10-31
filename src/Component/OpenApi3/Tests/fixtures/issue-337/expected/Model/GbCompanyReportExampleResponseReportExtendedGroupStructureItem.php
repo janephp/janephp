@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -70,6 +78,7 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -91,6 +100,7 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
      */
     public function setCountry(string $country) : self
     {
+        $this->initialized['country'] = true;
         $this->country = $country;
         return $this;
     }
@@ -112,6 +122,7 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
      */
     public function setSafeNumber(string $safeNumber) : self
     {
+        $this->initialized['safeNumber'] = true;
         $this->safeNumber = $safeNumber;
         return $this;
     }
@@ -133,6 +144,7 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
      */
     public function setCompanyName(string $companyName) : self
     {
+        $this->initialized['companyName'] = true;
         $this->companyName = $companyName;
         return $this;
     }
@@ -154,6 +166,7 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
      */
     public function setRegisteredNumber(string $registeredNumber) : self
     {
+        $this->initialized['registeredNumber'] = true;
         $this->registeredNumber = $registeredNumber;
         return $this;
     }
@@ -175,6 +188,7 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
      */
     public function setLatestAnnualAccounts(string $latestAnnualAccounts) : self
     {
+        $this->initialized['latestAnnualAccounts'] = true;
         $this->latestAnnualAccounts = $latestAnnualAccounts;
         return $this;
     }
@@ -196,6 +210,7 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
      */
     public function setLevel(float $level) : self
     {
+        $this->initialized['level'] = true;
         $this->level = $level;
         return $this;
     }
@@ -217,6 +232,7 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }

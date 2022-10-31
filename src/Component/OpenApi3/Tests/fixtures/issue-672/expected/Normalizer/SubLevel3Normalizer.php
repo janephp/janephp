@@ -58,7 +58,7 @@ class SubLevel3Normalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getEnd()) {
+        if ($object->isInitialized('end') && null !== $object->getEnd()) {
             $data['end'] = $object->getEnd();
         }
         foreach ($object as $key => $value) {

@@ -59,10 +59,10 @@ class ServiceEndpointVirtualIPsItemNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNetworkID()) {
+        if ($object->isInitialized('networkID') && null !== $object->getNetworkID()) {
             $data['NetworkID'] = $object->getNetworkID();
         }
-        if (null !== $object->getAddr()) {
+        if ($object->isInitialized('addr') && null !== $object->getAddr()) {
             $data['Addr'] = $object->getAddr();
         }
         if (!($context['skip_validation'] ?? false)) {

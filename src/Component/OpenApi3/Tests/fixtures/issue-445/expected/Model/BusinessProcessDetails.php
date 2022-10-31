@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessProcessDetails extends BusinessProcess
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Details for the business process.
      *
      * @var mixed|null
@@ -28,6 +36,7 @@ class BusinessProcessDetails extends BusinessProcess
      */
     public function setDetails($details) : self
     {
+        $this->initialized['details'] = true;
         $this->details = $details;
         return $this;
     }

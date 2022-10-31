@@ -98,22 +98,22 @@ class ScimErrorNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMessage()) {
+        if ($object->isInitialized('message') && null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
-        if (null !== $object->getDocumentationUrl()) {
+        if ($object->isInitialized('documentationUrl') && null !== $object->getDocumentationUrl()) {
             $data['documentation_url'] = $object->getDocumentationUrl();
         }
-        if (null !== $object->getDetail()) {
+        if ($object->isInitialized('detail') && null !== $object->getDetail()) {
             $data['detail'] = $object->getDetail();
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        if (null !== $object->getScimType()) {
+        if ($object->isInitialized('scimType') && null !== $object->getScimType()) {
             $data['scimType'] = $object->getScimType();
         }
-        if (null !== $object->getSchemas()) {
+        if ($object->isInitialized('schemas') && null !== $object->getSchemas()) {
             $values = array();
             foreach ($object->getSchemas() as $value) {
                 $values[] = $value;

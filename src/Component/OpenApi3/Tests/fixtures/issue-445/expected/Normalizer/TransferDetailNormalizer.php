@@ -134,36 +134,36 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
         $data['name'] = $object->getName();
         $data['state'] = $object->getState();
         $data['transferType'] = $object->getTransferType();
-        if (null !== $object->getBusinessProcessId()) {
+        if ($object->isInitialized('businessProcessId') && null !== $object->getBusinessProcessId()) {
             $data['businessProcessId'] = $object->getBusinessProcessId();
         }
         $data['fileTransferCount'] = $object->getFileTransferCount();
-        if (null !== $object->getCollectionId()) {
+        if ($object->isInitialized('collectionId') && null !== $object->getCollectionId()) {
             $data['collectionId'] = $object->getCollectionId();
         }
         $data['audit'] = $object->getAudit();
-        if (null !== $object->getItemProgress()) {
+        if ($object->isInitialized('itemProgress') && null !== $object->getItemProgress()) {
             $data['itemProgress'] = $object->getItemProgress();
         }
-        if (null !== $object->getItemCount()) {
+        if ($object->isInitialized('itemCount') && null !== $object->getItemCount()) {
             $data['itemCount'] = $object->getItemCount();
         }
-        if (null !== $object->getFileUploadInProgressCount()) {
+        if ($object->isInitialized('fileUploadInProgressCount') && null !== $object->getFileUploadInProgressCount()) {
             $data['fileUploadInProgressCount'] = $object->getFileUploadInProgressCount();
         }
-        if (null !== $object->getDataExtractionInProgressCount()) {
+        if ($object->isInitialized('dataExtractionInProgressCount') && null !== $object->getDataExtractionInProgressCount()) {
             $data['dataExtractionInProgressCount'] = $object->getDataExtractionInProgressCount();
         }
-        if (null !== $object->getItemsFailed()) {
+        if ($object->isInitialized('itemsFailed') && null !== $object->getItemsFailed()) {
             $data['itemsFailed'] = $object->getItemsFailed();
         }
-        if (null !== $object->getItemsCancelled()) {
+        if ($object->isInitialized('itemsCancelled') && null !== $object->getItemsCancelled()) {
             $data['itemsCancelled'] = $object->getItemsCancelled();
         }
-        if (null !== $object->getLastDataExtractionProgressTimeStamp()) {
+        if ($object->isInitialized('lastDataExtractionProgressTimeStamp') && null !== $object->getLastDataExtractionProgressTimeStamp()) {
             $data['lastDataExtractionProgressTimeStamp'] = $object->getLastDataExtractionProgressTimeStamp()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getLastFileUploadProgressTimeStamp()) {
+        if ($object->isInitialized('lastFileUploadProgressTimeStamp') && null !== $object->getLastFileUploadProgressTimeStamp()) {
             $data['lastFileUploadProgressTimeStamp'] = $object->getLastFileUploadProgressTimeStamp()->format('Y-m-d\\TH:i:sP');
         }
         foreach ($object as $key => $value) {

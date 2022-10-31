@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class PdfFormat extends FormatBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Specifies compression quality used for ReduceFileSize.
      *
      * @var int
@@ -52,6 +60,7 @@ class PdfFormat extends FormatBase
      */
     public function setJpegQuality(int $jpegQuality) : self
     {
+        $this->initialized['jpegQuality'] = true;
         $this->jpegQuality = $jpegQuality;
         return $this;
     }
@@ -73,6 +82,7 @@ class PdfFormat extends FormatBase
      */
     public function setFastWebView(bool $fastWebView) : self
     {
+        $this->initialized['fastWebView'] = true;
         $this->fastWebView = $fastWebView;
         return $this;
     }
@@ -94,6 +104,7 @@ class PdfFormat extends FormatBase
      */
     public function setReduceFileSize(bool $reduceFileSize) : self
     {
+        $this->initialized['reduceFileSize'] = true;
         $this->reduceFileSize = $reduceFileSize;
         return $this;
     }
@@ -115,6 +126,7 @@ class PdfFormat extends FormatBase
      */
     public function setExtension(?string $extension) : self
     {
+        $this->initialized['extension'] = true;
         $this->extension = $extension;
         return $this;
     }
@@ -136,6 +148,7 @@ class PdfFormat extends FormatBase
      */
     public function setExtractFullText(bool $extractFullText) : self
     {
+        $this->initialized['extractFullText'] = true;
         $this->extractFullText = $extractFullText;
         return $this;
     }

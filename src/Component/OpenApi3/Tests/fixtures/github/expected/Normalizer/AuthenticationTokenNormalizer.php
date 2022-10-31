@@ -95,24 +95,24 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
         $data = array();
         $data['token'] = $object->getToken();
         $data['expires_at'] = $object->getExpiresAt()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getPermissions()) {
+        if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
             $values = array();
             foreach ($object->getPermissions() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['permissions'] = $values;
         }
-        if (null !== $object->getRepositories()) {
+        if ($object->isInitialized('repositories') && null !== $object->getRepositories()) {
             $values_1 = array();
             foreach ($object->getRepositories() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['repositories'] = $values_1;
         }
-        if (null !== $object->getSingleFile()) {
+        if ($object->isInitialized('singleFile') && null !== $object->getSingleFile()) {
             $data['single_file'] = $object->getSingleFile();
         }
-        if (null !== $object->getRepositorySelection()) {
+        if ($object->isInitialized('repositorySelection') && null !== $object->getRepositorySelection()) {
             $data['repository_selection'] = $object->getRepositorySelection();
         }
         foreach ($object as $key_1 => $value_2) {

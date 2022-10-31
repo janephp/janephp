@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class Node
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -93,6 +101,7 @@ class Node
      */
     public function setID(string $iD) : self
     {
+        $this->initialized['iD'] = true;
         $this->iD = $iD;
         return $this;
     }
@@ -134,6 +143,7 @@ class Node
     */
     public function setVersion(ObjectVersion $version) : self
     {
+        $this->initialized['version'] = true;
         $this->version = $version;
         return $this;
     }
@@ -159,6 +169,7 @@ class Node
     */
     public function setCreatedAt(string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -184,6 +195,7 @@ class Node
     */
     public function setUpdatedAt(string $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -205,6 +217,7 @@ class Node
      */
     public function setSpec(NodeSpec $spec) : self
     {
+        $this->initialized['spec'] = true;
         $this->spec = $spec;
         return $this;
     }
@@ -230,6 +243,7 @@ class Node
     */
     public function setDescription(NodeDescription $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -257,6 +271,7 @@ class Node
     */
     public function setStatus(NodeStatus $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -286,6 +301,7 @@ class Node
     */
     public function setManagerStatus(?ManagerStatus $managerStatus) : self
     {
+        $this->initialized['managerStatus'] = true;
         $this->managerStatus = $managerStatus;
         return $this;
     }

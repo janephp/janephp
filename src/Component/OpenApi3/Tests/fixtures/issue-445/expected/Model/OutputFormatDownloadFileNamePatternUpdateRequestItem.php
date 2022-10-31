@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class OutputFormatDownloadFileNamePatternUpdateRequestItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of the output format to set pattern for.
      *
      * @var string
@@ -35,6 +43,7 @@ class OutputFormatDownloadFileNamePatternUpdateRequestItem
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -58,6 +67,7 @@ class OutputFormatDownloadFileNamePatternUpdateRequestItem
     */
     public function setPatterns($patterns) : self
     {
+        $this->initialized['patterns'] = true;
         $this->patterns = $patterns;
         return $this;
     }

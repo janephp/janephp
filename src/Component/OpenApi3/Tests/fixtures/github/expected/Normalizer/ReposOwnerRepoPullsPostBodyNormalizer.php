@@ -86,21 +86,21 @@ class ReposOwnerRepoPullsPostBodyNormalizer implements DenormalizerInterface, No
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
         $data['head'] = $object->getHead();
         $data['base'] = $object->getBase();
-        if (null !== $object->getBody()) {
+        if ($object->isInitialized('body') && null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
-        if (null !== $object->getMaintainerCanModify()) {
+        if ($object->isInitialized('maintainerCanModify') && null !== $object->getMaintainerCanModify()) {
             $data['maintainer_can_modify'] = $object->getMaintainerCanModify();
         }
-        if (null !== $object->getDraft()) {
+        if ($object->isInitialized('draft') && null !== $object->getDraft()) {
             $data['draft'] = $object->getDraft();
         }
-        if (null !== $object->getIssue()) {
+        if ($object->isInitialized('issue') && null !== $object->getIssue()) {
             $data['issue'] = $object->getIssue();
         }
         foreach ($object as $key => $value) {

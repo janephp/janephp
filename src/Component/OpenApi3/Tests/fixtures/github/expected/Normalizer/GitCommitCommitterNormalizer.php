@@ -70,7 +70,7 @@ class GitCommitCommitterNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDate()) {
+        if ($object->isInitialized('date') && null !== $object->getDate()) {
             $data['date'] = $object->getDate()->format('Y-m-d\\TH:i:sP');
         }
         $data['email'] = $object->getEmail();

@@ -71,7 +71,7 @@ class OperationalDisconnectProblemNormalizer implements DenormalizerInterface, N
     {
         $data = array();
         $data['type'] = $object->getType();
-        if (null !== $object->getDisconnectType()) {
+        if ($object->isInitialized('disconnectType') && null !== $object->getDisconnectType()) {
             $data['disconnect_type'] = $object->getDisconnectType();
         }
         $data['title'] = $object->getTitle();

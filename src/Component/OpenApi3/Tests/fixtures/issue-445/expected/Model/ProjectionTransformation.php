@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ProjectionTransformation extends BusinessRuleTransformation
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Transformations to apply.
      *
      * @var BusinessRuleTransformation[]|null
@@ -28,6 +36,7 @@ class ProjectionTransformation extends BusinessRuleTransformation
      */
     public function setTransformations(?array $transformations) : self
     {
+        $this->initialized['transformations'] = true;
         $this->transformations = $transformations;
         return $this;
     }

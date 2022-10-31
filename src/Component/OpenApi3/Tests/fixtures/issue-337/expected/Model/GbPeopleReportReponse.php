@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbPeopleReportReponse extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -64,6 +72,7 @@ class GbPeopleReportReponse extends \ArrayObject
      */
     public function setCorrelationId(string $correlationId) : self
     {
+        $this->initialized['correlationId'] = true;
         $this->correlationId = $correlationId;
         return $this;
     }
@@ -85,6 +94,7 @@ class GbPeopleReportReponse extends \ArrayObject
      */
     public function setOrderId(string $orderId) : self
     {
+        $this->initialized['orderId'] = true;
         $this->orderId = $orderId;
         return $this;
     }
@@ -106,6 +116,7 @@ class GbPeopleReportReponse extends \ArrayObject
      */
     public function setDirectorId(string $directorId) : self
     {
+        $this->initialized['directorId'] = true;
         $this->directorId = $directorId;
         return $this;
     }
@@ -127,6 +138,7 @@ class GbPeopleReportReponse extends \ArrayObject
      */
     public function setDateOfOrder(string $dateOfOrder) : self
     {
+        $this->initialized['dateOfOrder'] = true;
         $this->dateOfOrder = $dateOfOrder;
         return $this;
     }
@@ -148,6 +160,7 @@ class GbPeopleReportReponse extends \ArrayObject
      */
     public function setLanguage(string $language) : self
     {
+        $this->initialized['language'] = true;
         $this->language = $language;
         return $this;
     }
@@ -169,6 +182,7 @@ class GbPeopleReportReponse extends \ArrayObject
      */
     public function setUserId(string $userId) : self
     {
+        $this->initialized['userId'] = true;
         $this->userId = $userId;
         return $this;
     }
@@ -190,6 +204,7 @@ class GbPeopleReportReponse extends \ArrayObject
      */
     public function setReport(GbPeopleReportReponseReport $report) : self
     {
+        $this->initialized['report'] = true;
         $this->report = $report;
         return $this;
     }

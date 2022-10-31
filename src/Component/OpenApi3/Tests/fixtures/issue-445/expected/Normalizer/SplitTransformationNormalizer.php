@@ -80,17 +80,17 @@ class SplitTransformationNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getSeparators()) {
+        if ($object->isInitialized('separators') && null !== $object->getSeparators()) {
             $data['separators'] = $object->getSeparators();
         }
-        if (null !== $object->getKeepEmpty()) {
+        if ($object->isInitialized('keepEmpty') && null !== $object->getKeepEmpty()) {
             $data['keepEmpty'] = $object->getKeepEmpty();
         }
-        if (null !== $object->getTrim()) {
+        if ($object->isInitialized('trim') && null !== $object->getTrim()) {
             $data['trim'] = $object->getTrim();
         }
         foreach ($object as $key => $value) {

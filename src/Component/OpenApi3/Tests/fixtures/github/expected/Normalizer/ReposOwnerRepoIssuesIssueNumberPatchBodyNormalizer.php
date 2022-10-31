@@ -97,29 +97,29 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyNormalizer implements Denormalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getBody()) {
+        if ($object->isInitialized('body') && null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
-        if (null !== $object->getAssignee()) {
+        if ($object->isInitialized('assignee') && null !== $object->getAssignee()) {
             $data['assignee'] = $object->getAssignee();
         }
-        if (null !== $object->getState()) {
+        if ($object->isInitialized('state') && null !== $object->getState()) {
             $data['state'] = $object->getState();
         }
-        if (null !== $object->getMilestone()) {
+        if ($object->isInitialized('milestone') && null !== $object->getMilestone()) {
             $data['milestone'] = $object->getMilestone();
         }
-        if (null !== $object->getLabels()) {
+        if ($object->isInitialized('labels') && null !== $object->getLabels()) {
             $values = array();
             foreach ($object->getLabels() as $value) {
                 $values[] = $value;
             }
             $data['labels'] = $values;
         }
-        if (null !== $object->getAssignees()) {
+        if ($object->isInitialized('assignees') && null !== $object->getAssignees()) {
             $values_1 = array();
             foreach ($object->getAssignees() as $value_1) {
                 $values_1[] = $value_1;

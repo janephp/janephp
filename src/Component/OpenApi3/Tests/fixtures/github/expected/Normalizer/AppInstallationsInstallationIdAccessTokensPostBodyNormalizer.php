@@ -78,21 +78,21 @@ class AppInstallationsInstallationIdAccessTokensPostBodyNormalizer implements De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRepositories()) {
+        if ($object->isInitialized('repositories') && null !== $object->getRepositories()) {
             $values = array();
             foreach ($object->getRepositories() as $value) {
                 $values[] = $value;
             }
             $data['repositories'] = $values;
         }
-        if (null !== $object->getRepositoryIds()) {
+        if ($object->isInitialized('repositoryIds') && null !== $object->getRepositoryIds()) {
             $values_1 = array();
             foreach ($object->getRepositoryIds() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['repository_ids'] = $values_1;
         }
-        if (null !== $object->getPermissions()) {
+        if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
         foreach ($object as $key => $value_2) {

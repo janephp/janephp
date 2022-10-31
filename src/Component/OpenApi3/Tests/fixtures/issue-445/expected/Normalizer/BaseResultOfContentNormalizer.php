@@ -75,7 +75,7 @@ class BaseResultOfContentNormalizer implements DenormalizerInterface, Normalizer
         }
         $data['results'] = $values;
         $data['elapsedMilliseconds'] = $object->getElapsedMilliseconds();
-        if (null !== $object->getPageToken()) {
+        if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
             $data['pageToken'] = $object->getPageToken();
         }
         return $data;

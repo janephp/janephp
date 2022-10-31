@@ -5,6 +5,14 @@ namespace Jane\OpenApi3\Tests\Expected\Model;
 class Expansions extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var mixed[]
@@ -52,6 +60,7 @@ class Expansions extends \ArrayObject
      */
     public function setUsers(array $users) : self
     {
+        $this->initialized['users'] = true;
         $this->users = $users;
         return $this;
     }
@@ -73,6 +82,7 @@ class Expansions extends \ArrayObject
      */
     public function setTweets(array $tweets) : self
     {
+        $this->initialized['tweets'] = true;
         $this->tweets = $tweets;
         return $this;
     }
@@ -94,6 +104,7 @@ class Expansions extends \ArrayObject
      */
     public function setPlaces(array $places) : self
     {
+        $this->initialized['places'] = true;
         $this->places = $places;
         return $this;
     }
@@ -115,6 +126,7 @@ class Expansions extends \ArrayObject
      */
     public function setMedia(array $media) : self
     {
+        $this->initialized['media'] = true;
         $this->media = $media;
         return $this;
     }
@@ -136,6 +148,7 @@ class Expansions extends \ArrayObject
      */
     public function setPolls(array $polls) : self
     {
+        $this->initialized['polls'] = true;
         $this->polls = $polls;
         return $this;
     }

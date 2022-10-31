@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbPeopleReportReponseReportDirectorshipsInactiveItemPosition extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemPosition extends \Arra
      */
     public function setResignationDate(string $resignationDate) : self
     {
+        $this->initialized['resignationDate'] = true;
         $this->resignationDate = $resignationDate;
         return $this;
     }
@@ -61,6 +70,7 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemPosition extends \Arra
      */
     public function setDateAppointed(string $dateAppointed) : self
     {
+        $this->initialized['dateAppointed'] = true;
         $this->dateAppointed = $dateAppointed;
         return $this;
     }
@@ -82,6 +92,7 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemPosition extends \Arra
      */
     public function setPositionName(string $positionName) : self
     {
+        $this->initialized['positionName'] = true;
         $this->positionName = $positionName;
         return $this;
     }

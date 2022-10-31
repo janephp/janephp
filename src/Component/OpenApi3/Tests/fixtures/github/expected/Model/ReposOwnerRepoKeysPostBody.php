@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoKeysPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * A name for the key.
      *
      * @var string
@@ -42,6 +50,7 @@ class ReposOwnerRepoKeysPostBody extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -63,6 +72,7 @@ class ReposOwnerRepoKeysPostBody extends \ArrayObject
      */
     public function setKey(string $key) : self
     {
+        $this->initialized['key'] = true;
         $this->key = $key;
         return $this;
     }
@@ -88,6 +98,7 @@ class ReposOwnerRepoKeysPostBody extends \ArrayObject
     */
     public function setReadOnly(bool $readOnly) : self
     {
+        $this->initialized['readOnly'] = true;
         $this->readOnly = $readOnly;
         return $this;
     }

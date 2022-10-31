@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class TransferFile
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Replaced in favor of RequestId. Client generated identifier of the item.
      *
      * @deprecated
@@ -40,6 +48,7 @@ class TransferFile
      */
     public function setIdentifier(?string $identifier) : self
     {
+        $this->initialized['identifier'] = true;
         $this->identifier = $identifier;
         return $this;
     }
@@ -61,6 +70,7 @@ class TransferFile
      */
     public function setRequestId(?string $requestId) : self
     {
+        $this->initialized['requestId'] = true;
         $this->requestId = $requestId;
         return $this;
     }

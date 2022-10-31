@@ -108,23 +108,23 @@ class IndexFieldNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getFieldId()) {
+        if ($object->isInitialized('fieldId') && null !== $object->getFieldId()) {
             $data['fieldId'] = $object->getFieldId();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getIndexFields()) {
+        if ($object->isInitialized('indexFields') && null !== $object->getIndexFields()) {
             $values = array();
             foreach ($object->getIndexFields() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['indexFields'] = $values;
         }
-        if (null !== $object->getSimpleSearchFields()) {
+        if ($object->isInitialized('simpleSearchFields') && null !== $object->getSimpleSearchFields()) {
             $values_1 = array();
             foreach ($object->getSimpleSearchFields() as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
@@ -133,10 +133,10 @@ class IndexFieldNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $data['boost'] = $object->getBoost();
         $data['ignoreForSearch'] = $object->getIgnoreForSearch();
-        if (null !== $object->getNestedPath()) {
+        if ($object->isInitialized('nestedPath') && null !== $object->getNestedPath()) {
             $data['nestedPath'] = $object->getNestedPath();
         }
-        if (null !== $object->getSortField()) {
+        if ($object->isInitialized('sortField') && null !== $object->getSortField()) {
             $data['sortField'] = $object->getSortField();
         }
         return $data;

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UserAuditDetail
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The date on which the document was created.
      *
      * @var \DateTime
@@ -46,6 +54,7 @@ class UserAuditDetail
      */
     public function setCreationDate(\DateTime $creationDate) : self
     {
+        $this->initialized['creationDate'] = true;
         $this->creationDate = $creationDate;
         return $this;
     }
@@ -67,6 +76,7 @@ class UserAuditDetail
      */
     public function setModificationDate(\DateTime $modificationDate) : self
     {
+        $this->initialized['modificationDate'] = true;
         $this->modificationDate = $modificationDate;
         return $this;
     }
@@ -88,6 +98,7 @@ class UserAuditDetail
      */
     public function setCreatedByUser($createdByUser) : self
     {
+        $this->initialized['createdByUser'] = true;
         $this->createdByUser = $createdByUser;
         return $this;
     }
@@ -109,6 +120,7 @@ class UserAuditDetail
      */
     public function setModifiedByUser($modifiedByUser) : self
     {
+        $this->initialized['modifiedByUser'] = true;
         $this->modifiedByUser = $modifiedByUser;
         return $this;
     }

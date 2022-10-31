@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class EnqueueTaggingAction extends BusinessRuleAction
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Options to use while tagging.
      *
      * @var mixed|null
@@ -28,6 +36,7 @@ class EnqueueTaggingAction extends BusinessRuleAction
      */
     public function setOptions($options) : self
     {
+        $this->initialized['options'] = true;
         $this->options = $options;
         return $this;
     }

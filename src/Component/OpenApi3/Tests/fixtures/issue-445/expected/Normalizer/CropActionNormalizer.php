@@ -75,16 +75,16 @@ class CropActionNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $data = array();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getX()) {
+        if ($object->isInitialized('x') && null !== $object->getX()) {
             $data['x'] = $object->getX();
         }
-        if (null !== $object->getY()) {
+        if ($object->isInitialized('y') && null !== $object->getY()) {
             $data['y'] = $object->getY();
         }
-        if (null !== $object->getWidth()) {
+        if ($object->isInitialized('width') && null !== $object->getWidth()) {
             $data['width'] = $object->getWidth();
         }
-        if (null !== $object->getHeight()) {
+        if ($object->isInitialized('height') && null !== $object->getHeight()) {
             $data['height'] = $object->getHeight();
         }
         foreach ($object as $key => $value) {

@@ -101,37 +101,37 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemNormalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getYearEndDate()) {
+        if ($object->isInitialized('yearEndDate') && null !== $object->getYearEndDate()) {
             $data['yearEndDate'] = $object->getYearEndDate();
         }
-        if (null !== $object->getNumberOfWeeks()) {
+        if ($object->isInitialized('numberOfWeeks') && null !== $object->getNumberOfWeeks()) {
             $data['numberOfWeeks'] = $object->getNumberOfWeeks();
         }
-        if (null !== $object->getCurrency()) {
+        if ($object->isInitialized('currency') && null !== $object->getCurrency()) {
             $data['currency'] = $object->getCurrency();
         }
-        if (null !== $object->getConsolidatedAccounts()) {
+        if ($object->isInitialized('consolidatedAccounts') && null !== $object->getConsolidatedAccounts()) {
             $data['consolidatedAccounts'] = $object->getConsolidatedAccounts();
         }
-        if (null !== $object->getAuditQualification()) {
+        if ($object->isInitialized('auditQualification') && null !== $object->getAuditQualification()) {
             $data['auditQualification'] = $object->getAuditQualification();
         }
-        if (null !== $object->getProfitAndLoss()) {
+        if ($object->isInitialized('profitAndLoss') && null !== $object->getProfitAndLoss()) {
             $data['profitAndLoss'] = $this->normalizer->normalize($object->getProfitAndLoss(), 'json', $context);
         }
-        if (null !== $object->getBalanceSheet()) {
+        if ($object->isInitialized('balanceSheet') && null !== $object->getBalanceSheet()) {
             $data['balanceSheet'] = $this->normalizer->normalize($object->getBalanceSheet(), 'json', $context);
         }
-        if (null !== $object->getCashFlow()) {
+        if ($object->isInitialized('cashFlow') && null !== $object->getCashFlow()) {
             $data['cashFlow'] = $this->normalizer->normalize($object->getCashFlow(), 'json', $context);
         }
-        if (null !== $object->getOtherFinancials()) {
+        if ($object->isInitialized('otherFinancials') && null !== $object->getOtherFinancials()) {
             $data['otherFinancials'] = $this->normalizer->normalize($object->getOtherFinancials(), 'json', $context);
         }
-        if (null !== $object->getRatios()) {
+        if ($object->isInitialized('ratios') && null !== $object->getRatios()) {
             $data['ratios'] = $this->normalizer->normalize($object->getRatios(), 'json', $context);
         }
         foreach ($object as $key => $value) {

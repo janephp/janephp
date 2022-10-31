@@ -62,10 +62,10 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getIso()) {
+        if ($object->isInitialized('iso') && null !== $object->getIso()) {
             $data['iso'] = $object->getIso();
         }
-        if (null !== $object->getPrintableName()) {
+        if ($object->isInitialized('printableName') && null !== $object->getPrintableName()) {
             $data['printableName'] = $object->getPrintableName();
         }
         foreach ($object as $key => $value) {

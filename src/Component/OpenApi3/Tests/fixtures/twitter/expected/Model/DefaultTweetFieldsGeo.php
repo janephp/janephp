@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class DefaultTweetFieldsGeo extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * A [GeoJson Point](https://tools.ietf.org/html/rfc7946#section-3.1.2) geometry object.
      *
      * @var Point
@@ -34,6 +42,7 @@ class DefaultTweetFieldsGeo extends \ArrayObject
      */
     public function setCoordinates(Point $coordinates) : self
     {
+        $this->initialized['coordinates'] = true;
         $this->coordinates = $coordinates;
         return $this;
     }
@@ -55,6 +64,7 @@ class DefaultTweetFieldsGeo extends \ArrayObject
      */
     public function setPlaceId(string $placeId) : self
     {
+        $this->initialized['placeId'] = true;
         $this->placeId = $placeId;
         return $this;
     }

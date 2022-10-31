@@ -66,13 +66,13 @@ class GbPeopleReportReponseReportDirectorSummaryNormalizer implements Denormaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCurrentAppointments()) {
+        if ($object->isInitialized('currentAppointments') && null !== $object->getCurrentAppointments()) {
             $data['currentAppointments'] = $object->getCurrentAppointments();
         }
-        if (null !== $object->getInactiveAppointments()) {
+        if ($object->isInitialized('inactiveAppointments') && null !== $object->getInactiveAppointments()) {
             $data['inactiveAppointments'] = $object->getInactiveAppointments();
         }
-        if (null !== $object->getPreviousAppointments()) {
+        if ($object->isInitialized('previousAppointments') && null !== $object->getPreviousAppointments()) {
             $data['previousAppointments'] = $object->getPreviousAppointments();
         }
         foreach ($object as $key => $value) {

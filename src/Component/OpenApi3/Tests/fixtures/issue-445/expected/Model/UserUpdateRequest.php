@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UserUpdateRequest extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * User's Picturepark ID.
      *
      * @var string|null
@@ -82,6 +90,7 @@ class UserUpdateRequest extends \ArrayObject
      */
     public function setId(?string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -103,6 +112,7 @@ class UserUpdateRequest extends \ArrayObject
      */
     public function setFirstName(?string $firstName) : self
     {
+        $this->initialized['firstName'] = true;
         $this->firstName = $firstName;
         return $this;
     }
@@ -124,6 +134,7 @@ class UserUpdateRequest extends \ArrayObject
      */
     public function setLastName(?string $lastName) : self
     {
+        $this->initialized['lastName'] = true;
         $this->lastName = $lastName;
         return $this;
     }
@@ -145,6 +156,7 @@ class UserUpdateRequest extends \ArrayObject
      */
     public function setEmailAddress(string $emailAddress) : self
     {
+        $this->initialized['emailAddress'] = true;
         $this->emailAddress = $emailAddress;
         return $this;
     }
@@ -166,6 +178,7 @@ class UserUpdateRequest extends \ArrayObject
      */
     public function setIsDeleted(bool $isDeleted) : self
     {
+        $this->initialized['isDeleted'] = true;
         $this->isDeleted = $isDeleted;
         return $this;
     }
@@ -187,6 +200,7 @@ class UserUpdateRequest extends \ArrayObject
      */
     public function setUserRoles(?array $userRoles) : self
     {
+        $this->initialized['userRoles'] = true;
         $this->userRoles = $userRoles;
         return $this;
     }
@@ -208,6 +222,7 @@ class UserUpdateRequest extends \ArrayObject
      */
     public function setComment(?string $comment) : self
     {
+        $this->initialized['comment'] = true;
         $this->comment = $comment;
         return $this;
     }
@@ -229,6 +244,7 @@ class UserUpdateRequest extends \ArrayObject
      */
     public function setLanguageCode(?string $languageCode) : self
     {
+        $this->initialized['languageCode'] = true;
         $this->languageCode = $languageCode;
         return $this;
     }
@@ -250,6 +266,7 @@ class UserUpdateRequest extends \ArrayObject
      */
     public function setAddress($address) : self
     {
+        $this->initialized['address'] = true;
         $this->address = $address;
         return $this;
     }
@@ -271,6 +288,7 @@ class UserUpdateRequest extends \ArrayObject
      */
     public function setIdentityProviderId(?string $identityProviderId) : self
     {
+        $this->initialized['identityProviderId'] = true;
         $this->identityProviderId = $identityProviderId;
         return $this;
     }

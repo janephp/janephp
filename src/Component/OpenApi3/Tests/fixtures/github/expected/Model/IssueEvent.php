@@ -5,6 +5,14 @@ namespace Github\Model;
 class IssueEvent extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -148,6 +156,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -169,6 +178,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -190,6 +200,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -211,6 +222,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setActor(?IssueEventActor $actor) : self
     {
+        $this->initialized['actor'] = true;
         $this->actor = $actor;
         return $this;
     }
@@ -232,6 +244,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setEvent(string $event) : self
     {
+        $this->initialized['event'] = true;
         $this->event = $event;
         return $this;
     }
@@ -253,6 +266,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setCommitId(?string $commitId) : self
     {
+        $this->initialized['commitId'] = true;
         $this->commitId = $commitId;
         return $this;
     }
@@ -274,6 +288,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setCommitUrl(?string $commitUrl) : self
     {
+        $this->initialized['commitUrl'] = true;
         $this->commitUrl = $commitUrl;
         return $this;
     }
@@ -295,6 +310,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -316,6 +332,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setIssue(IssueSimple $issue) : self
     {
+        $this->initialized['issue'] = true;
         $this->issue = $issue;
         return $this;
     }
@@ -337,6 +354,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setLabel(IssueEventLabel $label) : self
     {
+        $this->initialized['label'] = true;
         $this->label = $label;
         return $this;
     }
@@ -358,6 +376,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setAssignee(?IssueEventAssignee $assignee) : self
     {
+        $this->initialized['assignee'] = true;
         $this->assignee = $assignee;
         return $this;
     }
@@ -379,6 +398,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setAssigner(?IssueEventAssigner $assigner) : self
     {
+        $this->initialized['assigner'] = true;
         $this->assigner = $assigner;
         return $this;
     }
@@ -400,6 +420,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setReviewRequester(?IssueEventReviewRequester $reviewRequester) : self
     {
+        $this->initialized['reviewRequester'] = true;
         $this->reviewRequester = $reviewRequester;
         return $this;
     }
@@ -421,6 +442,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setRequestedReviewer(?IssueEventRequestedReviewer $requestedReviewer) : self
     {
+        $this->initialized['requestedReviewer'] = true;
         $this->requestedReviewer = $requestedReviewer;
         return $this;
     }
@@ -442,6 +464,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setRequestedTeam(Team $requestedTeam) : self
     {
+        $this->initialized['requestedTeam'] = true;
         $this->requestedTeam = $requestedTeam;
         return $this;
     }
@@ -463,6 +486,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setDismissedReview(IssueEventDismissedReview $dismissedReview) : self
     {
+        $this->initialized['dismissedReview'] = true;
         $this->dismissedReview = $dismissedReview;
         return $this;
     }
@@ -484,6 +508,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setMilestone(IssueEventMilestone $milestone) : self
     {
+        $this->initialized['milestone'] = true;
         $this->milestone = $milestone;
         return $this;
     }
@@ -505,6 +530,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setProjectCard(IssueEventProjectCard $projectCard) : self
     {
+        $this->initialized['projectCard'] = true;
         $this->projectCard = $projectCard;
         return $this;
     }
@@ -526,6 +552,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setRename(IssueEventRename $rename) : self
     {
+        $this->initialized['rename'] = true;
         $this->rename = $rename;
         return $this;
     }
@@ -547,6 +574,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setAuthorAssociation(string $authorAssociation) : self
     {
+        $this->initialized['authorAssociation'] = true;
         $this->authorAssociation = $authorAssociation;
         return $this;
     }
@@ -568,6 +596,7 @@ class IssueEvent extends \ArrayObject
      */
     public function setLockReason(?string $lockReason) : self
     {
+        $this->initialized['lockReason'] = true;
         $this->lockReason = $lockReason;
         return $this;
     }

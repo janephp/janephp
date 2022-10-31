@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentDownloadRequestItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of the content that is going to be downloaded.
      *
      * @var string
@@ -34,6 +42,7 @@ class ContentDownloadRequestItem
      */
     public function setContentId(string $contentId) : self
     {
+        $this->initialized['contentId'] = true;
         $this->contentId = $contentId;
         return $this;
     }
@@ -55,6 +64,7 @@ class ContentDownloadRequestItem
      */
     public function setOutputFormatId(string $outputFormatId) : self
     {
+        $this->initialized['outputFormatId'] = true;
         $this->outputFormatId = $outputFormatId;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class ScimUserOperationsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class ScimUserOperationsItem extends \ArrayObject
      */
     public function setOp(string $op) : self
     {
+        $this->initialized['op'] = true;
         $this->op = $op;
         return $this;
     }
@@ -61,6 +70,7 @@ class ScimUserOperationsItem extends \ArrayObject
      */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -82,6 +92,7 @@ class ScimUserOperationsItem extends \ArrayObject
      */
     public function setValue($value) : self
     {
+        $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
     }

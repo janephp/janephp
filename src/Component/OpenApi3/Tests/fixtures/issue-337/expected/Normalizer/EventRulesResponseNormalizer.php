@@ -92,28 +92,28 @@ class EventRulesResponseNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getIsActive()) {
+        if ($object->isInitialized('isActive') && null !== $object->getIsActive()) {
             $data['isActive'] = $object->getIsActive();
         }
-        if (null !== $object->getRuleCode()) {
+        if ($object->isInitialized('ruleCode') && null !== $object->getRuleCode()) {
             $data['ruleCode'] = $object->getRuleCode();
         }
-        if (null !== $object->getRuleCountryCode()) {
+        if ($object->isInitialized('ruleCountryCode') && null !== $object->getRuleCountryCode()) {
             $data['ruleCountryCode'] = $object->getRuleCountryCode();
         }
-        if (null !== $object->getRuleType()) {
+        if ($object->isInitialized('ruleType') && null !== $object->getRuleType()) {
             $data['ruleType'] = $object->getRuleType();
         }
-        if (null !== $object->getRuleTypeName()) {
+        if ($object->isInitialized('ruleTypeName') && null !== $object->getRuleTypeName()) {
             $data['ruleTypeName'] = $object->getRuleTypeName();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getParam0()) {
+        if ($object->isInitialized('param0') && null !== $object->getParam0()) {
             $data['param0'] = $object->getParam0();
         }
-        if (null !== $object->getParam1()) {
+        if ($object->isInitialized('param1') && null !== $object->getParam1()) {
             $data['param1'] = $object->getParam1();
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace Github\Model;
 class NotificationsThreadsThreadIdSubscriptionPutBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Whether to block all notifications from a thread.
      *
      * @var bool
@@ -28,6 +36,7 @@ class NotificationsThreadsThreadIdSubscriptionPutBody extends \ArrayObject
      */
     public function setIgnored(bool $ignored) : self
     {
+        $this->initialized['ignored'] = true;
         $this->ignored = $ignored;
         return $this;
     }

@@ -78,19 +78,19 @@ class OrganizationPlanNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getSpace()) {
+        if ($object->isInitialized('space') && null !== $object->getSpace()) {
             $data['space'] = $object->getSpace();
         }
-        if (null !== $object->getPrivateRepos()) {
+        if ($object->isInitialized('privateRepos') && null !== $object->getPrivateRepos()) {
             $data['private_repos'] = $object->getPrivateRepos();
         }
-        if (null !== $object->getFilledSeats()) {
+        if ($object->isInitialized('filledSeats') && null !== $object->getFilledSeats()) {
             $data['filled_seats'] = $object->getFilledSeats();
         }
-        if (null !== $object->getSeats()) {
+        if ($object->isInitialized('seats') && null !== $object->getSeats()) {
             $data['seats'] = $object->getSeats();
         }
         foreach ($object as $key => $value) {

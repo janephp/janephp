@@ -5,6 +5,14 @@ namespace Github\Model;
 class ResponseServiceUnavailable extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class ResponseServiceUnavailable extends \ArrayObject
      */
     public function setCode(string $code) : self
     {
+        $this->initialized['code'] = true;
         $this->code = $code;
         return $this;
     }
@@ -61,6 +70,7 @@ class ResponseServiceUnavailable extends \ArrayObject
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -82,6 +92,7 @@ class ResponseServiceUnavailable extends \ArrayObject
      */
     public function setDocumentationUrl(string $documentationUrl) : self
     {
+        $this->initialized['documentationUrl'] = true;
         $this->documentationUrl = $documentationUrl;
         return $this;
     }

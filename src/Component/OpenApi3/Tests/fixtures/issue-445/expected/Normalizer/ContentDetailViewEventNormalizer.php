@@ -75,7 +75,7 @@ class ContentDetailViewEventNormalizer implements DenormalizerInterface, Normali
         $data = array();
         $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
         $data['kind'] = $object->getKind();
-        if (null !== $object->getContentIds()) {
+        if ($object->isInitialized('contentIds') && null !== $object->getContentIds()) {
             $values = array();
             foreach ($object->getContentIds() as $value) {
                 $values[] = $value;

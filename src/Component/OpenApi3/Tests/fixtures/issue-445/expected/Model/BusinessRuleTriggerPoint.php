@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessRuleTriggerPoint
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Execution scope.
      *
      * @var mixed
@@ -40,6 +48,7 @@ class BusinessRuleTriggerPoint
      */
     public function setExecutionScope($executionScope) : self
     {
+        $this->initialized['executionScope'] = true;
         $this->executionScope = $executionScope;
         return $this;
     }
@@ -61,6 +70,7 @@ class BusinessRuleTriggerPoint
      */
     public function setDocumentType($documentType) : self
     {
+        $this->initialized['documentType'] = true;
         $this->documentType = $documentType;
         return $this;
     }
@@ -82,6 +92,7 @@ class BusinessRuleTriggerPoint
      */
     public function setAction($action) : self
     {
+        $this->initialized['action'] = true;
         $this->action = $action;
         return $this;
     }

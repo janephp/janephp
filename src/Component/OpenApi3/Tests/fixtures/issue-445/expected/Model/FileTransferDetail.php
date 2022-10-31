@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class FileTransferDetail extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of file transfer.
      *
      * @var string
@@ -84,6 +92,7 @@ class FileTransferDetail extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -105,6 +114,7 @@ class FileTransferDetail extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -130,6 +140,7 @@ class FileTransferDetail extends \ArrayObject
      */
     public function setIdentifier(?string $identifier) : self
     {
+        $this->initialized['identifier'] = true;
         $this->identifier = $identifier;
         return $this;
     }
@@ -151,6 +162,7 @@ class FileTransferDetail extends \ArrayObject
      */
     public function setRequestId(string $requestId) : self
     {
+        $this->initialized['requestId'] = true;
         $this->requestId = $requestId;
         return $this;
     }
@@ -172,6 +184,7 @@ class FileTransferDetail extends \ArrayObject
      */
     public function setTransferId(string $transferId) : self
     {
+        $this->initialized['transferId'] = true;
         $this->transferId = $transferId;
         return $this;
     }
@@ -193,6 +206,7 @@ class FileTransferDetail extends \ArrayObject
      */
     public function setState($state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -214,6 +228,7 @@ class FileTransferDetail extends \ArrayObject
      */
     public function setContentId(?string $contentId) : self
     {
+        $this->initialized['contentId'] = true;
         $this->contentId = $contentId;
         return $this;
     }
@@ -235,6 +250,7 @@ class FileTransferDetail extends \ArrayObject
      */
     public function setAudit($audit) : self
     {
+        $this->initialized['audit'] = true;
         $this->audit = $audit;
         return $this;
     }
@@ -256,6 +272,7 @@ class FileTransferDetail extends \ArrayObject
      */
     public function setFileMetadata($fileMetadata) : self
     {
+        $this->initialized['fileMetadata'] = true;
         $this->fileMetadata = $fileMetadata;
         return $this;
     }
@@ -277,6 +294,7 @@ class FileTransferDetail extends \ArrayObject
      */
     public function setOutputItems(?array $outputItems) : self
     {
+        $this->initialized['outputItems'] = true;
         $this->outputItems = $outputItems;
         return $this;
     }

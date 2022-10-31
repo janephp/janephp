@@ -67,13 +67,13 @@ class BusinessRuleTracedTransformationNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
-        if (null !== $object->getInput()) {
+        if ($object->isInitialized('input') && null !== $object->getInput()) {
             $data['input'] = $object->getInput();
         }
-        if (null !== $object->getOutput()) {
+        if ($object->isInitialized('output') && null !== $object->getOutput()) {
             $data['output'] = $object->getOutput();
         }
         return $data;

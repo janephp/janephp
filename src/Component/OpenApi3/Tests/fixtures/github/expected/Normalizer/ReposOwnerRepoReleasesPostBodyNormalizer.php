@@ -83,19 +83,19 @@ class ReposOwnerRepoReleasesPostBodyNormalizer implements DenormalizerInterface,
     {
         $data = array();
         $data['tag_name'] = $object->getTagName();
-        if (null !== $object->getTargetCommitish()) {
+        if ($object->isInitialized('targetCommitish') && null !== $object->getTargetCommitish()) {
             $data['target_commitish'] = $object->getTargetCommitish();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getBody()) {
+        if ($object->isInitialized('body') && null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
-        if (null !== $object->getDraft()) {
+        if ($object->isInitialized('draft') && null !== $object->getDraft()) {
             $data['draft'] = $object->getDraft();
         }
-        if (null !== $object->getPrerelease()) {
+        if ($object->isInitialized('prerelease') && null !== $object->getPrerelease()) {
             $data['prerelease'] = $object->getPrerelease();
         }
         foreach ($object as $key => $value) {

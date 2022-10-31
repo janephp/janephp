@@ -65,16 +65,16 @@ class ServiceUpdateStatusNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getState()) {
+        if ($object->isInitialized('state') && null !== $object->getState()) {
             $data['State'] = $object->getState();
         }
-        if (null !== $object->getStartedAt()) {
+        if ($object->isInitialized('startedAt') && null !== $object->getStartedAt()) {
             $data['StartedAt'] = $object->getStartedAt();
         }
-        if (null !== $object->getCompletedAt()) {
+        if ($object->isInitialized('completedAt') && null !== $object->getCompletedAt()) {
             $data['CompletedAt'] = $object->getCompletedAt();
         }
-        if (null !== $object->getMessage()) {
+        if ($object->isInitialized('message') && null !== $object->getMessage()) {
             $data['Message'] = $object->getMessage();
         }
         if (!($context['skip_validation'] ?? false)) {

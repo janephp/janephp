@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SchemaTagboxFilterLookupNamedCacheConfiguration extends NamedCacheConfigurationBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The layer id.
      *
      * @var string|null
@@ -28,6 +36,7 @@ class SchemaTagboxFilterLookupNamedCacheConfiguration extends NamedCacheConfigur
      */
     public function setSchemaId(?string $schemaId) : self
     {
+        $this->initialized['schemaId'] = true;
         $this->schemaId = $schemaId;
         return $this;
     }

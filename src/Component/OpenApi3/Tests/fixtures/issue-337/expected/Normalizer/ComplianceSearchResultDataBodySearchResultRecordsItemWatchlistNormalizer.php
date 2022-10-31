@@ -66,14 +66,14 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistNormalizer i
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMatches()) {
+        if ($object->isInitialized('matches') && null !== $object->getMatches()) {
             $values = array();
             foreach ($object->getMatches() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['matches'] = $values;
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
         foreach ($object as $key => $value_1) {

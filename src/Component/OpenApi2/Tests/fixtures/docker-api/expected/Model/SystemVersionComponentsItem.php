@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class SystemVersionComponentsItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Name of the component
      *
      * @var string
@@ -46,6 +54,7 @@ class SystemVersionComponentsItem
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -67,6 +76,7 @@ class SystemVersionComponentsItem
      */
     public function setVersion(string $version) : self
     {
+        $this->initialized['version'] = true;
         $this->version = $version;
         return $this;
     }
@@ -100,6 +110,7 @@ class SystemVersionComponentsItem
     */
     public function setDetails($details) : self
     {
+        $this->initialized['details'] = true;
         $this->details = $details;
         return $this;
     }

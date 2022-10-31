@@ -84,7 +84,7 @@ class LiveStreamSearchResultNormalizer implements DenormalizerInterface, Normali
         }
         $data['results'] = $values;
         $data['elapsedMilliseconds'] = $object->getElapsedMilliseconds();
-        if (null !== $object->getPageToken()) {
+        if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
             $data['pageToken'] = $object->getPageToken();
         }
         foreach ($object as $key => $value_1) {

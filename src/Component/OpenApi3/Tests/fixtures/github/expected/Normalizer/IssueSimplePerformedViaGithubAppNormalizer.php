@@ -137,7 +137,7 @@ class IssueSimplePerformedViaGithubAppNormalizer implements DenormalizerInterfac
     {
         $data = array();
         $data['id'] = $object->getId();
-        if (null !== $object->getSlug()) {
+        if ($object->isInitialized('slug') && null !== $object->getSlug()) {
             $data['slug'] = $object->getSlug();
         }
         $data['node_id'] = $object->getNodeId();
@@ -154,19 +154,19 @@ class IssueSimplePerformedViaGithubAppNormalizer implements DenormalizerInterfac
             $values[] = $value;
         }
         $data['events'] = $values;
-        if (null !== $object->getInstallationsCount()) {
+        if ($object->isInitialized('installationsCount') && null !== $object->getInstallationsCount()) {
             $data['installations_count'] = $object->getInstallationsCount();
         }
-        if (null !== $object->getClientId()) {
+        if ($object->isInitialized('clientId') && null !== $object->getClientId()) {
             $data['client_id'] = $object->getClientId();
         }
-        if (null !== $object->getClientSecret()) {
+        if ($object->isInitialized('clientSecret') && null !== $object->getClientSecret()) {
             $data['client_secret'] = $object->getClientSecret();
         }
-        if (null !== $object->getWebhookSecret()) {
+        if ($object->isInitialized('webhookSecret') && null !== $object->getWebhookSecret()) {
             $data['webhook_secret'] = $object->getWebhookSecret();
         }
-        if (null !== $object->getPem()) {
+        if ($object->isInitialized('pem') && null !== $object->getPem()) {
             $data['pem'] = $object->getPem();
         }
         foreach ($object as $key => $value_1) {

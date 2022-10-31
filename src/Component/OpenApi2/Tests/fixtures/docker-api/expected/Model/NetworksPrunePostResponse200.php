@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class NetworksPrunePostResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Networks that were deleted
      *
      * @var string[]
@@ -28,6 +36,7 @@ class NetworksPrunePostResponse200
      */
     public function setNetworksDeleted(array $networksDeleted) : self
     {
+        $this->initialized['networksDeleted'] = true;
         $this->networksDeleted = $networksDeleted;
         return $this;
     }

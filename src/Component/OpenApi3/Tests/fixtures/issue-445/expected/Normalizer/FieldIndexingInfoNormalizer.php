@@ -78,7 +78,7 @@ class FieldIndexingInfoNormalizer implements DenormalizerInterface, NormalizerIn
         $data['simpleSearch'] = $object->getSimpleSearch();
         $data['sortable'] = $object->getSortable();
         $data['boost'] = $object->getBoost();
-        if (null !== $object->getRelatedSchemaIndexing()) {
+        if ($object->isInitialized('relatedSchemaIndexing') && null !== $object->getRelatedSchemaIndexing()) {
             $data['relatedSchemaIndexing'] = $object->getRelatedSchemaIndexing();
         }
         return $data;

@@ -72,23 +72,23 @@ class HealthConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTest()) {
+        if ($object->isInitialized('test') && null !== $object->getTest()) {
             $values = array();
             foreach ($object->getTest() as $value) {
                 $values[] = $value;
             }
             $data['Test'] = $values;
         }
-        if (null !== $object->getInterval()) {
+        if ($object->isInitialized('interval') && null !== $object->getInterval()) {
             $data['Interval'] = $object->getInterval();
         }
-        if (null !== $object->getTimeout()) {
+        if ($object->isInitialized('timeout') && null !== $object->getTimeout()) {
             $data['Timeout'] = $object->getTimeout();
         }
-        if (null !== $object->getRetries()) {
+        if ($object->isInitialized('retries') && null !== $object->getRetries()) {
             $data['Retries'] = $object->getRetries();
         }
-        if (null !== $object->getStartPeriod()) {
+        if ($object->isInitialized('startPeriod') && null !== $object->getStartPeriod()) {
             $data['StartPeriod'] = $object->getStartPeriod();
         }
         if (!($context['skip_validation'] ?? false)) {

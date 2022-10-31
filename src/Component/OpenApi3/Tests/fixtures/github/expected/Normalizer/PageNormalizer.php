@@ -92,10 +92,10 @@ class PageNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $data['status'] = $object->getStatus();
         $data['cname'] = $object->getCname();
         $data['custom_404'] = $object->getCustom404();
-        if (null !== $object->getHtmlUrl()) {
+        if ($object->isInitialized('htmlUrl') && null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
-        if (null !== $object->getSource()) {
+        if ($object->isInitialized('source') && null !== $object->getSource()) {
             $data['source'] = $this->normalizer->normalize($object->getSource(), 'json', $context);
         }
         foreach ($object as $key => $value) {

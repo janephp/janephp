@@ -65,16 +65,16 @@ class TaskSpecRestartPolicyNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCondition()) {
+        if ($object->isInitialized('condition') && null !== $object->getCondition()) {
             $data['Condition'] = $object->getCondition();
         }
-        if (null !== $object->getDelay()) {
+        if ($object->isInitialized('delay') && null !== $object->getDelay()) {
             $data['Delay'] = $object->getDelay();
         }
-        if (null !== $object->getMaxAttempts()) {
+        if ($object->isInitialized('maxAttempts') && null !== $object->getMaxAttempts()) {
             $data['MaxAttempts'] = $object->getMaxAttempts();
         }
-        if (null !== $object->getWindow()) {
+        if ($object->isInitialized('window') && null !== $object->getWindow()) {
             $data['Window'] = $object->getWindow();
         }
         if (!($context['skip_validation'] ?? false)) {

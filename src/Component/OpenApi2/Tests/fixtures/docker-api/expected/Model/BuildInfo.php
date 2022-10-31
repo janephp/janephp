@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class BuildInfo
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -70,6 +78,7 @@ class BuildInfo
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -91,6 +100,7 @@ class BuildInfo
      */
     public function setStream(string $stream) : self
     {
+        $this->initialized['stream'] = true;
         $this->stream = $stream;
         return $this;
     }
@@ -112,6 +122,7 @@ class BuildInfo
      */
     public function setError(string $error) : self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
         return $this;
     }
@@ -133,6 +144,7 @@ class BuildInfo
      */
     public function setErrorDetail(ErrorDetail $errorDetail) : self
     {
+        $this->initialized['errorDetail'] = true;
         $this->errorDetail = $errorDetail;
         return $this;
     }
@@ -154,6 +166,7 @@ class BuildInfo
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -175,6 +188,7 @@ class BuildInfo
      */
     public function setProgress(string $progress) : self
     {
+        $this->initialized['progress'] = true;
         $this->progress = $progress;
         return $this;
     }
@@ -196,6 +210,7 @@ class BuildInfo
      */
     public function setProgressDetail(ProgressDetail $progressDetail) : self
     {
+        $this->initialized['progressDetail'] = true;
         $this->progressDetail = $progressDetail;
         return $this;
     }
@@ -217,6 +232,7 @@ class BuildInfo
      */
     public function setAux(ImageID $aux) : self
     {
+        $this->initialized['aux'] = true;
         $this->aux = $aux;
         return $this;
     }

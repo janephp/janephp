@@ -86,19 +86,19 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getContingentLiabilities()) {
+        if ($object->isInitialized('contingentLiabilities') && null !== $object->getContingentLiabilities()) {
             $data['contingentLiabilities'] = $object->getContingentLiabilities();
         }
-        if (null !== $object->getBankOverdraftAndLTL()) {
+        if ($object->isInitialized('bankOverdraftAndLTL') && null !== $object->getBankOverdraftAndLTL()) {
             $data['bankOverdraftAndLTL'] = $object->getBankOverdraftAndLTL();
         }
-        if (null !== $object->getWorkingCapital()) {
+        if ($object->isInitialized('workingCapital') && null !== $object->getWorkingCapital()) {
             $data['workingCapital'] = $object->getWorkingCapital();
         }
-        if (null !== $object->getCapitalEmployed()) {
+        if ($object->isInitialized('capitalEmployed') && null !== $object->getCapitalEmployed()) {
             $data['capitalEmployed'] = $object->getCapitalEmployed();
         }
-        if (null !== $object->getNetWorth()) {
+        if ($object->isInitialized('netWorth') && null !== $object->getNetWorth()) {
             $data['netWorth'] = $object->getNetWorth();
         }
         foreach ($object as $key => $value) {

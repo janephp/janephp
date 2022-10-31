@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class Error
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * An application-specific error code, expressed as a string value.
      *
      * @var string
@@ -34,6 +42,7 @@ class Error
      */
     public function setCode(string $code) : self
     {
+        $this->initialized['code'] = true;
         $this->code = $code;
         return $this;
     }
@@ -55,6 +64,7 @@ class Error
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }

@@ -65,10 +65,10 @@ class PermissionSetUserPermissionRightsNormalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPermissionSetId()) {
+        if ($object->isInitialized('permissionSetId') && null !== $object->getPermissionSetId()) {
             $data['permissionSetId'] = $object->getPermissionSetId();
         }
-        if (null !== $object->getPermissionSetRights()) {
+        if ($object->isInitialized('permissionSetRights') && null !== $object->getPermissionSetRights()) {
             $values = array();
             foreach ($object->getPermissionSetRights() as $value) {
                 $values[] = $value;

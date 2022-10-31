@@ -70,13 +70,13 @@ class RepositoryTemplateRepositoryPermissionsNormalizer implements DenormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAdmin()) {
+        if ($object->isInitialized('admin') && null !== $object->getAdmin()) {
             $data['admin'] = $object->getAdmin();
         }
-        if (null !== $object->getPush()) {
+        if ($object->isInitialized('push') && null !== $object->getPush()) {
             $data['push'] = $object->getPush();
         }
-        if (null !== $object->getPull()) {
+        if ($object->isInitialized('pull') && null !== $object->getPull()) {
             $data['pull'] = $object->getPull();
         }
         foreach ($object as $key => $value) {

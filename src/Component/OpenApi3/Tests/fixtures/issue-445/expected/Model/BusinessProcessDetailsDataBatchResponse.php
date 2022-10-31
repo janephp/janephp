@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessProcessDetailsDataBatchResponse extends BusinessProcessDetailsDataBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The DocType on which the operation was performed.
      *
      * @var string
@@ -34,6 +42,7 @@ class BusinessProcessDetailsDataBatchResponse extends BusinessProcessDetailsData
      */
     public function setDocType(string $docType) : self
     {
+        $this->initialized['docType'] = true;
         $this->docType = $docType;
         return $this;
     }
@@ -55,6 +64,7 @@ class BusinessProcessDetailsDataBatchResponse extends BusinessProcessDetailsData
      */
     public function setResponse($response) : self
     {
+        $this->initialized['response'] = true;
         $this->response = $response;
         return $this;
     }

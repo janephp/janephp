@@ -62,7 +62,7 @@ class GbCompanyReportExampleResponseReportGroupStructureNormalizer implements De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSubsidiaryCompanies()) {
+        if ($object->isInitialized('subsidiaryCompanies') && null !== $object->getSubsidiaryCompanies()) {
             $values = array();
             foreach ($object->getSubsidiaryCompanies() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SearchFieldCount
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The number of fields created in the search index to store filter information for a schema.
      *
      * @var int
@@ -40,6 +48,7 @@ class SearchFieldCount
      */
     public function setIndexedField(int $indexedField) : self
     {
+        $this->initialized['indexedField'] = true;
         $this->indexedField = $indexedField;
         return $this;
     }
@@ -61,6 +70,7 @@ class SearchFieldCount
      */
     public function setSimpleSearchField(int $simpleSearchField) : self
     {
+        $this->initialized['simpleSearchField'] = true;
         $this->simpleSearchField = $simpleSearchField;
         return $this;
     }
@@ -82,6 +92,7 @@ class SearchFieldCount
      */
     public function setSortableField(int $sortableField) : self
     {
+        $this->initialized['sortableField'] = true;
         $this->sortableField = $sortableField;
         return $this;
     }

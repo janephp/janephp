@@ -59,10 +59,10 @@ class MountTmpfsOptionsNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSizeBytes()) {
+        if ($object->isInitialized('sizeBytes') && null !== $object->getSizeBytes()) {
             $data['SizeBytes'] = $object->getSizeBytes();
         }
-        if (null !== $object->getMode()) {
+        if ($object->isInitialized('mode') && null !== $object->getMode()) {
             $data['Mode'] = $object->getMode();
         }
         if (!($context['skip_validation'] ?? false)) {

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class MetadataReference
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Target ID of reference.
      *
      * @var string
@@ -49,6 +57,7 @@ class MetadataReference
      */
     public function setTargetMetadataItemId(string $targetMetadataItemId) : self
     {
+        $this->initialized['targetMetadataItemId'] = true;
         $this->targetMetadataItemId = $targetMetadataItemId;
         return $this;
     }
@@ -76,6 +85,7 @@ class MetadataReference
     */
     public function setIsRestricted(bool $isRestricted) : self
     {
+        $this->initialized['isRestricted'] = true;
         $this->isRestricted = $isRestricted;
         return $this;
     }
@@ -97,6 +107,7 @@ class MetadataReference
      */
     public function setSourceMetadataItemId(?string $sourceMetadataItemId) : self
     {
+        $this->initialized['sourceMetadataItemId'] = true;
         $this->sourceMetadataItemId = $sourceMetadataItemId;
         return $this;
     }
@@ -118,6 +129,7 @@ class MetadataReference
      */
     public function setSourceDocType(?string $sourceDocType) : self
     {
+        $this->initialized['sourceDocType'] = true;
         $this->sourceDocType = $sourceDocType;
         return $this;
     }

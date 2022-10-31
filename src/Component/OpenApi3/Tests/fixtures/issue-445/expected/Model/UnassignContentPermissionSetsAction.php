@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UnassignContentPermissionSetsAction extends BusinessRuleAction
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * IDs of the permission sets to unassign.
      *
      * @var mixed|null
@@ -28,6 +36,7 @@ class UnassignContentPermissionSetsAction extends BusinessRuleAction
      */
     public function setPermissionSetIds($permissionSetIds) : self
     {
+        $this->initialized['permissionSetIds'] = true;
         $this->permissionSetIds = $permissionSetIds;
         return $this;
     }

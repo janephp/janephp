@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyCompaniesItem[]
@@ -28,6 +36,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody extends \ArrayObjec
      */
     public function setCompanies(array $companies) : self
     {
+        $this->initialized['companies'] = true;
         $this->companies = $companies;
         return $this;
     }

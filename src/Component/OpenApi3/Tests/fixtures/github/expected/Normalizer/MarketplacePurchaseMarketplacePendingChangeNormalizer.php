@@ -81,19 +81,19 @@ class MarketplacePurchaseMarketplacePendingChangeNormalizer implements Denormali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getIsInstalled()) {
+        if ($object->isInitialized('isInstalled') && null !== $object->getIsInstalled()) {
             $data['is_installed'] = $object->getIsInstalled();
         }
-        if (null !== $object->getEffectiveDate()) {
+        if ($object->isInitialized('effectiveDate') && null !== $object->getEffectiveDate()) {
             $data['effective_date'] = $object->getEffectiveDate();
         }
-        if (null !== $object->getUnitCount()) {
+        if ($object->isInitialized('unitCount') && null !== $object->getUnitCount()) {
             $data['unit_count'] = $object->getUnitCount();
         }
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getPlan()) {
+        if ($object->isInitialized('plan') && null !== $object->getPlan()) {
             $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
         }
         foreach ($object as $key => $value) {

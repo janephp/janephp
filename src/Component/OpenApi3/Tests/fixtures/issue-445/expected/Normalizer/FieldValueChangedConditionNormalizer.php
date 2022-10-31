@@ -79,14 +79,14 @@ class FieldValueChangedConditionNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getFieldPath()) {
+        if ($object->isInitialized('fieldPath') && null !== $object->getFieldPath()) {
             $data['fieldPath'] = $object->getFieldPath();
         }
-        if (null !== $object->getExpectedValue()) {
+        if ($object->isInitialized('expectedValue') && null !== $object->getExpectedValue()) {
             $data['expectedValue'] = $object->getExpectedValue();
         }
         foreach ($object as $key => $value) {

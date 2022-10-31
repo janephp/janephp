@@ -5,6 +5,14 @@ namespace Github\Model;
 class MarketplacePurchaseMarketplacePendingChange extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -52,6 +60,7 @@ class MarketplacePurchaseMarketplacePendingChange extends \ArrayObject
      */
     public function setIsInstalled(bool $isInstalled) : self
     {
+        $this->initialized['isInstalled'] = true;
         $this->isInstalled = $isInstalled;
         return $this;
     }
@@ -73,6 +82,7 @@ class MarketplacePurchaseMarketplacePendingChange extends \ArrayObject
      */
     public function setEffectiveDate(string $effectiveDate) : self
     {
+        $this->initialized['effectiveDate'] = true;
         $this->effectiveDate = $effectiveDate;
         return $this;
     }
@@ -94,6 +104,7 @@ class MarketplacePurchaseMarketplacePendingChange extends \ArrayObject
      */
     public function setUnitCount(?int $unitCount) : self
     {
+        $this->initialized['unitCount'] = true;
         $this->unitCount = $unitCount;
         return $this;
     }
@@ -115,6 +126,7 @@ class MarketplacePurchaseMarketplacePendingChange extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -136,6 +148,7 @@ class MarketplacePurchaseMarketplacePendingChange extends \ArrayObject
      */
     public function setPlan(MarketplaceListingPlan $plan) : self
     {
+        $this->initialized['plan'] = true;
         $this->plan = $plan;
         return $this;
     }

@@ -70,13 +70,13 @@ class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyNormalizer implements Denormal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getLabel()) {
+        if ($object->isInitialized('label') && null !== $object->getLabel()) {
             $data['label'] = $object->getLabel();
         }
-        if (null !== $object->getState()) {
+        if ($object->isInitialized('state') && null !== $object->getState()) {
             $data['state'] = $object->getState();
         }
         foreach ($object as $key => $value) {

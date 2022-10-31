@@ -78,22 +78,22 @@ class ReviewsGetLdjsonResponse200HydraViewNormalizer implements DenormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['@id'] = $object->getId();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['@type'] = $object->getType();
         }
-        if (null !== $object->getHydraFirst()) {
+        if ($object->isInitialized('hydraFirst') && null !== $object->getHydraFirst()) {
             $data['hydra:first'] = $object->getHydraFirst();
         }
-        if (null !== $object->getHydraLast()) {
+        if ($object->isInitialized('hydraLast') && null !== $object->getHydraLast()) {
             $data['hydra:last'] = $object->getHydraLast();
         }
-        if (null !== $object->getHydraPrevious()) {
+        if ($object->isInitialized('hydraPrevious') && null !== $object->getHydraPrevious()) {
             $data['hydra:previous'] = $object->getHydraPrevious();
         }
-        if (null !== $object->getHydraNext()) {
+        if ($object->isInitialized('hydraNext') && null !== $object->getHydraNext()) {
             $data['hydra:next'] = $object->getHydraNext();
         }
         foreach ($object as $key => $value) {

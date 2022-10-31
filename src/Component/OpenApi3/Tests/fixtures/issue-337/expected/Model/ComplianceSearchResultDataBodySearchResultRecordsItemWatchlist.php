@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlist extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem[]
@@ -34,6 +42,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlist extends \Ar
      */
     public function setMatches(array $matches) : self
     {
+        $this->initialized['matches'] = true;
         $this->matches = $matches;
         return $this;
     }
@@ -55,6 +64,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlist extends \Ar
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }

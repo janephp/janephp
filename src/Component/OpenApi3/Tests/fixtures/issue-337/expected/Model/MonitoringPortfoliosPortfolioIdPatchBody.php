@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class MonitoringPortfoliosPortfolioIdPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class MonitoringPortfoliosPortfolioIdPatchBody extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -67,6 +76,7 @@ class MonitoringPortfoliosPortfolioIdPatchBody extends \ArrayObject
      */
     public function setEmails(array $emails) : self
     {
+        $this->initialized['emails'] = true;
         $this->emails = $emails;
         return $this;
     }
@@ -88,6 +98,7 @@ class MonitoringPortfoliosPortfolioIdPatchBody extends \ArrayObject
      */
     public function setEmailLanguage(string $emailLanguage) : self
     {
+        $this->initialized['emailLanguage'] = true;
         $this->emailLanguage = $emailLanguage;
         return $this;
     }
@@ -109,6 +120,7 @@ class MonitoringPortfoliosPortfolioIdPatchBody extends \ArrayObject
      */
     public function setEmailSubject(string $emailSubject) : self
     {
+        $this->initialized['emailSubject'] = true;
         $this->emailSubject = $emailSubject;
         return $this;
     }

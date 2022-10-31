@@ -70,7 +70,7 @@ class InvalidRequestProblemErrorsItemNormalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getParameters()) {
+        if ($object->isInitialized('parameters') && null !== $object->getParameters()) {
             $values = array();
             foreach ($object->getParameters() as $key => $value) {
                 $values_1 = array();
@@ -81,7 +81,7 @@ class InvalidRequestProblemErrorsItemNormalizer implements DenormalizerInterface
             }
             $data['parameters'] = $values;
         }
-        if (null !== $object->getMessage()) {
+        if ($object->isInitialized('message') && null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
         foreach ($object as $key_1 => $value_2) {

@@ -76,11 +76,11 @@ class ProjectionTransformationNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getTransformations()) {
+        if ($object->isInitialized('transformations') && null !== $object->getTransformations()) {
             $values = array();
             foreach ($object->getTransformations() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

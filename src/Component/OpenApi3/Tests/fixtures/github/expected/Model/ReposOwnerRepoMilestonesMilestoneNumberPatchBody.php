@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoMilestonesMilestoneNumberPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The title of the milestone.
      *
      * @var string
@@ -46,6 +54,7 @@ class ReposOwnerRepoMilestonesMilestoneNumberPatchBody extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -67,6 +76,7 @@ class ReposOwnerRepoMilestonesMilestoneNumberPatchBody extends \ArrayObject
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -88,6 +98,7 @@ class ReposOwnerRepoMilestonesMilestoneNumberPatchBody extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -109,6 +120,7 @@ class ReposOwnerRepoMilestonesMilestoneNumberPatchBody extends \ArrayObject
      */
     public function setDueOn(string $dueOn) : self
     {
+        $this->initialized['dueOn'] = true;
         $this->dueOn = $dueOn;
         return $this;
     }

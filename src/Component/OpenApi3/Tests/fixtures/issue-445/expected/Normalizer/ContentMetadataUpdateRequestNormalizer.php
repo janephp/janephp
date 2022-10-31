@@ -88,21 +88,21 @@ class ContentMetadataUpdateRequestNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLayerSchemaIds()) {
+        if ($object->isInitialized('layerSchemaIds') && null !== $object->getLayerSchemaIds()) {
             $values = array();
             foreach ($object->getLayerSchemaIds() as $value) {
                 $values[] = $value;
             }
             $data['layerSchemaIds'] = $values;
         }
-        if (null !== $object->getContent()) {
+        if ($object->isInitialized('content') && null !== $object->getContent()) {
             $values_1 = array();
             foreach ($object->getContent() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $data['content'] = $values_1;
         }
-        if (null !== $object->getMetadata()) {
+        if ($object->isInitialized('metadata') && null !== $object->getMetadata()) {
             $values_2 = array();
             foreach ($object->getMetadata() as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;

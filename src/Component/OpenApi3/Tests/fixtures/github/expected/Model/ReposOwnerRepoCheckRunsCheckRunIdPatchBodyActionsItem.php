@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The text to be displayed on a button in the web UI. The maximum size is 20 characters.
      *
      * @var string
@@ -40,6 +48,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItem extends \ArrayObject
      */
     public function setLabel(string $label) : self
     {
+        $this->initialized['label'] = true;
         $this->label = $label;
         return $this;
     }
@@ -61,6 +70,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItem extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -82,6 +92,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItem extends \ArrayObject
      */
     public function setIdentifier(string $identifier) : self
     {
+        $this->initialized['identifier'] = true;
         $this->identifier = $identifier;
         return $this;
     }

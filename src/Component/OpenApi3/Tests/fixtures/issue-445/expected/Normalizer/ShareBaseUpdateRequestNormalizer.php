@@ -100,10 +100,10 @@ class ShareBaseUpdateRequestNormalizer implements DenormalizerInterface, Normali
             return $this->normalizer->normalize($object, $format, $context);
         }
         $data['name'] = $object->getName();
-        if (null !== $object->getExpirationDate()) {
+        if ($object->isInitialized('expirationDate') && null !== $object->getExpirationDate()) {
             $data['expirationDate'] = $object->getExpirationDate()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
         $values = array();
@@ -111,7 +111,7 @@ class ShareBaseUpdateRequestNormalizer implements DenormalizerInterface, Normali
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['contents'] = $values;
-        if (null !== $object->getLayerSchemaIds()) {
+        if ($object->isInitialized('layerSchemaIds') && null !== $object->getLayerSchemaIds()) {
             $values_1 = array();
             foreach ($object->getLayerSchemaIds() as $value_1) {
                 $values_1[] = $value_1;

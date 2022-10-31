@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class TaskSpecContainerSpec
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The image name to use for the container
      *
      * @var string
@@ -218,6 +226,7 @@ class TaskSpecContainerSpec
      */
     public function setImage(string $image) : self
     {
+        $this->initialized['image'] = true;
         $this->image = $image;
         return $this;
     }
@@ -239,6 +248,7 @@ class TaskSpecContainerSpec
      */
     public function setLabels(iterable $labels) : self
     {
+        $this->initialized['labels'] = true;
         $this->labels = $labels;
         return $this;
     }
@@ -260,6 +270,7 @@ class TaskSpecContainerSpec
      */
     public function setCommand(array $command) : self
     {
+        $this->initialized['command'] = true;
         $this->command = $command;
         return $this;
     }
@@ -281,6 +292,7 @@ class TaskSpecContainerSpec
      */
     public function setArgs(array $args) : self
     {
+        $this->initialized['args'] = true;
         $this->args = $args;
         return $this;
     }
@@ -306,6 +318,7 @@ class TaskSpecContainerSpec
     */
     public function setHostname(string $hostname) : self
     {
+        $this->initialized['hostname'] = true;
         $this->hostname = $hostname;
         return $this;
     }
@@ -327,6 +340,7 @@ class TaskSpecContainerSpec
      */
     public function setEnv(array $env) : self
     {
+        $this->initialized['env'] = true;
         $this->env = $env;
         return $this;
     }
@@ -348,6 +362,7 @@ class TaskSpecContainerSpec
      */
     public function setDir(string $dir) : self
     {
+        $this->initialized['dir'] = true;
         $this->dir = $dir;
         return $this;
     }
@@ -369,6 +384,7 @@ class TaskSpecContainerSpec
      */
     public function setUser(string $user) : self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
     }
@@ -390,6 +406,7 @@ class TaskSpecContainerSpec
      */
     public function setGroups(array $groups) : self
     {
+        $this->initialized['groups'] = true;
         $this->groups = $groups;
         return $this;
     }
@@ -411,6 +428,7 @@ class TaskSpecContainerSpec
      */
     public function setPrivileges(TaskSpecContainerSpecPrivileges $privileges) : self
     {
+        $this->initialized['privileges'] = true;
         $this->privileges = $privileges;
         return $this;
     }
@@ -432,6 +450,7 @@ class TaskSpecContainerSpec
      */
     public function setTTY(bool $tTY) : self
     {
+        $this->initialized['tTY'] = true;
         $this->tTY = $tTY;
         return $this;
     }
@@ -453,6 +472,7 @@ class TaskSpecContainerSpec
      */
     public function setOpenStdin(bool $openStdin) : self
     {
+        $this->initialized['openStdin'] = true;
         $this->openStdin = $openStdin;
         return $this;
     }
@@ -474,6 +494,7 @@ class TaskSpecContainerSpec
      */
     public function setReadOnly(bool $readOnly) : self
     {
+        $this->initialized['readOnly'] = true;
         $this->readOnly = $readOnly;
         return $this;
     }
@@ -499,6 +520,7 @@ class TaskSpecContainerSpec
     */
     public function setMounts(array $mounts) : self
     {
+        $this->initialized['mounts'] = true;
         $this->mounts = $mounts;
         return $this;
     }
@@ -520,6 +542,7 @@ class TaskSpecContainerSpec
      */
     public function setStopSignal(string $stopSignal) : self
     {
+        $this->initialized['stopSignal'] = true;
         $this->stopSignal = $stopSignal;
         return $this;
     }
@@ -545,6 +568,7 @@ class TaskSpecContainerSpec
     */
     public function setStopGracePeriod(int $stopGracePeriod) : self
     {
+        $this->initialized['stopGracePeriod'] = true;
         $this->stopGracePeriod = $stopGracePeriod;
         return $this;
     }
@@ -566,6 +590,7 @@ class TaskSpecContainerSpec
      */
     public function setHealthCheck(HealthConfig $healthCheck) : self
     {
+        $this->initialized['healthCheck'] = true;
         $this->healthCheck = $healthCheck;
         return $this;
     }
@@ -599,6 +624,7 @@ class TaskSpecContainerSpec
     */
     public function setHosts(array $hosts) : self
     {
+        $this->initialized['hosts'] = true;
         $this->hosts = $hosts;
         return $this;
     }
@@ -624,6 +650,7 @@ class TaskSpecContainerSpec
     */
     public function setDNSConfig(TaskSpecContainerSpecDNSConfig $dNSConfig) : self
     {
+        $this->initialized['dNSConfig'] = true;
         $this->dNSConfig = $dNSConfig;
         return $this;
     }
@@ -649,6 +676,7 @@ class TaskSpecContainerSpec
     */
     public function setSecrets(array $secrets) : self
     {
+        $this->initialized['secrets'] = true;
         $this->secrets = $secrets;
         return $this;
     }
@@ -674,6 +702,7 @@ class TaskSpecContainerSpec
     */
     public function setConfigs(array $configs) : self
     {
+        $this->initialized['configs'] = true;
         $this->configs = $configs;
         return $this;
     }
@@ -699,6 +728,7 @@ class TaskSpecContainerSpec
     */
     public function setIsolation(string $isolation) : self
     {
+        $this->initialized['isolation'] = true;
         $this->isolation = $isolation;
         return $this;
     }
@@ -726,6 +756,7 @@ class TaskSpecContainerSpec
     */
     public function setInit(?bool $init) : self
     {
+        $this->initialized['init'] = true;
         $this->init = $init;
         return $this;
     }
@@ -761,6 +792,7 @@ class TaskSpecContainerSpec
     */
     public function setSysctls(iterable $sysctls) : self
     {
+        $this->initialized['sysctls'] = true;
         $this->sysctls = $sysctls;
         return $this;
     }
@@ -786,6 +818,7 @@ class TaskSpecContainerSpec
     */
     public function setCapabilityAdd(array $capabilityAdd) : self
     {
+        $this->initialized['capabilityAdd'] = true;
         $this->capabilityAdd = $capabilityAdd;
         return $this;
     }
@@ -811,6 +844,7 @@ class TaskSpecContainerSpec
     */
     public function setCapabilityDrop(array $capabilityDrop) : self
     {
+        $this->initialized['capabilityDrop'] = true;
         $this->capabilityDrop = $capabilityDrop;
         return $this;
     }
@@ -832,6 +866,7 @@ class TaskSpecContainerSpec
      */
     public function setUlimits(array $ulimits) : self
     {
+        $this->initialized['ulimits'] = true;
         $this->ulimits = $ulimits;
         return $this;
     }

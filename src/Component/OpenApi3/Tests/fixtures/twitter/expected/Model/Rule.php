@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class Rule extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The filterlang value of the rule.
      *
      * @var string
@@ -40,6 +48,7 @@ class Rule extends \ArrayObject
      */
     public function setValue(string $value) : self
     {
+        $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
     }
@@ -61,6 +70,7 @@ class Rule extends \ArrayObject
      */
     public function setTag(string $tag) : self
     {
+        $this->initialized['tag'] = true;
         $this->tag = $tag;
         return $this;
     }
@@ -82,6 +92,7 @@ class Rule extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }

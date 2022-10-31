@@ -52,7 +52,7 @@ class IdNormalizer implements DenormalizerInterface, NormalizerInterface, Denorm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUuid()) {
+        if ($object->isInitialized('uuid') && null !== $object->getUuid()) {
             $data['uuid'] = $object->getUuid();
         }
         return $data;

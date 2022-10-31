@@ -58,7 +58,7 @@ class InvalidTokenErrorNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getError()) {
+        if ($object->isInitialized('error') && null !== $object->getError()) {
             $data['error'] = $object->getError();
         }
         foreach ($object as $key => $value) {

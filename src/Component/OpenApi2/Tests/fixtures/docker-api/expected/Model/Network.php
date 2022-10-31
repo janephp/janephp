@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class Network
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -100,6 +108,7 @@ class Network
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -121,6 +130,7 @@ class Network
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -142,6 +152,7 @@ class Network
      */
     public function setCreated(string $created) : self
     {
+        $this->initialized['created'] = true;
         $this->created = $created;
         return $this;
     }
@@ -163,6 +174,7 @@ class Network
      */
     public function setScope(string $scope) : self
     {
+        $this->initialized['scope'] = true;
         $this->scope = $scope;
         return $this;
     }
@@ -184,6 +196,7 @@ class Network
      */
     public function setDriver(string $driver) : self
     {
+        $this->initialized['driver'] = true;
         $this->driver = $driver;
         return $this;
     }
@@ -205,6 +218,7 @@ class Network
      */
     public function setEnableIPv6(bool $enableIPv6) : self
     {
+        $this->initialized['enableIPv6'] = true;
         $this->enableIPv6 = $enableIPv6;
         return $this;
     }
@@ -226,6 +240,7 @@ class Network
      */
     public function setIPAM(IPAM $iPAM) : self
     {
+        $this->initialized['iPAM'] = true;
         $this->iPAM = $iPAM;
         return $this;
     }
@@ -247,6 +262,7 @@ class Network
      */
     public function setInternal(bool $internal) : self
     {
+        $this->initialized['internal'] = true;
         $this->internal = $internal;
         return $this;
     }
@@ -268,6 +284,7 @@ class Network
      */
     public function setAttachable(bool $attachable) : self
     {
+        $this->initialized['attachable'] = true;
         $this->attachable = $attachable;
         return $this;
     }
@@ -289,6 +306,7 @@ class Network
      */
     public function setIngress(bool $ingress) : self
     {
+        $this->initialized['ingress'] = true;
         $this->ingress = $ingress;
         return $this;
     }
@@ -310,6 +328,7 @@ class Network
      */
     public function setContainers(iterable $containers) : self
     {
+        $this->initialized['containers'] = true;
         $this->containers = $containers;
         return $this;
     }
@@ -331,6 +350,7 @@ class Network
      */
     public function setOptions(iterable $options) : self
     {
+        $this->initialized['options'] = true;
         $this->options = $options;
         return $this;
     }
@@ -352,6 +372,7 @@ class Network
      */
     public function setLabels(iterable $labels) : self
     {
+        $this->initialized['labels'] = true;
         $this->labels = $labels;
         return $this;
     }

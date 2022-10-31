@@ -103,7 +103,7 @@ class ApplicationGrantNormalizer implements DenormalizerInterface, NormalizerInt
             $values[] = $value;
         }
         $data['scopes'] = $values;
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         }
         foreach ($object as $key => $value_1) {

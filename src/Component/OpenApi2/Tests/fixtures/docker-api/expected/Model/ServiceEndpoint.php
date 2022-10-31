@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ServiceEndpoint
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Properties that can be configured to access and load balance a service.
      *
      * @var EndpointSpec
@@ -40,6 +48,7 @@ class ServiceEndpoint
      */
     public function setSpec(EndpointSpec $spec) : self
     {
+        $this->initialized['spec'] = true;
         $this->spec = $spec;
         return $this;
     }
@@ -61,6 +70,7 @@ class ServiceEndpoint
      */
     public function setPorts(array $ports) : self
     {
+        $this->initialized['ports'] = true;
         $this->ports = $ports;
         return $this;
     }
@@ -82,6 +92,7 @@ class ServiceEndpoint
      */
     public function setVirtualIPs(array $virtualIPs) : self
     {
+        $this->initialized['virtualIPs'] = true;
         $this->virtualIPs = $virtualIPs;
         return $this;
     }

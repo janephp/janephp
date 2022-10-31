@@ -101,22 +101,22 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getTriggerPoint()) {
+        if ($object->isInitialized('triggerPoint') && null !== $object->getTriggerPoint()) {
             $data['triggerPoint'] = $object->getTriggerPoint();
         }
         $data['isEnabled'] = $object->getIsEnabled();
-        if (null !== $object->getNames()) {
+        if ($object->isInitialized('names') && null !== $object->getNames()) {
             $data['names'] = $object->getNames();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
         $data['enableTracing'] = $object->getEnableTracing();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getScript()) {
+        if ($object->isInitialized('script') && null !== $object->getScript()) {
             $data['script'] = $object->getScript();
         }
         foreach ($object as $key => $value) {

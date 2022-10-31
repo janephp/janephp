@@ -82,7 +82,7 @@ class OrganizationActionsSecretNormalizer implements DenormalizerInterface, Norm
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['visibility'] = $object->getVisibility();
-        if (null !== $object->getSelectedRepositoriesUrl()) {
+        if ($object->isInitialized('selectedRepositoriesUrl') && null !== $object->getSelectedRepositoriesUrl()) {
             $data['selected_repositories_url'] = $object->getSelectedRepositoriesUrl();
         }
         foreach ($object as $key => $value) {

@@ -74,10 +74,10 @@ class PhotoNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
         $data['media_key'] = $object->getMediaKey();

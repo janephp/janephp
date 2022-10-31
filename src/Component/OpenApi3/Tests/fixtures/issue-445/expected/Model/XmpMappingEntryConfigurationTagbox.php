@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class XmpMappingEntryConfigurationTagbox extends XmpMappingEntryConfigurationBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * IDs of key fields.
      *
      * @var string[]
@@ -40,6 +48,7 @@ class XmpMappingEntryConfigurationTagbox extends XmpMappingEntryConfigurationBas
      */
     public function setKeyFieldIds(array $keyFieldIds) : self
     {
+        $this->initialized['keyFieldIds'] = true;
         $this->keyFieldIds = $keyFieldIds;
         return $this;
     }
@@ -61,6 +70,7 @@ class XmpMappingEntryConfigurationTagbox extends XmpMappingEntryConfigurationBas
      */
     public function setCaseSensitive(bool $caseSensitive) : self
     {
+        $this->initialized['caseSensitive'] = true;
         $this->caseSensitive = $caseSensitive;
         return $this;
     }
@@ -82,6 +92,7 @@ class XmpMappingEntryConfigurationTagbox extends XmpMappingEntryConfigurationBas
      */
     public function setIncludeAllSchemaChildren(bool $includeAllSchemaChildren) : self
     {
+        $this->initialized['includeAllSchemaChildren'] = true;
         $this->includeAllSchemaChildren = $includeAllSchemaChildren;
         return $this;
     }

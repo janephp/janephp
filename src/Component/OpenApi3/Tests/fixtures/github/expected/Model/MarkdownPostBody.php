@@ -5,6 +5,14 @@ namespace Github\Model;
 class MarkdownPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The Markdown text to render in HTML.
      *
      * @var string
@@ -40,6 +48,7 @@ class MarkdownPostBody extends \ArrayObject
      */
     public function setText(string $text) : self
     {
+        $this->initialized['text'] = true;
         $this->text = $text;
         return $this;
     }
@@ -61,6 +70,7 @@ class MarkdownPostBody extends \ArrayObject
      */
     public function setMode(string $mode) : self
     {
+        $this->initialized['mode'] = true;
         $this->mode = $mode;
         return $this;
     }
@@ -82,6 +92,7 @@ class MarkdownPostBody extends \ArrayObject
      */
     public function setContext(string $context) : self
     {
+        $this->initialized['context'] = true;
         $this->context = $context;
         return $this;
     }

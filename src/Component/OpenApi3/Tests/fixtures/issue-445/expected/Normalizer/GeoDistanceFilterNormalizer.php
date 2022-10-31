@@ -76,7 +76,7 @@ class GeoDistanceFilterNormalizer implements DenormalizerInterface, NormalizerIn
         $data['kind'] = $object->getKind();
         $data['field'] = $object->getField();
         $data['location'] = $object->getLocation();
-        if (null !== $object->getDistance()) {
+        if ($object->isInitialized('distance') && null !== $object->getDistance()) {
             $data['distance'] = $object->getDistance();
         }
         foreach ($object as $key => $value) {

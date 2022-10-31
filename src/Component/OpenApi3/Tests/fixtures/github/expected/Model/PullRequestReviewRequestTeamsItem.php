@@ -5,6 +5,14 @@ namespace Github\Model;
 class PullRequestReviewRequestTeamsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -94,6 +102,7 @@ class PullRequestReviewRequestTeamsItem extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -115,6 +124,7 @@ class PullRequestReviewRequestTeamsItem extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -136,6 +146,7 @@ class PullRequestReviewRequestTeamsItem extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -157,6 +168,7 @@ class PullRequestReviewRequestTeamsItem extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -178,6 +190,7 @@ class PullRequestReviewRequestTeamsItem extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -199,6 +212,7 @@ class PullRequestReviewRequestTeamsItem extends \ArrayObject
      */
     public function setSlug(string $slug) : self
     {
+        $this->initialized['slug'] = true;
         $this->slug = $slug;
         return $this;
     }
@@ -220,6 +234,7 @@ class PullRequestReviewRequestTeamsItem extends \ArrayObject
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -241,6 +256,7 @@ class PullRequestReviewRequestTeamsItem extends \ArrayObject
      */
     public function setPrivacy(string $privacy) : self
     {
+        $this->initialized['privacy'] = true;
         $this->privacy = $privacy;
         return $this;
     }
@@ -262,6 +278,7 @@ class PullRequestReviewRequestTeamsItem extends \ArrayObject
      */
     public function setPermission(string $permission) : self
     {
+        $this->initialized['permission'] = true;
         $this->permission = $permission;
         return $this;
     }
@@ -283,6 +300,7 @@ class PullRequestReviewRequestTeamsItem extends \ArrayObject
      */
     public function setMembersUrl(string $membersUrl) : self
     {
+        $this->initialized['membersUrl'] = true;
         $this->membersUrl = $membersUrl;
         return $this;
     }
@@ -304,6 +322,7 @@ class PullRequestReviewRequestTeamsItem extends \ArrayObject
      */
     public function setRepositoriesUrl(string $repositoriesUrl) : self
     {
+        $this->initialized['repositoriesUrl'] = true;
         $this->repositoriesUrl = $repositoriesUrl;
         return $this;
     }
@@ -325,6 +344,7 @@ class PullRequestReviewRequestTeamsItem extends \ArrayObject
      */
     public function setParent(?string $parent) : self
     {
+        $this->initialized['parent'] = true;
         $this->parent = $parent;
         return $this;
     }

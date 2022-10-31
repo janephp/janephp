@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class TweetInteractionMetrics extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Number of times this Tweet has been liked.
      *
      * @var int
@@ -52,6 +60,7 @@ class TweetInteractionMetrics extends \ArrayObject
      */
     public function setLikeCount(int $likeCount) : self
     {
+        $this->initialized['likeCount'] = true;
         $this->likeCount = $likeCount;
         return $this;
     }
@@ -73,6 +82,7 @@ class TweetInteractionMetrics extends \ArrayObject
      */
     public function setRetweetCount(int $retweetCount) : self
     {
+        $this->initialized['retweetCount'] = true;
         $this->retweetCount = $retweetCount;
         return $this;
     }
@@ -94,6 +104,7 @@ class TweetInteractionMetrics extends \ArrayObject
      */
     public function setQuoteCount(int $quoteCount) : self
     {
+        $this->initialized['quoteCount'] = true;
         $this->quoteCount = $quoteCount;
         return $this;
     }
@@ -115,6 +126,7 @@ class TweetInteractionMetrics extends \ArrayObject
      */
     public function setReplyCount(int $replyCount) : self
     {
+        $this->initialized['replyCount'] = true;
         $this->replyCount = $replyCount;
         return $this;
     }
@@ -136,6 +148,7 @@ class TweetInteractionMetrics extends \ArrayObject
      */
     public function setImpressionCount(int $impressionCount) : self
     {
+        $this->initialized['impressionCount'] = true;
         $this->impressionCount = $impressionCount;
         return $this;
     }

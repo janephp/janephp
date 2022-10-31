@@ -90,28 +90,28 @@ class KeyNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getKeyId()) {
+        if ($object->isInitialized('keyId') && null !== $object->getKeyId()) {
             $data['key_id'] = $object->getKeyId();
         }
-        if (null !== $object->getKey()) {
+        if ($object->isInitialized('key') && null !== $object->getKey()) {
             $data['key'] = $object->getKey();
         }
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getCreatedAt()) {
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getVerified()) {
+        if ($object->isInitialized('verified') && null !== $object->getVerified()) {
             $data['verified'] = $object->getVerified();
         }
-        if (null !== $object->getReadOnly()) {
+        if ($object->isInitialized('readOnly') && null !== $object->getReadOnly()) {
             $data['read_only'] = $object->getReadOnly();
         }
         foreach ($object as $key => $value) {

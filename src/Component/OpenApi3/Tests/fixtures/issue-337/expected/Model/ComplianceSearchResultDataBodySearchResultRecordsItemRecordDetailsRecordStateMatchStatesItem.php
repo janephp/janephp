@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateMatchStatesItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -34,6 +42,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
      */
     public function setMatchID(int $matchID) : self
     {
+        $this->initialized['matchID'] = true;
         $this->matchID = $matchID;
         return $this;
     }
@@ -55,6 +64,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }

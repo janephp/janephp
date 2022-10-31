@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class InverseListItemNamedCacheConfiguration extends NamedCacheConfigurationBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of the schema to cache (should have SchemaType = List)
      *
      * @var string|null
@@ -46,6 +54,7 @@ class InverseListItemNamedCacheConfiguration extends NamedCacheConfigurationBase
      */
     public function setSchemaId(?string $schemaId) : self
     {
+        $this->initialized['schemaId'] = true;
         $this->schemaId = $schemaId;
         return $this;
     }
@@ -67,6 +76,7 @@ class InverseListItemNamedCacheConfiguration extends NamedCacheConfigurationBase
      */
     public function setValueField(?string $valueField) : self
     {
+        $this->initialized['valueField'] = true;
         $this->valueField = $valueField;
         return $this;
     }
@@ -88,6 +98,7 @@ class InverseListItemNamedCacheConfiguration extends NamedCacheConfigurationBase
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }
@@ -109,6 +120,7 @@ class InverseListItemNamedCacheConfiguration extends NamedCacheConfigurationBase
      */
     public function setIncludeAllSchemaChildren(bool $includeAllSchemaChildren) : self
     {
+        $this->initialized['includeAllSchemaChildren'] = true;
         $this->includeAllSchemaChildren = $includeAllSchemaChildren;
         return $this;
     }

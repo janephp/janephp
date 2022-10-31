@@ -65,16 +65,16 @@ class AuthConfigNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUsername()) {
+        if ($object->isInitialized('username') && null !== $object->getUsername()) {
             $data['username'] = $object->getUsername();
         }
-        if (null !== $object->getPassword()) {
+        if ($object->isInitialized('password') && null !== $object->getPassword()) {
             $data['password'] = $object->getPassword();
         }
-        if (null !== $object->getEmail()) {
+        if ($object->isInitialized('email') && null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
-        if (null !== $object->getServeraddress()) {
+        if ($object->isInitialized('serveraddress') && null !== $object->getServeraddress()) {
             $data['serveraddress'] = $object->getServeraddress();
         }
         if (!($context['skip_validation'] ?? false)) {

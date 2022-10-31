@@ -114,61 +114,61 @@ class ContainerSummaryNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['Id'] = $object->getId();
         }
-        if (null !== $object->getNames()) {
+        if ($object->isInitialized('names') && null !== $object->getNames()) {
             $values = array();
             foreach ($object->getNames() as $value) {
                 $values[] = $value;
             }
             $data['Names'] = $values;
         }
-        if (null !== $object->getImage()) {
+        if ($object->isInitialized('image') && null !== $object->getImage()) {
             $data['Image'] = $object->getImage();
         }
-        if (null !== $object->getImageID()) {
+        if ($object->isInitialized('imageID') && null !== $object->getImageID()) {
             $data['ImageID'] = $object->getImageID();
         }
-        if (null !== $object->getCommand()) {
+        if ($object->isInitialized('command') && null !== $object->getCommand()) {
             $data['Command'] = $object->getCommand();
         }
-        if (null !== $object->getCreated()) {
+        if ($object->isInitialized('created') && null !== $object->getCreated()) {
             $data['Created'] = $object->getCreated();
         }
-        if (null !== $object->getPorts()) {
+        if ($object->isInitialized('ports') && null !== $object->getPorts()) {
             $values_1 = array();
             foreach ($object->getPorts() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['Ports'] = $values_1;
         }
-        if (null !== $object->getSizeRw()) {
+        if ($object->isInitialized('sizeRw') && null !== $object->getSizeRw()) {
             $data['SizeRw'] = $object->getSizeRw();
         }
-        if (null !== $object->getSizeRootFs()) {
+        if ($object->isInitialized('sizeRootFs') && null !== $object->getSizeRootFs()) {
             $data['SizeRootFs'] = $object->getSizeRootFs();
         }
-        if (null !== $object->getLabels()) {
+        if ($object->isInitialized('labels') && null !== $object->getLabels()) {
             $values_2 = array();
             foreach ($object->getLabels() as $key => $value_2) {
                 $values_2[$key] = $value_2;
             }
             $data['Labels'] = $values_2;
         }
-        if (null !== $object->getState()) {
+        if ($object->isInitialized('state') && null !== $object->getState()) {
             $data['State'] = $object->getState();
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['Status'] = $object->getStatus();
         }
-        if (null !== $object->getHostConfig()) {
+        if ($object->isInitialized('hostConfig') && null !== $object->getHostConfig()) {
             $data['HostConfig'] = $this->normalizer->normalize($object->getHostConfig(), 'json', $context);
         }
-        if (null !== $object->getNetworkSettings()) {
+        if ($object->isInitialized('networkSettings') && null !== $object->getNetworkSettings()) {
             $data['NetworkSettings'] = $this->normalizer->normalize($object->getNetworkSettings(), 'json', $context);
         }
-        if (null !== $object->getMounts()) {
+        if ($object->isInitialized('mounts') && null !== $object->getMounts()) {
             $values_3 = array();
             foreach ($object->getMounts() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);

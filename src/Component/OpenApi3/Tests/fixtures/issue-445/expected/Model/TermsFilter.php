@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class TermsFilter extends FilterBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
     (i.e. personLayer.address.street).
     *
@@ -37,6 +45,7 @@ class TermsFilter extends FilterBase
     */
     public function setField(string $field) : self
     {
+        $this->initialized['field'] = true;
         $this->field = $field;
         return $this;
     }
@@ -58,6 +67,7 @@ class TermsFilter extends FilterBase
      */
     public function setTerms(array $terms) : self
     {
+        $this->initialized['terms'] = true;
         $this->terms = $terms;
         return $this;
     }

@@ -179,42 +179,42 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $data = array();
         $data['contentSchemaId'] = $object->getContentSchemaId();
-        if (null !== $object->getLayerSchemaIds()) {
+        if ($object->isInitialized('layerSchemaIds') && null !== $object->getLayerSchemaIds()) {
             $values = array();
             foreach ($object->getLayerSchemaIds() as $value) {
                 $values[] = $value;
             }
             $data['layerSchemaIds'] = $values;
         }
-        if (null !== $object->getBrokenReferenceIds()) {
+        if ($object->isInitialized('brokenReferenceIds') && null !== $object->getBrokenReferenceIds()) {
             $values_1 = array();
             foreach ($object->getBrokenReferenceIds() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['brokenReferenceIds'] = $values_1;
         }
-        if (null !== $object->getBrokenIndirectReferenceIds()) {
+        if ($object->isInitialized('brokenIndirectReferenceIds') && null !== $object->getBrokenIndirectReferenceIds()) {
             $values_2 = array();
             foreach ($object->getBrokenIndirectReferenceIds() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['brokenIndirectReferenceIds'] = $values_2;
         }
-        if (null !== $object->getBrokenRelationTargetIds()) {
+        if ($object->isInitialized('brokenRelationTargetIds') && null !== $object->getBrokenRelationTargetIds()) {
             $values_3 = array();
             foreach ($object->getBrokenRelationTargetIds() as $value_3) {
                 $values_3[] = $value_3;
             }
             $data['brokenRelationTargetIds'] = $values_3;
         }
-        if (null !== $object->getContent()) {
+        if ($object->isInitialized('content') && null !== $object->getContent()) {
             $values_4 = array();
             foreach ($object->getContent() as $key => $value_4) {
                 $values_4[$key] = $value_4;
             }
             $data['content'] = $values_4;
         }
-        if (null !== $object->getMetadata()) {
+        if ($object->isInitialized('metadata') && null !== $object->getMetadata()) {
             $values_5 = array();
             foreach ($object->getMetadata() as $key_1 => $value_5) {
                 $values_5[$key_1] = $value_5;
@@ -222,40 +222,40 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['metadata'] = $values_5;
         }
         $data['id'] = $object->getId();
-        if (null !== $object->getContentPermissionSetIds()) {
+        if ($object->isInitialized('contentPermissionSetIds') && null !== $object->getContentPermissionSetIds()) {
             $values_6 = array();
             foreach ($object->getContentPermissionSetIds() as $value_6) {
                 $values_6[] = $value_6;
             }
             $data['contentPermissionSetIds'] = $values_6;
         }
-        if (null !== $object->getOutputs()) {
+        if ($object->isInitialized('outputs') && null !== $object->getOutputs()) {
             $values_7 = array();
             foreach ($object->getOutputs() as $value_7) {
                 $values_7[] = $this->normalizer->normalize($value_7, 'json', $context);
             }
             $data['outputs'] = $values_7;
         }
-        if (null !== $object->getAudit()) {
+        if ($object->isInitialized('audit') && null !== $object->getAudit()) {
             $data['audit'] = $object->getAudit();
         }
         $data['ownerTokenId'] = $object->getOwnerTokenId();
-        if (null !== $object->getOwner()) {
+        if ($object->isInitialized('owner') && null !== $object->getOwner()) {
             $data['owner'] = $object->getOwner();
         }
         $data['contentType'] = $object->getContentType();
-        if (null !== $object->getDisplayValues()) {
+        if ($object->isInitialized('displayValues') && null !== $object->getDisplayValues()) {
             $data['displayValues'] = $object->getDisplayValues();
         }
         $data['lifeCycle'] = $object->getLifeCycle();
-        if (null !== $object->getContentRights()) {
+        if ($object->isInitialized('contentRights') && null !== $object->getContentRights()) {
             $values_8 = array();
             foreach ($object->getContentRights() as $value_8) {
                 $values_8[] = $value_8;
             }
             $data['contentRights'] = $values_8;
         }
-        if (null !== $object->getActivity()) {
+        if ($object->isInitialized('activity') && null !== $object->getActivity()) {
             $data['activity'] = $object->getActivity();
         }
         return $data;

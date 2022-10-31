@@ -112,40 +112,40 @@ class PullRequestReviewRequestTeamsItemNormalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getNodeId()) {
+        if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getHtmlUrl()) {
+        if ($object->isInitialized('htmlUrl') && null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getSlug()) {
+        if ($object->isInitialized('slug') && null !== $object->getSlug()) {
             $data['slug'] = $object->getSlug();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getPrivacy()) {
+        if ($object->isInitialized('privacy') && null !== $object->getPrivacy()) {
             $data['privacy'] = $object->getPrivacy();
         }
-        if (null !== $object->getPermission()) {
+        if ($object->isInitialized('permission') && null !== $object->getPermission()) {
             $data['permission'] = $object->getPermission();
         }
-        if (null !== $object->getMembersUrl()) {
+        if ($object->isInitialized('membersUrl') && null !== $object->getMembersUrl()) {
             $data['members_url'] = $object->getMembersUrl();
         }
-        if (null !== $object->getRepositoriesUrl()) {
+        if ($object->isInitialized('repositoriesUrl') && null !== $object->getRepositoriesUrl()) {
             $data['repositories_url'] = $object->getRepositoriesUrl();
         }
-        if (null !== $object->getParent()) {
+        if ($object->isInitialized('parent') && null !== $object->getParent()) {
             $data['parent'] = $object->getParent();
         }
         foreach ($object as $key => $value) {

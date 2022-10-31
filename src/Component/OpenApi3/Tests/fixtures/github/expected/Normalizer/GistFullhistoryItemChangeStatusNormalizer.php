@@ -70,13 +70,13 @@ class GistFullhistoryItemChangeStatusNormalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDeletions()) {
+        if ($object->isInitialized('deletions') && null !== $object->getDeletions()) {
             $data['deletions'] = $object->getDeletions();
         }
-        if (null !== $object->getAdditions()) {
+        if ($object->isInitialized('additions') && null !== $object->getAdditions()) {
             $data['additions'] = $object->getAdditions();
         }
-        if (null !== $object->getTotal()) {
+        if ($object->isInitialized('total') && null !== $object->getTotal()) {
             $data['total'] = $object->getTotal();
         }
         foreach ($object as $key => $value) {

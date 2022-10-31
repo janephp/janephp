@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class InvalidVersionException extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -76,6 +84,7 @@ class InvalidVersionException extends \ArrayObject
      */
     public function setTraceLevel(string $traceLevel) : self
     {
+        $this->initialized['traceLevel'] = true;
         $this->traceLevel = $traceLevel;
         return $this;
     }
@@ -97,6 +106,7 @@ class InvalidVersionException extends \ArrayObject
      */
     public function setTraceId(?string $traceId) : self
     {
+        $this->initialized['traceId'] = true;
         $this->traceId = $traceId;
         return $this;
     }
@@ -118,6 +128,7 @@ class InvalidVersionException extends \ArrayObject
      */
     public function setTraceJobId(?string $traceJobId) : self
     {
+        $this->initialized['traceJobId'] = true;
         $this->traceJobId = $traceJobId;
         return $this;
     }
@@ -139,6 +150,7 @@ class InvalidVersionException extends \ArrayObject
      */
     public function setHttpStatusCode(int $httpStatusCode) : self
     {
+        $this->initialized['httpStatusCode'] = true;
         $this->httpStatusCode = $httpStatusCode;
         return $this;
     }
@@ -160,6 +172,7 @@ class InvalidVersionException extends \ArrayObject
      */
     public function setExceptionMessage(?string $exceptionMessage) : self
     {
+        $this->initialized['exceptionMessage'] = true;
         $this->exceptionMessage = $exceptionMessage;
         return $this;
     }
@@ -181,6 +194,7 @@ class InvalidVersionException extends \ArrayObject
      */
     public function setKind(string $kind) : self
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
         return $this;
     }
@@ -202,6 +216,7 @@ class InvalidVersionException extends \ArrayObject
      */
     public function setComponent(?string $component) : self
     {
+        $this->initialized['component'] = true;
         $this->component = $component;
         return $this;
     }
@@ -223,6 +238,7 @@ class InvalidVersionException extends \ArrayObject
      */
     public function setVersion(?string $version) : self
     {
+        $this->initialized['version'] = true;
         $this->version = $version;
         return $this;
     }
@@ -244,6 +260,7 @@ class InvalidVersionException extends \ArrayObject
      */
     public function setExpectedVersion(?string $expectedVersion) : self
     {
+        $this->initialized['expectedVersion'] = true;
         $this->expectedVersion = $expectedVersion;
         return $this;
     }

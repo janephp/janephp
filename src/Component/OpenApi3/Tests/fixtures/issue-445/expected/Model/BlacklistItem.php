@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BlacklistItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Friendly name of item.
      *
      * @var string
@@ -34,6 +42,7 @@ class BlacklistItem
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -55,6 +64,7 @@ class BlacklistItem
      */
     public function setMatch(string $match) : self
     {
+        $this->initialized['match'] = true;
         $this->match = $match;
         return $this;
     }

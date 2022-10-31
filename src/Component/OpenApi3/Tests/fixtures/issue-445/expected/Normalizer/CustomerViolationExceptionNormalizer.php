@@ -101,26 +101,26 @@ class CustomerViolationExceptionNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceLevel()) {
+        if ($object->isInitialized('traceLevel') && null !== $object->getTraceLevel()) {
             $data['traceLevel'] = $object->getTraceLevel();
         }
-        if (null !== $object->getTraceId()) {
+        if ($object->isInitialized('traceId') && null !== $object->getTraceId()) {
             $data['traceId'] = $object->getTraceId();
         }
-        if (null !== $object->getTraceJobId()) {
+        if ($object->isInitialized('traceJobId') && null !== $object->getTraceJobId()) {
             $data['traceJobId'] = $object->getTraceJobId();
         }
-        if (null !== $object->getHttpStatusCode()) {
+        if ($object->isInitialized('httpStatusCode') && null !== $object->getHttpStatusCode()) {
             $data['httpStatusCode'] = $object->getHttpStatusCode();
         }
-        if (null !== $object->getExceptionMessage()) {
+        if ($object->isInitialized('exceptionMessage') && null !== $object->getExceptionMessage()) {
             $data['exceptionMessage'] = $object->getExceptionMessage();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getExpectedCustomerId()) {
+        if ($object->isInitialized('expectedCustomerId') && null !== $object->getExpectedCustomerId()) {
             $data['expectedCustomerId'] = $object->getExpectedCustomerId();
         }
-        if (null !== $object->getCurrentCustomerId()) {
+        if ($object->isInitialized('currentCustomerId') && null !== $object->getCurrentCustomerId()) {
             $data['currentCustomerId'] = $object->getCurrentCustomerId();
         }
         foreach ($object as $key => $value) {

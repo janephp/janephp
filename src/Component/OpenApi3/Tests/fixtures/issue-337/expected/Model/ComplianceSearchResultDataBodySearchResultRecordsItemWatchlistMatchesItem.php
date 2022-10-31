@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -178,6 +186,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setAcceptListID(int $acceptListID) : self
     {
+        $this->initialized['acceptListID'] = true;
         $this->acceptListID = $acceptListID;
         return $this;
     }
@@ -199,6 +208,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setAddedToAcceptList(bool $addedToAcceptList) : self
     {
+        $this->initialized['addedToAcceptList'] = true;
         $this->addedToAcceptList = $addedToAcceptList;
         return $this;
     }
@@ -220,6 +230,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setAddressName(bool $addressName) : self
     {
+        $this->initialized['addressName'] = true;
         $this->addressName = $addressName;
         return $this;
     }
@@ -241,6 +252,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setAutoFalsePositive(bool $autoFalsePositive) : self
     {
+        $this->initialized['autoFalsePositive'] = true;
         $this->autoFalsePositive = $autoFalsePositive;
         return $this;
     }
@@ -262,6 +274,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setBestAddressIsPartial(bool $bestAddressIsPartial) : self
     {
+        $this->initialized['bestAddressIsPartial'] = true;
         $this->bestAddressIsPartial = $bestAddressIsPartial;
         return $this;
     }
@@ -283,6 +296,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setBestCountryScore(int $bestCountryScore) : self
     {
+        $this->initialized['bestCountryScore'] = true;
         $this->bestCountryScore = $bestCountryScore;
         return $this;
     }
@@ -304,6 +318,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setBestCountryType(string $bestCountryType) : self
     {
+        $this->initialized['bestCountryType'] = true;
         $this->bestCountryType = $bestCountryType;
         return $this;
     }
@@ -325,6 +340,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setBestDOBIsPartial(bool $bestDOBIsPartial) : self
     {
+        $this->initialized['bestDOBIsPartial'] = true;
         $this->bestDOBIsPartial = $bestDOBIsPartial;
         return $this;
     }
@@ -346,6 +362,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setBestName(string $bestName) : self
     {
+        $this->initialized['bestName'] = true;
         $this->bestName = $bestName;
         return $this;
     }
@@ -367,6 +384,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setBestNameScore(int $bestNameScore) : self
     {
+        $this->initialized['bestNameScore'] = true;
         $this->bestNameScore = $bestNameScore;
         return $this;
     }
@@ -388,6 +406,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setCheckSum(int $checkSum) : self
     {
+        $this->initialized['checkSum'] = true;
         $this->checkSum = $checkSum;
         return $this;
     }
@@ -409,6 +428,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setConflicts(ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemConflicts $conflicts) : self
     {
+        $this->initialized['conflicts'] = true;
         $this->conflicts = $conflicts;
         return $this;
     }
@@ -430,6 +450,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setEntityDetails(ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetails $entityDetails) : self
     {
+        $this->initialized['entityDetails'] = true;
         $this->entityDetails = $entityDetails;
         return $this;
     }
@@ -451,6 +472,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setEntityName(string $entityName) : self
     {
+        $this->initialized['entityName'] = true;
         $this->entityName = $entityName;
         return $this;
     }
@@ -472,6 +494,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setEntityScore(int $entityScore) : self
     {
+        $this->initialized['entityScore'] = true;
         $this->entityScore = $entityScore;
         return $this;
     }
@@ -493,6 +516,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setEntityUniqueID(string $entityUniqueID) : self
     {
+        $this->initialized['entityUniqueID'] = true;
         $this->entityUniqueID = $entityUniqueID;
         return $this;
     }
@@ -514,6 +538,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setFalsePositive(bool $falsePositive) : self
     {
+        $this->initialized['falsePositive'] = true;
         $this->falsePositive = $falsePositive;
         return $this;
     }
@@ -535,6 +560,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setFile(ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemFile $file) : self
     {
+        $this->initialized['file'] = true;
         $this->file = $file;
         return $this;
     }
@@ -556,6 +582,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setGatewayOFACScreeningIndicatorMatch(bool $gatewayOFACScreeningIndicatorMatch) : self
     {
+        $this->initialized['gatewayOFACScreeningIndicatorMatch'] = true;
         $this->gatewayOFACScreeningIndicatorMatch = $gatewayOFACScreeningIndicatorMatch;
         return $this;
     }
@@ -577,6 +604,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -598,6 +626,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setMatchReAlert(bool $matchReAlert) : self
     {
+        $this->initialized['matchReAlert'] = true;
         $this->matchReAlert = $matchReAlert;
         return $this;
     }
@@ -619,6 +648,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setPreviousResultID(int $previousResultID) : self
     {
+        $this->initialized['previousResultID'] = true;
         $this->previousResultID = $previousResultID;
         return $this;
     }
@@ -640,6 +670,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setReasonListed(string $reasonListed) : self
     {
+        $this->initialized['reasonListed'] = true;
         $this->reasonListed = $reasonListed;
         return $this;
     }
@@ -661,6 +692,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setResultDate(string $resultDate) : self
     {
+        $this->initialized['resultDate'] = true;
         $this->resultDate = $resultDate;
         return $this;
     }
@@ -682,6 +714,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setSecondaryOFACScreeningIndicatorMatch(bool $secondaryOFACScreeningIndicatorMatch) : self
     {
+        $this->initialized['secondaryOFACScreeningIndicatorMatch'] = true;
         $this->secondaryOFACScreeningIndicatorMatch = $secondaryOFACScreeningIndicatorMatch;
         return $this;
     }
@@ -703,6 +736,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
      */
     public function setTrueMatch(bool $trueMatch) : self
     {
+        $this->initialized['trueMatch'] = true;
         $this->trueMatch = $trueMatch;
         return $this;
     }

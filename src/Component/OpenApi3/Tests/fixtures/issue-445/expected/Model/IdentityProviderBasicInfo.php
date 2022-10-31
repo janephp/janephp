@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class IdentityProviderBasicInfo
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Identity provider ID (has to match an existing IdP defined in IdentityServer)
      *
      * @var string|null
@@ -40,6 +48,7 @@ class IdentityProviderBasicInfo
      */
     public function setId(?string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -61,6 +70,7 @@ class IdentityProviderBasicInfo
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -82,6 +92,7 @@ class IdentityProviderBasicInfo
      */
     public function setDisplayName(?string $displayName) : self
     {
+        $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
         return $this;
     }

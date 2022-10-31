@@ -72,7 +72,7 @@ class OrgsOrgTeamsTeamSlugDiscussionsPostBodyNormalizer implements DenormalizerI
         $data = array();
         $data['title'] = $object->getTitle();
         $data['body'] = $object->getBody();
-        if (null !== $object->getPrivate()) {
+        if ($object->isInitialized('private') && null !== $object->getPrivate()) {
             $data['private'] = $object->getPrivate();
         }
         foreach ($object as $key => $value) {

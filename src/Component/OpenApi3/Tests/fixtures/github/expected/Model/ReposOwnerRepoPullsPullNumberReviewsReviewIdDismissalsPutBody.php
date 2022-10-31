@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The message for the pull request review dismissal
      *
      * @var string
@@ -34,6 +42,7 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody extends \Arr
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody extends \Arr
      */
     public function setEvent(string $event) : self
     {
+        $this->initialized['event'] = true;
         $this->event = $event;
         return $this;
     }

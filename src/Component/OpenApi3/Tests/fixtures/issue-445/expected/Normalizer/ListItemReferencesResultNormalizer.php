@@ -55,7 +55,7 @@ class ListItemReferencesResultNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMetadataReferences()) {
+        if ($object->isInitialized('metadataReferences') && null !== $object->getMetadataReferences()) {
             $data['metadataReferences'] = $object->getMetadataReferences();
         }
         return $data;

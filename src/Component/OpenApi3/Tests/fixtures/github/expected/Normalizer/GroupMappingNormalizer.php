@@ -86,26 +86,26 @@ class GroupMappingNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getGroups()) {
+        if ($object->isInitialized('groups') && null !== $object->getGroups()) {
             $values = array();
             foreach ($object->getGroups() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['groups'] = $values;
         }
-        if (null !== $object->getGroupId()) {
+        if ($object->isInitialized('groupId') && null !== $object->getGroupId()) {
             $data['group_id'] = $object->getGroupId();
         }
-        if (null !== $object->getGroupName()) {
+        if ($object->isInitialized('groupName') && null !== $object->getGroupName()) {
             $data['group_name'] = $object->getGroupName();
         }
-        if (null !== $object->getGroupDescription()) {
+        if ($object->isInitialized('groupDescription') && null !== $object->getGroupDescription()) {
             $data['group_description'] = $object->getGroupDescription();
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        if (null !== $object->getSyncedAt()) {
+        if ($object->isInitialized('syncedAt') && null !== $object->getSyncedAt()) {
             $data['synced_at'] = $object->getSyncedAt();
         }
         foreach ($object as $key => $value_1) {

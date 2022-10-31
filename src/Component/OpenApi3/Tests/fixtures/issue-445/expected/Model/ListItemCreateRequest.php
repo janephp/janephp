@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ListItemCreateRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the content schema. The SchemaType of the specified schema must be List.
      *
      * @var string
@@ -42,6 +50,7 @@ class ListItemCreateRequest
      */
     public function setContentSchemaId(string $contentSchemaId) : self
     {
+        $this->initialized['contentSchemaId'] = true;
         $this->contentSchemaId = $contentSchemaId;
         return $this;
     }
@@ -63,6 +72,7 @@ class ListItemCreateRequest
      */
     public function setContent(?iterable $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }
@@ -88,6 +98,7 @@ class ListItemCreateRequest
     */
     public function setRequestId(?string $requestId) : self
     {
+        $this->initialized['requestId'] = true;
         $this->requestId = $requestId;
         return $this;
     }

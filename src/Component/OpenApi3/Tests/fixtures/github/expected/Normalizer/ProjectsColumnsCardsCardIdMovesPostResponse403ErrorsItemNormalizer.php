@@ -74,16 +74,16 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItemNormalizer impleme
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCode()) {
+        if ($object->isInitialized('code') && null !== $object->getCode()) {
             $data['code'] = $object->getCode();
         }
-        if (null !== $object->getMessage()) {
+        if ($object->isInitialized('message') && null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
-        if (null !== $object->getResource()) {
+        if ($object->isInitialized('resource') && null !== $object->getResource()) {
             $data['resource'] = $object->getResource();
         }
-        if (null !== $object->getField()) {
+        if ($object->isInitialized('field') && null !== $object->getField()) {
             $data['field'] = $object->getField();
         }
         foreach ($object as $key => $value) {

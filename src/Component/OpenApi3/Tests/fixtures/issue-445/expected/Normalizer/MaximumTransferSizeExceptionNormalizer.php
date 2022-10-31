@@ -102,29 +102,29 @@ class MaximumTransferSizeExceptionNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceLevel()) {
+        if ($object->isInitialized('traceLevel') && null !== $object->getTraceLevel()) {
             $data['traceLevel'] = $object->getTraceLevel();
         }
-        if (null !== $object->getTraceId()) {
+        if ($object->isInitialized('traceId') && null !== $object->getTraceId()) {
             $data['traceId'] = $object->getTraceId();
         }
-        if (null !== $object->getTraceJobId()) {
+        if ($object->isInitialized('traceJobId') && null !== $object->getTraceJobId()) {
             $data['traceJobId'] = $object->getTraceJobId();
         }
-        if (null !== $object->getHttpStatusCode()) {
+        if ($object->isInitialized('httpStatusCode') && null !== $object->getHttpStatusCode()) {
             $data['httpStatusCode'] = $object->getHttpStatusCode();
         }
-        if (null !== $object->getExceptionMessage()) {
+        if ($object->isInitialized('exceptionMessage') && null !== $object->getExceptionMessage()) {
             $data['exceptionMessage'] = $object->getExceptionMessage();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getTransferSize()) {
+        if ($object->isInitialized('transferSize') && null !== $object->getTransferSize()) {
             $data['transferSize'] = $object->getTransferSize();
         }
-        if (null !== $object->getMaximumTransferSize()) {
+        if ($object->isInitialized('maximumTransferSize') && null !== $object->getMaximumTransferSize()) {
             $data['maximumTransferSize'] = $object->getMaximumTransferSize();
         }
-        if (null !== $object->getTransferId()) {
+        if ($object->isInitialized('transferId') && null !== $object->getTransferId()) {
             $data['transferId'] = $object->getTransferId();
         }
         foreach ($object as $key => $value) {

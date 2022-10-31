@@ -58,7 +58,7 @@ class ReviewJsonhalReviewReadLinksNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSelf()) {
+        if ($object->isInitialized('self') && null !== $object->getSelf()) {
             $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
         }
         foreach ($object as $key => $value) {

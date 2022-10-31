@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class DateRange
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Language specific range names.
      *
      * @var mixed|null
@@ -40,6 +48,7 @@ class DateRange
      */
     public function setNames($names) : self
     {
+        $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }
@@ -61,6 +70,7 @@ class DateRange
      */
     public function setFrom(?string $from) : self
     {
+        $this->initialized['from'] = true;
         $this->from = $from;
         return $this;
     }
@@ -82,6 +92,7 @@ class DateRange
      */
     public function setTo(?string $to) : self
     {
+        $this->initialized['to'] = true;
         $this->to = $to;
         return $this;
     }

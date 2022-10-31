@@ -67,7 +67,7 @@ class ReposOwnerRepoGitRefsRefPatchBodyNormalizer implements DenormalizerInterfa
     {
         $data = array();
         $data['sha'] = $object->getSha();
-        if (null !== $object->getForce()) {
+        if ($object->isInitialized('force') && null !== $object->getForce()) {
             $data['force'] = $object->getForce();
         }
         foreach ($object as $key => $value) {

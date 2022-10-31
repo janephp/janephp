@@ -5,6 +5,14 @@ namespace Github\Model;
 class BranchProtectionAllowForcePushes extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -28,6 +36,7 @@ class BranchProtectionAllowForcePushes extends \ArrayObject
      */
     public function setEnabled(bool $enabled) : self
     {
+        $this->initialized['enabled'] = true;
         $this->enabled = $enabled;
         return $this;
     }

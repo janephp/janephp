@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi2\Tests\Expected\Api1\Model;
 class Body
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -28,6 +36,7 @@ class Body
      */
     public function setFoo(string $foo) : self
     {
+        $this->initialized['foo'] = true;
         $this->foo = $foo;
         return $this;
     }

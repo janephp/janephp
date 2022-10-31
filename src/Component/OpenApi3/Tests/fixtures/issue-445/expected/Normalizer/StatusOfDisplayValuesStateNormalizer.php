@@ -58,7 +58,7 @@ class StatusOfDisplayValuesStateNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
         $data['state'] = $object->getState();

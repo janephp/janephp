@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class TransferSearchRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Limits the search by using a query string filter. The Lucene query string syntax is supported.
      *
      * @var string|null
@@ -59,6 +67,7 @@ class TransferSearchRequest
      */
     public function setSearchString(?string $searchString) : self
     {
+        $this->initialized['searchString'] = true;
         $this->searchString = $searchString;
         return $this;
     }
@@ -80,6 +89,7 @@ class TransferSearchRequest
      */
     public function setSearchBehaviors(?array $searchBehaviors) : self
     {
+        $this->initialized['searchBehaviors'] = true;
         $this->searchBehaviors = $searchBehaviors;
         return $this;
     }
@@ -101,6 +111,7 @@ class TransferSearchRequest
      */
     public function setLimit(int $limit) : self
     {
+        $this->initialized['limit'] = true;
         $this->limit = $limit;
         return $this;
     }
@@ -122,6 +133,7 @@ class TransferSearchRequest
      */
     public function setPageToken(?string $pageToken) : self
     {
+        $this->initialized['pageToken'] = true;
         $this->pageToken = $pageToken;
         return $this;
     }
@@ -143,6 +155,7 @@ class TransferSearchRequest
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }
@@ -166,6 +179,7 @@ class TransferSearchRequest
     */
     public function setDebugMode(bool $debugMode) : self
     {
+        $this->initialized['debugMode'] = true;
         $this->debugMode = $debugMode;
         return $this;
     }

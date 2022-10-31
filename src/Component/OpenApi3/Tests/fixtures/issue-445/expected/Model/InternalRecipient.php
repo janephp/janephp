@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class InternalRecipient
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * User information of recipient.
      *
      * @var mixed
@@ -40,6 +48,7 @@ class InternalRecipient
      */
     public function setRecipient($recipient) : self
     {
+        $this->initialized['recipient'] = true;
         $this->recipient = $recipient;
         return $this;
     }
@@ -61,6 +70,7 @@ class InternalRecipient
      */
     public function setToken(?string $token) : self
     {
+        $this->initialized['token'] = true;
         $this->token = $token;
         return $this;
     }
@@ -82,6 +92,7 @@ class InternalRecipient
      */
     public function setUrl(?string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }

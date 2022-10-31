@@ -73,13 +73,13 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getFirstName()) {
+        if ($object->isInitialized('firstName') && null !== $object->getFirstName()) {
             $data['firstName'] = $object->getFirstName();
         }
-        if (null !== $object->getLastName()) {
+        if ($object->isInitialized('lastName') && null !== $object->getLastName()) {
             $data['lastName'] = $object->getLastName();
         }
         $data['emailAddress'] = $object->getEmailAddress();

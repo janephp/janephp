@@ -93,20 +93,20 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
         $data = array();
         $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
         $data['kind'] = $object->getKind();
-        if (null !== $object->getDownloadInfos()) {
+        if ($object->isInitialized('downloadInfos') && null !== $object->getDownloadInfos()) {
             $values = array();
             foreach ($object->getDownloadInfos() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['downloadInfos'] = $values;
         }
-        if (null !== $object->getFileSize()) {
+        if ($object->isInitialized('fileSize') && null !== $object->getFileSize()) {
             $data['fileSize'] = $object->getFileSize();
         }
-        if (null !== $object->getShareToken()) {
+        if ($object->isInitialized('shareToken') && null !== $object->getShareToken()) {
             $data['shareToken'] = $object->getShareToken();
         }
-        if (null !== $object->getRange()) {
+        if ($object->isInitialized('range') && null !== $object->getRange()) {
             $data['range'] = $object->getRange();
         }
         foreach ($object as $key => $value_1) {

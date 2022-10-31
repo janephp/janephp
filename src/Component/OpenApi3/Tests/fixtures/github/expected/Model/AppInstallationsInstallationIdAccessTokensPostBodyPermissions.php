@@ -5,6 +5,14 @@ namespace Github\Model;
 class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \Arr
      */
     public function setContents(string $contents) : self
     {
+        $this->initialized['contents'] = true;
         $this->contents = $contents;
         return $this;
     }
@@ -73,6 +82,7 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \Arr
      */
     public function setIssues(string $issues) : self
     {
+        $this->initialized['issues'] = true;
         $this->issues = $issues;
         return $this;
     }
@@ -94,6 +104,7 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \Arr
      */
     public function setDeployments(string $deployments) : self
     {
+        $this->initialized['deployments'] = true;
         $this->deployments = $deployments;
         return $this;
     }
@@ -115,6 +126,7 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \Arr
      */
     public function setSingleFile(string $singleFile) : self
     {
+        $this->initialized['singleFile'] = true;
         $this->singleFile = $singleFile;
         return $this;
     }
@@ -136,6 +148,7 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \Arr
      */
     public function setDefNotARepo(string $defNotARepo) : self
     {
+        $this->initialized['defNotARepo'] = true;
         $this->defNotARepo = $defNotARepo;
         return $this;
     }

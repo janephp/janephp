@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ParentFilter extends FilterBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The type of the parent document.
      *
      * @var string
@@ -34,6 +42,7 @@ class ParentFilter extends FilterBase
      */
     public function setParentType(string $parentType) : self
     {
+        $this->initialized['parentType'] = true;
         $this->parentType = $parentType;
         return $this;
     }
@@ -55,6 +64,7 @@ class ParentFilter extends FilterBase
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }

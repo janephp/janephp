@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class OutputFormatDownloadFileNamePatternUpdateManyRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Download file name update requests to be processed.
      *
      * @var OutputFormatDownloadFileNamePatternUpdateRequestItem[]
@@ -28,6 +36,7 @@ class OutputFormatDownloadFileNamePatternUpdateManyRequest
      */
     public function setItems(array $items) : self
     {
+        $this->initialized['items'] = true;
         $this->items = $items;
         return $this;
     }

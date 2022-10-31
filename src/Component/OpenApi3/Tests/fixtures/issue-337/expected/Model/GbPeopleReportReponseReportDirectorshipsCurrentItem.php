@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbPeopleReportReponseReportDirectorshipsCurrentItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -94,6 +102,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItem extends \ArrayObject
      */
     public function setCompanyName(string $companyName) : self
     {
+        $this->initialized['companyName'] = true;
         $this->companyName = $companyName;
         return $this;
     }
@@ -115,6 +124,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItem extends \ArrayObject
      */
     public function setCompanyNumber(string $companyNumber) : self
     {
+        $this->initialized['companyNumber'] = true;
         $this->companyNumber = $companyNumber;
         return $this;
     }
@@ -136,6 +146,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItem extends \ArrayObject
      */
     public function setCompanyRegistrationNumber(string $companyRegistrationNumber) : self
     {
+        $this->initialized['companyRegistrationNumber'] = true;
         $this->companyRegistrationNumber = $companyRegistrationNumber;
         return $this;
     }
@@ -157,6 +168,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItem extends \ArrayObject
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -178,6 +190,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItem extends \ArrayObject
      */
     public function setPosition(GbPeopleReportReponseReportDirectorshipsCurrentItemPosition $position) : self
     {
+        $this->initialized['position'] = true;
         $this->position = $position;
         return $this;
     }
@@ -199,6 +212,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItem extends \ArrayObject
      */
     public function setCompanyRegistrationDate(string $companyRegistrationDate) : self
     {
+        $this->initialized['companyRegistrationDate'] = true;
         $this->companyRegistrationDate = $companyRegistrationDate;
         return $this;
     }
@@ -220,6 +234,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItem extends \ArrayObject
      */
     public function setLegalCount(int $legalCount) : self
     {
+        $this->initialized['legalCount'] = true;
         $this->legalCount = $legalCount;
         return $this;
     }
@@ -241,6 +256,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItem extends \ArrayObject
      */
     public function setCreditScore(GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScore $creditScore) : self
     {
+        $this->initialized['creditScore'] = true;
         $this->creditScore = $creditScore;
         return $this;
     }
@@ -262,6 +278,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItem extends \ArrayObject
      */
     public function setAdditionalData(GbPeopleReportReponseReportDirectorshipsCurrentItemAdditionalData $additionalData) : self
     {
+        $this->initialized['additionalData'] = true;
         $this->additionalData = $additionalData;
         return $this;
     }
@@ -283,6 +300,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItem extends \ArrayObject
      */
     public function setLatestTurnoverFigure(GbPeopleReportReponseReportDirectorshipsCurrentItemLatestTurnoverFigure $latestTurnoverFigure) : self
     {
+        $this->initialized['latestTurnoverFigure'] = true;
         $this->latestTurnoverFigure = $latestTurnoverFigure;
         return $this;
     }
@@ -304,6 +322,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItem extends \ArrayObject
      */
     public function setNetWorth(GbPeopleReportReponseReportDirectorshipsCurrentItemNetWorth $netWorth) : self
     {
+        $this->initialized['netWorth'] = true;
         $this->netWorth = $netWorth;
         return $this;
     }
@@ -325,6 +344,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItem extends \ArrayObject
      */
     public function setLegalAmount(GbPeopleReportReponseReportDirectorshipsCurrentItemLegalAmount $legalAmount) : self
     {
+        $this->initialized['legalAmount'] = true;
         $this->legalAmount = $legalAmount;
         return $this;
     }

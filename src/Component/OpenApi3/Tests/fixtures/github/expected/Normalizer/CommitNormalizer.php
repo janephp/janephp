@@ -135,10 +135,10 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['parents'] = $values;
-        if (null !== $object->getStats()) {
+        if ($object->isInitialized('stats') && null !== $object->getStats()) {
             $data['stats'] = $this->normalizer->normalize($object->getStats(), 'json', $context);
         }
-        if (null !== $object->getFiles()) {
+        if ($object->isInitialized('files') && null !== $object->getFiles()) {
             $values_1 = array();
             foreach ($object->getFiles() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

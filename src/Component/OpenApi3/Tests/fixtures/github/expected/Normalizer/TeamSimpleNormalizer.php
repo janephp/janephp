@@ -116,13 +116,13 @@ class TeamSimpleNormalizer implements DenormalizerInterface, NormalizerInterface
         $data['name'] = $object->getName();
         $data['description'] = $object->getDescription();
         $data['permission'] = $object->getPermission();
-        if (null !== $object->getPrivacy()) {
+        if ($object->isInitialized('privacy') && null !== $object->getPrivacy()) {
             $data['privacy'] = $object->getPrivacy();
         }
         $data['html_url'] = $object->getHtmlUrl();
         $data['repositories_url'] = $object->getRepositoriesUrl();
         $data['slug'] = $object->getSlug();
-        if (null !== $object->getLdapDn()) {
+        if ($object->isInitialized('ldapDn') && null !== $object->getLdapDn()) {
             $data['ldap_dn'] = $object->getLdapDn();
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoPullsPullNumberMergePutBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Title for the automatic commit message.
      *
      * @var string
@@ -46,6 +54,7 @@ class ReposOwnerRepoPullsPullNumberMergePutBody extends \ArrayObject
      */
     public function setCommitTitle(string $commitTitle) : self
     {
+        $this->initialized['commitTitle'] = true;
         $this->commitTitle = $commitTitle;
         return $this;
     }
@@ -67,6 +76,7 @@ class ReposOwnerRepoPullsPullNumberMergePutBody extends \ArrayObject
      */
     public function setCommitMessage(string $commitMessage) : self
     {
+        $this->initialized['commitMessage'] = true;
         $this->commitMessage = $commitMessage;
         return $this;
     }
@@ -88,6 +98,7 @@ class ReposOwnerRepoPullsPullNumberMergePutBody extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -109,6 +120,7 @@ class ReposOwnerRepoPullsPullNumberMergePutBody extends \ArrayObject
      */
     public function setMergeMethod(string $mergeMethod) : self
     {
+        $this->initialized['mergeMethod'] = true;
         $this->mergeMethod = $mergeMethod;
         return $this;
     }

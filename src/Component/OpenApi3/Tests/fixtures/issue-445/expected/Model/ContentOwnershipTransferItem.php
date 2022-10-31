@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentOwnershipTransferItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the user to whom the content ownership has to be transferred to.
      *
      * @var string
@@ -34,6 +42,7 @@ class ContentOwnershipTransferItem extends \ArrayObject
      */
     public function setTransferUserId(string $transferUserId) : self
     {
+        $this->initialized['transferUserId'] = true;
         $this->transferUserId = $transferUserId;
         return $this;
     }
@@ -55,6 +64,7 @@ class ContentOwnershipTransferItem extends \ArrayObject
      */
     public function setContentId(string $contentId) : self
     {
+        $this->initialized['contentId'] = true;
         $this->contentId = $contentId;
         return $this;
     }

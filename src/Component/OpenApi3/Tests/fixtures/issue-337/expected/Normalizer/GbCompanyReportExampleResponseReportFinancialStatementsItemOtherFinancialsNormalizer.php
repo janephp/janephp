@@ -72,13 +72,13 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getContingentLiabilities()) {
+        if ($object->isInitialized('contingentLiabilities') && null !== $object->getContingentLiabilities()) {
             $data['contingentLiabilities'] = $object->getContingentLiabilities();
         }
-        if (null !== $object->getWorkingCapital()) {
+        if ($object->isInitialized('workingCapital') && null !== $object->getWorkingCapital()) {
             $data['workingCapital'] = $object->getWorkingCapital();
         }
-        if (null !== $object->getNetWorth()) {
+        if ($object->isInitialized('netWorth') && null !== $object->getNetWorth()) {
             $data['netWorth'] = $object->getNetWorth();
         }
         foreach ($object as $key => $value) {

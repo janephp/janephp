@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class UserDetails extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ISO/Alpha 2 format country code for the user's country.
      *
      * @var string
@@ -82,6 +90,7 @@ class UserDetails extends \ArrayObject
      */
     public function setCountryCode(string $countryCode) : self
     {
+        $this->initialized['countryCode'] = true;
         $this->countryCode = $countryCode;
         return $this;
     }
@@ -103,6 +112,7 @@ class UserDetails extends \ArrayObject
      */
     public function setCreatedDate(\DateTime $createdDate) : self
     {
+        $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
         return $this;
     }
@@ -124,6 +134,7 @@ class UserDetails extends \ArrayObject
      */
     public function setCsCustomerId(float $csCustomerId) : self
     {
+        $this->initialized['csCustomerId'] = true;
         $this->csCustomerId = $csCustomerId;
         return $this;
     }
@@ -145,6 +156,7 @@ class UserDetails extends \ArrayObject
      */
     public function setCsUserId(float $csUserId) : self
     {
+        $this->initialized['csUserId'] = true;
         $this->csUserId = $csUserId;
         return $this;
     }
@@ -166,6 +178,7 @@ class UserDetails extends \ArrayObject
      */
     public function setIsAutoTracker(bool $isAutoTracker) : self
     {
+        $this->initialized['isAutoTracker'] = true;
         $this->isAutoTracker = $isAutoTracker;
         return $this;
     }
@@ -187,6 +200,7 @@ class UserDetails extends \ArrayObject
      */
     public function setLanguageCode(string $languageCode) : self
     {
+        $this->initialized['languageCode'] = true;
         $this->languageCode = $languageCode;
         return $this;
     }
@@ -208,6 +222,7 @@ class UserDetails extends \ArrayObject
      */
     public function setLastAccessDate(\DateTime $lastAccessDate) : self
     {
+        $this->initialized['lastAccessDate'] = true;
         $this->lastAccessDate = $lastAccessDate;
         return $this;
     }
@@ -229,6 +244,7 @@ class UserDetails extends \ArrayObject
      */
     public function setModifiedDate(\DateTime $modifiedDate) : self
     {
+        $this->initialized['modifiedDate'] = true;
         $this->modifiedDate = $modifiedDate;
         return $this;
     }
@@ -250,6 +266,7 @@ class UserDetails extends \ArrayObject
      */
     public function setContractEndDate(\DateTime $contractEndDate) : self
     {
+        $this->initialized['contractEndDate'] = true;
         $this->contractEndDate = $contractEndDate;
         return $this;
     }
@@ -271,6 +288,7 @@ class UserDetails extends \ArrayObject
      */
     public function setUserId(float $userId) : self
     {
+        $this->initialized['userId'] = true;
         $this->userId = $userId;
         return $this;
     }

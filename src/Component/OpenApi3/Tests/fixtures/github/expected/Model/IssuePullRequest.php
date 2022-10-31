@@ -5,6 +5,14 @@ namespace Github\Model;
 class IssuePullRequest extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var \DateTime|null
@@ -52,6 +60,7 @@ class IssuePullRequest extends \ArrayObject
      */
     public function setMergedAt(?\DateTime $mergedAt) : self
     {
+        $this->initialized['mergedAt'] = true;
         $this->mergedAt = $mergedAt;
         return $this;
     }
@@ -73,6 +82,7 @@ class IssuePullRequest extends \ArrayObject
      */
     public function setDiffUrl(?string $diffUrl) : self
     {
+        $this->initialized['diffUrl'] = true;
         $this->diffUrl = $diffUrl;
         return $this;
     }
@@ -94,6 +104,7 @@ class IssuePullRequest extends \ArrayObject
      */
     public function setHtmlUrl(?string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -115,6 +126,7 @@ class IssuePullRequest extends \ArrayObject
      */
     public function setPatchUrl(?string $patchUrl) : self
     {
+        $this->initialized['patchUrl'] = true;
         $this->patchUrl = $patchUrl;
         return $this;
     }
@@ -136,6 +148,7 @@ class IssuePullRequest extends \ArrayObject
      */
     public function setUrl(?string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }

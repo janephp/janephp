@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UnassignLayerAction extends BusinessRuleAction
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the layer.
      *
      * @var string|null
@@ -28,6 +36,7 @@ class UnassignLayerAction extends BusinessRuleAction
      */
     public function setLayerId(?string $layerId) : self
     {
+        $this->initialized['layerId'] = true;
         $this->layerId = $layerId;
         return $this;
     }

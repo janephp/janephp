@@ -112,20 +112,20 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
         $data = array();
         $data['id'] = $object->getId();
         $data['name'] = $object->getName();
-        if (null !== $object->getIdentifier()) {
+        if ($object->isInitialized('identifier') && null !== $object->getIdentifier()) {
             $data['identifier'] = $object->getIdentifier();
         }
         $data['requestId'] = $object->getRequestId();
         $data['transferId'] = $object->getTransferId();
         $data['state'] = $object->getState();
-        if (null !== $object->getContentId()) {
+        if ($object->isInitialized('contentId') && null !== $object->getContentId()) {
             $data['contentId'] = $object->getContentId();
         }
         $data['audit'] = $object->getAudit();
-        if (null !== $object->getFileMetadata()) {
+        if ($object->isInitialized('fileMetadata') && null !== $object->getFileMetadata()) {
             $data['fileMetadata'] = $object->getFileMetadata();
         }
-        if (null !== $object->getOutputItems()) {
+        if ($object->isInitialized('outputItems') && null !== $object->getOutputItems()) {
             $values = array();
             foreach ($object->getOutputItems() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

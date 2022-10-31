@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoDispatchesPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * **Required:** A custom webhook event name.
      *
      * @var string
@@ -34,6 +42,7 @@ class ReposOwnerRepoDispatchesPostBody extends \ArrayObject
      */
     public function setEventType(string $eventType) : self
     {
+        $this->initialized['eventType'] = true;
         $this->eventType = $eventType;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReposOwnerRepoDispatchesPostBody extends \ArrayObject
      */
     public function setClientPayload(iterable $clientPayload) : self
     {
+        $this->initialized['clientPayload'] = true;
         $this->clientPayload = $clientPayload;
         return $this;
     }

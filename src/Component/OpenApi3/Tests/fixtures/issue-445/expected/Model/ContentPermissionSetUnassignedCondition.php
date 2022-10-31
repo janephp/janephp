@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentPermissionSetUnassignedCondition extends BusinessRuleCondition
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Permission set id to match on.
      *
      * @var string|null
@@ -28,6 +36,7 @@ class ContentPermissionSetUnassignedCondition extends BusinessRuleCondition
      */
     public function setPermissionSetId(?string $permissionSetId) : self
     {
+        $this->initialized['permissionSetId'] = true;
         $this->permissionSetId = $permissionSetId;
         return $this;
     }

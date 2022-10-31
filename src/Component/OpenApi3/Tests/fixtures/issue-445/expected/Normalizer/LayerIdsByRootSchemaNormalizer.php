@@ -65,10 +65,10 @@ class LayerIdsByRootSchemaNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRootSchemaId()) {
+        if ($object->isInitialized('rootSchemaId') && null !== $object->getRootSchemaId()) {
             $data['rootSchemaId'] = $object->getRootSchemaId();
         }
-        if (null !== $object->getLayerSchemaIds()) {
+        if ($object->isInitialized('layerSchemaIds') && null !== $object->getLayerSchemaIds()) {
             $values = array();
             foreach ($object->getLayerSchemaIds() as $value) {
                 $values[] = $value;

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class CustomerInfo
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The customer ID.
      *
      * @var string
@@ -106,6 +114,7 @@ class CustomerInfo
      */
     public function setCustomerId(string $customerId) : self
     {
+        $this->initialized['customerId'] = true;
         $this->customerId = $customerId;
         return $this;
     }
@@ -127,6 +136,7 @@ class CustomerInfo
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -148,6 +158,7 @@ class CustomerInfo
      */
     public function setCustomerAlias(string $customerAlias) : self
     {
+        $this->initialized['customerAlias'] = true;
         $this->customerAlias = $customerAlias;
         return $this;
     }
@@ -169,6 +180,7 @@ class CustomerInfo
      */
     public function setIdentityServerUrl(string $identityServerUrl) : self
     {
+        $this->initialized['identityServerUrl'] = true;
         $this->identityServerUrl = $identityServerUrl;
         return $this;
     }
@@ -190,6 +202,7 @@ class CustomerInfo
      */
     public function setApiUrl(string $apiUrl) : self
     {
+        $this->initialized['apiUrl'] = true;
         $this->apiUrl = $apiUrl;
         return $this;
     }
@@ -211,6 +224,7 @@ class CustomerInfo
      */
     public function setEnableQueryDetails(bool $enableQueryDetails) : self
     {
+        $this->initialized['enableQueryDetails'] = true;
         $this->enableQueryDetails = $enableQueryDetails;
         return $this;
     }
@@ -232,6 +246,7 @@ class CustomerInfo
      */
     public function setLanguageConfiguration($languageConfiguration) : self
     {
+        $this->initialized['languageConfiguration'] = true;
         $this->languageConfiguration = $languageConfiguration;
         return $this;
     }
@@ -253,6 +268,7 @@ class CustomerInfo
      */
     public function setLanguages(array $languages) : self
     {
+        $this->initialized['languages'] = true;
         $this->languages = $languages;
         return $this;
     }
@@ -274,6 +290,7 @@ class CustomerInfo
      */
     public function setOutputFormats(array $outputFormats) : self
     {
+        $this->initialized['outputFormats'] = true;
         $this->outputFormats = $outputFormats;
         return $this;
     }
@@ -295,6 +312,7 @@ class CustomerInfo
      */
     public function setBoostValues(array $boostValues) : self
     {
+        $this->initialized['boostValues'] = true;
         $this->boostValues = $boostValues;
         return $this;
     }
@@ -316,6 +334,7 @@ class CustomerInfo
      */
     public function setApps(?array $apps) : self
     {
+        $this->initialized['apps'] = true;
         $this->apps = $apps;
         return $this;
     }
@@ -337,6 +356,7 @@ class CustomerInfo
      */
     public function setModificationDate(\DateTime $modificationDate) : self
     {
+        $this->initialized['modificationDate'] = true;
         $this->modificationDate = $modificationDate;
         return $this;
     }
@@ -358,6 +378,7 @@ class CustomerInfo
      */
     public function setBaseUrl(string $baseUrl) : self
     {
+        $this->initialized['baseUrl'] = true;
         $this->baseUrl = $baseUrl;
         return $this;
     }
@@ -379,6 +400,7 @@ class CustomerInfo
      */
     public function setLogosUrl(string $logosUrl) : self
     {
+        $this->initialized['logosUrl'] = true;
         $this->logosUrl = $logosUrl;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class LatLon
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Latitude
      *
      * @var float
@@ -34,6 +42,7 @@ class LatLon
      */
     public function setLat(float $lat) : self
     {
+        $this->initialized['lat'] = true;
         $this->lat = $lat;
         return $this;
     }
@@ -55,6 +64,7 @@ class LatLon
      */
     public function setLon(float $lon) : self
     {
+        $this->initialized['lon'] = true;
         $this->lon = $lon;
         return $this;
     }

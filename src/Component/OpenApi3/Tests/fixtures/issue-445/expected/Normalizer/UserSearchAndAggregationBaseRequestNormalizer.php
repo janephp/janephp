@@ -100,28 +100,28 @@ class UserSearchAndAggregationBaseRequestNormalizer implements DenormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSearchString()) {
+        if ($object->isInitialized('searchString') && null !== $object->getSearchString()) {
             $data['searchString'] = $object->getSearchString();
         }
-        if (null !== $object->getSearchBehaviors()) {
+        if ($object->isInitialized('searchBehaviors') && null !== $object->getSearchBehaviors()) {
             $values = array();
             foreach ($object->getSearchBehaviors() as $value) {
                 $values[] = $value;
             }
             $data['searchBehaviors'] = $values;
         }
-        if (null !== $object->getFilter()) {
+        if ($object->isInitialized('filter') && null !== $object->getFilter()) {
             $data['filter'] = $object->getFilter();
         }
         $data['lifeCycleFilter'] = $object->getLifeCycleFilter();
-        if (null !== $object->getUserRightsFilter()) {
+        if ($object->isInitialized('userRightsFilter') && null !== $object->getUserRightsFilter()) {
             $values_1 = array();
             foreach ($object->getUserRightsFilter() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['userRightsFilter'] = $values_1;
         }
-        if (null !== $object->getAggregationFilters()) {
+        if ($object->isInitialized('aggregationFilters') && null !== $object->getAggregationFilters()) {
             $values_2 = array();
             foreach ($object->getAggregationFilters() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);

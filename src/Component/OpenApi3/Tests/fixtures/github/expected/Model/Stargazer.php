@@ -5,6 +5,14 @@ namespace Github\Model;
 class Stargazer extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var \DateTime
@@ -34,6 +42,7 @@ class Stargazer extends \ArrayObject
      */
     public function setStarredAt(\DateTime $starredAt) : self
     {
+        $this->initialized['starredAt'] = true;
         $this->starredAt = $starredAt;
         return $this;
     }
@@ -55,6 +64,7 @@ class Stargazer extends \ArrayObject
      */
     public function setUser(?StargazerUser $user) : self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
     }

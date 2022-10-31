@@ -88,35 +88,35 @@ class RegistryServiceConfigNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAllowNondistributableArtifactsCIDRs()) {
+        if ($object->isInitialized('allowNondistributableArtifactsCIDRs') && null !== $object->getAllowNondistributableArtifactsCIDRs()) {
             $values = array();
             foreach ($object->getAllowNondistributableArtifactsCIDRs() as $value) {
                 $values[] = $value;
             }
             $data['AllowNondistributableArtifactsCIDRs'] = $values;
         }
-        if (null !== $object->getAllowNondistributableArtifactsHostnames()) {
+        if ($object->isInitialized('allowNondistributableArtifactsHostnames') && null !== $object->getAllowNondistributableArtifactsHostnames()) {
             $values_1 = array();
             foreach ($object->getAllowNondistributableArtifactsHostnames() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['AllowNondistributableArtifactsHostnames'] = $values_1;
         }
-        if (null !== $object->getInsecureRegistryCIDRs()) {
+        if ($object->isInitialized('insecureRegistryCIDRs') && null !== $object->getInsecureRegistryCIDRs()) {
             $values_2 = array();
             foreach ($object->getInsecureRegistryCIDRs() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['InsecureRegistryCIDRs'] = $values_2;
         }
-        if (null !== $object->getIndexConfigs()) {
+        if ($object->isInitialized('indexConfigs') && null !== $object->getIndexConfigs()) {
             $values_3 = array();
             foreach ($object->getIndexConfigs() as $key => $value_3) {
                 $values_3[$key] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $data['IndexConfigs'] = $values_3;
         }
-        if (null !== $object->getMirrors()) {
+        if ($object->isInitialized('mirrors') && null !== $object->getMirrors()) {
             $values_4 = array();
             foreach ($object->getMirrors() as $value_4) {
                 $values_4[] = $value_4;

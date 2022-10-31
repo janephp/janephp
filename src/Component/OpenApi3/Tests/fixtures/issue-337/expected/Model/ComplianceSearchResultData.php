@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class ComplianceSearchResultData extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var ComplianceSearchResultDataBody
@@ -28,6 +36,7 @@ class ComplianceSearchResultData extends \ArrayObject
      */
     public function setBody(ComplianceSearchResultDataBody $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }

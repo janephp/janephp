@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class BuildCache
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -86,6 +94,7 @@ class BuildCache
      */
     public function setID(string $iD) : self
     {
+        $this->initialized['iD'] = true;
         $this->iD = $iD;
         return $this;
     }
@@ -107,6 +116,7 @@ class BuildCache
      */
     public function setParent(string $parent) : self
     {
+        $this->initialized['parent'] = true;
         $this->parent = $parent;
         return $this;
     }
@@ -128,6 +138,7 @@ class BuildCache
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -149,6 +160,7 @@ class BuildCache
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -170,6 +182,7 @@ class BuildCache
      */
     public function setInUse(bool $inUse) : self
     {
+        $this->initialized['inUse'] = true;
         $this->inUse = $inUse;
         return $this;
     }
@@ -191,6 +204,7 @@ class BuildCache
      */
     public function setShared(bool $shared) : self
     {
+        $this->initialized['shared'] = true;
         $this->shared = $shared;
         return $this;
     }
@@ -212,6 +226,7 @@ class BuildCache
      */
     public function setSize(int $size) : self
     {
+        $this->initialized['size'] = true;
         $this->size = $size;
         return $this;
     }
@@ -237,6 +252,7 @@ class BuildCache
     */
     public function setCreatedAt(string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -262,6 +278,7 @@ class BuildCache
     */
     public function setLastUsedAt(?string $lastUsedAt) : self
     {
+        $this->initialized['lastUsedAt'] = true;
         $this->lastUsedAt = $lastUsedAt;
         return $this;
     }
@@ -283,6 +300,7 @@ class BuildCache
      */
     public function setUsageCount(int $usageCount) : self
     {
+        $this->initialized['usageCount'] = true;
         $this->usageCount = $usageCount;
         return $this;
     }

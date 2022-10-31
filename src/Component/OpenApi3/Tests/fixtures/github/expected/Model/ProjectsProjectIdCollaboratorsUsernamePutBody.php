@@ -5,6 +5,14 @@ namespace Github\Model;
 class ProjectsProjectIdCollaboratorsUsernamePutBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The permission to grant the collaborator.
      *
      * @var string
@@ -28,6 +36,7 @@ class ProjectsProjectIdCollaboratorsUsernamePutBody extends \ArrayObject
      */
     public function setPermission(string $permission) : self
     {
+        $this->initialized['permission'] = true;
         $this->permission = $permission;
         return $this;
     }

@@ -68,19 +68,19 @@ class NodeDescriptionNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getHostname()) {
+        if ($object->isInitialized('hostname') && null !== $object->getHostname()) {
             $data['Hostname'] = $object->getHostname();
         }
-        if (null !== $object->getPlatform()) {
+        if ($object->isInitialized('platform') && null !== $object->getPlatform()) {
             $data['Platform'] = $this->normalizer->normalize($object->getPlatform(), 'json', $context);
         }
-        if (null !== $object->getResources()) {
+        if ($object->isInitialized('resources') && null !== $object->getResources()) {
             $data['Resources'] = $this->normalizer->normalize($object->getResources(), 'json', $context);
         }
-        if (null !== $object->getEngine()) {
+        if ($object->isInitialized('engine') && null !== $object->getEngine()) {
             $data['Engine'] = $this->normalizer->normalize($object->getEngine(), 'json', $context);
         }
-        if (null !== $object->getTLSInfo()) {
+        if ($object->isInitialized('tLSInfo') && null !== $object->getTLSInfo()) {
             $data['TLSInfo'] = $this->normalizer->normalize($object->getTLSInfo(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

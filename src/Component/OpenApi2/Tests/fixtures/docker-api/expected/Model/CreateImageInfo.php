@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class CreateImageInfo
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class CreateImageInfo
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -73,6 +82,7 @@ class CreateImageInfo
      */
     public function setError(string $error) : self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
         return $this;
     }
@@ -94,6 +104,7 @@ class CreateImageInfo
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -115,6 +126,7 @@ class CreateImageInfo
      */
     public function setProgress(string $progress) : self
     {
+        $this->initialized['progress'] = true;
         $this->progress = $progress;
         return $this;
     }
@@ -136,6 +148,7 @@ class CreateImageInfo
      */
     public function setProgressDetail(ProgressDetail $progressDetail) : self
     {
+        $this->initialized['progressDetail'] = true;
         $this->progressDetail = $progressDetail;
         return $this;
     }

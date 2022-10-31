@@ -100,21 +100,21 @@ class CredentialAuthorizationNormalizer implements DenormalizerInterface, Normal
         $data['login'] = $object->getLogin();
         $data['credential_id'] = $object->getCredentialId();
         $data['credential_type'] = $object->getCredentialType();
-        if (null !== $object->getTokenLastEight()) {
+        if ($object->isInitialized('tokenLastEight') && null !== $object->getTokenLastEight()) {
             $data['token_last_eight'] = $object->getTokenLastEight();
         }
         $data['credential_authorized_at'] = $object->getCredentialAuthorizedAt()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getScopes()) {
+        if ($object->isInitialized('scopes') && null !== $object->getScopes()) {
             $values = array();
             foreach ($object->getScopes() as $value) {
                 $values[] = $value;
             }
             $data['scopes'] = $values;
         }
-        if (null !== $object->getFingerprint()) {
+        if ($object->isInitialized('fingerprint') && null !== $object->getFingerprint()) {
             $data['fingerprint'] = $object->getFingerprint();
         }
-        if (null !== $object->getCredentialAccessedAt()) {
+        if ($object->isInitialized('credentialAccessedAt') && null !== $object->getCredentialAccessedAt()) {
             $data['credential_accessed_at'] = $object->getCredentialAccessedAt()->format('Y-m-d\\TH:i:sP');
         }
         foreach ($object as $key => $value_1) {

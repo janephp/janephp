@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class UrlEntity extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Index (zero-based) at which position this entity starts.
      *
      * @var int
@@ -76,6 +84,7 @@ class UrlEntity extends \ArrayObject
      */
     public function setStart(int $start) : self
     {
+        $this->initialized['start'] = true;
         $this->start = $start;
         return $this;
     }
@@ -97,6 +106,7 @@ class UrlEntity extends \ArrayObject
      */
     public function setEnd(int $end) : self
     {
+        $this->initialized['end'] = true;
         $this->end = $end;
         return $this;
     }
@@ -118,6 +128,7 @@ class UrlEntity extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -139,6 +150,7 @@ class UrlEntity extends \ArrayObject
      */
     public function setExpandedUrl(string $expandedUrl) : self
     {
+        $this->initialized['expandedUrl'] = true;
         $this->expandedUrl = $expandedUrl;
         return $this;
     }
@@ -160,6 +172,7 @@ class UrlEntity extends \ArrayObject
      */
     public function setDisplayUrl(string $displayUrl) : self
     {
+        $this->initialized['displayUrl'] = true;
         $this->displayUrl = $displayUrl;
         return $this;
     }
@@ -181,6 +194,7 @@ class UrlEntity extends \ArrayObject
      */
     public function setStatus(int $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -202,6 +216,7 @@ class UrlEntity extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -223,6 +238,7 @@ class UrlEntity extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -244,6 +260,7 @@ class UrlEntity extends \ArrayObject
      */
     public function setImages(array $images) : self
     {
+        $this->initialized['images'] = true;
         $this->images = $images;
         return $this;
     }

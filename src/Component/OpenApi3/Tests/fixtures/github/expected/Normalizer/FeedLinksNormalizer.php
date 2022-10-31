@@ -96,22 +96,22 @@ class FeedLinksNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data = array();
         $data['timeline'] = $this->normalizer->normalize($object->getTimeline(), 'json', $context);
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
-        if (null !== $object->getSecurityAdvisories()) {
+        if ($object->isInitialized('securityAdvisories') && null !== $object->getSecurityAdvisories()) {
             $data['security_advisories'] = $this->normalizer->normalize($object->getSecurityAdvisories(), 'json', $context);
         }
-        if (null !== $object->getCurrentUser()) {
+        if ($object->isInitialized('currentUser') && null !== $object->getCurrentUser()) {
             $data['current_user'] = $this->normalizer->normalize($object->getCurrentUser(), 'json', $context);
         }
-        if (null !== $object->getCurrentUserPublic()) {
+        if ($object->isInitialized('currentUserPublic') && null !== $object->getCurrentUserPublic()) {
             $data['current_user_public'] = $this->normalizer->normalize($object->getCurrentUserPublic(), 'json', $context);
         }
-        if (null !== $object->getCurrentUserActor()) {
+        if ($object->isInitialized('currentUserActor') && null !== $object->getCurrentUserActor()) {
             $data['current_user_actor'] = $this->normalizer->normalize($object->getCurrentUserActor(), 'json', $context);
         }
-        if (null !== $object->getCurrentUserOrganization()) {
+        if ($object->isInitialized('currentUserOrganization') && null !== $object->getCurrentUserOrganization()) {
             $data['current_user_organization'] = $this->normalizer->normalize($object->getCurrentUserOrganization(), 'json', $context);
         }
-        if (null !== $object->getCurrentUserOrganizations()) {
+        if ($object->isInitialized('currentUserOrganizations') && null !== $object->getCurrentUserOrganizations()) {
             $values = array();
             foreach ($object->getCurrentUserOrganizations() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

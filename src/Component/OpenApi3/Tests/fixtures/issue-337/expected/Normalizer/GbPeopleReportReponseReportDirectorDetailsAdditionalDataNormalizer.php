@@ -62,10 +62,10 @@ class GbPeopleReportReponseReportDirectorDetailsAdditionalDataNormalizer impleme
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDisqualified()) {
+        if ($object->isInitialized('disqualified') && null !== $object->getDisqualified()) {
             $data['disqualified'] = $object->getDisqualified();
         }
-        if (null !== $object->getDisqualifiedException()) {
+        if ($object->isInitialized('disqualifiedException') && null !== $object->getDisqualifiedException()) {
             $data['disqualifiedException'] = $object->getDisqualifiedException();
         }
         foreach ($object as $key => $value) {

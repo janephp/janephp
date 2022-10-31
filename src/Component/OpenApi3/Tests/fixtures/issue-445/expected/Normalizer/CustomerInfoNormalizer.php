@@ -132,7 +132,7 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
             $values_2[] = $value_2;
         }
         $data['boostValues'] = $values_2;
-        if (null !== $object->getApps()) {
+        if ($object->isInitialized('apps') && null !== $object->getApps()) {
             $values_3 = array();
             foreach ($object->getApps() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);

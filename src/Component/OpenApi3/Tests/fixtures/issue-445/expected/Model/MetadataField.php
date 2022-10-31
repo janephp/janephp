@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class MetadataField
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Path to the field in metadata.
      *
      * @var string
@@ -47,6 +55,7 @@ class MetadataField
      */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -70,6 +79,7 @@ class MetadataField
     */
     public function setIsWritable(bool $isWritable) : self
     {
+        $this->initialized['isWritable'] = true;
         $this->isWritable = $isWritable;
         return $this;
     }
@@ -91,6 +101,7 @@ class MetadataField
      */
     public function setDataType($dataType) : self
     {
+        $this->initialized['dataType'] = true;
         $this->dataType = $dataType;
         return $this;
     }
@@ -112,6 +123,7 @@ class MetadataField
      */
     public function setAvailableKeyFields(?array $availableKeyFields) : self
     {
+        $this->initialized['availableKeyFields'] = true;
         $this->availableKeyFields = $availableKeyFields;
         return $this;
     }

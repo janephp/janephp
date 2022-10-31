@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class IndexField
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -77,6 +85,7 @@ class IndexField
      */
     public function setId(?string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -98,6 +107,7 @@ class IndexField
      */
     public function setFieldId(?string $fieldId) : self
     {
+        $this->initialized['fieldId'] = true;
         $this->fieldId = $fieldId;
         return $this;
     }
@@ -119,6 +129,7 @@ class IndexField
      */
     public function setType(?string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -140,6 +151,7 @@ class IndexField
      */
     public function setIndexFields(?iterable $indexFields) : self
     {
+        $this->initialized['indexFields'] = true;
         $this->indexFields = $indexFields;
         return $this;
     }
@@ -163,6 +175,7 @@ class IndexField
     */
     public function setSimpleSearchFields(?iterable $simpleSearchFields) : self
     {
+        $this->initialized['simpleSearchFields'] = true;
         $this->simpleSearchFields = $simpleSearchFields;
         return $this;
     }
@@ -184,6 +197,7 @@ class IndexField
      */
     public function setBoost(float $boost) : self
     {
+        $this->initialized['boost'] = true;
         $this->boost = $boost;
         return $this;
     }
@@ -205,6 +219,7 @@ class IndexField
      */
     public function setIgnoreForSearch(bool $ignoreForSearch) : self
     {
+        $this->initialized['ignoreForSearch'] = true;
         $this->ignoreForSearch = $ignoreForSearch;
         return $this;
     }
@@ -226,6 +241,7 @@ class IndexField
      */
     public function setNestedPath(?string $nestedPath) : self
     {
+        $this->initialized['nestedPath'] = true;
         $this->nestedPath = $nestedPath;
         return $this;
     }
@@ -247,6 +263,7 @@ class IndexField
      */
     public function setSortField(?string $sortField) : self
     {
+        $this->initialized['sortField'] = true;
         $this->sortField = $sortField;
         return $this;
     }

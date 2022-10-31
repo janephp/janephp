@@ -92,7 +92,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictionsNormalizer implem
             $values_1[] = $value_1;
         }
         $data['teams'] = $values_1;
-        if (null !== $object->getApps()) {
+        if ($object->isInitialized('apps') && null !== $object->getApps()) {
             $values_2 = array();
             foreach ($object->getApps() as $value_2) {
                 $values_2[] = $value_2;

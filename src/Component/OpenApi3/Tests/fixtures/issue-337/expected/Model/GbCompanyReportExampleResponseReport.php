@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReport extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -118,6 +126,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
      */
     public function setCompanyId(string $companyId) : self
     {
+        $this->initialized['companyId'] = true;
         $this->companyId = $companyId;
         return $this;
     }
@@ -139,6 +148,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
      */
     public function setLanguage(string $language) : self
     {
+        $this->initialized['language'] = true;
         $this->language = $language;
         return $this;
     }
@@ -160,6 +170,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
      */
     public function setCompanySummary(GbCompanyReportExampleResponseReportCompanySummary $companySummary) : self
     {
+        $this->initialized['companySummary'] = true;
         $this->companySummary = $companySummary;
         return $this;
     }
@@ -181,6 +192,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
      */
     public function setCompanyIdentification(GbCompanyReportExampleResponseReportCompanyIdentification $companyIdentification) : self
     {
+        $this->initialized['companyIdentification'] = true;
         $this->companyIdentification = $companyIdentification;
         return $this;
     }
@@ -202,6 +214,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
      */
     public function setCreditScore(GbCompanyReportExampleResponseReportCreditScore $creditScore) : self
     {
+        $this->initialized['creditScore'] = true;
         $this->creditScore = $creditScore;
         return $this;
     }
@@ -223,6 +236,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
      */
     public function setContactInformation(GbCompanyReportExampleResponseReportContactInformation $contactInformation) : self
     {
+        $this->initialized['contactInformation'] = true;
         $this->contactInformation = $contactInformation;
         return $this;
     }
@@ -244,6 +258,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
      */
     public function setShareCapitalStructure(GbCompanyReportExampleResponseReportShareCapitalStructure $shareCapitalStructure) : self
     {
+        $this->initialized['shareCapitalStructure'] = true;
         $this->shareCapitalStructure = $shareCapitalStructure;
         return $this;
     }
@@ -265,6 +280,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
      */
     public function setDirectors(GbCompanyReportExampleResponseReportDirectors $directors) : self
     {
+        $this->initialized['directors'] = true;
         $this->directors = $directors;
         return $this;
     }
@@ -286,6 +302,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
      */
     public function setOtherInformation(GbCompanyReportExampleResponseReportOtherInformation $otherInformation) : self
     {
+        $this->initialized['otherInformation'] = true;
         $this->otherInformation = $otherInformation;
         return $this;
     }
@@ -307,6 +324,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
      */
     public function setGroupStructure(GbCompanyReportExampleResponseReportGroupStructure $groupStructure) : self
     {
+        $this->initialized['groupStructure'] = true;
         $this->groupStructure = $groupStructure;
         return $this;
     }
@@ -328,6 +346,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
      */
     public function setExtendedGroupStructure(array $extendedGroupStructure) : self
     {
+        $this->initialized['extendedGroupStructure'] = true;
         $this->extendedGroupStructure = $extendedGroupStructure;
         return $this;
     }
@@ -349,6 +368,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
      */
     public function setFinancialStatements(array $financialStatements) : self
     {
+        $this->initialized['financialStatements'] = true;
         $this->financialStatements = $financialStatements;
         return $this;
     }
@@ -370,6 +390,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
      */
     public function setLocalFinancialStatements(array $localFinancialStatements) : self
     {
+        $this->initialized['localFinancialStatements'] = true;
         $this->localFinancialStatements = $localFinancialStatements;
         return $this;
     }
@@ -391,6 +412,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
      */
     public function setPaymentData(GbCompanyReportExampleResponseReportPaymentData $paymentData) : self
     {
+        $this->initialized['paymentData'] = true;
         $this->paymentData = $paymentData;
         return $this;
     }
@@ -412,6 +434,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
      */
     public function setNegativeInformation(GbCompanyReportExampleResponseReportNegativeInformation $negativeInformation) : self
     {
+        $this->initialized['negativeInformation'] = true;
         $this->negativeInformation = $negativeInformation;
         return $this;
     }
@@ -433,6 +456,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
      */
     public function setAdditionalInformation(GbCompanyReportExampleResponseReportAdditionalInformation $additionalInformation) : self
     {
+        $this->initialized['additionalInformation'] = true;
         $this->additionalInformation = $additionalInformation;
         return $this;
     }

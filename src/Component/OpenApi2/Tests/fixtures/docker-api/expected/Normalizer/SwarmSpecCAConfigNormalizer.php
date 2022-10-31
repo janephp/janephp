@@ -72,23 +72,23 @@ class SwarmSpecCAConfigNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNodeCertExpiry()) {
+        if ($object->isInitialized('nodeCertExpiry') && null !== $object->getNodeCertExpiry()) {
             $data['NodeCertExpiry'] = $object->getNodeCertExpiry();
         }
-        if (null !== $object->getExternalCAs()) {
+        if ($object->isInitialized('externalCAs') && null !== $object->getExternalCAs()) {
             $values = array();
             foreach ($object->getExternalCAs() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['ExternalCAs'] = $values;
         }
-        if (null !== $object->getSigningCACert()) {
+        if ($object->isInitialized('signingCACert') && null !== $object->getSigningCACert()) {
             $data['SigningCACert'] = $object->getSigningCACert();
         }
-        if (null !== $object->getSigningCAKey()) {
+        if ($object->isInitialized('signingCAKey') && null !== $object->getSigningCAKey()) {
             $data['SigningCAKey'] = $object->getSigningCAKey();
         }
-        if (null !== $object->getForceRotate()) {
+        if ($object->isInitialized('forceRotate') && null !== $object->getForceRotate()) {
             $data['ForceRotate'] = $object->getForceRotate();
         }
         if (!($context['skip_validation'] ?? false)) {

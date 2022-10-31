@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class MountPoint
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -70,6 +78,7 @@ class MountPoint
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -91,6 +100,7 @@ class MountPoint
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -112,6 +122,7 @@ class MountPoint
      */
     public function setSource(string $source) : self
     {
+        $this->initialized['source'] = true;
         $this->source = $source;
         return $this;
     }
@@ -133,6 +144,7 @@ class MountPoint
      */
     public function setDestination(string $destination) : self
     {
+        $this->initialized['destination'] = true;
         $this->destination = $destination;
         return $this;
     }
@@ -154,6 +166,7 @@ class MountPoint
      */
     public function setDriver(string $driver) : self
     {
+        $this->initialized['driver'] = true;
         $this->driver = $driver;
         return $this;
     }
@@ -175,6 +188,7 @@ class MountPoint
      */
     public function setMode(string $mode) : self
     {
+        $this->initialized['mode'] = true;
         $this->mode = $mode;
         return $this;
     }
@@ -196,6 +210,7 @@ class MountPoint
      */
     public function setRW(bool $rW) : self
     {
+        $this->initialized['rW'] = true;
         $this->rW = $rW;
         return $this;
     }
@@ -217,6 +232,7 @@ class MountPoint
      */
     public function setPropagation(string $propagation) : self
     {
+        $this->initialized['propagation'] = true;
         $this->propagation = $propagation;
         return $this;
     }

@@ -113,17 +113,17 @@ class SchemaSearchRequestNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSearchString()) {
+        if ($object->isInitialized('searchString') && null !== $object->getSearchString()) {
             $data['searchString'] = $object->getSearchString();
         }
-        if (null !== $object->getSearchBehaviors()) {
+        if ($object->isInitialized('searchBehaviors') && null !== $object->getSearchBehaviors()) {
             $values = array();
             foreach ($object->getSearchBehaviors() as $value) {
                 $values[] = $value;
             }
             $data['searchBehaviors'] = $values;
         }
-        if (null !== $object->getSort()) {
+        if ($object->isInitialized('sort') && null !== $object->getSort()) {
             $values_1 = array();
             foreach ($object->getSort() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
@@ -131,21 +131,21 @@ class SchemaSearchRequestNormalizer implements DenormalizerInterface, Normalizer
             $data['sort'] = $values_1;
         }
         $data['limit'] = $object->getLimit();
-        if (null !== $object->getPageToken()) {
+        if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
             $data['pageToken'] = $object->getPageToken();
         }
-        if (null !== $object->getFilter()) {
+        if ($object->isInitialized('filter') && null !== $object->getFilter()) {
             $data['filter'] = $object->getFilter();
         }
         $data['debugMode'] = $object->getDebugMode();
-        if (null !== $object->getSearchLanguages()) {
+        if ($object->isInitialized('searchLanguages') && null !== $object->getSearchLanguages()) {
             $values_2 = array();
             foreach ($object->getSearchLanguages() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['searchLanguages'] = $values_2;
         }
-        if (null !== $object->getRightsFilter()) {
+        if ($object->isInitialized('rightsFilter') && null !== $object->getRightsFilter()) {
             $values_3 = array();
             foreach ($object->getRightsFilter() as $value_3) {
                 $values_3[] = $value_3;

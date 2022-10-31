@@ -5,6 +5,14 @@ namespace ApiPlatform\Demo\Model;
 class BookJsonhalLinks extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var BookJsonhalLinksSelf
@@ -28,6 +36,7 @@ class BookJsonhalLinks extends \ArrayObject
      */
     public function setSelf(BookJsonhalLinksSelf $self) : self
     {
+        $this->initialized['self'] = true;
         $this->self = $self;
         return $this;
     }

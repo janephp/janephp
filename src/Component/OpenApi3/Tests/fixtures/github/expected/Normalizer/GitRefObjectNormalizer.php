@@ -70,13 +70,13 @@ class GitRefObjectNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getSha()) {
+        if ($object->isInitialized('sha') && null !== $object->getSha()) {
             $data['sha'] = $object->getSha();
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
         foreach ($object as $key => $value) {

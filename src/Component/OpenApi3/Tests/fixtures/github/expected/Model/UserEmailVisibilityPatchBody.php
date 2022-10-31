@@ -5,6 +5,14 @@ namespace Github\Model;
 class UserEmailVisibilityPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * An email address associated with the GitHub user account to manage.
      *
      * @var string
@@ -34,6 +42,7 @@ class UserEmailVisibilityPatchBody extends \ArrayObject
      */
     public function setEmail(string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -55,6 +64,7 @@ class UserEmailVisibilityPatchBody extends \ArrayObject
      */
     public function setVisibility(string $visibility) : self
     {
+        $this->initialized['visibility'] = true;
         $this->visibility = $visibility;
         return $this;
     }

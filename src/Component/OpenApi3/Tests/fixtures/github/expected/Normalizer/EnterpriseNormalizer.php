@@ -110,11 +110,11 @@ class EnterpriseNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
         $data['html_url'] = $object->getHtmlUrl();
-        if (null !== $object->getWebsiteUrl()) {
+        if ($object->isInitialized('websiteUrl') && null !== $object->getWebsiteUrl()) {
             $data['website_url'] = $object->getWebsiteUrl();
         }
         $data['id'] = $object->getId();

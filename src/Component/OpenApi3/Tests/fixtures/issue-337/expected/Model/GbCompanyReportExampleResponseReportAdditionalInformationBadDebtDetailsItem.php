@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
      */
     public function setStatementDate(string $statementDate) : self
     {
+        $this->initialized['statementDate'] = true;
         $this->statementDate = $statementDate;
         return $this;
     }
@@ -67,6 +76,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
      */
     public function setRegistrationNumber(string $registrationNumber) : self
     {
+        $this->initialized['registrationNumber'] = true;
         $this->registrationNumber = $registrationNumber;
         return $this;
     }
@@ -88,6 +98,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
      */
     public function setCompanyName(string $companyName) : self
     {
+        $this->initialized['companyName'] = true;
         $this->companyName = $companyName;
         return $this;
     }
@@ -109,6 +120,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
      */
     public function setAmount(GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsItemAmount $amount) : self
     {
+        $this->initialized['amount'] = true;
         $this->amount = $amount;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class CommunityProfile extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -52,6 +60,7 @@ class CommunityProfile extends \ArrayObject
      */
     public function setHealthPercentage(int $healthPercentage) : self
     {
+        $this->initialized['healthPercentage'] = true;
         $this->healthPercentage = $healthPercentage;
         return $this;
     }
@@ -73,6 +82,7 @@ class CommunityProfile extends \ArrayObject
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -94,6 +104,7 @@ class CommunityProfile extends \ArrayObject
      */
     public function setDocumentation(?string $documentation) : self
     {
+        $this->initialized['documentation'] = true;
         $this->documentation = $documentation;
         return $this;
     }
@@ -115,6 +126,7 @@ class CommunityProfile extends \ArrayObject
      */
     public function setFiles(CommunityProfileFiles $files) : self
     {
+        $this->initialized['files'] = true;
         $this->files = $files;
         return $this;
     }
@@ -136,6 +148,7 @@ class CommunityProfile extends \ArrayObject
      */
     public function setUpdatedAt(?\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }

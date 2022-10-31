@@ -66,10 +66,10 @@ class PeopleSearchSuccessResultNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTotalSize()) {
+        if ($object->isInitialized('totalSize') && null !== $object->getTotalSize()) {
             $data['totalSize'] = $object->getTotalSize();
         }
-        if (null !== $object->getDirectors()) {
+        if ($object->isInitialized('directors') && null !== $object->getDirectors()) {
             $values = array();
             foreach ($object->getDirectors() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

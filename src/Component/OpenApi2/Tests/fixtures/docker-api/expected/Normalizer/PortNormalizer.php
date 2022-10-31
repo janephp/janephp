@@ -65,11 +65,11 @@ class PortNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getIP()) {
+        if ($object->isInitialized('iP') && null !== $object->getIP()) {
             $data['IP'] = $object->getIP();
         }
         $data['PrivatePort'] = $object->getPrivatePort();
-        if (null !== $object->getPublicPort()) {
+        if ($object->isInitialized('publicPort') && null !== $object->getPublicPort()) {
             $data['PublicPort'] = $object->getPublicPort();
         }
         $data['Type'] = $object->getType();

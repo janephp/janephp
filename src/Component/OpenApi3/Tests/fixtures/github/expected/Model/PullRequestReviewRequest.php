@@ -5,6 +5,14 @@ namespace Github\Model;
 class PullRequestReviewRequest extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var PullRequestReviewRequestUsersItem[]
@@ -34,6 +42,7 @@ class PullRequestReviewRequest extends \ArrayObject
      */
     public function setUsers(array $users) : self
     {
+        $this->initialized['users'] = true;
         $this->users = $users;
         return $this;
     }
@@ -55,6 +64,7 @@ class PullRequestReviewRequest extends \ArrayObject
      */
     public function setTeams(array $teams) : self
     {
+        $this->initialized['teams'] = true;
         $this->teams = $teams;
         return $this;
     }

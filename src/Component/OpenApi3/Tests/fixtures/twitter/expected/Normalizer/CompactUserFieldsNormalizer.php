@@ -92,10 +92,10 @@ class CompactUserFieldsNormalizer implements DenormalizerInterface, NormalizerIn
         $data['username'] = $object->getUsername();
         $data['protected'] = $object->getProtected();
         $data['verified'] = $object->getVerified();
-        if (null !== $object->getWithheld()) {
+        if ($object->isInitialized('withheld') && null !== $object->getWithheld()) {
             $data['withheld'] = $this->normalizer->normalize($object->getWithheld(), 'json', $context);
         }
-        if (null !== $object->getProfileImageUrl()) {
+        if ($object->isInitialized('profileImageUrl') && null !== $object->getProfileImageUrl()) {
             $data['profile_image_url'] = $object->getProfileImageUrl();
         }
         foreach ($object as $key => $value) {

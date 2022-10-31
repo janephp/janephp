@@ -5,6 +5,14 @@ namespace Github\Model;
 class ThreadSubscription extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -64,6 +72,7 @@ class ThreadSubscription extends \ArrayObject
      */
     public function setSubscribed(bool $subscribed) : self
     {
+        $this->initialized['subscribed'] = true;
         $this->subscribed = $subscribed;
         return $this;
     }
@@ -85,6 +94,7 @@ class ThreadSubscription extends \ArrayObject
      */
     public function setIgnored(bool $ignored) : self
     {
+        $this->initialized['ignored'] = true;
         $this->ignored = $ignored;
         return $this;
     }
@@ -106,6 +116,7 @@ class ThreadSubscription extends \ArrayObject
      */
     public function setReason(?string $reason) : self
     {
+        $this->initialized['reason'] = true;
         $this->reason = $reason;
         return $this;
     }
@@ -127,6 +138,7 @@ class ThreadSubscription extends \ArrayObject
      */
     public function setCreatedAt(?\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -148,6 +160,7 @@ class ThreadSubscription extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -169,6 +182,7 @@ class ThreadSubscription extends \ArrayObject
      */
     public function setThreadUrl(string $threadUrl) : self
     {
+        $this->initialized['threadUrl'] = true;
         $this->threadUrl = $threadUrl;
         return $this;
     }
@@ -190,6 +204,7 @@ class ThreadSubscription extends \ArrayObject
      */
     public function setRepositoryUrl(string $repositoryUrl) : self
     {
+        $this->initialized['repositoryUrl'] = true;
         $this->repositoryUrl = $repositoryUrl;
         return $this;
     }

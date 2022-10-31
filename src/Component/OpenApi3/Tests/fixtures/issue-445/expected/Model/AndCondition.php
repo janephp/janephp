@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class AndCondition extends BusinessRuleCondition
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The conditions.
      *
      * @var BusinessRuleCondition[]|null
@@ -28,6 +36,7 @@ class AndCondition extends BusinessRuleCondition
      */
     public function setConditions(?array $conditions) : self
     {
+        $this->initialized['conditions'] = true;
         $this->conditions = $conditions;
         return $this;
     }

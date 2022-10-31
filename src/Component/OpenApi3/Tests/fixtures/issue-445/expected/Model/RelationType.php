@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class RelationType
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the relation type.
      *
      * @var string
@@ -46,6 +54,7 @@ class RelationType
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -67,6 +76,7 @@ class RelationType
      */
     public function setNames($names) : self
     {
+        $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }
@@ -88,6 +98,7 @@ class RelationType
      */
     public function setTargetDocType(string $targetDocType) : self
     {
+        $this->initialized['targetDocType'] = true;
         $this->targetDocType = $targetDocType;
         return $this;
     }
@@ -109,6 +120,7 @@ class RelationType
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }

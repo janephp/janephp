@@ -89,28 +89,28 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItemNormalizer i
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getCountry()) {
+        if ($object->isInitialized('country') && null !== $object->getCountry()) {
             $data['country'] = $object->getCountry();
         }
-        if (null !== $object->getSafeNumber()) {
+        if ($object->isInitialized('safeNumber') && null !== $object->getSafeNumber()) {
             $data['safeNumber'] = $object->getSafeNumber();
         }
-        if (null !== $object->getCompanyName()) {
+        if ($object->isInitialized('companyName') && null !== $object->getCompanyName()) {
             $data['companyName'] = $object->getCompanyName();
         }
-        if (null !== $object->getRegisteredNumber()) {
+        if ($object->isInitialized('registeredNumber') && null !== $object->getRegisteredNumber()) {
             $data['registeredNumber'] = $object->getRegisteredNumber();
         }
-        if (null !== $object->getLatestAnnualAccounts()) {
+        if ($object->isInitialized('latestAnnualAccounts') && null !== $object->getLatestAnnualAccounts()) {
             $data['latestAnnualAccounts'] = $object->getLatestAnnualAccounts();
         }
-        if (null !== $object->getLevel()) {
+        if ($object->isInitialized('level') && null !== $object->getLevel()) {
             $data['level'] = $object->getLevel();
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
         foreach ($object as $key => $value) {

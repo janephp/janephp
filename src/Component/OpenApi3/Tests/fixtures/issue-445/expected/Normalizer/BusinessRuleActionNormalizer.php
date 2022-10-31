@@ -118,7 +118,7 @@ class BusinessRuleActionNormalizer implements DenormalizerInterface, NormalizerI
         if (null !== $object->getKind() and 'EnqueueTaggingAction' === $object->getKind()) {
             return $this->normalizer->normalize($object, $format, $context);
         }
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();

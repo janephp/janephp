@@ -62,10 +62,10 @@ class CreateFreshInvestigationRequestContactInfoCompanyNormalizer implements Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getNumber()) {
+        if ($object->isInitialized('number') && null !== $object->getNumber()) {
             $data['number'] = $object->getNumber();
         }
         foreach ($object as $key => $value) {

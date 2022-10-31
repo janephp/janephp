@@ -70,7 +70,7 @@ class BusinessProcessDetailsDataContentImportNormalizer implements DenormalizerI
     {
         $data = array();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getItems()) {
+        if ($object->isInitialized('items') && null !== $object->getItems()) {
             $values = array();
             foreach ($object->getItems() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

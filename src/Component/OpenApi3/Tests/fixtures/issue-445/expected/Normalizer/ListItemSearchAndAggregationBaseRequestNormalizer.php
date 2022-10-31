@@ -110,20 +110,20 @@ class ListItemSearchAndAggregationBaseRequestNormalizer implements DenormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSearchString()) {
+        if ($object->isInitialized('searchString') && null !== $object->getSearchString()) {
             $data['searchString'] = $object->getSearchString();
         }
-        if (null !== $object->getSearchBehaviors()) {
+        if ($object->isInitialized('searchBehaviors') && null !== $object->getSearchBehaviors()) {
             $values = array();
             foreach ($object->getSearchBehaviors() as $value) {
                 $values[] = $value;
             }
             $data['searchBehaviors'] = $values;
         }
-        if (null !== $object->getFilter()) {
+        if ($object->isInitialized('filter') && null !== $object->getFilter()) {
             $data['filter'] = $object->getFilter();
         }
-        if (null !== $object->getAggregationFilters()) {
+        if ($object->isInitialized('aggregationFilters') && null !== $object->getAggregationFilters()) {
             $values_1 = array();
             foreach ($object->getAggregationFilters() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
@@ -132,14 +132,14 @@ class ListItemSearchAndAggregationBaseRequestNormalizer implements DenormalizerI
         }
         $data['includeAllSchemaChildren'] = $object->getIncludeAllSchemaChildren();
         $data['brokenDependenciesFilter'] = $object->getBrokenDependenciesFilter();
-        if (null !== $object->getSchemaIds()) {
+        if ($object->isInitialized('schemaIds') && null !== $object->getSchemaIds()) {
             $values_2 = array();
             foreach ($object->getSchemaIds() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['schemaIds'] = $values_2;
         }
-        if (null !== $object->getSearchLanguages()) {
+        if ($object->isInitialized('searchLanguages') && null !== $object->getSearchLanguages()) {
             $values_3 = array();
             foreach ($object->getSearchLanguages() as $value_3) {
                 $values_3[] = $value_3;

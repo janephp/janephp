@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class EmptySpace extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -28,6 +36,7 @@ class EmptySpace extends \ArrayObject
      */
     public function setStringProperty(string $stringProperty) : self
     {
+        $this->initialized['stringProperty'] = true;
         $this->stringProperty = $stringProperty;
         return $this;
     }

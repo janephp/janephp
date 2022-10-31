@@ -98,10 +98,10 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $data['Name'] = $object->getName();
         $data['Driver'] = $object->getDriver();
         $data['Mountpoint'] = $object->getMountpoint();
-        if (null !== $object->getCreatedAt()) {
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['CreatedAt'] = $object->getCreatedAt();
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $values = array();
             foreach ($object->getStatus() as $key => $value) {
                 $values[$key] = $value;
@@ -119,7 +119,7 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $values_2[$key_2] = $value_2;
         }
         $data['Options'] = $values_2;
-        if (null !== $object->getUsageData()) {
+        if ($object->isInitialized('usageData') && null !== $object->getUsageData()) {
             $data['UsageData'] = $this->normalizer->normalize($object->getUsageData(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

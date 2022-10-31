@@ -62,13 +62,13 @@ class LimitNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNanoCPUs()) {
+        if ($object->isInitialized('nanoCPUs') && null !== $object->getNanoCPUs()) {
             $data['NanoCPUs'] = $object->getNanoCPUs();
         }
-        if (null !== $object->getMemoryBytes()) {
+        if ($object->isInitialized('memoryBytes') && null !== $object->getMemoryBytes()) {
             $data['MemoryBytes'] = $object->getMemoryBytes();
         }
-        if (null !== $object->getPids()) {
+        if ($object->isInitialized('pids') && null !== $object->getPids()) {
             $data['Pids'] = $object->getPids();
         }
         if (!($context['skip_validation'] ?? false)) {

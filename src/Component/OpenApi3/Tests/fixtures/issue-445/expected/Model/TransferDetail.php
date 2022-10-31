@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class TransferDetail extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of transfer.
      *
      * @var string
@@ -118,6 +126,7 @@ class TransferDetail extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -139,6 +148,7 @@ class TransferDetail extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -160,6 +170,7 @@ class TransferDetail extends \ArrayObject
      */
     public function setState($state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -181,6 +192,7 @@ class TransferDetail extends \ArrayObject
      */
     public function setTransferType($transferType) : self
     {
+        $this->initialized['transferType'] = true;
         $this->transferType = $transferType;
         return $this;
     }
@@ -202,6 +214,7 @@ class TransferDetail extends \ArrayObject
      */
     public function setBusinessProcessId(?string $businessProcessId) : self
     {
+        $this->initialized['businessProcessId'] = true;
         $this->businessProcessId = $businessProcessId;
         return $this;
     }
@@ -223,6 +236,7 @@ class TransferDetail extends \ArrayObject
      */
     public function setFileTransferCount(int $fileTransferCount) : self
     {
+        $this->initialized['fileTransferCount'] = true;
         $this->fileTransferCount = $fileTransferCount;
         return $this;
     }
@@ -244,6 +258,7 @@ class TransferDetail extends \ArrayObject
      */
     public function setCollectionId(?string $collectionId) : self
     {
+        $this->initialized['collectionId'] = true;
         $this->collectionId = $collectionId;
         return $this;
     }
@@ -265,6 +280,7 @@ class TransferDetail extends \ArrayObject
      */
     public function setAudit($audit) : self
     {
+        $this->initialized['audit'] = true;
         $this->audit = $audit;
         return $this;
     }
@@ -286,6 +302,7 @@ class TransferDetail extends \ArrayObject
      */
     public function setItemProgress(int $itemProgress) : self
     {
+        $this->initialized['itemProgress'] = true;
         $this->itemProgress = $itemProgress;
         return $this;
     }
@@ -307,6 +324,7 @@ class TransferDetail extends \ArrayObject
      */
     public function setItemCount(int $itemCount) : self
     {
+        $this->initialized['itemCount'] = true;
         $this->itemCount = $itemCount;
         return $this;
     }
@@ -328,6 +346,7 @@ class TransferDetail extends \ArrayObject
      */
     public function setFileUploadInProgressCount(int $fileUploadInProgressCount) : self
     {
+        $this->initialized['fileUploadInProgressCount'] = true;
         $this->fileUploadInProgressCount = $fileUploadInProgressCount;
         return $this;
     }
@@ -349,6 +368,7 @@ class TransferDetail extends \ArrayObject
      */
     public function setDataExtractionInProgressCount(int $dataExtractionInProgressCount) : self
     {
+        $this->initialized['dataExtractionInProgressCount'] = true;
         $this->dataExtractionInProgressCount = $dataExtractionInProgressCount;
         return $this;
     }
@@ -370,6 +390,7 @@ class TransferDetail extends \ArrayObject
      */
     public function setItemsFailed(int $itemsFailed) : self
     {
+        $this->initialized['itemsFailed'] = true;
         $this->itemsFailed = $itemsFailed;
         return $this;
     }
@@ -391,6 +412,7 @@ class TransferDetail extends \ArrayObject
      */
     public function setItemsCancelled(int $itemsCancelled) : self
     {
+        $this->initialized['itemsCancelled'] = true;
         $this->itemsCancelled = $itemsCancelled;
         return $this;
     }
@@ -412,6 +434,7 @@ class TransferDetail extends \ArrayObject
      */
     public function setLastDataExtractionProgressTimeStamp(?\DateTime $lastDataExtractionProgressTimeStamp) : self
     {
+        $this->initialized['lastDataExtractionProgressTimeStamp'] = true;
         $this->lastDataExtractionProgressTimeStamp = $lastDataExtractionProgressTimeStamp;
         return $this;
     }
@@ -433,6 +456,7 @@ class TransferDetail extends \ArrayObject
      */
     public function setLastFileUploadProgressTimeStamp(?\DateTime $lastFileUploadProgressTimeStamp) : self
     {
+        $this->initialized['lastFileUploadProgressTimeStamp'] = true;
         $this->lastFileUploadProgressTimeStamp = $lastFileUploadProgressTimeStamp;
         return $this;
     }

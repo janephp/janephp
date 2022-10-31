@@ -69,20 +69,20 @@ class NodeSpecNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['Name'] = $object->getName();
         }
-        if (null !== $object->getLabels()) {
+        if ($object->isInitialized('labels') && null !== $object->getLabels()) {
             $values = array();
             foreach ($object->getLabels() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['Labels'] = $values;
         }
-        if (null !== $object->getRole()) {
+        if ($object->isInitialized('role') && null !== $object->getRole()) {
             $data['Role'] = $object->getRole();
         }
-        if (null !== $object->getAvailability()) {
+        if ($object->isInitialized('availability') && null !== $object->getAvailability()) {
             $data['Availability'] = $object->getAvailability();
         }
         if (!($context['skip_validation'] ?? false)) {

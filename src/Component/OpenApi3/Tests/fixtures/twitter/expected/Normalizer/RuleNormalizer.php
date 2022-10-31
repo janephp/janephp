@@ -67,10 +67,10 @@ class RuleNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     {
         $data = array();
         $data['value'] = $object->getValue();
-        if (null !== $object->getTag()) {
+        if ($object->isInitialized('tag') && null !== $object->getTag()) {
             $data['tag'] = $object->getTag();
         }
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
         foreach ($object as $key => $value) {

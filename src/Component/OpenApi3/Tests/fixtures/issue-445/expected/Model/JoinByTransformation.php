@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class JoinByTransformation extends BusinessRuleTransformation
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Separator to use.
      *
      * @var string|null
@@ -28,6 +36,7 @@ class JoinByTransformation extends BusinessRuleTransformation
      */
     public function setSeparator(?string $separator) : self
     {
+        $this->initialized['separator'] = true;
         $this->separator = $separator;
         return $this;
     }

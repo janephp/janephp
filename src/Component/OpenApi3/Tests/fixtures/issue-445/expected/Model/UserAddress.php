@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UserAddress
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Company address line
      *
      * @var string|null
@@ -70,6 +78,7 @@ class UserAddress
      */
     public function setCompany(?string $company) : self
     {
+        $this->initialized['company'] = true;
         $this->company = $company;
         return $this;
     }
@@ -91,6 +100,7 @@ class UserAddress
      */
     public function setDepartment(?string $department) : self
     {
+        $this->initialized['department'] = true;
         $this->department = $department;
         return $this;
     }
@@ -112,6 +122,7 @@ class UserAddress
      */
     public function setAddress(?string $address) : self
     {
+        $this->initialized['address'] = true;
         $this->address = $address;
         return $this;
     }
@@ -133,6 +144,7 @@ class UserAddress
      */
     public function setAlternativeAddress(?string $alternativeAddress) : self
     {
+        $this->initialized['alternativeAddress'] = true;
         $this->alternativeAddress = $alternativeAddress;
         return $this;
     }
@@ -154,6 +166,7 @@ class UserAddress
      */
     public function setZip(?string $zip) : self
     {
+        $this->initialized['zip'] = true;
         $this->zip = $zip;
         return $this;
     }
@@ -175,6 +188,7 @@ class UserAddress
      */
     public function setCity(?string $city) : self
     {
+        $this->initialized['city'] = true;
         $this->city = $city;
         return $this;
     }
@@ -196,6 +210,7 @@ class UserAddress
      */
     public function setPhone(?string $phone) : self
     {
+        $this->initialized['phone'] = true;
         $this->phone = $phone;
         return $this;
     }
@@ -217,6 +232,7 @@ class UserAddress
      */
     public function setCountryCode(?string $countryCode) : self
     {
+        $this->initialized['countryCode'] = true;
         $this->countryCode = $countryCode;
         return $this;
     }

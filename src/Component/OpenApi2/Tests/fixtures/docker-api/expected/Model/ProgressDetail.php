@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ProgressDetail
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -34,6 +42,7 @@ class ProgressDetail
      */
     public function setCurrent(int $current) : self
     {
+        $this->initialized['current'] = true;
         $this->current = $current;
         return $this;
     }
@@ -55,6 +64,7 @@ class ProgressDetail
      */
     public function setTotal(int $total) : self
     {
+        $this->initialized['total'] = true;
         $this->total = $total;
         return $this;
     }

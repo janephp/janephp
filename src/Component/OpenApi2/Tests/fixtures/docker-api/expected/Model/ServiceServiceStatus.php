@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ServiceServiceStatus
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The number of tasks for the service currently in the Running state.
      *
      * @var int
@@ -49,6 +57,7 @@ class ServiceServiceStatus
      */
     public function setRunningTasks(int $runningTasks) : self
     {
+        $this->initialized['runningTasks'] = true;
         $this->runningTasks = $runningTasks;
         return $this;
     }
@@ -80,6 +89,7 @@ class ServiceServiceStatus
     */
     public function setDesiredTasks(int $desiredTasks) : self
     {
+        $this->initialized['desiredTasks'] = true;
         $this->desiredTasks = $desiredTasks;
         return $this;
     }
@@ -109,6 +119,7 @@ class ServiceServiceStatus
     */
     public function setCompletedTasks(int $completedTasks) : self
     {
+        $this->initialized['completedTasks'] = true;
         $this->completedTasks = $completedTasks;
         return $this;
     }

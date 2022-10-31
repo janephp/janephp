@@ -75,21 +75,21 @@ class LanguageConfigurationNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSystemLanguages()) {
+        if ($object->isInitialized('systemLanguages') && null !== $object->getSystemLanguages()) {
             $values = array();
             foreach ($object->getSystemLanguages() as $value) {
                 $values[] = $value;
             }
             $data['systemLanguages'] = $values;
         }
-        if (null !== $object->getMetadataLanguages()) {
+        if ($object->isInitialized('metadataLanguages') && null !== $object->getMetadataLanguages()) {
             $values_1 = array();
             foreach ($object->getMetadataLanguages() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['metadataLanguages'] = $values_1;
         }
-        if (null !== $object->getDefaultLanguage()) {
+        if ($object->isInitialized('defaultLanguage') && null !== $object->getDefaultLanguage()) {
             $data['defaultLanguage'] = $object->getDefaultLanguage();
         }
         return $data;

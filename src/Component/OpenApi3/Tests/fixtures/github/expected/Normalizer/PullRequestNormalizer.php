@@ -328,7 +328,7 @@ class PullRequestNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $data['labels'] = $values;
         $data['milestone'] = $this->normalizer->normalize($object->getMilestone(), 'json', $context);
-        if (null !== $object->getActiveLockReason()) {
+        if ($object->isInitialized('activeLockReason') && null !== $object->getActiveLockReason()) {
             $data['active_lock_reason'] = $object->getActiveLockReason();
         }
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
@@ -337,21 +337,21 @@ class PullRequestNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['merged_at'] = $object->getMergedAt()->format('Y-m-d\\TH:i:sP');
         $data['merge_commit_sha'] = $object->getMergeCommitSha();
         $data['assignee'] = $this->normalizer->normalize($object->getAssignee(), 'json', $context);
-        if (null !== $object->getAssignees()) {
+        if ($object->isInitialized('assignees') && null !== $object->getAssignees()) {
             $values_1 = array();
             foreach ($object->getAssignees() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['assignees'] = $values_1;
         }
-        if (null !== $object->getRequestedReviewers()) {
+        if ($object->isInitialized('requestedReviewers') && null !== $object->getRequestedReviewers()) {
             $values_2 = array();
             foreach ($object->getRequestedReviewers() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['requested_reviewers'] = $values_2;
         }
-        if (null !== $object->getRequestedTeams()) {
+        if ($object->isInitialized('requestedTeams') && null !== $object->getRequestedTeams()) {
             $values_3 = array();
             foreach ($object->getRequestedTeams() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
@@ -362,12 +362,12 @@ class PullRequestNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['base'] = $this->normalizer->normalize($object->getBase(), 'json', $context);
         $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         $data['author_association'] = $object->getAuthorAssociation();
-        if (null !== $object->getDraft()) {
+        if ($object->isInitialized('draft') && null !== $object->getDraft()) {
             $data['draft'] = $object->getDraft();
         }
         $data['merged'] = $object->getMerged();
         $data['mergeable'] = $object->getMergeable();
-        if (null !== $object->getRebaseable()) {
+        if ($object->isInitialized('rebaseable') && null !== $object->getRebaseable()) {
             $data['rebaseable'] = $object->getRebaseable();
         }
         $data['mergeable_state'] = $object->getMergeableState();

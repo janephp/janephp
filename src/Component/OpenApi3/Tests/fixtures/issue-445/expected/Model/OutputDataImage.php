@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class OutputDataImage extends OutputDataBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The width of the image.
      *
      * @var int
@@ -34,6 +42,7 @@ class OutputDataImage extends OutputDataBase
      */
     public function setWidth(int $width) : self
     {
+        $this->initialized['width'] = true;
         $this->width = $width;
         return $this;
     }
@@ -55,6 +64,7 @@ class OutputDataImage extends OutputDataBase
      */
     public function setHeight(int $height) : self
     {
+        $this->initialized['height'] = true;
         $this->height = $height;
         return $this;
     }

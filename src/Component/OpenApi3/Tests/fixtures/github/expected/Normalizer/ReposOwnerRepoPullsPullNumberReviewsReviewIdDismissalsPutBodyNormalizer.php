@@ -67,7 +67,7 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyNormalizer im
     {
         $data = array();
         $data['message'] = $object->getMessage();
-        if (null !== $object->getEvent()) {
+        if ($object->isInitialized('event') && null !== $object->getEvent()) {
             $data['event'] = $object->getEvent();
         }
         foreach ($object as $key => $value) {

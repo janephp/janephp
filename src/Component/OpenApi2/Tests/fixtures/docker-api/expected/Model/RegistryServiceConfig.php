@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class RegistryServiceConfig
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * List of IP ranges to which nondistributable artifacts can be pushed,
     using the CIDR syntax [RFC 4632](https://tools.ietf.org/html/4632).
     
@@ -160,6 +168,7 @@ class RegistryServiceConfig
     */
     public function setAllowNondistributableArtifactsCIDRs(array $allowNondistributableArtifactsCIDRs) : self
     {
+        $this->initialized['allowNondistributableArtifactsCIDRs'] = true;
         $this->allowNondistributableArtifactsCIDRs = $allowNondistributableArtifactsCIDRs;
         return $this;
     }
@@ -221,6 +230,7 @@ class RegistryServiceConfig
     */
     public function setAllowNondistributableArtifactsHostnames(array $allowNondistributableArtifactsHostnames) : self
     {
+        $this->initialized['allowNondistributableArtifactsHostnames'] = true;
         $this->allowNondistributableArtifactsHostnames = $allowNondistributableArtifactsHostnames;
         return $this;
     }
@@ -288,6 +298,7 @@ class RegistryServiceConfig
     */
     public function setInsecureRegistryCIDRs(array $insecureRegistryCIDRs) : self
     {
+        $this->initialized['insecureRegistryCIDRs'] = true;
         $this->insecureRegistryCIDRs = $insecureRegistryCIDRs;
         return $this;
     }
@@ -309,6 +320,7 @@ class RegistryServiceConfig
      */
     public function setIndexConfigs(iterable $indexConfigs) : self
     {
+        $this->initialized['indexConfigs'] = true;
         $this->indexConfigs = $indexConfigs;
         return $this;
     }
@@ -334,6 +346,7 @@ class RegistryServiceConfig
     */
     public function setMirrors(array $mirrors) : self
     {
+        $this->initialized['mirrors'] = true;
         $this->mirrors = $mirrors;
         return $this;
     }

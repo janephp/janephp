@@ -5,6 +5,14 @@ namespace Github\Model;
 class CheckSuitePreferencePreferencesAutoTriggerChecksItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -34,6 +42,7 @@ class CheckSuitePreferencePreferencesAutoTriggerChecksItem extends \ArrayObject
      */
     public function setAppId(int $appId) : self
     {
+        $this->initialized['appId'] = true;
         $this->appId = $appId;
         return $this;
     }
@@ -55,6 +64,7 @@ class CheckSuitePreferencePreferencesAutoTriggerChecksItem extends \ArrayObject
      */
     public function setSetting(bool $setting) : self
     {
+        $this->initialized['setting'] = true;
         $this->setting = $setting;
         return $this;
     }

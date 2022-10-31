@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class OutputRenderedEvent extends ApplicationEvent
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -46,6 +54,7 @@ class OutputRenderedEvent extends ApplicationEvent
      */
     public function setOutputId(?string $outputId) : self
     {
+        $this->initialized['outputId'] = true;
         $this->outputId = $outputId;
         return $this;
     }
@@ -67,6 +76,7 @@ class OutputRenderedEvent extends ApplicationEvent
      */
     public function setContentId(?string $contentId) : self
     {
+        $this->initialized['contentId'] = true;
         $this->contentId = $contentId;
         return $this;
     }
@@ -88,6 +98,7 @@ class OutputRenderedEvent extends ApplicationEvent
      */
     public function setOutputFormatId(?string $outputFormatId) : self
     {
+        $this->initialized['outputFormatId'] = true;
         $this->outputFormatId = $outputFormatId;
         return $this;
     }
@@ -109,6 +120,7 @@ class OutputRenderedEvent extends ApplicationEvent
      */
     public function setRenderingState(string $renderingState) : self
     {
+        $this->initialized['renderingState'] = true;
         $this->renderingState = $renderingState;
         return $this;
     }

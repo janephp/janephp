@@ -102,27 +102,27 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyNormalizer implements Denormal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSchemas()) {
+        if ($object->isInitialized('schemas') && null !== $object->getSchemas()) {
             $values = array();
             foreach ($object->getSchemas() as $value) {
                 $values[] = $value;
             }
             $data['schemas'] = $values;
         }
-        if (null !== $object->getDisplayName()) {
+        if ($object->isInitialized('displayName') && null !== $object->getDisplayName()) {
             $data['displayName'] = $object->getDisplayName();
         }
-        if (null !== $object->getExternalId()) {
+        if ($object->isInitialized('externalId') && null !== $object->getExternalId()) {
             $data['externalId'] = $object->getExternalId();
         }
-        if (null !== $object->getGroups()) {
+        if ($object->isInitialized('groups') && null !== $object->getGroups()) {
             $values_1 = array();
             foreach ($object->getGroups() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['groups'] = $values_1;
         }
-        if (null !== $object->getActive()) {
+        if ($object->isInitialized('active') && null !== $object->getActive()) {
             $data['active'] = $object->getActive();
         }
         $data['userName'] = $object->getUserName();

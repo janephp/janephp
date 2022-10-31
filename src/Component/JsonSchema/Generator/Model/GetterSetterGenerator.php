@@ -8,7 +8,9 @@ use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Name;
 use PhpParser\Node\Param;
+use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
 
 trait GetterSetterGenerator
@@ -54,6 +56,10 @@ trait GetterSetterGenerator
         }
 
         $stmts = [
+            new Stmt\Expression(new Expr\Assign(
+                new Expr\ArrayDimFetch(new Expr\PropertyFetch(new Expr\Variable('this'), 'initialized'), new Scalar\String_($property->getPhpName())),
+                new Expr\ConstFetch(new Name('true'))
+            )),
             // $this->property = $property;
             new Stmt\Expression(
                 new Expr\Assign(

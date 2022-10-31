@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class UserLookupResponse extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var mixed[]
@@ -40,6 +48,7 @@ class UserLookupResponse extends \ArrayObject
      */
     public function setData(array $data) : self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
         return $this;
     }
@@ -61,6 +70,7 @@ class UserLookupResponse extends \ArrayObject
      */
     public function setIncludes(Expansions $includes) : self
     {
+        $this->initialized['includes'] = true;
         $this->includes = $includes;
         return $this;
     }
@@ -82,6 +92,7 @@ class UserLookupResponse extends \ArrayObject
      */
     public function setErrors(array $errors) : self
     {
+        $this->initialized['errors'] = true;
         $this->errors = $errors;
         return $this;
     }

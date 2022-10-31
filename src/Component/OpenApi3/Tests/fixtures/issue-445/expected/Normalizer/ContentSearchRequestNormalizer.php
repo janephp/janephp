@@ -197,80 +197,80 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSearchString()) {
+        if ($object->isInitialized('searchString') && null !== $object->getSearchString()) {
             $data['searchString'] = $object->getSearchString();
         }
-        if (null !== $object->getSearchBehaviors()) {
+        if ($object->isInitialized('searchBehaviors') && null !== $object->getSearchBehaviors()) {
             $values = array();
             foreach ($object->getSearchBehaviors() as $value) {
                 $values[] = $value;
             }
             $data['searchBehaviors'] = $values;
         }
-        if (null !== $object->getFilter()) {
+        if ($object->isInitialized('filter') && null !== $object->getFilter()) {
             $data['filter'] = $object->getFilter();
         }
-        if (null !== $object->getAggregationFilters()) {
+        if ($object->isInitialized('aggregationFilters') && null !== $object->getAggregationFilters()) {
             $values_1 = array();
             foreach ($object->getAggregationFilters() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['aggregationFilters'] = $values_1;
         }
-        if (null !== $object->getChannelId()) {
+        if ($object->isInitialized('channelId') && null !== $object->getChannelId()) {
             $data['channelId'] = $object->getChannelId();
         }
-        if (null !== $object->getSearchLanguages()) {
+        if ($object->isInitialized('searchLanguages') && null !== $object->getSearchLanguages()) {
             $values_2 = array();
             foreach ($object->getSearchLanguages() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['searchLanguages'] = $values_2;
         }
-        if (null !== $object->getCollectionId()) {
+        if ($object->isInitialized('collectionId') && null !== $object->getCollectionId()) {
             $data['collectionId'] = $object->getCollectionId();
         }
         $data['lifeCycleFilter'] = $object->getLifeCycleFilter();
         $data['brokenDependenciesFilter'] = $object->getBrokenDependenciesFilter();
         $data['searchType'] = $object->getSearchType();
-        if (null !== $object->getDisplayPatternIds()) {
+        if ($object->isInitialized('displayPatternIds') && null !== $object->getDisplayPatternIds()) {
             $values_3 = array();
             foreach ($object->getDisplayPatternIds() as $value_3) {
                 $values_3[] = $value_3;
             }
             $data['displayPatternIds'] = $values_3;
         }
-        if (null !== $object->getSort()) {
+        if ($object->isInitialized('sort') && null !== $object->getSort()) {
             $values_4 = array();
             foreach ($object->getSort() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $data['sort'] = $values_4;
         }
-        if (null !== $object->getLimit()) {
+        if ($object->isInitialized('limit') && null !== $object->getLimit()) {
             $data['limit'] = $object->getLimit();
         }
-        if (null !== $object->getPageToken()) {
+        if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
             $data['pageToken'] = $object->getPageToken();
         }
-        if (null !== $object->getRightsFilter()) {
+        if ($object->isInitialized('rightsFilter') && null !== $object->getRightsFilter()) {
             $values_5 = array();
             foreach ($object->getRightsFilter() as $value_5) {
                 $values_5[] = $value_5;
             }
             $data['rightsFilter'] = $values_5;
         }
-        if (null !== $object->getRightsAggregations()) {
+        if ($object->isInitialized('rightsAggregations') && null !== $object->getRightsAggregations()) {
             $values_6 = array();
             foreach ($object->getRightsAggregations() as $value_6) {
                 $values_6[] = $value_6;
             }
             $data['rightsAggregations'] = $values_6;
         }
-        if (null !== $object->getDebugMode()) {
+        if ($object->isInitialized('debugMode') && null !== $object->getDebugMode()) {
             $data['debugMode'] = $object->getDebugMode();
         }
-        if (null !== $object->getAggregators()) {
+        if ($object->isInitialized('aggregators') && null !== $object->getAggregators()) {
             $values_7 = array();
             foreach ($object->getAggregators() as $value_7) {
                 $values_7[] = $this->normalizer->normalize($value_7, 'json', $context);

@@ -69,10 +69,10 @@ class AggregationResultNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $data = array();
         $data['name'] = $object->getName();
-        if (null !== $object->getSumOtherDocCount()) {
+        if ($object->isInitialized('sumOtherDocCount') && null !== $object->getSumOtherDocCount()) {
             $data['sumOtherDocCount'] = $object->getSumOtherDocCount();
         }
-        if (null !== $object->getAggregationResultItems()) {
+        if ($object->isInitialized('aggregationResultItems') && null !== $object->getAggregationResultItems()) {
             $values = array();
             foreach ($object->getAggregationResultItems() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

@@ -74,16 +74,16 @@ class GbImageTypesResponseAvailableTypesItemNormalizer implements DenormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getImageType()) {
+        if ($object->isInitialized('imageType') && null !== $object->getImageType()) {
             $data['imageType'] = $object->getImageType();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getAvailableFormats()) {
+        if ($object->isInitialized('availableFormats') && null !== $object->getAvailableFormats()) {
             $values = array();
             foreach ($object->getAvailableFormats() as $value) {
                 $values[] = $value;

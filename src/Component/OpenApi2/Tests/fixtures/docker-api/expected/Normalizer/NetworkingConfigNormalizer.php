@@ -60,7 +60,7 @@ class NetworkingConfigNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getEndpointsConfig()) {
+        if ($object->isInitialized('endpointsConfig') && null !== $object->getEndpointsConfig()) {
             $values = array();
             foreach ($object->getEndpointsConfig() as $key => $value) {
                 $values[$key] = $this->normalizer->normalize($value, 'json', $context);

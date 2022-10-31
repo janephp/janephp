@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class SubLevel3 extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -28,6 +36,7 @@ class SubLevel3 extends \ArrayObject
      */
     public function setEnd(string $end) : self
     {
+        $this->initialized['end'] = true;
         $this->end = $end;
         return $this;
     }

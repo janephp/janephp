@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class CompanyEventsResponse extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The total number of events returned for the given company.
      *
      * @var float
@@ -40,6 +48,7 @@ class CompanyEventsResponse extends \ArrayObject
      */
     public function setTotalCount(float $totalCount) : self
     {
+        $this->initialized['totalCount'] = true;
         $this->totalCount = $totalCount;
         return $this;
     }
@@ -61,6 +70,7 @@ class CompanyEventsResponse extends \ArrayObject
      */
     public function setData(array $data) : self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
         return $this;
     }
@@ -82,6 +92,7 @@ class CompanyEventsResponse extends \ArrayObject
      */
     public function setPaging(Paging $paging) : self
     {
+        $this->initialized['paging'] = true;
         $this->paging = $paging;
         return $this;
     }

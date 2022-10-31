@@ -136,41 +136,41 @@ class SchemaFieldTypeChangeExceptionNormalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceLevel()) {
+        if ($object->isInitialized('traceLevel') && null !== $object->getTraceLevel()) {
             $data['traceLevel'] = $object->getTraceLevel();
         }
-        if (null !== $object->getTraceId()) {
+        if ($object->isInitialized('traceId') && null !== $object->getTraceId()) {
             $data['traceId'] = $object->getTraceId();
         }
-        if (null !== $object->getTraceJobId()) {
+        if ($object->isInitialized('traceJobId') && null !== $object->getTraceJobId()) {
             $data['traceJobId'] = $object->getTraceJobId();
         }
-        if (null !== $object->getHttpStatusCode()) {
+        if ($object->isInitialized('httpStatusCode') && null !== $object->getHttpStatusCode()) {
             $data['httpStatusCode'] = $object->getHttpStatusCode();
         }
-        if (null !== $object->getExceptionMessage()) {
+        if ($object->isInitialized('exceptionMessage') && null !== $object->getExceptionMessage()) {
             $data['exceptionMessage'] = $object->getExceptionMessage();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getCustomerId()) {
+        if ($object->isInitialized('customerId') && null !== $object->getCustomerId()) {
             $data['customerId'] = $object->getCustomerId();
         }
-        if (null !== $object->getCustomerAlias()) {
+        if ($object->isInitialized('customerAlias') && null !== $object->getCustomerAlias()) {
             $data['customerAlias'] = $object->getCustomerAlias();
         }
-        if (null !== $object->getUserId()) {
+        if ($object->isInitialized('userId') && null !== $object->getUserId()) {
             $data['userId'] = $object->getUserId();
         }
-        if (null !== $object->getSchemaId()) {
+        if ($object->isInitialized('schemaId') && null !== $object->getSchemaId()) {
             $data['schemaId'] = $object->getSchemaId();
         }
-        if (null !== $object->getFieldId()) {
+        if ($object->isInitialized('fieldId') && null !== $object->getFieldId()) {
             $data['fieldId'] = $object->getFieldId();
         }
-        if (null !== $object->getOldTypeName()) {
+        if ($object->isInitialized('oldTypeName') && null !== $object->getOldTypeName()) {
             $data['oldTypeName'] = $object->getOldTypeName();
         }
-        if (null !== $object->getNewTypeName()) {
+        if ($object->isInitialized('newTypeName') && null !== $object->getNewTypeName()) {
             $data['newTypeName'] = $object->getNewTypeName();
         }
         foreach ($object as $key => $value) {

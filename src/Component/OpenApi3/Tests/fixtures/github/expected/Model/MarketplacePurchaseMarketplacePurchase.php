@@ -5,6 +5,14 @@ namespace Github\Model;
 class MarketplacePurchaseMarketplacePurchase extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -70,6 +78,7 @@ class MarketplacePurchaseMarketplacePurchase extends \ArrayObject
      */
     public function setBillingCycle(string $billingCycle) : self
     {
+        $this->initialized['billingCycle'] = true;
         $this->billingCycle = $billingCycle;
         return $this;
     }
@@ -91,6 +100,7 @@ class MarketplacePurchaseMarketplacePurchase extends \ArrayObject
      */
     public function setNextBillingDate(?string $nextBillingDate) : self
     {
+        $this->initialized['nextBillingDate'] = true;
         $this->nextBillingDate = $nextBillingDate;
         return $this;
     }
@@ -112,6 +122,7 @@ class MarketplacePurchaseMarketplacePurchase extends \ArrayObject
      */
     public function setIsInstalled(bool $isInstalled) : self
     {
+        $this->initialized['isInstalled'] = true;
         $this->isInstalled = $isInstalled;
         return $this;
     }
@@ -133,6 +144,7 @@ class MarketplacePurchaseMarketplacePurchase extends \ArrayObject
      */
     public function setUnitCount(?int $unitCount) : self
     {
+        $this->initialized['unitCount'] = true;
         $this->unitCount = $unitCount;
         return $this;
     }
@@ -154,6 +166,7 @@ class MarketplacePurchaseMarketplacePurchase extends \ArrayObject
      */
     public function setOnFreeTrial(bool $onFreeTrial) : self
     {
+        $this->initialized['onFreeTrial'] = true;
         $this->onFreeTrial = $onFreeTrial;
         return $this;
     }
@@ -175,6 +188,7 @@ class MarketplacePurchaseMarketplacePurchase extends \ArrayObject
      */
     public function setFreeTrialEndsOn(?string $freeTrialEndsOn) : self
     {
+        $this->initialized['freeTrialEndsOn'] = true;
         $this->freeTrialEndsOn = $freeTrialEndsOn;
         return $this;
     }
@@ -196,6 +210,7 @@ class MarketplacePurchaseMarketplacePurchase extends \ArrayObject
      */
     public function setUpdatedAt(string $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -217,6 +232,7 @@ class MarketplacePurchaseMarketplacePurchase extends \ArrayObject
      */
     public function setPlan(MarketplaceListingPlan $plan) : self
     {
+        $this->initialized['plan'] = true;
         $this->plan = $plan;
         return $this;
     }

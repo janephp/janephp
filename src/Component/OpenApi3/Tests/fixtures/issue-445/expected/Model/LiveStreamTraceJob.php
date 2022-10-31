@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class LiveStreamTraceJob
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -46,6 +54,7 @@ class LiveStreamTraceJob
      */
     public function setTraceJobId(?string $traceJobId) : self
     {
+        $this->initialized['traceJobId'] = true;
         $this->traceJobId = $traceJobId;
         return $this;
     }
@@ -67,6 +76,7 @@ class LiveStreamTraceJob
      */
     public function setIpAddress(?string $ipAddress) : self
     {
+        $this->initialized['ipAddress'] = true;
         $this->ipAddress = $ipAddress;
         return $this;
     }
@@ -88,6 +98,7 @@ class LiveStreamTraceJob
      */
     public function setUserId(?string $userId) : self
     {
+        $this->initialized['userId'] = true;
         $this->userId = $userId;
         return $this;
     }
@@ -109,6 +120,7 @@ class LiveStreamTraceJob
      */
     public function setApiClientId(?string $apiClientId) : self
     {
+        $this->initialized['apiClientId'] = true;
         $this->apiClientId = $apiClientId;
         return $this;
     }

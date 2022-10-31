@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class ContextAnnotation extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Represents the data for the context annotation domain.
      *
      * @var ContextAnnotationDomainFields
@@ -34,6 +42,7 @@ class ContextAnnotation extends \ArrayObject
      */
     public function setDomain(ContextAnnotationDomainFields $domain) : self
     {
+        $this->initialized['domain'] = true;
         $this->domain = $domain;
         return $this;
     }
@@ -55,6 +64,7 @@ class ContextAnnotation extends \ArrayObject
      */
     public function setEntity(ContextAnnotationEntityFields $entity) : self
     {
+        $this->initialized['entity'] = true;
         $this->entity = $entity;
         return $this;
     }

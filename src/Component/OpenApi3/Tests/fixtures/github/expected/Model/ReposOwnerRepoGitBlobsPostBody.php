@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoGitBlobsPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The new blob's content.
      *
      * @var string
@@ -34,6 +42,7 @@ class ReposOwnerRepoGitBlobsPostBody extends \ArrayObject
      */
     public function setContent(string $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReposOwnerRepoGitBlobsPostBody extends \ArrayObject
      */
     public function setEncoding(string $encoding) : self
     {
+        $this->initialized['encoding'] = true;
         $this->encoding = $encoding;
         return $this;
     }

@@ -74,16 +74,16 @@ class ContributorActivityWeeksItemNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getW()) {
+        if ($object->isInitialized('w') && null !== $object->getW()) {
             $data['w'] = $object->getW();
         }
-        if (null !== $object->getA()) {
+        if ($object->isInitialized('a') && null !== $object->getA()) {
             $data['a'] = $object->getA();
         }
-        if (null !== $object->getD()) {
+        if ($object->isInitialized('d') && null !== $object->getD()) {
             $data['d'] = $object->getD();
         }
-        if (null !== $object->getC()) {
+        if ($object->isInitialized('c') && null !== $object->getC()) {
             $data['c'] = $object->getC();
         }
         foreach ($object as $key => $value) {

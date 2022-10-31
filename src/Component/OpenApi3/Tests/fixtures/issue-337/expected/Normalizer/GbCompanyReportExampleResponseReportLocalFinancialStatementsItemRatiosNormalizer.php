@@ -152,46 +152,46 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatiosNorm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPreTaxProfitMargin()) {
+        if ($object->isInitialized('preTaxProfitMargin') && null !== $object->getPreTaxProfitMargin()) {
             $data['preTaxProfitMargin'] = $object->getPreTaxProfitMargin();
         }
-        if (null !== $object->getReturnOnCapitalEmployed()) {
+        if ($object->isInitialized('returnOnCapitalEmployed') && null !== $object->getReturnOnCapitalEmployed()) {
             $data['returnOnCapitalEmployed'] = $object->getReturnOnCapitalEmployed();
         }
-        if (null !== $object->getReturnOnTotalAssetsEmployed()) {
+        if ($object->isInitialized('returnOnTotalAssetsEmployed') && null !== $object->getReturnOnTotalAssetsEmployed()) {
             $data['returnOnTotalAssetsEmployed'] = $object->getReturnOnTotalAssetsEmployed();
         }
-        if (null !== $object->getReturnOnNetAssetsEmployed()) {
+        if ($object->isInitialized('returnOnNetAssetsEmployed') && null !== $object->getReturnOnNetAssetsEmployed()) {
             $data['returnOnNetAssetsEmployed'] = $object->getReturnOnNetAssetsEmployed();
         }
-        if (null !== $object->getSalesOrNetWorkingCapital()) {
+        if ($object->isInitialized('salesOrNetWorkingCapital') && null !== $object->getSalesOrNetWorkingCapital()) {
             $data['salesOrNetWorkingCapital'] = $object->getSalesOrNetWorkingCapital();
         }
-        if (null !== $object->getStocKTurnoverRatio()) {
+        if ($object->isInitialized('stocKTurnoverRatio') && null !== $object->getStocKTurnoverRatio()) {
             $data['stocKTurnoverRatio'] = $object->getStocKTurnoverRatio();
         }
-        if (null !== $object->getDebtorDays()) {
+        if ($object->isInitialized('debtorDays') && null !== $object->getDebtorDays()) {
             $data['debtorDays'] = $object->getDebtorDays();
         }
-        if (null !== $object->getCreditorDays()) {
+        if ($object->isInitialized('creditorDays') && null !== $object->getCreditorDays()) {
             $data['creditorDays'] = $object->getCreditorDays();
         }
-        if (null !== $object->getCurrentRatio()) {
+        if ($object->isInitialized('currentRatio') && null !== $object->getCurrentRatio()) {
             $data['currentRatio'] = $object->getCurrentRatio();
         }
-        if (null !== $object->getLiquidityRatioOrAcidTest()) {
+        if ($object->isInitialized('liquidityRatioOrAcidTest') && null !== $object->getLiquidityRatioOrAcidTest()) {
             $data['liquidityRatioOrAcidTest'] = $object->getLiquidityRatioOrAcidTest();
         }
-        if (null !== $object->getCurrentDebtRatio()) {
+        if ($object->isInitialized('currentDebtRatio') && null !== $object->getCurrentDebtRatio()) {
             $data['currentDebtRatio'] = $object->getCurrentDebtRatio();
         }
-        if (null !== $object->getGearing()) {
+        if ($object->isInitialized('gearing') && null !== $object->getGearing()) {
             $data['gearing'] = $object->getGearing();
         }
-        if (null !== $object->getEquityInPercentage()) {
+        if ($object->isInitialized('equityInPercentage') && null !== $object->getEquityInPercentage()) {
             $data['equityInPercentage'] = $object->getEquityInPercentage();
         }
-        if (null !== $object->getTotalDebtRatio()) {
+        if ($object->isInitialized('totalDebtRatio') && null !== $object->getTotalDebtRatio()) {
             $data['totalDebtRatio'] = $object->getTotalDebtRatio();
         }
         foreach ($object as $key => $value) {

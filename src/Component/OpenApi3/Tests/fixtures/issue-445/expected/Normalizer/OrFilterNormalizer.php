@@ -70,7 +70,7 @@ class OrFilterNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $data = array();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getFilters()) {
+        if ($object->isInitialized('filters') && null !== $object->getFilters()) {
             $values = array();
             foreach ($object->getFilters() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

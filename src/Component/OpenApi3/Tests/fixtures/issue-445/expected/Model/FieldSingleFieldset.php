@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class FieldSingleFieldset extends FieldBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the schema to be used as fieldset (it must be of type Struct).
      *
      * @var string
@@ -34,6 +42,7 @@ class FieldSingleFieldset extends FieldBase
      */
     public function setSchemaId(string $schemaId) : self
     {
+        $this->initialized['schemaId'] = true;
         $this->schemaId = $schemaId;
         return $this;
     }
@@ -55,6 +64,7 @@ class FieldSingleFieldset extends FieldBase
      */
     public function setSchemaIndexingInfo($schemaIndexingInfo) : self
     {
+        $this->initialized['schemaIndexingInfo'] = true;
         $this->schemaIndexingInfo = $schemaIndexingInfo;
         return $this;
     }

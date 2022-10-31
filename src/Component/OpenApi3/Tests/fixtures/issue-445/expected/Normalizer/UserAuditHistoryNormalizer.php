@@ -59,7 +59,7 @@ class UserAuditHistoryNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $data = array();
         $data['modificationDate'] = $object->getModificationDate()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getModifiedByUser()) {
+        if ($object->isInitialized('modifiedByUser') && null !== $object->getModifiedByUser()) {
             $data['modifiedByUser'] = $object->getModifiedByUser();
         }
         return $data;

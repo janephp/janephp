@@ -79,13 +79,13 @@ class BooksBookIdReviewsGetLdjsonResponse200Normalizer implements DenormalizerIn
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['hydra:member'] = $values;
-        if (null !== $object->getHydraTotalItems()) {
+        if ($object->isInitialized('hydraTotalItems') && null !== $object->getHydraTotalItems()) {
             $data['hydra:totalItems'] = $object->getHydraTotalItems();
         }
-        if (null !== $object->getHydraView()) {
+        if ($object->isInitialized('hydraView') && null !== $object->getHydraView()) {
             $data['hydra:view'] = $this->normalizer->normalize($object->getHydraView(), 'json', $context);
         }
-        if (null !== $object->getHydraSearch()) {
+        if ($object->isInitialized('hydraSearch') && null !== $object->getHydraSearch()) {
             $data['hydra:search'] = $this->normalizer->normalize($object->getHydraSearch(), 'json', $context);
         }
         foreach ($object as $key => $value_1) {

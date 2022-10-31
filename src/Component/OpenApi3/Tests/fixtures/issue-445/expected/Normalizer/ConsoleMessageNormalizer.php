@@ -102,24 +102,24 @@ class ConsoleMessageNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
         $data['retries'] = $object->getRetries();
         $data['priority'] = $object->getPriority();
         $data['deduplicate'] = $object->getDeduplicate();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getCommand()) {
+        if ($object->isInitialized('command') && null !== $object->getCommand()) {
             $data['command'] = $object->getCommand();
         }
-        if (null !== $object->getArguments()) {
+        if ($object->isInitialized('arguments') && null !== $object->getArguments()) {
             $values = array();
             foreach ($object->getArguments() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['arguments'] = $values;
         }
-        if (null !== $object->getTargetQueue()) {
+        if ($object->isInitialized('targetQueue') && null !== $object->getTargetQueue()) {
             $data['targetQueue'] = $object->getTargetQueue();
         }
         foreach ($object as $key => $value_1) {

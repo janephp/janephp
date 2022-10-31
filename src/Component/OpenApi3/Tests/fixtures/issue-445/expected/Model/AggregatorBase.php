@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class AggregatorBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The slug name of the aggregation. It must be unique per aggregation request.
      *
      * @var string
@@ -50,6 +58,7 @@ class AggregatorBase
      */
     public function setName(string $name)
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
     }
     /**
@@ -68,6 +77,7 @@ class AggregatorBase
      */
     public function setNames($names)
     {
+        $this->initialized['names'] = true;
         $this->names = $names;
     }
     /**
@@ -86,6 +96,7 @@ class AggregatorBase
      */
     public function setAggregators(?array $aggregators)
     {
+        $this->initialized['aggregators'] = true;
         $this->aggregators = $aggregators;
     }
     /**
@@ -104,6 +115,7 @@ class AggregatorBase
      */
     public function setFilter($filter)
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
     }
     /**
@@ -122,6 +134,7 @@ class AggregatorBase
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

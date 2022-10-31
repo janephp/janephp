@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentImportResult
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of the file transfer.
      *
      * @var string
@@ -52,6 +60,7 @@ class ContentImportResult
      */
     public function setFileTransferId(string $fileTransferId) : self
     {
+        $this->initialized['fileTransferId'] = true;
         $this->fileTransferId = $fileTransferId;
         return $this;
     }
@@ -73,6 +82,7 @@ class ContentImportResult
      */
     public function setContentId(?string $contentId) : self
     {
+        $this->initialized['contentId'] = true;
         $this->contentId = $contentId;
         return $this;
     }
@@ -94,6 +104,7 @@ class ContentImportResult
      */
     public function setState(?string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -115,6 +126,7 @@ class ContentImportResult
      */
     public function setSucceeded(bool $succeeded) : self
     {
+        $this->initialized['succeeded'] = true;
         $this->succeeded = $succeeded;
         return $this;
     }
@@ -136,6 +148,7 @@ class ContentImportResult
      */
     public function setError($error) : self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
         return $this;
     }

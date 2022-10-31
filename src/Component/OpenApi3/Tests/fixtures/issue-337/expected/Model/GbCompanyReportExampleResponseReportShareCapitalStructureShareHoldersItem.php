@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -58,6 +66,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem 
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -79,6 +88,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem 
      */
     public function setShareholderType(string $shareholderType) : self
     {
+        $this->initialized['shareholderType'] = true;
         $this->shareholderType = $shareholderType;
         return $this;
     }
@@ -100,6 +110,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem 
      */
     public function setShareType(string $shareType) : self
     {
+        $this->initialized['shareType'] = true;
         $this->shareType = $shareType;
         return $this;
     }
@@ -121,6 +132,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem 
      */
     public function setCurrency(string $currency) : self
     {
+        $this->initialized['currency'] = true;
         $this->currency = $currency;
         return $this;
     }
@@ -142,6 +154,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem 
      */
     public function setTotalNumberOfSharesOwned(float $totalNumberOfSharesOwned) : self
     {
+        $this->initialized['totalNumberOfSharesOwned'] = true;
         $this->totalNumberOfSharesOwned = $totalNumberOfSharesOwned;
         return $this;
     }
@@ -163,6 +176,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem 
      */
     public function setPercentSharesHeld(float $percentSharesHeld) : self
     {
+        $this->initialized['percentSharesHeld'] = true;
         $this->percentSharesHeld = $percentSharesHeld;
         return $this;
     }

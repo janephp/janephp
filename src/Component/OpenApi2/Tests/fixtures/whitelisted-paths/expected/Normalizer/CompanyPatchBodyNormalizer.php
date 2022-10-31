@@ -55,10 +55,10 @@ class CompanyPatchBodyNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getWantsTimestampTimers()) {
+        if ($object->isInitialized('wantsTimestampTimers') && null !== $object->getWantsTimestampTimers()) {
             $data['wants_timestamp_timers'] = $object->getWantsTimestampTimers();
         }
-        if (null !== $object->getWeeklyCapacity()) {
+        if ($object->isInitialized('weeklyCapacity') && null !== $object->getWeeklyCapacity()) {
             $data['weekly_capacity'] = $object->getWeeklyCapacity();
         }
         return $data;

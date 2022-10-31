@@ -93,28 +93,28 @@ class BusinessRuleTracedEvaluationNormalizer implements DenormalizerInterface, N
     {
         $data = array();
         $data['conditionSatisfied'] = $object->getConditionSatisfied();
-        if (null !== $object->getConditions()) {
+        if ($object->isInitialized('conditions') && null !== $object->getConditions()) {
             $values = array();
             foreach ($object->getConditions() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['conditions'] = $values;
         }
-        if (null !== $object->getTransformationGroups()) {
+        if ($object->isInitialized('transformationGroups') && null !== $object->getTransformationGroups()) {
             $values_1 = array();
             foreach ($object->getTransformationGroups() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['transformationGroups'] = $values_1;
         }
-        if (null !== $object->getActions()) {
+        if ($object->isInitialized('actions') && null !== $object->getActions()) {
             $values_2 = array();
             foreach ($object->getActions() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['actions'] = $values_2;
         }
-        if (null !== $object->getVariables()) {
+        if ($object->isInitialized('variables') && null !== $object->getVariables()) {
             $values_3 = array();
             foreach ($object->getVariables() as $key => $value_3) {
                 $values_3[$key] = $value_3;

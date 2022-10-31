@@ -172,20 +172,20 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSearchString()) {
+        if ($object->isInitialized('searchString') && null !== $object->getSearchString()) {
             $data['searchString'] = $object->getSearchString();
         }
-        if (null !== $object->getSearchBehaviors()) {
+        if ($object->isInitialized('searchBehaviors') && null !== $object->getSearchBehaviors()) {
             $values = array();
             foreach ($object->getSearchBehaviors() as $value) {
                 $values[] = $value;
             }
             $data['searchBehaviors'] = $values;
         }
-        if (null !== $object->getFilter()) {
+        if ($object->isInitialized('filter') && null !== $object->getFilter()) {
             $data['filter'] = $object->getFilter();
         }
-        if (null !== $object->getAggregationFilters()) {
+        if ($object->isInitialized('aggregationFilters') && null !== $object->getAggregationFilters()) {
             $values_1 = array();
             foreach ($object->getAggregationFilters() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
@@ -194,14 +194,14 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         $data['includeAllSchemaChildren'] = $object->getIncludeAllSchemaChildren();
         $data['brokenDependenciesFilter'] = $object->getBrokenDependenciesFilter();
-        if (null !== $object->getSchemaIds()) {
+        if ($object->isInitialized('schemaIds') && null !== $object->getSchemaIds()) {
             $values_2 = array();
             foreach ($object->getSchemaIds() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['schemaIds'] = $values_2;
         }
-        if (null !== $object->getSearchLanguages()) {
+        if ($object->isInitialized('searchLanguages') && null !== $object->getSearchLanguages()) {
             $values_3 = array();
             foreach ($object->getSearchLanguages() as $value_3) {
                 $values_3[] = $value_3;
@@ -209,30 +209,30 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
             $data['searchLanguages'] = $values_3;
         }
         $data['lifeCycleFilter'] = $object->getLifeCycleFilter();
-        if (null !== $object->getSort()) {
+        if ($object->isInitialized('sort') && null !== $object->getSort()) {
             $values_4 = array();
             foreach ($object->getSort() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $data['sort'] = $values_4;
         }
-        if (null !== $object->getLimit()) {
+        if ($object->isInitialized('limit') && null !== $object->getLimit()) {
             $data['limit'] = $object->getLimit();
         }
-        if (null !== $object->getPageToken()) {
+        if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
             $data['pageToken'] = $object->getPageToken();
         }
-        if (null !== $object->getDebugMode()) {
+        if ($object->isInitialized('debugMode') && null !== $object->getDebugMode()) {
             $data['debugMode'] = $object->getDebugMode();
         }
-        if (null !== $object->getResolveBehaviors()) {
+        if ($object->isInitialized('resolveBehaviors') && null !== $object->getResolveBehaviors()) {
             $values_5 = array();
             foreach ($object->getResolveBehaviors() as $value_5) {
                 $values_5[] = $value_5;
             }
             $data['resolveBehaviors'] = $values_5;
         }
-        if (null !== $object->getAggregators()) {
+        if ($object->isInitialized('aggregators') && null !== $object->getAggregators()) {
             $values_6 = array();
             foreach ($object->getAggregators() as $value_6) {
                 $values_6[] = $this->normalizer->normalize($value_6, 'json', $context);

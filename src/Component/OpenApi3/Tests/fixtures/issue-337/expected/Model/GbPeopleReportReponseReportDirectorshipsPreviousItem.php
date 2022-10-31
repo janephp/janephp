@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbPeopleReportReponseReportDirectorshipsPreviousItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -82,6 +90,7 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItem extends \ArrayObject
      */
     public function setCompanyName(string $companyName) : self
     {
+        $this->initialized['companyName'] = true;
         $this->companyName = $companyName;
         return $this;
     }
@@ -103,6 +112,7 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItem extends \ArrayObject
      */
     public function setCompanyRegistrationNumber(string $companyRegistrationNumber) : self
     {
+        $this->initialized['companyRegistrationNumber'] = true;
         $this->companyRegistrationNumber = $companyRegistrationNumber;
         return $this;
     }
@@ -124,6 +134,7 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItem extends \ArrayObject
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -145,6 +156,7 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItem extends \ArrayObject
      */
     public function setPosition(GbPeopleReportReponseReportDirectorshipsPreviousItemPosition $position) : self
     {
+        $this->initialized['position'] = true;
         $this->position = $position;
         return $this;
     }
@@ -166,6 +178,7 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItem extends \ArrayObject
      */
     public function setCompanyRegistrationDate(string $companyRegistrationDate) : self
     {
+        $this->initialized['companyRegistrationDate'] = true;
         $this->companyRegistrationDate = $companyRegistrationDate;
         return $this;
     }
@@ -187,6 +200,7 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItem extends \ArrayObject
      */
     public function setLatestTurnoverFigure(GbPeopleReportReponseReportDirectorshipsPreviousItemLatestTurnoverFigure $latestTurnoverFigure) : self
     {
+        $this->initialized['latestTurnoverFigure'] = true;
         $this->latestTurnoverFigure = $latestTurnoverFigure;
         return $this;
     }
@@ -208,6 +222,7 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItem extends \ArrayObject
      */
     public function setNetWorth(GbPeopleReportReponseReportDirectorshipsPreviousItemNetWorth $netWorth) : self
     {
+        $this->initialized['netWorth'] = true;
         $this->netWorth = $netWorth;
         return $this;
     }
@@ -229,6 +244,7 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItem extends \ArrayObject
      */
     public function setLegalCount(int $legalCount) : self
     {
+        $this->initialized['legalCount'] = true;
         $this->legalCount = $legalCount;
         return $this;
     }
@@ -250,6 +266,7 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItem extends \ArrayObject
      */
     public function setCreditScore(GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScore $creditScore) : self
     {
+        $this->initialized['creditScore'] = true;
         $this->creditScore = $creditScore;
         return $this;
     }
@@ -271,6 +288,7 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItem extends \ArrayObject
      */
     public function setAdditionalData(GbPeopleReportReponseReportDirectorshipsPreviousItemAdditionalData $additionalData) : self
     {
+        $this->initialized['additionalData'] = true;
         $this->additionalData = $additionalData;
         return $this;
     }

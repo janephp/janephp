@@ -66,10 +66,10 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Normalizer implemen
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMessage()) {
+        if ($object->isInitialized('message') && null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
         foreach ($object as $key => $value) {

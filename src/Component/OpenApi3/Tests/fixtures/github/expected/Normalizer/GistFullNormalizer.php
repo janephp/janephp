@@ -166,79 +166,79 @@ class GistFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getForksUrl()) {
+        if ($object->isInitialized('forksUrl') && null !== $object->getForksUrl()) {
             $data['forks_url'] = $object->getForksUrl();
         }
-        if (null !== $object->getCommitsUrl()) {
+        if ($object->isInitialized('commitsUrl') && null !== $object->getCommitsUrl()) {
             $data['commits_url'] = $object->getCommitsUrl();
         }
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getNodeId()) {
+        if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
-        if (null !== $object->getGitPullUrl()) {
+        if ($object->isInitialized('gitPullUrl') && null !== $object->getGitPullUrl()) {
             $data['git_pull_url'] = $object->getGitPullUrl();
         }
-        if (null !== $object->getGitPushUrl()) {
+        if ($object->isInitialized('gitPushUrl') && null !== $object->getGitPushUrl()) {
             $data['git_push_url'] = $object->getGitPushUrl();
         }
-        if (null !== $object->getHtmlUrl()) {
+        if ($object->isInitialized('htmlUrl') && null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
-        if (null !== $object->getFiles()) {
+        if ($object->isInitialized('files') && null !== $object->getFiles()) {
             $values = array();
             foreach ($object->getFiles() as $key => $value) {
                 $values[$key] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['files'] = $values;
         }
-        if (null !== $object->getPublic()) {
+        if ($object->isInitialized('public') && null !== $object->getPublic()) {
             $data['public'] = $object->getPublic();
         }
-        if (null !== $object->getCreatedAt()) {
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt();
         }
-        if (null !== $object->getUpdatedAt()) {
+        if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getComments()) {
+        if ($object->isInitialized('comments') && null !== $object->getComments()) {
             $data['comments'] = $object->getComments();
         }
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $data['user'] = $object->getUser();
         }
-        if (null !== $object->getCommentsUrl()) {
+        if ($object->isInitialized('commentsUrl') && null !== $object->getCommentsUrl()) {
             $data['comments_url'] = $object->getCommentsUrl();
         }
-        if (null !== $object->getOwner()) {
+        if ($object->isInitialized('owner') && null !== $object->getOwner()) {
             $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
         }
-        if (null !== $object->getTruncated()) {
+        if ($object->isInitialized('truncated') && null !== $object->getTruncated()) {
             $data['truncated'] = $object->getTruncated();
         }
-        if (null !== $object->getForks()) {
+        if ($object->isInitialized('forks') && null !== $object->getForks()) {
             $values_1 = array();
             foreach ($object->getForks() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['forks'] = $values_1;
         }
-        if (null !== $object->getHistory()) {
+        if ($object->isInitialized('history') && null !== $object->getHistory()) {
             $values_2 = array();
             foreach ($object->getHistory() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['history'] = $values_2;
         }
-        if (null !== $object->getForkOf()) {
+        if ($object->isInitialized('forkOf') && null !== $object->getForkOf()) {
             $data['fork_of'] = $this->normalizer->normalize($object->getForkOf(), 'json', $context);
         }
         foreach ($object as $key_1 => $value_3) {

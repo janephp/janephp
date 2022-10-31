@@ -79,19 +79,19 @@ class SourceOutputFormatsNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getImage()) {
+        if ($object->isInitialized('image') && null !== $object->getImage()) {
             $data['image'] = $object->getImage();
         }
-        if (null !== $object->getVideo()) {
+        if ($object->isInitialized('video') && null !== $object->getVideo()) {
             $data['video'] = $object->getVideo();
         }
-        if (null !== $object->getDocument()) {
+        if ($object->isInitialized('document') && null !== $object->getDocument()) {
             $data['document'] = $object->getDocument();
         }
-        if (null !== $object->getAudio()) {
+        if ($object->isInitialized('audio') && null !== $object->getAudio()) {
             $data['audio'] = $object->getAudio();
         }
-        if (null !== $object->getVector()) {
+        if ($object->isInitialized('vector') && null !== $object->getVector()) {
             $data['vector'] = $object->getVector();
         }
         return $data;

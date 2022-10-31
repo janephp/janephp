@@ -84,16 +84,16 @@ class ActionsPublicKeyNormalizer implements DenormalizerInterface, NormalizerInt
         $data = array();
         $data['key_id'] = $object->getKeyId();
         $data['key'] = $object->getKey();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getCreatedAt()) {
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt();
         }
         foreach ($object as $key => $value) {

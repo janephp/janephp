@@ -127,52 +127,52 @@ class UserReposPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $data = array();
         $data['name'] = $object->getName();
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getHomepage()) {
+        if ($object->isInitialized('homepage') && null !== $object->getHomepage()) {
             $data['homepage'] = $object->getHomepage();
         }
-        if (null !== $object->getPrivate()) {
+        if ($object->isInitialized('private') && null !== $object->getPrivate()) {
             $data['private'] = $object->getPrivate();
         }
-        if (null !== $object->getHasIssues()) {
+        if ($object->isInitialized('hasIssues') && null !== $object->getHasIssues()) {
             $data['has_issues'] = $object->getHasIssues();
         }
-        if (null !== $object->getHasProjects()) {
+        if ($object->isInitialized('hasProjects') && null !== $object->getHasProjects()) {
             $data['has_projects'] = $object->getHasProjects();
         }
-        if (null !== $object->getHasWiki()) {
+        if ($object->isInitialized('hasWiki') && null !== $object->getHasWiki()) {
             $data['has_wiki'] = $object->getHasWiki();
         }
-        if (null !== $object->getTeamId()) {
+        if ($object->isInitialized('teamId') && null !== $object->getTeamId()) {
             $data['team_id'] = $object->getTeamId();
         }
-        if (null !== $object->getAutoInit()) {
+        if ($object->isInitialized('autoInit') && null !== $object->getAutoInit()) {
             $data['auto_init'] = $object->getAutoInit();
         }
-        if (null !== $object->getGitignoreTemplate()) {
+        if ($object->isInitialized('gitignoreTemplate') && null !== $object->getGitignoreTemplate()) {
             $data['gitignore_template'] = $object->getGitignoreTemplate();
         }
-        if (null !== $object->getLicenseTemplate()) {
+        if ($object->isInitialized('licenseTemplate') && null !== $object->getLicenseTemplate()) {
             $data['license_template'] = $object->getLicenseTemplate();
         }
-        if (null !== $object->getAllowSquashMerge()) {
+        if ($object->isInitialized('allowSquashMerge') && null !== $object->getAllowSquashMerge()) {
             $data['allow_squash_merge'] = $object->getAllowSquashMerge();
         }
-        if (null !== $object->getAllowMergeCommit()) {
+        if ($object->isInitialized('allowMergeCommit') && null !== $object->getAllowMergeCommit()) {
             $data['allow_merge_commit'] = $object->getAllowMergeCommit();
         }
-        if (null !== $object->getAllowRebaseMerge()) {
+        if ($object->isInitialized('allowRebaseMerge') && null !== $object->getAllowRebaseMerge()) {
             $data['allow_rebase_merge'] = $object->getAllowRebaseMerge();
         }
-        if (null !== $object->getDeleteBranchOnMerge()) {
+        if ($object->isInitialized('deleteBranchOnMerge') && null !== $object->getDeleteBranchOnMerge()) {
             $data['delete_branch_on_merge'] = $object->getDeleteBranchOnMerge();
         }
-        if (null !== $object->getHasDownloads()) {
+        if ($object->isInitialized('hasDownloads') && null !== $object->getHasDownloads()) {
             $data['has_downloads'] = $object->getHasDownloads();
         }
-        if (null !== $object->getIsTemplate()) {
+        if ($object->isInitialized('isTemplate') && null !== $object->getIsTemplate()) {
             $data['is_template'] = $object->getIsTemplate();
         }
         foreach ($object as $key => $value) {

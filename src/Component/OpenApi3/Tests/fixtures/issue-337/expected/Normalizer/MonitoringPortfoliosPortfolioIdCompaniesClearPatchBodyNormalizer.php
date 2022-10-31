@@ -62,7 +62,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyNormalizer implement
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCompanies()) {
+        if ($object->isInitialized('companies') && null !== $object->getCompanies()) {
             $values = array();
             foreach ($object->getCompanies() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

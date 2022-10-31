@@ -59,10 +59,10 @@ class PlatformNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getArchitecture()) {
+        if ($object->isInitialized('architecture') && null !== $object->getArchitecture()) {
             $data['Architecture'] = $object->getArchitecture();
         }
-        if (null !== $object->getOS()) {
+        if ($object->isInitialized('oS') && null !== $object->getOS()) {
             $data['OS'] = $object->getOS();
         }
         if (!($context['skip_validation'] ?? false)) {

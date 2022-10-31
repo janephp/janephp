@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi2\Tests\Expected\Model;
 class SchemaObjectProperty
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -28,6 +36,7 @@ class SchemaObjectProperty
      */
     public function setStringProperty(string $stringProperty) : self
     {
+        $this->initialized['stringProperty'] = true;
         $this->stringProperty = $stringProperty;
         return $this;
     }

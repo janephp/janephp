@@ -130,64 +130,64 @@ class GbCompanyReportExampleResponseReportNormalizer implements DenormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCompanyId()) {
+        if ($object->isInitialized('companyId') && null !== $object->getCompanyId()) {
             $data['companyId'] = $object->getCompanyId();
         }
-        if (null !== $object->getLanguage()) {
+        if ($object->isInitialized('language') && null !== $object->getLanguage()) {
             $data['language'] = $object->getLanguage();
         }
-        if (null !== $object->getCompanySummary()) {
+        if ($object->isInitialized('companySummary') && null !== $object->getCompanySummary()) {
             $data['companySummary'] = $this->normalizer->normalize($object->getCompanySummary(), 'json', $context);
         }
-        if (null !== $object->getCompanyIdentification()) {
+        if ($object->isInitialized('companyIdentification') && null !== $object->getCompanyIdentification()) {
             $data['companyIdentification'] = $this->normalizer->normalize($object->getCompanyIdentification(), 'json', $context);
         }
-        if (null !== $object->getCreditScore()) {
+        if ($object->isInitialized('creditScore') && null !== $object->getCreditScore()) {
             $data['creditScore'] = $this->normalizer->normalize($object->getCreditScore(), 'json', $context);
         }
-        if (null !== $object->getContactInformation()) {
+        if ($object->isInitialized('contactInformation') && null !== $object->getContactInformation()) {
             $data['contactInformation'] = $this->normalizer->normalize($object->getContactInformation(), 'json', $context);
         }
-        if (null !== $object->getShareCapitalStructure()) {
+        if ($object->isInitialized('shareCapitalStructure') && null !== $object->getShareCapitalStructure()) {
             $data['shareCapitalStructure'] = $this->normalizer->normalize($object->getShareCapitalStructure(), 'json', $context);
         }
-        if (null !== $object->getDirectors()) {
+        if ($object->isInitialized('directors') && null !== $object->getDirectors()) {
             $data['directors'] = $this->normalizer->normalize($object->getDirectors(), 'json', $context);
         }
-        if (null !== $object->getOtherInformation()) {
+        if ($object->isInitialized('otherInformation') && null !== $object->getOtherInformation()) {
             $data['otherInformation'] = $this->normalizer->normalize($object->getOtherInformation(), 'json', $context);
         }
-        if (null !== $object->getGroupStructure()) {
+        if ($object->isInitialized('groupStructure') && null !== $object->getGroupStructure()) {
             $data['groupStructure'] = $this->normalizer->normalize($object->getGroupStructure(), 'json', $context);
         }
-        if (null !== $object->getExtendedGroupStructure()) {
+        if ($object->isInitialized('extendedGroupStructure') && null !== $object->getExtendedGroupStructure()) {
             $values = array();
             foreach ($object->getExtendedGroupStructure() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['extendedGroupStructure'] = $values;
         }
-        if (null !== $object->getFinancialStatements()) {
+        if ($object->isInitialized('financialStatements') && null !== $object->getFinancialStatements()) {
             $values_1 = array();
             foreach ($object->getFinancialStatements() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['financialStatements'] = $values_1;
         }
-        if (null !== $object->getLocalFinancialStatements()) {
+        if ($object->isInitialized('localFinancialStatements') && null !== $object->getLocalFinancialStatements()) {
             $values_2 = array();
             foreach ($object->getLocalFinancialStatements() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['localFinancialStatements'] = $values_2;
         }
-        if (null !== $object->getPaymentData()) {
+        if ($object->isInitialized('paymentData') && null !== $object->getPaymentData()) {
             $data['paymentData'] = $this->normalizer->normalize($object->getPaymentData(), 'json', $context);
         }
-        if (null !== $object->getNegativeInformation()) {
+        if ($object->isInitialized('negativeInformation') && null !== $object->getNegativeInformation()) {
             $data['negativeInformation'] = $this->normalizer->normalize($object->getNegativeInformation(), 'json', $context);
         }
-        if (null !== $object->getAdditionalInformation()) {
+        if ($object->isInitialized('additionalInformation') && null !== $object->getAdditionalInformation()) {
             $data['additionalInformation'] = $this->normalizer->normalize($object->getAdditionalInformation(), 'json', $context);
         }
         foreach ($object as $key => $value_3) {

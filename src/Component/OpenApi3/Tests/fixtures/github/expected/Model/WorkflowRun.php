@@ -5,6 +5,14 @@ namespace Github\Model;
 class WorkflowRun extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the workflow run.
      *
      * @var int
@@ -172,6 +180,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -193,6 +202,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -214,6 +224,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setHeadBranch(?string $headBranch) : self
     {
+        $this->initialized['headBranch'] = true;
         $this->headBranch = $headBranch;
         return $this;
     }
@@ -235,6 +246,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setHeadSha(string $headSha) : self
     {
+        $this->initialized['headSha'] = true;
         $this->headSha = $headSha;
         return $this;
     }
@@ -256,6 +268,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setRunNumber(int $runNumber) : self
     {
+        $this->initialized['runNumber'] = true;
         $this->runNumber = $runNumber;
         return $this;
     }
@@ -277,6 +290,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setEvent(string $event) : self
     {
+        $this->initialized['event'] = true;
         $this->event = $event;
         return $this;
     }
@@ -298,6 +312,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setStatus(?string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -319,6 +334,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setConclusion(?string $conclusion) : self
     {
+        $this->initialized['conclusion'] = true;
         $this->conclusion = $conclusion;
         return $this;
     }
@@ -340,6 +356,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setWorkflowId(int $workflowId) : self
     {
+        $this->initialized['workflowId'] = true;
         $this->workflowId = $workflowId;
         return $this;
     }
@@ -361,6 +378,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -382,6 +400,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -403,6 +422,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setPullRequests(?array $pullRequests) : self
     {
+        $this->initialized['pullRequests'] = true;
         $this->pullRequests = $pullRequests;
         return $this;
     }
@@ -424,6 +444,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setCreatedAt(?\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -445,6 +466,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setUpdatedAt(?\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -466,6 +488,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setJobsUrl(string $jobsUrl) : self
     {
+        $this->initialized['jobsUrl'] = true;
         $this->jobsUrl = $jobsUrl;
         return $this;
     }
@@ -487,6 +510,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setLogsUrl(string $logsUrl) : self
     {
+        $this->initialized['logsUrl'] = true;
         $this->logsUrl = $logsUrl;
         return $this;
     }
@@ -508,6 +532,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setCheckSuiteUrl(string $checkSuiteUrl) : self
     {
+        $this->initialized['checkSuiteUrl'] = true;
         $this->checkSuiteUrl = $checkSuiteUrl;
         return $this;
     }
@@ -529,6 +554,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setArtifactsUrl(string $artifactsUrl) : self
     {
+        $this->initialized['artifactsUrl'] = true;
         $this->artifactsUrl = $artifactsUrl;
         return $this;
     }
@@ -550,6 +576,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setCancelUrl(string $cancelUrl) : self
     {
+        $this->initialized['cancelUrl'] = true;
         $this->cancelUrl = $cancelUrl;
         return $this;
     }
@@ -571,6 +598,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setRerunUrl(string $rerunUrl) : self
     {
+        $this->initialized['rerunUrl'] = true;
         $this->rerunUrl = $rerunUrl;
         return $this;
     }
@@ -592,6 +620,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setWorkflowUrl(string $workflowUrl) : self
     {
+        $this->initialized['workflowUrl'] = true;
         $this->workflowUrl = $workflowUrl;
         return $this;
     }
@@ -613,6 +642,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setHeadCommit(SimpleCommit $headCommit) : self
     {
+        $this->initialized['headCommit'] = true;
         $this->headCommit = $headCommit;
         return $this;
     }
@@ -634,6 +664,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setRepository(MinimalRepository $repository) : self
     {
+        $this->initialized['repository'] = true;
         $this->repository = $repository;
         return $this;
     }
@@ -655,6 +686,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setHeadRepository(MinimalRepository $headRepository) : self
     {
+        $this->initialized['headRepository'] = true;
         $this->headRepository = $headRepository;
         return $this;
     }
@@ -676,6 +708,7 @@ class WorkflowRun extends \ArrayObject
      */
     public function setHeadRepositoryId(int $headRepositoryId) : self
     {
+        $this->initialized['headRepositoryId'] = true;
         $this->headRepositoryId = $headRepositoryId;
         return $this;
     }

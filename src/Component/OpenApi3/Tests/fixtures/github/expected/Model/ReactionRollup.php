@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReactionRollup extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -82,6 +90,7 @@ class ReactionRollup extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -103,6 +112,7 @@ class ReactionRollup extends \ArrayObject
      */
     public function setTotalCount(int $totalCount) : self
     {
+        $this->initialized['totalCount'] = true;
         $this->totalCount = $totalCount;
         return $this;
     }
@@ -124,6 +134,7 @@ class ReactionRollup extends \ArrayObject
      */
     public function set1(int $n1) : self
     {
+        $this->initialized['n1'] = true;
         $this->n1 = $n1;
         return $this;
     }
@@ -145,6 +156,7 @@ class ReactionRollup extends \ArrayObject
      */
     public function set12(int $n12) : self
     {
+        $this->initialized['n12'] = true;
         $this->n12 = $n12;
         return $this;
     }
@@ -166,6 +178,7 @@ class ReactionRollup extends \ArrayObject
      */
     public function setLaugh(int $laugh) : self
     {
+        $this->initialized['laugh'] = true;
         $this->laugh = $laugh;
         return $this;
     }
@@ -187,6 +200,7 @@ class ReactionRollup extends \ArrayObject
      */
     public function setConfused(int $confused) : self
     {
+        $this->initialized['confused'] = true;
         $this->confused = $confused;
         return $this;
     }
@@ -208,6 +222,7 @@ class ReactionRollup extends \ArrayObject
      */
     public function setHeart(int $heart) : self
     {
+        $this->initialized['heart'] = true;
         $this->heart = $heart;
         return $this;
     }
@@ -229,6 +244,7 @@ class ReactionRollup extends \ArrayObject
      */
     public function setHooray(int $hooray) : self
     {
+        $this->initialized['hooray'] = true;
         $this->hooray = $hooray;
         return $this;
     }
@@ -250,6 +266,7 @@ class ReactionRollup extends \ArrayObject
      */
     public function setEyes(int $eyes) : self
     {
+        $this->initialized['eyes'] = true;
         $this->eyes = $eyes;
         return $this;
     }
@@ -271,6 +288,7 @@ class ReactionRollup extends \ArrayObject
      */
     public function setRocket(int $rocket) : self
     {
+        $this->initialized['rocket'] = true;
         $this->rocket = $rocket;
         return $this;
     }

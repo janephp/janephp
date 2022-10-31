@@ -110,46 +110,46 @@ class BankMatchVerifyNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCompanyNumber()) {
+        if ($object->isInitialized('companyNumber') && null !== $object->getCompanyNumber()) {
             $data['companyNumber'] = $object->getCompanyNumber();
         }
-        if (null !== $object->getAccountNumber()) {
+        if ($object->isInitialized('accountNumber') && null !== $object->getAccountNumber()) {
             $data['accountNumber'] = $object->getAccountNumber();
         }
-        if (null !== $object->getIban()) {
+        if ($object->isInitialized('iban') && null !== $object->getIban()) {
             $data['iban'] = $object->getIban();
         }
-        if (null !== $object->getIbanResult()) {
+        if ($object->isInitialized('ibanResult') && null !== $object->getIbanResult()) {
             $data['ibanResult'] = $object->getIbanResult();
         }
-        if (null !== $object->getIbanText()) {
+        if ($object->isInitialized('ibanText') && null !== $object->getIbanText()) {
             $data['ibanText'] = $object->getIbanText();
         }
-        if (null !== $object->getLogDate()) {
+        if ($object->isInitialized('logDate') && null !== $object->getLogDate()) {
             $data['logDate'] = $object->getLogDate();
         }
-        if (null !== $object->getSafeNumber()) {
+        if ($object->isInitialized('safeNumber') && null !== $object->getSafeNumber()) {
             $data['safeNumber'] = $object->getSafeNumber();
         }
-        if (null !== $object->getScanResult()) {
+        if ($object->isInitialized('scanResult') && null !== $object->getScanResult()) {
             $data['scanResult'] = $object->getScanResult();
         }
-        if (null !== $object->getScanText()) {
+        if ($object->isInitialized('scanText') && null !== $object->getScanText()) {
             $data['scanText'] = $object->getScanText();
         }
-        if (null !== $object->getSortCode()) {
+        if ($object->isInitialized('sortCode') && null !== $object->getSortCode()) {
             $data['sortCode'] = $object->getSortCode();
         }
-        if (null !== $object->getStatusResult()) {
+        if ($object->isInitialized('statusResult') && null !== $object->getStatusResult()) {
             $data['statusResult'] = $object->getStatusResult();
         }
-        if (null !== $object->getStatusText()) {
+        if ($object->isInitialized('statusText') && null !== $object->getStatusText()) {
             $data['statusText'] = $object->getStatusText();
         }
-        if (null !== $object->getVatResult()) {
+        if ($object->isInitialized('vatResult') && null !== $object->getVatResult()) {
             $data['vatResult'] = $object->getVatResult();
         }
-        if (null !== $object->getVatText()) {
+        if ($object->isInitialized('vatText') && null !== $object->getVatText()) {
             $data['vatText'] = $object->getVatText();
         }
         foreach ($object as $key => $value) {

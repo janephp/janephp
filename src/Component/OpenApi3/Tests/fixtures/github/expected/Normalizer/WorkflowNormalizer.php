@@ -112,7 +112,7 @@ class WorkflowNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['url'] = $object->getUrl();
         $data['html_url'] = $object->getHtmlUrl();
         $data['badge_url'] = $object->getBadgeUrl();
-        if (null !== $object->getDeletedAt()) {
+        if ($object->isInitialized('deletedAt') && null !== $object->getDeletedAt()) {
             $data['deleted_at'] = $object->getDeletedAt()->format('Y-m-d\\TH:i:sP');
         }
         foreach ($object as $key => $value) {

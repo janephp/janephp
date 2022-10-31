@@ -145,16 +145,16 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $data = array();
         $data['id'] = $object->getId();
-        if (null !== $object->getIndexId()) {
+        if ($object->isInitialized('indexId') && null !== $object->getIndexId()) {
             $data['indexId'] = $object->getIndexId();
         }
-        if (null !== $object->getFieldNamespace()) {
+        if ($object->isInitialized('fieldNamespace') && null !== $object->getFieldNamespace()) {
             $data['fieldNamespace'] = $object->getFieldNamespace();
         }
-        if (null !== $object->getNames()) {
+        if ($object->isInitialized('names') && null !== $object->getNames()) {
             $data['names'] = $object->getNames();
         }
-        if (null !== $object->getDescriptions()) {
+        if ($object->isInitialized('descriptions') && null !== $object->getDescriptions()) {
             $data['descriptions'] = $object->getDescriptions();
         }
         $data['required'] = $object->getRequired();
@@ -163,16 +163,16 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['simpleSearch'] = $object->getSimpleSearch();
         $data['sortable'] = $object->getSortable();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getPattern()) {
+        if ($object->isInitialized('pattern') && null !== $object->getPattern()) {
             $data['pattern'] = $object->getPattern();
         }
-        if (null !== $object->getMinimum()) {
+        if ($object->isInitialized('minimum') && null !== $object->getMinimum()) {
             $data['minimum'] = $object->getMinimum();
         }
-        if (null !== $object->getMaximum()) {
+        if ($object->isInitialized('maximum') && null !== $object->getMaximum()) {
             $data['maximum'] = $object->getMaximum();
         }
-        if (null !== $object->getBoost()) {
+        if ($object->isInitialized('boost') && null !== $object->getBoost()) {
             $data['boost'] = $object->getBoost();
         }
         foreach ($object as $key => $value) {

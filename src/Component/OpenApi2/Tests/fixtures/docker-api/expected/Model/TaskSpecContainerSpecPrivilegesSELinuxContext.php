@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class TaskSpecContainerSpecPrivilegesSELinuxContext
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Disable SELinux
      *
      * @var bool
@@ -52,6 +60,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
      */
     public function setDisable(bool $disable) : self
     {
+        $this->initialized['disable'] = true;
         $this->disable = $disable;
         return $this;
     }
@@ -73,6 +82,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
      */
     public function setUser(string $user) : self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
     }
@@ -94,6 +104,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
      */
     public function setRole(string $role) : self
     {
+        $this->initialized['role'] = true;
         $this->role = $role;
         return $this;
     }
@@ -115,6 +126,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -136,6 +148,7 @@ class TaskSpecContainerSpecPrivilegesSELinuxContext
      */
     public function setLevel(string $level) : self
     {
+        $this->initialized['level'] = true;
         $this->level = $level;
         return $this;
     }

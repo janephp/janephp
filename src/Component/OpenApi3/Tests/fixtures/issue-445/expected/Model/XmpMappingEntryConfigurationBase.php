@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class XmpMappingEntryConfigurationBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -26,6 +34,7 @@ class XmpMappingEntryConfigurationBase
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

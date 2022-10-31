@@ -5,6 +5,14 @@ namespace Github\Model;
 class ApplicationGrant extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -64,6 +72,7 @@ class ApplicationGrant extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -85,6 +94,7 @@ class ApplicationGrant extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -106,6 +116,7 @@ class ApplicationGrant extends \ArrayObject
      */
     public function setApp(ApplicationGrantApp $app) : self
     {
+        $this->initialized['app'] = true;
         $this->app = $app;
         return $this;
     }
@@ -127,6 +138,7 @@ class ApplicationGrant extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -148,6 +160,7 @@ class ApplicationGrant extends \ArrayObject
      */
     public function setUpdatedAt(\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -169,6 +182,7 @@ class ApplicationGrant extends \ArrayObject
      */
     public function setScopes(array $scopes) : self
     {
+        $this->initialized['scopes'] = true;
         $this->scopes = $scopes;
         return $this;
     }
@@ -190,6 +204,7 @@ class ApplicationGrant extends \ArrayObject
      */
     public function setUser(?ApplicationGrantUser $user) : self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
     }

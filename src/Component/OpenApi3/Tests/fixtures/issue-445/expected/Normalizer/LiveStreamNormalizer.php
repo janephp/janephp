@@ -80,17 +80,17 @@ class LiveStreamNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $data = array();
         $data['id'] = $object->getId();
-        if (null !== $object->getDocument()) {
+        if ($object->isInitialized('document') && null !== $object->getDocument()) {
             $data['document'] = $object->getDocument();
         }
-        if (null !== $object->getScopeType()) {
+        if ($object->isInitialized('scopeType') && null !== $object->getScopeType()) {
             $data['scopeType'] = $object->getScopeType();
         }
         $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getTraceJob()) {
+        if ($object->isInitialized('traceJob') && null !== $object->getTraceJob()) {
             $data['traceJob'] = $object->getTraceJob();
         }
-        if (null !== $object->getAudit()) {
+        if ($object->isInitialized('audit') && null !== $object->getAudit()) {
             $data['audit'] = $object->getAudit();
         }
         return $data;

@@ -126,37 +126,37 @@ class DetailedTweetNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFormat()) {
+        if ($object->isInitialized('format') && null !== $object->getFormat()) {
             $data['format'] = $object->getFormat();
         }
         $data['id'] = $object->getId();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['text'] = $object->getText();
         $data['author_id'] = $object->getAuthorId();
-        if (null !== $object->getInReplyToUserId()) {
+        if ($object->isInitialized('inReplyToUserId') && null !== $object->getInReplyToUserId()) {
             $data['in_reply_to_user_id'] = $object->getInReplyToUserId();
         }
-        if (null !== $object->getReferencedTweets()) {
+        if ($object->isInitialized('referencedTweets') && null !== $object->getReferencedTweets()) {
             $values = array();
             foreach ($object->getReferencedTweets() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['referenced_tweets'] = $values;
         }
-        if (null !== $object->getAttachments()) {
+        if ($object->isInitialized('attachments') && null !== $object->getAttachments()) {
             $data['attachments'] = $this->normalizer->normalize($object->getAttachments(), 'json', $context);
         }
-        if (null !== $object->getWithheld()) {
+        if ($object->isInitialized('withheld') && null !== $object->getWithheld()) {
             $data['withheld'] = $this->normalizer->normalize($object->getWithheld(), 'json', $context);
         }
-        if (null !== $object->getGeo()) {
+        if ($object->isInitialized('geo') && null !== $object->getGeo()) {
             $data['geo'] = $this->normalizer->normalize($object->getGeo(), 'json', $context);
         }
-        if (null !== $object->getEntities()) {
+        if ($object->isInitialized('entities') && null !== $object->getEntities()) {
             $data['entities'] = $this->normalizer->normalize($object->getEntities(), 'json', $context);
         }
         $data['stats'] = $this->normalizer->normalize($object->getStats(), 'json', $context);
-        if (null !== $object->getContextAnnotation()) {
+        if ($object->isInitialized('contextAnnotation') && null !== $object->getContextAnnotation()) {
             $values_1 = array();
             foreach ($object->getContextAnnotation() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
@@ -164,10 +164,10 @@ class DetailedTweetNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['context_annotation'] = $values_1;
         }
         $data['possibly_sensitive'] = $object->getPossiblySensitive();
-        if (null !== $object->getLang()) {
+        if ($object->isInitialized('lang') && null !== $object->getLang()) {
             $data['lang'] = $object->getLang();
         }
-        if (null !== $object->getSource()) {
+        if ($object->isInitialized('source') && null !== $object->getSource()) {
             $data['source'] = $object->getSource();
         }
         foreach ($object as $key => $value_2) {

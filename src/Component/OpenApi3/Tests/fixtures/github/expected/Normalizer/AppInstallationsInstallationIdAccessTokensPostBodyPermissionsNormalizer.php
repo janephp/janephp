@@ -78,19 +78,19 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissionsNormalizer im
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getContents()) {
+        if ($object->isInitialized('contents') && null !== $object->getContents()) {
             $data['contents'] = $object->getContents();
         }
-        if (null !== $object->getIssues()) {
+        if ($object->isInitialized('issues') && null !== $object->getIssues()) {
             $data['issues'] = $object->getIssues();
         }
-        if (null !== $object->getDeployments()) {
+        if ($object->isInitialized('deployments') && null !== $object->getDeployments()) {
             $data['deployments'] = $object->getDeployments();
         }
-        if (null !== $object->getSingleFile()) {
+        if ($object->isInitialized('singleFile') && null !== $object->getSingleFile()) {
             $data['single_file'] = $object->getSingleFile();
         }
-        if (null !== $object->getDefNotARepo()) {
+        if ($object->isInitialized('defNotARepo') && null !== $object->getDefNotARepo()) {
             $data['def_not_a_repo'] = $object->getDefNotARepo();
         }
         foreach ($object as $key => $value) {

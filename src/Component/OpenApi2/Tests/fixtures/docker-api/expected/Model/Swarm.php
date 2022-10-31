@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class Swarm
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the swarm.
      *
      * @var string
@@ -111,6 +119,7 @@ class Swarm
      */
     public function setID(string $iD) : self
     {
+        $this->initialized['iD'] = true;
         $this->iD = $iD;
         return $this;
     }
@@ -152,6 +161,7 @@ class Swarm
     */
     public function setVersion(ObjectVersion $version) : self
     {
+        $this->initialized['version'] = true;
         $this->version = $version;
         return $this;
     }
@@ -177,6 +187,7 @@ class Swarm
     */
     public function setCreatedAt(string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -202,6 +213,7 @@ class Swarm
     */
     public function setUpdatedAt(string $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -223,6 +235,7 @@ class Swarm
      */
     public function setSpec(SwarmSpec $spec) : self
     {
+        $this->initialized['spec'] = true;
         $this->spec = $spec;
         return $this;
     }
@@ -248,6 +261,7 @@ class Swarm
     */
     public function setTLSInfo(TLSInfo $tLSInfo) : self
     {
+        $this->initialized['tLSInfo'] = true;
         $this->tLSInfo = $tLSInfo;
         return $this;
     }
@@ -269,6 +283,7 @@ class Swarm
      */
     public function setRootRotationInProgress(bool $rootRotationInProgress) : self
     {
+        $this->initialized['rootRotationInProgress'] = true;
         $this->rootRotationInProgress = $rootRotationInProgress;
         return $this;
     }
@@ -296,6 +311,7 @@ class Swarm
     */
     public function setDataPathPort(int $dataPathPort) : self
     {
+        $this->initialized['dataPathPort'] = true;
         $this->dataPathPort = $dataPathPort;
         return $this;
     }
@@ -321,6 +337,7 @@ class Swarm
     */
     public function setDefaultAddrPool(array $defaultAddrPool) : self
     {
+        $this->initialized['defaultAddrPool'] = true;
         $this->defaultAddrPool = $defaultAddrPool;
         return $this;
     }
@@ -346,6 +363,7 @@ class Swarm
     */
     public function setSubnetSize(int $subnetSize) : self
     {
+        $this->initialized['subnetSize'] = true;
         $this->subnetSize = $subnetSize;
         return $this;
     }
@@ -367,6 +385,7 @@ class Swarm
      */
     public function setJoinTokens(JoinTokens $joinTokens) : self
     {
+        $this->initialized['joinTokens'] = true;
         $this->joinTokens = $joinTokens;
         return $this;
     }

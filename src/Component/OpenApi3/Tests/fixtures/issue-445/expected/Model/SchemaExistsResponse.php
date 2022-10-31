@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SchemaExistsResponse
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * It indicates if it exists.
      *
      * @var bool
@@ -28,6 +36,7 @@ class SchemaExistsResponse
      */
     public function setExists(bool $exists) : self
     {
+        $this->initialized['exists'] = true;
         $this->exists = $exists;
         return $this;
     }

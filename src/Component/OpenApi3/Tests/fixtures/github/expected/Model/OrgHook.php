@@ -5,6 +5,14 @@ namespace Github\Model;
 class OrgHook extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -82,6 +90,7 @@ class OrgHook extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -103,6 +112,7 @@ class OrgHook extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -124,6 +134,7 @@ class OrgHook extends \ArrayObject
      */
     public function setPingUrl(string $pingUrl) : self
     {
+        $this->initialized['pingUrl'] = true;
         $this->pingUrl = $pingUrl;
         return $this;
     }
@@ -145,6 +156,7 @@ class OrgHook extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -166,6 +178,7 @@ class OrgHook extends \ArrayObject
      */
     public function setEvents(array $events) : self
     {
+        $this->initialized['events'] = true;
         $this->events = $events;
         return $this;
     }
@@ -187,6 +200,7 @@ class OrgHook extends \ArrayObject
      */
     public function setActive(bool $active) : self
     {
+        $this->initialized['active'] = true;
         $this->active = $active;
         return $this;
     }
@@ -208,6 +222,7 @@ class OrgHook extends \ArrayObject
      */
     public function setConfig(OrgHookConfig $config) : self
     {
+        $this->initialized['config'] = true;
         $this->config = $config;
         return $this;
     }
@@ -229,6 +244,7 @@ class OrgHook extends \ArrayObject
      */
     public function setUpdatedAt(\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -250,6 +266,7 @@ class OrgHook extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -271,6 +288,7 @@ class OrgHook extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }

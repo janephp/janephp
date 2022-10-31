@@ -68,19 +68,19 @@ class ImagesSearchGetResponse200ItemNormalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getIsOfficial()) {
+        if ($object->isInitialized('isOfficial') && null !== $object->getIsOfficial()) {
             $data['is_official'] = $object->getIsOfficial();
         }
-        if (null !== $object->getIsAutomated()) {
+        if ($object->isInitialized('isAutomated') && null !== $object->getIsAutomated()) {
             $data['is_automated'] = $object->getIsAutomated();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getStarCount()) {
+        if ($object->isInitialized('starCount') && null !== $object->getStarCount()) {
             $data['star_count'] = $object->getStarCount();
         }
         if (!($context['skip_validation'] ?? false)) {

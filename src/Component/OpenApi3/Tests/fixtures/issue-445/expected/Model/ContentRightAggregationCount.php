@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentRightAggregationCount
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ContentRight.
      *
      * @var mixed
@@ -34,6 +42,7 @@ class ContentRightAggregationCount
      */
     public function setContentRight($contentRight) : self
     {
+        $this->initialized['contentRight'] = true;
         $this->contentRight = $contentRight;
         return $this;
     }
@@ -55,6 +64,7 @@ class ContentRightAggregationCount
      */
     public function setCount(int $count) : self
     {
+        $this->initialized['count'] = true;
         $this->count = $count;
         return $this;
     }

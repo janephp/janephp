@@ -49,10 +49,10 @@ class OtherchildtypeNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getInheritedProperty()) {
+        if ($object->isInitialized('inheritedProperty') && null !== $object->getInheritedProperty()) {
             $data['inheritedProperty'] = $object->getInheritedProperty();
         }
-        if (null !== $object->getChildProperty()) {
+        if ($object->isInitialized('childProperty') && null !== $object->getChildProperty()) {
             $data['childProperty'] = $object->getChildProperty();
         }
         return $data;

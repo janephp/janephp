@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class FullTextEntitiesAnnotationsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Index (zero-based) at which position this entity starts.
      *
      * @var int
@@ -52,6 +60,7 @@ class FullTextEntitiesAnnotationsItem extends \ArrayObject
      */
     public function setStart(int $start) : self
     {
+        $this->initialized['start'] = true;
         $this->start = $start;
         return $this;
     }
@@ -73,6 +82,7 @@ class FullTextEntitiesAnnotationsItem extends \ArrayObject
      */
     public function setEnd(int $end) : self
     {
+        $this->initialized['end'] = true;
         $this->end = $end;
         return $this;
     }
@@ -94,6 +104,7 @@ class FullTextEntitiesAnnotationsItem extends \ArrayObject
      */
     public function setProbability(float $probability) : self
     {
+        $this->initialized['probability'] = true;
         $this->probability = $probability;
         return $this;
     }
@@ -115,6 +126,7 @@ class FullTextEntitiesAnnotationsItem extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -136,6 +148,7 @@ class FullTextEntitiesAnnotationsItem extends \ArrayObject
      */
     public function setNormalizedText(string $normalizedText) : self
     {
+        $this->initialized['normalizedText'] = true;
         $this->normalizedText = $normalizedText;
         return $this;
     }

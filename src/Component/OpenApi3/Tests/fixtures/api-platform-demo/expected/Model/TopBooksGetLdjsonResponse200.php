@@ -5,6 +5,14 @@ namespace ApiPlatform\Demo\Model;
 class TopBooksGetLdjsonResponse200 extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var TopBookJsonld[]
@@ -46,6 +54,7 @@ class TopBooksGetLdjsonResponse200 extends \ArrayObject
      */
     public function setHydraMember(array $hydraMember) : self
     {
+        $this->initialized['hydraMember'] = true;
         $this->hydraMember = $hydraMember;
         return $this;
     }
@@ -67,6 +76,7 @@ class TopBooksGetLdjsonResponse200 extends \ArrayObject
      */
     public function setHydraTotalItems(int $hydraTotalItems) : self
     {
+        $this->initialized['hydraTotalItems'] = true;
         $this->hydraTotalItems = $hydraTotalItems;
         return $this;
     }
@@ -88,6 +98,7 @@ class TopBooksGetLdjsonResponse200 extends \ArrayObject
      */
     public function setHydraView(TopBooksGetLdjsonResponse200HydraView $hydraView) : self
     {
+        $this->initialized['hydraView'] = true;
         $this->hydraView = $hydraView;
         return $this;
     }
@@ -109,6 +120,7 @@ class TopBooksGetLdjsonResponse200 extends \ArrayObject
      */
     public function setHydraSearch(TopBooksGetLdjsonResponse200HydraSearch $hydraSearch) : self
     {
+        $this->initialized['hydraSearch'] = true;
         $this->hydraSearch = $hydraSearch;
         return $this;
     }

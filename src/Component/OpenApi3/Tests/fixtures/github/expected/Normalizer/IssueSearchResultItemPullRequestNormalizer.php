@@ -93,7 +93,7 @@ class IssueSearchResultItemPullRequestNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMergedAt()) {
+        if ($object->isInitialized('mergedAt') && null !== $object->getMergedAt()) {
             $data['merged_at'] = $object->getMergedAt()->format('Y-m-d\\TH:i:sP');
         }
         $data['diff_url'] = $object->getDiffUrl();

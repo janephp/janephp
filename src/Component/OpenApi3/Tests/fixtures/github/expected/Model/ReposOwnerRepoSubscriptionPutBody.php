@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoSubscriptionPutBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Determines if notifications should be received from this repository.
      *
      * @var bool
@@ -34,6 +42,7 @@ class ReposOwnerRepoSubscriptionPutBody extends \ArrayObject
      */
     public function setSubscribed(bool $subscribed) : self
     {
+        $this->initialized['subscribed'] = true;
         $this->subscribed = $subscribed;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReposOwnerRepoSubscriptionPutBody extends \ArrayObject
      */
     public function setIgnored(bool $ignored) : self
     {
+        $this->initialized['ignored'] = true;
         $this->ignored = $ignored;
         return $this;
     }

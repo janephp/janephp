@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class NodeInfoMessage extends Message
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -70,6 +78,7 @@ class NodeInfoMessage extends Message
      */
     public function setNodeId(?string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -91,6 +100,7 @@ class NodeInfoMessage extends Message
      */
     public function setHostName(?string $hostName) : self
     {
+        $this->initialized['hostName'] = true;
         $this->hostName = $hostName;
         return $this;
     }
@@ -112,6 +122,7 @@ class NodeInfoMessage extends Message
      */
     public function setLastResponseTime(\DateTime $lastResponseTime) : self
     {
+        $this->initialized['lastResponseTime'] = true;
         $this->lastResponseTime = $lastResponseTime;
         return $this;
     }
@@ -133,6 +144,7 @@ class NodeInfoMessage extends Message
      */
     public function setServiceName(?string $serviceName) : self
     {
+        $this->initialized['serviceName'] = true;
         $this->serviceName = $serviceName;
         return $this;
     }
@@ -154,6 +166,7 @@ class NodeInfoMessage extends Message
      */
     public function setFileVersion(?string $fileVersion) : self
     {
+        $this->initialized['fileVersion'] = true;
         $this->fileVersion = $fileVersion;
         return $this;
     }
@@ -175,6 +188,7 @@ class NodeInfoMessage extends Message
      */
     public function setProductVersion(?string $productVersion) : self
     {
+        $this->initialized['productVersion'] = true;
         $this->productVersion = $productVersion;
         return $this;
     }
@@ -196,6 +210,7 @@ class NodeInfoMessage extends Message
      */
     public function setRelease(?string $release) : self
     {
+        $this->initialized['release'] = true;
         $this->release = $release;
         return $this;
     }
@@ -217,6 +232,7 @@ class NodeInfoMessage extends Message
      */
     public function setLogLevel(?string $logLevel) : self
     {
+        $this->initialized['logLevel'] = true;
         $this->logLevel = $logLevel;
         return $this;
     }

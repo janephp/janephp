@@ -119,14 +119,14 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         $data = array();
         $data['Id'] = $object->getId();
-        if (null !== $object->getRepoTags()) {
+        if ($object->isInitialized('repoTags') && null !== $object->getRepoTags()) {
             $values = array();
             foreach ($object->getRepoTags() as $value) {
                 $values[] = $value;
             }
             $data['RepoTags'] = $values;
         }
-        if (null !== $object->getRepoDigests()) {
+        if ($object->isInitialized('repoDigests') && null !== $object->getRepoDigests()) {
             $values_1 = array();
             foreach ($object->getRepoDigests() as $value_1) {
                 $values_1[] = $value_1;
@@ -137,24 +137,24 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $data['Comment'] = $object->getComment();
         $data['Created'] = $object->getCreated();
         $data['Container'] = $object->getContainer();
-        if (null !== $object->getContainerConfig()) {
+        if ($object->isInitialized('containerConfig') && null !== $object->getContainerConfig()) {
             $data['ContainerConfig'] = $this->normalizer->normalize($object->getContainerConfig(), 'json', $context);
         }
         $data['DockerVersion'] = $object->getDockerVersion();
         $data['Author'] = $object->getAuthor();
-        if (null !== $object->getConfig()) {
+        if ($object->isInitialized('config') && null !== $object->getConfig()) {
             $data['Config'] = $this->normalizer->normalize($object->getConfig(), 'json', $context);
         }
         $data['Architecture'] = $object->getArchitecture();
         $data['Os'] = $object->getOs();
-        if (null !== $object->getOsVersion()) {
+        if ($object->isInitialized('osVersion') && null !== $object->getOsVersion()) {
             $data['OsVersion'] = $object->getOsVersion();
         }
         $data['Size'] = $object->getSize();
         $data['VirtualSize'] = $object->getVirtualSize();
         $data['GraphDriver'] = $this->normalizer->normalize($object->getGraphDriver(), 'json', $context);
         $data['RootFS'] = $this->normalizer->normalize($object->getRootFS(), 'json', $context);
-        if (null !== $object->getMetadata()) {
+        if ($object->isInitialized('metadata') && null !== $object->getMetadata()) {
             $data['Metadata'] = $this->normalizer->normalize($object->getMetadata(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

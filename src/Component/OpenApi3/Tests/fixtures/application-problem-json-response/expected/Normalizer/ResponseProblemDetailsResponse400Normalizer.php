@@ -70,14 +70,14 @@ class ResponseProblemDetailsResponse400Normalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
         $data['type'] = $object->getType();
-        if (null !== $object->getDetail()) {
+        if ($object->isInitialized('detail') && null !== $object->getDetail()) {
             $data['detail'] = $object->getDetail();
         }
         foreach ($object as $key => $value) {

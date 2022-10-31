@@ -133,42 +133,42 @@ class BusinessProcessStateNotHitExceptionNormalizer implements DenormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceLevel()) {
+        if ($object->isInitialized('traceLevel') && null !== $object->getTraceLevel()) {
             $data['traceLevel'] = $object->getTraceLevel();
         }
-        if (null !== $object->getTraceId()) {
+        if ($object->isInitialized('traceId') && null !== $object->getTraceId()) {
             $data['traceId'] = $object->getTraceId();
         }
-        if (null !== $object->getTraceJobId()) {
+        if ($object->isInitialized('traceJobId') && null !== $object->getTraceJobId()) {
             $data['traceJobId'] = $object->getTraceJobId();
         }
-        if (null !== $object->getHttpStatusCode()) {
+        if ($object->isInitialized('httpStatusCode') && null !== $object->getHttpStatusCode()) {
             $data['httpStatusCode'] = $object->getHttpStatusCode();
         }
-        if (null !== $object->getExceptionMessage()) {
+        if ($object->isInitialized('exceptionMessage') && null !== $object->getExceptionMessage()) {
             $data['exceptionMessage'] = $object->getExceptionMessage();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getCustomerId()) {
+        if ($object->isInitialized('customerId') && null !== $object->getCustomerId()) {
             $data['customerId'] = $object->getCustomerId();
         }
-        if (null !== $object->getCustomerAlias()) {
+        if ($object->isInitialized('customerAlias') && null !== $object->getCustomerAlias()) {
             $data['customerAlias'] = $object->getCustomerAlias();
         }
-        if (null !== $object->getUserId()) {
+        if ($object->isInitialized('userId') && null !== $object->getUserId()) {
             $data['userId'] = $object->getUserId();
         }
-        if (null !== $object->getBusinessProcessId()) {
+        if ($object->isInitialized('businessProcessId') && null !== $object->getBusinessProcessId()) {
             $data['businessProcessId'] = $object->getBusinessProcessId();
         }
-        if (null !== $object->getExpected()) {
+        if ($object->isInitialized('expected') && null !== $object->getExpected()) {
             $values = array();
             foreach ($object->getExpected() as $value) {
                 $values[] = $value;
             }
             $data['expected'] = $values;
         }
-        if (null !== $object->getActual()) {
+        if ($object->isInitialized('actual') && null !== $object->getActual()) {
             $data['actual'] = $object->getActual();
         }
         foreach ($object as $key => $value_1) {

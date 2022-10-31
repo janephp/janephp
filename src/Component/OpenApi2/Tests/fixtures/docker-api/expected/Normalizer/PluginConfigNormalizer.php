@@ -113,7 +113,7 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDockerVersion()) {
+        if ($object->isInitialized('dockerVersion') && null !== $object->getDockerVersion()) {
             $data['DockerVersion'] = $object->getDockerVersion();
         }
         $data['Description'] = $object->getDescription();
@@ -125,7 +125,7 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $data['Entrypoint'] = $values;
         $data['WorkDir'] = $object->getWorkDir();
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $data['User'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         }
         $data['Network'] = $this->normalizer->normalize($object->getNetwork(), 'json', $context);
@@ -144,7 +144,7 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $data['Env'] = $values_2;
         $data['Args'] = $this->normalizer->normalize($object->getArgs(), 'json', $context);
-        if (null !== $object->getRootfs()) {
+        if ($object->isInitialized('rootfs') && null !== $object->getRootfs()) {
             $data['rootfs'] = $this->normalizer->normalize($object->getRootfs(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

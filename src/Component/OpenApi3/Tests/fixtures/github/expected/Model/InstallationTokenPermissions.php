@@ -5,6 +5,14 @@ namespace Github\Model;
 class InstallationTokenPermissions extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class InstallationTokenPermissions extends \ArrayObject
      */
     public function setIssues(string $issues) : self
     {
+        $this->initialized['issues'] = true;
         $this->issues = $issues;
         return $this;
     }
@@ -67,6 +76,7 @@ class InstallationTokenPermissions extends \ArrayObject
      */
     public function setContents(string $contents) : self
     {
+        $this->initialized['contents'] = true;
         $this->contents = $contents;
         return $this;
     }
@@ -88,6 +98,7 @@ class InstallationTokenPermissions extends \ArrayObject
      */
     public function setMetadata(string $metadata) : self
     {
+        $this->initialized['metadata'] = true;
         $this->metadata = $metadata;
         return $this;
     }
@@ -109,6 +120,7 @@ class InstallationTokenPermissions extends \ArrayObject
      */
     public function setSingleFile(string $singleFile) : self
     {
+        $this->initialized['singleFile'] = true;
         $this->singleFile = $singleFile;
         return $this;
     }

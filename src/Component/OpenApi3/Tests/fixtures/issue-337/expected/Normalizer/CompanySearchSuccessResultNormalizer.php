@@ -69,10 +69,10 @@ class CompanySearchSuccessResultNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTotalSize()) {
+        if ($object->isInitialized('totalSize') && null !== $object->getTotalSize()) {
             $data['totalSize'] = $object->getTotalSize();
         }
-        if (null !== $object->getCompanies()) {
+        if ($object->isInitialized('companies') && null !== $object->getCompanies()) {
             $values = array();
             foreach ($object->getCompanies() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

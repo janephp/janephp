@@ -62,10 +62,10 @@ class AuthenticationRequestNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUsername()) {
+        if ($object->isInitialized('username') && null !== $object->getUsername()) {
             $data['username'] = $object->getUsername();
         }
-        if (null !== $object->getPassword()) {
+        if ($object->isInitialized('password') && null !== $object->getPassword()) {
             $data['password'] = $object->getPassword();
         }
         foreach ($object as $key => $value) {

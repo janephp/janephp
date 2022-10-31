@@ -5,6 +5,14 @@ namespace Github\Model;
 class ContentFileLinks extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -40,6 +48,7 @@ class ContentFileLinks extends \ArrayObject
      */
     public function setGit(?string $git) : self
     {
+        $this->initialized['git'] = true;
         $this->git = $git;
         return $this;
     }
@@ -61,6 +70,7 @@ class ContentFileLinks extends \ArrayObject
      */
     public function setHtml(?string $html) : self
     {
+        $this->initialized['html'] = true;
         $this->html = $html;
         return $this;
     }
@@ -82,6 +92,7 @@ class ContentFileLinks extends \ArrayObject
      */
     public function setSelf(string $self) : self
     {
+        $this->initialized['self'] = true;
         $this->self = $self;
         return $this;
     }

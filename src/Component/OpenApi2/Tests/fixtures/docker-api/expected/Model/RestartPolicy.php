@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class RestartPolicy
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * - Empty string means not to restart
     - `no` Do not automatically restart
     - `always` Always restart
@@ -49,6 +57,7 @@ class RestartPolicy
     */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -70,6 +79,7 @@ class RestartPolicy
      */
     public function setMaximumRetryCount(int $maximumRetryCount) : self
     {
+        $this->initialized['maximumRetryCount'] = true;
         $this->maximumRetryCount = $maximumRetryCount;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Jane\OpenApi2\Tests\Expected\Model;
 class Company
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The Harvest URL for the company.
      *
      * @var string
@@ -124,6 +132,7 @@ class Company
      */
     public function setBaseUri(string $baseUri) : self
     {
+        $this->initialized['baseUri'] = true;
         $this->baseUri = $baseUri;
         return $this;
     }
@@ -145,6 +154,7 @@ class Company
      */
     public function setFullDomain(string $fullDomain) : self
     {
+        $this->initialized['fullDomain'] = true;
         $this->fullDomain = $fullDomain;
         return $this;
     }
@@ -166,6 +176,7 @@ class Company
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -187,6 +198,7 @@ class Company
      */
     public function setIsActive(bool $isActive) : self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
         return $this;
     }
@@ -208,6 +220,7 @@ class Company
      */
     public function setWeekStartDay(string $weekStartDay) : self
     {
+        $this->initialized['weekStartDay'] = true;
         $this->weekStartDay = $weekStartDay;
         return $this;
     }
@@ -229,6 +242,7 @@ class Company
      */
     public function setWantsTimestampTimers(bool $wantsTimestampTimers) : self
     {
+        $this->initialized['wantsTimestampTimers'] = true;
         $this->wantsTimestampTimers = $wantsTimestampTimers;
         return $this;
     }
@@ -250,6 +264,7 @@ class Company
      */
     public function setTimeFormat(string $timeFormat) : self
     {
+        $this->initialized['timeFormat'] = true;
         $this->timeFormat = $timeFormat;
         return $this;
     }
@@ -271,6 +286,7 @@ class Company
      */
     public function setPlanType(string $planType) : self
     {
+        $this->initialized['planType'] = true;
         $this->planType = $planType;
         return $this;
     }
@@ -292,6 +308,7 @@ class Company
      */
     public function setClock(string $clock) : self
     {
+        $this->initialized['clock'] = true;
         $this->clock = $clock;
         return $this;
     }
@@ -313,6 +330,7 @@ class Company
      */
     public function setDecimalSymbol(string $decimalSymbol) : self
     {
+        $this->initialized['decimalSymbol'] = true;
         $this->decimalSymbol = $decimalSymbol;
         return $this;
     }
@@ -334,6 +352,7 @@ class Company
      */
     public function setThousandsSeparator(string $thousandsSeparator) : self
     {
+        $this->initialized['thousandsSeparator'] = true;
         $this->thousandsSeparator = $thousandsSeparator;
         return $this;
     }
@@ -355,6 +374,7 @@ class Company
      */
     public function setColorScheme(string $colorScheme) : self
     {
+        $this->initialized['colorScheme'] = true;
         $this->colorScheme = $colorScheme;
         return $this;
     }
@@ -376,6 +396,7 @@ class Company
      */
     public function setWeeklyCapacity(int $weeklyCapacity) : self
     {
+        $this->initialized['weeklyCapacity'] = true;
         $this->weeklyCapacity = $weeklyCapacity;
         return $this;
     }
@@ -397,6 +418,7 @@ class Company
      */
     public function setExpenseFeature(bool $expenseFeature) : self
     {
+        $this->initialized['expenseFeature'] = true;
         $this->expenseFeature = $expenseFeature;
         return $this;
     }
@@ -418,6 +440,7 @@ class Company
      */
     public function setInvoiceFeature(bool $invoiceFeature) : self
     {
+        $this->initialized['invoiceFeature'] = true;
         $this->invoiceFeature = $invoiceFeature;
         return $this;
     }
@@ -439,6 +462,7 @@ class Company
      */
     public function setEstimateFeature(bool $estimateFeature) : self
     {
+        $this->initialized['estimateFeature'] = true;
         $this->estimateFeature = $estimateFeature;
         return $this;
     }
@@ -460,6 +484,7 @@ class Company
      */
     public function setApprovalFeature(bool $approvalFeature) : self
     {
+        $this->initialized['approvalFeature'] = true;
         $this->approvalFeature = $approvalFeature;
         return $this;
     }

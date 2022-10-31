@@ -160,107 +160,107 @@ class ContainerConfigNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getHostname()) {
+        if ($object->isInitialized('hostname') && null !== $object->getHostname()) {
             $data['Hostname'] = $object->getHostname();
         }
-        if (null !== $object->getDomainname()) {
+        if ($object->isInitialized('domainname') && null !== $object->getDomainname()) {
             $data['Domainname'] = $object->getDomainname();
         }
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $data['User'] = $object->getUser();
         }
-        if (null !== $object->getAttachStdin()) {
+        if ($object->isInitialized('attachStdin') && null !== $object->getAttachStdin()) {
             $data['AttachStdin'] = $object->getAttachStdin();
         }
-        if (null !== $object->getAttachStdout()) {
+        if ($object->isInitialized('attachStdout') && null !== $object->getAttachStdout()) {
             $data['AttachStdout'] = $object->getAttachStdout();
         }
-        if (null !== $object->getAttachStderr()) {
+        if ($object->isInitialized('attachStderr') && null !== $object->getAttachStderr()) {
             $data['AttachStderr'] = $object->getAttachStderr();
         }
-        if (null !== $object->getExposedPorts()) {
+        if ($object->isInitialized('exposedPorts') && null !== $object->getExposedPorts()) {
             $values = array();
             foreach ($object->getExposedPorts() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['ExposedPorts'] = $values;
         }
-        if (null !== $object->getTty()) {
+        if ($object->isInitialized('tty') && null !== $object->getTty()) {
             $data['Tty'] = $object->getTty();
         }
-        if (null !== $object->getOpenStdin()) {
+        if ($object->isInitialized('openStdin') && null !== $object->getOpenStdin()) {
             $data['OpenStdin'] = $object->getOpenStdin();
         }
-        if (null !== $object->getStdinOnce()) {
+        if ($object->isInitialized('stdinOnce') && null !== $object->getStdinOnce()) {
             $data['StdinOnce'] = $object->getStdinOnce();
         }
-        if (null !== $object->getEnv()) {
+        if ($object->isInitialized('env') && null !== $object->getEnv()) {
             $values_1 = array();
             foreach ($object->getEnv() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['Env'] = $values_1;
         }
-        if (null !== $object->getCmd()) {
+        if ($object->isInitialized('cmd') && null !== $object->getCmd()) {
             $values_2 = array();
             foreach ($object->getCmd() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['Cmd'] = $values_2;
         }
-        if (null !== $object->getHealthcheck()) {
+        if ($object->isInitialized('healthcheck') && null !== $object->getHealthcheck()) {
             $data['Healthcheck'] = $this->normalizer->normalize($object->getHealthcheck(), 'json', $context);
         }
-        if (null !== $object->getArgsEscaped()) {
+        if ($object->isInitialized('argsEscaped') && null !== $object->getArgsEscaped()) {
             $data['ArgsEscaped'] = $object->getArgsEscaped();
         }
-        if (null !== $object->getImage()) {
+        if ($object->isInitialized('image') && null !== $object->getImage()) {
             $data['Image'] = $object->getImage();
         }
-        if (null !== $object->getVolumes()) {
+        if ($object->isInitialized('volumes') && null !== $object->getVolumes()) {
             $values_3 = array();
             foreach ($object->getVolumes() as $key_1 => $value_3) {
                 $values_3[$key_1] = $value_3;
             }
             $data['Volumes'] = $values_3;
         }
-        if (null !== $object->getWorkingDir()) {
+        if ($object->isInitialized('workingDir') && null !== $object->getWorkingDir()) {
             $data['WorkingDir'] = $object->getWorkingDir();
         }
-        if (null !== $object->getEntrypoint()) {
+        if ($object->isInitialized('entrypoint') && null !== $object->getEntrypoint()) {
             $values_4 = array();
             foreach ($object->getEntrypoint() as $value_4) {
                 $values_4[] = $value_4;
             }
             $data['Entrypoint'] = $values_4;
         }
-        if (null !== $object->getNetworkDisabled()) {
+        if ($object->isInitialized('networkDisabled') && null !== $object->getNetworkDisabled()) {
             $data['NetworkDisabled'] = $object->getNetworkDisabled();
         }
-        if (null !== $object->getMacAddress()) {
+        if ($object->isInitialized('macAddress') && null !== $object->getMacAddress()) {
             $data['MacAddress'] = $object->getMacAddress();
         }
-        if (null !== $object->getOnBuild()) {
+        if ($object->isInitialized('onBuild') && null !== $object->getOnBuild()) {
             $values_5 = array();
             foreach ($object->getOnBuild() as $value_5) {
                 $values_5[] = $value_5;
             }
             $data['OnBuild'] = $values_5;
         }
-        if (null !== $object->getLabels()) {
+        if ($object->isInitialized('labels') && null !== $object->getLabels()) {
             $values_6 = array();
             foreach ($object->getLabels() as $key_2 => $value_6) {
                 $values_6[$key_2] = $value_6;
             }
             $data['Labels'] = $values_6;
         }
-        if (null !== $object->getStopSignal()) {
+        if ($object->isInitialized('stopSignal') && null !== $object->getStopSignal()) {
             $data['StopSignal'] = $object->getStopSignal();
         }
-        if (null !== $object->getStopTimeout()) {
+        if ($object->isInitialized('stopTimeout') && null !== $object->getStopTimeout()) {
             $data['StopTimeout'] = $object->getStopTimeout();
         }
-        if (null !== $object->getShell()) {
+        if ($object->isInitialized('shell') && null !== $object->getShell()) {
             $values_7 = array();
             foreach ($object->getShell() as $value_7) {
                 $values_7[] = $value_7;

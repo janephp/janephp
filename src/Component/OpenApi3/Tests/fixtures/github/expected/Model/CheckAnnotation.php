@@ -5,6 +5,14 @@ namespace Github\Model;
 class CheckAnnotation extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -82,6 +90,7 @@ class CheckAnnotation extends \ArrayObject
      */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -103,6 +112,7 @@ class CheckAnnotation extends \ArrayObject
      */
     public function setStartLine(int $startLine) : self
     {
+        $this->initialized['startLine'] = true;
         $this->startLine = $startLine;
         return $this;
     }
@@ -124,6 +134,7 @@ class CheckAnnotation extends \ArrayObject
      */
     public function setEndLine(int $endLine) : self
     {
+        $this->initialized['endLine'] = true;
         $this->endLine = $endLine;
         return $this;
     }
@@ -145,6 +156,7 @@ class CheckAnnotation extends \ArrayObject
      */
     public function setStartColumn(?int $startColumn) : self
     {
+        $this->initialized['startColumn'] = true;
         $this->startColumn = $startColumn;
         return $this;
     }
@@ -166,6 +178,7 @@ class CheckAnnotation extends \ArrayObject
      */
     public function setEndColumn(?int $endColumn) : self
     {
+        $this->initialized['endColumn'] = true;
         $this->endColumn = $endColumn;
         return $this;
     }
@@ -187,6 +200,7 @@ class CheckAnnotation extends \ArrayObject
      */
     public function setAnnotationLevel(?string $annotationLevel) : self
     {
+        $this->initialized['annotationLevel'] = true;
         $this->annotationLevel = $annotationLevel;
         return $this;
     }
@@ -208,6 +222,7 @@ class CheckAnnotation extends \ArrayObject
      */
     public function setTitle(?string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -229,6 +244,7 @@ class CheckAnnotation extends \ArrayObject
      */
     public function setMessage(?string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -250,6 +266,7 @@ class CheckAnnotation extends \ArrayObject
      */
     public function setRawDetails(?string $rawDetails) : self
     {
+        $this->initialized['rawDetails'] = true;
         $this->rawDetails = $rawDetails;
         return $this;
     }
@@ -271,6 +288,7 @@ class CheckAnnotation extends \ArrayObject
      */
     public function setBlobHref(string $blobHref) : self
     {
+        $this->initialized['blobHref'] = true;
         $this->blobHref = $blobHref;
         return $this;
     }

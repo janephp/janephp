@@ -62,10 +62,10 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationPreviousNamesItem
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getDateChanged()) {
+        if ($object->isInitialized('dateChanged') && null !== $object->getDateChanged()) {
             $data['dateChanged'] = $object->getDateChanged();
         }
         foreach ($object as $key => $value) {

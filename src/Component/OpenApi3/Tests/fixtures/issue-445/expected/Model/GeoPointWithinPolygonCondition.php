@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class GeoPointWithinPolygonCondition extends BusinessRuleCondition
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * JSON path to the field
      *
      * @var string|null
@@ -35,6 +43,7 @@ class GeoPointWithinPolygonCondition extends BusinessRuleCondition
      */
     public function setFieldPath(?string $fieldPath) : self
     {
+        $this->initialized['fieldPath'] = true;
         $this->fieldPath = $fieldPath;
         return $this;
     }
@@ -58,6 +67,7 @@ class GeoPointWithinPolygonCondition extends BusinessRuleCondition
     */
     public function setPolygon(?array $polygon) : self
     {
+        $this->initialized['polygon'] = true;
         $this->polygon = $polygon;
         return $this;
     }

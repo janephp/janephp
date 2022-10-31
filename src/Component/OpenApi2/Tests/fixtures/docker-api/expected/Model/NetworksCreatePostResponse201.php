@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class NetworksCreatePostResponse201
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the created network.
      *
      * @var string
@@ -34,6 +42,7 @@ class NetworksCreatePostResponse201
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -55,6 +64,7 @@ class NetworksCreatePostResponse201
      */
     public function setWarning(string $warning) : self
     {
+        $this->initialized['warning'] = true;
         $this->warning = $warning;
         return $this;
     }

@@ -58,7 +58,7 @@ class HideReplyResponseDataNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getHidden()) {
+        if ($object->isInitialized('hidden') && null !== $object->getHidden()) {
             $data['hidden'] = $object->getHidden();
         }
         foreach ($object as $key => $value) {

@@ -80,16 +80,16 @@ class FileCommitCommitVerificationNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getVerified()) {
+        if ($object->isInitialized('verified') && null !== $object->getVerified()) {
             $data['verified'] = $object->getVerified();
         }
-        if (null !== $object->getReason()) {
+        if ($object->isInitialized('reason') && null !== $object->getReason()) {
             $data['reason'] = $object->getReason();
         }
-        if (null !== $object->getSignature()) {
+        if ($object->isInitialized('signature') && null !== $object->getSignature()) {
             $data['signature'] = $object->getSignature();
         }
-        if (null !== $object->getPayload()) {
+        if ($object->isInitialized('payload') && null !== $object->getPayload()) {
             $data['payload'] = $object->getPayload();
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class DownloadLink
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Token of the download, used to generate the url.
      *
      * @var string
@@ -34,6 +42,7 @@ class DownloadLink
      */
     public function setDownloadToken(string $downloadToken) : self
     {
+        $this->initialized['downloadToken'] = true;
         $this->downloadToken = $downloadToken;
         return $this;
     }
@@ -55,6 +64,7 @@ class DownloadLink
      */
     public function setDownloadUrl(string $downloadUrl) : self
     {
+        $this->initialized['downloadUrl'] = true;
         $this->downloadUrl = $downloadUrl;
         return $this;
     }

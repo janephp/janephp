@@ -66,10 +66,10 @@ class CheckSuitePreferenceNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPreferences()) {
+        if ($object->isInitialized('preferences') && null !== $object->getPreferences()) {
             $data['preferences'] = $this->normalizer->normalize($object->getPreferences(), 'json', $context);
         }
-        if (null !== $object->getRepository()) {
+        if ($object->isInitialized('repository') && null !== $object->getRepository()) {
             $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
         }
         foreach ($object as $key => $value) {

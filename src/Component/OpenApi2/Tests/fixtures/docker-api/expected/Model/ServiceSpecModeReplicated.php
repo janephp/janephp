@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ServiceSpecModeReplicated
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -28,6 +36,7 @@ class ServiceSpecModeReplicated
      */
     public function setReplicas(int $replicas) : self
     {
+        $this->initialized['replicas'] = true;
         $this->replicas = $replicas;
         return $this;
     }

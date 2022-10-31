@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScore extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCreditRating
@@ -28,6 +36,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScore extends \Ar
      */
     public function setCurrentCreditRating(GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCreditRating $currentCreditRating) : self
     {
+        $this->initialized['currentCreditRating'] = true;
         $this->currentCreditRating = $currentCreditRating;
         return $this;
     }

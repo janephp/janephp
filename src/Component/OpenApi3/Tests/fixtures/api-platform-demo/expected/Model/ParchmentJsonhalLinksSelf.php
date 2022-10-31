@@ -5,6 +5,14 @@ namespace ApiPlatform\Demo\Model;
 class ParchmentJsonhalLinksSelf extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -28,6 +36,7 @@ class ParchmentJsonhalLinksSelf extends \ArrayObject
      */
     public function setHref(string $href) : self
     {
+        $this->initialized['href'] = true;
         $this->href = $href;
         return $this;
     }

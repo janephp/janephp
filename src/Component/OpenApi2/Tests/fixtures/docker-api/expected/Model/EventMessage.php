@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class EventMessage
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The type of object emitting the event
      *
      * @var string
@@ -62,6 +70,7 @@ class EventMessage
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -83,6 +92,7 @@ class EventMessage
      */
     public function setAction(string $action) : self
     {
+        $this->initialized['action'] = true;
         $this->action = $action;
         return $this;
     }
@@ -108,6 +118,7 @@ class EventMessage
     */
     public function setActor(EventActor $actor) : self
     {
+        $this->initialized['actor'] = true;
         $this->actor = $actor;
         return $this;
     }
@@ -133,6 +144,7 @@ class EventMessage
     */
     public function setScope(string $scope) : self
     {
+        $this->initialized['scope'] = true;
         $this->scope = $scope;
         return $this;
     }
@@ -154,6 +166,7 @@ class EventMessage
      */
     public function setTime(int $time) : self
     {
+        $this->initialized['time'] = true;
         $this->time = $time;
         return $this;
     }
@@ -175,6 +188,7 @@ class EventMessage
      */
     public function setTimeNano(int $timeNano) : self
     {
+        $this->initialized['timeNano'] = true;
         $this->timeNano = $timeNano;
         return $this;
     }

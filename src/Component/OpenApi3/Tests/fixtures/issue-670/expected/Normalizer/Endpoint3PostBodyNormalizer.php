@@ -58,7 +58,7 @@ class Endpoint3PostBodyNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPostField3()) {
+        if ($object->isInitialized('postField3') && null !== $object->getPostField3()) {
             $data['post-field-3'] = $this->normalizer->normalize($object->getPostField3(), 'json', $context);
         }
         foreach ($object as $key => $value) {

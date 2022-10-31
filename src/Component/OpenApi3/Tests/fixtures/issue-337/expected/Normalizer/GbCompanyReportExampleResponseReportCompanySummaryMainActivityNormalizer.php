@@ -66,13 +66,13 @@ class GbCompanyReportExampleResponseReportCompanySummaryMainActivityNormalizer i
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCode()) {
+        if ($object->isInitialized('code') && null !== $object->getCode()) {
             $data['code'] = $object->getCode();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getClassification()) {
+        if ($object->isInitialized('classification') && null !== $object->getClassification()) {
             $data['classification'] = $object->getClassification();
         }
         foreach ($object as $key => $value) {

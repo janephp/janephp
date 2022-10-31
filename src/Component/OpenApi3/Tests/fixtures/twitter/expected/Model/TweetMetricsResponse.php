@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class TweetMetricsResponse extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var TweetMetrics[]
@@ -34,6 +42,7 @@ class TweetMetricsResponse extends \ArrayObject
      */
     public function setData(array $data) : self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
         return $this;
     }
@@ -55,6 +64,7 @@ class TweetMetricsResponse extends \ArrayObject
      */
     public function setErrors(array $errors) : self
     {
+        $this->initialized['errors'] = true;
         $this->errors = $errors;
         return $this;
     }

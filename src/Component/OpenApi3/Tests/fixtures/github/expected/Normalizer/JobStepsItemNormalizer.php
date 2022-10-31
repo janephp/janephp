@@ -95,10 +95,10 @@ class JobStepsItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['conclusion'] = $object->getConclusion();
         $data['name'] = $object->getName();
         $data['number'] = $object->getNumber();
-        if (null !== $object->getStartedAt()) {
+        if ($object->isInitialized('startedAt') && null !== $object->getStartedAt()) {
             $data['started_at'] = $object->getStartedAt()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getCompletedAt()) {
+        if ($object->isInitialized('completedAt') && null !== $object->getCompletedAt()) {
             $data['completed_at'] = $object->getCompletedAt()->format('Y-m-d\\TH:i:sP');
         }
         foreach ($object as $key => $value) {

@@ -61,10 +61,10 @@ class TransferFileNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getIdentifier()) {
+        if ($object->isInitialized('identifier') && null !== $object->getIdentifier()) {
             $data['identifier'] = $object->getIdentifier();
         }
-        if (null !== $object->getRequestId()) {
+        if ($object->isInitialized('requestId') && null !== $object->getRequestId()) {
             $data['requestId'] = $object->getRequestId();
         }
         return $data;

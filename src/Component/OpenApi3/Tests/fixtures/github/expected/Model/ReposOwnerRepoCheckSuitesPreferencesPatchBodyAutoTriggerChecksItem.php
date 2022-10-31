@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The `id` of the GitHub App.
      *
      * @var int
@@ -34,6 +42,7 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItem extends
      */
     public function setAppId(int $appId) : self
     {
+        $this->initialized['appId'] = true;
         $this->appId = $appId;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItem extends
      */
     public function setSetting(bool $setting) : self
     {
+        $this->initialized['setting'] = true;
         $this->setting = $setting;
         return $this;
     }

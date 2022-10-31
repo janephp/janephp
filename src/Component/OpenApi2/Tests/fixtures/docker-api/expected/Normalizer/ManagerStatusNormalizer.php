@@ -62,13 +62,13 @@ class ManagerStatusNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLeader()) {
+        if ($object->isInitialized('leader') && null !== $object->getLeader()) {
             $data['Leader'] = $object->getLeader();
         }
-        if (null !== $object->getReachability()) {
+        if ($object->isInitialized('reachability') && null !== $object->getReachability()) {
             $data['Reachability'] = $object->getReachability();
         }
-        if (null !== $object->getAddr()) {
+        if ($object->isInitialized('addr') && null !== $object->getAddr()) {
             $data['Addr'] = $object->getAddr();
         }
         if (!($context['skip_validation'] ?? false)) {

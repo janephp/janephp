@@ -67,7 +67,7 @@ class ReposOwnerRepoGitBlobsPostBodyNormalizer implements DenormalizerInterface,
     {
         $data = array();
         $data['content'] = $object->getContent();
-        if (null !== $object->getEncoding()) {
+        if ($object->isInitialized('encoding') && null !== $object->getEncoding()) {
             $data['encoding'] = $object->getEncoding();
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class TaskSpecContainerSpecPrivileges
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * CredentialSpec for managed service account (Windows only)
      *
      * @var TaskSpecContainerSpecPrivilegesCredentialSpec
@@ -34,6 +42,7 @@ class TaskSpecContainerSpecPrivileges
      */
     public function setCredentialSpec(TaskSpecContainerSpecPrivilegesCredentialSpec $credentialSpec) : self
     {
+        $this->initialized['credentialSpec'] = true;
         $this->credentialSpec = $credentialSpec;
         return $this;
     }
@@ -55,6 +64,7 @@ class TaskSpecContainerSpecPrivileges
      */
     public function setSELinuxContext(TaskSpecContainerSpecPrivilegesSELinuxContext $sELinuxContext) : self
     {
+        $this->initialized['sELinuxContext'] = true;
         $this->sELinuxContext = $sELinuxContext;
         return $this;
     }

@@ -65,16 +65,16 @@ class PushImageInfoNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getError()) {
+        if ($object->isInitialized('error') && null !== $object->getError()) {
             $data['error'] = $object->getError();
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        if (null !== $object->getProgress()) {
+        if ($object->isInitialized('progress') && null !== $object->getProgress()) {
             $data['progress'] = $object->getProgress();
         }
-        if (null !== $object->getProgressDetail()) {
+        if ($object->isInitialized('progressDetail') && null !== $object->getProgressDetail()) {
             $data['progressDetail'] = $this->normalizer->normalize($object->getProgressDetail(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

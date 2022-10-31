@@ -99,28 +99,28 @@ class MarketplacePurchaseMarketplacePurchaseNormalizer implements DenormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBillingCycle()) {
+        if ($object->isInitialized('billingCycle') && null !== $object->getBillingCycle()) {
             $data['billing_cycle'] = $object->getBillingCycle();
         }
-        if (null !== $object->getNextBillingDate()) {
+        if ($object->isInitialized('nextBillingDate') && null !== $object->getNextBillingDate()) {
             $data['next_billing_date'] = $object->getNextBillingDate();
         }
-        if (null !== $object->getIsInstalled()) {
+        if ($object->isInitialized('isInstalled') && null !== $object->getIsInstalled()) {
             $data['is_installed'] = $object->getIsInstalled();
         }
-        if (null !== $object->getUnitCount()) {
+        if ($object->isInitialized('unitCount') && null !== $object->getUnitCount()) {
             $data['unit_count'] = $object->getUnitCount();
         }
-        if (null !== $object->getOnFreeTrial()) {
+        if ($object->isInitialized('onFreeTrial') && null !== $object->getOnFreeTrial()) {
             $data['on_free_trial'] = $object->getOnFreeTrial();
         }
-        if (null !== $object->getFreeTrialEndsOn()) {
+        if ($object->isInitialized('freeTrialEndsOn') && null !== $object->getFreeTrialEndsOn()) {
             $data['free_trial_ends_on'] = $object->getFreeTrialEndsOn();
         }
-        if (null !== $object->getUpdatedAt()) {
+        if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt();
         }
-        if (null !== $object->getPlan()) {
+        if ($object->isInitialized('plan') && null !== $object->getPlan()) {
             $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
         }
         foreach ($object as $key => $value) {

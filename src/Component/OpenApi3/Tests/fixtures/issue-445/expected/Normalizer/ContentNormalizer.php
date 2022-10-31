@@ -114,12 +114,12 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAudit()) {
+        if ($object->isInitialized('audit') && null !== $object->getAudit()) {
             $data['audit'] = $object->getAudit();
         }
         $data['contentSchemaId'] = $object->getContentSchemaId();
         $data['contentType'] = $object->getContentType();
-        if (null !== $object->getLayerSchemaIds()) {
+        if ($object->isInitialized('layerSchemaIds') && null !== $object->getLayerSchemaIds()) {
             $values = array();
             foreach ($object->getLayerSchemaIds() as $value) {
                 $values[] = $value;
@@ -132,21 +132,21 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         $data['displayValues'] = $values_1;
         $data['id'] = $object->getId();
-        if (null !== $object->getBrokenReferenceIds()) {
+        if ($object->isInitialized('brokenReferenceIds') && null !== $object->getBrokenReferenceIds()) {
             $values_2 = array();
             foreach ($object->getBrokenReferenceIds() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['brokenReferenceIds'] = $values_2;
         }
-        if (null !== $object->getBrokenIndirectReferenceIds()) {
+        if ($object->isInitialized('brokenIndirectReferenceIds') && null !== $object->getBrokenIndirectReferenceIds()) {
             $values_3 = array();
             foreach ($object->getBrokenIndirectReferenceIds() as $value_3) {
                 $values_3[] = $value_3;
             }
             $data['brokenIndirectReferenceIds'] = $values_3;
         }
-        if (null !== $object->getBrokenRelationTargetIds()) {
+        if ($object->isInitialized('brokenRelationTargetIds') && null !== $object->getBrokenRelationTargetIds()) {
             $values_4 = array();
             foreach ($object->getBrokenRelationTargetIds() as $value_4) {
                 $values_4[] = $value_4;

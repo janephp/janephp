@@ -64,11 +64,11 @@ class BusinessRuleTracedActionNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['documentModified'] = $object->getDocumentModified();
-        if (null !== $object->getText()) {
+        if ($object->isInitialized('text') && null !== $object->getText()) {
             $data['text'] = $object->getText();
         }
         return $data;

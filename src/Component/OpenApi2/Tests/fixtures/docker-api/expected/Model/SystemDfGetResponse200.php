@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class SystemDfGetResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -52,6 +60,7 @@ class SystemDfGetResponse200
      */
     public function setLayersSize(int $layersSize) : self
     {
+        $this->initialized['layersSize'] = true;
         $this->layersSize = $layersSize;
         return $this;
     }
@@ -73,6 +82,7 @@ class SystemDfGetResponse200
      */
     public function setImages(array $images) : self
     {
+        $this->initialized['images'] = true;
         $this->images = $images;
         return $this;
     }
@@ -94,6 +104,7 @@ class SystemDfGetResponse200
      */
     public function setContainers(array $containers) : self
     {
+        $this->initialized['containers'] = true;
         $this->containers = $containers;
         return $this;
     }
@@ -115,6 +126,7 @@ class SystemDfGetResponse200
      */
     public function setVolumes(array $volumes) : self
     {
+        $this->initialized['volumes'] = true;
         $this->volumes = $volumes;
         return $this;
     }
@@ -136,6 +148,7 @@ class SystemDfGetResponse200
      */
     public function setBuildCache(array $buildCache) : self
     {
+        $this->initialized['buildCache'] = true;
         $this->buildCache = $buildCache;
         return $this;
     }

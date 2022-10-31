@@ -5,6 +5,14 @@ namespace Github\Model;
 class ScimError extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -58,6 +66,7 @@ class ScimError extends \ArrayObject
      */
     public function setMessage(?string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -79,6 +88,7 @@ class ScimError extends \ArrayObject
      */
     public function setDocumentationUrl(?string $documentationUrl) : self
     {
+        $this->initialized['documentationUrl'] = true;
         $this->documentationUrl = $documentationUrl;
         return $this;
     }
@@ -100,6 +110,7 @@ class ScimError extends \ArrayObject
      */
     public function setDetail(?string $detail) : self
     {
+        $this->initialized['detail'] = true;
         $this->detail = $detail;
         return $this;
     }
@@ -121,6 +132,7 @@ class ScimError extends \ArrayObject
      */
     public function setStatus(int $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -142,6 +154,7 @@ class ScimError extends \ArrayObject
      */
     public function setScimType(?string $scimType) : self
     {
+        $this->initialized['scimType'] = true;
         $this->scimType = $scimType;
         return $this;
     }
@@ -163,6 +176,7 @@ class ScimError extends \ArrayObject
      */
     public function setSchemas(array $schemas) : self
     {
+        $this->initialized['schemas'] = true;
         $this->schemas = $schemas;
         return $this;
     }

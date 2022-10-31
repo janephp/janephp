@@ -76,13 +76,13 @@ class SearchReindexCompletedEventNormalizer implements DenormalizerInterface, No
         $data = array();
         $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
         $data['kind'] = $object->getKind();
-        if (null !== $object->getSearchIndex()) {
+        if ($object->isInitialized('searchIndex') && null !== $object->getSearchIndex()) {
             $data['searchIndex'] = $object->getSearchIndex();
         }
-        if (null !== $object->getItems()) {
+        if ($object->isInitialized('items') && null !== $object->getItems()) {
             $data['items'] = $object->getItems();
         }
-        if (null !== $object->getDuration()) {
+        if ($object->isInitialized('duration') && null !== $object->getDuration()) {
             $data['duration'] = $object->getDuration();
         }
         foreach ($object as $key => $value) {

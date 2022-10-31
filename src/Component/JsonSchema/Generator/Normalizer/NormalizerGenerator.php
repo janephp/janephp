@@ -101,12 +101,20 @@ trait NormalizerGenerator
                     continue;
                 }
 
-                $statements[] = new Stmt\If_(
-                    new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),
-                    [
-                        'stmts' => $normalizationStatements,
-                    ]
-                );
+                if (!$property->isRequired()) {
+                    $statements[] = new Stmt\If_(
+                        new Expr\BinaryOp\BooleanAnd(
+                            new Expr\MethodCall($objectVariable, 'isInitialized', [new Arg(new Scalar\String_($property->getPhpName()))]),
+                            new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar)
+                        ),
+                        ['stmts' => $normalizationStatements]
+                    );
+                } else {
+                    $statements[] = new Stmt\If_(
+                        new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),
+                        ['stmts' => $normalizationStatements]
+                    );
+                }
 
                 if ((!$context->isStrict() || $property->isNullable() ||
                     ($property->getType() instanceof MultipleType && \count(array_intersect([Type::TYPE_NULL], $property->getType()->getTypes())) === 1) ||

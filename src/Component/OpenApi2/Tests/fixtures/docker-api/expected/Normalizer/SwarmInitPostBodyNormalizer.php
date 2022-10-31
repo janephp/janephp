@@ -81,32 +81,32 @@ class SwarmInitPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getListenAddr()) {
+        if ($object->isInitialized('listenAddr') && null !== $object->getListenAddr()) {
             $data['ListenAddr'] = $object->getListenAddr();
         }
-        if (null !== $object->getAdvertiseAddr()) {
+        if ($object->isInitialized('advertiseAddr') && null !== $object->getAdvertiseAddr()) {
             $data['AdvertiseAddr'] = $object->getAdvertiseAddr();
         }
-        if (null !== $object->getDataPathAddr()) {
+        if ($object->isInitialized('dataPathAddr') && null !== $object->getDataPathAddr()) {
             $data['DataPathAddr'] = $object->getDataPathAddr();
         }
-        if (null !== $object->getDataPathPort()) {
+        if ($object->isInitialized('dataPathPort') && null !== $object->getDataPathPort()) {
             $data['DataPathPort'] = $object->getDataPathPort();
         }
-        if (null !== $object->getDefaultAddrPool()) {
+        if ($object->isInitialized('defaultAddrPool') && null !== $object->getDefaultAddrPool()) {
             $values = array();
             foreach ($object->getDefaultAddrPool() as $value) {
                 $values[] = $value;
             }
             $data['DefaultAddrPool'] = $values;
         }
-        if (null !== $object->getForceNewCluster()) {
+        if ($object->isInitialized('forceNewCluster') && null !== $object->getForceNewCluster()) {
             $data['ForceNewCluster'] = $object->getForceNewCluster();
         }
-        if (null !== $object->getSubnetSize()) {
+        if ($object->isInitialized('subnetSize') && null !== $object->getSubnetSize()) {
             $data['SubnetSize'] = $object->getSubnetSize();
         }
-        if (null !== $object->getSpec()) {
+        if ($object->isInitialized('spec') && null !== $object->getSpec()) {
             $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

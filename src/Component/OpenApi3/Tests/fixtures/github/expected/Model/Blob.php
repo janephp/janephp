@@ -5,6 +5,14 @@ namespace Github\Model;
 class Blob extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -64,6 +72,7 @@ class Blob extends \ArrayObject
      */
     public function setContent(string $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }
@@ -85,6 +94,7 @@ class Blob extends \ArrayObject
      */
     public function setEncoding(string $encoding) : self
     {
+        $this->initialized['encoding'] = true;
         $this->encoding = $encoding;
         return $this;
     }
@@ -106,6 +116,7 @@ class Blob extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -127,6 +138,7 @@ class Blob extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -148,6 +160,7 @@ class Blob extends \ArrayObject
      */
     public function setSize(?int $size) : self
     {
+        $this->initialized['size'] = true;
         $this->size = $size;
         return $this;
     }
@@ -169,6 +182,7 @@ class Blob extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -190,6 +204,7 @@ class Blob extends \ArrayObject
      */
     public function setHighlightedContent(string $highlightedContent) : self
     {
+        $this->initialized['highlightedContent'] = true;
         $this->highlightedContent = $highlightedContent;
         return $this;
     }

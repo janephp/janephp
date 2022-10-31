@@ -56,7 +56,7 @@ class SwarmSpecEncryptionConfigNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAutoLockManagers()) {
+        if ($object->isInitialized('autoLockManagers') && null !== $object->getAutoLockManagers()) {
             $data['AutoLockManagers'] = $object->getAutoLockManagers();
         }
         if (!($context['skip_validation'] ?? false)) {

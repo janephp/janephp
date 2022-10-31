@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class Language
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Language translations.
      *
      * @var mixed
@@ -52,6 +60,7 @@ class Language
      */
     public function setName($name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -73,6 +82,7 @@ class Language
      */
     public function setIetf(string $ietf) : self
     {
+        $this->initialized['ietf'] = true;
         $this->ietf = $ietf;
         return $this;
     }
@@ -94,6 +104,7 @@ class Language
      */
     public function setTwoLetterISOLanguageName(?string $twoLetterISOLanguageName) : self
     {
+        $this->initialized['twoLetterISOLanguageName'] = true;
         $this->twoLetterISOLanguageName = $twoLetterISOLanguageName;
         return $this;
     }
@@ -115,6 +126,7 @@ class Language
      */
     public function setThreeLetterISOLanguageName(?string $threeLetterISOLanguageName) : self
     {
+        $this->initialized['threeLetterISOLanguageName'] = true;
         $this->threeLetterISOLanguageName = $threeLetterISOLanguageName;
         return $this;
     }
@@ -136,6 +148,7 @@ class Language
      */
     public function setRegionCode(?string $regionCode) : self
     {
+        $this->initialized['regionCode'] = true;
         $this->regionCode = $regionCode;
         return $this;
     }

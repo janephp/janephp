@@ -78,22 +78,22 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCity()) {
+        if ($object->isInitialized('city') && null !== $object->getCity()) {
             $data['city'] = $object->getCity();
         }
-        if (null !== $object->getCountry()) {
+        if ($object->isInitialized('country') && null !== $object->getCountry()) {
             $data['country'] = $object->getCountry();
         }
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getPostalCode()) {
+        if ($object->isInitialized('postalCode') && null !== $object->getPostalCode()) {
             $data['postalCode'] = $object->getPostalCode();
         }
-        if (null !== $object->getStreet1()) {
+        if ($object->isInitialized('street1') && null !== $object->getStreet1()) {
             $data['street1'] = $object->getStreet1();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
         foreach ($object as $key => $value) {

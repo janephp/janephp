@@ -87,10 +87,10 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getOnlyNull()) {
+        if ($object->isInitialized('onlyNull') && null !== $object->getOnlyNull()) {
             $data['onlyNull'] = $object->getOnlyNull();
         }
-        if (null !== $object->getNullOrString()) {
+        if ($object->isInitialized('nullOrString') && null !== $object->getNullOrString()) {
             $value = $object->getNullOrString();
             if (is_string($object->getNullOrString())) {
                 $value = $object->getNullOrString();
@@ -99,14 +99,14 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $data['nullOrString'] = $value;
         }
-        if (null !== $object->getArray()) {
+        if ($object->isInitialized('array') && null !== $object->getArray()) {
             $values = array();
             foreach ($object->getArray() as $value_1) {
                 $values[] = $value_1;
             }
             $data['array'] = $values;
         }
-        if (null !== $object->getObject()) {
+        if ($object->isInitialized('object') && null !== $object->getObject()) {
             $values_1 = array();
             foreach ($object->getObject() as $key => $value_2) {
                 $values_1[$key] = $value_2;

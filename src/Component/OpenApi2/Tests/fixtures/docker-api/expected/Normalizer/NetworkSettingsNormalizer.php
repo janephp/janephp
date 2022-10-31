@@ -133,22 +133,22 @@ class NetworkSettingsNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBridge()) {
+        if ($object->isInitialized('bridge') && null !== $object->getBridge()) {
             $data['Bridge'] = $object->getBridge();
         }
-        if (null !== $object->getSandboxID()) {
+        if ($object->isInitialized('sandboxID') && null !== $object->getSandboxID()) {
             $data['SandboxID'] = $object->getSandboxID();
         }
-        if (null !== $object->getHairpinMode()) {
+        if ($object->isInitialized('hairpinMode') && null !== $object->getHairpinMode()) {
             $data['HairpinMode'] = $object->getHairpinMode();
         }
-        if (null !== $object->getLinkLocalIPv6Address()) {
+        if ($object->isInitialized('linkLocalIPv6Address') && null !== $object->getLinkLocalIPv6Address()) {
             $data['LinkLocalIPv6Address'] = $object->getLinkLocalIPv6Address();
         }
-        if (null !== $object->getLinkLocalIPv6PrefixLen()) {
+        if ($object->isInitialized('linkLocalIPv6PrefixLen') && null !== $object->getLinkLocalIPv6PrefixLen()) {
             $data['LinkLocalIPv6PrefixLen'] = $object->getLinkLocalIPv6PrefixLen();
         }
-        if (null !== $object->getPorts()) {
+        if ($object->isInitialized('ports') && null !== $object->getPorts()) {
             $values = array();
             foreach ($object->getPorts() as $key => $value) {
                 $values_1 = array();
@@ -159,48 +159,48 @@ class NetworkSettingsNormalizer implements DenormalizerInterface, NormalizerInte
             }
             $data['Ports'] = $values;
         }
-        if (null !== $object->getSandboxKey()) {
+        if ($object->isInitialized('sandboxKey') && null !== $object->getSandboxKey()) {
             $data['SandboxKey'] = $object->getSandboxKey();
         }
-        if (null !== $object->getSecondaryIPAddresses()) {
+        if ($object->isInitialized('secondaryIPAddresses') && null !== $object->getSecondaryIPAddresses()) {
             $values_2 = array();
             foreach ($object->getSecondaryIPAddresses() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['SecondaryIPAddresses'] = $values_2;
         }
-        if (null !== $object->getSecondaryIPv6Addresses()) {
+        if ($object->isInitialized('secondaryIPv6Addresses') && null !== $object->getSecondaryIPv6Addresses()) {
             $values_3 = array();
             foreach ($object->getSecondaryIPv6Addresses() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $data['SecondaryIPv6Addresses'] = $values_3;
         }
-        if (null !== $object->getEndpointID()) {
+        if ($object->isInitialized('endpointID') && null !== $object->getEndpointID()) {
             $data['EndpointID'] = $object->getEndpointID();
         }
-        if (null !== $object->getGateway()) {
+        if ($object->isInitialized('gateway') && null !== $object->getGateway()) {
             $data['Gateway'] = $object->getGateway();
         }
-        if (null !== $object->getGlobalIPv6Address()) {
+        if ($object->isInitialized('globalIPv6Address') && null !== $object->getGlobalIPv6Address()) {
             $data['GlobalIPv6Address'] = $object->getGlobalIPv6Address();
         }
-        if (null !== $object->getGlobalIPv6PrefixLen()) {
+        if ($object->isInitialized('globalIPv6PrefixLen') && null !== $object->getGlobalIPv6PrefixLen()) {
             $data['GlobalIPv6PrefixLen'] = $object->getGlobalIPv6PrefixLen();
         }
-        if (null !== $object->getIPAddress()) {
+        if ($object->isInitialized('iPAddress') && null !== $object->getIPAddress()) {
             $data['IPAddress'] = $object->getIPAddress();
         }
-        if (null !== $object->getIPPrefixLen()) {
+        if ($object->isInitialized('iPPrefixLen') && null !== $object->getIPPrefixLen()) {
             $data['IPPrefixLen'] = $object->getIPPrefixLen();
         }
-        if (null !== $object->getIPv6Gateway()) {
+        if ($object->isInitialized('iPv6Gateway') && null !== $object->getIPv6Gateway()) {
             $data['IPv6Gateway'] = $object->getIPv6Gateway();
         }
-        if (null !== $object->getMacAddress()) {
+        if ($object->isInitialized('macAddress') && null !== $object->getMacAddress()) {
             $data['MacAddress'] = $object->getMacAddress();
         }
-        if (null !== $object->getNetworks()) {
+        if ($object->isInitialized('networks') && null !== $object->getNetworks()) {
             $values_4 = array();
             foreach ($object->getNetworks() as $key_1 => $value_4) {
                 $values_4[$key_1] = $this->normalizer->normalize($value_4, 'json', $context);

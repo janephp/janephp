@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class NGramAnalyzer extends AnalyzerBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The analyzer type: NGram
      *
      * @var mixed
@@ -34,6 +42,7 @@ class NGramAnalyzer extends AnalyzerBase
      */
     public function setType($type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -55,6 +64,7 @@ class NGramAnalyzer extends AnalyzerBase
      */
     public function setFieldSuffix(?string $fieldSuffix) : self
     {
+        $this->initialized['fieldSuffix'] = true;
         $this->fieldSuffix = $fieldSuffix;
         return $this;
     }

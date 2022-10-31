@@ -97,28 +97,28 @@ class UserAddressNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCompany()) {
+        if ($object->isInitialized('company') && null !== $object->getCompany()) {
             $data['company'] = $object->getCompany();
         }
-        if (null !== $object->getDepartment()) {
+        if ($object->isInitialized('department') && null !== $object->getDepartment()) {
             $data['department'] = $object->getDepartment();
         }
-        if (null !== $object->getAddress()) {
+        if ($object->isInitialized('address') && null !== $object->getAddress()) {
             $data['address'] = $object->getAddress();
         }
-        if (null !== $object->getAlternativeAddress()) {
+        if ($object->isInitialized('alternativeAddress') && null !== $object->getAlternativeAddress()) {
             $data['alternativeAddress'] = $object->getAlternativeAddress();
         }
-        if (null !== $object->getZip()) {
+        if ($object->isInitialized('zip') && null !== $object->getZip()) {
             $data['zip'] = $object->getZip();
         }
-        if (null !== $object->getCity()) {
+        if ($object->isInitialized('city') && null !== $object->getCity()) {
             $data['city'] = $object->getCity();
         }
-        if (null !== $object->getPhone()) {
+        if ($object->isInitialized('phone') && null !== $object->getPhone()) {
             $data['phone'] = $object->getPhone();
         }
-        if (null !== $object->getCountryCode()) {
+        if ($object->isInitialized('countryCode') && null !== $object->getCountryCode()) {
             $data['countryCode'] = $object->getCountryCode();
         }
         return $data;

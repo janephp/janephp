@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class Health
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * Status is one of `none`, `starting`, `healthy` or `unhealthy`
     
     - "none"      Indicates there is no healthcheck
@@ -58,6 +66,7 @@ class Health
     */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -79,6 +88,7 @@ class Health
      */
     public function setFailingStreak(int $failingStreak) : self
     {
+        $this->initialized['failingStreak'] = true;
         $this->failingStreak = $failingStreak;
         return $this;
     }
@@ -100,6 +110,7 @@ class Health
      */
     public function setLog(array $log) : self
     {
+        $this->initialized['log'] = true;
         $this->log = $log;
         return $this;
     }

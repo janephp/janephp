@@ -70,16 +70,16 @@ class CreateFreshInvestigationRequestContactInfoNormalizer implements Denormaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getEmailAddress()) {
+        if ($object->isInitialized('emailAddress') && null !== $object->getEmailAddress()) {
             $data['emailAddress'] = $object->getEmailAddress();
         }
-        if (null !== $object->getTelephoneNumber()) {
+        if ($object->isInitialized('telephoneNumber') && null !== $object->getTelephoneNumber()) {
             $data['telephoneNumber'] = $object->getTelephoneNumber();
         }
-        if (null !== $object->getCompany()) {
+        if ($object->isInitialized('company') && null !== $object->getCompany()) {
             $data['company'] = $this->normalizer->normalize($object->getCompany(), 'json', $context);
         }
         foreach ($object as $key => $value) {

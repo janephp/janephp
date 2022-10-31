@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class XmpMappingTargets
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Fields in XMP/Exif.
      *
      * @var XmpField[]
@@ -34,6 +42,7 @@ class XmpMappingTargets
      */
     public function setXmpFields(array $xmpFields) : self
     {
+        $this->initialized['xmpFields'] = true;
         $this->xmpFields = $xmpFields;
         return $this;
     }
@@ -55,6 +64,7 @@ class XmpMappingTargets
      */
     public function setMetadataFields(array $metadataFields) : self
     {
+        $this->initialized['metadataFields'] = true;
         $this->metadataFields = $metadataFields;
         return $this;
     }

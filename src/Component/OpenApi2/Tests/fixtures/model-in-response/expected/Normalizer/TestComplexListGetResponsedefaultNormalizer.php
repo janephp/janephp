@@ -55,10 +55,10 @@ class TestComplexListGetResponsedefaultNormalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getError()) {
+        if ($object->isInitialized('error') && null !== $object->getError()) {
             $data['error'] = $object->getError();
         }
-        if (null !== $object->getOk()) {
+        if ($object->isInitialized('ok') && null !== $object->getOk()) {
             $data['ok'] = $object->getOk();
         }
         return $data;

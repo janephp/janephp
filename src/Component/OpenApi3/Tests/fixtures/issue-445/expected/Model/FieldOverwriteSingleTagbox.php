@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class FieldOverwriteSingleTagbox extends FieldOverwriteBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * An optional filter to limit the list items: this value will overwrite the existing Filter value specified in the parent schema  if
     OverwriteFilter is set to true.
     *
@@ -50,6 +58,7 @@ class FieldOverwriteSingleTagbox extends FieldOverwriteBase
     */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }
@@ -71,6 +80,7 @@ class FieldOverwriteSingleTagbox extends FieldOverwriteBase
      */
     public function setOverwriteFilter(bool $overwriteFilter) : self
     {
+        $this->initialized['overwriteFilter'] = true;
         $this->overwriteFilter = $overwriteFilter;
         return $this;
     }
@@ -94,6 +104,7 @@ class FieldOverwriteSingleTagbox extends FieldOverwriteBase
     */
     public function setListItemCreateTemplate(?string $listItemCreateTemplate) : self
     {
+        $this->initialized['listItemCreateTemplate'] = true;
         $this->listItemCreateTemplate = $listItemCreateTemplate;
         return $this;
     }
@@ -115,6 +126,7 @@ class FieldOverwriteSingleTagbox extends FieldOverwriteBase
      */
     public function setOverwriteListItemCreateTemplate(bool $overwriteListItemCreateTemplate) : self
     {
+        $this->initialized['overwriteListItemCreateTemplate'] = true;
         $this->overwriteListItemCreateTemplate = $overwriteListItemCreateTemplate;
         return $this;
     }

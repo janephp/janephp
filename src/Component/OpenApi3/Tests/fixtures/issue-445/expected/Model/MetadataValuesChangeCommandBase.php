@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class MetadataValuesChangeCommandBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the schema to which the operation scope is addressed.
      *
      * @var string
@@ -32,6 +40,7 @@ class MetadataValuesChangeCommandBase
      */
     public function setSchemaId(string $schemaId)
     {
+        $this->initialized['schemaId'] = true;
         $this->schemaId = $schemaId;
     }
     /**
@@ -50,6 +59,7 @@ class MetadataValuesChangeCommandBase
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

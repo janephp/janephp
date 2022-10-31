@@ -65,10 +65,10 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemNetWorthNormalizer imp
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCurrency()) {
+        if ($object->isInitialized('currency') && null !== $object->getCurrency()) {
             $data['currency'] = $object->getCurrency();
         }
-        if (null !== $object->getValue()) {
+        if ($object->isInitialized('value') && null !== $object->getValue()) {
             $data['value'] = $object->getValue();
         }
         foreach ($object as $key => $value) {

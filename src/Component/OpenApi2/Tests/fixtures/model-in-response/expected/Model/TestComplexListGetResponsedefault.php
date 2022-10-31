@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi2\Tests\Expected\Model;
 class TestComplexListGetResponsedefault
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class TestComplexListGetResponsedefault
      */
     public function setError(string $error) : self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
         return $this;
     }
@@ -55,6 +64,7 @@ class TestComplexListGetResponsedefault
      */
     public function setOk(bool $ok) : self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
         return $this;
     }

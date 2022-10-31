@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsName extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -28,6 +36,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsName ext
      */
     public function setFull(string $full) : self
     {
+        $this->initialized['full'] = true;
         $this->full = $full;
         return $this;
     }

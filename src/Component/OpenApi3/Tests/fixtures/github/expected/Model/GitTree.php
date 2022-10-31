@@ -5,6 +5,14 @@ namespace Github\Model;
 class GitTree extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class GitTree extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -67,6 +76,7 @@ class GitTree extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -88,6 +98,7 @@ class GitTree extends \ArrayObject
      */
     public function setTruncated(bool $truncated) : self
     {
+        $this->initialized['truncated'] = true;
         $this->truncated = $truncated;
         return $this;
     }
@@ -109,6 +120,7 @@ class GitTree extends \ArrayObject
      */
     public function setTree(array $tree) : self
     {
+        $this->initialized['tree'] = true;
         $this->tree = $tree;
         return $this;
     }

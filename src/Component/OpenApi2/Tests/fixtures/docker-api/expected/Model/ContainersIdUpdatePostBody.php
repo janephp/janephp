@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ContainersIdUpdatePostBody
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * An integer value representing this container's relative CPU weight
     versus other containers.
     
@@ -298,6 +306,7 @@ class ContainersIdUpdatePostBody
     */
     public function setCpuShares(int $cpuShares) : self
     {
+        $this->initialized['cpuShares'] = true;
         $this->cpuShares = $cpuShares;
         return $this;
     }
@@ -319,6 +328,7 @@ class ContainersIdUpdatePostBody
      */
     public function setMemory(int $memory) : self
     {
+        $this->initialized['memory'] = true;
         $this->memory = $memory;
         return $this;
     }
@@ -348,6 +358,7 @@ class ContainersIdUpdatePostBody
     */
     public function setCgroupParent(string $cgroupParent) : self
     {
+        $this->initialized['cgroupParent'] = true;
         $this->cgroupParent = $cgroupParent;
         return $this;
     }
@@ -369,6 +380,7 @@ class ContainersIdUpdatePostBody
      */
     public function setBlkioWeight(int $blkioWeight) : self
     {
+        $this->initialized['blkioWeight'] = true;
         $this->blkioWeight = $blkioWeight;
         return $this;
     }
@@ -400,6 +412,7 @@ class ContainersIdUpdatePostBody
     */
     public function setBlkioWeightDevice(array $blkioWeightDevice) : self
     {
+        $this->initialized['blkioWeightDevice'] = true;
         $this->blkioWeightDevice = $blkioWeightDevice;
         return $this;
     }
@@ -431,6 +444,7 @@ class ContainersIdUpdatePostBody
     */
     public function setBlkioDeviceReadBps(array $blkioDeviceReadBps) : self
     {
+        $this->initialized['blkioDeviceReadBps'] = true;
         $this->blkioDeviceReadBps = $blkioDeviceReadBps;
         return $this;
     }
@@ -462,6 +476,7 @@ class ContainersIdUpdatePostBody
     */
     public function setBlkioDeviceWriteBps(array $blkioDeviceWriteBps) : self
     {
+        $this->initialized['blkioDeviceWriteBps'] = true;
         $this->blkioDeviceWriteBps = $blkioDeviceWriteBps;
         return $this;
     }
@@ -493,6 +508,7 @@ class ContainersIdUpdatePostBody
     */
     public function setBlkioDeviceReadIOps(array $blkioDeviceReadIOps) : self
     {
+        $this->initialized['blkioDeviceReadIOps'] = true;
         $this->blkioDeviceReadIOps = $blkioDeviceReadIOps;
         return $this;
     }
@@ -524,6 +540,7 @@ class ContainersIdUpdatePostBody
     */
     public function setBlkioDeviceWriteIOps(array $blkioDeviceWriteIOps) : self
     {
+        $this->initialized['blkioDeviceWriteIOps'] = true;
         $this->blkioDeviceWriteIOps = $blkioDeviceWriteIOps;
         return $this;
     }
@@ -545,6 +562,7 @@ class ContainersIdUpdatePostBody
      */
     public function setCpuPeriod(int $cpuPeriod) : self
     {
+        $this->initialized['cpuPeriod'] = true;
         $this->cpuPeriod = $cpuPeriod;
         return $this;
     }
@@ -566,6 +584,7 @@ class ContainersIdUpdatePostBody
      */
     public function setCpuQuota(int $cpuQuota) : self
     {
+        $this->initialized['cpuQuota'] = true;
         $this->cpuQuota = $cpuQuota;
         return $this;
     }
@@ -591,6 +610,7 @@ class ContainersIdUpdatePostBody
     */
     public function setCpuRealtimePeriod(int $cpuRealtimePeriod) : self
     {
+        $this->initialized['cpuRealtimePeriod'] = true;
         $this->cpuRealtimePeriod = $cpuRealtimePeriod;
         return $this;
     }
@@ -616,6 +636,7 @@ class ContainersIdUpdatePostBody
     */
     public function setCpuRealtimeRuntime(int $cpuRealtimeRuntime) : self
     {
+        $this->initialized['cpuRealtimeRuntime'] = true;
         $this->cpuRealtimeRuntime = $cpuRealtimeRuntime;
         return $this;
     }
@@ -637,6 +658,7 @@ class ContainersIdUpdatePostBody
      */
     public function setCpusetCpus(string $cpusetCpus) : self
     {
+        $this->initialized['cpusetCpus'] = true;
         $this->cpusetCpus = $cpusetCpus;
         return $this;
     }
@@ -662,6 +684,7 @@ class ContainersIdUpdatePostBody
     */
     public function setCpusetMems(string $cpusetMems) : self
     {
+        $this->initialized['cpusetMems'] = true;
         $this->cpusetMems = $cpusetMems;
         return $this;
     }
@@ -683,6 +706,7 @@ class ContainersIdUpdatePostBody
      */
     public function setDevices(array $devices) : self
     {
+        $this->initialized['devices'] = true;
         $this->devices = $devices;
         return $this;
     }
@@ -704,6 +728,7 @@ class ContainersIdUpdatePostBody
      */
     public function setDeviceCgroupRules(array $deviceCgroupRules) : self
     {
+        $this->initialized['deviceCgroupRules'] = true;
         $this->deviceCgroupRules = $deviceCgroupRules;
         return $this;
     }
@@ -725,6 +750,7 @@ class ContainersIdUpdatePostBody
      */
     public function setDeviceRequests(array $deviceRequests) : self
     {
+        $this->initialized['deviceRequests'] = true;
         $this->deviceRequests = $deviceRequests;
         return $this;
     }
@@ -758,6 +784,7 @@ class ContainersIdUpdatePostBody
     */
     public function setKernelMemory(int $kernelMemory) : self
     {
+        $this->initialized['kernelMemory'] = true;
         $this->kernelMemory = $kernelMemory;
         return $this;
     }
@@ -779,6 +806,7 @@ class ContainersIdUpdatePostBody
      */
     public function setKernelMemoryTCP(int $kernelMemoryTCP) : self
     {
+        $this->initialized['kernelMemoryTCP'] = true;
         $this->kernelMemoryTCP = $kernelMemoryTCP;
         return $this;
     }
@@ -800,6 +828,7 @@ class ContainersIdUpdatePostBody
      */
     public function setMemoryReservation(int $memoryReservation) : self
     {
+        $this->initialized['memoryReservation'] = true;
         $this->memoryReservation = $memoryReservation;
         return $this;
     }
@@ -825,6 +854,7 @@ class ContainersIdUpdatePostBody
     */
     public function setMemorySwap(int $memorySwap) : self
     {
+        $this->initialized['memorySwap'] = true;
         $this->memorySwap = $memorySwap;
         return $this;
     }
@@ -850,6 +880,7 @@ class ContainersIdUpdatePostBody
     */
     public function setMemorySwappiness(int $memorySwappiness) : self
     {
+        $this->initialized['memorySwappiness'] = true;
         $this->memorySwappiness = $memorySwappiness;
         return $this;
     }
@@ -871,6 +902,7 @@ class ContainersIdUpdatePostBody
      */
     public function setNanoCpus(int $nanoCpus) : self
     {
+        $this->initialized['nanoCpus'] = true;
         $this->nanoCpus = $nanoCpus;
         return $this;
     }
@@ -892,6 +924,7 @@ class ContainersIdUpdatePostBody
      */
     public function setOomKillDisable(bool $oomKillDisable) : self
     {
+        $this->initialized['oomKillDisable'] = true;
         $this->oomKillDisable = $oomKillDisable;
         return $this;
     }
@@ -919,6 +952,7 @@ class ContainersIdUpdatePostBody
     */
     public function setInit(?bool $init) : self
     {
+        $this->initialized['init'] = true;
         $this->init = $init;
         return $this;
     }
@@ -944,6 +978,7 @@ class ContainersIdUpdatePostBody
     */
     public function setPidsLimit(?int $pidsLimit) : self
     {
+        $this->initialized['pidsLimit'] = true;
         $this->pidsLimit = $pidsLimit;
         return $this;
     }
@@ -975,6 +1010,7 @@ class ContainersIdUpdatePostBody
     */
     public function setUlimits(array $ulimits) : self
     {
+        $this->initialized['ulimits'] = true;
         $this->ulimits = $ulimits;
         return $this;
     }
@@ -1006,6 +1042,7 @@ class ContainersIdUpdatePostBody
     */
     public function setCpuCount(int $cpuCount) : self
     {
+        $this->initialized['cpuCount'] = true;
         $this->cpuCount = $cpuCount;
         return $this;
     }
@@ -1037,6 +1074,7 @@ class ContainersIdUpdatePostBody
     */
     public function setCpuPercent(int $cpuPercent) : self
     {
+        $this->initialized['cpuPercent'] = true;
         $this->cpuPercent = $cpuPercent;
         return $this;
     }
@@ -1058,6 +1096,7 @@ class ContainersIdUpdatePostBody
      */
     public function setIOMaximumIOps(int $iOMaximumIOps) : self
     {
+        $this->initialized['iOMaximumIOps'] = true;
         $this->iOMaximumIOps = $iOMaximumIOps;
         return $this;
     }
@@ -1083,6 +1122,7 @@ class ContainersIdUpdatePostBody
     */
     public function setIOMaximumBandwidth(int $iOMaximumBandwidth) : self
     {
+        $this->initialized['iOMaximumBandwidth'] = true;
         $this->iOMaximumBandwidth = $iOMaximumBandwidth;
         return $this;
     }
@@ -1114,6 +1154,7 @@ class ContainersIdUpdatePostBody
     */
     public function setRestartPolicy(RestartPolicy $restartPolicy) : self
     {
+        $this->initialized['restartPolicy'] = true;
         $this->restartPolicy = $restartPolicy;
         return $this;
     }

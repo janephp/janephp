@@ -67,13 +67,13 @@ class ErrorResponseNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getException()) {
+        if ($object->isInitialized('exception') && null !== $object->getException()) {
             $data['exception'] = $object->getException();
         }
-        if (null !== $object->getTraceId()) {
+        if ($object->isInitialized('traceId') && null !== $object->getTraceId()) {
             $data['traceId'] = $object->getTraceId();
         }
-        if (null !== $object->getTraceJobId()) {
+        if ($object->isInitialized('traceJobId') && null !== $object->getTraceJobId()) {
             $data['traceJobId'] = $object->getTraceJobId();
         }
         return $data;

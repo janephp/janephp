@@ -5,6 +5,14 @@ namespace Github\Model;
 class GitTag extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -70,6 +78,7 @@ class GitTag extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -91,6 +100,7 @@ class GitTag extends \ArrayObject
      */
     public function setTag(string $tag) : self
     {
+        $this->initialized['tag'] = true;
         $this->tag = $tag;
         return $this;
     }
@@ -112,6 +122,7 @@ class GitTag extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -133,6 +144,7 @@ class GitTag extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -154,6 +166,7 @@ class GitTag extends \ArrayObject
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -175,6 +188,7 @@ class GitTag extends \ArrayObject
      */
     public function setTagger(GitTagTagger $tagger) : self
     {
+        $this->initialized['tagger'] = true;
         $this->tagger = $tagger;
         return $this;
     }
@@ -196,6 +210,7 @@ class GitTag extends \ArrayObject
      */
     public function setObject(GitTagObject $object) : self
     {
+        $this->initialized['object'] = true;
         $this->object = $object;
         return $this;
     }
@@ -217,6 +232,7 @@ class GitTag extends \ArrayObject
      */
     public function setVerification(Verification $verification) : self
     {
+        $this->initialized['verification'] = true;
         $this->verification = $verification;
         return $this;
     }

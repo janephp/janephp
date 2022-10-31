@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class Schema
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The schema ID. It is unique throughout the whole customer setup.
      *
      * @var string
@@ -82,6 +90,7 @@ class Schema
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -103,6 +112,7 @@ class Schema
      */
     public function setParentSchemaId(?string $parentSchemaId) : self
     {
+        $this->initialized['parentSchemaId'] = true;
         $this->parentSchemaId = $parentSchemaId;
         return $this;
     }
@@ -124,6 +134,7 @@ class Schema
      */
     public function setTypes(?array $types) : self
     {
+        $this->initialized['types'] = true;
         $this->types = $types;
         return $this;
     }
@@ -145,6 +156,7 @@ class Schema
      */
     public function setNames($names) : self
     {
+        $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }
@@ -166,6 +178,7 @@ class Schema
      */
     public function setDescriptions($descriptions) : self
     {
+        $this->initialized['descriptions'] = true;
         $this->descriptions = $descriptions;
         return $this;
     }
@@ -187,6 +200,7 @@ class Schema
      */
     public function setLayerSchemaIds(?array $layerSchemaIds) : self
     {
+        $this->initialized['layerSchemaIds'] = true;
         $this->layerSchemaIds = $layerSchemaIds;
         return $this;
     }
@@ -208,6 +222,7 @@ class Schema
      */
     public function setFieldCount(int $fieldCount) : self
     {
+        $this->initialized['fieldCount'] = true;
         $this->fieldCount = $fieldCount;
         return $this;
     }
@@ -229,6 +244,7 @@ class Schema
      */
     public function setChildCount(int $childCount) : self
     {
+        $this->initialized['childCount'] = true;
         $this->childCount = $childCount;
         return $this;
     }
@@ -250,6 +266,7 @@ class Schema
      */
     public function setLevel(int $level) : self
     {
+        $this->initialized['level'] = true;
         $this->level = $level;
         return $this;
     }
@@ -271,6 +288,7 @@ class Schema
      */
     public function setSystem(bool $system) : self
     {
+        $this->initialized['system'] = true;
         $this->system = $system;
         return $this;
     }

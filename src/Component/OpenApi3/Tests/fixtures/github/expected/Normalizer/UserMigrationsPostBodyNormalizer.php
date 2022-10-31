@@ -82,13 +82,13 @@ class UserMigrationsPostBodyNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLockRepositories()) {
+        if ($object->isInitialized('lockRepositories') && null !== $object->getLockRepositories()) {
             $data['lock_repositories'] = $object->getLockRepositories();
         }
-        if (null !== $object->getExcludeAttachments()) {
+        if ($object->isInitialized('excludeAttachments') && null !== $object->getExcludeAttachments()) {
             $data['exclude_attachments'] = $object->getExcludeAttachments();
         }
-        if (null !== $object->getExclude()) {
+        if ($object->isInitialized('exclude') && null !== $object->getExclude()) {
             $values = array();
             foreach ($object->getExclude() as $value) {
                 $values[] = $value;

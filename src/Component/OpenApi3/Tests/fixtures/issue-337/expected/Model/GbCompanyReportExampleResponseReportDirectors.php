@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportDirectors extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem[]
@@ -34,6 +42,7 @@ class GbCompanyReportExampleResponseReportDirectors extends \ArrayObject
      */
     public function setCurrentDirectors(array $currentDirectors) : self
     {
+        $this->initialized['currentDirectors'] = true;
         $this->currentDirectors = $currentDirectors;
         return $this;
     }
@@ -55,6 +64,7 @@ class GbCompanyReportExampleResponseReportDirectors extends \ArrayObject
      */
     public function setPreviousDirectors(array $previousDirectors) : self
     {
+        $this->initialized['previousDirectors'] = true;
         $this->previousDirectors = $previousDirectors;
         return $this;
     }

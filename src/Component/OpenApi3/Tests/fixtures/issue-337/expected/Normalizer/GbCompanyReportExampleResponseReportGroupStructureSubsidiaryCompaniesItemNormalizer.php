@@ -82,25 +82,25 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItemN
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCountry()) {
+        if ($object->isInitialized('country') && null !== $object->getCountry()) {
             $data['country'] = $object->getCountry();
         }
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getSafeNumber()) {
+        if ($object->isInitialized('safeNumber') && null !== $object->getSafeNumber()) {
             $data['safeNumber'] = $object->getSafeNumber();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        if (null !== $object->getRegistrationNumber()) {
+        if ($object->isInitialized('registrationNumber') && null !== $object->getRegistrationNumber()) {
             $data['registrationNumber'] = $object->getRegistrationNumber();
         }
         foreach ($object as $key => $value) {

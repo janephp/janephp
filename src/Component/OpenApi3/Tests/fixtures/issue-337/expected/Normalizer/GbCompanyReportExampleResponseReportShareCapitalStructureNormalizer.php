@@ -73,13 +73,13 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureNormalizer implem
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getIssuedShareCapital()) {
+        if ($object->isInitialized('issuedShareCapital') && null !== $object->getIssuedShareCapital()) {
             $data['issuedShareCapital'] = $this->normalizer->normalize($object->getIssuedShareCapital(), 'json', $context);
         }
-        if (null !== $object->getNumberOfSharesIssued()) {
+        if ($object->isInitialized('numberOfSharesIssued') && null !== $object->getNumberOfSharesIssued()) {
             $data['numberOfSharesIssued'] = $object->getNumberOfSharesIssued();
         }
-        if (null !== $object->getShareHolders()) {
+        if ($object->isInitialized('shareHolders') && null !== $object->getShareHolders()) {
             $values = array();
             foreach ($object->getShareHolders() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

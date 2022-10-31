@@ -103,34 +103,34 @@ class UserDetailsNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCountryCode()) {
+        if ($object->isInitialized('countryCode') && null !== $object->getCountryCode()) {
             $data['countryCode'] = $object->getCountryCode();
         }
-        if (null !== $object->getCreatedDate()) {
+        if ($object->isInitialized('createdDate') && null !== $object->getCreatedDate()) {
             $data['createdDate'] = $object->getCreatedDate()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getCsCustomerId()) {
+        if ($object->isInitialized('csCustomerId') && null !== $object->getCsCustomerId()) {
             $data['csCustomerId'] = $object->getCsCustomerId();
         }
-        if (null !== $object->getCsUserId()) {
+        if ($object->isInitialized('csUserId') && null !== $object->getCsUserId()) {
             $data['csUserId'] = $object->getCsUserId();
         }
-        if (null !== $object->getIsAutoTracker()) {
+        if ($object->isInitialized('isAutoTracker') && null !== $object->getIsAutoTracker()) {
             $data['isAutoTracker'] = $object->getIsAutoTracker();
         }
-        if (null !== $object->getLanguageCode()) {
+        if ($object->isInitialized('languageCode') && null !== $object->getLanguageCode()) {
             $data['languageCode'] = $object->getLanguageCode();
         }
-        if (null !== $object->getLastAccessDate()) {
+        if ($object->isInitialized('lastAccessDate') && null !== $object->getLastAccessDate()) {
             $data['lastAccessDate'] = $object->getLastAccessDate()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getModifiedDate()) {
+        if ($object->isInitialized('modifiedDate') && null !== $object->getModifiedDate()) {
             $data['modifiedDate'] = $object->getModifiedDate()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getContractEndDate()) {
+        if ($object->isInitialized('contractEndDate') && null !== $object->getContractEndDate()) {
             $data['contractEndDate'] = $object->getContractEndDate()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getUserId()) {
+        if ($object->isInitialized('userId') && null !== $object->getUserId()) {
             $data['userId'] = $object->getUserId();
         }
         foreach ($object as $key => $value) {

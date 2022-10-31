@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ShareOutputEmbed extends ShareOutputBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Share token for the shared output.
      *
      * @var string|null
@@ -28,6 +36,7 @@ class ShareOutputEmbed extends ShareOutputBase
      */
     public function setToken(?string $token) : self
     {
+        $this->initialized['token'] = true;
         $this->token = $token;
         return $this;
     }

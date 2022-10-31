@@ -59,10 +59,10 @@ class MountBindOptionsNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPropagation()) {
+        if ($object->isInitialized('propagation') && null !== $object->getPropagation()) {
             $data['Propagation'] = $object->getPropagation();
         }
-        if (null !== $object->getNonRecursive()) {
+        if ($object->isInitialized('nonRecursive') && null !== $object->getNonRecursive()) {
             $data['NonRecursive'] = $object->getNonRecursive();
         }
         if (!($context['skip_validation'] ?? false)) {

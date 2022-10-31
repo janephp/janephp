@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class HideReplyRequest extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -28,6 +36,7 @@ class HideReplyRequest extends \ArrayObject
      */
     public function setHidden(bool $hidden) : self
     {
+        $this->initialized['hidden'] = true;
         $this->hidden = $hidden;
         return $this;
     }

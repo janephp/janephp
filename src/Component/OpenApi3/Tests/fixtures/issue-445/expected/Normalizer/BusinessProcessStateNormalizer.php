@@ -63,7 +63,7 @@ class BusinessProcessStateNormalizer implements DenormalizerInterface, Normalize
         $data = array();
         $data['state'] = $object->getState();
         $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getError()) {
+        if ($object->isInitialized('error') && null !== $object->getError()) {
             $data['error'] = $object->getError();
         }
         return $data;

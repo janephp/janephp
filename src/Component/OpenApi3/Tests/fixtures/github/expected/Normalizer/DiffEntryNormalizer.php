@@ -111,10 +111,10 @@ class DiffEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data['blob_url'] = $object->getBlobUrl();
         $data['raw_url'] = $object->getRawUrl();
         $data['contents_url'] = $object->getContentsUrl();
-        if (null !== $object->getPatch()) {
+        if ($object->isInitialized('patch') && null !== $object->getPatch()) {
             $data['patch'] = $object->getPatch();
         }
-        if (null !== $object->getPreviousFilename()) {
+        if ($object->isInitialized('previousFilename') && null !== $object->getPreviousFilename()) {
             $data['previous_filename'] = $object->getPreviousFilename();
         }
         foreach ($object as $key => $value) {

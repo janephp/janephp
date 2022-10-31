@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class ComplianceSearchResultDataBodySearchResultRecordsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -52,6 +60,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItem extends \ArrayObject
      */
     public function setRecord(int $record) : self
     {
+        $this->initialized['record'] = true;
         $this->record = $record;
         return $this;
     }
@@ -73,6 +82,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItem extends \ArrayObject
      */
     public function setRecordDetails(ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails $recordDetails) : self
     {
+        $this->initialized['recordDetails'] = true;
         $this->recordDetails = $recordDetails;
         return $this;
     }
@@ -94,6 +104,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItem extends \ArrayObject
      */
     public function setResultID(int $resultID) : self
     {
+        $this->initialized['resultID'] = true;
         $this->resultID = $resultID;
         return $this;
     }
@@ -115,6 +126,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItem extends \ArrayObject
      */
     public function setRunID(int $runID) : self
     {
+        $this->initialized['runID'] = true;
         $this->runID = $runID;
         return $this;
     }
@@ -136,6 +148,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItem extends \ArrayObject
      */
     public function setWatchlist(ComplianceSearchResultDataBodySearchResultRecordsItemWatchlist $watchlist) : self
     {
+        $this->initialized['watchlist'] = true;
         $this->watchlist = $watchlist;
         return $this;
     }

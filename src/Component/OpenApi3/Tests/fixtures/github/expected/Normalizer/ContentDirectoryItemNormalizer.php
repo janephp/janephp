@@ -115,7 +115,7 @@ class ContentDirectoryItemNormalizer implements DenormalizerInterface, Normalize
         $data['size'] = $object->getSize();
         $data['name'] = $object->getName();
         $data['path'] = $object->getPath();
-        if (null !== $object->getContent()) {
+        if ($object->isInitialized('content') && null !== $object->getContent()) {
             $data['content'] = $object->getContent();
         }
         $data['sha'] = $object->getSha();

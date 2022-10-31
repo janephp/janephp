@@ -73,17 +73,17 @@ class SearchNoResultsErrorNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTotalSize()) {
+        if ($object->isInitialized('totalSize') && null !== $object->getTotalSize()) {
             $data['totalSize'] = $object->getTotalSize();
         }
-        if (null !== $object->getCompanies()) {
+        if ($object->isInitialized('companies') && null !== $object->getCompanies()) {
             $values = array();
             foreach ($object->getCompanies() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['companies'] = $values;
         }
-        if (null !== $object->getMessages()) {
+        if ($object->isInitialized('messages') && null !== $object->getMessages()) {
             $data['messages'] = $this->normalizer->normalize($object->getMessages(), 'json', $context);
         }
         foreach ($object as $key_1 => $value_1) {

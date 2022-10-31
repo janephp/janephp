@@ -250,106 +250,106 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNames()) {
+        if ($object->isInitialized('names') && null !== $object->getNames()) {
             $data['names'] = $object->getNames();
         }
-        if (null !== $object->getDescriptions()) {
+        if ($object->isInitialized('descriptions') && null !== $object->getDescriptions()) {
             $data['descriptions'] = $object->getDescriptions();
         }
-        if (null !== $object->getFileExtension()) {
+        if ($object->isInitialized('fileExtension') && null !== $object->getFileExtension()) {
             $data['fileExtension'] = $object->getFileExtension();
         }
-        if (null !== $object->getFileName()) {
+        if ($object->isInitialized('fileName') && null !== $object->getFileName()) {
             $data['fileName'] = $object->getFileName();
         }
-        if (null !== $object->getFilePath()) {
+        if ($object->isInitialized('filePath') && null !== $object->getFilePath()) {
             $data['filePath'] = $object->getFilePath();
         }
-        if (null !== $object->getFileSizeInBytes()) {
+        if ($object->isInitialized('fileSizeInBytes') && null !== $object->getFileSizeInBytes()) {
             $data['fileSizeInBytes'] = $object->getFileSizeInBytes();
         }
-        if (null !== $object->getSha1Hash()) {
+        if ($object->isInitialized('sha1Hash') && null !== $object->getSha1Hash()) {
             $data['sha1Hash'] = $object->getSha1Hash();
         }
-        if (null !== $object->getXmpMetadata()) {
+        if ($object->isInitialized('xmpMetadata') && null !== $object->getXmpMetadata()) {
             $data['xmpMetadata'] = $object->getXmpMetadata();
         }
-        if (null !== $object->getExifMetadata()) {
+        if ($object->isInitialized('exifMetadata') && null !== $object->getExifMetadata()) {
             $data['exifMetadata'] = $object->getExifMetadata();
         }
-        if (null !== $object->getLanguage()) {
+        if ($object->isInitialized('language') && null !== $object->getLanguage()) {
             $data['language'] = $object->getLanguage();
         }
-        if (null !== $object->getWidth()) {
+        if ($object->isInitialized('width') && null !== $object->getWidth()) {
             $data['width'] = $object->getWidth();
         }
-        if (null !== $object->getHeight()) {
+        if ($object->isInitialized('height') && null !== $object->getHeight()) {
             $data['height'] = $object->getHeight();
         }
-        if (null !== $object->getWidthInInch()) {
+        if ($object->isInitialized('widthInInch') && null !== $object->getWidthInInch()) {
             $data['widthInInch'] = $object->getWidthInInch();
         }
-        if (null !== $object->getHeightInInch()) {
+        if ($object->isInitialized('heightInInch') && null !== $object->getHeightInInch()) {
             $data['heightInInch'] = $object->getHeightInInch();
         }
-        if (null !== $object->getWidthInCm()) {
+        if ($object->isInitialized('widthInCm') && null !== $object->getWidthInCm()) {
             $data['widthInCm'] = $object->getWidthInCm();
         }
-        if (null !== $object->getHeightInCm()) {
+        if ($object->isInitialized('heightInCm') && null !== $object->getHeightInCm()) {
             $data['heightInCm'] = $object->getHeightInCm();
         }
-        if (null !== $object->getColorSpace()) {
+        if ($object->isInitialized('colorSpace') && null !== $object->getColorSpace()) {
             $data['colorSpace'] = $object->getColorSpace();
         }
-        if (null !== $object->getColorProfile()) {
+        if ($object->isInitialized('colorProfile') && null !== $object->getColorProfile()) {
             $data['colorProfile'] = $object->getColorProfile();
         }
-        if (null !== $object->getBitsPerPixel()) {
+        if ($object->isInitialized('bitsPerPixel') && null !== $object->getBitsPerPixel()) {
             $data['bitsPerPixel'] = $object->getBitsPerPixel();
         }
-        if (null !== $object->getBitsPerChannel()) {
+        if ($object->isInitialized('bitsPerChannel') && null !== $object->getBitsPerChannel()) {
             $data['bitsPerChannel'] = $object->getBitsPerChannel();
         }
-        if (null !== $object->getChannels()) {
+        if ($object->isInitialized('channels') && null !== $object->getChannels()) {
             $data['channels'] = $object->getChannels();
         }
-        if (null !== $object->getPixelFormat()) {
+        if ($object->isInitialized('pixelFormat') && null !== $object->getPixelFormat()) {
             $data['pixelFormat'] = $object->getPixelFormat();
         }
-        if (null !== $object->getHasAlpha()) {
+        if ($object->isInitialized('hasAlpha') && null !== $object->getHasAlpha()) {
             $data['hasAlpha'] = $object->getHasAlpha();
         }
-        if (null !== $object->getIsIndexed()) {
+        if ($object->isInitialized('isIndexed') && null !== $object->getIsIndexed()) {
             $data['isIndexed'] = $object->getIsIndexed();
         }
-        if (null !== $object->getIsExtended()) {
+        if ($object->isInitialized('isExtended') && null !== $object->getIsExtended()) {
             $data['isExtended'] = $object->getIsExtended();
         }
-        if (null !== $object->getHorizontalResolution()) {
+        if ($object->isInitialized('horizontalResolution') && null !== $object->getHorizontalResolution()) {
             $data['horizontalResolution'] = $object->getHorizontalResolution();
         }
-        if (null !== $object->getVerticalResolution()) {
+        if ($object->isInitialized('verticalResolution') && null !== $object->getVerticalResolution()) {
             $data['verticalResolution'] = $object->getVerticalResolution();
         }
-        if (null !== $object->getTotalFrames()) {
+        if ($object->isInitialized('totalFrames') && null !== $object->getTotalFrames()) {
             $data['totalFrames'] = $object->getTotalFrames();
         }
-        if (null !== $object->getTotalUnspecifiedTiffExtraChannels()) {
+        if ($object->isInitialized('totalUnspecifiedTiffExtraChannels') && null !== $object->getTotalUnspecifiedTiffExtraChannels()) {
             $data['totalUnspecifiedTiffExtraChannels'] = $object->getTotalUnspecifiedTiffExtraChannels();
         }
-        if (null !== $object->getHasExifData()) {
+        if ($object->isInitialized('hasExifData') && null !== $object->getHasExifData()) {
             $data['hasExifData'] = $object->getHasExifData();
         }
-        if (null !== $object->getHasIptcData()) {
+        if ($object->isInitialized('hasIptcData') && null !== $object->getHasIptcData()) {
             $data['hasIptcData'] = $object->getHasIptcData();
         }
-        if (null !== $object->getHasAdobeResourceData()) {
+        if ($object->isInitialized('hasAdobeResourceData') && null !== $object->getHasAdobeResourceData()) {
             $data['hasAdobeResourceData'] = $object->getHasAdobeResourceData();
         }
-        if (null !== $object->getHasXmpData()) {
+        if ($object->isInitialized('hasXmpData') && null !== $object->getHasXmpData()) {
             $data['hasXmpData'] = $object->getHasXmpData();
         }
-        if (null !== $object->getUncompressedSizeInBytes()) {
+        if ($object->isInitialized('uncompressedSizeInBytes') && null !== $object->getUncompressedSizeInBytes()) {
             $data['uncompressedSizeInBytes'] = $object->getUncompressedSizeInBytes();
         }
         foreach ($object as $key => $value) {

@@ -66,10 +66,10 @@ class CompliancePreDefinedSearchesNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTotalSize()) {
+        if ($object->isInitialized('totalSize') && null !== $object->getTotalSize()) {
             $data['totalSize'] = $object->getTotalSize();
         }
-        if (null !== $object->getPredefinedSearches()) {
+        if ($object->isInitialized('predefinedSearches') && null !== $object->getPredefinedSearches()) {
             $values = array();
             foreach ($object->getPredefinedSearches() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

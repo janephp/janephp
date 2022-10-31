@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ManagerStatus
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -40,6 +48,7 @@ class ManagerStatus
      */
     public function setLeader(bool $leader) : self
     {
+        $this->initialized['leader'] = true;
         $this->leader = $leader;
         return $this;
     }
@@ -61,6 +70,7 @@ class ManagerStatus
      */
     public function setReachability(string $reachability) : self
     {
+        $this->initialized['reachability'] = true;
         $this->reachability = $reachability;
         return $this;
     }
@@ -82,6 +92,7 @@ class ManagerStatus
      */
     public function setAddr(string $addr) : self
     {
+        $this->initialized['addr'] = true;
         $this->addr = $addr;
         return $this;
     }

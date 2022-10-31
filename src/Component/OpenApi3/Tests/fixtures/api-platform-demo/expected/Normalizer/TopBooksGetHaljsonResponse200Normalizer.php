@@ -79,10 +79,10 @@ class TopBooksGetHaljsonResponse200Normalizer implements DenormalizerInterface, 
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['_embedded'] = $values;
-        if (null !== $object->getTotalItems()) {
+        if ($object->isInitialized('totalItems') && null !== $object->getTotalItems()) {
             $data['totalItems'] = $object->getTotalItems();
         }
-        if (null !== $object->getItemsPerPage()) {
+        if ($object->isInitialized('itemsPerPage') && null !== $object->getItemsPerPage()) {
             $data['itemsPerPage'] = $object->getItemsPerPage();
         }
         $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);

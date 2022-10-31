@@ -58,7 +58,7 @@ class BusinessProcessWaitForLifeCycleResultNormalizer implements DenormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLifeCycleHit()) {
+        if ($object->isInitialized('lifeCycleHit') && null !== $object->getLifeCycleHit()) {
             $data['lifeCycleHit'] = $object->getLifeCycleHit();
         }
         $data['businessProcess'] = $object->getBusinessProcess();

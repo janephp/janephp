@@ -436,7 +436,7 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         $data['language'] = $object->getLanguage();
         $data['forks_count'] = $object->getForksCount();
         $data['open_issues_count'] = $object->getOpenIssuesCount();
-        if (null !== $object->getMasterBranch()) {
+        if ($object->isInitialized('masterBranch') && null !== $object->getMasterBranch()) {
             $data['master_branch'] = $object->getMasterBranch();
         }
         $data['default_branch'] = $object->getDefaultBranch();
@@ -484,7 +484,7 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         $data['forks'] = $object->getForks();
         $data['open_issues'] = $object->getOpenIssues();
         $data['watchers'] = $object->getWatchers();
-        if (null !== $object->getTopics()) {
+        if ($object->isInitialized('topics') && null !== $object->getTopics()) {
             $values = array();
             foreach ($object->getTopics() as $value) {
                 $values[] = $value;
@@ -500,29 +500,29 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         $data['archived'] = $object->getArchived();
         $data['disabled'] = $object->getDisabled();
         $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
-        if (null !== $object->getPermissions()) {
+        if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
-        if (null !== $object->getTextMatches()) {
+        if ($object->isInitialized('textMatches') && null !== $object->getTextMatches()) {
             $values_1 = array();
             foreach ($object->getTextMatches() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['text_matches'] = $values_1;
         }
-        if (null !== $object->getTempCloneToken()) {
+        if ($object->isInitialized('tempCloneToken') && null !== $object->getTempCloneToken()) {
             $data['temp_clone_token'] = $object->getTempCloneToken();
         }
-        if (null !== $object->getAllowMergeCommit()) {
+        if ($object->isInitialized('allowMergeCommit') && null !== $object->getAllowMergeCommit()) {
             $data['allow_merge_commit'] = $object->getAllowMergeCommit();
         }
-        if (null !== $object->getAllowSquashMerge()) {
+        if ($object->isInitialized('allowSquashMerge') && null !== $object->getAllowSquashMerge()) {
             $data['allow_squash_merge'] = $object->getAllowSquashMerge();
         }
-        if (null !== $object->getAllowRebaseMerge()) {
+        if ($object->isInitialized('allowRebaseMerge') && null !== $object->getAllowRebaseMerge()) {
             $data['allow_rebase_merge'] = $object->getAllowRebaseMerge();
         }
-        if (null !== $object->getDeleteBranchOnMerge()) {
+        if ($object->isInitialized('deleteBranchOnMerge') && null !== $object->getDeleteBranchOnMerge()) {
             $data['delete_branch_on_merge'] = $object->getDeleteBranchOnMerge();
         }
         foreach ($object as $key => $value_2) {

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ShareDataEmbed extends ShareDataBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Token for the embed share.
      *
      * @var string
@@ -28,6 +36,7 @@ class ShareDataEmbed extends ShareDataBase
      */
     public function setToken(string $token) : self
     {
+        $this->initialized['token'] = true;
         $this->token = $token;
         return $this;
     }

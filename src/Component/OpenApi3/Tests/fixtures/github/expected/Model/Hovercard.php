@@ -5,6 +5,14 @@ namespace Github\Model;
 class Hovercard extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var HovercardContextsItem[]
@@ -28,6 +36,7 @@ class Hovercard extends \ArrayObject
      */
     public function setContexts(array $contexts) : self
     {
+        $this->initialized['contexts'] = true;
         $this->contexts = $contexts;
         return $this;
     }

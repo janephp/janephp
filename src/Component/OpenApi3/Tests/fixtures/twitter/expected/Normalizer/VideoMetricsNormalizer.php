@@ -84,19 +84,19 @@ class VideoMetricsNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data = array();
         $data['media_key'] = $object->getMediaKey();
         $data['view_count'] = $object->getViewCount();
-        if (null !== $object->getPlayback0Count()) {
+        if ($object->isInitialized('playback0Count') && null !== $object->getPlayback0Count()) {
             $data['playback_0_count'] = $object->getPlayback0Count();
         }
-        if (null !== $object->getPlayback25Count()) {
+        if ($object->isInitialized('playback25Count') && null !== $object->getPlayback25Count()) {
             $data['playback_25_count'] = $object->getPlayback25Count();
         }
-        if (null !== $object->getPlayback50Count()) {
+        if ($object->isInitialized('playback50Count') && null !== $object->getPlayback50Count()) {
             $data['playback_50_count'] = $object->getPlayback50Count();
         }
-        if (null !== $object->getPlayback75Count()) {
+        if ($object->isInitialized('playback75Count') && null !== $object->getPlayback75Count()) {
             $data['playback_75_count'] = $object->getPlayback75Count();
         }
-        if (null !== $object->getPlayback100Count()) {
+        if ($object->isInitialized('playback100Count') && null !== $object->getPlayback100Count()) {
             $data['playback_100_count'] = $object->getPlayback100Count();
         }
         foreach ($object as $key => $value) {

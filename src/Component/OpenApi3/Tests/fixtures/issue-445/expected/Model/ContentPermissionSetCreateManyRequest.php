@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentPermissionSetCreateManyRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Content permission set update requests.
      *
      * @var ContentPermissionSetCreateRequest[]|null
@@ -28,6 +36,7 @@ class ContentPermissionSetCreateManyRequest
      */
     public function setItems(?array $items) : self
     {
+        $this->initialized['items'] = true;
         $this->items = $items;
         return $this;
     }

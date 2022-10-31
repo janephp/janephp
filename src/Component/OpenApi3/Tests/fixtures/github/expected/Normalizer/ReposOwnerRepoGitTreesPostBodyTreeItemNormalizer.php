@@ -81,19 +81,19 @@ class ReposOwnerRepoGitTreesPostBodyTreeItemNormalizer implements DenormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPath()) {
+        if ($object->isInitialized('path') && null !== $object->getPath()) {
             $data['path'] = $object->getPath();
         }
-        if (null !== $object->getMode()) {
+        if ($object->isInitialized('mode') && null !== $object->getMode()) {
             $data['mode'] = $object->getMode();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getSha()) {
+        if ($object->isInitialized('sha') && null !== $object->getSha()) {
             $data['sha'] = $object->getSha();
         }
-        if (null !== $object->getContent()) {
+        if ($object->isInitialized('content') && null !== $object->getContent()) {
             $data['content'] = $object->getContent();
         }
         foreach ($object as $key => $value) {

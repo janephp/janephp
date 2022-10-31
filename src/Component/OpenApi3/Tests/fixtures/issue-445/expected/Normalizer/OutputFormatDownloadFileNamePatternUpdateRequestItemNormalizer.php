@@ -59,7 +59,7 @@ class OutputFormatDownloadFileNamePatternUpdateRequestItemNormalizer implements 
     {
         $data = array();
         $data['id'] = $object->getId();
-        if (null !== $object->getPatterns()) {
+        if ($object->isInitialized('patterns') && null !== $object->getPatterns()) {
             $data['patterns'] = $object->getPatterns();
         }
         return $data;

@@ -5,6 +5,14 @@ namespace Github\Model;
 class ImportProjectChoicesItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class ImportProjectChoicesItem extends \ArrayObject
      */
     public function setVcs(string $vcs) : self
     {
+        $this->initialized['vcs'] = true;
         $this->vcs = $vcs;
         return $this;
     }
@@ -61,6 +70,7 @@ class ImportProjectChoicesItem extends \ArrayObject
      */
     public function setTfvcProject(string $tfvcProject) : self
     {
+        $this->initialized['tfvcProject'] = true;
         $this->tfvcProject = $tfvcProject;
         return $this;
     }
@@ -82,6 +92,7 @@ class ImportProjectChoicesItem extends \ArrayObject
      */
     public function setHumanName(string $humanName) : self
     {
+        $this->initialized['humanName'] = true;
         $this->humanName = $humanName;
         return $this;
     }

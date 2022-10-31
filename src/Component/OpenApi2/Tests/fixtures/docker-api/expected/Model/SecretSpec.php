@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class SecretSpec
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * User-defined name of the secret.
      *
      * @var string
@@ -57,6 +65,7 @@ class SecretSpec
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -78,6 +87,7 @@ class SecretSpec
      */
     public function setLabels(iterable $labels) : self
     {
+        $this->initialized['labels'] = true;
         $this->labels = $labels;
         return $this;
     }
@@ -109,6 +119,7 @@ class SecretSpec
     */
     public function setData(string $data) : self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
         return $this;
     }
@@ -130,6 +141,7 @@ class SecretSpec
      */
     public function setDriver(Driver $driver) : self
     {
+        $this->initialized['driver'] = true;
         $this->driver = $driver;
         return $this;
     }
@@ -151,6 +163,7 @@ class SecretSpec
      */
     public function setTemplating(Driver $templating) : self
     {
+        $this->initialized['templating'] = true;
         $this->templating = $templating;
         return $this;
     }

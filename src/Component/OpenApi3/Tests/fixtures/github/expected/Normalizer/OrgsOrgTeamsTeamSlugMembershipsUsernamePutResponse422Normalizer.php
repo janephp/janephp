@@ -70,10 +70,10 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422Normalizer implements
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMessage()) {
+        if ($object->isInitialized('message') && null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
-        if (null !== $object->getErrors()) {
+        if ($object->isInitialized('errors') && null !== $object->getErrors()) {
             $values = array();
             foreach ($object->getErrors() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

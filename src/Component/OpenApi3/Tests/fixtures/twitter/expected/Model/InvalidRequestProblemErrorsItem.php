@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class InvalidRequestProblemErrorsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string[][]
@@ -34,6 +42,7 @@ class InvalidRequestProblemErrorsItem extends \ArrayObject
      */
     public function setParameters(iterable $parameters) : self
     {
+        $this->initialized['parameters'] = true;
         $this->parameters = $parameters;
         return $this;
     }
@@ -55,6 +64,7 @@ class InvalidRequestProblemErrorsItem extends \ArrayObject
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }

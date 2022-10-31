@@ -55,7 +55,7 @@ class SchemaCreateResultNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSchema()) {
+        if ($object->isInitialized('schema') && null !== $object->getSchema()) {
             $data['schema'] = $object->getSchema();
         }
         return $data;

@@ -78,22 +78,22 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectImageDocumentsIte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getCountryIso2()) {
+        if ($object->isInitialized('countryIso2') && null !== $object->getCountryIso2()) {
             $data['countryIso2'] = $object->getCountryIso2();
         }
-        if (null !== $object->getStartDate()) {
+        if ($object->isInitialized('startDate') && null !== $object->getStartDate()) {
             $data['startDate'] = $object->getStartDate();
         }
-        if (null !== $object->getExpireDate()) {
+        if ($object->isInitialized('expireDate') && null !== $object->getExpireDate()) {
             $data['expireDate'] = $object->getExpireDate();
         }
-        if (null !== $object->getPaid()) {
+        if ($object->isInitialized('paid') && null !== $object->getPaid()) {
             $data['paid'] = $object->getPaid();
         }
-        if (null !== $object->getUsed()) {
+        if ($object->isInitialized('used') && null !== $object->getUsed()) {
             $data['used'] = $object->getUsed();
         }
         foreach ($object as $key => $value) {

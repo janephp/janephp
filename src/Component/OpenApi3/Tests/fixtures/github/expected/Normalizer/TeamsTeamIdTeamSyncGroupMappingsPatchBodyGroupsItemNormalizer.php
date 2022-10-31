@@ -85,13 +85,13 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItemNormalizer implements D
         $data['group_id'] = $object->getGroupId();
         $data['group_name'] = $object->getGroupName();
         $data['group_description'] = $object->getGroupDescription();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
         foreach ($object as $key => $value) {

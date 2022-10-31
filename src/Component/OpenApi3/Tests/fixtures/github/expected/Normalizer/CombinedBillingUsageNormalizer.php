@@ -70,13 +70,13 @@ class CombinedBillingUsageNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDaysLeftInBillingCycle()) {
+        if ($object->isInitialized('daysLeftInBillingCycle') && null !== $object->getDaysLeftInBillingCycle()) {
             $data['days_left_in_billing_cycle'] = $object->getDaysLeftInBillingCycle();
         }
-        if (null !== $object->getEstimatedPaidStorageForMonth()) {
+        if ($object->isInitialized('estimatedPaidStorageForMonth') && null !== $object->getEstimatedPaidStorageForMonth()) {
             $data['estimated_paid_storage_for_month'] = $object->getEstimatedPaidStorageForMonth();
         }
-        if (null !== $object->getEstimatedStorageForMonth()) {
+        if ($object->isInitialized('estimatedStorageForMonth') && null !== $object->getEstimatedStorageForMonth()) {
             $data['estimated_storage_for_month'] = $object->getEstimatedStorageForMonth();
         }
         foreach ($object as $key => $value) {

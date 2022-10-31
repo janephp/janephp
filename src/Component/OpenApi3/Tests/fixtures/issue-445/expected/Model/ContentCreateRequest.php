@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentCreateRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * The ID of the content schema. The SchemaType of the specified schema must be Content.
     The schema specifies the structure of the Content dictionary.
     *
@@ -66,6 +74,7 @@ class ContentCreateRequest
     */
     public function setContentSchemaId(string $contentSchemaId) : self
     {
+        $this->initialized['contentSchemaId'] = true;
         $this->contentSchemaId = $contentSchemaId;
         return $this;
     }
@@ -89,6 +98,7 @@ class ContentCreateRequest
     */
     public function setLayerSchemaIds(?array $layerSchemaIds) : self
     {
+        $this->initialized['layerSchemaIds'] = true;
         $this->layerSchemaIds = $layerSchemaIds;
         return $this;
     }
@@ -110,6 +120,7 @@ class ContentCreateRequest
      */
     public function setContent(?iterable $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }
@@ -135,6 +146,7 @@ class ContentCreateRequest
     */
     public function setMetadata(?iterable $metadata) : self
     {
+        $this->initialized['metadata'] = true;
         $this->metadata = $metadata;
         return $this;
     }
@@ -156,6 +168,7 @@ class ContentCreateRequest
      */
     public function setContentPermissionSetIds(?array $contentPermissionSetIds) : self
     {
+        $this->initialized['contentPermissionSetIds'] = true;
         $this->contentPermissionSetIds = $contentPermissionSetIds;
         return $this;
     }
@@ -181,6 +194,7 @@ class ContentCreateRequest
     */
     public function setRequestId(?string $requestId) : self
     {
+        $this->initialized['requestId'] = true;
         $this->requestId = $requestId;
         return $this;
     }

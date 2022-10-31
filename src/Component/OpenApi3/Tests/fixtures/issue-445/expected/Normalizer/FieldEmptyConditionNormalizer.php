@@ -72,11 +72,11 @@ class FieldEmptyConditionNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getFieldPath()) {
+        if ($object->isInitialized('fieldPath') && null !== $object->getFieldPath()) {
             $data['fieldPath'] = $object->getFieldPath();
         }
         foreach ($object as $key => $value) {

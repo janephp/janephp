@@ -70,13 +70,13 @@ class PackagesBillingUsageNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTotalGigabytesBandwidthUsed()) {
+        if ($object->isInitialized('totalGigabytesBandwidthUsed') && null !== $object->getTotalGigabytesBandwidthUsed()) {
             $data['total_gigabytes_bandwidth_used'] = $object->getTotalGigabytesBandwidthUsed();
         }
-        if (null !== $object->getTotalPaidGigabytesBandwidthUsed()) {
+        if ($object->isInitialized('totalPaidGigabytesBandwidthUsed') && null !== $object->getTotalPaidGigabytesBandwidthUsed()) {
             $data['total_paid_gigabytes_bandwidth_used'] = $object->getTotalPaidGigabytesBandwidthUsed();
         }
-        if (null !== $object->getIncludedGigabytesBandwidth()) {
+        if ($object->isInitialized('includedGigabytesBandwidth') && null !== $object->getIncludedGigabytesBandwidth()) {
             $data['included_gigabytes_bandwidth'] = $object->getIncludedGigabytesBandwidth();
         }
         foreach ($object as $key => $value) {

@@ -179,20 +179,20 @@ class BaseGistNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['comments'] = $object->getComments();
         $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         $data['comments_url'] = $object->getCommentsUrl();
-        if (null !== $object->getOwner()) {
+        if ($object->isInitialized('owner') && null !== $object->getOwner()) {
             $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
         }
-        if (null !== $object->getTruncated()) {
+        if ($object->isInitialized('truncated') && null !== $object->getTruncated()) {
             $data['truncated'] = $object->getTruncated();
         }
-        if (null !== $object->getForks()) {
+        if ($object->isInitialized('forks') && null !== $object->getForks()) {
             $values_1 = array();
             foreach ($object->getForks() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['forks'] = $values_1;
         }
-        if (null !== $object->getHistory()) {
+        if ($object->isInitialized('history') && null !== $object->getHistory()) {
             $values_2 = array();
             foreach ($object->getHistory() as $value_2) {
                 $values_2[] = $value_2;

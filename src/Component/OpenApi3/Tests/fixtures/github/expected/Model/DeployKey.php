@@ -5,6 +5,14 @@ namespace Github\Model;
 class DeployKey extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -64,6 +72,7 @@ class DeployKey extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -85,6 +94,7 @@ class DeployKey extends \ArrayObject
      */
     public function setKey(string $key) : self
     {
+        $this->initialized['key'] = true;
         $this->key = $key;
         return $this;
     }
@@ -106,6 +116,7 @@ class DeployKey extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -127,6 +138,7 @@ class DeployKey extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -148,6 +160,7 @@ class DeployKey extends \ArrayObject
      */
     public function setVerified(bool $verified) : self
     {
+        $this->initialized['verified'] = true;
         $this->verified = $verified;
         return $this;
     }
@@ -169,6 +182,7 @@ class DeployKey extends \ArrayObject
      */
     public function setCreatedAt(string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -190,6 +204,7 @@ class DeployKey extends \ArrayObject
      */
     public function setReadOnly(bool $readOnly) : self
     {
+        $this->initialized['readOnly'] = true;
         $this->readOnly = $readOnly;
         return $this;
     }

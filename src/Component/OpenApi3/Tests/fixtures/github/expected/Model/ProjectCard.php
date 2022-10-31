@@ -5,6 +5,14 @@ namespace Github\Model;
 class ProjectCard extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -88,6 +96,7 @@ class ProjectCard extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -109,6 +118,7 @@ class ProjectCard extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -130,6 +140,7 @@ class ProjectCard extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -151,6 +162,7 @@ class ProjectCard extends \ArrayObject
      */
     public function setNote(?string $note) : self
     {
+        $this->initialized['note'] = true;
         $this->note = $note;
         return $this;
     }
@@ -172,6 +184,7 @@ class ProjectCard extends \ArrayObject
      */
     public function setCreator(?ProjectCardCreator $creator) : self
     {
+        $this->initialized['creator'] = true;
         $this->creator = $creator;
         return $this;
     }
@@ -193,6 +206,7 @@ class ProjectCard extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -214,6 +228,7 @@ class ProjectCard extends \ArrayObject
      */
     public function setUpdatedAt(\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -235,6 +250,7 @@ class ProjectCard extends \ArrayObject
      */
     public function setArchived(bool $archived) : self
     {
+        $this->initialized['archived'] = true;
         $this->archived = $archived;
         return $this;
     }
@@ -256,6 +272,7 @@ class ProjectCard extends \ArrayObject
      */
     public function setColumnUrl(string $columnUrl) : self
     {
+        $this->initialized['columnUrl'] = true;
         $this->columnUrl = $columnUrl;
         return $this;
     }
@@ -277,6 +294,7 @@ class ProjectCard extends \ArrayObject
      */
     public function setContentUrl(string $contentUrl) : self
     {
+        $this->initialized['contentUrl'] = true;
         $this->contentUrl = $contentUrl;
         return $this;
     }
@@ -298,6 +316,7 @@ class ProjectCard extends \ArrayObject
      */
     public function setProjectUrl(string $projectUrl) : self
     {
+        $this->initialized['projectUrl'] = true;
         $this->projectUrl = $projectUrl;
         return $this;
     }

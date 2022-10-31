@@ -82,25 +82,25 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMortgageType()) {
+        if ($object->isInitialized('mortgageType') && null !== $object->getMortgageType()) {
             $data['mortgageType'] = $object->getMortgageType();
         }
-        if (null !== $object->getDateChargeCreated()) {
+        if ($object->isInitialized('dateChargeCreated') && null !== $object->getDateChargeCreated()) {
             $data['dateChargeCreated'] = $object->getDateChargeCreated();
         }
-        if (null !== $object->getDateChargeRegistered()) {
+        if ($object->isInitialized('dateChargeRegistered') && null !== $object->getDateChargeRegistered()) {
             $data['dateChargeRegistered'] = $object->getDateChargeRegistered();
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        if (null !== $object->getPersonsEntitled()) {
+        if ($object->isInitialized('personsEntitled') && null !== $object->getPersonsEntitled()) {
             $data['personsEntitled'] = $object->getPersonsEntitled();
         }
-        if (null !== $object->getAmountSecured()) {
+        if ($object->isInitialized('amountSecured') && null !== $object->getAmountSecured()) {
             $data['amountSecured'] = $object->getAmountSecured();
         }
-        if (null !== $object->getDetails()) {
+        if ($object->isInitialized('details') && null !== $object->getDetails()) {
             $data['details'] = $object->getDetails();
         }
         foreach ($object as $key => $value) {

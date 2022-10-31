@@ -143,91 +143,91 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['Id'] = $object->getId();
         }
-        if (null !== $object->getCreated()) {
+        if ($object->isInitialized('created') && null !== $object->getCreated()) {
             $data['Created'] = $object->getCreated();
         }
-        if (null !== $object->getPath()) {
+        if ($object->isInitialized('path') && null !== $object->getPath()) {
             $data['Path'] = $object->getPath();
         }
-        if (null !== $object->getArgs()) {
+        if ($object->isInitialized('args') && null !== $object->getArgs()) {
             $values = array();
             foreach ($object->getArgs() as $value) {
                 $values[] = $value;
             }
             $data['Args'] = $values;
         }
-        if (null !== $object->getState()) {
+        if ($object->isInitialized('state') && null !== $object->getState()) {
             $data['State'] = $this->normalizer->normalize($object->getState(), 'json', $context);
         }
-        if (null !== $object->getImage()) {
+        if ($object->isInitialized('image') && null !== $object->getImage()) {
             $data['Image'] = $object->getImage();
         }
-        if (null !== $object->getResolvConfPath()) {
+        if ($object->isInitialized('resolvConfPath') && null !== $object->getResolvConfPath()) {
             $data['ResolvConfPath'] = $object->getResolvConfPath();
         }
-        if (null !== $object->getHostnamePath()) {
+        if ($object->isInitialized('hostnamePath') && null !== $object->getHostnamePath()) {
             $data['HostnamePath'] = $object->getHostnamePath();
         }
-        if (null !== $object->getHostsPath()) {
+        if ($object->isInitialized('hostsPath') && null !== $object->getHostsPath()) {
             $data['HostsPath'] = $object->getHostsPath();
         }
-        if (null !== $object->getLogPath()) {
+        if ($object->isInitialized('logPath') && null !== $object->getLogPath()) {
             $data['LogPath'] = $object->getLogPath();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['Name'] = $object->getName();
         }
-        if (null !== $object->getRestartCount()) {
+        if ($object->isInitialized('restartCount') && null !== $object->getRestartCount()) {
             $data['RestartCount'] = $object->getRestartCount();
         }
-        if (null !== $object->getDriver()) {
+        if ($object->isInitialized('driver') && null !== $object->getDriver()) {
             $data['Driver'] = $object->getDriver();
         }
-        if (null !== $object->getPlatform()) {
+        if ($object->isInitialized('platform') && null !== $object->getPlatform()) {
             $data['Platform'] = $object->getPlatform();
         }
-        if (null !== $object->getMountLabel()) {
+        if ($object->isInitialized('mountLabel') && null !== $object->getMountLabel()) {
             $data['MountLabel'] = $object->getMountLabel();
         }
-        if (null !== $object->getProcessLabel()) {
+        if ($object->isInitialized('processLabel') && null !== $object->getProcessLabel()) {
             $data['ProcessLabel'] = $object->getProcessLabel();
         }
-        if (null !== $object->getAppArmorProfile()) {
+        if ($object->isInitialized('appArmorProfile') && null !== $object->getAppArmorProfile()) {
             $data['AppArmorProfile'] = $object->getAppArmorProfile();
         }
-        if (null !== $object->getExecIDs()) {
+        if ($object->isInitialized('execIDs') && null !== $object->getExecIDs()) {
             $values_1 = array();
             foreach ($object->getExecIDs() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['ExecIDs'] = $values_1;
         }
-        if (null !== $object->getHostConfig()) {
+        if ($object->isInitialized('hostConfig') && null !== $object->getHostConfig()) {
             $data['HostConfig'] = $this->normalizer->normalize($object->getHostConfig(), 'json', $context);
         }
-        if (null !== $object->getGraphDriver()) {
+        if ($object->isInitialized('graphDriver') && null !== $object->getGraphDriver()) {
             $data['GraphDriver'] = $this->normalizer->normalize($object->getGraphDriver(), 'json', $context);
         }
-        if (null !== $object->getSizeRw()) {
+        if ($object->isInitialized('sizeRw') && null !== $object->getSizeRw()) {
             $data['SizeRw'] = $object->getSizeRw();
         }
-        if (null !== $object->getSizeRootFs()) {
+        if ($object->isInitialized('sizeRootFs') && null !== $object->getSizeRootFs()) {
             $data['SizeRootFs'] = $object->getSizeRootFs();
         }
-        if (null !== $object->getMounts()) {
+        if ($object->isInitialized('mounts') && null !== $object->getMounts()) {
             $values_2 = array();
             foreach ($object->getMounts() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['Mounts'] = $values_2;
         }
-        if (null !== $object->getConfig()) {
+        if ($object->isInitialized('config') && null !== $object->getConfig()) {
             $data['Config'] = $this->normalizer->normalize($object->getConfig(), 'json', $context);
         }
-        if (null !== $object->getNetworkSettings()) {
+        if ($object->isInitialized('networkSettings') && null !== $object->getNetworkSettings()) {
             $data['NetworkSettings'] = $this->normalizer->normalize($object->getNetworkSettings(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

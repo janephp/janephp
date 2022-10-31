@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class OutputFormatEditable extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Which output format should be used as a source of data.
      *
      * @var mixed|null
@@ -65,6 +73,7 @@ class OutputFormatEditable extends \ArrayObject
      */
     public function setSourceOutputFormats($sourceOutputFormats) : self
     {
+        $this->initialized['sourceOutputFormats'] = true;
         $this->sourceOutputFormats = $sourceOutputFormats;
         return $this;
     }
@@ -86,6 +95,7 @@ class OutputFormatEditable extends \ArrayObject
      */
     public function setFormat($format) : self
     {
+        $this->initialized['format'] = true;
         $this->format = $format;
         return $this;
     }
@@ -107,6 +117,7 @@ class OutputFormatEditable extends \ArrayObject
      */
     public function setNames($names) : self
     {
+        $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }
@@ -128,6 +139,7 @@ class OutputFormatEditable extends \ArrayObject
      */
     public function setRetentionTime(string $retentionTime) : self
     {
+        $this->initialized['retentionTime'] = true;
         $this->retentionTime = $retentionTime;
         return $this;
     }
@@ -151,6 +163,7 @@ class OutputFormatEditable extends \ArrayObject
     */
     public function setDownloadFileNamePatterns($downloadFileNamePatterns) : self
     {
+        $this->initialized['downloadFileNamePatterns'] = true;
         $this->downloadFileNamePatterns = $downloadFileNamePatterns;
         return $this;
     }
@@ -172,6 +185,7 @@ class OutputFormatEditable extends \ArrayObject
      */
     public function setViewForAll(bool $viewForAll) : self
     {
+        $this->initialized['viewForAll'] = true;
         $this->viewForAll = $viewForAll;
         return $this;
     }
@@ -193,6 +207,7 @@ class OutputFormatEditable extends \ArrayObject
      */
     public function setEnableXmpWriteback(bool $enableXmpWriteback) : self
     {
+        $this->initialized['enableXmpWriteback'] = true;
         $this->enableXmpWriteback = $enableXmpWriteback;
         return $this;
     }

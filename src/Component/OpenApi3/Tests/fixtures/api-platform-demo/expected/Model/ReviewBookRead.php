@@ -5,6 +5,14 @@ namespace ApiPlatform\Demo\Model;
 class ReviewBookRead extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -34,6 +42,7 @@ class ReviewBookRead extends \ArrayObject
      */
     public function setId(?string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReviewBookRead extends \ArrayObject
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UserReviewManyRequest extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * User IDs.
      *
      * @var string[]
@@ -35,6 +43,7 @@ class UserReviewManyRequest extends \ArrayObject
      */
     public function setUserIds(array $userIds) : self
     {
+        $this->initialized['userIds'] = true;
         $this->userIds = $userIds;
         return $this;
     }
@@ -58,6 +67,7 @@ class UserReviewManyRequest extends \ArrayObject
     */
     public function setReviewed(bool $reviewed) : self
     {
+        $this->initialized['reviewed'] = true;
         $this->reviewed = $reviewed;
         return $this;
     }

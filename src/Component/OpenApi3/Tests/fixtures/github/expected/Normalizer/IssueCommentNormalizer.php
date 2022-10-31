@@ -123,13 +123,13 @@ class IssueCommentNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['id'] = $object->getId();
         $data['node_id'] = $object->getNodeId();
         $data['url'] = $object->getUrl();
-        if (null !== $object->getBody()) {
+        if ($object->isInitialized('body') && null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
-        if (null !== $object->getBodyText()) {
+        if ($object->isInitialized('bodyText') && null !== $object->getBodyText()) {
             $data['body_text'] = $object->getBodyText();
         }
-        if (null !== $object->getBodyHtml()) {
+        if ($object->isInitialized('bodyHtml') && null !== $object->getBodyHtml()) {
             $data['body_html'] = $object->getBodyHtml();
         }
         $data['html_url'] = $object->getHtmlUrl();
@@ -138,10 +138,10 @@ class IssueCommentNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['issue_url'] = $object->getIssueUrl();
         $data['author_association'] = $object->getAuthorAssociation();
-        if (null !== $object->getPerformedViaGithubApp()) {
+        if ($object->isInitialized('performedViaGithubApp') && null !== $object->getPerformedViaGithubApp()) {
             $data['performed_via_github_app'] = $this->normalizer->normalize($object->getPerformedViaGithubApp(), 'json', $context);
         }
-        if (null !== $object->getReactions()) {
+        if ($object->isInitialized('reactions') && null !== $object->getReactions()) {
             $data['reactions'] = $this->normalizer->normalize($object->getReactions(), 'json', $context);
         }
         foreach ($object as $key => $value) {

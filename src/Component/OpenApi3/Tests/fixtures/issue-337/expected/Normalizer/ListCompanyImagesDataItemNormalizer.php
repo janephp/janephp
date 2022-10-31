@@ -102,40 +102,40 @@ class ListCompanyImagesDataItemNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getImageId()) {
+        if ($object->isInitialized('imageId') && null !== $object->getImageId()) {
             $data['imageId'] = $object->getImageId();
         }
-        if (null !== $object->getCompany()) {
+        if ($object->isInitialized('company') && null !== $object->getCompany()) {
             $data['company'] = $this->normalizer->normalize($object->getCompany(), 'json', $context);
         }
-        if (null !== $object->getDocument()) {
+        if ($object->isInitialized('document') && null !== $object->getDocument()) {
             $data['document'] = $this->normalizer->normalize($object->getDocument(), 'json', $context);
         }
-        if (null !== $object->getFormat()) {
+        if ($object->isInitialized('format') && null !== $object->getFormat()) {
             $data['format'] = $object->getFormat();
         }
-        if (null !== $object->getSource()) {
+        if ($object->isInitialized('source') && null !== $object->getSource()) {
             $data['source'] = $object->getSource();
         }
-        if (null !== $object->getFilingDate()) {
+        if ($object->isInitialized('filingDate') && null !== $object->getFilingDate()) {
             $data['filingDate'] = $object->getFilingDate();
         }
-        if (null !== $object->getUploadDate()) {
+        if ($object->isInitialized('uploadDate') && null !== $object->getUploadDate()) {
             $data['uploadDate'] = $object->getUploadDate();
         }
-        if (null !== $object->getAccountingDate()) {
+        if ($object->isInitialized('accountingDate') && null !== $object->getAccountingDate()) {
             $data['accountingDate'] = $object->getAccountingDate();
         }
-        if (null !== $object->getLanguage()) {
+        if ($object->isInitialized('language') && null !== $object->getLanguage()) {
             $data['language'] = $object->getLanguage();
         }
-        if (null !== $object->getComments()) {
+        if ($object->isInitialized('comments') && null !== $object->getComments()) {
             $data['comments'] = $object->getComments();
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        if (null !== $object->getLocalProperties()) {
+        if ($object->isInitialized('localProperties') && null !== $object->getLocalProperties()) {
             $data['localProperties'] = $this->normalizer->normalize($object->getLocalProperties(), 'json', $context);
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class PluginsInfo
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Names of available volume-drivers, and network-driver plugins.
      *
      * @var string[]
@@ -46,6 +54,7 @@ class PluginsInfo
      */
     public function setVolume(array $volume) : self
     {
+        $this->initialized['volume'] = true;
         $this->volume = $volume;
         return $this;
     }
@@ -67,6 +76,7 @@ class PluginsInfo
      */
     public function setNetwork(array $network) : self
     {
+        $this->initialized['network'] = true;
         $this->network = $network;
         return $this;
     }
@@ -88,6 +98,7 @@ class PluginsInfo
      */
     public function setAuthorization(array $authorization) : self
     {
+        $this->initialized['authorization'] = true;
         $this->authorization = $authorization;
         return $this;
     }
@@ -109,6 +120,7 @@ class PluginsInfo
      */
     public function setLog(array $log) : self
     {
+        $this->initialized['log'] = true;
         $this->log = $log;
         return $this;
     }

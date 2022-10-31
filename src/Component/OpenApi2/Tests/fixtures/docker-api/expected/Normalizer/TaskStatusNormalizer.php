@@ -68,19 +68,19 @@ class TaskStatusNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTimestamp()) {
+        if ($object->isInitialized('timestamp') && null !== $object->getTimestamp()) {
             $data['Timestamp'] = $object->getTimestamp();
         }
-        if (null !== $object->getState()) {
+        if ($object->isInitialized('state') && null !== $object->getState()) {
             $data['State'] = $object->getState();
         }
-        if (null !== $object->getMessage()) {
+        if ($object->isInitialized('message') && null !== $object->getMessage()) {
             $data['Message'] = $object->getMessage();
         }
-        if (null !== $object->getErr()) {
+        if ($object->isInitialized('err') && null !== $object->getErr()) {
             $data['Err'] = $object->getErr();
         }
-        if (null !== $object->getContainerStatus()) {
+        if ($object->isInitialized('containerStatus') && null !== $object->getContainerStatus()) {
             $data['ContainerStatus'] = $this->normalizer->normalize($object->getContainerStatus(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

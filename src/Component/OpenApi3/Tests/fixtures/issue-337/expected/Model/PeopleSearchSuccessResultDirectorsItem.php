@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -82,6 +90,7 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
      */
     public function setPeopleId(string $peopleId) : self
     {
+        $this->initialized['peopleId'] = true;
         $this->peopleId = $peopleId;
         return $this;
     }
@@ -103,6 +112,7 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
      */
     public function setFirstName(string $firstName) : self
     {
+        $this->initialized['firstName'] = true;
         $this->firstName = $firstName;
         return $this;
     }
@@ -124,6 +134,7 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
      */
     public function setLastName(string $lastName) : self
     {
+        $this->initialized['lastName'] = true;
         $this->lastName = $lastName;
         return $this;
     }
@@ -145,6 +156,7 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
      */
     public function setCountry(string $country) : self
     {
+        $this->initialized['country'] = true;
         $this->country = $country;
         return $this;
     }
@@ -166,6 +178,7 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
      */
     public function setCompany(PeopleSearchSuccessResultDirectorsItemCompany $company) : self
     {
+        $this->initialized['company'] = true;
         $this->company = $company;
         return $this;
     }
@@ -187,6 +200,7 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
      */
     public function setAddress(PeopleSearchSuccessResultDirectorsItemAddress $address) : self
     {
+        $this->initialized['address'] = true;
         $this->address = $address;
         return $this;
     }
@@ -208,6 +222,7 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -229,6 +244,7 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
      */
     public function setDateOfLatestChange(string $dateOfLatestChange) : self
     {
+        $this->initialized['dateOfLatestChange'] = true;
         $this->dateOfLatestChange = $dateOfLatestChange;
         return $this;
     }
@@ -250,6 +266,7 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
      */
     public function setDateOfBirth(string $dateOfBirth) : self
     {
+        $this->initialized['dateOfBirth'] = true;
         $this->dateOfBirth = $dateOfBirth;
         return $this;
     }
@@ -271,6 +288,7 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
      */
     public function setLocalDirectorNumber(string $localDirectorNumber) : self
     {
+        $this->initialized['localDirectorNumber'] = true;
         $this->localDirectorNumber = $localDirectorNumber;
         return $this;
     }

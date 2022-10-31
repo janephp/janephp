@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ObjectAggregationResult
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * How long did the search and aggregation took.
      *
      * @var int
@@ -52,6 +60,7 @@ class ObjectAggregationResult
      */
     public function setElapsedMilliseconds(int $elapsedMilliseconds) : self
     {
+        $this->initialized['elapsedMilliseconds'] = true;
         $this->elapsedMilliseconds = $elapsedMilliseconds;
         return $this;
     }
@@ -73,6 +82,7 @@ class ObjectAggregationResult
      */
     public function setAggregationResults(array $aggregationResults) : self
     {
+        $this->initialized['aggregationResults'] = true;
         $this->aggregationResults = $aggregationResults;
         return $this;
     }
@@ -94,6 +104,7 @@ class ObjectAggregationResult
      */
     public function setSearchString(?string $searchString) : self
     {
+        $this->initialized['searchString'] = true;
         $this->searchString = $searchString;
         return $this;
     }
@@ -115,6 +126,7 @@ class ObjectAggregationResult
      */
     public function setIsSearchStringRewritten(bool $isSearchStringRewritten) : self
     {
+        $this->initialized['isSearchStringRewritten'] = true;
         $this->isSearchStringRewritten = $isSearchStringRewritten;
         return $this;
     }
@@ -136,6 +148,7 @@ class ObjectAggregationResult
      */
     public function setQueryDebugInformation(?array $queryDebugInformation) : self
     {
+        $this->initialized['queryDebugInformation'] = true;
         $this->queryDebugInformation = $queryDebugInformation;
         return $this;
     }

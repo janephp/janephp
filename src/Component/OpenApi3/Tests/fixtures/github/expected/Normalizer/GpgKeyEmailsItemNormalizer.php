@@ -66,10 +66,10 @@ class GpgKeyEmailsItemNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getEmail()) {
+        if ($object->isInitialized('email') && null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
-        if (null !== $object->getVerified()) {
+        if ($object->isInitialized('verified') && null !== $object->getVerified()) {
             $data['verified'] = $object->getVerified();
         }
         foreach ($object as $key => $value) {

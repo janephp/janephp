@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class SystemVersion
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var SystemVersionPlatform
@@ -102,6 +110,7 @@ class SystemVersion
      */
     public function setPlatform(SystemVersionPlatform $platform) : self
     {
+        $this->initialized['platform'] = true;
         $this->platform = $platform;
         return $this;
     }
@@ -123,6 +132,7 @@ class SystemVersion
      */
     public function setComponents(array $components) : self
     {
+        $this->initialized['components'] = true;
         $this->components = $components;
         return $this;
     }
@@ -144,6 +154,7 @@ class SystemVersion
      */
     public function setVersion(string $version) : self
     {
+        $this->initialized['version'] = true;
         $this->version = $version;
         return $this;
     }
@@ -165,6 +176,7 @@ class SystemVersion
      */
     public function setApiVersion(string $apiVersion) : self
     {
+        $this->initialized['apiVersion'] = true;
         $this->apiVersion = $apiVersion;
         return $this;
     }
@@ -186,6 +198,7 @@ class SystemVersion
      */
     public function setMinAPIVersion(string $minAPIVersion) : self
     {
+        $this->initialized['minAPIVersion'] = true;
         $this->minAPIVersion = $minAPIVersion;
         return $this;
     }
@@ -207,6 +220,7 @@ class SystemVersion
      */
     public function setGitCommit(string $gitCommit) : self
     {
+        $this->initialized['gitCommit'] = true;
         $this->gitCommit = $gitCommit;
         return $this;
     }
@@ -232,6 +246,7 @@ class SystemVersion
     */
     public function setGoVersion(string $goVersion) : self
     {
+        $this->initialized['goVersion'] = true;
         $this->goVersion = $goVersion;
         return $this;
     }
@@ -253,6 +268,7 @@ class SystemVersion
      */
     public function setOs(string $os) : self
     {
+        $this->initialized['os'] = true;
         $this->os = $os;
         return $this;
     }
@@ -274,6 +290,7 @@ class SystemVersion
      */
     public function setArch(string $arch) : self
     {
+        $this->initialized['arch'] = true;
         $this->arch = $arch;
         return $this;
     }
@@ -301,6 +318,7 @@ class SystemVersion
     */
     public function setKernelVersion(string $kernelVersion) : self
     {
+        $this->initialized['kernelVersion'] = true;
         $this->kernelVersion = $kernelVersion;
         return $this;
     }
@@ -328,6 +346,7 @@ class SystemVersion
     */
     public function setExperimental(bool $experimental) : self
     {
+        $this->initialized['experimental'] = true;
         $this->experimental = $experimental;
         return $this;
     }
@@ -349,6 +368,7 @@ class SystemVersion
      */
     public function setBuildTime(string $buildTime) : self
     {
+        $this->initialized['buildTime'] = true;
         $this->buildTime = $buildTime;
         return $this;
     }

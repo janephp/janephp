@@ -64,11 +64,11 @@ class BusinessRuleTracedEvaluationConditionNormalizer implements DenormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['satisfied'] = $object->getSatisfied();
-        if (null !== $object->getReason()) {
+        if ($object->isInitialized('reason') && null !== $object->getReason()) {
             $data['reason'] = $object->getReason();
         }
         return $data;

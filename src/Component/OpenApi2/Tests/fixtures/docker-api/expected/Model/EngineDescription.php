@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class EngineDescription
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class EngineDescription
      */
     public function setEngineVersion(string $engineVersion) : self
     {
+        $this->initialized['engineVersion'] = true;
         $this->engineVersion = $engineVersion;
         return $this;
     }
@@ -61,6 +70,7 @@ class EngineDescription
      */
     public function setLabels(iterable $labels) : self
     {
+        $this->initialized['labels'] = true;
         $this->labels = $labels;
         return $this;
     }
@@ -82,6 +92,7 @@ class EngineDescription
      */
     public function setPlugins(array $plugins) : self
     {
+        $this->initialized['plugins'] = true;
         $this->plugins = $plugins;
         return $this;
     }

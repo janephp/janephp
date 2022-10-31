@@ -62,7 +62,7 @@ class ReposOwnerRepoForksPostBodyNormalizer implements DenormalizerInterface, No
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getOrganization()) {
+        if ($object->isInitialized('organization') && null !== $object->getOrganization()) {
             $data['organization'] = $object->getOrganization();
         }
         foreach ($object as $key => $value) {

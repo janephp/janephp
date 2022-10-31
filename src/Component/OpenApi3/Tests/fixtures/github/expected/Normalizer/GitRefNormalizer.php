@@ -74,16 +74,16 @@ class GitRefNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRef()) {
+        if ($object->isInitialized('ref') && null !== $object->getRef()) {
             $data['ref'] = $object->getRef();
         }
-        if (null !== $object->getNodeId()) {
+        if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getObject()) {
+        if ($object->isInitialized('object') && null !== $object->getObject()) {
             $data['object'] = $this->normalizer->normalize($object->getObject(), 'json', $context);
         }
         foreach ($object as $key => $value) {

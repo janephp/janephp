@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class MountVolumeOptions
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Populate volume with data from the target.
      *
      * @var bool
@@ -40,6 +48,7 @@ class MountVolumeOptions
      */
     public function setNoCopy(bool $noCopy) : self
     {
+        $this->initialized['noCopy'] = true;
         $this->noCopy = $noCopy;
         return $this;
     }
@@ -61,6 +70,7 @@ class MountVolumeOptions
      */
     public function setLabels(iterable $labels) : self
     {
+        $this->initialized['labels'] = true;
         $this->labels = $labels;
         return $this;
     }
@@ -82,6 +92,7 @@ class MountVolumeOptions
      */
     public function setDriverConfig(MountVolumeOptionsDriverConfig $driverConfig) : self
     {
+        $this->initialized['driverConfig'] = true;
         $this->driverConfig = $driverConfig;
         return $this;
     }

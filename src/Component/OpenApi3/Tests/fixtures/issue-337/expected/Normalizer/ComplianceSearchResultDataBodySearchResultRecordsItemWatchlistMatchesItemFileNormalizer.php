@@ -78,22 +78,22 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemF
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBuild()) {
+        if ($object->isInitialized('build') && null !== $object->getBuild()) {
             $data['build'] = $object->getBuild();
         }
-        if (null !== $object->getCustom()) {
+        if ($object->isInitialized('custom') && null !== $object->getCustom()) {
             $data['custom'] = $object->getCustom();
         }
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getPublished()) {
+        if ($object->isInitialized('published') && null !== $object->getPublished()) {
             $data['published'] = $object->getPublished();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
         foreach ($object as $key => $value) {

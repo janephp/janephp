@@ -85,36 +85,36 @@ class ServicesIdUpdatePostBodyNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['Name'] = $object->getName();
         }
-        if (null !== $object->getLabels()) {
+        if ($object->isInitialized('labels') && null !== $object->getLabels()) {
             $values = array();
             foreach ($object->getLabels() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['Labels'] = $values;
         }
-        if (null !== $object->getTaskTemplate()) {
+        if ($object->isInitialized('taskTemplate') && null !== $object->getTaskTemplate()) {
             $data['TaskTemplate'] = $this->normalizer->normalize($object->getTaskTemplate(), 'json', $context);
         }
-        if (null !== $object->getMode()) {
+        if ($object->isInitialized('mode') && null !== $object->getMode()) {
             $data['Mode'] = $this->normalizer->normalize($object->getMode(), 'json', $context);
         }
-        if (null !== $object->getUpdateConfig()) {
+        if ($object->isInitialized('updateConfig') && null !== $object->getUpdateConfig()) {
             $data['UpdateConfig'] = $this->normalizer->normalize($object->getUpdateConfig(), 'json', $context);
         }
-        if (null !== $object->getRollbackConfig()) {
+        if ($object->isInitialized('rollbackConfig') && null !== $object->getRollbackConfig()) {
             $data['RollbackConfig'] = $this->normalizer->normalize($object->getRollbackConfig(), 'json', $context);
         }
-        if (null !== $object->getNetworks()) {
+        if ($object->isInitialized('networks') && null !== $object->getNetworks()) {
             $values_1 = array();
             foreach ($object->getNetworks() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['Networks'] = $values_1;
         }
-        if (null !== $object->getEndpointSpec()) {
+        if ($object->isInitialized('endpointSpec') && null !== $object->getEndpointSpec()) {
             $data['EndpointSpec'] = $this->normalizer->normalize($object->getEndpointSpec(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

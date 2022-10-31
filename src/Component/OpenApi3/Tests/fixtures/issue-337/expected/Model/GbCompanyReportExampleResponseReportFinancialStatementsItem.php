@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -76,6 +84,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -97,6 +106,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
      */
     public function setYearEndDate(string $yearEndDate) : self
     {
+        $this->initialized['yearEndDate'] = true;
         $this->yearEndDate = $yearEndDate;
         return $this;
     }
@@ -118,6 +128,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
      */
     public function setNumberOfWeeks(float $numberOfWeeks) : self
     {
+        $this->initialized['numberOfWeeks'] = true;
         $this->numberOfWeeks = $numberOfWeeks;
         return $this;
     }
@@ -139,6 +150,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
      */
     public function setCurrency(string $currency) : self
     {
+        $this->initialized['currency'] = true;
         $this->currency = $currency;
         return $this;
     }
@@ -160,6 +172,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
      */
     public function setConsolidatedAccounts(bool $consolidatedAccounts) : self
     {
+        $this->initialized['consolidatedAccounts'] = true;
         $this->consolidatedAccounts = $consolidatedAccounts;
         return $this;
     }
@@ -181,6 +194,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
      */
     public function setProfitAndLoss(GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss $profitAndLoss) : self
     {
+        $this->initialized['profitAndLoss'] = true;
         $this->profitAndLoss = $profitAndLoss;
         return $this;
     }
@@ -202,6 +216,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
      */
     public function setBalanceSheet(GbCompanyReportExampleResponseReportFinancialStatementsItemBalanceSheet $balanceSheet) : self
     {
+        $this->initialized['balanceSheet'] = true;
         $this->balanceSheet = $balanceSheet;
         return $this;
     }
@@ -223,6 +238,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
      */
     public function setOtherFinancials(GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials $otherFinancials) : self
     {
+        $this->initialized['otherFinancials'] = true;
         $this->otherFinancials = $otherFinancials;
         return $this;
     }
@@ -244,6 +260,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
      */
     public function setRatios(GbCompanyReportExampleResponseReportFinancialStatementsItemRatios $ratios) : self
     {
+        $this->initialized['ratios'] = true;
         $this->ratios = $ratios;
         return $this;
     }

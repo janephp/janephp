@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi2\Tests\Expected\Model;
 class TestGetBody
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class TestGetBody
      */
     public function setFoo(string $foo) : self
     {
+        $this->initialized['foo'] = true;
         $this->foo = $foo;
         return $this;
     }
@@ -61,6 +70,7 @@ class TestGetBody
      */
     public function setBar(Bar $bar) : self
     {
+        $this->initialized['bar'] = true;
         $this->bar = $bar;
         return $this;
     }
@@ -82,6 +92,7 @@ class TestGetBody
      */
     public function setBaz(TestGetBodyBaz $baz) : self
     {
+        $this->initialized['baz'] = true;
         $this->baz = $baz;
         return $this;
     }

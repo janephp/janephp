@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ListItemRestoreManyRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The IDs of the list items to restore.
      *
      * @var string[]
@@ -34,6 +42,7 @@ class ListItemRestoreManyRequest
      */
     public function setListItemIds(array $listItemIds) : self
     {
+        $this->initialized['listItemIds'] = true;
         $this->listItemIds = $listItemIds;
         return $this;
     }
@@ -55,6 +64,7 @@ class ListItemRestoreManyRequest
      */
     public function setAllowMissingDependencies(bool $allowMissingDependencies) : self
     {
+        $this->initialized['allowMissingDependencies'] = true;
         $this->allowMissingDependencies = $allowMissingDependencies;
         return $this;
     }

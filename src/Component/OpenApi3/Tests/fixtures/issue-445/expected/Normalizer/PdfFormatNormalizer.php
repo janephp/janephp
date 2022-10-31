@@ -82,19 +82,19 @@ class PdfFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $data = array();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getJpegQuality()) {
+        if ($object->isInitialized('jpegQuality') && null !== $object->getJpegQuality()) {
             $data['jpegQuality'] = $object->getJpegQuality();
         }
-        if (null !== $object->getFastWebView()) {
+        if ($object->isInitialized('fastWebView') && null !== $object->getFastWebView()) {
             $data['fastWebView'] = $object->getFastWebView();
         }
-        if (null !== $object->getReduceFileSize()) {
+        if ($object->isInitialized('reduceFileSize') && null !== $object->getReduceFileSize()) {
             $data['reduceFileSize'] = $object->getReduceFileSize();
         }
-        if (null !== $object->getExtension()) {
+        if ($object->isInitialized('extension') && null !== $object->getExtension()) {
             $data['extension'] = $object->getExtension();
         }
-        if (null !== $object->getExtractFullText()) {
+        if ($object->isInitialized('extractFullText') && null !== $object->getExtractFullText()) {
             $data['extractFullText'] = $object->getExtractFullText();
         }
         foreach ($object as $key => $value) {

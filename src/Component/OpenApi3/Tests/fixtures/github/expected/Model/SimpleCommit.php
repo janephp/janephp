@@ -5,6 +5,14 @@ namespace Github\Model;
 class SimpleCommit extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -58,6 +66,7 @@ class SimpleCommit extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -79,6 +88,7 @@ class SimpleCommit extends \ArrayObject
      */
     public function setTreeId(string $treeId) : self
     {
+        $this->initialized['treeId'] = true;
         $this->treeId = $treeId;
         return $this;
     }
@@ -100,6 +110,7 @@ class SimpleCommit extends \ArrayObject
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -121,6 +132,7 @@ class SimpleCommit extends \ArrayObject
      */
     public function setTimestamp(\DateTime $timestamp) : self
     {
+        $this->initialized['timestamp'] = true;
         $this->timestamp = $timestamp;
         return $this;
     }
@@ -142,6 +154,7 @@ class SimpleCommit extends \ArrayObject
      */
     public function setAuthor(?SimpleCommitAuthor $author) : self
     {
+        $this->initialized['author'] = true;
         $this->author = $author;
         return $this;
     }
@@ -163,6 +176,7 @@ class SimpleCommit extends \ArrayObject
      */
     public function setCommitter(?SimpleCommitCommitter $committer) : self
     {
+        $this->initialized['committer'] = true;
         $this->committer = $committer;
         return $this;
     }

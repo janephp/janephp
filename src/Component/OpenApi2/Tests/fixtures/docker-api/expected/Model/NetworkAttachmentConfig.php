@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class NetworkAttachmentConfig
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The target network for attachment. Must be a network name or ID.
      *
      * @var string
@@ -40,6 +48,7 @@ class NetworkAttachmentConfig
      */
     public function setTarget(string $target) : self
     {
+        $this->initialized['target'] = true;
         $this->target = $target;
         return $this;
     }
@@ -61,6 +70,7 @@ class NetworkAttachmentConfig
      */
     public function setAliases(array $aliases) : self
     {
+        $this->initialized['aliases'] = true;
         $this->aliases = $aliases;
         return $this;
     }
@@ -82,6 +92,7 @@ class NetworkAttachmentConfig
      */
     public function setDriverOpts(iterable $driverOpts) : self
     {
+        $this->initialized['driverOpts'] = true;
         $this->driverOpts = $driverOpts;
         return $this;
     }

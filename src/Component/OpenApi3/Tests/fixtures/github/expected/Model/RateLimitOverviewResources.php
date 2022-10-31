@@ -5,6 +5,14 @@ namespace Github\Model;
 class RateLimitOverviewResources extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var RateLimit
@@ -52,6 +60,7 @@ class RateLimitOverviewResources extends \ArrayObject
      */
     public function setCore(RateLimit $core) : self
     {
+        $this->initialized['core'] = true;
         $this->core = $core;
         return $this;
     }
@@ -73,6 +82,7 @@ class RateLimitOverviewResources extends \ArrayObject
      */
     public function setGraphql(RateLimit $graphql) : self
     {
+        $this->initialized['graphql'] = true;
         $this->graphql = $graphql;
         return $this;
     }
@@ -94,6 +104,7 @@ class RateLimitOverviewResources extends \ArrayObject
      */
     public function setSearch(RateLimit $search) : self
     {
+        $this->initialized['search'] = true;
         $this->search = $search;
         return $this;
     }
@@ -115,6 +126,7 @@ class RateLimitOverviewResources extends \ArrayObject
      */
     public function setSourceImport(RateLimit $sourceImport) : self
     {
+        $this->initialized['sourceImport'] = true;
         $this->sourceImport = $sourceImport;
         return $this;
     }
@@ -136,6 +148,7 @@ class RateLimitOverviewResources extends \ArrayObject
      */
     public function setIntegrationManifest(RateLimit $integrationManifest) : self
     {
+        $this->initialized['integrationManifest'] = true;
         $this->integrationManifest = $integrationManifest;
         return $this;
     }

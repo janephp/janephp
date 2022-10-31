@@ -164,41 +164,41 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNames()) {
+        if ($object->isInitialized('names') && null !== $object->getNames()) {
             $data['names'] = $object->getNames();
         }
-        if (null !== $object->getDescriptions()) {
+        if ($object->isInitialized('descriptions') && null !== $object->getDescriptions()) {
             $data['descriptions'] = $object->getDescriptions();
         }
-        if (null !== $object->getDisplayPatterns()) {
+        if ($object->isInitialized('displayPatterns') && null !== $object->getDisplayPatterns()) {
             $values = array();
             foreach ($object->getDisplayPatterns() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['displayPatterns'] = $values;
         }
-        if (null !== $object->getFields()) {
+        if ($object->isInitialized('fields') && null !== $object->getFields()) {
             $values_1 = array();
             foreach ($object->getFields() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['fields'] = $values_1;
         }
-        if (null !== $object->getFieldsOverwrite()) {
+        if ($object->isInitialized('fieldsOverwrite') && null !== $object->getFieldsOverwrite()) {
             $values_2 = array();
             foreach ($object->getFieldsOverwrite() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['fieldsOverwrite'] = $values_2;
         }
-        if (null !== $object->getAggregations()) {
+        if ($object->isInitialized('aggregations') && null !== $object->getAggregations()) {
             $values_3 = array();
             foreach ($object->getAggregations() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $data['aggregations'] = $values_3;
         }
-        if (null !== $object->getSort()) {
+        if ($object->isInitialized('sort') && null !== $object->getSort()) {
             $values_4 = array();
             foreach ($object->getSort() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
@@ -206,21 +206,21 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
             $data['sort'] = $values_4;
         }
         $data['viewForAll'] = $object->getViewForAll();
-        if (null !== $object->getSchemaPermissionSetIds()) {
+        if ($object->isInitialized('schemaPermissionSetIds') && null !== $object->getSchemaPermissionSetIds()) {
             $values_5 = array();
             foreach ($object->getSchemaPermissionSetIds() as $value_5) {
                 $values_5[] = $value_5;
             }
             $data['schemaPermissionSetIds'] = $values_5;
         }
-        if (null !== $object->getLayerSchemaIds()) {
+        if ($object->isInitialized('layerSchemaIds') && null !== $object->getLayerSchemaIds()) {
             $values_6 = array();
             foreach ($object->getLayerSchemaIds() as $value_6) {
                 $values_6[] = $value_6;
             }
             $data['layerSchemaIds'] = $values_6;
         }
-        if (null !== $object->getReferencedInContentSchemaIds()) {
+        if ($object->isInitialized('referencedInContentSchemaIds') && null !== $object->getReferencedInContentSchemaIds()) {
             $values_7 = array();
             foreach ($object->getReferencedInContentSchemaIds() as $value_7) {
                 $values_7[] = $value_7;

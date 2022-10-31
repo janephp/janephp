@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportNegativeInformationCcjSummary extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var float
@@ -34,6 +42,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCcjSummary extends 
      */
     public function setExactRegistered(float $exactRegistered) : self
     {
+        $this->initialized['exactRegistered'] = true;
         $this->exactRegistered = $exactRegistered;
         return $this;
     }
@@ -55,6 +64,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCcjSummary extends 
      */
     public function setPossibleRegistered(float $possibleRegistered) : self
     {
+        $this->initialized['possibleRegistered'] = true;
         $this->possibleRegistered = $possibleRegistered;
         return $this;
     }

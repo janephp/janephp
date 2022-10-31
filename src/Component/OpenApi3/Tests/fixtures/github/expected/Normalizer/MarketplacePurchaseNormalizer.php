@@ -93,10 +93,10 @@ class MarketplacePurchaseNormalizer implements DenormalizerInterface, Normalizer
         $data['type'] = $object->getType();
         $data['id'] = $object->getId();
         $data['login'] = $object->getLogin();
-        if (null !== $object->getOrganizationBillingEmail()) {
+        if ($object->isInitialized('organizationBillingEmail') && null !== $object->getOrganizationBillingEmail()) {
             $data['organization_billing_email'] = $object->getOrganizationBillingEmail();
         }
-        if (null !== $object->getMarketplacePendingChange()) {
+        if ($object->isInitialized('marketplacePendingChange') && null !== $object->getMarketplacePendingChange()) {
             $data['marketplace_pending_change'] = $this->normalizer->normalize($object->getMarketplacePendingChange(), 'json', $context);
         }
         $data['marketplace_purchase'] = $this->normalizer->normalize($object->getMarketplacePurchase(), 'json', $context);

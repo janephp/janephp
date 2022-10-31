@@ -5,6 +5,14 @@ namespace Github\Model;
 class ContentTraffic extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class ContentTraffic extends \ArrayObject
      */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -67,6 +76,7 @@ class ContentTraffic extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -88,6 +98,7 @@ class ContentTraffic extends \ArrayObject
      */
     public function setCount(int $count) : self
     {
+        $this->initialized['count'] = true;
         $this->count = $count;
         return $this;
     }
@@ -109,6 +120,7 @@ class ContentTraffic extends \ArrayObject
      */
     public function setUniques(int $uniques) : self
     {
+        $this->initialized['uniques'] = true;
         $this->uniques = $uniques;
         return $this;
     }

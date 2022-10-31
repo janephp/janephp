@@ -98,38 +98,38 @@ class CompletedFreshInvestigationNormalizer implements DenormalizerInterface, No
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getChargeReference()) {
+        if ($object->isInitialized('chargeReference') && null !== $object->getChargeReference()) {
             $data['chargeReference'] = $object->getChargeReference();
         }
-        if (null !== $object->getContactDetails()) {
+        if ($object->isInitialized('contactDetails') && null !== $object->getContactDetails()) {
             $data['contactDetails'] = $this->normalizer->normalize($object->getContactDetails(), 'json', $context);
         }
-        if (null !== $object->getCreationDate()) {
+        if ($object->isInitialized('creationDate') && null !== $object->getCreationDate()) {
             $data['creationDate'] = $object->getCreationDate();
         }
-        if (null !== $object->getLastStatusChangeDate()) {
+        if ($object->isInitialized('lastStatusChangeDate') && null !== $object->getLastStatusChangeDate()) {
             $data['lastStatusChangeDate'] = $object->getLastStatusChangeDate();
         }
-        if (null !== $object->getOrderID()) {
+        if ($object->isInitialized('orderID') && null !== $object->getOrderID()) {
             $data['orderID'] = $object->getOrderID();
         }
-        if (null !== $object->getReportDate()) {
+        if ($object->isInitialized('reportDate') && null !== $object->getReportDate()) {
             $data['reportDate'] = $object->getReportDate();
         }
-        if (null !== $object->getSearchCriteria()) {
+        if ($object->isInitialized('searchCriteria') && null !== $object->getSearchCriteria()) {
             $data['searchCriteria'] = $this->normalizer->normalize($object->getSearchCriteria(), 'json', $context);
         }
-        if (null !== $object->getSections()) {
+        if ($object->isInitialized('sections') && null !== $object->getSections()) {
             $values = array();
             foreach ($object->getSections() as $value) {
                 $values[] = $value;
             }
             $data['sections'] = $values;
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $this->normalizer->normalize($object->getStatus(), 'json', $context);
         }
-        if (null !== $object->getTransactionID()) {
+        if ($object->isInitialized('transactionID') && null !== $object->getTransactionID()) {
             $data['transactionID'] = $object->getTransactionID();
         }
         foreach ($object as $key => $value_1) {

@@ -95,7 +95,7 @@ class CommitSearchResultItemCommitNormalizer implements DenormalizerInterface, N
         $data['message'] = $object->getMessage();
         $data['tree'] = $this->normalizer->normalize($object->getTree(), 'json', $context);
         $data['url'] = $object->getUrl();
-        if (null !== $object->getVerification()) {
+        if ($object->isInitialized('verification') && null !== $object->getVerification()) {
             $data['verification'] = $this->normalizer->normalize($object->getVerification(), 'json', $context);
         }
         foreach ($object as $key => $value) {

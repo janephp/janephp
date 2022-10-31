@@ -5,6 +5,14 @@ namespace Github\Model;
 class UserProjectsPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Name of the project
      *
      * @var string
@@ -34,6 +42,7 @@ class UserProjectsPostBody extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -55,6 +64,7 @@ class UserProjectsPostBody extends \ArrayObject
      */
     public function setBody(?string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }

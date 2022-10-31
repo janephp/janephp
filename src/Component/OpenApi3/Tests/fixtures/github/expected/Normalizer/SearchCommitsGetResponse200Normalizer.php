@@ -74,13 +74,13 @@ class SearchCommitsGetResponse200Normalizer implements DenormalizerInterface, No
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTotalCount()) {
+        if ($object->isInitialized('totalCount') && null !== $object->getTotalCount()) {
             $data['total_count'] = $object->getTotalCount();
         }
-        if (null !== $object->getIncompleteResults()) {
+        if ($object->isInitialized('incompleteResults') && null !== $object->getIncompleteResults()) {
             $data['incomplete_results'] = $object->getIncompleteResults();
         }
-        if (null !== $object->getItems()) {
+        if ($object->isInitialized('items') && null !== $object->getItems()) {
             $values = array();
             foreach ($object->getItems() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

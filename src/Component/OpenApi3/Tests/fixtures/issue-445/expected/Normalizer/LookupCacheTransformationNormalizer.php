@@ -72,11 +72,11 @@ class LookupCacheTransformationNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getNamedCache()) {
+        if ($object->isInitialized('namedCache') && null !== $object->getNamedCache()) {
             $data['namedCache'] = $object->getNamedCache();
         }
         foreach ($object as $key => $value) {

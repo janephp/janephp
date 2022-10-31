@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class HostConfigLogConfig
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class HostConfigLogConfig
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -55,6 +64,7 @@ class HostConfigLogConfig
      */
     public function setConfig(iterable $config) : self
     {
+        $this->initialized['config'] = true;
         $this->config = $config;
         return $this;
     }

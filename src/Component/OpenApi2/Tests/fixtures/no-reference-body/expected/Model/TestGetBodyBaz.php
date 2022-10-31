@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi2\Tests\Expected\Model;
 class TestGetBodyBaz
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -28,6 +36,7 @@ class TestGetBodyBaz
      */
     public function setBaz(string $baz) : self
     {
+        $this->initialized['baz'] = true;
         $this->baz = $baz;
         return $this;
     }

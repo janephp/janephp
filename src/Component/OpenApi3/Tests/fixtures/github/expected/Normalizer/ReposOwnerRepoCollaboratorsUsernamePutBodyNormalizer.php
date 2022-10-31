@@ -66,10 +66,10 @@ class ReposOwnerRepoCollaboratorsUsernamePutBodyNormalizer implements Denormaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPermission()) {
+        if ($object->isInitialized('permission') && null !== $object->getPermission()) {
             $data['permission'] = $object->getPermission();
         }
-        if (null !== $object->getPermissions()) {
+        if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
             $data['permissions'] = $object->getPermissions();
         }
         foreach ($object as $key => $value) {

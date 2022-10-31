@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportCreditScore extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRating
@@ -46,6 +54,7 @@ class GbCompanyReportExampleResponseReportCreditScore extends \ArrayObject
      */
     public function setCurrentCreditRating(GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRating $currentCreditRating) : self
     {
+        $this->initialized['currentCreditRating'] = true;
         $this->currentCreditRating = $currentCreditRating;
         return $this;
     }
@@ -67,6 +76,7 @@ class GbCompanyReportExampleResponseReportCreditScore extends \ArrayObject
      */
     public function setCurrentContractLimit(GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimit $currentContractLimit) : self
     {
+        $this->initialized['currentContractLimit'] = true;
         $this->currentContractLimit = $currentContractLimit;
         return $this;
     }
@@ -88,6 +98,7 @@ class GbCompanyReportExampleResponseReportCreditScore extends \ArrayObject
      */
     public function setPreviousCreditRating(GbCompanyReportExampleResponseReportCreditScorePreviousCreditRating $previousCreditRating) : self
     {
+        $this->initialized['previousCreditRating'] = true;
         $this->previousCreditRating = $previousCreditRating;
         return $this;
     }
@@ -109,6 +120,7 @@ class GbCompanyReportExampleResponseReportCreditScore extends \ArrayObject
      */
     public function setLatestRatingChangeDate(string $latestRatingChangeDate) : self
     {
+        $this->initialized['latestRatingChangeDate'] = true;
         $this->latestRatingChangeDate = $latestRatingChangeDate;
         return $this;
     }

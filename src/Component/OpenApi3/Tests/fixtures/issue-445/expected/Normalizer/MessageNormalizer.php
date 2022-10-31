@@ -85,7 +85,7 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null !== $object->getKind() and 'LiveStreamMessage' === $object->getKind()) {
             return $this->normalizer->normalize($object, $format, $context);
         }
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
         $data['retries'] = $object->getRetries();

@@ -62,7 +62,7 @@ class ReposOwnerRepoNotificationsPutBodyNormalizer implements DenormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getLastReadAt()) {
+        if ($object->isInitialized('lastReadAt') && null !== $object->getLastReadAt()) {
             $data['last_read_at'] = $object->getLastReadAt();
         }
         foreach ($object as $key => $value) {

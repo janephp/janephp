@@ -66,13 +66,13 @@ class SearchNoResultsErrorMessagesNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCode()) {
+        if ($object->isInitialized('code') && null !== $object->getCode()) {
             $data['code'] = $object->getCode();
         }
-        if (null !== $object->getText()) {
+        if ($object->isInitialized('text') && null !== $object->getText()) {
             $data['text'] = $object->getText();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
         foreach ($object as $key => $value) {

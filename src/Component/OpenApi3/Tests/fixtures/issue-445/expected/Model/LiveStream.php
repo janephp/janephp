@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class LiveStream
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -58,6 +66,7 @@ class LiveStream
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -79,6 +88,7 @@ class LiveStream
      */
     public function setDocument(?string $document) : self
     {
+        $this->initialized['document'] = true;
         $this->document = $document;
         return $this;
     }
@@ -100,6 +110,7 @@ class LiveStream
      */
     public function setScopeType(?string $scopeType) : self
     {
+        $this->initialized['scopeType'] = true;
         $this->scopeType = $scopeType;
         return $this;
     }
@@ -121,6 +132,7 @@ class LiveStream
      */
     public function setTimestamp(\DateTime $timestamp) : self
     {
+        $this->initialized['timestamp'] = true;
         $this->timestamp = $timestamp;
         return $this;
     }
@@ -142,6 +154,7 @@ class LiveStream
      */
     public function setTraceJob($traceJob) : self
     {
+        $this->initialized['traceJob'] = true;
         $this->traceJob = $traceJob;
         return $this;
     }
@@ -163,6 +176,7 @@ class LiveStream
      */
     public function setAudit($audit) : self
     {
+        $this->initialized['audit'] = true;
         $this->audit = $audit;
         return $this;
     }

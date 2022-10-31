@@ -139,7 +139,7 @@ class CommitCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['author_association'] = $object->getAuthorAssociation();
-        if (null !== $object->getReactions()) {
+        if ($object->isInitialized('reactions') && null !== $object->getReactions()) {
             $data['reactions'] = $this->normalizer->normalize($object->getReactions(), 'json', $context);
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace Github\Model;
 class ActionsPublicKey extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The identifier for the key.
      *
      * @var string
@@ -58,6 +66,7 @@ class ActionsPublicKey extends \ArrayObject
      */
     public function setKeyId(string $keyId) : self
     {
+        $this->initialized['keyId'] = true;
         $this->keyId = $keyId;
         return $this;
     }
@@ -79,6 +88,7 @@ class ActionsPublicKey extends \ArrayObject
      */
     public function setKey(string $key) : self
     {
+        $this->initialized['key'] = true;
         $this->key = $key;
         return $this;
     }
@@ -100,6 +110,7 @@ class ActionsPublicKey extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -121,6 +132,7 @@ class ActionsPublicKey extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -142,6 +154,7 @@ class ActionsPublicKey extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -163,6 +176,7 @@ class ActionsPublicKey extends \ArrayObject
      */
     public function setCreatedAt(string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }

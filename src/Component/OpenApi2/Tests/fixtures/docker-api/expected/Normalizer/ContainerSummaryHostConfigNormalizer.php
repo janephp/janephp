@@ -56,7 +56,7 @@ class ContainerSummaryHostConfigNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNetworkMode()) {
+        if ($object->isInitialized('networkMode') && null !== $object->getNetworkMode()) {
             $data['NetworkMode'] = $object->getNetworkMode();
         }
         if (!($context['skip_validation'] ?? false)) {

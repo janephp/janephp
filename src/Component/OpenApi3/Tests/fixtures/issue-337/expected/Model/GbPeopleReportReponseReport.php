@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbPeopleReportReponseReport extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class GbPeopleReportReponseReport extends \ArrayObject
      */
     public function setDirectorId(string $directorId) : self
     {
+        $this->initialized['directorId'] = true;
         $this->directorId = $directorId;
         return $this;
     }
@@ -73,6 +82,7 @@ class GbPeopleReportReponseReport extends \ArrayObject
      */
     public function setDirectorSummary(GbPeopleReportReponseReportDirectorSummary $directorSummary) : self
     {
+        $this->initialized['directorSummary'] = true;
         $this->directorSummary = $directorSummary;
         return $this;
     }
@@ -94,6 +104,7 @@ class GbPeopleReportReponseReport extends \ArrayObject
      */
     public function setDirectorDetails(GbPeopleReportReponseReportDirectorDetails $directorDetails) : self
     {
+        $this->initialized['directorDetails'] = true;
         $this->directorDetails = $directorDetails;
         return $this;
     }
@@ -115,6 +126,7 @@ class GbPeopleReportReponseReport extends \ArrayObject
      */
     public function setOtherAddresses(array $otherAddresses) : self
     {
+        $this->initialized['otherAddresses'] = true;
         $this->otherAddresses = $otherAddresses;
         return $this;
     }
@@ -136,6 +148,7 @@ class GbPeopleReportReponseReport extends \ArrayObject
      */
     public function setDirectorships(GbPeopleReportReponseReportDirectorships $directorships) : self
     {
+        $this->initialized['directorships'] = true;
         $this->directorships = $directorships;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class IssueEventForIssue extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -148,6 +156,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -169,6 +178,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -190,6 +200,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -211,6 +222,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setActor(?SimpleUser $actor) : self
     {
+        $this->initialized['actor'] = true;
         $this->actor = $actor;
         return $this;
     }
@@ -232,6 +244,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setEvent(string $event) : self
     {
+        $this->initialized['event'] = true;
         $this->event = $event;
         return $this;
     }
@@ -253,6 +266,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setCommitId(?string $commitId) : self
     {
+        $this->initialized['commitId'] = true;
         $this->commitId = $commitId;
         return $this;
     }
@@ -274,6 +288,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setCommitUrl(?string $commitUrl) : self
     {
+        $this->initialized['commitUrl'] = true;
         $this->commitUrl = $commitUrl;
         return $this;
     }
@@ -295,6 +310,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setCreatedAt(string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -316,6 +332,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -337,6 +354,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -358,6 +376,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -379,6 +398,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setIssueUrl(string $issueUrl) : self
     {
+        $this->initialized['issueUrl'] = true;
         $this->issueUrl = $issueUrl;
         return $this;
     }
@@ -400,6 +420,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setUpdatedAt(string $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -421,6 +442,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setAuthorAssociation(string $authorAssociation) : self
     {
+        $this->initialized['authorAssociation'] = true;
         $this->authorAssociation = $authorAssociation;
         return $this;
     }
@@ -442,6 +464,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }
@@ -463,6 +486,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setLockReason(string $lockReason) : self
     {
+        $this->initialized['lockReason'] = true;
         $this->lockReason = $lockReason;
         return $this;
     }
@@ -484,6 +508,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setSubmittedAt(string $submittedAt) : self
     {
+        $this->initialized['submittedAt'] = true;
         $this->submittedAt = $submittedAt;
         return $this;
     }
@@ -505,6 +530,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -526,6 +552,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setPullRequestUrl(string $pullRequestUrl) : self
     {
+        $this->initialized['pullRequestUrl'] = true;
         $this->pullRequestUrl = $pullRequestUrl;
         return $this;
     }
@@ -547,6 +574,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setBodyHtml(string $bodyHtml) : self
     {
+        $this->initialized['bodyHtml'] = true;
         $this->bodyHtml = $bodyHtml;
         return $this;
     }
@@ -568,6 +596,7 @@ class IssueEventForIssue extends \ArrayObject
      */
     public function setBodyText(string $bodyText) : self
     {
+        $this->initialized['bodyText'] = true;
         $this->bodyText = $bodyText;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class DefaultPlaceFields extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class DefaultPlaceFields extends \ArrayObject
      */
     public function setPlaceType(string $placeType) : self
     {
+        $this->initialized['placeType'] = true;
         $this->placeType = $placeType;
         return $this;
     }
@@ -67,6 +76,7 @@ class DefaultPlaceFields extends \ArrayObject
      */
     public function setFullName(string $fullName) : self
     {
+        $this->initialized['fullName'] = true;
         $this->fullName = $fullName;
         return $this;
     }
@@ -88,6 +98,7 @@ class DefaultPlaceFields extends \ArrayObject
      */
     public function setCountry(string $country) : self
     {
+        $this->initialized['country'] = true;
         $this->country = $country;
         return $this;
     }
@@ -109,6 +120,7 @@ class DefaultPlaceFields extends \ArrayObject
      */
     public function setContainedWithin(array $containedWithin) : self
     {
+        $this->initialized['containedWithin'] = true;
         $this->containedWithin = $containedWithin;
         return $this;
     }

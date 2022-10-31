@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ListItemDeleteManyRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * IDs of the list items to delete.
      *
      * @var string[]
@@ -40,6 +48,7 @@ class ListItemDeleteManyRequest
      */
     public function setListItemIds(array $listItemIds) : self
     {
+        $this->initialized['listItemIds'] = true;
         $this->listItemIds = $listItemIds;
         return $this;
     }
@@ -61,6 +70,7 @@ class ListItemDeleteManyRequest
      */
     public function setForceReferenceRemoval(bool $forceReferenceRemoval) : self
     {
+        $this->initialized['forceReferenceRemoval'] = true;
         $this->forceReferenceRemoval = $forceReferenceRemoval;
         return $this;
     }
@@ -82,6 +92,7 @@ class ListItemDeleteManyRequest
      */
     public function setNotifyProgress(bool $notifyProgress) : self
     {
+        $this->initialized['notifyProgress'] = true;
         $this->notifyProgress = $notifyProgress;
         return $this;
     }

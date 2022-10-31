@@ -61,7 +61,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $value = $object->getId();
             if (is_null($object->getId())) {
                 $value = $object->getId();

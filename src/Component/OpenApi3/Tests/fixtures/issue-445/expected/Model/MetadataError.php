@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class MetadataError
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -58,6 +66,7 @@ class MetadataError
      */
     public function setErrorType(?string $errorType) : self
     {
+        $this->initialized['errorType'] = true;
         $this->errorType = $errorType;
         return $this;
     }
@@ -79,6 +88,7 @@ class MetadataError
      */
     public function setLineNumber(int $lineNumber) : self
     {
+        $this->initialized['lineNumber'] = true;
         $this->lineNumber = $lineNumber;
         return $this;
     }
@@ -100,6 +110,7 @@ class MetadataError
      */
     public function setLinePosition(int $linePosition) : self
     {
+        $this->initialized['linePosition'] = true;
         $this->linePosition = $linePosition;
         return $this;
     }
@@ -121,6 +132,7 @@ class MetadataError
      */
     public function setPath(?string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -142,6 +154,7 @@ class MetadataError
      */
     public function setMessage(?string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -163,6 +176,7 @@ class MetadataError
      */
     public function setSchemaId(?string $schemaId) : self
     {
+        $this->initialized['schemaId'] = true;
         $this->schemaId = $schemaId;
         return $this;
     }

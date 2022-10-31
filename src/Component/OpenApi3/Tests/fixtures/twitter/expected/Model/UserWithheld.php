@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class UserWithheld extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Provides a list of countries where this content is not available.
      *
      * @var string[]
@@ -34,6 +42,7 @@ class UserWithheld extends \ArrayObject
      */
     public function setCountryCodes(array $countryCodes) : self
     {
+        $this->initialized['countryCodes'] = true;
         $this->countryCodes = $countryCodes;
         return $this;
     }
@@ -55,6 +64,7 @@ class UserWithheld extends \ArrayObject
      */
     public function setScope(string $scope) : self
     {
+        $this->initialized['scope'] = true;
         $this->scope = $scope;
         return $this;
     }

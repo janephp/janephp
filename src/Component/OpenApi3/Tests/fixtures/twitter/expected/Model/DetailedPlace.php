@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class DetailedPlace extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -76,6 +84,7 @@ class DetailedPlace extends \ArrayObject
      */
     public function setFormat(string $format) : self
     {
+        $this->initialized['format'] = true;
         $this->format = $format;
         return $this;
     }
@@ -97,6 +106,7 @@ class DetailedPlace extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -118,6 +128,7 @@ class DetailedPlace extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -139,6 +150,7 @@ class DetailedPlace extends \ArrayObject
      */
     public function setCountryCode(string $countryCode) : self
     {
+        $this->initialized['countryCode'] = true;
         $this->countryCode = $countryCode;
         return $this;
     }
@@ -160,6 +172,7 @@ class DetailedPlace extends \ArrayObject
      */
     public function setPlaceType(string $placeType) : self
     {
+        $this->initialized['placeType'] = true;
         $this->placeType = $placeType;
         return $this;
     }
@@ -181,6 +194,7 @@ class DetailedPlace extends \ArrayObject
      */
     public function setFullName(string $fullName) : self
     {
+        $this->initialized['fullName'] = true;
         $this->fullName = $fullName;
         return $this;
     }
@@ -202,6 +216,7 @@ class DetailedPlace extends \ArrayObject
      */
     public function setCountry(string $country) : self
     {
+        $this->initialized['country'] = true;
         $this->country = $country;
         return $this;
     }
@@ -223,6 +238,7 @@ class DetailedPlace extends \ArrayObject
      */
     public function setContainedWithin(array $containedWithin) : self
     {
+        $this->initialized['containedWithin'] = true;
         $this->containedWithin = $containedWithin;
         return $this;
     }
@@ -244,6 +260,7 @@ class DetailedPlace extends \ArrayObject
      */
     public function setGeo(Geo $geo) : self
     {
+        $this->initialized['geo'] = true;
         $this->geo = $geo;
         return $this;
     }

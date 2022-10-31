@@ -65,10 +65,10 @@ class UserRoleRightsOfContentRightNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUserRoleId()) {
+        if ($object->isInitialized('userRoleId') && null !== $object->getUserRoleId()) {
             $data['userRoleId'] = $object->getUserRoleId();
         }
-        if (null !== $object->getRights()) {
+        if ($object->isInitialized('rights') && null !== $object->getRights()) {
             $values = array();
             foreach ($object->getRights() as $value) {
                 $values[] = $value;

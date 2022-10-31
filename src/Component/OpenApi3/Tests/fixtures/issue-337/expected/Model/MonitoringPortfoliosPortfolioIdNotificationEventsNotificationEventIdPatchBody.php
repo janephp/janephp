@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -28,6 +36,7 @@ class MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchB
      */
     public function setIsProcessed(bool $isProcessed) : self
     {
+        $this->initialized['isProcessed'] = true;
         $this->isProcessed = $isProcessed;
         return $this;
     }

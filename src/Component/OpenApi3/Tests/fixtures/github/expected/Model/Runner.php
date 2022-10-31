@@ -5,6 +5,14 @@ namespace Github\Model;
 class Runner extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The id of the runner.
      *
      * @var int
@@ -46,6 +54,7 @@ class Runner extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -67,6 +76,7 @@ class Runner extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -88,6 +98,7 @@ class Runner extends \ArrayObject
      */
     public function setOs(string $os) : self
     {
+        $this->initialized['os'] = true;
         $this->os = $os;
         return $this;
     }
@@ -109,6 +120,7 @@ class Runner extends \ArrayObject
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class Plugin
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -58,6 +66,7 @@ class Plugin
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -79,6 +88,7 @@ class Plugin
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -100,6 +110,7 @@ class Plugin
      */
     public function setEnabled(bool $enabled) : self
     {
+        $this->initialized['enabled'] = true;
         $this->enabled = $enabled;
         return $this;
     }
@@ -121,6 +132,7 @@ class Plugin
      */
     public function setSettings(PluginSettings $settings) : self
     {
+        $this->initialized['settings'] = true;
         $this->settings = $settings;
         return $this;
     }
@@ -142,6 +154,7 @@ class Plugin
      */
     public function setPluginReference(string $pluginReference) : self
     {
+        $this->initialized['pluginReference'] = true;
         $this->pluginReference = $pluginReference;
         return $this;
     }
@@ -163,6 +176,7 @@ class Plugin
      */
     public function setConfig(PluginConfig $config) : self
     {
+        $this->initialized['config'] = true;
         $this->config = $config;
         return $this;
     }

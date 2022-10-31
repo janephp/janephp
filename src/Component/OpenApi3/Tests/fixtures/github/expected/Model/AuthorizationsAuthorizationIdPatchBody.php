@@ -5,6 +5,14 @@ namespace Github\Model;
 class AuthorizationsAuthorizationIdPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * A list of scopes that this authorization is in.
      *
      * @var string[]|null
@@ -58,6 +66,7 @@ class AuthorizationsAuthorizationIdPatchBody extends \ArrayObject
      */
     public function setScopes(?array $scopes) : self
     {
+        $this->initialized['scopes'] = true;
         $this->scopes = $scopes;
         return $this;
     }
@@ -79,6 +88,7 @@ class AuthorizationsAuthorizationIdPatchBody extends \ArrayObject
      */
     public function setAddScopes(array $addScopes) : self
     {
+        $this->initialized['addScopes'] = true;
         $this->addScopes = $addScopes;
         return $this;
     }
@@ -100,6 +110,7 @@ class AuthorizationsAuthorizationIdPatchBody extends \ArrayObject
      */
     public function setRemoveScopes(array $removeScopes) : self
     {
+        $this->initialized['removeScopes'] = true;
         $this->removeScopes = $removeScopes;
         return $this;
     }
@@ -121,6 +132,7 @@ class AuthorizationsAuthorizationIdPatchBody extends \ArrayObject
      */
     public function setNote(string $note) : self
     {
+        $this->initialized['note'] = true;
         $this->note = $note;
         return $this;
     }
@@ -142,6 +154,7 @@ class AuthorizationsAuthorizationIdPatchBody extends \ArrayObject
      */
     public function setNoteUrl(string $noteUrl) : self
     {
+        $this->initialized['noteUrl'] = true;
         $this->noteUrl = $noteUrl;
         return $this;
     }
@@ -163,6 +176,7 @@ class AuthorizationsAuthorizationIdPatchBody extends \ArrayObject
      */
     public function setFingerprint(string $fingerprint) : self
     {
+        $this->initialized['fingerprint'] = true;
         $this->fingerprint = $fingerprint;
         return $this;
     }

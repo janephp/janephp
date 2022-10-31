@@ -66,10 +66,10 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassific
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getClassification()) {
+        if ($object->isInitialized('classification') && null !== $object->getClassification()) {
             $data['classification'] = $object->getClassification();
         }
-        if (null !== $object->getActivities()) {
+        if ($object->isInitialized('activities') && null !== $object->getActivities()) {
             $values = array();
             foreach ($object->getActivities() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

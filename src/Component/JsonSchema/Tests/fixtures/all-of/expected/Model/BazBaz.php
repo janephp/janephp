@@ -5,6 +5,14 @@ namespace Jane\Component\JsonSchema\Tests\Expected\Model;
 class BazBaz
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -28,6 +36,7 @@ class BazBaz
      */
     public function setBaz(string $baz) : self
     {
+        $this->initialized['baz'] = true;
         $this->baz = $baz;
         return $this;
     }

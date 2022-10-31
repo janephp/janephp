@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class NumericRangeFilter extends FilterBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
     (i.e. personLayer.address.street).
     *
@@ -37,6 +45,7 @@ class NumericRangeFilter extends FilterBase
     */
     public function setField(string $field) : self
     {
+        $this->initialized['field'] = true;
         $this->field = $field;
         return $this;
     }
@@ -58,6 +67,7 @@ class NumericRangeFilter extends FilterBase
      */
     public function setRange($range) : self
     {
+        $this->initialized['range'] = true;
         $this->range = $range;
         return $this;
     }

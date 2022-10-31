@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoLabelsNamePatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The new name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see [emoji-cheat-sheet.com](http://emoji-cheat-sheet.com/).
      *
      * @var string
@@ -46,6 +54,7 @@ class ReposOwnerRepoLabelsNamePatchBody extends \ArrayObject
      */
     public function setNewName(string $newName) : self
     {
+        $this->initialized['newName'] = true;
         $this->newName = $newName;
         return $this;
     }
@@ -67,6 +76,7 @@ class ReposOwnerRepoLabelsNamePatchBody extends \ArrayObject
      */
     public function setColor(string $color) : self
     {
+        $this->initialized['color'] = true;
         $this->color = $color;
         return $this;
     }
@@ -88,6 +98,7 @@ class ReposOwnerRepoLabelsNamePatchBody extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -109,6 +120,7 @@ class ReposOwnerRepoLabelsNamePatchBody extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }

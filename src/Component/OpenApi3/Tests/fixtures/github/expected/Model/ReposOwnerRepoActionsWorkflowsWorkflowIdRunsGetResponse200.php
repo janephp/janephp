@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200 extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -34,6 +42,7 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200 extends \ArrayO
      */
     public function setTotalCount(int $totalCount) : self
     {
+        $this->initialized['totalCount'] = true;
         $this->totalCount = $totalCount;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200 extends \ArrayO
      */
     public function setWorkflowRuns(array $workflowRuns) : self
     {
+        $this->initialized['workflowRuns'] = true;
         $this->workflowRuns = $workflowRuns;
         return $this;
     }

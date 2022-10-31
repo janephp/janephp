@@ -59,10 +59,10 @@ class GenericResourcesItemNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNamedResourceSpec()) {
+        if ($object->isInitialized('namedResourceSpec') && null !== $object->getNamedResourceSpec()) {
             $data['NamedResourceSpec'] = $this->normalizer->normalize($object->getNamedResourceSpec(), 'json', $context);
         }
-        if (null !== $object->getDiscreteResourceSpec()) {
+        if ($object->isInitialized('discreteResourceSpec') && null !== $object->getDiscreteResourceSpec()) {
             $data['DiscreteResourceSpec'] = $this->normalizer->normalize($object->getDiscreteResourceSpec(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

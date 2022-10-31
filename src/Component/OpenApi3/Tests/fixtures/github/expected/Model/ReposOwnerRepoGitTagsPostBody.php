@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoGitTagsPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The tag's name. This is typically a version (e.g., "v0.0.1").
      *
      * @var string
@@ -52,6 +60,7 @@ class ReposOwnerRepoGitTagsPostBody extends \ArrayObject
      */
     public function setTag(string $tag) : self
     {
+        $this->initialized['tag'] = true;
         $this->tag = $tag;
         return $this;
     }
@@ -73,6 +82,7 @@ class ReposOwnerRepoGitTagsPostBody extends \ArrayObject
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -94,6 +104,7 @@ class ReposOwnerRepoGitTagsPostBody extends \ArrayObject
      */
     public function setObject(string $object) : self
     {
+        $this->initialized['object'] = true;
         $this->object = $object;
         return $this;
     }
@@ -115,6 +126,7 @@ class ReposOwnerRepoGitTagsPostBody extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -136,6 +148,7 @@ class ReposOwnerRepoGitTagsPostBody extends \ArrayObject
      */
     public function setTagger(ReposOwnerRepoGitTagsPostBodyTagger $tagger) : self
     {
+        $this->initialized['tagger'] = true;
         $this->tagger = $tagger;
         return $this;
     }

@@ -67,13 +67,13 @@ class IdentityProviderBasicInfoNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getDisplayName()) {
+        if ($object->isInitialized('displayName') && null !== $object->getDisplayName()) {
             $data['displayName'] = $object->getDisplayName();
         }
         return $data;

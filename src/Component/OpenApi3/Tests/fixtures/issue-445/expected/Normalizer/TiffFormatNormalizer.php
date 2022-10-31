@@ -131,41 +131,41 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $data = array();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getColorProfile()) {
+        if ($object->isInitialized('colorProfile') && null !== $object->getColorProfile()) {
             $data['colorProfile'] = $object->getColorProfile();
         }
-        if (null !== $object->getColorTransformationIntent()) {
+        if ($object->isInitialized('colorTransformationIntent') && null !== $object->getColorTransformationIntent()) {
             $data['colorTransformationIntent'] = $object->getColorTransformationIntent();
         }
-        if (null !== $object->getHorizontalResolution()) {
+        if ($object->isInitialized('horizontalResolution') && null !== $object->getHorizontalResolution()) {
             $data['horizontalResolution'] = $object->getHorizontalResolution();
         }
-        if (null !== $object->getVerticalResolution()) {
+        if ($object->isInitialized('verticalResolution') && null !== $object->getVerticalResolution()) {
             $data['verticalResolution'] = $object->getVerticalResolution();
         }
-        if (null !== $object->getKeepClippingPath()) {
+        if ($object->isInitialized('keepClippingPath') && null !== $object->getKeepClippingPath()) {
             $data['keepClippingPath'] = $object->getKeepClippingPath();
         }
-        if (null !== $object->getResizeAction()) {
+        if ($object->isInitialized('resizeAction') && null !== $object->getResizeAction()) {
             $data['resizeAction'] = $object->getResizeAction();
         }
-        if (null !== $object->getActions()) {
+        if ($object->isInitialized('actions') && null !== $object->getActions()) {
             $values = array();
             foreach ($object->getActions() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['actions'] = $values;
         }
-        if (null !== $object->getAlphaPremultiplied()) {
+        if ($object->isInitialized('alphaPremultiplied') && null !== $object->getAlphaPremultiplied()) {
             $data['alphaPremultiplied'] = $object->getAlphaPremultiplied();
         }
-        if (null !== $object->getCompressionType()) {
+        if ($object->isInitialized('compressionType') && null !== $object->getCompressionType()) {
             $data['compressionType'] = $object->getCompressionType();
         }
-        if (null !== $object->getIncludeUnspecifiedTiffExtraChannels()) {
+        if ($object->isInitialized('includeUnspecifiedTiffExtraChannels') && null !== $object->getIncludeUnspecifiedTiffExtraChannels()) {
             $data['includeUnspecifiedTiffExtraChannels'] = $object->getIncludeUnspecifiedTiffExtraChannels();
         }
-        if (null !== $object->getExtension()) {
+        if ($object->isInitialized('extension') && null !== $object->getExtension()) {
             $data['extension'] = $object->getExtension();
         }
         foreach ($object as $key => $value_1) {

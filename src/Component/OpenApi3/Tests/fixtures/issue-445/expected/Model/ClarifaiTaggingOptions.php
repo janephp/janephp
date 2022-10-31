@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ClarifaiTaggingOptions extends TaggingOptionsBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Override for the model to use
      *
      * @var string|null
@@ -40,6 +48,7 @@ class ClarifaiTaggingOptions extends TaggingOptionsBase
      */
     public function setModel(?string $model) : self
     {
+        $this->initialized['model'] = true;
         $this->model = $model;
         return $this;
     }
@@ -61,6 +70,7 @@ class ClarifaiTaggingOptions extends TaggingOptionsBase
      */
     public function setLanguage(?string $language) : self
     {
+        $this->initialized['language'] = true;
         $this->language = $language;
         return $this;
     }
@@ -82,6 +92,7 @@ class ClarifaiTaggingOptions extends TaggingOptionsBase
      */
     public function setMinimumValue(?string $minimumValue) : self
     {
+        $this->initialized['minimumValue'] = true;
         $this->minimumValue = $minimumValue;
         return $this;
     }

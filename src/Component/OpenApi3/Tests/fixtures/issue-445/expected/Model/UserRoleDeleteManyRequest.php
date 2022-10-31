@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UserRoleDeleteManyRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * IDs of the user roles to delete.
      *
      * @var string[]
@@ -28,6 +36,7 @@ class UserRoleDeleteManyRequest
      */
     public function setIds(array $ids) : self
     {
+        $this->initialized['ids'] = true;
         $this->ids = $ids;
         return $this;
     }

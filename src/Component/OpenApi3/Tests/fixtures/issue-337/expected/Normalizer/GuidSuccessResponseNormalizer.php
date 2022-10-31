@@ -62,7 +62,7 @@ class GuidSuccessResponseNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getGUIDList()) {
+        if ($object->isInitialized('gUIDList') && null !== $object->getGUIDList()) {
             $values = array();
             foreach ($object->getGUIDList() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

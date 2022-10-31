@@ -5,6 +5,14 @@ namespace Github\Model;
 class GetResponse200 extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -220,6 +228,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setCurrentUserUrl(string $currentUserUrl) : self
     {
+        $this->initialized['currentUserUrl'] = true;
         $this->currentUserUrl = $currentUserUrl;
         return $this;
     }
@@ -241,6 +250,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setCurrentUserAuthorizationsHtmlUrl(string $currentUserAuthorizationsHtmlUrl) : self
     {
+        $this->initialized['currentUserAuthorizationsHtmlUrl'] = true;
         $this->currentUserAuthorizationsHtmlUrl = $currentUserAuthorizationsHtmlUrl;
         return $this;
     }
@@ -262,6 +272,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setAuthorizationsUrl(string $authorizationsUrl) : self
     {
+        $this->initialized['authorizationsUrl'] = true;
         $this->authorizationsUrl = $authorizationsUrl;
         return $this;
     }
@@ -283,6 +294,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setCodeSearchUrl(string $codeSearchUrl) : self
     {
+        $this->initialized['codeSearchUrl'] = true;
         $this->codeSearchUrl = $codeSearchUrl;
         return $this;
     }
@@ -304,6 +316,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setCommitSearchUrl(string $commitSearchUrl) : self
     {
+        $this->initialized['commitSearchUrl'] = true;
         $this->commitSearchUrl = $commitSearchUrl;
         return $this;
     }
@@ -325,6 +338,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setEmailsUrl(string $emailsUrl) : self
     {
+        $this->initialized['emailsUrl'] = true;
         $this->emailsUrl = $emailsUrl;
         return $this;
     }
@@ -346,6 +360,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setEmojisUrl(string $emojisUrl) : self
     {
+        $this->initialized['emojisUrl'] = true;
         $this->emojisUrl = $emojisUrl;
         return $this;
     }
@@ -367,6 +382,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setEventsUrl(string $eventsUrl) : self
     {
+        $this->initialized['eventsUrl'] = true;
         $this->eventsUrl = $eventsUrl;
         return $this;
     }
@@ -388,6 +404,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setFeedsUrl(string $feedsUrl) : self
     {
+        $this->initialized['feedsUrl'] = true;
         $this->feedsUrl = $feedsUrl;
         return $this;
     }
@@ -409,6 +426,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setFollowersUrl(string $followersUrl) : self
     {
+        $this->initialized['followersUrl'] = true;
         $this->followersUrl = $followersUrl;
         return $this;
     }
@@ -430,6 +448,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setFollowingUrl(string $followingUrl) : self
     {
+        $this->initialized['followingUrl'] = true;
         $this->followingUrl = $followingUrl;
         return $this;
     }
@@ -451,6 +470,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setGistsUrl(string $gistsUrl) : self
     {
+        $this->initialized['gistsUrl'] = true;
         $this->gistsUrl = $gistsUrl;
         return $this;
     }
@@ -472,6 +492,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setHubUrl(string $hubUrl) : self
     {
+        $this->initialized['hubUrl'] = true;
         $this->hubUrl = $hubUrl;
         return $this;
     }
@@ -493,6 +514,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setIssueSearchUrl(string $issueSearchUrl) : self
     {
+        $this->initialized['issueSearchUrl'] = true;
         $this->issueSearchUrl = $issueSearchUrl;
         return $this;
     }
@@ -514,6 +536,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setIssuesUrl(string $issuesUrl) : self
     {
+        $this->initialized['issuesUrl'] = true;
         $this->issuesUrl = $issuesUrl;
         return $this;
     }
@@ -535,6 +558,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setKeysUrl(string $keysUrl) : self
     {
+        $this->initialized['keysUrl'] = true;
         $this->keysUrl = $keysUrl;
         return $this;
     }
@@ -556,6 +580,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setLabelSearchUrl(string $labelSearchUrl) : self
     {
+        $this->initialized['labelSearchUrl'] = true;
         $this->labelSearchUrl = $labelSearchUrl;
         return $this;
     }
@@ -577,6 +602,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setNotificationsUrl(string $notificationsUrl) : self
     {
+        $this->initialized['notificationsUrl'] = true;
         $this->notificationsUrl = $notificationsUrl;
         return $this;
     }
@@ -598,6 +624,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setOrganizationUrl(string $organizationUrl) : self
     {
+        $this->initialized['organizationUrl'] = true;
         $this->organizationUrl = $organizationUrl;
         return $this;
     }
@@ -619,6 +646,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setOrganizationRepositoriesUrl(string $organizationRepositoriesUrl) : self
     {
+        $this->initialized['organizationRepositoriesUrl'] = true;
         $this->organizationRepositoriesUrl = $organizationRepositoriesUrl;
         return $this;
     }
@@ -640,6 +668,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setOrganizationTeamsUrl(string $organizationTeamsUrl) : self
     {
+        $this->initialized['organizationTeamsUrl'] = true;
         $this->organizationTeamsUrl = $organizationTeamsUrl;
         return $this;
     }
@@ -661,6 +690,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setPublicGistsUrl(string $publicGistsUrl) : self
     {
+        $this->initialized['publicGistsUrl'] = true;
         $this->publicGistsUrl = $publicGistsUrl;
         return $this;
     }
@@ -682,6 +712,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setRateLimitUrl(string $rateLimitUrl) : self
     {
+        $this->initialized['rateLimitUrl'] = true;
         $this->rateLimitUrl = $rateLimitUrl;
         return $this;
     }
@@ -703,6 +734,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setRepositoryUrl(string $repositoryUrl) : self
     {
+        $this->initialized['repositoryUrl'] = true;
         $this->repositoryUrl = $repositoryUrl;
         return $this;
     }
@@ -724,6 +756,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setRepositorySearchUrl(string $repositorySearchUrl) : self
     {
+        $this->initialized['repositorySearchUrl'] = true;
         $this->repositorySearchUrl = $repositorySearchUrl;
         return $this;
     }
@@ -745,6 +778,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setCurrentUserRepositoriesUrl(string $currentUserRepositoriesUrl) : self
     {
+        $this->initialized['currentUserRepositoriesUrl'] = true;
         $this->currentUserRepositoriesUrl = $currentUserRepositoriesUrl;
         return $this;
     }
@@ -766,6 +800,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setStarredUrl(string $starredUrl) : self
     {
+        $this->initialized['starredUrl'] = true;
         $this->starredUrl = $starredUrl;
         return $this;
     }
@@ -787,6 +822,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setStarredGistsUrl(string $starredGistsUrl) : self
     {
+        $this->initialized['starredGistsUrl'] = true;
         $this->starredGistsUrl = $starredGistsUrl;
         return $this;
     }
@@ -808,6 +844,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setTopicSearchUrl(string $topicSearchUrl) : self
     {
+        $this->initialized['topicSearchUrl'] = true;
         $this->topicSearchUrl = $topicSearchUrl;
         return $this;
     }
@@ -829,6 +866,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setUserUrl(string $userUrl) : self
     {
+        $this->initialized['userUrl'] = true;
         $this->userUrl = $userUrl;
         return $this;
     }
@@ -850,6 +888,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setUserOrganizationsUrl(string $userOrganizationsUrl) : self
     {
+        $this->initialized['userOrganizationsUrl'] = true;
         $this->userOrganizationsUrl = $userOrganizationsUrl;
         return $this;
     }
@@ -871,6 +910,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setUserRepositoriesUrl(string $userRepositoriesUrl) : self
     {
+        $this->initialized['userRepositoriesUrl'] = true;
         $this->userRepositoriesUrl = $userRepositoriesUrl;
         return $this;
     }
@@ -892,6 +932,7 @@ class GetResponse200 extends \ArrayObject
      */
     public function setUserSearchUrl(string $userSearchUrl) : self
     {
+        $this->initialized['userSearchUrl'] = true;
         $this->userSearchUrl = $userSearchUrl;
         return $this;
     }

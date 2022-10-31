@@ -68,10 +68,10 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageSummaryNo
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getOutstanding()) {
+        if ($object->isInitialized('outstanding') && null !== $object->getOutstanding()) {
             $data['outstanding'] = $object->getOutstanding();
         }
-        if (null !== $object->getSatisfied()) {
+        if ($object->isInitialized('satisfied') && null !== $object->getSatisfied()) {
             $data['satisfied'] = $object->getSatisfied();
         }
         foreach ($object as $key => $value) {

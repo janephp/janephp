@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var float
@@ -46,6 +54,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow e
      */
     public function setNetCashFlowFromOperations(float $netCashFlowFromOperations) : self
     {
+        $this->initialized['netCashFlowFromOperations'] = true;
         $this->netCashFlowFromOperations = $netCashFlowFromOperations;
         return $this;
     }
@@ -67,6 +76,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow e
      */
     public function setNetCashFlowBeforeFinancing(float $netCashFlowBeforeFinancing) : self
     {
+        $this->initialized['netCashFlowBeforeFinancing'] = true;
         $this->netCashFlowBeforeFinancing = $netCashFlowBeforeFinancing;
         return $this;
     }
@@ -88,6 +98,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow e
      */
     public function setNetCashFlowFromFinancing(float $netCashFlowFromFinancing) : self
     {
+        $this->initialized['netCashFlowFromFinancing'] = true;
         $this->netCashFlowFromFinancing = $netCashFlowFromFinancing;
         return $this;
     }
@@ -109,6 +120,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow e
      */
     public function setIncreaseInCash(float $increaseInCash) : self
     {
+        $this->initialized['increaseInCash'] = true;
         $this->increaseInCash = $increaseInCash;
         return $this;
     }

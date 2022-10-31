@@ -86,21 +86,21 @@ class CreateTransferRequestNormalizer implements DenormalizerInterface, Normaliz
         $data = array();
         $data['name'] = $object->getName();
         $data['transferType'] = $object->getTransferType();
-        if (null !== $object->getFiles()) {
+        if ($object->isInitialized('files') && null !== $object->getFiles()) {
             $values = array();
             foreach ($object->getFiles() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['files'] = $values;
         }
-        if (null !== $object->getWebLinks()) {
+        if ($object->isInitialized('webLinks') && null !== $object->getWebLinks()) {
             $values_1 = array();
             foreach ($object->getWebLinks() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['webLinks'] = $values_1;
         }
-        if (null !== $object->getCollectionName()) {
+        if ($object->isInitialized('collectionName') && null !== $object->getCollectionName()) {
             $data['collectionName'] = $object->getCollectionName();
         }
         $data['createCollection'] = $object->getCreateCollection();

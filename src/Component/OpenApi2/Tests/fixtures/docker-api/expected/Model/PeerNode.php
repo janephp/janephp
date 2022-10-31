@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class PeerNode
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Unique identifier of for this node in the swarm.
      *
      * @var string
@@ -34,6 +42,7 @@ class PeerNode
      */
     public function setNodeID(string $nodeID) : self
     {
+        $this->initialized['nodeID'] = true;
         $this->nodeID = $nodeID;
         return $this;
     }
@@ -55,6 +64,7 @@ class PeerNode
      */
     public function setAddr(string $addr) : self
     {
+        $this->initialized['addr'] = true;
         $this->addr = $addr;
         return $this;
     }

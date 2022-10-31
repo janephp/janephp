@@ -5,6 +5,14 @@ namespace Github\Model;
 class CommitActivity extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int[]
@@ -40,6 +48,7 @@ class CommitActivity extends \ArrayObject
      */
     public function setDays(array $days) : self
     {
+        $this->initialized['days'] = true;
         $this->days = $days;
         return $this;
     }
@@ -61,6 +70,7 @@ class CommitActivity extends \ArrayObject
      */
     public function setTotal(int $total) : self
     {
+        $this->initialized['total'] = true;
         $this->total = $total;
         return $this;
     }
@@ -82,6 +92,7 @@ class CommitActivity extends \ArrayObject
      */
     public function setWeek(int $week) : self
     {
+        $this->initialized['week'] = true;
         $this->week = $week;
         return $this;
     }

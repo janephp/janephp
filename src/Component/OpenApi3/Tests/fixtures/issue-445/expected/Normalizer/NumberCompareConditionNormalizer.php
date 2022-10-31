@@ -83,17 +83,17 @@ class NumberCompareConditionNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getFieldPath()) {
+        if ($object->isInitialized('fieldPath') && null !== $object->getFieldPath()) {
             $data['fieldPath'] = $object->getFieldPath();
         }
-        if (null !== $object->getMode()) {
+        if ($object->isInitialized('mode') && null !== $object->getMode()) {
             $data['mode'] = $object->getMode();
         }
-        if (null !== $object->getValue()) {
+        if ($object->isInitialized('value') && null !== $object->getValue()) {
             $data['value'] = $object->getValue();
         }
         foreach ($object as $key => $value) {

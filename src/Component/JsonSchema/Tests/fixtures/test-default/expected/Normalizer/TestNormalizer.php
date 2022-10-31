@@ -102,33 +102,33 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getString()) {
+        if ($object->isInitialized('string') && null !== $object->getString()) {
             $data['string'] = $object->getString();
         }
-        if (null !== $object->getBool()) {
+        if ($object->isInitialized('bool') && null !== $object->getBool()) {
             $data['bool'] = $object->getBool();
         }
-        if (null !== $object->getInteger()) {
+        if ($object->isInitialized('integer') && null !== $object->getInteger()) {
             $data['integer'] = $object->getInteger();
         }
-        if (null !== $object->getFloat()) {
+        if ($object->isInitialized('float') && null !== $object->getFloat()) {
             $data['float'] = $object->getFloat();
         }
-        if (null !== $object->getArray()) {
+        if ($object->isInitialized('array') && null !== $object->getArray()) {
             $values = array();
             foreach ($object->getArray() as $value) {
                 $values[] = $value;
             }
             $data['array'] = $values;
         }
-        if (null !== $object->getObject()) {
+        if ($object->isInitialized('object') && null !== $object->getObject()) {
             $values_1 = array();
             foreach ($object->getObject() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['object'] = $values_1;
         }
-        if (null !== $object->getSubObject()) {
+        if ($object->isInitialized('subObject') && null !== $object->getSubObject()) {
             $data['subObject'] = $this->normalizer->normalize($object->getSubObject(), 'json', $context);
         }
         return $data;

@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials
      */
     public function setContingentLiabilities(string $contingentLiabilities) : self
     {
+        $this->initialized['contingentLiabilities'] = true;
         $this->contingentLiabilities = $contingentLiabilities;
         return $this;
     }
@@ -61,6 +70,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials
      */
     public function setWorkingCapital(float $workingCapital) : self
     {
+        $this->initialized['workingCapital'] = true;
         $this->workingCapital = $workingCapital;
         return $this;
     }
@@ -82,6 +92,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials
      */
     public function setNetWorth(float $netWorth) : self
     {
+        $this->initialized['netWorth'] = true;
         $this->netWorth = $netWorth;
         return $this;
     }

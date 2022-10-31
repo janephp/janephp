@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoHooksHookIdPatchBodyConfig extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The URL to which the payloads will be delivered.
      *
      * @var string
@@ -58,6 +66,7 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfig extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -79,6 +88,7 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfig extends \ArrayObject
      */
     public function setContentType(string $contentType) : self
     {
+        $this->initialized['contentType'] = true;
         $this->contentType = $contentType;
         return $this;
     }
@@ -100,6 +110,7 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfig extends \ArrayObject
      */
     public function setSecret(string $secret) : self
     {
+        $this->initialized['secret'] = true;
         $this->secret = $secret;
         return $this;
     }
@@ -121,6 +132,7 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfig extends \ArrayObject
      */
     public function setInsecureSsl(string $insecureSsl) : self
     {
+        $this->initialized['insecureSsl'] = true;
         $this->insecureSsl = $insecureSsl;
         return $this;
     }
@@ -142,6 +154,7 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfig extends \ArrayObject
      */
     public function setAddress(string $address) : self
     {
+        $this->initialized['address'] = true;
         $this->address = $address;
         return $this;
     }
@@ -163,6 +176,7 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfig extends \ArrayObject
      */
     public function setRoom(string $room) : self
     {
+        $this->initialized['room'] = true;
         $this->room = $room;
         return $this;
     }

@@ -63,7 +63,7 @@ class RuleNoIdNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $data = array();
         $data['value'] = $object->getValue();
-        if (null !== $object->getTag()) {
+        if ($object->isInitialized('tag') && null !== $object->getTag()) {
             $data['tag'] = $object->getTag();
         }
         foreach ($object as $key => $value) {

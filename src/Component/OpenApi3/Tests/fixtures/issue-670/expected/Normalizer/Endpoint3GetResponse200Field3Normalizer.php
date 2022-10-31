@@ -58,7 +58,7 @@ class Endpoint3GetResponse200Field3Normalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSubField3()) {
+        if ($object->isInitialized('subField3') && null !== $object->getSubField3()) {
             $data['sub-field-3'] = $object->getSubField3();
         }
         foreach ($object as $key => $value) {

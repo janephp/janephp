@@ -5,6 +5,14 @@ namespace Github\Model;
 class ProtectedBranchRequiredLinearHistory
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -28,6 +36,7 @@ class ProtectedBranchRequiredLinearHistory
      */
     public function setEnabled(bool $enabled) : self
     {
+        $this->initialized['enabled'] = true;
         $this->enabled = $enabled;
         return $this;
     }

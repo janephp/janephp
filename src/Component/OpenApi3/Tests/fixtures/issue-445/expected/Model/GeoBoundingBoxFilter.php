@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class GeoBoundingBoxFilter extends FilterBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
     (i.e. personLayer.address.street).
     *
@@ -43,6 +51,7 @@ class GeoBoundingBoxFilter extends FilterBase
     */
     public function setField(string $field) : self
     {
+        $this->initialized['field'] = true;
         $this->field = $field;
         return $this;
     }
@@ -64,6 +73,7 @@ class GeoBoundingBoxFilter extends FilterBase
      */
     public function setTopLeft($topLeft) : self
     {
+        $this->initialized['topLeft'] = true;
         $this->topLeft = $topLeft;
         return $this;
     }
@@ -85,6 +95,7 @@ class GeoBoundingBoxFilter extends FilterBase
      */
     public function setBottomRight($bottomRight) : self
     {
+        $this->initialized['bottomRight'] = true;
         $this->bottomRight = $bottomRight;
         return $this;
     }

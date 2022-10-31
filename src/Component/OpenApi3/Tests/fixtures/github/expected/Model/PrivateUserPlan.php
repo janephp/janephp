@@ -5,6 +5,14 @@ namespace Github\Model;
 class PrivateUserPlan extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -46,6 +54,7 @@ class PrivateUserPlan extends \ArrayObject
      */
     public function setCollaborators(int $collaborators) : self
     {
+        $this->initialized['collaborators'] = true;
         $this->collaborators = $collaborators;
         return $this;
     }
@@ -67,6 +76,7 @@ class PrivateUserPlan extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -88,6 +98,7 @@ class PrivateUserPlan extends \ArrayObject
      */
     public function setSpace(int $space) : self
     {
+        $this->initialized['space'] = true;
         $this->space = $space;
         return $this;
     }
@@ -109,6 +120,7 @@ class PrivateUserPlan extends \ArrayObject
      */
     public function setPrivateRepos(int $privateRepos) : self
     {
+        $this->initialized['privateRepos'] = true;
         $this->privateRepos = $privateRepos;
         return $this;
     }

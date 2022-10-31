@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SchemaUpdateManyRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The schemas to update.
      *
      * @var SchemaUpdateItem[]
@@ -28,6 +36,7 @@ class SchemaUpdateManyRequest
      */
     public function setSchemas(array $schemas) : self
     {
+        $this->initialized['schemas'] = true;
         $this->schemas = $schemas;
         return $this;
     }

@@ -56,7 +56,7 @@ class ContainersIdArchiveHeadResponse400Normalizer implements DenormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMessage()) {
+        if ($object->isInitialized('message') && null !== $object->getMessage()) {
             $data['message'] = $object->getMessage();
         }
         if (!($context['skip_validation'] ?? false)) {

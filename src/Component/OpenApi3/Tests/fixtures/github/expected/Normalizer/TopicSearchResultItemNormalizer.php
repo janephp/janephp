@@ -172,27 +172,27 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         $data['featured'] = $object->getFeatured();
         $data['curated'] = $object->getCurated();
         $data['score'] = $object->getScore();
-        if (null !== $object->getRepositoryCount()) {
+        if ($object->isInitialized('repositoryCount') && null !== $object->getRepositoryCount()) {
             $data['repository_count'] = $object->getRepositoryCount();
         }
-        if (null !== $object->getLogoUrl()) {
+        if ($object->isInitialized('logoUrl') && null !== $object->getLogoUrl()) {
             $data['logo_url'] = $object->getLogoUrl();
         }
-        if (null !== $object->getTextMatches()) {
+        if ($object->isInitialized('textMatches') && null !== $object->getTextMatches()) {
             $values = array();
             foreach ($object->getTextMatches() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['text_matches'] = $values;
         }
-        if (null !== $object->getRelated()) {
+        if ($object->isInitialized('related') && null !== $object->getRelated()) {
             $values_1 = array();
             foreach ($object->getRelated() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['related'] = $values_1;
         }
-        if (null !== $object->getAliases()) {
+        if ($object->isInitialized('aliases') && null !== $object->getAliases()) {
             $values_2 = array();
             foreach ($object->getAliases() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);

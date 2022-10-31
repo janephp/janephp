@@ -118,19 +118,19 @@ class OutputDataBaseNormalizer implements DenormalizerInterface, NormalizerInter
         if (null !== $object->getKind() and 'OutputDataDefault' === $object->getKind()) {
             return $this->normalizer->normalize($object, $format, $context);
         }
-        if (null !== $object->getFileExtension()) {
+        if ($object->isInitialized('fileExtension') && null !== $object->getFileExtension()) {
             $data['fileExtension'] = $object->getFileExtension();
         }
-        if (null !== $object->getFilePath()) {
+        if ($object->isInitialized('filePath') && null !== $object->getFilePath()) {
             $data['filePath'] = $object->getFilePath();
         }
-        if (null !== $object->getFileSizeInBytes()) {
+        if ($object->isInitialized('fileSizeInBytes') && null !== $object->getFileSizeInBytes()) {
             $data['fileSizeInBytes'] = $object->getFileSizeInBytes();
         }
-        if (null !== $object->getSha1Hash()) {
+        if ($object->isInitialized('sha1Hash') && null !== $object->getSha1Hash()) {
             $data['sha1Hash'] = $object->getSha1Hash();
         }
-        if (null !== $object->getOriginalFileName()) {
+        if ($object->isInitialized('originalFileName') && null !== $object->getOriginalFileName()) {
             $data['originalFileName'] = $object->getOriginalFileName();
         }
         $data['kind'] = $object->getKind();

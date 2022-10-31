@@ -5,6 +5,14 @@ namespace Github\Model;
 class OrganizationFullPlan extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class OrganizationFullPlan extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -73,6 +82,7 @@ class OrganizationFullPlan extends \ArrayObject
      */
     public function setSpace(int $space) : self
     {
+        $this->initialized['space'] = true;
         $this->space = $space;
         return $this;
     }
@@ -94,6 +104,7 @@ class OrganizationFullPlan extends \ArrayObject
      */
     public function setPrivateRepos(int $privateRepos) : self
     {
+        $this->initialized['privateRepos'] = true;
         $this->privateRepos = $privateRepos;
         return $this;
     }
@@ -115,6 +126,7 @@ class OrganizationFullPlan extends \ArrayObject
      */
     public function setFilledSeats(int $filledSeats) : self
     {
+        $this->initialized['filledSeats'] = true;
         $this->filledSeats = $filledSeats;
         return $this;
     }
@@ -136,6 +148,7 @@ class OrganizationFullPlan extends \ArrayObject
      */
     public function setSeats(int $seats) : self
     {
+        $this->initialized['seats'] = true;
         $this->seats = $seats;
         return $this;
     }

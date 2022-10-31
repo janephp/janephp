@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class OutputResolveResult
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of output.
      *
      * @var string|null
@@ -58,6 +66,7 @@ class OutputResolveResult
      */
     public function setId(?string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -79,6 +88,7 @@ class OutputResolveResult
      */
     public function setOutputFormatId(string $outputFormatId) : self
     {
+        $this->initialized['outputFormatId'] = true;
         $this->outputFormatId = $outputFormatId;
         return $this;
     }
@@ -100,6 +110,7 @@ class OutputResolveResult
      */
     public function setContentId(string $contentId) : self
     {
+        $this->initialized['contentId'] = true;
         $this->contentId = $contentId;
         return $this;
     }
@@ -121,6 +132,7 @@ class OutputResolveResult
      */
     public function setRenderingState($renderingState) : self
     {
+        $this->initialized['renderingState'] = true;
         $this->renderingState = $renderingState;
         return $this;
     }
@@ -142,6 +154,7 @@ class OutputResolveResult
      */
     public function setDynamicRendering(bool $dynamicRendering) : self
     {
+        $this->initialized['dynamicRendering'] = true;
         $this->dynamicRendering = $dynamicRendering;
         return $this;
     }
@@ -163,6 +176,7 @@ class OutputResolveResult
      */
     public function setFileSize(?int $fileSize) : self
     {
+        $this->initialized['fileSize'] = true;
         $this->fileSize = $fileSize;
         return $this;
     }

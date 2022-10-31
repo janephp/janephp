@@ -70,16 +70,16 @@ class PeopleSearchSuccessResultDirectorsItemAddressNormalizer implements Denorma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSimpleValue()) {
+        if ($object->isInitialized('simpleValue') && null !== $object->getSimpleValue()) {
             $data['simpleValue'] = $object->getSimpleValue();
         }
-        if (null !== $object->getHouseNo()) {
+        if ($object->isInitialized('houseNo') && null !== $object->getHouseNo()) {
             $data['houseNo'] = $object->getHouseNo();
         }
-        if (null !== $object->getCity()) {
+        if ($object->isInitialized('city') && null !== $object->getCity()) {
             $data['city'] = $object->getCity();
         }
-        if (null !== $object->getPostCode()) {
+        if ($object->isInitialized('postCode') && null !== $object->getPostCode()) {
             $data['postCode'] = $object->getPostCode();
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SchemaDetail
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The schema ID. It is unique throughout the whole customer setup.
      *
      * @var string
@@ -146,6 +154,7 @@ class SchemaDetail
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -167,6 +176,7 @@ class SchemaDetail
      */
     public function setSchemaNamespace(string $schemaNamespace) : self
     {
+        $this->initialized['schemaNamespace'] = true;
         $this->schemaNamespace = $schemaNamespace;
         return $this;
     }
@@ -188,6 +198,7 @@ class SchemaDetail
      */
     public function setParentSchemaId(?string $parentSchemaId) : self
     {
+        $this->initialized['parentSchemaId'] = true;
         $this->parentSchemaId = $parentSchemaId;
         return $this;
     }
@@ -209,6 +220,7 @@ class SchemaDetail
      */
     public function setTypes(array $types) : self
     {
+        $this->initialized['types'] = true;
         $this->types = $types;
         return $this;
     }
@@ -230,6 +242,7 @@ class SchemaDetail
      */
     public function setNames($names) : self
     {
+        $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }
@@ -251,6 +264,7 @@ class SchemaDetail
      */
     public function setDescriptions($descriptions) : self
     {
+        $this->initialized['descriptions'] = true;
         $this->descriptions = $descriptions;
         return $this;
     }
@@ -272,6 +286,7 @@ class SchemaDetail
      */
     public function setLayerSchemaIds(?array $layerSchemaIds) : self
     {
+        $this->initialized['layerSchemaIds'] = true;
         $this->layerSchemaIds = $layerSchemaIds;
         return $this;
     }
@@ -293,6 +308,7 @@ class SchemaDetail
      */
     public function setDisplayPatterns(array $displayPatterns) : self
     {
+        $this->initialized['displayPatterns'] = true;
         $this->displayPatterns = $displayPatterns;
         return $this;
     }
@@ -314,6 +330,7 @@ class SchemaDetail
      */
     public function setFields(?array $fields) : self
     {
+        $this->initialized['fields'] = true;
         $this->fields = $fields;
         return $this;
     }
@@ -337,6 +354,7 @@ class SchemaDetail
     */
     public function setFieldsOverwrite(?array $fieldsOverwrite) : self
     {
+        $this->initialized['fieldsOverwrite'] = true;
         $this->fieldsOverwrite = $fieldsOverwrite;
         return $this;
     }
@@ -360,6 +378,7 @@ class SchemaDetail
     */
     public function setSort(?array $sort) : self
     {
+        $this->initialized['sort'] = true;
         $this->sort = $sort;
         return $this;
     }
@@ -383,6 +402,7 @@ class SchemaDetail
     */
     public function setAggregations(?array $aggregations) : self
     {
+        $this->initialized['aggregations'] = true;
         $this->aggregations = $aggregations;
         return $this;
     }
@@ -404,6 +424,7 @@ class SchemaDetail
      */
     public function setSystem(bool $system) : self
     {
+        $this->initialized['system'] = true;
         $this->system = $system;
         return $this;
     }
@@ -425,6 +446,7 @@ class SchemaDetail
      */
     public function setOwnerTokenId(string $ownerTokenId) : self
     {
+        $this->initialized['ownerTokenId'] = true;
         $this->ownerTokenId = $ownerTokenId;
         return $this;
     }
@@ -446,6 +468,7 @@ class SchemaDetail
      */
     public function setViewForAll(bool $viewForAll) : self
     {
+        $this->initialized['viewForAll'] = true;
         $this->viewForAll = $viewForAll;
         return $this;
     }
@@ -467,6 +490,7 @@ class SchemaDetail
      */
     public function setSchemaPermissionSetIds(?array $schemaPermissionSetIds) : self
     {
+        $this->initialized['schemaPermissionSetIds'] = true;
         $this->schemaPermissionSetIds = $schemaPermissionSetIds;
         return $this;
     }
@@ -490,6 +514,7 @@ class SchemaDetail
     */
     public function setReferencedInContentSchemaIds(?array $referencedInContentSchemaIds) : self
     {
+        $this->initialized['referencedInContentSchemaIds'] = true;
         $this->referencedInContentSchemaIds = $referencedInContentSchemaIds;
         return $this;
     }
@@ -511,6 +536,7 @@ class SchemaDetail
      */
     public function setDescendantSchemaIds(?array $descendantSchemaIds) : self
     {
+        $this->initialized['descendantSchemaIds'] = true;
         $this->descendantSchemaIds = $descendantSchemaIds;
         return $this;
     }
@@ -532,6 +558,7 @@ class SchemaDetail
      */
     public function setAudit($audit) : self
     {
+        $this->initialized['audit'] = true;
         $this->audit = $audit;
         return $this;
     }
@@ -553,6 +580,7 @@ class SchemaDetail
      */
     public function setSearchFieldCount($searchFieldCount) : self
     {
+        $this->initialized['searchFieldCount'] = true;
         $this->searchFieldCount = $searchFieldCount;
         return $this;
     }

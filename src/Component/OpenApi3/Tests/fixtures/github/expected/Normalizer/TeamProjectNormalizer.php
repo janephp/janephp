@@ -128,52 +128,52 @@ class TeamProjectNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getOwnerUrl()) {
+        if ($object->isInitialized('ownerUrl') && null !== $object->getOwnerUrl()) {
             $data['owner_url'] = $object->getOwnerUrl();
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getHtmlUrl()) {
+        if ($object->isInitialized('htmlUrl') && null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
-        if (null !== $object->getColumnsUrl()) {
+        if ($object->isInitialized('columnsUrl') && null !== $object->getColumnsUrl()) {
             $data['columns_url'] = $object->getColumnsUrl();
         }
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getNodeId()) {
+        if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getBody()) {
+        if ($object->isInitialized('body') && null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
-        if (null !== $object->getNumber()) {
+        if ($object->isInitialized('number') && null !== $object->getNumber()) {
             $data['number'] = $object->getNumber();
         }
-        if (null !== $object->getState()) {
+        if ($object->isInitialized('state') && null !== $object->getState()) {
             $data['state'] = $object->getState();
         }
-        if (null !== $object->getCreator()) {
+        if ($object->isInitialized('creator') && null !== $object->getCreator()) {
             $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
         }
-        if (null !== $object->getCreatedAt()) {
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt();
         }
-        if (null !== $object->getUpdatedAt()) {
+        if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt();
         }
-        if (null !== $object->getOrganizationPermission()) {
+        if ($object->isInitialized('organizationPermission') && null !== $object->getOrganizationPermission()) {
             $data['organization_permission'] = $object->getOrganizationPermission();
         }
-        if (null !== $object->getPrivate()) {
+        if ($object->isInitialized('private') && null !== $object->getPrivate()) {
             $data['private'] = $object->getPrivate();
         }
-        if (null !== $object->getPermissions()) {
+        if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
         foreach ($object as $key => $value) {

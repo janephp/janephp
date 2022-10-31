@@ -70,10 +70,10 @@ class OrgsOrgInstallationsGetResponse200Normalizer implements DenormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTotalCount()) {
+        if ($object->isInitialized('totalCount') && null !== $object->getTotalCount()) {
             $data['total_count'] = $object->getTotalCount();
         }
-        if (null !== $object->getInstallations()) {
+        if ($object->isInitialized('installations') && null !== $object->getInstallations()) {
             $values = array();
             foreach ($object->getInstallations() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

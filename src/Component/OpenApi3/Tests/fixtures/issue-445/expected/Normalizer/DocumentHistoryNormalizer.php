@@ -88,19 +88,19 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDocumentId()) {
+        if ($object->isInitialized('documentId') && null !== $object->getDocumentId()) {
             $data['documentId'] = $object->getDocumentId();
         }
         $data['documentVersion'] = $object->getDocumentVersion();
-        if (null !== $object->getDocumentType()) {
+        if ($object->isInitialized('documentType') && null !== $object->getDocumentType()) {
             $data['documentType'] = $object->getDocumentType();
         }
         $data['documentDate'] = $object->getDocumentDate()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getDocument()) {
+        if ($object->isInitialized('document') && null !== $object->getDocument()) {
             $data['document'] = $object->getDocument();
         }
         $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getAudit()) {
+        if ($object->isInitialized('audit') && null !== $object->getAudit()) {
             $data['audit'] = $object->getAudit();
         }
         $data['deleted'] = $object->getDeleted();

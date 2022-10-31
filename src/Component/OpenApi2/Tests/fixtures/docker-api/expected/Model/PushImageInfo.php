@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class PushImageInfo
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class PushImageInfo
      */
     public function setError(string $error) : self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
         return $this;
     }
@@ -67,6 +76,7 @@ class PushImageInfo
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -88,6 +98,7 @@ class PushImageInfo
      */
     public function setProgress(string $progress) : self
     {
+        $this->initialized['progress'] = true;
         $this->progress = $progress;
         return $this;
     }
@@ -109,6 +120,7 @@ class PushImageInfo
      */
     public function setProgressDetail(ProgressDetail $progressDetail) : self
     {
+        $this->initialized['progressDetail'] = true;
         $this->progressDetail = $progressDetail;
         return $this;
     }

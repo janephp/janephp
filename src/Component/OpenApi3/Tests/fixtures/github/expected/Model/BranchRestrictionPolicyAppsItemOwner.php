@@ -5,6 +5,14 @@ namespace Github\Model;
 class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -154,6 +162,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setLogin(string $login) : self
     {
+        $this->initialized['login'] = true;
         $this->login = $login;
         return $this;
     }
@@ -175,6 +184,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -196,6 +206,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -217,6 +228,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -238,6 +250,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setReposUrl(string $reposUrl) : self
     {
+        $this->initialized['reposUrl'] = true;
         $this->reposUrl = $reposUrl;
         return $this;
     }
@@ -259,6 +272,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setEventsUrl(string $eventsUrl) : self
     {
+        $this->initialized['eventsUrl'] = true;
         $this->eventsUrl = $eventsUrl;
         return $this;
     }
@@ -280,6 +294,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setHooksUrl(string $hooksUrl) : self
     {
+        $this->initialized['hooksUrl'] = true;
         $this->hooksUrl = $hooksUrl;
         return $this;
     }
@@ -301,6 +316,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setIssuesUrl(string $issuesUrl) : self
     {
+        $this->initialized['issuesUrl'] = true;
         $this->issuesUrl = $issuesUrl;
         return $this;
     }
@@ -322,6 +338,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setMembersUrl(string $membersUrl) : self
     {
+        $this->initialized['membersUrl'] = true;
         $this->membersUrl = $membersUrl;
         return $this;
     }
@@ -343,6 +360,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setPublicMembersUrl(string $publicMembersUrl) : self
     {
+        $this->initialized['publicMembersUrl'] = true;
         $this->publicMembersUrl = $publicMembersUrl;
         return $this;
     }
@@ -364,6 +382,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setAvatarUrl(string $avatarUrl) : self
     {
+        $this->initialized['avatarUrl'] = true;
         $this->avatarUrl = $avatarUrl;
         return $this;
     }
@@ -385,6 +404,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -406,6 +426,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setGravatarId(string $gravatarId) : self
     {
+        $this->initialized['gravatarId'] = true;
         $this->gravatarId = $gravatarId;
         return $this;
     }
@@ -427,6 +448,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -448,6 +470,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setFollowersUrl(string $followersUrl) : self
     {
+        $this->initialized['followersUrl'] = true;
         $this->followersUrl = $followersUrl;
         return $this;
     }
@@ -469,6 +492,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setFollowingUrl(string $followingUrl) : self
     {
+        $this->initialized['followingUrl'] = true;
         $this->followingUrl = $followingUrl;
         return $this;
     }
@@ -490,6 +514,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setGistsUrl(string $gistsUrl) : self
     {
+        $this->initialized['gistsUrl'] = true;
         $this->gistsUrl = $gistsUrl;
         return $this;
     }
@@ -511,6 +536,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setStarredUrl(string $starredUrl) : self
     {
+        $this->initialized['starredUrl'] = true;
         $this->starredUrl = $starredUrl;
         return $this;
     }
@@ -532,6 +558,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setSubscriptionsUrl(string $subscriptionsUrl) : self
     {
+        $this->initialized['subscriptionsUrl'] = true;
         $this->subscriptionsUrl = $subscriptionsUrl;
         return $this;
     }
@@ -553,6 +580,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setOrganizationsUrl(string $organizationsUrl) : self
     {
+        $this->initialized['organizationsUrl'] = true;
         $this->organizationsUrl = $organizationsUrl;
         return $this;
     }
@@ -574,6 +602,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setReceivedEventsUrl(string $receivedEventsUrl) : self
     {
+        $this->initialized['receivedEventsUrl'] = true;
         $this->receivedEventsUrl = $receivedEventsUrl;
         return $this;
     }
@@ -595,6 +624,7 @@ class BranchRestrictionPolicyAppsItemOwner extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }

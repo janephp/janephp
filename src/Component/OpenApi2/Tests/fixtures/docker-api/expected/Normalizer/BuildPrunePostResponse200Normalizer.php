@@ -63,14 +63,14 @@ class BuildPrunePostResponse200Normalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCachesDeleted()) {
+        if ($object->isInitialized('cachesDeleted') && null !== $object->getCachesDeleted()) {
             $values = array();
             foreach ($object->getCachesDeleted() as $value) {
                 $values[] = $value;
             }
             $data['CachesDeleted'] = $values;
         }
-        if (null !== $object->getSpaceReclaimed()) {
+        if ($object->isInitialized('spaceReclaimed') && null !== $object->getSpaceReclaimed()) {
             $data['SpaceReclaimed'] = $object->getSpaceReclaimed();
         }
         if (!($context['skip_validation'] ?? false)) {

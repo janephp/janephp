@@ -5,6 +5,14 @@ namespace ApiPlatform\Demo\Model;
 class TopBookJsonld extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var mixed
@@ -76,6 +84,7 @@ class TopBookJsonld extends \ArrayObject
      */
     public function setContext($context) : self
     {
+        $this->initialized['context'] = true;
         $this->context = $context;
         return $this;
     }
@@ -97,6 +106,7 @@ class TopBookJsonld extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -118,6 +128,7 @@ class TopBookJsonld extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -139,6 +150,7 @@ class TopBookJsonld extends \ArrayObject
      */
     public function setId2(int $id2) : self
     {
+        $this->initialized['id2'] = true;
         $this->id2 = $id2;
         return $this;
     }
@@ -160,6 +172,7 @@ class TopBookJsonld extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -181,6 +194,7 @@ class TopBookJsonld extends \ArrayObject
      */
     public function setAuthor(string $author) : self
     {
+        $this->initialized['author'] = true;
         $this->author = $author;
         return $this;
     }
@@ -202,6 +216,7 @@ class TopBookJsonld extends \ArrayObject
      */
     public function setPart(string $part) : self
     {
+        $this->initialized['part'] = true;
         $this->part = $part;
         return $this;
     }
@@ -223,6 +238,7 @@ class TopBookJsonld extends \ArrayObject
      */
     public function setPlace(string $place) : self
     {
+        $this->initialized['place'] = true;
         $this->place = $place;
         return $this;
     }
@@ -244,6 +260,7 @@ class TopBookJsonld extends \ArrayObject
      */
     public function setBorrowCount(int $borrowCount) : self
     {
+        $this->initialized['borrowCount'] = true;
         $this->borrowCount = $borrowCount;
         return $this;
     }

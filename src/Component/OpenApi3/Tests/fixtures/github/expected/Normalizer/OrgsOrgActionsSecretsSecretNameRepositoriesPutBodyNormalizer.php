@@ -66,7 +66,7 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyNormalizer implements De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSelectedRepositoryIds()) {
+        if ($object->isInitialized('selectedRepositoryIds') && null !== $object->getSelectedRepositoryIds()) {
             $values = array();
             foreach ($object->getSelectedRepositoryIds() as $value) {
                 $values[] = $value;

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -100,6 +108,7 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
      */
     public function setTraceLevel(string $traceLevel) : self
     {
+        $this->initialized['traceLevel'] = true;
         $this->traceLevel = $traceLevel;
         return $this;
     }
@@ -121,6 +130,7 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
      */
     public function setTraceId(?string $traceId) : self
     {
+        $this->initialized['traceId'] = true;
         $this->traceId = $traceId;
         return $this;
     }
@@ -142,6 +152,7 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
      */
     public function setTraceJobId(?string $traceJobId) : self
     {
+        $this->initialized['traceJobId'] = true;
         $this->traceJobId = $traceJobId;
         return $this;
     }
@@ -163,6 +174,7 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
      */
     public function setHttpStatusCode(int $httpStatusCode) : self
     {
+        $this->initialized['httpStatusCode'] = true;
         $this->httpStatusCode = $httpStatusCode;
         return $this;
     }
@@ -184,6 +196,7 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
      */
     public function setExceptionMessage(?string $exceptionMessage) : self
     {
+        $this->initialized['exceptionMessage'] = true;
         $this->exceptionMessage = $exceptionMessage;
         return $this;
     }
@@ -205,6 +218,7 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
      */
     public function setKind(string $kind) : self
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
         return $this;
     }
@@ -226,6 +240,7 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
      */
     public function setCustomerId(?string $customerId) : self
     {
+        $this->initialized['customerId'] = true;
         $this->customerId = $customerId;
         return $this;
     }
@@ -247,6 +262,7 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
      */
     public function setCustomerAlias(?string $customerAlias) : self
     {
+        $this->initialized['customerAlias'] = true;
         $this->customerAlias = $customerAlias;
         return $this;
     }
@@ -268,6 +284,7 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
      */
     public function setUserId(?string $userId) : self
     {
+        $this->initialized['userId'] = true;
         $this->userId = $userId;
         return $this;
     }
@@ -289,6 +306,7 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
      */
     public function setSchemaId(?string $schemaId) : self
     {
+        $this->initialized['schemaId'] = true;
         $this->schemaId = $schemaId;
         return $this;
     }
@@ -310,6 +328,7 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
      */
     public function setFieldId(?string $fieldId) : self
     {
+        $this->initialized['fieldId'] = true;
         $this->fieldId = $fieldId;
         return $this;
     }
@@ -331,6 +350,7 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
      */
     public function setFieldOverwriteType(?string $fieldOverwriteType) : self
     {
+        $this->initialized['fieldOverwriteType'] = true;
         $this->fieldOverwriteType = $fieldOverwriteType;
         return $this;
     }
@@ -352,6 +372,7 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
      */
     public function setFieldType(?string $fieldType) : self
     {
+        $this->initialized['fieldType'] = true;
         $this->fieldType = $fieldType;
         return $this;
     }

@@ -74,22 +74,22 @@ class ServiceSpecRollbackConfigNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getParallelism()) {
+        if ($object->isInitialized('parallelism') && null !== $object->getParallelism()) {
             $data['Parallelism'] = $object->getParallelism();
         }
-        if (null !== $object->getDelay()) {
+        if ($object->isInitialized('delay') && null !== $object->getDelay()) {
             $data['Delay'] = $object->getDelay();
         }
-        if (null !== $object->getFailureAction()) {
+        if ($object->isInitialized('failureAction') && null !== $object->getFailureAction()) {
             $data['FailureAction'] = $object->getFailureAction();
         }
-        if (null !== $object->getMonitor()) {
+        if ($object->isInitialized('monitor') && null !== $object->getMonitor()) {
             $data['Monitor'] = $object->getMonitor();
         }
-        if (null !== $object->getMaxFailureRatio()) {
+        if ($object->isInitialized('maxFailureRatio') && null !== $object->getMaxFailureRatio()) {
             $data['MaxFailureRatio'] = $object->getMaxFailureRatio();
         }
-        if (null !== $object->getOrder()) {
+        if ($object->isInitialized('order') && null !== $object->getOrder()) {
             $data['Order'] = $object->getOrder();
         }
         if (!($context['skip_validation'] ?? false)) {

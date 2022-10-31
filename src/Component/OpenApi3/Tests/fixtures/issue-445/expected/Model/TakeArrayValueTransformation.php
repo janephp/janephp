@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class TakeArrayValueTransformation extends BusinessRuleTransformation
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Index of the item.
      *
      * @var string|null
@@ -28,6 +36,7 @@ class TakeArrayValueTransformation extends BusinessRuleTransformation
      */
     public function setIndex(?string $index) : self
     {
+        $this->initialized['index'] = true;
         $this->index = $index;
         return $this;
     }

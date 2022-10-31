@@ -5,6 +5,14 @@ namespace ApiPlatform\Demo\Model;
 class TopBook extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -58,6 +66,7 @@ class TopBook extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -79,6 +88,7 @@ class TopBook extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -100,6 +110,7 @@ class TopBook extends \ArrayObject
      */
     public function setAuthor(string $author) : self
     {
+        $this->initialized['author'] = true;
         $this->author = $author;
         return $this;
     }
@@ -121,6 +132,7 @@ class TopBook extends \ArrayObject
      */
     public function setPart(string $part) : self
     {
+        $this->initialized['part'] = true;
         $this->part = $part;
         return $this;
     }
@@ -142,6 +154,7 @@ class TopBook extends \ArrayObject
      */
     public function setPlace(string $place) : self
     {
+        $this->initialized['place'] = true;
         $this->place = $place;
         return $this;
     }
@@ -163,6 +176,7 @@ class TopBook extends \ArrayObject
      */
     public function setBorrowCount(int $borrowCount) : self
     {
+        $this->initialized['borrowCount'] = true;
         $this->borrowCount = $borrowCount;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class Job extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The id of the job.
      *
      * @var int
@@ -106,6 +114,7 @@ class Job extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -127,6 +136,7 @@ class Job extends \ArrayObject
      */
     public function setRunId(int $runId) : self
     {
+        $this->initialized['runId'] = true;
         $this->runId = $runId;
         return $this;
     }
@@ -148,6 +158,7 @@ class Job extends \ArrayObject
      */
     public function setRunUrl(string $runUrl) : self
     {
+        $this->initialized['runUrl'] = true;
         $this->runUrl = $runUrl;
         return $this;
     }
@@ -169,6 +180,7 @@ class Job extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -190,6 +202,7 @@ class Job extends \ArrayObject
      */
     public function setHeadSha(string $headSha) : self
     {
+        $this->initialized['headSha'] = true;
         $this->headSha = $headSha;
         return $this;
     }
@@ -211,6 +224,7 @@ class Job extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -232,6 +246,7 @@ class Job extends \ArrayObject
      */
     public function setHtmlUrl(?string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -253,6 +268,7 @@ class Job extends \ArrayObject
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -274,6 +290,7 @@ class Job extends \ArrayObject
      */
     public function setConclusion(?string $conclusion) : self
     {
+        $this->initialized['conclusion'] = true;
         $this->conclusion = $conclusion;
         return $this;
     }
@@ -295,6 +312,7 @@ class Job extends \ArrayObject
      */
     public function setStartedAt(\DateTime $startedAt) : self
     {
+        $this->initialized['startedAt'] = true;
         $this->startedAt = $startedAt;
         return $this;
     }
@@ -316,6 +334,7 @@ class Job extends \ArrayObject
      */
     public function setCompletedAt(?\DateTime $completedAt) : self
     {
+        $this->initialized['completedAt'] = true;
         $this->completedAt = $completedAt;
         return $this;
     }
@@ -337,6 +356,7 @@ class Job extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -358,6 +378,7 @@ class Job extends \ArrayObject
      */
     public function setSteps(array $steps) : self
     {
+        $this->initialized['steps'] = true;
         $this->steps = $steps;
         return $this;
     }
@@ -379,6 +400,7 @@ class Job extends \ArrayObject
      */
     public function setCheckRunUrl(string $checkRunUrl) : self
     {
+        $this->initialized['checkRunUrl'] = true;
         $this->checkRunUrl = $checkRunUrl;
         return $this;
     }

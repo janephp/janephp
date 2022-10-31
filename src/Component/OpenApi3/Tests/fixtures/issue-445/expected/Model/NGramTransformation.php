@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class NGramTransformation extends BusinessRuleTransformation
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * Maximum size of n-grams to produce.
     Settings this to 3 will produce unigrams, bigrams, trigrams.
     *
@@ -43,6 +51,7 @@ class NGramTransformation extends BusinessRuleTransformation
     */
     public function setSize(int $size) : self
     {
+        $this->initialized['size'] = true;
         $this->size = $size;
         return $this;
     }
@@ -64,6 +73,7 @@ class NGramTransformation extends BusinessRuleTransformation
      */
     public function setMinWordLength(int $minWordLength) : self
     {
+        $this->initialized['minWordLength'] = true;
         $this->minWordLength = $minWordLength;
         return $this;
     }
@@ -85,6 +95,7 @@ class NGramTransformation extends BusinessRuleTransformation
      */
     public function setMaxWordLength(?int $maxWordLength) : self
     {
+        $this->initialized['maxWordLength'] = true;
         $this->maxWordLength = $maxWordLength;
         return $this;
     }

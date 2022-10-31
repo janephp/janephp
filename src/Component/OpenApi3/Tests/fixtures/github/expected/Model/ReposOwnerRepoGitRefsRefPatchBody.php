@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoGitRefsRefPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The SHA1 value to set this reference to
      *
      * @var string
@@ -34,6 +42,7 @@ class ReposOwnerRepoGitRefsRefPatchBody extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReposOwnerRepoGitRefsRefPatchBody extends \ArrayObject
      */
     public function setForce(bool $force) : self
     {
+        $this->initialized['force'] = true;
         $this->force = $force;
         return $this;
     }

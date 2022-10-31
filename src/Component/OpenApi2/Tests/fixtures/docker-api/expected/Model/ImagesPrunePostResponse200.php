@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ImagesPrunePostResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Images that were deleted
      *
      * @var ImageDeleteResponseItem[]
@@ -34,6 +42,7 @@ class ImagesPrunePostResponse200
      */
     public function setImagesDeleted(array $imagesDeleted) : self
     {
+        $this->initialized['imagesDeleted'] = true;
         $this->imagesDeleted = $imagesDeleted;
         return $this;
     }
@@ -55,6 +64,7 @@ class ImagesPrunePostResponse200
      */
     public function setSpaceReclaimed(int $spaceReclaimed) : self
     {
+        $this->initialized['spaceReclaimed'] = true;
         $this->spaceReclaimed = $spaceReclaimed;
         return $this;
     }

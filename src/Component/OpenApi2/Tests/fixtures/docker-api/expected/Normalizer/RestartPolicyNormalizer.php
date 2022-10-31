@@ -59,10 +59,10 @@ class RestartPolicyNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['Name'] = $object->getName();
         }
-        if (null !== $object->getMaximumRetryCount()) {
+        if ($object->isInitialized('maximumRetryCount') && null !== $object->getMaximumRetryCount()) {
             $data['MaximumRetryCount'] = $object->getMaximumRetryCount();
         }
         if (!($context['skip_validation'] ?? false)) {

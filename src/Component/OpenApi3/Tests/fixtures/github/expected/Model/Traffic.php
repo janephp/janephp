@@ -5,6 +5,14 @@ namespace Github\Model;
 class Traffic extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var \DateTime
@@ -40,6 +48,7 @@ class Traffic extends \ArrayObject
      */
     public function setTimestamp(\DateTime $timestamp) : self
     {
+        $this->initialized['timestamp'] = true;
         $this->timestamp = $timestamp;
         return $this;
     }
@@ -61,6 +70,7 @@ class Traffic extends \ArrayObject
      */
     public function setUniques(int $uniques) : self
     {
+        $this->initialized['uniques'] = true;
         $this->uniques = $uniques;
         return $this;
     }
@@ -82,6 +92,7 @@ class Traffic extends \ArrayObject
      */
     public function setCount(int $count) : self
     {
+        $this->initialized['count'] = true;
         $this->count = $count;
         return $this;
     }

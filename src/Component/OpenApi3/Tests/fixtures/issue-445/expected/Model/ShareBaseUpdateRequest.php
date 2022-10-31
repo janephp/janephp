@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ShareBaseUpdateRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Name of share.
      *
      * @var string
@@ -62,6 +70,7 @@ class ShareBaseUpdateRequest
      */
     public function setName(string $name)
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
     }
     /**
@@ -80,6 +89,7 @@ class ShareBaseUpdateRequest
      */
     public function setExpirationDate(?\DateTime $expirationDate)
     {
+        $this->initialized['expirationDate'] = true;
         $this->expirationDate = $expirationDate;
     }
     /**
@@ -98,6 +108,7 @@ class ShareBaseUpdateRequest
      */
     public function setDescription(?string $description)
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
     }
     /**
@@ -116,6 +127,7 @@ class ShareBaseUpdateRequest
      */
     public function setContents(array $contents)
     {
+        $this->initialized['contents'] = true;
         $this->contents = $contents;
     }
     /**
@@ -134,6 +146,7 @@ class ShareBaseUpdateRequest
      */
     public function setLayerSchemaIds(?array $layerSchemaIds)
     {
+        $this->initialized['layerSchemaIds'] = true;
         $this->layerSchemaIds = $layerSchemaIds;
     }
     /**
@@ -152,6 +165,7 @@ class ShareBaseUpdateRequest
      */
     public function setOutputAccess($outputAccess)
     {
+        $this->initialized['outputAccess'] = true;
         $this->outputAccess = $outputAccess;
     }
     /**
@@ -170,6 +184,7 @@ class ShareBaseUpdateRequest
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

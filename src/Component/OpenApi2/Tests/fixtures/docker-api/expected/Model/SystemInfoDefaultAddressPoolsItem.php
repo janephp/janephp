@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class SystemInfoDefaultAddressPoolsItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The network address in CIDR format
      *
      * @var string
@@ -34,6 +42,7 @@ class SystemInfoDefaultAddressPoolsItem
      */
     public function setBase(string $base) : self
     {
+        $this->initialized['base'] = true;
         $this->base = $base;
         return $this;
     }
@@ -55,6 +64,7 @@ class SystemInfoDefaultAddressPoolsItem
      */
     public function setSize(int $size) : self
     {
+        $this->initialized['size'] = true;
         $this->size = $size;
         return $this;
     }

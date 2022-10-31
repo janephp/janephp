@@ -62,7 +62,7 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyNormalizer implements Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getExpectedHeadSha()) {
+        if ($object->isInitialized('expectedHeadSha') && null !== $object->getExpectedHeadSha()) {
             $data['expected_head_sha'] = $object->getExpectedHeadSha();
         }
         foreach ($object as $key => $value) {

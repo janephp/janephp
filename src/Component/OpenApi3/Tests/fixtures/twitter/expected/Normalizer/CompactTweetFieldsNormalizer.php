@@ -94,20 +94,20 @@ class CompactTweetFieldsNormalizer implements DenormalizerInterface, NormalizerI
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['text'] = $object->getText();
         $data['author_id'] = $object->getAuthorId();
-        if (null !== $object->getInReplyToUserId()) {
+        if ($object->isInitialized('inReplyToUserId') && null !== $object->getInReplyToUserId()) {
             $data['in_reply_to_user_id'] = $object->getInReplyToUserId();
         }
-        if (null !== $object->getReferencedTweets()) {
+        if ($object->isInitialized('referencedTweets') && null !== $object->getReferencedTweets()) {
             $values = array();
             foreach ($object->getReferencedTweets() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['referenced_tweets'] = $values;
         }
-        if (null !== $object->getAttachments()) {
+        if ($object->isInitialized('attachments') && null !== $object->getAttachments()) {
             $data['attachments'] = $this->normalizer->normalize($object->getAttachments(), 'json', $context);
         }
-        if (null !== $object->getWithheld()) {
+        if ($object->isInitialized('withheld') && null !== $object->getWithheld()) {
             $data['withheld'] = $this->normalizer->normalize($object->getWithheld(), 'json', $context);
         }
         foreach ($object as $key => $value_1) {

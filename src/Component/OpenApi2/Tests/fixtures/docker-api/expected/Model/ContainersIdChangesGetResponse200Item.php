@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ContainersIdChangesGetResponse200Item
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Path to file that has changed
      *
      * @var string
@@ -34,6 +42,7 @@ class ContainersIdChangesGetResponse200Item
      */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -55,6 +64,7 @@ class ContainersIdChangesGetResponse200Item
      */
     public function setKind(int $kind) : self
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
         return $this;
     }

@@ -97,22 +97,22 @@ class UrlEntityNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data['start'] = $object->getStart();
         $data['end'] = $object->getEnd();
         $data['url'] = $object->getUrl();
-        if (null !== $object->getExpandedUrl()) {
+        if ($object->isInitialized('expandedUrl') && null !== $object->getExpandedUrl()) {
             $data['expanded_url'] = $object->getExpandedUrl();
         }
-        if (null !== $object->getDisplayUrl()) {
+        if ($object->isInitialized('displayUrl') && null !== $object->getDisplayUrl()) {
             $data['display_url'] = $object->getDisplayUrl();
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getImages()) {
+        if ($object->isInitialized('images') && null !== $object->getImages()) {
             $values = array();
             foreach ($object->getImages() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

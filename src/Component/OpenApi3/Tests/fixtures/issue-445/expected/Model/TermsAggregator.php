@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class TermsAggregator extends AggregatorBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The field's ID to execute the aggregation on. Only not analyzed fields are supported.
      *
      * @var string
@@ -58,6 +66,7 @@ class TermsAggregator extends AggregatorBase
      */
     public function setField(string $field) : self
     {
+        $this->initialized['field'] = true;
         $this->field = $field;
         return $this;
     }
@@ -79,6 +88,7 @@ class TermsAggregator extends AggregatorBase
      */
     public function setSize(?int $size) : self
     {
+        $this->initialized['size'] = true;
         $this->size = $size;
         return $this;
     }
@@ -100,6 +110,7 @@ class TermsAggregator extends AggregatorBase
      */
     public function setIncludes(?array $includes) : self
     {
+        $this->initialized['includes'] = true;
         $this->includes = $includes;
         return $this;
     }
@@ -121,6 +132,7 @@ class TermsAggregator extends AggregatorBase
      */
     public function setExcludes(?array $excludes) : self
     {
+        $this->initialized['excludes'] = true;
         $this->excludes = $excludes;
         return $this;
     }
@@ -142,6 +154,7 @@ class TermsAggregator extends AggregatorBase
      */
     public function setSearchString(?string $searchString) : self
     {
+        $this->initialized['searchString'] = true;
         $this->searchString = $searchString;
         return $this;
     }
@@ -163,6 +176,7 @@ class TermsAggregator extends AggregatorBase
      */
     public function setSearchFields(?array $searchFields) : self
     {
+        $this->initialized['searchFields'] = true;
         $this->searchFields = $searchFields;
         return $this;
     }

@@ -74,16 +74,16 @@ class InstallationTokenPermissionsNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getIssues()) {
+        if ($object->isInitialized('issues') && null !== $object->getIssues()) {
             $data['issues'] = $object->getIssues();
         }
-        if (null !== $object->getContents()) {
+        if ($object->isInitialized('contents') && null !== $object->getContents()) {
             $data['contents'] = $object->getContents();
         }
-        if (null !== $object->getMetadata()) {
+        if ($object->isInitialized('metadata') && null !== $object->getMetadata()) {
             $data['metadata'] = $object->getMetadata();
         }
-        if (null !== $object->getSingleFile()) {
+        if ($object->isInitialized('singleFile') && null !== $object->getSingleFile()) {
             $data['single_file'] = $object->getSingleFile();
         }
         foreach ($object as $key => $value) {

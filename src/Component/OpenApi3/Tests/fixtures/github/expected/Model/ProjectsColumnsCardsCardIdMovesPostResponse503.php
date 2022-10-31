@@ -5,6 +5,14 @@ namespace Github\Model;
 class ProjectsColumnsCardsCardIdMovesPostResponse503 extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503 extends \ArrayObject
      */
     public function setCode(string $code) : self
     {
+        $this->initialized['code'] = true;
         $this->code = $code;
         return $this;
     }
@@ -67,6 +76,7 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503 extends \ArrayObject
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -88,6 +98,7 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503 extends \ArrayObject
      */
     public function setDocumentationUrl(string $documentationUrl) : self
     {
+        $this->initialized['documentationUrl'] = true;
         $this->documentationUrl = $documentationUrl;
         return $this;
     }
@@ -109,6 +120,7 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503 extends \ArrayObject
      */
     public function setErrors(array $errors) : self
     {
+        $this->initialized['errors'] = true;
         $this->errors = $errors;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class TeamDiscussion extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var TeamDiscussionAuthor|null
@@ -130,6 +138,7 @@ class TeamDiscussion extends \ArrayObject
      */
     public function setAuthor(?TeamDiscussionAuthor $author) : self
     {
+        $this->initialized['author'] = true;
         $this->author = $author;
         return $this;
     }
@@ -151,6 +160,7 @@ class TeamDiscussion extends \ArrayObject
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }
@@ -172,6 +182,7 @@ class TeamDiscussion extends \ArrayObject
      */
     public function setBodyHtml(string $bodyHtml) : self
     {
+        $this->initialized['bodyHtml'] = true;
         $this->bodyHtml = $bodyHtml;
         return $this;
     }
@@ -193,6 +204,7 @@ class TeamDiscussion extends \ArrayObject
      */
     public function setBodyVersion(string $bodyVersion) : self
     {
+        $this->initialized['bodyVersion'] = true;
         $this->bodyVersion = $bodyVersion;
         return $this;
     }
@@ -214,6 +226,7 @@ class TeamDiscussion extends \ArrayObject
      */
     public function setCommentsCount(int $commentsCount) : self
     {
+        $this->initialized['commentsCount'] = true;
         $this->commentsCount = $commentsCount;
         return $this;
     }
@@ -235,6 +248,7 @@ class TeamDiscussion extends \ArrayObject
      */
     public function setCommentsUrl(string $commentsUrl) : self
     {
+        $this->initialized['commentsUrl'] = true;
         $this->commentsUrl = $commentsUrl;
         return $this;
     }
@@ -256,6 +270,7 @@ class TeamDiscussion extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -277,6 +292,7 @@ class TeamDiscussion extends \ArrayObject
      */
     public function setLastEditedAt(?\DateTime $lastEditedAt) : self
     {
+        $this->initialized['lastEditedAt'] = true;
         $this->lastEditedAt = $lastEditedAt;
         return $this;
     }
@@ -298,6 +314,7 @@ class TeamDiscussion extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -319,6 +336,7 @@ class TeamDiscussion extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -340,6 +358,7 @@ class TeamDiscussion extends \ArrayObject
      */
     public function setNumber(int $number) : self
     {
+        $this->initialized['number'] = true;
         $this->number = $number;
         return $this;
     }
@@ -361,6 +380,7 @@ class TeamDiscussion extends \ArrayObject
      */
     public function setPinned(bool $pinned) : self
     {
+        $this->initialized['pinned'] = true;
         $this->pinned = $pinned;
         return $this;
     }
@@ -382,6 +402,7 @@ class TeamDiscussion extends \ArrayObject
      */
     public function setPrivate(bool $private) : self
     {
+        $this->initialized['private'] = true;
         $this->private = $private;
         return $this;
     }
@@ -403,6 +424,7 @@ class TeamDiscussion extends \ArrayObject
      */
     public function setTeamUrl(string $teamUrl) : self
     {
+        $this->initialized['teamUrl'] = true;
         $this->teamUrl = $teamUrl;
         return $this;
     }
@@ -424,6 +446,7 @@ class TeamDiscussion extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -445,6 +468,7 @@ class TeamDiscussion extends \ArrayObject
      */
     public function setUpdatedAt(\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -466,6 +490,7 @@ class TeamDiscussion extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -487,6 +512,7 @@ class TeamDiscussion extends \ArrayObject
      */
     public function setReactions(ReactionRollup $reactions) : self
     {
+        $this->initialized['reactions'] = true;
         $this->reactions = $reactions;
         return $this;
     }

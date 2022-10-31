@@ -77,10 +77,10 @@ class BatchResponseRowNormalizer implements DenormalizerInterface, NormalizerInt
         $data['succeeded'] = $object->getSucceeded();
         $data['status'] = $object->getStatus();
         $data['version'] = $object->getVersion();
-        if (null !== $object->getError()) {
+        if ($object->isInitialized('error') && null !== $object->getError()) {
             $data['error'] = $object->getError();
         }
-        if (null !== $object->getRequestId()) {
+        if ($object->isInitialized('requestId') && null !== $object->getRequestId()) {
             $data['requestId'] = $object->getRequestId();
         }
         return $data;

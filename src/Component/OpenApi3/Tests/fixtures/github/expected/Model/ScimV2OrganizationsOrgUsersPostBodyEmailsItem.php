@@ -5,6 +5,14 @@ namespace Github\Model;
 class ScimV2OrganizationsOrgUsersPostBodyEmailsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class ScimV2OrganizationsOrgUsersPostBodyEmailsItem extends \ArrayObject
      */
     public function setValue(string $value) : self
     {
+        $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
     }
@@ -61,6 +70,7 @@ class ScimV2OrganizationsOrgUsersPostBodyEmailsItem extends \ArrayObject
      */
     public function setPrimary(bool $primary) : self
     {
+        $this->initialized['primary'] = true;
         $this->primary = $primary;
         return $this;
     }
@@ -82,6 +92,7 @@ class ScimV2OrganizationsOrgUsersPostBodyEmailsItem extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }

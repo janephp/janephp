@@ -5,6 +5,14 @@ namespace Github\Model;
 class CodeScanningAlert extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -94,6 +102,7 @@ class CodeScanningAlert extends \ArrayObject
      */
     public function setNumber(int $number) : self
     {
+        $this->initialized['number'] = true;
         $this->number = $number;
         return $this;
     }
@@ -115,6 +124,7 @@ class CodeScanningAlert extends \ArrayObject
      */
     public function setRuleId(string $ruleId) : self
     {
+        $this->initialized['ruleId'] = true;
         $this->ruleId = $ruleId;
         return $this;
     }
@@ -136,6 +146,7 @@ class CodeScanningAlert extends \ArrayObject
      */
     public function setRuleSeverity(string $ruleSeverity) : self
     {
+        $this->initialized['ruleSeverity'] = true;
         $this->ruleSeverity = $ruleSeverity;
         return $this;
     }
@@ -157,6 +168,7 @@ class CodeScanningAlert extends \ArrayObject
      */
     public function setRuleDescription(string $ruleDescription) : self
     {
+        $this->initialized['ruleDescription'] = true;
         $this->ruleDescription = $ruleDescription;
         return $this;
     }
@@ -178,6 +190,7 @@ class CodeScanningAlert extends \ArrayObject
      */
     public function setTool(?string $tool) : self
     {
+        $this->initialized['tool'] = true;
         $this->tool = $tool;
         return $this;
     }
@@ -199,6 +212,7 @@ class CodeScanningAlert extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -220,6 +234,7 @@ class CodeScanningAlert extends \ArrayObject
      */
     public function setOpen(bool $open) : self
     {
+        $this->initialized['open'] = true;
         $this->open = $open;
         return $this;
     }
@@ -241,6 +256,7 @@ class CodeScanningAlert extends \ArrayObject
      */
     public function setClosedBy(?CodeScanningAlertClosedBy $closedBy) : self
     {
+        $this->initialized['closedBy'] = true;
         $this->closedBy = $closedBy;
         return $this;
     }
@@ -262,6 +278,7 @@ class CodeScanningAlert extends \ArrayObject
      */
     public function setClosedAt(?\DateTime $closedAt) : self
     {
+        $this->initialized['closedAt'] = true;
         $this->closedAt = $closedAt;
         return $this;
     }
@@ -283,6 +300,7 @@ class CodeScanningAlert extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -304,6 +322,7 @@ class CodeScanningAlert extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -325,6 +344,7 @@ class CodeScanningAlert extends \ArrayObject
      */
     public function setClosedReason(?string $closedReason) : self
     {
+        $this->initialized['closedReason'] = true;
         $this->closedReason = $closedReason;
         return $this;
     }

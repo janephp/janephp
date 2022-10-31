@@ -5,6 +5,14 @@ namespace Github\Model;
 class ScopedInstallation extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var mixed[]
@@ -52,6 +60,7 @@ class ScopedInstallation extends \ArrayObject
      */
     public function setPermissions(iterable $permissions) : self
     {
+        $this->initialized['permissions'] = true;
         $this->permissions = $permissions;
         return $this;
     }
@@ -73,6 +82,7 @@ class ScopedInstallation extends \ArrayObject
      */
     public function setRepositorySelection(string $repositorySelection) : self
     {
+        $this->initialized['repositorySelection'] = true;
         $this->repositorySelection = $repositorySelection;
         return $this;
     }
@@ -94,6 +104,7 @@ class ScopedInstallation extends \ArrayObject
      */
     public function setSingleFileName(?string $singleFileName) : self
     {
+        $this->initialized['singleFileName'] = true;
         $this->singleFileName = $singleFileName;
         return $this;
     }
@@ -115,6 +126,7 @@ class ScopedInstallation extends \ArrayObject
      */
     public function setRepositoriesUrl(string $repositoriesUrl) : self
     {
+        $this->initialized['repositoriesUrl'] = true;
         $this->repositoriesUrl = $repositoriesUrl;
         return $this;
     }
@@ -136,6 +148,7 @@ class ScopedInstallation extends \ArrayObject
      */
     public function setAccount(?SimpleUser $account) : self
     {
+        $this->initialized['account'] = true;
         $this->account = $account;
         return $this;
     }

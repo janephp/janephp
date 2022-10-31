@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class IdentityProviderEditable
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Mapping of identity provider claims to user attributes
      *
      * @var IdpClaimToUserAttributeMapping[]|null
@@ -46,6 +54,7 @@ class IdentityProviderEditable
      */
     public function setClaimMapping(?array $claimMapping) : self
     {
+        $this->initialized['claimMapping'] = true;
         $this->claimMapping = $claimMapping;
         return $this;
     }
@@ -67,6 +76,7 @@ class IdentityProviderEditable
      */
     public function setGroupClaimType(?string $groupClaimType) : self
     {
+        $this->initialized['groupClaimType'] = true;
         $this->groupClaimType = $groupClaimType;
         return $this;
     }
@@ -88,6 +98,7 @@ class IdentityProviderEditable
      */
     public function setGroupMapping(?array $groupMapping) : self
     {
+        $this->initialized['groupMapping'] = true;
         $this->groupMapping = $groupMapping;
         return $this;
     }
@@ -109,6 +120,7 @@ class IdentityProviderEditable
      */
     public function setFallbackUserRoleId(?string $fallbackUserRoleId) : self
     {
+        $this->initialized['fallbackUserRoleId'] = true;
         $this->fallbackUserRoleId = $fallbackUserRoleId;
         return $this;
     }

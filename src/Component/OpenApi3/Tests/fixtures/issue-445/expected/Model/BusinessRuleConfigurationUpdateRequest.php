@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessRuleConfigurationUpdateRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Disables the rule engine completely.
      *
      * @var bool
@@ -40,6 +48,7 @@ class BusinessRuleConfigurationUpdateRequest
      */
     public function setDisableRuleEngine(bool $disableRuleEngine) : self
     {
+        $this->initialized['disableRuleEngine'] = true;
         $this->disableRuleEngine = $disableRuleEngine;
         return $this;
     }
@@ -61,6 +70,7 @@ class BusinessRuleConfigurationUpdateRequest
      */
     public function setRules(?array $rules) : self
     {
+        $this->initialized['rules'] = true;
         $this->rules = $rules;
         return $this;
     }
@@ -82,6 +92,7 @@ class BusinessRuleConfigurationUpdateRequest
      */
     public function setCaches(?array $caches) : self
     {
+        $this->initialized['caches'] = true;
         $this->caches = $caches;
         return $this;
     }

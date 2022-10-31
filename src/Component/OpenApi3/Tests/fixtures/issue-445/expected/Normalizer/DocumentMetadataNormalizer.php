@@ -230,93 +230,93 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNames()) {
+        if ($object->isInitialized('names') && null !== $object->getNames()) {
             $data['names'] = $object->getNames();
         }
-        if (null !== $object->getDescriptions()) {
+        if ($object->isInitialized('descriptions') && null !== $object->getDescriptions()) {
             $data['descriptions'] = $object->getDescriptions();
         }
-        if (null !== $object->getFileExtension()) {
+        if ($object->isInitialized('fileExtension') && null !== $object->getFileExtension()) {
             $data['fileExtension'] = $object->getFileExtension();
         }
-        if (null !== $object->getFileName()) {
+        if ($object->isInitialized('fileName') && null !== $object->getFileName()) {
             $data['fileName'] = $object->getFileName();
         }
-        if (null !== $object->getFilePath()) {
+        if ($object->isInitialized('filePath') && null !== $object->getFilePath()) {
             $data['filePath'] = $object->getFilePath();
         }
-        if (null !== $object->getFileSizeInBytes()) {
+        if ($object->isInitialized('fileSizeInBytes') && null !== $object->getFileSizeInBytes()) {
             $data['fileSizeInBytes'] = $object->getFileSizeInBytes();
         }
-        if (null !== $object->getSha1Hash()) {
+        if ($object->isInitialized('sha1Hash') && null !== $object->getSha1Hash()) {
             $data['sha1Hash'] = $object->getSha1Hash();
         }
-        if (null !== $object->getXmpMetadata()) {
+        if ($object->isInitialized('xmpMetadata') && null !== $object->getXmpMetadata()) {
             $data['xmpMetadata'] = $object->getXmpMetadata();
         }
-        if (null !== $object->getExifMetadata()) {
+        if ($object->isInitialized('exifMetadata') && null !== $object->getExifMetadata()) {
             $data['exifMetadata'] = $object->getExifMetadata();
         }
-        if (null !== $object->getLanguage()) {
+        if ($object->isInitialized('language') && null !== $object->getLanguage()) {
             $data['language'] = $object->getLanguage();
         }
-        if (null !== $object->getApplicationName()) {
+        if ($object->isInitialized('applicationName') && null !== $object->getApplicationName()) {
             $data['applicationName'] = $object->getApplicationName();
         }
-        if (null !== $object->getApplicationVersion()) {
+        if ($object->isInitialized('applicationVersion') && null !== $object->getApplicationVersion()) {
             $data['applicationVersion'] = $object->getApplicationVersion();
         }
-        if (null !== $object->getAuthor()) {
+        if ($object->isInitialized('author') && null !== $object->getAuthor()) {
             $data['author'] = $object->getAuthor();
         }
-        if (null !== $object->getCreator()) {
+        if ($object->isInitialized('creator') && null !== $object->getCreator()) {
             $data['creator'] = $object->getCreator();
         }
-        if (null !== $object->getPublisher()) {
+        if ($object->isInitialized('publisher') && null !== $object->getPublisher()) {
             $data['publisher'] = $object->getPublisher();
         }
-        if (null !== $object->getCompany()) {
+        if ($object->isInitialized('company') && null !== $object->getCompany()) {
             $data['company'] = $object->getCompany();
         }
-        if (null !== $object->getDocumentTitle()) {
+        if ($object->isInitialized('documentTitle') && null !== $object->getDocumentTitle()) {
             $data['documentTitle'] = $object->getDocumentTitle();
         }
-        if (null !== $object->getCharacterCount()) {
+        if ($object->isInitialized('characterCount') && null !== $object->getCharacterCount()) {
             $data['characterCount'] = $object->getCharacterCount();
         }
-        if (null !== $object->getCharacterCountWithSpaces()) {
+        if ($object->isInitialized('characterCountWithSpaces') && null !== $object->getCharacterCountWithSpaces()) {
             $data['characterCountWithSpaces'] = $object->getCharacterCountWithSpaces();
         }
-        if (null !== $object->getLineCount()) {
+        if ($object->isInitialized('lineCount') && null !== $object->getLineCount()) {
             $data['lineCount'] = $object->getLineCount();
         }
-        if (null !== $object->getPageCount()) {
+        if ($object->isInitialized('pageCount') && null !== $object->getPageCount()) {
             $data['pageCount'] = $object->getPageCount();
         }
-        if (null !== $object->getSlideCount()) {
+        if ($object->isInitialized('slideCount') && null !== $object->getSlideCount()) {
             $data['slideCount'] = $object->getSlideCount();
         }
-        if (null !== $object->getParagraphCount()) {
+        if ($object->isInitialized('paragraphCount') && null !== $object->getParagraphCount()) {
             $data['paragraphCount'] = $object->getParagraphCount();
         }
-        if (null !== $object->getRevisionNumber()) {
+        if ($object->isInitialized('revisionNumber') && null !== $object->getRevisionNumber()) {
             $data['revisionNumber'] = $object->getRevisionNumber();
         }
-        if (null !== $object->getTitles()) {
+        if ($object->isInitialized('titles') && null !== $object->getTitles()) {
             $values = array();
             foreach ($object->getTitles() as $value) {
                 $values[] = $value;
             }
             $data['titles'] = $values;
         }
-        if (null !== $object->getImageTitles()) {
+        if ($object->isInitialized('imageTitles') && null !== $object->getImageTitles()) {
             $values_1 = array();
             foreach ($object->getImageTitles() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['imageTitles'] = $values_1;
         }
-        if (null !== $object->getEpsInfo()) {
+        if ($object->isInitialized('epsInfo') && null !== $object->getEpsInfo()) {
             $data['epsInfo'] = $object->getEpsInfo();
         }
         foreach ($object as $key => $value_2) {

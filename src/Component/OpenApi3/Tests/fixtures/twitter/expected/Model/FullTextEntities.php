@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class FullTextEntities extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var UrlEntity[]
@@ -52,6 +60,7 @@ class FullTextEntities extends \ArrayObject
      */
     public function setUrls(array $urls) : self
     {
+        $this->initialized['urls'] = true;
         $this->urls = $urls;
         return $this;
     }
@@ -73,6 +82,7 @@ class FullTextEntities extends \ArrayObject
      */
     public function setHashtags(array $hashtags) : self
     {
+        $this->initialized['hashtags'] = true;
         $this->hashtags = $hashtags;
         return $this;
     }
@@ -94,6 +104,7 @@ class FullTextEntities extends \ArrayObject
      */
     public function setMentions(array $mentions) : self
     {
+        $this->initialized['mentions'] = true;
         $this->mentions = $mentions;
         return $this;
     }
@@ -115,6 +126,7 @@ class FullTextEntities extends \ArrayObject
      */
     public function setCashtags(array $cashtags) : self
     {
+        $this->initialized['cashtags'] = true;
         $this->cashtags = $cashtags;
         return $this;
     }
@@ -136,6 +148,7 @@ class FullTextEntities extends \ArrayObject
      */
     public function setAnnotations(array $annotations) : self
     {
+        $this->initialized['annotations'] = true;
         $this->annotations = $annotations;
         return $this;
     }

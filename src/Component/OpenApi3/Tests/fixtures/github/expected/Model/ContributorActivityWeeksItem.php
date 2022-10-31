@@ -5,6 +5,14 @@ namespace Github\Model;
 class ContributorActivityWeeksItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class ContributorActivityWeeksItem extends \ArrayObject
      */
     public function setW(string $w) : self
     {
+        $this->initialized['w'] = true;
         $this->w = $w;
         return $this;
     }
@@ -67,6 +76,7 @@ class ContributorActivityWeeksItem extends \ArrayObject
      */
     public function setA(int $a) : self
     {
+        $this->initialized['a'] = true;
         $this->a = $a;
         return $this;
     }
@@ -88,6 +98,7 @@ class ContributorActivityWeeksItem extends \ArrayObject
      */
     public function setD(int $d) : self
     {
+        $this->initialized['d'] = true;
         $this->d = $d;
         return $this;
     }
@@ -109,6 +120,7 @@ class ContributorActivityWeeksItem extends \ArrayObject
      */
     public function setC(int $c) : self
     {
+        $this->initialized['c'] = true;
         $this->c = $c;
         return $this;
     }

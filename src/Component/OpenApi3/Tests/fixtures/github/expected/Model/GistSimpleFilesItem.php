@@ -5,6 +5,14 @@ namespace Github\Model;
 class GistSimpleFilesItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -64,6 +72,7 @@ class GistSimpleFilesItem extends \ArrayObject
      */
     public function setFilename(string $filename) : self
     {
+        $this->initialized['filename'] = true;
         $this->filename = $filename;
         return $this;
     }
@@ -85,6 +94,7 @@ class GistSimpleFilesItem extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -106,6 +116,7 @@ class GistSimpleFilesItem extends \ArrayObject
      */
     public function setLanguage(string $language) : self
     {
+        $this->initialized['language'] = true;
         $this->language = $language;
         return $this;
     }
@@ -127,6 +138,7 @@ class GistSimpleFilesItem extends \ArrayObject
      */
     public function setRawUrl(string $rawUrl) : self
     {
+        $this->initialized['rawUrl'] = true;
         $this->rawUrl = $rawUrl;
         return $this;
     }
@@ -148,6 +160,7 @@ class GistSimpleFilesItem extends \ArrayObject
      */
     public function setSize(int $size) : self
     {
+        $this->initialized['size'] = true;
         $this->size = $size;
         return $this;
     }
@@ -169,6 +182,7 @@ class GistSimpleFilesItem extends \ArrayObject
      */
     public function setTruncated(bool $truncated) : self
     {
+        $this->initialized['truncated'] = true;
         $this->truncated = $truncated;
         return $this;
     }
@@ -190,6 +204,7 @@ class GistSimpleFilesItem extends \ArrayObject
      */
     public function setContent(string $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }

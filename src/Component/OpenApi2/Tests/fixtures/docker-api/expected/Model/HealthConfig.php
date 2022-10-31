@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class HealthConfig
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * The test to perform. Possible values are:
     
     - `[]` inherit healthcheck from image or parent image
@@ -79,6 +87,7 @@ class HealthConfig
     */
     public function setTest(array $test) : self
     {
+        $this->initialized['test'] = true;
         $this->test = $test;
         return $this;
     }
@@ -104,6 +113,7 @@ class HealthConfig
     */
     public function setInterval(int $interval) : self
     {
+        $this->initialized['interval'] = true;
         $this->interval = $interval;
         return $this;
     }
@@ -129,6 +139,7 @@ class HealthConfig
     */
     public function setTimeout(int $timeout) : self
     {
+        $this->initialized['timeout'] = true;
         $this->timeout = $timeout;
         return $this;
     }
@@ -154,6 +165,7 @@ class HealthConfig
     */
     public function setRetries(int $retries) : self
     {
+        $this->initialized['retries'] = true;
         $this->retries = $retries;
         return $this;
     }
@@ -181,6 +193,7 @@ class HealthConfig
     */
     public function setStartPeriod(int $startPeriod) : self
     {
+        $this->initialized['startPeriod'] = true;
         $this->startPeriod = $startPeriod;
         return $this;
     }

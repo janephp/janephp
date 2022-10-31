@@ -81,10 +81,10 @@ class OrganizationFullPlanNormalizer implements DenormalizerInterface, Normalize
         $data['name'] = $object->getName();
         $data['space'] = $object->getSpace();
         $data['private_repos'] = $object->getPrivateRepos();
-        if (null !== $object->getFilledSeats()) {
+        if ($object->isInitialized('filledSeats') && null !== $object->getFilledSeats()) {
             $data['filled_seats'] = $object->getFilledSeats();
         }
-        if (null !== $object->getSeats()) {
+        if ($object->isInitialized('seats') && null !== $object->getSeats()) {
             $data['seats'] = $object->getSeats();
         }
         foreach ($object as $key => $value) {

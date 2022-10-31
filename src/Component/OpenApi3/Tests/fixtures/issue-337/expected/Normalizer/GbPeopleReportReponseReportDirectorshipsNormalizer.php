@@ -78,21 +78,21 @@ class GbPeopleReportReponseReportDirectorshipsNormalizer implements Denormalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCurrent()) {
+        if ($object->isInitialized('current') && null !== $object->getCurrent()) {
             $values = array();
             foreach ($object->getCurrent() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['current'] = $values;
         }
-        if (null !== $object->getInactive()) {
+        if ($object->isInitialized('inactive') && null !== $object->getInactive()) {
             $values_1 = array();
             foreach ($object->getInactive() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['inactive'] = $values_1;
         }
-        if (null !== $object->getPrevious()) {
+        if ($object->isInitialized('previous') && null !== $object->getPrevious()) {
             $values_2 = array();
             foreach ($object->getPrevious() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);

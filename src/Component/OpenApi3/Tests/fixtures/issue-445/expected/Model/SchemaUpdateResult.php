@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SchemaUpdateResult
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The details of the updated schema.
      *
      * @var mixed|null
@@ -28,6 +36,7 @@ class SchemaUpdateResult
      */
     public function setSchema($schema) : self
     {
+        $this->initialized['schema'] = true;
         $this->schema = $schema;
         return $this;
     }

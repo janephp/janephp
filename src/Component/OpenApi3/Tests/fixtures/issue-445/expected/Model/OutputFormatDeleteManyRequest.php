@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class OutputFormatDeleteManyRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * List of IDs of output formats to remove.
      *
      * @var string[]|null
@@ -28,6 +36,7 @@ class OutputFormatDeleteManyRequest
      */
     public function setIds(?array $ids) : self
     {
+        $this->initialized['ids'] = true;
         $this->ids = $ids;
         return $this;
     }

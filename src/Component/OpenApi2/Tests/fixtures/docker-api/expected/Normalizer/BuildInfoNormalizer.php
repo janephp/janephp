@@ -77,28 +77,28 @@ class BuildInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getStream()) {
+        if ($object->isInitialized('stream') && null !== $object->getStream()) {
             $data['stream'] = $object->getStream();
         }
-        if (null !== $object->getError()) {
+        if ($object->isInitialized('error') && null !== $object->getError()) {
             $data['error'] = $object->getError();
         }
-        if (null !== $object->getErrorDetail()) {
+        if ($object->isInitialized('errorDetail') && null !== $object->getErrorDetail()) {
             $data['errorDetail'] = $this->normalizer->normalize($object->getErrorDetail(), 'json', $context);
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        if (null !== $object->getProgress()) {
+        if ($object->isInitialized('progress') && null !== $object->getProgress()) {
             $data['progress'] = $object->getProgress();
         }
-        if (null !== $object->getProgressDetail()) {
+        if ($object->isInitialized('progressDetail') && null !== $object->getProgressDetail()) {
             $data['progressDetail'] = $this->normalizer->normalize($object->getProgressDetail(), 'json', $context);
         }
-        if (null !== $object->getAux()) {
+        if ($object->isInitialized('aux') && null !== $object->getAux()) {
             $data['aux'] = $this->normalizer->normalize($object->getAux(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

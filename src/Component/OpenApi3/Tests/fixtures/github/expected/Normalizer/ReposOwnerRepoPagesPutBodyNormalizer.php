@@ -69,10 +69,10 @@ class ReposOwnerRepoPagesPutBodyNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCname()) {
+        if ($object->isInitialized('cname') && null !== $object->getCname()) {
             $data['cname'] = $object->getCname();
         }
-        if (null !== $object->getSource()) {
+        if ($object->isInitialized('source') && null !== $object->getSource()) {
             $data['source'] = $object->getSource();
         }
         foreach ($object as $key => $value) {

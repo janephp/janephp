@@ -76,17 +76,17 @@ class ContentShareReferenceNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getAudit()) {
+        if ($object->isInitialized('audit') && null !== $object->getAudit()) {
             $data['audit'] = $object->getAudit();
         }
         $data['shareType'] = $object->getShareType();
-        if (null !== $object->getEmailAddress()) {
+        if ($object->isInitialized('emailAddress') && null !== $object->getEmailAddress()) {
             $data['emailAddress'] = $object->getEmailAddress();
         }
         return $data;

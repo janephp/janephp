@@ -86,24 +86,24 @@ class UserCreateRequestNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFirstName()) {
+        if ($object->isInitialized('firstName') && null !== $object->getFirstName()) {
             $data['firstName'] = $object->getFirstName();
         }
-        if (null !== $object->getLastName()) {
+        if ($object->isInitialized('lastName') && null !== $object->getLastName()) {
             $data['lastName'] = $object->getLastName();
         }
         $data['emailAddress'] = $object->getEmailAddress();
-        if (null !== $object->getLanguageCode()) {
+        if ($object->isInitialized('languageCode') && null !== $object->getLanguageCode()) {
             $data['languageCode'] = $object->getLanguageCode();
         }
-        if (null !== $object->getUserRoleIds()) {
+        if ($object->isInitialized('userRoleIds') && null !== $object->getUserRoleIds()) {
             $values = array();
             foreach ($object->getUserRoleIds() as $value) {
                 $values[] = $value;
             }
             $data['userRoleIds'] = $values;
         }
-        if (null !== $object->getAddress()) {
+        if ($object->isInitialized('address') && null !== $object->getAddress()) {
             $data['address'] = $object->getAddress();
         }
         return $data;

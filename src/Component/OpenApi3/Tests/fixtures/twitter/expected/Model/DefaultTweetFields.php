@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class DefaultTweetFields extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The location tagged on the Tweet, if the user provided one.
      *
      * @var DefaultTweetFieldsGeo
@@ -34,6 +42,7 @@ class DefaultTweetFields extends \ArrayObject
      */
     public function setGeo(DefaultTweetFieldsGeo $geo) : self
     {
+        $this->initialized['geo'] = true;
         $this->geo = $geo;
         return $this;
     }
@@ -55,6 +64,7 @@ class DefaultTweetFields extends \ArrayObject
      */
     public function setEntities(FullTextEntities $entities) : self
     {
+        $this->initialized['entities'] = true;
         $this->entities = $entities;
         return $this;
     }

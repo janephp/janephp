@@ -5,6 +5,14 @@ namespace Github\Model;
 class ScimV2OrganizationsOrgUsersScimUserIdPutBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string[]
@@ -70,6 +78,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBody extends \ArrayObject
      */
     public function setSchemas(array $schemas) : self
     {
+        $this->initialized['schemas'] = true;
         $this->schemas = $schemas;
         return $this;
     }
@@ -91,6 +100,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBody extends \ArrayObject
      */
     public function setDisplayName(string $displayName) : self
     {
+        $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
         return $this;
     }
@@ -112,6 +122,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBody extends \ArrayObject
      */
     public function setExternalId(string $externalId) : self
     {
+        $this->initialized['externalId'] = true;
         $this->externalId = $externalId;
         return $this;
     }
@@ -133,6 +144,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBody extends \ArrayObject
      */
     public function setGroups(array $groups) : self
     {
+        $this->initialized['groups'] = true;
         $this->groups = $groups;
         return $this;
     }
@@ -154,6 +166,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBody extends \ArrayObject
      */
     public function setActive(bool $active) : self
     {
+        $this->initialized['active'] = true;
         $this->active = $active;
         return $this;
     }
@@ -175,6 +188,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBody extends \ArrayObject
      */
     public function setUserName(string $userName) : self
     {
+        $this->initialized['userName'] = true;
         $this->userName = $userName;
         return $this;
     }
@@ -196,6 +210,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBody extends \ArrayObject
      */
     public function setName(ScimV2OrganizationsOrgUsersScimUserIdPutBodyName $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -217,6 +232,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBody extends \ArrayObject
      */
     public function setEmails(array $emails) : self
     {
+        $this->initialized['emails'] = true;
         $this->emails = $emails;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessProcessNotificationUpdateRequest extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The title the message that is shown to the user should have.
      *
      * @var mixed
@@ -47,6 +55,7 @@ class BusinessProcessNotificationUpdateRequest extends \ArrayObject
      */
     public function setTitle($title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -68,6 +77,7 @@ class BusinessProcessNotificationUpdateRequest extends \ArrayObject
      */
     public function setMessage($message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -91,6 +101,7 @@ class BusinessProcessNotificationUpdateRequest extends \ArrayObject
     */
     public function setNavigationLink(?string $navigationLink) : self
     {
+        $this->initialized['navigationLink'] = true;
         $this->navigationLink = $navigationLink;
         return $this;
     }
@@ -112,6 +123,7 @@ class BusinessProcessNotificationUpdateRequest extends \ArrayObject
      */
     public function setEventType($eventType) : self
     {
+        $this->initialized['eventType'] = true;
         $this->eventType = $eventType;
         return $this;
     }

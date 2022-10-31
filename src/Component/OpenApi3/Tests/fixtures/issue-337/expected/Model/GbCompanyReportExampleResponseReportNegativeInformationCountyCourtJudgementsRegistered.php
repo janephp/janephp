@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegistered extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredExactItem[]
@@ -34,6 +42,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
      */
     public function setExact(array $exact) : self
     {
+        $this->initialized['exact'] = true;
         $this->exact = $exact;
         return $this;
     }
@@ -55,6 +64,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
      */
     public function setPossible(array $possible) : self
     {
+        $this->initialized['possible'] = true;
         $this->possible = $possible;
         return $this;
     }

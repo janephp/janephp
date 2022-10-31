@@ -5,6 +5,14 @@ namespace Github\Model;
 class ScimUserList extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * SCIM schema used.
      *
      * @var string[]
@@ -52,6 +60,7 @@ class ScimUserList extends \ArrayObject
      */
     public function setSchemas(array $schemas) : self
     {
+        $this->initialized['schemas'] = true;
         $this->schemas = $schemas;
         return $this;
     }
@@ -73,6 +82,7 @@ class ScimUserList extends \ArrayObject
      */
     public function setTotalResults(int $totalResults) : self
     {
+        $this->initialized['totalResults'] = true;
         $this->totalResults = $totalResults;
         return $this;
     }
@@ -94,6 +104,7 @@ class ScimUserList extends \ArrayObject
      */
     public function setItemsPerPage(int $itemsPerPage) : self
     {
+        $this->initialized['itemsPerPage'] = true;
         $this->itemsPerPage = $itemsPerPage;
         return $this;
     }
@@ -115,6 +126,7 @@ class ScimUserList extends \ArrayObject
      */
     public function setStartIndex(int $startIndex) : self
     {
+        $this->initialized['startIndex'] = true;
         $this->startIndex = $startIndex;
         return $this;
     }
@@ -136,6 +148,7 @@ class ScimUserList extends \ArrayObject
      */
     public function setResources(array $resources) : self
     {
+        $this->initialized['resources'] = true;
         $this->resources = $resources;
         return $this;
     }

@@ -78,19 +78,19 @@ class MinimalRepositoryLicenseNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getKey()) {
+        if ($object->isInitialized('key') && null !== $object->getKey()) {
             $data['key'] = $object->getKey();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getSpdxId()) {
+        if ($object->isInitialized('spdxId') && null !== $object->getSpdxId()) {
             $data['spdx_id'] = $object->getSpdxId();
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getNodeId()) {
+        if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
         foreach ($object as $key => $value) {

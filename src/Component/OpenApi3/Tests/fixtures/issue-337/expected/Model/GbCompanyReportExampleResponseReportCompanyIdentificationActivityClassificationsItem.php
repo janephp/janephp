@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassific
      */
     public function setClassification(string $classification) : self
     {
+        $this->initialized['classification'] = true;
         $this->classification = $classification;
         return $this;
     }
@@ -55,6 +64,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassific
      */
     public function setActivities(array $activities) : self
     {
+        $this->initialized['activities'] = true;
         $this->activities = $activities;
         return $this;
     }

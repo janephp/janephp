@@ -5,6 +5,14 @@ namespace Github\Model;
 class OrgsOrgActionsSecretsSecretNamePutBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://developer.github.com/v3/actions/secrets/#get-an-organization-public-key) endpoint.
      *
      * @var string
@@ -49,6 +57,7 @@ class OrgsOrgActionsSecretsSecretNamePutBody extends \ArrayObject
      */
     public function setEncryptedValue(string $encryptedValue) : self
     {
+        $this->initialized['encryptedValue'] = true;
         $this->encryptedValue = $encryptedValue;
         return $this;
     }
@@ -70,6 +79,7 @@ class OrgsOrgActionsSecretsSecretNamePutBody extends \ArrayObject
      */
     public function setKeyId(string $keyId) : self
     {
+        $this->initialized['keyId'] = true;
         $this->keyId = $keyId;
         return $this;
     }
@@ -97,6 +107,7 @@ class OrgsOrgActionsSecretsSecretNamePutBody extends \ArrayObject
     */
     public function setVisibility(string $visibility) : self
     {
+        $this->initialized['visibility'] = true;
         $this->visibility = $visibility;
         return $this;
     }
@@ -118,6 +129,7 @@ class OrgsOrgActionsSecretsSecretNamePutBody extends \ArrayObject
      */
     public function setSelectedRepositoryIds(array $selectedRepositoryIds) : self
     {
+        $this->initialized['selectedRepositoryIds'] = true;
         $this->selectedRepositoryIds = $selectedRepositoryIds;
         return $this;
     }

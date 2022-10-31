@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class CustomerApp
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -46,6 +54,7 @@ class CustomerApp
      */
     public function setAppId(?string $appId) : self
     {
+        $this->initialized['appId'] = true;
         $this->appId = $appId;
         return $this;
     }
@@ -67,6 +76,7 @@ class CustomerApp
      */
     public function setName($name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -88,6 +98,7 @@ class CustomerApp
      */
     public function setDescription($description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -109,6 +120,7 @@ class CustomerApp
      */
     public function setIcon(?string $icon) : self
     {
+        $this->initialized['icon'] = true;
         $this->icon = $icon;
         return $this;
     }

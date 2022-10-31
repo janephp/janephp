@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * An array of user `login`s that will be removed.
      *
      * @var string[]
@@ -34,6 +42,7 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody extends \ArrayOb
      */
     public function setReviewers(array $reviewers) : self
     {
+        $this->initialized['reviewers'] = true;
         $this->reviewers = $reviewers;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody extends \ArrayOb
      */
     public function setTeamReviewers(array $teamReviewers) : self
     {
+        $this->initialized['teamReviewers'] = true;
         $this->teamReviewers = $teamReviewers;
         return $this;
     }

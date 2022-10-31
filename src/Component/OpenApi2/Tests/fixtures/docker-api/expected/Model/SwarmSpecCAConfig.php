@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class SwarmSpecCAConfig
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The duration node certificates are issued for.
      *
      * @var int
@@ -61,6 +69,7 @@ class SwarmSpecCAConfig
      */
     public function setNodeCertExpiry(int $nodeCertExpiry) : self
     {
+        $this->initialized['nodeCertExpiry'] = true;
         $this->nodeCertExpiry = $nodeCertExpiry;
         return $this;
     }
@@ -86,6 +95,7 @@ class SwarmSpecCAConfig
     */
     public function setExternalCAs(array $externalCAs) : self
     {
+        $this->initialized['externalCAs'] = true;
         $this->externalCAs = $externalCAs;
         return $this;
     }
@@ -111,6 +121,7 @@ class SwarmSpecCAConfig
     */
     public function setSigningCACert(string $signingCACert) : self
     {
+        $this->initialized['signingCACert'] = true;
         $this->signingCACert = $signingCACert;
         return $this;
     }
@@ -136,6 +147,7 @@ class SwarmSpecCAConfig
     */
     public function setSigningCAKey(string $signingCAKey) : self
     {
+        $this->initialized['signingCAKey'] = true;
         $this->signingCAKey = $signingCAKey;
         return $this;
     }
@@ -163,6 +175,7 @@ class SwarmSpecCAConfig
     */
     public function setForceRotate(int $forceRotate) : self
     {
+        $this->initialized['forceRotate'] = true;
         $this->forceRotate = $forceRotate;
         return $this;
     }

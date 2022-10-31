@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoContentsPathPutBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The commit message.
      *
      * @var string
@@ -58,6 +66,7 @@ class ReposOwnerRepoContentsPathPutBody extends \ArrayObject
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -79,6 +88,7 @@ class ReposOwnerRepoContentsPathPutBody extends \ArrayObject
      */
     public function setContent(string $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }
@@ -100,6 +110,7 @@ class ReposOwnerRepoContentsPathPutBody extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -121,6 +132,7 @@ class ReposOwnerRepoContentsPathPutBody extends \ArrayObject
      */
     public function setBranch(string $branch) : self
     {
+        $this->initialized['branch'] = true;
         $this->branch = $branch;
         return $this;
     }
@@ -142,6 +154,7 @@ class ReposOwnerRepoContentsPathPutBody extends \ArrayObject
      */
     public function setCommitter(ReposOwnerRepoContentsPathPutBodyCommitter $committer) : self
     {
+        $this->initialized['committer'] = true;
         $this->committer = $committer;
         return $this;
     }
@@ -163,6 +176,7 @@ class ReposOwnerRepoContentsPathPutBody extends \ArrayObject
      */
     public function setAuthor(ReposOwnerRepoContentsPathPutBodyAuthor $author) : self
     {
+        $this->initialized['author'] = true;
         $this->author = $author;
         return $this;
     }

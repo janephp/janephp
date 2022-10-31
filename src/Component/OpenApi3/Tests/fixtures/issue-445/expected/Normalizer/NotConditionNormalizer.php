@@ -72,11 +72,11 @@ class NotConditionNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getCondition()) {
+        if ($object->isInitialized('condition') && null !== $object->getCondition()) {
             $data['condition'] = $object->getCondition();
         }
         foreach ($object as $key => $value) {

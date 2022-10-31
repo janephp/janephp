@@ -5,6 +5,14 @@ namespace Github\Model;
 class PullRequestReviewCommentLinksHtml extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -28,6 +36,7 @@ class PullRequestReviewCommentLinksHtml extends \ArrayObject
      */
     public function setHref(string $href) : self
     {
+        $this->initialized['href'] = true;
         $this->href = $href;
         return $this;
     }

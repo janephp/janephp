@@ -68,19 +68,19 @@ class EndpointPortConfigNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['Name'] = $object->getName();
         }
-        if (null !== $object->getProtocol()) {
+        if ($object->isInitialized('protocol') && null !== $object->getProtocol()) {
             $data['Protocol'] = $object->getProtocol();
         }
-        if (null !== $object->getTargetPort()) {
+        if ($object->isInitialized('targetPort') && null !== $object->getTargetPort()) {
             $data['TargetPort'] = $object->getTargetPort();
         }
-        if (null !== $object->getPublishedPort()) {
+        if ($object->isInitialized('publishedPort') && null !== $object->getPublishedPort()) {
             $data['PublishedPort'] = $object->getPublishedPort();
         }
-        if (null !== $object->getPublishMode()) {
+        if ($object->isInitialized('publishMode') && null !== $object->getPublishMode()) {
             $data['PublishMode'] = $object->getPublishMode();
         }
         if (!($context['skip_validation'] ?? false)) {

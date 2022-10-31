@@ -100,55 +100,55 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBaseUri()) {
+        if ($object->isInitialized('baseUri') && null !== $object->getBaseUri()) {
             $data['base_uri'] = $object->getBaseUri();
         }
-        if (null !== $object->getFullDomain()) {
+        if ($object->isInitialized('fullDomain') && null !== $object->getFullDomain()) {
             $data['full_domain'] = $object->getFullDomain();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getIsActive()) {
+        if ($object->isInitialized('isActive') && null !== $object->getIsActive()) {
             $data['is_active'] = $object->getIsActive();
         }
-        if (null !== $object->getWeekStartDay()) {
+        if ($object->isInitialized('weekStartDay') && null !== $object->getWeekStartDay()) {
             $data['week_start_day'] = $object->getWeekStartDay();
         }
-        if (null !== $object->getWantsTimestampTimers()) {
+        if ($object->isInitialized('wantsTimestampTimers') && null !== $object->getWantsTimestampTimers()) {
             $data['wants_timestamp_timers'] = $object->getWantsTimestampTimers();
         }
-        if (null !== $object->getTimeFormat()) {
+        if ($object->isInitialized('timeFormat') && null !== $object->getTimeFormat()) {
             $data['time_format'] = $object->getTimeFormat();
         }
-        if (null !== $object->getPlanType()) {
+        if ($object->isInitialized('planType') && null !== $object->getPlanType()) {
             $data['plan_type'] = $object->getPlanType();
         }
-        if (null !== $object->getClock()) {
+        if ($object->isInitialized('clock') && null !== $object->getClock()) {
             $data['clock'] = $object->getClock();
         }
-        if (null !== $object->getDecimalSymbol()) {
+        if ($object->isInitialized('decimalSymbol') && null !== $object->getDecimalSymbol()) {
             $data['decimal_symbol'] = $object->getDecimalSymbol();
         }
-        if (null !== $object->getThousandsSeparator()) {
+        if ($object->isInitialized('thousandsSeparator') && null !== $object->getThousandsSeparator()) {
             $data['thousands_separator'] = $object->getThousandsSeparator();
         }
-        if (null !== $object->getColorScheme()) {
+        if ($object->isInitialized('colorScheme') && null !== $object->getColorScheme()) {
             $data['color_scheme'] = $object->getColorScheme();
         }
-        if (null !== $object->getWeeklyCapacity()) {
+        if ($object->isInitialized('weeklyCapacity') && null !== $object->getWeeklyCapacity()) {
             $data['weekly_capacity'] = $object->getWeeklyCapacity();
         }
-        if (null !== $object->getExpenseFeature()) {
+        if ($object->isInitialized('expenseFeature') && null !== $object->getExpenseFeature()) {
             $data['expense_feature'] = $object->getExpenseFeature();
         }
-        if (null !== $object->getInvoiceFeature()) {
+        if ($object->isInitialized('invoiceFeature') && null !== $object->getInvoiceFeature()) {
             $data['invoice_feature'] = $object->getInvoiceFeature();
         }
-        if (null !== $object->getEstimateFeature()) {
+        if ($object->isInitialized('estimateFeature') && null !== $object->getEstimateFeature()) {
             $data['estimate_feature'] = $object->getEstimateFeature();
         }
-        if (null !== $object->getApprovalFeature()) {
+        if ($object->isInitialized('approvalFeature') && null !== $object->getApprovalFeature()) {
             $data['approval_feature'] = $object->getApprovalFeature();
         }
         return $data;

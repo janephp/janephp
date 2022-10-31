@@ -87,22 +87,22 @@ class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyNormalizer implements
     {
         $data = array();
         $data['state'] = $object->getState();
-        if (null !== $object->getTargetUrl()) {
+        if ($object->isInitialized('targetUrl') && null !== $object->getTargetUrl()) {
             $data['target_url'] = $object->getTargetUrl();
         }
-        if (null !== $object->getLogUrl()) {
+        if ($object->isInitialized('logUrl') && null !== $object->getLogUrl()) {
             $data['log_url'] = $object->getLogUrl();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getEnvironment()) {
+        if ($object->isInitialized('environment') && null !== $object->getEnvironment()) {
             $data['environment'] = $object->getEnvironment();
         }
-        if (null !== $object->getEnvironmentUrl()) {
+        if ($object->isInitialized('environmentUrl') && null !== $object->getEnvironmentUrl()) {
             $data['environment_url'] = $object->getEnvironmentUrl();
         }
-        if (null !== $object->getAutoInactive()) {
+        if ($object->isInitialized('autoInactive') && null !== $object->getAutoInactive()) {
             $data['auto_inactive'] = $object->getAutoInactive();
         }
         foreach ($object as $key => $value) {

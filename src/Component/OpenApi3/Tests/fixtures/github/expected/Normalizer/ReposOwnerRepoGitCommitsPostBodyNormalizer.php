@@ -88,20 +88,20 @@ class ReposOwnerRepoGitCommitsPostBodyNormalizer implements DenormalizerInterfac
         $data = array();
         $data['message'] = $object->getMessage();
         $data['tree'] = $object->getTree();
-        if (null !== $object->getParents()) {
+        if ($object->isInitialized('parents') && null !== $object->getParents()) {
             $values = array();
             foreach ($object->getParents() as $value) {
                 $values[] = $value;
             }
             $data['parents'] = $values;
         }
-        if (null !== $object->getAuthor()) {
+        if ($object->isInitialized('author') && null !== $object->getAuthor()) {
             $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
         }
-        if (null !== $object->getCommitter()) {
+        if ($object->isInitialized('committer') && null !== $object->getCommitter()) {
             $data['committer'] = $this->normalizer->normalize($object->getCommitter(), 'json', $context);
         }
-        if (null !== $object->getSignature()) {
+        if ($object->isInitialized('signature') && null !== $object->getSignature()) {
             $data['signature'] = $object->getSignature();
         }
         foreach ($object as $key => $value_1) {

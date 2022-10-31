@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class SourceOutputFormats
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The source to be used for content of type Image
      *
      * @var string|null
@@ -52,6 +60,7 @@ class SourceOutputFormats
      */
     public function setImage(?string $image) : self
     {
+        $this->initialized['image'] = true;
         $this->image = $image;
         return $this;
     }
@@ -73,6 +82,7 @@ class SourceOutputFormats
      */
     public function setVideo(?string $video) : self
     {
+        $this->initialized['video'] = true;
         $this->video = $video;
         return $this;
     }
@@ -94,6 +104,7 @@ class SourceOutputFormats
      */
     public function setDocument(?string $document) : self
     {
+        $this->initialized['document'] = true;
         $this->document = $document;
         return $this;
     }
@@ -115,6 +126,7 @@ class SourceOutputFormats
      */
     public function setAudio(?string $audio) : self
     {
+        $this->initialized['audio'] = true;
         $this->audio = $audio;
         return $this;
     }
@@ -136,6 +148,7 @@ class SourceOutputFormats
      */
     public function setVector(?string $vector) : self
     {
+        $this->initialized['vector'] = true;
         $this->vector = $vector;
         return $this;
     }

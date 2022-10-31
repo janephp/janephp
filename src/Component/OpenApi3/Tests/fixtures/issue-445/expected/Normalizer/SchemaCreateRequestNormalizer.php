@@ -161,20 +161,20 @@ class SchemaCreateRequestNormalizer implements DenormalizerInterface, Normalizer
     {
         $data = array();
         $data['id'] = $object->getId();
-        if (null !== $object->getParentSchemaId()) {
+        if ($object->isInitialized('parentSchemaId') && null !== $object->getParentSchemaId()) {
             $data['parentSchemaId'] = $object->getParentSchemaId();
         }
-        if (null !== $object->getTypes()) {
+        if ($object->isInitialized('types') && null !== $object->getTypes()) {
             $values = array();
             foreach ($object->getTypes() as $value) {
                 $values[] = $value;
             }
             $data['types'] = $values;
         }
-        if (null !== $object->getNames()) {
+        if ($object->isInitialized('names') && null !== $object->getNames()) {
             $data['names'] = $object->getNames();
         }
-        if (null !== $object->getDescriptions()) {
+        if ($object->isInitialized('descriptions') && null !== $object->getDescriptions()) {
             $data['descriptions'] = $object->getDescriptions();
         }
         $values_1 = array();
@@ -182,28 +182,28 @@ class SchemaCreateRequestNormalizer implements DenormalizerInterface, Normalizer
             $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
         $data['displayPatterns'] = $values_1;
-        if (null !== $object->getFields()) {
+        if ($object->isInitialized('fields') && null !== $object->getFields()) {
             $values_2 = array();
             foreach ($object->getFields() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['fields'] = $values_2;
         }
-        if (null !== $object->getFieldsOverwrite()) {
+        if ($object->isInitialized('fieldsOverwrite') && null !== $object->getFieldsOverwrite()) {
             $values_3 = array();
             foreach ($object->getFieldsOverwrite() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $data['fieldsOverwrite'] = $values_3;
         }
-        if (null !== $object->getAggregations()) {
+        if ($object->isInitialized('aggregations') && null !== $object->getAggregations()) {
             $values_4 = array();
             foreach ($object->getAggregations() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $data['aggregations'] = $values_4;
         }
-        if (null !== $object->getSort()) {
+        if ($object->isInitialized('sort') && null !== $object->getSort()) {
             $values_5 = array();
             foreach ($object->getSort() as $value_5) {
                 $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
@@ -211,21 +211,21 @@ class SchemaCreateRequestNormalizer implements DenormalizerInterface, Normalizer
             $data['sort'] = $values_5;
         }
         $data['viewForAll'] = $object->getViewForAll();
-        if (null !== $object->getSchemaPermissionSetIds()) {
+        if ($object->isInitialized('schemaPermissionSetIds') && null !== $object->getSchemaPermissionSetIds()) {
             $values_6 = array();
             foreach ($object->getSchemaPermissionSetIds() as $value_6) {
                 $values_6[] = $value_6;
             }
             $data['schemaPermissionSetIds'] = $values_6;
         }
-        if (null !== $object->getLayerSchemaIds()) {
+        if ($object->isInitialized('layerSchemaIds') && null !== $object->getLayerSchemaIds()) {
             $values_7 = array();
             foreach ($object->getLayerSchemaIds() as $value_7) {
                 $values_7[] = $value_7;
             }
             $data['layerSchemaIds'] = $values_7;
         }
-        if (null !== $object->getReferencedInContentSchemaIds()) {
+        if ($object->isInitialized('referencedInContentSchemaIds') && null !== $object->getReferencedInContentSchemaIds()) {
             $values_8 = array();
             foreach ($object->getReferencedInContentSchemaIds() as $value_8) {
                 $values_8[] = $value_8;

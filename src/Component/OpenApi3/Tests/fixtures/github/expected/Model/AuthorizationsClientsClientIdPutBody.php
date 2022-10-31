@@ -5,6 +5,14 @@ namespace Github\Model;
 class AuthorizationsClientsClientIdPutBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The OAuth app client secret for which to create the token.
      *
      * @var string
@@ -52,6 +60,7 @@ class AuthorizationsClientsClientIdPutBody extends \ArrayObject
      */
     public function setClientSecret(string $clientSecret) : self
     {
+        $this->initialized['clientSecret'] = true;
         $this->clientSecret = $clientSecret;
         return $this;
     }
@@ -73,6 +82,7 @@ class AuthorizationsClientsClientIdPutBody extends \ArrayObject
      */
     public function setScopes(?array $scopes) : self
     {
+        $this->initialized['scopes'] = true;
         $this->scopes = $scopes;
         return $this;
     }
@@ -94,6 +104,7 @@ class AuthorizationsClientsClientIdPutBody extends \ArrayObject
      */
     public function setNote(string $note) : self
     {
+        $this->initialized['note'] = true;
         $this->note = $note;
         return $this;
     }
@@ -115,6 +126,7 @@ class AuthorizationsClientsClientIdPutBody extends \ArrayObject
      */
     public function setNoteUrl(string $noteUrl) : self
     {
+        $this->initialized['noteUrl'] = true;
         $this->noteUrl = $noteUrl;
         return $this;
     }
@@ -136,6 +148,7 @@ class AuthorizationsClientsClientIdPutBody extends \ArrayObject
      */
     public function setFingerprint(string $fingerprint) : self
     {
+        $this->initialized['fingerprint'] = true;
         $this->fingerprint = $fingerprint;
         return $this;
     }

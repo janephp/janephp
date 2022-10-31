@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class CommonMediaFields extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The Media Key identifier for this attachment.
      *
      * @var string
@@ -40,6 +48,7 @@ class CommonMediaFields extends \ArrayObject
      */
     public function setMediaKey(string $mediaKey) : self
     {
+        $this->initialized['mediaKey'] = true;
         $this->mediaKey = $mediaKey;
         return $this;
     }
@@ -61,6 +70,7 @@ class CommonMediaFields extends \ArrayObject
      */
     public function setHeight(int $height) : self
     {
+        $this->initialized['height'] = true;
         $this->height = $height;
         return $this;
     }
@@ -82,6 +92,7 @@ class CommonMediaFields extends \ArrayObject
      */
     public function setWidth(int $width) : self
     {
+        $this->initialized['width'] = true;
         $this->width = $width;
         return $this;
     }

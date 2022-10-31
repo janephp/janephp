@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class EndpointSpec
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The mode of resolution to use for internal load balancing between tasks.
      *
      * @var string
@@ -36,6 +44,7 @@ class EndpointSpec
      */
     public function setMode(string $mode) : self
     {
+        $this->initialized['mode'] = true;
         $this->mode = $mode;
         return $this;
     }
@@ -61,6 +70,7 @@ class EndpointSpec
     */
     public function setPorts(array $ports) : self
     {
+        $this->initialized['ports'] = true;
         $this->ports = $ports;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbPeopleReportReponseReportDirectorships extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var GbPeopleReportReponseReportDirectorshipsCurrentItem[]
@@ -40,6 +48,7 @@ class GbPeopleReportReponseReportDirectorships extends \ArrayObject
      */
     public function setCurrent(array $current) : self
     {
+        $this->initialized['current'] = true;
         $this->current = $current;
         return $this;
     }
@@ -61,6 +70,7 @@ class GbPeopleReportReponseReportDirectorships extends \ArrayObject
      */
     public function setInactive(array $inactive) : self
     {
+        $this->initialized['inactive'] = true;
         $this->inactive = $inactive;
         return $this;
     }
@@ -82,6 +92,7 @@ class GbPeopleReportReponseReportDirectorships extends \ArrayObject
      */
     public function setPrevious(array $previous) : self
     {
+        $this->initialized['previous'] = true;
         $this->previous = $previous;
         return $this;
     }

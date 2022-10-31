@@ -5,6 +5,14 @@ namespace Github\Model;
 class OrgsOrgInvitationsPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * **Required unless you provide `email`**. GitHub user ID for the person you are inviting.
      *
      * @var int
@@ -49,6 +57,7 @@ class OrgsOrgInvitationsPostBody extends \ArrayObject
      */
     public function setInviteeId(int $inviteeId) : self
     {
+        $this->initialized['inviteeId'] = true;
         $this->inviteeId = $inviteeId;
         return $this;
     }
@@ -70,6 +79,7 @@ class OrgsOrgInvitationsPostBody extends \ArrayObject
      */
     public function setEmail(string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -97,6 +107,7 @@ class OrgsOrgInvitationsPostBody extends \ArrayObject
     */
     public function setRole(string $role) : self
     {
+        $this->initialized['role'] = true;
         $this->role = $role;
         return $this;
     }
@@ -118,6 +129,7 @@ class OrgsOrgInvitationsPostBody extends \ArrayObject
      */
     public function setTeamIds(array $teamIds) : self
     {
+        $this->initialized['teamIds'] = true;
         $this->teamIds = $teamIds;
         return $this;
     }

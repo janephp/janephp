@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class CdnPurgeJobBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Indicates if the operation was performed successfully.
      *
      * @var bool
@@ -38,6 +46,7 @@ class CdnPurgeJobBase
      */
     public function setSuccess(bool $success)
     {
+        $this->initialized['success'] = true;
         $this->success = $success;
     }
     /**
@@ -56,6 +65,7 @@ class CdnPurgeJobBase
      */
     public function setRetriesLeft(int $retriesLeft)
     {
+        $this->initialized['retriesLeft'] = true;
         $this->retriesLeft = $retriesLeft;
     }
     /**
@@ -74,6 +84,7 @@ class CdnPurgeJobBase
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

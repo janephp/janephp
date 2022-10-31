@@ -110,47 +110,47 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsNormaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAcceptListID()) {
+        if ($object->isInitialized('acceptListID') && null !== $object->getAcceptListID()) {
             $data['acceptListID'] = $object->getAcceptListID();
         }
-        if (null !== $object->getAddedToAcceptList()) {
+        if ($object->isInitialized('addedToAcceptList') && null !== $object->getAddedToAcceptList()) {
             $data['addedToAcceptList'] = $object->getAddedToAcceptList();
         }
-        if (null !== $object->getDivision()) {
+        if ($object->isInitialized('division') && null !== $object->getDivision()) {
             $data['division'] = $object->getDivision();
         }
-        if (null !== $object->getDppa()) {
+        if ($object->isInitialized('dppa') && null !== $object->getDppa()) {
             $data['dppa'] = $object->getDppa();
         }
-        if (null !== $object->getEftType()) {
+        if ($object->isInitialized('eftType') && null !== $object->getEftType()) {
             $data['eftType'] = $object->getEftType();
         }
-        if (null !== $object->getEntityType()) {
+        if ($object->isInitialized('entityType') && null !== $object->getEntityType()) {
             $data['entityType'] = $object->getEntityType();
         }
-        if (null !== $object->getGender()) {
+        if ($object->isInitialized('gender') && null !== $object->getGender()) {
             $data['gender'] = $object->getGender();
         }
-        if (null !== $object->getGlb()) {
+        if ($object->isInitialized('glb') && null !== $object->getGlb()) {
             $data['glb'] = $object->getGlb();
         }
-        if (null !== $object->getIDs()) {
+        if ($object->isInitialized('iDs') && null !== $object->getIDs()) {
             $values = array();
             foreach ($object->getIDs() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['iDs'] = $values;
         }
-        if (null !== $object->getLastUpdatedDate()) {
+        if ($object->isInitialized('lastUpdatedDate') && null !== $object->getLastUpdatedDate()) {
             $data['lastUpdatedDate'] = $object->getLastUpdatedDate();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
         }
-        if (null !== $object->getRecordState()) {
+        if ($object->isInitialized('recordState') && null !== $object->getRecordState()) {
             $data['recordState'] = $this->normalizer->normalize($object->getRecordState(), 'json', $context);
         }
-        if (null !== $object->getSearchDate()) {
+        if ($object->isInitialized('searchDate') && null !== $object->getSearchDate()) {
             $data['searchDate'] = $object->getSearchDate();
         }
         foreach ($object as $key => $value_1) {

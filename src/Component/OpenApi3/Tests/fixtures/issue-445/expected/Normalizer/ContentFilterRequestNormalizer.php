@@ -102,29 +102,29 @@ class ContentFilterRequestNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getChannelId()) {
+        if ($object->isInitialized('channelId') && null !== $object->getChannelId()) {
             $data['channelId'] = $object->getChannelId();
         }
-        if (null !== $object->getSearchLanguages()) {
+        if ($object->isInitialized('searchLanguages') && null !== $object->getSearchLanguages()) {
             $values = array();
             foreach ($object->getSearchLanguages() as $value) {
                 $values[] = $value;
             }
             $data['searchLanguages'] = $values;
         }
-        if (null !== $object->getSearchString()) {
+        if ($object->isInitialized('searchString') && null !== $object->getSearchString()) {
             $data['searchString'] = $object->getSearchString();
         }
         $data['searchType'] = $object->getSearchType();
-        if (null !== $object->getCollectionId()) {
+        if ($object->isInitialized('collectionId') && null !== $object->getCollectionId()) {
             $data['collectionId'] = $object->getCollectionId();
         }
-        if (null !== $object->getFilter()) {
+        if ($object->isInitialized('filter') && null !== $object->getFilter()) {
             $data['filter'] = $object->getFilter();
         }
         $data['lifeCycleFilter'] = $object->getLifeCycleFilter();
         $data['brokenDependenciesFilter'] = $object->getBrokenDependenciesFilter();
-        if (null !== $object->getRightsFilter()) {
+        if ($object->isInitialized('rightsFilter') && null !== $object->getRightsFilter()) {
             $values_1 = array();
             foreach ($object->getRightsFilter() as $value_1) {
                 $values_1[] = $value_1;

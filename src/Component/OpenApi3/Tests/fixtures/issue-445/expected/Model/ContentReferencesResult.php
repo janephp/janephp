@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentReferencesResult
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * List of references. Only available when requested in the request.
      *
      * @var mixed|null
@@ -34,6 +42,7 @@ class ContentReferencesResult
      */
     public function setMetadataReferences($metadataReferences) : self
     {
+        $this->initialized['metadataReferences'] = true;
         $this->metadataReferences = $metadataReferences;
         return $this;
     }
@@ -55,6 +64,7 @@ class ContentReferencesResult
      */
     public function setShareReferences($shareReferences) : self
     {
+        $this->initialized['shareReferences'] = true;
         $this->shareReferences = $shareReferences;
         return $this;
     }

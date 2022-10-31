@@ -62,7 +62,7 @@ class ReposOwnerRepoInvitationsInvitationIdPatchBodyNormalizer implements Denorm
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPermissions()) {
+        if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
             $data['permissions'] = $object->getPermissions();
         }
         foreach ($object as $key => $value) {

@@ -85,13 +85,13 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
         $data = array();
         $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
         $data['kind'] = $object->getKind();
-        if (null !== $object->getBusinessProcessId()) {
+        if ($object->isInitialized('businessProcessId') && null !== $object->getBusinessProcessId()) {
             $data['businessProcessId'] = $object->getBusinessProcessId();
         }
-        if (null !== $object->getLifeCycle()) {
+        if ($object->isInitialized('lifeCycle') && null !== $object->getLifeCycle()) {
             $data['lifeCycle'] = $object->getLifeCycle();
         }
-        if (null !== $object->getState()) {
+        if ($object->isInitialized('state') && null !== $object->getState()) {
             $data['state'] = $object->getState();
         }
         foreach ($object as $key => $value) {

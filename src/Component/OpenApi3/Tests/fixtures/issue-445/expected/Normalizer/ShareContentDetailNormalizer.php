@@ -102,7 +102,7 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
     {
         $data = array();
         $data['contentSchemaId'] = $object->getContentSchemaId();
-        if (null !== $object->getLayerSchemaIds()) {
+        if ($object->isInitialized('layerSchemaIds') && null !== $object->getLayerSchemaIds()) {
             $values = array();
             foreach ($object->getLayerSchemaIds() as $value) {
                 $values[] = $value;
@@ -114,7 +114,7 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
             $values_1[$key] = $value_1;
         }
         $data['content'] = $values_1;
-        if (null !== $object->getMetadata()) {
+        if ($object->isInitialized('metadata') && null !== $object->getMetadata()) {
             $values_2 = array();
             foreach ($object->getMetadata() as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
@@ -129,7 +129,7 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
         $data['outputs'] = $values_3;
         $data['contentType'] = $object->getContentType();
         $data['displayValues'] = $object->getDisplayValues();
-        if (null !== $object->getIconUrl()) {
+        if ($object->isInitialized('iconUrl') && null !== $object->getIconUrl()) {
             $data['iconUrl'] = $object->getIconUrl();
         }
         return $data;

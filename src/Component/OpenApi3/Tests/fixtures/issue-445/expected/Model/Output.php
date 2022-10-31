@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class Output
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the output. Can be null for dynamic outputs which are not rendered yet.
      *
      * @var string|null
@@ -80,6 +88,7 @@ class Output
      */
     public function setId(?string $id)
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
     }
     /**
@@ -98,6 +107,7 @@ class Output
      */
     public function setOutputFormatId(string $outputFormatId)
     {
+        $this->initialized['outputFormatId'] = true;
         $this->outputFormatId = $outputFormatId;
     }
     /**
@@ -116,6 +126,7 @@ class Output
      */
     public function setContentId(string $contentId)
     {
+        $this->initialized['contentId'] = true;
         $this->contentId = $contentId;
     }
     /**
@@ -134,6 +145,7 @@ class Output
      */
     public function setRenderingState($renderingState)
     {
+        $this->initialized['renderingState'] = true;
         $this->renderingState = $renderingState;
     }
     /**
@@ -152,6 +164,7 @@ class Output
      */
     public function setDetail($detail)
     {
+        $this->initialized['detail'] = true;
         $this->detail = $detail;
     }
     /**
@@ -170,6 +183,7 @@ class Output
      */
     public function setBackupTimestamp(?\DateTime $backupTimestamp)
     {
+        $this->initialized['backupTimestamp'] = true;
         $this->backupTimestamp = $backupTimestamp;
     }
     /**
@@ -188,6 +202,7 @@ class Output
      */
     public function setAttemptsLeft(int $attemptsLeft)
     {
+        $this->initialized['attemptsLeft'] = true;
         $this->attemptsLeft = $attemptsLeft;
     }
     /**
@@ -206,6 +221,7 @@ class Output
      */
     public function setFileVersion(int $fileVersion)
     {
+        $this->initialized['fileVersion'] = true;
         $this->fileVersion = $fileVersion;
     }
     /**
@@ -224,6 +240,7 @@ class Output
      */
     public function setDynamicRendering(bool $dynamicRendering)
     {
+        $this->initialized['dynamicRendering'] = true;
         $this->dynamicRendering = $dynamicRendering;
     }
     /**
@@ -242,6 +259,7 @@ class Output
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

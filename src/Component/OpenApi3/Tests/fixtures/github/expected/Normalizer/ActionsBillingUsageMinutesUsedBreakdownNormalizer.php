@@ -70,13 +70,13 @@ class ActionsBillingUsageMinutesUsedBreakdownNormalizer implements DenormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUBUNTU()) {
+        if ($object->isInitialized('uBUNTU') && null !== $object->getUBUNTU()) {
             $data['UBUNTU'] = $object->getUBUNTU();
         }
-        if (null !== $object->getMACOS()) {
+        if ($object->isInitialized('mACOS') && null !== $object->getMACOS()) {
             $data['MACOS'] = $object->getMACOS();
         }
-        if (null !== $object->getWINDOWS()) {
+        if ($object->isInitialized('wINDOWS') && null !== $object->getWINDOWS()) {
             $data['WINDOWS'] = $object->getWINDOWS();
         }
         foreach ($object as $key => $value) {

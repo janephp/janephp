@@ -70,13 +70,13 @@ class ImportProjectChoicesItemNormalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getVcs()) {
+        if ($object->isInitialized('vcs') && null !== $object->getVcs()) {
             $data['vcs'] = $object->getVcs();
         }
-        if (null !== $object->getTfvcProject()) {
+        if ($object->isInitialized('tfvcProject') && null !== $object->getTfvcProject()) {
             $data['tfvc_project'] = $object->getTfvcProject();
         }
-        if (null !== $object->getHumanName()) {
+        if ($object->isInitialized('humanName') && null !== $object->getHumanName()) {
             $data['human_name'] = $object->getHumanName();
         }
         foreach ($object as $key => $value) {

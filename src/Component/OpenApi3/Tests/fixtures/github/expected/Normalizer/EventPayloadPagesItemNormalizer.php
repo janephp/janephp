@@ -85,22 +85,22 @@ class EventPayloadPagesItemNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPageName()) {
+        if ($object->isInitialized('pageName') && null !== $object->getPageName()) {
             $data['page_name'] = $object->getPageName();
         }
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getSummary()) {
+        if ($object->isInitialized('summary') && null !== $object->getSummary()) {
             $data['summary'] = $object->getSummary();
         }
-        if (null !== $object->getAction()) {
+        if ($object->isInitialized('action') && null !== $object->getAction()) {
             $data['action'] = $object->getAction();
         }
-        if (null !== $object->getSha()) {
+        if ($object->isInitialized('sha') && null !== $object->getSha()) {
             $data['sha'] = $object->getSha();
         }
-        if (null !== $object->getHtmlUrl()) {
+        if ($object->isInitialized('htmlUrl') && null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
         foreach ($object as $key => $value) {

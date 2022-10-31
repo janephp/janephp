@@ -59,10 +59,10 @@ class AddressNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAddr()) {
+        if ($object->isInitialized('addr') && null !== $object->getAddr()) {
             $data['Addr'] = $object->getAddr();
         }
-        if (null !== $object->getPrefixLen()) {
+        if ($object->isInitialized('prefixLen') && null !== $object->getPrefixLen()) {
             $data['PrefixLen'] = $object->getPrefixLen();
         }
         if (!($context['skip_validation'] ?? false)) {

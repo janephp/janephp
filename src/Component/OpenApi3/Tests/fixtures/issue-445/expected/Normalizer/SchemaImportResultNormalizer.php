@@ -81,14 +81,14 @@ class SchemaImportResultNormalizer implements DenormalizerInterface, NormalizerI
         $data['importedSchemaCount'] = $object->getImportedSchemaCount();
         $data['skippedSchemaCount'] = $object->getSkippedSchemaCount();
         $data['totalSchemaCount'] = $object->getTotalSchemaCount();
-        if (null !== $object->getSkippedSchemaIds()) {
+        if ($object->isInitialized('skippedSchemaIds') && null !== $object->getSkippedSchemaIds()) {
             $values = array();
             foreach ($object->getSkippedSchemaIds() as $value) {
                 $values[] = $value;
             }
             $data['skippedSchemaIds'] = $values;
         }
-        if (null !== $object->getImportedSchemaIds()) {
+        if ($object->isInitialized('importedSchemaIds') && null !== $object->getImportedSchemaIds()) {
             $values_1 = array();
             foreach ($object->getImportedSchemaIds() as $value_1) {
                 $values_1[] = $value_1;

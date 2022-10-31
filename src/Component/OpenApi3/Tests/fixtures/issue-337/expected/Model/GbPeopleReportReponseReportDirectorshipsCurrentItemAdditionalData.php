@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbPeopleReportReponseReportDirectorshipsCurrentItemAdditionalData extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemAdditionalData extends 
      */
     public function setOccupation(string $occupation) : self
     {
+        $this->initialized['occupation'] = true;
         $this->occupation = $occupation;
         return $this;
     }
@@ -61,6 +70,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemAdditionalData extends 
      */
     public function setStatusDescription(string $statusDescription) : self
     {
+        $this->initialized['statusDescription'] = true;
         $this->statusDescription = $statusDescription;
         return $this;
     }
@@ -82,6 +92,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemAdditionalData extends 
      */
     public function setGearing(float $gearing) : self
     {
+        $this->initialized['gearing'] = true;
         $this->gearing = $gearing;
         return $this;
     }

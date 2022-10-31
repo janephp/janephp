@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class AudioStream
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -88,6 +96,7 @@ class AudioStream
      */
     public function setBitRate(?string $bitRate) : self
     {
+        $this->initialized['bitRate'] = true;
         $this->bitRate = $bitRate;
         return $this;
     }
@@ -109,6 +118,7 @@ class AudioStream
      */
     public function setBitRateMode(?string $bitRateMode) : self
     {
+        $this->initialized['bitRateMode'] = true;
         $this->bitRateMode = $bitRateMode;
         return $this;
     }
@@ -130,6 +140,7 @@ class AudioStream
      */
     public function setChannels(?string $channels) : self
     {
+        $this->initialized['channels'] = true;
         $this->channels = $channels;
         return $this;
     }
@@ -151,6 +162,7 @@ class AudioStream
      */
     public function setChannelPositions(?string $channelPositions) : self
     {
+        $this->initialized['channelPositions'] = true;
         $this->channelPositions = $channelPositions;
         return $this;
     }
@@ -172,6 +184,7 @@ class AudioStream
      */
     public function setCodec(?string $codec) : self
     {
+        $this->initialized['codec'] = true;
         $this->codec = $codec;
         return $this;
     }
@@ -193,6 +206,7 @@ class AudioStream
      */
     public function setDurationInSeconds(?float $durationInSeconds) : self
     {
+        $this->initialized['durationInSeconds'] = true;
         $this->durationInSeconds = $durationInSeconds;
         return $this;
     }
@@ -214,6 +228,7 @@ class AudioStream
      */
     public function setFormat(?string $format) : self
     {
+        $this->initialized['format'] = true;
         $this->format = $format;
         return $this;
     }
@@ -235,6 +250,7 @@ class AudioStream
      */
     public function setLanguage(?string $language) : self
     {
+        $this->initialized['language'] = true;
         $this->language = $language;
         return $this;
     }
@@ -256,6 +272,7 @@ class AudioStream
      */
     public function setResolution(?int $resolution) : self
     {
+        $this->initialized['resolution'] = true;
         $this->resolution = $resolution;
         return $this;
     }
@@ -277,6 +294,7 @@ class AudioStream
      */
     public function setSamplingRate(?int $samplingRate) : self
     {
+        $this->initialized['samplingRate'] = true;
         $this->samplingRate = $samplingRate;
         return $this;
     }
@@ -298,6 +316,7 @@ class AudioStream
      */
     public function setStreamSize(?int $streamSize) : self
     {
+        $this->initialized['streamSize'] = true;
         $this->streamSize = $streamSize;
         return $this;
     }

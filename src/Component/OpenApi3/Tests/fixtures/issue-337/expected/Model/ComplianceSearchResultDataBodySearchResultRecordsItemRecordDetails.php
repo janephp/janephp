@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -100,6 +108,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
      */
     public function setAcceptListID(int $acceptListID) : self
     {
+        $this->initialized['acceptListID'] = true;
         $this->acceptListID = $acceptListID;
         return $this;
     }
@@ -121,6 +130,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
      */
     public function setAddedToAcceptList(bool $addedToAcceptList) : self
     {
+        $this->initialized['addedToAcceptList'] = true;
         $this->addedToAcceptList = $addedToAcceptList;
         return $this;
     }
@@ -142,6 +152,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
      */
     public function setDivision(string $division) : self
     {
+        $this->initialized['division'] = true;
         $this->division = $division;
         return $this;
     }
@@ -163,6 +174,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
      */
     public function setDppa(string $dppa) : self
     {
+        $this->initialized['dppa'] = true;
         $this->dppa = $dppa;
         return $this;
     }
@@ -184,6 +196,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
      */
     public function setEftType(string $eftType) : self
     {
+        $this->initialized['eftType'] = true;
         $this->eftType = $eftType;
         return $this;
     }
@@ -205,6 +218,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
      */
     public function setEntityType(string $entityType) : self
     {
+        $this->initialized['entityType'] = true;
         $this->entityType = $entityType;
         return $this;
     }
@@ -226,6 +240,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
      */
     public function setGender(string $gender) : self
     {
+        $this->initialized['gender'] = true;
         $this->gender = $gender;
         return $this;
     }
@@ -247,6 +262,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
      */
     public function setGlb(int $glb) : self
     {
+        $this->initialized['glb'] = true;
         $this->glb = $glb;
         return $this;
     }
@@ -268,6 +284,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
      */
     public function setIDs(array $iDs) : self
     {
+        $this->initialized['iDs'] = true;
         $this->iDs = $iDs;
         return $this;
     }
@@ -289,6 +306,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
      */
     public function setLastUpdatedDate(string $lastUpdatedDate) : self
     {
+        $this->initialized['lastUpdatedDate'] = true;
         $this->lastUpdatedDate = $lastUpdatedDate;
         return $this;
     }
@@ -310,6 +328,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
      */
     public function setName(ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsName $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -331,6 +350,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
      */
     public function setRecordState(ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordState $recordState) : self
     {
+        $this->initialized['recordState'] = true;
         $this->recordState = $recordState;
         return $this;
     }
@@ -352,6 +372,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
      */
     public function setSearchDate(string $searchDate) : self
     {
+        $this->initialized['searchDate'] = true;
         $this->searchDate = $searchDate;
         return $this;
     }

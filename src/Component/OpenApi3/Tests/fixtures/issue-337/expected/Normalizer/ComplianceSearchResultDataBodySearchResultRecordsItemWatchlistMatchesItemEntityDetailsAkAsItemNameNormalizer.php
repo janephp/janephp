@@ -58,7 +58,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFull()) {
+        if ($object->isInitialized('full') && null !== $object->getFull()) {
             $data['full'] = $object->getFull();
         }
         foreach ($object as $key => $value) {

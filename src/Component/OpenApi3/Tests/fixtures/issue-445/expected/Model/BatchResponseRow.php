@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BatchResponseRow
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Id of the item.
      *
      * @var string
@@ -58,6 +66,7 @@ class BatchResponseRow
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -79,6 +88,7 @@ class BatchResponseRow
      */
     public function setSucceeded(bool $succeeded) : self
     {
+        $this->initialized['succeeded'] = true;
         $this->succeeded = $succeeded;
         return $this;
     }
@@ -100,6 +110,7 @@ class BatchResponseRow
      */
     public function setStatus(int $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -121,6 +132,7 @@ class BatchResponseRow
      */
     public function setVersion(int $version) : self
     {
+        $this->initialized['version'] = true;
         $this->version = $version;
         return $this;
     }
@@ -142,6 +154,7 @@ class BatchResponseRow
      */
     public function setError($error) : self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
         return $this;
     }
@@ -163,6 +176,7 @@ class BatchResponseRow
      */
     public function setRequestId(?string $requestId) : self
     {
+        $this->initialized['requestId'] = true;
         $this->requestId = $requestId;
         return $this;
     }

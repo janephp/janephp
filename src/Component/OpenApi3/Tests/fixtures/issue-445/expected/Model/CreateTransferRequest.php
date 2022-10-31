@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class CreateTransferRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Name of transfer.
      *
      * @var string
@@ -62,6 +70,7 @@ class CreateTransferRequest
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -83,6 +92,7 @@ class CreateTransferRequest
      */
     public function setTransferType($transferType) : self
     {
+        $this->initialized['transferType'] = true;
         $this->transferType = $transferType;
         return $this;
     }
@@ -108,6 +118,7 @@ class CreateTransferRequest
     */
     public function setFiles(?array $files) : self
     {
+        $this->initialized['files'] = true;
         $this->files = $files;
         return $this;
     }
@@ -133,6 +144,7 @@ class CreateTransferRequest
     */
     public function setWebLinks(?array $webLinks) : self
     {
+        $this->initialized['webLinks'] = true;
         $this->webLinks = $webLinks;
         return $this;
     }
@@ -154,6 +166,7 @@ class CreateTransferRequest
      */
     public function setCollectionName(?string $collectionName) : self
     {
+        $this->initialized['collectionName'] = true;
         $this->collectionName = $collectionName;
         return $this;
     }
@@ -175,6 +188,7 @@ class CreateTransferRequest
      */
     public function setCreateCollection(bool $createCollection) : self
     {
+        $this->initialized['createCollection'] = true;
         $this->createCollection = $createCollection;
         return $this;
     }

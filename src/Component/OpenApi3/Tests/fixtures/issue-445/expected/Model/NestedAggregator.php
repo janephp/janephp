@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class NestedAggregator extends AggregatorBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The path pointing to the nested object.
      *
      * @var string
@@ -28,6 +36,7 @@ class NestedAggregator extends AggregatorBase
      */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportAdditionalInformationCompanyHistoryItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCompanyHistoryIte
      */
     public function setDate(string $date) : self
     {
+        $this->initialized['date'] = true;
         $this->date = $date;
         return $this;
     }
@@ -55,6 +64,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCompanyHistoryIte
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }

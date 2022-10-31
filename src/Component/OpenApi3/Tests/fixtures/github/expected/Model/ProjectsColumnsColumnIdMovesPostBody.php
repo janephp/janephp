@@ -5,6 +5,14 @@ namespace Github\Model;
 class ProjectsColumnsColumnIdMovesPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The position of the column in a project
      *
      * @var string
@@ -28,6 +36,7 @@ class ProjectsColumnsColumnIdMovesPostBody extends \ArrayObject
      */
     public function setPosition(string $position) : self
     {
+        $this->initialized['position'] = true;
         $this->position = $position;
         return $this;
     }

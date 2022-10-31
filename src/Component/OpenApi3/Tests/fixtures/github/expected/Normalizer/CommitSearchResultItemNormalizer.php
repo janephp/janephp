@@ -135,7 +135,7 @@ class CommitSearchResultItemNormalizer implements DenormalizerInterface, Normali
         $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
         $data['score'] = $object->getScore();
         $data['node_id'] = $object->getNodeId();
-        if (null !== $object->getTextMatches()) {
+        if ($object->isInitialized('textMatches') && null !== $object->getTextMatches()) {
             $values_1 = array();
             foreach ($object->getTextMatches() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

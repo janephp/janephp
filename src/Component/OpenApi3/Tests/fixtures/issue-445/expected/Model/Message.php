@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class Message
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -50,6 +58,7 @@ class Message
      */
     public function setId(?string $id)
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
     }
     /**
@@ -68,6 +77,7 @@ class Message
      */
     public function setRetries(int $retries)
     {
+        $this->initialized['retries'] = true;
         $this->retries = $retries;
     }
     /**
@@ -86,6 +96,7 @@ class Message
      */
     public function setPriority(int $priority)
     {
+        $this->initialized['priority'] = true;
         $this->priority = $priority;
     }
     /**
@@ -104,6 +115,7 @@ class Message
      */
     public function setDeduplicate(bool $deduplicate)
     {
+        $this->initialized['deduplicate'] = true;
         $this->deduplicate = $deduplicate;
     }
     /**
@@ -122,6 +134,7 @@ class Message
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

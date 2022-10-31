@@ -5,6 +5,14 @@ namespace Github\Model;
 class StatusCheckPolicy extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class StatusCheckPolicy extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -67,6 +76,7 @@ class StatusCheckPolicy extends \ArrayObject
      */
     public function setStrict(bool $strict) : self
     {
+        $this->initialized['strict'] = true;
         $this->strict = $strict;
         return $this;
     }
@@ -88,6 +98,7 @@ class StatusCheckPolicy extends \ArrayObject
      */
     public function setContexts(array $contexts) : self
     {
+        $this->initialized['contexts'] = true;
         $this->contexts = $contexts;
         return $this;
     }
@@ -109,6 +120,7 @@ class StatusCheckPolicy extends \ArrayObject
      */
     public function setContextsUrl(string $contextsUrl) : self
     {
+        $this->initialized['contextsUrl'] = true;
         $this->contextsUrl = $contextsUrl;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class CombinedBillingUsage extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Numbers of days left in billing cycle.
      *
      * @var int
@@ -40,6 +48,7 @@ class CombinedBillingUsage extends \ArrayObject
      */
     public function setDaysLeftInBillingCycle(int $daysLeftInBillingCycle) : self
     {
+        $this->initialized['daysLeftInBillingCycle'] = true;
         $this->daysLeftInBillingCycle = $daysLeftInBillingCycle;
         return $this;
     }
@@ -61,6 +70,7 @@ class CombinedBillingUsage extends \ArrayObject
      */
     public function setEstimatedPaidStorageForMonth(int $estimatedPaidStorageForMonth) : self
     {
+        $this->initialized['estimatedPaidStorageForMonth'] = true;
         $this->estimatedPaidStorageForMonth = $estimatedPaidStorageForMonth;
         return $this;
     }
@@ -82,6 +92,7 @@ class CombinedBillingUsage extends \ArrayObject
      */
     public function setEstimatedStorageForMonth(int $estimatedStorageForMonth) : self
     {
+        $this->initialized['estimatedStorageForMonth'] = true;
         $this->estimatedStorageForMonth = $estimatedStorageForMonth;
         return $this;
     }

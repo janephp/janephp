@@ -69,13 +69,13 @@ class GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDate()) {
+        if ($object->isInitialized('date') && null !== $object->getDate()) {
             $data['date'] = $object->getDate();
         }
-        if (null !== $object->getCompanyValue()) {
+        if ($object->isInitialized('companyValue') && null !== $object->getCompanyValue()) {
             $data['companyValue'] = $object->getCompanyValue();
         }
-        if (null !== $object->getRatingDescription()) {
+        if ($object->isInitialized('ratingDescription') && null !== $object->getRatingDescription()) {
             $data['ratingDescription'] = $object->getRatingDescription();
         }
         foreach ($object as $key => $value) {

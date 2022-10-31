@@ -5,6 +5,14 @@ namespace Github\Model;
 class ProtectedBranchPullRequestReviewDismissalRestrictions extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The list of users with review dismissal access.
      *
      * @var SimpleUser[]
@@ -52,6 +60,7 @@ class ProtectedBranchPullRequestReviewDismissalRestrictions extends \ArrayObject
      */
     public function setUsers(array $users) : self
     {
+        $this->initialized['users'] = true;
         $this->users = $users;
         return $this;
     }
@@ -73,6 +82,7 @@ class ProtectedBranchPullRequestReviewDismissalRestrictions extends \ArrayObject
      */
     public function setTeams(array $teams) : self
     {
+        $this->initialized['teams'] = true;
         $this->teams = $teams;
         return $this;
     }
@@ -94,6 +104,7 @@ class ProtectedBranchPullRequestReviewDismissalRestrictions extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -115,6 +126,7 @@ class ProtectedBranchPullRequestReviewDismissalRestrictions extends \ArrayObject
      */
     public function setUsersUrl(string $usersUrl) : self
     {
+        $this->initialized['usersUrl'] = true;
         $this->usersUrl = $usersUrl;
         return $this;
     }
@@ -136,6 +148,7 @@ class ProtectedBranchPullRequestReviewDismissalRestrictions extends \ArrayObject
      */
     public function setTeamsUrl(string $teamsUrl) : self
     {
+        $this->initialized['teamsUrl'] = true;
         $this->teamsUrl = $teamsUrl;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -112,6 +120,7 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -133,6 +142,7 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
      */
     public function setCountry(string $country) : self
     {
+        $this->initialized['country'] = true;
         $this->country = $country;
         return $this;
     }
@@ -154,6 +164,7 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
      */
     public function setRegNo(string $regNo) : self
     {
+        $this->initialized['regNo'] = true;
         $this->regNo = $regNo;
         return $this;
     }
@@ -175,6 +186,7 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
      */
     public function setVatNo(CompanySearchSuccessResultCompaniesItemVatNo $vatNo) : self
     {
+        $this->initialized['vatNo'] = true;
         $this->vatNo = $vatNo;
         return $this;
     }
@@ -196,6 +208,7 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
      */
     public function setSafeNo(string $safeNo) : self
     {
+        $this->initialized['safeNo'] = true;
         $this->safeNo = $safeNo;
         return $this;
     }
@@ -217,6 +230,7 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -238,6 +252,7 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -259,6 +274,7 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
      */
     public function setOfficeType(string $officeType) : self
     {
+        $this->initialized['officeType'] = true;
         $this->officeType = $officeType;
         return $this;
     }
@@ -280,6 +296,7 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -301,6 +318,7 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
      */
     public function setStatusDescription(string $statusDescription) : self
     {
+        $this->initialized['statusDescription'] = true;
         $this->statusDescription = $statusDescription;
         return $this;
     }
@@ -322,6 +340,7 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
      */
     public function setActivityCode(string $activityCode) : self
     {
+        $this->initialized['activityCode'] = true;
         $this->activityCode = $activityCode;
         return $this;
     }
@@ -343,6 +362,7 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
      */
     public function setTradingNames(CompanySearchSuccessResultCompaniesItemTradingNames $tradingNames) : self
     {
+        $this->initialized['tradingNames'] = true;
         $this->tradingNames = $tradingNames;
         return $this;
     }
@@ -364,6 +384,7 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
      */
     public function setAddress(CompanySearchSuccessResultCompaniesItemAddress $address) : self
     {
+        $this->initialized['address'] = true;
         $this->address = $address;
         return $this;
     }
@@ -385,6 +406,7 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
      */
     public function setDateOfLatestChange(CompanySearchSuccessResultCompaniesItemDateOfLatestChange $dateOfLatestChange) : self
     {
+        $this->initialized['dateOfLatestChange'] = true;
         $this->dateOfLatestChange = $dateOfLatestChange;
         return $this;
     }
@@ -406,6 +428,7 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
      */
     public function setDateOfLatestCAccounts(CompanySearchSuccessResultCompaniesItemDateOfLatestCAccounts $dateOfLatestCAccounts) : self
     {
+        $this->initialized['dateOfLatestCAccounts'] = true;
         $this->dateOfLatestCAccounts = $dateOfLatestCAccounts;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ImportTransferRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * An optional id list of schemas with type layer.
      *
      * @var string[]|null
@@ -41,6 +49,7 @@ class ImportTransferRequest
      */
     public function setLayerSchemaIds(?array $layerSchemaIds) : self
     {
+        $this->initialized['layerSchemaIds'] = true;
         $this->layerSchemaIds = $layerSchemaIds;
         return $this;
     }
@@ -64,6 +73,7 @@ class ImportTransferRequest
     */
     public function setMetadata(?iterable $metadata) : self
     {
+        $this->initialized['metadata'] = true;
         $this->metadata = $metadata;
         return $this;
     }
@@ -85,6 +95,7 @@ class ImportTransferRequest
      */
     public function setContentPermissionSetIds(?array $contentPermissionSetIds) : self
     {
+        $this->initialized['contentPermissionSetIds'] = true;
         $this->contentPermissionSetIds = $contentPermissionSetIds;
         return $this;
     }

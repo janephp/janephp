@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class TaskStatusContainerStatus
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class TaskStatusContainerStatus
      */
     public function setContainerID(string $containerID) : self
     {
+        $this->initialized['containerID'] = true;
         $this->containerID = $containerID;
         return $this;
     }
@@ -61,6 +70,7 @@ class TaskStatusContainerStatus
      */
     public function setPID(int $pID) : self
     {
+        $this->initialized['pID'] = true;
         $this->pID = $pID;
         return $this;
     }
@@ -82,6 +92,7 @@ class TaskStatusContainerStatus
      */
     public function setExitCode(int $exitCode) : self
     {
+        $this->initialized['exitCode'] = true;
         $this->exitCode = $exitCode;
         return $this;
     }

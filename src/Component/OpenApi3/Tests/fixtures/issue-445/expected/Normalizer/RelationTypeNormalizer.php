@@ -68,11 +68,11 @@ class RelationTypeNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $data = array();
         $data['id'] = $object->getId();
-        if (null !== $object->getNames()) {
+        if ($object->isInitialized('names') && null !== $object->getNames()) {
             $data['names'] = $object->getNames();
         }
         $data['targetDocType'] = $object->getTargetDocType();
-        if (null !== $object->getFilter()) {
+        if ($object->isInitialized('filter') && null !== $object->getFilter()) {
             $data['filter'] = $object->getFilter();
         }
         return $data;

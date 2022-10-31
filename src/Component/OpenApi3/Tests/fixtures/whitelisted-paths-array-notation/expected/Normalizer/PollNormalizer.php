@@ -86,7 +86,7 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $data['options'] = $values;
         $data['voting_status'] = $object->getVotingStatus();
         $data['end_datetime'] = $object->getEndDatetime()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getDurationMinutes()) {
+        if ($object->isInitialized('durationMinutes') && null !== $object->getDurationMinutes()) {
             $data['duration_minutes'] = $object->getDurationMinutes();
         }
         foreach ($object as $key => $value_1) {

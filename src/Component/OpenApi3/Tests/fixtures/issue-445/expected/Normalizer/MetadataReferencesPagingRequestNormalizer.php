@@ -70,10 +70,10 @@ class MetadataReferencesPagingRequestNormalizer implements DenormalizerInterface
     {
         $data = array();
         $data['limit'] = $object->getLimit();
-        if (null !== $object->getPageToken()) {
+        if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
             $data['pageToken'] = $object->getPageToken();
         }
-        if (null !== $object->getFetchReferencedByRestrictedItem()) {
+        if ($object->isInitialized('fetchReferencedByRestrictedItem') && null !== $object->getFetchReferencedByRestrictedItem()) {
             $data['fetchReferencedByRestrictedItem'] = $object->getFetchReferencedByRestrictedItem();
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace Github\Model;
 class TeamsTeamIdDiscussionsPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The discussion post's title.
      *
      * @var string
@@ -40,6 +48,7 @@ class TeamsTeamIdDiscussionsPostBody extends \ArrayObject
      */
     public function setTitle(string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -61,6 +70,7 @@ class TeamsTeamIdDiscussionsPostBody extends \ArrayObject
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }
@@ -82,6 +92,7 @@ class TeamsTeamIdDiscussionsPostBody extends \ArrayObject
      */
     public function setPrivate(bool $private) : self
     {
+        $this->initialized['private'] = true;
         $this->private = $private;
         return $this;
     }

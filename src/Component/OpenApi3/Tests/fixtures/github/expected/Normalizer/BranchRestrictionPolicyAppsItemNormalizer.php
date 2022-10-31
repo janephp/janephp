@@ -110,40 +110,40 @@ class BranchRestrictionPolicyAppsItemNormalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getSlug()) {
+        if ($object->isInitialized('slug') && null !== $object->getSlug()) {
             $data['slug'] = $object->getSlug();
         }
-        if (null !== $object->getNodeId()) {
+        if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
             $data['node_id'] = $object->getNodeId();
         }
-        if (null !== $object->getOwner()) {
+        if ($object->isInitialized('owner') && null !== $object->getOwner()) {
             $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getExternalUrl()) {
+        if ($object->isInitialized('externalUrl') && null !== $object->getExternalUrl()) {
             $data['external_url'] = $object->getExternalUrl();
         }
-        if (null !== $object->getHtmlUrl()) {
+        if ($object->isInitialized('htmlUrl') && null !== $object->getHtmlUrl()) {
             $data['html_url'] = $object->getHtmlUrl();
         }
-        if (null !== $object->getCreatedAt()) {
+        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt();
         }
-        if (null !== $object->getUpdatedAt()) {
+        if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt();
         }
-        if (null !== $object->getPermissions()) {
+        if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
-        if (null !== $object->getEvents()) {
+        if ($object->isInitialized('events') && null !== $object->getEvents()) {
             $values = array();
             foreach ($object->getEvents() as $value) {
                 $values[] = $value;

@@ -70,14 +70,14 @@ class DeleteRulesRequestNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getIds()) {
+        if ($object->isInitialized('ids') && null !== $object->getIds()) {
             $values = array();
             foreach ($object->getIds() as $value) {
                 $values[] = $value;
             }
             $data['ids'] = $values;
         }
-        if (null !== $object->getValues()) {
+        if ($object->isInitialized('values') && null !== $object->getValues()) {
             $values_1 = array();
             foreach ($object->getValues() as $value_1) {
                 $values_1[] = $value_1;

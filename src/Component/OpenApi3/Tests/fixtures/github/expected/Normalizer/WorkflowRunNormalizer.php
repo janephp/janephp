@@ -208,7 +208,7 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['head_commit'] = $this->normalizer->normalize($object->getHeadCommit(), 'json', $context);
         $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
         $data['head_repository'] = $this->normalizer->normalize($object->getHeadRepository(), 'json', $context);
-        if (null !== $object->getHeadRepositoryId()) {
+        if ($object->isInitialized('headRepositoryId') && null !== $object->getHeadRepositoryId()) {
             $data['head_repository_id'] = $object->getHeadRepositoryId();
         }
         foreach ($object as $key => $value_1) {

@@ -5,6 +5,14 @@ namespace Github\Model;
 class ProjectsColumnsCardsCardIdPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The project card's note
      *
      * @var string|null
@@ -34,6 +42,7 @@ class ProjectsColumnsCardsCardIdPatchBody extends \ArrayObject
      */
     public function setNote(?string $note) : self
     {
+        $this->initialized['note'] = true;
         $this->note = $note;
         return $this;
     }
@@ -55,6 +64,7 @@ class ProjectsColumnsCardsCardIdPatchBody extends \ArrayObject
      */
     public function setArchived(bool $archived) : self
     {
+        $this->initialized['archived'] = true;
         $this->archived = $archived;
         return $this;
     }

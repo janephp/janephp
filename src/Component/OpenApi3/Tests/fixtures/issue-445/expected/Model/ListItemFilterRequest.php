@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ListItemFilterRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The string used to query the data. The Lucene query string syntax is supported.
      *
      * @var string|null
@@ -59,6 +67,7 @@ class ListItemFilterRequest
      */
     public function setSearchString(?string $searchString) : self
     {
+        $this->initialized['searchString'] = true;
         $this->searchString = $searchString;
         return $this;
     }
@@ -80,6 +89,7 @@ class ListItemFilterRequest
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }
@@ -101,6 +111,7 @@ class ListItemFilterRequest
      */
     public function setIncludeAllSchemaChildren(bool $includeAllSchemaChildren) : self
     {
+        $this->initialized['includeAllSchemaChildren'] = true;
         $this->includeAllSchemaChildren = $includeAllSchemaChildren;
         return $this;
     }
@@ -122,6 +133,7 @@ class ListItemFilterRequest
      */
     public function setSchemaIds(?array $schemaIds) : self
     {
+        $this->initialized['schemaIds'] = true;
         $this->schemaIds = $schemaIds;
         return $this;
     }
@@ -145,6 +157,7 @@ class ListItemFilterRequest
     */
     public function setSearchLanguages(?array $searchLanguages) : self
     {
+        $this->initialized['searchLanguages'] = true;
         $this->searchLanguages = $searchLanguages;
         return $this;
     }
@@ -166,6 +179,7 @@ class ListItemFilterRequest
      */
     public function setBrokenDependenciesFilter($brokenDependenciesFilter) : self
     {
+        $this->initialized['brokenDependenciesFilter'] = true;
         $this->brokenDependenciesFilter = $brokenDependenciesFilter;
         return $this;
     }

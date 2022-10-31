@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UnsharpenMaskAction extends ImageActionBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Unsharp mask amount (the difference between blurred and original image).
      *
      * @var float
@@ -40,6 +48,7 @@ class UnsharpenMaskAction extends ImageActionBase
      */
     public function setAmount(float $amount) : self
     {
+        $this->initialized['amount'] = true;
         $this->amount = $amount;
         return $this;
     }
@@ -61,6 +70,7 @@ class UnsharpenMaskAction extends ImageActionBase
      */
     public function setRadius(float $radius) : self
     {
+        $this->initialized['radius'] = true;
         $this->radius = $radius;
         return $this;
     }
@@ -82,6 +92,7 @@ class UnsharpenMaskAction extends ImageActionBase
      */
     public function setThreshold(float $threshold) : self
     {
+        $this->initialized['threshold'] = true;
         $this->threshold = $threshold;
         return $this;
     }

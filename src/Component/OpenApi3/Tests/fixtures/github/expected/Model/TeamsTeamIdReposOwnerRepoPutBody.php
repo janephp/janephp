@@ -5,6 +5,14 @@ namespace Github\Model;
 class TeamsTeamIdReposOwnerRepoPutBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * The permission to grant the team on this repository. Can be one of:  
     \* `pull` - team members can pull, but not push to or administer this repository.  
     \* `push` - team members can pull and push, but not administer this repository.  
@@ -43,6 +51,7 @@ class TeamsTeamIdReposOwnerRepoPutBody extends \ArrayObject
     */
     public function setPermission(string $permission) : self
     {
+        $this->initialized['permission'] = true;
         $this->permission = $permission;
         return $this;
     }

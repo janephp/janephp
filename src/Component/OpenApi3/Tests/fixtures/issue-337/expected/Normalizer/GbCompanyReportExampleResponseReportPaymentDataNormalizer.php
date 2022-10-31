@@ -219,76 +219,76 @@ class GbCompanyReportExampleResponseReportPaymentDataNormalizer implements Denor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPaymentsOnFile()) {
+        if ($object->isInitialized('paymentsOnFile') && null !== $object->getPaymentsOnFile()) {
             $data['paymentsOnFile'] = $object->getPaymentsOnFile();
         }
-        if (null !== $object->getPaymentsOnTime()) {
+        if ($object->isInitialized('paymentsOnTime') && null !== $object->getPaymentsOnTime()) {
             $data['paymentsOnTime'] = $object->getPaymentsOnTime();
         }
-        if (null !== $object->getPaymentsPaidLate()) {
+        if ($object->isInitialized('paymentsPaidLate') && null !== $object->getPaymentsPaidLate()) {
             $data['paymentsPaidLate'] = $object->getPaymentsPaidLate();
         }
-        if (null !== $object->getPaymentsSentLegal()) {
+        if ($object->isInitialized('paymentsSentLegal') && null !== $object->getPaymentsSentLegal()) {
             $data['paymentsSentLegal'] = $object->getPaymentsSentLegal();
         }
-        if (null !== $object->getPaymentsStillOwingLate()) {
+        if ($object->isInitialized('paymentsStillOwingLate') && null !== $object->getPaymentsStillOwingLate()) {
             $data['paymentsStillOwingLate'] = $object->getPaymentsStillOwingLate();
         }
-        if (null !== $object->getPaymentsPaid0to30Days()) {
+        if ($object->isInitialized('paymentsPaid0to30Days') && null !== $object->getPaymentsPaid0to30Days()) {
             $data['paymentsPaid0to30Days'] = $object->getPaymentsPaid0to30Days();
         }
-        if (null !== $object->getHighestInvoiceValueOutstandingLate()) {
+        if ($object->isInitialized('highestInvoiceValueOutstandingLate') && null !== $object->getHighestInvoiceValueOutstandingLate()) {
             $data['highestInvoiceValueOutstandingLate'] = $object->getHighestInvoiceValueOutstandingLate();
         }
-        if (null !== $object->getPaymentsPaid90DaysplusLate()) {
+        if ($object->isInitialized('paymentsPaid90DaysplusLate') && null !== $object->getPaymentsPaid90DaysplusLate()) {
             $data['paymentsPaid90DaysplusLate'] = $object->getPaymentsPaid90DaysplusLate();
         }
-        if (null !== $object->getTotalBalanceStillOwingLate()) {
+        if ($object->isInitialized('totalBalanceStillOwingLate') && null !== $object->getTotalBalanceStillOwingLate()) {
             $data['totalBalanceStillOwingLate'] = $object->getTotalBalanceStillOwingLate();
         }
-        if (null !== $object->getDbt()) {
+        if ($object->isInitialized('dbt') && null !== $object->getDbt()) {
             $data['dbt'] = $object->getDbt();
         }
-        if (null !== $object->getPaymentsPaid61to90Days()) {
+        if ($object->isInitialized('paymentsPaid61to90Days') && null !== $object->getPaymentsPaid61to90Days()) {
             $data['paymentsPaid61to90Days'] = $object->getPaymentsPaid61to90Days();
         }
-        if (null !== $object->getTotalBalanceStillOwing()) {
+        if ($object->isInitialized('totalBalanceStillOwing') && null !== $object->getTotalBalanceStillOwing()) {
             $data['totalBalanceStillOwing'] = $object->getTotalBalanceStillOwing();
         }
-        if (null !== $object->getPayments31to60DaysLate()) {
+        if ($object->isInitialized('payments31to60DaysLate') && null !== $object->getPayments31to60DaysLate()) {
             $data['payments31to60DaysLate'] = $object->getPayments31to60DaysLate();
         }
-        if (null !== $object->getPayments61to90DaysLate()) {
+        if ($object->isInitialized('payments61to90DaysLate') && null !== $object->getPayments61to90DaysLate()) {
             $data['payments61to90DaysLate'] = $object->getPayments61to90DaysLate();
         }
-        if (null !== $object->getHighestInvoiceValueOutstanding()) {
+        if ($object->isInitialized('highestInvoiceValueOutstanding') && null !== $object->getHighestInvoiceValueOutstanding()) {
             $data['highestInvoiceValueOutstanding'] = $object->getHighestInvoiceValueOutstanding();
         }
-        if (null !== $object->getPaymentsStillOwing()) {
+        if ($object->isInitialized('paymentsStillOwing') && null !== $object->getPaymentsStillOwing()) {
             $data['paymentsStillOwing'] = $object->getPaymentsStillOwing();
         }
-        if (null !== $object->getPaymentsWithinTerms()) {
+        if ($object->isInitialized('paymentsWithinTerms') && null !== $object->getPaymentsWithinTerms()) {
             $data['paymentsWithinTerms'] = $object->getPaymentsWithinTerms();
         }
-        if (null !== $object->getPayments0to30Dayslate()) {
+        if ($object->isInitialized('payments0to30Dayslate') && null !== $object->getPayments0to30Dayslate()) {
             $data['payments0to30Dayslate'] = $object->getPayments0to30Dayslate();
         }
-        if (null !== $object->getAverageInvoiceValue()) {
+        if ($object->isInitialized('averageInvoiceValue') && null !== $object->getAverageInvoiceValue()) {
             $data['averageInvoiceValue'] = $object->getAverageInvoiceValue();
         }
-        if (null !== $object->getPaymentsPaid31to60Days()) {
+        if ($object->isInitialized('paymentsPaid31to60Days') && null !== $object->getPaymentsPaid31to60Days()) {
             $data['paymentsPaid31to60Days'] = $object->getPaymentsPaid31to60Days();
         }
-        if (null !== $object->getPaymentsPaid90Daysplus()) {
+        if ($object->isInitialized('paymentsPaid90Daysplus') && null !== $object->getPaymentsPaid90Daysplus()) {
             $data['paymentsPaid90Daysplus'] = $object->getPaymentsPaid90Daysplus();
         }
-        if (null !== $object->getTotalInvoiceValues()) {
+        if ($object->isInitialized('totalInvoiceValues') && null !== $object->getTotalInvoiceValues()) {
             $data['totalInvoiceValues'] = $object->getTotalInvoiceValues();
         }
-        if (null !== $object->getPaymentTrend()) {
+        if ($object->isInitialized('paymentTrend') && null !== $object->getPaymentTrend()) {
             $data['paymentTrend'] = $object->getPaymentTrend();
         }
-        if (null !== $object->getIndustryDBT()) {
+        if ($object->isInitialized('industryDBT') && null !== $object->getIndustryDBT()) {
             $data['industryDBT'] = $object->getIndustryDBT();
         }
         foreach ($object as $key => $value) {

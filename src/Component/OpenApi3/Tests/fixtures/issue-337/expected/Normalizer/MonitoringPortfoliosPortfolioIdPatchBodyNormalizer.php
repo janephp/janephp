@@ -74,20 +74,20 @@ class MonitoringPortfoliosPortfolioIdPatchBodyNormalizer implements Denormalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getEmails()) {
+        if ($object->isInitialized('emails') && null !== $object->getEmails()) {
             $values = array();
             foreach ($object->getEmails() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['emails'] = $values;
         }
-        if (null !== $object->getEmailLanguage()) {
+        if ($object->isInitialized('emailLanguage') && null !== $object->getEmailLanguage()) {
             $data['emailLanguage'] = $object->getEmailLanguage();
         }
-        if (null !== $object->getEmailSubject()) {
+        if ($object->isInitialized('emailSubject') && null !== $object->getEmailSubject()) {
             $data['emailSubject'] = $object->getEmailSubject();
         }
         foreach ($object as $key => $value_1) {

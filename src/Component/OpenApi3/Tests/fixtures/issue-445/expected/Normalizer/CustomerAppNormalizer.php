@@ -73,16 +73,16 @@ class CustomerAppNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getAppId()) {
+        if ($object->isInitialized('appId') && null !== $object->getAppId()) {
             $data['appId'] = $object->getAppId();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getIcon()) {
+        if ($object->isInitialized('icon') && null !== $object->getIcon()) {
             $data['icon'] = $object->getIcon();
         }
         return $data;

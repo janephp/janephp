@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class Mount
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Container path.
      *
      * @var string
@@ -76,6 +84,7 @@ class Mount
      */
     public function setTarget(string $target) : self
     {
+        $this->initialized['target'] = true;
         $this->target = $target;
         return $this;
     }
@@ -97,6 +106,7 @@ class Mount
      */
     public function setSource(string $source) : self
     {
+        $this->initialized['source'] = true;
         $this->source = $source;
         return $this;
     }
@@ -130,6 +140,7 @@ class Mount
     */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -151,6 +162,7 @@ class Mount
      */
     public function setReadOnly(bool $readOnly) : self
     {
+        $this->initialized['readOnly'] = true;
         $this->readOnly = $readOnly;
         return $this;
     }
@@ -172,6 +184,7 @@ class Mount
      */
     public function setConsistency(string $consistency) : self
     {
+        $this->initialized['consistency'] = true;
         $this->consistency = $consistency;
         return $this;
     }
@@ -193,6 +206,7 @@ class Mount
      */
     public function setBindOptions(MountBindOptions $bindOptions) : self
     {
+        $this->initialized['bindOptions'] = true;
         $this->bindOptions = $bindOptions;
         return $this;
     }
@@ -214,6 +228,7 @@ class Mount
      */
     public function setVolumeOptions(MountVolumeOptions $volumeOptions) : self
     {
+        $this->initialized['volumeOptions'] = true;
         $this->volumeOptions = $volumeOptions;
         return $this;
     }
@@ -235,6 +250,7 @@ class Mount
      */
     public function setTmpfsOptions(MountTmpfsOptions $tmpfsOptions) : self
     {
+        $this->initialized['tmpfsOptions'] = true;
         $this->tmpfsOptions = $tmpfsOptions;
         return $this;
     }

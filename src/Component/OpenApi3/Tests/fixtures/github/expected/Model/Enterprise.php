@@ -5,6 +5,14 @@ namespace Github\Model;
 class Enterprise extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * A short description of the enterprise.
      *
      * @var string|null
@@ -82,6 +90,7 @@ class Enterprise extends \ArrayObject
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -103,6 +112,7 @@ class Enterprise extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -124,6 +134,7 @@ class Enterprise extends \ArrayObject
      */
     public function setWebsiteUrl(?string $websiteUrl) : self
     {
+        $this->initialized['websiteUrl'] = true;
         $this->websiteUrl = $websiteUrl;
         return $this;
     }
@@ -145,6 +156,7 @@ class Enterprise extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -166,6 +178,7 @@ class Enterprise extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -187,6 +200,7 @@ class Enterprise extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -208,6 +222,7 @@ class Enterprise extends \ArrayObject
      */
     public function setSlug(string $slug) : self
     {
+        $this->initialized['slug'] = true;
         $this->slug = $slug;
         return $this;
     }
@@ -229,6 +244,7 @@ class Enterprise extends \ArrayObject
      */
     public function setCreatedAt(?\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -250,6 +266,7 @@ class Enterprise extends \ArrayObject
      */
     public function setUpdatedAt(?\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -271,6 +288,7 @@ class Enterprise extends \ArrayObject
      */
     public function setAvatarUrl(string $avatarUrl) : self
     {
+        $this->initialized['avatarUrl'] = true;
         $this->avatarUrl = $avatarUrl;
         return $this;
     }

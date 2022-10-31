@@ -114,49 +114,49 @@ class CompanySearchSuccessResultCompaniesItemNormalizer implements DenormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getCountry()) {
+        if ($object->isInitialized('country') && null !== $object->getCountry()) {
             $data['country'] = $object->getCountry();
         }
-        if (null !== $object->getRegNo()) {
+        if ($object->isInitialized('regNo') && null !== $object->getRegNo()) {
             $data['regNo'] = $object->getRegNo();
         }
-        if (null !== $object->getVatNo()) {
+        if ($object->isInitialized('vatNo') && null !== $object->getVatNo()) {
             $data['vatNo'] = $this->normalizer->normalize($object->getVatNo(), 'json', $context);
         }
-        if (null !== $object->getSafeNo()) {
+        if ($object->isInitialized('safeNo') && null !== $object->getSafeNo()) {
             $data['safeNo'] = $object->getSafeNo();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getStatus()) {
+        if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
-        if (null !== $object->getOfficeType()) {
+        if ($object->isInitialized('officeType') && null !== $object->getOfficeType()) {
             $data['officeType'] = $object->getOfficeType();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getStatusDescription()) {
+        if ($object->isInitialized('statusDescription') && null !== $object->getStatusDescription()) {
             $data['statusDescription'] = $object->getStatusDescription();
         }
-        if (null !== $object->getActivityCode()) {
+        if ($object->isInitialized('activityCode') && null !== $object->getActivityCode()) {
             $data['activityCode'] = $object->getActivityCode();
         }
-        if (null !== $object->getTradingNames()) {
+        if ($object->isInitialized('tradingNames') && null !== $object->getTradingNames()) {
             $data['tradingNames'] = $this->normalizer->normalize($object->getTradingNames(), 'json', $context);
         }
-        if (null !== $object->getAddress()) {
+        if ($object->isInitialized('address') && null !== $object->getAddress()) {
             $data['address'] = $this->normalizer->normalize($object->getAddress(), 'json', $context);
         }
-        if (null !== $object->getDateOfLatestChange()) {
+        if ($object->isInitialized('dateOfLatestChange') && null !== $object->getDateOfLatestChange()) {
             $data['dateOfLatestChange'] = $this->normalizer->normalize($object->getDateOfLatestChange(), 'json', $context);
         }
-        if (null !== $object->getDateOfLatestCAccounts()) {
+        if ($object->isInitialized('dateOfLatestCAccounts') && null !== $object->getDateOfLatestCAccounts()) {
             $data['dateOfLatestCAccounts'] = $this->normalizer->normalize($object->getDateOfLatestCAccounts(), 'json', $context);
         }
         foreach ($object as $key => $value) {

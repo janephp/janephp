@@ -5,6 +5,14 @@ namespace Github\Model;
 class PullRequestMinimal extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -52,6 +60,7 @@ class PullRequestMinimal extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -73,6 +82,7 @@ class PullRequestMinimal extends \ArrayObject
      */
     public function setNumber(int $number) : self
     {
+        $this->initialized['number'] = true;
         $this->number = $number;
         return $this;
     }
@@ -94,6 +104,7 @@ class PullRequestMinimal extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -115,6 +126,7 @@ class PullRequestMinimal extends \ArrayObject
      */
     public function setHead(PullRequestMinimalHead $head) : self
     {
+        $this->initialized['head'] = true;
         $this->head = $head;
         return $this;
     }
@@ -136,6 +148,7 @@ class PullRequestMinimal extends \ArrayObject
      */
     public function setBase(PullRequestMinimalBase $base) : self
     {
+        $this->initialized['base'] = true;
         $this->base = $base;
         return $this;
     }

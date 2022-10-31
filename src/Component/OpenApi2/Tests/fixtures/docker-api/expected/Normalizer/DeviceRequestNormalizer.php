@@ -84,20 +84,20 @@ class DeviceRequestNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDriver()) {
+        if ($object->isInitialized('driver') && null !== $object->getDriver()) {
             $data['Driver'] = $object->getDriver();
         }
-        if (null !== $object->getCount()) {
+        if ($object->isInitialized('count') && null !== $object->getCount()) {
             $data['Count'] = $object->getCount();
         }
-        if (null !== $object->getDeviceIDs()) {
+        if ($object->isInitialized('deviceIDs') && null !== $object->getDeviceIDs()) {
             $values = array();
             foreach ($object->getDeviceIDs() as $value) {
                 $values[] = $value;
             }
             $data['DeviceIDs'] = $values;
         }
-        if (null !== $object->getCapabilities()) {
+        if ($object->isInitialized('capabilities') && null !== $object->getCapabilities()) {
             $values_1 = array();
             foreach ($object->getCapabilities() as $value_1) {
                 $values_2 = array();
@@ -108,7 +108,7 @@ class DeviceRequestNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $data['Capabilities'] = $values_1;
         }
-        if (null !== $object->getOptions()) {
+        if ($object->isInitialized('options') && null !== $object->getOptions()) {
             $values_3 = array();
             foreach ($object->getOptions() as $key => $value_3) {
                 $values_3[$key] = $value_3;

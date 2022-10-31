@@ -69,10 +69,10 @@ class UserAuditNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data = array();
         $data['creationDate'] = $object->getCreationDate()->format('Y-m-d\\TH:i:sP');
         $data['modificationDate'] = $object->getModificationDate()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getCreatedByUser()) {
+        if ($object->isInitialized('createdByUser') && null !== $object->getCreatedByUser()) {
             $data['createdByUser'] = $object->getCreatedByUser();
         }
-        if (null !== $object->getModifiedByUser()) {
+        if ($object->isInitialized('modifiedByUser') && null !== $object->getModifiedByUser()) {
             $data['modifiedByUser'] = $object->getModifiedByUser();
         }
         return $data;

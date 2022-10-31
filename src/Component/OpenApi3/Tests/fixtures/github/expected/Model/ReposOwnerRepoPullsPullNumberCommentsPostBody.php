@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoPullsPullNumberCommentsPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The text of the review comment.
      *
      * @var string
@@ -76,6 +84,7 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBody extends \ArrayObject
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }
@@ -97,6 +106,7 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBody extends \ArrayObject
      */
     public function setCommitId(string $commitId) : self
     {
+        $this->initialized['commitId'] = true;
         $this->commitId = $commitId;
         return $this;
     }
@@ -118,6 +128,7 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBody extends \ArrayObject
      */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -139,6 +150,7 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBody extends \ArrayObject
      */
     public function setPosition(int $position) : self
     {
+        $this->initialized['position'] = true;
         $this->position = $position;
         return $this;
     }
@@ -160,6 +172,7 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBody extends \ArrayObject
      */
     public function setSide(string $side) : self
     {
+        $this->initialized['side'] = true;
         $this->side = $side;
         return $this;
     }
@@ -181,6 +194,7 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBody extends \ArrayObject
      */
     public function setLine(int $line) : self
     {
+        $this->initialized['line'] = true;
         $this->line = $line;
         return $this;
     }
@@ -202,6 +216,7 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBody extends \ArrayObject
      */
     public function setStartLine(int $startLine) : self
     {
+        $this->initialized['startLine'] = true;
         $this->startLine = $startLine;
         return $this;
     }
@@ -223,6 +238,7 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBody extends \ArrayObject
      */
     public function setStartSide(string $startSide) : self
     {
+        $this->initialized['startSide'] = true;
         $this->startSide = $startSide;
         return $this;
     }
@@ -244,6 +260,7 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBody extends \ArrayObject
      */
     public function setInReplyTo(int $inReplyTo) : self
     {
+        $this->initialized['inReplyTo'] = true;
         $this->inReplyTo = $inReplyTo;
         return $this;
     }

@@ -64,10 +64,10 @@ class UserEmailNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFirstName()) {
+        if ($object->isInitialized('firstName') && null !== $object->getFirstName()) {
             $data['firstName'] = $object->getFirstName();
         }
-        if (null !== $object->getLastName()) {
+        if ($object->isInitialized('lastName') && null !== $object->getLastName()) {
             $data['lastName'] = $object->getLastName();
         }
         $data['emailAddress'] = $object->getEmailAddress();

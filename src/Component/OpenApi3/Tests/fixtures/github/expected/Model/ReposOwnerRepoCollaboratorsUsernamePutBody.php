@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoCollaboratorsUsernamePutBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * The permission to grant the collaborator. **Only valid on organization-owned repositories.** Can be one of:  
     \* `pull` - can pull, but not push to or administer this repository.  
     \* `push` - can pull and push, but not administer this repository.  
@@ -49,6 +57,7 @@ class ReposOwnerRepoCollaboratorsUsernamePutBody extends \ArrayObject
     */
     public function setPermission(string $permission) : self
     {
+        $this->initialized['permission'] = true;
         $this->permission = $permission;
         return $this;
     }
@@ -70,6 +79,7 @@ class ReposOwnerRepoCollaboratorsUsernamePutBody extends \ArrayObject
      */
     public function setPermissions(string $permissions) : self
     {
+        $this->initialized['permissions'] = true;
         $this->permissions = $permissions;
         return $this;
     }

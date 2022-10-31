@@ -70,14 +70,14 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getExact()) {
+        if ($object->isInitialized('exact') && null !== $object->getExact()) {
             $values = array();
             foreach ($object->getExact() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['exact'] = $values;
         }
-        if (null !== $object->getPossible()) {
+        if ($object->isInitialized('possible') && null !== $object->getPossible()) {
             $values_1 = array();
             foreach ($object->getPossible() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

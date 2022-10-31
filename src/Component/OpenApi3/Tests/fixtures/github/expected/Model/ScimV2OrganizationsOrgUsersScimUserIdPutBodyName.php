@@ -5,6 +5,14 @@ namespace Github\Model;
 class ScimV2OrganizationsOrgUsersScimUserIdPutBodyName extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyName extends \ArrayObject
      */
     public function setGivenName(string $givenName) : self
     {
+        $this->initialized['givenName'] = true;
         $this->givenName = $givenName;
         return $this;
     }
@@ -55,6 +64,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyName extends \ArrayObject
      */
     public function setFamilyName(string $familyName) : self
     {
+        $this->initialized['familyName'] = true;
         $this->familyName = $familyName;
         return $this;
     }

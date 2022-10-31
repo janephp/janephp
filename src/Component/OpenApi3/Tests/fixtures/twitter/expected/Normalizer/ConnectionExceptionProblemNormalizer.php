@@ -71,7 +71,7 @@ class ConnectionExceptionProblemNormalizer implements DenormalizerInterface, Nor
     {
         $data = array();
         $data['type'] = $object->getType();
-        if (null !== $object->getConnectionIssue()) {
+        if ($object->isInitialized('connectionIssue') && null !== $object->getConnectionIssue()) {
             $data['connection_issue'] = $object->getConnectionIssue();
         }
         $data['title'] = $object->getTitle();

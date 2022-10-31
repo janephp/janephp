@@ -72,19 +72,19 @@ class ProcessConfigNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getPrivileged()) {
+        if ($object->isInitialized('privileged') && null !== $object->getPrivileged()) {
             $data['privileged'] = $object->getPrivileged();
         }
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $data['user'] = $object->getUser();
         }
-        if (null !== $object->getTty()) {
+        if ($object->isInitialized('tty') && null !== $object->getTty()) {
             $data['tty'] = $object->getTty();
         }
-        if (null !== $object->getEntrypoint()) {
+        if ($object->isInitialized('entrypoint') && null !== $object->getEntrypoint()) {
             $data['entrypoint'] = $object->getEntrypoint();
         }
-        if (null !== $object->getArguments()) {
+        if ($object->isInitialized('arguments') && null !== $object->getArguments()) {
             $values = array();
             foreach ($object->getArguments() as $value) {
                 $values[] = $value;

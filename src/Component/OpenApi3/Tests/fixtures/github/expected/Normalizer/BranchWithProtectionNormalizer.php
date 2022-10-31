@@ -96,10 +96,10 @@ class BranchWithProtectionNormalizer implements DenormalizerInterface, Normalize
         $data['protected'] = $object->getProtected();
         $data['protection'] = $this->normalizer->normalize($object->getProtection(), 'json', $context);
         $data['protection_url'] = $object->getProtectionUrl();
-        if (null !== $object->getPattern()) {
+        if ($object->isInitialized('pattern') && null !== $object->getPattern()) {
             $data['pattern'] = $object->getPattern();
         }
-        if (null !== $object->getRequiredApprovingReviewCount()) {
+        if ($object->isInitialized('requiredApprovingReviewCount') && null !== $object->getRequiredApprovingReviewCount()) {
             $data['required_approving_review_count'] = $object->getRequiredApprovingReviewCount();
         }
         foreach ($object as $key => $value) {

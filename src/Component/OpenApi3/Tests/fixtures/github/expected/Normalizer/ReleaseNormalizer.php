@@ -171,7 +171,7 @@ class ReleaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data['tag_name'] = $object->getTagName();
         $data['target_commitish'] = $object->getTargetCommitish();
         $data['name'] = $object->getName();
-        if (null !== $object->getBody()) {
+        if ($object->isInitialized('body') && null !== $object->getBody()) {
             $data['body'] = $object->getBody();
         }
         $data['draft'] = $object->getDraft();
@@ -184,10 +184,10 @@ class ReleaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['assets'] = $values;
-        if (null !== $object->getBodyHtml()) {
+        if ($object->isInitialized('bodyHtml') && null !== $object->getBodyHtml()) {
             $data['body_html'] = $object->getBodyHtml();
         }
-        if (null !== $object->getBodyText()) {
+        if ($object->isInitialized('bodyText') && null !== $object->getBodyText()) {
             $data['body_text'] = $object->getBodyText();
         }
         foreach ($object as $key => $value_1) {

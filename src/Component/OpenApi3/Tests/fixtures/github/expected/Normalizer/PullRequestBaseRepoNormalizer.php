@@ -455,7 +455,7 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         $data['has_pages'] = $object->getHasPages();
         $data['homepage'] = $object->getHomepage();
         $data['language'] = $object->getLanguage();
-        if (null !== $object->getMasterBranch()) {
+        if ($object->isInitialized('masterBranch') && null !== $object->getMasterBranch()) {
             $data['master_branch'] = $object->getMasterBranch();
         }
         $data['archived'] = $object->getArchived();
@@ -463,19 +463,19 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         $data['mirror_url'] = $object->getMirrorUrl();
         $data['open_issues'] = $object->getOpenIssues();
         $data['open_issues_count'] = $object->getOpenIssuesCount();
-        if (null !== $object->getPermissions()) {
+        if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
             $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
         }
-        if (null !== $object->getTempCloneToken()) {
+        if ($object->isInitialized('tempCloneToken') && null !== $object->getTempCloneToken()) {
             $data['temp_clone_token'] = $object->getTempCloneToken();
         }
-        if (null !== $object->getAllowMergeCommit()) {
+        if ($object->isInitialized('allowMergeCommit') && null !== $object->getAllowMergeCommit()) {
             $data['allow_merge_commit'] = $object->getAllowMergeCommit();
         }
-        if (null !== $object->getAllowSquashMerge()) {
+        if ($object->isInitialized('allowSquashMerge') && null !== $object->getAllowSquashMerge()) {
             $data['allow_squash_merge'] = $object->getAllowSquashMerge();
         }
-        if (null !== $object->getAllowRebaseMerge()) {
+        if ($object->isInitialized('allowRebaseMerge') && null !== $object->getAllowRebaseMerge()) {
             $data['allow_rebase_merge'] = $object->getAllowRebaseMerge();
         }
         $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
@@ -484,7 +484,7 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         $data['ssh_url'] = $object->getSshUrl();
         $data['stargazers_count'] = $object->getStargazersCount();
         $data['svn_url'] = $object->getSvnUrl();
-        if (null !== $object->getTopics()) {
+        if ($object->isInitialized('topics') && null !== $object->getTopics()) {
             $values = array();
             foreach ($object->getTopics() as $value) {
                 $values[] = $value;

@@ -66,10 +66,10 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyNormalizer imple
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getRevokeAll()) {
+        if ($object->isInitialized('revokeAll') && null !== $object->getRevokeAll()) {
             $data['revokeAll'] = $object->getRevokeAll();
         }
-        if (null !== $object->getCompanies()) {
+        if ($object->isInitialized('companies') && null !== $object->getCompanies()) {
             $values = array();
             foreach ($object->getCompanies() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

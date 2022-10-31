@@ -72,7 +72,7 @@ class ReposOwnerRepoCheckRunsPostBodyOutputImagesItemNormalizer implements Denor
         $data = array();
         $data['alt'] = $object->getAlt();
         $data['image_url'] = $object->getImageUrl();
-        if (null !== $object->getCaption()) {
+        if ($object->isInitialized('caption') && null !== $object->getCaption()) {
             $data['caption'] = $object->getCaption();
         }
         foreach ($object as $key => $value) {

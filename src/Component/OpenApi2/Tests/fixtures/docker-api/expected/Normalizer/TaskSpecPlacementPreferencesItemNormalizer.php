@@ -56,7 +56,7 @@ class TaskSpecPlacementPreferencesItemNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getSpread()) {
+        if ($object->isInitialized('spread') && null !== $object->getSpread()) {
             $data['Spread'] = $this->normalizer->normalize($object->getSpread(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

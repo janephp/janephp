@@ -5,6 +5,14 @@ namespace Github\Model;
 class ApplicationsClientIdTokenPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The access_token of the OAuth application.
      *
      * @var string
@@ -28,6 +36,7 @@ class ApplicationsClientIdTokenPostBody extends \ArrayObject
      */
     public function setAccessToken(string $accessToken) : self
     {
+        $this->initialized['accessToken'] = true;
         $this->accessToken = $accessToken;
         return $this;
     }

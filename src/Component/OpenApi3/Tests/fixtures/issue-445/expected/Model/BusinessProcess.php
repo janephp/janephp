@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessProcess
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of the business process.
      *
      * @var string
@@ -110,6 +118,7 @@ class BusinessProcess
      */
     public function setId(string $id)
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
     }
     /**
@@ -128,6 +137,7 @@ class BusinessProcess
      */
     public function setProcessDefinitionId(string $processDefinitionId)
     {
+        $this->initialized['processDefinitionId'] = true;
         $this->processDefinitionId = $processDefinitionId;
     }
     /**
@@ -146,6 +156,7 @@ class BusinessProcess
      */
     public function setReferenceId(?string $referenceId)
     {
+        $this->initialized['referenceId'] = true;
         $this->referenceId = $referenceId;
     }
     /**
@@ -164,6 +175,7 @@ class BusinessProcess
      */
     public function setReferenceDocType(?string $referenceDocType)
     {
+        $this->initialized['referenceDocType'] = true;
         $this->referenceDocType = $referenceDocType;
     }
     /**
@@ -182,6 +194,7 @@ class BusinessProcess
      */
     public function setSupportsCancellation(bool $supportsCancellation)
     {
+        $this->initialized['supportsCancellation'] = true;
         $this->supportsCancellation = $supportsCancellation;
     }
     /**
@@ -200,6 +213,7 @@ class BusinessProcess
      */
     public function setBusinessProcessScope($businessProcessScope)
     {
+        $this->initialized['businessProcessScope'] = true;
         $this->businessProcessScope = $businessProcessScope;
     }
     /**
@@ -218,6 +232,7 @@ class BusinessProcess
      */
     public function setLifeCycle($lifeCycle)
     {
+        $this->initialized['lifeCycle'] = true;
         $this->lifeCycle = $lifeCycle;
     }
     /**
@@ -236,6 +251,7 @@ class BusinessProcess
      */
     public function setStartDate(\DateTime $startDate)
     {
+        $this->initialized['startDate'] = true;
         $this->startDate = $startDate;
     }
     /**
@@ -254,6 +270,7 @@ class BusinessProcess
      */
     public function setEndDate(\DateTime $endDate)
     {
+        $this->initialized['endDate'] = true;
         $this->endDate = $endDate;
     }
     /**
@@ -272,6 +289,7 @@ class BusinessProcess
      */
     public function setFinished(bool $finished)
     {
+        $this->initialized['finished'] = true;
         $this->finished = $finished;
     }
     /**
@@ -290,6 +308,7 @@ class BusinessProcess
      */
     public function setStateHistory(?array $stateHistory)
     {
+        $this->initialized['stateHistory'] = true;
         $this->stateHistory = $stateHistory;
     }
     /**
@@ -308,6 +327,7 @@ class BusinessProcess
      */
     public function setCurrentState(?string $currentState)
     {
+        $this->initialized['currentState'] = true;
         $this->currentState = $currentState;
     }
     /**
@@ -326,6 +346,7 @@ class BusinessProcess
      */
     public function setLastReportedProgress(?\DateTime $lastReportedProgress)
     {
+        $this->initialized['lastReportedProgress'] = true;
         $this->lastReportedProgress = $lastReportedProgress;
     }
     /**
@@ -344,6 +365,7 @@ class BusinessProcess
      */
     public function setContinuationBusinessProcessId(?string $continuationBusinessProcessId)
     {
+        $this->initialized['continuationBusinessProcessId'] = true;
         $this->continuationBusinessProcessId = $continuationBusinessProcessId;
     }
     /**
@@ -362,6 +384,7 @@ class BusinessProcess
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class BadRequestError extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class BadRequestError extends \ArrayObject
      */
     public function setCorrelationId(string $correlationId) : self
     {
+        $this->initialized['correlationId'] = true;
         $this->correlationId = $correlationId;
         return $this;
     }
@@ -61,6 +70,7 @@ class BadRequestError extends \ArrayObject
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -82,6 +92,7 @@ class BadRequestError extends \ArrayObject
      */
     public function setDetails(string $details) : self
     {
+        $this->initialized['details'] = true;
         $this->details = $details;
         return $this;
     }

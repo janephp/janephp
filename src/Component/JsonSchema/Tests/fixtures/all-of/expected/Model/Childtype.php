@@ -5,6 +5,14 @@ namespace Jane\Component\JsonSchema\Tests\Expected\Model;
 class Childtype
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class Childtype
      */
     public function setChildProperty(string $childProperty) : self
     {
+        $this->initialized['childProperty'] = true;
         $this->childProperty = $childProperty;
         return $this;
     }
@@ -55,6 +64,7 @@ class Childtype
      */
     public function setInheritedProperty(string $inheritedProperty) : self
     {
+        $this->initialized['inheritedProperty'] = true;
         $this->inheritedProperty = $inheritedProperty;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Jane\Component\JsonSchema\Tests\Expected\Model;
 class Test
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class Test
      */
     public function setString(string $string) : self
     {
+        $this->initialized['string'] = true;
         $this->string = $string;
         return $this;
     }
@@ -55,6 +64,7 @@ class Test
      */
     public function setSubObject(TestSubObject $subObject) : self
     {
+        $this->initialized['subObject'] = true;
         $this->subObject = $subObject;
         return $this;
     }

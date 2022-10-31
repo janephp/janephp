@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class PermissionUserRoleRightsOfPermissionSetRight
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The user role ID.
      *
      * @var string|null
@@ -41,6 +49,7 @@ class PermissionUserRoleRightsOfPermissionSetRight
      */
     public function setUserRoleId(?string $userRoleId) : self
     {
+        $this->initialized['userRoleId'] = true;
         $this->userRoleId = $userRoleId;
         return $this;
     }
@@ -62,6 +71,7 @@ class PermissionUserRoleRightsOfPermissionSetRight
      */
     public function setNames($names) : self
     {
+        $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }
@@ -85,6 +95,7 @@ class PermissionUserRoleRightsOfPermissionSetRight
     */
     public function setRights(?array $rights) : self
     {
+        $this->initialized['rights'] = true;
         $this->rights = $rights;
         return $this;
     }

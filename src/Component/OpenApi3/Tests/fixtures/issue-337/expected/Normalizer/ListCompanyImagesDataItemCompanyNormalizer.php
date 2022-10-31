@@ -70,16 +70,16 @@ class ListCompanyImagesDataItemCompanyNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getCountry()) {
+        if ($object->isInitialized('country') && null !== $object->getCountry()) {
             $data['country'] = $object->getCountry();
         }
-        if (null !== $object->getLocalId()) {
+        if ($object->isInitialized('localId') && null !== $object->getLocalId()) {
             $data['localId'] = $object->getLocalId();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
         foreach ($object as $key => $value) {

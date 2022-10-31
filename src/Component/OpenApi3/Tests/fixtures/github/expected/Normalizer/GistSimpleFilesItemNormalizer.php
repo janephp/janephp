@@ -86,25 +86,25 @@ class GistSimpleFilesItemNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFilename()) {
+        if ($object->isInitialized('filename') && null !== $object->getFilename()) {
             $data['filename'] = $object->getFilename();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getLanguage()) {
+        if ($object->isInitialized('language') && null !== $object->getLanguage()) {
             $data['language'] = $object->getLanguage();
         }
-        if (null !== $object->getRawUrl()) {
+        if ($object->isInitialized('rawUrl') && null !== $object->getRawUrl()) {
             $data['raw_url'] = $object->getRawUrl();
         }
-        if (null !== $object->getSize()) {
+        if ($object->isInitialized('size') && null !== $object->getSize()) {
             $data['size'] = $object->getSize();
         }
-        if (null !== $object->getTruncated()) {
+        if ($object->isInitialized('truncated') && null !== $object->getTruncated()) {
             $data['truncated'] = $object->getTruncated();
         }
-        if (null !== $object->getContent()) {
+        if ($object->isInitialized('content') && null !== $object->getContent()) {
             $data['content'] = $object->getContent();
         }
         foreach ($object as $key => $value) {

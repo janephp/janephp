@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessProcessDetailsDataCdnPurge extends BusinessProcessDetailsDataBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Serialized CDN configuration.
      *
      * @var string
@@ -34,6 +42,7 @@ class BusinessProcessDetailsDataCdnPurge extends BusinessProcessDetailsDataBase
      */
     public function setSerializedCdnConfiguration(string $serializedCdnConfiguration) : self
     {
+        $this->initialized['serializedCdnConfiguration'] = true;
         $this->serializedCdnConfiguration = $serializedCdnConfiguration;
         return $this;
     }
@@ -55,6 +64,7 @@ class BusinessProcessDetailsDataCdnPurge extends BusinessProcessDetailsDataBase
      */
     public function setJobs(array $jobs) : self
     {
+        $this->initialized['jobs'] = true;
         $this->jobs = $jobs;
         return $this;
     }

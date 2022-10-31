@@ -129,23 +129,23 @@ class CodeSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         $data['html_url'] = $object->getHtmlUrl();
         $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
         $data['score'] = $object->getScore();
-        if (null !== $object->getFileSize()) {
+        if ($object->isInitialized('fileSize') && null !== $object->getFileSize()) {
             $data['file_size'] = $object->getFileSize();
         }
-        if (null !== $object->getLanguage()) {
+        if ($object->isInitialized('language') && null !== $object->getLanguage()) {
             $data['language'] = $object->getLanguage();
         }
-        if (null !== $object->getLastModifiedAt()) {
+        if ($object->isInitialized('lastModifiedAt') && null !== $object->getLastModifiedAt()) {
             $data['last_modified_at'] = $object->getLastModifiedAt()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getLineNumbers()) {
+        if ($object->isInitialized('lineNumbers') && null !== $object->getLineNumbers()) {
             $values = array();
             foreach ($object->getLineNumbers() as $value) {
                 $values[] = $value;
             }
             $data['line_numbers'] = $values;
         }
-        if (null !== $object->getTextMatches()) {
+        if ($object->isInitialized('textMatches') && null !== $object->getTextMatches()) {
             $values_1 = array();
             foreach ($object->getTextMatches() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

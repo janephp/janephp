@@ -115,11 +115,11 @@ class ProjectCardNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        if (null !== $object->getArchived()) {
+        if ($object->isInitialized('archived') && null !== $object->getArchived()) {
             $data['archived'] = $object->getArchived();
         }
         $data['column_url'] = $object->getColumnUrl();
-        if (null !== $object->getContentUrl()) {
+        if ($object->isInitialized('contentUrl') && null !== $object->getContentUrl()) {
             $data['content_url'] = $object->getContentUrl();
         }
         $data['project_url'] = $object->getProjectUrl();

@@ -98,34 +98,34 @@ class HookConfigNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getEmail()) {
+        if ($object->isInitialized('email') && null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
         }
-        if (null !== $object->getPassword()) {
+        if ($object->isInitialized('password') && null !== $object->getPassword()) {
             $data['password'] = $object->getPassword();
         }
-        if (null !== $object->getRoom()) {
+        if ($object->isInitialized('room') && null !== $object->getRoom()) {
             $data['room'] = $object->getRoom();
         }
-        if (null !== $object->getSubdomain()) {
+        if ($object->isInitialized('subdomain') && null !== $object->getSubdomain()) {
             $data['subdomain'] = $object->getSubdomain();
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getInsecureSsl()) {
+        if ($object->isInitialized('insecureSsl') && null !== $object->getInsecureSsl()) {
             $data['insecure_ssl'] = $object->getInsecureSsl();
         }
-        if (null !== $object->getContentType()) {
+        if ($object->isInitialized('contentType') && null !== $object->getContentType()) {
             $data['content_type'] = $object->getContentType();
         }
-        if (null !== $object->getDigest()) {
+        if ($object->isInitialized('digest') && null !== $object->getDigest()) {
             $data['digest'] = $object->getDigest();
         }
-        if (null !== $object->getSecret()) {
+        if ($object->isInitialized('secret') && null !== $object->getSecret()) {
             $data['secret'] = $object->getSecret();
         }
-        if (null !== $object->getToken()) {
+        if ($object->isInitialized('token') && null !== $object->getToken()) {
             $data['token'] = $object->getToken();
         }
         foreach ($object as $key => $value) {

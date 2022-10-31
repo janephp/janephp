@@ -5,6 +5,14 @@ namespace Github\Model;
 class CodeOfConductSimple extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class CodeOfConductSimple extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -67,6 +76,7 @@ class CodeOfConductSimple extends \ArrayObject
      */
     public function setKey(string $key) : self
     {
+        $this->initialized['key'] = true;
         $this->key = $key;
         return $this;
     }
@@ -88,6 +98,7 @@ class CodeOfConductSimple extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -109,6 +120,7 @@ class CodeOfConductSimple extends \ArrayObject
      */
     public function setHtmlUrl(?string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }

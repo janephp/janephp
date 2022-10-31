@@ -58,7 +58,7 @@ class AuthenticationSuccessResponseNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getToken()) {
+        if ($object->isInitialized('token') && null !== $object->getToken()) {
             $data['token'] = $object->getToken();
         }
         foreach ($object as $key => $value) {

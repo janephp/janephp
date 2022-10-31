@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class AlphaHandlingAction extends ImageActionBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Specifies the kind of alpha handling to be applied.
      *
      * @var mixed
@@ -34,6 +42,7 @@ class AlphaHandlingAction extends ImageActionBase
      */
     public function setAlphaHandling($alphaHandling) : self
     {
+        $this->initialized['alphaHandling'] = true;
         $this->alphaHandling = $alphaHandling;
         return $this;
     }
@@ -55,6 +64,7 @@ class AlphaHandlingAction extends ImageActionBase
      */
     public function setReplacementRgbColorHexCode(?string $replacementRgbColorHexCode) : self
     {
+        $this->initialized['replacementRgbColorHexCode'] = true;
         $this->replacementRgbColorHexCode = $replacementRgbColorHexCode;
         return $this;
     }

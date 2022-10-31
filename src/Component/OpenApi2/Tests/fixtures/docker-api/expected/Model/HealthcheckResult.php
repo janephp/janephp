@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class HealthcheckResult
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * Date and time at which this check started in
     [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
     
@@ -60,6 +68,7 @@ class HealthcheckResult
     */
     public function setStart(\DateTime $start) : self
     {
+        $this->initialized['start'] = true;
         $this->start = $start;
         return $this;
     }
@@ -85,6 +94,7 @@ class HealthcheckResult
     */
     public function setEnd(string $end) : self
     {
+        $this->initialized['end'] = true;
         $this->end = $end;
         return $this;
     }
@@ -118,6 +128,7 @@ class HealthcheckResult
     */
     public function setExitCode(int $exitCode) : self
     {
+        $this->initialized['exitCode'] = true;
         $this->exitCode = $exitCode;
         return $this;
     }
@@ -139,6 +150,7 @@ class HealthcheckResult
      */
     public function setOutput(string $output) : self
     {
+        $this->initialized['output'] = true;
         $this->output = $output;
         return $this;
     }

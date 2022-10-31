@@ -97,31 +97,31 @@ class ThreadNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getRepository()) {
+        if ($object->isInitialized('repository') && null !== $object->getRepository()) {
             $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
         }
-        if (null !== $object->getSubject()) {
+        if ($object->isInitialized('subject') && null !== $object->getSubject()) {
             $data['subject'] = $this->normalizer->normalize($object->getSubject(), 'json', $context);
         }
-        if (null !== $object->getReason()) {
+        if ($object->isInitialized('reason') && null !== $object->getReason()) {
             $data['reason'] = $object->getReason();
         }
-        if (null !== $object->getUnread()) {
+        if ($object->isInitialized('unread') && null !== $object->getUnread()) {
             $data['unread'] = $object->getUnread();
         }
-        if (null !== $object->getUpdatedAt()) {
+        if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
             $data['updated_at'] = $object->getUpdatedAt();
         }
-        if (null !== $object->getLastReadAt()) {
+        if ($object->isInitialized('lastReadAt') && null !== $object->getLastReadAt()) {
             $data['last_read_at'] = $object->getLastReadAt();
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getSubscriptionUrl()) {
+        if ($object->isInitialized('subscriptionUrl') && null !== $object->getSubscriptionUrl()) {
             $data['subscription_url'] = $object->getSubscriptionUrl();
         }
         foreach ($object as $key => $value) {

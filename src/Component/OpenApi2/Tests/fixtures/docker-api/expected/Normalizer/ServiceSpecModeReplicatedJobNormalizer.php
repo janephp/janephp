@@ -59,10 +59,10 @@ class ServiceSpecModeReplicatedJobNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMaxConcurrent()) {
+        if ($object->isInitialized('maxConcurrent') && null !== $object->getMaxConcurrent()) {
             $data['MaxConcurrent'] = $object->getMaxConcurrent();
         }
-        if (null !== $object->getTotalCompletions()) {
+        if ($object->isInitialized('totalCompletions') && null !== $object->getTotalCompletions()) {
             $data['TotalCompletions'] = $object->getTotalCompletions();
         }
         if (!($context['skip_validation'] ?? false)) {

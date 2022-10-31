@@ -5,6 +5,14 @@ namespace Github\Model;
 class UserGpgKeysPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * A GPG key in ASCII-armored format.
      *
      * @var string
@@ -28,6 +36,7 @@ class UserGpgKeysPostBody extends \ArrayObject
      */
     public function setArmoredPublicKey(string $armoredPublicKey) : self
     {
+        $this->initialized['armoredPublicKey'] = true;
         $this->armoredPublicKey = $armoredPublicKey;
         return $this;
     }

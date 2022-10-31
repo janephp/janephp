@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class PngFormat extends FormatBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Color profile to use. Colorspace is derived from the chosen profile.
      *
      * @var mixed|null
@@ -70,6 +78,7 @@ class PngFormat extends FormatBase
      */
     public function setColorProfile($colorProfile) : self
     {
+        $this->initialized['colorProfile'] = true;
         $this->colorProfile = $colorProfile;
         return $this;
     }
@@ -91,6 +100,7 @@ class PngFormat extends FormatBase
      */
     public function setColorTransformationIntent($colorTransformationIntent) : self
     {
+        $this->initialized['colorTransformationIntent'] = true;
         $this->colorTransformationIntent = $colorTransformationIntent;
         return $this;
     }
@@ -112,6 +122,7 @@ class PngFormat extends FormatBase
      */
     public function setHorizontalResolution(?float $horizontalResolution) : self
     {
+        $this->initialized['horizontalResolution'] = true;
         $this->horizontalResolution = $horizontalResolution;
         return $this;
     }
@@ -133,6 +144,7 @@ class PngFormat extends FormatBase
      */
     public function setVerticalResolution(?float $verticalResolution) : self
     {
+        $this->initialized['verticalResolution'] = true;
         $this->verticalResolution = $verticalResolution;
         return $this;
     }
@@ -154,6 +166,7 @@ class PngFormat extends FormatBase
      */
     public function setKeepClippingPath(bool $keepClippingPath) : self
     {
+        $this->initialized['keepClippingPath'] = true;
         $this->keepClippingPath = $keepClippingPath;
         return $this;
     }
@@ -175,6 +188,7 @@ class PngFormat extends FormatBase
      */
     public function setResizeAction($resizeAction) : self
     {
+        $this->initialized['resizeAction'] = true;
         $this->resizeAction = $resizeAction;
         return $this;
     }
@@ -196,6 +210,7 @@ class PngFormat extends FormatBase
      */
     public function setActions(?array $actions) : self
     {
+        $this->initialized['actions'] = true;
         $this->actions = $actions;
         return $this;
     }
@@ -217,6 +232,7 @@ class PngFormat extends FormatBase
      */
     public function setExtension(?string $extension) : self
     {
+        $this->initialized['extension'] = true;
         $this->extension = $extension;
         return $this;
     }

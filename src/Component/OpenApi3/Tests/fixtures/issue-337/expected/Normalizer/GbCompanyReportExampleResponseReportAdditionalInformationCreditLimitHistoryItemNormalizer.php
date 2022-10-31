@@ -62,10 +62,10 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDate()) {
+        if ($object->isInitialized('date') && null !== $object->getDate()) {
             $data['date'] = $object->getDate();
         }
-        if (null !== $object->getCompanyValue()) {
+        if ($object->isInitialized('companyValue') && null !== $object->getCompanyValue()) {
             $data['companyValue'] = $this->normalizer->normalize($object->getCompanyValue(), 'json', $context);
         }
         foreach ($object as $key => $value) {

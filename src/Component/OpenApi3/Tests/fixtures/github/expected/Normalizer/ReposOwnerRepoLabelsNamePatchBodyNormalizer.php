@@ -74,16 +74,16 @@ class ReposOwnerRepoLabelsNamePatchBodyNormalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNewName()) {
+        if ($object->isInitialized('newName') && null !== $object->getNewName()) {
             $data['new_name'] = $object->getNewName();
         }
-        if (null !== $object->getColor()) {
+        if ($object->isInitialized('color') && null !== $object->getColor()) {
             $data['color'] = $object->getColor();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
         foreach ($object as $key => $value) {

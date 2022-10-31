@@ -5,6 +5,14 @@ namespace Github\Model;
 class ProtectedBranch extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -76,6 +84,7 @@ class ProtectedBranch extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -97,6 +106,7 @@ class ProtectedBranch extends \ArrayObject
      */
     public function setRequiredStatusChecks(StatusCheckPolicy $requiredStatusChecks) : self
     {
+        $this->initialized['requiredStatusChecks'] = true;
         $this->requiredStatusChecks = $requiredStatusChecks;
         return $this;
     }
@@ -118,6 +128,7 @@ class ProtectedBranch extends \ArrayObject
      */
     public function setRequiredPullRequestReviews(ProtectedBranchRequiredPullRequestReviews $requiredPullRequestReviews) : self
     {
+        $this->initialized['requiredPullRequestReviews'] = true;
         $this->requiredPullRequestReviews = $requiredPullRequestReviews;
         return $this;
     }
@@ -139,6 +150,7 @@ class ProtectedBranch extends \ArrayObject
      */
     public function setRequiredSignatures(ProtectedBranchRequiredSignatures $requiredSignatures) : self
     {
+        $this->initialized['requiredSignatures'] = true;
         $this->requiredSignatures = $requiredSignatures;
         return $this;
     }
@@ -160,6 +172,7 @@ class ProtectedBranch extends \ArrayObject
      */
     public function setEnforceAdmins(ProtectedBranchEnforceAdmins $enforceAdmins) : self
     {
+        $this->initialized['enforceAdmins'] = true;
         $this->enforceAdmins = $enforceAdmins;
         return $this;
     }
@@ -181,6 +194,7 @@ class ProtectedBranch extends \ArrayObject
      */
     public function setRequiredLinearHistory(ProtectedBranchRequiredLinearHistory $requiredLinearHistory) : self
     {
+        $this->initialized['requiredLinearHistory'] = true;
         $this->requiredLinearHistory = $requiredLinearHistory;
         return $this;
     }
@@ -202,6 +216,7 @@ class ProtectedBranch extends \ArrayObject
      */
     public function setAllowForcePushes(ProtectedBranchAllowForcePushes $allowForcePushes) : self
     {
+        $this->initialized['allowForcePushes'] = true;
         $this->allowForcePushes = $allowForcePushes;
         return $this;
     }
@@ -223,6 +238,7 @@ class ProtectedBranch extends \ArrayObject
      */
     public function setAllowDeletions(ProtectedBranchAllowDeletions $allowDeletions) : self
     {
+        $this->initialized['allowDeletions'] = true;
         $this->allowDeletions = $allowDeletions;
         return $this;
     }
@@ -244,6 +260,7 @@ class ProtectedBranch extends \ArrayObject
      */
     public function setRestrictions(BranchRestrictionPolicy $restrictions) : self
     {
+        $this->initialized['restrictions'] = true;
         $this->restrictions = $restrictions;
         return $this;
     }

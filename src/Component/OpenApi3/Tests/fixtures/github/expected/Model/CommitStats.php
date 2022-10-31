@@ -5,6 +5,14 @@ namespace Github\Model;
 class CommitStats extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -40,6 +48,7 @@ class CommitStats extends \ArrayObject
      */
     public function setAdditions(int $additions) : self
     {
+        $this->initialized['additions'] = true;
         $this->additions = $additions;
         return $this;
     }
@@ -61,6 +70,7 @@ class CommitStats extends \ArrayObject
      */
     public function setDeletions(int $deletions) : self
     {
+        $this->initialized['deletions'] = true;
         $this->deletions = $deletions;
         return $this;
     }
@@ -82,6 +92,7 @@ class CommitStats extends \ArrayObject
      */
     public function setTotal(int $total) : self
     {
+        $this->initialized['total'] = true;
         $this->total = $total;
         return $this;
     }

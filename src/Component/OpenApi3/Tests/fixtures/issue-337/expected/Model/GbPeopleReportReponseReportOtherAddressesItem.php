@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -64,6 +72,7 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -85,6 +94,7 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
      */
     public function setSimpleValue(string $simpleValue) : self
     {
+        $this->initialized['simpleValue'] = true;
         $this->simpleValue = $simpleValue;
         return $this;
     }
@@ -106,6 +116,7 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
      */
     public function setStreet(string $street) : self
     {
+        $this->initialized['street'] = true;
         $this->street = $street;
         return $this;
     }
@@ -127,6 +138,7 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
      */
     public function setCity(string $city) : self
     {
+        $this->initialized['city'] = true;
         $this->city = $city;
         return $this;
     }
@@ -148,6 +160,7 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
      */
     public function setPostalCode(string $postalCode) : self
     {
+        $this->initialized['postalCode'] = true;
         $this->postalCode = $postalCode;
         return $this;
     }
@@ -169,6 +182,7 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
      */
     public function setProvince(string $province) : self
     {
+        $this->initialized['province'] = true;
         $this->province = $province;
         return $this;
     }
@@ -190,6 +204,7 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
      */
     public function setCountry(string $country) : self
     {
+        $this->initialized['country'] = true;
         $this->country = $country;
         return $this;
     }

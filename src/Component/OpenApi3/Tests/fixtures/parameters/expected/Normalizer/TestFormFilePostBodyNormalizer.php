@@ -58,7 +58,7 @@ class TestFormFilePostBodyNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTestFile()) {
+        if ($object->isInitialized('testFile') && null !== $object->getTestFile()) {
             $data['testFile'] = $object->getTestFile();
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class XmpMappingEntry extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Direction of the mapping.
      *
      * @var mixed
@@ -64,6 +72,7 @@ class XmpMappingEntry extends \ArrayObject
      */
     public function setDirection($direction) : self
     {
+        $this->initialized['direction'] = true;
         $this->direction = $direction;
         return $this;
     }
@@ -85,6 +94,7 @@ class XmpMappingEntry extends \ArrayObject
      */
     public function setPriority(int $priority) : self
     {
+        $this->initialized['priority'] = true;
         $this->priority = $priority;
         return $this;
     }
@@ -106,6 +116,7 @@ class XmpMappingEntry extends \ArrayObject
      */
     public function setStopProcessing(bool $stopProcessing) : self
     {
+        $this->initialized['stopProcessing'] = true;
         $this->stopProcessing = $stopProcessing;
         return $this;
     }
@@ -127,6 +138,7 @@ class XmpMappingEntry extends \ArrayObject
      */
     public function setXmpPath(string $xmpPath) : self
     {
+        $this->initialized['xmpPath'] = true;
         $this->xmpPath = $xmpPath;
         return $this;
     }
@@ -148,6 +160,7 @@ class XmpMappingEntry extends \ArrayObject
      */
     public function setMetadataPath(string $metadataPath) : self
     {
+        $this->initialized['metadataPath'] = true;
         $this->metadataPath = $metadataPath;
         return $this;
     }
@@ -169,6 +182,7 @@ class XmpMappingEntry extends \ArrayObject
      */
     public function setConfiguration($configuration) : self
     {
+        $this->initialized['configuration'] = true;
         $this->configuration = $configuration;
         return $this;
     }
@@ -190,6 +204,7 @@ class XmpMappingEntry extends \ArrayObject
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }

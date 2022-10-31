@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class TweetWithheld extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Indicates if the content is being withheld for on the basis of copyright infringement.
      *
      * @var bool
@@ -40,6 +48,7 @@ class TweetWithheld extends \ArrayObject
      */
     public function setCopyright(bool $copyright) : self
     {
+        $this->initialized['copyright'] = true;
         $this->copyright = $copyright;
         return $this;
     }
@@ -61,6 +70,7 @@ class TweetWithheld extends \ArrayObject
      */
     public function setCountryCodes(array $countryCodes) : self
     {
+        $this->initialized['countryCodes'] = true;
         $this->countryCodes = $countryCodes;
         return $this;
     }
@@ -82,6 +92,7 @@ class TweetWithheld extends \ArrayObject
      */
     public function setScope(string $scope) : self
     {
+        $this->initialized['scope'] = true;
         $this->scope = $scope;
         return $this;
     }

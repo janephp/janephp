@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ConsoleMessage extends Message
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -40,6 +48,7 @@ class ConsoleMessage extends Message
      */
     public function setCommand(?string $command) : self
     {
+        $this->initialized['command'] = true;
         $this->command = $command;
         return $this;
     }
@@ -61,6 +70,7 @@ class ConsoleMessage extends Message
      */
     public function setArguments(?array $arguments) : self
     {
+        $this->initialized['arguments'] = true;
         $this->arguments = $arguments;
         return $this;
     }
@@ -82,6 +92,7 @@ class ConsoleMessage extends Message
      */
     public function setTargetQueue(?string $targetQueue) : self
     {
+        $this->initialized['targetQueue'] = true;
         $this->targetQueue = $targetQueue;
         return $this;
     }

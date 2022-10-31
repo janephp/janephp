@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoStatusesShaPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The state of the status. Can be one of `error`, `failure`, `pending`, or `success`.
      *
      * @var string
@@ -48,6 +56,7 @@ class ReposOwnerRepoStatusesShaPostBody extends \ArrayObject
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -73,6 +82,7 @@ class ReposOwnerRepoStatusesShaPostBody extends \ArrayObject
     */
     public function setTargetUrl(string $targetUrl) : self
     {
+        $this->initialized['targetUrl'] = true;
         $this->targetUrl = $targetUrl;
         return $this;
     }
@@ -94,6 +104,7 @@ class ReposOwnerRepoStatusesShaPostBody extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -115,6 +126,7 @@ class ReposOwnerRepoStatusesShaPostBody extends \ArrayObject
      */
     public function setContext(string $context) : self
     {
+        $this->initialized['context'] = true;
         $this->context = $context;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoCheckSuitesPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The sha of the head commit.
      *
      * @var string
@@ -28,6 +36,7 @@ class ReposOwnerRepoCheckSuitesPostBody extends \ArrayObject
      */
     public function setHeadSha(string $headSha) : self
     {
+        $this->initialized['headSha'] = true;
         $this->headSha = $headSha;
         return $this;
     }

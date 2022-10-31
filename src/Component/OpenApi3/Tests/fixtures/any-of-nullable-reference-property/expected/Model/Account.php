@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class Account extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -58,6 +66,7 @@ class Account extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -79,6 +88,7 @@ class Account extends \ArrayObject
      */
     public function setFirstname(string $firstname) : self
     {
+        $this->initialized['firstname'] = true;
         $this->firstname = $firstname;
         return $this;
     }
@@ -100,6 +110,7 @@ class Account extends \ArrayObject
      */
     public function setLastname(string $lastname) : self
     {
+        $this->initialized['lastname'] = true;
         $this->lastname = $lastname;
         return $this;
     }
@@ -121,6 +132,7 @@ class Account extends \ArrayObject
      */
     public function setCountryOfBirth(?Country $countryOfBirth) : self
     {
+        $this->initialized['countryOfBirth'] = true;
         $this->countryOfBirth = $countryOfBirth;
         return $this;
     }
@@ -142,6 +154,7 @@ class Account extends \ArrayObject
      */
     public function setCountry(Country $country) : self
     {
+        $this->initialized['country'] = true;
         $this->country = $country;
         return $this;
     }
@@ -163,6 +176,7 @@ class Account extends \ArrayObject
      */
     public function setNationality($nationality) : self
     {
+        $this->initialized['nationality'] = true;
         $this->nationality = $nationality;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class MountTmpfsOptions
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The size for the tmpfs mount in bytes.
      *
      * @var int
@@ -34,6 +42,7 @@ class MountTmpfsOptions
      */
     public function setSizeBytes(int $sizeBytes) : self
     {
+        $this->initialized['sizeBytes'] = true;
         $this->sizeBytes = $sizeBytes;
         return $this;
     }
@@ -55,6 +64,7 @@ class MountTmpfsOptions
      */
     public function setMode(int $mode) : self
     {
+        $this->initialized['mode'] = true;
         $this->mode = $mode;
         return $this;
     }

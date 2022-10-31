@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class CompletedFreshInvestigationContactDetails extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -40,6 +48,7 @@ class CompletedFreshInvestigationContactDetails extends \ArrayObject
      */
     public function setEmailAddress(string $emailAddress) : self
     {
+        $this->initialized['emailAddress'] = true;
         $this->emailAddress = $emailAddress;
         return $this;
     }
@@ -61,6 +70,7 @@ class CompletedFreshInvestigationContactDetails extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -82,6 +92,7 @@ class CompletedFreshInvestigationContactDetails extends \ArrayObject
      */
     public function setTelephoneNumber(string $telephoneNumber) : self
     {
+        $this->initialized['telephoneNumber'] = true;
         $this->telephoneNumber = $telephoneNumber;
         return $this;
     }

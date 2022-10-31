@@ -62,13 +62,13 @@ class TaskSpecContainerSpecSecretsItemNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFile()) {
+        if ($object->isInitialized('file') && null !== $object->getFile()) {
             $data['File'] = $this->normalizer->normalize($object->getFile(), 'json', $context);
         }
-        if (null !== $object->getSecretID()) {
+        if ($object->isInitialized('secretID') && null !== $object->getSecretID()) {
             $data['SecretID'] = $object->getSecretID();
         }
-        if (null !== $object->getSecretName()) {
+        if ($object->isInitialized('secretName') && null !== $object->getSecretName()) {
             $data['SecretName'] = $object->getSecretName();
         }
         if (!($context['skip_validation'] ?? false)) {

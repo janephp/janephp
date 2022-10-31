@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ImportTransferPartialRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var FileTransferCreateItem[]|null
@@ -28,6 +36,7 @@ class ImportTransferPartialRequest
      */
     public function setItems(?array $items) : self
     {
+        $this->initialized['items'] = true;
         $this->items = $items;
         return $this;
     }

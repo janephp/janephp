@@ -92,35 +92,35 @@ class NetworksCreatePostBodyNormalizer implements DenormalizerInterface, Normali
     {
         $data = array();
         $data['Name'] = $object->getName();
-        if (null !== $object->getCheckDuplicate()) {
+        if ($object->isInitialized('checkDuplicate') && null !== $object->getCheckDuplicate()) {
             $data['CheckDuplicate'] = $object->getCheckDuplicate();
         }
-        if (null !== $object->getDriver()) {
+        if ($object->isInitialized('driver') && null !== $object->getDriver()) {
             $data['Driver'] = $object->getDriver();
         }
-        if (null !== $object->getInternal()) {
+        if ($object->isInitialized('internal') && null !== $object->getInternal()) {
             $data['Internal'] = $object->getInternal();
         }
-        if (null !== $object->getAttachable()) {
+        if ($object->isInitialized('attachable') && null !== $object->getAttachable()) {
             $data['Attachable'] = $object->getAttachable();
         }
-        if (null !== $object->getIngress()) {
+        if ($object->isInitialized('ingress') && null !== $object->getIngress()) {
             $data['Ingress'] = $object->getIngress();
         }
-        if (null !== $object->getIPAM()) {
+        if ($object->isInitialized('iPAM') && null !== $object->getIPAM()) {
             $data['IPAM'] = $this->normalizer->normalize($object->getIPAM(), 'json', $context);
         }
-        if (null !== $object->getEnableIPv6()) {
+        if ($object->isInitialized('enableIPv6') && null !== $object->getEnableIPv6()) {
             $data['EnableIPv6'] = $object->getEnableIPv6();
         }
-        if (null !== $object->getOptions()) {
+        if ($object->isInitialized('options') && null !== $object->getOptions()) {
             $values = array();
             foreach ($object->getOptions() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['Options'] = $values;
         }
-        if (null !== $object->getLabels()) {
+        if ($object->isInitialized('labels') && null !== $object->getLabels()) {
             $values_1 = array();
             foreach ($object->getLabels() as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;

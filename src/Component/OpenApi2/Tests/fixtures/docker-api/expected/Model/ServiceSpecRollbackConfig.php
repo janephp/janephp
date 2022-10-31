@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class ServiceSpecRollbackConfig
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * Maximum number of tasks to be rolled back in one iteration (0 means
     unlimited parallelism).
     
@@ -74,6 +82,7 @@ class ServiceSpecRollbackConfig
     */
     public function setParallelism(int $parallelism) : self
     {
+        $this->initialized['parallelism'] = true;
         $this->parallelism = $parallelism;
         return $this;
     }
@@ -95,6 +104,7 @@ class ServiceSpecRollbackConfig
      */
     public function setDelay(int $delay) : self
     {
+        $this->initialized['delay'] = true;
         $this->delay = $delay;
         return $this;
     }
@@ -120,6 +130,7 @@ class ServiceSpecRollbackConfig
     */
     public function setFailureAction(string $failureAction) : self
     {
+        $this->initialized['failureAction'] = true;
         $this->failureAction = $failureAction;
         return $this;
     }
@@ -145,6 +156,7 @@ class ServiceSpecRollbackConfig
     */
     public function setMonitor(int $monitor) : self
     {
+        $this->initialized['monitor'] = true;
         $this->monitor = $monitor;
         return $this;
     }
@@ -172,6 +184,7 @@ class ServiceSpecRollbackConfig
     */
     public function setMaxFailureRatio(float $maxFailureRatio) : self
     {
+        $this->initialized['maxFailureRatio'] = true;
         $this->maxFailureRatio = $maxFailureRatio;
         return $this;
     }
@@ -199,6 +212,7 @@ class ServiceSpecRollbackConfig
     */
     public function setOrder(string $order) : self
     {
+        $this->initialized['order'] = true;
         $this->order = $order;
         return $this;
     }

@@ -69,20 +69,20 @@ class IndexInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['Name'] = $object->getName();
         }
-        if (null !== $object->getMirrors()) {
+        if ($object->isInitialized('mirrors') && null !== $object->getMirrors()) {
             $values = array();
             foreach ($object->getMirrors() as $value) {
                 $values[] = $value;
             }
             $data['Mirrors'] = $values;
         }
-        if (null !== $object->getSecure()) {
+        if ($object->isInitialized('secure') && null !== $object->getSecure()) {
             $data['Secure'] = $object->getSecure();
         }
-        if (null !== $object->getOfficial()) {
+        if ($object->isInitialized('official') && null !== $object->getOfficial()) {
             $data['Official'] = $object->getOfficial();
         }
         if (!($context['skip_validation'] ?? false)) {

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class XmpMappingEntryDeleteManyRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * IDs to delete.
      *
      * @var string[]|null
@@ -28,6 +36,7 @@ class XmpMappingEntryDeleteManyRequest
      */
     public function setIds(?array $ids) : self
     {
+        $this->initialized['ids'] = true;
         $this->ids = $ids;
         return $this;
     }

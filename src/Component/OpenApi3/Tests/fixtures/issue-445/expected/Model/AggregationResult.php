@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class AggregationResult
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Name of the aggregation.
      *
      * @var string
@@ -41,6 +49,7 @@ class AggregationResult
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -62,6 +71,7 @@ class AggregationResult
      */
     public function setSumOtherDocCount(?int $sumOtherDocCount) : self
     {
+        $this->initialized['sumOtherDocCount'] = true;
         $this->sumOtherDocCount = $sumOtherDocCount;
         return $this;
     }
@@ -85,6 +95,7 @@ class AggregationResult
     */
     public function setAggregationResultItems(?array $aggregationResultItems) : self
     {
+        $this->initialized['aggregationResultItems'] = true;
         $this->aggregationResultItems = $aggregationResultItems;
         return $this;
     }

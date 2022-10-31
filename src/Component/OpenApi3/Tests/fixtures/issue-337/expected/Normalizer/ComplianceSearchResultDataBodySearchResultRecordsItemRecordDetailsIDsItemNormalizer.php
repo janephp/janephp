@@ -62,10 +62,10 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsIDsItemN
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNumber()) {
+        if ($object->isInitialized('number') && null !== $object->getNumber()) {
             $data['number'] = $object->getNumber();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
         foreach ($object as $key => $value) {

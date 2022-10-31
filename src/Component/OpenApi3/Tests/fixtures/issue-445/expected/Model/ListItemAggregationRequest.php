@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ListItemAggregationRequest extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Limits the search by using a query string filter. The Lucene query string syntax is supported.
      *
      * @var string|null
@@ -88,6 +96,7 @@ class ListItemAggregationRequest extends \ArrayObject
      */
     public function setSearchString(?string $searchString) : self
     {
+        $this->initialized['searchString'] = true;
         $this->searchString = $searchString;
         return $this;
     }
@@ -109,6 +118,7 @@ class ListItemAggregationRequest extends \ArrayObject
      */
     public function setSearchBehaviors(?array $searchBehaviors) : self
     {
+        $this->initialized['searchBehaviors'] = true;
         $this->searchBehaviors = $searchBehaviors;
         return $this;
     }
@@ -130,6 +140,7 @@ class ListItemAggregationRequest extends \ArrayObject
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }
@@ -161,6 +172,7 @@ class ListItemAggregationRequest extends \ArrayObject
     */
     public function setAggregationFilters(?array $aggregationFilters) : self
     {
+        $this->initialized['aggregationFilters'] = true;
         $this->aggregationFilters = $aggregationFilters;
         return $this;
     }
@@ -182,6 +194,7 @@ class ListItemAggregationRequest extends \ArrayObject
      */
     public function setIncludeAllSchemaChildren(bool $includeAllSchemaChildren) : self
     {
+        $this->initialized['includeAllSchemaChildren'] = true;
         $this->includeAllSchemaChildren = $includeAllSchemaChildren;
         return $this;
     }
@@ -203,6 +216,7 @@ class ListItemAggregationRequest extends \ArrayObject
      */
     public function setBrokenDependenciesFilter($brokenDependenciesFilter) : self
     {
+        $this->initialized['brokenDependenciesFilter'] = true;
         $this->brokenDependenciesFilter = $brokenDependenciesFilter;
         return $this;
     }
@@ -224,6 +238,7 @@ class ListItemAggregationRequest extends \ArrayObject
      */
     public function setSchemaIds(?array $schemaIds) : self
     {
+        $this->initialized['schemaIds'] = true;
         $this->schemaIds = $schemaIds;
         return $this;
     }
@@ -247,6 +262,7 @@ class ListItemAggregationRequest extends \ArrayObject
     */
     public function setSearchLanguages(?array $searchLanguages) : self
     {
+        $this->initialized['searchLanguages'] = true;
         $this->searchLanguages = $searchLanguages;
         return $this;
     }
@@ -268,6 +284,7 @@ class ListItemAggregationRequest extends \ArrayObject
      */
     public function setLifeCycleFilter($lifeCycleFilter) : self
     {
+        $this->initialized['lifeCycleFilter'] = true;
         $this->lifeCycleFilter = $lifeCycleFilter;
         return $this;
     }
@@ -289,6 +306,7 @@ class ListItemAggregationRequest extends \ArrayObject
      */
     public function setAggregators(array $aggregators) : self
     {
+        $this->initialized['aggregators'] = true;
         $this->aggregators = $aggregators;
         return $this;
     }

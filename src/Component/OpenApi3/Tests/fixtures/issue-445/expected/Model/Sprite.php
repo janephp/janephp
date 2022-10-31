@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class Sprite
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The width of the sprite.
      *
      * @var int
@@ -58,6 +66,7 @@ class Sprite
      */
     public function setWidth(int $width) : self
     {
+        $this->initialized['width'] = true;
         $this->width = $width;
         return $this;
     }
@@ -79,6 +88,7 @@ class Sprite
      */
     public function setHeight(int $height) : self
     {
+        $this->initialized['height'] = true;
         $this->height = $height;
         return $this;
     }
@@ -100,6 +110,7 @@ class Sprite
      */
     public function setY(int $y) : self
     {
+        $this->initialized['y'] = true;
         $this->y = $y;
         return $this;
     }
@@ -121,6 +132,7 @@ class Sprite
      */
     public function setX(int $x) : self
     {
+        $this->initialized['x'] = true;
         $this->x = $x;
         return $this;
     }
@@ -142,6 +154,7 @@ class Sprite
      */
     public function setStart(string $start) : self
     {
+        $this->initialized['start'] = true;
         $this->start = $start;
         return $this;
     }
@@ -163,6 +176,7 @@ class Sprite
      */
     public function setEnd(string $end) : self
     {
+        $this->initialized['end'] = true;
         $this->end = $end;
         return $this;
     }

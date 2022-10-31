@@ -5,6 +5,14 @@ namespace Github\Model;
 class Status extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -88,6 +96,7 @@ class Status extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -109,6 +118,7 @@ class Status extends \ArrayObject
      */
     public function setAvatarUrl(?string $avatarUrl) : self
     {
+        $this->initialized['avatarUrl'] = true;
         $this->avatarUrl = $avatarUrl;
         return $this;
     }
@@ -130,6 +140,7 @@ class Status extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -151,6 +162,7 @@ class Status extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -172,6 +184,7 @@ class Status extends \ArrayObject
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }
@@ -193,6 +206,7 @@ class Status extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -214,6 +228,7 @@ class Status extends \ArrayObject
      */
     public function setTargetUrl(string $targetUrl) : self
     {
+        $this->initialized['targetUrl'] = true;
         $this->targetUrl = $targetUrl;
         return $this;
     }
@@ -235,6 +250,7 @@ class Status extends \ArrayObject
      */
     public function setContext(string $context) : self
     {
+        $this->initialized['context'] = true;
         $this->context = $context;
         return $this;
     }
@@ -256,6 +272,7 @@ class Status extends \ArrayObject
      */
     public function setCreatedAt(string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -277,6 +294,7 @@ class Status extends \ArrayObject
      */
     public function setUpdatedAt(string $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -298,6 +316,7 @@ class Status extends \ArrayObject
      */
     public function setCreator(?SimpleUser $creator) : self
     {
+        $this->initialized['creator'] = true;
         $this->creator = $creator;
         return $this;
     }

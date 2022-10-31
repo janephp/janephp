@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class EventRulesResponse extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Shows whether the notification event rule has been enabled for the given portfolio.
      *
      * @var bool
@@ -70,6 +78,7 @@ class EventRulesResponse extends \ArrayObject
      */
     public function setIsActive(bool $isActive) : self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
         return $this;
     }
@@ -91,6 +100,7 @@ class EventRulesResponse extends \ArrayObject
      */
     public function setRuleCode(float $ruleCode) : self
     {
+        $this->initialized['ruleCode'] = true;
         $this->ruleCode = $ruleCode;
         return $this;
     }
@@ -112,6 +122,7 @@ class EventRulesResponse extends \ArrayObject
      */
     public function setRuleCountryCode(string $ruleCountryCode) : self
     {
+        $this->initialized['ruleCountryCode'] = true;
         $this->ruleCountryCode = $ruleCountryCode;
         return $this;
     }
@@ -133,6 +144,7 @@ class EventRulesResponse extends \ArrayObject
      */
     public function setRuleType(float $ruleType) : self
     {
+        $this->initialized['ruleType'] = true;
         $this->ruleType = $ruleType;
         return $this;
     }
@@ -154,6 +166,7 @@ class EventRulesResponse extends \ArrayObject
      */
     public function setRuleTypeName(string $ruleTypeName) : self
     {
+        $this->initialized['ruleTypeName'] = true;
         $this->ruleTypeName = $ruleTypeName;
         return $this;
     }
@@ -175,6 +188,7 @@ class EventRulesResponse extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -196,6 +210,7 @@ class EventRulesResponse extends \ArrayObject
      */
     public function setParam0(string $param0) : self
     {
+        $this->initialized['param0'] = true;
         $this->param0 = $param0;
         return $this;
     }
@@ -217,6 +232,7 @@ class EventRulesResponse extends \ArrayObject
      */
     public function setParam1(string $param1) : self
     {
+        $this->initialized['param1'] = true;
         $this->param1 = $param1;
         return $this;
     }

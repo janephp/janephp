@@ -74,16 +74,16 @@ class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyNormalizer implements Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getState()) {
+        if ($object->isInitialized('state') && null !== $object->getState()) {
             $data['state'] = $object->getState();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getDueOn()) {
+        if ($object->isInitialized('dueOn') && null !== $object->getDueOn()) {
             $data['due_on'] = $object->getDueOn();
         }
         foreach ($object as $key => $value) {

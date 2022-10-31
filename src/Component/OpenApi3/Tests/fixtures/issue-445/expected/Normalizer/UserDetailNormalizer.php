@@ -164,62 +164,62 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getFirstName()) {
+        if ($object->isInitialized('firstName') && null !== $object->getFirstName()) {
             $data['firstName'] = $object->getFirstName();
         }
-        if (null !== $object->getLastName()) {
+        if ($object->isInitialized('lastName') && null !== $object->getLastName()) {
             $data['lastName'] = $object->getLastName();
         }
         $data['emailAddress'] = $object->getEmailAddress();
         $data['isDeleted'] = $object->getIsDeleted();
-        if (null !== $object->getUserRoles()) {
+        if ($object->isInitialized('userRoles') && null !== $object->getUserRoles()) {
             $values = array();
             foreach ($object->getUserRoles() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['userRoles'] = $values;
         }
-        if (null !== $object->getComment()) {
+        if ($object->isInitialized('comment') && null !== $object->getComment()) {
             $data['comment'] = $object->getComment();
         }
-        if (null !== $object->getLanguageCode()) {
+        if ($object->isInitialized('languageCode') && null !== $object->getLanguageCode()) {
             $data['languageCode'] = $object->getLanguageCode();
         }
-        if (null !== $object->getAddress()) {
+        if ($object->isInitialized('address') && null !== $object->getAddress()) {
             $data['address'] = $object->getAddress();
         }
-        if (null !== $object->getIdentityProviderId()) {
+        if ($object->isInitialized('identityProviderId') && null !== $object->getIdentityProviderId()) {
             $data['identityProviderId'] = $object->getIdentityProviderId();
         }
-        if (null !== $object->getOwnerTokens()) {
+        if ($object->isInitialized('ownerTokens') && null !== $object->getOwnerTokens()) {
             $values_1 = array();
             foreach ($object->getOwnerTokens() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['ownerTokens'] = $values_1;
         }
-        if (null !== $object->getAuthorizationState()) {
+        if ($object->isInitialized('authorizationState') && null !== $object->getAuthorizationState()) {
             $data['authorizationState'] = $object->getAuthorizationState();
         }
-        if (null !== $object->getIsLocked()) {
+        if ($object->isInitialized('isLocked') && null !== $object->getIsLocked()) {
             $data['isLocked'] = $object->getIsLocked();
         }
-        if (null !== $object->getLifeCycle()) {
+        if ($object->isInitialized('lifeCycle') && null !== $object->getLifeCycle()) {
             $data['lifeCycle'] = $object->getLifeCycle();
         }
-        if (null !== $object->getIsSupportUser()) {
+        if ($object->isInitialized('isSupportUser') && null !== $object->getIsSupportUser()) {
             $data['isSupportUser'] = $object->getIsSupportUser();
         }
-        if (null !== $object->getIsReadOnly()) {
+        if ($object->isInitialized('isReadOnly') && null !== $object->getIsReadOnly()) {
             $data['isReadOnly'] = $object->getIsReadOnly();
         }
-        if (null !== $object->getIsFederated()) {
+        if ($object->isInitialized('isFederated') && null !== $object->getIsFederated()) {
             $data['isFederated'] = $object->getIsFederated();
         }
-        if (null !== $object->getAudit()) {
+        if ($object->isInitialized('audit') && null !== $object->getAudit()) {
             $data['audit'] = $object->getAudit();
         }
         foreach ($object as $key => $value_2) {

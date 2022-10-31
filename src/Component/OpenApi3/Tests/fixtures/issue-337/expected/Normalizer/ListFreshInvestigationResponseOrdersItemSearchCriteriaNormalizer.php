@@ -78,22 +78,22 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteriaNormalizer implement
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getVatNo()) {
+        if ($object->isInitialized('vatNo') && null !== $object->getVatNo()) {
             $data['vatNo'] = $object->getVatNo();
         }
-        if (null !== $object->getRegNo()) {
+        if ($object->isInitialized('regNo') && null !== $object->getRegNo()) {
             $data['regNo'] = $object->getRegNo();
         }
-        if (null !== $object->getAdditionalInfo()) {
+        if ($object->isInitialized('additionalInfo') && null !== $object->getAdditionalInfo()) {
             $data['additionalInfo'] = $object->getAdditionalInfo();
         }
-        if (null !== $object->getAddress()) {
+        if ($object->isInitialized('address') && null !== $object->getAddress()) {
             $data['address'] = $this->normalizer->normalize($object->getAddress(), 'json', $context);
         }
-        if (null !== $object->getCountryCode()) {
+        if ($object->isInitialized('countryCode') && null !== $object->getCountryCode()) {
             $data['countryCode'] = $object->getCountryCode();
         }
         foreach ($object as $key => $value) {

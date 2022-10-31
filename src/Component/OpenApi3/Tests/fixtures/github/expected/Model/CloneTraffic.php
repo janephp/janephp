@@ -5,6 +5,14 @@ namespace Github\Model;
 class CloneTraffic extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -40,6 +48,7 @@ class CloneTraffic extends \ArrayObject
      */
     public function setCount(int $count) : self
     {
+        $this->initialized['count'] = true;
         $this->count = $count;
         return $this;
     }
@@ -61,6 +70,7 @@ class CloneTraffic extends \ArrayObject
      */
     public function setUniques(int $uniques) : self
     {
+        $this->initialized['uniques'] = true;
         $this->uniques = $uniques;
         return $this;
     }
@@ -82,6 +92,7 @@ class CloneTraffic extends \ArrayObject
      */
     public function setClones(array $clones) : self
     {
+        $this->initialized['clones'] = true;
         $this->clones = $clones;
         return $this;
     }

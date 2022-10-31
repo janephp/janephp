@@ -5,6 +5,14 @@ namespace Jane\OpenApi2\Tests\Expected\Model;
 class ProjectClient
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -40,6 +48,7 @@ class ProjectClient
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -61,6 +70,7 @@ class ProjectClient
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -82,6 +92,7 @@ class ProjectClient
      */
     public function setCurrency(string $currency) : self
     {
+        $this->initialized['currency'] = true;
         $this->currency = $currency;
         return $this;
     }

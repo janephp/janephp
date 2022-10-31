@@ -5,6 +5,14 @@ namespace Github\Model;
 class PublicUser
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -256,6 +264,7 @@ class PublicUser
      */
     public function setLogin(string $login) : self
     {
+        $this->initialized['login'] = true;
         $this->login = $login;
         return $this;
     }
@@ -277,6 +286,7 @@ class PublicUser
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -298,6 +308,7 @@ class PublicUser
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -319,6 +330,7 @@ class PublicUser
      */
     public function setAvatarUrl(string $avatarUrl) : self
     {
+        $this->initialized['avatarUrl'] = true;
         $this->avatarUrl = $avatarUrl;
         return $this;
     }
@@ -340,6 +352,7 @@ class PublicUser
      */
     public function setGravatarId(?string $gravatarId) : self
     {
+        $this->initialized['gravatarId'] = true;
         $this->gravatarId = $gravatarId;
         return $this;
     }
@@ -361,6 +374,7 @@ class PublicUser
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -382,6 +396,7 @@ class PublicUser
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -403,6 +418,7 @@ class PublicUser
      */
     public function setFollowersUrl(string $followersUrl) : self
     {
+        $this->initialized['followersUrl'] = true;
         $this->followersUrl = $followersUrl;
         return $this;
     }
@@ -424,6 +440,7 @@ class PublicUser
      */
     public function setFollowingUrl(string $followingUrl) : self
     {
+        $this->initialized['followingUrl'] = true;
         $this->followingUrl = $followingUrl;
         return $this;
     }
@@ -445,6 +462,7 @@ class PublicUser
      */
     public function setGistsUrl(string $gistsUrl) : self
     {
+        $this->initialized['gistsUrl'] = true;
         $this->gistsUrl = $gistsUrl;
         return $this;
     }
@@ -466,6 +484,7 @@ class PublicUser
      */
     public function setStarredUrl(string $starredUrl) : self
     {
+        $this->initialized['starredUrl'] = true;
         $this->starredUrl = $starredUrl;
         return $this;
     }
@@ -487,6 +506,7 @@ class PublicUser
      */
     public function setSubscriptionsUrl(string $subscriptionsUrl) : self
     {
+        $this->initialized['subscriptionsUrl'] = true;
         $this->subscriptionsUrl = $subscriptionsUrl;
         return $this;
     }
@@ -508,6 +528,7 @@ class PublicUser
      */
     public function setOrganizationsUrl(string $organizationsUrl) : self
     {
+        $this->initialized['organizationsUrl'] = true;
         $this->organizationsUrl = $organizationsUrl;
         return $this;
     }
@@ -529,6 +550,7 @@ class PublicUser
      */
     public function setReposUrl(string $reposUrl) : self
     {
+        $this->initialized['reposUrl'] = true;
         $this->reposUrl = $reposUrl;
         return $this;
     }
@@ -550,6 +572,7 @@ class PublicUser
      */
     public function setEventsUrl(string $eventsUrl) : self
     {
+        $this->initialized['eventsUrl'] = true;
         $this->eventsUrl = $eventsUrl;
         return $this;
     }
@@ -571,6 +594,7 @@ class PublicUser
      */
     public function setReceivedEventsUrl(string $receivedEventsUrl) : self
     {
+        $this->initialized['receivedEventsUrl'] = true;
         $this->receivedEventsUrl = $receivedEventsUrl;
         return $this;
     }
@@ -592,6 +616,7 @@ class PublicUser
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -613,6 +638,7 @@ class PublicUser
      */
     public function setSiteAdmin(bool $siteAdmin) : self
     {
+        $this->initialized['siteAdmin'] = true;
         $this->siteAdmin = $siteAdmin;
         return $this;
     }
@@ -634,6 +660,7 @@ class PublicUser
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -655,6 +682,7 @@ class PublicUser
      */
     public function setCompany(?string $company) : self
     {
+        $this->initialized['company'] = true;
         $this->company = $company;
         return $this;
     }
@@ -676,6 +704,7 @@ class PublicUser
      */
     public function setBlog(?string $blog) : self
     {
+        $this->initialized['blog'] = true;
         $this->blog = $blog;
         return $this;
     }
@@ -697,6 +726,7 @@ class PublicUser
      */
     public function setLocation(?string $location) : self
     {
+        $this->initialized['location'] = true;
         $this->location = $location;
         return $this;
     }
@@ -718,6 +748,7 @@ class PublicUser
      */
     public function setEmail(?string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -739,6 +770,7 @@ class PublicUser
      */
     public function setHireable(?bool $hireable) : self
     {
+        $this->initialized['hireable'] = true;
         $this->hireable = $hireable;
         return $this;
     }
@@ -760,6 +792,7 @@ class PublicUser
      */
     public function setBio(?string $bio) : self
     {
+        $this->initialized['bio'] = true;
         $this->bio = $bio;
         return $this;
     }
@@ -781,6 +814,7 @@ class PublicUser
      */
     public function setTwitterUsername(?string $twitterUsername) : self
     {
+        $this->initialized['twitterUsername'] = true;
         $this->twitterUsername = $twitterUsername;
         return $this;
     }
@@ -802,6 +836,7 @@ class PublicUser
      */
     public function setPublicRepos(int $publicRepos) : self
     {
+        $this->initialized['publicRepos'] = true;
         $this->publicRepos = $publicRepos;
         return $this;
     }
@@ -823,6 +858,7 @@ class PublicUser
      */
     public function setPublicGists(int $publicGists) : self
     {
+        $this->initialized['publicGists'] = true;
         $this->publicGists = $publicGists;
         return $this;
     }
@@ -844,6 +880,7 @@ class PublicUser
      */
     public function setFollowers(int $followers) : self
     {
+        $this->initialized['followers'] = true;
         $this->followers = $followers;
         return $this;
     }
@@ -865,6 +902,7 @@ class PublicUser
      */
     public function setFollowing(int $following) : self
     {
+        $this->initialized['following'] = true;
         $this->following = $following;
         return $this;
     }
@@ -886,6 +924,7 @@ class PublicUser
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -907,6 +946,7 @@ class PublicUser
      */
     public function setUpdatedAt(\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -928,6 +968,7 @@ class PublicUser
      */
     public function setPlan(PublicUserPlan $plan) : self
     {
+        $this->initialized['plan'] = true;
         $this->plan = $plan;
         return $this;
     }
@@ -949,6 +990,7 @@ class PublicUser
      */
     public function setSuspendedAt(?\DateTime $suspendedAt) : self
     {
+        $this->initialized['suspendedAt'] = true;
         $this->suspendedAt = $suspendedAt;
         return $this;
     }
@@ -970,6 +1012,7 @@ class PublicUser
      */
     public function setPrivateGists(int $privateGists) : self
     {
+        $this->initialized['privateGists'] = true;
         $this->privateGists = $privateGists;
         return $this;
     }
@@ -991,6 +1034,7 @@ class PublicUser
      */
     public function setTotalPrivateRepos(int $totalPrivateRepos) : self
     {
+        $this->initialized['totalPrivateRepos'] = true;
         $this->totalPrivateRepos = $totalPrivateRepos;
         return $this;
     }
@@ -1012,6 +1056,7 @@ class PublicUser
      */
     public function setOwnedPrivateRepos(int $ownedPrivateRepos) : self
     {
+        $this->initialized['ownedPrivateRepos'] = true;
         $this->ownedPrivateRepos = $ownedPrivateRepos;
         return $this;
     }
@@ -1033,6 +1078,7 @@ class PublicUser
      */
     public function setDiskUsage(int $diskUsage) : self
     {
+        $this->initialized['diskUsage'] = true;
         $this->diskUsage = $diskUsage;
         return $this;
     }
@@ -1054,6 +1100,7 @@ class PublicUser
      */
     public function setCollaborators(int $collaborators) : self
     {
+        $this->initialized['collaborators'] = true;
         $this->collaborators = $collaborators;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoCommitsCommitShaCommentsPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The contents of the comment.
      *
      * @var string
@@ -46,6 +54,7 @@ class ReposOwnerRepoCommitsCommitShaCommentsPostBody extends \ArrayObject
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }
@@ -67,6 +76,7 @@ class ReposOwnerRepoCommitsCommitShaCommentsPostBody extends \ArrayObject
      */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -88,6 +98,7 @@ class ReposOwnerRepoCommitsCommitShaCommentsPostBody extends \ArrayObject
      */
     public function setPosition(int $position) : self
     {
+        $this->initialized['position'] = true;
         $this->position = $position;
         return $this;
     }
@@ -109,6 +120,7 @@ class ReposOwnerRepoCommitsCommitShaCommentsPostBody extends \ArrayObject
      */
     public function setLine(int $line) : self
     {
+        $this->initialized['line'] = true;
         $this->line = $line;
         return $this;
     }

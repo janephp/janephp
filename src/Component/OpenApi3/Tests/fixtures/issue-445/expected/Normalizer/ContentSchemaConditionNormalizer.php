@@ -72,11 +72,11 @@ class ContentSchemaConditionNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTraceRefId()) {
+        if ($object->isInitialized('traceRefId') && null !== $object->getTraceRefId()) {
             $data['traceRefId'] = $object->getTraceRefId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getSchemaId()) {
+        if ($object->isInitialized('schemaId') && null !== $object->getSchemaId()) {
             $data['schemaId'] = $object->getSchemaId();
         }
         foreach ($object as $key => $value) {

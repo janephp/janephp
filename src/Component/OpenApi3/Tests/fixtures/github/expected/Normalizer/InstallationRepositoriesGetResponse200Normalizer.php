@@ -74,17 +74,17 @@ class InstallationRepositoriesGetResponse200Normalizer implements DenormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTotalCount()) {
+        if ($object->isInitialized('totalCount') && null !== $object->getTotalCount()) {
             $data['total_count'] = $object->getTotalCount();
         }
-        if (null !== $object->getRepositories()) {
+        if ($object->isInitialized('repositories') && null !== $object->getRepositories()) {
             $values = array();
             foreach ($object->getRepositories() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['repositories'] = $values;
         }
-        if (null !== $object->getRepositorySelection()) {
+        if ($object->isInitialized('repositorySelection') && null !== $object->getRepositorySelection()) {
             $data['repository_selection'] = $object->getRepositorySelection();
         }
         foreach ($object as $key => $value_1) {

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class User
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * User's Picturepark ID.
      *
      * @var string|null
@@ -52,6 +60,7 @@ class User
      */
     public function setId(?string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -73,6 +82,7 @@ class User
      */
     public function setFirstName(?string $firstName) : self
     {
+        $this->initialized['firstName'] = true;
         $this->firstName = $firstName;
         return $this;
     }
@@ -94,6 +104,7 @@ class User
      */
     public function setLastName(?string $lastName) : self
     {
+        $this->initialized['lastName'] = true;
         $this->lastName = $lastName;
         return $this;
     }
@@ -115,6 +126,7 @@ class User
      */
     public function setEmailAddress(string $emailAddress) : self
     {
+        $this->initialized['emailAddress'] = true;
         $this->emailAddress = $emailAddress;
         return $this;
     }
@@ -136,6 +148,7 @@ class User
      */
     public function setIsDeleted(bool $isDeleted) : self
     {
+        $this->initialized['isDeleted'] = true;
         $this->isDeleted = $isDeleted;
         return $this;
     }

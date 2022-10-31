@@ -75,10 +75,10 @@ class ReindexEventNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data = array();
         $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
         $data['kind'] = $object->getKind();
-        if (null !== $object->getIndexId()) {
+        if ($object->isInitialized('indexId') && null !== $object->getIndexId()) {
             $data['indexId'] = $object->getIndexId();
         }
-        if (null !== $object->getState()) {
+        if ($object->isInitialized('state') && null !== $object->getState()) {
             $data['state'] = $object->getState();
         }
         foreach ($object as $key => $value) {

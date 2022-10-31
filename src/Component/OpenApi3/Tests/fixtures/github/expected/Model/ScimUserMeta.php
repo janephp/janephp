@@ -5,6 +5,14 @@ namespace Github\Model;
 class ScimUserMeta extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class ScimUserMeta extends \ArrayObject
      */
     public function setResourceType(string $resourceType) : self
     {
+        $this->initialized['resourceType'] = true;
         $this->resourceType = $resourceType;
         return $this;
     }
@@ -67,6 +76,7 @@ class ScimUserMeta extends \ArrayObject
      */
     public function setCreated(\DateTime $created) : self
     {
+        $this->initialized['created'] = true;
         $this->created = $created;
         return $this;
     }
@@ -88,6 +98,7 @@ class ScimUserMeta extends \ArrayObject
      */
     public function setLastModified(\DateTime $lastModified) : self
     {
+        $this->initialized['lastModified'] = true;
         $this->lastModified = $lastModified;
         return $this;
     }
@@ -109,6 +120,7 @@ class ScimUserMeta extends \ArrayObject
      */
     public function setLocation(string $location) : self
     {
+        $this->initialized['location'] = true;
         $this->location = $location;
         return $this;
     }

@@ -71,13 +71,13 @@ class PluginNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['Id'] = $object->getId();
         }
         $data['Name'] = $object->getName();
         $data['Enabled'] = $object->getEnabled();
         $data['Settings'] = $this->normalizer->normalize($object->getSettings(), 'json', $context);
-        if (null !== $object->getPluginReference()) {
+        if ($object->isInitialized('pluginReference') && null !== $object->getPluginReference()) {
             $data['PluginReference'] = $object->getPluginReference();
         }
         $data['Config'] = $this->normalizer->normalize($object->getConfig(), 'json', $context);

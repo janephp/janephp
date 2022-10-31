@@ -5,6 +5,14 @@ namespace Github\Model;
 class PorterAuthor extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -64,6 +72,7 @@ class PorterAuthor extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -85,6 +94,7 @@ class PorterAuthor extends \ArrayObject
      */
     public function setRemoteId(string $remoteId) : self
     {
+        $this->initialized['remoteId'] = true;
         $this->remoteId = $remoteId;
         return $this;
     }
@@ -106,6 +116,7 @@ class PorterAuthor extends \ArrayObject
      */
     public function setRemoteName(string $remoteName) : self
     {
+        $this->initialized['remoteName'] = true;
         $this->remoteName = $remoteName;
         return $this;
     }
@@ -127,6 +138,7 @@ class PorterAuthor extends \ArrayObject
      */
     public function setEmail(string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -148,6 +160,7 @@ class PorterAuthor extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -169,6 +182,7 @@ class PorterAuthor extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -190,6 +204,7 @@ class PorterAuthor extends \ArrayObject
      */
     public function setImportUrl(string $importUrl) : self
     {
+        $this->initialized['importUrl'] = true;
         $this->importUrl = $importUrl;
         return $this;
     }

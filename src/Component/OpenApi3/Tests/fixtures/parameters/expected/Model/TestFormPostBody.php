@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class TestFormPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -58,6 +66,7 @@ class TestFormPostBody extends \ArrayObject
      */
     public function setTestString(string $testString) : self
     {
+        $this->initialized['testString'] = true;
         $this->testString = $testString;
         return $this;
     }
@@ -79,6 +88,7 @@ class TestFormPostBody extends \ArrayObject
      */
     public function setTestInteger(int $testInteger) : self
     {
+        $this->initialized['testInteger'] = true;
         $this->testInteger = $testInteger;
         return $this;
     }
@@ -100,6 +110,7 @@ class TestFormPostBody extends \ArrayObject
      */
     public function setTestFloat(float $testFloat) : self
     {
+        $this->initialized['testFloat'] = true;
         $this->testFloat = $testFloat;
         return $this;
     }
@@ -121,6 +132,7 @@ class TestFormPostBody extends \ArrayObject
      */
     public function setTestArray(array $testArray) : self
     {
+        $this->initialized['testArray'] = true;
         $this->testArray = $testArray;
         return $this;
     }
@@ -142,6 +154,7 @@ class TestFormPostBody extends \ArrayObject
      */
     public function setTestRequired(string $testRequired) : self
     {
+        $this->initialized['testRequired'] = true;
         $this->testRequired = $testRequired;
         return $this;
     }
@@ -163,6 +176,7 @@ class TestFormPostBody extends \ArrayObject
      */
     public function setTestDefault(string $testDefault) : self
     {
+        $this->initialized['testDefault'] = true;
         $this->testDefault = $testDefault;
         return $this;
     }

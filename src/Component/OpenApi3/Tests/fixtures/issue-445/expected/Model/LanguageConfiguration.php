@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class LanguageConfiguration
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * A list of languages serving as system languages.
      *
      * @var string[]|null
@@ -40,6 +48,7 @@ class LanguageConfiguration
      */
     public function setSystemLanguages(?array $systemLanguages) : self
     {
+        $this->initialized['systemLanguages'] = true;
         $this->systemLanguages = $systemLanguages;
         return $this;
     }
@@ -61,6 +70,7 @@ class LanguageConfiguration
      */
     public function setMetadataLanguages(?array $metadataLanguages) : self
     {
+        $this->initialized['metadataLanguages'] = true;
         $this->metadataLanguages = $metadataLanguages;
         return $this;
     }
@@ -82,6 +92,7 @@ class LanguageConfiguration
      */
     public function setDefaultLanguage(?string $defaultLanguage) : self
     {
+        $this->initialized['defaultLanguage'] = true;
         $this->defaultLanguage = $defaultLanguage;
         return $this;
     }

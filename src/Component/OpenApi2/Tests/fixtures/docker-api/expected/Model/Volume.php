@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class Volume
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Name of the volume.
      *
      * @var string
@@ -86,6 +94,7 @@ class Volume
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -107,6 +116,7 @@ class Volume
      */
     public function setDriver(string $driver) : self
     {
+        $this->initialized['driver'] = true;
         $this->driver = $driver;
         return $this;
     }
@@ -128,6 +138,7 @@ class Volume
      */
     public function setMountpoint(string $mountpoint) : self
     {
+        $this->initialized['mountpoint'] = true;
         $this->mountpoint = $mountpoint;
         return $this;
     }
@@ -149,6 +160,7 @@ class Volume
      */
     public function setCreatedAt(string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -182,6 +194,7 @@ class Volume
     */
     public function setStatus(iterable $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -203,6 +216,7 @@ class Volume
      */
     public function setLabels(iterable $labels) : self
     {
+        $this->initialized['labels'] = true;
         $this->labels = $labels;
         return $this;
     }
@@ -228,6 +242,7 @@ class Volume
     */
     public function setScope(string $scope) : self
     {
+        $this->initialized['scope'] = true;
         $this->scope = $scope;
         return $this;
     }
@@ -249,6 +264,7 @@ class Volume
      */
     public function setOptions(iterable $options) : self
     {
+        $this->initialized['options'] = true;
         $this->options = $options;
         return $this;
     }
@@ -274,6 +290,7 @@ class Volume
     */
     public function setUsageData(?VolumeUsageData $usageData) : self
     {
+        $this->initialized['usageData'] = true;
         $this->usageData = $usageData;
         return $this;
     }

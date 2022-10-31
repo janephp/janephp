@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ListItemUpdateManyRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Allows updating list items with references to list items or contents that don't exist in the system.
      *
      * @var bool
@@ -34,6 +42,7 @@ class ListItemUpdateManyRequest
      */
     public function setAllowMissingDependencies(bool $allowMissingDependencies) : self
     {
+        $this->initialized['allowMissingDependencies'] = true;
         $this->allowMissingDependencies = $allowMissingDependencies;
         return $this;
     }
@@ -55,6 +64,7 @@ class ListItemUpdateManyRequest
      */
     public function setItems(array $items) : self
     {
+        $this->initialized['items'] = true;
         $this->items = $items;
         return $this;
     }

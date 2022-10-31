@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class PluginSettings
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var PluginMount[]
@@ -46,6 +54,7 @@ class PluginSettings
      */
     public function setMounts(array $mounts) : self
     {
+        $this->initialized['mounts'] = true;
         $this->mounts = $mounts;
         return $this;
     }
@@ -67,6 +76,7 @@ class PluginSettings
      */
     public function setEnv(array $env) : self
     {
+        $this->initialized['env'] = true;
         $this->env = $env;
         return $this;
     }
@@ -88,6 +98,7 @@ class PluginSettings
      */
     public function setArgs(array $args) : self
     {
+        $this->initialized['args'] = true;
         $this->args = $args;
         return $this;
     }
@@ -109,6 +120,7 @@ class PluginSettings
      */
     public function setDevices(array $devices) : self
     {
+        $this->initialized['devices'] = true;
         $this->devices = $devices;
         return $this;
     }

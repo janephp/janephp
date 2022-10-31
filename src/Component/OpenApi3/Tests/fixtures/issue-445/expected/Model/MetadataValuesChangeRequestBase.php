@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class MetadataValuesChangeRequestBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Changes that need to be applied to the existing content metadata. The same set of changes is applied to all contents.
      *
      * @var MetadataValuesChangeCommandBase[]
@@ -44,6 +52,7 @@ class MetadataValuesChangeRequestBase
      */
     public function setChangeCommands(array $changeCommands)
     {
+        $this->initialized['changeCommands'] = true;
         $this->changeCommands = $changeCommands;
     }
     /**
@@ -62,6 +71,7 @@ class MetadataValuesChangeRequestBase
      */
     public function setAllowMissingDependencies(bool $allowMissingDependencies)
     {
+        $this->initialized['allowMissingDependencies'] = true;
         $this->allowMissingDependencies = $allowMissingDependencies;
     }
     /**
@@ -80,6 +90,7 @@ class MetadataValuesChangeRequestBase
      */
     public function setNotifyProgress(bool $notifyProgress)
     {
+        $this->initialized['notifyProgress'] = true;
         $this->notifyProgress = $notifyProgress;
     }
     /**
@@ -98,6 +109,7 @@ class MetadataValuesChangeRequestBase
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

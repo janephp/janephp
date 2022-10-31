@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class MetadataReferencesPagingRequest extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Limits the number of the returned schemas. Defaults to 0.
      *
      * @var int
@@ -40,6 +48,7 @@ class MetadataReferencesPagingRequest extends \ArrayObject
      */
     public function setLimit(int $limit) : self
     {
+        $this->initialized['limit'] = true;
         $this->limit = $limit;
         return $this;
     }
@@ -61,6 +70,7 @@ class MetadataReferencesPagingRequest extends \ArrayObject
      */
     public function setPageToken(?string $pageToken) : self
     {
+        $this->initialized['pageToken'] = true;
         $this->pageToken = $pageToken;
         return $this;
     }
@@ -82,6 +92,7 @@ class MetadataReferencesPagingRequest extends \ArrayObject
      */
     public function setFetchReferencedByRestrictedItem(bool $fetchReferencedByRestrictedItem) : self
     {
+        $this->initialized['fetchReferencedByRestrictedItem'] = true;
         $this->fetchReferencedByRestrictedItem = $fetchReferencedByRestrictedItem;
         return $this;
     }

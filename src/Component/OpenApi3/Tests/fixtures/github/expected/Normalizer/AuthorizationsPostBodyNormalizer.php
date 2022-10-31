@@ -89,26 +89,26 @@ class AuthorizationsPostBodyNormalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getScopes()) {
+        if ($object->isInitialized('scopes') && null !== $object->getScopes()) {
             $values = array();
             foreach ($object->getScopes() as $value) {
                 $values[] = $value;
             }
             $data['scopes'] = $values;
         }
-        if (null !== $object->getNote()) {
+        if ($object->isInitialized('note') && null !== $object->getNote()) {
             $data['note'] = $object->getNote();
         }
-        if (null !== $object->getNoteUrl()) {
+        if ($object->isInitialized('noteUrl') && null !== $object->getNoteUrl()) {
             $data['note_url'] = $object->getNoteUrl();
         }
-        if (null !== $object->getClientId()) {
+        if ($object->isInitialized('clientId') && null !== $object->getClientId()) {
             $data['client_id'] = $object->getClientId();
         }
-        if (null !== $object->getClientSecret()) {
+        if ($object->isInitialized('clientSecret') && null !== $object->getClientSecret()) {
             $data['client_secret'] = $object->getClientSecret();
         }
-        if (null !== $object->getFingerprint()) {
+        if ($object->isInitialized('fingerprint') && null !== $object->getFingerprint()) {
             $data['fingerprint'] = $object->getFingerprint();
         }
         foreach ($object as $key => $value_1) {

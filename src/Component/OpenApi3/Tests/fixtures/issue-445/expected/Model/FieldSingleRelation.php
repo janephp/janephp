@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class FieldSingleRelation extends FieldBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the schema used for relation metadata (it must be of type Struct, and it cannot be a system schema).
      *
      * @var string
@@ -40,6 +48,7 @@ class FieldSingleRelation extends FieldBase
      */
     public function setSchemaId(string $schemaId) : self
     {
+        $this->initialized['schemaId'] = true;
         $this->schemaId = $schemaId;
         return $this;
     }
@@ -61,6 +70,7 @@ class FieldSingleRelation extends FieldBase
      */
     public function setSchemaIndexingInfo($schemaIndexingInfo) : self
     {
+        $this->initialized['schemaIndexingInfo'] = true;
         $this->schemaIndexingInfo = $schemaIndexingInfo;
         return $this;
     }
@@ -82,6 +92,7 @@ class FieldSingleRelation extends FieldBase
      */
     public function setRelationTypes(array $relationTypes) : self
     {
+        $this->initialized['relationTypes'] = true;
         $this->relationTypes = $relationTypes;
         return $this;
     }

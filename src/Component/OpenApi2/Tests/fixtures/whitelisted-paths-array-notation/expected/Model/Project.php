@@ -5,6 +5,14 @@ namespace Jane\OpenApi2\Tests\Expected\Model;
 class Project
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Unique ID for the project.
      *
      * @var int
@@ -166,6 +174,7 @@ class Project
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -187,6 +196,7 @@ class Project
      */
     public function setClient(ProjectClient $client) : self
     {
+        $this->initialized['client'] = true;
         $this->client = $client;
         return $this;
     }
@@ -208,6 +218,7 @@ class Project
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -229,6 +240,7 @@ class Project
      */
     public function setCode(string $code) : self
     {
+        $this->initialized['code'] = true;
         $this->code = $code;
         return $this;
     }
@@ -250,6 +262,7 @@ class Project
      */
     public function setIsActive(bool $isActive) : self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
         return $this;
     }
@@ -271,6 +284,7 @@ class Project
      */
     public function setIsBillable(bool $isBillable) : self
     {
+        $this->initialized['isBillable'] = true;
         $this->isBillable = $isBillable;
         return $this;
     }
@@ -292,6 +306,7 @@ class Project
      */
     public function setIsFixedFee(bool $isFixedFee) : self
     {
+        $this->initialized['isFixedFee'] = true;
         $this->isFixedFee = $isFixedFee;
         return $this;
     }
@@ -313,6 +328,7 @@ class Project
      */
     public function setBillBy(string $billBy) : self
     {
+        $this->initialized['billBy'] = true;
         $this->billBy = $billBy;
         return $this;
     }
@@ -334,6 +350,7 @@ class Project
      */
     public function setHourlyRate(float $hourlyRate) : self
     {
+        $this->initialized['hourlyRate'] = true;
         $this->hourlyRate = $hourlyRate;
         return $this;
     }
@@ -355,6 +372,7 @@ class Project
      */
     public function setBudget(float $budget) : self
     {
+        $this->initialized['budget'] = true;
         $this->budget = $budget;
         return $this;
     }
@@ -376,6 +394,7 @@ class Project
      */
     public function setBudgetBy(string $budgetBy) : self
     {
+        $this->initialized['budgetBy'] = true;
         $this->budgetBy = $budgetBy;
         return $this;
     }
@@ -397,6 +416,7 @@ class Project
      */
     public function setBudgetIsMonthly(bool $budgetIsMonthly) : self
     {
+        $this->initialized['budgetIsMonthly'] = true;
         $this->budgetIsMonthly = $budgetIsMonthly;
         return $this;
     }
@@ -418,6 +438,7 @@ class Project
      */
     public function setNotifyWhenOverBudget(bool $notifyWhenOverBudget) : self
     {
+        $this->initialized['notifyWhenOverBudget'] = true;
         $this->notifyWhenOverBudget = $notifyWhenOverBudget;
         return $this;
     }
@@ -439,6 +460,7 @@ class Project
      */
     public function setOverBudgetNotificationPercentage(float $overBudgetNotificationPercentage) : self
     {
+        $this->initialized['overBudgetNotificationPercentage'] = true;
         $this->overBudgetNotificationPercentage = $overBudgetNotificationPercentage;
         return $this;
     }
@@ -460,6 +482,7 @@ class Project
      */
     public function setOverBudgetNotificationDate(\DateTime $overBudgetNotificationDate) : self
     {
+        $this->initialized['overBudgetNotificationDate'] = true;
         $this->overBudgetNotificationDate = $overBudgetNotificationDate;
         return $this;
     }
@@ -481,6 +504,7 @@ class Project
      */
     public function setShowBudgetToAll(bool $showBudgetToAll) : self
     {
+        $this->initialized['showBudgetToAll'] = true;
         $this->showBudgetToAll = $showBudgetToAll;
         return $this;
     }
@@ -502,6 +526,7 @@ class Project
      */
     public function setCostBudget(float $costBudget) : self
     {
+        $this->initialized['costBudget'] = true;
         $this->costBudget = $costBudget;
         return $this;
     }
@@ -523,6 +548,7 @@ class Project
      */
     public function setCostBudgetIncludeExpenses(bool $costBudgetIncludeExpenses) : self
     {
+        $this->initialized['costBudgetIncludeExpenses'] = true;
         $this->costBudgetIncludeExpenses = $costBudgetIncludeExpenses;
         return $this;
     }
@@ -544,6 +570,7 @@ class Project
      */
     public function setFee(float $fee) : self
     {
+        $this->initialized['fee'] = true;
         $this->fee = $fee;
         return $this;
     }
@@ -565,6 +592,7 @@ class Project
      */
     public function setNotes(string $notes) : self
     {
+        $this->initialized['notes'] = true;
         $this->notes = $notes;
         return $this;
     }
@@ -586,6 +614,7 @@ class Project
      */
     public function setStartsOn(\DateTime $startsOn) : self
     {
+        $this->initialized['startsOn'] = true;
         $this->startsOn = $startsOn;
         return $this;
     }
@@ -607,6 +636,7 @@ class Project
      */
     public function setEndsOn(\DateTime $endsOn) : self
     {
+        $this->initialized['endsOn'] = true;
         $this->endsOn = $endsOn;
         return $this;
     }
@@ -628,6 +658,7 @@ class Project
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -649,6 +680,7 @@ class Project
      */
     public function setUpdatedAt(\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }

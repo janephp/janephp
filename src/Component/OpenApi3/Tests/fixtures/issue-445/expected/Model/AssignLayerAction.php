@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class AssignLayerAction extends BusinessRuleAction
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the layer.
      *
      * @var string|null
@@ -34,6 +42,7 @@ class AssignLayerAction extends BusinessRuleAction
      */
     public function setLayerId(?string $layerId) : self
     {
+        $this->initialized['layerId'] = true;
         $this->layerId = $layerId;
         return $this;
     }
@@ -55,6 +64,7 @@ class AssignLayerAction extends BusinessRuleAction
      */
     public function setDefaultValues(?iterable $defaultValues) : self
     {
+        $this->initialized['defaultValues'] = true;
         $this->defaultValues = $defaultValues;
         return $this;
     }

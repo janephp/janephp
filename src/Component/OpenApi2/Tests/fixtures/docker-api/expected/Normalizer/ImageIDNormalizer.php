@@ -56,7 +56,7 @@ class ImageIDNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getID()) {
+        if ($object->isInitialized('iD') && null !== $object->getID()) {
             $data['ID'] = $object->getID();
         }
         if (!($context['skip_validation'] ?? false)) {

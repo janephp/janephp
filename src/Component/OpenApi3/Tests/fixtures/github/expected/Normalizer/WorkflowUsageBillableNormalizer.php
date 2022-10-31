@@ -70,13 +70,13 @@ class WorkflowUsageBillableNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUBUNTU()) {
+        if ($object->isInitialized('uBUNTU') && null !== $object->getUBUNTU()) {
             $data['UBUNTU'] = $this->normalizer->normalize($object->getUBUNTU(), 'json', $context);
         }
-        if (null !== $object->getMACOS()) {
+        if ($object->isInitialized('mACOS') && null !== $object->getMACOS()) {
             $data['MACOS'] = $this->normalizer->normalize($object->getMACOS(), 'json', $context);
         }
-        if (null !== $object->getWINDOWS()) {
+        if ($object->isInitialized('wINDOWS') && null !== $object->getWINDOWS()) {
             $data['WINDOWS'] = $this->normalizer->normalize($object->getWINDOWS(), 'json', $context);
         }
         foreach ($object as $key => $value) {

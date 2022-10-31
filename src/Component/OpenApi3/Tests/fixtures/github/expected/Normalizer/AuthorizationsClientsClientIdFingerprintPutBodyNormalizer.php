@@ -82,17 +82,17 @@ class AuthorizationsClientsClientIdFingerprintPutBodyNormalizer implements Denor
     {
         $data = array();
         $data['client_secret'] = $object->getClientSecret();
-        if (null !== $object->getScopes()) {
+        if ($object->isInitialized('scopes') && null !== $object->getScopes()) {
             $values = array();
             foreach ($object->getScopes() as $value) {
                 $values[] = $value;
             }
             $data['scopes'] = $values;
         }
-        if (null !== $object->getNote()) {
+        if ($object->isInitialized('note') && null !== $object->getNote()) {
             $data['note'] = $object->getNote();
         }
-        if (null !== $object->getNoteUrl()) {
+        if ($object->isInitialized('noteUrl') && null !== $object->getNoteUrl()) {
             $data['note_url'] = $object->getNoteUrl();
         }
         foreach ($object as $key => $value_1) {

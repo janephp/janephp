@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class NestedFilter extends FilterBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The path pointing to the nested document (i.e. personLayer.nestedAddress).
      *
      * @var string
@@ -34,6 +42,7 @@ class NestedFilter extends FilterBase
      */
     public function setPath(string $path) : self
     {
+        $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
     }
@@ -55,6 +64,7 @@ class NestedFilter extends FilterBase
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }

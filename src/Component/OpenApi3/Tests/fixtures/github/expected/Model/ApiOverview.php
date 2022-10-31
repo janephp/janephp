@@ -5,6 +5,14 @@ namespace Github\Model;
 class ApiOverview extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -82,6 +90,7 @@ class ApiOverview extends \ArrayObject
      */
     public function setVerifiablePasswordAuthentication(bool $verifiablePasswordAuthentication) : self
     {
+        $this->initialized['verifiablePasswordAuthentication'] = true;
         $this->verifiablePasswordAuthentication = $verifiablePasswordAuthentication;
         return $this;
     }
@@ -103,6 +112,7 @@ class ApiOverview extends \ArrayObject
      */
     public function setSshKeyFingerprints(ApiOverviewSshKeyFingerprints $sshKeyFingerprints) : self
     {
+        $this->initialized['sshKeyFingerprints'] = true;
         $this->sshKeyFingerprints = $sshKeyFingerprints;
         return $this;
     }
@@ -124,6 +134,7 @@ class ApiOverview extends \ArrayObject
      */
     public function setHooks(array $hooks) : self
     {
+        $this->initialized['hooks'] = true;
         $this->hooks = $hooks;
         return $this;
     }
@@ -145,6 +156,7 @@ class ApiOverview extends \ArrayObject
      */
     public function setWeb(array $web) : self
     {
+        $this->initialized['web'] = true;
         $this->web = $web;
         return $this;
     }
@@ -166,6 +178,7 @@ class ApiOverview extends \ArrayObject
      */
     public function setApi(array $api) : self
     {
+        $this->initialized['api'] = true;
         $this->api = $api;
         return $this;
     }
@@ -187,6 +200,7 @@ class ApiOverview extends \ArrayObject
      */
     public function setGit(array $git) : self
     {
+        $this->initialized['git'] = true;
         $this->git = $git;
         return $this;
     }
@@ -208,6 +222,7 @@ class ApiOverview extends \ArrayObject
      */
     public function setPages(array $pages) : self
     {
+        $this->initialized['pages'] = true;
         $this->pages = $pages;
         return $this;
     }
@@ -229,6 +244,7 @@ class ApiOverview extends \ArrayObject
      */
     public function setImporter(array $importer) : self
     {
+        $this->initialized['importer'] = true;
         $this->importer = $importer;
         return $this;
     }
@@ -250,6 +266,7 @@ class ApiOverview extends \ArrayObject
      */
     public function setGithubServicesSha(string $githubServicesSha) : self
     {
+        $this->initialized['githubServicesSha'] = true;
         $this->githubServicesSha = $githubServicesSha;
         return $this;
     }
@@ -271,6 +288,7 @@ class ApiOverview extends \ArrayObject
      */
     public function setInstalledVersion(string $installedVersion) : self
     {
+        $this->initialized['installedVersion'] = true;
         $this->installedVersion = $installedVersion;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class TagboxItemsChangedCondition extends BusinessRuleCondition
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * JSON path to the field
      *
      * @var string|null
@@ -28,6 +36,7 @@ class TagboxItemsChangedCondition extends BusinessRuleCondition
      */
     public function setFieldPath(?string $fieldPath) : self
     {
+        $this->initialized['fieldPath'] = true;
         $this->fieldPath = $fieldPath;
         return $this;
     }

@@ -68,19 +68,19 @@ class TaskSpecContainerSpecPrivilegesSELinuxContextNormalizer implements Denorma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getDisable()) {
+        if ($object->isInitialized('disable') && null !== $object->getDisable()) {
             $data['Disable'] = $object->getDisable();
         }
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $data['User'] = $object->getUser();
         }
-        if (null !== $object->getRole()) {
+        if ($object->isInitialized('role') && null !== $object->getRole()) {
             $data['Role'] = $object->getRole();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['Type'] = $object->getType();
         }
-        if (null !== $object->getLevel()) {
+        if ($object->isInitialized('level') && null !== $object->getLevel()) {
             $data['Level'] = $object->getLevel();
         }
         if (!($context['skip_validation'] ?? false)) {

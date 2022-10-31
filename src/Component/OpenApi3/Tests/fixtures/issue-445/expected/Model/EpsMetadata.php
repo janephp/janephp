@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class EpsMetadata
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -40,6 +48,7 @@ class EpsMetadata
      */
     public function setIsRasterized(bool $isRasterized) : self
     {
+        $this->initialized['isRasterized'] = true;
         $this->isRasterized = $isRasterized;
         return $this;
     }
@@ -61,6 +70,7 @@ class EpsMetadata
      */
     public function setWidthInPoints(float $widthInPoints) : self
     {
+        $this->initialized['widthInPoints'] = true;
         $this->widthInPoints = $widthInPoints;
         return $this;
     }
@@ -82,6 +92,7 @@ class EpsMetadata
      */
     public function setHeightInPoints(float $heightInPoints) : self
     {
+        $this->initialized['heightInPoints'] = true;
         $this->heightInPoints = $heightInPoints;
         return $this;
     }

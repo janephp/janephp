@@ -58,7 +58,7 @@ class BusinessProcessWaitForStateResultNormalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getStateHit()) {
+        if ($object->isInitialized('stateHit') && null !== $object->getStateHit()) {
             $data['stateHit'] = $object->getStateHit();
         }
         $data['businessProcess'] = $object->getBusinessProcess();

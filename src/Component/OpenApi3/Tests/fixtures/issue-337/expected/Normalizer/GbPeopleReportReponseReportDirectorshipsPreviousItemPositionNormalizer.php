@@ -66,13 +66,13 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemPositionNormalizer imp
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getResignationDate()) {
+        if ($object->isInitialized('resignationDate') && null !== $object->getResignationDate()) {
             $data['resignationDate'] = $object->getResignationDate();
         }
-        if (null !== $object->getDateAppointed()) {
+        if ($object->isInitialized('dateAppointed') && null !== $object->getDateAppointed()) {
             $data['dateAppointed'] = $object->getDateAppointed();
         }
-        if (null !== $object->getPositionName()) {
+        if ($object->isInitialized('positionName') && null !== $object->getPositionName()) {
             $data['positionName'] = $object->getPositionName();
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class CashtagFields extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -28,6 +36,7 @@ class CashtagFields extends \ArrayObject
      */
     public function setTag(string $tag) : self
     {
+        $this->initialized['tag'] = true;
         $this->tag = $tag;
         return $this;
     }

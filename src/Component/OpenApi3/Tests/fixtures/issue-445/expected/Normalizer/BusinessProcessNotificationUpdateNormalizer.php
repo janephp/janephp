@@ -66,7 +66,7 @@ class BusinessProcessNotificationUpdateNormalizer implements DenormalizerInterfa
         $data = array();
         $data['title'] = $object->getTitle();
         $data['message'] = $object->getMessage();
-        if (null !== $object->getNavigationLink()) {
+        if ($object->isInitialized('navigationLink') && null !== $object->getNavigationLink()) {
             $data['navigationLink'] = $object->getNavigationLink();
         }
         $data['eventType'] = $object->getEventType();

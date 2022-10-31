@@ -114,7 +114,7 @@ class DefaultUserNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFormat()) {
+        if ($object->isInitialized('format') && null !== $object->getFormat()) {
             $data['format'] = $object->getFormat();
         }
         $data['id'] = $object->getId();
@@ -123,24 +123,24 @@ class DefaultUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['username'] = $object->getUsername();
         $data['protected'] = $object->getProtected();
         $data['verified'] = $object->getVerified();
-        if (null !== $object->getWithheld()) {
+        if ($object->isInitialized('withheld') && null !== $object->getWithheld()) {
             $data['withheld'] = $this->normalizer->normalize($object->getWithheld(), 'json', $context);
         }
-        if (null !== $object->getProfileImageUrl()) {
+        if ($object->isInitialized('profileImageUrl') && null !== $object->getProfileImageUrl()) {
             $data['profile_image_url'] = $object->getProfileImageUrl();
         }
-        if (null !== $object->getLocation()) {
+        if ($object->isInitialized('location') && null !== $object->getLocation()) {
             $data['location'] = $object->getLocation();
         }
         $data['url'] = $object->getUrl();
         $data['description'] = $object->getDescription();
-        if (null !== $object->getEntities()) {
+        if ($object->isInitialized('entities') && null !== $object->getEntities()) {
             $data['entities'] = $this->normalizer->normalize($object->getEntities(), 'json', $context);
         }
-        if (null !== $object->getMostRecentTweetId()) {
+        if ($object->isInitialized('mostRecentTweetId') && null !== $object->getMostRecentTweetId()) {
             $data['most_recent_tweet_id'] = $object->getMostRecentTweetId();
         }
-        if (null !== $object->getPinnedTweetId()) {
+        if ($object->isInitialized('pinnedTweetId') && null !== $object->getPinnedTweetId()) {
             $data['pinned_tweet_id'] = $object->getPinnedTweetId();
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class Country extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class Country extends \ArrayObject
      */
     public function setIso(string $iso) : self
     {
+        $this->initialized['iso'] = true;
         $this->iso = $iso;
         return $this;
     }
@@ -55,6 +64,7 @@ class Country extends \ArrayObject
      */
     public function setPrintableName(string $printableName) : self
     {
+        $this->initialized['printableName'] = true;
         $this->printableName = $printableName;
         return $this;
     }

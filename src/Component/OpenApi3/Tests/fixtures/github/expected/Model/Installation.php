@@ -5,6 +5,14 @@ namespace Github\Model;
 class Installation extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the installation.
      *
      * @var int
@@ -130,6 +138,7 @@ class Installation extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -151,6 +160,7 @@ class Installation extends \ArrayObject
      */
     public function setAccount($account) : self
     {
+        $this->initialized['account'] = true;
         $this->account = $account;
         return $this;
     }
@@ -172,6 +182,7 @@ class Installation extends \ArrayObject
      */
     public function setRepositorySelection(string $repositorySelection) : self
     {
+        $this->initialized['repositorySelection'] = true;
         $this->repositorySelection = $repositorySelection;
         return $this;
     }
@@ -193,6 +204,7 @@ class Installation extends \ArrayObject
      */
     public function setAccessTokensUrl(string $accessTokensUrl) : self
     {
+        $this->initialized['accessTokensUrl'] = true;
         $this->accessTokensUrl = $accessTokensUrl;
         return $this;
     }
@@ -214,6 +226,7 @@ class Installation extends \ArrayObject
      */
     public function setRepositoriesUrl(string $repositoriesUrl) : self
     {
+        $this->initialized['repositoriesUrl'] = true;
         $this->repositoriesUrl = $repositoriesUrl;
         return $this;
     }
@@ -235,6 +248,7 @@ class Installation extends \ArrayObject
      */
     public function setHtmlUrl(string $htmlUrl) : self
     {
+        $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
     }
@@ -256,6 +270,7 @@ class Installation extends \ArrayObject
      */
     public function setAppId(int $appId) : self
     {
+        $this->initialized['appId'] = true;
         $this->appId = $appId;
         return $this;
     }
@@ -277,6 +292,7 @@ class Installation extends \ArrayObject
      */
     public function setTargetId(int $targetId) : self
     {
+        $this->initialized['targetId'] = true;
         $this->targetId = $targetId;
         return $this;
     }
@@ -298,6 +314,7 @@ class Installation extends \ArrayObject
      */
     public function setTargetType(string $targetType) : self
     {
+        $this->initialized['targetType'] = true;
         $this->targetType = $targetType;
         return $this;
     }
@@ -319,6 +336,7 @@ class Installation extends \ArrayObject
      */
     public function setPermissions(InstallationPermissions $permissions) : self
     {
+        $this->initialized['permissions'] = true;
         $this->permissions = $permissions;
         return $this;
     }
@@ -340,6 +358,7 @@ class Installation extends \ArrayObject
      */
     public function setEvents(array $events) : self
     {
+        $this->initialized['events'] = true;
         $this->events = $events;
         return $this;
     }
@@ -361,6 +380,7 @@ class Installation extends \ArrayObject
      */
     public function setCreatedAt(\DateTime $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -382,6 +402,7 @@ class Installation extends \ArrayObject
      */
     public function setUpdatedAt(\DateTime $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -403,6 +424,7 @@ class Installation extends \ArrayObject
      */
     public function setSingleFileName(?string $singleFileName) : self
     {
+        $this->initialized['singleFileName'] = true;
         $this->singleFileName = $singleFileName;
         return $this;
     }
@@ -424,6 +446,7 @@ class Installation extends \ArrayObject
      */
     public function setAppSlug(string $appSlug) : self
     {
+        $this->initialized['appSlug'] = true;
         $this->appSlug = $appSlug;
         return $this;
     }
@@ -445,6 +468,7 @@ class Installation extends \ArrayObject
      */
     public function setSuspendedBy(?InstallationSuspendedBy $suspendedBy) : self
     {
+        $this->initialized['suspendedBy'] = true;
         $this->suspendedBy = $suspendedBy;
         return $this;
     }
@@ -466,6 +490,7 @@ class Installation extends \ArrayObject
      */
     public function setSuspendedAt(?\DateTime $suspendedAt) : self
     {
+        $this->initialized['suspendedAt'] = true;
         $this->suspendedAt = $suspendedAt;
         return $this;
     }
@@ -487,6 +512,7 @@ class Installation extends \ArrayObject
      */
     public function setContactEmail(?string $contactEmail) : self
     {
+        $this->initialized['contactEmail'] = true;
         $this->contactEmail = $contactEmail;
         return $this;
     }

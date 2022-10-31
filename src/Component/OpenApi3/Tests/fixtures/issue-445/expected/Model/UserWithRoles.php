@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UserWithRoles
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * IDs of user roles user is assigned to
      *
      * @var string[]|null
@@ -88,6 +96,7 @@ class UserWithRoles
      */
     public function setUserRoleIds(?array $userRoleIds) : self
     {
+        $this->initialized['userRoleIds'] = true;
         $this->userRoleIds = $userRoleIds;
         return $this;
     }
@@ -109,6 +118,7 @@ class UserWithRoles
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -130,6 +140,7 @@ class UserWithRoles
      */
     public function setFirstName(?string $firstName) : self
     {
+        $this->initialized['firstName'] = true;
         $this->firstName = $firstName;
         return $this;
     }
@@ -151,6 +162,7 @@ class UserWithRoles
      */
     public function setLastName(?string $lastName) : self
     {
+        $this->initialized['lastName'] = true;
         $this->lastName = $lastName;
         return $this;
     }
@@ -172,6 +184,7 @@ class UserWithRoles
      */
     public function setEmailAddress(string $emailAddress) : self
     {
+        $this->initialized['emailAddress'] = true;
         $this->emailAddress = $emailAddress;
         return $this;
     }
@@ -193,6 +206,7 @@ class UserWithRoles
      */
     public function setAuthorizationState($authorizationState) : self
     {
+        $this->initialized['authorizationState'] = true;
         $this->authorizationState = $authorizationState;
         return $this;
     }
@@ -214,6 +228,7 @@ class UserWithRoles
      */
     public function setLifeCycle($lifeCycle) : self
     {
+        $this->initialized['lifeCycle'] = true;
         $this->lifeCycle = $lifeCycle;
         return $this;
     }
@@ -235,6 +250,7 @@ class UserWithRoles
      */
     public function setIsLocked(bool $isLocked) : self
     {
+        $this->initialized['isLocked'] = true;
         $this->isLocked = $isLocked;
         return $this;
     }
@@ -256,6 +272,7 @@ class UserWithRoles
      */
     public function setIsSupportUser(bool $isSupportUser) : self
     {
+        $this->initialized['isSupportUser'] = true;
         $this->isSupportUser = $isSupportUser;
         return $this;
     }
@@ -277,6 +294,7 @@ class UserWithRoles
      */
     public function setIsReadOnly(bool $isReadOnly) : self
     {
+        $this->initialized['isReadOnly'] = true;
         $this->isReadOnly = $isReadOnly;
         return $this;
     }
@@ -298,6 +316,7 @@ class UserWithRoles
      */
     public function setIsFederated(bool $isFederated) : self
     {
+        $this->initialized['isFederated'] = true;
         $this->isFederated = $isFederated;
         return $this;
     }

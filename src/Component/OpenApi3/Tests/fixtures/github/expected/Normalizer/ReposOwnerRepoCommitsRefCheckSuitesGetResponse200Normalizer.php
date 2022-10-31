@@ -70,10 +70,10 @@ class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Normalizer implements Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTotalCount()) {
+        if ($object->isInitialized('totalCount') && null !== $object->getTotalCount()) {
             $data['total_count'] = $object->getTotalCount();
         }
-        if (null !== $object->getCheckSuites()) {
+        if ($object->isInitialized('checkSuites') && null !== $object->getCheckSuites()) {
             $values = array();
             foreach ($object->getCheckSuites() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

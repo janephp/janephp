@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class MountVolumeOptionsDriverConfig
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Name of the driver to use to create the volume.
      *
      * @var string
@@ -34,6 +42,7 @@ class MountVolumeOptionsDriverConfig
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -55,6 +64,7 @@ class MountVolumeOptionsDriverConfig
      */
     public function setOptions(iterable $options) : self
     {
+        $this->initialized['options'] = true;
         $this->options = $options;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class ShortBranch extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -52,6 +60,7 @@ class ShortBranch extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -73,6 +82,7 @@ class ShortBranch extends \ArrayObject
      */
     public function setCommit(ShortBranchCommit $commit) : self
     {
+        $this->initialized['commit'] = true;
         $this->commit = $commit;
         return $this;
     }
@@ -94,6 +104,7 @@ class ShortBranch extends \ArrayObject
      */
     public function setProtected(bool $protected) : self
     {
+        $this->initialized['protected'] = true;
         $this->protected = $protected;
         return $this;
     }
@@ -115,6 +126,7 @@ class ShortBranch extends \ArrayObject
      */
     public function setProtection(BranchProtection $protection) : self
     {
+        $this->initialized['protection'] = true;
         $this->protection = $protection;
         return $this;
     }
@@ -136,6 +148,7 @@ class ShortBranch extends \ArrayObject
      */
     public function setProtectionUrl(string $protectionUrl) : self
     {
+        $this->initialized['protectionUrl'] = true;
         $this->protectionUrl = $protectionUrl;
         return $this;
     }

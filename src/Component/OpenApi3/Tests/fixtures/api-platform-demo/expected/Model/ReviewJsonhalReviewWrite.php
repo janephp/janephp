@@ -5,6 +5,14 @@ namespace ApiPlatform\Demo\Model;
 class ReviewJsonhalReviewWrite extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var ReviewJsonhalReviewWriteLinks
@@ -66,6 +74,7 @@ class ReviewJsonhalReviewWrite extends \ArrayObject
      */
     public function setLinks(ReviewJsonhalReviewWriteLinks $links) : self
     {
+        $this->initialized['links'] = true;
         $this->links = $links;
         return $this;
     }
@@ -87,6 +96,7 @@ class ReviewJsonhalReviewWrite extends \ArrayObject
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }
@@ -108,6 +118,7 @@ class ReviewJsonhalReviewWrite extends \ArrayObject
      */
     public function setRating(int $rating) : self
     {
+        $this->initialized['rating'] = true;
         $this->rating = $rating;
         return $this;
     }
@@ -133,6 +144,7 @@ class ReviewJsonhalReviewWrite extends \ArrayObject
      */
     public function setLetter(?string $letter) : self
     {
+        $this->initialized['letter'] = true;
         $this->letter = $letter;
         return $this;
     }
@@ -154,6 +166,7 @@ class ReviewJsonhalReviewWrite extends \ArrayObject
      */
     public function setBook(string $book) : self
     {
+        $this->initialized['book'] = true;
         $this->book = $book;
         return $this;
     }
@@ -175,6 +188,7 @@ class ReviewJsonhalReviewWrite extends \ArrayObject
      */
     public function setAuthor(?string $author) : self
     {
+        $this->initialized['author'] = true;
         $this->author = $author;
         return $this;
     }
@@ -196,6 +210,7 @@ class ReviewJsonhalReviewWrite extends \ArrayObject
      */
     public function setPublicationDate(?\DateTime $publicationDate) : self
     {
+        $this->initialized['publicationDate'] = true;
         $this->publicationDate = $publicationDate;
         return $this;
     }

@@ -78,22 +78,22 @@ class TopBookNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getAuthor()) {
+        if ($object->isInitialized('author') && null !== $object->getAuthor()) {
             $data['author'] = $object->getAuthor();
         }
-        if (null !== $object->getPart()) {
+        if ($object->isInitialized('part') && null !== $object->getPart()) {
             $data['part'] = $object->getPart();
         }
-        if (null !== $object->getPlace()) {
+        if ($object->isInitialized('place') && null !== $object->getPlace()) {
             $data['place'] = $object->getPlace();
         }
-        if (null !== $object->getBorrowCount()) {
+        if ($object->isInitialized('borrowCount') && null !== $object->getBorrowCount()) {
             $data['borrowCount'] = $object->getBorrowCount();
         }
         foreach ($object as $key => $value) {

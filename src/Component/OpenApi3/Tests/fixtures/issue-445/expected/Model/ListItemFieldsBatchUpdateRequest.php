@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ListItemFieldsBatchUpdateRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ids of the list items whose fields need to be updated.
      *
      * @var string[]
@@ -46,6 +54,7 @@ class ListItemFieldsBatchUpdateRequest
      */
     public function setListItemIds(array $listItemIds) : self
     {
+        $this->initialized['listItemIds'] = true;
         $this->listItemIds = $listItemIds;
         return $this;
     }
@@ -67,6 +76,7 @@ class ListItemFieldsBatchUpdateRequest
      */
     public function setChangeCommands(array $changeCommands) : self
     {
+        $this->initialized['changeCommands'] = true;
         $this->changeCommands = $changeCommands;
         return $this;
     }
@@ -88,6 +98,7 @@ class ListItemFieldsBatchUpdateRequest
      */
     public function setAllowMissingDependencies(bool $allowMissingDependencies) : self
     {
+        $this->initialized['allowMissingDependencies'] = true;
         $this->allowMissingDependencies = $allowMissingDependencies;
         return $this;
     }
@@ -109,6 +120,7 @@ class ListItemFieldsBatchUpdateRequest
      */
     public function setNotifyProgress(bool $notifyProgress) : self
     {
+        $this->initialized['notifyProgress'] = true;
         $this->notifyProgress = $notifyProgress;
         return $this;
     }

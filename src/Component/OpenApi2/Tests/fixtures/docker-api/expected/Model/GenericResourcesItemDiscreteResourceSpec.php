@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class GenericResourcesItemDiscreteResourceSpec
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -34,6 +42,7 @@ class GenericResourcesItemDiscreteResourceSpec
      */
     public function setKind(string $kind) : self
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
         return $this;
     }
@@ -55,6 +64,7 @@ class GenericResourcesItemDiscreteResourceSpec
      */
     public function setValue(int $value) : self
     {
+        $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class GitRef extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class GitRef extends \ArrayObject
      */
     public function setRef(string $ref) : self
     {
+        $this->initialized['ref'] = true;
         $this->ref = $ref;
         return $this;
     }
@@ -67,6 +76,7 @@ class GitRef extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -88,6 +98,7 @@ class GitRef extends \ArrayObject
      */
     public function setUrl(string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -109,6 +120,7 @@ class GitRef extends \ArrayObject
      */
     public function setObject(GitRefObject $object) : self
     {
+        $this->initialized['object'] = true;
         $this->object = $object;
         return $this;
     }

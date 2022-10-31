@@ -94,35 +94,35 @@ class FullTextEntitiesNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getUrls()) {
+        if ($object->isInitialized('urls') && null !== $object->getUrls()) {
             $values = array();
             foreach ($object->getUrls() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['urls'] = $values;
         }
-        if (null !== $object->getHashtags()) {
+        if ($object->isInitialized('hashtags') && null !== $object->getHashtags()) {
             $values_1 = array();
             foreach ($object->getHashtags() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['hashtags'] = $values_1;
         }
-        if (null !== $object->getMentions()) {
+        if ($object->isInitialized('mentions') && null !== $object->getMentions()) {
             $values_2 = array();
             foreach ($object->getMentions() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['mentions'] = $values_2;
         }
-        if (null !== $object->getCashtags()) {
+        if ($object->isInitialized('cashtags') && null !== $object->getCashtags()) {
             $values_3 = array();
             foreach ($object->getCashtags() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $data['cashtags'] = $values_3;
         }
-        if (null !== $object->getAnnotations()) {
+        if ($object->isInitialized('annotations') && null !== $object->getAnnotations()) {
             $values_4 = array();
             foreach ($object->getAnnotations() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);

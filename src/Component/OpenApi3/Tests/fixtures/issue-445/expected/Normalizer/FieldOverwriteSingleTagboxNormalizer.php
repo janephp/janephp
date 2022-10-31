@@ -95,22 +95,22 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
         $data['required'] = $object->getRequired();
         $data['overwriteRequired'] = $object->getOverwriteRequired();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getFilter()) {
+        if ($object->isInitialized('filter') && null !== $object->getFilter()) {
             $data['filter'] = $object->getFilter();
         }
-        if (null !== $object->getOverwriteFilter()) {
+        if ($object->isInitialized('overwriteFilter') && null !== $object->getOverwriteFilter()) {
             $data['overwriteFilter'] = $object->getOverwriteFilter();
         }
-        if (null !== $object->getListItemCreateTemplate()) {
+        if ($object->isInitialized('listItemCreateTemplate') && null !== $object->getListItemCreateTemplate()) {
             $data['listItemCreateTemplate'] = $object->getListItemCreateTemplate();
         }
-        if (null !== $object->getOverwriteListItemCreateTemplate()) {
+        if ($object->isInitialized('overwriteListItemCreateTemplate') && null !== $object->getOverwriteListItemCreateTemplate()) {
             $data['overwriteListItemCreateTemplate'] = $object->getOverwriteListItemCreateTemplate();
         }
         foreach ($object as $key => $value) {

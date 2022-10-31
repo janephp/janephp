@@ -5,6 +5,14 @@ namespace Github\Model;
 class UserMembershipsOrgsOrgPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The state that the membership should be in. Only `"active"` will be accepted.
      *
      * @var string
@@ -28,6 +36,7 @@ class UserMembershipsOrgsOrgPatchBody extends \ArrayObject
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class OutputDataAudio extends OutputDataBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Duration of the audio stream in seconds.
      *
      * @var float|null
@@ -28,6 +36,7 @@ class OutputDataAudio extends OutputDataBase
      */
     public function setDurationInSeconds(?float $durationInSeconds) : self
     {
+        $this->initialized['durationInSeconds'] = true;
         $this->durationInSeconds = $durationInSeconds;
         return $this;
     }

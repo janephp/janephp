@@ -5,6 +5,14 @@ namespace Github\Model;
 class UserReposPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The name of the repository.
      *
      * @var string
@@ -124,6 +132,7 @@ class UserReposPostBody extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -145,6 +154,7 @@ class UserReposPostBody extends \ArrayObject
      */
     public function setDescription(string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -166,6 +176,7 @@ class UserReposPostBody extends \ArrayObject
      */
     public function setHomepage(string $homepage) : self
     {
+        $this->initialized['homepage'] = true;
         $this->homepage = $homepage;
         return $this;
     }
@@ -187,6 +198,7 @@ class UserReposPostBody extends \ArrayObject
      */
     public function setPrivate(bool $private) : self
     {
+        $this->initialized['private'] = true;
         $this->private = $private;
         return $this;
     }
@@ -208,6 +220,7 @@ class UserReposPostBody extends \ArrayObject
      */
     public function setHasIssues(bool $hasIssues) : self
     {
+        $this->initialized['hasIssues'] = true;
         $this->hasIssues = $hasIssues;
         return $this;
     }
@@ -229,6 +242,7 @@ class UserReposPostBody extends \ArrayObject
      */
     public function setHasProjects(bool $hasProjects) : self
     {
+        $this->initialized['hasProjects'] = true;
         $this->hasProjects = $hasProjects;
         return $this;
     }
@@ -250,6 +264,7 @@ class UserReposPostBody extends \ArrayObject
      */
     public function setHasWiki(bool $hasWiki) : self
     {
+        $this->initialized['hasWiki'] = true;
         $this->hasWiki = $hasWiki;
         return $this;
     }
@@ -271,6 +286,7 @@ class UserReposPostBody extends \ArrayObject
      */
     public function setTeamId(int $teamId) : self
     {
+        $this->initialized['teamId'] = true;
         $this->teamId = $teamId;
         return $this;
     }
@@ -292,6 +308,7 @@ class UserReposPostBody extends \ArrayObject
      */
     public function setAutoInit(bool $autoInit) : self
     {
+        $this->initialized['autoInit'] = true;
         $this->autoInit = $autoInit;
         return $this;
     }
@@ -313,6 +330,7 @@ class UserReposPostBody extends \ArrayObject
      */
     public function setGitignoreTemplate(string $gitignoreTemplate) : self
     {
+        $this->initialized['gitignoreTemplate'] = true;
         $this->gitignoreTemplate = $gitignoreTemplate;
         return $this;
     }
@@ -334,6 +352,7 @@ class UserReposPostBody extends \ArrayObject
      */
     public function setLicenseTemplate(string $licenseTemplate) : self
     {
+        $this->initialized['licenseTemplate'] = true;
         $this->licenseTemplate = $licenseTemplate;
         return $this;
     }
@@ -355,6 +374,7 @@ class UserReposPostBody extends \ArrayObject
      */
     public function setAllowSquashMerge(bool $allowSquashMerge) : self
     {
+        $this->initialized['allowSquashMerge'] = true;
         $this->allowSquashMerge = $allowSquashMerge;
         return $this;
     }
@@ -376,6 +396,7 @@ class UserReposPostBody extends \ArrayObject
      */
     public function setAllowMergeCommit(bool $allowMergeCommit) : self
     {
+        $this->initialized['allowMergeCommit'] = true;
         $this->allowMergeCommit = $allowMergeCommit;
         return $this;
     }
@@ -397,6 +418,7 @@ class UserReposPostBody extends \ArrayObject
      */
     public function setAllowRebaseMerge(bool $allowRebaseMerge) : self
     {
+        $this->initialized['allowRebaseMerge'] = true;
         $this->allowRebaseMerge = $allowRebaseMerge;
         return $this;
     }
@@ -418,6 +440,7 @@ class UserReposPostBody extends \ArrayObject
      */
     public function setDeleteBranchOnMerge(bool $deleteBranchOnMerge) : self
     {
+        $this->initialized['deleteBranchOnMerge'] = true;
         $this->deleteBranchOnMerge = $deleteBranchOnMerge;
         return $this;
     }
@@ -439,6 +462,7 @@ class UserReposPostBody extends \ArrayObject
      */
     public function setHasDownloads(bool $hasDownloads) : self
     {
+        $this->initialized['hasDownloads'] = true;
         $this->hasDownloads = $hasDownloads;
         return $this;
     }
@@ -460,6 +484,7 @@ class UserReposPostBody extends \ArrayObject
      */
     public function setIsTemplate(bool $isTemplate) : self
     {
+        $this->initialized['isTemplate'] = true;
         $this->isTemplate = $isTemplate;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportLocalFinancialStatementsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -88,6 +96,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItem extends \
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -109,6 +118,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItem extends \
      */
     public function setYearEndDate(string $yearEndDate) : self
     {
+        $this->initialized['yearEndDate'] = true;
         $this->yearEndDate = $yearEndDate;
         return $this;
     }
@@ -130,6 +140,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItem extends \
      */
     public function setNumberOfWeeks(float $numberOfWeeks) : self
     {
+        $this->initialized['numberOfWeeks'] = true;
         $this->numberOfWeeks = $numberOfWeeks;
         return $this;
     }
@@ -151,6 +162,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItem extends \
      */
     public function setCurrency(string $currency) : self
     {
+        $this->initialized['currency'] = true;
         $this->currency = $currency;
         return $this;
     }
@@ -172,6 +184,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItem extends \
      */
     public function setConsolidatedAccounts(bool $consolidatedAccounts) : self
     {
+        $this->initialized['consolidatedAccounts'] = true;
         $this->consolidatedAccounts = $consolidatedAccounts;
         return $this;
     }
@@ -193,6 +206,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItem extends \
      */
     public function setAuditQualification(string $auditQualification) : self
     {
+        $this->initialized['auditQualification'] = true;
         $this->auditQualification = $auditQualification;
         return $this;
     }
@@ -214,6 +228,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItem extends \
      */
     public function setProfitAndLoss(GbCompanyReportExampleResponseReportLocalFinancialStatementsItemProfitAndLoss $profitAndLoss) : self
     {
+        $this->initialized['profitAndLoss'] = true;
         $this->profitAndLoss = $profitAndLoss;
         return $this;
     }
@@ -235,6 +250,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItem extends \
      */
     public function setBalanceSheet(GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceSheet $balanceSheet) : self
     {
+        $this->initialized['balanceSheet'] = true;
         $this->balanceSheet = $balanceSheet;
         return $this;
     }
@@ -256,6 +272,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItem extends \
      */
     public function setCashFlow(GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow $cashFlow) : self
     {
+        $this->initialized['cashFlow'] = true;
         $this->cashFlow = $cashFlow;
         return $this;
     }
@@ -277,6 +294,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItem extends \
      */
     public function setOtherFinancials(GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinancials $otherFinancials) : self
     {
+        $this->initialized['otherFinancials'] = true;
         $this->otherFinancials = $otherFinancials;
         return $this;
     }
@@ -298,6 +316,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItem extends \
      */
     public function setRatios(GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios $ratios) : self
     {
+        $this->initialized['ratios'] = true;
         $this->ratios = $ratios;
         return $this;
     }

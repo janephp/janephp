@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The text of the review comment.
      *
      * @var string
@@ -28,6 +36,7 @@ class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody extends \Arr
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }

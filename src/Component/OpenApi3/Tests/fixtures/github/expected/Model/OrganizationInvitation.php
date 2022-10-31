@@ -5,6 +5,14 @@ namespace Github\Model;
 class OrganizationInvitation extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -82,6 +90,7 @@ class OrganizationInvitation extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -103,6 +112,7 @@ class OrganizationInvitation extends \ArrayObject
      */
     public function setLogin(?string $login) : self
     {
+        $this->initialized['login'] = true;
         $this->login = $login;
         return $this;
     }
@@ -124,6 +134,7 @@ class OrganizationInvitation extends \ArrayObject
      */
     public function setEmail(?string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -145,6 +156,7 @@ class OrganizationInvitation extends \ArrayObject
      */
     public function setRole(string $role) : self
     {
+        $this->initialized['role'] = true;
         $this->role = $role;
         return $this;
     }
@@ -166,6 +178,7 @@ class OrganizationInvitation extends \ArrayObject
      */
     public function setCreatedAt(string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -187,6 +200,7 @@ class OrganizationInvitation extends \ArrayObject
      */
     public function setInviter(?SimpleUser $inviter) : self
     {
+        $this->initialized['inviter'] = true;
         $this->inviter = $inviter;
         return $this;
     }
@@ -208,6 +222,7 @@ class OrganizationInvitation extends \ArrayObject
      */
     public function setTeamCount(int $teamCount) : self
     {
+        $this->initialized['teamCount'] = true;
         $this->teamCount = $teamCount;
         return $this;
     }
@@ -229,6 +244,7 @@ class OrganizationInvitation extends \ArrayObject
      */
     public function setInvitationTeamUrl(string $invitationTeamUrl) : self
     {
+        $this->initialized['invitationTeamUrl'] = true;
         $this->invitationTeamUrl = $invitationTeamUrl;
         return $this;
     }
@@ -250,6 +266,7 @@ class OrganizationInvitation extends \ArrayObject
      */
     public function setNodeId(string $nodeId) : self
     {
+        $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
     }
@@ -271,6 +288,7 @@ class OrganizationInvitation extends \ArrayObject
      */
     public function setInvitationTeamsUrl(string $invitationTeamsUrl) : self
     {
+        $this->initialized['invitationTeamsUrl'] = true;
         $this->invitationTeamsUrl = $invitationTeamsUrl;
         return $this;
     }

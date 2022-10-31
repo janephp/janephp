@@ -59,10 +59,10 @@ class SystemInfoDefaultAddressPoolsItemNormalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getBase()) {
+        if ($object->isInitialized('base') && null !== $object->getBase()) {
             $data['Base'] = $object->getBase();
         }
-        if (null !== $object->getSize()) {
+        if ($object->isInitialized('size') && null !== $object->getSize()) {
             $data['Size'] = $object->getSize();
         }
         if (!($context['skip_validation'] ?? false)) {

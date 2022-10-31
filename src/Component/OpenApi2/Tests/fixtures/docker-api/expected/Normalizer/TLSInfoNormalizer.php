@@ -62,13 +62,13 @@ class TLSInfoNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTrustRoot()) {
+        if ($object->isInitialized('trustRoot') && null !== $object->getTrustRoot()) {
             $data['TrustRoot'] = $object->getTrustRoot();
         }
-        if (null !== $object->getCertIssuerSubject()) {
+        if ($object->isInitialized('certIssuerSubject') && null !== $object->getCertIssuerSubject()) {
             $data['CertIssuerSubject'] = $object->getCertIssuerSubject();
         }
-        if (null !== $object->getCertIssuerPublicKey()) {
+        if ($object->isInitialized('certIssuerPublicKey') && null !== $object->getCertIssuerPublicKey()) {
             $data['CertIssuerPublicKey'] = $object->getCertIssuerPublicKey();
         }
         if (!($context['skip_validation'] ?? false)) {

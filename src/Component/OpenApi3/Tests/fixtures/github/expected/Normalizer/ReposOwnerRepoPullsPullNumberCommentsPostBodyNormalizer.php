@@ -95,26 +95,26 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBodyNormalizer implements Denorma
     {
         $data = array();
         $data['body'] = $object->getBody();
-        if (null !== $object->getCommitId()) {
+        if ($object->isInitialized('commitId') && null !== $object->getCommitId()) {
             $data['commit_id'] = $object->getCommitId();
         }
         $data['path'] = $object->getPath();
-        if (null !== $object->getPosition()) {
+        if ($object->isInitialized('position') && null !== $object->getPosition()) {
             $data['position'] = $object->getPosition();
         }
-        if (null !== $object->getSide()) {
+        if ($object->isInitialized('side') && null !== $object->getSide()) {
             $data['side'] = $object->getSide();
         }
-        if (null !== $object->getLine()) {
+        if ($object->isInitialized('line') && null !== $object->getLine()) {
             $data['line'] = $object->getLine();
         }
-        if (null !== $object->getStartLine()) {
+        if ($object->isInitialized('startLine') && null !== $object->getStartLine()) {
             $data['start_line'] = $object->getStartLine();
         }
-        if (null !== $object->getStartSide()) {
+        if ($object->isInitialized('startSide') && null !== $object->getStartSide()) {
             $data['start_side'] = $object->getStartSide();
         }
-        if (null !== $object->getInReplyTo()) {
+        if ($object->isInitialized('inReplyTo') && null !== $object->getInReplyTo()) {
             $data['in_reply_to'] = $object->getInReplyTo();
         }
         foreach ($object as $key => $value) {

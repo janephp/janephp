@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ReindexEvent extends ApplicationEvent
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -34,6 +42,7 @@ class ReindexEvent extends ApplicationEvent
      */
     public function setIndexId(?string $indexId) : self
     {
+        $this->initialized['indexId'] = true;
         $this->indexId = $indexId;
         return $this;
     }
@@ -55,6 +64,7 @@ class ReindexEvent extends ApplicationEvent
      */
     public function setState(string $state) : self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
     }

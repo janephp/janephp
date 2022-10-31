@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class FieldMultiFieldset extends FieldBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The ID of the schema to be used as fieldset (it must be of type Struct, and it cannot be a system schema).
      *
      * @var string
@@ -46,6 +54,7 @@ class FieldMultiFieldset extends FieldBase
      */
     public function setSchemaId(string $schemaId) : self
     {
+        $this->initialized['schemaId'] = true;
         $this->schemaId = $schemaId;
         return $this;
     }
@@ -67,6 +76,7 @@ class FieldMultiFieldset extends FieldBase
      */
     public function setSchemaIndexingInfo($schemaIndexingInfo) : self
     {
+        $this->initialized['schemaIndexingInfo'] = true;
         $this->schemaIndexingInfo = $schemaIndexingInfo;
         return $this;
     }
@@ -88,6 +98,7 @@ class FieldMultiFieldset extends FieldBase
      */
     public function setMaximumItems(?int $maximumItems) : self
     {
+        $this->initialized['maximumItems'] = true;
         $this->maximumItems = $maximumItems;
         return $this;
     }
@@ -109,6 +120,7 @@ class FieldMultiFieldset extends FieldBase
      */
     public function setMinimumItems(?int $minimumItems) : self
     {
+        $this->initialized['minimumItems'] = true;
         $this->minimumItems = $minimumItems;
         return $this;
     }

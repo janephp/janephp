@@ -5,6 +5,14 @@ namespace Github\Model;
 class TopicSearchResultItemAliasesItemTopicRelation extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var int
@@ -46,6 +54,7 @@ class TopicSearchResultItemAliasesItemTopicRelation extends \ArrayObject
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -67,6 +76,7 @@ class TopicSearchResultItemAliasesItemTopicRelation extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -88,6 +98,7 @@ class TopicSearchResultItemAliasesItemTopicRelation extends \ArrayObject
      */
     public function setTopicId(int $topicId) : self
     {
+        $this->initialized['topicId'] = true;
         $this->topicId = $topicId;
         return $this;
     }
@@ -109,6 +120,7 @@ class TopicSearchResultItemAliasesItemTopicRelation extends \ArrayObject
      */
     public function setRelationType(string $relationType) : self
     {
+        $this->initialized['relationType'] = true;
         $this->relationType = $relationType;
         return $this;
     }

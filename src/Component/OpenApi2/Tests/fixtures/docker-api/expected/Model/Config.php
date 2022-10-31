@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class Config
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -62,6 +70,7 @@ class Config
      */
     public function setID(string $iD) : self
     {
+        $this->initialized['iD'] = true;
         $this->iD = $iD;
         return $this;
     }
@@ -103,6 +112,7 @@ class Config
     */
     public function setVersion(ObjectVersion $version) : self
     {
+        $this->initialized['version'] = true;
         $this->version = $version;
         return $this;
     }
@@ -124,6 +134,7 @@ class Config
      */
     public function setCreatedAt(string $createdAt) : self
     {
+        $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
     }
@@ -145,6 +156,7 @@ class Config
      */
     public function setUpdatedAt(string $updatedAt) : self
     {
+        $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
     }
@@ -166,6 +178,7 @@ class Config
      */
     public function setSpec(ConfigSpec $spec) : self
     {
+        $this->initialized['spec'] = true;
         $this->spec = $spec;
         return $this;
     }

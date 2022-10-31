@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ShareContent
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Content ID to share.
      *
      * @var string
@@ -34,6 +42,7 @@ class ShareContent
      */
     public function setContentId(string $contentId) : self
     {
+        $this->initialized['contentId'] = true;
         $this->contentId = $contentId;
         return $this;
     }
@@ -55,6 +64,7 @@ class ShareContent
      */
     public function setOutputFormatIds(?array $outputFormatIds) : self
     {
+        $this->initialized['outputFormatIds'] = true;
         $this->outputFormatIds = $outputFormatIds;
         return $this;
     }

@@ -189,133 +189,133 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getImage()) {
+        if ($object->isInitialized('image') && null !== $object->getImage()) {
             $data['Image'] = $object->getImage();
         }
-        if (null !== $object->getLabels()) {
+        if ($object->isInitialized('labels') && null !== $object->getLabels()) {
             $values = array();
             foreach ($object->getLabels() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['Labels'] = $values;
         }
-        if (null !== $object->getCommand()) {
+        if ($object->isInitialized('command') && null !== $object->getCommand()) {
             $values_1 = array();
             foreach ($object->getCommand() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['Command'] = $values_1;
         }
-        if (null !== $object->getArgs()) {
+        if ($object->isInitialized('args') && null !== $object->getArgs()) {
             $values_2 = array();
             foreach ($object->getArgs() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['Args'] = $values_2;
         }
-        if (null !== $object->getHostname()) {
+        if ($object->isInitialized('hostname') && null !== $object->getHostname()) {
             $data['Hostname'] = $object->getHostname();
         }
-        if (null !== $object->getEnv()) {
+        if ($object->isInitialized('env') && null !== $object->getEnv()) {
             $values_3 = array();
             foreach ($object->getEnv() as $value_3) {
                 $values_3[] = $value_3;
             }
             $data['Env'] = $values_3;
         }
-        if (null !== $object->getDir()) {
+        if ($object->isInitialized('dir') && null !== $object->getDir()) {
             $data['Dir'] = $object->getDir();
         }
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $data['User'] = $object->getUser();
         }
-        if (null !== $object->getGroups()) {
+        if ($object->isInitialized('groups') && null !== $object->getGroups()) {
             $values_4 = array();
             foreach ($object->getGroups() as $value_4) {
                 $values_4[] = $value_4;
             }
             $data['Groups'] = $values_4;
         }
-        if (null !== $object->getPrivileges()) {
+        if ($object->isInitialized('privileges') && null !== $object->getPrivileges()) {
             $data['Privileges'] = $this->normalizer->normalize($object->getPrivileges(), 'json', $context);
         }
-        if (null !== $object->getTTY()) {
+        if ($object->isInitialized('tTY') && null !== $object->getTTY()) {
             $data['TTY'] = $object->getTTY();
         }
-        if (null !== $object->getOpenStdin()) {
+        if ($object->isInitialized('openStdin') && null !== $object->getOpenStdin()) {
             $data['OpenStdin'] = $object->getOpenStdin();
         }
-        if (null !== $object->getReadOnly()) {
+        if ($object->isInitialized('readOnly') && null !== $object->getReadOnly()) {
             $data['ReadOnly'] = $object->getReadOnly();
         }
-        if (null !== $object->getMounts()) {
+        if ($object->isInitialized('mounts') && null !== $object->getMounts()) {
             $values_5 = array();
             foreach ($object->getMounts() as $value_5) {
                 $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
             }
             $data['Mounts'] = $values_5;
         }
-        if (null !== $object->getStopSignal()) {
+        if ($object->isInitialized('stopSignal') && null !== $object->getStopSignal()) {
             $data['StopSignal'] = $object->getStopSignal();
         }
-        if (null !== $object->getStopGracePeriod()) {
+        if ($object->isInitialized('stopGracePeriod') && null !== $object->getStopGracePeriod()) {
             $data['StopGracePeriod'] = $object->getStopGracePeriod();
         }
-        if (null !== $object->getHealthCheck()) {
+        if ($object->isInitialized('healthCheck') && null !== $object->getHealthCheck()) {
             $data['HealthCheck'] = $this->normalizer->normalize($object->getHealthCheck(), 'json', $context);
         }
-        if (null !== $object->getHosts()) {
+        if ($object->isInitialized('hosts') && null !== $object->getHosts()) {
             $values_6 = array();
             foreach ($object->getHosts() as $value_6) {
                 $values_6[] = $value_6;
             }
             $data['Hosts'] = $values_6;
         }
-        if (null !== $object->getDNSConfig()) {
+        if ($object->isInitialized('dNSConfig') && null !== $object->getDNSConfig()) {
             $data['DNSConfig'] = $this->normalizer->normalize($object->getDNSConfig(), 'json', $context);
         }
-        if (null !== $object->getSecrets()) {
+        if ($object->isInitialized('secrets') && null !== $object->getSecrets()) {
             $values_7 = array();
             foreach ($object->getSecrets() as $value_7) {
                 $values_7[] = $this->normalizer->normalize($value_7, 'json', $context);
             }
             $data['Secrets'] = $values_7;
         }
-        if (null !== $object->getConfigs()) {
+        if ($object->isInitialized('configs') && null !== $object->getConfigs()) {
             $values_8 = array();
             foreach ($object->getConfigs() as $value_8) {
                 $values_8[] = $this->normalizer->normalize($value_8, 'json', $context);
             }
             $data['Configs'] = $values_8;
         }
-        if (null !== $object->getIsolation()) {
+        if ($object->isInitialized('isolation') && null !== $object->getIsolation()) {
             $data['Isolation'] = $object->getIsolation();
         }
-        if (null !== $object->getInit()) {
+        if ($object->isInitialized('init') && null !== $object->getInit()) {
             $data['Init'] = $object->getInit();
         }
-        if (null !== $object->getSysctls()) {
+        if ($object->isInitialized('sysctls') && null !== $object->getSysctls()) {
             $values_9 = array();
             foreach ($object->getSysctls() as $key_1 => $value_9) {
                 $values_9[$key_1] = $value_9;
             }
             $data['Sysctls'] = $values_9;
         }
-        if (null !== $object->getCapabilityAdd()) {
+        if ($object->isInitialized('capabilityAdd') && null !== $object->getCapabilityAdd()) {
             $values_10 = array();
             foreach ($object->getCapabilityAdd() as $value_10) {
                 $values_10[] = $value_10;
             }
             $data['CapabilityAdd'] = $values_10;
         }
-        if (null !== $object->getCapabilityDrop()) {
+        if ($object->isInitialized('capabilityDrop') && null !== $object->getCapabilityDrop()) {
             $values_11 = array();
             foreach ($object->getCapabilityDrop() as $value_11) {
                 $values_11[] = $value_11;
             }
             $data['CapabilityDrop'] = $values_11;
         }
-        if (null !== $object->getUlimits()) {
+        if ($object->isInitialized('ulimits') && null !== $object->getUlimits()) {
             $values_12 = array();
             foreach ($object->getUlimits() as $value_12) {
                 $values_12[] = $this->normalizer->normalize($value_12, 'json', $context);

@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class Port
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Host IP address that the container's port is mapped to
      *
      * @var string
@@ -46,6 +54,7 @@ class Port
      */
     public function setIP(string $iP) : self
     {
+        $this->initialized['iP'] = true;
         $this->iP = $iP;
         return $this;
     }
@@ -67,6 +76,7 @@ class Port
      */
     public function setPrivatePort(int $privatePort) : self
     {
+        $this->initialized['privatePort'] = true;
         $this->privatePort = $privatePort;
         return $this;
     }
@@ -88,6 +98,7 @@ class Port
      */
     public function setPublicPort(int $publicPort) : self
     {
+        $this->initialized['publicPort'] = true;
         $this->publicPort = $publicPort;
         return $this;
     }
@@ -109,6 +120,7 @@ class Port
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }

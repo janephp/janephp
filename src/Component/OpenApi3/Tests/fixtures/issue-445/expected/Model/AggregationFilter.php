@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class AggregationFilter extends FilterBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The name of the aggregation this filter is connected to.
      *
      * @var string|null
@@ -40,6 +48,7 @@ class AggregationFilter extends FilterBase
      */
     public function setAggregationName(?string $aggregationName) : self
     {
+        $this->initialized['aggregationName'] = true;
         $this->aggregationName = $aggregationName;
         return $this;
     }
@@ -61,6 +70,7 @@ class AggregationFilter extends FilterBase
      */
     public function setFilter($filter) : self
     {
+        $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
     }
@@ -82,6 +92,7 @@ class AggregationFilter extends FilterBase
      */
     public function setTemporaryAggregatorRequestId(?string $temporaryAggregatorRequestId) : self
     {
+        $this->initialized['temporaryAggregatorRequestId'] = true;
         $this->temporaryAggregatorRequestId = $temporaryAggregatorRequestId;
         return $this;
     }

@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoReleasesPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The name of the tag.
      *
      * @var string
@@ -58,6 +66,7 @@ class ReposOwnerRepoReleasesPostBody extends \ArrayObject
      */
     public function setTagName(string $tagName) : self
     {
+        $this->initialized['tagName'] = true;
         $this->tagName = $tagName;
         return $this;
     }
@@ -79,6 +88,7 @@ class ReposOwnerRepoReleasesPostBody extends \ArrayObject
      */
     public function setTargetCommitish(string $targetCommitish) : self
     {
+        $this->initialized['targetCommitish'] = true;
         $this->targetCommitish = $targetCommitish;
         return $this;
     }
@@ -100,6 +110,7 @@ class ReposOwnerRepoReleasesPostBody extends \ArrayObject
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -121,6 +132,7 @@ class ReposOwnerRepoReleasesPostBody extends \ArrayObject
      */
     public function setBody(string $body) : self
     {
+        $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
     }
@@ -142,6 +154,7 @@ class ReposOwnerRepoReleasesPostBody extends \ArrayObject
      */
     public function setDraft(bool $draft) : self
     {
+        $this->initialized['draft'] = true;
         $this->draft = $draft;
         return $this;
     }
@@ -163,6 +176,7 @@ class ReposOwnerRepoReleasesPostBody extends \ArrayObject
      */
     public function setPrerelease(bool $prerelease) : self
     {
+        $this->initialized['prerelease'] = true;
         $this->prerelease = $prerelease;
         return $this;
     }

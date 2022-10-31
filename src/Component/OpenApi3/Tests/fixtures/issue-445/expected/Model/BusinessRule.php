@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessRule
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * User defined ID of the rule.
      *
      * @var string|null
@@ -62,6 +70,7 @@ class BusinessRule
      */
     public function setId(?string $id)
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
     }
     /**
@@ -80,6 +89,7 @@ class BusinessRule
      */
     public function setTriggerPoint($triggerPoint)
     {
+        $this->initialized['triggerPoint'] = true;
         $this->triggerPoint = $triggerPoint;
     }
     /**
@@ -98,6 +108,7 @@ class BusinessRule
      */
     public function setIsEnabled(bool $isEnabled)
     {
+        $this->initialized['isEnabled'] = true;
         $this->isEnabled = $isEnabled;
     }
     /**
@@ -116,6 +127,7 @@ class BusinessRule
      */
     public function setNames($names)
     {
+        $this->initialized['names'] = true;
         $this->names = $names;
     }
     /**
@@ -134,6 +146,7 @@ class BusinessRule
      */
     public function setDescription($description)
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
     }
     /**
@@ -152,6 +165,7 @@ class BusinessRule
      */
     public function setEnableTracing(bool $enableTracing)
     {
+        $this->initialized['enableTracing'] = true;
         $this->enableTracing = $enableTracing;
     }
     /**
@@ -170,6 +184,7 @@ class BusinessRule
      */
     public function setKind(string $kind)
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
     }
 }

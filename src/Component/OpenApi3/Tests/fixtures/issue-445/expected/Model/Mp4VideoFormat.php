@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class Mp4VideoFormat extends FormatBase
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Allows resizing of the video.
      *
      * @var mixed|null
@@ -46,6 +54,7 @@ class Mp4VideoFormat extends FormatBase
      */
     public function setResizeAction($resizeAction) : self
     {
+        $this->initialized['resizeAction'] = true;
         $this->resizeAction = $resizeAction;
         return $this;
     }
@@ -67,6 +76,7 @@ class Mp4VideoFormat extends FormatBase
      */
     public function setAudioCodec($audioCodec) : self
     {
+        $this->initialized['audioCodec'] = true;
         $this->audioCodec = $audioCodec;
         return $this;
     }
@@ -88,6 +98,7 @@ class Mp4VideoFormat extends FormatBase
      */
     public function setPreset($preset) : self
     {
+        $this->initialized['preset'] = true;
         $this->preset = $preset;
         return $this;
     }
@@ -109,6 +120,7 @@ class Mp4VideoFormat extends FormatBase
      */
     public function setExtension(?string $extension) : self
     {
+        $this->initialized['extension'] = true;
         $this->extension = $extension;
         return $this;
     }

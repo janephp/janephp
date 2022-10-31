@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class BusinessRuleTraceLog
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of the trace.
      *
      * @var string|null
@@ -70,6 +78,7 @@ class BusinessRuleTraceLog
      */
     public function setId(?string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -91,6 +100,7 @@ class BusinessRuleTraceLog
      */
     public function setDocumentId(?string $documentId) : self
     {
+        $this->initialized['documentId'] = true;
         $this->documentId = $documentId;
         return $this;
     }
@@ -112,6 +122,7 @@ class BusinessRuleTraceLog
      */
     public function setDocumentType($documentType) : self
     {
+        $this->initialized['documentType'] = true;
         $this->documentType = $documentType;
         return $this;
     }
@@ -133,6 +144,7 @@ class BusinessRuleTraceLog
      */
     public function setRuleIds(?array $ruleIds) : self
     {
+        $this->initialized['ruleIds'] = true;
         $this->ruleIds = $ruleIds;
         return $this;
     }
@@ -154,6 +166,7 @@ class BusinessRuleTraceLog
      */
     public function setRules(?array $rules) : self
     {
+        $this->initialized['rules'] = true;
         $this->rules = $rules;
         return $this;
     }
@@ -175,6 +188,7 @@ class BusinessRuleTraceLog
      */
     public function setValidationErrors(?array $validationErrors) : self
     {
+        $this->initialized['validationErrors'] = true;
         $this->validationErrors = $validationErrors;
         return $this;
     }
@@ -196,6 +210,7 @@ class BusinessRuleTraceLog
      */
     public function setGeneralErrors(?array $generalErrors) : self
     {
+        $this->initialized['generalErrors'] = true;
         $this->generalErrors = $generalErrors;
         return $this;
     }
@@ -217,6 +232,7 @@ class BusinessRuleTraceLog
      */
     public function setAudit($audit) : self
     {
+        $this->initialized['audit'] = true;
         $this->audit = $audit;
         return $this;
     }

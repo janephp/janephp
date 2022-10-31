@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class AuthenticationSuccessResponse extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Authentication Token
      *
      * @var string
@@ -28,6 +36,7 @@ class AuthenticationSuccessResponse extends \ArrayObject
      */
     public function setToken(string $token) : self
     {
+        $this->initialized['token'] = true;
         $this->token = $token;
         return $this;
     }

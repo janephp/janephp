@@ -81,16 +81,16 @@ class VideoSpriteFormatNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $data = array();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getSpriteResizeAction()) {
+        if ($object->isInitialized('spriteResizeAction') && null !== $object->getSpriteResizeAction()) {
             $data['spriteResizeAction'] = $object->getSpriteResizeAction();
         }
-        if (null !== $object->getMaxNumberOfSprites()) {
+        if ($object->isInitialized('maxNumberOfSprites') && null !== $object->getMaxNumberOfSprites()) {
             $data['maxNumberOfSprites'] = $object->getMaxNumberOfSprites();
         }
-        if (null !== $object->getQuality()) {
+        if ($object->isInitialized('quality') && null !== $object->getQuality()) {
             $data['quality'] = $object->getQuality();
         }
-        if (null !== $object->getExtension()) {
+        if ($object->isInitialized('extension') && null !== $object->getExtension()) {
             $data['extension'] = $object->getExtension();
         }
         foreach ($object as $key => $value) {

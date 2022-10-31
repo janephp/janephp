@@ -74,16 +74,16 @@ class ThreadSubjectNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getUrl()) {
+        if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();
         }
-        if (null !== $object->getLatestCommentUrl()) {
+        if ($object->isInitialized('latestCommentUrl') && null !== $object->getLatestCommentUrl()) {
             $data['latest_comment_url'] = $object->getLatestCommentUrl();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
         foreach ($object as $key => $value) {

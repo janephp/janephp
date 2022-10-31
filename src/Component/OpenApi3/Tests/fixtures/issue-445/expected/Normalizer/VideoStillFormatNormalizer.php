@@ -70,10 +70,10 @@ class VideoStillFormatNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $data = array();
         $data['kind'] = $object->getKind();
-        if (null !== $object->getExtension()) {
+        if ($object->isInitialized('extension') && null !== $object->getExtension()) {
             $data['extension'] = $object->getExtension();
         }
-        if (null !== $object->getPositionInSeconds()) {
+        if ($object->isInitialized('positionInSeconds') && null !== $object->getPositionInSeconds()) {
             $data['positionInSeconds'] = $object->getPositionInSeconds();
         }
         foreach ($object as $key => $value) {

@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentFileUpdateRequest
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of the file transfer to use to replace the content file.
      *
      * @var string
@@ -28,6 +36,7 @@ class ContentFileUpdateRequest
      */
     public function setFileTransferId(string $fileTransferId) : self
     {
+        $this->initialized['fileTransferId'] = true;
         $this->fileTransferId = $fileTransferId;
         return $this;
     }

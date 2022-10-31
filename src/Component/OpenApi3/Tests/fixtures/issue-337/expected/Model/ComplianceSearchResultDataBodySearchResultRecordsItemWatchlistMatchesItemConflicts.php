@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemConflicts extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var bool
@@ -70,6 +78,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
      */
     public function setAddressConflict(bool $addressConflict) : self
     {
+        $this->initialized['addressConflict'] = true;
         $this->addressConflict = $addressConflict;
         return $this;
     }
@@ -91,6 +100,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
      */
     public function setCitizenshipConflict(bool $citizenshipConflict) : self
     {
+        $this->initialized['citizenshipConflict'] = true;
         $this->citizenshipConflict = $citizenshipConflict;
         return $this;
     }
@@ -112,6 +122,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
      */
     public function setCountryConflict(bool $countryConflict) : self
     {
+        $this->initialized['countryConflict'] = true;
         $this->countryConflict = $countryConflict;
         return $this;
     }
@@ -133,6 +144,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
      */
     public function setDobConflict(bool $dobConflict) : self
     {
+        $this->initialized['dobConflict'] = true;
         $this->dobConflict = $dobConflict;
         return $this;
     }
@@ -154,6 +166,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
      */
     public function setEntityTypeConflict(bool $entityTypeConflict) : self
     {
+        $this->initialized['entityTypeConflict'] = true;
         $this->entityTypeConflict = $entityTypeConflict;
         return $this;
     }
@@ -175,6 +188,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
      */
     public function setGenderConflict(bool $genderConflict) : self
     {
+        $this->initialized['genderConflict'] = true;
         $this->genderConflict = $genderConflict;
         return $this;
     }
@@ -196,6 +210,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
      */
     public function setIdConflict(bool $idConflict) : self
     {
+        $this->initialized['idConflict'] = true;
         $this->idConflict = $idConflict;
         return $this;
     }
@@ -217,6 +232,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
      */
     public function setPhoneConflict(bool $phoneConflict) : self
     {
+        $this->initialized['phoneConflict'] = true;
         $this->phoneConflict = $phoneConflict;
         return $this;
     }

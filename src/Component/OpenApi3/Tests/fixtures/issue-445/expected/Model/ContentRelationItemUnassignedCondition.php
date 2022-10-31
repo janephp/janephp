@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ContentRelationItemUnassignedCondition extends BusinessRuleCondition
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Content id that should be matched against.
      *
      * @var string|null
@@ -34,6 +42,7 @@ class ContentRelationItemUnassignedCondition extends BusinessRuleCondition
      */
     public function setContentId(?string $contentId) : self
     {
+        $this->initialized['contentId'] = true;
         $this->contentId = $contentId;
         return $this;
     }
@@ -55,6 +64,7 @@ class ContentRelationItemUnassignedCondition extends BusinessRuleCondition
      */
     public function setFieldPath(?string $fieldPath) : self
     {
+        $this->initialized['fieldPath'] = true;
         $this->fieldPath = $fieldPath;
         return $this;
     }

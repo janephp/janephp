@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class Video extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -58,6 +66,7 @@ class Video extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -79,6 +88,7 @@ class Video extends \ArrayObject
      */
     public function setPreviewImageUrl(string $previewImageUrl) : self
     {
+        $this->initialized['previewImageUrl'] = true;
         $this->previewImageUrl = $previewImageUrl;
         return $this;
     }
@@ -100,6 +110,7 @@ class Video extends \ArrayObject
      */
     public function setDurationMs(int $durationMs) : self
     {
+        $this->initialized['durationMs'] = true;
         $this->durationMs = $durationMs;
         return $this;
     }
@@ -121,6 +132,7 @@ class Video extends \ArrayObject
      */
     public function setMediaKey(string $mediaKey) : self
     {
+        $this->initialized['mediaKey'] = true;
         $this->mediaKey = $mediaKey;
         return $this;
     }
@@ -142,6 +154,7 @@ class Video extends \ArrayObject
      */
     public function setHeight(int $height) : self
     {
+        $this->initialized['height'] = true;
         $this->height = $height;
         return $this;
     }
@@ -163,6 +176,7 @@ class Video extends \ArrayObject
      */
     public function setWidth(int $width) : self
     {
+        $this->initialized['width'] = true;
         $this->width = $width;
         return $this;
     }

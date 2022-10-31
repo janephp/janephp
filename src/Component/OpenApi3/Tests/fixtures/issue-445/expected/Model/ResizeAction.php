@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class ResizeAction
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Target width for the output.
      *
      * @var int
@@ -40,6 +48,7 @@ class ResizeAction
      */
     public function setWidth(int $width) : self
     {
+        $this->initialized['width'] = true;
         $this->width = $width;
         return $this;
     }
@@ -61,6 +70,7 @@ class ResizeAction
      */
     public function setHeight(int $height) : self
     {
+        $this->initialized['height'] = true;
         $this->height = $height;
         return $this;
     }
@@ -82,6 +92,7 @@ class ResizeAction
      */
     public function setResizeMode($resizeMode) : self
     {
+        $this->initialized['resizeMode'] = true;
         $this->resizeMode = $resizeMode;
         return $this;
     }

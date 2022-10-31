@@ -5,6 +5,14 @@ namespace Github\Model;
 class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyGroupsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * ID of the IdP group.
      *
      * @var string
@@ -40,6 +48,7 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyGroupsItem extends \Arra
      */
     public function setGroupId(string $groupId) : self
     {
+        $this->initialized['groupId'] = true;
         $this->groupId = $groupId;
         return $this;
     }
@@ -61,6 +70,7 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyGroupsItem extends \Arra
      */
     public function setGroupName(string $groupName) : self
     {
+        $this->initialized['groupName'] = true;
         $this->groupName = $groupName;
         return $this;
     }
@@ -82,6 +92,7 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyGroupsItem extends \Arra
      */
     public function setGroupDescription(string $groupDescription) : self
     {
+        $this->initialized['groupDescription'] = true;
         $this->groupDescription = $groupDescription;
         return $this;
     }

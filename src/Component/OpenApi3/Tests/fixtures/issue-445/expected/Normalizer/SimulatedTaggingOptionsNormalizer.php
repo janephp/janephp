@@ -100,23 +100,23 @@ class SimulatedTaggingOptionsNormalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getTagOutputFormatId()) {
+        if ($object->isInitialized('tagOutputFormatId') && null !== $object->getTagOutputFormatId()) {
             $data['tagOutputFormatId'] = $object->getTagOutputFormatId();
         }
-        if (null !== $object->getKeywordLookupCacheName()) {
+        if ($object->isInitialized('keywordLookupCacheName') && null !== $object->getKeywordLookupCacheName()) {
             $data['keywordLookupCacheName'] = $object->getKeywordLookupCacheName();
         }
-        if (null !== $object->getTaggingLayerId()) {
+        if ($object->isInitialized('taggingLayerId') && null !== $object->getTaggingLayerId()) {
             $data['taggingLayerId'] = $object->getTaggingLayerId();
         }
-        if (null !== $object->getFoundTagsFieldId()) {
+        if ($object->isInitialized('foundTagsFieldId') && null !== $object->getFoundTagsFieldId()) {
             $data['foundTagsFieldId'] = $object->getFoundTagsFieldId();
         }
-        if (null !== $object->getMissingKeywordsFieldId()) {
+        if ($object->isInitialized('missingKeywordsFieldId') && null !== $object->getMissingKeywordsFieldId()) {
             $data['missingKeywordsFieldId'] = $object->getMissingKeywordsFieldId();
         }
         $data['kind'] = $object->getKind();
-        if (null !== $object->getNumberOfKeywords()) {
+        if ($object->isInitialized('numberOfKeywords') && null !== $object->getNumberOfKeywords()) {
             $data['numberOfKeywords'] = $object->getNumberOfKeywords();
         }
         foreach ($object as $key => $value) {

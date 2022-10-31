@@ -78,16 +78,16 @@ class OrgsOrgActionsSecretsSecretNamePutBodyNormalizer implements DenormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getEncryptedValue()) {
+        if ($object->isInitialized('encryptedValue') && null !== $object->getEncryptedValue()) {
             $data['encrypted_value'] = $object->getEncryptedValue();
         }
-        if (null !== $object->getKeyId()) {
+        if ($object->isInitialized('keyId') && null !== $object->getKeyId()) {
             $data['key_id'] = $object->getKeyId();
         }
-        if (null !== $object->getVisibility()) {
+        if ($object->isInitialized('visibility') && null !== $object->getVisibility()) {
             $data['visibility'] = $object->getVisibility();
         }
-        if (null !== $object->getSelectedRepositoryIds()) {
+        if ($object->isInitialized('selectedRepositoryIds') && null !== $object->getSelectedRepositoryIds()) {
             $values = array();
             foreach ($object->getSelectedRepositoryIds() as $value) {
                 $values[] = $value;

@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -64,6 +72,7 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
      */
     public function setCountry(string $country) : self
     {
+        $this->initialized['country'] = true;
         $this->country = $country;
         return $this;
     }
@@ -85,6 +94,7 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -106,6 +116,7 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
      */
     public function setSafeNumber(string $safeNumber) : self
     {
+        $this->initialized['safeNumber'] = true;
         $this->safeNumber = $safeNumber;
         return $this;
     }
@@ -127,6 +138,7 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -148,6 +160,7 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -169,6 +182,7 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
      */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -190,6 +204,7 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
      */
     public function setRegistrationNumber(string $registrationNumber) : self
     {
+        $this->initialized['registrationNumber'] = true;
         $this->registrationNumber = $registrationNumber;
         return $this;
     }

@@ -83,19 +83,19 @@ class ReposOwnerRepoHooksPostBodyConfigNormalizer implements DenormalizerInterfa
     {
         $data = array();
         $data['url'] = $object->getUrl();
-        if (null !== $object->getContentType()) {
+        if ($object->isInitialized('contentType') && null !== $object->getContentType()) {
             $data['content_type'] = $object->getContentType();
         }
-        if (null !== $object->getSecret()) {
+        if ($object->isInitialized('secret') && null !== $object->getSecret()) {
             $data['secret'] = $object->getSecret();
         }
-        if (null !== $object->getInsecureSsl()) {
+        if ($object->isInitialized('insecureSsl') && null !== $object->getInsecureSsl()) {
             $data['insecure_ssl'] = $object->getInsecureSsl();
         }
-        if (null !== $object->getToken()) {
+        if ($object->isInitialized('token') && null !== $object->getToken()) {
             $data['token'] = $object->getToken();
         }
-        if (null !== $object->getDigest()) {
+        if ($object->isInitialized('digest') && null !== $object->getDigest()) {
             $data['digest'] = $object->getDigest();
         }
         foreach ($object as $key => $value) {

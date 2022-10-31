@@ -71,7 +71,7 @@ class ConfigurationChangeEventNormalizer implements DenormalizerInterface, Norma
         $data = array();
         $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
         $data['kind'] = $object->getKind();
-        if (null !== $object->getDocumentType()) {
+        if ($object->isInitialized('documentType') && null !== $object->getDocumentType()) {
             $data['documentType'] = $object->getDocumentType();
         }
         foreach ($object as $key => $value) {

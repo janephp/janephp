@@ -5,6 +5,14 @@ namespace CreditSafe\API\Model;
 class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAddressesItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -58,6 +66,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
      */
     public function setCity(string $city) : self
     {
+        $this->initialized['city'] = true;
         $this->city = $city;
         return $this;
     }
@@ -79,6 +88,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
      */
     public function setCountry(string $country) : self
     {
+        $this->initialized['country'] = true;
         $this->country = $country;
         return $this;
     }
@@ -100,6 +110,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
      */
     public function setId(int $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -121,6 +132,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
      */
     public function setPostalCode(string $postalCode) : self
     {
+        $this->initialized['postalCode'] = true;
         $this->postalCode = $postalCode;
         return $this;
     }
@@ -142,6 +154,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
      */
     public function setStreet1(string $street1) : self
     {
+        $this->initialized['street1'] = true;
         $this->street1 = $street1;
         return $this;
     }
@@ -163,6 +176,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }

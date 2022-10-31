@@ -5,6 +5,14 @@ namespace PicturePark\API\Model;
 class UserLockManyRequest extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * User IDs.
      *
      * @var string[]
@@ -36,6 +44,7 @@ class UserLockManyRequest extends \ArrayObject
      */
     public function setUserIds(array $userIds) : self
     {
+        $this->initialized['userIds'] = true;
         $this->userIds = $userIds;
         return $this;
     }
@@ -61,6 +70,7 @@ class UserLockManyRequest extends \ArrayObject
     */
     public function setLock(bool $lock) : self
     {
+        $this->initialized['lock'] = true;
         $this->lock = $lock;
         return $this;
     }

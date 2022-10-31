@@ -74,17 +74,17 @@ class UserLookupResponseNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getData()) {
+        if ($object->isInitialized('data') && null !== $object->getData()) {
             $values = array();
             foreach ($object->getData() as $value) {
                 $values[] = $value;
             }
             $data['data'] = $values;
         }
-        if (null !== $object->getIncludes()) {
+        if ($object->isInitialized('includes') && null !== $object->getIncludes()) {
             $data['includes'] = $this->normalizer->normalize($object->getIncludes(), 'json', $context);
         }
-        if (null !== $object->getErrors()) {
+        if ($object->isInitialized('errors') && null !== $object->getErrors()) {
             $values_1 = array();
             foreach ($object->getErrors() as $value_1) {
                 $values_1[] = $value_1;

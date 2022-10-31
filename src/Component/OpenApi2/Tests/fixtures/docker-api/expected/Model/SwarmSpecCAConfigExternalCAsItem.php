@@ -5,6 +5,14 @@ namespace Docker\Api\Model;
 class SwarmSpecCAConfigExternalCAsItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
     * Protocol for communication with the external CA (currently
     only `cfssl` is supported).
     
@@ -57,6 +65,7 @@ class SwarmSpecCAConfigExternalCAsItem
     */
     public function setProtocol(string $protocol) : self
     {
+        $this->initialized['protocol'] = true;
         $this->protocol = $protocol;
         return $this;
     }
@@ -78,6 +87,7 @@ class SwarmSpecCAConfigExternalCAsItem
      */
     public function setURL(string $uRL) : self
     {
+        $this->initialized['uRL'] = true;
         $this->uRL = $uRL;
         return $this;
     }
@@ -103,6 +113,7 @@ class SwarmSpecCAConfigExternalCAsItem
     */
     public function setOptions(iterable $options) : self
     {
+        $this->initialized['options'] = true;
         $this->options = $options;
         return $this;
     }
@@ -130,6 +141,7 @@ class SwarmSpecCAConfigExternalCAsItem
     */
     public function setCACert(string $cACert) : self
     {
+        $this->initialized['cACert'] = true;
         $this->cACert = $cACert;
         return $this;
     }

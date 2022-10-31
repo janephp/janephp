@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Specify which users and teams can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.
      *
      * @var ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyDismissalRestrictions
@@ -46,6 +54,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody 
      */
     public function setDismissalRestrictions(ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyDismissalRestrictions $dismissalRestrictions) : self
     {
+        $this->initialized['dismissalRestrictions'] = true;
         $this->dismissalRestrictions = $dismissalRestrictions;
         return $this;
     }
@@ -67,6 +76,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody 
      */
     public function setDismissStaleReviews(bool $dismissStaleReviews) : self
     {
+        $this->initialized['dismissStaleReviews'] = true;
         $this->dismissStaleReviews = $dismissStaleReviews;
         return $this;
     }
@@ -88,6 +98,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody 
      */
     public function setRequireCodeOwnerReviews(bool $requireCodeOwnerReviews) : self
     {
+        $this->initialized['requireCodeOwnerReviews'] = true;
         $this->requireCodeOwnerReviews = $requireCodeOwnerReviews;
         return $this;
     }
@@ -109,6 +120,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody 
      */
     public function setRequiredApprovingReviewCount(int $requiredApprovingReviewCount) : self
     {
+        $this->initialized['requiredApprovingReviewCount'] = true;
         $this->requiredApprovingReviewCount = $requiredApprovingReviewCount;
         return $this;
     }

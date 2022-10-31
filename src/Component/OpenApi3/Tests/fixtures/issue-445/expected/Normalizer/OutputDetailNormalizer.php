@@ -103,16 +103,16 @@ class OutputDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
         $data['outputFormatId'] = $object->getOutputFormatId();
         $data['contentId'] = $object->getContentId();
         $data['renderingState'] = $object->getRenderingState();
-        if (null !== $object->getDetail()) {
+        if ($object->isInitialized('detail') && null !== $object->getDetail()) {
             $data['detail'] = $object->getDetail();
         }
-        if (null !== $object->getBackupTimestamp()) {
+        if ($object->isInitialized('backupTimestamp') && null !== $object->getBackupTimestamp()) {
             $data['backupTimestamp'] = $object->getBackupTimestamp()->format('Y-m-d\\TH:i:sP');
         }
         $data['attemptsLeft'] = $object->getAttemptsLeft();

@@ -191,136 +191,136 @@ class ResourcesNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCpuShares()) {
+        if ($object->isInitialized('cpuShares') && null !== $object->getCpuShares()) {
             $data['CpuShares'] = $object->getCpuShares();
         }
-        if (null !== $object->getMemory()) {
+        if ($object->isInitialized('memory') && null !== $object->getMemory()) {
             $data['Memory'] = $object->getMemory();
         }
-        if (null !== $object->getCgroupParent()) {
+        if ($object->isInitialized('cgroupParent') && null !== $object->getCgroupParent()) {
             $data['CgroupParent'] = $object->getCgroupParent();
         }
-        if (null !== $object->getBlkioWeight()) {
+        if ($object->isInitialized('blkioWeight') && null !== $object->getBlkioWeight()) {
             $data['BlkioWeight'] = $object->getBlkioWeight();
         }
-        if (null !== $object->getBlkioWeightDevice()) {
+        if ($object->isInitialized('blkioWeightDevice') && null !== $object->getBlkioWeightDevice()) {
             $values = array();
             foreach ($object->getBlkioWeightDevice() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['BlkioWeightDevice'] = $values;
         }
-        if (null !== $object->getBlkioDeviceReadBps()) {
+        if ($object->isInitialized('blkioDeviceReadBps') && null !== $object->getBlkioDeviceReadBps()) {
             $values_1 = array();
             foreach ($object->getBlkioDeviceReadBps() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['BlkioDeviceReadBps'] = $values_1;
         }
-        if (null !== $object->getBlkioDeviceWriteBps()) {
+        if ($object->isInitialized('blkioDeviceWriteBps') && null !== $object->getBlkioDeviceWriteBps()) {
             $values_2 = array();
             foreach ($object->getBlkioDeviceWriteBps() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['BlkioDeviceWriteBps'] = $values_2;
         }
-        if (null !== $object->getBlkioDeviceReadIOps()) {
+        if ($object->isInitialized('blkioDeviceReadIOps') && null !== $object->getBlkioDeviceReadIOps()) {
             $values_3 = array();
             foreach ($object->getBlkioDeviceReadIOps() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $data['BlkioDeviceReadIOps'] = $values_3;
         }
-        if (null !== $object->getBlkioDeviceWriteIOps()) {
+        if ($object->isInitialized('blkioDeviceWriteIOps') && null !== $object->getBlkioDeviceWriteIOps()) {
             $values_4 = array();
             foreach ($object->getBlkioDeviceWriteIOps() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $data['BlkioDeviceWriteIOps'] = $values_4;
         }
-        if (null !== $object->getCpuPeriod()) {
+        if ($object->isInitialized('cpuPeriod') && null !== $object->getCpuPeriod()) {
             $data['CpuPeriod'] = $object->getCpuPeriod();
         }
-        if (null !== $object->getCpuQuota()) {
+        if ($object->isInitialized('cpuQuota') && null !== $object->getCpuQuota()) {
             $data['CpuQuota'] = $object->getCpuQuota();
         }
-        if (null !== $object->getCpuRealtimePeriod()) {
+        if ($object->isInitialized('cpuRealtimePeriod') && null !== $object->getCpuRealtimePeriod()) {
             $data['CpuRealtimePeriod'] = $object->getCpuRealtimePeriod();
         }
-        if (null !== $object->getCpuRealtimeRuntime()) {
+        if ($object->isInitialized('cpuRealtimeRuntime') && null !== $object->getCpuRealtimeRuntime()) {
             $data['CpuRealtimeRuntime'] = $object->getCpuRealtimeRuntime();
         }
-        if (null !== $object->getCpusetCpus()) {
+        if ($object->isInitialized('cpusetCpus') && null !== $object->getCpusetCpus()) {
             $data['CpusetCpus'] = $object->getCpusetCpus();
         }
-        if (null !== $object->getCpusetMems()) {
+        if ($object->isInitialized('cpusetMems') && null !== $object->getCpusetMems()) {
             $data['CpusetMems'] = $object->getCpusetMems();
         }
-        if (null !== $object->getDevices()) {
+        if ($object->isInitialized('devices') && null !== $object->getDevices()) {
             $values_5 = array();
             foreach ($object->getDevices() as $value_5) {
                 $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
             }
             $data['Devices'] = $values_5;
         }
-        if (null !== $object->getDeviceCgroupRules()) {
+        if ($object->isInitialized('deviceCgroupRules') && null !== $object->getDeviceCgroupRules()) {
             $values_6 = array();
             foreach ($object->getDeviceCgroupRules() as $value_6) {
                 $values_6[] = $value_6;
             }
             $data['DeviceCgroupRules'] = $values_6;
         }
-        if (null !== $object->getDeviceRequests()) {
+        if ($object->isInitialized('deviceRequests') && null !== $object->getDeviceRequests()) {
             $values_7 = array();
             foreach ($object->getDeviceRequests() as $value_7) {
                 $values_7[] = $this->normalizer->normalize($value_7, 'json', $context);
             }
             $data['DeviceRequests'] = $values_7;
         }
-        if (null !== $object->getKernelMemory()) {
+        if ($object->isInitialized('kernelMemory') && null !== $object->getKernelMemory()) {
             $data['KernelMemory'] = $object->getKernelMemory();
         }
-        if (null !== $object->getKernelMemoryTCP()) {
+        if ($object->isInitialized('kernelMemoryTCP') && null !== $object->getKernelMemoryTCP()) {
             $data['KernelMemoryTCP'] = $object->getKernelMemoryTCP();
         }
-        if (null !== $object->getMemoryReservation()) {
+        if ($object->isInitialized('memoryReservation') && null !== $object->getMemoryReservation()) {
             $data['MemoryReservation'] = $object->getMemoryReservation();
         }
-        if (null !== $object->getMemorySwap()) {
+        if ($object->isInitialized('memorySwap') && null !== $object->getMemorySwap()) {
             $data['MemorySwap'] = $object->getMemorySwap();
         }
-        if (null !== $object->getMemorySwappiness()) {
+        if ($object->isInitialized('memorySwappiness') && null !== $object->getMemorySwappiness()) {
             $data['MemorySwappiness'] = $object->getMemorySwappiness();
         }
-        if (null !== $object->getNanoCpus()) {
+        if ($object->isInitialized('nanoCpus') && null !== $object->getNanoCpus()) {
             $data['NanoCpus'] = $object->getNanoCpus();
         }
-        if (null !== $object->getOomKillDisable()) {
+        if ($object->isInitialized('oomKillDisable') && null !== $object->getOomKillDisable()) {
             $data['OomKillDisable'] = $object->getOomKillDisable();
         }
-        if (null !== $object->getInit()) {
+        if ($object->isInitialized('init') && null !== $object->getInit()) {
             $data['Init'] = $object->getInit();
         }
-        if (null !== $object->getPidsLimit()) {
+        if ($object->isInitialized('pidsLimit') && null !== $object->getPidsLimit()) {
             $data['PidsLimit'] = $object->getPidsLimit();
         }
-        if (null !== $object->getUlimits()) {
+        if ($object->isInitialized('ulimits') && null !== $object->getUlimits()) {
             $values_8 = array();
             foreach ($object->getUlimits() as $value_8) {
                 $values_8[] = $this->normalizer->normalize($value_8, 'json', $context);
             }
             $data['Ulimits'] = $values_8;
         }
-        if (null !== $object->getCpuCount()) {
+        if ($object->isInitialized('cpuCount') && null !== $object->getCpuCount()) {
             $data['CpuCount'] = $object->getCpuCount();
         }
-        if (null !== $object->getCpuPercent()) {
+        if ($object->isInitialized('cpuPercent') && null !== $object->getCpuPercent()) {
             $data['CpuPercent'] = $object->getCpuPercent();
         }
-        if (null !== $object->getIOMaximumIOps()) {
+        if ($object->isInitialized('iOMaximumIOps') && null !== $object->getIOMaximumIOps()) {
             $data['IOMaximumIOps'] = $object->getIOMaximumIOps();
         }
-        if (null !== $object->getIOMaximumBandwidth()) {
+        if ($object->isInitialized('iOMaximumBandwidth') && null !== $object->getIOMaximumBandwidth()) {
             $data['IOMaximumBandwidth'] = $object->getIOMaximumBandwidth();
         }
         if (!($context['skip_validation'] ?? false)) {

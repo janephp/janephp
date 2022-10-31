@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 class Geo extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -46,6 +54,7 @@ class Geo extends \ArrayObject
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -67,6 +76,7 @@ class Geo extends \ArrayObject
      */
     public function setBbox(array $bbox) : self
     {
+        $this->initialized['bbox'] = true;
         $this->bbox = $bbox;
         return $this;
     }
@@ -88,6 +98,7 @@ class Geo extends \ArrayObject
      */
     public function setGeometry(Point $geometry) : self
     {
+        $this->initialized['geometry'] = true;
         $this->geometry = $geometry;
         return $this;
     }
@@ -109,6 +120,7 @@ class Geo extends \ArrayObject
      */
     public function setProperties(iterable $properties) : self
     {
+        $this->initialized['properties'] = true;
         $this->properties = $properties;
         return $this;
     }

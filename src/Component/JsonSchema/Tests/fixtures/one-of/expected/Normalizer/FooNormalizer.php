@@ -71,7 +71,7 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getFoo()) {
+        if ($object->isInitialized('foo') && null !== $object->getFoo()) {
             $value = $object->getFoo();
             if (is_string($object->getFoo())) {
                 $value = $object->getFoo();

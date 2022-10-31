@@ -70,16 +70,16 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCategory()) {
+        if ($object->isInitialized('category') && null !== $object->getCategory()) {
             $data['category'] = $object->getCategory();
         }
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
         foreach ($object as $key => $value) {

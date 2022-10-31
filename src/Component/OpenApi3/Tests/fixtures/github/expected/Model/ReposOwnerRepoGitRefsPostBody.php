@@ -5,6 +5,14 @@ namespace Github\Model;
 class ReposOwnerRepoGitRefsPostBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected.
      *
      * @var string
@@ -40,6 +48,7 @@ class ReposOwnerRepoGitRefsPostBody extends \ArrayObject
      */
     public function setRef(string $ref) : self
     {
+        $this->initialized['ref'] = true;
         $this->ref = $ref;
         return $this;
     }
@@ -61,6 +70,7 @@ class ReposOwnerRepoGitRefsPostBody extends \ArrayObject
      */
     public function setSha(string $sha) : self
     {
+        $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
     }
@@ -82,6 +92,7 @@ class ReposOwnerRepoGitRefsPostBody extends \ArrayObject
      */
     public function setKey(string $key) : self
     {
+        $this->initialized['key'] = true;
         $this->key = $key;
         return $this;
     }
