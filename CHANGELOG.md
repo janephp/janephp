@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [7.4.0] - 2022-11-15
 ### Added
 - [OpenAPI] [GH#665](https://github.com/janephp/janephp/pull/655) Support API Platform and different response content types; application/ld+json application/hal+json application/vnd.api+json, through optional accept headers in Client methods.
 - [OpenAPI] [GH#656](https://github.com/janephp/janephp/pull/656) Support anyOf reference or null property in schema
@@ -643,8 +645,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.3.2...HEAD
-[7.3.2]: https://github.com/janephp/janephp/compare/v7.3.1...v7.3.2
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.4.0...HEAD
+[7.4.0]: https://github.com/janephp/janephp/compare/v7.3.1...v7.4.0
 [7.3.1]: https://github.com/janephp/janephp/compare/v7.3.0...v7.3.1
 [7.3.0]: https://github.com/janephp/janephp/compare/v7.2.5...v7.3.0
 [7.2.5]: https://github.com/janephp/janephp/compare/v7.2.4...v7.2.5
