@@ -45,13 +45,15 @@ class TeamsRemoveMemberLegacy extends \Github\Runtime\Client\BaseEndpoint implem
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (204 === $status) {
             return null;
         }
         if (404 === $status) {
-            throw new \Github\Exception\TeamsRemoveMemberLegacyNotFoundException();
+            throw new \Github\Exception\TeamsRemoveMemberLegacyNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

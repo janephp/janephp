@@ -54,22 +54,24 @@ class EditPendingFreshInvestigation extends \CreditSafe\API\Runtime\Client\BaseE
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\EditPendingFreshInvestigationBadRequestException();
+            throw new \CreditSafe\API\Exception\EditPendingFreshInvestigationBadRequestException($response);
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\EditPendingFreshInvestigationUnauthorizedException();
+            throw new \CreditSafe\API\Exception\EditPendingFreshInvestigationUnauthorizedException($response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\EditPendingFreshInvestigationForbiddenException();
+            throw new \CreditSafe\API\Exception\EditPendingFreshInvestigationForbiddenException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\EditPendingFreshInvestigationNotFoundException();
+            throw new \CreditSafe\API\Exception\EditPendingFreshInvestigationNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

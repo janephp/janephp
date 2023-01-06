@@ -76,22 +76,24 @@ class NotificationEvents extends \CreditSafe\API\Runtime\Client\BaseEndpoint imp
      *
      * @return null|\CreditSafe\API\Model\NotificationEventsResponse
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'CreditSafe\\API\\Model\\NotificationEventsResponse', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\NotificationEventsBadRequestException();
+            throw new \CreditSafe\API\Exception\NotificationEventsBadRequestException($response);
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\NotificationEventsUnauthorizedException();
+            throw new \CreditSafe\API\Exception\NotificationEventsUnauthorizedException($response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\NotificationEventsForbiddenException();
+            throw new \CreditSafe\API\Exception\NotificationEventsForbiddenException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\NotificationEventsNotFoundException();
+            throw new \CreditSafe\API\Exception\NotificationEventsNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

@@ -34,13 +34,15 @@ class ApiReviewsIdDelete extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint i
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (204 === $status) {
             return null;
         }
         if (404 === $status) {
-            throw new \ApiPlatform\Demo\Exception\ApiReviewsIdDeleteNotFoundException();
+            throw new \ApiPlatform\Demo\Exception\ApiReviewsIdDeleteNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

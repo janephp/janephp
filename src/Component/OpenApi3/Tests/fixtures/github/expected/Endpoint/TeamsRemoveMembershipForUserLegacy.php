@@ -43,13 +43,15 @@ class TeamsRemoveMembershipForUserLegacy extends \Github\Runtime\Client\BaseEndp
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (204 === $status) {
             return null;
         }
         if (403 === $status) {
-            throw new \Github\Exception\TeamsRemoveMembershipForUserLegacyForbiddenException();
+            throw new \Github\Exception\TeamsRemoveMembershipForUserLegacyForbiddenException($response);
         }
     }
     public function getAuthenticationScopes() : array

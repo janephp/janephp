@@ -90,22 +90,24 @@ class ListSubmittedFreshInvestigations extends \CreditSafe\API\Runtime\Client\Ba
      *
      * @return null|\CreditSafe\API\Model\ListFreshInvestigationResponse
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'CreditSafe\\API\\Model\\ListFreshInvestigationResponse', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsBadRequestException();
+            throw new \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsBadRequestException($response);
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsUnauthorizedException();
+            throw new \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsUnauthorizedException($response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsForbiddenException();
+            throw new \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsForbiddenException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsNotFoundException();
+            throw new \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

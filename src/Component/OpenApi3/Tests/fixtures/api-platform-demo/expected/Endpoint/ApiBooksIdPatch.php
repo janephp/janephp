@@ -54,8 +54,10 @@ class ApiBooksIdPatch extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
      *
      * @return null|\ApiPlatform\Demo\Model\BookJsonldBookRead|\ApiPlatform\Demo\Model\BookJsonhalBookRead|\ApiPlatform\Demo\Model\BookBookRead
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (200 === $status) {
             if (mb_strpos($contentType, 'application/ld+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\\Demo\\Model\\BookJsonldBookRead', 'json');
@@ -71,13 +73,13 @@ class ApiBooksIdPatch extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
             }
         }
         if (400 === $status) {
-            throw new \ApiPlatform\Demo\Exception\ApiBooksIdPatchBadRequestException();
+            throw new \ApiPlatform\Demo\Exception\ApiBooksIdPatchBadRequestException($response);
         }
         if (422 === $status) {
-            throw new \ApiPlatform\Demo\Exception\ApiBooksIdPatchUnprocessableEntityException();
+            throw new \ApiPlatform\Demo\Exception\ApiBooksIdPatchUnprocessableEntityException($response);
         }
         if (404 === $status) {
-            throw new \ApiPlatform\Demo\Exception\ApiBooksIdPatchNotFoundException();
+            throw new \ApiPlatform\Demo\Exception\ApiBooksIdPatchNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

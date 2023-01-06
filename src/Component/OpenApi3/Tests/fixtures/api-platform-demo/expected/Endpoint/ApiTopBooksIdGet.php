@@ -44,8 +44,10 @@ class ApiTopBooksIdGet extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint imp
      *
      * @return null|\ApiPlatform\Demo\Model\TopBookJsonld|\ApiPlatform\Demo\Model\TopBookJsonhal|\ApiPlatform\Demo\Model\TopBook
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (200 === $status) {
             if (mb_strpos($contentType, 'application/ld+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\\Demo\\Model\\TopBookJsonld', 'json');
@@ -61,7 +63,7 @@ class ApiTopBooksIdGet extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint imp
             }
         }
         if (404 === $status) {
-            throw new \ApiPlatform\Demo\Exception\ApiTopBooksIdGetNotFoundException();
+            throw new \ApiPlatform\Demo\Exception\ApiTopBooksIdGetNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

@@ -29,16 +29,18 @@ class GetTest extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Schema
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Schema', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\GetTestBadRequestException($serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Error', 'json'));
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\GetTestBadRequestException($serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Error', 'json'), $response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\GetTestNotFoundException($serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Error', 'json'));
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\GetTestNotFoundException($serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Error', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

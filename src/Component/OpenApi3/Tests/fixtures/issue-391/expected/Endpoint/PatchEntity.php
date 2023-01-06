@@ -40,16 +40,18 @@ class PatchEntity extends \Gounlaf\JanephpBug\Runtime\Client\BaseEndpoint implem
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (202 === $status) {
             return null;
         }
         if (400 === $status) {
-            throw new \Gounlaf\JanephpBug\Exception\PatchEntityBadRequestException();
+            throw new \Gounlaf\JanephpBug\Exception\PatchEntityBadRequestException($response);
         }
         if (404 === $status) {
-            throw new \Gounlaf\JanephpBug\Exception\PatchEntityNotFoundException();
+            throw new \Gounlaf\JanephpBug\Exception\PatchEntityNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

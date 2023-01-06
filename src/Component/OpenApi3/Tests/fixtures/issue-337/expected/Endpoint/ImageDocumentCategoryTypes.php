@@ -62,16 +62,18 @@ class ImageDocumentCategoryTypes extends \CreditSafe\API\Runtime\Client\BaseEndp
      *
      * @return null|\CreditSafe\API\Model\GbImageTypesResponse
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'CreditSafe\\API\\Model\\GbImageTypesResponse', 'json');
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\ImageDocumentCategoryTypesUnauthorizedException();
+            throw new \CreditSafe\API\Exception\ImageDocumentCategoryTypesUnauthorizedException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\ImageDocumentCategoryTypesNotFoundException();
+            throw new \CreditSafe\API\Exception\ImageDocumentCategoryTypesNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

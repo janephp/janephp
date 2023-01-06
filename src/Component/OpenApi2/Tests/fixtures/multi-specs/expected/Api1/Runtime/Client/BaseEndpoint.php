@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApi2\Tests\Expected\Api1\Runtime\Client;
 use Http\Message\MultipartStream\MultipartStreamBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\SerializerInterface;
+use Psr\Http\Message\ResponseInterface;
 abstract class BaseEndpoint implements Endpoint
 {
     protected $queryParameters = [];
@@ -14,7 +15,7 @@ abstract class BaseEndpoint implements Endpoint
     public abstract function getBody(SerializerInterface $serializer, $streamFactory = null) : array;
     public abstract function getUri() : string;
     public abstract function getAuthenticationScopes() : array;
-    protected abstract function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType = null);
+    protected abstract function transformResponseBody(ResponseInterface $response, SerializerInterface $serializer, ?string $contentType = null);
     protected function getExtraHeaders() : array
     {
         return [];

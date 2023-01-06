@@ -64,22 +64,24 @@ class CompanySearchCriteria extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CompanySearchCriteriaBadRequestException();
+            throw new \CreditSafe\API\Exception\CompanySearchCriteriaBadRequestException($response);
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CompanySearchCriteriaUnauthorizedException();
+            throw new \CreditSafe\API\Exception\CompanySearchCriteriaUnauthorizedException($response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CompanySearchCriteriaForbiddenException();
+            throw new \CreditSafe\API\Exception\CompanySearchCriteriaForbiddenException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CompanySearchCriteriaNotFoundException();
+            throw new \CreditSafe\API\Exception\CompanySearchCriteriaNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array
