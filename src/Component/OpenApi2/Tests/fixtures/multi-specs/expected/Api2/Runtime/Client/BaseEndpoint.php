@@ -3,9 +3,9 @@
 namespace Jane\Component\OpenApi2\Tests\Expected\Api2\Runtime\Client;
 
 use Http\Message\MultipartStream\MultipartStreamBuilder;
+use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\SerializerInterface;
-use Psr\Http\Message\ResponseInterface;
 abstract class BaseEndpoint implements Endpoint
 {
     protected $queryParameters = [];

@@ -3,9 +3,9 @@
 namespace Docker\Api\Runtime\Client;
 
 use Http\Message\MultipartStream\MultipartStreamBuilder;
+use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\SerializerInterface;
-use Psr\Http\Message\ResponseInterface;
 abstract class BaseEndpoint implements Endpoint
 {
     protected $queryParameters = [];
