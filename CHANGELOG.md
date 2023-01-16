@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [7.4.1] - 2023-01-16
 ### Changed
 - [JsonSchema] [GH#688](https://github.com/janephp/janephp/pull/688) Allow php-jsonpointer/php-jsonpointer v4
 - [OpenAPI] [GH#687](https://github.com/janephp/janephp/pull/687) Default message in 4XX & 5XX exception codes when no description is given.
@@ -649,7 +651,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.4.0...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.4.1...HEAD
+[7.4.1]: https://github.com/janephp/janephp/compare/v7.4.0...v7.4.1
 [7.4.0]: https://github.com/janephp/janephp/compare/v7.3.1...v7.4.0
 [7.3.1]: https://github.com/janephp/janephp/compare/v7.3.0...v7.3.1
 [7.3.0]: https://github.com/janephp/janephp/compare/v7.2.5...v7.3.0
