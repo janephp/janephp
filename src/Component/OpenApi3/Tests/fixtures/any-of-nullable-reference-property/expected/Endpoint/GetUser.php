@@ -28,13 +28,15 @@ class GetUser extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Account
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Account', 'json');
         }
         if (404 === $status) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\GetUserNotFoundException();
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\GetUserNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

@@ -34,13 +34,15 @@ class ApiParchmentsIdDelete extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoin
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (204 === $status) {
             return null;
         }
         if (404 === $status) {
-            throw new \ApiPlatform\Demo\Exception\ApiParchmentsIdDeleteNotFoundException();
+            throw new \ApiPlatform\Demo\Exception\ApiParchmentsIdDeleteNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

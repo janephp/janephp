@@ -62,25 +62,27 @@ class ProjectsListForRepo extends \Github\Runtime\Client\BaseEndpoint implements
      *
      * @return null|\Github\Model\Project[]
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Project[]', 'json');
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ProjectsListForRepoUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
+            throw new \Github\Exception\ProjectsListForRepoUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ProjectsListForRepoForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
+            throw new \Github\Exception\ProjectsListForRepoForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ProjectsListForRepoNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
+            throw new \Github\Exception\ProjectsListForRepoNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (410 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ProjectsListForRepoGoneException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
+            throw new \Github\Exception\ProjectsListForRepoGoneException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ProjectsListForRepoUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationErrorSimple', 'json'));
+            throw new \Github\Exception\ProjectsListForRepoUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationErrorSimple', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

@@ -46,8 +46,10 @@ class ProjectsMoveCard extends \Github\Runtime\Client\BaseEndpoint implements \G
      *
      * @return null|\Github\Model\ProjectsColumnsCardsCardIdMovesPostResponse201
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\ProjectsColumnsCardsCardIdMovesPostResponse201', 'json');
         }
@@ -55,16 +57,16 @@ class ProjectsMoveCard extends \Github\Runtime\Client\BaseEndpoint implements \G
             return null;
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ProjectsMoveCardForbiddenException($serializer->deserialize($body, 'Github\\Model\\ProjectsColumnsCardsCardIdMovesPostResponse403', 'json'));
+            throw new \Github\Exception\ProjectsMoveCardForbiddenException($serializer->deserialize($body, 'Github\\Model\\ProjectsColumnsCardsCardIdMovesPostResponse403', 'json'), $response);
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ProjectsMoveCardUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
+            throw new \Github\Exception\ProjectsMoveCardUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ProjectsMoveCardServiceUnavailableException($serializer->deserialize($body, 'Github\\Model\\ProjectsColumnsCardsCardIdMovesPostResponse503', 'json'));
+            throw new \Github\Exception\ProjectsMoveCardServiceUnavailableException($serializer->deserialize($body, 'Github\\Model\\ProjectsColumnsCardsCardIdMovesPostResponse503', 'json'), $response);
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ProjectsMoveCardUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
+            throw new \Github\Exception\ProjectsMoveCardUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

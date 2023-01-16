@@ -91,8 +91,10 @@ class ReposCreateDeployment extends \Github\Runtime\Client\BaseEndpoint implemen
      *
      * @return null|\Github\Model\Deployment|\Github\Model\ReposOwnerRepoDeploymentsPostResponse202
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Deployment', 'json');
         }
@@ -100,10 +102,10 @@ class ReposCreateDeployment extends \Github\Runtime\Client\BaseEndpoint implemen
             return $serializer->deserialize($body, 'Github\\Model\\ReposOwnerRepoDeploymentsPostResponse202', 'json');
         }
         if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ReposCreateDeploymentConflictException($serializer->deserialize($body, 'Github\\Model\\ReposOwnerRepoDeploymentsPostResponse409', 'json'));
+            throw new \Github\Exception\ReposCreateDeploymentConflictException($serializer->deserialize($body, 'Github\\Model\\ReposOwnerRepoDeploymentsPostResponse409', 'json'), $response);
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ReposCreateDeploymentUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
+            throw new \Github\Exception\ReposCreateDeploymentUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

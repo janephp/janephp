@@ -48,19 +48,21 @@ class GitGetBlob extends \Github\Runtime\Client\BaseEndpoint implements \Github\
      *
      * @return null|\Github\Model\Blob
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\Blob', 'json');
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\GitGetBlobNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
+            throw new \Github\Exception\GitGetBlobNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\GitGetBlobUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'));
+            throw new \Github\Exception\GitGetBlobUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'), $response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\GitGetBlobForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
+            throw new \Github\Exception\GitGetBlobForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

@@ -47,16 +47,18 @@ class CodeScanningGetAlert extends \Github\Runtime\Client\BaseEndpoint implement
      *
      * @return null|\Github\Model\CodeScanningAlert
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\CodeScanningAlert', 'json');
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\CodeScanningGetAlertNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'));
+            throw new \Github\Exception\CodeScanningGetAlertNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\CodeScanningGetAlertServiceUnavailableException($serializer->deserialize($body, 'Github\\Model\\ResponseServiceUnavailable', 'json'));
+            throw new \Github\Exception\CodeScanningGetAlertServiceUnavailableException($serializer->deserialize($body, 'Github\\Model\\ResponseServiceUnavailable', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

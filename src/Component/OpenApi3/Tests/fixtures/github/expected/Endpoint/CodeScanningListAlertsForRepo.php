@@ -57,16 +57,18 @@ class CodeScanningListAlertsForRepo extends \Github\Runtime\Client\BaseEndpoint 
      *
      * @return null|\Github\Model\CodeScanningAlert[]
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\\Model\\CodeScanningAlert[]', 'json');
         }
         if (404 === $status) {
-            throw new \Github\Exception\CodeScanningListAlertsForRepoNotFoundException();
+            throw new \Github\Exception\CodeScanningListAlertsForRepoNotFoundException($response);
         }
         if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\CodeScanningListAlertsForRepoServiceUnavailableException($serializer->deserialize($body, 'Github\\Model\\ResponseServiceUnavailable', 'json'));
+            throw new \Github\Exception\CodeScanningListAlertsForRepoServiceUnavailableException($serializer->deserialize($body, 'Github\\Model\\ResponseServiceUnavailable', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

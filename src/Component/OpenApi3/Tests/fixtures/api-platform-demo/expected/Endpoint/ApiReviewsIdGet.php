@@ -44,8 +44,10 @@ class ApiReviewsIdGet extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
      *
      * @return null|\ApiPlatform\Demo\Model\ReviewJsonldReviewRead|\ApiPlatform\Demo\Model\ReviewJsonhalReviewRead|\ApiPlatform\Demo\Model\ReviewReviewRead
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (200 === $status) {
             if (mb_strpos($contentType, 'application/ld+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\\Demo\\Model\\ReviewJsonldReviewRead', 'json');
@@ -61,7 +63,7 @@ class ApiReviewsIdGet extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
             }
         }
         if (404 === $status) {
-            throw new \ApiPlatform\Demo\Exception\ApiReviewsIdGetNotFoundException();
+            throw new \ApiPlatform\Demo\Exception\ApiReviewsIdGetNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

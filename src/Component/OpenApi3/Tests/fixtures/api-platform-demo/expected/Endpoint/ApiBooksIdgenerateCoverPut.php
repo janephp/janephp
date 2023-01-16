@@ -75,8 +75,10 @@ class ApiBooksIdgenerateCoverPut extends \ApiPlatform\Demo\Runtime\Client\BaseEn
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (204 === $status) {
             if (mb_strpos($contentType, 'application/ld+json') !== false) {
                 return json_decode($body);
@@ -92,13 +94,13 @@ class ApiBooksIdgenerateCoverPut extends \ApiPlatform\Demo\Runtime\Client\BaseEn
             }
         }
         if (400 === $status) {
-            throw new \ApiPlatform\Demo\Exception\ApiBooksIdgenerateCoverPutBadRequestException();
+            throw new \ApiPlatform\Demo\Exception\ApiBooksIdgenerateCoverPutBadRequestException($response);
         }
         if (422 === $status) {
-            throw new \ApiPlatform\Demo\Exception\ApiBooksIdgenerateCoverPutUnprocessableEntityException();
+            throw new \ApiPlatform\Demo\Exception\ApiBooksIdgenerateCoverPutUnprocessableEntityException($response);
         }
         if (404 === $status) {
-            throw new \ApiPlatform\Demo\Exception\ApiBooksIdgenerateCoverPutNotFoundException();
+            throw new \ApiPlatform\Demo\Exception\ApiBooksIdgenerateCoverPutNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

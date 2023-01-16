@@ -66,16 +66,18 @@ class CompanyImageDocuments extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
      *
      * @return null|\CreditSafe\API\Model\ListCompanyImages
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'CreditSafe\\API\\Model\\ListCompanyImages', 'json');
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CompanyImageDocumentsUnauthorizedException();
+            throw new \CreditSafe\API\Exception\CompanyImageDocumentsUnauthorizedException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CompanyImageDocumentsNotFoundException();
+            throw new \CreditSafe\API\Exception\CompanyImageDocumentsNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

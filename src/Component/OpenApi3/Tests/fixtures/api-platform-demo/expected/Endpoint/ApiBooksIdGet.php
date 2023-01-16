@@ -44,8 +44,10 @@ class ApiBooksIdGet extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implem
      *
      * @return null|\ApiPlatform\Demo\Model\BookJsonldBookRead|\ApiPlatform\Demo\Model\BookJsonhalBookRead|\ApiPlatform\Demo\Model\BookBookRead
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (200 === $status) {
             if (mb_strpos($contentType, 'application/ld+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\\Demo\\Model\\BookJsonldBookRead', 'json');
@@ -61,7 +63,7 @@ class ApiBooksIdGet extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implem
             }
         }
         if (404 === $status) {
-            throw new \ApiPlatform\Demo\Exception\ApiBooksIdGetNotFoundException();
+            throw new \ApiPlatform\Demo\Exception\ApiBooksIdGetNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

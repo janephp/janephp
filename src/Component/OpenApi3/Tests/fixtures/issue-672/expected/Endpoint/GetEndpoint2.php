@@ -27,8 +27,10 @@ class GetEndpoint2 extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Clien
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint2GetResponse
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Endpoint2GetResponse', 'json');
         }

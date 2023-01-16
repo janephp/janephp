@@ -56,22 +56,24 @@ class CreateMonitoringPortfolio extends \CreditSafe\API\Runtime\Client\BaseEndpo
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CreateMonitoringPortfolioBadRequestException();
+            throw new \CreditSafe\API\Exception\CreateMonitoringPortfolioBadRequestException($response);
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CreateMonitoringPortfolioUnauthorizedException();
+            throw new \CreditSafe\API\Exception\CreateMonitoringPortfolioUnauthorizedException($response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CreateMonitoringPortfolioForbiddenException();
+            throw new \CreditSafe\API\Exception\CreateMonitoringPortfolioForbiddenException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CreateMonitoringPortfolioNotFoundException();
+            throw new \CreditSafe\API\Exception\CreateMonitoringPortfolioNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

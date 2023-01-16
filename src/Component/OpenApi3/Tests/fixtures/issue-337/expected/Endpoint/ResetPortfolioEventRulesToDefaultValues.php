@@ -54,21 +54,23 @@ class ResetPortfolioEventRulesToDefaultValues extends \CreditSafe\API\Runtime\Cl
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (204 === $status) {
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesBadRequestException();
+            throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesBadRequestException($response);
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesUnauthorizedException();
+            throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesUnauthorizedException($response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesForbiddenException();
+            throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesForbiddenException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesNotFoundException();
+            throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

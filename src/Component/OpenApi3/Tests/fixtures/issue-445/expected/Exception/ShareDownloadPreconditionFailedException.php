@@ -4,8 +4,17 @@ namespace PicturePark\API\Exception;
 
 class ShareDownloadPreconditionFailedException extends PreconditionFailedException
 {
-    public function __construct()
+    /**
+     * @var \Psr\Http\Message\ResponseInterface
+     */
+    private $response;
+    public function __construct(\Psr\Http\Message\ResponseInterface $response = null)
     {
-        parent::__construct('');
+        parent::__construct('Precondition Failed');
+        $this->response = $response;
+    }
+    public function getResponse() : ?\Psr\Http\Message\ResponseInterface
+    {
+        return $this->response;
     }
 }

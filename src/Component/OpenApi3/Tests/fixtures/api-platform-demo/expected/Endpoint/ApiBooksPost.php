@@ -71,8 +71,10 @@ class ApiBooksPost extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impleme
      *
      * @return null|\ApiPlatform\Demo\Model\BookJsonldBookRead|\ApiPlatform\Demo\Model\BookJsonhalBookRead|\ApiPlatform\Demo\Model\BookBookRead
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (201 === $status) {
             if (mb_strpos($contentType, 'application/ld+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\\Demo\\Model\\BookJsonldBookRead', 'json');
@@ -88,10 +90,10 @@ class ApiBooksPost extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impleme
             }
         }
         if (400 === $status) {
-            throw new \ApiPlatform\Demo\Exception\ApiBooksPostBadRequestException();
+            throw new \ApiPlatform\Demo\Exception\ApiBooksPostBadRequestException($response);
         }
         if (422 === $status) {
-            throw new \ApiPlatform\Demo\Exception\ApiBooksPostUnprocessableEntityException();
+            throw new \ApiPlatform\Demo\Exception\ApiBooksPostUnprocessableEntityException($response);
         }
     }
     public function getAuthenticationScopes() : array

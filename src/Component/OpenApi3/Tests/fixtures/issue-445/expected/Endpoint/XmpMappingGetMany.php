@@ -54,31 +54,33 @@ class XmpMappingGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
      *
      * @return null|\PicturePark\API\Model\XmpMappingEntry[]
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'PicturePark\\API\\Model\\XmpMappingEntry[]', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \PicturePark\API\Exception\XmpMappingGetManyBadRequestException($serializer->deserialize($body, 'PicturePark\\API\\Model\\RequestSizeLimitExceededException', 'json'));
+            throw new \PicturePark\API\Exception\XmpMappingGetManyBadRequestException($serializer->deserialize($body, 'PicturePark\\API\\Model\\RequestSizeLimitExceededException', 'json'), $response);
         }
         if (401 === $status) {
-            throw new \PicturePark\API\Exception\XmpMappingGetManyUnauthorizedException();
+            throw new \PicturePark\API\Exception\XmpMappingGetManyUnauthorizedException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \PicturePark\API\Exception\XmpMappingGetManyNotFoundException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkNotFoundException', 'json'));
+            throw new \PicturePark\API\Exception\XmpMappingGetManyNotFoundException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkNotFoundException', 'json'), $response);
         }
         if (405 === $status) {
-            throw new \PicturePark\API\Exception\XmpMappingGetManyMethodNotAllowedException();
+            throw new \PicturePark\API\Exception\XmpMappingGetManyMethodNotAllowedException($response);
         }
         if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \PicturePark\API\Exception\XmpMappingGetManyConflictException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkConflictException', 'json'));
+            throw new \PicturePark\API\Exception\XmpMappingGetManyConflictException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkConflictException', 'json'), $response);
         }
         if (429 === $status) {
-            throw new \PicturePark\API\Exception\XmpMappingGetManyTooManyRequestsException();
+            throw new \PicturePark\API\Exception\XmpMappingGetManyTooManyRequestsException($response);
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \PicturePark\API\Exception\XmpMappingGetManyInternalServerErrorException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkException', 'json'));
+            throw new \PicturePark\API\Exception\XmpMappingGetManyInternalServerErrorException($serializer->deserialize($body, 'PicturePark\\API\\Model\\PictureparkException', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

@@ -73,22 +73,24 @@ class CompanyEvents extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
      *
      * @return null|\CreditSafe\API\Model\CompanyEventsResponse
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'CreditSafe\\API\\Model\\CompanyEventsResponse', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CompanyEventsBadRequestException($serializer->deserialize($body, 'CreditSafe\\API\\Model\\BadRequestError', 'json'));
+            throw new \CreditSafe\API\Exception\CompanyEventsBadRequestException($serializer->deserialize($body, 'CreditSafe\\API\\Model\\BadRequestError', 'json'), $response);
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CompanyEventsUnauthorizedException();
+            throw new \CreditSafe\API\Exception\CompanyEventsUnauthorizedException($response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CompanyEventsForbiddenException();
+            throw new \CreditSafe\API\Exception\CompanyEventsForbiddenException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CompanyEventsNotFoundException();
+            throw new \CreditSafe\API\Exception\CompanyEventsNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

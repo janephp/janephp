@@ -72,22 +72,24 @@ class MoveCompaniesFromOneToAnotherPortfolioS extends \CreditSafe\API\Runtime\Cl
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSBadRequestException();
+            throw new \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSBadRequestException($response);
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSUnauthorizedException();
+            throw new \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSUnauthorizedException($response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSForbiddenException();
+            throw new \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSForbiddenException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSNotFoundException();
+            throw new \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

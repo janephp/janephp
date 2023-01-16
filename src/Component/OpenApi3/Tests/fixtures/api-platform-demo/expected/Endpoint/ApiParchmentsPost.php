@@ -71,8 +71,10 @@ class ApiParchmentsPost extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint im
      *
      * @return null|\ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (201 === $status) {
             if (mb_strpos($contentType, 'application/ld+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\\Demo\\Model\\ParchmentJsonld', 'json');
@@ -88,10 +90,10 @@ class ApiParchmentsPost extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint im
             }
         }
         if (400 === $status) {
-            throw new \ApiPlatform\Demo\Exception\ApiParchmentsPostBadRequestException();
+            throw new \ApiPlatform\Demo\Exception\ApiParchmentsPostBadRequestException($response);
         }
         if (422 === $status) {
-            throw new \ApiPlatform\Demo\Exception\ApiParchmentsPostUnprocessableEntityException();
+            throw new \ApiPlatform\Demo\Exception\ApiParchmentsPostUnprocessableEntityException($response);
         }
     }
     public function getAuthenticationScopes() : array

@@ -22,7 +22,10 @@ trait GetTransformResponseBodyTrait
 {
     public function getTransformResponseBody(OperationGuess $operation, string $endpointName, GuessClass $guessClass, ExceptionGenerator $exceptionGenerator, Context $context): array
     {
-        $outputStatements = [];
+        $outputStatements = [
+            new Node\Stmt\Expression(new Expr\Assign(new Expr\Variable('status'), new Expr\MethodCall(new Expr\Variable('response'), 'getStatusCode'))),
+            new Node\Stmt\Expression(new Expr\Assign(new Expr\Variable('body'), new Expr\Cast\String_(new Expr\MethodCall(new Expr\Variable('response'), 'getBody')))),
+        ];
         $outputTypes = $context->getRegistry()->getThrowUnexpectedStatusCode() ? [] : ['null'];
         $throwTypes = [];
 
@@ -88,8 +91,7 @@ trait GetTransformResponseBodyTrait
         return [new Stmt\ClassMethod('transformResponseBody', [
             'type' => Stmt\Class_::MODIFIER_PROTECTED,
             'params' => [
-                new Node\Param(new Node\Expr\Variable('body'), null, new Name('string')),
-                new Node\Param(new Node\Expr\Variable('status'), null, new Name('int')),
+                new Node\Param(new Expr\Variable('response'), null, new Name('\\Psr\\Http\\Message\\ResponseInterface')),
                 new Node\Param(new Node\Expr\Variable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
                 new Node\Param(new Node\Expr\Variable('contentType'), new Expr\ConstFetch(new Name('null')), new Node\NullableType(new Name('string'))),
             ],
@@ -155,8 +157,8 @@ EOD
             $returnType = null;
             $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\' . $exceptionName;
             $returnStmt = new Stmt\Throw_(new Expr\New_(new Name($throwType), $classGuess ? [
-                $serializeStmt,
-            ] : []));
+                new Arg($serializeStmt), new Arg(new Expr\Variable('response')),
+            ] : [new Arg(new Expr\Variable('response'))]));
         }
 
         if ('default' === $status) {

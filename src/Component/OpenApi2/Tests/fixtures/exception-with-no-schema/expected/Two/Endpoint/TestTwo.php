@@ -28,13 +28,15 @@ class TestTwo extends \Jane\Component\OpenApi2\Tests\Expected\Two\Runtime\Client
      *
      * @return null|\Jane\Component\OpenApi2\Tests\Expected\Two\Model\TestTwoGetResponse200
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (200 === $status) {
             return $serializer->deserialize($body, 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Two\\Model\\TestTwoGetResponse200', 'json');
         }
         if (404 === $status) {
-            throw new \Jane\Component\OpenApi2\Tests\Expected\Two\Exception\TestTwoNotFoundException();
+            throw new \Jane\Component\OpenApi2\Tests\Expected\Two\Exception\TestTwoNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

@@ -41,16 +41,18 @@ class GenerateAuthenticationToken extends \CreditSafe\API\Runtime\Client\BaseEnd
      *
      * @return null|\CreditSafe\API\Model\AuthenticationSuccessResponse
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'CreditSafe\\API\\Model\\AuthenticationSuccessResponse', 'json');
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\GenerateAuthenticationTokenUnauthorizedException();
+            throw new \CreditSafe\API\Exception\GenerateAuthenticationTokenUnauthorizedException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\GenerateAuthenticationTokenNotFoundException();
+            throw new \CreditSafe\API\Exception\GenerateAuthenticationTokenNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

@@ -75,8 +75,10 @@ class ApiParchmentsIdPut extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint i
      *
      * @return null|\ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (200 === $status) {
             if (mb_strpos($contentType, 'application/ld+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\\Demo\\Model\\ParchmentJsonld', 'json');
@@ -92,13 +94,13 @@ class ApiParchmentsIdPut extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint i
             }
         }
         if (400 === $status) {
-            throw new \ApiPlatform\Demo\Exception\ApiParchmentsIdPutBadRequestException();
+            throw new \ApiPlatform\Demo\Exception\ApiParchmentsIdPutBadRequestException($response);
         }
         if (422 === $status) {
-            throw new \ApiPlatform\Demo\Exception\ApiParchmentsIdPutUnprocessableEntityException();
+            throw new \ApiPlatform\Demo\Exception\ApiParchmentsIdPutUnprocessableEntityException($response);
         }
         if (404 === $status) {
-            throw new \ApiPlatform\Demo\Exception\ApiParchmentsIdPutNotFoundException();
+            throw new \ApiPlatform\Demo\Exception\ApiParchmentsIdPutNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array

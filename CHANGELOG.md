@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Changed
-- [JsonSchemaRuntime] [GH#688](https://github.com/janephp/janephp/pull/688) Allow php-jsonpointer/php-jsonpointer v4
+- [JsonSchema] [GH#688](https://github.com/janephp/janephp/pull/688) Allow php-jsonpointer/php-jsonpointer v4
+- [OpenAPI] [GH#687](https://github.com/janephp/janephp/pull/687) Default message in 4XX & 5XX exception codes when no description is given.
+- [OpenAPI] [GH#687](https://github.com/janephp/janephp/pull/687) Response is passed in exceptions as a property
 
 ## [7.4.0] - 2022-11-15
 ### Added

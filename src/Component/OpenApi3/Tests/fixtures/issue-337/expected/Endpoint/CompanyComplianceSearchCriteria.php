@@ -51,22 +51,24 @@ class CompanyComplianceSearchCriteria extends \CreditSafe\API\Runtime\Client\Bas
      *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaBadRequestException();
+            throw new \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaBadRequestException($response);
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaUnauthorizedException();
+            throw new \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaUnauthorizedException($response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaForbiddenException();
+            throw new \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaForbiddenException($response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaNotFoundException();
+            throw new \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaNotFoundException($response);
         }
     }
     public function getAuthenticationScopes() : array
