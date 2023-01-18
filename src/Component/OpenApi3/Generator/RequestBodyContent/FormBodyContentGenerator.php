@@ -51,7 +51,7 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
                                     new Scalar\String_('multipart/form-data; boundary="'),
                                     new Expr\BinaryOp\Concat(
                                         new Expr\MethodCall(new Expr\Variable('bodyBuilder'), 'getBoundary'),
-                                        new Scalar\String_('""')
+                                        new Scalar\String_('"')
                                     )
                                 )
                             )]),
