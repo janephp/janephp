@@ -31,7 +31,7 @@ class TestFormFileParameters extends \Jane\Component\OpenApi3\Tests\Expected\Run
                 $value = is_int($value) ? (string) $value : $value;
                 $bodyBuilder->addResource($key, $value);
             }
-            return array(array('Content-Type' => array('multipart/form-data; boundary="' . ($bodyBuilder->getBoundary() . '""'))), $bodyBuilder->build());
+            return array(array('Content-Type' => array('multipart/form-data; boundary="' . ($bodyBuilder->getBoundary() . '"'))), $bodyBuilder->build());
         }
         return array(array(), null);
     }
