@@ -206,7 +206,9 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         $operationGuess = new OperationGuess($pathItem, $operation, $path, $operationType, $reference, $securityScopes);
         $operationName = $this->naming->getEndpointName($operationGuess);
 
-        $schema = $registry->getSchema($reference);
+        if (($schema = $registry->getSchema($reference)) === null) {
+            throw new \RuntimeException("Schema for reference $reference could not be found");
+        }
         $schema->addOperation($reference, $operationGuess);
         $schema->initOperationRelations($operationName);
 
