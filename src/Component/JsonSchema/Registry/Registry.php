@@ -33,6 +33,7 @@ class Registry implements RegistryInterface
 
     public function getSchema(string $reference): ?Schema
     {
+        $reference = $this->fixPath($reference);
         $uri = Http::createFromString($reference);
         $schemaUri = (string) $uri->withFragment('');
 
@@ -81,5 +82,14 @@ class Registry implements RegistryInterface
     public function getOptionsHash(): string
     {
         return md5(json_encode([]));
+    }
+
+    private function fixPath(string $path): string
+    {
+        if ('\\' === DIRECTORY_SEPARATOR) {
+            $path = lcfirst(str_replace(DIRECTORY_SEPARATOR, '/', $path));
+        }
+
+        return $path;
     }
 }

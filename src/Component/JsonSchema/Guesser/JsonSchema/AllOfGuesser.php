@@ -2,6 +2,7 @@
 
 namespace Jane\Component\JsonSchema\Guesser\JsonSchema;
 
+use Jane\Component\AutoMapper\Exception\RuntimeException;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\ChainGuesserAwareInterface;
 use Jane\Component\JsonSchema\Guesser\ChainGuesserAwareTrait;
@@ -77,7 +78,10 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
                     $classGuess->setRequired($object->getRequired());
                 }
 
-                $registry->getSchema($reference)->addClass($reference, $classGuess);
+                if (($schema = $registry->getSchema($reference)) === null) {
+                    throw new RuntimeException("Schema for reference $reference could not be found");
+                }
+                $schema->addClass($reference, $classGuess);
             }
 
             foreach ($object->getAllOf() as $allOfIndex => $allOf) {
@@ -102,7 +106,13 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
 
         // Mainly a merged class
         if ($registry->hasClass($reference)) {
-            return new ObjectType($object, $registry->getClass($reference)->getName(), $registry->getSchema($reference)->getNamespace());
+            if (($class = $registry->getClass($reference)) === null) {
+                throw new RuntimeException("Class for reference $reference could not be found");
+            }
+            if (($schema = $registry->getSchema($reference)) === null) {
+                throw new RuntimeException("Schema for reference $reference could not be found");
+            }
+            return new ObjectType($object, $class->getName(), $schema->getNamespace());
         }
 
         foreach ($object->getAllOf() as $allOfIndex => $allOf) {

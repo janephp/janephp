@@ -2,6 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Guesser\OpenApiSchema;
 
+use Jane\Component\AutoMapper\Exception\RuntimeException;
 use Jane\Component\JsonSchema\Guesser\ChainGuesserAwareInterface;
 use Jane\Component\JsonSchema\Guesser\ChainGuesserAwareTrait;
 use Jane\Component\JsonSchema\Guesser\ClassGuesserInterface;
@@ -206,7 +207,9 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         $operationGuess = new OperationGuess($pathItem, $operation, $path, $operationType, $reference, $securityScopes);
         $operationName = $this->naming->getEndpointName($operationGuess);
 
-        $schema = $registry->getSchema($reference);
+        if (($schema = $registry->getSchema($reference)) === null) {
+            throw new RuntimeException("Schema for reference $reference could not be found");
+        }
         $schema->addOperation($reference, $operationGuess);
         $schema->initOperationRelations($operationName);
 
