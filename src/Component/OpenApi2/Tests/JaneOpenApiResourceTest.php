@@ -24,7 +24,7 @@ class JaneOpenApiResourceTest extends TestCase
     /**
      * @dataProvider resourceProvider
      */
-    public function testRessources($name, SplFileInfo $testDirectory): void
+    public function testResources($name, SplFileInfo $testDirectory): void
     {
         // 1. Cleanup generated
         $filesystem = new Filesystem();
