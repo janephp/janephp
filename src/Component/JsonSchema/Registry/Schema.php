@@ -193,8 +193,8 @@ class Schema implements SchemaInterface
 
     private function fixPath(string $path): string
     {
-        if ('\\' === DIRECTORY_SEPARATOR) {
-            $path = lcfirst(str_replace(DIRECTORY_SEPARATOR, '/', $path));
+        if ('\\' === \DIRECTORY_SEPARATOR) {
+            $path = lcfirst(str_replace(\DIRECTORY_SEPARATOR, '/', $path));
         }
         $path = preg_replace('#([^:]){1}/{2,}#', '$1/', $path);
 

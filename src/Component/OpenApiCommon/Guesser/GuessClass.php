@@ -18,7 +18,7 @@ class GuessClass
         $this->denormalizer = $denormalizer;
     }
 
-    public function guessClass(&$schema, string $reference, Registry $registry, bool &$array = null): ?ClassGuess
+    public function guessClass(&$schema, string $reference, Registry $registry, bool & $array = null): ?ClassGuess
     {
         $array = false;
 

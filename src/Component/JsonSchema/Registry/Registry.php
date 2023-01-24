@@ -86,8 +86,8 @@ class Registry implements RegistryInterface
 
     private function fixPath(string $path): string
     {
-        if ('\\' === DIRECTORY_SEPARATOR) {
-            $path = lcfirst(str_replace(DIRECTORY_SEPARATOR, '/', $path));
+        if ('\\' === \DIRECTORY_SEPARATOR) {
+            $path = lcfirst(str_replace(\DIRECTORY_SEPARATOR, '/', $path));
         }
 
         return $path;
