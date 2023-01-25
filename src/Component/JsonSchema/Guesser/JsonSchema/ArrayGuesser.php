@@ -18,6 +18,9 @@ class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
 {
     use ChainGuesserAwareTrait;
 
+    /** @var array<string, int> */
+    protected $refGuessLevel = [];
+
     /**
      * {@inheritdoc}
      */
@@ -41,6 +44,12 @@ class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
      */
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
+        $this->refGuessLevel[$reference] = ($this->refGuessLevel[$reference] ?? 0) + 1;
+
+        if ($this->refGuessLevel[$reference] > 20) {
+            return new ArrayType($object, new Type($object, 'mixed'));
+        }
+
         $items = $object->getItems();
 
         if (null === $items || (\is_array($items) && 0 === \count($items))) {
