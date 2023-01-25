@@ -29,6 +29,8 @@ class Reference
 
     public function __construct(string $reference, string $origin)
     {
+        $reference = $this->fixPath($reference);
+        $origin = $this->fixPath($origin);
         $originParts = UriString::parse($origin);
         $referenceParts = parse_url($reference);
         $mergedParts = array_merge($originParts, $referenceParts);
@@ -174,5 +176,14 @@ class Reference
         }
 
         return implode('/', $resultPathParts);
+    }
+
+    private function fixPath(string $path): string
+    {
+        if ('\\' === \DIRECTORY_SEPARATOR) {
+            $path = lcfirst(str_replace(\DIRECTORY_SEPARATOR, '/', $path));
+        }
+
+        return $path;
     }
 }

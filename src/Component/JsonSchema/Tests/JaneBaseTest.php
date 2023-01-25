@@ -16,7 +16,7 @@ class JaneBaseTest extends TestCase
     /**
      * @dataProvider schemaProvider
      */
-    public function testRessources(SplFileInfo $testDirectory): void
+    public function testResources(SplFileInfo $testDirectory): void
     {
         // 1. Generate
         $command = new GenerateCommand(new ConfigLoader(), new SchemaLoader());

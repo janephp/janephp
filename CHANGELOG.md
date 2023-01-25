@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 - [OpenApi3] [GH#690](https://github.com/janephp/janephp/pull/690) Content-Type header typo for multipart/form-data.
+- [Jane] [GH#694](https://github.com/janephp/janephp/pull/694) Improve Windows paths support.
 
 ## [7.4.1] - 2023-01-16
 ### Changed
