@@ -101,7 +101,10 @@
     ],
     "config": {
         "process-timeout": 1800,
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": false
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
