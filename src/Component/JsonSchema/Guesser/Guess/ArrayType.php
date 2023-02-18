@@ -86,8 +86,25 @@ class ArrayType extends Type
     {
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
         $statements = [
-            // $values = [];
-            new Stmt\Expression(new Expr\Assign($valuesVar, $this->createNormalizationArrayValueStatement())),
+            new Stmt\If_(
+                new Expr\BinaryOp\Equal(
+                    new Expr\MethodCall(new Expr\Variable('this'), 'isOnlyNumericKeys', [
+                        new Arg($input),
+                    ]),
+                    new Expr\ConstFetch(new Name('true'))
+                ),
+                [
+                    'stmts' => [
+                        new Stmt\Expression(new Expr\Assign($valuesVar, $this->createNormalizationArrayValueStatement())),
+                    ],
+                    'else' => new Stmt\Else_([
+                        new Stmt\Expression(new Expr\Assign($valuesVar, new Expr\New_(new Name('\ArrayObject'), [
+                            new Expr\Array_(),
+                            new Expr\ClassConstFetch(new Name('\ArrayObject'), 'ARRAY_AS_PROPS'),
+                        ])))
+                    ]),
+                ]
+            ),
         ];
 
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
