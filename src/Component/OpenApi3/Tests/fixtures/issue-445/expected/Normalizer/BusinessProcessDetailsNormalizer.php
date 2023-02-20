@@ -160,7 +160,7 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
         if ($object->isInitialized('stateHistory') && null !== $object->getStateHistory()) {
             $values = array();
             foreach ($object->getStateHistory() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['stateHistory'] = $values;
         }

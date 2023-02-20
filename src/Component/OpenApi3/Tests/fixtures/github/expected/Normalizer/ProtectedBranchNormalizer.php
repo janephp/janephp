@@ -95,28 +95,28 @@ class ProtectedBranchNormalizer implements DenormalizerInterface, NormalizerInte
         $data = array();
         $data['url'] = $object->getUrl();
         if ($object->isInitialized('requiredStatusChecks') && null !== $object->getRequiredStatusChecks()) {
-            $data['required_status_checks'] = $this->normalizer->normalize($object->getRequiredStatusChecks(), 'json', $context);
+            $data['required_status_checks'] = $object->getRequiredStatusChecks() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRequiredStatusChecks(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('requiredPullRequestReviews') && null !== $object->getRequiredPullRequestReviews()) {
-            $data['required_pull_request_reviews'] = $this->normalizer->normalize($object->getRequiredPullRequestReviews(), 'json', $context);
+            $data['required_pull_request_reviews'] = $object->getRequiredPullRequestReviews() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRequiredPullRequestReviews(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('requiredSignatures') && null !== $object->getRequiredSignatures()) {
-            $data['required_signatures'] = $this->normalizer->normalize($object->getRequiredSignatures(), 'json', $context);
+            $data['required_signatures'] = $object->getRequiredSignatures() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRequiredSignatures(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('enforceAdmins') && null !== $object->getEnforceAdmins()) {
-            $data['enforce_admins'] = $this->normalizer->normalize($object->getEnforceAdmins(), 'json', $context);
+            $data['enforce_admins'] = $object->getEnforceAdmins() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getEnforceAdmins(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('requiredLinearHistory') && null !== $object->getRequiredLinearHistory()) {
-            $data['required_linear_history'] = $this->normalizer->normalize($object->getRequiredLinearHistory(), 'json', $context);
+            $data['required_linear_history'] = $object->getRequiredLinearHistory() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRequiredLinearHistory(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('allowForcePushes') && null !== $object->getAllowForcePushes()) {
-            $data['allow_force_pushes'] = $this->normalizer->normalize($object->getAllowForcePushes(), 'json', $context);
+            $data['allow_force_pushes'] = $object->getAllowForcePushes() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAllowForcePushes(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('allowDeletions') && null !== $object->getAllowDeletions()) {
-            $data['allow_deletions'] = $this->normalizer->normalize($object->getAllowDeletions(), 'json', $context);
+            $data['allow_deletions'] = $object->getAllowDeletions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAllowDeletions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('restrictions') && null !== $object->getRestrictions()) {
-            $data['restrictions'] = $this->normalizer->normalize($object->getRestrictions(), 'json', $context);
+            $data['restrictions'] = $object->getRestrictions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRestrictions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

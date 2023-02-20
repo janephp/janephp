@@ -75,19 +75,19 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationNormalizer implem
     {
         $data = array();
         if ($object->isInitialized('basicInformation') && null !== $object->getBasicInformation()) {
-            $data['basicInformation'] = $this->normalizer->normalize($object->getBasicInformation(), 'json', $context);
+            $data['basicInformation'] = $object->getBasicInformation() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getBasicInformation(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('activityClassifications') && null !== $object->getActivityClassifications()) {
             $values = array();
             foreach ($object->getActivityClassifications() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['activityClassifications'] = $values;
         }
         if ($object->isInitialized('previousNames') && null !== $object->getPreviousNames()) {
             $values_1 = array();
             foreach ($object->getPreviousNames() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['previousNames'] = $values_1;
         }

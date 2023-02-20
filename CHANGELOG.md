@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- [JsonSchema] [GH#704](https://github.com/janephp/janephp/pull/704) Use arrayObject for objects in order to handle empty objects
+- [OpenAPI] [GH#704](https://github.com/janephp/janephp/pull/704) Use arrayObject for objects in order to handle empty objects
+- [JsonSchema] [GH#704](https://github.com/janephp/janephp/pull/704) Add checks to handle null objects
+- [OpenAPI] [GH#704](https://github.com/janephp/janephp/pull/704) Add checks to handle null objects
 
 ## [7.5.4] - 2023-10-09
 ### Changed

@@ -262,14 +262,14 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
         $data['state'] = $object->getState();
         $data['locked'] = $object->getLocked();
         $data['title'] = $object->getTitle();
-        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $data['user'] = $object->getUser() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getUser(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['body'] = $object->getBody();
         $values = array();
         foreach ($object->getLabels() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['labels'] = $values;
-        $data['milestone'] = $this->normalizer->normalize($object->getMilestone(), 'json', $context);
+        $data['milestone'] = $object->getMilestone() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getMilestone(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('activeLockReason') && null !== $object->getActiveLockReason()) {
             $data['active_lock_reason'] = $object->getActiveLockReason();
         }
@@ -278,31 +278,31 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
         $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:sP');
         $data['merged_at'] = $object->getMergedAt()->format('Y-m-d\\TH:i:sP');
         $data['merge_commit_sha'] = $object->getMergeCommitSha();
-        $data['assignee'] = $this->normalizer->normalize($object->getAssignee(), 'json', $context);
+        $data['assignee'] = $object->getAssignee() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAssignee(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('assignees') && null !== $object->getAssignees()) {
             $values_1 = array();
             foreach ($object->getAssignees() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['assignees'] = $values_1;
         }
         if ($object->isInitialized('requestedReviewers') && null !== $object->getRequestedReviewers()) {
             $values_2 = array();
             foreach ($object->getRequestedReviewers() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['requested_reviewers'] = $values_2;
         }
         if ($object->isInitialized('requestedTeams') && null !== $object->getRequestedTeams()) {
             $values_3 = array();
             foreach ($object->getRequestedTeams() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 == null ? null : new \ArrayObject($this->normalizer->normalize($value_3, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['requested_teams'] = $values_3;
         }
-        $data['head'] = $this->normalizer->normalize($object->getHead(), 'json', $context);
-        $data['base'] = $this->normalizer->normalize($object->getBase(), 'json', $context);
-        $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+        $data['head'] = $object->getHead() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getHead(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['base'] = $object->getBase() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getBase(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['_links'] = $object->getLinks() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLinks(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['author_association'] = $object->getAuthorAssociation();
         if ($object->isInitialized('draft') && null !== $object->getDraft()) {
             $data['draft'] = $object->getDraft();

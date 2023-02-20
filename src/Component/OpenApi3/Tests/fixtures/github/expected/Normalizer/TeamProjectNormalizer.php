@@ -158,7 +158,7 @@ class TeamProjectNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['state'] = $object->getState();
         }
         if ($object->isInitialized('creator') && null !== $object->getCreator()) {
-            $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
+            $data['creator'] = $object->getCreator() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCreator(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['created_at'] = $object->getCreatedAt();
@@ -173,7 +173,7 @@ class TeamProjectNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['private'] = $object->getPrivate();
         }
         if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
-            $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
+            $data['permissions'] = $object->getPermissions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPermissions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

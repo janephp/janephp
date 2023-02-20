@@ -69,10 +69,10 @@ class FileCommitNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $data = array();
         if ($object->isInitialized('content') && null !== $object->getContent()) {
-            $data['content'] = $this->normalizer->normalize($object->getContent(), 'json', $context);
+            $data['content'] = $object->getContent() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getContent(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('commit') && null !== $object->getCommit()) {
-            $data['commit'] = $this->normalizer->normalize($object->getCommit(), 'json', $context);
+            $data['commit'] = $object->getCommit() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCommit(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

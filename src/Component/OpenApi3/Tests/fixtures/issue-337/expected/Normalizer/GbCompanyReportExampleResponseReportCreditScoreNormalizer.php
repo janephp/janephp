@@ -71,13 +71,13 @@ class GbCompanyReportExampleResponseReportCreditScoreNormalizer implements Denor
     {
         $data = array();
         if ($object->isInitialized('currentCreditRating') && null !== $object->getCurrentCreditRating()) {
-            $data['currentCreditRating'] = $this->normalizer->normalize($object->getCurrentCreditRating(), 'json', $context);
+            $data['currentCreditRating'] = $object->getCurrentCreditRating() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCurrentCreditRating(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('currentContractLimit') && null !== $object->getCurrentContractLimit()) {
-            $data['currentContractLimit'] = $this->normalizer->normalize($object->getCurrentContractLimit(), 'json', $context);
+            $data['currentContractLimit'] = $object->getCurrentContractLimit() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCurrentContractLimit(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('previousCreditRating') && null !== $object->getPreviousCreditRating()) {
-            $data['previousCreditRating'] = $this->normalizer->normalize($object->getPreviousCreditRating(), 'json', $context);
+            $data['previousCreditRating'] = $object->getPreviousCreditRating() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPreviousCreditRating(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('latestRatingChangeDate') && null !== $object->getLatestRatingChangeDate()) {
             $data['latestRatingChangeDate'] = $object->getLatestRatingChangeDate();

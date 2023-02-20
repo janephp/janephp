@@ -75,7 +75,7 @@ class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Normalizer implements Den
         if ($object->isInitialized('checkSuites') && null !== $object->getCheckSuites()) {
             $values = array();
             foreach ($object->getCheckSuites() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['check_suites'] = $values;
         }

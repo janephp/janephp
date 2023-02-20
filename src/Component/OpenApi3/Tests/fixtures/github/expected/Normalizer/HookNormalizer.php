@@ -118,13 +118,13 @@ class HookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $values[] = $value;
         }
         $data['events'] = $values;
-        $data['config'] = $this->normalizer->normalize($object->getConfig(), 'json', $context);
+        $data['config'] = $object->getConfig() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['url'] = $object->getUrl();
         $data['test_url'] = $object->getTestUrl();
         $data['ping_url'] = $object->getPingUrl();
-        $data['last_response'] = $this->normalizer->normalize($object->getLastResponse(), 'json', $context);
+        $data['last_response'] = $object->getLastResponse() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLastResponse(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value_1;

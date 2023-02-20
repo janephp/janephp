@@ -73,9 +73,9 @@ class GistsGistIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
             $data['description'] = $object->getDescription();
         }
         if ($object->isInitialized('files') && null !== $object->getFiles()) {
-            $values = array();
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getFiles() as $key => $value) {
-                $values[$key] = $this->normalizer->normalize($value, 'json', $context);
+                $values[$key] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['files'] = $values;
         }

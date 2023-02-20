@@ -113,16 +113,16 @@ class ListFreshInvestigationResponseOrdersItemNormalizer implements Denormalizer
             $data['chargeReference'] = $object->getChargeReference();
         }
         if ($object->isInitialized('contactDetails') && null !== $object->getContactDetails()) {
-            $data['contactDetails'] = $this->normalizer->normalize($object->getContactDetails(), 'json', $context);
+            $data['contactDetails'] = $object->getContactDetails() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getContactDetails(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('status') && null !== $object->getStatus()) {
-            $data['status'] = $this->normalizer->normalize($object->getStatus(), 'json', $context);
+            $data['status'] = $object->getStatus() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getStatus(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('consent') && null !== $object->getConsent()) {
             $data['consent'] = $object->getConsent();
         }
         if ($object->isInitialized('searchCriteria') && null !== $object->getSearchCriteria()) {
-            $data['searchCriteria'] = $this->normalizer->normalize($object->getSearchCriteria(), 'json', $context);
+            $data['searchCriteria'] = $object->getSearchCriteria() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSearchCriteria(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

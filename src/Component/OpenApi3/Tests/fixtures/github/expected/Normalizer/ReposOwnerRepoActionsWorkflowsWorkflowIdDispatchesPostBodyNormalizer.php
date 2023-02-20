@@ -71,7 +71,7 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyNormalizer imple
         $data = array();
         $data['ref'] = $object->getRef();
         if ($object->isInitialized('inputs') && null !== $object->getInputs()) {
-            $values = array();
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getInputs() as $key => $value) {
                 $values[$key] = $value;
             }

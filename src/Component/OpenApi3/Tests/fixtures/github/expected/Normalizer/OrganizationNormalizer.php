@@ -217,7 +217,7 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         if ($object->isInitialized('plan') && null !== $object->getPlan()) {
-            $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
+            $data['plan'] = $object->getPlan() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPlan(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

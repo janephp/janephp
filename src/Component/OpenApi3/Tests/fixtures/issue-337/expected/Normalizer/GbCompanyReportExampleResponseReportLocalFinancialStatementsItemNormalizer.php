@@ -120,19 +120,19 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemNormalizer
             $data['auditQualification'] = $object->getAuditQualification();
         }
         if ($object->isInitialized('profitAndLoss') && null !== $object->getProfitAndLoss()) {
-            $data['profitAndLoss'] = $this->normalizer->normalize($object->getProfitAndLoss(), 'json', $context);
+            $data['profitAndLoss'] = $object->getProfitAndLoss() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getProfitAndLoss(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('balanceSheet') && null !== $object->getBalanceSheet()) {
-            $data['balanceSheet'] = $this->normalizer->normalize($object->getBalanceSheet(), 'json', $context);
+            $data['balanceSheet'] = $object->getBalanceSheet() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getBalanceSheet(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('cashFlow') && null !== $object->getCashFlow()) {
-            $data['cashFlow'] = $this->normalizer->normalize($object->getCashFlow(), 'json', $context);
+            $data['cashFlow'] = $object->getCashFlow() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCashFlow(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('otherFinancials') && null !== $object->getOtherFinancials()) {
-            $data['otherFinancials'] = $this->normalizer->normalize($object->getOtherFinancials(), 'json', $context);
+            $data['otherFinancials'] = $object->getOtherFinancials() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getOtherFinancials(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('ratios') && null !== $object->getRatios()) {
-            $data['ratios'] = $this->normalizer->normalize($object->getRatios(), 'json', $context);
+            $data['ratios'] = $object->getRatios() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRatios(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

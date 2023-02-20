@@ -107,7 +107,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['array'] = $values;
         }
         if ($object->isInitialized('object') && null !== $object->getObject()) {
-            $values_1 = array();
+            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getObject() as $key => $value_2) {
                 $values_1[$key] = $value_2;
             }

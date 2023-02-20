@@ -61,7 +61,7 @@ class ContentDownloadLinkCreateRequestNormalizer implements DenormalizerInterfac
         $data = array();
         $values = array();
         foreach ($object->getContents() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['contents'] = $values;
         $data['notifyProgress'] = $object->getNotifyProgress();

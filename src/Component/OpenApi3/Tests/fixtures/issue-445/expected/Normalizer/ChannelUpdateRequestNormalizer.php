@@ -130,17 +130,17 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
         if ($object->isInitialized('sort') && null !== $object->getSort()) {
             $values = array();
             foreach ($object->getSort() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['sort'] = $values;
         }
         $data['sortOrder'] = $object->getSortOrder();
         $values_1 = array();
         foreach ($object->getSortFields() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['sortFields'] = $values_1;
-        $values_2 = array();
+        $values_2 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object->getNames() as $key => $value_2) {
             $values_2[$key] = $value_2;
         }
@@ -158,7 +158,7 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
         if ($object->isInitialized('aggregations') && null !== $object->getAggregations()) {
             $values_4 = array();
             foreach ($object->getAggregations() as $value_4) {
-                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = $value_4 == null ? null : new \ArrayObject($this->normalizer->normalize($value_4, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['aggregations'] = $values_4;
         }

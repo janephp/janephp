@@ -79,7 +79,7 @@ class TeamsTeamIdMembershipsUsernamePutResponse422Normalizer implements Denormal
         if ($object->isInitialized('errors') && null !== $object->getErrors()) {
             $values = array();
             foreach ($object->getErrors() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['errors'] = $values;
         }

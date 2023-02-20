@@ -121,7 +121,7 @@ class FeedNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if ($object->isInitialized('securityAdvisoriesUrl') && null !== $object->getSecurityAdvisoriesUrl()) {
             $data['security_advisories_url'] = $object->getSecurityAdvisoriesUrl();
         }
-        $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+        $data['_links'] = $object->getLinks() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLinks(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value_1;

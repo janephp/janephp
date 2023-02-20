@@ -123,21 +123,21 @@ class CommitSearchResultItemNormalizer implements DenormalizerInterface, Normali
         $data['sha'] = $object->getSha();
         $data['html_url'] = $object->getHtmlUrl();
         $data['comments_url'] = $object->getCommentsUrl();
-        $data['commit'] = $this->normalizer->normalize($object->getCommit(), 'json', $context);
-        $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
-        $data['committer'] = $this->normalizer->normalize($object->getCommitter(), 'json', $context);
+        $data['commit'] = $object->getCommit() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCommit(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['author'] = $object->getAuthor() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAuthor(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['committer'] = $object->getCommitter() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCommitter(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $values = array();
         foreach ($object->getParents() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['parents'] = $values;
-        $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
+        $data['repository'] = $object->getRepository() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRepository(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['score'] = $object->getScore();
         $data['node_id'] = $object->getNodeId();
         if ($object->isInitialized('textMatches') && null !== $object->getTextMatches()) {
             $values_1 = array();
             foreach ($object->getTextMatches() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['text_matches'] = $values_1;
         }

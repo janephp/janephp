@@ -67,7 +67,7 @@ class HovercardNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data = array();
         $values = array();
         foreach ($object->getContexts() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['contexts'] = $values;
         foreach ($object as $key => $value_1) {

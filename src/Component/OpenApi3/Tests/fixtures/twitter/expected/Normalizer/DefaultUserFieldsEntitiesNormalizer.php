@@ -63,10 +63,10 @@ class DefaultUserFieldsEntitiesNormalizer implements DenormalizerInterface, Norm
     {
         $data = array();
         if ($object->isInitialized('url') && null !== $object->getUrl()) {
-            $data['url'] = $this->normalizer->normalize($object->getUrl(), 'json', $context);
+            $data['url'] = $object->getUrl() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getUrl(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('description') && null !== $object->getDescription()) {
-            $data['description'] = $this->normalizer->normalize($object->getDescription(), 'json', $context);
+            $data['description'] = $object->getDescription() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getDescription(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

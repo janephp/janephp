@@ -95,14 +95,14 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputNormalizer implements Deno
         if ($object->isInitialized('annotations') && null !== $object->getAnnotations()) {
             $values = array();
             foreach ($object->getAnnotations() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['annotations'] = $values;
         }
         if ($object->isInitialized('images') && null !== $object->getImages()) {
             $values_1 = array();
             foreach ($object->getImages() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['images'] = $values_1;
         }

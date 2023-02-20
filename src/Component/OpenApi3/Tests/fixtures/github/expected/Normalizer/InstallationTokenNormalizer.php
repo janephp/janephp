@@ -92,7 +92,7 @@ class InstallationTokenNormalizer implements DenormalizerInterface, NormalizerIn
             $data['expires_at'] = $object->getExpiresAt();
         }
         if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
-            $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
+            $data['permissions'] = $object->getPermissions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPermissions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('repositorySelection') && null !== $object->getRepositorySelection()) {
             $data['repository_selection'] = $object->getRepositorySelection();
@@ -100,7 +100,7 @@ class InstallationTokenNormalizer implements DenormalizerInterface, NormalizerIn
         if ($object->isInitialized('repositories') && null !== $object->getRepositories()) {
             $values = array();
             foreach ($object->getRepositories() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['repositories'] = $values;
         }

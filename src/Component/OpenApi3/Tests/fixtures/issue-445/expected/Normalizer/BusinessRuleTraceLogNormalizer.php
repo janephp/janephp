@@ -127,21 +127,21 @@ class BusinessRuleTraceLogNormalizer implements DenormalizerInterface, Normalize
         if ($object->isInitialized('rules') && null !== $object->getRules()) {
             $values_1 = array();
             foreach ($object->getRules() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['rules'] = $values_1;
         }
         if ($object->isInitialized('validationErrors') && null !== $object->getValidationErrors()) {
             $values_2 = array();
             foreach ($object->getValidationErrors() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['validationErrors'] = $values_2;
         }
         if ($object->isInitialized('generalErrors') && null !== $object->getGeneralErrors()) {
             $values_3 = array();
             foreach ($object->getGeneralErrors() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 == null ? null : new \ArrayObject($this->normalizer->normalize($value_3, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['generalErrors'] = $values_3;
         }

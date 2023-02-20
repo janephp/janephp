@@ -180,21 +180,21 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         if ($object->isInitialized('textMatches') && null !== $object->getTextMatches()) {
             $values = array();
             foreach ($object->getTextMatches() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['text_matches'] = $values;
         }
         if ($object->isInitialized('related') && null !== $object->getRelated()) {
             $values_1 = array();
             foreach ($object->getRelated() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['related'] = $values_1;
         }
         if ($object->isInitialized('aliases') && null !== $object->getAliases()) {
             $values_2 = array();
             foreach ($object->getAliases() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['aliases'] = $values_2;
         }

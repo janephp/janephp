@@ -91,7 +91,7 @@ class BusinessRuleTransformationGroupNormalizer implements DenormalizerInterface
         if ($object->isInitialized('transformations') && null !== $object->getTransformations()) {
             $values_1 = array();
             foreach ($object->getTransformations() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['transformations'] = $values_1;
         }

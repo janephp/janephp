@@ -75,7 +75,7 @@ class ReposOwnerRepoActionsRunnersGetResponse200Normalizer implements Denormaliz
         if ($object->isInitialized('runners') && null !== $object->getRunners()) {
             $values = array();
             foreach ($object->getRunners() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['runners'] = $values;
         }

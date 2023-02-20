@@ -143,7 +143,7 @@ class ShareSearchRequestNormalizer implements DenormalizerInterface, NormalizerI
         if ($object->isInitialized('aggregationFilters') && null !== $object->getAggregationFilters()) {
             $values_1 = array();
             foreach ($object->getAggregationFilters() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['aggregationFilters'] = $values_1;
         }
@@ -153,7 +153,7 @@ class ShareSearchRequestNormalizer implements DenormalizerInterface, NormalizerI
         if ($object->isInitialized('sort') && null !== $object->getSort()) {
             $values_2 = array();
             foreach ($object->getSort() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['sort'] = $values_2;
         }
@@ -166,7 +166,7 @@ class ShareSearchRequestNormalizer implements DenormalizerInterface, NormalizerI
         if ($object->isInitialized('aggregators') && null !== $object->getAggregators()) {
             $values_3 = array();
             foreach ($object->getAggregators() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 == null ? null : new \ArrayObject($this->normalizer->normalize($value_3, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['aggregators'] = $values_3;
         }

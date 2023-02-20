@@ -75,7 +75,7 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Normalizer imple
         if ($object->isInitialized('workflowRuns') && null !== $object->getWorkflowRuns()) {
             $values = array();
             foreach ($object->getWorkflowRuns() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['workflow_runs'] = $values;
         }

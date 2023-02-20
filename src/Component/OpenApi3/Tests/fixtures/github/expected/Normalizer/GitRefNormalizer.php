@@ -83,7 +83,7 @@ class GitRefNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data['url'] = $object->getUrl();
         }
         if ($object->isInitialized('object') && null !== $object->getObject()) {
-            $data['object'] = $this->normalizer->normalize($object->getObject(), 'json', $context);
+            $data['object'] = $object->getObject() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getObject(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -62,7 +62,7 @@ class WorkflowUsageNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $data = array();
         if ($object->isInitialized('billable') && null !== $object->getBillable()) {
-            $data['billable'] = $this->normalizer->normalize($object->getBillable(), 'json', $context);
+            $data['billable'] = $object->getBillable() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getBillable(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

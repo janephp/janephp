@@ -91,7 +91,7 @@ class AssignLayerActionNormalizer implements DenormalizerInterface, NormalizerIn
             $data['layerId'] = $object->getLayerId();
         }
         if ($object->isInitialized('defaultValues') && null !== $object->getDefaultValues()) {
-            $values = array();
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getDefaultValues() as $key => $value) {
                 $values[$key] = $value;
             }

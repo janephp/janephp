@@ -151,17 +151,17 @@ class AuthorizationNormalizer implements DenormalizerInterface, NormalizerInterf
         $data['token'] = $object->getToken();
         $data['token_last_eight'] = $object->getTokenLastEight();
         $data['hashed_token'] = $object->getHashedToken();
-        $data['app'] = $this->normalizer->normalize($object->getApp(), 'json', $context);
+        $data['app'] = $object->getApp() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getApp(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['note'] = $object->getNote();
         $data['note_url'] = $object->getNoteUrl();
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['fingerprint'] = $object->getFingerprint();
         if ($object->isInitialized('user') && null !== $object->getUser()) {
-            $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+            $data['user'] = $object->getUser() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getUser(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('installation') && null !== $object->getInstallation()) {
-            $data['installation'] = $this->normalizer->normalize($object->getInstallation(), 'json', $context);
+            $data['installation'] = $object->getInstallation() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getInstallation(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

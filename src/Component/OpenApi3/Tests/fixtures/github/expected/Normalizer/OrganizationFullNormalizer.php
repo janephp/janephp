@@ -317,7 +317,7 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
             $data['billing_email'] = $object->getBillingEmail();
         }
         if ($object->isInitialized('plan') && null !== $object->getPlan()) {
-            $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
+            $data['plan'] = $object->getPlan() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPlan(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('defaultRepositoryPermission') && null !== $object->getDefaultRepositoryPermission()) {
             $data['default_repository_permission'] = $object->getDefaultRepositoryPermission();

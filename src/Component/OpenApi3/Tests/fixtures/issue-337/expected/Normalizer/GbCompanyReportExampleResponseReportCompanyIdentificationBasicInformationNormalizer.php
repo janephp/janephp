@@ -106,16 +106,16 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationN
             $data['companyRegistrationDate'] = $object->getCompanyRegistrationDate();
         }
         if ($object->isInitialized('legalForm') && null !== $object->getLegalForm()) {
-            $data['legalForm'] = $this->normalizer->normalize($object->getLegalForm(), 'json', $context);
+            $data['legalForm'] = $object->getLegalForm() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLegalForm(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('companyStatus') && null !== $object->getCompanyStatus()) {
-            $data['companyStatus'] = $this->normalizer->normalize($object->getCompanyStatus(), 'json', $context);
+            $data['companyStatus'] = $object->getCompanyStatus() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCompanyStatus(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('principalActivity') && null !== $object->getPrincipalActivity()) {
-            $data['principalActivity'] = $this->normalizer->normalize($object->getPrincipalActivity(), 'json', $context);
+            $data['principalActivity'] = $object->getPrincipalActivity() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPrincipalActivity(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('contactAddress') && null !== $object->getContactAddress()) {
-            $data['contactAddress'] = $this->normalizer->normalize($object->getContactAddress(), 'json', $context);
+            $data['contactAddress'] = $object->getContactAddress() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getContactAddress(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

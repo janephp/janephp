@@ -66,7 +66,7 @@ class StarredRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $data = array();
         $data['starred_at'] = $object->getStarredAt()->format('Y-m-d\\TH:i:sP');
-        $data['repo'] = $this->normalizer->normalize($object->getRepo(), 'json', $context);
+        $data['repo'] = $object->getRepo() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRepo(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

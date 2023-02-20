@@ -157,7 +157,7 @@ class ContentLayerSameRootExceptionNormalizer implements DenormalizerInterface, 
         if ($object->isInitialized('layerIdsByRootSchema') && null !== $object->getLayerIdsByRootSchema()) {
             $values = array();
             foreach ($object->getLayerIdsByRootSchema() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['layerIdsByRootSchema'] = $values;
         }

@@ -122,20 +122,20 @@ class CommitComparisonNormalizer implements DenormalizerInterface, NormalizerInt
         $data['permalink_url'] = $object->getPermalinkUrl();
         $data['diff_url'] = $object->getDiffUrl();
         $data['patch_url'] = $object->getPatchUrl();
-        $data['base_commit'] = $this->normalizer->normalize($object->getBaseCommit(), 'json', $context);
-        $data['merge_base_commit'] = $this->normalizer->normalize($object->getMergeBaseCommit(), 'json', $context);
+        $data['base_commit'] = $object->getBaseCommit() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getBaseCommit(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['merge_base_commit'] = $object->getMergeBaseCommit() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getMergeBaseCommit(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['status'] = $object->getStatus();
         $data['ahead_by'] = $object->getAheadBy();
         $data['behind_by'] = $object->getBehindBy();
         $data['total_commits'] = $object->getTotalCommits();
         $values = array();
         foreach ($object->getCommits() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['commits'] = $values;
         $values_1 = array();
         foreach ($object->getFiles() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['files'] = $values_1;
         foreach ($object as $key => $value_2) {

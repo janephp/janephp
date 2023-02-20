@@ -208,14 +208,14 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['brokenRelationTargetIds'] = $values_3;
         }
         if ($object->isInitialized('content') && null !== $object->getContent()) {
-            $values_4 = array();
+            $values_4 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getContent() as $key => $value_4) {
                 $values_4[$key] = $value_4;
             }
             $data['content'] = $values_4;
         }
         if ($object->isInitialized('metadata') && null !== $object->getMetadata()) {
-            $values_5 = array();
+            $values_5 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getMetadata() as $key_1 => $value_5) {
                 $values_5[$key_1] = $value_5;
             }
@@ -232,7 +232,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($object->isInitialized('outputs') && null !== $object->getOutputs()) {
             $values_7 = array();
             foreach ($object->getOutputs() as $value_7) {
-                $values_7[] = $this->normalizer->normalize($value_7, 'json', $context);
+                $values_7[] = $value_7 == null ? null : new \ArrayObject($this->normalizer->normalize($value_7, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['outputs'] = $values_7;
         }

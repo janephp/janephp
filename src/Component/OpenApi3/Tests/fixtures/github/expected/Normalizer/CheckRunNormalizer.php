@@ -156,10 +156,10 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['conclusion'] = $object->getConclusion();
         $data['started_at'] = $object->getStartedAt()->format('Y-m-d\\TH:i:sP');
         $data['completed_at'] = $object->getCompletedAt()->format('Y-m-d\\TH:i:sP');
-        $data['output'] = $this->normalizer->normalize($object->getOutput(), 'json', $context);
+        $data['output'] = $object->getOutput() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getOutput(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['name'] = $object->getName();
-        $data['check_suite'] = $this->normalizer->normalize($object->getCheckSuite(), 'json', $context);
-        $data['app'] = $this->normalizer->normalize($object->getApp(), 'json', $context);
+        $data['check_suite'] = $object->getCheckSuite() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCheckSuite(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['app'] = $object->getApp() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getApp(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['pull_requests'] = $object->getPullRequests();
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

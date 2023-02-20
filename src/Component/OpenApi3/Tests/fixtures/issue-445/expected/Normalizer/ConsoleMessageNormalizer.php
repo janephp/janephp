@@ -115,7 +115,7 @@ class ConsoleMessageNormalizer implements DenormalizerInterface, NormalizerInter
         if ($object->isInitialized('arguments') && null !== $object->getArguments()) {
             $values = array();
             foreach ($object->getArguments() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['arguments'] = $values;
         }

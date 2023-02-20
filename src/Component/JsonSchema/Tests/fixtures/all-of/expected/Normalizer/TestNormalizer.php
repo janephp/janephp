@@ -50,10 +50,10 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     {
         $data = array();
         if ($object->isInitialized('child') && null !== $object->getChild()) {
-            $data['child'] = $this->normalizer->normalize($object->getChild(), 'json', $context);
+            $data['child'] = $object->getChild() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getChild(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('parent') && null !== $object->getParent()) {
-            $data['parent'] = $this->normalizer->normalize($object->getParent(), 'json', $context);
+            $data['parent'] = $object->getParent() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getParent(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         return $data;
     }

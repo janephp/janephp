@@ -88,33 +88,33 @@ class ServicesIdUpdatePostBodyNormalizer implements DenormalizerInterface, Norma
             $data['Name'] = $object->getName();
         }
         if ($object->isInitialized('labels') && null !== $object->getLabels()) {
-            $values = array();
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getLabels() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['Labels'] = $values;
         }
         if ($object->isInitialized('taskTemplate') && null !== $object->getTaskTemplate()) {
-            $data['TaskTemplate'] = $this->normalizer->normalize($object->getTaskTemplate(), 'json', $context);
+            $data['TaskTemplate'] = $object->getTaskTemplate() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getTaskTemplate(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('mode') && null !== $object->getMode()) {
-            $data['Mode'] = $this->normalizer->normalize($object->getMode(), 'json', $context);
+            $data['Mode'] = $object->getMode() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getMode(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('updateConfig') && null !== $object->getUpdateConfig()) {
-            $data['UpdateConfig'] = $this->normalizer->normalize($object->getUpdateConfig(), 'json', $context);
+            $data['UpdateConfig'] = $object->getUpdateConfig() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getUpdateConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('rollbackConfig') && null !== $object->getRollbackConfig()) {
-            $data['RollbackConfig'] = $this->normalizer->normalize($object->getRollbackConfig(), 'json', $context);
+            $data['RollbackConfig'] = $object->getRollbackConfig() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRollbackConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('networks') && null !== $object->getNetworks()) {
             $values_1 = array();
             foreach ($object->getNetworks() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['Networks'] = $values_1;
         }
         if ($object->isInitialized('endpointSpec') && null !== $object->getEndpointSpec()) {
-            $data['EndpointSpec'] = $this->normalizer->normalize($object->getEndpointSpec(), 'json', $context);
+            $data['EndpointSpec'] = $object->getEndpointSpec() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getEndpointSpec(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ServicesIdUpdatePostBodyConstraint());

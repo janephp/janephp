@@ -78,7 +78,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemNormalizer implements
             $data['record'] = $object->getRecord();
         }
         if ($object->isInitialized('recordDetails') && null !== $object->getRecordDetails()) {
-            $data['recordDetails'] = $this->normalizer->normalize($object->getRecordDetails(), 'json', $context);
+            $data['recordDetails'] = $object->getRecordDetails() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRecordDetails(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('resultID') && null !== $object->getResultID()) {
             $data['resultID'] = $object->getResultID();
@@ -87,7 +87,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemNormalizer implements
             $data['runID'] = $object->getRunID();
         }
         if ($object->isInitialized('watchlist') && null !== $object->getWatchlist()) {
-            $data['watchlist'] = $this->normalizer->normalize($object->getWatchlist(), 'json', $context);
+            $data['watchlist'] = $object->getWatchlist() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getWatchlist(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

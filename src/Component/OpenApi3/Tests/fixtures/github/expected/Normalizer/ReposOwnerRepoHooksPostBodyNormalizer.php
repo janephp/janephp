@@ -80,7 +80,7 @@ class ReposOwnerRepoHooksPostBodyNormalizer implements DenormalizerInterface, No
         if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        $data['config'] = $this->normalizer->normalize($object->getConfig(), 'json', $context);
+        $data['config'] = $object->getConfig() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('events') && null !== $object->getEvents()) {
             $values = array();
             foreach ($object->getEvents() as $value) {

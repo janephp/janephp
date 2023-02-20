@@ -128,7 +128,7 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
         if ($object->isInitialized('outputItems') && null !== $object->getOutputItems()) {
             $values = array();
             foreach ($object->getOutputItems() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['outputItems'] = $values;
         }

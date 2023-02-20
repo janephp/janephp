@@ -157,7 +157,7 @@ class BusinessRuleValidationExceptionNormalizer implements DenormalizerInterface
         if ($object->isInitialized('innerExceptions') && null !== $object->getInnerExceptions()) {
             $values = array();
             foreach ($object->getInnerExceptions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['innerExceptions'] = $values;
         }

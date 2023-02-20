@@ -83,7 +83,7 @@ class ActionsBillingUsageNormalizer implements DenormalizerInterface, Normalizer
             $data['included_minutes'] = $object->getIncludedMinutes();
         }
         if ($object->isInitialized('minutesUsedBreakdown') && null !== $object->getMinutesUsedBreakdown()) {
-            $data['minutes_used_breakdown'] = $this->normalizer->normalize($object->getMinutesUsedBreakdown(), 'json', $context);
+            $data['minutes_used_breakdown'] = $object->getMinutesUsedBreakdown() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getMinutesUsedBreakdown(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

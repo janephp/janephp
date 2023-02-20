@@ -96,7 +96,7 @@ class NotificationEventNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $data = array();
         if ($object->isInitialized('company') && null !== $object->getCompany()) {
-            $data['company'] = $this->normalizer->normalize($object->getCompany(), 'json', $context);
+            $data['company'] = $object->getCompany() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCompany(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('eventId') && null !== $object->getEventId()) {
             $data['eventId'] = $object->getEventId();

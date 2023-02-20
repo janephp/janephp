@@ -101,7 +101,7 @@ class GbPeopleReportReponseNormalizer implements DenormalizerInterface, Normaliz
             $data['userId'] = $object->getUserId();
         }
         if ($object->isInitialized('report') && null !== $object->getReport()) {
-            $data['report'] = $this->normalizer->normalize($object->getReport(), 'json', $context);
+            $data['report'] = $object->getReport() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getReport(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

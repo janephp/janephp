@@ -77,7 +77,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
             $data['id'] = $object->getId();
         }
         if ($object->isInitialized('name') && null !== $object->getName()) {
-            $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
+            $data['name'] = $object->getName() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getName(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();

@@ -107,22 +107,22 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemNormalizer implements 
             $data['status'] = $object->getStatus();
         }
         if ($object->isInitialized('position') && null !== $object->getPosition()) {
-            $data['position'] = $this->normalizer->normalize($object->getPosition(), 'json', $context);
+            $data['position'] = $object->getPosition() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPosition(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('companyRegistrationDate') && null !== $object->getCompanyRegistrationDate()) {
             $data['companyRegistrationDate'] = $object->getCompanyRegistrationDate();
         }
         if ($object->isInitialized('netWorth') && null !== $object->getNetWorth()) {
-            $data['netWorth'] = $this->normalizer->normalize($object->getNetWorth(), 'json', $context);
+            $data['netWorth'] = $object->getNetWorth() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getNetWorth(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('legalCount') && null !== $object->getLegalCount()) {
             $data['legalCount'] = $object->getLegalCount();
         }
         if ($object->isInitialized('creditScore') && null !== $object->getCreditScore()) {
-            $data['creditScore'] = $this->normalizer->normalize($object->getCreditScore(), 'json', $context);
+            $data['creditScore'] = $object->getCreditScore() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCreditScore(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('additionalData') && null !== $object->getAdditionalData()) {
-            $data['additionalData'] = $this->normalizer->normalize($object->getAdditionalData(), 'json', $context);
+            $data['additionalData'] = $object->getAdditionalData() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAdditionalData(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

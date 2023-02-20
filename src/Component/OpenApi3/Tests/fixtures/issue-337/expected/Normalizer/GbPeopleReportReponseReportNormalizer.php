@@ -82,20 +82,20 @@ class GbPeopleReportReponseReportNormalizer implements DenormalizerInterface, No
             $data['directorId'] = $object->getDirectorId();
         }
         if ($object->isInitialized('directorSummary') && null !== $object->getDirectorSummary()) {
-            $data['directorSummary'] = $this->normalizer->normalize($object->getDirectorSummary(), 'json', $context);
+            $data['directorSummary'] = $object->getDirectorSummary() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getDirectorSummary(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('directorDetails') && null !== $object->getDirectorDetails()) {
-            $data['directorDetails'] = $this->normalizer->normalize($object->getDirectorDetails(), 'json', $context);
+            $data['directorDetails'] = $object->getDirectorDetails() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getDirectorDetails(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('otherAddresses') && null !== $object->getOtherAddresses()) {
             $values = array();
             foreach ($object->getOtherAddresses() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['otherAddresses'] = $values;
         }
         if ($object->isInitialized('directorships') && null !== $object->getDirectorships()) {
-            $data['directorships'] = $this->normalizer->normalize($object->getDirectorships(), 'json', $context);
+            $data['directorships'] = $object->getDirectorships() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getDirectorships(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

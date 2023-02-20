@@ -65,7 +65,7 @@ class TaskSpecContainerSpecConfigsItemNormalizer implements DenormalizerInterfac
     {
         $data = array();
         if ($object->isInitialized('file') && null !== $object->getFile()) {
-            $data['File'] = $this->normalizer->normalize($object->getFile(), 'json', $context);
+            $data['File'] = $object->getFile() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getFile(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('runtime') && null !== $object->getRuntime()) {
             $data['Runtime'] = $object->getRuntime();

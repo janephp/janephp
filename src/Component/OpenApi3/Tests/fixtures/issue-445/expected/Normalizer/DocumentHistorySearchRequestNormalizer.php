@@ -105,7 +105,7 @@ class DocumentHistorySearchRequestNormalizer implements DenormalizerInterface, N
         if ($object->isInitialized('sort') && null !== $object->getSort()) {
             $values = array();
             foreach ($object->getSort() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['sort'] = $values;
         }

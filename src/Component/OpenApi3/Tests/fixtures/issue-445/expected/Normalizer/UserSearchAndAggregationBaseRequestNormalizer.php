@@ -124,7 +124,7 @@ class UserSearchAndAggregationBaseRequestNormalizer implements DenormalizerInter
         if ($object->isInitialized('aggregationFilters') && null !== $object->getAggregationFilters()) {
             $values_2 = array();
             foreach ($object->getAggregationFilters() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['aggregationFilters'] = $values_2;
         }

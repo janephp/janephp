@@ -59,7 +59,7 @@ class BookJsonhalBookReadLinksNormalizer implements DenormalizerInterface, Norma
     {
         $data = array();
         if ($object->isInitialized('self') && null !== $object->getSelf()) {
-            $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
+            $data['self'] = $object->getSelf() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSelf(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

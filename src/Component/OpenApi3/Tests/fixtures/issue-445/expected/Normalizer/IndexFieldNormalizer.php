@@ -118,14 +118,14 @@ class IndexFieldNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['type'] = $object->getType();
         }
         if ($object->isInitialized('indexFields') && null !== $object->getIndexFields()) {
-            $values = array();
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getIndexFields() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['indexFields'] = $values;
         }
         if ($object->isInitialized('simpleSearchFields') && null !== $object->getSimpleSearchFields()) {
-            $values_1 = array();
+            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getSimpleSearchFields() as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }

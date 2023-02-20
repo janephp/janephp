@@ -296,7 +296,7 @@ class PrivateUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['collaborators'] = $object->getCollaborators();
         $data['two_factor_authentication'] = $object->getTwoFactorAuthentication();
         if ($object->isInitialized('plan') && null !== $object->getPlan()) {
-            $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
+            $data['plan'] = $object->getPlan() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPlan(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('suspendedAt') && null !== $object->getSuspendedAt()) {
             $data['suspended_at'] = $object->getSuspendedAt()->format('Y-m-d\\TH:i:sP');

@@ -92,13 +92,13 @@ class MountNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['Consistency'] = $object->getConsistency();
         }
         if ($object->isInitialized('bindOptions') && null !== $object->getBindOptions()) {
-            $data['BindOptions'] = $this->normalizer->normalize($object->getBindOptions(), 'json', $context);
+            $data['BindOptions'] = $object->getBindOptions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getBindOptions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('volumeOptions') && null !== $object->getVolumeOptions()) {
-            $data['VolumeOptions'] = $this->normalizer->normalize($object->getVolumeOptions(), 'json', $context);
+            $data['VolumeOptions'] = $object->getVolumeOptions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getVolumeOptions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('tmpfsOptions') && null !== $object->getTmpfsOptions()) {
-            $data['TmpfsOptions'] = $this->normalizer->normalize($object->getTmpfsOptions(), 'json', $context);
+            $data['TmpfsOptions'] = $object->getTmpfsOptions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getTmpfsOptions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\MountConstraint());

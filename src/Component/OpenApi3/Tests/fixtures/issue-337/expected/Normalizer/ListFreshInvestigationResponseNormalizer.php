@@ -72,7 +72,7 @@ class ListFreshInvestigationResponseNormalizer implements DenormalizerInterface,
         if ($object->isInitialized('orders') && null !== $object->getOrders()) {
             $values = array();
             foreach ($object->getOrders() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['orders'] = $values;
         }

@@ -122,7 +122,7 @@ class ContentTreeEntriesItemNormalizer implements DenormalizerInterface, Normali
         $data['git_url'] = $object->getGitUrl();
         $data['html_url'] = $object->getHtmlUrl();
         $data['download_url'] = $object->getDownloadUrl();
-        $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+        $data['_links'] = $object->getLinks() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLinks(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

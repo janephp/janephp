@@ -107,14 +107,14 @@ class ContentCreateRequestNormalizer implements DenormalizerInterface, Normalize
             $data['layerSchemaIds'] = $values;
         }
         if ($object->isInitialized('content') && null !== $object->getContent()) {
-            $values_1 = array();
+            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getContent() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $data['content'] = $values_1;
         }
         if ($object->isInitialized('metadata') && null !== $object->getMetadata()) {
-            $values_2 = array();
+            $values_2 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getMetadata() as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }

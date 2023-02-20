@@ -78,10 +78,10 @@ class ShortBranchNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $data = array();
         $data['name'] = $object->getName();
-        $data['commit'] = $this->normalizer->normalize($object->getCommit(), 'json', $context);
+        $data['commit'] = $object->getCommit() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCommit(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['protected'] = $object->getProtected();
         if ($object->isInitialized('protection') && null !== $object->getProtection()) {
-            $data['protection'] = $this->normalizer->normalize($object->getProtection(), 'json', $context);
+            $data['protection'] = $object->getProtection() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getProtection(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('protectionUrl') && null !== $object->getProtectionUrl()) {
             $data['protection_url'] = $object->getProtectionUrl();

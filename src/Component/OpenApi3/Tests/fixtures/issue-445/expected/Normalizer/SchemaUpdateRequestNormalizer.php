@@ -153,35 +153,35 @@ class SchemaUpdateRequestNormalizer implements DenormalizerInterface, Normalizer
         if ($object->isInitialized('displayPatterns') && null !== $object->getDisplayPatterns()) {
             $values = array();
             foreach ($object->getDisplayPatterns() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['displayPatterns'] = $values;
         }
         if ($object->isInitialized('fields') && null !== $object->getFields()) {
             $values_1 = array();
             foreach ($object->getFields() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['fields'] = $values_1;
         }
         if ($object->isInitialized('fieldsOverwrite') && null !== $object->getFieldsOverwrite()) {
             $values_2 = array();
             foreach ($object->getFieldsOverwrite() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['fieldsOverwrite'] = $values_2;
         }
         if ($object->isInitialized('aggregations') && null !== $object->getAggregations()) {
             $values_3 = array();
             foreach ($object->getAggregations() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 == null ? null : new \ArrayObject($this->normalizer->normalize($value_3, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['aggregations'] = $values_3;
         }
         if ($object->isInitialized('sort') && null !== $object->getSort()) {
             $values_4 = array();
             foreach ($object->getSort() as $value_4) {
-                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = $value_4 == null ? null : new \ArrayObject($this->normalizer->normalize($value_4, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['sort'] = $values_4;
         }

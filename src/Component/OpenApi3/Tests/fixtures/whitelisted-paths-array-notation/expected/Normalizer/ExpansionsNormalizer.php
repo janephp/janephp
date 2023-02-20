@@ -125,7 +125,7 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($object->isInitialized('polls') && null !== $object->getPolls()) {
             $values_4 = array();
             foreach ($object->getPolls() as $value_4) {
-                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = $value_4 == null ? null : new \ArrayObject($this->normalizer->normalize($value_4, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['polls'] = $values_4;
         }

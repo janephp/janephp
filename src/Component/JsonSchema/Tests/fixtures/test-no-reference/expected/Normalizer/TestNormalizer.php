@@ -53,7 +53,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['string'] = $object->getString();
         }
         if ($object->isInitialized('subObject') && null !== $object->getSubObject()) {
-            $data['subObject'] = $this->normalizer->normalize($object->getSubObject(), 'json', $context);
+            $data['subObject'] = $object->getSubObject() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSubObject(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         return $data;
     }

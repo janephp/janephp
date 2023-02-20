@@ -101,25 +101,25 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data['CreatedAt'] = $object->getCreatedAt();
         }
         if ($object->isInitialized('status') && null !== $object->getStatus()) {
-            $values = array();
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getStatus() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['Status'] = $values;
         }
-        $values_1 = array();
+        $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object->getLabels() as $key_1 => $value_1) {
             $values_1[$key_1] = $value_1;
         }
         $data['Labels'] = $values_1;
         $data['Scope'] = $object->getScope();
-        $values_2 = array();
+        $values_2 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object->getOptions() as $key_2 => $value_2) {
             $values_2[$key_2] = $value_2;
         }
         $data['Options'] = $values_2;
         if ($object->isInitialized('usageData') && null !== $object->getUsageData()) {
-            $data['UsageData'] = $this->normalizer->normalize($object->getUsageData(), 'json', $context);
+            $data['UsageData'] = $object->getUsageData() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getUsageData(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\VolumeConstraint());

@@ -137,58 +137,58 @@ class GbCompanyReportExampleResponseReportNormalizer implements DenormalizerInte
             $data['language'] = $object->getLanguage();
         }
         if ($object->isInitialized('companySummary') && null !== $object->getCompanySummary()) {
-            $data['companySummary'] = $this->normalizer->normalize($object->getCompanySummary(), 'json', $context);
+            $data['companySummary'] = $object->getCompanySummary() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCompanySummary(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('companyIdentification') && null !== $object->getCompanyIdentification()) {
-            $data['companyIdentification'] = $this->normalizer->normalize($object->getCompanyIdentification(), 'json', $context);
+            $data['companyIdentification'] = $object->getCompanyIdentification() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCompanyIdentification(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('creditScore') && null !== $object->getCreditScore()) {
-            $data['creditScore'] = $this->normalizer->normalize($object->getCreditScore(), 'json', $context);
+            $data['creditScore'] = $object->getCreditScore() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCreditScore(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('contactInformation') && null !== $object->getContactInformation()) {
-            $data['contactInformation'] = $this->normalizer->normalize($object->getContactInformation(), 'json', $context);
+            $data['contactInformation'] = $object->getContactInformation() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getContactInformation(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('shareCapitalStructure') && null !== $object->getShareCapitalStructure()) {
-            $data['shareCapitalStructure'] = $this->normalizer->normalize($object->getShareCapitalStructure(), 'json', $context);
+            $data['shareCapitalStructure'] = $object->getShareCapitalStructure() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getShareCapitalStructure(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('directors') && null !== $object->getDirectors()) {
-            $data['directors'] = $this->normalizer->normalize($object->getDirectors(), 'json', $context);
+            $data['directors'] = $object->getDirectors() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getDirectors(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('otherInformation') && null !== $object->getOtherInformation()) {
-            $data['otherInformation'] = $this->normalizer->normalize($object->getOtherInformation(), 'json', $context);
+            $data['otherInformation'] = $object->getOtherInformation() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getOtherInformation(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('groupStructure') && null !== $object->getGroupStructure()) {
-            $data['groupStructure'] = $this->normalizer->normalize($object->getGroupStructure(), 'json', $context);
+            $data['groupStructure'] = $object->getGroupStructure() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getGroupStructure(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('extendedGroupStructure') && null !== $object->getExtendedGroupStructure()) {
             $values = array();
             foreach ($object->getExtendedGroupStructure() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['extendedGroupStructure'] = $values;
         }
         if ($object->isInitialized('financialStatements') && null !== $object->getFinancialStatements()) {
             $values_1 = array();
             foreach ($object->getFinancialStatements() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['financialStatements'] = $values_1;
         }
         if ($object->isInitialized('localFinancialStatements') && null !== $object->getLocalFinancialStatements()) {
             $values_2 = array();
             foreach ($object->getLocalFinancialStatements() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['localFinancialStatements'] = $values_2;
         }
         if ($object->isInitialized('paymentData') && null !== $object->getPaymentData()) {
-            $data['paymentData'] = $this->normalizer->normalize($object->getPaymentData(), 'json', $context);
+            $data['paymentData'] = $object->getPaymentData() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPaymentData(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('negativeInformation') && null !== $object->getNegativeInformation()) {
-            $data['negativeInformation'] = $this->normalizer->normalize($object->getNegativeInformation(), 'json', $context);
+            $data['negativeInformation'] = $object->getNegativeInformation() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getNegativeInformation(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('additionalInformation') && null !== $object->getAdditionalInformation()) {
-            $data['additionalInformation'] = $this->normalizer->normalize($object->getAdditionalInformation(), 'json', $context);
+            $data['additionalInformation'] = $object->getAdditionalInformation() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAdditionalInformation(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {

@@ -70,7 +70,7 @@ class DocumentNormalizer implements DenormalizerInterface, NormalizerInterface, 
             if (is_array($object->getAttributes())) {
                 $values = array();
                 foreach ($object->getAttributes() as $value_1) {
-                    $values[] = $this->normalizer->normalize($value_1, 'json', $context);
+                    $values[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
                 }
                 $value = $values;
             } elseif (is_null($object->getAttributes())) {

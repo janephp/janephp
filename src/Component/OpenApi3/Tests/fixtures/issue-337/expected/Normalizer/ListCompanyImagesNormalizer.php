@@ -72,7 +72,7 @@ class ListCompanyImagesNormalizer implements DenormalizerInterface, NormalizerIn
         if ($object->isInitialized('data') && null !== $object->getData()) {
             $values = array();
             foreach ($object->getData() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['data'] = $values;
         }

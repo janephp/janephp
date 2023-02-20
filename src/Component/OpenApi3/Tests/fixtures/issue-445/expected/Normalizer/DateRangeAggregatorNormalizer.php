@@ -106,7 +106,7 @@ class DateRangeAggregatorNormalizer implements DenormalizerInterface, Normalizer
         if ($object->isInitialized('aggregators') && null !== $object->getAggregators()) {
             $values = array();
             foreach ($object->getAggregators() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['aggregators'] = $values;
         }
@@ -117,7 +117,7 @@ class DateRangeAggregatorNormalizer implements DenormalizerInterface, Normalizer
         $data['field'] = $object->getField();
         $values_1 = array();
         foreach ($object->getRanges() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['ranges'] = $values_1;
         foreach ($object as $key => $value_2) {

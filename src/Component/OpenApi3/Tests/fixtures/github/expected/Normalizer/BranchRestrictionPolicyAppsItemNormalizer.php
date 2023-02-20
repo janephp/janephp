@@ -119,7 +119,7 @@ class BranchRestrictionPolicyAppsItemNormalizer implements DenormalizerInterface
             $data['node_id'] = $object->getNodeId();
         }
         if ($object->isInitialized('owner') && null !== $object->getOwner()) {
-            $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
+            $data['owner'] = $object->getOwner() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getOwner(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
@@ -140,7 +140,7 @@ class BranchRestrictionPolicyAppsItemNormalizer implements DenormalizerInterface
             $data['updated_at'] = $object->getUpdatedAt();
         }
         if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
-            $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
+            $data['permissions'] = $object->getPermissions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPermissions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('events') && null !== $object->getEvents()) {
             $values = array();

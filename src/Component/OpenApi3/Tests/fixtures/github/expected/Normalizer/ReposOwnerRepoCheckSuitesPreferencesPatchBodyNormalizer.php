@@ -68,7 +68,7 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBodyNormalizer implements Denorma
         if ($object->isInitialized('autoTriggerChecks') && null !== $object->getAutoTriggerChecks()) {
             $values = array();
             foreach ($object->getAutoTriggerChecks() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['auto_trigger_checks'] = $values;
         }

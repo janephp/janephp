@@ -94,8 +94,8 @@ class PageBuildNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data = array();
         $data['url'] = $object->getUrl();
         $data['status'] = $object->getStatus();
-        $data['error'] = $this->normalizer->normalize($object->getError(), 'json', $context);
-        $data['pusher'] = $this->normalizer->normalize($object->getPusher(), 'json', $context);
+        $data['error'] = $object->getError() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getError(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['pusher'] = $object->getPusher() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPusher(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['commit'] = $object->getCommit();
         $data['duration'] = $object->getDuration();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');

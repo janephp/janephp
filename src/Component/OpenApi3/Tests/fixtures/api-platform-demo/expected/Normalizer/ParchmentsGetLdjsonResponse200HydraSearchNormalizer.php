@@ -86,7 +86,7 @@ class ParchmentsGetLdjsonResponse200HydraSearchNormalizer implements Denormalize
         if ($object->isInitialized('hydraMapping') && null !== $object->getHydraMapping()) {
             $values = array();
             foreach ($object->getHydraMapping() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['hydra:mapping'] = $values;
         }

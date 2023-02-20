@@ -82,7 +82,7 @@ class ReactionNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data = array();
         $data['id'] = $object->getId();
         $data['node_id'] = $object->getNodeId();
-        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $data['user'] = $object->getUser() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getUser(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['content'] = $object->getContent();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         foreach ($object as $key => $value) {

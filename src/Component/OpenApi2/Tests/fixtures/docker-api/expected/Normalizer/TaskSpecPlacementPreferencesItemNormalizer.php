@@ -56,7 +56,7 @@ class TaskSpecPlacementPreferencesItemNormalizer implements DenormalizerInterfac
     {
         $data = array();
         if ($object->isInitialized('spread') && null !== $object->getSpread()) {
-            $data['Spread'] = $this->normalizer->normalize($object->getSpread(), 'json', $context);
+            $data['Spread'] = $object->getSpread() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSpread(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\TaskSpecPlacementPreferencesItemConstraint());

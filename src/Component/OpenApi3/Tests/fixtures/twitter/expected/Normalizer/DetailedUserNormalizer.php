@@ -128,7 +128,7 @@ class DetailedUserNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['protected'] = $object->getProtected();
         $data['verified'] = $object->getVerified();
         if ($object->isInitialized('withheld') && null !== $object->getWithheld()) {
-            $data['withheld'] = $this->normalizer->normalize($object->getWithheld(), 'json', $context);
+            $data['withheld'] = $object->getWithheld() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getWithheld(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('profileImageUrl') && null !== $object->getProfileImageUrl()) {
             $data['profile_image_url'] = $object->getProfileImageUrl();
@@ -139,7 +139,7 @@ class DetailedUserNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['url'] = $object->getUrl();
         $data['description'] = $object->getDescription();
         if ($object->isInitialized('entities') && null !== $object->getEntities()) {
-            $data['entities'] = $this->normalizer->normalize($object->getEntities(), 'json', $context);
+            $data['entities'] = $object->getEntities() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getEntities(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('mostRecentTweetId') && null !== $object->getMostRecentTweetId()) {
             $data['most_recent_tweet_id'] = $object->getMostRecentTweetId();
@@ -148,7 +148,7 @@ class DetailedUserNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['pinned_tweet_id'] = $object->getPinnedTweetId();
         }
         if ($object->isInitialized('stats') && null !== $object->getStats()) {
-            $data['stats'] = $this->normalizer->normalize($object->getStats(), 'json', $context);
+            $data['stats'] = $object->getStats() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getStats(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

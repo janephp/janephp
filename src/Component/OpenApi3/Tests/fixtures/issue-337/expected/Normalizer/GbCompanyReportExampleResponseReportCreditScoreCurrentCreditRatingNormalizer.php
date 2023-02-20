@@ -81,10 +81,10 @@ class GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRatingNormaliz
             $data['commonDescription'] = $object->getCommonDescription();
         }
         if ($object->isInitialized('creditLimit') && null !== $object->getCreditLimit()) {
-            $data['creditLimit'] = $this->normalizer->normalize($object->getCreditLimit(), 'json', $context);
+            $data['creditLimit'] = $object->getCreditLimit() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCreditLimit(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('providerValue') && null !== $object->getProviderValue()) {
-            $data['providerValue'] = $this->normalizer->normalize($object->getProviderValue(), 'json', $context);
+            $data['providerValue'] = $object->getProviderValue() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getProviderValue(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('providerDescription') && null !== $object->getProviderDescription()) {
             $data['providerDescription'] = $object->getProviderDescription();

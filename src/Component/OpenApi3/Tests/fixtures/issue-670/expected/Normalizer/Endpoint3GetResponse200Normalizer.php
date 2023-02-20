@@ -59,7 +59,7 @@ class Endpoint3GetResponse200Normalizer implements DenormalizerInterface, Normal
     {
         $data = array();
         if ($object->isInitialized('field3') && null !== $object->getField3()) {
-            $data['field-3'] = $this->normalizer->normalize($object->getField3(), 'json', $context);
+            $data['field-3'] = $object->getField3() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getField3(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

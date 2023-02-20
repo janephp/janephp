@@ -100,10 +100,10 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['required_status_checks'] = $this->normalizer->normalize($object->getRequiredStatusChecks(), 'json', $context);
+        $data['required_status_checks'] = $object->getRequiredStatusChecks() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRequiredStatusChecks(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['enforce_admins'] = $object->getEnforceAdmins();
-        $data['required_pull_request_reviews'] = $this->normalizer->normalize($object->getRequiredPullRequestReviews(), 'json', $context);
-        $data['restrictions'] = $this->normalizer->normalize($object->getRestrictions(), 'json', $context);
+        $data['required_pull_request_reviews'] = $object->getRequiredPullRequestReviews() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRequiredPullRequestReviews(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['restrictions'] = $object->getRestrictions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRestrictions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('requiredLinearHistory') && null !== $object->getRequiredLinearHistory()) {
             $data['required_linear_history'] = $object->getRequiredLinearHistory();
         }

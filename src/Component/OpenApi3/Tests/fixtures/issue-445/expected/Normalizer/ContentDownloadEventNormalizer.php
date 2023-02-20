@@ -96,7 +96,7 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
         if ($object->isInitialized('downloadInfos') && null !== $object->getDownloadInfos()) {
             $values = array();
             foreach ($object->getDownloadInfos() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['downloadInfos'] = $values;
         }

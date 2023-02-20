@@ -95,7 +95,7 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
         $data['token'] = $object->getToken();
         $data['expires_at'] = $object->getExpiresAt()->format('Y-m-d\\TH:i:sP');
         if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
-            $values = array();
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getPermissions() as $key => $value) {
                 $values[$key] = $value;
             }
@@ -104,7 +104,7 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
         if ($object->isInitialized('repositories') && null !== $object->getRepositories()) {
             $values_1 = array();
             foreach ($object->getRepositories() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['repositories'] = $values_1;
         }

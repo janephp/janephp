@@ -132,16 +132,16 @@ class IssueCommentNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['body_html'] = $object->getBodyHtml();
         }
         $data['html_url'] = $object->getHtmlUrl();
-        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $data['user'] = $object->getUser() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getUser(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['issue_url'] = $object->getIssueUrl();
         $data['author_association'] = $object->getAuthorAssociation();
         if ($object->isInitialized('performedViaGithubApp') && null !== $object->getPerformedViaGithubApp()) {
-            $data['performed_via_github_app'] = $this->normalizer->normalize($object->getPerformedViaGithubApp(), 'json', $context);
+            $data['performed_via_github_app'] = $object->getPerformedViaGithubApp() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPerformedViaGithubApp(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('reactions') && null !== $object->getReactions()) {
-            $data['reactions'] = $this->normalizer->normalize($object->getReactions(), 'json', $context);
+            $data['reactions'] = $object->getReactions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getReactions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

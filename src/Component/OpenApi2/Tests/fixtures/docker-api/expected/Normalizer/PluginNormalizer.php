@@ -75,11 +75,11 @@ class PluginNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         $data['Name'] = $object->getName();
         $data['Enabled'] = $object->getEnabled();
-        $data['Settings'] = $this->normalizer->normalize($object->getSettings(), 'json', $context);
+        $data['Settings'] = $object->getSettings() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSettings(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('pluginReference') && null !== $object->getPluginReference()) {
             $data['PluginReference'] = $object->getPluginReference();
         }
-        $data['Config'] = $this->normalizer->normalize($object->getConfig(), 'json', $context);
+        $data['Config'] = $object->getConfig() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PluginConstraint());
         }

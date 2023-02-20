@@ -192,7 +192,7 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
             $data['Image'] = $object->getImage();
         }
         if ($object->isInitialized('labels') && null !== $object->getLabels()) {
-            $values = array();
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getLabels() as $key => $value) {
                 $values[$key] = $value;
             }
@@ -236,7 +236,7 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
             $data['Groups'] = $values_4;
         }
         if ($object->isInitialized('privileges') && null !== $object->getPrivileges()) {
-            $data['Privileges'] = $this->normalizer->normalize($object->getPrivileges(), 'json', $context);
+            $data['Privileges'] = $object->getPrivileges() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPrivileges(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('tTY') && null !== $object->getTTY()) {
             $data['TTY'] = $object->getTTY();
@@ -250,7 +250,7 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
         if ($object->isInitialized('mounts') && null !== $object->getMounts()) {
             $values_5 = array();
             foreach ($object->getMounts() as $value_5) {
-                $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
+                $values_5[] = $value_5 == null ? null : new \ArrayObject($this->normalizer->normalize($value_5, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['Mounts'] = $values_5;
         }
@@ -261,7 +261,7 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
             $data['StopGracePeriod'] = $object->getStopGracePeriod();
         }
         if ($object->isInitialized('healthCheck') && null !== $object->getHealthCheck()) {
-            $data['HealthCheck'] = $this->normalizer->normalize($object->getHealthCheck(), 'json', $context);
+            $data['HealthCheck'] = $object->getHealthCheck() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getHealthCheck(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('hosts') && null !== $object->getHosts()) {
             $values_6 = array();
@@ -271,19 +271,19 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
             $data['Hosts'] = $values_6;
         }
         if ($object->isInitialized('dNSConfig') && null !== $object->getDNSConfig()) {
-            $data['DNSConfig'] = $this->normalizer->normalize($object->getDNSConfig(), 'json', $context);
+            $data['DNSConfig'] = $object->getDNSConfig() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getDNSConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('secrets') && null !== $object->getSecrets()) {
             $values_7 = array();
             foreach ($object->getSecrets() as $value_7) {
-                $values_7[] = $this->normalizer->normalize($value_7, 'json', $context);
+                $values_7[] = $value_7 == null ? null : new \ArrayObject($this->normalizer->normalize($value_7, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['Secrets'] = $values_7;
         }
         if ($object->isInitialized('configs') && null !== $object->getConfigs()) {
             $values_8 = array();
             foreach ($object->getConfigs() as $value_8) {
-                $values_8[] = $this->normalizer->normalize($value_8, 'json', $context);
+                $values_8[] = $value_8 == null ? null : new \ArrayObject($this->normalizer->normalize($value_8, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['Configs'] = $values_8;
         }
@@ -294,7 +294,7 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
             $data['Init'] = $object->getInit();
         }
         if ($object->isInitialized('sysctls') && null !== $object->getSysctls()) {
-            $values_9 = array();
+            $values_9 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getSysctls() as $key_1 => $value_9) {
                 $values_9[$key_1] = $value_9;
             }
@@ -317,7 +317,7 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
         if ($object->isInitialized('ulimits') && null !== $object->getUlimits()) {
             $values_12 = array();
             foreach ($object->getUlimits() as $value_12) {
-                $values_12[] = $this->normalizer->normalize($value_12, 'json', $context);
+                $values_12[] = $value_12 == null ? null : new \ArrayObject($this->normalizer->normalize($value_12, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['Ulimits'] = $values_12;
         }

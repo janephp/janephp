@@ -157,9 +157,9 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['id'] = $object->getId();
         $value = $object->getAccount();
         if (is_object($object->getAccount())) {
-            $value = $this->normalizer->normalize($object->getAccount(), 'json', $context);
+            $value = $object->getAccount() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAccount(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         } elseif (is_object($object->getAccount())) {
-            $value = $this->normalizer->normalize($object->getAccount(), 'json', $context);
+            $value = $object->getAccount() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAccount(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['account'] = $value;
         $data['repository_selection'] = $object->getRepositorySelection();
@@ -169,7 +169,7 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['app_id'] = $object->getAppId();
         $data['target_id'] = $object->getTargetId();
         $data['target_type'] = $object->getTargetType();
-        $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
+        $data['permissions'] = $object->getPermissions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPermissions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $values = array();
         foreach ($object->getEvents() as $value_1) {
             $values[] = $value_1;
@@ -180,7 +180,7 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['single_file_name'] = $object->getSingleFileName();
         $data['app_slug'] = $object->getAppSlug();
         if ($object->isInitialized('suspendedBy') && null !== $object->getSuspendedBy()) {
-            $data['suspended_by'] = $this->normalizer->normalize($object->getSuspendedBy(), 'json', $context);
+            $data['suspended_by'] = $object->getSuspendedBy() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSuspendedBy(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('suspendedAt') && null !== $object->getSuspendedAt()) {
             $data['suspended_at'] = $object->getSuspendedAt()->format('Y-m-d\\TH:i:sP');

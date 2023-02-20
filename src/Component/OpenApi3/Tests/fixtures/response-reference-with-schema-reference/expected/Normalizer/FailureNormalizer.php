@@ -58,7 +58,7 @@ class FailureNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data = array();
         $values = array();
         foreach ($object->getErrors() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['errors'] = $values;
         return $data;

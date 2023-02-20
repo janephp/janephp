@@ -58,7 +58,7 @@ class DeleteRulesResponseNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['meta'] = $this->normalizer->normalize($object->getMeta(), 'json', $context);
+        $data['meta'] = $object->getMeta() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getMeta(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

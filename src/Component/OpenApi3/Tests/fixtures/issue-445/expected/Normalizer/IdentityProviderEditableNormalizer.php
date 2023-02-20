@@ -84,7 +84,7 @@ class IdentityProviderEditableNormalizer implements DenormalizerInterface, Norma
         if ($object->isInitialized('claimMapping') && null !== $object->getClaimMapping()) {
             $values = array();
             foreach ($object->getClaimMapping() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['claimMapping'] = $values;
         }
@@ -94,7 +94,7 @@ class IdentityProviderEditableNormalizer implements DenormalizerInterface, Norma
         if ($object->isInitialized('groupMapping') && null !== $object->getGroupMapping()) {
             $values_1 = array();
             foreach ($object->getGroupMapping() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['groupMapping'] = $values_1;
         }

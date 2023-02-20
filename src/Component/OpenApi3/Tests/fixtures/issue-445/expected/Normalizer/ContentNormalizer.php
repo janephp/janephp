@@ -126,7 +126,7 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $data['layerSchemaIds'] = $values;
         }
-        $values_1 = array();
+        $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object->getDisplayValues() as $key => $value_1) {
             $values_1[$key] = $value_1;
         }

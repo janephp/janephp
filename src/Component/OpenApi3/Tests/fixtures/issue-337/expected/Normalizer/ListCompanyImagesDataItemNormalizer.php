@@ -106,10 +106,10 @@ class ListCompanyImagesDataItemNormalizer implements DenormalizerInterface, Norm
             $data['imageId'] = $object->getImageId();
         }
         if ($object->isInitialized('company') && null !== $object->getCompany()) {
-            $data['company'] = $this->normalizer->normalize($object->getCompany(), 'json', $context);
+            $data['company'] = $object->getCompany() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCompany(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('document') && null !== $object->getDocument()) {
-            $data['document'] = $this->normalizer->normalize($object->getDocument(), 'json', $context);
+            $data['document'] = $object->getDocument() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getDocument(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('format') && null !== $object->getFormat()) {
             $data['format'] = $object->getFormat();
@@ -136,7 +136,7 @@ class ListCompanyImagesDataItemNormalizer implements DenormalizerInterface, Norm
             $data['status'] = $object->getStatus();
         }
         if ($object->isInitialized('localProperties') && null !== $object->getLocalProperties()) {
-            $data['localProperties'] = $this->normalizer->normalize($object->getLocalProperties(), 'json', $context);
+            $data['localProperties'] = $object->getLocalProperties() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLocalProperties(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

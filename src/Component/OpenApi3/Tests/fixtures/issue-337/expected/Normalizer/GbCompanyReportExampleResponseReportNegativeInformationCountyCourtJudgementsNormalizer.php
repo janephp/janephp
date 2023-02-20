@@ -59,7 +59,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
     {
         $data = array();
         if ($object->isInitialized('registered') && null !== $object->getRegistered()) {
-            $data['registered'] = $this->normalizer->normalize($object->getRegistered(), 'json', $context);
+            $data['registered'] = $object->getRegistered() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRegistered(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

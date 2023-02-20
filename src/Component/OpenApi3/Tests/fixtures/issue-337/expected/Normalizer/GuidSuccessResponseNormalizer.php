@@ -65,7 +65,7 @@ class GuidSuccessResponseNormalizer implements DenormalizerInterface, Normalizer
         if ($object->isInitialized('gUIDList') && null !== $object->getGUIDList()) {
             $values = array();
             foreach ($object->getGUIDList() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['GUIDList'] = $values;
         }

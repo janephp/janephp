@@ -72,7 +72,7 @@ class ParentNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if ($object->isInitialized('child') && null !== $object->getChild()) {
             $values = array();
             foreach ($object->getChild() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['child'] = $values;
         }

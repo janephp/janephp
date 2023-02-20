@@ -102,7 +102,7 @@ class CompletedFreshInvestigationNormalizer implements DenormalizerInterface, No
             $data['chargeReference'] = $object->getChargeReference();
         }
         if ($object->isInitialized('contactDetails') && null !== $object->getContactDetails()) {
-            $data['contactDetails'] = $this->normalizer->normalize($object->getContactDetails(), 'json', $context);
+            $data['contactDetails'] = $object->getContactDetails() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getContactDetails(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('creationDate') && null !== $object->getCreationDate()) {
             $data['creationDate'] = $object->getCreationDate();
@@ -117,7 +117,7 @@ class CompletedFreshInvestigationNormalizer implements DenormalizerInterface, No
             $data['reportDate'] = $object->getReportDate();
         }
         if ($object->isInitialized('searchCriteria') && null !== $object->getSearchCriteria()) {
-            $data['searchCriteria'] = $this->normalizer->normalize($object->getSearchCriteria(), 'json', $context);
+            $data['searchCriteria'] = $object->getSearchCriteria() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSearchCriteria(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('sections') && null !== $object->getSections()) {
             $values = array();
@@ -127,7 +127,7 @@ class CompletedFreshInvestigationNormalizer implements DenormalizerInterface, No
             $data['sections'] = $values;
         }
         if ($object->isInitialized('status') && null !== $object->getStatus()) {
-            $data['status'] = $this->normalizer->normalize($object->getStatus(), 'json', $context);
+            $data['status'] = $object->getStatus() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getStatus(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('transactionID') && null !== $object->getTransactionID()) {
             $data['transactionID'] = $object->getTransactionID();

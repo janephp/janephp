@@ -233,14 +233,14 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($object->isInitialized('videoStreams') && null !== $object->getVideoStreams()) {
             $values = array();
             foreach ($object->getVideoStreams() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['videoStreams'] = $values;
         }
         if ($object->isInitialized('audioStreams') && null !== $object->getAudioStreams()) {
             $values_1 = array();
             foreach ($object->getAudioStreams() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['audioStreams'] = $values_1;
         }

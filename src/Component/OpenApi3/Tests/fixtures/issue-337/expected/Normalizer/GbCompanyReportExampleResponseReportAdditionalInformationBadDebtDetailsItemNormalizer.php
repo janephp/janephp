@@ -80,7 +80,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
             $data['companyName'] = $object->getCompanyName();
         }
         if ($object->isInitialized('amount') && null !== $object->getAmount()) {
-            $data['amount'] = $this->normalizer->normalize($object->getAmount(), 'json', $context);
+            $data['amount'] = $object->getAmount() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAmount(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

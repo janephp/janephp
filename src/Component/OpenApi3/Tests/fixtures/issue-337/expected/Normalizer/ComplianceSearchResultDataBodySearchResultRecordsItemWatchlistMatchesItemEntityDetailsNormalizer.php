@@ -113,21 +113,21 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         if ($object->isInitialized('additionalInfo') && null !== $object->getAdditionalInfo()) {
             $values = array();
             foreach ($object->getAdditionalInfo() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['additionalInfo'] = $values;
         }
         if ($object->isInitialized('addresses') && null !== $object->getAddresses()) {
             $values_1 = array();
             foreach ($object->getAddresses() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['addresses'] = $values_1;
         }
         if ($object->isInitialized('akAs') && null !== $object->getAkAs()) {
             $values_2 = array();
             foreach ($object->getAkAs() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['akAs'] = $values_2;
         }
@@ -143,7 +143,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         if ($object->isInitialized('iDs') && null !== $object->getIDs()) {
             $values_3 = array();
             foreach ($object->getIDs() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 == null ? null : new \ArrayObject($this->normalizer->normalize($value_3, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['iDs'] = $values_3;
         }
@@ -151,7 +151,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
             $data['listReferenceNumber'] = $object->getListReferenceNumber();
         }
         if ($object->isInitialized('name') && null !== $object->getName()) {
-            $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
+            $data['name'] = $object->getName() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getName(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('reasonListed') && null !== $object->getReasonListed()) {
             $data['reasonListed'] = $object->getReasonListed();

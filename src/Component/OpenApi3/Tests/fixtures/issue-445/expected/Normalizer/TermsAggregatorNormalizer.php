@@ -145,7 +145,7 @@ class TermsAggregatorNormalizer implements DenormalizerInterface, NormalizerInte
         if ($object->isInitialized('aggregators') && null !== $object->getAggregators()) {
             $values = array();
             foreach ($object->getAggregators() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['aggregators'] = $values;
         }

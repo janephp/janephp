@@ -134,12 +134,12 @@ class CommitCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         $data['position'] = $object->getPosition();
         $data['line'] = $object->getLine();
         $data['commit_id'] = $object->getCommitId();
-        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $data['user'] = $object->getUser() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getUser(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['author_association'] = $object->getAuthorAssociation();
         if ($object->isInitialized('reactions') && null !== $object->getReactions()) {
-            $data['reactions'] = $this->normalizer->normalize($object->getReactions(), 'json', $context);
+            $data['reactions'] = $object->getReactions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getReactions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

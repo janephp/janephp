@@ -99,7 +99,7 @@ class SearchResultTextMatchesItemNormalizer implements DenormalizerInterface, No
         if ($object->isInitialized('matches') && null !== $object->getMatches()) {
             $values = array();
             foreach ($object->getMatches() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['matches'] = $values;
         }

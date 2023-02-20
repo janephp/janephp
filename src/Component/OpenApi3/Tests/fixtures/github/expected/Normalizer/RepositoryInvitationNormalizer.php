@@ -100,9 +100,9 @@ class RepositoryInvitationNormalizer implements DenormalizerInterface, Normalize
     {
         $data = array();
         $data['id'] = $object->getId();
-        $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
-        $data['invitee'] = $this->normalizer->normalize($object->getInvitee(), 'json', $context);
-        $data['inviter'] = $this->normalizer->normalize($object->getInviter(), 'json', $context);
+        $data['repository'] = $object->getRepository() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRepository(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['invitee'] = $object->getInvitee() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getInvitee(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['inviter'] = $object->getInviter() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getInviter(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['permissions'] = $object->getPermissions();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['url'] = $object->getUrl();

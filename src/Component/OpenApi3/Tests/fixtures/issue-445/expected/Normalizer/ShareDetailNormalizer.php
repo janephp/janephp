@@ -124,7 +124,7 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['audit'] = $object->getAudit();
         $values = array();
         foreach ($object->getContentSelections() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['contentSelections'] = $values;
         if ($object->isInitialized('layerSchemaIds') && null !== $object->getLayerSchemaIds()) {
@@ -146,7 +146,7 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($object->isInitialized('schemas') && null !== $object->getSchemas()) {
             $values_2 = array();
             foreach ($object->getSchemas() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['schemas'] = $values_2;
         }

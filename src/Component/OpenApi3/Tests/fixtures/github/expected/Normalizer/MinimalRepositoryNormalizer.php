@@ -420,7 +420,7 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         $data['node_id'] = $object->getNodeId();
         $data['name'] = $object->getName();
         $data['full_name'] = $object->getFullName();
-        $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
+        $data['owner'] = $object->getOwner() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getOwner(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['private'] = $object->getPrivate();
         $data['html_url'] = $object->getHtmlUrl();
         $data['description'] = $object->getDescription();
@@ -545,7 +545,7 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
             $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         }
         if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
-            $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
+            $data['permissions'] = $object->getPermissions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPermissions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('templateRepository') && null !== $object->getTemplateRepository()) {
             $data['template_repository'] = $object->getTemplateRepository();
@@ -563,7 +563,7 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
             $data['network_count'] = $object->getNetworkCount();
         }
         if ($object->isInitialized('license') && null !== $object->getLicense()) {
-            $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
+            $data['license'] = $object->getLicense() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLicense(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('forks') && null !== $object->getForks()) {
             $data['forks'] = $object->getForks();

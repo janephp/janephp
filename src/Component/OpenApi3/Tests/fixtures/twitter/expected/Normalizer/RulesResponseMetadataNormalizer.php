@@ -68,7 +68,7 @@ class RulesResponseMetadataNormalizer implements DenormalizerInterface, Normaliz
         $data = array();
         $data['sent'] = $object->getSent();
         if ($object->isInitialized('summary') && null !== $object->getSummary()) {
-            $values = array();
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getSummary() as $key => $value) {
                 $values[$key] = $value;
             }

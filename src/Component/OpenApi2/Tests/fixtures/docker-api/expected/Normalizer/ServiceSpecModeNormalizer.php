@@ -65,13 +65,13 @@ class ServiceSpecModeNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $data = array();
         if ($object->isInitialized('replicated') && null !== $object->getReplicated()) {
-            $data['Replicated'] = $this->normalizer->normalize($object->getReplicated(), 'json', $context);
+            $data['Replicated'] = $object->getReplicated() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getReplicated(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('global') && null !== $object->getGlobal()) {
             $data['Global'] = $object->getGlobal();
         }
         if ($object->isInitialized('replicatedJob') && null !== $object->getReplicatedJob()) {
-            $data['ReplicatedJob'] = $this->normalizer->normalize($object->getReplicatedJob(), 'json', $context);
+            $data['ReplicatedJob'] = $object->getReplicatedJob() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getReplicatedJob(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('globalJob') && null !== $object->getGlobalJob()) {
             $data['GlobalJob'] = $object->getGlobalJob();

@@ -132,8 +132,8 @@ class LicenseContentNormalizer implements DenormalizerInterface, NormalizerInter
         $data['type'] = $object->getType();
         $data['content'] = $object->getContent();
         $data['encoding'] = $object->getEncoding();
-        $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
-        $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
+        $data['_links'] = $object->getLinks() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLinks(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['license'] = $object->getLicense() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLicense(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

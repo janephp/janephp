@@ -124,7 +124,7 @@ class CompanySearchSuccessResultCompaniesItemNormalizer implements DenormalizerI
             $data['regNo'] = $object->getRegNo();
         }
         if ($object->isInitialized('vatNo') && null !== $object->getVatNo()) {
-            $data['vatNo'] = $this->normalizer->normalize($object->getVatNo(), 'json', $context);
+            $data['vatNo'] = $object->getVatNo() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getVatNo(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('safeNo') && null !== $object->getSafeNo()) {
             $data['safeNo'] = $object->getSafeNo();
@@ -148,16 +148,16 @@ class CompanySearchSuccessResultCompaniesItemNormalizer implements DenormalizerI
             $data['activityCode'] = $object->getActivityCode();
         }
         if ($object->isInitialized('tradingNames') && null !== $object->getTradingNames()) {
-            $data['tradingNames'] = $this->normalizer->normalize($object->getTradingNames(), 'json', $context);
+            $data['tradingNames'] = $object->getTradingNames() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getTradingNames(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('address') && null !== $object->getAddress()) {
-            $data['address'] = $this->normalizer->normalize($object->getAddress(), 'json', $context);
+            $data['address'] = $object->getAddress() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAddress(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('dateOfLatestChange') && null !== $object->getDateOfLatestChange()) {
-            $data['dateOfLatestChange'] = $this->normalizer->normalize($object->getDateOfLatestChange(), 'json', $context);
+            $data['dateOfLatestChange'] = $object->getDateOfLatestChange() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getDateOfLatestChange(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('dateOfLatestCAccounts') && null !== $object->getDateOfLatestCAccounts()) {
-            $data['dateOfLatestCAccounts'] = $this->normalizer->normalize($object->getDateOfLatestCAccounts(), 'json', $context);
+            $data['dateOfLatestCAccounts'] = $object->getDateOfLatestCAccounts() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getDateOfLatestCAccounts(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

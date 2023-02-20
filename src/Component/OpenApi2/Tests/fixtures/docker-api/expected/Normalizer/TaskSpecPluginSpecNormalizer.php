@@ -80,7 +80,7 @@ class TaskSpecPluginSpecNormalizer implements DenormalizerInterface, NormalizerI
         if ($object->isInitialized('pluginPrivilege') && null !== $object->getPluginPrivilege()) {
             $values = array();
             foreach ($object->getPluginPrivilege() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['PluginPrivilege'] = $values;
         }

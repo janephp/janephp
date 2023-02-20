@@ -73,14 +73,14 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         if ($object->isInitialized('exact') && null !== $object->getExact()) {
             $values = array();
             foreach ($object->getExact() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['exact'] = $values;
         }
         if ($object->isInitialized('possible') && null !== $object->getPossible()) {
             $values_1 = array();
             foreach ($object->getPossible() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['possible'] = $values_1;
         }

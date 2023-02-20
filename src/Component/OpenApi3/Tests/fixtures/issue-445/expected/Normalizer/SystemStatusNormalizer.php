@@ -82,21 +82,21 @@ class SystemStatusNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($object->isInitialized('searchIndicesStatus') && null !== $object->getSearchIndicesStatus()) {
             $values = array();
             foreach ($object->getSearchIndicesStatus() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['searchIndicesStatus'] = $values;
         }
         if ($object->isInitialized('displayValuesStatus') && null !== $object->getDisplayValuesStatus()) {
             $values_1 = array();
             foreach ($object->getDisplayValuesStatus() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['displayValuesStatus'] = $values_1;
         }
         if ($object->isInitialized('metadataStatus') && null !== $object->getMetadataStatus()) {
             $values_2 = array();
             foreach ($object->getMetadataStatus() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['metadataStatus'] = $values_2;
         }

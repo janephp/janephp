@@ -114,7 +114,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemNormalize
             $data['surname'] = $object->getSurname();
         }
         if ($object->isInitialized('address') && null !== $object->getAddress()) {
-            $data['address'] = $this->normalizer->normalize($object->getAddress(), 'json', $context);
+            $data['address'] = $object->getAddress() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAddress(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('gender') && null !== $object->getGender()) {
             $data['gender'] = $object->getGender();
@@ -128,7 +128,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemNormalize
         if ($object->isInitialized('positions') && null !== $object->getPositions()) {
             $values = array();
             foreach ($object->getPositions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['positions'] = $values;
         }

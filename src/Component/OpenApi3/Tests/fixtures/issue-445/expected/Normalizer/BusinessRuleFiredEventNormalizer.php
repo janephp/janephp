@@ -78,7 +78,7 @@ class BusinessRuleFiredEventNormalizer implements DenormalizerInterface, Normali
         if ($object->isInitialized('details') && null !== $object->getDetails()) {
             $values = array();
             foreach ($object->getDetails() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['details'] = $values;
         }

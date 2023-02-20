@@ -95,10 +95,10 @@ class ReposOwnerRepoGitCommitsPostBodyNormalizer implements DenormalizerInterfac
             $data['parents'] = $values;
         }
         if ($object->isInitialized('author') && null !== $object->getAuthor()) {
-            $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
+            $data['author'] = $object->getAuthor() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAuthor(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('committer') && null !== $object->getCommitter()) {
-            $data['committer'] = $this->normalizer->normalize($object->getCommitter(), 'json', $context);
+            $data['committer'] = $object->getCommitter() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCommitter(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('signature') && null !== $object->getSignature()) {
             $data['signature'] = $object->getSignature();

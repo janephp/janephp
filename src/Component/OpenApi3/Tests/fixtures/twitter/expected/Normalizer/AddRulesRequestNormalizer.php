@@ -64,7 +64,7 @@ class AddRulesRequestNormalizer implements DenormalizerInterface, NormalizerInte
         $data = array();
         $values = array();
         foreach ($object->getAdd() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['add'] = $values;
         foreach ($object as $key => $value_1) {

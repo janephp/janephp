@@ -178,7 +178,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($object->isInitialized('userRoles') && null !== $object->getUserRoles()) {
             $values = array();
             foreach ($object->getUserRoles() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['userRoles'] = $values;
         }
@@ -197,7 +197,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($object->isInitialized('ownerTokens') && null !== $object->getOwnerTokens()) {
             $values_1 = array();
             foreach ($object->getOwnerTokens() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['ownerTokens'] = $values_1;
         }

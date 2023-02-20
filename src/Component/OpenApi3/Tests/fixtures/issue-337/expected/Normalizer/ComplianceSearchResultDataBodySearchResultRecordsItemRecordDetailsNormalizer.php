@@ -137,7 +137,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsNormaliz
         if ($object->isInitialized('iDs') && null !== $object->getIDs()) {
             $values = array();
             foreach ($object->getIDs() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['iDs'] = $values;
         }
@@ -145,10 +145,10 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsNormaliz
             $data['lastUpdatedDate'] = $object->getLastUpdatedDate();
         }
         if ($object->isInitialized('name') && null !== $object->getName()) {
-            $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
+            $data['name'] = $object->getName() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getName(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('recordState') && null !== $object->getRecordState()) {
-            $data['recordState'] = $this->normalizer->normalize($object->getRecordState(), 'json', $context);
+            $data['recordState'] = $object->getRecordState() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRecordState(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('searchDate') && null !== $object->getSearchDate()) {
             $data['searchDate'] = $object->getSearchDate();

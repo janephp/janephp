@@ -76,7 +76,7 @@ class BooksBookIdReviewsGetHaljsonResponse200Normalizer implements DenormalizerI
         $data = array();
         $values = array();
         foreach ($object->getEmbedded() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['_embedded'] = $values;
         if ($object->isInitialized('totalItems') && null !== $object->getTotalItems()) {
@@ -85,7 +85,7 @@ class BooksBookIdReviewsGetHaljsonResponse200Normalizer implements DenormalizerI
         if ($object->isInitialized('itemsPerPage') && null !== $object->getItemsPerPage()) {
             $data['itemsPerPage'] = $object->getItemsPerPage();
         }
-        $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+        $data['_links'] = $object->getLinks() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLinks(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value_1;

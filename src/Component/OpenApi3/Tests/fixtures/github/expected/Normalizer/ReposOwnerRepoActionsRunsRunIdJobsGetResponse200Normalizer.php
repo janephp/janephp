@@ -75,7 +75,7 @@ class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Normalizer implements Deno
         if ($object->isInitialized('jobs') && null !== $object->getJobs()) {
             $values = array();
             foreach ($object->getJobs() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['jobs'] = $values;
         }

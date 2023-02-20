@@ -77,16 +77,16 @@ class RateLimitOverviewResourcesNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['core'] = $this->normalizer->normalize($object->getCore(), 'json', $context);
+        $data['core'] = $object->getCore() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCore(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('graphql') && null !== $object->getGraphql()) {
-            $data['graphql'] = $this->normalizer->normalize($object->getGraphql(), 'json', $context);
+            $data['graphql'] = $object->getGraphql() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getGraphql(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
-        $data['search'] = $this->normalizer->normalize($object->getSearch(), 'json', $context);
+        $data['search'] = $object->getSearch() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSearch(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('sourceImport') && null !== $object->getSourceImport()) {
-            $data['source_import'] = $this->normalizer->normalize($object->getSourceImport(), 'json', $context);
+            $data['source_import'] = $object->getSourceImport() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSourceImport(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('integrationManifest') && null !== $object->getIntegrationManifest()) {
-            $data['integration_manifest'] = $this->normalizer->normalize($object->getIntegrationManifest(), 'json', $context);
+            $data['integration_manifest'] = $object->getIntegrationManifest() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getIntegrationManifest(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

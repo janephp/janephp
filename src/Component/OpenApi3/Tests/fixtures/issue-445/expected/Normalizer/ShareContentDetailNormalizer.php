@@ -109,13 +109,13 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
             }
             $data['layerSchemaIds'] = $values;
         }
-        $values_1 = array();
+        $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object->getContent() as $key => $value_1) {
             $values_1[$key] = $value_1;
         }
         $data['content'] = $values_1;
         if ($object->isInitialized('metadata') && null !== $object->getMetadata()) {
-            $values_2 = array();
+            $values_2 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getMetadata() as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }
@@ -124,7 +124,7 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
         $data['id'] = $object->getId();
         $values_3 = array();
         foreach ($object->getOutputs() as $value_3) {
-            $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+            $values_3[] = $value_3 == null ? null : new \ArrayObject($this->normalizer->normalize($value_3, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['outputs'] = $values_3;
         $data['contentType'] = $object->getContentType();

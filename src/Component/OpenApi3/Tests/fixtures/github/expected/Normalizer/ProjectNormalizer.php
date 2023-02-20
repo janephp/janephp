@@ -141,7 +141,7 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data['body'] = $object->getBody();
         $data['number'] = $object->getNumber();
         $data['state'] = $object->getState();
-        $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
+        $data['creator'] = $object->getCreator() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCreator(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         if ($object->isInitialized('organizationPermission') && null !== $object->getOrganizationPermission()) {
@@ -154,7 +154,7 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['cards_url'] = $object->getCardsUrl();
         }
         if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
-            $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
+            $data['permissions'] = $object->getPermissions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPermissions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -192,7 +192,7 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['html_url'] = $object->getHtmlUrl();
         $values = array();
         foreach ($object->getPullRequests() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['pull_requests'] = $values;
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
@@ -204,9 +204,9 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['cancel_url'] = $object->getCancelUrl();
         $data['rerun_url'] = $object->getRerunUrl();
         $data['workflow_url'] = $object->getWorkflowUrl();
-        $data['head_commit'] = $this->normalizer->normalize($object->getHeadCommit(), 'json', $context);
-        $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
-        $data['head_repository'] = $this->normalizer->normalize($object->getHeadRepository(), 'json', $context);
+        $data['head_commit'] = $object->getHeadCommit() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getHeadCommit(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['repository'] = $object->getRepository() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRepository(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['head_repository'] = $object->getHeadRepository() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getHeadRepository(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('headRepositoryId') && null !== $object->getHeadRepositoryId()) {
             $data['head_repository_id'] = $object->getHeadRepositoryId();
         }

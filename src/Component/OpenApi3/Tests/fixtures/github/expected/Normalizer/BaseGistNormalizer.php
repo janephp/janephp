@@ -166,9 +166,9 @@ class BaseGistNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['git_pull_url'] = $object->getGitPullUrl();
         $data['git_push_url'] = $object->getGitPushUrl();
         $data['html_url'] = $object->getHtmlUrl();
-        $values = array();
+        $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object->getFiles() as $key => $value) {
-            $values[$key] = $this->normalizer->normalize($value, 'json', $context);
+            $values[$key] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['files'] = $values;
         $data['public'] = $object->getPublic();
@@ -176,10 +176,10 @@ class BaseGistNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['description'] = $object->getDescription();
         $data['comments'] = $object->getComments();
-        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $data['user'] = $object->getUser() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getUser(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['comments_url'] = $object->getCommentsUrl();
         if ($object->isInitialized('owner') && null !== $object->getOwner()) {
-            $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
+            $data['owner'] = $object->getOwner() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getOwner(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('truncated') && null !== $object->getTruncated()) {
             $data['truncated'] = $object->getTruncated();

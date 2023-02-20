@@ -77,7 +77,7 @@ class PluginConfigLinuxNormalizer implements DenormalizerInterface, NormalizerIn
         $data['AllowAllDevices'] = $object->getAllowAllDevices();
         $values_1 = array();
         foreach ($object->getDevices() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['Devices'] = $values_1;
         if (!($context['skip_validation'] ?? false)) {

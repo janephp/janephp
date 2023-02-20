@@ -73,14 +73,14 @@ class GbCompanyReportExampleResponseReportOtherInformationNormalizer implements 
         if ($object->isInitialized('advisors') && null !== $object->getAdvisors()) {
             $values = array();
             foreach ($object->getAdvisors() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['advisors'] = $values;
         }
         if ($object->isInitialized('employeesInformation') && null !== $object->getEmployeesInformation()) {
             $values_1 = array();
             foreach ($object->getEmployeesInformation() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['employeesInformation'] = $values_1;
         }

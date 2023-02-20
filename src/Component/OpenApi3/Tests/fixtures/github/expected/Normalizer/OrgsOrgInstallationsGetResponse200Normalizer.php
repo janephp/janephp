@@ -75,7 +75,7 @@ class OrgsOrgInstallationsGetResponse200Normalizer implements DenormalizerInterf
         if ($object->isInitialized('installations') && null !== $object->getInstallations()) {
             $values = array();
             foreach ($object->getInstallations() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['installations'] = $values;
         }

@@ -136,7 +136,7 @@ class GbPeopleReportReponseReportDirectorDetailsNormalizer implements Denormaliz
             $data['surname'] = $object->getSurname();
         }
         if ($object->isInitialized('address') && null !== $object->getAddress()) {
-            $data['address'] = $this->normalizer->normalize($object->getAddress(), 'json', $context);
+            $data['address'] = $object->getAddress() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAddress(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('gender') && null !== $object->getGender()) {
             $data['gender'] = $object->getGender();
@@ -153,12 +153,12 @@ class GbPeopleReportReponseReportDirectorDetailsNormalizer implements Denormaliz
         if ($object->isInitialized('positions') && null !== $object->getPositions()) {
             $values = array();
             foreach ($object->getPositions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['positions'] = $values;
         }
         if ($object->isInitialized('additionalData') && null !== $object->getAdditionalData()) {
-            $data['additionalData'] = $this->normalizer->normalize($object->getAdditionalData(), 'json', $context);
+            $data['additionalData'] = $object->getAdditionalData() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAdditionalData(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

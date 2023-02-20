@@ -168,7 +168,7 @@ class AudioMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($object->isInitialized('audioStreams') && null !== $object->getAudioStreams()) {
             $values = array();
             foreach ($object->getAudioStreams() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['audioStreams'] = $values;
         }

@@ -102,10 +102,10 @@ class ScimV2OrganizationsOrgUsersPostBodyNormalizer implements DenormalizerInter
     {
         $data = array();
         $data['userName'] = $object->getUserName();
-        $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
+        $data['name'] = $object->getName() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getName(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $values = array();
         foreach ($object->getEmails() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['emails'] = $values;
         if ($object->isInitialized('schemas') && null !== $object->getSchemas()) {

@@ -168,7 +168,7 @@ class FieldMultiRelationNormalizer implements DenormalizerInterface, NormalizerI
         }
         $values = array();
         foreach ($object->getRelationTypes() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['relationTypes'] = $values;
         if ($object->isInitialized('maximumItems') && null !== $object->getMaximumItems()) {

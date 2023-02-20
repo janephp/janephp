@@ -78,7 +78,7 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     {
         $data = array();
         $data['name'] = $object->getName();
-        $data['commit'] = $this->normalizer->normalize($object->getCommit(), 'json', $context);
+        $data['commit'] = $object->getCommit() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCommit(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['zipball_url'] = $object->getZipballUrl();
         $data['tarball_url'] = $object->getTarballUrl();
         $data['node_id'] = $object->getNodeId();

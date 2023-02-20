@@ -89,14 +89,14 @@ class PullRequestLinksNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['comments'] = $this->normalizer->normalize($object->getComments(), 'json', $context);
-        $data['commits'] = $this->normalizer->normalize($object->getCommits(), 'json', $context);
-        $data['statuses'] = $this->normalizer->normalize($object->getStatuses(), 'json', $context);
-        $data['html'] = $this->normalizer->normalize($object->getHtml(), 'json', $context);
-        $data['issue'] = $this->normalizer->normalize($object->getIssue(), 'json', $context);
-        $data['review_comments'] = $this->normalizer->normalize($object->getReviewComments(), 'json', $context);
-        $data['review_comment'] = $this->normalizer->normalize($object->getReviewComment(), 'json', $context);
-        $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
+        $data['comments'] = $object->getComments() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getComments(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['commits'] = $object->getCommits() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCommits(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['statuses'] = $object->getStatuses() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getStatuses(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['html'] = $object->getHtml() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getHtml(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['issue'] = $object->getIssue() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getIssue(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['review_comments'] = $object->getReviewComments() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getReviewComments(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['review_comment'] = $object->getReviewComment() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getReviewComment(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['self'] = $object->getSelf() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSelf(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

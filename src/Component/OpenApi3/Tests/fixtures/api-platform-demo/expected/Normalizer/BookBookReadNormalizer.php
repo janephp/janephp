@@ -102,7 +102,7 @@ class BookBookReadNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($object->isInitialized('reviews') && null !== $object->getReviews()) {
             $values = array();
             foreach ($object->getReviews() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['reviews'] = $values;
         }

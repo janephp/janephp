@@ -63,10 +63,10 @@ class Endpoint2GetResponseNormalizer implements DenormalizerInterface, Normalize
     {
         $data = array();
         if ($object->isInitialized('field2') && null !== $object->getField2()) {
-            $data['field-2'] = $this->normalizer->normalize($object->getField2(), 'json', $context);
+            $data['field-2'] = $object->getField2() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getField2(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('field2Bis') && null !== $object->getField2Bis()) {
-            $data['field-2-bis'] = $this->normalizer->normalize($object->getField2Bis(), 'json', $context);
+            $data['field-2-bis'] = $object->getField2Bis() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getField2Bis(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

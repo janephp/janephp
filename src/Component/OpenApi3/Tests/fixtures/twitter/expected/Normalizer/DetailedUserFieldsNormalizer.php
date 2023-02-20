@@ -59,7 +59,7 @@ class DetailedUserFieldsNormalizer implements DenormalizerInterface, NormalizerI
     {
         $data = array();
         if ($object->isInitialized('stats') && null !== $object->getStats()) {
-            $data['stats'] = $this->normalizer->normalize($object->getStats(), 'json', $context);
+            $data['stats'] = $object->getStats() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getStats(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

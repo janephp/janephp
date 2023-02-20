@@ -82,7 +82,7 @@ class UserLookupResponseNormalizer implements DenormalizerInterface, NormalizerI
             $data['data'] = $values;
         }
         if ($object->isInitialized('includes') && null !== $object->getIncludes()) {
-            $data['includes'] = $this->normalizer->normalize($object->getIncludes(), 'json', $context);
+            $data['includes'] = $object->getIncludes() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getIncludes(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('errors') && null !== $object->getErrors()) {
             $values_1 = array();

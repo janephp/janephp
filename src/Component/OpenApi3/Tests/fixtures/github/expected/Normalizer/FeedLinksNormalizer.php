@@ -93,27 +93,27 @@ class FeedLinksNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['timeline'] = $this->normalizer->normalize($object->getTimeline(), 'json', $context);
-        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $data['timeline'] = $object->getTimeline() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getTimeline(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['user'] = $object->getUser() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getUser(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('securityAdvisories') && null !== $object->getSecurityAdvisories()) {
-            $data['security_advisories'] = $this->normalizer->normalize($object->getSecurityAdvisories(), 'json', $context);
+            $data['security_advisories'] = $object->getSecurityAdvisories() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSecurityAdvisories(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('currentUser') && null !== $object->getCurrentUser()) {
-            $data['current_user'] = $this->normalizer->normalize($object->getCurrentUser(), 'json', $context);
+            $data['current_user'] = $object->getCurrentUser() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCurrentUser(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('currentUserPublic') && null !== $object->getCurrentUserPublic()) {
-            $data['current_user_public'] = $this->normalizer->normalize($object->getCurrentUserPublic(), 'json', $context);
+            $data['current_user_public'] = $object->getCurrentUserPublic() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCurrentUserPublic(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('currentUserActor') && null !== $object->getCurrentUserActor()) {
-            $data['current_user_actor'] = $this->normalizer->normalize($object->getCurrentUserActor(), 'json', $context);
+            $data['current_user_actor'] = $object->getCurrentUserActor() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCurrentUserActor(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('currentUserOrganization') && null !== $object->getCurrentUserOrganization()) {
-            $data['current_user_organization'] = $this->normalizer->normalize($object->getCurrentUserOrganization(), 'json', $context);
+            $data['current_user_organization'] = $object->getCurrentUserOrganization() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCurrentUserOrganization(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('currentUserOrganizations') && null !== $object->getCurrentUserOrganizations()) {
             $values = array();
             foreach ($object->getCurrentUserOrganizations() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['current_user_organizations'] = $values;
         }

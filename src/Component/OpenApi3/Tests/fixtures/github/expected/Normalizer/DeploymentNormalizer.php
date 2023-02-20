@@ -144,13 +144,13 @@ class DeploymentNormalizer implements DenormalizerInterface, NormalizerInterface
         $data['sha'] = $object->getSha();
         $data['ref'] = $object->getRef();
         $data['task'] = $object->getTask();
-        $data['payload'] = $this->normalizer->normalize($object->getPayload(), 'json', $context);
+        $data['payload'] = $object->getPayload() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPayload(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('originalEnvironment') && null !== $object->getOriginalEnvironment()) {
             $data['original_environment'] = $object->getOriginalEnvironment();
         }
         $data['environment'] = $object->getEnvironment();
         $data['description'] = $object->getDescription();
-        $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
+        $data['creator'] = $object->getCreator() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCreator(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['statuses_url'] = $object->getStatusesUrl();
@@ -162,7 +162,7 @@ class DeploymentNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['production_environment'] = $object->getProductionEnvironment();
         }
         if ($object->isInitialized('performedViaGithubApp') && null !== $object->getPerformedViaGithubApp()) {
-            $data['performed_via_github_app'] = $this->normalizer->normalize($object->getPerformedViaGithubApp(), 'json', $context);
+            $data['performed_via_github_app'] = $object->getPerformedViaGithubApp() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPerformedViaGithubApp(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

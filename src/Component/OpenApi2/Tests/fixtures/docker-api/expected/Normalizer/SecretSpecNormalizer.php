@@ -75,7 +75,7 @@ class SecretSpecNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['Name'] = $object->getName();
         }
         if ($object->isInitialized('labels') && null !== $object->getLabels()) {
-            $values = array();
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getLabels() as $key => $value) {
                 $values[$key] = $value;
             }
@@ -85,10 +85,10 @@ class SecretSpecNormalizer implements DenormalizerInterface, NormalizerInterface
             $data['Data'] = $object->getData();
         }
         if ($object->isInitialized('driver') && null !== $object->getDriver()) {
-            $data['Driver'] = $this->normalizer->normalize($object->getDriver(), 'json', $context);
+            $data['Driver'] = $object->getDriver() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getDriver(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('templating') && null !== $object->getTemplating()) {
-            $data['Templating'] = $this->normalizer->normalize($object->getTemplating(), 'json', $context);
+            $data['Templating'] = $object->getTemplating() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getTemplating(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SecretSpecConstraint());
