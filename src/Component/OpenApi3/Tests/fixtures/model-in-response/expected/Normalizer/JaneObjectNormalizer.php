@@ -17,11 +17,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use CheckArray;
     use ValidatorTrait;
     protected $normalizers = array('Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Schema' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\SchemaNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\SchemaObjectProperty' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\SchemaObjectPropertyNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Error' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\ErrorNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\EmptySpace' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\EmptySpaceNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestIdGetResponse200' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestIdGetResponse200Normalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\Component\\OpenApi3\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return array_key_exists($type, $this->normalizers);
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
     }

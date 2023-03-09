@@ -18,11 +18,11 @@ class ServicesCreatePostResponse201Normalizer implements DenormalizerInterface, 
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Docker\\Api\\Model\\ServicesCreatePostResponse201';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\ServicesCreatePostResponse201';
     }

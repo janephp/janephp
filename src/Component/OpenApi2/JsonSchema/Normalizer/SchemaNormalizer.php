@@ -30,7 +30,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Schema';
     }
 
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, $context = []) : bool
     {
         return $data instanceof \Jane\Component\OpenApi2\JsonSchema\Model\Schema;
     }

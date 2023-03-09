@@ -18,11 +18,11 @@ class HelloWorldNormalizer implements DenormalizerInterface, NormalizerInterface
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Jane\\JsonSchema\\Tests\\Expected\\Model\\HelloWorld';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return $data instanceof \Jane\JsonSchema\Tests\Expected\Model\HelloWorld;
     }

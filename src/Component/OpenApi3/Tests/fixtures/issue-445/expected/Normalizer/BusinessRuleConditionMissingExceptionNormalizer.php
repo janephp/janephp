@@ -18,11 +18,11 @@ class BusinessRuleConditionMissingExceptionNormalizer implements DenormalizerInt
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'PicturePark\\API\\Model\\BusinessRuleConditionMissingException';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\BusinessRuleConditionMissingException';
     }

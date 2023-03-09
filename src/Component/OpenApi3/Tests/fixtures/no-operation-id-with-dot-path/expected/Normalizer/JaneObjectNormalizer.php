@@ -17,11 +17,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use CheckArray;
     use ValidatorTrait;
     protected $normalizers = array('Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\MessageM700PostBody' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\MessageM700PostBodyNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\MessageM70047PostBody' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\MessageM70047PostBodyNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\Component\\OpenApi3\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return array_key_exists($type, $this->normalizers);
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
     }

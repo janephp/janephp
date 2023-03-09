@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [OpenApi3] [GH#690](https://github.com/janephp/janephp/pull/690) Content-Type header typo for multipart/form-data.
 - [Jane] [GH#694](https://github.com/janephp/janephp/pull/694) Improve Windows paths support.
 - [Jane] [GH#695](https://github.com/janephp/janephp/pull/695) Fix circular reference OOM, fix null pointer exceptions.
+- Fixed some Symfony deprecations
 
 ## [7.4.1] - 2023-01-16
 ### Changed

@@ -30,7 +30,7 @@ class Oauth2ImplicitSecurityNormalizer implements DenormalizerInterface, Normali
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Oauth2ImplicitSecurity';
     }
 
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, $context = []) : bool
     {
         return $data instanceof \Jane\Component\OpenApi2\JsonSchema\Model\Oauth2ImplicitSecurity;
     }

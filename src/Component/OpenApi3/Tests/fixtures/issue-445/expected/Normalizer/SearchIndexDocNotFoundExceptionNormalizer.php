@@ -18,11 +18,11 @@ class SearchIndexDocNotFoundExceptionNormalizer implements DenormalizerInterface
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'PicturePark\\API\\Model\\SearchIndexDocNotFoundException';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\SearchIndexDocNotFoundException';
     }
