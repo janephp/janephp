@@ -18,11 +18,11 @@ class NullableNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Nullable';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Nullable;
     }

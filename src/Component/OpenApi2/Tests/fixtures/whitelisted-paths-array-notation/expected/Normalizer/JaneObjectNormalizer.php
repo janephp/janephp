@@ -17,11 +17,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use CheckArray;
     use ValidatorTrait;
     protected $normalizers = array('Jane\\OpenApi2\\Tests\\Expected\\Model\\Company' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\CompanyNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Project' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\ProjectNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\ProjectClient' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\ProjectClientNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Projects' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\ProjectsNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Error' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\ErrorNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\PaginationLinks' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\PaginationLinksNormalizer', 'Jane\\OpenApi2\\Tests\\Expected\\Model\\CompanyPatchBody' => 'Jane\\OpenApi2\\Tests\\Expected\\Normalizer\\CompanyPatchBodyNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\OpenApi2\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return array_key_exists($type, $this->normalizers);
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
     }

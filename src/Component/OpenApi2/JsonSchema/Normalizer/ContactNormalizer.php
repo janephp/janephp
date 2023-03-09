@@ -30,7 +30,7 @@ class ContactNormalizer implements DenormalizerInterface, NormalizerInterface, D
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Contact';
     }
 
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, $context = []) : bool
     {
         return $data instanceof \Jane\Component\OpenApi2\JsonSchema\Model\Contact;
     }

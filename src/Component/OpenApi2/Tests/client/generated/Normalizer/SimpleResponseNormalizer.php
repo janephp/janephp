@@ -20,7 +20,7 @@ class SimpleResponseNormalizer implements DenormalizerInterface, NormalizerInter
     {
         return $type === 'Jane\\Component\\OpenApi2\\Tests\\Client\\Model\\SimpleResponse';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, $context = []) : bool
     {
         return is_object($data) && get_class($data) === 'Jane\\Component\\OpenApi2\\Tests\\Client\\Model\\SimpleResponse';
     }

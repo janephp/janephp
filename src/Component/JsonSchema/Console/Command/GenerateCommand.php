@@ -41,6 +41,8 @@ class GenerateCommand extends Command
 
     /**
      * {@inheritdoc}
+     *
+     * @return int
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {

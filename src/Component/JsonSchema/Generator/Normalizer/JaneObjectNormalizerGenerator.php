@@ -20,6 +20,7 @@ trait JaneObjectNormalizerGenerator
                 new Param(new Expr\Variable('data')),
                 new Param(new Expr\Variable('type')),
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],
             'stmts' => [new Stmt\Return_(new Expr\FuncCall(new Name('array_key_exists'), [
                 new Arg(new Expr\Variable('type')),
@@ -36,6 +37,7 @@ trait JaneObjectNormalizerGenerator
             'params' => [
                 new Param(new Expr\Variable('data')),
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],
             'stmts' => [new Stmt\Return_(
                 new Expr\BinaryOp\BooleanAnd(

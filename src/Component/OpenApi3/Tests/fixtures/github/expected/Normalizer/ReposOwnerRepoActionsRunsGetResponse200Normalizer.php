@@ -18,11 +18,11 @@ class ReposOwnerRepoActionsRunsGetResponse200Normalizer implements DenormalizerI
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Github\\Model\\ReposOwnerRepoActionsRunsGetResponse200';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Github\\Model\\ReposOwnerRepoActionsRunsGetResponse200';
     }

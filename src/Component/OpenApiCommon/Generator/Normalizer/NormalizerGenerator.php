@@ -74,6 +74,7 @@ trait NormalizerGenerator
             'params' => [
                 new Param(new Expr\Variable('data')),
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],
             'stmts' => [
                 new Stmt\Return_(

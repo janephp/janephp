@@ -30,7 +30,7 @@ class QueryParameterSubSchemaNormalizer implements DenormalizerInterface, Normal
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\QueryParameterSubSchema';
     }
 
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return $data instanceof \Jane\Component\OpenApi2\JsonSchema\Model\QueryParameterSubSchema;
     }
