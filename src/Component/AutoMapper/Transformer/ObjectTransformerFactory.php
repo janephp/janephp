@@ -48,11 +48,19 @@ final class ObjectTransformerFactory extends AbstractUniqueTypeTransformerFactor
 
     private function isObjectType(Type $type): bool
     {
-        return
-            Type::BUILTIN_TYPE_OBJECT === $type->getBuiltinType()
-            ||
-            (Type::BUILTIN_TYPE_ARRAY === $type->getBuiltinType() && !$type->isCollection())
-        ;
+        if (!\in_array($type->getBuiltinType(), [Type::BUILTIN_TYPE_OBJECT, Type::BUILTIN_TYPE_ARRAY])) {
+            return false;
+        }
+
+        if (Type::BUILTIN_TYPE_ARRAY === $type->getBuiltinType() && $type->isCollection()) {
+            return false;
+        }
+
+        if (is_subclass_of($type->getClassName(), \UnitEnum::class)) {
+            return false;
+        }
+
+        return true;
     }
 
     /**

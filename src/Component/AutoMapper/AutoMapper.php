@@ -14,6 +14,7 @@ use Jane\Component\AutoMapper\Transformer\ArrayTransformerFactory;
 use Jane\Component\AutoMapper\Transformer\BuiltinTransformerFactory;
 use Jane\Component\AutoMapper\Transformer\ChainTransformerFactory;
 use Jane\Component\AutoMapper\Transformer\DateTimeTransformerFactory;
+use Jane\Component\AutoMapper\Transformer\EnumTransformerFactory;
 use Jane\Component\AutoMapper\Transformer\MultipleTransformerFactory;
 use Jane\Component\AutoMapper\Transformer\NullableTransformerFactory;
 use Jane\Component\AutoMapper\Transformer\ObjectTransformerFactory;
@@ -261,6 +262,7 @@ class AutoMapper implements AutoMapperInterface, AutoMapperRegistryInterface, Ma
         $transformerFactory->addTransformerFactory(new BuiltinTransformerFactory());
         $transformerFactory->addTransformerFactory(new ArrayTransformerFactory($transformerFactory));
         $transformerFactory->addTransformerFactory(new ObjectTransformerFactory($autoMapper));
+        $transformerFactory->addTransformerFactory(new EnumTransformerFactory());
 
         if (class_exists(AbstractUid::class)) {
             $transformerFactory->addTransformerFactory(new SymfonyUidTransformerFactory());

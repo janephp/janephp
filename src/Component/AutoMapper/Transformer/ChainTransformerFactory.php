@@ -17,7 +17,7 @@ final class ChainTransformerFactory implements TransformerFactoryInterface
 
     /**
      * Biggest priority is MultipleTransformerFactory with 128, so default priority will be bigger in order to
-     * be used before it, 256 should be enought.
+     * be used before it, 256 should be enough.
      */
     public function addTransformerFactory(TransformerFactoryInterface $transformerFactory, int $priority = 256): void
     {
