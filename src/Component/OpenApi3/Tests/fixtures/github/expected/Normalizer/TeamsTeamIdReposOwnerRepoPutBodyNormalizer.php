@@ -40,7 +40,6 @@ class TeamsTeamIdReposOwnerRepoPutBodyNormalizer implements DenormalizerInterfac
         $object = new \Github\Model\TeamsTeamIdReposOwnerRepoPutBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdReposOwnerRepoPutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -72,7 +71,6 @@ class TeamsTeamIdReposOwnerRepoPutBodyNormalizer implements DenormalizerInterfac
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdReposOwnerRepoPutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class CommitCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         $object = new \Github\Model\CommitComment();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommitCommentConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -149,7 +148,6 @@ class CommitCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommitCommentConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

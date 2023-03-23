@@ -40,7 +40,6 @@ class HealthConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         $object = new \Docker\Api\Model\HealthConfig();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\HealthConfigConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -93,7 +92,6 @@ class HealthConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\HealthConfigConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class ProjectsColumnsCardsCardIdMovesPostBodyNormalizer implements DenormalizerI
         $object = new \Github\Model\ProjectsColumnsCardsCardIdMovesPostBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsColumnsCardsCardIdMovesPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -77,7 +76,6 @@ class ProjectsColumnsCardsCardIdMovesPostBodyNormalizer implements DenormalizerI
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsColumnsCardsCardIdMovesPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

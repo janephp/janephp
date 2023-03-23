@@ -40,7 +40,6 @@ class RepositoryCollaboratorPermissionNormalizer implements DenormalizerInterfac
         $object = new \Github\Model\RepositoryCollaboratorPermission();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\RepositoryCollaboratorPermissionConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -78,7 +77,6 @@ class RepositoryCollaboratorPermissionNormalizer implements DenormalizerInterfac
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\RepositoryCollaboratorPermissionConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

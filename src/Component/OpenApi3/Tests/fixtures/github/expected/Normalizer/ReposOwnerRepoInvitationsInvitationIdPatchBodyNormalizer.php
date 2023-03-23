@@ -40,7 +40,6 @@ class ReposOwnerRepoInvitationsInvitationIdPatchBodyNormalizer implements Denorm
         $object = new \Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoInvitationsInvitationIdPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -72,7 +71,6 @@ class ReposOwnerRepoInvitationsInvitationIdPatchBodyNormalizer implements Denorm
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoInvitationsInvitationIdPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class ReposOwnerRepoImportLfsPatchBodyNormalizer implements DenormalizerInterfac
         $object = new \Github\Model\ReposOwnerRepoImportLfsPatchBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoImportLfsPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -70,7 +69,6 @@ class ReposOwnerRepoImportLfsPatchBodyNormalizer implements DenormalizerInterfac
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoImportLfsPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

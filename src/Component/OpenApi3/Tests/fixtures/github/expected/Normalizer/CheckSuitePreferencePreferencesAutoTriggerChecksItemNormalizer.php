@@ -40,7 +40,6 @@ class CheckSuitePreferencePreferencesAutoTriggerChecksItemNormalizer implements 
         $object = new \Github\Model\CheckSuitePreferencePreferencesAutoTriggerChecksItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CheckSuitePreferencePreferencesAutoTriggerChecksItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -75,7 +74,6 @@ class CheckSuitePreferencePreferencesAutoTriggerChecksItemNormalizer implements 
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CheckSuitePreferencePreferencesAutoTriggerChecksItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

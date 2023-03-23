@@ -40,7 +40,6 @@ class ArtifactNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $object = new \Github\Model\Artifact();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ArtifactConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -121,7 +120,6 @@ class ArtifactNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ArtifactConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

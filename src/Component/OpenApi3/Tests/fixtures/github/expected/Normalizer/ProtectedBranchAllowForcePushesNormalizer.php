@@ -40,7 +40,6 @@ class ProtectedBranchAllowForcePushesNormalizer implements DenormalizerInterface
         $object = new \Github\Model\ProtectedBranchAllowForcePushes();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProtectedBranchAllowForcePushesConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -59,7 +58,6 @@ class ProtectedBranchAllowForcePushesNormalizer implements DenormalizerInterface
         $data['enabled'] = $object->getEnabled();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProtectedBranchAllowForcePushesConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

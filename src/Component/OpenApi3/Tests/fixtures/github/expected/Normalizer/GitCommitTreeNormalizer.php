@@ -40,7 +40,6 @@ class GitCommitTreeNormalizer implements DenormalizerInterface, NormalizerInterf
         $object = new \Github\Model\GitCommitTree();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GitCommitTreeConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -79,7 +78,6 @@ class GitCommitTreeNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GitCommitTreeConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

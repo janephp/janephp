@@ -40,7 +40,6 @@ class RepositoryInvitationInviterNormalizer implements DenormalizerInterface, No
         $object = new \Github\Model\RepositoryInvitationInviter();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\RepositoryInvitationInviterConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -165,7 +164,6 @@ class RepositoryInvitationInviterNormalizer implements DenormalizerInterface, No
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\RepositoryInvitationInviterConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

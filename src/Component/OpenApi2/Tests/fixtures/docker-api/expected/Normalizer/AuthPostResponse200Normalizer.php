@@ -40,7 +40,6 @@ class AuthPostResponse200Normalizer implements DenormalizerInterface, Normalizer
         $object = new \Docker\Api\Model\AuthPostResponse200();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\AuthPostResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -65,7 +64,6 @@ class AuthPostResponse200Normalizer implements DenormalizerInterface, Normalizer
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\AuthPostResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

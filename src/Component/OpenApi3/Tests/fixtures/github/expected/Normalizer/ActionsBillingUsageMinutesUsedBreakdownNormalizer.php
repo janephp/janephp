@@ -40,7 +40,6 @@ class ActionsBillingUsageMinutesUsedBreakdownNormalizer implements DenormalizerI
         $object = new \Github\Model\ActionsBillingUsageMinutesUsedBreakdown();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ActionsBillingUsageMinutesUsedBreakdownConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -86,7 +85,6 @@ class ActionsBillingUsageMinutesUsedBreakdownNormalizer implements DenormalizerI
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ActionsBillingUsageMinutesUsedBreakdownConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

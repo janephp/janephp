@@ -40,7 +40,6 @@ class GistCommentUserNormalizer implements DenormalizerInterface, NormalizerInte
         $object = new \Github\Model\GistCommentUser();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistCommentUserConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -165,7 +164,6 @@ class GistCommentUserNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistCommentUserConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

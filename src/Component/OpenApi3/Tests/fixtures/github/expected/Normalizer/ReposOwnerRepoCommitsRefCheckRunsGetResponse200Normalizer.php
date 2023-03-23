@@ -40,7 +40,6 @@ class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Normalizer implements Denor
         $object = new \Github\Model\ReposOwnerRepoCommitsRefCheckRunsGetResponse200();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoCommitsRefCheckRunsGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -87,7 +86,6 @@ class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Normalizer implements Denor
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoCommitsRefCheckRunsGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

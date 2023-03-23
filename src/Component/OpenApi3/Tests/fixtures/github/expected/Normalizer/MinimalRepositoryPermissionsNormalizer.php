@@ -40,7 +40,6 @@ class MinimalRepositoryPermissionsNormalizer implements DenormalizerInterface, N
         $object = new \Github\Model\MinimalRepositoryPermissions();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MinimalRepositoryPermissionsConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -86,7 +85,6 @@ class MinimalRepositoryPermissionsNormalizer implements DenormalizerInterface, N
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MinimalRepositoryPermissionsConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

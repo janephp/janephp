@@ -40,7 +40,6 @@ class TeamsTeamIdMembershipsUsernamePutResponse422Normalizer implements Denormal
         $object = new \Github\Model\TeamsTeamIdMembershipsUsernamePutResponse422();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdMembershipsUsernamePutResponse422Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -94,7 +93,6 @@ class TeamsTeamIdMembershipsUsernamePutResponse422Normalizer implements Denormal
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdMembershipsUsernamePutResponse422Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

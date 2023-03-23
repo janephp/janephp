@@ -40,7 +40,6 @@ class ProjectsProjectIdPatchResponse403Normalizer implements DenormalizerInterfa
         $object = new \Github\Model\ProjectsProjectIdPatchResponse403();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsProjectIdPatchResponse403Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -94,7 +93,6 @@ class ProjectsProjectIdPatchResponse403Normalizer implements DenormalizerInterfa
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsProjectIdPatchResponse403Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

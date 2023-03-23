@@ -43,7 +43,6 @@ class ServiceSpecRollbackConfigNormalizer implements DenormalizerInterface, Norm
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ServiceSpecRollbackConfigConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -94,7 +93,6 @@ class ServiceSpecRollbackConfigNormalizer implements DenormalizerInterface, Norm
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ServiceSpecRollbackConfigConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

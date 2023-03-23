@@ -40,7 +40,6 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $object = new \Docker\Api\Model\Commit();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\CommitConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -67,7 +66,6 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\CommitConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItemNormalizer implement
         $object = new \Github\Model\TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -86,7 +85,6 @@ class TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItemNormalizer implement
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

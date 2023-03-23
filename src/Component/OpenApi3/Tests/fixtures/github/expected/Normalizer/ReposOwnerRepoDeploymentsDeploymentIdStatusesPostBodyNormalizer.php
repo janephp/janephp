@@ -40,7 +40,6 @@ class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyNormalizer implements
         $object = new \Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -112,7 +111,6 @@ class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyNormalizer implements
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

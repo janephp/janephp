@@ -40,7 +40,6 @@ class PullRequestReviewCommentLinksNormalizer implements DenormalizerInterface, 
         $object = new \Github\Model\PullRequestReviewCommentLinks();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestReviewCommentLinksConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -80,7 +79,6 @@ class PullRequestReviewCommentLinksNormalizer implements DenormalizerInterface, 
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestReviewCommentLinksConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

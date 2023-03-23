@@ -40,7 +40,6 @@ class SearchCommitsGetResponse200Normalizer implements DenormalizerInterface, No
         $object = new \Github\Model\SearchCommitsGetResponse200();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\SearchCommitsGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -94,7 +93,6 @@ class SearchCommitsGetResponse200Normalizer implements DenormalizerInterface, No
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\SearchCommitsGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

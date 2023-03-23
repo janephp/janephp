@@ -40,7 +40,6 @@ class FooFooFooNormalizer implements DenormalizerInterface, NormalizerInterface,
         $object = new \Jane\JsonSchema\Tests\Expected\Model\FooFooFoo();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\JsonSchema\Tests\Expected\Validator\FooFooFooConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -61,7 +60,6 @@ class FooFooFooNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\JsonSchema\Tests\Expected\Validator\FooFooFooConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

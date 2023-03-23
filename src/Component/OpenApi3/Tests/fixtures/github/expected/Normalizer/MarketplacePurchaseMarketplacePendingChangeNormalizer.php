@@ -40,7 +40,6 @@ class MarketplacePurchaseMarketplacePendingChangeNormalizer implements Denormali
         $object = new \Github\Model\MarketplacePurchaseMarketplacePendingChange();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MarketplacePurchaseMarketplacePendingChangeConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -103,7 +102,6 @@ class MarketplacePurchaseMarketplacePendingChangeNormalizer implements Denormali
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MarketplacePurchaseMarketplacePendingChangeConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

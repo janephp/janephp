@@ -40,7 +40,6 @@ class SwarmSpecCAConfigNormalizer implements DenormalizerInterface, NormalizerIn
         $object = new \Docker\Api\Model\SwarmSpecCAConfig();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SwarmSpecCAConfigConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -93,7 +92,6 @@ class SwarmSpecCAConfigNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SwarmSpecCAConfigConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

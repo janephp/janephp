@@ -40,7 +40,6 @@ class TeamParentNormalizer implements DenormalizerInterface, NormalizerInterface
         $object = new \Github\Model\TeamParent();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamParentConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -132,7 +131,6 @@ class TeamParentNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamParentConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

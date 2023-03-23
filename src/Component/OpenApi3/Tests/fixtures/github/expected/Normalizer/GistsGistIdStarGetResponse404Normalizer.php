@@ -40,7 +40,6 @@ class GistsGistIdStarGetResponse404Normalizer implements DenormalizerInterface, 
         $object = new \Github\Model\GistsGistIdStarGetResponse404();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistsGistIdStarGetResponse404Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -55,7 +54,6 @@ class GistsGistIdStarGetResponse404Normalizer implements DenormalizerInterface, 
         $data = array();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistsGistIdStarGetResponse404Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

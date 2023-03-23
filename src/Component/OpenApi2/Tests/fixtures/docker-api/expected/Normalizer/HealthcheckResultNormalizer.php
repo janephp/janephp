@@ -40,7 +40,6 @@ class HealthcheckResultNormalizer implements DenormalizerInterface, NormalizerIn
         $object = new \Docker\Api\Model\HealthcheckResult();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\HealthcheckResultConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -79,7 +78,6 @@ class HealthcheckResultNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\HealthcheckResultConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

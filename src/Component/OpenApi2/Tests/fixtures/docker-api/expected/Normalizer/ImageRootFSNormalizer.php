@@ -40,7 +40,6 @@ class ImageRootFSNormalizer implements DenormalizerInterface, NormalizerInterfac
         $object = new \Docker\Api\Model\ImageRootFS();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ImageRootFSConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -79,7 +78,6 @@ class ImageRootFSNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ImageRootFSConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

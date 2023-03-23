@@ -40,7 +40,6 @@ class IssueCommentNormalizer implements DenormalizerInterface, NormalizerInterfa
         $object = new \Github\Model\IssueComment();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssueCommentConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -151,7 +150,6 @@ class IssueCommentNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssueCommentConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

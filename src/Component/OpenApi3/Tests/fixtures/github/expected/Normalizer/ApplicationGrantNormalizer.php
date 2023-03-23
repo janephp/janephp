@@ -40,7 +40,6 @@ class ApplicationGrantNormalizer implements DenormalizerInterface, NormalizerInt
         $object = new \Github\Model\ApplicationGrant();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ApplicationGrantConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -113,7 +112,6 @@ class ApplicationGrantNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ApplicationGrantConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class IssueSimpleNormalizer implements DenormalizerInterface, NormalizerInterfac
         $object = new \Github\Model\IssueSimple();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssueSimpleConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -270,7 +269,6 @@ class IssueSimpleNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssueSimpleConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

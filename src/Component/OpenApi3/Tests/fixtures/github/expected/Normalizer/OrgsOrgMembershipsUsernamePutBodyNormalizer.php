@@ -40,7 +40,6 @@ class OrgsOrgMembershipsUsernamePutBodyNormalizer implements DenormalizerInterfa
         $object = new \Github\Model\OrgsOrgMembershipsUsernamePutBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgMembershipsUsernamePutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -72,7 +71,6 @@ class OrgsOrgMembershipsUsernamePutBodyNormalizer implements DenormalizerInterfa
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgMembershipsUsernamePutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

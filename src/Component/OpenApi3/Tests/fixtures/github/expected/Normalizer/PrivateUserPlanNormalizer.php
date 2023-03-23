@@ -40,7 +40,6 @@ class PrivateUserPlanNormalizer implements DenormalizerInterface, NormalizerInte
         $object = new \Github\Model\PrivateUserPlan();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PrivateUserPlanConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -85,7 +84,6 @@ class PrivateUserPlanNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PrivateUserPlanConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

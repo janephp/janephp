@@ -40,7 +40,6 @@ class ReposOwnerRepoPullsCommentsCommentIdPatchBodyNormalizer implements Denorma
         $object = new \Github\Model\ReposOwnerRepoPullsCommentsCommentIdPatchBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsCommentsCommentIdPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -70,7 +69,6 @@ class ReposOwnerRepoPullsCommentsCommentIdPatchBodyNormalizer implements Denorma
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsCommentsCommentIdPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

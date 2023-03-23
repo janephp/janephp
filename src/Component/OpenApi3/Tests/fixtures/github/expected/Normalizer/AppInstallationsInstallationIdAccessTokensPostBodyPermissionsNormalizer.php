@@ -40,7 +40,6 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissionsNormalizer im
         $object = new \Github\Model\AppInstallationsInstallationIdAccessTokensPostBodyPermissions();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\AppInstallationsInstallationIdAccessTokensPostBodyPermissionsConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -100,7 +99,6 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissionsNormalizer im
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\AppInstallationsInstallationIdAccessTokensPostBodyPermissionsConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

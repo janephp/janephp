@@ -40,7 +40,6 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         $object = new \Github\Model\Tag();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TagConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -90,7 +89,6 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TagConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

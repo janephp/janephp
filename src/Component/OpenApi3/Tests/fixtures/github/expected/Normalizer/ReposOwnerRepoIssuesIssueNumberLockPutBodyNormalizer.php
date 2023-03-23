@@ -40,7 +40,6 @@ class ReposOwnerRepoIssuesIssueNumberLockPutBodyNormalizer implements Denormaliz
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberLockPutBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLockPutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -72,7 +71,6 @@ class ReposOwnerRepoIssuesIssueNumberLockPutBodyNormalizer implements Denormaliz
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLockPutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

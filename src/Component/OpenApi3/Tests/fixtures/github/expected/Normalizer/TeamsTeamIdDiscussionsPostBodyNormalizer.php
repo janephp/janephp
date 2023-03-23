@@ -40,7 +40,6 @@ class TeamsTeamIdDiscussionsPostBodyNormalizer implements DenormalizerInterface,
         $object = new \Github\Model\TeamsTeamIdDiscussionsPostBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdDiscussionsPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -82,7 +81,6 @@ class TeamsTeamIdDiscussionsPostBodyNormalizer implements DenormalizerInterface,
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdDiscussionsPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

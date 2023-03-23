@@ -40,7 +40,6 @@ class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyNormalizer implements Denormalize
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -72,7 +71,6 @@ class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyNormalizer implements Denormalize
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

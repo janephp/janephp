@@ -40,7 +40,6 @@ class NodeDescriptionNormalizer implements DenormalizerInterface, NormalizerInte
         $object = new \Docker\Api\Model\NodeDescription();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\NodeDescriptionConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -85,7 +84,6 @@ class NodeDescriptionNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\NodeDescriptionConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

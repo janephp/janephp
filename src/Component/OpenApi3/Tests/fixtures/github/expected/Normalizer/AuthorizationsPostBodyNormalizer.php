@@ -40,7 +40,6 @@ class AuthorizationsPostBodyNormalizer implements DenormalizerInterface, Normali
         $object = new \Github\Model\AuthorizationsPostBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\AuthorizationsPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -118,7 +117,6 @@ class AuthorizationsPostBodyNormalizer implements DenormalizerInterface, Normali
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\AuthorizationsPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

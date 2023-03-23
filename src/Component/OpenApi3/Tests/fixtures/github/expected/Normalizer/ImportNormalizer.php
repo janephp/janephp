@@ -40,7 +40,6 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $object = new \Github\Model\Import();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ImportConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -244,7 +243,6 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ImportConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

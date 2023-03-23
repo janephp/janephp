@@ -40,7 +40,6 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
         $object = new \Github\Model\UserMarketplacePurchase();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\UserMarketplacePurchaseConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -117,7 +116,6 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\UserMarketplacePurchaseConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyNormalizer
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -70,7 +69,6 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyNormalizer
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

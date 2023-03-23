@@ -40,7 +40,6 @@ class RegistryServiceConfigNormalizer implements DenormalizerInterface, Normaliz
         $object = new \Docker\Api\Model\RegistryServiceConfig();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\RegistryServiceConfigConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -125,7 +124,6 @@ class RegistryServiceConfigNormalizer implements DenormalizerInterface, Normaliz
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\RegistryServiceConfigConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

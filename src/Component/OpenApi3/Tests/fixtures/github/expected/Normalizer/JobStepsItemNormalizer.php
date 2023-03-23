@@ -40,7 +40,6 @@ class JobStepsItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         $object = new \Github\Model\JobStepsItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\JobStepsItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -108,7 +107,6 @@ class JobStepsItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\JobStepsItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

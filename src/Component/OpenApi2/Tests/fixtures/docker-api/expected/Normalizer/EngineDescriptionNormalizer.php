@@ -40,7 +40,6 @@ class EngineDescriptionNormalizer implements DenormalizerInterface, NormalizerIn
         $object = new \Docker\Api\Model\EngineDescription();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\EngineDescriptionConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -89,7 +88,6 @@ class EngineDescriptionNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\EngineDescriptionConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

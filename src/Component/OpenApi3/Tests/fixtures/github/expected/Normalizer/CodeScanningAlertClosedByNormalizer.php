@@ -40,7 +40,6 @@ class CodeScanningAlertClosedByNormalizer implements DenormalizerInterface, Norm
         $object = new \Github\Model\CodeScanningAlertClosedBy();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CodeScanningAlertClosedByConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -165,7 +164,6 @@ class CodeScanningAlertClosedByNormalizer implements DenormalizerInterface, Norm
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CodeScanningAlertClosedByConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

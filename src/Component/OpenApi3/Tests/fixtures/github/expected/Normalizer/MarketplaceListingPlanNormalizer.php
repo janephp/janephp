@@ -40,7 +40,6 @@ class MarketplaceListingPlanNormalizer implements DenormalizerInterface, Normali
         $object = new \Github\Model\MarketplaceListingPlan();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MarketplaceListingPlanConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -141,7 +140,6 @@ class MarketplaceListingPlanNormalizer implements DenormalizerInterface, Normali
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MarketplaceListingPlanConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

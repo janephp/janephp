@@ -40,7 +40,6 @@ class ReposOwnerRepoNotificationsPutBodyNormalizer implements DenormalizerInterf
         $object = new \Github\Model\ReposOwnerRepoNotificationsPutBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoNotificationsPutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -72,7 +71,6 @@ class ReposOwnerRepoNotificationsPutBodyNormalizer implements DenormalizerInterf
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoNotificationsPutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

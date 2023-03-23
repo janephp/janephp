@@ -40,7 +40,6 @@ class PushImageInfoNormalizer implements DenormalizerInterface, NormalizerInterf
         $object = new \Docker\Api\Model\PushImageInfo();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PushImageInfoConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -79,7 +78,6 @@ class PushImageInfoNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PushImageInfoConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

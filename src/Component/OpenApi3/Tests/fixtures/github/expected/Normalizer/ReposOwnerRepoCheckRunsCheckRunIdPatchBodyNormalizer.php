@@ -40,7 +40,6 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyNormalizer implements Denormaliz
         $object = new \Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -136,7 +135,6 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyNormalizer implements Denormaliz
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

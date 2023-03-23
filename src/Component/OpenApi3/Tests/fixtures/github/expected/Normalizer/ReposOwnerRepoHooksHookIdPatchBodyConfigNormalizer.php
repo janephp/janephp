@@ -40,7 +40,6 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfigNormalizer implements Denormalizer
         $object = new \Github\Model\ReposOwnerRepoHooksHookIdPatchBodyConfig();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoHooksHookIdPatchBodyConfigConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -105,7 +104,6 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfigNormalizer implements Denormalizer
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoHooksHookIdPatchBodyConfigConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

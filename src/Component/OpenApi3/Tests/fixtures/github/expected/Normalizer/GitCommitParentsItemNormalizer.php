@@ -40,7 +40,6 @@ class GitCommitParentsItemNormalizer implements DenormalizerInterface, Normalize
         $object = new \Github\Model\GitCommitParentsItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GitCommitParentsItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -86,7 +85,6 @@ class GitCommitParentsItemNormalizer implements DenormalizerInterface, Normalize
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GitCommitParentsItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class ContentTreeLinksNormalizer implements DenormalizerInterface, NormalizerInt
         $object = new \Github\Model\ContentTreeLinks();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ContentTreeLinksConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -86,7 +85,6 @@ class ContentTreeLinksNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ContentTreeLinksConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

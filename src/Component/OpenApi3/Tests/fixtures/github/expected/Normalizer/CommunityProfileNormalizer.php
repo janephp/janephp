@@ -40,7 +40,6 @@ class CommunityProfileNormalizer implements DenormalizerInterface, NormalizerInt
         $object = new \Github\Model\CommunityProfile();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommunityProfileConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -99,7 +98,6 @@ class CommunityProfileNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommunityProfileConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

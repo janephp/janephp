@@ -40,7 +40,6 @@ class ReposOwnerRepoContentsPathPutBodyCommitterNormalizer implements Denormaliz
         $object = new \Github\Model\ReposOwnerRepoContentsPathPutBodyCommitter();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoContentsPathPutBodyCommitterConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -82,7 +81,6 @@ class ReposOwnerRepoContentsPathPutBodyCommitterNormalizer implements Denormaliz
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoContentsPathPutBodyCommitterConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

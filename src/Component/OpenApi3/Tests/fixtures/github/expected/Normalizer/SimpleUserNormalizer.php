@@ -40,7 +40,6 @@ class SimpleUserNormalizer implements DenormalizerInterface, NormalizerInterface
         $object = new \Github\Model\SimpleUser();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\SimpleUserConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -165,7 +164,6 @@ class SimpleUserNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\SimpleUserConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

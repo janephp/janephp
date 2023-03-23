@@ -40,7 +40,6 @@ class DiffEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
         $object = new \Github\Model\DiffEntry();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\DiffEntryConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -124,7 +123,6 @@ class DiffEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\DiffEntryConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

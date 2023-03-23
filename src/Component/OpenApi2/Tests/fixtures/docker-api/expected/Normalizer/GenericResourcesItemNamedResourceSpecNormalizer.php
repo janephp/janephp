@@ -40,7 +40,6 @@ class GenericResourcesItemNamedResourceSpecNormalizer implements DenormalizerInt
         $object = new \Docker\Api\Model\GenericResourcesItemNamedResourceSpec();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\GenericResourcesItemNamedResourceSpecConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -67,7 +66,6 @@ class GenericResourcesItemNamedResourceSpecNormalizer implements DenormalizerInt
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\GenericResourcesItemNamedResourceSpecConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

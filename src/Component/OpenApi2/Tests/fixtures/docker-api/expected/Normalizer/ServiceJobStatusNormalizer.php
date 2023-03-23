@@ -40,7 +40,6 @@ class ServiceJobStatusNormalizer implements DenormalizerInterface, NormalizerInt
         $object = new \Docker\Api\Model\ServiceJobStatus();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ServiceJobStatusConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -67,7 +66,6 @@ class ServiceJobStatusNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ServiceJobStatusConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

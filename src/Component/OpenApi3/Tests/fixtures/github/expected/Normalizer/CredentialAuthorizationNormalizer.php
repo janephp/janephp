@@ -40,7 +40,6 @@ class CredentialAuthorizationNormalizer implements DenormalizerInterface, Normal
         $object = new \Github\Model\CredentialAuthorization();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CredentialAuthorizationConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -124,7 +123,6 @@ class CredentialAuthorizationNormalizer implements DenormalizerInterface, Normal
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CredentialAuthorizationConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

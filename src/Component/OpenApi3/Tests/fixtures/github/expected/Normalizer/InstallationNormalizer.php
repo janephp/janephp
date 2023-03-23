@@ -40,7 +40,6 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         $object = new \Github\Model\Installation();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\InstallationConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -196,7 +195,6 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\InstallationConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

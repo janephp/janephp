@@ -40,7 +40,6 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyNormalizer implements Denorm
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -72,7 +71,6 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyNormalizer implements Denorm
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

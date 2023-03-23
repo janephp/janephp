@@ -40,7 +40,6 @@ class BranchShortCommitNormalizer implements DenormalizerInterface, NormalizerIn
         $object = new \Github\Model\BranchShortCommit();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\BranchShortCommitConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -79,7 +78,6 @@ class BranchShortCommitNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\BranchShortCommitConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

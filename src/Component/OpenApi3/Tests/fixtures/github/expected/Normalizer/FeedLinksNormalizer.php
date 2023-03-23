@@ -40,7 +40,6 @@ class FeedLinksNormalizer implements DenormalizerInterface, NormalizerInterface,
         $object = new \Github\Model\FeedLinks();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\FeedLinksConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -125,7 +124,6 @@ class FeedLinksNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\FeedLinksConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

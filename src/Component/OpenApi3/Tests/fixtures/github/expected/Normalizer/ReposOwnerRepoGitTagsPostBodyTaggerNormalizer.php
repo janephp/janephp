@@ -40,7 +40,6 @@ class ReposOwnerRepoGitTagsPostBodyTaggerNormalizer implements DenormalizerInter
         $object = new \Github\Model\ReposOwnerRepoGitTagsPostBodyTagger();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoGitTagsPostBodyTaggerConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -86,7 +85,6 @@ class ReposOwnerRepoGitTagsPostBodyTaggerNormalizer implements DenormalizerInter
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoGitTagsPostBodyTaggerConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

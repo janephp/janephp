@@ -40,7 +40,6 @@ class ReposOwnerRepoPagesPostBodySourceNormalizer implements DenormalizerInterfa
         $object = new \Github\Model\ReposOwnerRepoPagesPostBodySource();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPagesPostBodySourceConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -79,7 +78,6 @@ class ReposOwnerRepoPagesPostBodySourceNormalizer implements DenormalizerInterfa
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPagesPostBodySourceConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

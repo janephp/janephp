@@ -40,7 +40,6 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
         $object = new \Docker\Api\Model\ContainersIdJsonGetResponse200();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ContainersIdJsonGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -232,7 +231,6 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ContainersIdJsonGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

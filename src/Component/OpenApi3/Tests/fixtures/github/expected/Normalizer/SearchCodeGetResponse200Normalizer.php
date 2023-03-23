@@ -40,7 +40,6 @@ class SearchCodeGetResponse200Normalizer implements DenormalizerInterface, Norma
         $object = new \Github\Model\SearchCodeGetResponse200();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\SearchCodeGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -94,7 +93,6 @@ class SearchCodeGetResponse200Normalizer implements DenormalizerInterface, Norma
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\SearchCodeGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

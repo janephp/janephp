@@ -40,7 +40,6 @@ class CommunityProfileFilesLicenseNormalizer implements DenormalizerInterface, N
         $object = new \Github\Model\CommunityProfileFilesLicense();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommunityProfileFilesLicenseConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -103,7 +102,6 @@ class CommunityProfileFilesLicenseNormalizer implements DenormalizerInterface, N
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommunityProfileFilesLicenseConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class GistFullforksItemUserNormalizer implements DenormalizerInterface, Normaliz
         $object = new \Github\Model\GistFullforksItemUser();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistFullforksItemUserConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -191,7 +190,6 @@ class GistFullforksItemUserNormalizer implements DenormalizerInterface, Normaliz
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistFullforksItemUserConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

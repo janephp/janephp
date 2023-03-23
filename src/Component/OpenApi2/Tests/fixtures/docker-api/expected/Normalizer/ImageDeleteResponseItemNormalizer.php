@@ -40,7 +40,6 @@ class ImageDeleteResponseItemNormalizer implements DenormalizerInterface, Normal
         $object = new \Docker\Api\Model\ImageDeleteResponseItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ImageDeleteResponseItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -67,7 +66,6 @@ class ImageDeleteResponseItemNormalizer implements DenormalizerInterface, Normal
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ImageDeleteResponseItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

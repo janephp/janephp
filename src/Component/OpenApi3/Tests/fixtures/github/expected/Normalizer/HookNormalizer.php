@@ -40,7 +40,6 @@ class HookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $object = new \Github\Model\Hook();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\HookConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -133,7 +132,6 @@ class HookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\HookConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

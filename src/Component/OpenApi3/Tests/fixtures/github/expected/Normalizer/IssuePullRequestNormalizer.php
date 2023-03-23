@@ -40,7 +40,6 @@ class IssuePullRequestNormalizer implements DenormalizerInterface, NormalizerInt
         $object = new \Github\Model\IssuePullRequest();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssuePullRequestConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -107,7 +106,6 @@ class IssuePullRequestNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssuePullRequestConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

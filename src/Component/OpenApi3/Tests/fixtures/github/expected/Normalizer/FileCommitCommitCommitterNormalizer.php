@@ -40,7 +40,6 @@ class FileCommitCommitCommitterNormalizer implements DenormalizerInterface, Norm
         $object = new \Github\Model\FileCommitCommitCommitter();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\FileCommitCommitCommitterConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -86,7 +85,6 @@ class FileCommitCommitCommitterNormalizer implements DenormalizerInterface, Norm
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\FileCommitCommitCommitterConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

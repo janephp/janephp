@@ -40,7 +40,6 @@ class ContentSymlinkNormalizer implements DenormalizerInterface, NormalizerInter
         $object = new \Github\Model\ContentSymlink();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ContentSymlinkConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -129,7 +128,6 @@ class ContentSymlinkNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ContentSymlinkConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

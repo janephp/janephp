@@ -40,7 +40,6 @@ class ProtectedBranchRequiredLinearHistoryNormalizer implements DenormalizerInte
         $object = new \Github\Model\ProtectedBranchRequiredLinearHistory();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProtectedBranchRequiredLinearHistoryConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -59,7 +58,6 @@ class ProtectedBranchRequiredLinearHistoryNormalizer implements DenormalizerInte
         $data['enabled'] = $object->getEnabled();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProtectedBranchRequiredLinearHistoryConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

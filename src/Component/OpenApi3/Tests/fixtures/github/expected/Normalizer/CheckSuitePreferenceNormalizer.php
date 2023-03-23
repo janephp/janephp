@@ -40,7 +40,6 @@ class CheckSuitePreferenceNormalizer implements DenormalizerInterface, Normalize
         $object = new \Github\Model\CheckSuitePreference();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CheckSuitePreferenceConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -79,7 +78,6 @@ class CheckSuitePreferenceNormalizer implements DenormalizerInterface, Normalize
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CheckSuitePreferenceConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

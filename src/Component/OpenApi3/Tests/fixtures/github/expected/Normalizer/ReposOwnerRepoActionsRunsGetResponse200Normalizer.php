@@ -40,7 +40,6 @@ class ReposOwnerRepoActionsRunsGetResponse200Normalizer implements DenormalizerI
         $object = new \Github\Model\ReposOwnerRepoActionsRunsGetResponse200();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoActionsRunsGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -87,7 +86,6 @@ class ReposOwnerRepoActionsRunsGetResponse200Normalizer implements DenormalizerI
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoActionsRunsGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

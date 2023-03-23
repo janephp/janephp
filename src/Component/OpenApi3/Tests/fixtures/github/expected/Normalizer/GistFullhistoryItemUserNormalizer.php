@@ -40,7 +40,6 @@ class GistFullhistoryItemUserNormalizer implements DenormalizerInterface, Normal
         $object = new \Github\Model\GistFullhistoryItemUser();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistFullhistoryItemUserConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -191,7 +190,6 @@ class GistFullhistoryItemUserNormalizer implements DenormalizerInterface, Normal
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistFullhistoryItemUserConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

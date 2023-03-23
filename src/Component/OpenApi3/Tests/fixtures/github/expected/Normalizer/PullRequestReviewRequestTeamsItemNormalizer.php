@@ -40,7 +40,6 @@ class PullRequestReviewRequestTeamsItemNormalizer implements DenormalizerInterfa
         $object = new \Github\Model\PullRequestReviewRequestTeamsItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestReviewRequestTeamsItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -155,7 +154,6 @@ class PullRequestReviewRequestTeamsItemNormalizer implements DenormalizerInterfa
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestReviewRequestTeamsItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

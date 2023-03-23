@@ -40,7 +40,6 @@ class GraphDriverDataNormalizer implements DenormalizerInterface, NormalizerInte
         $object = new \Docker\Api\Model\GraphDriverData();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\GraphDriverDataConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -71,7 +70,6 @@ class GraphDriverDataNormalizer implements DenormalizerInterface, NormalizerInte
         $data['Data'] = $values;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\GraphDriverDataConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

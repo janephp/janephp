@@ -40,7 +40,6 @@ class CombinedBillingUsageNormalizer implements DenormalizerInterface, Normalize
         $object = new \Github\Model\CombinedBillingUsage();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CombinedBillingUsageConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -86,7 +85,6 @@ class CombinedBillingUsageNormalizer implements DenormalizerInterface, Normalize
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CombinedBillingUsageConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

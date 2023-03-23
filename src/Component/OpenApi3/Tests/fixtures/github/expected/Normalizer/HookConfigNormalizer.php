@@ -40,7 +40,6 @@ class HookConfigNormalizer implements DenormalizerInterface, NormalizerInterface
         $object = new \Github\Model\HookConfig();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\HookConfigConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -135,7 +134,6 @@ class HookConfigNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\HookConfigConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

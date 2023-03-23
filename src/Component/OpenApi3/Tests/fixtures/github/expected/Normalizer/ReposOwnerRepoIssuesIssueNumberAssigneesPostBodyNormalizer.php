@@ -40,7 +40,6 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyNormalizer implements Deno
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -80,7 +79,6 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyNormalizer implements Deno
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

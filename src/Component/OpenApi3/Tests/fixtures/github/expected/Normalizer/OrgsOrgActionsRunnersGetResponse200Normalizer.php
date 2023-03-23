@@ -40,7 +40,6 @@ class OrgsOrgActionsRunnersGetResponse200Normalizer implements DenormalizerInter
         $object = new \Github\Model\OrgsOrgActionsRunnersGetResponse200();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgActionsRunnersGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -87,7 +86,6 @@ class OrgsOrgActionsRunnersGetResponse200Normalizer implements DenormalizerInter
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgActionsRunnersGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

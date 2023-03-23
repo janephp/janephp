@@ -40,7 +40,6 @@ class VolumesPrunePostResponse200Normalizer implements DenormalizerInterface, No
         $object = new \Docker\Api\Model\VolumesPrunePostResponse200();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\VolumesPrunePostResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -75,7 +74,6 @@ class VolumesPrunePostResponse200Normalizer implements DenormalizerInterface, No
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\VolumesPrunePostResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

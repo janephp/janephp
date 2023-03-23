@@ -40,7 +40,6 @@ class GistsPostBodyFilesItemNormalizer implements DenormalizerInterface, Normali
         $object = new \Github\Model\GistsPostBodyFilesItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistsPostBodyFilesItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -70,7 +69,6 @@ class GistsPostBodyFilesItemNormalizer implements DenormalizerInterface, Normali
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistsPostBodyFilesItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

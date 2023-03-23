@@ -40,7 +40,6 @@ class ResourcesUlimitsItemNormalizer implements DenormalizerInterface, Normalize
         $object = new \Docker\Api\Model\ResourcesUlimitsItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ResourcesUlimitsItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -73,7 +72,6 @@ class ResourcesUlimitsItemNormalizer implements DenormalizerInterface, Normalize
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ResourcesUlimitsItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

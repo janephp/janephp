@@ -40,7 +40,6 @@ class FileCommitCommitParentsItemNormalizer implements DenormalizerInterface, No
         $object = new \Github\Model\FileCommitCommitParentsItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\FileCommitCommitParentsItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -86,7 +85,6 @@ class FileCommitCommitParentsItemNormalizer implements DenormalizerInterface, No
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\FileCommitCommitParentsItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

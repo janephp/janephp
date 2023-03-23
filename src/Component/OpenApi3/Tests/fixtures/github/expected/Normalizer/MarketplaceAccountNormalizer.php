@@ -40,7 +40,6 @@ class MarketplaceAccountNormalizer implements DenormalizerInterface, NormalizerI
         $object = new \Github\Model\MarketplaceAccount();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MarketplaceAccountConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -112,7 +111,6 @@ class MarketplaceAccountNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MarketplaceAccountConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

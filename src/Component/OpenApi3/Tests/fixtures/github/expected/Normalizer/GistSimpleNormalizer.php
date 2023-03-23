@@ -40,7 +40,6 @@ class GistSimpleNormalizer implements DenormalizerInterface, NormalizerInterface
         $object = new \Github\Model\GistSimple();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistSimpleConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -208,7 +207,6 @@ class GistSimpleNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistSimpleConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class TaskSpecPluginSpecNormalizer implements DenormalizerInterface, NormalizerI
         $object = new \Docker\Api\Model\TaskSpecPluginSpec();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\TaskSpecPluginSpecConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -87,7 +86,6 @@ class TaskSpecPluginSpecNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\TaskSpecPluginSpecConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

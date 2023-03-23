@@ -40,7 +40,6 @@ class PluginMountNormalizer implements DenormalizerInterface, NormalizerInterfac
         $object = new \Docker\Api\Model\PluginMount();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PluginMountConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -99,7 +98,6 @@ class PluginMountNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['Options'] = $values_1;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PluginMountConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

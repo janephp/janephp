@@ -40,7 +40,6 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         $object = new \Github\Model\RepoSearchResultItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\RepoSearchResultItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -532,7 +531,6 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\RepoSearchResultItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class PluginConfigArgsNormalizer implements DenormalizerInterface, NormalizerInt
         $object = new \Docker\Api\Model\PluginConfigArgs();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PluginConfigArgsConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -87,7 +86,6 @@ class PluginConfigArgsNormalizer implements DenormalizerInterface, NormalizerInt
         $data['Value'] = $values_1;
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PluginConfigArgsConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

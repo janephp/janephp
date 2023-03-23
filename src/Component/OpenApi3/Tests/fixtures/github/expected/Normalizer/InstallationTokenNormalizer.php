@@ -40,7 +40,6 @@ class InstallationTokenNormalizer implements DenormalizerInterface, NormalizerIn
         $object = new \Github\Model\InstallationToken();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\InstallationTokenConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -115,7 +114,6 @@ class InstallationTokenNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\InstallationTokenConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

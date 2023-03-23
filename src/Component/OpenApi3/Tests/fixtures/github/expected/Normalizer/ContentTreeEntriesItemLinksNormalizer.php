@@ -40,7 +40,6 @@ class ContentTreeEntriesItemLinksNormalizer implements DenormalizerInterface, No
         $object = new \Github\Model\ContentTreeEntriesItemLinks();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ContentTreeEntriesItemLinksConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -86,7 +85,6 @@ class ContentTreeEntriesItemLinksNormalizer implements DenormalizerInterface, No
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ContentTreeEntriesItemLinksConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

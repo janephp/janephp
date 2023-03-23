@@ -40,7 +40,6 @@ class ThreadSubscriptionNormalizer implements DenormalizerInterface, NormalizerI
         $object = new \Github\Model\ThreadSubscription();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ThreadSubscriptionConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -110,7 +109,6 @@ class ThreadSubscriptionNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ThreadSubscriptionConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

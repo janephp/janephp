@@ -40,7 +40,6 @@ class ActionsBillingUsageNormalizer implements DenormalizerInterface, Normalizer
         $object = new \Github\Model\ActionsBillingUsage();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ActionsBillingUsageConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -93,7 +92,6 @@ class ActionsBillingUsageNormalizer implements DenormalizerInterface, Normalizer
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ActionsBillingUsageConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

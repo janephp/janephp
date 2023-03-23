@@ -40,7 +40,6 @@ class CommunityProfileFilesCodeOfConductNormalizer implements DenormalizerInterf
         $object = new \Github\Model\CommunityProfileFilesCodeOfConduct();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommunityProfileFilesCodeOfConductConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -88,7 +87,6 @@ class CommunityProfileFilesCodeOfConductNormalizer implements DenormalizerInterf
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommunityProfileFilesCodeOfConductConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
         $object = new \Docker\Api\Model\EndpointSettings();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\EndpointSettingsConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -163,7 +162,6 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\EndpointSettingsConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

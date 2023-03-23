@@ -40,7 +40,6 @@ class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyNormalizer implements Denormal
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -72,7 +71,6 @@ class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyNormalizer implements Denormal
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

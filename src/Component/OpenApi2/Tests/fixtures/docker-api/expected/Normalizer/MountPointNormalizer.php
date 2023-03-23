@@ -40,7 +40,6 @@ class MountPointNormalizer implements DenormalizerInterface, NormalizerInterface
         $object = new \Docker\Api\Model\MountPoint();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\MountPointConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -103,7 +102,6 @@ class MountPointNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\MountPointConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

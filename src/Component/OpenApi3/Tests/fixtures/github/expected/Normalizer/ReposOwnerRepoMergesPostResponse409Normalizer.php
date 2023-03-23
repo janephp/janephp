@@ -40,7 +40,6 @@ class ReposOwnerRepoMergesPostResponse409Normalizer implements DenormalizerInter
         $object = new \Github\Model\ReposOwnerRepoMergesPostResponse409();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoMergesPostResponse409Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -79,7 +78,6 @@ class ReposOwnerRepoMergesPostResponse409Normalizer implements DenormalizerInter
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoMergesPostResponse409Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

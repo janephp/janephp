@@ -40,7 +40,6 @@ class ReposOwnerRepoCommentsCommentIdPatchBodyNormalizer implements Denormalizer
         $object = new \Github\Model\ReposOwnerRepoCommentsCommentIdPatchBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoCommentsCommentIdPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -70,7 +69,6 @@ class ReposOwnerRepoCommentsCommentIdPatchBodyNormalizer implements Denormalizer
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoCommentsCommentIdPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

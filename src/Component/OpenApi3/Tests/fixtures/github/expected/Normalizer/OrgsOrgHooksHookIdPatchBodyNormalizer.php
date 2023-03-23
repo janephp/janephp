@@ -40,7 +40,6 @@ class OrgsOrgHooksHookIdPatchBodyNormalizer implements DenormalizerInterface, No
         $object = new \Github\Model\OrgsOrgHooksHookIdPatchBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgHooksHookIdPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -101,7 +100,6 @@ class OrgsOrgHooksHookIdPatchBodyNormalizer implements DenormalizerInterface, No
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgHooksHookIdPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

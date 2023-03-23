@@ -40,7 +40,6 @@ class InteractionLimitNormalizer implements DenormalizerInterface, NormalizerInt
         $object = new \Github\Model\InteractionLimit();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\InteractionLimitConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -80,7 +79,6 @@ class InteractionLimitNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\InteractionLimitConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

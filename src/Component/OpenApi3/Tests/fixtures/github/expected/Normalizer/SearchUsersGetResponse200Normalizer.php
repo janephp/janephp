@@ -40,7 +40,6 @@ class SearchUsersGetResponse200Normalizer implements DenormalizerInterface, Norm
         $object = new \Github\Model\SearchUsersGetResponse200();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\SearchUsersGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -94,7 +93,6 @@ class SearchUsersGetResponse200Normalizer implements DenormalizerInterface, Norm
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\SearchUsersGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

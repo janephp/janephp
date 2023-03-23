@@ -40,7 +40,6 @@ class TeamsTeamIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
         $object = new \Github\Model\TeamsTeamIdPatchBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -101,7 +100,6 @@ class TeamsTeamIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

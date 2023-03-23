@@ -40,7 +40,6 @@ class IndexInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
         $object = new \Docker\Api\Model\IndexInfo();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\IndexInfoConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -87,7 +86,6 @@ class IndexInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\IndexInfoConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class OrgsOrgHooksPostBodyNormalizer implements DenormalizerInterface, Normalize
         $object = new \Github\Model\OrgsOrgHooksPostBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgHooksPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -97,7 +96,6 @@ class OrgsOrgHooksPostBodyNormalizer implements DenormalizerInterface, Normalize
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgHooksPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

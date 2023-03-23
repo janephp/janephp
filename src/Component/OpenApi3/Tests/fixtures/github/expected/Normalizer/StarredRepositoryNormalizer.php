@@ -40,7 +40,6 @@ class StarredRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         $object = new \Github\Model\StarredRepository();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\StarredRepositoryConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -75,7 +74,6 @@ class StarredRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\StarredRepositoryConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }
