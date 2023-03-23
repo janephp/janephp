@@ -6,6 +6,8 @@ use Jane\Component\AutoMapper\AutoMapper;
 use Jane\Component\AutoMapper\Exception\CircularReferenceException;
 use Jane\Component\AutoMapper\Exception\NoMappingFoundException;
 use Jane\Component\AutoMapper\MapperContext;
+use Jane\Component\AutoMapper\Tests\Fixtures\AddressType;
+use Jane\Component\AutoMapper\Tests\Fixtures\AddressWithEnum;
 use Jane\Component\AutoMapper\Tests\Fixtures\Fish;
 use Jane\Component\AutoMapper\Tests\Fixtures\Order;
 use Jane\Component\AutoMapper\Tests\Fixtures\PetOwner;
@@ -985,7 +987,7 @@ class AutoMapperTest extends AutoMapperBaseTest
         self::assertTrue($target->isDisplayIncVatPrices());
     }
 
-    public function testPartialConstructorWithTargetToPopulate()
+    public function testPartialConstructorWithTargetToPopulate(): void
     {
         $source = new Fixtures\User(1, 'Jack', 37);
         /** @var Fixtures\UserPartialConstructor $target */
@@ -994,5 +996,32 @@ class AutoMapperTest extends AutoMapperBaseTest
         self::assertEquals(1, $target->getId());
         self::assertEquals('Jack', $target->name);
         self::assertEquals(37, $target->age);
+    }
+
+    /**
+     * @requires PHP 8.1
+     */
+    public function testEnum(): void
+    {
+        // enum source
+        $address = new AddressWithEnum();
+        $address->setType(AddressType::APARTMENT);
+        /** @var array $addressData */
+        $addressData = $this->autoMapper->map($address, 'array');
+        $var = AddressType::APARTMENT; // only here for lower PHP version handling
+        self::assertEquals($var->value, $addressData['type']);
+
+        // enum target
+        $data = ['type' => 'flat'];
+        /** @var AddressWithEnum $address */
+        $address = $this->autoMapper->map($data, AddressWithEnum::class);
+        self::assertEquals(AddressType::FLAT, $address->getType());
+
+        // both source & target are enums
+        $address = new AddressWithEnum();
+        $address->setType(AddressType::FLAT);
+        /** @var AddressWithEnum $copyAddress */
+        $copyAddress = $this->autoMapper->map($address, AddressWithEnum::class);
+        self::assertEquals($address->getType(), $copyAddress->getType());
     }
 }
