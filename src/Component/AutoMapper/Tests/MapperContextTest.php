@@ -125,6 +125,7 @@ class MapperContextTest extends TestCase
             ],
         ];
 
+        self::assertTrue(MapperContext::isAllowedAttribute($context, 'foo', 1));
         $newContext = MapperContext::withNewContext($context, 'foo');
 
         self::assertEquals(['bar'], $newContext[MapperContext::ALLOWED_ATTRIBUTES]);
