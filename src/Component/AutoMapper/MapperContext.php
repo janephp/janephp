@@ -171,7 +171,9 @@ class MapperContext
             return true;
         }
 
-        return \in_array($attribute, $context[self::ALLOWED_ATTRIBUTES], true);
+        return \in_array($attribute, $context[self::ALLOWED_ATTRIBUTES], true) // current field is allowed
+            || isset($context[self::ALLOWED_ATTRIBUTES][$attribute]) // some nested fields are allowed
+        ;
     }
 
     /**

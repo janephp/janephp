@@ -3,7 +3,9 @@
 namespace Jane\Bundle\AutoMapperBundle\Tests;
 
 use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\AddressDTO;
+use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\DTOWithEnum;
 use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\Order;
+use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\SomeEnum;
 use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\User;
 use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\UserDTO;
 use Jane\Component\AutoMapper\AutoMapperInterface;
@@ -83,5 +85,19 @@ class ServiceInstantiationTest extends WebTestCase
 
         $pet = $autoMapper->map($data, Fixtures\Pet::class);
         self::assertInstanceOf(Fixtures\Cat::class, $pet);
+    }
+
+    /**
+     * @requires PHP 8.1
+     */
+    public function testItCanMapEnums(): void
+    {
+        static::bootKernel();
+        $container = static::$kernel->getContainer();
+        $autoMapper = $container->get(AutoMapperInterface::class);
+
+        $dto = new DTOWithEnum();
+        $dto->enum = SomeEnum::FOO;
+        self::assertSame(['enum' => 'foo'], $autoMapper->map($dto, 'array'));
     }
 }
