@@ -83,6 +83,10 @@
             <tag name="jane_auto_mapper.transformer_factory" priority="1000" />
         </service>
 
+        <service id="Jane\Component\AutoMapper\Transformer\EnumTransformerFactory">
+            <tag name="jane_auto_mapper.transformer_factory" priority="-999" />
+        </service>
+
         <service id="Jane\Component\AutoMapper\Transformer\DateTimeTransformerFactory">
             <tag name="jane_auto_mapper.transformer_factory" priority="-1000" />
         </service>
