@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [7.4.4] - 2023-03-27
+### Added
+- [AutoMapper] [GH#710](https://github.com/janephp/janephp/pull/710) Add Enum support in AutoMapper bundle
+- [AutoMapper] [GH#711](https://github.com/janephp/janephp/pull/711) Allow nesting properties with `MapperContext::isAllowedAttribute()`
+
 ## [7.4.3] - 2023-03-23
 ### Added
 - [AutoMapper] [GH#707](https://github.com/janephp/janephp/pull/707) Add Enum support
