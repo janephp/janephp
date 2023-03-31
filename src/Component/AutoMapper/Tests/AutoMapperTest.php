@@ -425,6 +425,23 @@ class AutoMapperTest extends AutoMapperBaseTest
         self::assertFalse(isset($fooArray['child']['child']['child']));
     }
 
+    public function testIgnoreInSource(): void
+    {
+        $foo = new Fixtures\FooIgnore();
+        $foo->id = 5;
+        $fooArray = $this->autoMapper->map($foo, 'array');
+
+        self::assertSame([], $fooArray);
+    }
+
+    public function testIgnoreInTarget(): void
+    {
+        $foo = new Fixtures\Foo();
+        $fooIgnore = $this->autoMapper->map($foo, Fixtures\FooIgnore::class);
+
+        self::assertNull($fooIgnore->id);
+    }
+
     public function testObjectToPopulate(): void
     {
         $configurationUser = $this->autoMapper->getMetadata(Fixtures\User::class, Fixtures\UserDTO::class);

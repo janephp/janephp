@@ -8,6 +8,7 @@ use Symfony\Component\PropertyInfo\PropertyReadInfo;
 use Symfony\Component\PropertyInfo\PropertyReadInfoExtractorInterface;
 use Symfony\Component\PropertyInfo\PropertyWriteInfo;
 use Symfony\Component\PropertyInfo\PropertyWriteInfoExtractorInterface;
+use Symfony\Component\Serializer\Mapping\AttributeMetadataInterface;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactoryInterface;
 
 /**
@@ -156,5 +157,26 @@ abstract class MappingExtractor implements MappingExtractorInterface
         }
 
         return $groups;
+    }
+
+    protected function isIgnoredProperty($class, $property): bool
+    {
+        if ('array' === $class || !method_exists(AttributeMetadataInterface::class, 'isIgnored')) {
+            return false;
+        }
+
+        if (null === $this->classMetadataFactory || !$this->classMetadataFactory->getMetadataFor($class)) {
+            return false;
+        }
+
+        $serializerClassMetadata = $this->classMetadataFactory->getMetadataFor($class);
+
+        foreach ($serializerClassMetadata->getAttributesMetadata() as $serializerAttributeMetadata) {
+            if ($serializerAttributeMetadata->getName() === $property) {
+                return $serializerAttributeMetadata->isIgnored();
+            }
+        }
+
+        return false;
     }
 }

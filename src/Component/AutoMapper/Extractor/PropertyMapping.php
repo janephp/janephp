@@ -29,6 +29,10 @@ final class PropertyMapping
 
     private $maxDepth;
 
+    private $sourceIgnored;
+
+    private $targetIgnored;
+
     public function __construct(
         ReadAccessor $readAccessor,
         ?WriteMutator $writeMutator,
@@ -38,7 +42,9 @@ final class PropertyMapping
         bool $checkExists = false,
         array $sourceGroups = null,
         array $targetGroups = null,
-        ?int $maxDepth = null
+        ?int $maxDepth = null,
+        bool $sourceIgnored = false,
+        bool $targetIgnored = false
     ) {
         $this->readAccessor = $readAccessor;
         $this->writeMutator = $writeMutator;
@@ -49,6 +55,8 @@ final class PropertyMapping
         $this->sourceGroups = $sourceGroups;
         $this->targetGroups = $targetGroups;
         $this->maxDepth = $maxDepth;
+        $this->sourceIgnored = $sourceIgnored;
+        $this->targetIgnored = $targetIgnored;
     }
 
     public function getReadAccessor(): ReadAccessor
@@ -94,5 +102,10 @@ final class PropertyMapping
     public function getMaxDepth(): ?int
     {
         return $this->maxDepth;
+    }
+
+    public function shouldIgnoreProperty(): bool
+    {
+        return $this->sourceIgnored || $this->targetIgnored;
     }
 }
