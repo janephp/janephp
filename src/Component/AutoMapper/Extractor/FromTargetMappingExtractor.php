@@ -85,7 +85,9 @@ final class FromTargetMappingExtractor extends MappingExtractor
                 true,
                 $this->getGroups($mapperMetadata->getSource(), $property),
                 $this->getGroups($mapperMetadata->getTarget(), $property),
-                $this->getMaxDepth($mapperMetadata->getTarget(), $property)
+                $this->getMaxDepth($mapperMetadata->getTarget(), $property),
+                $this->isIgnoredProperty($mapperMetadata->getSource(), $property),
+                $this->isIgnoredProperty($mapperMetadata->getTarget(), $property)
             );
         }
 

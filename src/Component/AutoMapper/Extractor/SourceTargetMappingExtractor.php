@@ -76,7 +76,9 @@ class SourceTargetMappingExtractor extends MappingExtractor
                     false,
                     $this->getGroups($mapperMetadata->getSource(), $property),
                     $this->getGroups($mapperMetadata->getTarget(), $property),
-                    $maxDepth
+                    $maxDepth,
+                    $this->isIgnoredProperty($mapperMetadata->getSource(), $property),
+                    $this->isIgnoredProperty($mapperMetadata->getTarget(), $property)
                 );
             }
         }

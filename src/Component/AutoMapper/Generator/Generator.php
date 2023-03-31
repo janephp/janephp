@@ -140,6 +140,10 @@ final class Generator
         $duplicatedStatements = [];
         $setterStatements = [];
         foreach ($propertiesMapping as $propertyMapping) {
+            if ($propertyMapping->shouldIgnoreProperty()) {
+                continue;
+            }
+
             $transformer = $propertyMapping->getTransformer();
 
             $sourcePropertyAccessor = $propertyMapping->getReadAccessor()->getExpression($sourceInput);
