@@ -2,9 +2,11 @@
 
 namespace Jane\Component\AutoMapper\Tests\Normalizer;
 
+use Jane\Component\AutoMapper\MapperContext;
 use Jane\Component\AutoMapper\Normalizer\AutoMapperNormalizer;
 use Jane\Component\AutoMapper\Tests\AutoMapperBaseTest;
 use Jane\Component\AutoMapper\Tests\Fixtures;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 
 /**
  * @author Baptiste Leduc <baptiste.leduc@gmail.com>
@@ -80,5 +82,41 @@ class AutoMapperNormalizerTest extends AutoMapperBaseTest
         self::assertEquals($expected['name'], $normalized['name']);
         self::assertEquals($expected['age'], $normalized['age']);
         self::assertEquals($expected['yearOfBirth'], $normalized['yearOfBirth']);
+    }
+
+    public function testItUsesSerializerContext(): void
+    {
+        $normalizer = new AutoMapperNormalizer(
+            new class() implements \Jane\Component\AutoMapper\AutoMapperInterface {
+                public function map($source, $target, array $context = [])
+                {
+                    return $context;
+                }
+            }
+        );
+
+        $context = $normalizer->normalize(new Fixtures\User(1, 'Jack', 37), 'array', [
+            AbstractNormalizer::GROUPS => ['foo'],
+            AbstractNormalizer::ATTRIBUTES => ['foo'],
+            AbstractNormalizer::IGNORED_ATTRIBUTES => ['foo'],
+            AbstractNormalizer::OBJECT_TO_POPULATE => 'some-object',
+            AbstractNormalizer::CIRCULAR_REFERENCE_LIMIT => 1,
+            AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => 'circular-reference-handler',
+            'custom-context' => 'some custom context',
+            MapperContext::ALLOWED_ATTRIBUTES => 'some ignored context',
+        ]);
+
+        self::assertSame(
+            [
+                MapperContext::GROUPS => ['foo'],
+                MapperContext::ALLOWED_ATTRIBUTES => ['foo'],
+                MapperContext::IGNORED_ATTRIBUTES => ['foo'],
+                MapperContext::TARGET_TO_POPULATE => 'some-object',
+                MapperContext::CIRCULAR_REFERENCE_LIMIT => 1,
+                MapperContext::CIRCULAR_REFERENCE_HANDLER => 'circular-reference-handler',
+                'custom-context' => 'some custom context',
+            ],
+            $context
+        );
     }
 }
