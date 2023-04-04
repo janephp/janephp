@@ -82,6 +82,20 @@ abstract class MappingExtractor implements MappingExtractorInterface
             return new WriteMutator(WriteMutator::TYPE_CONSTRUCTOR, $writeInfo->getName(), false, $parameter);
         }
 
+        // The reported WriteInfo of readonly promoted properties is incorrectly returned as a writeable property when constructor extraction is disabled.
+        // see https://github.com/symfony/symfony/pull/48108
+        if (
+            ($context['enable_constructor_extraction'] ?? true) === false
+            && \PHP_VERSION_ID >= 80100
+            && PropertyWriteInfo::TYPE_PROPERTY === $writeInfo->getType()
+        ) {
+            $reflectionProperty = new \ReflectionProperty($target, $property);
+
+            if ($reflectionProperty->isReadOnly() || $reflectionProperty->isPromoted()) {
+                return null;
+            }
+        }
+
         $type = WriteMutator::TYPE_PROPERTY;
 
         if (PropertyWriteInfo::TYPE_METHOD === $writeInfo->getType()) {

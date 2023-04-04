@@ -7,6 +7,7 @@ use Jane\Component\AutoMapper\MapperMetadataInterface;
 use Jane\Component\AutoMapper\Transformer\TransformerFactoryInterface;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractorInterface;
 use Symfony\Component\PropertyInfo\PropertyReadInfoExtractorInterface;
+use Symfony\Component\PropertyInfo\PropertyWriteInfo;
 use Symfony\Component\PropertyInfo\PropertyWriteInfoExtractorInterface;
 use Symfony\Component\PropertyInfo\Type;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactoryInterface;
@@ -50,7 +51,7 @@ final class FromTargetMappingExtractor extends MappingExtractor
         $mapping = [];
 
         foreach ($targetProperties as $property) {
-            if (!$this->propertyInfoExtractor->isWritable($mapperMetadata->getTarget(), $property)) {
+            if (!$this->isWritable($mapperMetadata->getTarget(), $property)) {
                 continue;
             }
 
@@ -138,5 +139,37 @@ final class FromTargetMappingExtractor extends MappingExtractor
             $this->transformType($source, $collectionKeyTypes[0] ?? null),
             $this->transformType($source, $collectionValueTypes[0] ?? null)
         );
+    }
+
+    /**
+     * PropertyInfoExtractor::isWritable() is not enough: we want to know if the property is readonly and writable from the constructor.
+     */
+    private function isWritable(string $target, string $property): bool
+    {
+        if ($this->propertyInfoExtractor->isWritable($target, $property)) {
+            return true;
+        }
+
+        if (\PHP_VERSION_ID < 80100) {
+            return false;
+        }
+
+        try {
+            $reflectionProperty = new \ReflectionProperty($target, $property);
+        } catch (\ReflectionException $e) {
+            // the property does not exist
+            return false;
+        }
+
+        if (!$reflectionProperty->isReadOnly()) {
+            return false;
+        }
+
+        $writeInfo = $this->writeInfoExtractor->getWriteInfo($target, $property, ['enable_constructor_extraction' => true]);
+        if ($writeInfo->getType() !== PropertyWriteInfo::TYPE_CONSTRUCTOR) {
+            return false;
+        }
+
+        return true;
     }
 }

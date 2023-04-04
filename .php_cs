@@ -11,8 +11,14 @@ $dirs = PhpCsFixer\Finder::create()
     ->exclude('Component/OpenApi3/Tests/fixtures')
     ->exclude('Component/OpenApi3/Tests/client/generated')
     ->exclude('Component/AutoMapper/Tests/cache')
-    ->notPath('Component/AutoMapper/Tests/Fixtures/AddressType.php') // should be removed once PHP 8.1 is minimal req
-    ->notPath('Bundle/AutoMapperBundle/Tests/Fixtures/SomeEnum.php') // should be removed once PHP 8.1 is minimal req
+    ->notPath([
+        // should be removed once PHP 8.1 is minimal req
+        'Component/AutoMapper/Tests/Fixtures/AddressType.php',
+        'Bundle/AutoMapperBundle/Tests/Fixtures/SomeEnum.php',
+        'Component/AutoMapper/Tests/Fixtures/AddressDTOWithReadonly.php',
+        'Component/AutoMapper/Tests/Fixtures/AddressDTOWithReadonlyPromotedProperty.php',
+        'Component/AutoMapper/Tests/Fixtures/AddressDTOReadonlyClass.php',
+    ])
     ->exclude('Bundle/AutoMapperBundle/Tests/Resources')
     ->exclude('Bundle/JsonSchemaBundle/Tests/Resources')
     ->exclude('Bundle/OpenApiBundle/Tests/Resources')
