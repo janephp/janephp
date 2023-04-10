@@ -1092,4 +1092,18 @@ class AutoMapperTest extends AutoMapperBaseTest
             yield [AddressDTOReadonlyClass::class];
         }
     }
+
+    /**
+     * @requires PHP 8.2
+     */
+    public function testReadonlyClass(): void
+    {
+        $data = ['city' => 'Nantes'];
+        $toPopulate = new AddressDTOReadonlyClass('city');
+
+        $this->autoMapper->map($data, $toPopulate);
+
+        // value didn't changed because the object class is readonly, we can't change the value there
+        self::assertEquals('city', $toPopulate->city);
+    }
 }
