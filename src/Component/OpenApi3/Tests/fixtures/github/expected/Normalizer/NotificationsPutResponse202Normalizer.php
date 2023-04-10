@@ -40,7 +40,6 @@ class NotificationsPutResponse202Normalizer implements DenormalizerInterface, No
         $object = new \Github\Model\NotificationsPutResponse202();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\NotificationsPutResponse202Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -72,7 +71,6 @@ class NotificationsPutResponse202Normalizer implements DenormalizerInterface, No
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\NotificationsPutResponse202Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

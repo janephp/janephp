@@ -40,7 +40,6 @@ class ApplicationsClientIdTokenPostBodyNormalizer implements DenormalizerInterfa
         $object = new \Github\Model\ApplicationsClientIdTokenPostBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ApplicationsClientIdTokenPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -70,7 +69,6 @@ class ApplicationsClientIdTokenPostBodyNormalizer implements DenormalizerInterfa
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ApplicationsClientIdTokenPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

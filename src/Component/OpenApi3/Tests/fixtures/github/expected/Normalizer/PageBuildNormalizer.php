@@ -40,7 +40,6 @@ class PageBuildNormalizer implements DenormalizerInterface, NormalizerInterface,
         $object = new \Github\Model\PageBuild();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PageBuildConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -108,7 +107,6 @@ class PageBuildNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PageBuildConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

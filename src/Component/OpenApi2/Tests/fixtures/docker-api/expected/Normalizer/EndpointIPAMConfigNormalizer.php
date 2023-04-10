@@ -40,7 +40,6 @@ class EndpointIPAMConfigNormalizer implements DenormalizerInterface, NormalizerI
         $object = new \Docker\Api\Model\EndpointIPAMConfig();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\EndpointIPAMConfigConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -81,7 +80,6 @@ class EndpointIPAMConfigNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\EndpointIPAMConfigConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

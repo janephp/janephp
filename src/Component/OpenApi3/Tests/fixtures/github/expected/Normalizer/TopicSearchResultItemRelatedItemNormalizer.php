@@ -40,7 +40,6 @@ class TopicSearchResultItemRelatedItemNormalizer implements DenormalizerInterfac
         $object = new \Github\Model\TopicSearchResultItemRelatedItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TopicSearchResultItemRelatedItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -72,7 +71,6 @@ class TopicSearchResultItemRelatedItemNormalizer implements DenormalizerInterfac
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TopicSearchResultItemRelatedItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

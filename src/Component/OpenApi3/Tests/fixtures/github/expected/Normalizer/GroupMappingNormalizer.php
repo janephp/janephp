@@ -40,7 +40,6 @@ class GroupMappingNormalizer implements DenormalizerInterface, NormalizerInterfa
         $object = new \Github\Model\GroupMapping();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GroupMappingConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -115,7 +114,6 @@ class GroupMappingNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GroupMappingConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

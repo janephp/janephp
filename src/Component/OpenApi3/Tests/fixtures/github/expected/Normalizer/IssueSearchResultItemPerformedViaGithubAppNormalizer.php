@@ -40,7 +40,6 @@ class IssueSearchResultItemPerformedViaGithubAppNormalizer implements Denormaliz
         $object = new \Github\Model\IssueSearchResultItemPerformedViaGithubApp();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssueSearchResultItemPerformedViaGithubAppConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -176,7 +175,6 @@ class IssueSearchResultItemPerformedViaGithubAppNormalizer implements Denormaliz
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssueSearchResultItemPerformedViaGithubAppConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

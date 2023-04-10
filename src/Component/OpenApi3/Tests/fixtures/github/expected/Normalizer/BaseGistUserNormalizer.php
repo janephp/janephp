@@ -40,7 +40,6 @@ class BaseGistUserNormalizer implements DenormalizerInterface, NormalizerInterfa
         $object = new \Github\Model\BaseGistUser();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\BaseGistUserConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -165,7 +164,6 @@ class BaseGistUserNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\BaseGistUserConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

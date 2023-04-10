@@ -40,7 +40,6 @@ class GroupMappingGroupsItemNormalizer implements DenormalizerInterface, Normali
         $object = new \Github\Model\GroupMappingGroupsItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GroupMappingGroupsItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -80,7 +79,6 @@ class GroupMappingGroupsItemNormalizer implements DenormalizerInterface, Normali
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GroupMappingGroupsItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

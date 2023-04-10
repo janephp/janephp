@@ -40,7 +40,6 @@ class PagesSourceHashNormalizer implements DenormalizerInterface, NormalizerInte
         $object = new \Github\Model\PagesSourceHash();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PagesSourceHashConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -75,7 +74,6 @@ class PagesSourceHashNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PagesSourceHashConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

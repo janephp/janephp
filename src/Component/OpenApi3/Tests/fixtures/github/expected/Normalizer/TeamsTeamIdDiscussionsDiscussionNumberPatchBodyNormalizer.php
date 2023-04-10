@@ -40,7 +40,6 @@ class TeamsTeamIdDiscussionsDiscussionNumberPatchBodyNormalizer implements Denor
         $object = new \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberPatchBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdDiscussionsDiscussionNumberPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -79,7 +78,6 @@ class TeamsTeamIdDiscussionsDiscussionNumberPatchBodyNormalizer implements Denor
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdDiscussionsDiscussionNumberPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

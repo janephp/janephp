@@ -40,7 +40,6 @@ class LabelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $object = new \Github\Model\Label();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\LabelConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -105,7 +104,6 @@ class LabelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\LabelConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

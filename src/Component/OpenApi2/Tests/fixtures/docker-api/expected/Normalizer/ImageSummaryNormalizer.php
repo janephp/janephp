@@ -40,7 +40,6 @@ class ImageSummaryNormalizer implements DenormalizerInterface, NormalizerInterfa
         $object = new \Docker\Api\Model\ImageSummary();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ImageSummaryConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -119,7 +118,6 @@ class ImageSummaryNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['Containers'] = $object->getContainers();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ImageSummaryConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

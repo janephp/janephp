@@ -40,7 +40,6 @@ class CommitComparisonNormalizer implements DenormalizerInterface, NormalizerInt
         $object = new \Github\Model\CommitComparison();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommitComparisonConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -146,7 +145,6 @@ class CommitComparisonNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommitComparisonConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

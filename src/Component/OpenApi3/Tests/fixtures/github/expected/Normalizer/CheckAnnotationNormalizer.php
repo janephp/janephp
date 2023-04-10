@@ -40,7 +40,6 @@ class CheckAnnotationNormalizer implements DenormalizerInterface, NormalizerInte
         $object = new \Github\Model\CheckAnnotation();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CheckAnnotationConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -133,7 +132,6 @@ class CheckAnnotationNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CheckAnnotationConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

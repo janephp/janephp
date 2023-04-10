@@ -40,7 +40,6 @@ class PullRequestBaseRepoOwnerNormalizer implements DenormalizerInterface, Norma
         $object = new \Github\Model\PullRequestBaseRepoOwner();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestBaseRepoOwnerConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -158,7 +157,6 @@ class PullRequestBaseRepoOwnerNormalizer implements DenormalizerInterface, Norma
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestBaseRepoOwnerConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

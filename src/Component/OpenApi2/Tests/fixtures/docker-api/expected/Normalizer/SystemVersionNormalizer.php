@@ -40,7 +40,6 @@ class SystemVersionNormalizer implements DenormalizerInterface, NormalizerInterf
         $object = new \Docker\Api\Model\SystemVersion();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SystemVersionConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -135,7 +134,6 @@ class SystemVersionNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SystemVersionConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

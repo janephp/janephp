@@ -40,7 +40,6 @@ class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInter
         $object = new \Docker\Api\Model\ContainerState();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ContainerStateConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -127,7 +126,6 @@ class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ContainerStateConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

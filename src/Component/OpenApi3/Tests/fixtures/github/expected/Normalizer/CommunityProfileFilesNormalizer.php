@@ -40,7 +40,6 @@ class CommunityProfileFilesNormalizer implements DenormalizerInterface, Normaliz
         $object = new \Github\Model\CommunityProfileFiles();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommunityProfileFilesConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -113,7 +112,6 @@ class CommunityProfileFilesNormalizer implements DenormalizerInterface, Normaliz
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommunityProfileFilesConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

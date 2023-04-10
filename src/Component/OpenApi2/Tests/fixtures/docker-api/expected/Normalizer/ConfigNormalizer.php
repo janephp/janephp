@@ -40,7 +40,6 @@ class ConfigNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $object = new \Docker\Api\Model\Config();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ConfigConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -85,7 +84,6 @@ class ConfigNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ConfigConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

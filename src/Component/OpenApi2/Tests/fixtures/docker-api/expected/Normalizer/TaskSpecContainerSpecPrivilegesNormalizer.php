@@ -40,7 +40,6 @@ class TaskSpecContainerSpecPrivilegesNormalizer implements DenormalizerInterface
         $object = new \Docker\Api\Model\TaskSpecContainerSpecPrivileges();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -67,7 +66,6 @@ class TaskSpecContainerSpecPrivilegesNormalizer implements DenormalizerInterface
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

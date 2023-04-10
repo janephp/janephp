@@ -40,7 +40,6 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyNormalizer implements De
         $object = new \Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesPutBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -80,7 +79,6 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyNormalizer implements De
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

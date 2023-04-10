@@ -40,7 +40,6 @@ class MigrationNormalizer implements DenormalizerInterface, NormalizerInterface,
         $object = new \Github\Model\Migration();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MigrationConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -153,7 +152,6 @@ class MigrationNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MigrationConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

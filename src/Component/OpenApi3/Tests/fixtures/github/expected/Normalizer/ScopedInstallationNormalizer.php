@@ -40,7 +40,6 @@ class ScopedInstallationNormalizer implements DenormalizerInterface, NormalizerI
         $object = new \Github\Model\ScopedInstallation();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScopedInstallationConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -104,7 +103,6 @@ class ScopedInstallationNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScopedInstallationConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

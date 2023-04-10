@@ -40,7 +40,6 @@ class ProjectsColumnsColumnIdCardsPostResponse503ErrorsItemNormalizer implements
         $object = new \Github\Model\ProjectsColumnsColumnIdCardsPostResponse503ErrorsItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsColumnsColumnIdCardsPostResponse503ErrorsItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -79,7 +78,6 @@ class ProjectsColumnsColumnIdCardsPostResponse503ErrorsItemNormalizer implements
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsColumnsColumnIdCardsPostResponse503ErrorsItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

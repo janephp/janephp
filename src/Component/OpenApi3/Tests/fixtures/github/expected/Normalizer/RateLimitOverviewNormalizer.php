@@ -40,7 +40,6 @@ class RateLimitOverviewNormalizer implements DenormalizerInterface, NormalizerIn
         $object = new \Github\Model\RateLimitOverview();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\RateLimitOverviewConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -75,7 +74,6 @@ class RateLimitOverviewNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\RateLimitOverviewConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

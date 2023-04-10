@@ -40,7 +40,6 @@ class ContributorActivityWeeksItemNormalizer implements DenormalizerInterface, N
         $object = new \Github\Model\ContributorActivityWeeksItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ContributorActivityWeeksItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -93,7 +92,6 @@ class ContributorActivityWeeksItemNormalizer implements DenormalizerInterface, N
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ContributorActivityWeeksItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

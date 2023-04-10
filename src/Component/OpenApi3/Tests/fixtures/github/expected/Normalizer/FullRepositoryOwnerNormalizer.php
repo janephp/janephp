@@ -40,7 +40,6 @@ class FullRepositoryOwnerNormalizer implements DenormalizerInterface, Normalizer
         $object = new \Github\Model\FullRepositoryOwner();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\FullRepositoryOwnerConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -165,7 +164,6 @@ class FullRepositoryOwnerNormalizer implements DenormalizerInterface, Normalizer
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\FullRepositoryOwnerConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

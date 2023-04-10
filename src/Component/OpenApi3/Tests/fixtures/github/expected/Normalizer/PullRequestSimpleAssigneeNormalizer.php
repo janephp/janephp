@@ -40,7 +40,6 @@ class PullRequestSimpleAssigneeNormalizer implements DenormalizerInterface, Norm
         $object = new \Github\Model\PullRequestSimpleAssignee();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestSimpleAssigneeConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -165,7 +164,6 @@ class PullRequestSimpleAssigneeNormalizer implements DenormalizerInterface, Norm
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestSimpleAssigneeConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

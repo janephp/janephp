@@ -40,7 +40,6 @@ class ReleaseAssetNormalizer implements DenormalizerInterface, NormalizerInterfa
         $object = new \Github\Model\ReleaseAsset();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReleaseAssetConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -136,7 +135,6 @@ class ReleaseAssetNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReleaseAssetConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

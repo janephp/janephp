@@ -40,7 +40,6 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $object = new \Docker\Api\Model\Swarm();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SwarmConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -129,7 +128,6 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SwarmConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

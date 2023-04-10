@@ -40,7 +40,6 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyNormalizer im
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -77,7 +76,6 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyNormalizer im
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

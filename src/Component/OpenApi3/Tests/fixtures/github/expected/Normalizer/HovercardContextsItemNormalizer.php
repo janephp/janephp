@@ -40,7 +40,6 @@ class HovercardContextsItemNormalizer implements DenormalizerInterface, Normaliz
         $object = new \Github\Model\HovercardContextsItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\HovercardContextsItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -75,7 +74,6 @@ class HovercardContextsItemNormalizer implements DenormalizerInterface, Normaliz
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\HovercardContextsItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

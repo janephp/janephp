@@ -40,7 +40,6 @@ class WorkflowRunUsageBillableUBUNTUNormalizer implements DenormalizerInterface,
         $object = new \Github\Model\WorkflowRunUsageBillableUBUNTU();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\WorkflowRunUsageBillableUBUNTUConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -79,7 +78,6 @@ class WorkflowRunUsageBillableUBUNTUNormalizer implements DenormalizerInterface,
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\WorkflowRunUsageBillableUBUNTUConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

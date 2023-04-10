@@ -40,7 +40,6 @@ class TeamsTeamIdProjectsProjectIdPutBodyNormalizer implements DenormalizerInter
         $object = new \Github\Model\TeamsTeamIdProjectsProjectIdPutBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdProjectsProjectIdPutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -72,7 +71,6 @@ class TeamsTeamIdProjectsProjectIdPutBodyNormalizer implements DenormalizerInter
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdProjectsProjectIdPutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

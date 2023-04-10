@@ -40,7 +40,6 @@ class CheckSuiteAppNormalizer implements DenormalizerInterface, NormalizerInterf
         $object = new \Github\Model\CheckSuiteApp();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CheckSuiteAppConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -176,7 +175,6 @@ class CheckSuiteAppNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CheckSuiteAppConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

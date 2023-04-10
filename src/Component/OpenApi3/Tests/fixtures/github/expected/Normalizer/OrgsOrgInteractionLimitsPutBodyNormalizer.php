@@ -40,7 +40,6 @@ class OrgsOrgInteractionLimitsPutBodyNormalizer implements DenormalizerInterface
         $object = new \Github\Model\OrgsOrgInteractionLimitsPutBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgInteractionLimitsPutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -70,7 +69,6 @@ class OrgsOrgInteractionLimitsPutBodyNormalizer implements DenormalizerInterface
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgInteractionLimitsPutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

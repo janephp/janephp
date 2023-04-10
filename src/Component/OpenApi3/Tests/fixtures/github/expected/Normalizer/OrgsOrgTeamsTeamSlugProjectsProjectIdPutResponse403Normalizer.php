@@ -40,7 +40,6 @@ class OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Normalizer implements D
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -79,7 +78,6 @@ class OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Normalizer implements D
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class ApiOverviewSshKeyFingerprintsNormalizer implements DenormalizerInterface, 
         $object = new \Github\Model\ApiOverviewSshKeyFingerprints();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ApiOverviewSshKeyFingerprintsConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -93,7 +92,6 @@ class ApiOverviewSshKeyFingerprintsNormalizer implements DenormalizerInterface, 
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ApiOverviewSshKeyFingerprintsConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

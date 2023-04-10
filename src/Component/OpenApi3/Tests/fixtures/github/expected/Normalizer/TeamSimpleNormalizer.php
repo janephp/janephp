@@ -40,7 +40,6 @@ class TeamSimpleNormalizer implements DenormalizerInterface, NormalizerInterface
         $object = new \Github\Model\TeamSimple();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamSimpleConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -132,7 +131,6 @@ class TeamSimpleNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamSimpleConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

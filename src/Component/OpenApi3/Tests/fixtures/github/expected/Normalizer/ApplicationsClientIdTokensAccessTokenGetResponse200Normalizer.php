@@ -40,7 +40,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200Normalizer implements D
         $object = new \Github\Model\ApplicationsClientIdTokensAccessTokenGetResponse200();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ApplicationsClientIdTokensAccessTokenGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -171,7 +170,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200Normalizer implements D
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ApplicationsClientIdTokensAccessTokenGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

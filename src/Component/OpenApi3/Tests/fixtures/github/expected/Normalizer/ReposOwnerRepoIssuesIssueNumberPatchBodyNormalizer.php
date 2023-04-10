@@ -40,7 +40,6 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyNormalizer implements Denormalizer
         $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberPatchBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoIssuesIssueNumberPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -133,7 +132,6 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyNormalizer implements Denormalizer
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoIssuesIssueNumberPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

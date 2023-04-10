@@ -40,7 +40,6 @@ class OrganizationPlanNormalizer implements DenormalizerInterface, NormalizerInt
         $object = new \Github\Model\OrganizationPlan();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrganizationPlanConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -100,7 +99,6 @@ class OrganizationPlanNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrganizationPlanConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

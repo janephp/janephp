@@ -40,7 +40,6 @@ class AuthorizationUserNormalizer implements DenormalizerInterface, NormalizerIn
         $object = new \Github\Model\AuthorizationUser();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\AuthorizationUserConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -165,7 +164,6 @@ class AuthorizationUserNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\AuthorizationUserConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

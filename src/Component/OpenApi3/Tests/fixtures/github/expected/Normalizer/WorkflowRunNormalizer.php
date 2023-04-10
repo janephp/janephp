@@ -40,7 +40,6 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
         $object = new \Github\Model\WorkflowRun();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\WorkflowRunConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -218,7 +217,6 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\WorkflowRunConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

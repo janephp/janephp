@@ -40,7 +40,6 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyNormali
         $object = new \Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -87,7 +86,6 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyNormali
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

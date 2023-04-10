@@ -40,7 +40,6 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200Normalizer implem
         $object = new \Github\Model\UserInstallationsInstallationIdRepositoriesGetResponse200();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\UserInstallationsInstallationIdRepositoriesGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -94,7 +93,6 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200Normalizer implem
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\UserInstallationsInstallationIdRepositoriesGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

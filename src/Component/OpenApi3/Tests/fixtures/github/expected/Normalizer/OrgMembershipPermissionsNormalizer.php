@@ -40,7 +40,6 @@ class OrgMembershipPermissionsNormalizer implements DenormalizerInterface, Norma
         $object = new \Github\Model\OrgMembershipPermissions();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgMembershipPermissionsConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -70,7 +69,6 @@ class OrgMembershipPermissionsNormalizer implements DenormalizerInterface, Norma
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgMembershipPermissionsConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

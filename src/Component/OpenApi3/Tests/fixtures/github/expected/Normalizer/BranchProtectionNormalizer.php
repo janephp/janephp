@@ -40,7 +40,6 @@ class BranchProtectionNormalizer implements DenormalizerInterface, NormalizerInt
         $object = new \Github\Model\BranchProtection();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\BranchProtectionConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -138,7 +137,6 @@ class BranchProtectionNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\BranchProtectionConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

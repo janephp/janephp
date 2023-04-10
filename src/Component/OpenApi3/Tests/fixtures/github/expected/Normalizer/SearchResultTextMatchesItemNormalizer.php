@@ -40,7 +40,6 @@ class SearchResultTextMatchesItemNormalizer implements DenormalizerInterface, No
         $object = new \Github\Model\SearchResultTextMatchesItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\SearchResultTextMatchesItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -111,7 +110,6 @@ class SearchResultTextMatchesItemNormalizer implements DenormalizerInterface, No
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\SearchResultTextMatchesItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

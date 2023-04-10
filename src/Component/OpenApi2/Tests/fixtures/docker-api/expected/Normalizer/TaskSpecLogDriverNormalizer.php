@@ -40,7 +40,6 @@ class TaskSpecLogDriverNormalizer implements DenormalizerInterface, NormalizerIn
         $object = new \Docker\Api\Model\TaskSpecLogDriver();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\TaskSpecLogDriverConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -75,7 +74,6 @@ class TaskSpecLogDriverNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\TaskSpecLogDriverConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

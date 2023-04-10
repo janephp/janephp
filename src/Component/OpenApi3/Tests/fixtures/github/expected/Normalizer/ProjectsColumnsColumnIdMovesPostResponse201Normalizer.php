@@ -40,7 +40,6 @@ class ProjectsColumnsColumnIdMovesPostResponse201Normalizer implements Denormali
         $object = new \Github\Model\ProjectsColumnsColumnIdMovesPostResponse201();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsColumnsColumnIdMovesPostResponse201Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -55,7 +54,6 @@ class ProjectsColumnsColumnIdMovesPostResponse201Normalizer implements Denormali
         $data = array();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsColumnsColumnIdMovesPostResponse201Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class ExampleNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\Example();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi3\Tests\Expected\Validator\ExampleConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -73,7 +72,6 @@ class ExampleNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi3\Tests\Expected\Validator\ExampleConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

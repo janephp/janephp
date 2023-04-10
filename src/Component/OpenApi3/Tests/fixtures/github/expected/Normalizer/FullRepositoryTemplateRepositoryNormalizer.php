@@ -40,7 +40,6 @@ class FullRepositoryTemplateRepositoryNormalizer implements DenormalizerInterfac
         $object = new \Github\Model\FullRepositoryTemplateRepository();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\FullRepositoryTemplateRepositoryConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -566,7 +565,6 @@ class FullRepositoryTemplateRepositoryNormalizer implements DenormalizerInterfac
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\FullRepositoryTemplateRepositoryConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

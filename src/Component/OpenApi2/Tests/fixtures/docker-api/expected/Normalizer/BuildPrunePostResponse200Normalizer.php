@@ -40,7 +40,6 @@ class BuildPrunePostResponse200Normalizer implements DenormalizerInterface, Norm
         $object = new \Docker\Api\Model\BuildPrunePostResponse200();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\BuildPrunePostResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -75,7 +74,6 @@ class BuildPrunePostResponse200Normalizer implements DenormalizerInterface, Norm
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\BuildPrunePostResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

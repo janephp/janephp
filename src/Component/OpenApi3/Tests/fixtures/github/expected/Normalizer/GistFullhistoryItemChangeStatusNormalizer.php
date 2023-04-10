@@ -40,7 +40,6 @@ class GistFullhistoryItemChangeStatusNormalizer implements DenormalizerInterface
         $object = new \Github\Model\GistFullhistoryItemChangeStatus();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistFullhistoryItemChangeStatusConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -86,7 +85,6 @@ class GistFullhistoryItemChangeStatusNormalizer implements DenormalizerInterface
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GistFullhistoryItemChangeStatusConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

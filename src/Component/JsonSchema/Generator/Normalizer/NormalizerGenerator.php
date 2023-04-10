@@ -163,10 +163,6 @@ trait NormalizerGenerator
                 new Stmt\Expression(new Expr\MethodCall(new Expr\Variable('this'), 'validate', [
                     new Arg($dataVariable), new Arg(new Expr\New_(new Name('\\' . $constraintFqdn))),
                 ])),
-                new Stmt\Expression(new Expr\Assign(
-                    new Expr\ArrayDimFetch($contextVariable, new Scalar\String_('skip_validation')),
-                    new Expr\ConstFetch(new Name('true'))
-                )),
             ]]);
         }
 

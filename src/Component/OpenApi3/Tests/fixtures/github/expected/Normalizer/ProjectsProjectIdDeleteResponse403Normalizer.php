@@ -40,7 +40,6 @@ class ProjectsProjectIdDeleteResponse403Normalizer implements DenormalizerInterf
         $object = new \Github\Model\ProjectsProjectIdDeleteResponse403();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsProjectIdDeleteResponse403Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -94,7 +93,6 @@ class ProjectsProjectIdDeleteResponse403Normalizer implements DenormalizerInterf
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsProjectIdDeleteResponse403Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

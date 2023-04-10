@@ -40,7 +40,6 @@ class IssueSimplePerformedViaGithubAppNormalizer implements DenormalizerInterfac
         $object = new \Github\Model\IssueSimplePerformedViaGithubApp();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssueSimplePerformedViaGithubAppConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -176,7 +175,6 @@ class IssueSimplePerformedViaGithubAppNormalizer implements DenormalizerInterfac
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssueSimplePerformedViaGithubAppConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

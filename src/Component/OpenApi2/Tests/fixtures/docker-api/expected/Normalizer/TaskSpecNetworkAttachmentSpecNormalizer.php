@@ -40,7 +40,6 @@ class TaskSpecNetworkAttachmentSpecNormalizer implements DenormalizerInterface, 
         $object = new \Docker\Api\Model\TaskSpecNetworkAttachmentSpec();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\TaskSpecNetworkAttachmentSpecConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -61,7 +60,6 @@ class TaskSpecNetworkAttachmentSpecNormalizer implements DenormalizerInterface, 
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\TaskSpecNetworkAttachmentSpecConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

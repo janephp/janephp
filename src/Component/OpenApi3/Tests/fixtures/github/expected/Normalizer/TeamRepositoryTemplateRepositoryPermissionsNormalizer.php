@@ -40,7 +40,6 @@ class TeamRepositoryTemplateRepositoryPermissionsNormalizer implements Denormali
         $object = new \Github\Model\TeamRepositoryTemplateRepositoryPermissions();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamRepositoryTemplateRepositoryPermissionsConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -86,7 +85,6 @@ class TeamRepositoryTemplateRepositoryPermissionsNormalizer implements Denormali
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamRepositoryTemplateRepositoryPermissionsConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

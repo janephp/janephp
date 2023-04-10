@@ -40,7 +40,6 @@ class BranchProtectionRequiredStatusChecksNormalizer implements DenormalizerInte
         $object = new \Github\Model\BranchProtectionRequiredStatusChecks();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\BranchProtectionRequiredStatusChecksConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -97,7 +96,6 @@ class BranchProtectionRequiredStatusChecksNormalizer implements DenormalizerInte
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\BranchProtectionRequiredStatusChecksConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

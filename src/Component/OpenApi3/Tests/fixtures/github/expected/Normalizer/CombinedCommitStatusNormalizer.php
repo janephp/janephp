@@ -40,7 +40,6 @@ class CombinedCommitStatusNormalizer implements DenormalizerInterface, Normalize
         $object = new \Github\Model\CombinedCommitStatus();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CombinedCommitStatusConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -108,7 +107,6 @@ class CombinedCommitStatusNormalizer implements DenormalizerInterface, Normalize
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CombinedCommitStatusConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class SwarmSpecTaskDefaultsNormalizer implements DenormalizerInterface, Normaliz
         $object = new \Docker\Api\Model\SwarmSpecTaskDefaults();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SwarmSpecTaskDefaultsConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -61,7 +60,6 @@ class SwarmSpecTaskDefaultsNormalizer implements DenormalizerInterface, Normaliz
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SwarmSpecTaskDefaultsConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

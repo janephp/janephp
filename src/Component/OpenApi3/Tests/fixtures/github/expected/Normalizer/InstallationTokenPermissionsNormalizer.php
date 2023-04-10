@@ -40,7 +40,6 @@ class InstallationTokenPermissionsNormalizer implements DenormalizerInterface, N
         $object = new \Github\Model\InstallationTokenPermissions();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\InstallationTokenPermissionsConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -93,7 +92,6 @@ class InstallationTokenPermissionsNormalizer implements DenormalizerInterface, N
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\InstallationTokenPermissionsConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

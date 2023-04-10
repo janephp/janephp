@@ -40,7 +40,6 @@ class ProtectedBranchRequiredPullRequestReviewsNormalizer implements Denormalize
         $object = new \Github\Model\ProtectedBranchRequiredPullRequestReviews();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProtectedBranchRequiredPullRequestReviewsConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -98,7 +97,6 @@ class ProtectedBranchRequiredPullRequestReviewsNormalizer implements Denormalize
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProtectedBranchRequiredPullRequestReviewsConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

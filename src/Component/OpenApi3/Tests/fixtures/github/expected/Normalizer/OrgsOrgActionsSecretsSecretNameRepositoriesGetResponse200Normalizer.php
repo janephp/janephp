@@ -40,7 +40,6 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Normalizer implem
         $object = new \Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -87,7 +86,6 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Normalizer implem
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }
