@@ -6,6 +6,10 @@ use Jane\Component\AutoMapper\AutoMapper;
 use Jane\Component\AutoMapper\Exception\CircularReferenceException;
 use Jane\Component\AutoMapper\Exception\NoMappingFoundException;
 use Jane\Component\AutoMapper\MapperContext;
+use Jane\Component\AutoMapper\Tests\Fixtures\Address;
+use Jane\Component\AutoMapper\Tests\Fixtures\AddressDTOReadonlyClass;
+use Jane\Component\AutoMapper\Tests\Fixtures\AddressDTOWithReadonly;
+use Jane\Component\AutoMapper\Tests\Fixtures\AddressDTOWithReadonlyPromotedProperty;
 use Jane\Component\AutoMapper\Tests\Fixtures\AddressType;
 use Jane\Component\AutoMapper\Tests\Fixtures\AddressWithEnum;
 use Jane\Component\AutoMapper\Tests\Fixtures\Fish;
@@ -1040,5 +1044,52 @@ class AutoMapperTest extends AutoMapperBaseTest
         /** @var AddressWithEnum $copyAddress */
         $copyAddress = $this->autoMapper->map($address, AddressWithEnum::class);
         self::assertEquals($address->getType(), $copyAddress->getType());
+    }
+
+    /**
+     * @requires PHP 8.1
+     * @dataProvider provideReadonly
+     */
+    public function testReadonly(string $addressWithReadonlyClass): void
+    {
+        $address = new Address();
+        $address->setCity('city');
+
+        self::assertSame(
+            ['city' => 'city'],
+            $this->autoMapper->map(new $addressWithReadonlyClass('city'), 'array')
+        );
+
+        self::assertEquals(
+            $address,
+            $this->autoMapper->map(new $addressWithReadonlyClass('city'), Address::class)
+        );
+
+        self::assertEquals(
+            new $addressWithReadonlyClass('city'),
+            $this->autoMapper->map(['city' => 'city'], $addressWithReadonlyClass)
+        );
+
+        self::assertEquals(
+            new $addressWithReadonlyClass('city'),
+            $this->autoMapper->map($address, $addressWithReadonlyClass)
+        );
+
+        // assert that readonly property / class as a target object does not break automapping
+        $address->setCity('another city');
+        self::assertEquals(
+            new $addressWithReadonlyClass('city'),
+            $this->autoMapper->map($address, new $addressWithReadonlyClass('city'))
+        );
+    }
+
+    public static function provideReadonly(): iterable
+    {
+        yield [AddressDTOWithReadonly::class];
+        yield [AddressDTOWithReadonlyPromotedProperty::class];
+
+        if (\PHP_VERSION_ID >= 80200) {
+            yield [AddressDTOReadonlyClass::class];
+        }
     }
 }

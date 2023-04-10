@@ -149,6 +149,15 @@ final class Generator
             $sourcePropertyAccessor = $propertyMapping->getReadAccessor()->getExpression($sourceInput);
             [$output, $propStatements] = $transformer->transform($sourcePropertyAccessor, $result, $propertyMapping, $uniqueVariableScope);
 
+            $extractCallback = $propertyMapping->getReadAccessor()->getExtractCallback($mapperGeneratorMetadata->getSource());
+
+            if (null !== $extractCallback) {
+                $constructStatements[] = new Stmt\Expression(new Expr\Assign(
+                    new Expr\ArrayDimFetch(new Expr\PropertyFetch(new Expr\Variable('this'), 'extractCallbacks'), new Scalar\String_($propertyMapping->getProperty())),
+                    $extractCallback
+                ));
+            }
+
             if (null === $propertyMapping->getWriteMutator()) {
                 continue;
             }
@@ -162,17 +171,7 @@ final class Generator
                 $propStatements[] = new Stmt\Expression($writeExpression);
             }
 
-            $conditions = [];
-
-            $extractCallback = $propertyMapping->getReadAccessor()->getExtractCallback($mapperGeneratorMetadata->getSource());
             $hydrateCallback = $propertyMapping->getWriteMutator()->getHydrateCallback($mapperGeneratorMetadata->getTarget());
-
-            if (null !== $extractCallback) {
-                $constructStatements[] = new Stmt\Expression(new Expr\Assign(
-                    new Expr\ArrayDimFetch(new Expr\PropertyFetch(new Expr\Variable('this'), 'extractCallbacks'), new Scalar\String_($propertyMapping->getProperty())),
-                    $extractCallback
-                ));
-            }
 
             if (null !== $hydrateCallback) {
                 $constructStatements[] = new Stmt\Expression(new Expr\Assign(
@@ -180,6 +179,8 @@ final class Generator
                     $hydrateCallback
                 ));
             }
+
+            $conditions = [];
 
             if ($propertyMapping->checkExists()) {
                 if (\stdClass::class === $mapperGeneratorMetadata->getSource()) {
