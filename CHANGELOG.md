@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [AutoMapper] [GH#714](https://github.com/janephp/janephp/pull/714) Allow custom context in AutomapperNormalizer
 - [AutoMapper] [GH#716](https://github.com/janephp/janephp/pull/716) Add readonly properties support
 
+### Fixed
+- [JsonSchema] [GH#717](https://github.com/janephp/janephp/pull/717) Validate all nested classes too
+
 ## [7.4.3] - 2023-03-23
 ### Added
 - [AutoMapper] [GH#707](https://github.com/janephp/janephp/pull/707) Add Enum support
