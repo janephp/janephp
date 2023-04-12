@@ -40,7 +40,6 @@ class ProjectsProjectIdPatchBodyNormalizer implements DenormalizerInterface, Nor
         $object = new \Github\Model\ProjectsProjectIdPatchBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsProjectIdPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -103,7 +102,6 @@ class ProjectsProjectIdPatchBodyNormalizer implements DenormalizerInterface, Nor
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsProjectIdPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

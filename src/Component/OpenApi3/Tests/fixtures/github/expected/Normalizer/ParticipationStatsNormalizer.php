@@ -40,7 +40,6 @@ class ParticipationStatsNormalizer implements DenormalizerInterface, NormalizerI
         $object = new \Github\Model\ParticipationStats();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ParticipationStatsConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -95,7 +94,6 @@ class ParticipationStatsNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ParticipationStatsConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

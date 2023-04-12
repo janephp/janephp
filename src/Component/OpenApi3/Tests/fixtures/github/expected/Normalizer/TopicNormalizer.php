@@ -40,7 +40,6 @@ class TopicNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $object = new \Github\Model\Topic();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TopicConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -80,7 +79,6 @@ class TopicNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TopicConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

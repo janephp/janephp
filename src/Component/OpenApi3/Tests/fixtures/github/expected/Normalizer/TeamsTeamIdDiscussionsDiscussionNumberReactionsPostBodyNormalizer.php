@@ -40,7 +40,6 @@ class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyNormalizer implemen
         $object = new \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -70,7 +69,6 @@ class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyNormalizer implemen
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

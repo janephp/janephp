@@ -40,7 +40,6 @@ class CommitActivityNormalizer implements DenormalizerInterface, NormalizerInter
         $object = new \Github\Model\CommitActivity();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommitActivityConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -88,7 +87,6 @@ class CommitActivityNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommitActivityConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

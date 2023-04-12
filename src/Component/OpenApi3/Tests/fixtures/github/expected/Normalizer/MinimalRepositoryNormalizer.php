@@ -40,7 +40,6 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         $object = new \Github\Model\MinimalRepository();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MinimalRepositoryConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -582,7 +581,6 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MinimalRepositoryConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

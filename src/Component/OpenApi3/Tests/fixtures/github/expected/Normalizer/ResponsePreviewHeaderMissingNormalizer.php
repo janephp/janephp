@@ -40,7 +40,6 @@ class ResponsePreviewHeaderMissingNormalizer implements DenormalizerInterface, N
         $object = new \Github\Model\ResponsePreviewHeaderMissing();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ResponsePreviewHeaderMissingConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -75,7 +74,6 @@ class ResponsePreviewHeaderMissingNormalizer implements DenormalizerInterface, N
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ResponsePreviewHeaderMissingConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

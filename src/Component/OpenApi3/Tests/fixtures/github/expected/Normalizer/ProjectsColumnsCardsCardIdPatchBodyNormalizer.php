@@ -40,7 +40,6 @@ class ProjectsColumnsCardsCardIdPatchBodyNormalizer implements DenormalizerInter
         $object = new \Github\Model\ProjectsColumnsCardsCardIdPatchBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsColumnsCardsCardIdPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -82,7 +81,6 @@ class ProjectsColumnsCardsCardIdPatchBodyNormalizer implements DenormalizerInter
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectsColumnsCardsCardIdPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

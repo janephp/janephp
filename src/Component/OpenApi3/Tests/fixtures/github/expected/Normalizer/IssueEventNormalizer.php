@@ -40,7 +40,6 @@ class IssueEventNormalizer implements DenormalizerInterface, NormalizerInterface
         $object = new \Github\Model\IssueEvent();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssueEventConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -220,7 +219,6 @@ class IssueEventNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssueEventConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

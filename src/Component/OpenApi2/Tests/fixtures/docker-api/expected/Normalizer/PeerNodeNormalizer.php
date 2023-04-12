@@ -40,7 +40,6 @@ class PeerNodeNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $object = new \Docker\Api\Model\PeerNode();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PeerNodeConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -67,7 +66,6 @@ class PeerNodeNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PeerNodeConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class UserGpgKeysPostBodyNormalizer implements DenormalizerInterface, Normalizer
         $object = new \Github\Model\UserGpgKeysPostBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\UserGpgKeysPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -70,7 +69,6 @@ class UserGpgKeysPostBodyNormalizer implements DenormalizerInterface, Normalizer
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\UserGpgKeysPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

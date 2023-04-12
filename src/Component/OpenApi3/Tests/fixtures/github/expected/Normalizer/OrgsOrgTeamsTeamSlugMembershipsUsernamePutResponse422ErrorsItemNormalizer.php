@@ -40,7 +40,6 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItemNormalizer 
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -86,7 +85,6 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItemNormalizer 
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

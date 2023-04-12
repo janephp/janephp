@@ -40,7 +40,6 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $object = new \Github\Model\GpgKey();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GpgKeyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -155,7 +154,6 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GpgKeyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

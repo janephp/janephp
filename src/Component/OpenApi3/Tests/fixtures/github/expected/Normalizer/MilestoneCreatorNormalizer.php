@@ -40,7 +40,6 @@ class MilestoneCreatorNormalizer implements DenormalizerInterface, NormalizerInt
         $object = new \Github\Model\MilestoneCreator();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MilestoneCreatorConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -165,7 +164,6 @@ class MilestoneCreatorNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MilestoneCreatorConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

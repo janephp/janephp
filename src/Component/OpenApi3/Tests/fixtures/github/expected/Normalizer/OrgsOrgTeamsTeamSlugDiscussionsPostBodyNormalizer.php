@@ -40,7 +40,6 @@ class OrgsOrgTeamsTeamSlugDiscussionsPostBodyNormalizer implements DenormalizerI
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsPostBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugDiscussionsPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -82,7 +81,6 @@ class OrgsOrgTeamsTeamSlugDiscussionsPostBodyNormalizer implements DenormalizerI
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugDiscussionsPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

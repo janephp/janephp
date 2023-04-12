@@ -40,7 +40,6 @@ class CommitSearchResultItemCommitAuthorNormalizer implements DenormalizerInterf
         $object = new \Github\Model\CommitSearchResultItemCommitAuthor();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommitSearchResultItemCommitAuthorConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -80,7 +79,6 @@ class CommitSearchResultItemCommitAuthorNormalizer implements DenormalizerInterf
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CommitSearchResultItemCommitAuthorConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

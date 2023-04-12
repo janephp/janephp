@@ -40,7 +40,6 @@ class EngineDescriptionPluginsItemNormalizer implements DenormalizerInterface, N
         $object = new \Docker\Api\Model\EngineDescriptionPluginsItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\EngineDescriptionPluginsItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -67,7 +66,6 @@ class EngineDescriptionPluginsItemNormalizer implements DenormalizerInterface, N
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\EngineDescriptionPluginsItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

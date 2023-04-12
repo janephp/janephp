@@ -40,7 +40,6 @@ class ReposOwnerRepoReleasesPostBodyNormalizer implements DenormalizerInterface,
         $object = new \Github\Model\ReposOwnerRepoReleasesPostBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoReleasesPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -105,7 +104,6 @@ class ReposOwnerRepoReleasesPostBodyNormalizer implements DenormalizerInterface,
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoReleasesPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

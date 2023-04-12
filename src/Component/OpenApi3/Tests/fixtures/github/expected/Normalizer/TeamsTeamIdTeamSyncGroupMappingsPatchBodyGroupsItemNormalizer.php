@@ -40,7 +40,6 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItemNormalizer implements D
         $object = new \Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -101,7 +100,6 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItemNormalizer implements D
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

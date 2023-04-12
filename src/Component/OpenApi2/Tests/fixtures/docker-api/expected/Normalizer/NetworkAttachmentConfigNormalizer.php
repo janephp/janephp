@@ -40,7 +40,6 @@ class NetworkAttachmentConfigNormalizer implements DenormalizerInterface, Normal
         $object = new \Docker\Api\Model\NetworkAttachmentConfig();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\NetworkAttachmentConfigConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -89,7 +88,6 @@ class NetworkAttachmentConfigNormalizer implements DenormalizerInterface, Normal
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\NetworkAttachmentConfigConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

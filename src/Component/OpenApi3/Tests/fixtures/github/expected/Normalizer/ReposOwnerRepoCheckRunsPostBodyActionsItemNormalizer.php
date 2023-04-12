@@ -40,7 +40,6 @@ class ReposOwnerRepoCheckRunsPostBodyActionsItemNormalizer implements Denormaliz
         $object = new \Github\Model\ReposOwnerRepoCheckRunsPostBodyActionsItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoCheckRunsPostBodyActionsItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -80,7 +79,6 @@ class ReposOwnerRepoCheckRunsPostBodyActionsItemNormalizer implements Denormaliz
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoCheckRunsPostBodyActionsItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

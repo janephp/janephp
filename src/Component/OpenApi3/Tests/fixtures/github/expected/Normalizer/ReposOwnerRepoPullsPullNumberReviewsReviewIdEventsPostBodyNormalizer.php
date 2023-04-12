@@ -40,7 +40,6 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyNormalizer imple
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -77,7 +76,6 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyNormalizer imple
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

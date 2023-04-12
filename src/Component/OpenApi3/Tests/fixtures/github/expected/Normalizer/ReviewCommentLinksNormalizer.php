@@ -40,7 +40,6 @@ class ReviewCommentLinksNormalizer implements DenormalizerInterface, NormalizerI
         $object = new \Github\Model\ReviewCommentLinks();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReviewCommentLinksConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -80,7 +79,6 @@ class ReviewCommentLinksNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReviewCommentLinksConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

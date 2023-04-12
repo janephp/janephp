@@ -40,7 +40,6 @@ class GetResponse200Normalizer implements DenormalizerInterface, NormalizerInter
         $object = new \Github\Model\GetResponse200();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -232,7 +231,6 @@ class GetResponse200Normalizer implements DenormalizerInterface, NormalizerInter
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

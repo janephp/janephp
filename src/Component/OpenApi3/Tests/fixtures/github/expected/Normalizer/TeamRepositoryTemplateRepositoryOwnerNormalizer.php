@@ -40,7 +40,6 @@ class TeamRepositoryTemplateRepositoryOwnerNormalizer implements DenormalizerInt
         $object = new \Github\Model\TeamRepositoryTemplateRepositoryOwner();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamRepositoryTemplateRepositoryOwnerConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -191,7 +190,6 @@ class TeamRepositoryTemplateRepositoryOwnerNormalizer implements DenormalizerInt
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamRepositoryTemplateRepositoryOwnerConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

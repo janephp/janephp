@@ -40,7 +40,6 @@ class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyNormalizer implements Denormal
         $object = new \Github\Model\ReposOwnerRepoReleasesAssetsAssetIdPatchBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoReleasesAssetsAssetIdPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -86,7 +85,6 @@ class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyNormalizer implements Denormal
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoReleasesAssetsAssetIdPatchBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class ContentReferencesContentReferenceIdAttachmentsPostBodyNormalizer implement
         $object = new \Github\Model\ContentReferencesContentReferenceIdAttachmentsPostBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ContentReferencesContentReferenceIdAttachmentsPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -75,7 +74,6 @@ class ContentReferencesContentReferenceIdAttachmentsPostBodyNormalizer implement
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ContentReferencesContentReferenceIdAttachmentsPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class BuildCacheNormalizer implements DenormalizerInterface, NormalizerInterface
         $object = new \Docker\Api\Model\BuildCache();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\BuildCacheConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -118,7 +117,6 @@ class BuildCacheNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\BuildCacheConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

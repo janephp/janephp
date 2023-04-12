@@ -40,7 +40,6 @@ class ReposOwnerRepoContentsPathDeleteBodyCommitterNormalizer implements Denorma
         $object = new \Github\Model\ReposOwnerRepoContentsPathDeleteBodyCommitter();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoContentsPathDeleteBodyCommitterConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -79,7 +78,6 @@ class ReposOwnerRepoContentsPathDeleteBodyCommitterNormalizer implements Denorma
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoContentsPathDeleteBodyCommitterConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

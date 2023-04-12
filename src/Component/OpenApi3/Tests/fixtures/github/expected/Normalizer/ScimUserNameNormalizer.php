@@ -40,7 +40,6 @@ class ScimUserNameNormalizer implements DenormalizerInterface, NormalizerInterfa
         $object = new \Github\Model\ScimUserName();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScimUserNameConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -81,7 +80,6 @@ class ScimUserNameNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScimUserNameConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

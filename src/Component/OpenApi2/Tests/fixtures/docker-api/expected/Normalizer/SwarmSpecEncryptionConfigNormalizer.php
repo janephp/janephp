@@ -40,7 +40,6 @@ class SwarmSpecEncryptionConfigNormalizer implements DenormalizerInterface, Norm
         $object = new \Docker\Api\Model\SwarmSpecEncryptionConfig();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SwarmSpecEncryptionConfigConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -61,7 +60,6 @@ class SwarmSpecEncryptionConfigNormalizer implements DenormalizerInterface, Norm
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SwarmSpecEncryptionConfigConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

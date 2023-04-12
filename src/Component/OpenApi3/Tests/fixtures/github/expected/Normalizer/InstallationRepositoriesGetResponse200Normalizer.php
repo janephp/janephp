@@ -40,7 +40,6 @@ class InstallationRepositoriesGetResponse200Normalizer implements DenormalizerIn
         $object = new \Github\Model\InstallationRepositoriesGetResponse200();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\InstallationRepositoriesGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -94,7 +93,6 @@ class InstallationRepositoriesGetResponse200Normalizer implements DenormalizerIn
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\InstallationRepositoriesGetResponse200Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class ServiceSpecNormalizer implements DenormalizerInterface, NormalizerInterfac
         $object = new \Docker\Api\Model\ServiceSpec();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ServiceSpecConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -119,7 +118,6 @@ class ServiceSpecNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ServiceSpecConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

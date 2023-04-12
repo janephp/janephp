@@ -40,7 +40,6 @@ class StargazerUserNormalizer implements DenormalizerInterface, NormalizerInterf
         $object = new \Github\Model\StargazerUser();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\StargazerUserConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -165,7 +164,6 @@ class StargazerUserNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\StargazerUserConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

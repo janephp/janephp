@@ -40,7 +40,6 @@ class ContainerSummaryNormalizer implements DenormalizerInterface, NormalizerInt
         $object = new \Docker\Api\Model\ContainerSummary();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ContainerSummaryConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -177,7 +176,6 @@ class ContainerSummaryNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ContainerSummaryConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

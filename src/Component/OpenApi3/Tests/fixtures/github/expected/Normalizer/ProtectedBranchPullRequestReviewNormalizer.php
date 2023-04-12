@@ -40,7 +40,6 @@ class ProtectedBranchPullRequestReviewNormalizer implements DenormalizerInterfac
         $object = new \Github\Model\ProtectedBranchPullRequestReview();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProtectedBranchPullRequestReviewConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -96,7 +95,6 @@ class ProtectedBranchPullRequestReviewNormalizer implements DenormalizerInterfac
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProtectedBranchPullRequestReviewConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

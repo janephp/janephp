@@ -40,7 +40,6 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422Normalizer implements
         $object = new \Github\Model\OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -87,7 +86,6 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422Normalizer implements
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

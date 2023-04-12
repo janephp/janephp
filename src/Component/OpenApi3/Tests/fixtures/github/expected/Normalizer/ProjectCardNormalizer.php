@@ -40,7 +40,6 @@ class ProjectCardNormalizer implements DenormalizerInterface, NormalizerInterfac
         $object = new \Github\Model\ProjectCard();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectCardConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -130,7 +129,6 @@ class ProjectCardNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectCardConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class ContainersIdArchiveHeadResponse400Normalizer implements DenormalizerInterf
         $object = new \Docker\Api\Model\ContainersIdArchiveHeadResponse400();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ContainersIdArchiveHeadResponse400Constraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -61,7 +60,6 @@ class ContainersIdArchiveHeadResponse400Normalizer implements DenormalizerInterf
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ContainersIdArchiveHeadResponse400Constraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

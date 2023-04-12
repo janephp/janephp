@@ -40,7 +40,6 @@ class JobNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         $object = new \Github\Model\Job();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\JobConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -154,7 +153,6 @@ class JobNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\JobConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

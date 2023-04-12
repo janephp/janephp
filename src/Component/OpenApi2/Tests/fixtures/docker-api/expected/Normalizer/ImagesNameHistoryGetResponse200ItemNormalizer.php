@@ -40,7 +40,6 @@ class ImagesNameHistoryGetResponse200ItemNormalizer implements DenormalizerInter
         $object = new \Docker\Api\Model\ImagesNameHistoryGetResponse200Item();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ImagesNameHistoryGetResponse200ItemConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -87,7 +86,6 @@ class ImagesNameHistoryGetResponse200ItemNormalizer implements DenormalizerInter
         $data['Comment'] = $object->getComment();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ImagesNameHistoryGetResponse200ItemConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

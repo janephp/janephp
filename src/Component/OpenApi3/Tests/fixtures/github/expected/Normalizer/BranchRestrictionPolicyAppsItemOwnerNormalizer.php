@@ -40,7 +40,6 @@ class BranchRestrictionPolicyAppsItemOwnerNormalizer implements DenormalizerInte
         $object = new \Github\Model\BranchRestrictionPolicyAppsItemOwner();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\BranchRestrictionPolicyAppsItemOwnerConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -219,7 +218,6 @@ class BranchRestrictionPolicyAppsItemOwnerNormalizer implements DenormalizerInte
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\BranchRestrictionPolicyAppsItemOwnerConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

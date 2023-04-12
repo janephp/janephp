@@ -40,7 +40,6 @@ class WorkflowRunUsageBillableNormalizer implements DenormalizerInterface, Norma
         $object = new \Github\Model\WorkflowRunUsageBillable();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\WorkflowRunUsageBillableConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -86,7 +85,6 @@ class WorkflowRunUsageBillableNormalizer implements DenormalizerInterface, Norma
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\WorkflowRunUsageBillableConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

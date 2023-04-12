@@ -40,7 +40,6 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsNormalizer i
         $object = new \Github\Model\ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -106,7 +105,6 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsNormalizer i
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

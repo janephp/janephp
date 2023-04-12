@@ -40,7 +40,6 @@ class ValidationErrorNormalizer implements DenormalizerInterface, NormalizerInte
         $object = new \Github\Model\ValidationError();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ValidationErrorConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -90,7 +89,6 @@ class ValidationErrorNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ValidationErrorConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

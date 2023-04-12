@@ -40,7 +40,6 @@ class InstallationSuspendedByNormalizer implements DenormalizerInterface, Normal
         $object = new \Github\Model\InstallationSuspendedBy();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\InstallationSuspendedByConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -165,7 +164,6 @@ class InstallationSuspendedByNormalizer implements DenormalizerInterface, Normal
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\InstallationSuspendedByConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

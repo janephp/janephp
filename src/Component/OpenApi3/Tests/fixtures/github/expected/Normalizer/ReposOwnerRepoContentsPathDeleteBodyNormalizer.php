@@ -40,7 +40,6 @@ class ReposOwnerRepoContentsPathDeleteBodyNormalizer implements DenormalizerInte
         $object = new \Github\Model\ReposOwnerRepoContentsPathDeleteBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoContentsPathDeleteBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -96,7 +95,6 @@ class ReposOwnerRepoContentsPathDeleteBodyNormalizer implements DenormalizerInte
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoContentsPathDeleteBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class MountVolumeOptionsDriverConfigNormalizer implements DenormalizerInterface,
         $object = new \Docker\Api\Model\MountVolumeOptionsDriverConfig();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\MountVolumeOptionsDriverConfigConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -75,7 +74,6 @@ class MountVolumeOptionsDriverConfigNormalizer implements DenormalizerInterface,
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\MountVolumeOptionsDriverConfigConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

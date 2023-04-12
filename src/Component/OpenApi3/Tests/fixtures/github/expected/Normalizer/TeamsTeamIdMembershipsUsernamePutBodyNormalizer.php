@@ -40,7 +40,6 @@ class TeamsTeamIdMembershipsUsernamePutBodyNormalizer implements DenormalizerInt
         $object = new \Github\Model\TeamsTeamIdMembershipsUsernamePutBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdMembershipsUsernamePutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -72,7 +71,6 @@ class TeamsTeamIdMembershipsUsernamePutBodyNormalizer implements DenormalizerInt
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdMembershipsUsernamePutBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

@@ -40,7 +40,6 @@ class ReposOwnerRepoStatusesShaPostBodyNormalizer implements DenormalizerInterfa
         $object = new \Github\Model\ReposOwnerRepoStatusesShaPostBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoStatusesShaPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -91,7 +90,6 @@ class ReposOwnerRepoStatusesShaPostBodyNormalizer implements DenormalizerInterfa
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoStatusesShaPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

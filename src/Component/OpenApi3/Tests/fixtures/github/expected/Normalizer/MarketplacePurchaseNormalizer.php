@@ -40,7 +40,6 @@ class MarketplacePurchaseNormalizer implements DenormalizerInterface, Normalizer
         $object = new \Github\Model\MarketplacePurchase();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MarketplacePurchaseConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -107,7 +106,6 @@ class MarketplacePurchaseNormalizer implements DenormalizerInterface, Normalizer
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MarketplacePurchaseConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

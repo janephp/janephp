@@ -40,7 +40,6 @@ class ReposOwnerRepoMilestonesPostBodyNormalizer implements DenormalizerInterfac
         $object = new \Github\Model\ReposOwnerRepoMilestonesPostBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoMilestonesPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -91,7 +90,6 @@ class ReposOwnerRepoMilestonesPostBodyNormalizer implements DenormalizerInterfac
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoMilestonesPostBodyConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }

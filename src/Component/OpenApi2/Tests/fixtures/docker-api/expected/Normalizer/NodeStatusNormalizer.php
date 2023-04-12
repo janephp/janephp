@@ -40,7 +40,6 @@ class NodeStatusNormalizer implements DenormalizerInterface, NormalizerInterface
         $object = new \Docker\Api\Model\NodeStatus();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\NodeStatusConstraint());
-            $context['skip_validation'] = true;
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -73,7 +72,6 @@ class NodeStatusNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\NodeStatusConstraint());
-            $context['skip_validation'] = true;
         }
         return $data;
     }
