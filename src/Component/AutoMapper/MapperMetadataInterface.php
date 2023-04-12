@@ -22,6 +22,11 @@ interface MapperMetadataInterface
     public function getTarget(): string;
 
     /**
+     * Check if the target is a read-only class.
+     */
+    public function isTargetReadOnlyClass(): bool;
+
+    /**
      * Get properties to map between source and target.
      *
      * @return PropertyMapping[]

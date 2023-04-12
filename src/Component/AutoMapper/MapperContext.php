@@ -24,6 +24,7 @@ class MapperContext
     public const TARGET_TO_POPULATE = 'target_to_populate';
     public const CONSTRUCTOR_ARGUMENTS = 'constructor_arguments';
     public const SKIP_NULL_VALUES = 'skip_null_values';
+    public const ALLOW_READONLY_TARGET_TO_POPULATE = 'allow_readonly_target_to_populate';
 
     private $context = [
         self::DEPTH => 0,
@@ -82,6 +83,20 @@ class MapperContext
     public function setConstructorArgument(string $class, string $key, $value): self
     {
         $this->context[self::CONSTRUCTOR_ARGUMENTS][$class][$key] = $value;
+
+        return $this;
+    }
+
+    public function setSkipNullValues(bool $skipNullValues): self
+    {
+        $this->context[self::SKIP_NULL_VALUES] = $skipNullValues;
+
+        return $this;
+    }
+
+    public function setAllowReadOnlyTargetToPopulate(bool $allowReadOnlyTargetToPopulate): self
+    {
+        $this->context[self::ALLOW_READONLY_TARGET_TO_POPULATE] = $allowReadOnlyTargetToPopulate;
 
         return $this;
     }

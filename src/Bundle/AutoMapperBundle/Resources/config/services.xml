@@ -55,6 +55,7 @@
         <service id="Jane\Component\AutoMapper\Generator\Generator">
             <argument>null</argument>
             <argument type="service" id="jane.mapping.class_discriminator_from_class_metadata" />
+            <argument>false</argument>
         </service>
 
         <service id="jane.mapping.class_discriminator_from_class_metadata" class="Symfony\Component\Serializer\Mapping\ClassDiscriminatorFromClassMetadata">

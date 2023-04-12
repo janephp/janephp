@@ -51,10 +51,24 @@ final class MapperGeneratorMetadataFactory implements MapperGeneratorMetadataFac
             $extractor = $this->fromSourcePropertiesMappingExtractor;
         }
 
-        $mapperMetadata = new MapperMetadata($autoMapperRegister, $extractor, $source, $target, $this->classPrefix);
+        $mapperMetadata = new MapperMetadata($autoMapperRegister, $extractor, $source, $target, $this->isReadOnly($target), $this->classPrefix);
         $mapperMetadata->setAttributeChecking($this->attributeChecking);
         $mapperMetadata->setDateTimeFormat($this->dateTimeFormat);
 
         return $mapperMetadata;
+    }
+
+    private function isReadOnly(string $mappedType): bool
+    {
+        try {
+            $reflClass = new \ReflectionClass($mappedType);
+        } catch (\ReflectionException $e) {
+            $reflClass = null;
+        }
+        if (\PHP_VERSION_ID >= 80200 && null !== $reflClass && $reflClass->isReadOnly()) {
+            return true;
+        }
+
+        return false;
     }
 }
