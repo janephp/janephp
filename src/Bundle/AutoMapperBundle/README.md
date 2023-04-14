@@ -24,6 +24,7 @@ Possible properties:
 - `cache_dir` (default: `%kernel.cache_dir%/automapper`): This settings allows you to customize the output directory for generated mappers;
 - `mappings`: This option allows you to customize Mapper metadata, you have to specify `source` & `target` data types and related configuration using `pass` field.
 This configuration should implements `Jane\Bundle\AutoMapper\Configuration\ConfigurationPassInterface`.
+- `allow_readonly_target_to_populate` (default: `false`): Will throw an exception if you use a readonly class as target to populate if set to `false`.
 
 ## Normalizer Bridge
 A Normalizer Bridge is available, aiming to be 100% feature compatible with the ObjectNormalizer of the ``symfony/serializer`` component. The goal of this bridge **is not to replace the ObjectNormalizer** but rather providing a very fast alternative.

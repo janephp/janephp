@@ -18,6 +18,7 @@ $dirs = PhpCsFixer\Finder::create()
         'Component/AutoMapper/Tests/Fixtures/AddressDTOWithReadonly.php',
         'Component/AutoMapper/Tests/Fixtures/AddressDTOWithReadonlyPromotedProperty.php',
         'Component/AutoMapper/Tests/Fixtures/AddressDTOReadonlyClass.php',
+        'Component/AutoMapper/Tests/Fixtures/AddressDTOSecondReadonlyClass.php',
     ])
     ->exclude('Bundle/AutoMapperBundle/Tests/Resources')
     ->exclude('Bundle/JsonSchemaBundle/Tests/Resources')

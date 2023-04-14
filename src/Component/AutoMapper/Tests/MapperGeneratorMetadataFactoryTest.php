@@ -129,6 +129,7 @@ class MapperGeneratorMetadataFactoryTest extends AutoMapperBaseTest
         self::assertInstanceOf(PropertyMapping::class, $metadata->getPropertyMapping('id'));
         self::assertInstanceOf(PropertyMapping::class, $metadata->getPropertyMapping('name'));
         self::assertNull($metadata->getPropertyMapping('email'));
+        self::assertFalse($metadata->isTargetReadOnlyClass());
     }
 
     public function testHasNotConstructor(): void
@@ -136,5 +137,16 @@ class MapperGeneratorMetadataFactoryTest extends AutoMapperBaseTest
         $metadata = $this->factory->create($this->autoMapper, 'array', Fixtures\UserDTO::class);
 
         self::assertFalse($metadata->hasConstructor());
+    }
+
+    /**
+     * @requires PHP 8.2
+     */
+    public function testTargetIsReadOnlyClass(): void
+    {
+        $metadata = $this->factory->create($this->autoMapper, 'array', Fixtures\AddressDTOReadonlyClass::class);
+
+        self::assertEquals(Fixtures\AddressDTOReadonlyClass::class, $metadata->getTarget());
+        self::assertTrue($metadata->isTargetReadOnlyClass());
     }
 }

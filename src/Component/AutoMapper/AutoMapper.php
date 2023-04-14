@@ -186,14 +186,16 @@ class AutoMapper implements AutoMapperInterface, AutoMapperRegistryInterface, Ma
         string $classPrefix = 'Mapper_',
         bool $attributeChecking = true,
         bool $autoRegister = true,
-        string $dateTimeFormat = \DateTime::RFC3339
+        string $dateTimeFormat = \DateTime::RFC3339,
+        bool $allowReadOnlyTargetToPopulate = false
     ): self {
         $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
 
         if (null === $loader) {
             $loader = new EvalLoader(new Generator(
                 (new ParserFactory())->create(ParserFactory::PREFER_PHP7),
-                new ClassDiscriminatorFromClassMetadata($classMetadataFactory)
+                new ClassDiscriminatorFromClassMetadata($classMetadataFactory),
+                $allowReadOnlyTargetToPopulate
             ));
         }
 

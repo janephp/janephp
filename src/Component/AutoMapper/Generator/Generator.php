@@ -4,6 +4,7 @@ namespace Jane\Component\AutoMapper\Generator;
 
 use Jane\Component\AutoMapper\AutoMapperRegistryInterface;
 use Jane\Component\AutoMapper\Exception\CompileException;
+use Jane\Component\AutoMapper\Exception\ReadOnlyTargetException;
 use Jane\Component\AutoMapper\Extractor\WriteMutator;
 use Jane\Component\AutoMapper\GeneratedMapper;
 use Jane\Component\AutoMapper\MapperContext;
@@ -31,10 +32,13 @@ final class Generator
 
     private $classDiscriminator;
 
-    public function __construct(Parser $parser = null, ClassDiscriminatorResolverInterface $classDiscriminator = null)
+    private $allowReadOnlyTargetToPopulate;
+
+    public function __construct(Parser $parser = null, ClassDiscriminatorResolverInterface $classDiscriminator = null, bool $allowReadOnlyTargetToPopulate = false)
     {
         $this->parser = $parser ?? (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
         $this->classDiscriminator = $classDiscriminator;
+        $this->allowReadOnlyTargetToPopulate = $allowReadOnlyTargetToPopulate;
     }
 
     /**
@@ -87,10 +91,21 @@ final class Generator
         [$createObjectStmts, $inConstructor, $constructStatementsForCreateObjects, $injectMapperStatements] = $this->getCreateObjectStatements($mapperGeneratorMetadata, $result, $contextVariable, $sourceInput, $uniqueVariableScope);
         $constructStatements = array_merge($constructStatements, $constructStatementsForCreateObjects);
 
+        $targetToPopulate = new Expr\ArrayDimFetch($contextVariable, new Scalar\String_(MapperContext::TARGET_TO_POPULATE));
         $statements[] = new Stmt\Expression(new Expr\Assign($result, new Expr\BinaryOp\Coalesce(
-            new Expr\ArrayDimFetch($contextVariable, new Scalar\String_(MapperContext::TARGET_TO_POPULATE)),
+            $targetToPopulate,
             new Expr\ConstFetch(new Name('null'))
         )));
+        if (!$this->allowReadOnlyTargetToPopulate && $mapperGeneratorMetadata->isTargetReadOnlyClass()) {
+            $statements[] = new Stmt\If_(
+                new Expr\BinaryOp\BooleanAnd(
+                    new Expr\BooleanNot(new Expr\BinaryOp\Coalesce(new Expr\ArrayDimFetch($contextVariable, new Scalar\String_(MapperContext::ALLOW_READONLY_TARGET_TO_POPULATE)), new Expr\ConstFetch(new Name('false')))),
+                    new Expr\FuncCall(new Name('is_object'), [new Arg(new Expr\BinaryOp\Coalesce($targetToPopulate, new Expr\ConstFetch(new Name('null'))))])
+                ), [
+                'stmts' => [new Stmt\Expression(new Expr\Throw_(new Expr\New_(new Name(ReadOnlyTargetException::class))))],
+            ]);
+        }
+
         $statements[] = new Stmt\If_(new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), $result), [
             'stmts' => $createObjectStmts,
         ]);

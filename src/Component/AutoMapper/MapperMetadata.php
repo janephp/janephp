@@ -31,6 +31,8 @@ class MapperMetadata implements MapperGeneratorMetadataInterface
 
     private $isConstructorAllowed;
 
+    private $isTargetReadOnlyClass;
+
     private $dateTimeFormat;
 
     private $classPrefix;
@@ -39,12 +41,13 @@ class MapperMetadata implements MapperGeneratorMetadataInterface
 
     private $targetReflectionClass = null;
 
-    public function __construct(MapperGeneratorMetadataRegistryInterface $metadataRegistry, MappingExtractorInterface $mappingExtractor, string $source, string $target, string $classPrefix = 'Mapper_')
+    public function __construct(MapperGeneratorMetadataRegistryInterface $metadataRegistry, MappingExtractorInterface $mappingExtractor, string $source, string $target, bool $isTargetReadOnlyClass, string $classPrefix = 'Mapper_')
     {
         $this->mappingExtractor = $mappingExtractor;
         $this->metadataRegistry = $metadataRegistry;
         $this->source = $source;
         $this->target = $target;
+        $this->isTargetReadOnlyClass = $isTargetReadOnlyClass;
         $this->isConstructorAllowed = true;
         $this->dateTimeFormat = \DateTime::RFC3339;
         $this->classPrefix = $classPrefix;
@@ -308,5 +311,10 @@ class MapperMetadata implements MapperGeneratorMetadataInterface
         }
 
         return false;
+    }
+
+    public function isTargetReadOnlyClass(): bool
+    {
+        return $this->isTargetReadOnlyClass;
     }
 }

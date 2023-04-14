@@ -5,6 +5,7 @@ namespace Jane\Component\AutoMapper\Tests;
 use Jane\Component\AutoMapper\AutoMapper;
 use Jane\Component\AutoMapper\Exception\CircularReferenceException;
 use Jane\Component\AutoMapper\Exception\NoMappingFoundException;
+use Jane\Component\AutoMapper\Exception\ReadOnlyTargetException;
 use Jane\Component\AutoMapper\MapperContext;
 use Jane\Component\AutoMapper\Tests\Fixtures\Address;
 use Jane\Component\AutoMapper\Tests\Fixtures\AddressDTOReadonlyClass;
@@ -1047,11 +1048,55 @@ class AutoMapperTest extends AutoMapperBaseTest
     }
 
     /**
+     * @requires PHP 8.2
+     */
+    public function testTargetReadonlyClass(): void
+    {
+        $data = ['city' => 'Nantes'];
+        $toPopulate = new Fixtures\AddressDTOSecondReadonlyClass('city', '67100');
+
+        self::expectException(ReadOnlyTargetException::class);
+        $this->autoMapper->map($data, $toPopulate);
+    }
+
+    /**
+     * @requires PHP 8.2
+     */
+    public function testTargetReadonlyClassSkippedContext(): void
+    {
+        $data = ['city' => 'Nantes'];
+        $toPopulate = new Fixtures\AddressDTOSecondReadonlyClass('city', '67100');
+
+        $this->autoMapper->map($data, $toPopulate, [MapperContext::ALLOW_READONLY_TARGET_TO_POPULATE => true]);
+
+        // value didn't changed because the object class is readonly, we can't change the value there
+        self::assertEquals('city', $toPopulate->city);
+    }
+
+    /**
+     * @requires PHP 8.2
+     */
+    public function testTargetReadonlyClassAllowed(): void
+    {
+        $this->buildAutoMapper(true);
+
+        $data = ['city' => 'Nantes'];
+        $toPopulate = new AddressDTOReadonlyClass('city');
+
+        $this->autoMapper->map($data, $toPopulate);
+
+        // value didn't changed because the object class is readonly, we can't change the value there
+        self::assertEquals('city', $toPopulate->city);
+    }
+
+    /**
      * @requires PHP 8.1
      * @dataProvider provideReadonly
      */
     public function testReadonly(string $addressWithReadonlyClass): void
     {
+        $this->buildAutoMapper(true);
+
         $address = new Address();
         $address->setCity('city');
 

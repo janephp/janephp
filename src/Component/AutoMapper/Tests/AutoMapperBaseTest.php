@@ -9,6 +9,7 @@ use Jane\Component\AutoMapper\Loader\ClassLoaderInterface;
 use Jane\Component\AutoMapper\Loader\FileLoader;
 use PhpParser\ParserFactory;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Serializer\Mapping\ClassDiscriminatorFromClassMetadata;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
@@ -26,14 +27,22 @@ abstract class AutoMapperBaseTest extends TestCase
 
     protected function setUp(): void
     {
-        @unlink(__DIR__ . '/cache/registry.php');
+        unset($this->autoMapper, $this->loader);
+        $this->buildAutoMapper();
+    }
+
+    protected function buildAutoMapper(bool $allowReadOnlyTargetToPopulate = false): AutoMapper
+    {
+        $fs = new Filesystem();
+        $fs->remove(__DIR__ . '/cache/');
         $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
 
         $this->loader = new FileLoader(new Generator(
             (new ParserFactory())->create(ParserFactory::PREFER_PHP7),
-            new ClassDiscriminatorFromClassMetadata($classMetadataFactory)
+            new ClassDiscriminatorFromClassMetadata($classMetadataFactory),
+            $allowReadOnlyTargetToPopulate
         ), __DIR__ . '/cache');
 
-        $this->autoMapper = AutoMapper::create(true, $this->loader);
+        return $this->autoMapper = AutoMapper::create(true, $this->loader);
     }
 }

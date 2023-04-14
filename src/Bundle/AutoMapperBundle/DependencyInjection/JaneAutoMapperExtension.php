@@ -5,6 +5,7 @@ namespace Jane\Bundle\AutoMapperBundle\DependencyInjection;
 use Jane\Bundle\AutoMapperBundle\Configuration\MapperConfigurationInterface;
 use Jane\Component\AutoMapper\Extractor\FromSourceMappingExtractor;
 use Jane\Component\AutoMapper\Extractor\FromTargetMappingExtractor;
+use Jane\Component\AutoMapper\Generator\Generator;
 use Jane\Component\AutoMapper\Loader\FileLoader;
 use Jane\Component\AutoMapper\MapperGeneratorMetadataFactory;
 use Jane\Component\AutoMapper\MapperGeneratorMetadataInterface;
@@ -67,6 +68,12 @@ class JaneAutoMapperExtension extends Extension
             $container
                 ->getDefinition(FromSourceMappingExtractor::class)
                 ->addArgument(new Reference($config['name_converter']));
+        }
+
+        if ($config['allow_readonly_target_to_populate']) {
+            $container
+                ->getDefinition(Generator::class)
+                ->replaceArgument(2, $config['allow_readonly_target_to_populate']);
         }
 
         $container->setParameter('automapper.cache_dir', $config['cache_dir']);
