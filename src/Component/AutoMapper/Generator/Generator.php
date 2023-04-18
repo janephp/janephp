@@ -317,6 +317,7 @@ final class Generator
             ],
             'byRef' => true,
             'stmts' => $statements,
+            'returnType' => \PHP_VERSION_ID >= 80000 ? 'mixed' : null,
         ]);
 
         $constructMethod = new Stmt\ClassMethod('__construct', [
