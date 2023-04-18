@@ -55,7 +55,10 @@ final class FileLoader implements ClassLoaderInterface
         require $classPath;
     }
 
-    public function saveMapper(MapperGeneratorMetadataInterface $mapperGeneratorMetadata): void
+    /**
+     * @return string The generated class name
+     */
+    public function saveMapper(MapperGeneratorMetadataInterface $mapperGeneratorMetadata): string
     {
         $className = $mapperGeneratorMetadata->getMapperClassName();
         $classPath = $this->directory . \DIRECTORY_SEPARATOR . $className . '.php';
@@ -65,6 +68,8 @@ final class FileLoader implements ClassLoaderInterface
         if ($this->hotReload) {
             $this->addHashToRegistry($className, $mapperGeneratorMetadata->getHash());
         }
+
+        return $className;
     }
 
     private function addHashToRegistry($className, $hash): void

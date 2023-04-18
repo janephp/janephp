@@ -10,6 +10,7 @@ use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\User;
 use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\UserDTO;
 use Jane\Component\AutoMapper\AutoMapperInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\Filesystem\Filesystem;
 
 class ServiceInstantiationTest extends WebTestCase
 {
@@ -19,7 +20,7 @@ class ServiceInstantiationTest extends WebTestCase
         $_SERVER['KERNEL_DIR'] = __DIR__ . '/Resources/app';
         $_SERVER['KERNEL_CLASS'] = 'DummyApp\AppKernel';
 
-        @unlink(__DIR__ . '/Resources/var/cache/test');
+        (new Filesystem())->remove(__DIR__ . '/Resources/var/cache/test');
     }
 
     public function testAutoMapper()
@@ -99,5 +100,15 @@ class ServiceInstantiationTest extends WebTestCase
         $dto = new DTOWithEnum();
         $dto->enum = SomeEnum::FOO;
         self::assertSame(['enum' => 'foo'], $autoMapper->map($dto, 'array'));
+    }
+
+    /**
+     * @see Resources/app/config.yml
+     */
+    public function testWarmup(): void
+    {
+        static::bootKernel();
+
+        self::assertFileExists(__DIR__ . '/Resources/var/cache/test/automapper/Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_Address_array.php');
     }
 }
