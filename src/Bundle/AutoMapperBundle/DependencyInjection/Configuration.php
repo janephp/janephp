@@ -30,6 +30,14 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('date_time_format')->defaultValue(\DateTimeInterface::RFC3339)->end()
                 ->booleanNode('hot_reload')->defaultValue($this->debug)->end()
                 ->booleanNode('allow_readonly_target_to_populate')->defaultFalse()->end()
+                ->arrayNode('warmup')
+                    ->arrayPrototype()
+                        ->children()
+                            ->scalarNode('source')->defaultValue('array')->end()
+                            ->scalarNode('target')->defaultValue('array')->end()
+                        ->end()
+                    ->end()
+                ->end()
             ->end()
         ;
 

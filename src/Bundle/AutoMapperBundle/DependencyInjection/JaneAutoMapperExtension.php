@@ -2,6 +2,8 @@
 
 namespace Jane\Bundle\AutoMapperBundle\DependencyInjection;
 
+use Jane\Bundle\AutoMapperBundle\CacheWarmup\CacheWarmerLoaderInterface;
+use Jane\Bundle\AutoMapperBundle\CacheWarmup\ConfigurationCacheWarmerLoader;
 use Jane\Bundle\AutoMapperBundle\Configuration\MapperConfigurationInterface;
 use Jane\Component\AutoMapper\Extractor\FromSourceMappingExtractor;
 use Jane\Component\AutoMapper\Extractor\FromTargetMappingExtractor;
@@ -56,8 +58,7 @@ class JaneAutoMapperExtension extends Extension
         if ($config['normalizer']) {
             $container
                 ->getDefinition(AutoMapperNormalizer::class)
-                ->addTag('serializer.normalizer', ['priority' => 1000])
-            ;
+                ->addTag('serializer.normalizer', ['priority' => 1000]);
         }
 
         if (null !== $config['name_converter']) {
@@ -77,5 +78,10 @@ class JaneAutoMapperExtension extends Extension
         }
 
         $container->setParameter('automapper.cache_dir', $config['cache_dir']);
+
+        $container->registerForAutoconfiguration(CacheWarmerLoaderInterface::class)->addTag('jane_auto_mapper.cache_warmer_loader');
+        $container
+            ->getDefinition(ConfigurationCacheWarmerLoader::class)
+            ->replaceArgument(0, $config['warmup']);
     }
 }
