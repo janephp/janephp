@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [7.5.0] - 2023-04-24
 ### Changed
 - [AutoMapper] [GH#720](https://github.com/janephp/janephp/pull/720) Add mixed return type to generated mappers
 - [AutoMapper] [GH#721](https://github.com/janephp/janephp/pull/721) Create mappers on Symfony cache warmup
@@ -677,7 +679,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.4.4...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.5.0...HEAD
+[7.5.0]: https://github.com/janephp/janephp/compare/v7.4.4...v7.5.0
 [7.4.4]: https://github.com/janephp/janephp/compare/v7.4.3...v7.4.4
 [7.4.3]: https://github.com/janephp/janephp/compare/v7.4.2...v7.4.3
 [7.4.2]: https://github.com/janephp/janephp/compare/v7.4.1...v7.4.2
