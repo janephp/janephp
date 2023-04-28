@@ -166,7 +166,7 @@ final class FromTargetMappingExtractor extends MappingExtractor
         }
 
         $writeInfo = $this->writeInfoExtractor->getWriteInfo($target, $property, ['enable_constructor_extraction' => true]);
-        if ($writeInfo->getType() !== PropertyWriteInfo::TYPE_CONSTRUCTOR) {
+        if (null === $writeInfo || $writeInfo->getType() !== PropertyWriteInfo::TYPE_CONSTRUCTOR) {
             return false;
         }
 
