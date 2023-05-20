@@ -1,0 +1,109 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/test-simple": {
+            "post": {
+                "operationId": "Test AnyOf with Discriminator",
+                "responses": {
+                    "200": {
+                        "description": "no error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FooBar"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "some error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FooBarWithMapping"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Test."
+                ]
+            }
+        }
+    },
+    "info": {
+        "version": "",
+        "title": ""
+    },
+    "components": {
+        "schemas": {
+            "FooBar": {
+                "type": "object",
+                "title": "FooBar",
+                "properties": {
+                    "what": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/Foo"
+                            },
+                            {
+                                "$ref": "#/components/schemas/Bar"
+                            }
+                        ],
+                        "discriminator": {
+                            "propertyName": "type"
+                        }
+                    }
+                }
+            },
+            "FooBarWithMapping": {
+                "type": "object",
+                "title": "FooBarWithMapping",
+                "properties": {
+                    "what": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/Foo"
+                            },
+                            {
+                                "$ref": "#/components/schemas/Bar"
+                            }
+                        ],
+                        "discriminator": {
+                            "propertyName": "type",
+                            "mapping": {
+                                "foo": "#/components/schemas/Foo",
+                                "bar": "#/components/schemas/Bar"
+                            }
+                        }
+                    }
+                }
+            },
+            "Foo": {
+                "type": "object",
+                "title": "Foo",
+                "properties": {
+                    "type": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Bar": {
+                "type": "object",
+                "title": "Bar",
+                "properties": {
+                    "type": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

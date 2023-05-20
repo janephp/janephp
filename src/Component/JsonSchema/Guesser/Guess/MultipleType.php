@@ -110,7 +110,7 @@ class MultipleType extends Type
 
         // We have exactly two types: one null and an object
         if (2 === \count($this->types)) {
-            list($type1, $type2) = $this->types;
+            list($type1, $type2) = array_values($this->types);
 
             if ($this->isOptionalType($type1)) {
                 return $type2->getTypeHint($namespace);
