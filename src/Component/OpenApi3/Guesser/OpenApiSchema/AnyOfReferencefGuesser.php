@@ -42,7 +42,9 @@ class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInter
         $type = new MultipleType($object);
         if ($object instanceof Schema) {
             $mapping = null;
+            $supportsDiscriminator = false;
             if ($object->getDiscriminator() && $object->getDiscriminator()->getPropertyName()) {
+                $supportsDiscriminator = true;
                 $type->setDiscriminatorProperty($object->getDiscriminator()->getPropertyName());
                 if ($object->getDiscriminator()->getMapping()) {
                     $mapping = array_flip((array) $object->getDiscriminator()->getMapping());
@@ -66,8 +68,12 @@ class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInter
                 }
                 if (null !== $anyOfSchema->getType()) {
                     $anyOfType = $this->chainGuesser->guessType($anyOfSchema, $name, $anyOfReference, $registry);
-                    $objectRef = '#' . $anyOf->getMergedUri()->getFragment();
-                    $type->addType($anyOfType, $mapping ? $mapping[$objectRef] : $objectRef);
+                    if ($supportsDiscriminator) {
+                        $objectRef = '#' . $anyOf->getMergedUri()->getFragment();
+                        $type->addType($anyOfType, $mapping ? $mapping[$objectRef] : $objectRef);
+                    } else {
+                        $type->addType($anyOfType);
+                    }
                 }
             }
         }

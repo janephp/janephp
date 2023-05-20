@@ -23,7 +23,7 @@ class MultipleType extends Type
     }
 
     /**
-     * Sets discriminator property
+     * Sets discriminator property.
      */
     public function setDiscriminatorProperty(string $property): self
     {
