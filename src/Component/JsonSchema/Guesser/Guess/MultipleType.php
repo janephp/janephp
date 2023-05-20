@@ -6,8 +6,8 @@ use Jane\Component\JsonSchema\Generator\Context\Context;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
-use PhpParser\Node\Stmt;
 use PhpParser\Node\Scalar;
+use PhpParser\Node\Stmt;
 
 class MultipleType extends Type
 {
