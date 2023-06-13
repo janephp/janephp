@@ -82,4 +82,9 @@ class User
     {
         $this->properties = $properties;
     }
+
+    public function setAddress(Address $address): void
+    {
+        $this->address = $address;
+    }
 }
