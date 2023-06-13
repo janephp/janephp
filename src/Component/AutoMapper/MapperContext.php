@@ -235,6 +235,8 @@ class MapperContext
 
         if (\is_array($context[self::ALLOWED_ATTRIBUTES][$attribute] ?? false)) {
             $context[self::ALLOWED_ATTRIBUTES] = $context[self::ALLOWED_ATTRIBUTES][$attribute];
+        } else {
+            unset($context[self::ALLOWED_ATTRIBUTES]);
         }
 
         return $context;

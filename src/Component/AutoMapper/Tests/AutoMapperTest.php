@@ -8,6 +8,7 @@ use Jane\Component\AutoMapper\Exception\NoMappingFoundException;
 use Jane\Component\AutoMapper\Exception\ReadOnlyTargetException;
 use Jane\Component\AutoMapper\MapperContext;
 use Jane\Component\AutoMapper\Tests\Fixtures\Address;
+use Jane\Component\AutoMapper\Tests\Fixtures\AddressDTO;
 use Jane\Component\AutoMapper\Tests\Fixtures\AddressDTOReadonlyClass;
 use Jane\Component\AutoMapper\Tests\Fixtures\AddressDTOWithReadonly;
 use Jane\Component\AutoMapper\Tests\Fixtures\AddressDTOWithReadonlyPromotedProperty;
@@ -558,10 +559,16 @@ class AutoMapperTest extends AutoMapperBaseTest
         });
 
         $user = new Fixtures\User(1, 'yolo', '13');
+        $address = new Address();
+        $address->setCity('some city');
+        $user->setAddress($address);
 
-        $userDto = $this->autoMapper->map($user, Fixtures\UserDTO::class, [MapperContext::ALLOWED_ATTRIBUTES => ['id', 'age']]);
+        /** @var Fixtures\UserDTO $userDto */
+        $userDto = $this->autoMapper->map($user, Fixtures\UserDTO::class, [MapperContext::ALLOWED_ATTRIBUTES => ['id', 'age', 'address']]);
 
         self::assertNull($userDto->getName());
+        self::assertInstanceOf(AddressDTO::class, $userDto->address);
+        self::assertSame('some city', $userDto->address->city);
     }
 
     public function testIgnoredAttributes(): void
