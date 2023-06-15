@@ -26,12 +26,14 @@ class MapperContext
     public const SKIP_NULL_VALUES = 'skip_null_values';
     public const ALLOW_READONLY_TARGET_TO_POPULATE = 'allow_readonly_target_to_populate';
     public const DATETIME_FORMAT = 'datetime_format';
+    public const MAP_TO_ACCESSOR_PARAMETER = 'map_to_accessor_parameter';
 
     private $context = [
         self::DEPTH => 0,
         self::CIRCULAR_REFERENCE_REGISTRY => [],
         self::CIRCULAR_COUNT_REFERENCE_REGISTRY => [],
         self::CONSTRUCTOR_ARGUMENTS => [],
+        self::MAP_TO_ACCESSOR_PARAMETER => [],
     ];
 
     public function toArray(): array

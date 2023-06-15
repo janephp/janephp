@@ -31,7 +31,7 @@ abstract class MappingExtractor implements MappingExtractorInterface
     public function __construct(PropertyInfoExtractorInterface $propertyInfoExtractor, PropertyReadInfoExtractorInterface $readInfoExtractor, PropertyWriteInfoExtractorInterface $writeInfoExtractor, TransformerFactoryInterface $transformerFactory, ClassMetadataFactoryInterface $classMetadataFactory = null)
     {
         $this->propertyInfoExtractor = $propertyInfoExtractor;
-        $this->readInfoExtractor = $readInfoExtractor;
+        $this->readInfoExtractor = new MapToContextReadInfoExtractorDecorator($readInfoExtractor);
         $this->writeInfoExtractor = $writeInfoExtractor;
         $this->transformerFactory = $transformerFactory;
         $this->classMetadataFactory = $classMetadataFactory;
@@ -57,6 +57,7 @@ abstract class MappingExtractor implements MappingExtractorInterface
         return new ReadAccessor(
             $type,
             $readInfo->getName(),
+            $source,
             PropertyReadInfo::VISIBILITY_PUBLIC !== $readInfo->getVisibility()
         );
     }
