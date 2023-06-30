@@ -7,7 +7,7 @@ jane_auto_mapper:
     normalizer: true
     name_converter: DummyApp\IdNameConverter
     warmup:
-      - {source: 'Jane\Bundle\AutoMapperBundle\Tests\Fixtures\Address', target: 'array'}
+      - {source: 'Jane\Bundle\AutoMapperBundle\Tests\Fixtures\NestedObject', target: 'array'}
 
 services:
   _defaults:

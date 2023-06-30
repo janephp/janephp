@@ -109,10 +109,9 @@
         <service id="Jane\Component\AutoMapper\Transformer\SymfonyUidTransformerFactory" />
 
         <service id="Jane\Bundle\AutoMapperBundle\CacheWarmup\CacheWarmer">
-            <argument type="service" id="Jane\Component\AutoMapper\Loader\FileLoader" />
             <argument type="service" id="Jane\Component\AutoMapper\AutoMapperRegistryInterface" />
-            <argument type="service" id="Jane\Component\AutoMapper\MapperGeneratorMetadataFactoryInterface" />
             <argument type="tagged_iterator" tag="jane_auto_mapper.cache_warmer_loader" />
+            <argument type="string">%automapper.cache_dir%</argument>
             <tag name="kernel.cache_warmer" />
         </service>
 
