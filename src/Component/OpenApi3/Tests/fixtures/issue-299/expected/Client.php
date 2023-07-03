@@ -12,7 +12,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|mixed|\Psr\Http\Message\ResponseInterface
      */
     public function getUsers(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {

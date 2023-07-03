@@ -44,14 +44,14 @@ class TeamsRemoveMembershipForUserInOrg extends \Github\Runtime\Client\BaseEndpo
      *
      * @throws \Github\Exception\TeamsRemoveMembershipForUserInOrgForbiddenException
      *
-     * @return null
+     * @return null|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (204 === $status) {
-            return null;
+            return $body;
         }
         if (403 === $status) {
             throw new \Github\Exception\TeamsRemoveMembershipForUserInOrgForbiddenException($response);

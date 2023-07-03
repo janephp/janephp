@@ -64,18 +64,18 @@ class IssuesListEventsForTimeline extends \Github\Runtime\Client\BaseEndpoint im
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\IssueEventForIssue[]', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\IssueEventForIssue[]', 'json');
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\IssuesListEventsForTimelineNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\IssuesListEventsForTimelineNotFoundException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (410 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\IssuesListEventsForTimelineGoneException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\IssuesListEventsForTimelineGoneException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (415 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\IssuesListEventsForTimelineUnsupportedMediaTypeException($serializer->deserialize($body, 'Github\\Model\\ResponsePreviewHeaderMissing', 'json'), $response);
+            throw new \Github\Exception\IssuesListEventsForTimelineUnsupportedMediaTypeException($serializer->deserialize((string) $body, 'Github\\Model\\ResponsePreviewHeaderMissing', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

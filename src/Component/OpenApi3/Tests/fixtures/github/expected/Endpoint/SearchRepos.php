@@ -67,23 +67,23 @@ class SearchRepos extends \Github\Runtime\Client\BaseEndpoint implements \Github
      * @throws \Github\Exception\SearchReposServiceUnavailableException
      * @throws \Github\Exception\SearchReposUnprocessableEntityException
      *
-     * @return null|\Github\Model\SearchRepositoriesGetResponse200
+     * @return null|\Github\Model\SearchRepositoriesGetResponse200|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\SearchRepositoriesGetResponse200', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\SearchRepositoriesGetResponse200', 'json');
         }
         if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\SearchReposServiceUnavailableException($serializer->deserialize($body, 'Github\\Model\\ResponseServiceUnavailable', 'json'), $response);
+            throw new \Github\Exception\SearchReposServiceUnavailableException($serializer->deserialize((string) $body, 'Github\\Model\\ResponseServiceUnavailable', 'json'), $response);
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\SearchReposUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'), $response);
+            throw new \Github\Exception\SearchReposUnprocessableEntityException($serializer->deserialize((string) $body, 'Github\\Model\\ValidationError', 'json'), $response);
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
     }
     public function getAuthenticationScopes() : array

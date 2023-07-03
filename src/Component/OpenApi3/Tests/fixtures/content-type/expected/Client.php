@@ -10,7 +10,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param string $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function bodyParameterTriggersContentTypeBeingSet(string $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -19,7 +19,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function producesTriggersAcceptBeingSet(string $fetch = self::FETCH_OBJECT)
     {

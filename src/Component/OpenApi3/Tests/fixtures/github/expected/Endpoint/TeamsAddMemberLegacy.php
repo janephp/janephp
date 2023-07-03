@@ -51,23 +51,23 @@ class TeamsAddMemberLegacy extends \Github\Runtime\Client\BaseEndpoint implement
      * @throws \Github\Exception\TeamsAddMemberLegacyUnprocessableEntityException
      * @throws \Github\Exception\TeamsAddMemberLegacyForbiddenException
      *
-     * @return null
+     * @return null|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (204 === $status) {
-            return null;
+            return $body;
         }
         if (404 === $status) {
             throw new \Github\Exception\TeamsAddMemberLegacyNotFoundException($response);
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\TeamsAddMemberLegacyUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\TeamsTeamIdMembersUsernamePutResponse422', 'json'), $response);
+            throw new \Github\Exception\TeamsAddMemberLegacyUnprocessableEntityException($serializer->deserialize((string) $body, 'Github\\Model\\TeamsTeamIdMembersUsernamePutResponse422', 'json'), $response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\TeamsAddMemberLegacyForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\TeamsAddMemberLegacyForbiddenException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

@@ -39,29 +39,29 @@ class ProjectsDelete extends \Github\Runtime\Client\BaseEndpoint implements \Git
      * @throws \Github\Exception\ProjectsDeleteGoneException
      * @throws \Github\Exception\ProjectsDeleteNotFoundException
      *
-     * @return null
+     * @return null|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (204 === $status) {
-            return null;
+            return $body;
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ProjectsDeleteForbiddenException($serializer->deserialize($body, 'Github\\Model\\ProjectsProjectIdDeleteResponse403', 'json'), $response);
+            throw new \Github\Exception\ProjectsDeleteForbiddenException($serializer->deserialize((string) $body, 'Github\\Model\\ProjectsProjectIdDeleteResponse403', 'json'), $response);
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ProjectsDeleteUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\ProjectsDeleteUnauthorizedException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (410 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ProjectsDeleteGoneException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\ProjectsDeleteGoneException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ProjectsDeleteNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\ProjectsDeleteNotFoundException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

@@ -45,18 +45,18 @@ class ContainerExec extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (201 === $status) {
-            return $serializer->deserialize($body, 'Docker\\Api\\Model\\IdResponse', 'json');
+            return $serializer->deserialize((string) $body, 'Docker\\Api\\Model\\IdResponse', 'json');
         }
         if (404 === $status) {
-            throw new \Docker\Api\Exception\ContainerExecNotFoundException($serializer->deserialize($body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
+            throw new \Docker\Api\Exception\ContainerExecNotFoundException($serializer->deserialize((string) $body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
         }
         if (409 === $status) {
-            throw new \Docker\Api\Exception\ContainerExecConflictException($serializer->deserialize($body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
+            throw new \Docker\Api\Exception\ContainerExecConflictException($serializer->deserialize((string) $body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
         }
         if (500 === $status) {
-            throw new \Docker\Api\Exception\ContainerExecInternalServerErrorException($serializer->deserialize($body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
+            throw new \Docker\Api\Exception\ContainerExecInternalServerErrorException($serializer->deserialize((string) $body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

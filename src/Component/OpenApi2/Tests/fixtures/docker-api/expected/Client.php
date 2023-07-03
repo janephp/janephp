@@ -134,7 +134,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\ContainerLogsNotFoundException
     * @throws \Docker\Api\Exception\ContainerLogsInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|mixed|\Psr\Http\Message\ResponseInterface
     */
     public function containerLogs(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -168,7 +168,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ContainerExportNotFoundException
      * @throws \Docker\Api\Exception\ContainerExportInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function containerExport(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -216,7 +216,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\ContainerStatsNotFoundException
     * @throws \Docker\Api\Exception\ContainerStatsInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|mixed|\Psr\Http\Message\ResponseInterface
     */
     public function containerStats(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -234,7 +234,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ContainerResizeNotFoundException
      * @throws \Docker\Api\Exception\ContainerResizeInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function containerResize(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -254,7 +254,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\ContainerStartNotFoundException
     * @throws \Docker\Api\Exception\ContainerStartInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function containerStart(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -271,7 +271,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ContainerStopNotFoundException
      * @throws \Docker\Api\Exception\ContainerStopInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function containerStop(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -288,7 +288,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ContainerRestartNotFoundException
      * @throws \Docker\Api\Exception\ContainerRestartInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function containerRestart(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -308,7 +308,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\ContainerKillConflictException
     * @throws \Docker\Api\Exception\ContainerKillInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function containerKill(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -343,7 +343,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ContainerRenameConflictException
      * @throws \Docker\Api\Exception\ContainerRenameInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function containerRename(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -363,7 +363,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\ContainerPauseNotFoundException
     * @throws \Docker\Api\Exception\ContainerPauseInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function containerPause(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -377,7 +377,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ContainerUnpauseNotFoundException
      * @throws \Docker\Api\Exception\ContainerUnpauseInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function containerUnpause(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -505,7 +505,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\ContainerAttachNotFoundException
     * @throws \Docker\Api\Exception\ContainerAttachInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function containerAttach(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -531,7 +531,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\ContainerAttachWebsocketNotFoundException
     * @throws \Docker\Api\Exception\ContainerAttachWebsocketInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function containerAttachWebsocket(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -571,7 +571,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ContainerDeleteConflictException
      * @throws \Docker\Api\Exception\ContainerDeleteInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function containerDelete(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -589,7 +589,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ContainerArchiveNotFoundException
      * @throws \Docker\Api\Exception\ContainerArchiveInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function containerArchive(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -610,7 +610,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\ContainerArchiveInfoNotFoundException
     * @throws \Docker\Api\Exception\ContainerArchiveInfoInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function containerArchiveInfo(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -640,7 +640,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\PutContainerArchiveNotFoundException
     * @throws \Docker\Api\Exception\PutContainerArchiveInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function putContainerArchive(string $id, $inputStream, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -765,7 +765,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\ImageBuildBadRequestException
     * @throws \Docker\Api\Exception\ImageBuildInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function imageBuild($inputStream, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -831,7 +831,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\ImageCreateNotFoundException
     * @throws \Docker\Api\Exception\ImageCreateInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function imageCreate(string $inputImage, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -890,7 +890,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\ImagePushNotFoundException
     * @throws \Docker\Api\Exception\ImagePushInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function imagePush(string $name, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -910,7 +910,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ImageTagConflictException
      * @throws \Docker\Api\Exception\ImageTagInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function imageTag(string $name, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -993,7 +993,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Docker\Api\Exception\SystemAuthInternalServerErrorException
     *
-    * @return null|\Docker\Api\Model\AuthPostResponse200|\Psr\Http\Message\ResponseInterface
+    * @return null|\Docker\Api\Model\AuthPostResponse200|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function systemAuth(\Docker\Api\Model\AuthConfig $authConfig, string $fetch = self::FETCH_OBJECT)
     {
@@ -1023,7 +1023,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\SystemPingInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|mixed|\Psr\Http\Message\ResponseInterface
      */
     public function systemPing(string $fetch = self::FETCH_OBJECT)
     {
@@ -1033,7 +1033,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\SystemPingHeadInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|mixed|\Psr\Http\Message\ResponseInterface
      */
     public function systemPingHead(string $fetch = self::FETCH_OBJECT)
     {
@@ -1159,7 +1159,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Docker\Api\Exception\ImageGetInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|mixed|\Psr\Http\Message\ResponseInterface
     */
     public function imageGet(string $name, string $fetch = self::FETCH_OBJECT)
     {
@@ -1184,7 +1184,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Docker\Api\Exception\ImageGetAllInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|mixed|\Psr\Http\Message\ResponseInterface
     */
     public function imageGetAll(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1203,7 +1203,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Docker\Api\Exception\ImageLoadInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function imageLoad($imagesTarball, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1237,7 +1237,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\ExecStartNotFoundException
     * @throws \Docker\Api\Exception\ExecStartConflictException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function execStart(string $id, \Docker\Api\Model\ExecIdStartPostBody $execStartConfig, string $fetch = self::FETCH_OBJECT)
     {
@@ -1258,7 +1258,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\ExecResizeNotFoundException
     * @throws \Docker\Api\Exception\ExecResizeInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function execResize(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1329,7 +1329,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\VolumeDeleteConflictException
      * @throws \Docker\Api\Exception\VolumeDeleteInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function volumeDelete(string $name, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1413,7 +1413,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\NetworkDeleteNotFoundException
      * @throws \Docker\Api\Exception\NetworkDeleteInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function networkDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -1462,7 +1462,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\NetworkConnectNotFoundException
      * @throws \Docker\Api\Exception\NetworkConnectInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function networkConnect(string $id, \Docker\Api\Model\NetworksIdConnectPostBody $container, string $fetch = self::FETCH_OBJECT)
     {
@@ -1478,7 +1478,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\NetworkDisconnectNotFoundException
      * @throws \Docker\Api\Exception\NetworkDisconnectInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function networkDisconnect(string $id, \Docker\Api\Model\NetworksIdDisconnectPostBody $container, string $fetch = self::FETCH_OBJECT)
     {
@@ -1570,7 +1570,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Docker\Api\Exception\PluginPullInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function pluginPull(array $body, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1626,7 +1626,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\PluginEnableNotFoundException
     * @throws \Docker\Api\Exception\PluginEnableInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function pluginEnable(string $name, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1642,7 +1642,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\PluginDisableNotFoundException
     * @throws \Docker\Api\Exception\PluginDisableInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function pluginDisable(string $name, string $fetch = self::FETCH_OBJECT)
     {
@@ -1673,7 +1673,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\PluginUpgradeNotFoundException
     * @throws \Docker\Api\Exception\PluginUpgradeInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function pluginUpgrade(string $name, array $body, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1691,7 +1691,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Docker\Api\Exception\PluginCreateInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function pluginCreate($tarContext, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1708,7 +1708,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\PluginPushNotFoundException
     * @throws \Docker\Api\Exception\PluginPushInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function pluginPush(string $name, string $fetch = self::FETCH_OBJECT)
     {
@@ -1725,7 +1725,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\PluginSetNotFoundException
     * @throws \Docker\Api\Exception\PluginSetInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function pluginSet(string $name, array $body, string $fetch = self::FETCH_OBJECT)
     {
@@ -1768,7 +1768,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\NodeDeleteInternalServerErrorException
      * @throws \Docker\Api\Exception\NodeDeleteServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function nodeDelete(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1805,7 +1805,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\NodeUpdateInternalServerErrorException
     * @throws \Docker\Api\Exception\NodeUpdateServiceUnavailableException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function nodeUpdate(string $id, \Docker\Api\Model\NodeSpec $body, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1832,7 +1832,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\SwarmInitInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmInitServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|mixed|\Psr\Http\Message\ResponseInterface
      */
     public function swarmInit(\Docker\Api\Model\SwarmInitPostBody $body, string $fetch = self::FETCH_OBJECT)
     {
@@ -1847,7 +1847,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\SwarmJoinInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmJoinServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function swarmJoin(\Docker\Api\Model\SwarmJoinPostBody $body, string $fetch = self::FETCH_OBJECT)
     {
@@ -1865,7 +1865,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\SwarmLeaveInternalServerErrorException
     * @throws \Docker\Api\Exception\SwarmLeaveServiceUnavailableException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function swarmLeave(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1888,7 +1888,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\SwarmUpdateInternalServerErrorException
     * @throws \Docker\Api\Exception\SwarmUpdateServiceUnavailableException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function swarmUpdate(\Docker\Api\Model\SwarmSpec $body, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1913,7 +1913,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\SwarmUnlockInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmUnlockServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function swarmUnlock(\Docker\Api\Model\SwarmUnlockPostBody $body, string $fetch = self::FETCH_OBJECT)
     {
@@ -1980,7 +1980,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ServiceDeleteInternalServerErrorException
      * @throws \Docker\Api\Exception\ServiceDeleteServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function serviceDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -2069,7 +2069,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\ServiceLogsInternalServerErrorException
     * @throws \Docker\Api\Exception\ServiceLogsServiceUnavailableException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|mixed|\Psr\Http\Message\ResponseInterface
     */
     public function serviceLogs(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -2142,7 +2142,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\TaskLogsInternalServerErrorException
     * @throws \Docker\Api\Exception\TaskLogsServiceUnavailableException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|mixed|\Psr\Http\Message\ResponseInterface
     */
     public function taskLogs(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -2197,7 +2197,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\SecretDeleteInternalServerErrorException
      * @throws \Docker\Api\Exception\SecretDeleteServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function secretDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -2237,7 +2237,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\SecretUpdateInternalServerErrorException
     * @throws \Docker\Api\Exception\SecretUpdateServiceUnavailableException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function secretUpdate(string $id, \Docker\Api\Model\SecretSpec $body, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -2292,7 +2292,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ConfigDeleteInternalServerErrorException
      * @throws \Docker\Api\Exception\ConfigDeleteServiceUnavailableException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function configDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -2332,7 +2332,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     * @throws \Docker\Api\Exception\ConfigUpdateInternalServerErrorException
     * @throws \Docker\Api\Exception\ConfigUpdateServiceUnavailableException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function configUpdate(string $id, \Docker\Api\Model\ConfigSpec $body, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -2357,7 +2357,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\SessionBadRequestException
      * @throws \Docker\Api\Exception\SessionInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function session(string $fetch = self::FETCH_OBJECT)
     {

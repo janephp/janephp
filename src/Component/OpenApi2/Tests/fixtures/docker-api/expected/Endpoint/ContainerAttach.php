@@ -166,26 +166,26 @@ class ContainerAttach extends \Docker\Api\Runtime\Client\BaseEndpoint implements
      * @throws \Docker\Api\Exception\ContainerAttachNotFoundException
      * @throws \Docker\Api\Exception\ContainerAttachInternalServerErrorException
      *
-     * @return null
+     * @return null|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (101 === $status) {
-            return null;
+            return $body;
         }
         if (200 === $status) {
-            return null;
+            return $body;
         }
         if (400 === $status) {
-            throw new \Docker\Api\Exception\ContainerAttachBadRequestException($serializer->deserialize($body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
+            throw new \Docker\Api\Exception\ContainerAttachBadRequestException($serializer->deserialize((string) $body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
         }
         if (404 === $status) {
-            throw new \Docker\Api\Exception\ContainerAttachNotFoundException($serializer->deserialize($body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
+            throw new \Docker\Api\Exception\ContainerAttachNotFoundException($serializer->deserialize((string) $body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
         }
         if (500 === $status) {
-            throw new \Docker\Api\Exception\ContainerAttachInternalServerErrorException($serializer->deserialize($body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
+            throw new \Docker\Api\Exception\ContainerAttachInternalServerErrorException($serializer->deserialize((string) $body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

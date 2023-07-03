@@ -62,12 +62,12 @@ class AppsListAccountsForPlanStubbed extends \Github\Runtime\Client\BaseEndpoint
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\MarketplacePurchase[]', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\MarketplacePurchase[]', 'json');
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\AppsListAccountsForPlanStubbedUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\AppsListAccountsForPlanStubbedUnauthorizedException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

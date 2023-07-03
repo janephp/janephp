@@ -36,20 +36,20 @@ class SwarmUnlock extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
      * @throws \Docker\Api\Exception\SwarmUnlockInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmUnlockServiceUnavailableException
      *
-     * @return null
+     * @return null|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (200 === $status) {
-            return null;
+            return $body;
         }
         if (500 === $status) {
-            throw new \Docker\Api\Exception\SwarmUnlockInternalServerErrorException($serializer->deserialize($body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
+            throw new \Docker\Api\Exception\SwarmUnlockInternalServerErrorException($serializer->deserialize((string) $body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
         }
         if (503 === $status) {
-            throw new \Docker\Api\Exception\SwarmUnlockServiceUnavailableException($serializer->deserialize($body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
+            throw new \Docker\Api\Exception\SwarmUnlockServiceUnavailableException($serializer->deserialize((string) $body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

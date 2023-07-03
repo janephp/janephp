@@ -63,23 +63,23 @@ class SearchUsers extends \Github\Runtime\Client\BaseEndpoint implements \Github
      * @throws \Github\Exception\SearchUsersServiceUnavailableException
      * @throws \Github\Exception\SearchUsersUnprocessableEntityException
      *
-     * @return null|\Github\Model\SearchUsersGetResponse200
+     * @return null|\Github\Model\SearchUsersGetResponse200|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\SearchUsersGetResponse200', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\SearchUsersGetResponse200', 'json');
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\SearchUsersServiceUnavailableException($serializer->deserialize($body, 'Github\\Model\\ResponseServiceUnavailable', 'json'), $response);
+            throw new \Github\Exception\SearchUsersServiceUnavailableException($serializer->deserialize((string) $body, 'Github\\Model\\ResponseServiceUnavailable', 'json'), $response);
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\SearchUsersUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'), $response);
+            throw new \Github\Exception\SearchUsersUnprocessableEntityException($serializer->deserialize((string) $body, 'Github\\Model\\ValidationError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

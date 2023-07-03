@@ -47,17 +47,17 @@ class LicensesGetAllCommonlyUsed extends \Github\Runtime\Client\BaseEndpoint imp
      * {@inheritdoc}
      *
      *
-     * @return null|\Github\Model\LicenseSimple[]
+     * @return null|\Github\Model\LicenseSimple[]|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\LicenseSimple[]', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\LicenseSimple[]', 'json');
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
     }
     public function getAuthenticationScopes() : array

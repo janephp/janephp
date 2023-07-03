@@ -31,9 +31,9 @@ class TestOne extends \Jane\Component\OpenApi2\Tests\Expected\One\Runtime\Client
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\\Component\\OpenApi2\\Tests\\Expected\\One\\Model\\TestOneGetResponse200', 'json');
+            return $serializer->deserialize((string) $body, 'Jane\\Component\\OpenApi2\\Tests\\Expected\\One\\Model\\TestOneGetResponse200', 'json');
         }
         if (404 === $status) {
             throw new \Jane\Component\OpenApi2\Tests\Expected\One\Exception\TestOneNotFoundException($response);

@@ -42,23 +42,23 @@ class GistsCreateComment extends \Github\Runtime\Client\BaseEndpoint implements 
      * @throws \Github\Exception\GistsCreateCommentNotFoundException
      * @throws \Github\Exception\GistsCreateCommentForbiddenException
      *
-     * @return null|\Github\Model\GistComment
+     * @return null|\Github\Model\GistComment|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\GistComment', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\GistComment', 'json');
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\GistsCreateCommentNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\GistsCreateCommentNotFoundException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\GistsCreateCommentForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\GistsCreateCommentForbiddenException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

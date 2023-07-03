@@ -38,26 +38,26 @@ class UsersGetGpgKeyForAuthenticated extends \Github\Runtime\Client\BaseEndpoint
      * @throws \Github\Exception\UsersGetGpgKeyForAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersGetGpgKeyForAuthenticatedUnauthorizedException
      *
-     * @return null|\Github\Model\GpgKey
+     * @return null|\Github\Model\GpgKey|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\GpgKey', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\GpgKey', 'json');
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\UsersGetGpgKeyForAuthenticatedNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\UsersGetGpgKeyForAuthenticatedNotFoundException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\UsersGetGpgKeyForAuthenticatedForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\UsersGetGpgKeyForAuthenticatedForbiddenException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\UsersGetGpgKeyForAuthenticatedUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\UsersGetGpgKeyForAuthenticatedUnauthorizedException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

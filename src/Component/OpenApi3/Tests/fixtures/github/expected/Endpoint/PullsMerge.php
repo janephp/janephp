@@ -56,24 +56,24 @@ class PullsMerge extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\PullRequestMergeResult', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\PullRequestMergeResult', 'json');
         }
         if (is_null($contentType) === false && (405 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\PullsMergeMethodNotAllowedException($serializer->deserialize($body, 'Github\\Model\\ReposOwnerRepoPullsPullNumberMergePutResponse405', 'json'), $response);
+            throw new \Github\Exception\PullsMergeMethodNotAllowedException($serializer->deserialize((string) $body, 'Github\\Model\\ReposOwnerRepoPullsPullNumberMergePutResponse405', 'json'), $response);
         }
         if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\PullsMergeConflictException($serializer->deserialize($body, 'Github\\Model\\ReposOwnerRepoPullsPullNumberMergePutResponse409', 'json'), $response);
+            throw new \Github\Exception\PullsMergeConflictException($serializer->deserialize((string) $body, 'Github\\Model\\ReposOwnerRepoPullsPullNumberMergePutResponse409', 'json'), $response);
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\PullsMergeUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'), $response);
+            throw new \Github\Exception\PullsMergeUnprocessableEntityException($serializer->deserialize((string) $body, 'Github\\Model\\ValidationError', 'json'), $response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\PullsMergeForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\PullsMergeForbiddenException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\PullsMergeNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\PullsMergeNotFoundException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

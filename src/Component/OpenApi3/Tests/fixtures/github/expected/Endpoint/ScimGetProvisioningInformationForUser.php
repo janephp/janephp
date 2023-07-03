@@ -46,22 +46,22 @@ class ScimGetProvisioningInformationForUser extends \Github\Runtime\Client\BaseE
      * @throws \Github\Exception\ScimGetProvisioningInformationForUserNotFoundException
      * @throws \Github\Exception\ScimGetProvisioningInformationForUserForbiddenException
      *
-     * @return null
+     * @return null|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (200 === $status) {
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimGetProvisioningInformationForUserNotFoundException($serializer->deserialize($body, 'Github\\Model\\ScimError', 'json'), $response);
+            throw new \Github\Exception\ScimGetProvisioningInformationForUserNotFoundException($serializer->deserialize((string) $body, 'Github\\Model\\ScimError', 'json'), $response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimGetProvisioningInformationForUserForbiddenException($serializer->deserialize($body, 'Github\\Model\\ScimError', 'json'), $response);
+            throw new \Github\Exception\ScimGetProvisioningInformationForUserForbiddenException($serializer->deserialize((string) $body, 'Github\\Model\\ScimError', 'json'), $response);
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
     }
     public function getAuthenticationScopes() : array

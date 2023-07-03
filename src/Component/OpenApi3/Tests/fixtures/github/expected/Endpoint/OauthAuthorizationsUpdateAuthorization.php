@@ -50,12 +50,12 @@ class OauthAuthorizationsUpdateAuthorization extends \Github\Runtime\Client\Base
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\Authorization', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\Authorization', 'json');
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\OauthAuthorizationsUpdateAuthorizationUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'), $response);
+            throw new \Github\Exception\OauthAuthorizationsUpdateAuthorizationUnprocessableEntityException($serializer->deserialize((string) $body, 'Github\\Model\\ValidationError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

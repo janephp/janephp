@@ -56,20 +56,20 @@ class AddOrDeleteRules extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\C
      * {@inheritdoc}
      *
      *
-     * @return null
+     * @return null|mixed
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return json_decode($body);
+            return json_decode((string) $body);
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
-            return json_decode($body);
+            return json_decode((string) $body);
         }
         if (mb_strpos($contentType, 'application/problem+json') !== false) {
-            return json_decode($body);
+            return json_decode((string) $body);
         }
     }
     public function getAuthenticationScopes() : array

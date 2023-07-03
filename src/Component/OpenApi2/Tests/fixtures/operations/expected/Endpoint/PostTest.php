@@ -21,14 +21,14 @@ class PostTest extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Ba
      * {@inheritdoc}
      *
      *
-     * @return null
+     * @return null|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (200 === $status) {
-            return null;
+            return $body;
         }
     }
     public function getAuthenticationScopes() : array

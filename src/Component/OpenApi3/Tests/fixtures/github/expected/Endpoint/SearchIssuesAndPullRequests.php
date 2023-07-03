@@ -65,26 +65,26 @@ class SearchIssuesAndPullRequests extends \Github\Runtime\Client\BaseEndpoint im
      * @throws \Github\Exception\SearchIssuesAndPullRequestsUnprocessableEntityException
      * @throws \Github\Exception\SearchIssuesAndPullRequestsForbiddenException
      *
-     * @return null|\Github\Model\SearchIssuesGetResponse200
+     * @return null|\Github\Model\SearchIssuesGetResponse200|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\SearchIssuesGetResponse200', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\SearchIssuesGetResponse200', 'json');
         }
         if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\SearchIssuesAndPullRequestsServiceUnavailableException($serializer->deserialize($body, 'Github\\Model\\ResponseServiceUnavailable', 'json'), $response);
+            throw new \Github\Exception\SearchIssuesAndPullRequestsServiceUnavailableException($serializer->deserialize((string) $body, 'Github\\Model\\ResponseServiceUnavailable', 'json'), $response);
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\SearchIssuesAndPullRequestsUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'), $response);
+            throw new \Github\Exception\SearchIssuesAndPullRequestsUnprocessableEntityException($serializer->deserialize((string) $body, 'Github\\Model\\ValidationError', 'json'), $response);
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\SearchIssuesAndPullRequestsForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\SearchIssuesAndPullRequestsForbiddenException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

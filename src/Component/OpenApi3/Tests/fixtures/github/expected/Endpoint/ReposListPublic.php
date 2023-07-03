@@ -52,20 +52,20 @@ class ReposListPublic extends \Github\Runtime\Client\BaseEndpoint implements \Gi
      *
      * @throws \Github\Exception\ReposListPublicUnprocessableEntityException
      *
-     * @return null|\Github\Model\MinimalRepository[]
+     * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\MinimalRepository[]', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\MinimalRepository[]', 'json');
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ReposListPublicUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'), $response);
+            throw new \Github\Exception\ReposListPublicUnprocessableEntityException($serializer->deserialize((string) $body, 'Github\\Model\\ValidationError', 'json'), $response);
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
     }
     public function getAuthenticationScopes() : array

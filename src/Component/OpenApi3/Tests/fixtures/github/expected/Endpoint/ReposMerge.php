@@ -52,21 +52,21 @@ class ReposMerge extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\Commit', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\Commit', 'json');
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ReposMergeNotFoundException($serializer->deserialize($body, 'Github\\Model\\ReposOwnerRepoMergesPostResponse404', 'json'), $response);
+            throw new \Github\Exception\ReposMergeNotFoundException($serializer->deserialize((string) $body, 'Github\\Model\\ReposOwnerRepoMergesPostResponse404', 'json'), $response);
         }
         if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ReposMergeConflictException($serializer->deserialize($body, 'Github\\Model\\ReposOwnerRepoMergesPostResponse409', 'json'), $response);
+            throw new \Github\Exception\ReposMergeConflictException($serializer->deserialize((string) $body, 'Github\\Model\\ReposOwnerRepoMergesPostResponse409', 'json'), $response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ReposMergeForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\ReposMergeForbiddenException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ReposMergeUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'), $response);
+            throw new \Github\Exception\ReposMergeUnprocessableEntityException($serializer->deserialize((string) $body, 'Github\\Model\\ValidationError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

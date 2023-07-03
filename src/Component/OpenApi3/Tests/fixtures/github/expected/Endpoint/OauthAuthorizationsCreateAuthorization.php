@@ -51,29 +51,29 @@ class OauthAuthorizationsCreateAuthorization extends \Github\Runtime\Client\Base
      * @throws \Github\Exception\OauthAuthorizationsCreateAuthorizationForbiddenException
      * @throws \Github\Exception\OauthAuthorizationsCreateAuthorizationUnauthorizedException
      *
-     * @return null|\Github\Model\Authorization
+     * @return null|\Github\Model\Authorization|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\Authorization', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\Authorization', 'json');
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\OauthAuthorizationsCreateAuthorizationUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'), $response);
+            throw new \Github\Exception\OauthAuthorizationsCreateAuthorizationUnprocessableEntityException($serializer->deserialize((string) $body, 'Github\\Model\\ValidationError', 'json'), $response);
         }
         if (is_null($contentType) === false && (410 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\OauthAuthorizationsCreateAuthorizationGoneException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\OauthAuthorizationsCreateAuthorizationGoneException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\OauthAuthorizationsCreateAuthorizationForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\OauthAuthorizationsCreateAuthorizationForbiddenException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\OauthAuthorizationsCreateAuthorizationUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\OauthAuthorizationsCreateAuthorizationUnauthorizedException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

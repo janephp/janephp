@@ -32,15 +32,15 @@ class GetTest extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Schema', 'json');
+            return $serializer->deserialize((string) $body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Schema', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\GetTestBadRequestException($serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Error', 'json'), $response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\GetTestBadRequestException($serializer->deserialize((string) $body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Error', 'json'), $response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\GetTestNotFoundException($serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Error', 'json'), $response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\GetTestNotFoundException($serializer->deserialize((string) $body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Error', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

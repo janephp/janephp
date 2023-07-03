@@ -42,17 +42,17 @@ class GitDeleteRef extends \Github\Runtime\Client\BaseEndpoint implements \Githu
      *
      * @throws \Github\Exception\GitDeleteRefUnprocessableEntityException
      *
-     * @return null
+     * @return null|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (204 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\GitDeleteRefUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationError', 'json'), $response);
+            throw new \Github\Exception\GitDeleteRefUnprocessableEntityException($serializer->deserialize((string) $body, 'Github\\Model\\ValidationError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

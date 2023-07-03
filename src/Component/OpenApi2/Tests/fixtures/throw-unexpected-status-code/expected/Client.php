@@ -8,7 +8,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function testNoTag(string $fetch = self::FETCH_OBJECT)
     {

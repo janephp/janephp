@@ -55,26 +55,26 @@ class ActivityListPublicEventsForRepoNetwork extends \Github\Runtime\Client\Base
      * @throws \Github\Exception\ActivityListPublicEventsForRepoNetworkNotFoundException
      * @throws \Github\Exception\ActivityListPublicEventsForRepoNetworkForbiddenException
      *
-     * @return null|\Github\Model\Event[]
+     * @return null|\Github\Model\Event[]|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\Event[]', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\Event[]', 'json');
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ActivityListPublicEventsForRepoNetworkNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\ActivityListPublicEventsForRepoNetworkNotFoundException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ActivityListPublicEventsForRepoNetworkForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\ActivityListPublicEventsForRepoNetworkForbiddenException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
         if (301 === $status) {
-            return null;
+            return $body;
         }
     }
     public function getAuthenticationScopes() : array

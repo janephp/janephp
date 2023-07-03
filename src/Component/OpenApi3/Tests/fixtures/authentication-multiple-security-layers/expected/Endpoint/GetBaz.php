@@ -26,7 +26,7 @@ class GetBaz extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Base
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
     }
     public function getAuthenticationScopes() : array
     {

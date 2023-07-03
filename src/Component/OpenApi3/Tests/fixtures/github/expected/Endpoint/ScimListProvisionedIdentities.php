@@ -82,25 +82,25 @@ class ScimListProvisionedIdentities extends \Github\Runtime\Client\BaseEndpoint 
      * @throws \Github\Exception\ScimListProvisionedIdentitiesForbiddenException
      * @throws \Github\Exception\ScimListProvisionedIdentitiesBadRequestException
      *
-     * @return null
+     * @return null|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (200 === $status) {
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimListProvisionedIdentitiesNotFoundException($serializer->deserialize($body, 'Github\\Model\\ScimError', 'json'), $response);
+            throw new \Github\Exception\ScimListProvisionedIdentitiesNotFoundException($serializer->deserialize((string) $body, 'Github\\Model\\ScimError', 'json'), $response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimListProvisionedIdentitiesForbiddenException($serializer->deserialize($body, 'Github\\Model\\ScimError', 'json'), $response);
+            throw new \Github\Exception\ScimListProvisionedIdentitiesForbiddenException($serializer->deserialize((string) $body, 'Github\\Model\\ScimError', 'json'), $response);
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimListProvisionedIdentitiesBadRequestException($serializer->deserialize($body, 'Github\\Model\\ScimError', 'json'), $response);
+            throw new \Github\Exception\ScimListProvisionedIdentitiesBadRequestException($serializer->deserialize((string) $body, 'Github\\Model\\ScimError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

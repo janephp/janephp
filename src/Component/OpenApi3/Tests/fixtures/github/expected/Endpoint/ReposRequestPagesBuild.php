@@ -45,9 +45,9 @@ class ReposRequestPagesBuild extends \Github\Runtime\Client\BaseEndpoint impleme
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\PageBuildStatus', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\PageBuildStatus', 'json');
         }
     }
     public function getAuthenticationScopes() : array

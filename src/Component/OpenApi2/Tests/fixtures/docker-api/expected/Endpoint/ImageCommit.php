@@ -66,15 +66,15 @@ class ImageCommit extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (201 === $status) {
-            return $serializer->deserialize($body, 'Docker\\Api\\Model\\IdResponse', 'json');
+            return $serializer->deserialize((string) $body, 'Docker\\Api\\Model\\IdResponse', 'json');
         }
         if (404 === $status) {
-            throw new \Docker\Api\Exception\ImageCommitNotFoundException($serializer->deserialize($body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
+            throw new \Docker\Api\Exception\ImageCommitNotFoundException($serializer->deserialize((string) $body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
         }
         if (500 === $status) {
-            throw new \Docker\Api\Exception\ImageCommitInternalServerErrorException($serializer->deserialize($body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
+            throw new \Docker\Api\Exception\ImageCommitInternalServerErrorException($serializer->deserialize((string) $body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

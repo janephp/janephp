@@ -16,7 +16,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function testGetWithPathParameters(string $testPath, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -34,7 +34,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function testPostWithPathParameters(string $testPath, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -53,7 +53,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function testQueryParameters(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -72,7 +72,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function testHeaderParameters(array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -84,7 +84,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormPostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function testFormParameters(?\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -96,7 +96,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormFilePostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function testFormFileParameters(?\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormFilePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -108,7 +108,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function testBinaryBody($requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -122,7 +122,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param float $testFloat 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function testPathParameters(string $testString, int $testInteger, float $testFloat, string $fetch = self::FETCH_OBJECT)
     {
@@ -134,7 +134,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param int $testInteger 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function getByTestInteger(int $testInteger, string $fetch = self::FETCH_OBJECT)
     {

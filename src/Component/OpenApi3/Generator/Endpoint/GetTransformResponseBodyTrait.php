@@ -17,6 +17,7 @@ use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
+use Psr\Http\Message\StreamInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
 trait GetTransformResponseBodyTrait
@@ -25,7 +26,7 @@ trait GetTransformResponseBodyTrait
     {
         $outputStatements = [
             new Node\Stmt\Expression(new Expr\Assign(new Expr\Variable('status'), new Expr\MethodCall(new Expr\Variable('response'), 'getStatusCode'))),
-            new Node\Stmt\Expression(new Expr\Assign(new Expr\Variable('body'), new Expr\Cast\String_(new Expr\MethodCall(new Expr\Variable('response'), 'getBody')))),
+            new Node\Stmt\Expression(new Expr\Assign(new Expr\Variable('body'), new Expr\MethodCall(new Expr\Variable('response'), 'getBody'))),
         ];
         $outputTypes = $context->getRegistry()->getThrowUnexpectedStatusCode() ? [] : ['null'];
         $throwTypes = [];
@@ -102,7 +103,7 @@ trait GetTransformResponseBodyTrait
                             new Name($throwType),
                             [
                                 new Node\Arg(new Node\Expr\Variable('status')),
-                                new Node\Arg(new Node\Expr\Variable('body')),
+                                new Node\Arg(new Expr\Cast\String_(new Node\Expr\Variable('body'))),
                             ]
                         )
                     ),
@@ -252,9 +253,9 @@ EOD
     private function createContentDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description, GuessClass $guessClass, ExceptionGenerator $exceptionGenerator): array
     {
         $classGuess = $guessClass->guessClass($schema, $reference, $context->getRegistry(), $array);
-        $returnType = 'null';
+        $returnType = '\\' . StreamInterface::class;
         $throwType = null;
-        $serializeStmt = new Expr\ConstFetch(new Name('null'));
+        $serializeStmt = new Expr\Variable('body');
         $class = null;
 
         if (null !== $classGuess) {
@@ -269,15 +270,16 @@ EOD
                 new Expr\Variable('serializer'),
                 'deserialize',
                 [
-                    new Node\Arg(new Expr\Variable('body')),
+                    new Node\Arg(new Expr\Cast\String_(new Node\Expr\Variable('body'))),
                     new Node\Arg(new Scalar\String_($class)),
                     new Node\Arg(new Scalar\String_('json')),
                 ]
             );
         } elseif ($schema instanceof Schema) {
             $serializeStmt = new Expr\FuncCall(new Name('json_decode'), [
-                new Node\Arg(new Expr\Variable('body')),
+                new Node\Arg(new Expr\Cast\String_(new Node\Expr\Variable('body'))),
             ]);
+            $returnType = 'mixed';
         }
 
         $contentStatement = new Stmt\Return_($serializeStmt);

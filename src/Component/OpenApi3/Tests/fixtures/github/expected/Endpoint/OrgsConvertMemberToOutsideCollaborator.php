@@ -40,23 +40,23 @@ class OrgsConvertMemberToOutsideCollaborator extends \Github\Runtime\Client\Base
      * @throws \Github\Exception\OrgsConvertMemberToOutsideCollaboratorForbiddenException
      * @throws \Github\Exception\OrgsConvertMemberToOutsideCollaboratorNotFoundException
      *
-     * @return null
+     * @return null|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (202 === $status) {
-            return null;
+            return $body;
         }
         if (204 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\OrgsConvertMemberToOutsideCollaboratorForbiddenException($serializer->deserialize($body, 'Github\\Model\\OrgsOrgOutsideCollaboratorsUsernamePutResponse403', 'json'), $response);
+            throw new \Github\Exception\OrgsConvertMemberToOutsideCollaboratorForbiddenException($serializer->deserialize((string) $body, 'Github\\Model\\OrgsOrgOutsideCollaboratorsUsernamePutResponse403', 'json'), $response);
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\OrgsConvertMemberToOutsideCollaboratorNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\OrgsConvertMemberToOutsideCollaboratorNotFoundException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

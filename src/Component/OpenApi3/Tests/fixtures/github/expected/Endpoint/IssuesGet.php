@@ -53,26 +53,26 @@ class IssuesGet extends \Github\Runtime\Client\BaseEndpoint implements \Github\R
      * @throws \Github\Exception\IssuesGetNotFoundException
      * @throws \Github\Exception\IssuesGetGoneException
      *
-     * @return null|\Github\Model\Issue
+     * @return null|\Github\Model\Issue|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\Issue', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\Issue', 'json');
         }
         if (301 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\IssuesGetNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\IssuesGetNotFoundException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (410 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\IssuesGetGoneException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\IssuesGetGoneException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
     }
     public function getAuthenticationScopes() : array

@@ -71,7 +71,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiBooksIdDeleteNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function apiBooksIdDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -136,7 +136,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      * @throws \ApiPlatform\Demo\Exception\ApiBooksIdgenerateCoverPutUnprocessableEntityException
      * @throws \ApiPlatform\Demo\Exception\ApiBooksIdgenerateCoverPutNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|mixed|\Psr\Http\Message\ResponseInterface
      */
     public function apiBooksIdgenerateCoverPut(string $id, $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
@@ -179,7 +179,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiParchmentsIdDeleteNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function apiParchmentsIdDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -275,7 +275,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiReviewsIdDeleteNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function apiReviewsIdDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {

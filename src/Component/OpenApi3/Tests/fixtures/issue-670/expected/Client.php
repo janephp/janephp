@@ -19,7 +19,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint1PostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function postEndpoint1(?\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint1PostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -40,7 +40,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint2PostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function postEndpoint2(?\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint2PostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -61,7 +61,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint3PostBody $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function postEndpoint3(?\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint3PostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {

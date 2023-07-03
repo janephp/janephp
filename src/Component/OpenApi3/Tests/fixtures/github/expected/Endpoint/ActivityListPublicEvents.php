@@ -49,23 +49,23 @@ class ActivityListPublicEvents extends \Github\Runtime\Client\BaseEndpoint imple
      * @throws \Github\Exception\ActivityListPublicEventsForbiddenException
      * @throws \Github\Exception\ActivityListPublicEventsServiceUnavailableException
      *
-     * @return null|\Github\Model\Event[]
+     * @return null|\Github\Model\Event[]|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\Event[]', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\Event[]', 'json');
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ActivityListPublicEventsForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\ActivityListPublicEventsForbiddenException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ActivityListPublicEventsServiceUnavailableException($serializer->deserialize($body, 'Github\\Model\\ResponseServiceUnavailable', 'json'), $response);
+            throw new \Github\Exception\ActivityListPublicEventsServiceUnavailableException($serializer->deserialize((string) $body, 'Github\\Model\\ResponseServiceUnavailable', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

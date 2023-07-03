@@ -54,20 +54,20 @@ class SearchTopics extends \Github\Runtime\Client\BaseEndpoint implements \Githu
      *
      * @throws \Github\Exception\SearchTopicsUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\SearchTopicsGetResponse200
+     * @return null|\Github\Model\SearchTopicsGetResponse200|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\SearchTopicsGetResponse200', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\SearchTopicsGetResponse200', 'json');
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (415 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\SearchTopicsUnsupportedMediaTypeException($serializer->deserialize($body, 'Github\\Model\\ResponsePreviewHeaderMissing', 'json'), $response);
+            throw new \Github\Exception\SearchTopicsUnsupportedMediaTypeException($serializer->deserialize((string) $body, 'Github\\Model\\ResponsePreviewHeaderMissing', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

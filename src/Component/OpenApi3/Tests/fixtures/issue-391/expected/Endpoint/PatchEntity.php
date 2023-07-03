@@ -38,14 +38,14 @@ class PatchEntity extends \Gounlaf\JanephpBug\Runtime\Client\BaseEndpoint implem
      * @throws \Gounlaf\JanephpBug\Exception\PatchEntityBadRequestException
      * @throws \Gounlaf\JanephpBug\Exception\PatchEntityNotFoundException
      *
-     * @return null
+     * @return null|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (202 === $status) {
-            return null;
+            return $body;
         }
         if (400 === $status) {
             throw new \Gounlaf\JanephpBug\Exception\PatchEntityBadRequestException($response);

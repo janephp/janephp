@@ -13,7 +13,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PostFooInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function postFoo(?\Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {

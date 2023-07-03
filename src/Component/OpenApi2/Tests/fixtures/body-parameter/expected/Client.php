@@ -10,7 +10,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      * @param string|resource|\Psr\Http\Message\StreamInterface $testString 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function testSimpleBodyParameter($testString, string $fetch = self::FETCH_OBJECT)
     {
@@ -22,7 +22,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      * @param \Jane\Component\OpenApi2\Tests\Expected\Model\Schema $testObject 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function testObjectBodyParameter(\Jane\Component\OpenApi2\Tests\Expected\Model\Schema $testObject, string $fetch = self::FETCH_OBJECT)
     {
@@ -34,7 +34,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      * @param \Jane\Component\OpenApi2\Tests\Expected\Model\Schema[] $testObjectList 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function testObjectListBodyParameter(array $testObjectList, string $fetch = self::FETCH_OBJECT)
     {

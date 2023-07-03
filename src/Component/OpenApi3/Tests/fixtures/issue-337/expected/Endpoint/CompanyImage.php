@@ -51,14 +51,14 @@ class CompanyImage extends \CreditSafe\API\Runtime\Client\BaseEndpoint implement
      * @throws \CreditSafe\API\Exception\CompanyImageForbiddenException
      * @throws \CreditSafe\API\Exception\CompanyImageNotFoundException
      *
-     * @return null
+     * @return null|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (200 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\CompanyImageBadRequestException($response);

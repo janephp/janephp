@@ -61,20 +61,20 @@ class FindTweetsById extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\BaseEn
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\OpenApi3\Tests\Expected\Model\TweetLookupResponse
+     * @return null|\Jane\OpenApi3\Tests\Expected\Model\TweetLookupResponse|mixed
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\TweetLookupResponse', 'json');
+            return $serializer->deserialize((string) $body, 'Jane\\OpenApi3\\Tests\\Expected\\Model\\TweetLookupResponse', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
-            return json_decode($body);
+            return json_decode((string) $body);
         }
         if (mb_strpos($contentType, 'application/problem+json') !== false) {
-            return json_decode($body);
+            return json_decode((string) $body);
         }
     }
     public function getAuthenticationScopes() : array

@@ -42,9 +42,9 @@ class AppsGetOrgInstallation extends \Github\Runtime\Client\BaseEndpoint impleme
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\Installation', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\Installation', 'json');
         }
     }
     public function getAuthenticationScopes() : array

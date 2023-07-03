@@ -49,9 +49,9 @@ class TeamsUpdateInOrg extends \Github\Runtime\Client\BaseEndpoint implements \G
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\TeamFull', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\TeamFull', 'json');
         }
     }
     public function getAuthenticationScopes() : array

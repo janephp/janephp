@@ -51,23 +51,23 @@ class AppsListReposAccessibleToInstallation extends \Github\Runtime\Client\BaseE
      * @throws \Github\Exception\AppsListReposAccessibleToInstallationForbiddenException
      * @throws \Github\Exception\AppsListReposAccessibleToInstallationUnauthorizedException
      *
-     * @return null|\Github\Model\InstallationRepositoriesGetResponse200
+     * @return null|\Github\Model\InstallationRepositoriesGetResponse200|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\InstallationRepositoriesGetResponse200', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\InstallationRepositoriesGetResponse200', 'json');
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\AppsListReposAccessibleToInstallationForbiddenException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\AppsListReposAccessibleToInstallationForbiddenException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\AppsListReposAccessibleToInstallationUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\AppsListReposAccessibleToInstallationUnauthorizedException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

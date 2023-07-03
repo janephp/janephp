@@ -8,7 +8,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\One\Runtime\Client\
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Component\OpenApi3\Tests\Expected\One\Exception\TestOneNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function testOne(string $fetch = self::FETCH_OBJECT)
     {

@@ -36,7 +36,7 @@ class TestGetWithUppercasePathParameters extends \Jane\Component\OpenApi3\Tests\
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
     }
     public function getAuthenticationScopes() : array
     {

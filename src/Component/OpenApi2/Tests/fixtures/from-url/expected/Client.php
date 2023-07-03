@@ -21,7 +21,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Jane\Component\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
      */
     public function createPets(string $fetch = self::FETCH_OBJECT)
     {

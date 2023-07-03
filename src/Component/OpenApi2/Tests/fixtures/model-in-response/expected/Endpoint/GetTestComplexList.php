@@ -21,16 +21,16 @@ class GetTestComplexList extends \Jane\Component\OpenApi2\Tests\Expected\Runtime
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\TestComplexListGetResponsedefault
+     * @return null|mixed|\Jane\Component\OpenApi2\Tests\Expected\Model\TestComplexListGetResponsedefault
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (200 === $status) {
-            return json_decode($body);
+            return json_decode((string) $body);
         }
-        return $serializer->deserialize($body, 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\TestComplexListGetResponsedefault', 'json');
+        return $serializer->deserialize((string) $body, 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\TestComplexListGetResponsedefault', 'json');
     }
     public function getAuthenticationScopes() : array
     {

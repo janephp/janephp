@@ -37,20 +37,20 @@ class SystemAuth extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
      *
      * @throws \Docker\Api\Exception\SystemAuthInternalServerErrorException
      *
-     * @return null|\Docker\Api\Model\AuthPostResponse200
+     * @return null|\Docker\Api\Model\AuthPostResponse200|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Docker\\Api\\Model\\AuthPostResponse200', 'json');
+            return $serializer->deserialize((string) $body, 'Docker\\Api\\Model\\AuthPostResponse200', 'json');
         }
         if (204 === $status) {
-            return null;
+            return $body;
         }
         if (500 === $status) {
-            throw new \Docker\Api\Exception\SystemAuthInternalServerErrorException($serializer->deserialize($body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
+            throw new \Docker\Api\Exception\SystemAuthInternalServerErrorException($serializer->deserialize((string) $body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

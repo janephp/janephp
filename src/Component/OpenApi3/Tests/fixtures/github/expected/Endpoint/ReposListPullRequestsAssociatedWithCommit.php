@@ -62,12 +62,12 @@ class ReposListPullRequestsAssociatedWithCommit extends \Github\Runtime\Client\B
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\PullRequestSimple[]', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\PullRequestSimple[]', 'json');
         }
         if (is_null($contentType) === false && (415 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ReposListPullRequestsAssociatedWithCommitUnsupportedMediaTypeException($serializer->deserialize($body, 'Github\\Model\\ResponsePreviewHeaderMissing', 'json'), $response);
+            throw new \Github\Exception\ReposListPullRequestsAssociatedWithCommitUnsupportedMediaTypeException($serializer->deserialize((string) $body, 'Github\\Model\\ResponsePreviewHeaderMissing', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

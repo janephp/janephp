@@ -57,12 +57,12 @@ class ListPortfolioEventRules extends \CreditSafe\API\Runtime\Client\BaseEndpoin
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'CreditSafe\\API\\Model\\EventRulesResponse', 'json');
+            return $serializer->deserialize((string) $body, 'CreditSafe\\API\\Model\\EventRulesResponse', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\ListPortfolioEventRulesBadRequestException($serializer->deserialize($body, 'CreditSafe\\API\\Model\\BadRequestError', 'json'), $response);
+            throw new \CreditSafe\API\Exception\ListPortfolioEventRulesBadRequestException($serializer->deserialize((string) $body, 'CreditSafe\\API\\Model\\BadRequestError', 'json'), $response);
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\ListPortfolioEventRulesUnauthorizedException($response);

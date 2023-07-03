@@ -40,14 +40,14 @@ class ReposCheckCollaborator extends \Github\Runtime\Client\BaseEndpoint impleme
      *
      * @throws \Github\Exception\ReposCheckCollaboratorNotFoundException
      *
-     * @return null
+     * @return null|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (204 === $status) {
-            return null;
+            return $body;
         }
         if (404 === $status) {
             throw new \Github\Exception\ReposCheckCollaboratorNotFoundException($response);

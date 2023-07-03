@@ -53,9 +53,9 @@ class TeamsUpdateDiscussionCommentLegacy extends \Github\Runtime\Client\BaseEndp
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\TeamDiscussionComment', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\TeamDiscussionComment', 'json');
         }
     }
     public function getAuthenticationScopes() : array

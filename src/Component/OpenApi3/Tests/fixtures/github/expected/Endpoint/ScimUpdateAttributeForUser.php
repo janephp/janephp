@@ -68,28 +68,28 @@ class ScimUpdateAttributeForUser extends \Github\Runtime\Client\BaseEndpoint imp
      * @throws \Github\Exception\ScimUpdateAttributeForUserBadRequestException
      * @throws \Github\Exception\ScimUpdateAttributeForUserTooManyRequestsException
      *
-     * @return null
+     * @return null|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (200 === $status) {
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimUpdateAttributeForUserNotFoundException($serializer->deserialize($body, 'Github\\Model\\ScimError', 'json'), $response);
+            throw new \Github\Exception\ScimUpdateAttributeForUserNotFoundException($serializer->deserialize((string) $body, 'Github\\Model\\ScimError', 'json'), $response);
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimUpdateAttributeForUserForbiddenException($serializer->deserialize($body, 'Github\\Model\\ScimError', 'json'), $response);
+            throw new \Github\Exception\ScimUpdateAttributeForUserForbiddenException($serializer->deserialize((string) $body, 'Github\\Model\\ScimError', 'json'), $response);
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimUpdateAttributeForUserBadRequestException($serializer->deserialize($body, 'Github\\Model\\ScimError', 'json'), $response);
+            throw new \Github\Exception\ScimUpdateAttributeForUserBadRequestException($serializer->deserialize((string) $body, 'Github\\Model\\ScimError', 'json'), $response);
         }
         if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimUpdateAttributeForUserTooManyRequestsException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\ScimUpdateAttributeForUserTooManyRequestsException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

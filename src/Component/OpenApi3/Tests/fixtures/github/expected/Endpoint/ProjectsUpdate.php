@@ -45,32 +45,32 @@ class ProjectsUpdate extends \Github\Runtime\Client\BaseEndpoint implements \Git
      * @throws \Github\Exception\ProjectsUpdateGoneException
      * @throws \Github\Exception\ProjectsUpdateUnprocessableEntityException
      *
-     * @return null|\Github\Model\Project
+     * @return null|\Github\Model\Project|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\Project', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\Project', 'json');
         }
         if (404 === $status) {
             throw new \Github\Exception\ProjectsUpdateNotFoundException($response);
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ProjectsUpdateForbiddenException($serializer->deserialize($body, 'Github\\Model\\ProjectsProjectIdPatchResponse403', 'json'), $response);
+            throw new \Github\Exception\ProjectsUpdateForbiddenException($serializer->deserialize((string) $body, 'Github\\Model\\ProjectsProjectIdPatchResponse403', 'json'), $response);
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ProjectsUpdateUnauthorizedException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\ProjectsUpdateUnauthorizedException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (410 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ProjectsUpdateGoneException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\ProjectsUpdateGoneException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
         if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ProjectsUpdateUnprocessableEntityException($serializer->deserialize($body, 'Github\\Model\\ValidationErrorSimple', 'json'), $response);
+            throw new \Github\Exception\ProjectsUpdateUnprocessableEntityException($serializer->deserialize((string) $body, 'Github\\Model\\ValidationErrorSimple', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

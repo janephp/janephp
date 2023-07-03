@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- [OpenApi] [GH#735](https://github.com/janephp/janephp/pull/735) Return type declaration of json formatted non denormalizable body.
+### Changed
+- [OpenApi] [GH#735](https://github.com/janephp/janephp/pull/735) Default return value of transformed response body is now an instance of  `Psr\Http\Message\StreamInterface`.
 
 ## [7.5.1] - 2023-06-13
 ### Fixed

@@ -26,9 +26,9 @@ class Test extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEn
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (201 === $status) {
-            return $serializer->deserialize($body, 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\TestPostResponse201', 'json');
+            return $serializer->deserialize((string) $body, 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\TestPostResponse201', 'json');
         }
     }
     public function getAuthenticationScopes() : array

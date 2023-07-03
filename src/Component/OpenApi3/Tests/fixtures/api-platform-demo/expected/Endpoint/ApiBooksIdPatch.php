@@ -57,19 +57,19 @@ class ApiBooksIdPatch extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (200 === $status) {
             if (mb_strpos($contentType, 'application/ld+json') !== false) {
-                return $serializer->deserialize($body, 'ApiPlatform\\Demo\\Model\\BookJsonldBookRead', 'json');
+                return $serializer->deserialize((string) $body, 'ApiPlatform\\Demo\\Model\\BookJsonldBookRead', 'json');
             }
             if (mb_strpos($contentType, 'application/hal+json') !== false) {
-                return $serializer->deserialize($body, 'ApiPlatform\\Demo\\Model\\BookJsonhalBookRead', 'json');
+                return $serializer->deserialize((string) $body, 'ApiPlatform\\Demo\\Model\\BookJsonhalBookRead', 'json');
             }
             if (mb_strpos($contentType, 'application/vnd.api+json') !== false) {
-                return $serializer->deserialize($body, 'ApiPlatform\\Demo\\Model\\BookBookRead', 'json');
+                return $serializer->deserialize((string) $body, 'ApiPlatform\\Demo\\Model\\BookBookRead', 'json');
             }
             if (mb_strpos($contentType, 'application/json') !== false) {
-                return $serializer->deserialize($body, 'ApiPlatform\\Demo\\Model\\BookBookRead', 'json');
+                return $serializer->deserialize((string) $body, 'ApiPlatform\\Demo\\Model\\BookBookRead', 'json');
             }
         }
         if (400 === $status) {

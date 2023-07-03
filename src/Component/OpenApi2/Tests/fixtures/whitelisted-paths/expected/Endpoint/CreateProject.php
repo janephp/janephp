@@ -35,11 +35,11 @@ class CreateProject extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseEnd
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (201 === $status) {
-            return $serializer->deserialize($body, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Project', 'json');
+            return $serializer->deserialize((string) $body, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Project', 'json');
         }
-        return $serializer->deserialize($body, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Error', 'json');
+        return $serializer->deserialize((string) $body, 'Jane\\OpenApi2\\Tests\\Expected\\Model\\Error', 'json');
     }
     public function getAuthenticationScopes() : array
     {

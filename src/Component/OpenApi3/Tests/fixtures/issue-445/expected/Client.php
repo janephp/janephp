@@ -76,7 +76,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessUpdateNotificationTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessUpdateNotificationInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function businessProcessUpdateNotification(string $id, \PicturePark\API\Model\BusinessProcessNotificationUpdateRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -95,7 +95,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\BusinessProcessCancelTooManyRequestsException
      * @throws \PicturePark\API\Exception\BusinessProcessCancelInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function businessProcessCancel(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -315,7 +315,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ChannelDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\ChannelDeleteInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function channelDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -373,7 +373,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetDeleteInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function contentPermissionSetDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -472,7 +472,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function contentPermissionSetTransferOwnership(string $id, \PicturePark\API\Model\PermissionSetOwnershipTransferRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -491,7 +491,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|mixed|\Psr\Http\Message\ResponseInterface
      */
     public function contentPermissionSetGetPermissions(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -567,7 +567,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetTransferOwnershipManyInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function contentPermissionSetTransferOwnershipMany(\PicturePark\API\Model\PermissionSetOwnershipTransferManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -633,7 +633,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\ContentDeleteTooManyRequestsException
     * @throws \PicturePark\API\Exception\ContentDeleteInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function contentDelete(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -844,7 +844,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\ContentRestoreTooManyRequestsException
     * @throws \PicturePark\API\Exception\ContentRestoreInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function contentRestore(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -870,7 +870,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\ContentTransferOwnershipTooManyRequestsException
     * @throws \PicturePark\API\Exception\ContentTransferOwnershipInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function contentTransferOwnership(string $id, \PicturePark\API\Model\ContentOwnershipTransferRequest $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1475,7 +1475,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesTooManyRequestsException
      * @throws \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|mixed|\Psr\Http\Message\ResponseInterface
      */
     public function identityProviderGetSynchronizableAttributes(string $fetch = self::FETCH_OBJECT)
     {
@@ -1521,7 +1521,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\JsonSchemaGetTooManyRequestsException
      * @throws \PicturePark\API\Exception\JsonSchemaGetInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|mixed|\Psr\Http\Message\ResponseInterface
      */
     public function jsonSchemaGet(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -1547,7 +1547,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\ListItemDeleteTooManyRequestsException
     * @throws \PicturePark\API\Exception\ListItemDeleteInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function listItemDelete(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -1623,7 +1623,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\ListItemRestoreTooManyRequestsException
     * @throws \PicturePark\API\Exception\ListItemRestoreInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function listItemRestore(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -2308,7 +2308,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ProfileRequestDeletionTooManyRequestsException
      * @throws \PicturePark\API\Exception\ProfileRequestDeletionInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function profileRequestDeletion(string $fetch = self::FETCH_OBJECT)
     {
@@ -2327,7 +2327,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetDeleteInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function schemaPermissionSetDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -2426,7 +2426,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function schemaPermissionSetTransferOwnership(string $id, \PicturePark\API\Model\PermissionSetOwnershipTransferRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -2445,7 +2445,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|mixed|\Psr\Http\Message\ResponseInterface
      */
     public function schemaPermissionSetGetPermissions(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -2521,7 +2521,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipManyTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetTransferOwnershipManyInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function schemaPermissionSetTransferOwnershipMany(\PicturePark\API\Model\PermissionSetOwnershipTransferManyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -2585,7 +2585,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\SchemaDeleteTooManyRequestsException
     * @throws \PicturePark\API\Exception\SchemaDeleteInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|mixed|\Psr\Http\Message\ResponseInterface
     */
     public function schemaDelete(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -2712,7 +2712,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\SchemaTransferOwnershipTooManyRequestsException
     * @throws \PicturePark\API\Exception\SchemaTransferOwnershipInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function schemaTransferOwnership(string $id, \PicturePark\API\Model\SchemaOwnershipTransferRequest $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -3154,7 +3154,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferDeleteInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function transferDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -3241,7 +3241,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\TransferCancelTooManyRequestsException
     * @throws \PicturePark\API\Exception\TransferCancelInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function transferCancel(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -3317,7 +3317,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\TransferDeleteFilesTooManyRequestsException
      * @throws \PicturePark\API\Exception\TransferDeleteFilesInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function transferDeleteFiles(\PicturePark\API\Model\FileTransferDeleteRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -3365,7 +3365,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\TransferUploadFileTooManyRequestsException
     * @throws \PicturePark\API\Exception\TransferUploadFileInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function transferUploadFile(string $transferId, string $requestId, $requestBody = null, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
@@ -3500,7 +3500,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRoleDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRoleDeleteInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function userRoleDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -3599,7 +3599,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * @throws \PicturePark\API\Exception\UserLockTooManyRequestsException
     * @throws \PicturePark\API\Exception\UserLockInternalServerErrorException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
     */
     public function userLock(string $id, \PicturePark\API\Model\UserLockRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -3639,7 +3639,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserReviewTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserReviewInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function userReview(string $id, \PicturePark\API\Model\UserReviewRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -3677,7 +3677,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserInviteTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserInviteInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function userInvite(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -3715,7 +3715,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserReinviteTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserReinviteInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function userReinvite(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -3773,7 +3773,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserDeleteTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserDeleteInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function userDelete(string $id, \PicturePark\API\Model\UserDeleteRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -3792,7 +3792,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserRestoreTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserRestoreInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function userRestore(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -3811,7 +3811,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\UserCancelDeletionRequestTooManyRequestsException
      * @throws \PicturePark\API\Exception\UserCancelDeletionRequestInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\StreamInterface|\Psr\Http\Message\ResponseInterface
      */
     public function userCancelDeletionRequest(string $id, string $fetch = self::FETCH_OBJECT)
     {

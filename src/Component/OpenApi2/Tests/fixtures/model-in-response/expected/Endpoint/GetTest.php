@@ -28,15 +28,15 @@ class GetTest extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Bas
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\Schema', 'json');
+            return $serializer->deserialize((string) $body, 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\Schema', 'json');
         }
         if (400 === $status) {
-            throw new \Jane\Component\OpenApi2\Tests\Expected\Exception\GetTestBadRequestException($serializer->deserialize($body, 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\Error', 'json'), $response);
+            throw new \Jane\Component\OpenApi2\Tests\Expected\Exception\GetTestBadRequestException($serializer->deserialize((string) $body, 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\Error', 'json'), $response);
         }
         if (404 === $status) {
-            throw new \Jane\Component\OpenApi2\Tests\Expected\Exception\GetTestNotFoundException($serializer->deserialize($body, 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\Error', 'json'), $response);
+            throw new \Jane\Component\OpenApi2\Tests\Expected\Exception\GetTestNotFoundException($serializer->deserialize((string) $body, 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\Error', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

@@ -34,16 +34,16 @@ class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
      *
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UnexpectedStatusCodeException
      *
-     * @return null
+     * @return \Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (200 === $status) {
-            return null;
+            return $body;
         }
-        throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UnexpectedStatusCodeException($status, $body);
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UnexpectedStatusCodeException($status, (string) $body);
     }
     public function getAuthenticationScopes() : array
     {

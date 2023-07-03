@@ -73,24 +73,24 @@ class ApiBooksIdgenerateCoverPut extends \ApiPlatform\Demo\Runtime\Client\BaseEn
      * @throws \ApiPlatform\Demo\Exception\ApiBooksIdgenerateCoverPutUnprocessableEntityException
      * @throws \ApiPlatform\Demo\Exception\ApiBooksIdgenerateCoverPutNotFoundException
      *
-     * @return null
+     * @return null|mixed
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (204 === $status) {
             if (mb_strpos($contentType, 'application/ld+json') !== false) {
-                return json_decode($body);
+                return json_decode((string) $body);
             }
             if (mb_strpos($contentType, 'application/hal+json') !== false) {
-                return json_decode($body);
+                return json_decode((string) $body);
             }
             if (mb_strpos($contentType, 'application/vnd.api+json') !== false) {
-                return json_decode($body);
+                return json_decode((string) $body);
             }
             if (mb_strpos($contentType, 'application/json') !== false) {
-                return json_decode($body);
+                return json_decode((string) $body);
             }
         }
         if (400 === $status) {

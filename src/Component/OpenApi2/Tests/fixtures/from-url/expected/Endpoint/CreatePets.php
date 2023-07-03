@@ -25,16 +25,16 @@ class CreatePets extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\Error
+     * @return null|\Psr\Http\Message\StreamInterface|\Jane\Component\OpenApi2\Tests\Expected\Model\Error
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (201 === $status) {
-            return null;
+            return $body;
         }
-        return $serializer->deserialize($body, 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\Error', 'json');
+        return $serializer->deserialize((string) $body, 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\Error', 'json');
     }
     public function getAuthenticationScopes() : array
     {

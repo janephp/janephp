@@ -50,9 +50,9 @@ class ReactionsCreateForTeamDiscussionLegacy extends \Github\Runtime\Client\Base
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\Reaction', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\Reaction', 'json');
         }
     }
     public function getAuthenticationScopes() : array

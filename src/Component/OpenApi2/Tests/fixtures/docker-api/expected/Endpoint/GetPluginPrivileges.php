@@ -53,12 +53,12 @@ class GetPluginPrivileges extends \Docker\Api\Runtime\Client\BaseEndpoint implem
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Docker\\Api\\Model\\PluginPrivilege[]', 'json');
+            return $serializer->deserialize((string) $body, 'Docker\\Api\\Model\\PluginPrivilege[]', 'json');
         }
         if (500 === $status) {
-            throw new \Docker\Api\Exception\GetPluginPrivilegesInternalServerErrorException($serializer->deserialize($body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
+            throw new \Docker\Api\Exception\GetPluginPrivilegesInternalServerErrorException($serializer->deserialize((string) $body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

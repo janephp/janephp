@@ -40,22 +40,22 @@ class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PostFooInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UnexpectedStatusCodeException
      *
-     * @return null
+     * @return \Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (200 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PostFooBadRequestException($serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\ResponseProblemDetailsResponse400', 'json'), $response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PostFooBadRequestException($serializer->deserialize((string) $body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\ResponseProblemDetailsResponse400', 'json'), $response);
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/problem+json') !== false)) {
-            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PostFooInternalServerErrorException($serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\ResponseProblemDetailsResponse500', 'json'), $response);
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PostFooInternalServerErrorException($serializer->deserialize((string) $body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\ResponseProblemDetailsResponse500', 'json'), $response);
         }
-        throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UnexpectedStatusCodeException($status, $body);
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UnexpectedStatusCodeException($status, (string) $body);
     }
     public function getAuthenticationScopes() : array
     {

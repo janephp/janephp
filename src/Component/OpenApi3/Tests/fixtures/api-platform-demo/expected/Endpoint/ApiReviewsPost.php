@@ -74,19 +74,19 @@ class ApiReviewsPost extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint imple
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (201 === $status) {
             if (mb_strpos($contentType, 'application/ld+json') !== false) {
-                return $serializer->deserialize($body, 'ApiPlatform\\Demo\\Model\\ReviewJsonldReviewRead', 'json');
+                return $serializer->deserialize((string) $body, 'ApiPlatform\\Demo\\Model\\ReviewJsonldReviewRead', 'json');
             }
             if (mb_strpos($contentType, 'application/hal+json') !== false) {
-                return $serializer->deserialize($body, 'ApiPlatform\\Demo\\Model\\ReviewJsonhalReviewRead', 'json');
+                return $serializer->deserialize((string) $body, 'ApiPlatform\\Demo\\Model\\ReviewJsonhalReviewRead', 'json');
             }
             if (mb_strpos($contentType, 'application/vnd.api+json') !== false) {
-                return $serializer->deserialize($body, 'ApiPlatform\\Demo\\Model\\ReviewReviewRead', 'json');
+                return $serializer->deserialize((string) $body, 'ApiPlatform\\Demo\\Model\\ReviewReviewRead', 'json');
             }
             if (mb_strpos($contentType, 'application/json') !== false) {
-                return $serializer->deserialize($body, 'ApiPlatform\\Demo\\Model\\ReviewReviewRead', 'json');
+                return $serializer->deserialize((string) $body, 'ApiPlatform\\Demo\\Model\\ReviewReviewRead', 'json');
             }
         }
         if (400 === $status) {

@@ -26,20 +26,20 @@ class CodesOfConductGetAllCodesOfConduct extends \Github\Runtime\Client\BaseEndp
      *
      * @throws \Github\Exception\CodesOfConductGetAllCodesOfConductUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\CodeOfConduct[]
+     * @return null|\Github\Model\CodeOfConduct[]|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\CodeOfConduct[]', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\CodeOfConduct[]', 'json');
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (415 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\CodesOfConductGetAllCodesOfConductUnsupportedMediaTypeException($serializer->deserialize($body, 'Github\\Model\\ResponsePreviewHeaderMissing', 'json'), $response);
+            throw new \Github\Exception\CodesOfConductGetAllCodesOfConductUnsupportedMediaTypeException($serializer->deserialize((string) $body, 'Github\\Model\\ResponsePreviewHeaderMissing', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

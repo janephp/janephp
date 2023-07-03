@@ -38,14 +38,14 @@ class TeamsDeleteInOrg extends \Github\Runtime\Client\BaseEndpoint implements \G
      * {@inheritdoc}
      *
      *
-     * @return null
+     * @return null|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (204 === $status) {
-            return null;
+            return $body;
         }
     }
     public function getAuthenticationScopes() : array

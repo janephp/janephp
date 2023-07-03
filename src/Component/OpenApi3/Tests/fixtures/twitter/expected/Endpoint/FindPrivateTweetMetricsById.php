@@ -51,20 +51,20 @@ class FindPrivateTweetMetricsById extends \Jane\Component\OpenApi3\Tests\Expecte
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\TweetMetricsResponse|\Jane\Component\OpenApi3\Tests\Expected\Model\Error
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\TweetMetricsResponse|\Jane\Component\OpenApi3\Tests\Expected\Model\Error|mixed
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TweetMetricsResponse', 'json');
+            return $serializer->deserialize((string) $body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TweetMetricsResponse', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
-            return $serializer->deserialize($body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Error', 'json');
+            return $serializer->deserialize((string) $body, 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Error', 'json');
         }
         if (mb_strpos($contentType, 'application/problem+json') !== false) {
-            return json_decode($body);
+            return json_decode((string) $body);
         }
     }
     public function getAuthenticationScopes() : array

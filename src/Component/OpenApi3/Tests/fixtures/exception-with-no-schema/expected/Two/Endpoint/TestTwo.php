@@ -22,14 +22,14 @@ class TestTwo extends \Jane\Component\OpenApi3\Tests\Expected\Two\Runtime\Client
      *
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Two\Exception\TestTwoNotFoundException
      *
-     * @return null
+     * @return null|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (200 === $status) {
-            return null;
+            return $body;
         }
         if (404 === $status) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\Two\Exception\TestTwoNotFoundException($response);

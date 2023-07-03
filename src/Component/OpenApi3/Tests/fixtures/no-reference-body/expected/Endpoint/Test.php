@@ -33,13 +33,13 @@ class Test extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEn
      * {@inheritdoc}
      *
      *
-     * @return null
+     * @return null|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
-        return null;
+        $body = $response->getBody();
+        return $body;
     }
     public function getAuthenticationScopes() : array
     {

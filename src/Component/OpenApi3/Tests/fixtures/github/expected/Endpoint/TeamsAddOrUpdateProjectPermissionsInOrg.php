@@ -48,17 +48,17 @@ class TeamsAddOrUpdateProjectPermissionsInOrg extends \Github\Runtime\Client\Bas
      *
      * @throws \Github\Exception\TeamsAddOrUpdateProjectPermissionsInOrgForbiddenException
      *
-     * @return null
+     * @return null|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (204 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\TeamsAddOrUpdateProjectPermissionsInOrgForbiddenException($serializer->deserialize($body, 'Github\\Model\\OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403', 'json'), $response);
+            throw new \Github\Exception\TeamsAddOrUpdateProjectPermissionsInOrgForbiddenException($serializer->deserialize((string) $body, 'Github\\Model\\OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

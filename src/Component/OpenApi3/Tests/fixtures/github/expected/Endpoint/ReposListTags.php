@@ -58,9 +58,9 @@ class ReposListTags extends \Github\Runtime\Client\BaseEndpoint implements \Gith
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\Tag[]', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\Tag[]', 'json');
         }
     }
     public function getAuthenticationScopes() : array

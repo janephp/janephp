@@ -48,17 +48,17 @@ class OrgsList extends \Github\Runtime\Client\BaseEndpoint implements \Github\Ru
      * {@inheritdoc}
      *
      *
-     * @return null|\Github\Model\OrganizationSimple[]
+     * @return null|\Github\Model\OrganizationSimple[]|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\OrganizationSimple[]', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\OrganizationSimple[]', 'json');
         }
         if (304 === $status) {
-            return null;
+            return $body;
         }
     }
     public function getAuthenticationScopes() : array

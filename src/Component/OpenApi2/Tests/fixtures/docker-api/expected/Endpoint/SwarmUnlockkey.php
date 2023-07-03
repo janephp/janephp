@@ -32,15 +32,15 @@ class SwarmUnlockkey extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Docker\\Api\\Model\\SwarmUnlockkeyGetResponse200', 'json');
+            return $serializer->deserialize((string) $body, 'Docker\\Api\\Model\\SwarmUnlockkeyGetResponse200', 'json');
         }
         if (500 === $status) {
-            throw new \Docker\Api\Exception\SwarmUnlockkeyInternalServerErrorException($serializer->deserialize($body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
+            throw new \Docker\Api\Exception\SwarmUnlockkeyInternalServerErrorException($serializer->deserialize((string) $body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
         }
         if (503 === $status) {
-            throw new \Docker\Api\Exception\SwarmUnlockkeyServiceUnavailableException($serializer->deserialize($body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
+            throw new \Docker\Api\Exception\SwarmUnlockkeyServiceUnavailableException($serializer->deserialize((string) $body, 'Docker\\Api\\Model\\ErrorResponse', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array

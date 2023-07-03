@@ -41,20 +41,20 @@ class AppsGetRepoInstallation extends \Github\Runtime\Client\BaseEndpoint implem
      *
      * @throws \Github\Exception\AppsGetRepoInstallationNotFoundException
      *
-     * @return null|\Github\Model\Installation
+     * @return null|\Github\Model\Installation|\Psr\Http\Message\StreamInterface
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\\Model\\Installation', 'json');
+            return $serializer->deserialize((string) $body, 'Github\\Model\\Installation', 'json');
         }
         if (301 === $status) {
-            return null;
+            return $body;
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\AppsGetRepoInstallationNotFoundException($serializer->deserialize($body, 'Github\\Model\\BasicError', 'json'), $response);
+            throw new \Github\Exception\AppsGetRepoInstallationNotFoundException($serializer->deserialize((string) $body, 'Github\\Model\\BasicError', 'json'), $response);
         }
     }
     public function getAuthenticationScopes() : array
