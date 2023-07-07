@@ -27,7 +27,7 @@ jobs:
     strategy:
       max-parallel: 15
       matrix:
-        php-versions:  ['7.2', '7.3', '7.4', '8.0', '8.1', '8.2']
+        php-versions:  ['7.3', '7.4', '8.0', '8.1', '8.2']
     name: tests-${{ matrix.php-versions }}
     steps:
       - name: checkout
@@ -65,7 +65,7 @@ jobs:
       - name: setup
         uses: shivammathur/setup-php@2.9.0
         with:
-          php-version: 7.2
+          php-version: 7.3
           extensions: mbstring, fileinfo, json, intl, dom
       - name: composer install
         run: composer update --prefer-lowest --prefer-stable
