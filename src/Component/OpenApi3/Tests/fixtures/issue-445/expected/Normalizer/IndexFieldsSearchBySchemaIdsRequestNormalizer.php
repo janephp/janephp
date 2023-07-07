@@ -72,4 +72,8 @@ class IndexFieldsSearchBySchemaIdsRequestNormalizer implements DenormalizerInter
         $data['searchMode'] = $object->getSearchMode();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\IndexFieldsSearchBySchemaIdsRequest' => false);
+    }
 }

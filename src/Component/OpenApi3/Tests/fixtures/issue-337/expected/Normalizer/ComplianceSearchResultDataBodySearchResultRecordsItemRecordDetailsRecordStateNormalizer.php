@@ -134,4 +134,8 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordState' => false);
+    }
 }

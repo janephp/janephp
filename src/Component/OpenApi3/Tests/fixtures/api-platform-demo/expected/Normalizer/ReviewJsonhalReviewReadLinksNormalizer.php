@@ -68,4 +68,8 @@ class ReviewJsonhalReviewReadLinksNormalizer implements DenormalizerInterface, N
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\ReviewJsonhalReviewReadLinks' => false);
+    }
 }

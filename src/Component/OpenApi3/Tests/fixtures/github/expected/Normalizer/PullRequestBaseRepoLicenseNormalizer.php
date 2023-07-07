@@ -105,4 +105,8 @@ class PullRequestBaseRepoLicenseNormalizer implements DenormalizerInterface, Nor
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\PullRequestBaseRepoLicense' => false);
+    }
 }

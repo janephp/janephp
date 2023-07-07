@@ -55,4 +55,8 @@ class ContentFileUpdateRequestNormalizer implements DenormalizerInterface, Norma
         $data['fileTransferId'] = $object->getFileTransferId();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\ContentFileUpdateRequest' => false);
+    }
 }

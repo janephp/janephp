@@ -72,4 +72,8 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyNormalizer 
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody' => false);
+    }
 }

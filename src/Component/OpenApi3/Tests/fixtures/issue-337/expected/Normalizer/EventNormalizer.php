@@ -140,4 +140,8 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\Event' => false);
+    }
 }

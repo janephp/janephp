@@ -149,4 +149,8 @@ class ListItemSearchAndAggregationBaseRequestNormalizer implements DenormalizerI
         $data['lifeCycleFilter'] = $object->getLifeCycleFilter();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\ListItemSearchAndAggregationBaseRequest' => false);
+    }
 }

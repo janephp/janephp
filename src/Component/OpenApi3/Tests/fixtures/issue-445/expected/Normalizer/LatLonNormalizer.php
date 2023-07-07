@@ -65,4 +65,8 @@ class LatLonNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $data['lon'] = $object->getLon();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\LatLon' => false);
+    }
 }

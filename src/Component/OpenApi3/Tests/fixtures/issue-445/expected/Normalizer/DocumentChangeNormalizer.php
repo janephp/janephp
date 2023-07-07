@@ -86,4 +86,8 @@ class DocumentChangeNormalizer implements DenormalizerInterface, NormalizerInter
         $data['timeStamp'] = $object->getTimeStamp()->format('Y-m-d\\TH:i:sP');
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\DocumentChange' => false);
+    }
 }

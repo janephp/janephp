@@ -96,4 +96,8 @@ class SearchIssuesGetResponse200Normalizer implements DenormalizerInterface, Nor
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\SearchIssuesGetResponse200' => false);
+    }
 }

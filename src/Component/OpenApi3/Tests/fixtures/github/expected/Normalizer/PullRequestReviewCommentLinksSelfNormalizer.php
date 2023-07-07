@@ -72,4 +72,8 @@ class PullRequestReviewCommentLinksSelfNormalizer implements DenormalizerInterfa
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\PullRequestReviewCommentLinksSelf' => false);
+    }
 }

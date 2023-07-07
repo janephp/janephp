@@ -72,4 +72,8 @@ class ShareContentNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\ShareContent' => false);
+    }
 }

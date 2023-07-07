@@ -63,4 +63,8 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\OpenApi2\\Tests\\Expected\\Model\\Error' => false);
+    }
 }

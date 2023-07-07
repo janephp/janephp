@@ -88,4 +88,8 @@ class GitUserNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\GitUser' => false);
+    }
 }

@@ -61,4 +61,8 @@ class CompanySearchSuccessResultCompaniesItemVatNoNormalizer implements Denormal
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\CompanySearchSuccessResultCompaniesItemVatNo' => false);
+    }
 }

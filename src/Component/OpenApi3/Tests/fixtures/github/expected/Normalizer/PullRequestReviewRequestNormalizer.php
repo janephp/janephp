@@ -97,4 +97,8 @@ class PullRequestReviewRequestNormalizer implements DenormalizerInterface, Norma
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\PullRequestReviewRequest' => false);
+    }
 }

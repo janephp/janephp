@@ -91,4 +91,8 @@ class InvalidRequestProblemErrorsItemNormalizer implements DenormalizerInterface
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\InvalidRequestProblemErrorsItem' => false);
+    }
 }

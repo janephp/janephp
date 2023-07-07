@@ -103,4 +103,8 @@ class TopBookNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\TopBook' => false);
+    }
 }

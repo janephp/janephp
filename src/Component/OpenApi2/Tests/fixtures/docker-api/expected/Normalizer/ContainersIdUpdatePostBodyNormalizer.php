@@ -333,4 +333,8 @@ class ContainersIdUpdatePostBodyNormalizer implements DenormalizerInterface, Nor
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\ContainersIdUpdatePostBody' => false);
+    }
 }

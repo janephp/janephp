@@ -81,4 +81,8 @@ class OrgsOrgOutsideCollaboratorsUsernamePutResponse403Normalizer implements Den
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\OrgsOrgOutsideCollaboratorsUsernamePutResponse403' => false);
+    }
 }

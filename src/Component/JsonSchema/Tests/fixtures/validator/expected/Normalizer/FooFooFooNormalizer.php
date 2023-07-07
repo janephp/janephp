@@ -63,4 +63,8 @@ class FooFooFooNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\JsonSchema\\Tests\\Expected\\Model\\FooFooFoo' => false);
+    }
 }

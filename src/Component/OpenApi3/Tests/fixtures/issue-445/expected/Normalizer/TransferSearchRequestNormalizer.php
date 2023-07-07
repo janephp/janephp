@@ -103,4 +103,8 @@ class TransferSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         $data['debugMode'] = $object->getDebugMode();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\TransferSearchRequest' => false);
+    }
 }

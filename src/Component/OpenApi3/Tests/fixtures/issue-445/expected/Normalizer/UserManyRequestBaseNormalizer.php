@@ -63,4 +63,8 @@ class UserManyRequestBaseNormalizer implements DenormalizerInterface, Normalizer
         $data['userIds'] = $values;
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\UserManyRequestBase' => false);
+    }
 }

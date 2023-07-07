@@ -124,4 +124,8 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationN
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation' => false);
+    }
 }

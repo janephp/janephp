@@ -123,4 +123,8 @@ class OutputResetRetryAttemptsRequestNormalizer implements DenormalizerInterface
         $data['includeCompleted'] = $object->getIncludeCompleted();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\OutputResetRetryAttemptsRequest' => false);
+    }
 }

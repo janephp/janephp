@@ -98,4 +98,8 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationNormalizer implem
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanyIdentification' => false);
+    }
 }

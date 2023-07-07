@@ -103,4 +103,8 @@ class BusinessProcessSearchRequestNormalizer implements DenormalizerInterface, N
         $data['debugMode'] = $object->getDebugMode();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\BusinessProcessSearchRequest' => false);
+    }
 }

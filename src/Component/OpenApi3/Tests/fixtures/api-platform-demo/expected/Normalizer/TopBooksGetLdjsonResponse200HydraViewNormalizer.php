@@ -103,4 +103,8 @@ class TopBooksGetLdjsonResponse200HydraViewNormalizer implements DenormalizerInt
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\TopBooksGetLdjsonResponse200HydraView' => false);
+    }
 }

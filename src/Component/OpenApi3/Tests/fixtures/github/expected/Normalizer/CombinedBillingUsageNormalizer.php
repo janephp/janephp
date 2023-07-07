@@ -88,4 +88,8 @@ class CombinedBillingUsageNormalizer implements DenormalizerInterface, Normalize
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\CombinedBillingUsage' => false);
+    }
 }

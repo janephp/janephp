@@ -107,4 +107,8 @@ class ReposOwnerRepoHooksPostBodyConfigNormalizer implements DenormalizerInterfa
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoHooksPostBodyConfig' => false);
+    }
 }

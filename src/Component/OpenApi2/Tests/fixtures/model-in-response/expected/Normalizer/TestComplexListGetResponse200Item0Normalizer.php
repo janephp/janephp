@@ -57,4 +57,8 @@ class TestComplexListGetResponse200Item0Normalizer implements DenormalizerInterf
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\TestComplexListGetResponse200Item0' => false);
+    }
 }

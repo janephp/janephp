@@ -57,4 +57,8 @@ class GistsGistIdStarGetResponse404Normalizer implements DenormalizerInterface, 
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\GistsGistIdStarGetResponse404' => false);
+    }
 }

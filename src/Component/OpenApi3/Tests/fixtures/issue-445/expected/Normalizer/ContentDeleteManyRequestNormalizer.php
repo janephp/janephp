@@ -71,4 +71,8 @@ class ContentDeleteManyRequestNormalizer implements DenormalizerInterface, Norma
         $data['notifyProgress'] = $object->getNotifyProgress();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\ContentDeleteManyRequest' => false);
+    }
 }

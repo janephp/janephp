@@ -59,4 +59,8 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $data['message'] = $object->getMessage();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\Error' => false);
+    }
 }

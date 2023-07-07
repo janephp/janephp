@@ -112,4 +112,8 @@ class CompactUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\CompactUser' => false);
+    }
 }

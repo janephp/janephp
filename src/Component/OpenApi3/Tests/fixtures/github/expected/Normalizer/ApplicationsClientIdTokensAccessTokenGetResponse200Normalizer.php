@@ -173,4 +173,8 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200Normalizer implements D
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ApplicationsClientIdTokensAccessTokenGetResponse200' => false);
+    }
 }

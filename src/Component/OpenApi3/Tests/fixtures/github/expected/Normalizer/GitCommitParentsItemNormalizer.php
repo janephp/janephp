@@ -88,4 +88,8 @@ class GitCommitParentsItemNormalizer implements DenormalizerInterface, Normalize
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\GitCommitParentsItem' => false);
+    }
 }

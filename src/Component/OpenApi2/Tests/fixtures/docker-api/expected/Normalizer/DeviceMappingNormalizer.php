@@ -75,4 +75,8 @@ class DeviceMappingNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\DeviceMapping' => false);
+    }
 }

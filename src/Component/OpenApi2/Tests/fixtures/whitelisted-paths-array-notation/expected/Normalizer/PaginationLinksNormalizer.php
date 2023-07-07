@@ -71,4 +71,8 @@ class PaginationLinksNormalizer implements DenormalizerInterface, NormalizerInte
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\OpenApi2\\Tests\\Expected\\Model\\PaginationLinks' => false);
+    }
 }

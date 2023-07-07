@@ -95,4 +95,8 @@ class ReviewsGetLdjsonResponse200Normalizer implements DenormalizerInterface, No
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\ReviewsGetLdjsonResponse200' => false);
+    }
 }

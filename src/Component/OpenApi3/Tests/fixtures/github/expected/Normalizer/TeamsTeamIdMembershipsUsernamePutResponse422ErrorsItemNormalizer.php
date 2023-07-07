@@ -88,4 +88,8 @@ class TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItemNormalizer implement
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItem' => false);
+    }
 }

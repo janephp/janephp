@@ -109,4 +109,8 @@ class OrgsOrgMigrationsPostBodyNormalizer implements DenormalizerInterface, Norm
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\OrgsOrgMigrationsPostBody' => false);
+    }
 }

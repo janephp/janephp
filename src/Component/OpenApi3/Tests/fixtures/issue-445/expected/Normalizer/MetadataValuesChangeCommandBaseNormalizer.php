@@ -101,4 +101,8 @@ class MetadataValuesChangeCommandBaseNormalizer implements DenormalizerInterface
         $data['kind'] = $object->getKind();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\MetadataValuesChangeCommandBase' => false);
+    }
 }

@@ -132,4 +132,8 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $data['system'] = $object->getSystem();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\Schema' => false);
+    }
 }

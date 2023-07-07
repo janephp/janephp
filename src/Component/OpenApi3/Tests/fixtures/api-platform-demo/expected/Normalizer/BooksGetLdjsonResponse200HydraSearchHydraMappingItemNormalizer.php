@@ -92,4 +92,8 @@ class BooksGetLdjsonResponse200HydraSearchHydraMappingItemNormalizer implements 
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\BooksGetLdjsonResponse200HydraSearchHydraMappingItem' => false);
+    }
 }

@@ -89,4 +89,8 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Normalizer imple
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200' => false);
+    }
 }

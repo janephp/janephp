@@ -72,4 +72,8 @@ class CheckRunCheckSuiteNormalizer implements DenormalizerInterface, NormalizerI
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\CheckRunCheckSuite' => false);
+    }
 }

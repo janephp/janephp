@@ -110,4 +110,8 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsItem' => false);
+    }
 }

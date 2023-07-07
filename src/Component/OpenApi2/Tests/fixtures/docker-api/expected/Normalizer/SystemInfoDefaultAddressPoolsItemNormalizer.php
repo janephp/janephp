@@ -69,4 +69,8 @@ class SystemInfoDefaultAddressPoolsItemNormalizer implements DenormalizerInterfa
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\SystemInfoDefaultAddressPoolsItem' => false);
+    }
 }

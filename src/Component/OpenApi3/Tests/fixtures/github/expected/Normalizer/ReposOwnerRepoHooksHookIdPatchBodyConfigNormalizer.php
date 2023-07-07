@@ -107,4 +107,8 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfigNormalizer implements Denormalizer
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoHooksHookIdPatchBodyConfig' => false);
+    }
 }

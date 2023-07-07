@@ -69,4 +69,8 @@ class ServiceEndpointVirtualIPsItemNormalizer implements DenormalizerInterface, 
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\ServiceEndpointVirtualIPsItem' => false);
+    }
 }

@@ -68,4 +68,8 @@ class ReviewsGetHaljsonResponse200LinksFirstNormalizer implements DenormalizerIn
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\ReviewsGetHaljsonResponse200LinksFirst' => false);
+    }
 }

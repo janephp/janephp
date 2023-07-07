@@ -63,4 +63,8 @@ class DogNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         $data['packSize'] = $object->getPackSize();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\Dog' => false);
+    }
 }

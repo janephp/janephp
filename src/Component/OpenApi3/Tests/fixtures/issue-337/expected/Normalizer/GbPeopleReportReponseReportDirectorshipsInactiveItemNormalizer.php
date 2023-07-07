@@ -131,4 +131,8 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemNormalizer implements 
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorshipsInactiveItem' => false);
+    }
 }

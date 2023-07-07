@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - [AutoMapper] [GH#734](https://github.com/janephp/janephp/pull/734) Cache warmer should generate mappers for nested classes
+- [JsonSchema] [GH#739](https://github.com/janephp/janephp/pull/739) Add getSupportedTypes method to generated Normalizers
 
 ## [7.5.1] - 2023-06-13
 ### Fixed

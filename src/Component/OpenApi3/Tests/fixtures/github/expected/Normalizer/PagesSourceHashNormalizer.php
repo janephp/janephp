@@ -77,4 +77,8 @@ class PagesSourceHashNormalizer implements DenormalizerInterface, NormalizerInte
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\PagesSourceHash' => false);
+    }
 }

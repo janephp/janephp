@@ -86,4 +86,8 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItemNormalizer imp
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem' => false);
+    }
 }

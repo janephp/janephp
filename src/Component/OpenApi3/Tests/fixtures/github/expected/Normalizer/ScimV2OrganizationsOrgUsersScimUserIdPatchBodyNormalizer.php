@@ -95,4 +95,8 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyNormalizer implements Denorm
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ScimV2OrganizationsOrgUsersScimUserIdPatchBody' => false);
+    }
 }

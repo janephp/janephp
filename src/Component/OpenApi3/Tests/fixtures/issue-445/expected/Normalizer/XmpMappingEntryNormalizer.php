@@ -101,4 +101,8 @@ class XmpMappingEntryNormalizer implements DenormalizerInterface, NormalizerInte
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\XmpMappingEntry' => false);
+    }
 }

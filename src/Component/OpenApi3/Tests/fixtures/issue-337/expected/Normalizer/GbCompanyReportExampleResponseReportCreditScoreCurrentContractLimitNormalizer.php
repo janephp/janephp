@@ -78,4 +78,8 @@ class GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimitNormali
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimit' => false);
+    }
 }

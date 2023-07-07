@@ -55,4 +55,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\Pet' => false, 'Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\Error' => false, '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => false);
+    }
 }

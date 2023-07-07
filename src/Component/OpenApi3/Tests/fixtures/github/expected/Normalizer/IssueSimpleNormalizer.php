@@ -272,4 +272,8 @@ class IssueSimpleNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\IssueSimple' => false);
+    }
 }

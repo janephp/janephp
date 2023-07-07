@@ -63,4 +63,8 @@ class CatNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         $data['huntingSkill'] = $object->getHuntingSkill();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\Cat' => false);
+    }
 }

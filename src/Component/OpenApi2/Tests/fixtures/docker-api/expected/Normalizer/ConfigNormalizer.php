@@ -87,4 +87,8 @@ class ConfigNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\Config' => false);
+    }
 }

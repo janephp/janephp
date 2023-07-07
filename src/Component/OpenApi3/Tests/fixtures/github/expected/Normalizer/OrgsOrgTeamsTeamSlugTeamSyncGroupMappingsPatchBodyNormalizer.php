@@ -80,4 +80,8 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyNormalizer implements De
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody' => false);
+    }
 }

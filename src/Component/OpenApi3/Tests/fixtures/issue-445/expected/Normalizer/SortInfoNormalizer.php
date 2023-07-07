@@ -64,4 +64,8 @@ class SortInfoNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['direction'] = $object->getDirection();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\SortInfo' => false);
+    }
 }

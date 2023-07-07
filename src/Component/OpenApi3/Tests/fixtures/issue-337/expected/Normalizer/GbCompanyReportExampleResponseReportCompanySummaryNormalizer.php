@@ -124,4 +124,8 @@ class GbCompanyReportExampleResponseReportCompanySummaryNormalizer implements De
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCompanySummary' => false);
+    }
 }

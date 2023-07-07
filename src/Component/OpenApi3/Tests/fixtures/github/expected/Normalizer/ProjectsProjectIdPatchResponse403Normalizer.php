@@ -96,4 +96,8 @@ class ProjectsProjectIdPatchResponse403Normalizer implements DenormalizerInterfa
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ProjectsProjectIdPatchResponse403' => false);
+    }
 }

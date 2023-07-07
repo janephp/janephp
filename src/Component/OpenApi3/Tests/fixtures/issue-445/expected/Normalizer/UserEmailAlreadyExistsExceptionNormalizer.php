@@ -150,4 +150,8 @@ class UserEmailAlreadyExistsExceptionNormalizer implements DenormalizerInterface
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\UserEmailAlreadyExistsException' => false);
+    }
 }

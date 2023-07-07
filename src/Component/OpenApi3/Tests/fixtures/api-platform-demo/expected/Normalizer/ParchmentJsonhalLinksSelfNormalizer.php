@@ -68,4 +68,8 @@ class ParchmentJsonhalLinksSelfNormalizer implements DenormalizerInterface, Norm
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\ParchmentJsonhalLinksSelf' => false);
+    }
 }

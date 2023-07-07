@@ -103,4 +103,8 @@ class ProjectsColumnsColumnIdCardsPostResponse503Normalizer implements Denormali
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ProjectsColumnsColumnIdCardsPostResponse503' => false);
+    }
 }

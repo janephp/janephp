@@ -69,4 +69,8 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\Commit' => false);
+    }
 }

@@ -80,4 +80,8 @@ class BaseResultOfFileTransferNormalizer implements DenormalizerInterface, Norma
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\BaseResultOfFileTransfer' => false);
+    }
 }

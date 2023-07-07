@@ -57,4 +57,8 @@ class TestTwoGetResponse200Normalizer implements DenormalizerInterface, Normaliz
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\OpenApi2\\Tests\\Expected\\Two\\Model\\TestTwoGetResponse200' => false);
+    }
 }

@@ -59,4 +59,8 @@ class ContentRightAggregationCountNormalizer implements DenormalizerInterface, N
         $data['count'] = $object->getCount();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\ContentRightAggregationCount' => false);
+    }
 }

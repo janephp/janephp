@@ -103,4 +103,8 @@ class BooksGetLdjsonResponse200HydraViewNormalizer implements DenormalizerInterf
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\BooksGetLdjsonResponse200HydraView' => false);
+    }
 }

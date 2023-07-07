@@ -63,4 +63,8 @@ class SearchFieldCountNormalizer implements DenormalizerInterface, NormalizerInt
         $data['sortableField'] = $object->getSortableField();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\SearchFieldCount' => false);
+    }
 }

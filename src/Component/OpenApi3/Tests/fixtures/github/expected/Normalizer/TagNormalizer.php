@@ -92,4 +92,8 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\Tag' => false);
+    }
 }

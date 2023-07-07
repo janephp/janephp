@@ -89,4 +89,8 @@ class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Normalizer implements Den
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoCommitsRefCheckSuitesGetResponse200' => false);
+    }
 }

@@ -91,4 +91,8 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\OpenApi2\\Tests\\Expected\\Model\\Projects' => false);
+    }
 }

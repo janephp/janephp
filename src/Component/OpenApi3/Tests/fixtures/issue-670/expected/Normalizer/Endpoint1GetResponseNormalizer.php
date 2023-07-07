@@ -68,4 +68,8 @@ class Endpoint1GetResponseNormalizer implements DenormalizerInterface, Normalize
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Endpoint1GetResponse' => false);
+    }
 }

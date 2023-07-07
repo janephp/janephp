@@ -88,4 +88,8 @@ class TeamsTeamIdMembersUsernamePutResponse422ErrorsItemNormalizer implements De
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\TeamsTeamIdMembersUsernamePutResponse422ErrorsItem' => false);
+    }
 }

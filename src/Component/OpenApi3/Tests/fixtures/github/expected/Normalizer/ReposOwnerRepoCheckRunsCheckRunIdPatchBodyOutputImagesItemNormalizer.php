@@ -84,4 +84,8 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItemNormalizer imple
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItem' => false);
+    }
 }

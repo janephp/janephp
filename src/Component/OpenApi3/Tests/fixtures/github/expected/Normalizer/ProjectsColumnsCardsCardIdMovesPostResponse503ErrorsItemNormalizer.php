@@ -81,4 +81,8 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItemNormalizer impleme
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItem' => false);
+    }
 }

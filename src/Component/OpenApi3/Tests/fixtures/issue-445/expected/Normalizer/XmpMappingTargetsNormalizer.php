@@ -75,4 +75,8 @@ class XmpMappingTargetsNormalizer implements DenormalizerInterface, NormalizerIn
         $data['metadataFields'] = $values_1;
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\XmpMappingTargets' => false);
+    }
 }

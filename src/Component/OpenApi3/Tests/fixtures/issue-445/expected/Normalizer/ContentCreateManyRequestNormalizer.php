@@ -67,4 +67,8 @@ class ContentCreateManyRequestNormalizer implements DenormalizerInterface, Norma
         $data['items'] = $values;
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\ContentCreateManyRequest' => false);
+    }
 }

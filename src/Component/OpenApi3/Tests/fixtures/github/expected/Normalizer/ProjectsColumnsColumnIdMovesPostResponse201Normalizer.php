@@ -57,4 +57,8 @@ class ProjectsColumnsColumnIdMovesPostResponse201Normalizer implements Denormali
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ProjectsColumnsColumnIdMovesPostResponse201' => false);
+    }
 }

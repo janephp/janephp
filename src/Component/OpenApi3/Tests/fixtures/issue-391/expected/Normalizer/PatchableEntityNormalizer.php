@@ -79,4 +79,8 @@ class PatchableEntityNormalizer implements DenormalizerInterface, NormalizerInte
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Gounlaf\\JanephpBug\\Model\\PatchableEntity' => false);
+    }
 }

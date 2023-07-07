@@ -64,4 +64,8 @@ class StatusOfSearchIndexStateNormalizer implements DenormalizerInterface, Norma
         $data['state'] = $object->getState();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\StatusOfSearchIndexState' => false);
+    }
 }

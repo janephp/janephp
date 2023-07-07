@@ -141,4 +141,8 @@ class UserRoleSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         $data['includeAdministratorSystemUserRole'] = $object->getIncludeAdministratorSystemUserRole();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\UserRoleSearchRequest' => false);
+    }
 }

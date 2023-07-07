@@ -97,4 +97,8 @@ class TopBooksGetLdjsonResponse200HydraSearchNormalizer implements DenormalizerI
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\TopBooksGetLdjsonResponse200HydraSearch' => false);
+    }
 }

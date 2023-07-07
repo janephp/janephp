@@ -135,4 +135,8 @@ class HookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\Hook' => false);
+    }
 }

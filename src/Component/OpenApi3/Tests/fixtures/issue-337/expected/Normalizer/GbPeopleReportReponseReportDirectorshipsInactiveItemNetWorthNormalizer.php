@@ -78,4 +78,8 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemNetWorthNormalizer imp
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorshipsInactiveItemNetWorth' => false);
+    }
 }

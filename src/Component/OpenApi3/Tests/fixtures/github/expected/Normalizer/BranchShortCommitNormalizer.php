@@ -81,4 +81,8 @@ class BranchShortCommitNormalizer implements DenormalizerInterface, NormalizerIn
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\BranchShortCommit' => false);
+    }
 }

@@ -96,4 +96,8 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200Normalizer implem
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\UserInstallationsInstallationIdRepositoriesGetResponse200' => false);
+    }
 }

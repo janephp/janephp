@@ -175,4 +175,8 @@ class SchemaFieldDisplayPatternTypeNotSupportedExceptionNormalizer implements De
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\SchemaFieldDisplayPatternTypeNotSupportedException' => false);
+    }
 }

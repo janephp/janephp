@@ -176,4 +176,8 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['isFederated'] = $object->getIsFederated();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\UserProfile' => false);
+    }
 }

@@ -68,4 +68,8 @@ class BodyNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\OpenApi3\\Tests\\Expected\\Api1\\Model\\Body' => false);
+    }
 }

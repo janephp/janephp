@@ -127,4 +127,8 @@ class ShareBasicUpdateRequestNormalizer implements DenormalizerInterface, Normal
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\ShareBasicUpdateRequest' => false);
+    }
 }

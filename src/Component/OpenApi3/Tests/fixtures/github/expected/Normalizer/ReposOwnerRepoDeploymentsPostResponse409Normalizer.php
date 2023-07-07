@@ -81,4 +81,8 @@ class ReposOwnerRepoDeploymentsPostResponse409Normalizer implements Denormalizer
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoDeploymentsPostResponse409' => false);
+    }
 }

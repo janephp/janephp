@@ -82,4 +82,8 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemPositionNormalizer imp
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorshipsPreviousItemPosition' => false);
+    }
 }

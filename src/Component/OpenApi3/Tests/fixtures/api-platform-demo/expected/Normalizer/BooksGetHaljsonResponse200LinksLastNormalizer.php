@@ -68,4 +68,8 @@ class BooksGetHaljsonResponse200LinksLastNormalizer implements DenormalizerInter
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\BooksGetHaljsonResponse200LinksLast' => false);
+    }
 }

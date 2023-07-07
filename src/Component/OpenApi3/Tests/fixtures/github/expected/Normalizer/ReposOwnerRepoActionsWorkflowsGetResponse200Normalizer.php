@@ -89,4 +89,8 @@ class ReposOwnerRepoActionsWorkflowsGetResponse200Normalizer implements Denormal
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoActionsWorkflowsGetResponse200' => false);
+    }
 }

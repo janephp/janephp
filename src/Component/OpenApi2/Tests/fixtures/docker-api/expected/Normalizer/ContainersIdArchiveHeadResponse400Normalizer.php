@@ -63,4 +63,8 @@ class ContainersIdArchiveHeadResponse400Normalizer implements DenormalizerInterf
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\ContainersIdArchiveHeadResponse400' => false);
+    }
 }

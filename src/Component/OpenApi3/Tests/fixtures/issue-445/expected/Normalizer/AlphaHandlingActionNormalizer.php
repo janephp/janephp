@@ -83,4 +83,8 @@ class AlphaHandlingActionNormalizer implements DenormalizerInterface, Normalizer
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\AlphaHandlingAction' => false);
+    }
 }

@@ -59,4 +59,8 @@ class ShareUserNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data['emailHash'] = $object->getEmailHash();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\ShareUser' => false);
+    }
 }

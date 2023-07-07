@@ -77,4 +77,8 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyNameNormalizer implements Deno
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ScimV2OrganizationsOrgUsersScimUserIdPutBodyName' => false);
+    }
 }

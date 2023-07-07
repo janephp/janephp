@@ -63,4 +63,8 @@ class ResizeActionNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['resizeMode'] = $object->getResizeMode();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\ResizeAction' => false);
+    }
 }

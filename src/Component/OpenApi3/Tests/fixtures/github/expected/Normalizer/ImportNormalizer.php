@@ -246,4 +246,8 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\Import' => false);
+    }
 }

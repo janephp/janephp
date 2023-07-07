@@ -104,4 +104,8 @@ class NullableNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['requiredNull'] = $value_1;
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Nullable' => false);
+    }
 }

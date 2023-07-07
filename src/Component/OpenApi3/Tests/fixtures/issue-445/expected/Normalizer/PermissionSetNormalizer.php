@@ -63,4 +63,8 @@ class PermissionSetNormalizer implements DenormalizerInterface, NormalizerInterf
         $data['names'] = $object->getNames();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\PermissionSet' => false);
+    }
 }

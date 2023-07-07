@@ -150,4 +150,8 @@ class UnableToMapMultipleClaimTypesIntoSameAttributeExceptionNormalizer implemen
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\UnableToMapMultipleClaimTypesIntoSameAttributeException' => false);
+    }
 }

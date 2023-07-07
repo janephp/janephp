@@ -67,4 +67,8 @@ class FileTransferDeleteRequestNormalizer implements DenormalizerInterface, Norm
         $data['fileTransferIds'] = $values;
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\FileTransferDeleteRequest' => false);
+    }
 }

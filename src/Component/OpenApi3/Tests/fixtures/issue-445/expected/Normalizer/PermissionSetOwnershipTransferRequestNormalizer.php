@@ -55,4 +55,8 @@ class PermissionSetOwnershipTransferRequestNormalizer implements DenormalizerInt
         $data['transferUserId'] = $object->getTransferUserId();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\PermissionSetOwnershipTransferRequest' => false);
+    }
 }

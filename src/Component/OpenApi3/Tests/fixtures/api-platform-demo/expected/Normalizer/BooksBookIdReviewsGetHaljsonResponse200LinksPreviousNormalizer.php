@@ -68,4 +68,8 @@ class BooksBookIdReviewsGetHaljsonResponse200LinksPreviousNormalizer implements 
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\BooksBookIdReviewsGetHaljsonResponse200LinksPrevious' => false);
+    }
 }

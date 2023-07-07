@@ -67,4 +67,8 @@ class ContentRestoreManyRequestNormalizer implements DenormalizerInterface, Norm
         $data['allowMissingDependencies'] = $object->getAllowMissingDependencies();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\ContentRestoreManyRequest' => false);
+    }
 }

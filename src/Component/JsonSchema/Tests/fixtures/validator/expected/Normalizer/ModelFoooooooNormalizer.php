@@ -237,4 +237,8 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\JsonSchema\\Tests\\Expected\\Model\\ModelFooooooo' => false);
+    }
 }

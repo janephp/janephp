@@ -55,4 +55,8 @@ class UserLockRequestNormalizer implements DenormalizerInterface, NormalizerInte
         $data['lock'] = $object->getLock();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\UserLockRequest' => false);
+    }
 }

@@ -71,4 +71,8 @@ class ContainersIdUpdatePostResponse200Normalizer implements DenormalizerInterfa
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\ContainersIdUpdatePostResponse200' => false);
+    }
 }

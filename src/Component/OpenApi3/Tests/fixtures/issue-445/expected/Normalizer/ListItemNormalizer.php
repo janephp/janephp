@@ -154,4 +154,8 @@ class ListItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['lifeCycle'] = $object->getLifeCycle();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\ListItem' => false);
+    }
 }

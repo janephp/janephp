@@ -73,4 +73,8 @@ class UserEmailNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data['emailAddress'] = $object->getEmailAddress();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\UserEmail' => false);
+    }
 }

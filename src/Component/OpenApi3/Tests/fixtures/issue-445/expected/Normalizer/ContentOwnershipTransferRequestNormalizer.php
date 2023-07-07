@@ -55,4 +55,8 @@ class ContentOwnershipTransferRequestNormalizer implements DenormalizerInterface
         $data['transferUserId'] = $object->getTransferUserId();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\ContentOwnershipTransferRequest' => false);
+    }
 }

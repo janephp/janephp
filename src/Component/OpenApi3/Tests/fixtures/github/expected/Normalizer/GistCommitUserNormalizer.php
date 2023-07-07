@@ -167,4 +167,8 @@ class GistCommitUserNormalizer implements DenormalizerInterface, NormalizerInter
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\GistCommitUser' => false);
+    }
 }

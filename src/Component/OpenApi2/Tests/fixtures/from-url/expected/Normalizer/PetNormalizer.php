@@ -65,4 +65,8 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\OpenApi2\\Tests\\Expected\\Model\\Pet' => false);
+    }
 }
