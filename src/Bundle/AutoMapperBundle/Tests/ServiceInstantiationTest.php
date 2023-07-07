@@ -24,6 +24,8 @@ class ServiceInstantiationTest extends WebTestCase
     }
 
     /**
+     * This method needs to be the first in this test class, more details about why here: https://github.com/janephp/janephp/pull/734#discussion_r1247921885
+     *
      * @see Resources/app/config.yml
      */
     public function testWarmup(): void
