@@ -15,6 +15,7 @@ use Jane\Component\AutoMapper\Tests\Fixtures\AddressDTOWithReadonlyPromotedPrope
 use Jane\Component\AutoMapper\Tests\Fixtures\AddressType;
 use Jane\Component\AutoMapper\Tests\Fixtures\AddressWithEnum;
 use Jane\Component\AutoMapper\Tests\Fixtures\Fish;
+use Jane\Component\AutoMapper\Tests\Fixtures\ObjectWithDateTime;
 use Jane\Component\AutoMapper\Tests\Fixtures\Order;
 use Jane\Component\AutoMapper\Tests\Fixtures\PetOwner;
 use Jane\Component\AutoMapper\Tests\Fixtures\Transformer\MoneyTransformerFactory;
@@ -1143,5 +1144,26 @@ class AutoMapperTest extends AutoMapperBaseTest
         if (\PHP_VERSION_ID >= 80200) {
             yield [AddressDTOReadonlyClass::class];
         }
+    }
+
+    public function testDateTimeFormatCanBeConfiguredFromContext(): void
+    {
+        self::assertSame(
+            ['dateTime' => '2021-01-01'],
+            $this->autoMapper->map(
+                new ObjectWithDateTime(new \DateTimeImmutable('2021-01-01 12:00:00')),
+                'array',
+                [MapperContext::DATETIME_FORMAT => 'Y-m-d']
+            )
+        );
+
+        self::assertEquals(
+            new ObjectWithDateTime(new \DateTimeImmutable('2023-01-24 00:00:00')),
+            $this->autoMapper->map(
+                ['dateTime' => '24-01-2023'],
+                ObjectWithDateTime::class,
+                [MapperContext::DATETIME_FORMAT => '!d-m-Y']
+            )
+        );
     }
 }

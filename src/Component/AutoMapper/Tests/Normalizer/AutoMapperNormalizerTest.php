@@ -6,7 +6,9 @@ use Jane\Component\AutoMapper\MapperContext;
 use Jane\Component\AutoMapper\Normalizer\AutoMapperNormalizer;
 use Jane\Component\AutoMapper\Tests\AutoMapperBaseTest;
 use Jane\Component\AutoMapper\Tests\Fixtures;
+use Jane\Component\AutoMapper\Tests\Fixtures\ObjectWithDateTime;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 
 /**
  * @author Baptiste Leduc <baptiste.leduc@gmail.com>
@@ -102,6 +104,7 @@ class AutoMapperNormalizerTest extends AutoMapperBaseTest
             AbstractNormalizer::OBJECT_TO_POPULATE => 'some-object',
             AbstractNormalizer::CIRCULAR_REFERENCE_LIMIT => 1,
             AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => 'circular-reference-handler',
+            DateTimeNormalizer::FORMAT_KEY => 'Y-m-d',
             'custom-context' => 'some custom context',
             MapperContext::ALLOWED_ATTRIBUTES => 'some ignored context',
         ]);
@@ -114,9 +117,32 @@ class AutoMapperNormalizerTest extends AutoMapperBaseTest
                 MapperContext::TARGET_TO_POPULATE => 'some-object',
                 MapperContext::CIRCULAR_REFERENCE_LIMIT => 1,
                 MapperContext::CIRCULAR_REFERENCE_HANDLER => 'circular-reference-handler',
+                MapperContext::DATETIME_FORMAT => 'Y-m-d',
                 'custom-context' => 'some custom context',
             ],
             $context
+        );
+    }
+
+    public function testItUsesSerializerDateFormatBasedOnSerializerContext(): void
+    {
+        self::assertSame(
+            ['dateTime' => '2021-01-01'],
+            $this->normalizer->normalize(
+                new ObjectWithDateTime(new \DateTimeImmutable('2021-01-01 12:00:00')),
+                'json',
+                [DateTimeNormalizer::FORMAT_KEY => 'Y-m-d']
+            )
+        );
+
+        self::assertEquals(
+            new ObjectWithDateTime(new \DateTimeImmutable('2023-01-24 00:00:00')),
+            $this->normalizer->denormalize(
+                ['dateTime' => '24-01-2023'],
+                ObjectWithDateTime::class,
+                null,
+                [MapperContext::DATETIME_FORMAT => '!d-m-Y']
+            )
         );
     }
 }

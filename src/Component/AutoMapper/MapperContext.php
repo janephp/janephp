@@ -25,6 +25,7 @@ class MapperContext
     public const CONSTRUCTOR_ARGUMENTS = 'constructor_arguments';
     public const SKIP_NULL_VALUES = 'skip_null_values';
     public const ALLOW_READONLY_TARGET_TO_POPULATE = 'allow_readonly_target_to_populate';
+    public const DATETIME_FORMAT = 'datetime_format';
 
     private $context = [
         self::DEPTH => 0,

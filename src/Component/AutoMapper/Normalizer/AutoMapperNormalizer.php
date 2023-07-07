@@ -6,6 +6,7 @@ use Jane\Component\AutoMapper\AutoMapperInterface;
 use Jane\Component\AutoMapper\MapperContext;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
@@ -23,6 +24,7 @@ class AutoMapperNormalizer implements NormalizerInterface, DenormalizerInterface
         AbstractNormalizer::OBJECT_TO_POPULATE => MapperContext::TARGET_TO_POPULATE,
         AbstractNormalizer::CIRCULAR_REFERENCE_LIMIT => MapperContext::CIRCULAR_REFERENCE_LIMIT,
         AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => MapperContext::CIRCULAR_REFERENCE_HANDLER,
+        DateTimeNormalizer::FORMAT_KEY => MapperContext::DATETIME_FORMAT,
     ];
 
     private $autoMapper;
