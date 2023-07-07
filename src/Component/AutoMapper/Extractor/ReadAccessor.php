@@ -2,7 +2,9 @@
 
 namespace Jane\Component\AutoMapper\Extractor;
 
+use Jane\Component\AutoMapper\Attribute\MapToContext;
 use Jane\Component\AutoMapper\Exception\CompileException;
+use Jane\Component\AutoMapper\MapperContext;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -26,13 +28,20 @@ final class ReadAccessor
 
     private $name;
 
+    private $sourceClass;
+
     private $private;
 
-    public function __construct(int $type, string $name, $private = false)
+    public function __construct(int $type, string $name, string $sourceClass = null, $private = false)
     {
         $this->type = $type;
         $this->name = $name;
+        $this->sourceClass = $sourceClass;
         $this->private = $private;
+
+        if (self::TYPE_METHOD === $this->type && null === $this->sourceClass) {
+            throw new \InvalidArgumentException('Source class must be provided when using "method" type.');
+        }
     }
 
     /**
@@ -43,7 +52,48 @@ final class ReadAccessor
     public function getExpression(Expr\Variable $input): Expr
     {
         if (self::TYPE_METHOD === $this->type) {
-            return new Expr\MethodCall($input, $this->name);
+            $methodCallArguments = [];
+
+            if (\PHP_VERSION_ID >= 80000 && class_exists($this->sourceClass)) {
+                $parameters = (new \ReflectionMethod($this->sourceClass, $this->name))->getParameters();
+
+                foreach ($parameters as $parameter) {
+                    if ($attribute = ($parameter->getAttributes(MapToContext::class)[0] ?? null)) {
+                        // generates code similar to:
+                        // $value->getValue(
+                        //     $context['map_to_accessor_parameter']['some_key'] ?? throw new \InvalidArgumentException('error message');
+                        // )
+
+                        $methodCallArguments[] = new Arg(
+                            new Expr\BinaryOp\Coalesce(
+                                new Expr\ArrayDimFetch(
+                                    new Expr\ArrayDimFetch(
+                                        new Expr\Variable('context'),
+                                        new Scalar\String_(MapperContext::MAP_TO_ACCESSOR_PARAMETER)
+                                    ),
+                                    new Scalar\String_($attribute->newInstance()->getContextName())
+                                ),
+                                new Expr\Throw_(
+                                    new Expr\New_(
+                                        new Name\FullyQualified(\InvalidArgumentException::class),
+                                        [
+                                            new Arg(
+                                                new Scalar\String_(
+                                                    "Parameter \"\${$parameter->getName()}\" of method \"{$this->sourceClass}\"::\"{$this->name}()\" is configured to be mapped to context but no value was found in the context."
+                                                )
+                                            ),
+                                        ]
+                                    )
+                                )
+                            )
+                        );
+                    } else {
+                        throw new \InvalidArgumentException("Accessors method \"{$this->sourceClass}\"::\"{$this->name}()\" should not have parameters or they must have #[MapToContext] attribute.");
+                    }
+                }
+            }
+
+            return new Expr\MethodCall($input, $this->name, $methodCallArguments);
         }
 
         if (self::TYPE_PROPERTY === $this->type) {

@@ -14,6 +14,7 @@ use Jane\Component\AutoMapper\Tests\Fixtures\AddressDTOWithReadonly;
 use Jane\Component\AutoMapper\Tests\Fixtures\AddressDTOWithReadonlyPromotedProperty;
 use Jane\Component\AutoMapper\Tests\Fixtures\AddressType;
 use Jane\Component\AutoMapper\Tests\Fixtures\AddressWithEnum;
+use Jane\Component\AutoMapper\Tests\Fixtures\ClassWithMapToContextAttribute;
 use Jane\Component\AutoMapper\Tests\Fixtures\Fish;
 use Jane\Component\AutoMapper\Tests\Fixtures\ObjectWithDateTime;
 use Jane\Component\AutoMapper\Tests\Fixtures\Order;
@@ -1163,6 +1164,21 @@ class AutoMapperTest extends AutoMapperBaseTest
                 ['dateTime' => '24-01-2023'],
                 ObjectWithDateTime::class,
                 [MapperContext::DATETIME_FORMAT => '!d-m-Y']
+            )
+        );
+    }
+
+    /**
+     * @requires PHP 8.0
+     */
+    public function testMapToContextAttribute(): void
+    {
+        self::assertSame(
+            ['value' => 'foo_bar_baz'],
+            $this->autoMapper->map(
+                new ClassWithMapToContextAttribute('bar'),
+                'array',
+                [MapperContext::MAP_TO_ACCESSOR_PARAMETER => ['suffix' => 'baz', 'prefix' => 'foo']]
             )
         );
     }
