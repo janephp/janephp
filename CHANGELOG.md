@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - [AutoMapper] [GH#733](https://github.com/janephp/janephp/pull/733) Configure date format with context
 
+### Fixed
+- [AutoMapper] [GH#734](https://github.com/janephp/janephp/pull/734) Cache warmer should generate mappers for nested classes
+
 ## [7.5.1] - 2023-06-13
 ### Fixed
 - [AutoMapper] [GH#729](https://github.com/janephp/janephp/pull/729) Allow to add full objects in `allowed_attribute` context

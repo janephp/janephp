@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Jane\Bundle\AutoMapperBundle\CacheWarmup;
 
-use Jane\Component\AutoMapper\Loader\FileLoader;
-use Jane\Component\AutoMapper\MapperGeneratorMetadataFactoryInterface;
-use Jane\Component\AutoMapper\MapperGeneratorMetadataRegistryInterface;
+use Jane\Component\AutoMapper\AutoMapperRegistryInterface;
 use Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface;
 
 /**
@@ -14,23 +12,20 @@ use Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface;
  */
 final class CacheWarmer implements CacheWarmerInterface
 {
-    private $fileLoader;
     private $autoMapperRegistry;
-    private $mapperConfigurationFactory;
     /** @var iterable<CacheWarmerLoaderInterface> */
     private $cacheWarmerLoaders;
+    private $autoMapperCacheDirectory;
 
     /** @param iterable<CacheWarmerLoaderInterface> $cacheWarmerLoaders */
     public function __construct(
-        FileLoader $fileLoader,
-        MapperGeneratorMetadataRegistryInterface $autoMapperRegistry,
-        MapperGeneratorMetadataFactoryInterface $mapperConfigurationFactory,
-        iterable $cacheWarmerLoaders
+        AutoMapperRegistryInterface $autoMapperRegistry,
+        iterable $cacheWarmerLoaders,
+        string $autoMapperCacheDirectory
     ) {
-        $this->fileLoader = $fileLoader;
         $this->autoMapperRegistry = $autoMapperRegistry;
-        $this->mapperConfigurationFactory = $mapperConfigurationFactory;
         $this->cacheWarmerLoaders = $cacheWarmerLoaders;
+        $this->autoMapperCacheDirectory = $autoMapperCacheDirectory;
     }
 
     public function isOptional()
@@ -40,20 +35,29 @@ final class CacheWarmer implements CacheWarmerInterface
 
     public function warmUp($cacheDir)
     {
-        $mapperClasses = [];
-
         foreach ($this->cacheWarmerLoaders as $cacheWarmerLoader) {
             foreach ($cacheWarmerLoader->loadCacheWarmupData() as $cacheWarmupData) {
-                $mapperClasses[] = $this->fileLoader->saveMapper(
-                    $this->mapperConfigurationFactory->create(
-                        $this->autoMapperRegistry,
-                        $cacheWarmupData->getSource(),
-                        $cacheWarmupData->getTarget()
-                    )
-                );
+                $this->autoMapperRegistry->getMapper($cacheWarmupData->getSource(), $cacheWarmupData->getTarget());
             }
         }
 
-        return $mapperClasses;
+        // preloaded files must be in cache directory
+        if (0 !== strpos($this->autoMapperCacheDirectory, $cacheDir)) {
+            return [];
+        }
+
+        $registryFile = sprintf('%s/registry.php', $this->autoMapperCacheDirectory);
+        if (!file_exists($registryFile)) {
+            return [];
+        }
+
+        $mapppers = array_keys(require_once $registryFile);
+
+        return array_map(
+            function ($mapper) {
+                return sprintf('%s/%s.php', $this->autoMapperCacheDirectory, $mapper);
+            },
+            $mapppers
+        );
     }
 }

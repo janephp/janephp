@@ -23,6 +23,24 @@ class ServiceInstantiationTest extends WebTestCase
         (new Filesystem())->remove(__DIR__ . '/Resources/var/cache/test');
     }
 
+    /**
+     * This method needs to be the first in this test class, more details about why here: https://github.com/janephp/janephp/pull/734#discussion_r1247921885.
+     *
+     * @see Resources/app/config.yml
+     */
+    public function testWarmup(): void
+    {
+        static::bootKernel();
+
+        self::assertFileExists(__DIR__ . '/Resources/var/cache/test/automapper/Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_NestedObject_array.php');
+        self::assertFileExists(__DIR__ . '/Resources/var/cache/test/automapper/Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_User_array.php');
+        self::assertFileExists(__DIR__ . '/Resources/var/cache/test/automapper/Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_AddressDTO_array.php');
+
+        self::assertInstanceOf(\Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_NestedObject_array::class, new \Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_NestedObject_array());
+        self::assertInstanceOf(\Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_User_array::class, new \Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_User_array());
+        self::assertInstanceOf(\Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_AddressDTO_array::class, new \Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_AddressDTO_array());
+    }
+
     public function testAutoMapper()
     {
         static::bootKernel();
@@ -100,15 +118,5 @@ class ServiceInstantiationTest extends WebTestCase
         $dto = new DTOWithEnum();
         $dto->enum = SomeEnum::FOO;
         self::assertSame(['enum' => 'foo'], $autoMapper->map($dto, 'array'));
-    }
-
-    /**
-     * @see Resources/app/config.yml
-     */
-    public function testWarmup(): void
-    {
-        static::bootKernel();
-
-        self::assertFileExists(__DIR__ . '/Resources/var/cache/test/automapper/Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_Address_array.php');
     }
 }
