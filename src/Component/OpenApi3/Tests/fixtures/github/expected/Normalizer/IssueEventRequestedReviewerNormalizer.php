@@ -167,4 +167,8 @@ class IssueEventRequestedReviewerNormalizer implements DenormalizerInterface, No
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\IssueEventRequestedReviewer' => false);
+    }
 }

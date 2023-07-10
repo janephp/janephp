@@ -82,4 +82,8 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreCurrentCred
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreCurrentCreditRatingProviderValue' => false);
+    }
 }

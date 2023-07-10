@@ -76,4 +76,8 @@ class DefaultUserFieldsEntitiesUrlNormalizer implements DenormalizerInterface, N
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\DefaultUserFieldsEntitiesUrl' => false);
+    }
 }

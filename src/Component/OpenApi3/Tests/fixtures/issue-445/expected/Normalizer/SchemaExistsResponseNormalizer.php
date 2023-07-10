@@ -55,4 +55,8 @@ class SchemaExistsResponseNormalizer implements DenormalizerInterface, Normalize
         $data['exists'] = $object->getExists();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\SchemaExistsResponse' => false);
+    }
 }

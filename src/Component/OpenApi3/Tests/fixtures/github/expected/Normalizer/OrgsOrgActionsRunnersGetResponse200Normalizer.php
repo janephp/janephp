@@ -89,4 +89,8 @@ class OrgsOrgActionsRunnersGetResponse200Normalizer implements DenormalizerInter
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\OrgsOrgActionsRunnersGetResponse200' => false);
+    }
 }

@@ -301,4 +301,8 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceShe
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceSheet' => false);
+    }
 }

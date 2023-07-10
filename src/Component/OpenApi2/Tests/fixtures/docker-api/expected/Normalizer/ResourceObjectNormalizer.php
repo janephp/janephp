@@ -83,4 +83,8 @@ class ResourceObjectNormalizer implements DenormalizerInterface, NormalizerInter
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\ResourceObject' => false);
+    }
 }

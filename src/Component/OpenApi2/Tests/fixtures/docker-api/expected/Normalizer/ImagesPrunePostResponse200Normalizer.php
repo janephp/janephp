@@ -77,4 +77,8 @@ class ImagesPrunePostResponse200Normalizer implements DenormalizerInterface, Nor
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\ImagesPrunePostResponse200' => false);
+    }
 }

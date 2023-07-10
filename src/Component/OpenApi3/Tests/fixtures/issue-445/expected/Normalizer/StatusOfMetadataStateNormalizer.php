@@ -64,4 +64,8 @@ class StatusOfMetadataStateNormalizer implements DenormalizerInterface, Normaliz
         $data['state'] = $object->getState();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\StatusOfMetadataState' => false);
+    }
 }

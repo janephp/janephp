@@ -108,4 +108,8 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinancials' => false);
+    }
 }

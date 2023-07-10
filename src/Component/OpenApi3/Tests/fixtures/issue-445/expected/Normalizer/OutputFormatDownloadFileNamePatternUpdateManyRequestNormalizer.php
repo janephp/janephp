@@ -63,4 +63,8 @@ class OutputFormatDownloadFileNamePatternUpdateManyRequestNormalizer implements 
         $data['items'] = $values;
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\OutputFormatDownloadFileNamePatternUpdateManyRequest' => false);
+    }
 }

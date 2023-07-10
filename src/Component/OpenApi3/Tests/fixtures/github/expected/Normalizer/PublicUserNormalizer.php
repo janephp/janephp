@@ -259,4 +259,8 @@ class PublicUserNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\PublicUser' => false);
+    }
 }

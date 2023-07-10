@@ -92,4 +92,8 @@ class ParchmentsGetLdjsonResponse200HydraSearchHydraMappingItemNormalizer implem
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\ParchmentsGetLdjsonResponse200HydraSearchHydraMappingItem' => false);
+    }
 }

@@ -83,4 +83,8 @@ class DetailedTweetFieldsStatsNormalizer implements DenormalizerInterface, Norma
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\DetailedTweetFieldsStats' => false);
+    }
 }

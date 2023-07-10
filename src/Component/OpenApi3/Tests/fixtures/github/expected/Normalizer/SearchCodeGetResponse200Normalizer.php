@@ -96,4 +96,8 @@ class SearchCodeGetResponse200Normalizer implements DenormalizerInterface, Norma
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\SearchCodeGetResponse200' => false);
+    }
 }

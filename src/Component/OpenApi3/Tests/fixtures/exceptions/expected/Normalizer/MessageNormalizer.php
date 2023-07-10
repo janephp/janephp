@@ -68,4 +68,8 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Message' => false);
+    }
 }

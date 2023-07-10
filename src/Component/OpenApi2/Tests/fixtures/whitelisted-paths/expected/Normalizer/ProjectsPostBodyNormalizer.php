@@ -176,4 +176,8 @@ class ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\OpenApi2\\Tests\\Expected\\Model\\ProjectsPostBody' => false);
+    }
 }

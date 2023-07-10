@@ -88,4 +88,8 @@ class FileCommitCommitParentsItemNormalizer implements DenormalizerInterface, No
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\FileCommitCommitParentsItem' => false);
+    }
 }

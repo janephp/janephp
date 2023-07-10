@@ -71,4 +71,8 @@ class ShareDataBaseNormalizer implements DenormalizerInterface, NormalizerInterf
         $data['kind'] = $object->getKind();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\ShareDataBase' => false);
+    }
 }

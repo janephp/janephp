@@ -82,4 +82,8 @@ class BadRequestErrorNormalizer implements DenormalizerInterface, NormalizerInte
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\BadRequestError' => false);
+    }
 }

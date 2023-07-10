@@ -86,4 +86,8 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $data['isDeleted'] = $object->getIsDeleted();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\User' => false);
+    }
 }

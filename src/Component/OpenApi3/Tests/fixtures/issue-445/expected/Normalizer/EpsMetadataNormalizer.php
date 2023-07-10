@@ -69,4 +69,8 @@ class EpsMetadataNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['heightInPoints'] = $object->getHeightInPoints();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\EpsMetadata' => false);
+    }
 }

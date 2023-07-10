@@ -87,4 +87,8 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyNormalizer implements Denormalize
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\TeamsTeamIdTeamSyncGroupMappingsPatchBody' => false);
+    }
 }

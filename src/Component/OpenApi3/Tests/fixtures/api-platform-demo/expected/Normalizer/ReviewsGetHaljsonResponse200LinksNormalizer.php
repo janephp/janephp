@@ -96,4 +96,8 @@ class ReviewsGetHaljsonResponse200LinksNormalizer implements DenormalizerInterfa
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\ReviewsGetHaljsonResponse200Links' => false);
+    }
 }

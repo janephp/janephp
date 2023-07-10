@@ -97,4 +97,8 @@ class BooksBookIdReviewsGetLdjsonResponse200HydraSearchNormalizer implements Den
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\BooksBookIdReviewsGetLdjsonResponse200HydraSearch' => false);
+    }
 }

@@ -74,4 +74,8 @@ class ApplicationsClientIdGrantDeleteBodyNormalizer implements DenormalizerInter
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ApplicationsClientIdGrantDeleteBody' => false);
+    }
 }

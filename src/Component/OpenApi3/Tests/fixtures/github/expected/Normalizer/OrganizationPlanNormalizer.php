@@ -102,4 +102,8 @@ class OrganizationPlanNormalizer implements DenormalizerInterface, NormalizerInt
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\OrganizationPlan' => false);
+    }
 }

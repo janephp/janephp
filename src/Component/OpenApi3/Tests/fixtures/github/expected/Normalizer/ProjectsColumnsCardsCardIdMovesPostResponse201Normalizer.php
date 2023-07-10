@@ -57,4 +57,8 @@ class ProjectsColumnsCardsCardIdMovesPostResponse201Normalizer implements Denorm
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ProjectsColumnsCardsCardIdMovesPostResponse201' => false);
+    }
 }

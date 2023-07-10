@@ -165,4 +165,8 @@ class TeamDiscussionNormalizer implements DenormalizerInterface, NormalizerInter
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\TeamDiscussion' => false);
+    }
 }

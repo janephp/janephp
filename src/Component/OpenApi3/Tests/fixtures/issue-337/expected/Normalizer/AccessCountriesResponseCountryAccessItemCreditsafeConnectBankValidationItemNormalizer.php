@@ -96,4 +96,8 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectBankValidationIte
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\AccessCountriesResponseCountryAccessItemCreditsafeConnectBankValidationItem' => false);
+    }
 }

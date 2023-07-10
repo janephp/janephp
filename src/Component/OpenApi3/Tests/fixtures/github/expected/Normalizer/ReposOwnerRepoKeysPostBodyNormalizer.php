@@ -86,4 +86,8 @@ class ReposOwnerRepoKeysPostBodyNormalizer implements DenormalizerInterface, Nor
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoKeysPostBody' => false);
+    }
 }

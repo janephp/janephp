@@ -88,4 +88,8 @@ class CommitStatsNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\CommitStats' => false);
+    }
 }

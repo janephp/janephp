@@ -91,4 +91,8 @@ class DownloadTrackingInfoNormalizer implements DenormalizerInterface, Normalize
         $data['contentDisposition'] = $object->getContentDisposition();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\DownloadTrackingInfo' => false);
+    }
 }

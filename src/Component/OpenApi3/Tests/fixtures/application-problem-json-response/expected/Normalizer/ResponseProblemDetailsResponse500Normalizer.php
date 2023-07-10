@@ -81,4 +81,8 @@ class ResponseProblemDetailsResponse500Normalizer implements DenormalizerInterfa
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\ResponseProblemDetailsResponse500' => false);
+    }
 }

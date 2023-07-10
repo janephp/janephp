@@ -101,4 +101,8 @@ class CommunityProfileNormalizer implements DenormalizerInterface, NormalizerInt
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\CommunityProfile' => false);
+    }
 }

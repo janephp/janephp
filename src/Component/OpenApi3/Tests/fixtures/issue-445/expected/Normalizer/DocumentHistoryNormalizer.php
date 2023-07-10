@@ -107,4 +107,8 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
         $data['action'] = $object->getAction();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\DocumentHistory' => false);
+    }
 }

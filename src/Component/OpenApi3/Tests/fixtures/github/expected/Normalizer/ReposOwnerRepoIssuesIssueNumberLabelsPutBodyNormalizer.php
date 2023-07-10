@@ -82,4 +82,8 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyNormalizer implements Denormal
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoIssuesIssueNumberLabelsPutBody' => false);
+    }
 }

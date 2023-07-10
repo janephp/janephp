@@ -150,4 +150,8 @@ class SystemLayerReferenceInvalidModificationExceptionNormalizer implements Deno
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\SystemLayerReferenceInvalidModificationException' => false);
+    }
 }

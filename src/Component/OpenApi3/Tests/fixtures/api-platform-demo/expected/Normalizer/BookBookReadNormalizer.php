@@ -113,4 +113,8 @@ class BookBookReadNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\BookBookRead' => false);
+    }
 }

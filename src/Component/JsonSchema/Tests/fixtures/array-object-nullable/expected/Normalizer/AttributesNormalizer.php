@@ -57,4 +57,8 @@ class AttributesNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Attributes' => false);
+    }
 }

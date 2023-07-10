@@ -92,4 +92,8 @@ class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItemNormalizer 
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem' => false);
+    }
 }

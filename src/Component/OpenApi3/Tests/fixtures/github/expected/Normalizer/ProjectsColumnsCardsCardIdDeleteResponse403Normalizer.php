@@ -96,4 +96,8 @@ class ProjectsColumnsCardsCardIdDeleteResponse403Normalizer implements Denormali
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ProjectsColumnsCardsCardIdDeleteResponse403' => false);
+    }
 }

@@ -141,4 +141,8 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyNormalizer implements Denormal
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ScimV2OrganizationsOrgUsersScimUserIdPutBody' => false);
+    }
 }

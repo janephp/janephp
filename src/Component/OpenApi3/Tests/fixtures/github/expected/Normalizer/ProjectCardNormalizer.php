@@ -132,4 +132,8 @@ class ProjectCardNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ProjectCard' => false);
+    }
 }

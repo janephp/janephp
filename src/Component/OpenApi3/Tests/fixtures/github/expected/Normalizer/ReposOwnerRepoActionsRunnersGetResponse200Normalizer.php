@@ -89,4 +89,8 @@ class ReposOwnerRepoActionsRunnersGetResponse200Normalizer implements Denormaliz
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoActionsRunnersGetResponse200' => false);
+    }
 }

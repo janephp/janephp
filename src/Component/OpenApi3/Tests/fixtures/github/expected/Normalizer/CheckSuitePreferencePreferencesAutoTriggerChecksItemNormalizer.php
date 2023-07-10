@@ -77,4 +77,8 @@ class CheckSuitePreferencePreferencesAutoTriggerChecksItemNormalizer implements 
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\CheckSuitePreferencePreferencesAutoTriggerChecksItem' => false);
+    }
 }

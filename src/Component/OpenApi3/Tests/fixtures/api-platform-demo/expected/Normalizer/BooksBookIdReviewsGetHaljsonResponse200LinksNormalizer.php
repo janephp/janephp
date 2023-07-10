@@ -96,4 +96,8 @@ class BooksBookIdReviewsGetHaljsonResponse200LinksNormalizer implements Denormal
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\BooksBookIdReviewsGetHaljsonResponse200Links' => false);
+    }
 }

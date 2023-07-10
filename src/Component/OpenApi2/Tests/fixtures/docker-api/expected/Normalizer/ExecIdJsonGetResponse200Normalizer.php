@@ -123,4 +123,8 @@ class ExecIdJsonGetResponse200Normalizer implements DenormalizerInterface, Norma
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\ExecIdJsonGetResponse200' => false);
+    }
 }

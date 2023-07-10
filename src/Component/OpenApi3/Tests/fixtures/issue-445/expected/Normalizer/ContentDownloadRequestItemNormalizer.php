@@ -59,4 +59,8 @@ class ContentDownloadRequestItemNormalizer implements DenormalizerInterface, Nor
         $data['outputFormatId'] = $object->getOutputFormatId();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\ContentDownloadRequestItem' => false);
+    }
 }

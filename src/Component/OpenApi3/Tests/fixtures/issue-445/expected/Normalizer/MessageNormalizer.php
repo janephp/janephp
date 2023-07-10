@@ -94,4 +94,8 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data['kind'] = $object->getKind();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\Message' => false);
+    }
 }

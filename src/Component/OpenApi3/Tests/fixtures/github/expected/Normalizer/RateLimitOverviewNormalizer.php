@@ -77,4 +77,8 @@ class RateLimitOverviewNormalizer implements DenormalizerInterface, NormalizerIn
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\RateLimitOverview' => false);
+    }
 }

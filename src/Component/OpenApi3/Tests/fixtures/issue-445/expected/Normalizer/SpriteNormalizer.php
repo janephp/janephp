@@ -75,4 +75,8 @@ class SpriteNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $data['end'] = $object->getEnd();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\Sprite' => false);
+    }
 }

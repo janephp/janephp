@@ -111,4 +111,8 @@ class ServiceNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\Service' => false);
+    }
 }

@@ -136,4 +136,8 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\OpenApi3\\Tests\\Expected\\Model\\Expansions' => false);
+    }
 }

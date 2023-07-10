@@ -74,4 +74,8 @@ class BranchProtectionRequiredLinearHistoryNormalizer implements DenormalizerInt
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\BranchProtectionRequiredLinearHistory' => false);
+    }
 }

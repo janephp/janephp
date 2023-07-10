@@ -72,4 +72,8 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchB
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody' => false);
+    }
 }

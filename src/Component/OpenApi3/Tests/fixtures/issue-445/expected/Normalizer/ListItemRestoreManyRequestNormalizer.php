@@ -67,4 +67,8 @@ class ListItemRestoreManyRequestNormalizer implements DenormalizerInterface, Nor
         $data['allowMissingDependencies'] = $object->getAllowMissingDependencies();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\ListItemRestoreManyRequest' => false);
+    }
 }

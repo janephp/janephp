@@ -150,4 +150,8 @@ class UserAttributeNotSynchronizableExceptionNormalizer implements DenormalizerI
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\UserAttributeNotSynchronizableException' => false);
+    }
 }

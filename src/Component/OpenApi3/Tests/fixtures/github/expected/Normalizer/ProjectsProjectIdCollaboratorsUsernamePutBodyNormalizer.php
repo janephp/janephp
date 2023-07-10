@@ -74,4 +74,8 @@ class ProjectsProjectIdCollaboratorsUsernamePutBodyNormalizer implements Denorma
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ProjectsProjectIdCollaboratorsUsernamePutBody' => false);
+    }
 }

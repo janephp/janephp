@@ -81,4 +81,8 @@ class ServiceUpdateStatusNormalizer implements DenormalizerInterface, Normalizer
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\ServiceUpdateStatus' => false);
+    }
 }

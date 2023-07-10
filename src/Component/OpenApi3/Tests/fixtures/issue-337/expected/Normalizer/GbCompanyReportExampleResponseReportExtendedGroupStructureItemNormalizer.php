@@ -120,4 +120,8 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItemNormalizer i
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportExtendedGroupStructureItem' => false);
+    }
 }

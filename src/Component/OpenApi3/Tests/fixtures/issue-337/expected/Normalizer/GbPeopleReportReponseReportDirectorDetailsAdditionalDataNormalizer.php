@@ -75,4 +75,8 @@ class GbPeopleReportReponseReportDirectorDetailsAdditionalDataNormalizer impleme
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\GbPeopleReportReponseReportDirectorDetailsAdditionalData' => false);
+    }
 }

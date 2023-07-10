@@ -83,4 +83,8 @@ class ListItemFieldsBatchUpdateRequestNormalizer implements DenormalizerInterfac
         $data['notifyProgress'] = $object->getNotifyProgress();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\ListItemFieldsBatchUpdateRequest' => false);
+    }
 }

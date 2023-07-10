@@ -167,4 +167,8 @@ class ContributorActivityAuthorNormalizer implements DenormalizerInterface, Norm
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ContributorActivityAuthor' => false);
+    }
 }

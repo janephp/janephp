@@ -96,4 +96,8 @@ class CompanySearchSuccessResultCompaniesItemAddressNormalizer implements Denorm
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\CompanySearchSuccessResultCompaniesItemAddress' => false);
+    }
 }

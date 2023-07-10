@@ -115,4 +115,8 @@ class TopBookJsonldNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\TopBookJsonld' => false);
+    }
 }

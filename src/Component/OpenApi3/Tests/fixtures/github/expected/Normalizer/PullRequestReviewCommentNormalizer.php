@@ -242,4 +242,8 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\PullRequestReviewComment' => false);
+    }
 }

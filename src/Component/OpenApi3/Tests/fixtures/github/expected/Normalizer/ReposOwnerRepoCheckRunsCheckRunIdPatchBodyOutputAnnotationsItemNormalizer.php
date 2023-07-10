@@ -120,4 +120,8 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItemNormalizer 
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputAnnotationsItem' => false);
+    }
 }

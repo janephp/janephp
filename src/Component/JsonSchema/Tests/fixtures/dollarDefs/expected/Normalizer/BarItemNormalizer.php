@@ -57,4 +57,8 @@ class BarItemNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\JsonSchema\\Tests\\Expected\\Model\\BarItem' => false);
+    }
 }

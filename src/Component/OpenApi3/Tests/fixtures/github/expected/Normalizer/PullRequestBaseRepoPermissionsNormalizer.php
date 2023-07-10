@@ -82,4 +82,8 @@ class PullRequestBaseRepoPermissionsNormalizer implements DenormalizerInterface,
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\PullRequestBaseRepoPermissions' => false);
+    }
 }

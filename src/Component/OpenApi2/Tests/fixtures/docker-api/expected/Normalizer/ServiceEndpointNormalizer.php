@@ -91,4 +91,8 @@ class ServiceEndpointNormalizer implements DenormalizerInterface, NormalizerInte
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\ServiceEndpoint' => false);
+    }
 }

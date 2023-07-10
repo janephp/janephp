@@ -81,4 +81,8 @@ class TaskSpecContainerSpecConfigsItemFileNormalizer implements DenormalizerInte
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\TaskSpecContainerSpecConfigsItemFile' => false);
+    }
 }

@@ -68,4 +68,8 @@ class BusinessProcessCreateRequestNormalizer implements DenormalizerInterface, N
         $data['initialState'] = $object->getInitialState();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\BusinessProcessCreateRequest' => false);
+    }
 }

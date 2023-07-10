@@ -63,4 +63,8 @@ class SchemaImportRequestNormalizer implements DenormalizerInterface, Normalizer
         $data['importListItems'] = $object->getImportListItems();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\SchemaImportRequest' => false);
+    }
 }

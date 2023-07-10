@@ -63,4 +63,8 @@ class SwarmUnlockkeyGetResponse200Normalizer implements DenormalizerInterface, N
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\SwarmUnlockkeyGetResponse200' => false);
+    }
 }

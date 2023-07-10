@@ -122,4 +122,8 @@ class ShareBaseUpdateRequestNormalizer implements DenormalizerInterface, Normali
         $data['kind'] = $object->getKind();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\ShareBaseUpdateRequest' => false);
+    }
 }

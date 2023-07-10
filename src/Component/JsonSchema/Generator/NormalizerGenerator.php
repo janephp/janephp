@@ -9,6 +9,9 @@ use Jane\Component\JsonSchema\Generator\Normalizer\NormalizerGenerator as Normal
 use Jane\Component\JsonSchema\Registry\Schema;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
+use PhpParser\Node\NullableType;
+use PhpParser\Node\Param;
+use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
 use PhpParser\Parser;
 
@@ -94,6 +97,7 @@ class NormalizerGenerator implements GeneratorInterface
             $methods[] = $this->createSupportsNormalizationMethod($modelFqdn);
             $methods[] = $this->createDenormalizeMethod($modelFqdn, $context, $class);
             $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class, $this->skipNullValues, $this->skipRequiedFields);
+            $methods[] = $this->createGetSupportedTypesMethod($modelFqdn, $this->useCacheableSupportsMethod);
 
             if ($this->useCacheableSupportsMethod) {
                 $methods[] = $this->createHasCacheableSupportsMethod();
@@ -166,6 +170,7 @@ class NormalizerGenerator implements GeneratorInterface
         $methods[] = $this->createBaseNormalizerDenormalizeMethod();
         $methods[] = $this->createBaseNormalizerGetNormalizer();
         $methods[] = $this->createBaseNormalizerInitNormalizerMethod();
+        $methods[] = $this->createProxyGetSupportedTypesMethod(array_keys($normalizers));
 
         if ($this->useCacheableSupportsMethod) {
             $methods[] = $this->createHasCacheableSupportsMethod();
@@ -193,5 +198,56 @@ class NormalizerGenerator implements GeneratorInterface
         }
 
         return array_merge($useStmts, [$normalizerClass]);
+    }
+
+    /**
+     * Create method to return the supported type.
+     *
+     * @param string $modelFqdn Fully Qualified name of the model class denormalized
+     *
+     * @return Stmt\ClassMethod
+     */
+    protected function createGetSupportedTypesMethod(string $modelFqdn, bool $useCacheableSupportsMethod = false)
+    {
+        return new Stmt\ClassMethod('getSupportedTypes', [
+            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'returnType' => 'array',
+            'params' => [
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new NullableType('string')),
+            ],
+            'stmts' => [new Stmt\Return_(new Expr\Array_([
+                new Expr\ArrayItem(
+                    new Expr\ConstFetch(new Name($useCacheableSupportsMethod ? 'true' : 'false')),
+                    new Scalar\String_($modelFqdn),
+                ),
+            ]))],
+        ]);
+    }
+
+    /**
+     * Create method to return the supported type.
+     *
+     * @param string[] $modelFqdn Fully Qualified name of the models class denormalized
+     *
+     * @return Stmt\ClassMethod
+     */
+    protected function createProxyGetSupportedTypesMethod(array $modelsFqdn)
+    {
+        $arrayItems = [];
+        foreach ($modelsFqdn as $modelFqdn) {
+            $arrayItems[] = new Expr\ArrayItem(
+                new Expr\ConstFetch(new Name('false')), // we don't want proxy Normalizer to be cached, never
+                new Scalar\String_($modelFqdn),
+            );
+        }
+
+        return new Stmt\ClassMethod('getSupportedTypes', [
+            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'returnType' => 'array',
+            'params' => [
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new NullableType('string')),
+            ],
+            'stmts' => [new Stmt\Return_(new Expr\Array_($arrayItems))],
+        ]);
     }
 }

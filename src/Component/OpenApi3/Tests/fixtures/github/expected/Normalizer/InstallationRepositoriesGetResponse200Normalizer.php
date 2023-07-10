@@ -96,4 +96,8 @@ class InstallationRepositoriesGetResponse200Normalizer implements DenormalizerIn
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\InstallationRepositoriesGetResponse200' => false);
+    }
 }

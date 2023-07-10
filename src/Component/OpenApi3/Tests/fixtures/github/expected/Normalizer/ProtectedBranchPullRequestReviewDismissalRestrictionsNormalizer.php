@@ -118,4 +118,8 @@ class ProtectedBranchPullRequestReviewDismissalRestrictionsNormalizer implements
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ProtectedBranchPullRequestReviewDismissalRestrictions' => false);
+    }
 }

@@ -96,4 +96,8 @@ class TeamsTeamIdMembershipsUsernamePutResponse422Normalizer implements Denormal
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\TeamsTeamIdMembershipsUsernamePutResponse422' => false);
+    }
 }

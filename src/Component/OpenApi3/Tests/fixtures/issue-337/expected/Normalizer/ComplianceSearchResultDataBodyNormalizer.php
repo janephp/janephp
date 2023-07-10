@@ -68,4 +68,8 @@ class ComplianceSearchResultDataBodyNormalizer implements DenormalizerInterface,
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\ComplianceSearchResultDataBody' => false);
+    }
 }

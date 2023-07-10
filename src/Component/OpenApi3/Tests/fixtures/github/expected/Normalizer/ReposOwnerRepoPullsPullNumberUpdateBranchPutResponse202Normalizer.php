@@ -81,4 +81,8 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Normalizer implemen
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202' => false);
+    }
 }

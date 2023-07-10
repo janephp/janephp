@@ -103,4 +103,8 @@ class ReviewsGetLdjsonResponse200HydraViewNormalizer implements DenormalizerInte
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\ReviewsGetLdjsonResponse200HydraView' => false);
+    }
 }

@@ -140,4 +140,8 @@ class RenderingNotAwaitedExceptionNormalizer implements DenormalizerInterface, N
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\RenderingNotAwaitedException' => false);
+    }
 }

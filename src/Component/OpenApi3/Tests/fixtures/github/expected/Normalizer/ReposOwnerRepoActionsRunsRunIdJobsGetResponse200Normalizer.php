@@ -89,4 +89,8 @@ class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Normalizer implements Deno
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoActionsRunsRunIdJobsGetResponse200' => false);
+    }
 }

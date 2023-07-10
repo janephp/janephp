@@ -74,4 +74,8 @@ class ReposOwnerRepoIssuesIssueNumberLockPutBodyNormalizer implements Denormaliz
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoIssuesIssueNumberLockPutBody' => false);
+    }
 }

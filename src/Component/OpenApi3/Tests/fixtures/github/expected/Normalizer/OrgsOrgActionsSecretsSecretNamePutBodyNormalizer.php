@@ -103,4 +103,8 @@ class OrgsOrgActionsSecretsSecretNamePutBodyNormalizer implements DenormalizerIn
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\OrgsOrgActionsSecretsSecretNamePutBody' => false);
+    }
 }

@@ -120,4 +120,8 @@ class ReviewJsonhalReviewReadNormalizer implements DenormalizerInterface, Normal
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\ReviewJsonhalReviewRead' => false);
+    }
 }

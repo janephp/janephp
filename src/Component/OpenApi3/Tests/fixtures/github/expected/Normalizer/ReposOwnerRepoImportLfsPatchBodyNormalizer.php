@@ -72,4 +72,8 @@ class ReposOwnerRepoImportLfsPatchBodyNormalizer implements DenormalizerInterfac
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoImportLfsPatchBody' => false);
+    }
 }

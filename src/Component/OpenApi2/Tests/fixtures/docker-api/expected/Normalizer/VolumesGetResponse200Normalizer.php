@@ -81,4 +81,8 @@ class VolumesGetResponse200Normalizer implements DenormalizerInterface, Normaliz
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\VolumesGetResponse200' => false);
+    }
 }

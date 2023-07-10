@@ -138,4 +138,8 @@ class ReleaseAssetNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReleaseAsset' => false);
+    }
 }

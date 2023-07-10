@@ -68,4 +68,8 @@ class InvalidTokenErrorNormalizer implements DenormalizerInterface, NormalizerIn
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\InvalidTokenError' => false);
+    }
 }

@@ -89,4 +89,8 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422Normalizer implements
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422' => false);
+    }
 }

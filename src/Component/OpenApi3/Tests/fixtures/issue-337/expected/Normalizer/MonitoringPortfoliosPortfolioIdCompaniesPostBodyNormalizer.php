@@ -87,4 +87,8 @@ class MonitoringPortfoliosPortfolioIdCompaniesPostBodyNormalizer implements Deno
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\MonitoringPortfoliosPortfolioIdCompaniesPostBody' => false);
+    }
 }

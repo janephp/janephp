@@ -63,4 +63,8 @@ class SwarmSpecOrchestrationNormalizer implements DenormalizerInterface, Normali
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\SwarmSpecOrchestration' => false);
+    }
 }

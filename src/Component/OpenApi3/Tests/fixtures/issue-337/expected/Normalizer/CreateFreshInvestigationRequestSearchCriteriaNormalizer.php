@@ -110,4 +110,8 @@ class CreateFreshInvestigationRequestSearchCriteriaNormalizer implements Denorma
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\CreateFreshInvestigationRequestSearchCriteria' => false);
+    }
 }

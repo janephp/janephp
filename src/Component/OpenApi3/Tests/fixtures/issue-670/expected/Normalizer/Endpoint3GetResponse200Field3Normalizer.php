@@ -68,4 +68,8 @@ class Endpoint3GetResponse200Field3Normalizer implements DenormalizerInterface, 
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Endpoint3GetResponse200Field3' => false);
+    }
 }

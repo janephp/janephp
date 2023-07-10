@@ -63,4 +63,8 @@ class ContentDeleteManyFilterRequestNormalizer implements DenormalizerInterface,
         $data['notifyProgress'] = $object->getNotifyProgress();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\ContentDeleteManyFilterRequest' => false);
+    }
 }

@@ -156,4 +156,8 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data['lifeCycle'] = $object->getLifeCycle();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\Content' => false);
+    }
 }

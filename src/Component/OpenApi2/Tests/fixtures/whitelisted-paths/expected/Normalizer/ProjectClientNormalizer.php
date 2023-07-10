@@ -69,4 +69,8 @@ class ProjectClientNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\OpenApi2\\Tests\\Expected\\Model\\ProjectClient' => false);
+    }
 }

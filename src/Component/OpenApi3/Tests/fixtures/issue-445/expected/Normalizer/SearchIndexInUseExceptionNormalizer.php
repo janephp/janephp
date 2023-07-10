@@ -150,4 +150,8 @@ class SearchIndexInUseExceptionNormalizer implements DenormalizerInterface, Norm
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\SearchIndexInUseException' => false);
+    }
 }

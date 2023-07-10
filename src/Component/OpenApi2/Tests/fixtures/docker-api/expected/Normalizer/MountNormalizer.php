@@ -105,4 +105,8 @@ class MountNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\Mount' => false);
+    }
 }

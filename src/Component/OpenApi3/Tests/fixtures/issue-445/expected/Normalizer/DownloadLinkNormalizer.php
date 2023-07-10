@@ -59,4 +59,8 @@ class DownloadLinkNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['downloadUrl'] = $object->getDownloadUrl();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\DownloadLink' => false);
+    }
 }

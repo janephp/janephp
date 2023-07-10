@@ -55,4 +55,8 @@ class UserReviewRequestNormalizer implements DenormalizerInterface, NormalizerIn
         $data['reviewed'] = $object->getReviewed();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\UserReviewRequest' => false);
+    }
 }

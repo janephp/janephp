@@ -68,4 +68,8 @@ class XmpFieldNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['dataType'] = $object->getDataType();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\XmpField' => false);
+    }
 }

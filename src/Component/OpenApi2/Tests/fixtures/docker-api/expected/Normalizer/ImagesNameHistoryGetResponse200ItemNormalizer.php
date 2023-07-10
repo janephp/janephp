@@ -89,4 +89,8 @@ class ImagesNameHistoryGetResponse200ItemNormalizer implements DenormalizerInter
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\ImagesNameHistoryGetResponse200Item' => false);
+    }
 }

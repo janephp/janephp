@@ -75,4 +75,8 @@ class GbCompanyReportExampleResponseReportCreditScorePreviousCreditRatingCreditL
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportCreditScorePreviousCreditRatingCreditLimit' => false);
+    }
 }

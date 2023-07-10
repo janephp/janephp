@@ -68,4 +68,8 @@ class ParchmentsGetHaljsonResponse200LinksNextNormalizer implements Denormalizer
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\ParchmentsGetHaljsonResponse200LinksNext' => false);
+    }
 }

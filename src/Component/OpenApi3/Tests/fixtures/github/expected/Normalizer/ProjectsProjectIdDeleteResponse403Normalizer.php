@@ -96,4 +96,8 @@ class ProjectsProjectIdDeleteResponse403Normalizer implements DenormalizerInterf
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ProjectsProjectIdDeleteResponse403' => false);
+    }
 }

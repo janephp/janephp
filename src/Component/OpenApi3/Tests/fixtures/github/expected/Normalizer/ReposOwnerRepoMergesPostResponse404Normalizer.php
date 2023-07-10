@@ -81,4 +81,8 @@ class ReposOwnerRepoMergesPostResponse404Normalizer implements DenormalizerInter
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoMergesPostResponse404' => false);
+    }
 }

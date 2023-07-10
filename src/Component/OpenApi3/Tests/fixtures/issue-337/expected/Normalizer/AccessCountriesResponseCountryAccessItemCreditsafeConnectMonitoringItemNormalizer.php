@@ -96,4 +96,8 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectMonitoringItemNor
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\AccessCountriesResponseCountryAccessItemCreditsafeConnectMonitoringItem' => false);
+    }
 }

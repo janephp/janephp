@@ -110,4 +110,8 @@ class GistCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\GistComment' => false);
+    }
 }

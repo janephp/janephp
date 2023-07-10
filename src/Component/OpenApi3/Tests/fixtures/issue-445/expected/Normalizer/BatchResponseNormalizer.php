@@ -63,4 +63,8 @@ class BatchResponseNormalizer implements DenormalizerInterface, NormalizerInterf
         $data['rows'] = $values;
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\BatchResponse' => false);
+    }
 }

@@ -125,4 +125,8 @@ class ReviewJsonldReviewReadNormalizer implements DenormalizerInterface, Normali
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\ReviewJsonldReviewRead' => false);
+    }
 }

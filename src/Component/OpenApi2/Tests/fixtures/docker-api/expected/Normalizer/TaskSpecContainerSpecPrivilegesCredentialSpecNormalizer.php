@@ -75,4 +75,8 @@ class TaskSpecContainerSpecPrivilegesCredentialSpecNormalizer implements Denorma
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\TaskSpecContainerSpecPrivilegesCredentialSpec' => false);
+    }
 }

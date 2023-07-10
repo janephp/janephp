@@ -63,4 +63,8 @@ class UserRoleDeleteManyRequestNormalizer implements DenormalizerInterface, Norm
         $data['ids'] = $values;
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\UserRoleDeleteManyRequest' => false);
+    }
 }

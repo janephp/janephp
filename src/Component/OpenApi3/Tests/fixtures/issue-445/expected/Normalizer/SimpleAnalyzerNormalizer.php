@@ -83,4 +83,8 @@ class SimpleAnalyzerNormalizer implements DenormalizerInterface, NormalizerInter
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\SimpleAnalyzer' => false);
+    }
 }

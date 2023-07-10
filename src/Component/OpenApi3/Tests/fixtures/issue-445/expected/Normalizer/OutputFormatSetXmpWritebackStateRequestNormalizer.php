@@ -55,4 +55,8 @@ class OutputFormatSetXmpWritebackStateRequestNormalizer implements DenormalizerI
         $data['enabled'] = $object->getEnabled();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\OutputFormatSetXmpWritebackStateRequest' => false);
+    }
 }

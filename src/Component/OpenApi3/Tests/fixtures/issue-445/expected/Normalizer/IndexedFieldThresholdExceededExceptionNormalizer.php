@@ -175,4 +175,8 @@ class IndexedFieldThresholdExceededExceptionNormalizer implements DenormalizerIn
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\IndexedFieldThresholdExceededException' => false);
+    }
 }

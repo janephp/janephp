@@ -129,4 +129,8 @@ class SearchBehaviorBaseResultOfUserRoleNormalizer implements DenormalizerInterf
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\SearchBehaviorBaseResultOfUserRole' => false);
+    }
 }

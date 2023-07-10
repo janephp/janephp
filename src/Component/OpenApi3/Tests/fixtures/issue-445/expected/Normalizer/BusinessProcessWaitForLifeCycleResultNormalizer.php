@@ -64,4 +64,8 @@ class BusinessProcessWaitForLifeCycleResultNormalizer implements DenormalizerInt
         $data['businessProcess'] = $object->getBusinessProcess();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\BusinessProcessWaitForLifeCycleResult' => false);
+    }
 }

@@ -77,4 +77,8 @@ class ScimV2OrganizationsOrgUsersPostBodyNameNormalizer implements DenormalizerI
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ScimV2OrganizationsOrgUsersPostBodyName' => false);
+    }
 }

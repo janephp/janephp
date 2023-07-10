@@ -109,4 +109,8 @@ class IssuePullRequestNormalizer implements DenormalizerInterface, NormalizerInt
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\IssuePullRequest' => false);
+    }
 }

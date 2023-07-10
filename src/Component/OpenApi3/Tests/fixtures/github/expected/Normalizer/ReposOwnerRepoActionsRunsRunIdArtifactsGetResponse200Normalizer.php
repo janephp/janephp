@@ -89,4 +89,8 @@ class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Normalizer implements
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200' => false);
+    }
 }

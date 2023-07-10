@@ -123,4 +123,8 @@ class KeyNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\Key' => false);
+    }
 }

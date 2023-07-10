@@ -101,4 +101,8 @@ class PagingNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\Paging' => false);
+    }
 }

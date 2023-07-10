@@ -67,4 +67,8 @@ class UserRoleEditableNormalizer implements DenormalizerInterface, NormalizerInt
         $data['userRights'] = $values;
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\UserRoleEditable' => false);
+    }
 }

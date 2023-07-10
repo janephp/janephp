@@ -123,4 +123,8 @@ class EventRulesResponseNormalizer implements DenormalizerInterface, NormalizerI
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\EventRulesResponse' => false);
+    }
 }

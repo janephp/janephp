@@ -97,4 +97,8 @@ class ParchmentsGetLdjsonResponse200HydraSearchNormalizer implements Denormalize
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\ParchmentsGetLdjsonResponse200HydraSearch' => false);
+    }
 }

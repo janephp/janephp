@@ -55,4 +55,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Test' => false, 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\TestFooItem' => false, '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => false);
+    }
 }

@@ -51,4 +51,8 @@ class TestSubObjectNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\TestSubObject' => false);
+    }
 }

@@ -64,4 +64,8 @@ class UserRoleAssignmentNormalizer implements DenormalizerInterface, NormalizerI
         $data['isFederated'] = $object->getIsFederated();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\UserRoleAssignment' => false);
+    }
 }

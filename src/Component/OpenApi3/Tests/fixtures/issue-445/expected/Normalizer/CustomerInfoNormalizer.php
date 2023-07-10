@@ -144,4 +144,8 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['logosUrl'] = $object->getLogosUrl();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\CustomerInfo' => false);
+    }
 }

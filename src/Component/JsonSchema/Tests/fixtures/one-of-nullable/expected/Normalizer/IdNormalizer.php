@@ -57,4 +57,8 @@ class IdNormalizer implements DenormalizerInterface, NormalizerInterface, Denorm
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Id' => false);
+    }
 }

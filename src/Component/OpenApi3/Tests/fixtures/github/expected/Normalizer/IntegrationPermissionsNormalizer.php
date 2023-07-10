@@ -102,4 +102,8 @@ class IntegrationPermissionsNormalizer implements DenormalizerInterface, Normali
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\IntegrationPermissions' => false);
+    }
 }

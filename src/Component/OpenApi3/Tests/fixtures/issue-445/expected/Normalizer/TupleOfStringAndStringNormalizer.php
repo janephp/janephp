@@ -59,4 +59,8 @@ class TupleOfStringAndStringNormalizer implements DenormalizerInterface, Normali
         $data['item2'] = $object->getItem2();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\TupleOfStringAndString' => false);
+    }
 }

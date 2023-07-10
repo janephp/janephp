@@ -89,4 +89,8 @@ class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Normalizer implements Denor
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoCommitsRefCheckRunsGetResponse200' => false);
+    }
 }

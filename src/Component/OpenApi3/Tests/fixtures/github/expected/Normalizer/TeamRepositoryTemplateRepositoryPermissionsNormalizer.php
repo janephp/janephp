@@ -88,4 +88,8 @@ class TeamRepositoryTemplateRepositoryPermissionsNormalizer implements Denormali
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\TeamRepositoryTemplateRepositoryPermissions' => false);
+    }
 }

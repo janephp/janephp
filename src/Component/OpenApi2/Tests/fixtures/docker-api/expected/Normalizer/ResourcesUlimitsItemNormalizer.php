@@ -75,4 +75,8 @@ class ResourcesUlimitsItemNormalizer implements DenormalizerInterface, Normalize
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Docker\\Api\\Model\\ResourcesUlimitsItem' => false);
+    }
 }

@@ -106,4 +106,8 @@ class CreateTransferRequestNormalizer implements DenormalizerInterface, Normaliz
         $data['createCollection'] = $object->getCreateCollection();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\CreateTransferRequest' => false);
+    }
 }

@@ -105,4 +105,8 @@ class ProjectsProjectIdPatchBodyNormalizer implements DenormalizerInterface, Nor
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ProjectsProjectIdPatchBody' => false);
+    }
 }

@@ -97,4 +97,8 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $data['isReadOnly'] = $object->getIsReadOnly();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\Share' => false);
+    }
 }

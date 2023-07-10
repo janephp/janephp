@@ -119,4 +119,8 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\UserMarketplacePurchase' => false);
+    }
 }

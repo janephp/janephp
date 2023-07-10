@@ -97,4 +97,8 @@ class ReviewsGetLdjsonResponse200HydraSearchNormalizer implements DenormalizerIn
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('ApiPlatform\\Demo\\Model\\ReviewsGetLdjsonResponse200HydraSearch' => false);
+    }
 }

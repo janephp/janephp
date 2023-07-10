@@ -89,4 +89,8 @@ class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Normalizer imp
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200' => false);
+    }
 }

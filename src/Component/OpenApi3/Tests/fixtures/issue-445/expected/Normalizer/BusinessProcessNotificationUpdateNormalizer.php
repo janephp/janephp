@@ -72,4 +72,8 @@ class BusinessProcessNotificationUpdateNormalizer implements DenormalizerInterfa
         $data['eventType'] = $object->getEventType();
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\BusinessProcessNotificationUpdate' => false);
+    }
 }

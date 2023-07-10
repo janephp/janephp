@@ -68,4 +68,8 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyCompaniesItemNormalize
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyCompaniesItem' => false);
+    }
 }

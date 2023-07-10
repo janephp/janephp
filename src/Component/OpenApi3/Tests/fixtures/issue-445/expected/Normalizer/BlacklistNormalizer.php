@@ -63,4 +63,8 @@ class BlacklistNormalizer implements DenormalizerInterface, NormalizerInterface,
         $data['items'] = $values;
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('PicturePark\\API\\Model\\Blacklist' => false);
+    }
 }

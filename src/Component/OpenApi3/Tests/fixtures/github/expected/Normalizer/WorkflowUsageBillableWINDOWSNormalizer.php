@@ -74,4 +74,8 @@ class WorkflowUsageBillableWINDOWSNormalizer implements DenormalizerInterface, N
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('Github\\Model\\WorkflowUsageBillableWINDOWS' => false);
+    }
 }

@@ -75,4 +75,8 @@ class CompletedFreshInvestigationStatusNormalizer implements DenormalizerInterfa
         }
         return $data;
     }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return array('CreditSafe\\API\\Model\\CompletedFreshInvestigationStatus' => false);
+    }
 }
