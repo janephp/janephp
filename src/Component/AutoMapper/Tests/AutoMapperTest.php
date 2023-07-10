@@ -1174,7 +1174,10 @@ class AutoMapperTest extends AutoMapperBaseTest
     public function testMapToContextAttribute(): void
     {
         self::assertSame(
-            ['value' => 'foo_bar_baz'],
+            [
+                'value' => 'foo_bar_baz',
+                'virtualProperty' => 'foo_bar_baz',
+            ],
             $this->autoMapper->map(
                 new ClassWithMapToContextAttribute('bar'),
                 'array',

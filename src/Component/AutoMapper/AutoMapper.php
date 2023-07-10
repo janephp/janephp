@@ -6,6 +6,7 @@ use Doctrine\Common\Annotations\AnnotationReader;
 use Jane\Component\AutoMapper\Exception\NoMappingFoundException;
 use Jane\Component\AutoMapper\Extractor\FromSourceMappingExtractor;
 use Jane\Component\AutoMapper\Extractor\FromTargetMappingExtractor;
+use Jane\Component\AutoMapper\Extractor\MapToContextPropertyInfoExtractorDecorator;
 use Jane\Component\AutoMapper\Extractor\SourceTargetMappingExtractor;
 use Jane\Component\AutoMapper\Generator\Generator;
 use Jane\Component\AutoMapper\Loader\ClassLoaderInterface;
@@ -218,13 +219,13 @@ class AutoMapper implements AutoMapperInterface, AutoMapperRegistryInterface, Ma
             [$reflectionExtractor],
             [$phpDocExtractor, $reflectionExtractor],
             [$reflectionExtractor],
-            [$reflectionExtractor]
+            [new MapToContextPropertyInfoExtractorDecorator($reflectionExtractor)]
         );
 
         $transformerFactory = new ChainTransformerFactory();
         $sourceTargetMappingExtractor = new SourceTargetMappingExtractor(
             $propertyInfoExtractor,
-            $reflectionExtractor,
+            new MapToContextPropertyInfoExtractorDecorator($reflectionExtractor),
             $reflectionExtractor,
             $transformerFactory,
             $classMetadataFactory
@@ -241,7 +242,7 @@ class AutoMapper implements AutoMapperInterface, AutoMapperRegistryInterface, Ma
 
         $fromSourceMappingExtractor = new FromSourceMappingExtractor(
             $propertyInfoExtractor,
-            $reflectionExtractor,
+            new MapToContextPropertyInfoExtractorDecorator($reflectionExtractor),
             $reflectionExtractor,
             $transformerFactory,
             $classMetadataFactory,

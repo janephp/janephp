@@ -17,4 +17,11 @@ class ClassWithMapToContextAttribute
     ): string {
         return "{$prefix}_{$this->value}_{$suffix}";
     }
+
+    public function getVirtualProperty(
+        #[MapToContext('prefix')] string $prefix,
+        #[MapToContext('suffix')] string $suffix,
+    ): string {
+        return "{$prefix}_{$this->value}_{$suffix}";
+    }
 }
