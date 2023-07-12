@@ -51,7 +51,7 @@ final class CacheWarmer implements CacheWarmerInterface
             return [];
         }
 
-        $mapppers = array_keys(require_once $registryFile);
+        $mapppers = array_keys(require $registryFile);
 
         return array_map(
             function ($mapper) {
