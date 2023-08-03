@@ -15,9 +15,9 @@ class Schema extends BaseSchema implements SchemaInterface
     /** @var SecuritySchemeGuess[] List of SecuritySchemes associated to this schema */
     private $securitySchemes = [];
 
-    public function __construct(string $origin, string $namespace, string $directory)
+    public function __construct(string $origin, string $namespace, string $directory, string $rootName)
     {
-        parent::__construct($origin, $namespace, $directory, '');
+        parent::__construct($origin, $namespace, $directory, $rootName);
     }
 
     public function addSecurityScheme(string $reference, SecuritySchemeGuess $securityScheme)

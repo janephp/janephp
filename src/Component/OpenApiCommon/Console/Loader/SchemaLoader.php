@@ -11,7 +11,7 @@ class SchemaLoader extends BaseSchemaLoader implements SchemaLoaderInterface
 {
     protected function newSchema(string $schema, array $options): SchemaInterface
     {
-        return new Schema($schema, $options['namespace'], $options['directory']);
+        return new Schema($schema, $options['namespace'], $options['directory'], $options['root-class'] ?? '');
     }
 
     protected function getDefinedOptions(): array
@@ -37,6 +37,7 @@ class SchemaLoader extends BaseSchemaLoader implements SchemaLoaderInterface
             'custom-query-resolver',
             'throw-unexpected-status-code',
             'custom-string-format-mapping',
+            'root-class',
         ];
     }
 

@@ -38,7 +38,8 @@ abstract class ClientGenerator implements GeneratorInterface
             $statements[] = $this->operationGenerator->createOperation($operationName, $operation, $context);
         }
 
-        $client = $this->createResourceClass($schema, 'Client' . $this->getSuffix());
+        $className =  empty($schema->getRootName()) ? 'Client' : $schema->getRootName() . $this->getSuffix();
+        $client = $this->createResourceClass($schema, $className);
         $client->stmts = array_merge(
             $statements,
             [
@@ -51,7 +52,7 @@ abstract class ClientGenerator implements GeneratorInterface
         ]);
 
         $schema->addFile(new File(
-            $schema->getDirectory() . \DIRECTORY_SEPARATOR . 'Client' . $this->getSuffix() . '.php',
+            $schema->getDirectory() . \DIRECTORY_SEPARATOR . $className . '.php',
             $node,
             'client'
         ));
