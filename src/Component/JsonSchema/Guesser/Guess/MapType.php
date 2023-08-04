@@ -15,17 +15,16 @@ class MapType extends ArrayType
         $this->itemType = $itemType;
     }
 
-    /**
-     * ({@inheritDoc}.
-     */
     public function getTypeHint(string $namespace)
     {
         return new Name('iterable');
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    public function getDocTypeHint(string $namespace)
+    {
+        return new Name(sprintf('array<string, %s>', $this->getItemType()->getDocTypeHint($namespace)));
+    }
+
     protected function createArrayValueStatement(): Expr
     {
         return new Expr\New_(new Name('\ArrayObject'), [
@@ -34,33 +33,21 @@ class MapType extends ArrayType
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function createNormalizationArrayValueStatement(): Expr
     {
         return new Expr\Array_();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function createLoopKeyStatement(Context $context): Expr
     {
         return new Expr\Variable($context->getUniqueVariableName('key'));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function createLoopOutputAssignement(Expr $valuesVar, $loopKeyVar): Expr
     {
         return new Expr\ArrayDimFetch($valuesVar, $loopKeyVar);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function createNormalizationLoopOutputAssignement(Expr $valuesVar, $loopKeyVar): Expr
     {
         return new Expr\ArrayDimFetch($valuesVar, $loopKeyVar);

@@ -74,13 +74,13 @@ class NetworksCreatePostBody
     /**
      * Network specific options to be used by the drivers.
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $options;
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $labels;
     /**
@@ -284,7 +284,7 @@ class NetworksCreatePostBody
     /**
      * Network specific options to be used by the drivers.
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getOptions() : iterable
     {
@@ -293,7 +293,7 @@ class NetworksCreatePostBody
     /**
      * Network specific options to be used by the drivers.
      *
-     * @param string[] $options
+     * @param array<string, string> $options
      *
      * @return self
      */
@@ -306,7 +306,7 @@ class NetworksCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getLabels() : iterable
     {
@@ -315,7 +315,7 @@ class NetworksCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param array<string, string> $labels
      *
      * @return self
      */

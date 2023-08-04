@@ -15,13 +15,13 @@ class MetadataValuesSchemaUpdateCommand extends MetadataValuesChangeCommandBase
     /**
      * An object containing the metadata values to add / update.
      *
-     * @var mixed[]
+     * @var array<string, mixed>
      */
     protected $value;
     /**
      * An object containing the metadata values to add / update.
      *
-     * @return mixed[]
+     * @return array<string, mixed>
      */
     public function getValue() : iterable
     {
@@ -30,7 +30,7 @@ class MetadataValuesSchemaUpdateCommand extends MetadataValuesChangeCommandBase
     /**
      * An object containing the metadata values to add / update.
      *
-     * @param mixed[] $value
+     * @param array<string, mixed> $value
      *
      * @return self
      */

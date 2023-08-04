@@ -21,7 +21,7 @@ class GraphDriverData
     /**
      * 
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $data;
     /**
@@ -49,7 +49,7 @@ class GraphDriverData
     /**
      * 
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getData() : iterable
     {
@@ -58,7 +58,7 @@ class GraphDriverData
     /**
      * 
      *
-     * @param string[] $data
+     * @param array<string, string> $data
      *
      * @return self
      */

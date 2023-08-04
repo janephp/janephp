@@ -63,7 +63,7 @@ class ImageSummary
     /**
      * 
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $labels;
     /**
@@ -251,7 +251,7 @@ class ImageSummary
     /**
      * 
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getLabels() : iterable
     {
@@ -260,7 +260,7 @@ class ImageSummary
     /**
      * 
      *
-     * @param string[] $labels
+     * @param array<string, string> $labels
      *
      * @return self
      */

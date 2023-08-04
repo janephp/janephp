@@ -31,7 +31,7 @@ class SwarmSpecCAConfigExternalCAsItem
     protocol-specific options for the external CA driver.
     
     *
-    * @var string[]
+    * @var array<string, string>
     */
     protected $options;
     /**
@@ -96,7 +96,7 @@ class SwarmSpecCAConfigExternalCAsItem
     protocol-specific options for the external CA driver.
     
     *
-    * @return string[]
+    * @return array<string, string>
     */
     public function getOptions() : iterable
     {
@@ -107,7 +107,7 @@ class SwarmSpecCAConfigExternalCAsItem
     protocol-specific options for the external CA driver.
     
     *
-    * @param string[] $options
+    * @param array<string, string> $options
     *
     * @return self
     */

@@ -33,14 +33,14 @@ class IndexField
     /**
      * Contains all index field name variants of the field.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $indexFields;
     /**
     * Contains all simple search field name variants of the field.
     The amount of simple search fields can be equal or less to the amount of IndexFields, but never more.
     *
-    * @var string[]|null
+    * @var array<string, string>|null
     */
     protected $simpleSearchFields;
     /**
@@ -136,7 +136,7 @@ class IndexField
     /**
      * Contains all index field name variants of the field.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getIndexFields() : ?iterable
     {
@@ -145,7 +145,7 @@ class IndexField
     /**
      * Contains all index field name variants of the field.
      *
-     * @param string[]|null $indexFields
+     * @param array<string, string>|null $indexFields
      *
      * @return self
      */
@@ -159,7 +159,7 @@ class IndexField
     * Contains all simple search field name variants of the field.
     The amount of simple search fields can be equal or less to the amount of IndexFields, but never more.
     *
-    * @return string[]|null
+    * @return array<string, string>|null
     */
     public function getSimpleSearchFields() : ?iterable
     {
@@ -169,7 +169,7 @@ class IndexField
     * Contains all simple search field name variants of the field.
     The amount of simple search fields can be equal or less to the amount of IndexFields, but never more.
     *
-    * @param string[]|null $simpleSearchFields
+    * @param array<string, string>|null $simpleSearchFields
     *
     * @return self
     */

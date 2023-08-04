@@ -21,7 +21,7 @@ class ListItemCreateRequest
     /**
      * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema.
      *
-     * @var mixed[]|null
+     * @var array<string, mixed>|null
      */
     protected $content;
     /**
@@ -57,7 +57,7 @@ class ListItemCreateRequest
     /**
      * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema.
      *
-     * @return mixed[]|null
+     * @return array<string, mixed>|null
      */
     public function getContent() : ?iterable
     {
@@ -66,7 +66,7 @@ class ListItemCreateRequest
     /**
      * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema.
      *
-     * @param mixed[]|null $content
+     * @param array<string, mixed>|null $content
      *
      * @return self
      */

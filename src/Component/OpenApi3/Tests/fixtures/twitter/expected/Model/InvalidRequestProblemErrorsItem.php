@@ -15,7 +15,7 @@ class InvalidRequestProblemErrorsItem extends \ArrayObject
     /**
      * 
      *
-     * @var string[][]
+     * @var array<string, string[]>
      */
     protected $parameters;
     /**
@@ -27,7 +27,7 @@ class InvalidRequestProblemErrorsItem extends \ArrayObject
     /**
      * 
      *
-     * @return string[][]
+     * @return array<string, string[]>
      */
     public function getParameters() : iterable
     {
@@ -36,7 +36,7 @@ class InvalidRequestProblemErrorsItem extends \ArrayObject
     /**
      * 
      *
-     * @param string[][] $parameters
+     * @param array<string, string[]> $parameters
      *
      * @return self
      */

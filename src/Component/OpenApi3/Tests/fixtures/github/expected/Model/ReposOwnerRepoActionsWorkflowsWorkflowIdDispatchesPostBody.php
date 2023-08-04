@@ -21,7 +21,7 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody extends \ArrayO
     /**
      * Input keys and values configured in the workflow file. The maximum number of properties is 10. Any default properties configured in the workflow file will be used when `inputs` are omitted.
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $inputs;
     /**
@@ -49,7 +49,7 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody extends \ArrayO
     /**
      * Input keys and values configured in the workflow file. The maximum number of properties is 10. Any default properties configured in the workflow file will be used when `inputs` are omitted.
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getInputs() : iterable
     {
@@ -58,7 +58,7 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody extends \ArrayO
     /**
      * Input keys and values configured in the workflow file. The maximum number of properties is 10. Any default properties configured in the workflow file will be used when `inputs` are omitted.
      *
-     * @param string[] $inputs
+     * @param array<string, string> $inputs
      *
      * @return self
      */

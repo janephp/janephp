@@ -54,7 +54,7 @@ class ContainersCreatePostBody
     `{"<port>/<tcp|udp|sctp>": {}}`
     
     *
-    * @var mixed[]
+    * @var array<string, mixed>
     */
     protected $exposedPorts;
     /**
@@ -113,7 +113,7 @@ class ContainersCreatePostBody
     objects.
     
     *
-    * @var mixed[]
+    * @var array<string, mixed>
     */
     protected $volumes;
     /**
@@ -154,7 +154,7 @@ class ContainersCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $labels;
     /**
@@ -329,7 +329,7 @@ class ContainersCreatePostBody
     `{"<port>/<tcp|udp|sctp>": {}}`
     
     *
-    * @return mixed[]
+    * @return array<string, mixed>
     */
     public function getExposedPorts() : iterable
     {
@@ -341,7 +341,7 @@ class ContainersCreatePostBody
     `{"<port>/<tcp|udp|sctp>": {}}`
     
     *
-    * @param mixed[] $exposedPorts
+    * @param array<string, mixed> $exposedPorts
     *
     * @return self
     */
@@ -538,7 +538,7 @@ class ContainersCreatePostBody
     objects.
     
     *
-    * @return mixed[]
+    * @return array<string, mixed>
     */
     public function getVolumes() : iterable
     {
@@ -549,7 +549,7 @@ class ContainersCreatePostBody
     objects.
     
     *
-    * @param mixed[] $volumes
+    * @param array<string, mixed> $volumes
     *
     * @return self
     */
@@ -682,7 +682,7 @@ class ContainersCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getLabels() : iterable
     {
@@ -691,7 +691,7 @@ class ContainersCreatePostBody
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param array<string, string> $labels
      *
      * @return self
      */

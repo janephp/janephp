@@ -27,7 +27,7 @@ class NetworkAttachmentConfig
     /**
      * Driver attachment options for the network target.
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $driverOpts;
     /**
@@ -77,7 +77,7 @@ class NetworkAttachmentConfig
     /**
      * Driver attachment options for the network target.
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getDriverOpts() : iterable
     {
@@ -86,7 +86,7 @@ class NetworkAttachmentConfig
     /**
      * Driver attachment options for the network target.
      *
-     * @param string[] $driverOpts
+     * @param array<string, string> $driverOpts
      *
      * @return self
      */

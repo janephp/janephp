@@ -39,7 +39,7 @@ class BusinessRuleTracedEvaluation
     /**
      * State of variables after all transformation groups were ran.
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $variables;
     /**
@@ -133,7 +133,7 @@ class BusinessRuleTracedEvaluation
     /**
      * State of variables after all transformation groups were ran.
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getVariables() : ?iterable
     {
@@ -142,7 +142,7 @@ class BusinessRuleTracedEvaluation
     /**
      * State of variables after all transformation groups were ran.
      *
-     * @param string[]|null $variables
+     * @param array<string, string>|null $variables
      *
      * @return self
      */

@@ -15,13 +15,13 @@ class MetadataValuesSchemaReplaceCommand extends MetadataValuesChangeCommandBase
     /**
      * An object containing the metadata values for the schema. The existing dictionary will be entirely overwritten.
      *
-     * @var mixed[]
+     * @var array<string, mixed>
      */
     protected $value;
     /**
      * An object containing the metadata values for the schema. The existing dictionary will be entirely overwritten.
      *
-     * @return mixed[]
+     * @return array<string, mixed>
      */
     public function getValue() : iterable
     {
@@ -30,7 +30,7 @@ class MetadataValuesSchemaReplaceCommand extends MetadataValuesChangeCommandBase
     /**
      * An object containing the metadata values for the schema. The existing dictionary will be entirely overwritten.
      *
-     * @param mixed[] $value
+     * @param array<string, mixed> $value
      *
      * @return self
      */

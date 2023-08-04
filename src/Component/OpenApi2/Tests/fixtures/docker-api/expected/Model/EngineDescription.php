@@ -21,7 +21,7 @@ class EngineDescription
     /**
      * 
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $labels;
     /**
@@ -55,7 +55,7 @@ class EngineDescription
     /**
      * 
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getLabels() : iterable
     {
@@ -64,7 +64,7 @@ class EngineDescription
     /**
      * 
      *
-     * @param string[] $labels
+     * @param array<string, string> $labels
      *
      * @return self
      */

@@ -33,7 +33,7 @@ class ChannelUpdateRequest
     /**
      * A custom dictionary type to distinguish language specific class properties.
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $names;
     /**
@@ -147,7 +147,7 @@ class ChannelUpdateRequest
     /**
      * A custom dictionary type to distinguish language specific class properties.
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getNames() : iterable
     {
@@ -156,7 +156,7 @@ class ChannelUpdateRequest
     /**
      * A custom dictionary type to distinguish language specific class properties.
      *
-     * @param string[] $names
+     * @param array<string, string> $names
      *
      * @return self
      */

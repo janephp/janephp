@@ -45,13 +45,13 @@ class Volume
     does not support this feature.
     
     *
-    * @var mixed[]
+    * @var array<string, mixed>
     */
     protected $status;
     /**
      * User-defined key/value metadata.
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $labels;
     /**
@@ -65,7 +65,7 @@ class Volume
     /**
      * The driver specific options used when creating the volume.
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $options;
     /**
@@ -173,7 +173,7 @@ class Volume
     does not support this feature.
     
     *
-    * @return mixed[]
+    * @return array<string, mixed>
     */
     public function getStatus() : iterable
     {
@@ -188,7 +188,7 @@ class Volume
     does not support this feature.
     
     *
-    * @param mixed[] $status
+    * @param array<string, mixed> $status
     *
     * @return self
     */
@@ -201,7 +201,7 @@ class Volume
     /**
      * User-defined key/value metadata.
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getLabels() : iterable
     {
@@ -210,7 +210,7 @@ class Volume
     /**
      * User-defined key/value metadata.
      *
-     * @param string[] $labels
+     * @param array<string, string> $labels
      *
      * @return self
      */
@@ -249,7 +249,7 @@ class Volume
     /**
      * The driver specific options used when creating the volume.
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getOptions() : iterable
     {
@@ -258,7 +258,7 @@ class Volume
     /**
      * The driver specific options used when creating the volume.
      *
-     * @param string[] $options
+     * @param array<string, string> $options
      *
      * @return self
      */

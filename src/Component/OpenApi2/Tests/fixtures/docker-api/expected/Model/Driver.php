@@ -21,7 +21,7 @@ class Driver
     /**
      * Key/value map of driver-specific options.
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $options;
     /**
@@ -49,7 +49,7 @@ class Driver
     /**
      * Key/value map of driver-specific options.
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getOptions() : iterable
     {
@@ -58,7 +58,7 @@ class Driver
     /**
      * Key/value map of driver-specific options.
      *
-     * @param string[] $options
+     * @param array<string, string> $options
      *
      * @return self
      */

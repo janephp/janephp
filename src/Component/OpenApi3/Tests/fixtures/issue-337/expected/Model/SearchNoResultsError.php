@@ -21,7 +21,7 @@ class SearchNoResultsError extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[]
+     * @var array<string, mixed>
      */
     protected $companies;
     /**
@@ -55,7 +55,7 @@ class SearchNoResultsError extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return array<string, mixed>
      */
     public function getCompanies() : iterable
     {
@@ -64,7 +64,7 @@ class SearchNoResultsError extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $companies
+     * @param array<string, mixed> $companies
      *
      * @return self
      */

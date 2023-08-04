@@ -15,13 +15,13 @@ class NetworkingConfig
     /**
      * A mapping of network name to endpoint configuration for that network.
      *
-     * @var EndpointSettings[]
+     * @var array<string, EndpointSettings>
      */
     protected $endpointsConfig;
     /**
      * A mapping of network name to endpoint configuration for that network.
      *
-     * @return EndpointSettings[]
+     * @return array<string, EndpointSettings>
      */
     public function getEndpointsConfig() : iterable
     {
@@ -30,7 +30,7 @@ class NetworkingConfig
     /**
      * A mapping of network name to endpoint configuration for that network.
      *
-     * @param EndpointSettings[] $endpointsConfig
+     * @param array<string, EndpointSettings> $endpointsConfig
      *
      * @return self
      */

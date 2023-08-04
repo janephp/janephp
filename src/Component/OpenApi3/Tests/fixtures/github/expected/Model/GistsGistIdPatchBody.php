@@ -21,7 +21,7 @@ class GistsGistIdPatchBody extends \ArrayObject
     /**
      * Names of files to be updated
      *
-     * @var GistsGistIdPatchBodyFilesItem[]
+     * @var array<string, GistsGistIdPatchBodyFilesItem>
      */
     protected $files;
     /**
@@ -49,7 +49,7 @@ class GistsGistIdPatchBody extends \ArrayObject
     /**
      * Names of files to be updated
      *
-     * @return GistsGistIdPatchBodyFilesItem[]
+     * @return array<string, GistsGistIdPatchBodyFilesItem>
      */
     public function getFiles() : iterable
     {
@@ -58,7 +58,7 @@ class GistsGistIdPatchBody extends \ArrayObject
     /**
      * Names of files to be updated
      *
-     * @param GistsGistIdPatchBodyFilesItem[] $files
+     * @param array<string, GistsGistIdPatchBodyFilesItem> $files
      *
      * @return self
      */

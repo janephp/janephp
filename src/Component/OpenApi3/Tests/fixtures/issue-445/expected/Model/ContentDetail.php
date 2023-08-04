@@ -49,14 +49,14 @@ class ContentDetail
     * The content data of the content. It's an object of dynamic metadata whose structure is defined in the Content schema identified.
     by the ContentSchemaId property.
     *
-    * @var mixed[]|null
+    * @var array<string, mixed>|null
     */
     protected $content;
     /**
     * The metadata belonging to the layers of the content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
     by the LayerSchemaIds property.
     *
-    * @var mixed[]|null
+    * @var array<string, mixed>|null
     */
     protected $metadata;
     /**
@@ -246,7 +246,7 @@ class ContentDetail
     * The content data of the content. It's an object of dynamic metadata whose structure is defined in the Content schema identified.
     by the ContentSchemaId property.
     *
-    * @return mixed[]|null
+    * @return array<string, mixed>|null
     */
     public function getContent() : ?iterable
     {
@@ -256,7 +256,7 @@ class ContentDetail
     * The content data of the content. It's an object of dynamic metadata whose structure is defined in the Content schema identified.
     by the ContentSchemaId property.
     *
-    * @param mixed[]|null $content
+    * @param array<string, mixed>|null $content
     *
     * @return self
     */
@@ -270,7 +270,7 @@ class ContentDetail
     * The metadata belonging to the layers of the content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
     by the LayerSchemaIds property.
     *
-    * @return mixed[]|null
+    * @return array<string, mixed>|null
     */
     public function getMetadata() : ?iterable
     {
@@ -280,7 +280,7 @@ class ContentDetail
     * The metadata belonging to the layers of the content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
     by the LayerSchemaIds property.
     *
-    * @param mixed[]|null $metadata
+    * @param array<string, mixed>|null $metadata
     *
     * @return self
     */

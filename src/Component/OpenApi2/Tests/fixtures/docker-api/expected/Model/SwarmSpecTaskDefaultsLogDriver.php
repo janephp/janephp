@@ -23,7 +23,7 @@ class SwarmSpecTaskDefaultsLogDriver
     as key/value pairs.
     
     *
-    * @var string[]
+    * @var array<string, string>
     */
     protected $options;
     /**
@@ -53,7 +53,7 @@ class SwarmSpecTaskDefaultsLogDriver
     as key/value pairs.
     
     *
-    * @return string[]
+    * @return array<string, string>
     */
     public function getOptions() : iterable
     {
@@ -64,7 +64,7 @@ class SwarmSpecTaskDefaultsLogDriver
     as key/value pairs.
     
     *
-    * @param string[] $options
+    * @param array<string, string> $options
     *
     * @return self
     */
