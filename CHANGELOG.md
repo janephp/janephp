@@ -6,10 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-### Fixed
-- [AutoMapper] [GH#734](https://github.com/janephp/janephp/pull/741) `#[MapToContext]` should accept virtual properties
+### Changed
+- [JsonSchema] [GH#436](https://github.com/janephp/janephp/pull/436) Better PHPDoc for generated Map type properties
 
-## [7.5.2]
+### Fixed
+- [AutoMapper] [GH#742](https://github.com/janephp/janephp/pull/742) Always require registry during cache warmup
+- [AutoMapper] [GH#741](https://github.com/janephp/janephp/pull/741) `#[MapToContext]` should accept virtual properties
 
 ## [7.5.2] - 2023-07-10
 ### Added
