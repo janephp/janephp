@@ -14,7 +14,7 @@
 
         <service id="Jane\Component\AutoMapper\Extractor\SourceTargetMappingExtractor">
             <argument type="service" id="property_info" />
-            <argument type="service" id="property_info.reflection_extractor" />
+            <argument type="service" id="Jane\Component\AutoMapper\Extractor\MapToContextPropertyInfoExtractorDecorator" />
             <argument type="service" id="property_info.reflection_extractor" />
             <argument type="service" id="Jane\Component\AutoMapper\Transformer\TransformerFactoryInterface" />
         </service>
@@ -29,7 +29,7 @@
 
         <service id="Jane\Component\AutoMapper\Extractor\FromSourceMappingExtractor">
             <argument type="service" id="property_info" />
-            <argument type="service" id="property_info.reflection_extractor" />
+            <argument type="service" id="Jane\Component\AutoMapper\Extractor\MapToContextPropertyInfoExtractorDecorator" />
             <argument type="service" id="property_info.reflection_extractor" />
             <argument type="service" id="Jane\Component\AutoMapper\Transformer\TransformerFactoryInterface" />
             <argument type="service" id="serializer.mapping.class_metadata_factory" />
@@ -118,6 +118,11 @@
         <service id="Jane\Bundle\AutoMapperBundle\CacheWarmup\ConfigurationCacheWarmerLoader">
             <argument/> <!-- mappers list from config -->
             <tag name="jane_auto_mapper.cache_warmer_loader" />
+        </service>
+
+        <service id="Jane\Component\AutoMapper\Extractor\MapToContextPropertyInfoExtractorDecorator">
+            <argument type="service" id="property_info.reflection_extractor" />
+            <tag name="property_info.access_extractor" priority="-100" />
         </service>
     </services>
 </container>

@@ -5,28 +5,27 @@ declare(strict_types=1);
 namespace Jane\Component\AutoMapper\Extractor;
 
 use Jane\Component\AutoMapper\Attribute\MapToContext;
+use ReflectionException;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
+use Symfony\Component\PropertyInfo\PropertyAccessExtractorInterface;
 use Symfony\Component\PropertyInfo\PropertyReadInfo;
 use Symfony\Component\PropertyInfo\PropertyReadInfoExtractorInterface;
 
-final class MapToContextReadInfoExtractorDecorator implements PropertyReadInfoExtractorInterface
+final class MapToContextPropertyInfoExtractorDecorator implements PropertyAccessExtractorInterface, PropertyReadInfoExtractorInterface
 {
-    private $decorated;
+    /** @var PropertyReadInfoExtractorInterface&PropertyAccessExtractorInterface */
+    private $propertyReadInfoExtractor;
 
-    public function __construct(PropertyReadInfoExtractorInterface $decorated)
+    public function __construct($propertyReadInfoExtractor)
     {
-        $this->decorated = $decorated;
+        $this->propertyReadInfoExtractor = $propertyReadInfoExtractor;
     }
 
     public function getReadInfo(string $class, string $property, array $context = []): ?PropertyReadInfo
     {
-        $readInfo = $this->decorated->getReadInfo($class, $property, $context);
+        $readInfo = $this->propertyReadInfoExtractor->getReadInfo($class, $property, $context);
 
-        if (null === $readInfo) {
-            return null;
-        }
-
-        if ($readInfo->getType() === PropertyReadInfo::TYPE_PROPERTY && PropertyReadInfo::VISIBILITY_PUBLIC !== $readInfo->getVisibility()) {
+        if (null === $readInfo || $readInfo->getType() === PropertyReadInfo::TYPE_PROPERTY && PropertyReadInfo::VISIBILITY_PUBLIC !== $readInfo->getVisibility()) {
             $reflClass = new \ReflectionClass($class);
             $camelProp = $this->camelize($property);
 
@@ -50,6 +49,20 @@ final class MapToContextReadInfoExtractorDecorator implements PropertyReadInfoEx
         return $readInfo;
     }
 
+    public function isReadable(string $class, string $property, array $context = [])
+    {
+        if ($this->isAllowedProperty($class, $property)) {
+            return true;
+        }
+
+        return null !== $this->getReadInfo($class, $property, $context);
+    }
+
+    public function isWritable(string $class, string $property, array $context = [])
+    {
+        return $this->propertyReadInfoExtractor->isWritable($class, $property, $context);
+    }
+
     private function camelize(string $string): string
     {
         return str_replace(' ', '', ucwords(str_replace('_', ' ', $string)));
@@ -64,5 +77,22 @@ final class MapToContextReadInfoExtractorDecorator implements PropertyReadInfoEx
         }
 
         return true;
+    }
+
+    private function isAllowedProperty(string $class, string $property, bool $writeAccessRequired = false): bool
+    {
+        try {
+            $reflectionProperty = new \ReflectionProperty($class, $property);
+
+            if (\PHP_VERSION_ID >= 80100 && $writeAccessRequired && $reflectionProperty->isReadOnly()) {
+                return false;
+            }
+
+            return (bool) ($reflectionProperty->getModifiers() & \ReflectionProperty::IS_PUBLIC);
+        } catch (ReflectionException $e) {
+            // Return false if the property doesn't exist
+        }
+
+        return false;
     }
 }
