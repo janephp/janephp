@@ -29,7 +29,7 @@ trait ServerPluginGenerator
                 new Expr\MethodCall(
                     new Expr\StaticCall(
                         new Name\FullyQualified(Psr17FactoryDiscovery::class),
-                        'findUrlFactory'
+                        'findUriFactory'
                     ),
                     'createUri',
                     [
