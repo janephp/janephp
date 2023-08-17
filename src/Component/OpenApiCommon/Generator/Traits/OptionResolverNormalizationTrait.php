@@ -20,8 +20,8 @@ trait OptionResolverNormalizationTrait
         if (\array_key_exists('__type', $customQueryResolver)) {
             $genericCustomQueryResolver = $customQueryResolver['__type'];
         }
-        if (\array_key_exists($operation->getPath(), $customQueryResolver) &&
-            \array_key_exists(mb_strtolower($operation->getMethod()), $customQueryResolver[$operation->getPath()])) {
+        if (\array_key_exists($operation->getPath(), $customQueryResolver)
+            && \array_key_exists(mb_strtolower($operation->getMethod()), $customQueryResolver[$operation->getPath()])) {
             $operationCustomQueryResolver = $customQueryResolver[$operation->getPath()][mb_strtolower($operation->getMethod())];
         }
 

@@ -6,22 +6,17 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@master
-      - name: cache-composer
-        uses: actions/cache@v2
-        with:
-          path: ~/.composer/cache/
-          key: composer-7.4-${{ github.sha }}
       - name: setup
         uses: shivammathur/setup-php@2.9.0
         with:
-          php-version: 8.0
-          extensions: mbstring, fileinfo, json, intl, dom
-      - name: install
-        run: composer update --prefer-stable
+          php-version: 8.2
+          coverage: none
+      - name: install PHP CS Fixer
+        uses: ramsey/composer-install@v2
+        with:
+          composer-options: '--working-dir=tools/php-cs-fixer'
       - name: 'php-cs-fixer check'
-        run: 'vendor/bin/php-cs-fixer fix --dry-run --diff'
-        env:
-          PHP_CS_FIXER_IGNORE_ENV: 1
+        run: 'tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --dry-run --diff'
   tests:
     runs-on: ubuntu-latest
     strategy:

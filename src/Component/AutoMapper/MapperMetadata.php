@@ -39,7 +39,7 @@ class MapperMetadata implements MapperGeneratorMetadataInterface
 
     private $attributeChecking;
 
-    private $targetReflectionClass = null;
+    private $targetReflectionClass;
 
     public function __construct(MapperGeneratorMetadataRegistryInterface $metadataRegistry, MappingExtractorInterface $mappingExtractor, string $source, string $target, bool $isTargetReadOnlyClass, string $classPrefix = 'Mapper_')
     {

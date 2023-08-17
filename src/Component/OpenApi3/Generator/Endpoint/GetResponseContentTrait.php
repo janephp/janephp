@@ -32,7 +32,7 @@ trait GetResponseContentTrait
                 if ($response->getContent()) {
                     foreach ($response->getContent() as $contentType => $content) {
                         $trimmedContentType = trim($contentType);
-                        if (\strlen($trimmedContentType) !== 0 && !\in_array($trimmedContentType, $produces)) {
+                        if ($trimmedContentType !== '' && !\in_array($trimmedContentType, $produces)) {
                             $produces[] = $trimmedContentType;
                         }
                     }
@@ -50,7 +50,7 @@ trait GetResponseContentTrait
                 if ($response->getContent()) {
                     foreach ($response->getContent() as $contentType => $content) {
                         $trimmedContentType = trim($contentType);
-                        if (\strlen($trimmedContentType) !== 0 && !\in_array($trimmedContentType, $produces)) {
+                        if ($trimmedContentType !== '' && !\in_array($trimmedContentType, $produces)) {
                             $produces[] = $trimmedContentType;
                         }
                     }

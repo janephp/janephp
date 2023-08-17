@@ -41,10 +41,10 @@ class DefinitionGuesser implements ChainGuesserAwareInterface, GuesserInterface,
      */
     public function supportObject($object): bool
     {
-        return ($object instanceof JsonSchema) &&
-            (
-                (null !== $object->getDefinitions() && \count($object->getDefinitions()) > 0) ||
-                (null !== $object->getDollarDefs() && \count($object->getDollarDefs()) > 0)
+        return ($object instanceof JsonSchema)
+            && (
+                (null !== $object->getDefinitions() && \count($object->getDefinitions()) > 0)
+                || (null !== $object->getDollarDefs() && \count($object->getDollarDefs()) > 0)
             );
     }
 

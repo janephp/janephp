@@ -14,9 +14,9 @@ use Symfony\Component\Validator\Constraints\Required;
 
 class ValidatorGenerator implements GeneratorInterface
 {
-    const FILE_TYPE_VALIDATOR = 'validator';
-    const VALIDATOR_INTERFACE_NAME = 'ValidatorInterface';
-    const VALIDATOR_EXCEPTION_NAME = 'ValidationException';
+    public const FILE_TYPE_VALIDATOR = 'validator';
+    public const VALIDATOR_INTERFACE_NAME = 'ValidatorInterface';
+    public const VALIDATOR_EXCEPTION_NAME = 'ValidationException';
 
     /** @var Naming */
     private $naming;

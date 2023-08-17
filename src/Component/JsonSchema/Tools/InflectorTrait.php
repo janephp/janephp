@@ -7,7 +7,7 @@ use Doctrine\Inflector\InflectorFactory;
 
 trait InflectorTrait
 {
-    private $inflector = null;
+    private $inflector;
 
     protected function getInflector(): Inflector
     {

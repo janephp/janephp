@@ -40,13 +40,10 @@ class SimpleTypeGuesser implements GuesserInterface, TypeGuesserInterface
         $class = $this->getSchemaClass();
 
         return ($object instanceof $class)
-            &&
-            \in_array($object->getType(), $this->typesSupported)
-            &&
-            (
+            && \in_array($object->getType(), $this->typesSupported)
+            && (
                 !\in_array($object->getType(), $this->excludeFormat)
-                ||
-                !\in_array($object->getFormat(), $this->excludeFormat[$object->getType()])
+                || !\in_array($object->getFormat(), $this->excludeFormat[$object->getType()])
             )
         ;
     }

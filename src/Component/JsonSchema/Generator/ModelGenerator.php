@@ -19,7 +19,7 @@ class ModelGenerator implements GeneratorInterface
     use GetterSetterGenerator;
     use PropertyGenerator;
 
-    const FILE_TYPE_MODEL = 'model';
+    public const FILE_TYPE_MODEL = 'model';
 
     /**
      * @var Naming Naming Service

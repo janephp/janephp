@@ -30,7 +30,7 @@ trait PropertyGenerator
             $default = $property->getDefault();
         }
 
-        if ((null !== $default && is_scalar($default)) || (Type::TYPE_ARRAY === $property->getType()->getTypeHint($namespace) && \is_array($default))) {
+        if ((null !== $default && \is_scalar($default)) || (Type::TYPE_ARRAY === $property->getType()->getTypeHint($namespace) && \is_array($default))) {
             $propertyStmt->default = $this->getDefaultAsExpr($default)->expr;
         }
 
@@ -54,7 +54,7 @@ trait PropertyGenerator
  *
 
 EOD
-        , $property->getDescription());
+            , $property->getDescription());
 
         if ($property->isDeprecated()) {
             $description .= <<<EOD
@@ -68,7 +68,7 @@ EOD;
  * @var %s
  */
 EOD
-        , $docTypeHint);
+            , $docTypeHint);
 
         return new Doc($description);
     }

@@ -17,11 +17,10 @@ use PhpParser\Parser;
 
 class NormalizerGenerator implements GeneratorInterface
 {
-    const FILE_TYPE_NORMALIZER = 'normalizer';
-
     use DenormalizerGenerator;
     use JaneObjectNormalizerGenerator;
     use NormalizerGeneratorTrait;
+    public const FILE_TYPE_NORMALIZER = 'normalizer';
 
     /**
      * @var Naming The naming service
@@ -143,8 +142,8 @@ class NormalizerGenerator implements GeneratorInterface
     protected function canUseCacheableSupportsMethod(?bool $useCacheableSupportsMethod): bool
     {
         return
-            true === $useCacheableSupportsMethod ||
-            (null === $useCacheableSupportsMethod && class_exists('Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface'));
+            true === $useCacheableSupportsMethod
+            || (null === $useCacheableSupportsMethod && class_exists('Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface'));
     }
 
     protected function createJaneObjectNormalizerClass(Schema $schema, array $normalizers): array
@@ -227,7 +226,7 @@ class NormalizerGenerator implements GeneratorInterface
     /**
      * Create method to return the supported type.
      *
-     * @param string[] $modelFqdn Fully Qualified name of the models class denormalized
+     * @param string[] $modelsFqdn Fully Qualified name of the models class denormalized
      *
      * @return Stmt\ClassMethod
      */

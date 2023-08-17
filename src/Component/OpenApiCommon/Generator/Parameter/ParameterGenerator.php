@@ -21,25 +21,17 @@ abstract class ParameterGenerator
         $this->parser = $parser;
     }
 
-    /**
-     * @param $parameter
-     */
     public function generateMethodParameter($parameter, Context $context, string $reference): ?Node\Param
     {
         return null;
     }
 
-    /**
-     * @param $parameter
-     */
     public function generateMethodDocParameter($parameter, Context $context, string $reference): string
     {
         return '';
     }
 
     /**
-     * @param $parameter
-     *
      * @return Node\Expr[]
      */
     protected function generateInputParamArguments($parameter): array

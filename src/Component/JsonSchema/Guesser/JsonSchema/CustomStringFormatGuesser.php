@@ -26,9 +26,9 @@ class CustomStringFormatGuesser implements GuesserInterface, TypeGuesserInterfac
         $class = $this->getSchemaClass();
 
         return ($object instanceof $class) && 'string' === $object->getType() && \array_key_exists(
-                $object->getFormat(),
-                $this->mapping
-            );
+            $object->getFormat(),
+            $this->mapping
+        );
     }
 
     public function guessType($object, string $name, string $reference, Registry $registry): Type

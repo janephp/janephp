@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Jane\Component\AutoMapper\Extractor;
 
 use Jane\Component\AutoMapper\Attribute\MapToContext;
-use ReflectionException;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\PropertyAccessExtractorInterface;
 use Symfony\Component\PropertyInfo\PropertyReadInfo;
@@ -89,7 +88,7 @@ final class MapToContextPropertyInfoExtractorDecorator implements PropertyAccess
             }
 
             return (bool) ($reflectionProperty->getModifiers() & \ReflectionProperty::IS_PUBLIC);
-        } catch (ReflectionException $e) {
+        } catch (\ReflectionException $e) {
             // Return false if the property doesn't exist
         }
 
