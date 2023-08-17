@@ -39,9 +39,9 @@ class Reference
             $mergedParts['path'] = $this->joinPath(\dirname($originParts['path']), $referenceParts['path']);
         }
 
-        $this->referenceUri = Http::createFromString($reference);
-        $this->originUri = Http::createFromString($origin);
-        $this->mergedUri = Http::createFromComponents($mergedParts);
+        $this->referenceUri = method_exists(Http::class, 'new') ? Http::new($reference) : Http::createFromString($reference);
+        $this->originUri = method_exists(Http::class, 'new') ? Http::new($origin) : Http::createFromString($origin);
+        $this->mergedUri = method_exists(Http::class, 'fromComponents') ? Http::fromComponents($mergedParts) : Http::createFromComponents($mergedParts);
     }
 
     /**

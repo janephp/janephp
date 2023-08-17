@@ -24,7 +24,7 @@
     "require": {
         "php": "^7.2 || ^8.0",
         "ext-json": "*",
-        "league/uri": "^6.0",
+        "league/uri": "^6.0 || ^7.0",
         "php-jsonpointer/php-jsonpointer": "^3.0 || ^4.0",
         "symfony/serializer": "^4.4 || ^5.0 || ^6.0",
         "symfony/yaml": "~4.4.9 || ^5.0 || ^6.0"

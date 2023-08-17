@@ -34,7 +34,7 @@ class Registry implements RegistryInterface
     public function getSchema(string $reference): ?Schema
     {
         $reference = $this->fixPath($reference);
-        $uri = Http::createFromString($reference);
+        $uri = method_exists(Http::class, 'new') ? Http::new($reference) : Http::createFromString($reference);
         $schemaUri = (string) $uri->withFragment('');
 
         foreach ($this->schemas as $schema) {
