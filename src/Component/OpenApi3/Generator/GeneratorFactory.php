@@ -2,7 +2,6 @@
 
 namespace Jane\Component\OpenApi3\Generator;
 
-use InvalidArgumentException;
 use Jane\Component\JsonSchema\Generator\GeneratorInterface;
 use Jane\Component\OpenApi3\Generator\Parameter\NonBodyParameterGenerator;
 use Jane\Component\OpenApi3\Generator\RequestBodyContent\DefaultBodyContentGenerator;
@@ -36,7 +35,7 @@ class GeneratorFactory
         $requestBodyGenerator->addRequestBodyGenerator(['application/x-www-form-urlencoded', 'multipart/form-data'], new FormBodyContentGenerator($serializer));
 
         if (!class_exists($endpointGeneratorClass)) {
-            throw new InvalidArgumentException(sprintf('Unknown generator class %s', $endpointGeneratorClass));
+            throw new \InvalidArgumentException(sprintf('Unknown generator class %s', $endpointGeneratorClass));
         }
 
         $endpointGenerator = new $endpointGeneratorClass($operationNaming, $nonBodyParameter, $serializer, $exceptionGenerator, $requestBodyGenerator);

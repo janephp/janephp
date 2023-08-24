@@ -32,8 +32,8 @@ class SchemaGuesser extends ObjectGuesser
         $classGuess = new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, $object->getDeprecated() ?? false);
 
         $discriminator = $object->getDiscriminator();
-        if ($discriminator instanceof Discriminator &&
-            is_countable($discriminator->getMapping()) && \count($discriminator->getMapping()) > 0) {
+        if ($discriminator instanceof Discriminator
+            && is_countable($discriminator->getMapping()) && \count($discriminator->getMapping()) > 0) {
             $classGuess = new ParentClass($classGuess, $discriminator->getPropertyName());
 
             foreach ($discriminator->getMapping() as $discriminatorValue => $entryReference) {
@@ -52,8 +52,8 @@ class SchemaGuesser extends ObjectGuesser
             return $classGuess;
         }
 
-        if ($object->getDiscriminator() instanceof Discriminator &&
-            \is_array($object->getEnum()) && \count($object->getEnum()) > 0) {
+        if ($object->getDiscriminator() instanceof Discriminator
+            && \is_array($object->getEnum()) && \count($object->getEnum()) > 0) {
             $classGuess = new ParentClass($classGuess, $object->getDiscriminator()->getPropertyName());
 
             foreach ($object->getEnum() as $subClassName) {

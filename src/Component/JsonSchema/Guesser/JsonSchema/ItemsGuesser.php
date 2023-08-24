@@ -35,10 +35,10 @@ class ItemsGuesser implements GuesserInterface, ClassGuesserInterface, ChainGues
         $class = $this->getSchemaClass();
 
         return
-            $object instanceof $class &&
-            (
-                $object->getItems() instanceof $class ||
-                (\is_array($object->getItems()) && \count($object->getItems()) > 0)
+            $object instanceof $class
+            && (
+                $object->getItems() instanceof $class
+                || (\is_array($object->getItems()) && \count($object->getItems()) > 0)
             )
         ;
     }

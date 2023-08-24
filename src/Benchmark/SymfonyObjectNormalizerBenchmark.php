@@ -21,8 +21,11 @@ use Symfony\Component\Serializer\Serializer;
 
 /**
  * @BeforeMethods({"initObjectNormalizer"})
+ *
  * @Warmup(1)
+ *
  * @Revs(60)
+ *
  * @Iterations(60)
  */
 class SymfonyObjectNormalizerBenchmark

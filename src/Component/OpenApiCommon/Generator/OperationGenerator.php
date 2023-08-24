@@ -29,7 +29,7 @@ class OperationGenerator
         }, $throwTypes))
             . " *\n"
             . ' * @return ' . implode('|', $returnTypes)
-            ;
+        ;
     }
 
     public function createOperation(string $name, OperationGuess $operation, Context $context): Stmt\ClassMethod

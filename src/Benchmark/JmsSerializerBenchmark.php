@@ -12,8 +12,11 @@ use PhpBench\Benchmark\Metadata\Annotations\Warmup;
 
 /**
  * @BeforeMethods({"initSerializer"})
+ *
  * @Warmup(1)
+ *
  * @Revs(60)
+ *
  * @Iterations(60)
  */
 class JmsSerializerBenchmark
@@ -22,7 +25,7 @@ class JmsSerializerBenchmark
 
     public function initSerializer(): void
     {
-        $this->serializer = (SerializerBuilder::create())->build();
+        $this->serializer = SerializerBuilder::create()->build();
     }
 
     public function benchJmsSerializer()

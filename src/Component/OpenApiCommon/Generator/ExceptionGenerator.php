@@ -100,7 +100,7 @@ class ExceptionGenerator
  * @var %s%s
  */
 EOD
-                , '\\' . $classFqdn, ($isArray ? '[]' : ''));
+                , '\\' . $classFqdn, $isArray ? '[]' : '');
 
             $methodName = 'get' . ucfirst($propertyName);
             $exception = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
@@ -119,52 +119,52 @@ EOD
  * @var \Psr\Http\Message\ResponseInterface
  */
 EOD
-)]]),
+                            )]]),
                             new Stmt\ClassMethod('__construct', [
-                                'type' => Stmt\Class_::MODIFIER_PUBLIC,
-                                'params' => [
-                                    new Param(new Node\Expr\Variable($realPropertyName), null, $isArray ? null : new Name('\\' . $classFqdn)),
-                                    new Param(new Node\Expr\Variable('response'), null, new Name('\\Psr\\Http\\Message\\ResponseInterface')),
-                                ],
-                                'stmts' => [
-                                    new Node\Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
-                                        new Scalar\String_($description),
-                                    ])),
-                                    new Node\Stmt\Expression(new Expr\Assign(
-                                        new Expr\PropertyFetch(
-                                            new Expr\Variable('this'),
-                                            $propertyName
-                                        ), new Expr\Variable($realPropertyName)
-                                    )),
-                                    new Node\Stmt\Expression(new Expr\Assign(
-                                        new Expr\PropertyFetch(
-                                            new Expr\Variable('this'),
-                                            'response'
-                                        ), new Expr\Variable('response')
-                                    )),
-                                ],
-                            ]),
+                                                            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                                                            'params' => [
+                                                                new Param(new Node\Expr\Variable($realPropertyName), null, $isArray ? null : new Name('\\' . $classFqdn)),
+                                                                new Param(new Node\Expr\Variable('response'), null, new Name('\\Psr\\Http\\Message\\ResponseInterface')),
+                                                            ],
+                                                            'stmts' => [
+                                                                new Node\Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
+                                                                    new Scalar\String_($description),
+                                                                ])),
+                                                                new Node\Stmt\Expression(new Expr\Assign(
+                                                                    new Expr\PropertyFetch(
+                                                                        new Expr\Variable('this'),
+                                                                        $propertyName
+                                                                    ), new Expr\Variable($realPropertyName)
+                                                                )),
+                                                                new Node\Stmt\Expression(new Expr\Assign(
+                                                                    new Expr\PropertyFetch(
+                                                                        new Expr\Variable('this'),
+                                                                        'response'
+                                                                    ), new Expr\Variable('response')
+                                                                )),
+                                                            ],
+                                                        ]),
                             new Stmt\ClassMethod($methodName, [
                                 'type' => Stmt\Class_::MODIFIER_PUBLIC,
                                 'stmts' => [
-                                    new Stmt\Return_(
-                                        new Expr\PropertyFetch(
-                                            new Expr\Variable('this'),
-                                            $propertyName
-                                        )
-                                    ),
+                                                                new Stmt\Return_(
+                                                                    new Expr\PropertyFetch(
+                                                                        new Expr\Variable('this'),
+                                                                        $propertyName
+                                                                    )
+                                                                ),
                                 ],
                                 'returnType' => ($isArray ? null : new Name('\\' . $classFqdn)),
                             ]),
                             new Stmt\ClassMethod('getResponse', [
                                 'type' => Stmt\Class_::MODIFIER_PUBLIC,
                                 'stmts' => [
-                                    new Stmt\Return_(
-                                        new Expr\PropertyFetch(
-                                            new Expr\Variable('this'),
-                                            'response'
-                                        )
-                                    ),
+                                                                new Stmt\Return_(
+                                                                    new Expr\PropertyFetch(
+                                                                        new Expr\Variable('this'),
+                                                                        'response'
+                                                                    )
+                                                                ),
                                 ],
                                 'returnType' => new Name('\\Psr\\Http\\Message\\ResponseInterface'),
                             ]),

@@ -10,7 +10,7 @@ use PhpParser\Parser;
 
 class RuntimeGenerator implements GeneratorInterface
 {
-    const FILE_TYPE_RUNTIME = 'runtime';
+    public const FILE_TYPE_RUNTIME = 'runtime';
 
     private $naming;
     private $parser;

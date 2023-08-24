@@ -33,8 +33,8 @@ class SchemaGuesser extends ObjectGuesser
     {
         $classGuess = new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions);
 
-        if (\is_string($object->getDiscriminator()) &&
-            \is_array($object->getEnum()) && \count($object->getEnum()) > 0) {
+        if (\is_string($object->getDiscriminator())
+            && \is_array($object->getEnum()) && \count($object->getEnum()) > 0) {
             $classGuess = new ParentClass($classGuess, $object->getDiscriminator());
 
             foreach ($object->getEnum() as $subClassName) {

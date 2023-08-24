@@ -13,7 +13,7 @@ final class ChainTransformerFactory implements TransformerFactoryInterface
     private $factories = [];
 
     /** @var TransformerFactoryInterface[]|null */
-    private $sorted = null;
+    private $sorted;
 
     /**
      * Biggest priority is MultipleTransformerFactory with 128, so default priority will be bigger in order to

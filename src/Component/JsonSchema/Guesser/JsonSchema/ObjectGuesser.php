@@ -32,7 +32,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
     protected $naming;
 
     /** @var ValidatorInterface */
-    protected $chainValidator = null;
+    protected $chainValidator;
 
     public function __construct(Naming $naming, SerializerInterface $serializer)
     {

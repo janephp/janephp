@@ -1100,6 +1100,7 @@ class AutoMapperTest extends AutoMapperBaseTest
 
     /**
      * @requires PHP 8.1
+     *
      * @dataProvider provideReadonly
      */
     public function testReadonly(string $addressWithReadonlyClass): void

@@ -3,8 +3,6 @@
 namespace Jane\Component\JsonSchema\Generator;
 
 use Jane\Component\JsonSchema\Tools\InflectorTrait;
-use function strtolower;
-use function substr;
 
 /**
  * Helper to generate name for property / class / ....
@@ -13,7 +11,7 @@ class Naming
 {
     use InflectorTrait;
 
-    const BAD_CLASS_NAME_REGEX = '/^
+    public const BAD_CLASS_NAME_REGEX = '/^
         ([0-9])|
         \b(
             (a(bstract|nd|rray|s))|

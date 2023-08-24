@@ -2,8 +2,6 @@
 
 namespace Jane\Component\AutoMapper\Tests\Fixtures;
 
-use Symfony\Component\Serializer\Annotation\Groups;
-
 class UserPartialConstructor
 {
     /**

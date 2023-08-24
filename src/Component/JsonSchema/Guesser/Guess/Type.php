@@ -9,14 +9,14 @@ use PhpParser\Node\Name;
 
 class Type
 {
-    const TYPE_BOOLEAN = 'bool';
-    const TYPE_INTEGER = 'int';
-    const TYPE_FLOAT = 'float';
-    const TYPE_STRING = 'string';
-    const TYPE_NULL = 'null';
-    const TYPE_MIXED = 'mixed';
-    const TYPE_ARRAY = 'array';
-    const TYPE_OBJECT = 'object';
+    public const TYPE_BOOLEAN = 'bool';
+    public const TYPE_INTEGER = 'int';
+    public const TYPE_FLOAT = 'float';
+    public const TYPE_STRING = 'string';
+    public const TYPE_NULL = 'null';
+    public const TYPE_MIXED = 'mixed';
+    public const TYPE_ARRAY = 'array';
+    public const TYPE_OBJECT = 'object';
 
     protected $phpMapping = [
         self::TYPE_BOOLEAN => 'bool',
