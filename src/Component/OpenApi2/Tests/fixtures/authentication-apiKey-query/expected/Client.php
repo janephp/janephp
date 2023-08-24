@@ -18,7 +18,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = array();
-            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('https://www.foo-host.com/base-path');
+            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('https://www.foo-host.com/base-path');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             if (count($additionalPlugins) > 0) {

@@ -36,7 +36,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins = array();
-            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('http://127.0.0.1/');
+            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('http://127.0.0.1/');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             if (count($additionalPlugins) > 0) {
