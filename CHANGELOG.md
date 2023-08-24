@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - [Jane] [GH#748](https://github.com/janephp/janephp/pull/748) Move PHP CS Fixer to a separate composer.json file
 - [JsonSchema] [GH#747](https://github.com/janephp/janephp/pull/747) Allow league/uri v7
+- [OpenApiCommon] [GH#750](https://github.com/janephp/janephp/pull/750) Replace 'findUrlFactory' with 'findUriFactory'
 
 ## [7.5.3] - 2023-08-04
 ### Changed
