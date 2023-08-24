@@ -16,7 +16,7 @@
         "php": "^7.2 || ^8.0",
         "ext-json": "*",
         "doctrine/inflector": "^1.4 || ^2.0",
-        "league/uri": "^6.0",
+        "league/uri": "^6.0 || ^7.0",
         "nikic/php-parser": "^4.0",
         "php-http/client-common": "^2.0",
         "php-http/message-factory": "^1.0.2",
