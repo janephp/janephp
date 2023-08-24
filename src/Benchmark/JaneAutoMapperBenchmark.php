@@ -19,8 +19,11 @@ use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
 
 /**
  * @BeforeMethods({"initAutomapper"})
+ *
  * @Warmup(1)
+ *
  * @Revs(60)
+ *
  * @Iterations(60)
  */
 class JaneAutoMapperBenchmark

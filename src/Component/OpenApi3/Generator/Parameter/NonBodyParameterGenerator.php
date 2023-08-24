@@ -179,9 +179,9 @@ class NonBodyParameterGenerator extends ParameterGenerator
             $type = 'string';
         }
 
-        if ($additionalProperties instanceof Schema &&
-            'object' === $type &&
-            'string' === $additionalProperties->getType()) {
+        if ($additionalProperties instanceof Schema
+            && 'object' === $type
+            && 'string' === $additionalProperties->getType()) {
             return ['string'];
         }
 

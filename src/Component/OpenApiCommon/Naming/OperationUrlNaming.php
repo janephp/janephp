@@ -11,13 +11,12 @@ use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 
 class OperationUrlNaming implements OperationNamingInterface
 {
-    const FORBIDDEN_EXTENSIONS = [
+    use InflectorTrait;
+    public const FORBIDDEN_EXTENSIONS = [
         '.json',
         '.php',
         '.asp',
     ];
-
-    use InflectorTrait;
 
     protected function getUniqueName(OperationGuess $operation): string
     {

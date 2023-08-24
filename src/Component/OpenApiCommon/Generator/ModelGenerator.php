@@ -26,8 +26,8 @@ class ModelGenerator extends BaseModelGenerator
     protected function doCreateModel(BaseClassGuess $class, array $properties, array $methods): Stmt\Class_
     {
         $extends = null;
-        if ($class instanceof ClassGuess &&
-            $class->getParentClass() instanceof ParentClass) {
+        if ($class instanceof ClassGuess
+            && $class->getParentClass() instanceof ParentClass) {
             $extends = $this->getNaming()->getClassName($class->getParentClass()->getName());
         }
 

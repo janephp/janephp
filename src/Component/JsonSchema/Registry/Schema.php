@@ -178,14 +178,14 @@ class Schema implements SchemaInterface
         foreach ($classGuess->getProperties() as $property) {
             // second condition is here to avoid mapping PHP classes such as \DateTime
             /** @var ObjectType $objectType */
-            if (($objectType = $property->getType()) instanceof ObjectType &&
-                '\\' !== substr($objectType->getClassName(), 0, 1)) {
+            if (($objectType = $property->getType()) instanceof ObjectType
+                && '\\' !== substr($objectType->getClassName(), 0, 1)) {
                 $this->addRelation($baseModel, $objectType->getClassName());
             }
 
-            if (($arrayType = $property->getType()) instanceof ArrayType &&
-                ($itemType = $arrayType->getItemType()) instanceof ObjectType &&
-                '\\' !== substr($itemType->getClassName(), 0, 1)) {
+            if (($arrayType = $property->getType()) instanceof ArrayType
+                && ($itemType = $arrayType->getItemType()) instanceof ObjectType
+                && '\\' !== substr($itemType->getClassName(), 0, 1)) {
                 $this->addRelation($baseModel, $itemType->getClassName());
             }
         }

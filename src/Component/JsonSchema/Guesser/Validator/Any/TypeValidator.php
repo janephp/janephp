@@ -21,7 +21,7 @@ class TypeValidator implements ValidatorInterface
 
     public function supports($object): bool
     {
-        return $this->checkObject($object) && $object->getType() !== null && (\is_string($object->getType()) || (\is_array($object->getType() && null !== $object->getType()[0])));
+        return $this->checkObject($object) && $object->getType() !== null && (\is_string($object->getType()) || \is_array($object->getType() && null !== $object->getType()[0]));
     }
 
     /**

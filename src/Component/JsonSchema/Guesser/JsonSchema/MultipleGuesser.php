@@ -13,9 +13,8 @@ use Jane\Component\JsonSchema\Registry\Registry;
 
 class MultipleGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface
 {
-    protected $bannedTypes = [];
-
     use ChainGuesserAwareTrait;
+    protected $bannedTypes = [];
 
     /**
      * {@inheritdoc}

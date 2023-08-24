@@ -100,6 +100,7 @@ class DateTimeType extends ObjectType
             );
             // new \DateTimeZone('GMT')
             $gmtTimezone = new Expr\New_(new Name('\DateTimeZone'), [new Scalar\String_('GMT')]);
+
             // (new \DateTime($data))->getTimezone()->getName() === 'Z' ? (new \DateTime($data))->setTimezone(new \DateTimeZone('GMT')) : \DateTime($data)
             return new Expr\Ternary(
                 new Expr\BinaryOp\Equal($timezoneName, new Scalar\String_('Z')),

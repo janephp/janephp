@@ -7,7 +7,7 @@ class VatEntity
     /**
      * @var int|null
      */
-    private $id = null;
+    private $id;
 
     /**
      * @var string

@@ -110,14 +110,10 @@ class Reference
     {
         return
             $this->mergedUri->getScheme() === $this->originUri->getScheme()
-            &&
-            $this->mergedUri->getHost() === $this->originUri->getHost()
-            &&
-            $this->mergedUri->getPort() === $this->originUri->getPort()
-            &&
-            $this->mergedUri->getPath() === $this->originUri->getPath()
-            &&
-            $this->mergedUri->getQuery() === $this->originUri->getQuery()
+            && $this->mergedUri->getHost() === $this->originUri->getHost()
+            && $this->mergedUri->getPort() === $this->originUri->getPort()
+            && $this->mergedUri->getPath() === $this->originUri->getPath()
+            && $this->mergedUri->getQuery() === $this->originUri->getQuery()
         ;
     }
 

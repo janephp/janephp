@@ -1,5 +1,5 @@
 .idea
-.php_cs.cache
+.php-cs-fixer.cache
 .phpunit.result.cache
 vendor
 composer.lock
@@ -18,3 +18,6 @@ cache/*
 !cache/.gitkeep
 src/Component/AutoMapper/Tests/cache/*
 !src/Component/AutoMapper/Tests/cache/.gitkeep
+
+tools/*/composer.lock
+tools/*/vendor

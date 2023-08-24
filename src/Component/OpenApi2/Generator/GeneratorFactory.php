@@ -2,7 +2,6 @@
 
 namespace Jane\Component\OpenApi2\Generator;
 
-use InvalidArgumentException;
 use Jane\Component\JsonSchema\Generator\GeneratorInterface;
 use Jane\Component\OpenApi2\Generator\Parameter\BodyParameterGenerator;
 use Jane\Component\OpenApi2\Generator\Parameter\NonBodyParameterGenerator;
@@ -30,7 +29,7 @@ class GeneratorFactory
         ]);
 
         if (!class_exists($endpointGeneratorClass)) {
-            throw new InvalidArgumentException(sprintf('Unknown generator class %s', $endpointGeneratorClass));
+            throw new \InvalidArgumentException(sprintf('Unknown generator class %s', $endpointGeneratorClass));
         }
 
         $endpointGenerator = new $endpointGeneratorClass($operationNaming, $bodyParameter, $nonBodyParameter, $serializer, $exceptionGenerator);

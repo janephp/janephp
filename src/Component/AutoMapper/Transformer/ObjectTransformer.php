@@ -36,14 +36,14 @@ final class ObjectTransformer implements TransformerInterface, DependentTransfor
         $mapperName = $this->getDependencyName();
 
         return [new Expr\MethodCall(new Expr\ArrayDimFetch(
-                new Expr\PropertyFetch(new Expr\Variable('this'), 'mappers'),
+            new Expr\PropertyFetch(new Expr\Variable('this'), 'mappers'),
             new Scalar\String_($mapperName)
-            ), 'map', [
-                new Arg($input),
-                new Arg(new Expr\StaticCall(new Name\FullyQualified(MapperContext::class), 'withNewContext', [
-                    new Arg(new Expr\Variable('context')),
-                    new Arg(new Scalar\String_($propertyMapping->getProperty())),
-                ])),
+        ), 'map', [
+            new Arg($input),
+            new Arg(new Expr\StaticCall(new Name\FullyQualified(MapperContext::class), 'withNewContext', [
+                new Arg(new Expr\Variable('context')),
+                new Arg(new Scalar\String_($propertyMapping->getProperty())),
+            ])),
         ]), []];
     }
 
