@@ -52,9 +52,6 @@ class ParentClass extends ClassGuess
         return array_keys($this->childEntries);
     }
 
-    /**
-     * @return string
-     */
     public function getChildEntryClassNameByKey(string $key): ?string
     {
         if (!\array_key_exists($key, $this->childEntries)) {

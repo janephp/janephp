@@ -87,8 +87,8 @@ final class ReadAccessor
                                 )
                             )
                         );
-                    } else {
-                        throw new \InvalidArgumentException("Accessors method \"{$this->sourceClass}\"::\"{$this->name}()\" should not have parameters or they must have #[MapToContext] attribute.");
+                    } elseif (!$parameter->isDefaultValueAvailable()) {
+                        throw new \InvalidArgumentException("Accessors method \"{$this->sourceClass}\"::\"{$this->name}()\" parameters must have either a default value or the #[MapToContext] attribute.");
                     }
                 }
             }

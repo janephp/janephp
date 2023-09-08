@@ -21,9 +21,6 @@ class Property
      */
     private $reference;
 
-    /**
-     * @var mixed
-     */
     private $object;
 
     /**
@@ -41,9 +38,6 @@ class Property
      */
     private $description;
 
-    /**
-     * @var mixed
-     */
     private $default;
 
     /**

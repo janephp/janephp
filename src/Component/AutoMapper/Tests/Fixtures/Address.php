@@ -9,9 +9,6 @@ class Address
      */
     private $city;
 
-    /**
-     * @param string $city
-     */
     public function setCity(?string $city): void
     {
         $this->city = $city;
