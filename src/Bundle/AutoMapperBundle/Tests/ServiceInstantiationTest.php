@@ -3,12 +3,15 @@
 namespace Jane\Bundle\AutoMapperBundle\Tests;
 
 use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\AddressDTO;
+use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\ClassWithPrivateProperty;
 use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\DTOWithEnum;
 use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\Order;
 use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\SomeEnum;
 use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\User;
 use Jane\Bundle\AutoMapperBundle\Tests\Fixtures\UserDTO;
 use Jane\Component\AutoMapper\AutoMapperInterface;
+use Jane\Component\AutoMapper\MapperContext;
+use Jane\Component\AutoMapper\Tests\Fixtures\ClassWithMapToContextAttribute;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Filesystem\Filesystem;
 
@@ -36,9 +39,18 @@ class ServiceInstantiationTest extends WebTestCase
         self::assertFileExists(__DIR__ . '/Resources/var/cache/test/automapper/Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_User_array.php');
         self::assertFileExists(__DIR__ . '/Resources/var/cache/test/automapper/Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_AddressDTO_array.php');
 
-        self::assertInstanceOf(\Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_NestedObject_array::class, new \Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_NestedObject_array());
-        self::assertInstanceOf(\Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_User_array::class, new \Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_User_array());
-        self::assertInstanceOf(\Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_AddressDTO_array::class, new \Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_AddressDTO_array());
+        self::assertInstanceOf(
+            \Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_NestedObject_array::class,
+            new \Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_NestedObject_array()
+        );
+        self::assertInstanceOf(
+            \Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_User_array::class,
+            new \Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_User_array()
+        );
+        self::assertInstanceOf(
+            \Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_AddressDTO_array::class,
+            new \Symfony_Mapper_Jane_Bundle_AutoMapperBundle_Tests_Fixtures_AddressDTO_array()
+        );
     }
 
     public function testAutoMapper()
@@ -118,5 +130,46 @@ class ServiceInstantiationTest extends WebTestCase
         $dto = new DTOWithEnum();
         $dto->enum = SomeEnum::FOO;
         self::assertSame(['enum' => 'foo'], $autoMapper->map($dto, 'array'));
+    }
+
+    /**
+     * @requires PHP 8.0
+     * This test validates that PropertyInfoPass is correctly applied.
+     */
+    public function testMapClassWithPrivateProperty(): void
+    {
+        static::bootKernel();
+        $container = static::$kernel->getContainer();
+        $autoMapper = $container->get(AutoMapperInterface::class);
+
+        self::assertEquals(
+            new ClassWithPrivateProperty('bar'),
+            $autoMapper->map(['foo' => 'bar'], ClassWithPrivateProperty::class)
+        );
+    }
+
+    /**
+     * @requires PHP 8.0
+     * We need to test that the mapToContext attribute is correctly used,
+     * because this behavior is dependent of the dependency injection.
+     */
+    public function testMapToContextAttribute(): void
+    {
+        static::bootKernel();
+        $container = static::$kernel->getContainer();
+        $autoMapper = $container->get(AutoMapperInterface::class);
+
+        self::assertSame(
+            [
+                'value' => 'foo_bar_baz',
+                'virtualProperty' => 'foo_bar_baz',
+                'propertyWithDefaultValue' => 'foo',
+            ],
+            $autoMapper->map(
+                new ClassWithMapToContextAttribute('bar'),
+                'array',
+                [MapperContext::MAP_TO_ACCESSOR_PARAMETER => ['suffix' => 'baz', 'prefix' => 'foo']]
+            )
+        );
     }
 }

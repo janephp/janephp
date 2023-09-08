@@ -28,8 +28,13 @@ abstract class MappingExtractor implements MappingExtractorInterface
 
     protected $classMetadataFactory;
 
-    public function __construct(PropertyInfoExtractorInterface $propertyInfoExtractor, PropertyReadInfoExtractorInterface $readInfoExtractor, PropertyWriteInfoExtractorInterface $writeInfoExtractor, TransformerFactoryInterface $transformerFactory, ClassMetadataFactoryInterface $classMetadataFactory = null)
-    {
+    public function __construct(
+        PropertyInfoExtractorInterface $propertyInfoExtractor,
+        PropertyReadInfoExtractorInterface $readInfoExtractor,
+        PropertyWriteInfoExtractorInterface $writeInfoExtractor,
+        TransformerFactoryInterface $transformerFactory,
+        ClassMetadataFactoryInterface $classMetadataFactory = null
+    ) {
         $this->propertyInfoExtractor = $propertyInfoExtractor;
         $this->readInfoExtractor = $readInfoExtractor;
         $this->writeInfoExtractor = $writeInfoExtractor;

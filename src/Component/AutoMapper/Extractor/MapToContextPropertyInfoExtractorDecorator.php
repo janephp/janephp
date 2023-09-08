@@ -5,24 +5,30 @@ declare(strict_types=1);
 namespace Jane\Component\AutoMapper\Extractor;
 
 use Jane\Component\AutoMapper\Attribute\MapToContext;
+use Symfony\Component\PropertyInfo\Extractor\ConstructorArgumentTypeExtractorInterface;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\PropertyAccessExtractorInterface;
+use Symfony\Component\PropertyInfo\PropertyInitializableExtractorInterface;
+use Symfony\Component\PropertyInfo\PropertyListExtractorInterface;
 use Symfony\Component\PropertyInfo\PropertyReadInfo;
 use Symfony\Component\PropertyInfo\PropertyReadInfoExtractorInterface;
+use Symfony\Component\PropertyInfo\PropertyTypeExtractorInterface;
+use Symfony\Component\PropertyInfo\PropertyWriteInfo;
+use Symfony\Component\PropertyInfo\PropertyWriteInfoExtractorInterface;
 
-final class MapToContextPropertyInfoExtractorDecorator implements PropertyAccessExtractorInterface, PropertyReadInfoExtractorInterface
+final class MapToContextPropertyInfoExtractorDecorator implements PropertyListExtractorInterface, PropertyTypeExtractorInterface, PropertyAccessExtractorInterface, PropertyInitializableExtractorInterface, PropertyReadInfoExtractorInterface, PropertyWriteInfoExtractorInterface, ConstructorArgumentTypeExtractorInterface
 {
-    /** @var PropertyReadInfoExtractorInterface&PropertyAccessExtractorInterface */
-    private $propertyReadInfoExtractor;
+    /** @var ReflectionExtractor */
+    private $decorated;
 
     public function __construct($propertyReadInfoExtractor)
     {
-        $this->propertyReadInfoExtractor = $propertyReadInfoExtractor;
+        $this->decorated = $propertyReadInfoExtractor;
     }
 
     public function getReadInfo(string $class, string $property, array $context = []): ?PropertyReadInfo
     {
-        $readInfo = $this->propertyReadInfoExtractor->getReadInfo($class, $property, $context);
+        $readInfo = $this->decorated->getReadInfo($class, $property, $context);
 
         if (null === $readInfo || $readInfo->getType() === PropertyReadInfo::TYPE_PROPERTY && PropertyReadInfo::VISIBILITY_PUBLIC !== $readInfo->getVisibility()) {
             $reflClass = new \ReflectionClass($class);
@@ -59,7 +65,7 @@ final class MapToContextPropertyInfoExtractorDecorator implements PropertyAccess
 
     public function isWritable(string $class, string $property, array $context = [])
     {
-        return $this->propertyReadInfoExtractor->isWritable($class, $property, $context);
+        return $this->decorated->isWritable($class, $property, $context);
     }
 
     private function camelize(string $string): string
@@ -93,5 +99,30 @@ final class MapToContextPropertyInfoExtractorDecorator implements PropertyAccess
         }
 
         return false;
+    }
+
+    public function getTypesFromConstructor(string $class, string $property): ?array
+    {
+        return $this->decorated->getTypesFromConstructor($class, $property);
+    }
+
+    public function isInitializable(string $class, string $property, array $context = []): ?bool
+    {
+        return $this->decorated->isInitializable($class, $property, $context);
+    }
+
+    public function getProperties(string $class, array $context = [])
+    {
+        return $this->decorated->getProperties($class, $context);
+    }
+
+    public function getTypes(string $class, string $property, array $context = [])
+    {
+        return $this->decorated->getTypes($class, $property, $context);
+    }
+
+    public function getWriteInfo(string $class, string $property, array $context = []): ?PropertyWriteInfo
+    {
+        return $this->decorated->getWriteInfo($class, $property, $context);
     }
 }
