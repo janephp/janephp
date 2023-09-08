@@ -181,6 +181,7 @@ class AutoMapper implements AutoMapperInterface, AutoMapperRegistryInterface, Ma
      * Create an automapper.
      */
     public static function create(
+        /* @deprecated */
         bool $private = true,
         ClassLoaderInterface $loader = null,
         AdvancedNameConverterInterface $nameConverter = null,
@@ -188,7 +189,8 @@ class AutoMapper implements AutoMapperInterface, AutoMapperRegistryInterface, Ma
         bool $attributeChecking = true,
         bool $autoRegister = true,
         string $dateTimeFormat = \DateTime::RFC3339,
-        bool $allowReadOnlyTargetToPopulate = false
+        bool $allowReadOnlyTargetToPopulate = false,
+        bool $mapPrivateProperties = true,
     ): self {
         $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
 
@@ -204,6 +206,12 @@ class AutoMapper implements AutoMapperInterface, AutoMapperRegistryInterface, Ma
 
         if ($private) {
             $flags |= ReflectionExtractor::ALLOW_PROTECTED | ReflectionExtractor::ALLOW_PRIVATE;
+        } else {
+            trigger_deprecation('jane-php/automapper', '7.6.0', 'Setting `$private` to false is deprecated. This argument will be removed in Jane 8.0.');
+
+            if ($mapPrivateProperties) {
+                throw new \LogicException('Cannot set `$private` to false and `$mapPrivateProperties` to true at the same time.');
+            }
         }
 
         $reflectionExtractor = new ReflectionExtractor(
@@ -249,14 +257,19 @@ class AutoMapper implements AutoMapperInterface, AutoMapperRegistryInterface, Ma
             $nameConverter
         );
 
-        $autoMapper = $autoRegister ? new self($loader, $transformerFactory, new MapperGeneratorMetadataFactory(
-            $sourceTargetMappingExtractor,
-            $fromSourceMappingExtractor,
-            $fromTargetMappingExtractor,
-            $classPrefix,
-            $attributeChecking,
-            $dateTimeFormat
-        )) : new self($loader, $transformerFactory);
+        $autoMapper = $autoRegister ? new self(
+            $loader,
+            $transformerFactory,
+            new MapperGeneratorMetadataFactory(
+                $sourceTargetMappingExtractor,
+                $fromSourceMappingExtractor,
+                $fromTargetMappingExtractor,
+                $classPrefix,
+                $attributeChecking,
+                $dateTimeFormat,
+                $mapPrivateProperties
+            ),
+        ) : new self($loader, $transformerFactory);
 
         $transformerFactory->addTransformerFactory(new MultipleTransformerFactory($transformerFactory));
         $transformerFactory->addTransformerFactory(new NullableTransformerFactory($transformerFactory));

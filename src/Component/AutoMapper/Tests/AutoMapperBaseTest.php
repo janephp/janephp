@@ -31,7 +31,7 @@ abstract class AutoMapperBaseTest extends TestCase
         $this->buildAutoMapper();
     }
 
-    protected function buildAutoMapper(bool $allowReadOnlyTargetToPopulate = false): AutoMapper
+    protected function buildAutoMapper(bool $allowReadOnlyTargetToPopulate = false, bool $mapPrivatePropertiesAndMethod = true): AutoMapper
     {
         $fs = new Filesystem();
         $fs->remove(__DIR__ . '/cache/');
@@ -40,9 +40,19 @@ abstract class AutoMapperBaseTest extends TestCase
         $this->loader = new FileLoader(new Generator(
             (new ParserFactory())->create(ParserFactory::PREFER_PHP7),
             new ClassDiscriminatorFromClassMetadata($classMetadataFactory),
-            $allowReadOnlyTargetToPopulate
+            $allowReadOnlyTargetToPopulate,
         ), __DIR__ . '/cache');
 
-        return $this->autoMapper = AutoMapper::create(true, $this->loader);
+        return $this->autoMapper = AutoMapper::create(
+            true,
+            $this->loader,
+            null,
+            'Mapper_',
+            true,
+            true,
+            \DateTime::RFC3339,
+            false,
+            $mapPrivatePropertiesAndMethod,
+        );
     }
 }

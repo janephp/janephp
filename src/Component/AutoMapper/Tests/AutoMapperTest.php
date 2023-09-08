@@ -15,6 +15,7 @@ use Jane\Component\AutoMapper\Tests\Fixtures\AddressDTOWithReadonlyPromotedPrope
 use Jane\Component\AutoMapper\Tests\Fixtures\AddressType;
 use Jane\Component\AutoMapper\Tests\Fixtures\AddressWithEnum;
 use Jane\Component\AutoMapper\Tests\Fixtures\ClassWithMapToContextAttribute;
+use Jane\Component\AutoMapper\Tests\Fixtures\ClassWithPrivateProperty;
 use Jane\Component\AutoMapper\Tests\Fixtures\Fish;
 use Jane\Component\AutoMapper\Tests\Fixtures\ObjectWithDateTime;
 use Jane\Component\AutoMapper\Tests\Fixtures\Order;
@@ -1185,6 +1186,34 @@ class AutoMapperTest extends AutoMapperBaseTest
                 'array',
                 [MapperContext::MAP_TO_ACCESSOR_PARAMETER => ['suffix' => 'baz', 'prefix' => 'foo']]
             )
+        );
+    }
+
+    /**
+     * @requires PHP 8.0
+     */
+    public function testMapClassWithPrivateProperty(): void
+    {
+        self::assertSame(
+            ['foo' => 'foo', 'bar' => 'bar'],
+            $this->autoMapper->map(new ClassWithPrivateProperty('foo'), 'array')
+        );
+        self::assertEquals(
+            new ClassWithPrivateProperty('foo'),
+            $this->autoMapper->map(['foo' => 'foo'], ClassWithPrivateProperty::class)
+        );
+    }
+
+    /**
+     * @requires PHP 8.0
+     */
+    public function testItCanDisablePrivatePropertiesMapping(): void
+    {
+        $autoMapper = $this->buildAutoMapper(false, false);
+
+        self::assertSame(
+            [],
+            $autoMapper->map(new ClassWithPrivateProperty('foo'), 'array')
         );
     }
 }

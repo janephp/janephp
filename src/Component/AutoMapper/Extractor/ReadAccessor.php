@@ -142,4 +142,9 @@ final class ReadAccessor
             new Arg(new Scalar\String_(new Name\FullyQualified($className))),
         ]);
     }
+
+    public function getType(): int
+    {
+        return $this->type;
+    }
 }

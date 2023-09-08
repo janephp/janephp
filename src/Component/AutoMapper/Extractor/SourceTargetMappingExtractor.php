@@ -78,7 +78,8 @@ class SourceTargetMappingExtractor extends MappingExtractor
                     $this->getGroups($mapperMetadata->getTarget(), $property),
                     $maxDepth,
                     $this->isIgnoredProperty($mapperMetadata->getSource(), $property),
-                    $this->isIgnoredProperty($mapperMetadata->getTarget(), $property)
+                    $this->isIgnoredProperty($mapperMetadata->getTarget(), $property),
+                    $this->readInfoExtractor->getReadInfo($mapperMetadata->getSource(), $property)
                 );
             }
         }
