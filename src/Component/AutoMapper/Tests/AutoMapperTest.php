@@ -1178,6 +1178,7 @@ class AutoMapperTest extends AutoMapperBaseTest
             [
                 'value' => 'foo_bar_baz',
                 'virtualProperty' => 'foo_bar_baz',
+                'propertyWithDefaultValue' => 'foo',
             ],
             $this->autoMapper->map(
                 new ClassWithMapToContextAttribute('bar'),

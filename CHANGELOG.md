@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [JsonSchema] [GH#747](https://github.com/janephp/janephp/pull/747) Allow league/uri v7
 - [OpenApiCommon] [GH#750](https://github.com/janephp/janephp/pull/750) Replace 'findUrlFactory' with 'findUriFactory'
 
+### Fixed
+- [AutoMapper] [GH#753](https://github.com/janephp/janephp/pull/753) Fix: AutoMapper should accept getters with default properties
+
 ## [7.5.3] - 2023-08-04
 ### Changed
 - [JsonSchema] [GH#436](https://github.com/janephp/janephp/pull/436) Better PHPDoc for generated Map type properties

@@ -128,8 +128,6 @@ class MapperContext
      * Handle circular reference for a specific reference.
      *
      * By default will try to keep it and return the previous value
-     *
-     * @return mixed
      */
     public static function &handleCircularReference(array &$context, string $reference, $object, ?int $circularReferenceLimit = null, callable $callback = null)
     {

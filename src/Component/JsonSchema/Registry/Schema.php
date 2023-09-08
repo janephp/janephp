@@ -134,17 +134,11 @@ class Schema implements SchemaInterface
         return \in_array($reference, $this->references, true);
     }
 
-    /**
-     * @return mixed
-     */
     public function getParsed()
     {
         return $this->parsed;
     }
 
-    /**
-     * @param mixed $parsed
-     */
     public function setParsed($parsed): void
     {
         $this->parsed = $parsed;

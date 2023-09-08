@@ -24,4 +24,10 @@ class ClassWithMapToContextAttribute
     ): string {
         return "{$prefix}_{$this->value}_{$suffix}";
     }
+
+    public function getPropertyWithDefaultValue(
+        string $someVar = 'foo',
+    ): string {
+        return $someVar;
+    }
 }

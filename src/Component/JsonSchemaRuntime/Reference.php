@@ -47,8 +47,6 @@ class Reference
     /**
      * Resolve a JSON Reference.
      *
-     * @param callable $deserializeCallback
-     *
      * @return mixed Return the json value (deserialized) referenced
      */
     public function resolve(callable $deserializeCallback = null)
