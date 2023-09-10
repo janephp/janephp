@@ -42,6 +42,7 @@
             <argument>Symfony_Mapper_</argument>
             <argument>true</argument>
             <argument></argument> <!-- Date time format -->
+            <argument></argument> <!-- bool: map private properties -->
         </service>
         <service id="Jane\Component\AutoMapper\MapperGeneratorMetadataFactoryInterface" alias="Jane\Component\AutoMapper\MapperGeneratorMetadataFactory" />
 

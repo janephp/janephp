@@ -161,7 +161,7 @@ final class Generator
 
             $transformer = $propertyMapping->getTransformer();
 
-            $fieldValueVariable = new Expr\Variable($a = $uniqueVariableScope->getUniqueName('fieldValue'));
+            $fieldValueVariable = new Expr\Variable($uniqueVariableScope->getUniqueName('fieldValue'));
             $sourcePropertyAccessor = new Expr\Assign($fieldValueVariable, $propertyMapping->getReadAccessor()->getExpression($sourceInput, $propertyMapping->getProperty()));
 
             [$output, $propStatements] = $transformer->transform($fieldValueVariable, $result, $propertyMapping, $uniqueVariableScope);

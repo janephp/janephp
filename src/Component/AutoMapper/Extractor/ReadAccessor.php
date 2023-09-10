@@ -88,9 +88,7 @@ final class ReadAccessor
                             )
                         );
                     } elseif (!$parameter->isDefaultValueAvailable()) {
-                        throw new \InvalidArgumentException(
-                            "Accessors method \"{$this->sourceClass}\"::\"{$this->name}()\" parameters must have either a default value or the #[MapToContext] attribute."
-                        );
+                        throw new \InvalidArgumentException("Accessors method \"{$this->sourceClass}\"::\"{$this->name}()\" parameters must have either a default value or the #[MapToContext] attribute.");
                     }
                 }
             }
@@ -136,7 +134,7 @@ final class ReadAccessor
      */
     public function getExtractCallback($className): ?Expr
     {
-        if (!in_array($this->type, [self::TYPE_PROPERTY, self::TYPE_METHOD]) || !$this->private) {
+        if (!\in_array($this->type, [self::TYPE_PROPERTY, self::TYPE_METHOD]) || !$this->private) {
             return null;
         }
 
@@ -158,10 +156,5 @@ final class ReadAccessor
             new Arg(new Expr\ConstFetch(new Name('null'))),
             new Arg(new Scalar\String_(new Name\FullyQualified($className))),
         ]);
-    }
-
-    public function getType(): int
-    {
-        return $this->type;
     }
 }

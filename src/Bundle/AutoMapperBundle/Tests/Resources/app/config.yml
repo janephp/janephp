@@ -6,6 +6,7 @@ framework:
 jane_auto_mapper:
     normalizer: true
     name_converter: DummyApp\IdNameConverter
+    map_private_properties: true
     warmup:
       - {source: 'Jane\Bundle\AutoMapperBundle\Tests\Fixtures\NestedObject', target: 'array'}
 

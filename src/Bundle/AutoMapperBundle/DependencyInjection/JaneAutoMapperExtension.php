@@ -45,7 +45,10 @@ class JaneAutoMapperExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
 
-        $container->getDefinition(MapperGeneratorMetadataFactory::class)->replaceArgument(5, $config['date_time_format']);
+        $container->getDefinition(MapperGeneratorMetadataFactory::class)
+            ->replaceArgument(5, $config['date_time_format'])
+            ->replaceArgument(6, $config['map_private_properties'])
+        ;
         $container->getDefinition(FileLoader::class)->replaceArgument(2, $config['hot_reload']);
         $container->registerForAutoconfiguration(TransformerFactoryInterface::class)->addTag('jane_auto_mapper.transformer_factory');
 

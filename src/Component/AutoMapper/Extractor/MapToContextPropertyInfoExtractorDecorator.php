@@ -30,6 +30,10 @@ final class MapToContextPropertyInfoExtractorDecorator implements PropertyListEx
     {
         $readInfo = $this->decorated->getReadInfo($class, $property, $context);
 
+        if ($class === 'array') {
+            return $readInfo;
+        }
+
         if (null === $readInfo || $readInfo->getType() === PropertyReadInfo::TYPE_PROPERTY && PropertyReadInfo::VISIBILITY_PUBLIC !== $readInfo->getVisibility()) {
             $reflClass = new \ReflectionClass($class);
             $camelProp = $this->camelize($property);
