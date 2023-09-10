@@ -3,6 +3,7 @@
 namespace Jane\Component\AutoMapper\Extractor;
 
 use Jane\Component\AutoMapper\MapperMetadataInterface;
+use Symfony\Component\PropertyInfo\PropertyReadInfo;
 
 /**
  * Extracts mapping between two objects, only gives properties that have the same name.
@@ -79,7 +80,7 @@ class SourceTargetMappingExtractor extends MappingExtractor
                     $maxDepth,
                     $this->isIgnoredProperty($mapperMetadata->getSource(), $property),
                     $this->isIgnoredProperty($mapperMetadata->getTarget(), $property),
-                    $this->readInfoExtractor->getReadInfo($mapperMetadata->getSource(), $property)
+                    PropertyReadInfo::VISIBILITY_PUBLIC === $this->readInfoExtractor->getReadInfo($mapperMetadata->getSource(), $property)?->getVisibility() ?? true,
                 );
             }
         }

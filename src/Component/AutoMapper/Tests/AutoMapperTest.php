@@ -16,6 +16,7 @@ use Jane\Component\AutoMapper\Tests\Fixtures\AddressType;
 use Jane\Component\AutoMapper\Tests\Fixtures\AddressWithEnum;
 use Jane\Component\AutoMapper\Tests\Fixtures\ClassWithMapToContextAttribute;
 use Jane\Component\AutoMapper\Tests\Fixtures\ClassWithPrivateProperty;
+use Jane\Component\AutoMapper\Tests\Fixtures\ClassWithPrivateProperty2;
 use Jane\Component\AutoMapper\Tests\Fixtures\Fish;
 use Jane\Component\AutoMapper\Tests\Fixtures\ObjectWithDateTime;
 use Jane\Component\AutoMapper\Tests\Fixtures\Order;
@@ -163,7 +164,7 @@ class AutoMapperTest extends AutoMapperBaseTest
 
     public function testNotReadable(): void
     {
-        $autoMapper = AutoMapper::create(false, $this->loader, null, 'NotReadable_');
+        $autoMapper = AutoMapper::create(false, $this->loader, null, 'NotReadable_', mapPrivateProperties: false);
         $address = new Fixtures\Address();
         $address->setCity('test');
 
@@ -186,7 +187,7 @@ class AutoMapperTest extends AutoMapperBaseTest
 
     public function testNoTypes(): void
     {
-        $autoMapper = AutoMapper::create(false, $this->loader, null, 'NotReadable_');
+        $autoMapper = AutoMapper::create(false, $this->loader, null, 'NotReadable_', mapPrivateProperties: false);
         $address = new Fixtures\AddressNoTypes();
         $address->city = 'test';
 
@@ -360,7 +361,7 @@ class AutoMapperTest extends AutoMapperBaseTest
 
     public function testConstructor(): void
     {
-        $autoMapper = AutoMapper::create(false, $this->loader);
+        $autoMapper = AutoMapper::create(false, $this->loader, mapPrivateProperties: false);
 
         $user = new Fixtures\UserDTO();
         $user->id = 10;
@@ -741,7 +742,7 @@ class AutoMapperTest extends AutoMapperBaseTest
     {
         self::expectException(NoMappingFoundException::class);
 
-        $automapper = AutoMapper::create(false, null, null, 'Mapper_', true, false);
+        $automapper = AutoMapper::create(false, null, null, 'Mapper_', true, false, mapPrivateProperties: false);
         $automapper->getMapper(Fixtures\User::class, Fixtures\UserDTO::class);
     }
 
@@ -1206,6 +1207,8 @@ class AutoMapperTest extends AutoMapperBaseTest
 
     /**
      * @requires PHP 8.0
+     * Generated mapper will be different from what "testMapClassWithPrivateProperty" generates,
+     * hence the duplicated class, to avoid any conflict with autloading.
      */
     public function testItCanDisablePrivatePropertiesMapping(): void
     {
@@ -1213,7 +1216,7 @@ class AutoMapperTest extends AutoMapperBaseTest
 
         self::assertSame(
             [],
-            $autoMapper->map(new ClassWithPrivateProperty('foo'), 'array')
+            $autoMapper->map(new ClassWithPrivateProperty2('foo'), 'array')
         );
     }
 }

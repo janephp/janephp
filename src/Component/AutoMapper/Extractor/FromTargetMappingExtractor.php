@@ -6,6 +6,7 @@ use Jane\Component\AutoMapper\Exception\InvalidMappingException;
 use Jane\Component\AutoMapper\MapperMetadataInterface;
 use Jane\Component\AutoMapper\Transformer\TransformerFactoryInterface;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractorInterface;
+use Symfony\Component\PropertyInfo\PropertyReadInfo;
 use Symfony\Component\PropertyInfo\PropertyReadInfoExtractorInterface;
 use Symfony\Component\PropertyInfo\PropertyWriteInfo;
 use Symfony\Component\PropertyInfo\PropertyWriteInfoExtractorInterface;
@@ -89,7 +90,7 @@ final class FromTargetMappingExtractor extends MappingExtractor
                 $this->getMaxDepth($mapperMetadata->getTarget(), $property),
                 $this->isIgnoredProperty($mapperMetadata->getSource(), $property),
                 $this->isIgnoredProperty($mapperMetadata->getTarget(), $property),
-                $this->readInfoExtractor->getReadInfo($mapperMetadata->getSource(), $property)
+                PropertyReadInfo::VISIBILITY_PUBLIC === $this->readInfoExtractor->getReadInfo($mapperMetadata->getSource(), $property)?->getVisibility() ?? true
             );
         }
 

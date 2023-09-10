@@ -49,7 +49,7 @@ final class ReadAccessor
      *
      * @throws CompileException
      */
-    public function getExpression(Expr\Variable $input): Expr
+    public function getExpression(Expr\Variable $input, string $fieldName): Expr
     {
         if (self::TYPE_METHOD === $this->type) {
             $methodCallArguments = [];
@@ -88,15 +88,26 @@ final class ReadAccessor
                             )
                         );
                     } elseif (!$parameter->isDefaultValueAvailable()) {
-                        throw new \InvalidArgumentException("Accessors method \"{$this->sourceClass}\"::\"{$this->name}()\" parameters must have either a default value or the #[MapToContext] attribute.");
+                        throw new \InvalidArgumentException(
+                            "Accessors method \"{$this->sourceClass}\"::\"{$this->name}()\" parameters must have either a default value or the #[MapToContext] attribute."
+                        );
                     }
                 }
+            }
+
+            if ($this->private) {
+                return new Expr\FuncCall(
+                    new Expr\ArrayDimFetch(new Expr\PropertyFetch(new Expr\Variable('this'), 'extractCallbacks'), new Scalar\String_($fieldName)),
+                    [
+                        new Arg($input),
+                    ]
+                );
             }
 
             return new Expr\MethodCall($input, $this->name, $methodCallArguments);
         }
 
-        if (self::TYPE_PROPERTY === $this->type) {
+        if ($this->type === self::TYPE_PROPERTY) {
             if ($this->private) {
                 return new Expr\FuncCall(
                     new Expr\ArrayDimFetch(new Expr\PropertyFetch(new Expr\Variable('this'), 'extractCallbacks'), new Scalar\String_($this->name)),
@@ -125,19 +136,25 @@ final class ReadAccessor
      */
     public function getExtractCallback($className): ?Expr
     {
-        if (self::TYPE_PROPERTY !== $this->type || !$this->private) {
+        if (!in_array($this->type, [self::TYPE_PROPERTY, self::TYPE_METHOD]) || !$this->private) {
             return null;
         }
 
         return new Expr\StaticCall(new Name\FullyQualified(\Closure::class), 'bind', [
-            new Arg(new Expr\Closure([
-                'params' => [
-                    new Param(new Expr\Variable('object')),
-                ],
-                'stmts' => [
-                    new Stmt\Return_(new Expr\PropertyFetch(new Expr\Variable('object'), $this->name)),
-                ],
-            ])),
+            new Arg(
+                new Expr\Closure([
+                    'params' => [
+                        new Param(new Expr\Variable('object')),
+                    ],
+                    'stmts' => [
+                        new Stmt\Return_(
+                            $this->type === self::TYPE_PROPERTY
+                                ? new Expr\PropertyFetch(new Expr\Variable('object'), $this->name)
+                                : new Expr\MethodCall(new Expr\Variable('object'), $this->name)
+                        ),
+                    ],
+                ])
+            ),
             new Arg(new Expr\ConstFetch(new Name('null'))),
             new Arg(new Scalar\String_(new Name\FullyQualified($className))),
         ]);
