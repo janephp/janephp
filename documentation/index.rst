@@ -4,9 +4,6 @@ Jane: Tools for generating PHP Code
 Jane is a set of libraries to generate Models & API Clients based on JsonSchema / OpenAPI specs
 by following high quality PHP code guidelines and respecting common & advanced PSR.
 
-Jane also includes the AutoMapper, an advanced serializer that generates classes that can serialize or deserialize to
-improve performance. You can read more about it on the :doc:`/components/AutoMapper` page.
-
 If you don't know what JSON Schema or OpenAPI are, you should consider reading :doc:`/documentation/choose` to help you
 sort what you need and how to use them.
 
@@ -66,4 +63,3 @@ Lastly, if you want to contribute there is some details about :doc:`/contributin
 
    JSON Schema <components/JsonSchema>
    OpenAPI <components/OpenAPI>
-   AutoMapper <components/AutoMapper>
