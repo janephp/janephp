@@ -36,8 +36,6 @@
         "symfony/validator": "^5.1 || ^6.0"
     },
     "replace": {
-        "jane-php/automapper": "self.version",
-        "jane-php/automapper-bundle": "self.version",
         "jane-php/json-schema": "self.version",
         "jane-php/json-schema-bundle": "self.version",
         "jane-php/json-schema-runtime": "self.version",
@@ -84,7 +82,6 @@
     },
     "autoload-dev": {
         "classmap": [
-            "src/Bundle/AutoMapperBundle/Tests/Resources/app/AppKernel.php",
             "src/Component/OpenApi2/Tests/",
             "src/Component/OpenApi3/Tests/"
         ],

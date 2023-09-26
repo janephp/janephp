@@ -16,8 +16,6 @@ tests/fixtures/*/generated
 
 cache/*
 !cache/.gitkeep
-src/Component/AutoMapper/Tests/cache/*
-!src/Component/AutoMapper/Tests/cache/.gitkeep
 
 tools/*/composer.lock
 tools/*/vendor
