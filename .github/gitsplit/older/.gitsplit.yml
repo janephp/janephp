@@ -4,9 +4,6 @@ cache_url: "cache/gitsplit/older/"
 # List of splits.
 splits:
   -
-    prefix: "src/AutoMapper"
-    target: "https://${GH_TOKEN}@github.com/janephp/automapper.git"
-  -
     prefix: "src/JsonSchema"
     target: "https://${GH_TOKEN}@github.com/janephp/json-schema.git"
   -
