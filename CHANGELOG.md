@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [7.5.4] - 2023-10-09
 ### Changed
 - [Jane] [GH#748](https://github.com/janephp/janephp/pull/748) Move PHP CS Fixer to a separate composer.json file
 - [JsonSchema] [GH#747](https://github.com/janephp/janephp/pull/747) Allow league/uri v7
@@ -710,7 +712,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.5.3...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.5.4...HEAD
+[7.5.4]: https://github.com/janephp/janephp/compare/v7.5.3...v7.5.4
 [7.5.3]: https://github.com/janephp/janephp/compare/v7.5.2...v7.5.3
 [7.5.2]: https://github.com/janephp/janephp/compare/v7.5.1...v7.5.2
 [7.5.1]: https://github.com/janephp/janephp/compare/v7.5.0...v7.5.1
