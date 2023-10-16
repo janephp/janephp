@@ -39,16 +39,17 @@ class NonBodyParameterGenerator extends ParameterGenerator
     {
         $name = $this->getInflector()->camelize($parameter->getName());
         $methodParameter = new Node\Param(new Expr\Variable($name));
+        $schema = $this->getSchema($parameter->getSchema());
 
-        if (!$parameter->getSchema()) {
+        if ($schema === null) {
             return $methodParameter;
         }
 
-        if (!$parameter->getRequired() || null !== $parameter->getSchema()->getDefault()) {
-            $methodParameter->default = $this->getDefaultAsExpr($parameter);
+        if (!$parameter->getRequired() || null !== $schema->getDefault()) {
+            $methodParameter->default = $this->getDefaultAsExpr($schema);
         }
 
-        $types = $this->convertParameterType($parameter->getSchema());
+        $types = $this->convertParameterType($schema);
 
         if (\count($types) === 1) {
             $methodParameter->type = new Node\Name($types[0]);
@@ -67,11 +68,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
         foreach ($parameters as $parameter) {
             $defined[] = new Expr\ArrayItem(new Scalar\String_($parameter->getName()));
-            $schema = $parameter->getSchema();
-
-            if ($schema instanceof Reference) {
-                [$_, $schema] = $this->guessClass->resolve($schema, Schema::class);
-            }
+            $schema = $this->getSchema($parameter->getSchema());
 
             if ($parameter->getRequired() && (null !== $schema && null === $schema->getDefault())) {
                 $required[] = new Expr\ArrayItem(new Scalar\String_($parameter->getName()));
@@ -100,7 +97,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             }
 
             if (!$parameter->getRequired() && null !== $schema && null !== $schema->getDefault()) {
-                $defaults[] = new Expr\ArrayItem($this->getDefaultAsExpr($parameter), new Scalar\String_($parameter->getName()));
+                $defaults[] = new Expr\ArrayItem($this->getDefaultAsExpr($schema), new Scalar\String_($parameter->getName()));
             }
 
             if (null !== $matchGenericResolver) {
@@ -129,9 +126,10 @@ class NonBodyParameterGenerator extends ParameterGenerator
     public function generateMethodDocParameter($parameter, Context $context, string $reference): string
     {
         $type = 'mixed';
+        $schema = $this->getSchema($parameter->getSchema());
 
-        if ($parameter->getSchema()) {
-            $type = implode('|', $this->convertParameterType($parameter->getSchema()));
+        if ($schema) {
+            $type = implode('|', $this->convertParameterType($schema));
         }
 
         return sprintf(' * @param %s $%s %s', $type, $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: '');
@@ -140,9 +138,10 @@ class NonBodyParameterGenerator extends ParameterGenerator
     public function generateOptionDocParameter(Parameter $parameter): string
     {
         $type = 'mixed';
+        $schema = $this->getSchema($parameter->getSchema());
 
-        if ($parameter->getSchema() instanceof Schema) {
-            $type = implode('|', $this->convertParameterType($parameter->getSchema()));
+        if ($schema) {
+            $type = implode('|', $this->convertParameterType($schema));
         }
 
         return sprintf(' *     @var %s $%s %s', $type, $parameter->getName(), $parameter->getDescription() ?: '');
@@ -151,9 +150,9 @@ class NonBodyParameterGenerator extends ParameterGenerator
     /**
      * Generate a default value as an Expr.
      */
-    private function getDefaultAsExpr(Parameter $parameter): Expr
+    private function getDefaultAsExpr(Schema $schema): Expr
     {
-        $expr = $this->parser->parse('<?php ' . var_export($parameter->getSchema()->getDefault(), true) . ';')[0];
+        $expr = $this->parser->parse('<?php ' . var_export($schema->getDefault(), true) . ';')[0];
 
         if ($expr instanceof Stmt\Expression) {
             return $expr->expr;
@@ -162,16 +161,26 @@ class NonBodyParameterGenerator extends ParameterGenerator
         return $expr;
     }
 
+    /** @param Schema|Reference|null $schema */
+    private function getSchema(?object $schema): ?Schema
+    {
+        if ($schema instanceof Reference) {
+            [, $schema] = $this->guessClass->resolve($schema, Schema::class);
+        }
+
+        return $schema;
+    }
+
     private function convertParameterType(Schema $schema): array
     {
         $type = $schema->getType();
-        $additionalProperties = $schema->getAdditionalProperties();
+        $additionalProperties = $this->getSchema($schema->getAdditionalProperties() ?: null);
 
         if (null === $type && null !== $schema->getEnum() && \count($schema->getEnum()) > 0) {
             $type = 'string';
         }
 
-        if ($additionalProperties instanceof Schema &&
+        if ($additionalProperties &&
             'object' === $type &&
             'string' === $additionalProperties->getType()) {
             return ['string'];
