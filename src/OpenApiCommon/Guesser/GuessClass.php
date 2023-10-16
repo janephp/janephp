@@ -39,6 +39,13 @@ class GuessClass
         return $registry->getClass($reference);
     }
 
+    /**
+     * @template TDenormalized of object
+     *
+     * @param class-string<TDenormalized> $class
+     *
+     * @return array{string, TDenormalized}
+     */
     public function resolve(Reference $reference, string $class): array
     {
         $result = $reference;
