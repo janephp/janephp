@@ -15,7 +15,7 @@ class TestHost extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Ba
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -30,6 +30,6 @@ class TestHost extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Ba
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

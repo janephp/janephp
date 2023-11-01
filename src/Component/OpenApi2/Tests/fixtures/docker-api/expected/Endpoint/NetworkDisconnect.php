@@ -23,7 +23,7 @@ class NetworkDisconnect extends \Docker\Api\Runtime\Client\BaseEndpoint implemen
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/networks/{id}/disconnect');
+        return str_replace(['{id}'], [$this->id], '/networks/{id}/disconnect');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
@@ -31,7 +31,7 @@ class NetworkDisconnect extends \Docker\Api\Runtime\Client\BaseEndpoint implemen
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -61,6 +61,6 @@ class NetworkDisconnect extends \Docker\Api\Runtime\Client\BaseEndpoint implemen
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

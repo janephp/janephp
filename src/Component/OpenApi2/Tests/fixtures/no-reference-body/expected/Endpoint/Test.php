@@ -39,6 +39,6 @@ class Test extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEn
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

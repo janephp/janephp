@@ -13,7 +13,7 @@ class SwarmLeave extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     
     * }
     */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -28,19 +28,19 @@ class SwarmLeave extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('force'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('force' => false));
-        $optionsResolver->addAllowedTypes('force', array('bool'));
+        $optionsResolver->setDefined(['force']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['force' => false]);
+        $optionsResolver->addAllowedTypes('force', ['bool']);
         return $optionsResolver;
     }
     /**
@@ -67,6 +67,6 @@ class SwarmLeave extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

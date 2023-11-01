@@ -20,7 +20,7 @@ class MigrationsGetStatusForAuthenticatedUser extends \Github\Runtime\Client\Bas
     *     @var array $exclude 
     * }
     */
-    public function __construct(int $migrationId, array $queryParameters = array())
+    public function __construct(int $migrationId, array $queryParameters = [])
     {
         $this->migration_id = $migrationId;
         $this->queryParameters = $queryParameters;
@@ -32,23 +32,23 @@ class MigrationsGetStatusForAuthenticatedUser extends \Github\Runtime\Client\Bas
     }
     public function getUri() : string
     {
-        return str_replace(array('{migration_id}'), array($this->migration_id), '/user/migrations/{migration_id}');
+        return str_replace(['{migration_id}'], [$this->migration_id], '/user/migrations/{migration_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('exclude'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('exclude', array('array'));
+        $optionsResolver->setDefined(['exclude']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('exclude', ['array']);
         return $optionsResolver;
     }
     /**
@@ -82,6 +82,6 @@ class MigrationsGetStatusForAuthenticatedUser extends \Github\Runtime\Client\Bas
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

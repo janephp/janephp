@@ -39,18 +39,18 @@ class TeamsAddOrUpdateMembershipForUserInOrg extends \Github\Runtime\Client\Base
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}', '{team_slug}', '{username}'), array($this->org, $this->team_slug, $this->username), '/orgs/{org}/teams/{team_slug}/memberships/{username}');
+        return str_replace(['{org}', '{team_slug}', '{username}'], [$this->org, $this->team_slug, $this->username], '/orgs/{org}/teams/{team_slug}/memberships/{username}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -76,6 +76,6 @@ class TeamsAddOrUpdateMembershipForUserInOrg extends \Github\Runtime\Client\Base
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -21,11 +21,11 @@ class ApiParchmentsIdDelete extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoin
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/parchments/{id}');
+        return str_replace(['{id}'], [$this->id], '/parchments/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -47,6 +47,6 @@ class ApiParchmentsIdDelete extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoin
     }
     public function getAuthenticationScopes() : array
     {
-        return array('apiKey');
+        return ['apiKey'];
     }
 }

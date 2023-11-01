@@ -13,7 +13,7 @@ class ContainerRename extends \Docker\Api\Runtime\Client\BaseEndpoint implements
      *     @var string $name New name for the container
      * }
      */
-    public function __construct(string $id, array $queryParameters = array())
+    public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;
@@ -25,23 +25,23 @@ class ContainerRename extends \Docker\Api\Runtime\Client\BaseEndpoint implements
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/containers/{id}/rename');
+        return str_replace(['{id}'], [$this->id], '/containers/{id}/rename');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('name'));
-        $optionsResolver->setRequired(array('name'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('name', array('string'));
+        $optionsResolver->setDefined(['name']);
+        $optionsResolver->setRequired(['name']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('name', ['string']);
         return $optionsResolver;
     }
     /**
@@ -72,6 +72,6 @@ class ContainerRename extends \Docker\Api\Runtime\Client\BaseEndpoint implements
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

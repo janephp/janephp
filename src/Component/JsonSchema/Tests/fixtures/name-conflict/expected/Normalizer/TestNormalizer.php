@@ -12,57 +12,109 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class TestNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class TestNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Test';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Test;
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Test';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Test;
         }
-        $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\Test();
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\Test();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('msgref', $data)) {
+                $object->setMsgref($data['msgref']);
+            }
+            if (\array_key_exists('msg_ref', $data)) {
+                $object->setMsgRef2($data['msg_ref']);
+            }
             return $object;
         }
-        if (\array_key_exists('msgref', $data)) {
-            $object->setMsgref($data['msgref']);
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['msgref'] = $object->getMsgref();
+            if ($object->isInitialized('msgRef2') && null !== $object->getMsgRef2()) {
+                $data['msg_ref'] = $object->getMsgRef2();
+            }
+            return $data;
         }
-        if (\array_key_exists('msg_ref', $data)) {
-            $object->setMsgRef2($data['msg_ref']);
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Test' => false];
         }
-        return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+} else {
+    class TestNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = array();
-        $data['msgref'] = $object->getMsgref();
-        if ($object->isInitialized('msgRef2') && null !== $object->getMsgRef2()) {
-            $data['msg_ref'] = $object->getMsgRef2();
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Test';
         }
-        return $data;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Test' => false);
+        public function supportsNormalization($data, $format = null, array $context = []) : bool
+        {
+            return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Test;
+        }
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\Test();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('msgref', $data)) {
+                $object->setMsgref($data['msgref']);
+            }
+            if (\array_key_exists('msg_ref', $data)) {
+                $object->setMsgRef2($data['msg_ref']);
+            }
+            return $object;
+        }
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $data['msgref'] = $object->getMsgref();
+            if ($object->isInitialized('msgRef2') && null !== $object->getMsgRef2()) {
+                $data['msg_ref'] = $object->getMsgRef2();
+            }
+            return $data;
+        }
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Test' => false];
+        }
     }
 }

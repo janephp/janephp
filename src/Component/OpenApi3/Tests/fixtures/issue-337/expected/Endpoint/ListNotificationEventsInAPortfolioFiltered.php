@@ -20,7 +20,7 @@ class ListNotificationEventsInAPortfolioFiltered extends \CreditSafe\API\Runtime
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(string $portfolioId, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(string $portfolioId, array $queryParameters = [], array $headerParameters = [])
     {
         $this->portfolioId = $portfolioId;
         $this->queryParameters = $queryParameters;
@@ -33,36 +33,36 @@ class ListNotificationEventsInAPortfolioFiltered extends \CreditSafe\API\Runtime
     }
     public function getUri() : string
     {
-        return str_replace(array('{portfolioId}'), array($this->portfolioId), '/monitoring/portfolios/{portfolioId}/notificationEvents');
+        return str_replace(['{portfolioId}'], [$this->portfolioId], '/monitoring/portfolios/{portfolioId}/notificationEvents');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('searchQuery', 'sortDir', 'pageSize', 'page', 'sortBy'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('sortDir' => 'asc', 'pageSize' => 50, 'page' => 0));
-        $optionsResolver->addAllowedTypes('searchQuery', array('string'));
-        $optionsResolver->addAllowedTypes('sortDir', array('string'));
-        $optionsResolver->addAllowedTypes('pageSize', array('int'));
-        $optionsResolver->addAllowedTypes('page', array('int'));
-        $optionsResolver->addAllowedTypes('sortBy', array('string'));
+        $optionsResolver->setDefined(['searchQuery', 'sortDir', 'pageSize', 'page', 'sortBy']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['sortDir' => 'asc', 'pageSize' => 50, 'page' => 0]);
+        $optionsResolver->addAllowedTypes('searchQuery', ['string']);
+        $optionsResolver->addAllowedTypes('sortDir', ['string']);
+        $optionsResolver->addAllowedTypes('pageSize', ['int']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
+        $optionsResolver->addAllowedTypes('sortBy', ['string']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('Authorization'));
-        $optionsResolver->setRequired(array('Authorization'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('Authorization', array('string'));
+        $optionsResolver->setDefined(['Authorization']);
+        $optionsResolver->setRequired(['Authorization']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('Authorization', ['string']);
         return $optionsResolver;
     }
     /**
@@ -97,6 +97,6 @@ class ListNotificationEventsInAPortfolioFiltered extends \CreditSafe\API\Runtime
     }
     public function getAuthenticationScopes() : array
     {
-        return array('bearerAuth');
+        return ['bearerAuth'];
     }
 }

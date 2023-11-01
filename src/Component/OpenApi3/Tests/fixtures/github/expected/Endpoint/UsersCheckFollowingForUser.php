@@ -24,11 +24,11 @@ class UsersCheckFollowingForUser extends \Github\Runtime\Client\BaseEndpoint imp
     }
     public function getUri() : string
     {
-        return str_replace(array('{username}', '{target_user}'), array($this->username, $this->target_user), '/users/{username}/following/{target_user}');
+        return str_replace(['{username}', '{target_user}'], [$this->username, $this->target_user], '/users/{username}/following/{target_user}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -50,6 +50,6 @@ class UsersCheckFollowingForUser extends \Github\Runtime\Client\BaseEndpoint imp
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

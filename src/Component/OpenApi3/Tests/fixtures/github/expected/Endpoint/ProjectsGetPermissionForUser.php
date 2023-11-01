@@ -24,15 +24,15 @@ class ProjectsGetPermissionForUser extends \Github\Runtime\Client\BaseEndpoint i
     }
     public function getUri() : string
     {
-        return str_replace(array('{project_id}', '{username}'), array($this->project_id, $this->username), '/projects/{project_id}/collaborators/{username}/permission');
+        return str_replace(['{project_id}', '{username}'], [$this->project_id, $this->username], '/projects/{project_id}/collaborators/{username}/permission');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -73,6 +73,6 @@ class ProjectsGetPermissionForUser extends \Github\Runtime\Client\BaseEndpoint i
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

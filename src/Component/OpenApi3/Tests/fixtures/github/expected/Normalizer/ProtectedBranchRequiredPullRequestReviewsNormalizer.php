@@ -12,96 +12,187 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ProtectedBranchRequiredPullRequestReviewsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class ProtectedBranchRequiredPullRequestReviewsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Github\\Model\\ProtectedBranchRequiredPullRequestReviews';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'Github\\Model\\ProtectedBranchRequiredPullRequestReviews';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Github\\Model\\ProtectedBranchRequiredPullRequestReviews';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Github\\Model\\ProtectedBranchRequiredPullRequestReviews';
         }
-        $object = new \Github\Model\ProtectedBranchRequiredPullRequestReviews();
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Github\Validator\ProtectedBranchRequiredPullRequestReviewsConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Github\Model\ProtectedBranchRequiredPullRequestReviews();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Github\Validator\ProtectedBranchRequiredPullRequestReviewsConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('url', $data)) {
+                $object->setUrl($data['url']);
+                unset($data['url']);
+            }
+            if (\array_key_exists('dismiss_stale_reviews', $data)) {
+                $object->setDismissStaleReviews($data['dismiss_stale_reviews']);
+                unset($data['dismiss_stale_reviews']);
+            }
+            if (\array_key_exists('require_code_owner_reviews', $data)) {
+                $object->setRequireCodeOwnerReviews($data['require_code_owner_reviews']);
+                unset($data['require_code_owner_reviews']);
+            }
+            if (\array_key_exists('required_approving_review_count', $data)) {
+                $object->setRequiredApprovingReviewCount($data['required_approving_review_count']);
+                unset($data['required_approving_review_count']);
+            }
+            if (\array_key_exists('dismissal_restrictions', $data)) {
+                $object->setDismissalRestrictions($this->denormalizer->denormalize($data['dismissal_restrictions'], 'Github\\Model\\ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions', 'json', $context));
+                unset($data['dismissal_restrictions']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
             return $object;
         }
-        if (\array_key_exists('url', $data)) {
-            $object->setUrl($data['url']);
-            unset($data['url']);
-        }
-        if (\array_key_exists('dismiss_stale_reviews', $data)) {
-            $object->setDismissStaleReviews($data['dismiss_stale_reviews']);
-            unset($data['dismiss_stale_reviews']);
-        }
-        if (\array_key_exists('require_code_owner_reviews', $data)) {
-            $object->setRequireCodeOwnerReviews($data['require_code_owner_reviews']);
-            unset($data['require_code_owner_reviews']);
-        }
-        if (\array_key_exists('required_approving_review_count', $data)) {
-            $object->setRequiredApprovingReviewCount($data['required_approving_review_count']);
-            unset($data['required_approving_review_count']);
-        }
-        if (\array_key_exists('dismissal_restrictions', $data)) {
-            $object->setDismissalRestrictions($this->denormalizer->denormalize($data['dismissal_restrictions'], 'Github\\Model\\ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions', 'json', $context));
-            unset($data['dismissal_restrictions']);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['url'] = $object->getUrl();
+            if ($object->isInitialized('dismissStaleReviews') && null !== $object->getDismissStaleReviews()) {
+                $data['dismiss_stale_reviews'] = $object->getDismissStaleReviews();
             }
-        }
-        return $object;
-    }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
-    {
-        $data = array();
-        $data['url'] = $object->getUrl();
-        if ($object->isInitialized('dismissStaleReviews') && null !== $object->getDismissStaleReviews()) {
-            $data['dismiss_stale_reviews'] = $object->getDismissStaleReviews();
-        }
-        if ($object->isInitialized('requireCodeOwnerReviews') && null !== $object->getRequireCodeOwnerReviews()) {
-            $data['require_code_owner_reviews'] = $object->getRequireCodeOwnerReviews();
-        }
-        if ($object->isInitialized('requiredApprovingReviewCount') && null !== $object->getRequiredApprovingReviewCount()) {
-            $data['required_approving_review_count'] = $object->getRequiredApprovingReviewCount();
-        }
-        if ($object->isInitialized('dismissalRestrictions') && null !== $object->getDismissalRestrictions()) {
-            $data['dismissal_restrictions'] = $this->normalizer->normalize($object->getDismissalRestrictions(), 'json', $context);
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+            if ($object->isInitialized('requireCodeOwnerReviews') && null !== $object->getRequireCodeOwnerReviews()) {
+                $data['require_code_owner_reviews'] = $object->getRequireCodeOwnerReviews();
             }
+            if ($object->isInitialized('requiredApprovingReviewCount') && null !== $object->getRequiredApprovingReviewCount()) {
+                $data['required_approving_review_count'] = $object->getRequiredApprovingReviewCount();
+            }
+            if ($object->isInitialized('dismissalRestrictions') && null !== $object->getDismissalRestrictions()) {
+                $data['dismissal_restrictions'] = $this->normalizer->normalize($object->getDismissalRestrictions(), 'json', $context);
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Github\Validator\ProtectedBranchRequiredPullRequestReviewsConstraint());
+            }
+            return $data;
         }
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Github\Validator\ProtectedBranchRequiredPullRequestReviewsConstraint());
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Github\\Model\\ProtectedBranchRequiredPullRequestReviews' => false];
         }
-        return $data;
     }
-    public function getSupportedTypes(?string $format = null) : array
+} else {
+    class ProtectedBranchRequiredPullRequestReviewsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return array('Github\\Model\\ProtectedBranchRequiredPullRequestReviews' => false);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Github\\Model\\ProtectedBranchRequiredPullRequestReviews';
+        }
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Github\\Model\\ProtectedBranchRequiredPullRequestReviews';
+        }
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Github\Model\ProtectedBranchRequiredPullRequestReviews();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Github\Validator\ProtectedBranchRequiredPullRequestReviewsConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('url', $data)) {
+                $object->setUrl($data['url']);
+                unset($data['url']);
+            }
+            if (\array_key_exists('dismiss_stale_reviews', $data)) {
+                $object->setDismissStaleReviews($data['dismiss_stale_reviews']);
+                unset($data['dismiss_stale_reviews']);
+            }
+            if (\array_key_exists('require_code_owner_reviews', $data)) {
+                $object->setRequireCodeOwnerReviews($data['require_code_owner_reviews']);
+                unset($data['require_code_owner_reviews']);
+            }
+            if (\array_key_exists('required_approving_review_count', $data)) {
+                $object->setRequiredApprovingReviewCount($data['required_approving_review_count']);
+                unset($data['required_approving_review_count']);
+            }
+            if (\array_key_exists('dismissal_restrictions', $data)) {
+                $object->setDismissalRestrictions($this->denormalizer->denormalize($data['dismissal_restrictions'], 'Github\\Model\\ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions', 'json', $context));
+                unset($data['dismissal_restrictions']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+            return $object;
+        }
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $data['url'] = $object->getUrl();
+            if ($object->isInitialized('dismissStaleReviews') && null !== $object->getDismissStaleReviews()) {
+                $data['dismiss_stale_reviews'] = $object->getDismissStaleReviews();
+            }
+            if ($object->isInitialized('requireCodeOwnerReviews') && null !== $object->getRequireCodeOwnerReviews()) {
+                $data['require_code_owner_reviews'] = $object->getRequireCodeOwnerReviews();
+            }
+            if ($object->isInitialized('requiredApprovingReviewCount') && null !== $object->getRequiredApprovingReviewCount()) {
+                $data['required_approving_review_count'] = $object->getRequiredApprovingReviewCount();
+            }
+            if ($object->isInitialized('dismissalRestrictions') && null !== $object->getDismissalRestrictions()) {
+                $data['dismissal_restrictions'] = $this->normalizer->normalize($object->getDismissalRestrictions(), 'json', $context);
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Github\Validator\ProtectedBranchRequiredPullRequestReviewsConstraint());
+            }
+            return $data;
+        }
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Github\\Model\\ProtectedBranchRequiredPullRequestReviews' => false];
+        }
     }
 }

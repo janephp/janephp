@@ -42,6 +42,6 @@ class TestObjectListBodyParameter extends \Jane\Component\OpenApi2\Tests\Expecte
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

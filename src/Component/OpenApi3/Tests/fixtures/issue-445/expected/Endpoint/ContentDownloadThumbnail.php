@@ -18,7 +18,7 @@ class ContentDownloadThumbnail extends \PicturePark\API\Runtime\Client\BaseEndpo
      * }
      * @param array $accept Accept content header application/json|application/octet-stream
      */
-    public function __construct(string $id, string $size, array $queryParameters = array(), array $accept = array())
+    public function __construct(string $id, string $size, array $queryParameters = [], array $accept = [])
     {
         $this->id = $id;
         $this->size = $size;
@@ -32,27 +32,27 @@ class ContentDownloadThumbnail extends \PicturePark\API\Runtime\Client\BaseEndpo
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}', '{size}'), array($this->id, $this->size), '/v1/Contents/thumbnails/{id}/{size}');
+        return str_replace(['{id}', '{size}'], [$this->id, $this->size], '/v1/Contents/thumbnails/{id}/{size}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/json', 'application/octet-stream'));
+            return ['Accept' => ['application/json', 'application/octet-stream']];
         }
         return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('width', 'height'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('width', array('int', 'null'));
-        $optionsResolver->addAllowedTypes('height', array('int', 'null'));
+        $optionsResolver->setDefined(['width', 'height']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('width', ['int', 'null']);
+        $optionsResolver->addAllowedTypes('height', ['int', 'null']);
         return $optionsResolver;
     }
     /**
@@ -102,6 +102,6 @@ class ContentDownloadThumbnail extends \PicturePark\API\Runtime\Client\BaseEndpo
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

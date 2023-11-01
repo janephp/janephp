@@ -32,11 +32,11 @@ class ReactionsDeleteForPullRequestComment extends \Github\Runtime\Client\BaseEn
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{comment_id}', '{reaction_id}'), array($this->owner, $this->repo, $this->comment_id, $this->reaction_id), '/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}');
+        return str_replace(['{owner}', '{repo}', '{comment_id}', '{reaction_id}'], [$this->owner, $this->repo, $this->comment_id, $this->reaction_id], '/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -54,6 +54,6 @@ class ReactionsDeleteForPullRequestComment extends \Github\Runtime\Client\BaseEn
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

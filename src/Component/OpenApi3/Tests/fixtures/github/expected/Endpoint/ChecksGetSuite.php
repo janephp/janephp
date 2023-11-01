@@ -29,15 +29,15 @@ class ChecksGetSuite extends \Github\Runtime\Client\BaseEndpoint implements \Git
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{check_suite_id}'), array($this->owner, $this->repo, $this->check_suite_id), '/repos/{owner}/{repo}/check-suites/{check_suite_id}');
+        return str_replace(['{owner}', '{repo}', '{check_suite_id}'], [$this->owner, $this->repo, $this->check_suite_id], '/repos/{owner}/{repo}/check-suites/{check_suite_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -55,6 +55,6 @@ class ChecksGetSuite extends \Github\Runtime\Client\BaseEndpoint implements \Git
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

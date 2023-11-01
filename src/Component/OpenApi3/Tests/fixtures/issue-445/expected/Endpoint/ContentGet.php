@@ -13,7 +13,7 @@ class ContentGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
      *     @var array $resolveBehaviors List of enums that control which parts of the content are resolved and returned.
      * }
      */
-    public function __construct(string $id, array $queryParameters = array())
+    public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;
@@ -25,23 +25,23 @@ class ContentGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/v1/Contents/{id}');
+        return str_replace(['{id}'], [$this->id], '/v1/Contents/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('resolveBehaviors'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('resolveBehaviors', array('array', 'null'));
+        $optionsResolver->setDefined(['resolveBehaviors']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('resolveBehaviors', ['array', 'null']);
         return $optionsResolver;
     }
     /**
@@ -88,6 +88,6 @@ class ContentGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

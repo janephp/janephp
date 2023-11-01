@@ -62,15 +62,15 @@ class ReposCompareCommits extends \Github\Runtime\Client\BaseEndpoint implements
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{base}', '{head}'), array($this->owner, $this->repo, $this->base, $this->head), '/repos/{owner}/{repo}/compare/{base}...{head}');
+        return str_replace(['{owner}', '{repo}', '{base}', '{head}'], [$this->owner, $this->repo, $this->base, $this->head], '/repos/{owner}/{repo}/compare/{base}...{head}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -96,6 +96,6 @@ class ReposCompareCommits extends \Github\Runtime\Client\BaseEndpoint implements
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

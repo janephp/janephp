@@ -12,101 +12,197 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class TaskSpecPlacementNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class TaskSpecPlacementNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Docker\\Api\\Model\\TaskSpecPlacement';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\TaskSpecPlacement';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Docker\\Api\\Model\\TaskSpecPlacement';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\TaskSpecPlacement';
         }
-        $object = new \Docker\Api\Model\TaskSpecPlacement();
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Docker\Api\Validator\TaskSpecPlacementConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Docker\Api\Model\TaskSpecPlacement();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\TaskSpecPlacementConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('Constraints', $data)) {
+                $values = [];
+                foreach ($data['Constraints'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setConstraints($values);
+            }
+            if (\array_key_exists('Preferences', $data)) {
+                $values_1 = [];
+                foreach ($data['Preferences'] as $value_1) {
+                    $values_1[] = $this->denormalizer->denormalize($value_1, 'Docker\\Api\\Model\\TaskSpecPlacementPreferencesItem', 'json', $context);
+                }
+                $object->setPreferences($values_1);
+            }
+            if (\array_key_exists('MaxReplicas', $data)) {
+                $object->setMaxReplicas($data['MaxReplicas']);
+            }
+            if (\array_key_exists('Platforms', $data)) {
+                $values_2 = [];
+                foreach ($data['Platforms'] as $value_2) {
+                    $values_2[] = $this->denormalizer->denormalize($value_2, 'Docker\\Api\\Model\\Platform', 'json', $context);
+                }
+                $object->setPlatforms($values_2);
+            }
             return $object;
         }
-        if (\array_key_exists('Constraints', $data)) {
-            $values = array();
-            foreach ($data['Constraints'] as $value) {
-                $values[] = $value;
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('constraints') && null !== $object->getConstraints()) {
+                $values = [];
+                foreach ($object->getConstraints() as $value) {
+                    $values[] = $value;
+                }
+                $data['Constraints'] = $values;
             }
-            $object->setConstraints($values);
-        }
-        if (\array_key_exists('Preferences', $data)) {
-            $values_1 = array();
-            foreach ($data['Preferences'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Docker\\Api\\Model\\TaskSpecPlacementPreferencesItem', 'json', $context);
+            if ($object->isInitialized('preferences') && null !== $object->getPreferences()) {
+                $values_1 = [];
+                foreach ($object->getPreferences() as $value_1) {
+                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                }
+                $data['Preferences'] = $values_1;
             }
-            $object->setPreferences($values_1);
-        }
-        if (\array_key_exists('MaxReplicas', $data)) {
-            $object->setMaxReplicas($data['MaxReplicas']);
-        }
-        if (\array_key_exists('Platforms', $data)) {
-            $values_2 = array();
-            foreach ($data['Platforms'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, 'Docker\\Api\\Model\\Platform', 'json', $context);
+            if ($object->isInitialized('maxReplicas') && null !== $object->getMaxReplicas()) {
+                $data['MaxReplicas'] = $object->getMaxReplicas();
             }
-            $object->setPlatforms($values_2);
+            if ($object->isInitialized('platforms') && null !== $object->getPlatforms()) {
+                $values_2 = [];
+                foreach ($object->getPlatforms() as $value_2) {
+                    $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                }
+                $data['Platforms'] = $values_2;
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\TaskSpecPlacementConstraint());
+            }
+            return $data;
         }
-        return $object;
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Docker\\Api\\Model\\TaskSpecPlacement' => false];
+        }
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+} else {
+    class TaskSpecPlacementNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = array();
-        if ($object->isInitialized('constraints') && null !== $object->getConstraints()) {
-            $values = array();
-            foreach ($object->getConstraints() as $value) {
-                $values[] = $value;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Docker\\Api\\Model\\TaskSpecPlacement';
+        }
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\TaskSpecPlacement';
+        }
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
             }
-            $data['Constraints'] = $values;
-        }
-        if ($object->isInitialized('preferences') && null !== $object->getPreferences()) {
-            $values_1 = array();
-            foreach ($object->getPreferences() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
-            $data['Preferences'] = $values_1;
-        }
-        if ($object->isInitialized('maxReplicas') && null !== $object->getMaxReplicas()) {
-            $data['MaxReplicas'] = $object->getMaxReplicas();
-        }
-        if ($object->isInitialized('platforms') && null !== $object->getPlatforms()) {
-            $values_2 = array();
-            foreach ($object->getPlatforms() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+            $object = new \Docker\Api\Model\TaskSpecPlacement();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\TaskSpecPlacementConstraint());
             }
-            $data['Platforms'] = $values_2;
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('Constraints', $data)) {
+                $values = [];
+                foreach ($data['Constraints'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setConstraints($values);
+            }
+            if (\array_key_exists('Preferences', $data)) {
+                $values_1 = [];
+                foreach ($data['Preferences'] as $value_1) {
+                    $values_1[] = $this->denormalizer->denormalize($value_1, 'Docker\\Api\\Model\\TaskSpecPlacementPreferencesItem', 'json', $context);
+                }
+                $object->setPreferences($values_1);
+            }
+            if (\array_key_exists('MaxReplicas', $data)) {
+                $object->setMaxReplicas($data['MaxReplicas']);
+            }
+            if (\array_key_exists('Platforms', $data)) {
+                $values_2 = [];
+                foreach ($data['Platforms'] as $value_2) {
+                    $values_2[] = $this->denormalizer->denormalize($value_2, 'Docker\\Api\\Model\\Platform', 'json', $context);
+                }
+                $object->setPlatforms($values_2);
+            }
+            return $object;
         }
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Docker\Api\Validator\TaskSpecPlacementConstraint());
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            if ($object->isInitialized('constraints') && null !== $object->getConstraints()) {
+                $values = [];
+                foreach ($object->getConstraints() as $value) {
+                    $values[] = $value;
+                }
+                $data['Constraints'] = $values;
+            }
+            if ($object->isInitialized('preferences') && null !== $object->getPreferences()) {
+                $values_1 = [];
+                foreach ($object->getPreferences() as $value_1) {
+                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                }
+                $data['Preferences'] = $values_1;
+            }
+            if ($object->isInitialized('maxReplicas') && null !== $object->getMaxReplicas()) {
+                $data['MaxReplicas'] = $object->getMaxReplicas();
+            }
+            if ($object->isInitialized('platforms') && null !== $object->getPlatforms()) {
+                $values_2 = [];
+                foreach ($object->getPlatforms() as $value_2) {
+                    $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                }
+                $data['Platforms'] = $values_2;
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\TaskSpecPlacementConstraint());
+            }
+            return $data;
         }
-        return $data;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('Docker\\Api\\Model\\TaskSpecPlacement' => false);
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Docker\\Api\\Model\\TaskSpecPlacement' => false];
+        }
     }
 }

@@ -13,9 +13,9 @@ class ApiKeyAuthentication implements \Jane\Component\OpenApiRuntime\Client\Auth
     {
         $uri = $request->getUri();
         $query = $uri->getQuery();
-        $params = array();
+        $params = [];
         parse_str($query, $params);
-        $params = array_merge($params, array('api_key' => $this->{'apiKey'}));
+        $params = array_merge($params, ['api_key' => $this->{'apiKey'}]);
         $query = http_build_query($params, null, '&');
         $uri = $uri->withQuery($query);
         $request = $request->withUri($uri);

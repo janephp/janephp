@@ -22,7 +22,7 @@ class SearchLabels extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     *     @var string $order Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
     * }
     */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -37,22 +37,22 @@ class SearchLabels extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('repository_id', 'q', 'sort', 'order'));
-        $optionsResolver->setRequired(array('repository_id', 'q'));
-        $optionsResolver->setDefaults(array('order' => 'desc'));
-        $optionsResolver->addAllowedTypes('repository_id', array('int'));
-        $optionsResolver->addAllowedTypes('q', array('string'));
-        $optionsResolver->addAllowedTypes('sort', array('string'));
-        $optionsResolver->addAllowedTypes('order', array('string'));
+        $optionsResolver->setDefined(['repository_id', 'q', 'sort', 'order']);
+        $optionsResolver->setRequired(['repository_id', 'q']);
+        $optionsResolver->setDefaults(['order' => 'desc']);
+        $optionsResolver->addAllowedTypes('repository_id', ['int']);
+        $optionsResolver->addAllowedTypes('q', ['string']);
+        $optionsResolver->addAllowedTypes('sort', ['string']);
+        $optionsResolver->addAllowedTypes('order', ['string']);
         return $optionsResolver;
     }
     /**
@@ -86,6 +86,6 @@ class SearchLabels extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

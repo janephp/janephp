@@ -11,7 +11,7 @@ class OutputFormatRenderFormatPreview extends \PicturePark\API\Runtime\Client\Ba
      * @param \PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody 
      * @param array $accept Accept content header application/octet-stream|application/json
      */
-    public function __construct(\PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody, array $accept = array())
+    public function __construct(\PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody, array $accept = [])
     {
         $this->body = $requestBody;
         $this->accept = $accept;
@@ -28,14 +28,14 @@ class OutputFormatRenderFormatPreview extends \PicturePark\API\Runtime\Client\Ba
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \PicturePark\API\Model\OutputFormatRenderPreviewRequest) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/octet-stream', 'application/json'));
+            return ['Accept' => ['application/octet-stream', 'application/json']];
         }
         return $this->accept;
     }
@@ -88,6 +88,6 @@ class OutputFormatRenderFormatPreview extends \PicturePark\API\Runtime\Client\Ba
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

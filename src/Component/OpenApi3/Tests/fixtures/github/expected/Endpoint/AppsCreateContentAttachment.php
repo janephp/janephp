@@ -27,18 +27,18 @@ class AppsCreateContentAttachment extends \Github\Runtime\Client\BaseEndpoint im
     }
     public function getUri() : string
     {
-        return str_replace(array('{content_reference_id}'), array($this->content_reference_id), '/content_references/{content_reference_id}/attachments');
+        return str_replace(['{content_reference_id}'], [$this->content_reference_id], '/content_references/{content_reference_id}/attachments');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\ContentReferencesContentReferenceIdAttachmentsPostBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -79,6 +79,6 @@ class AppsCreateContentAttachment extends \Github\Runtime\Client\BaseEndpoint im
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -29,18 +29,18 @@ class ReposUpdateReleaseAsset extends \Github\Runtime\Client\BaseEndpoint implem
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{asset_id}'), array($this->owner, $this->repo, $this->asset_id), '/repos/{owner}/{repo}/releases/assets/{asset_id}');
+        return str_replace(['{owner}', '{repo}', '{asset_id}'], [$this->owner, $this->repo, $this->asset_id], '/repos/{owner}/{repo}/releases/assets/{asset_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\ReposOwnerRepoReleasesAssetsAssetIdPatchBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -58,6 +58,6 @@ class ReposUpdateReleaseAsset extends \Github\Runtime\Client\BaseEndpoint implem
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

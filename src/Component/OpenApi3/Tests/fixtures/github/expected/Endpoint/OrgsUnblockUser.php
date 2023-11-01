@@ -24,11 +24,11 @@ class OrgsUnblockUser extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}', '{username}'), array($this->org, $this->username), '/orgs/{org}/blocks/{username}');
+        return str_replace(['{org}', '{username}'], [$this->org, $this->username], '/orgs/{org}/blocks/{username}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -46,6 +46,6 @@ class OrgsUnblockUser extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

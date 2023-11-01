@@ -20,7 +20,7 @@ class AppsListInstallationReposForAuthenticatedUser extends \Github\Runtime\Clie
     *     @var int $page Page number of the results to fetch.
     * }
     */
-    public function __construct(int $installationId, array $queryParameters = array())
+    public function __construct(int $installationId, array $queryParameters = [])
     {
         $this->installation_id = $installationId;
         $this->queryParameters = $queryParameters;
@@ -32,24 +32,24 @@ class AppsListInstallationReposForAuthenticatedUser extends \Github\Runtime\Clie
     }
     public function getUri() : string
     {
-        return str_replace(array('{installation_id}'), array($this->installation_id), '/user/installations/{installation_id}/repositories');
+        return str_replace(['{installation_id}'], [$this->installation_id], '/user/installations/{installation_id}/repositories');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('per_page', 'page'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('per_page' => 30, 'page' => 1));
-        $optionsResolver->addAllowedTypes('per_page', array('int'));
-        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->setDefined(['per_page', 'page']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['per_page' => 30, 'page' => 1]);
+        $optionsResolver->addAllowedTypes('per_page', ['int']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
         return $optionsResolver;
     }
     /**
@@ -79,6 +79,6 @@ class AppsListInstallationReposForAuthenticatedUser extends \Github\Runtime\Clie
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

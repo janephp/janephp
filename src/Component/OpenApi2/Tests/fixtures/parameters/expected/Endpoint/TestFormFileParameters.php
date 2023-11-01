@@ -11,7 +11,7 @@ class TestFormFileParameters extends \Jane\Component\OpenApi2\Tests\Expected\Run
      *     @var string|resource|\Psr\Http\Message\StreamInterface $testFile 
      * }
      */
-    public function __construct(array $formParameters = array())
+    public function __construct(array $formParameters = [])
     {
         $this->formParameters = $formParameters;
     }
@@ -31,10 +31,10 @@ class TestFormFileParameters extends \Jane\Component\OpenApi2\Tests\Expected\Run
     protected function getFormOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(array('testFile'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('testFile', array('string', 'resource', '\\Psr\\Http\\Message\\StreamInterface'));
+        $optionsResolver->setDefined(['testFile']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('testFile', ['string', 'resource', '\\Psr\\Http\\Message\\StreamInterface']);
         return $optionsResolver;
     }
     /**
@@ -53,6 +53,6 @@ class TestFormFileParameters extends \Jane\Component\OpenApi2\Tests\Expected\Run
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

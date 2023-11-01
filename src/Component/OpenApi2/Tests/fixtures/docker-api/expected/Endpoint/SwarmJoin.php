@@ -28,7 +28,7 @@ class SwarmJoin extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -58,6 +58,6 @@ class SwarmJoin extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

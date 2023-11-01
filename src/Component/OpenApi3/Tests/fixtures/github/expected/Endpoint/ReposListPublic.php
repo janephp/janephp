@@ -15,7 +15,7 @@ class ReposListPublic extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     *     @var string $visibility 
     * }
     */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -30,21 +30,21 @@ class ReposListPublic extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('per_page', 'since', 'visibility'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('per_page' => 30));
-        $optionsResolver->addAllowedTypes('per_page', array('int'));
-        $optionsResolver->addAllowedTypes('since', array('string'));
-        $optionsResolver->addAllowedTypes('visibility', array('string'));
+        $optionsResolver->setDefined(['per_page', 'since', 'visibility']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['per_page' => 30]);
+        $optionsResolver->addAllowedTypes('per_page', ['int']);
+        $optionsResolver->addAllowedTypes('since', ['string']);
+        $optionsResolver->addAllowedTypes('visibility', ['string']);
         return $optionsResolver;
     }
     /**
@@ -70,6 +70,6 @@ class ReposListPublic extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

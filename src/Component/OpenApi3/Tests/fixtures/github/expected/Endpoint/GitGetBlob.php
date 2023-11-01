@@ -29,15 +29,15 @@ class GitGetBlob extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{file_sha}'), array($this->owner, $this->repo, $this->file_sha), '/repos/{owner}/{repo}/git/blobs/{file_sha}');
+        return str_replace(['{owner}', '{repo}', '{file_sha}'], [$this->owner, $this->repo, $this->file_sha], '/repos/{owner}/{repo}/git/blobs/{file_sha}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -67,6 +67,6 @@ class GitGetBlob extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

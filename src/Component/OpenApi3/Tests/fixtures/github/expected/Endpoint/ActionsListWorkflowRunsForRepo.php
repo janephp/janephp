@@ -22,7 +22,7 @@ class ActionsListWorkflowRunsForRepo extends \Github\Runtime\Client\BaseEndpoint
     *     @var int $page Page number of the results to fetch.
     * }
     */
-    public function __construct(string $owner, string $repo, array $queryParameters = array())
+    public function __construct(string $owner, string $repo, array $queryParameters = [])
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -35,28 +35,28 @@ class ActionsListWorkflowRunsForRepo extends \Github\Runtime\Client\BaseEndpoint
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}'), array($this->owner, $this->repo), '/repos/{owner}/{repo}/actions/runs');
+        return str_replace(['{owner}', '{repo}'], [$this->owner, $this->repo], '/repos/{owner}/{repo}/actions/runs');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('actor', 'branch', 'event', 'status', 'per_page', 'page'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('per_page' => 30, 'page' => 1));
-        $optionsResolver->addAllowedTypes('actor', array('string'));
-        $optionsResolver->addAllowedTypes('branch', array('string'));
-        $optionsResolver->addAllowedTypes('event', array('string'));
-        $optionsResolver->addAllowedTypes('status', array('string'));
-        $optionsResolver->addAllowedTypes('per_page', array('int'));
-        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->setDefined(['actor', 'branch', 'event', 'status', 'per_page', 'page']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['per_page' => 30, 'page' => 1]);
+        $optionsResolver->addAllowedTypes('actor', ['string']);
+        $optionsResolver->addAllowedTypes('branch', ['string']);
+        $optionsResolver->addAllowedTypes('event', ['string']);
+        $optionsResolver->addAllowedTypes('status', ['string']);
+        $optionsResolver->addAllowedTypes('per_page', ['int']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
         return $optionsResolver;
     }
     /**
@@ -75,6 +75,6 @@ class ActionsListWorkflowRunsForRepo extends \Github\Runtime\Client\BaseEndpoint
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

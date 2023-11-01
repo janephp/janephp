@@ -24,11 +24,11 @@ class ActivityDeleteRepoSubscription extends \Github\Runtime\Client\BaseEndpoint
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}'), array($this->owner, $this->repo), '/repos/{owner}/{repo}/subscription');
+        return str_replace(['{owner}', '{repo}'], [$this->owner, $this->repo], '/repos/{owner}/{repo}/subscription');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -46,6 +46,6 @@ class ActivityDeleteRepoSubscription extends \Github\Runtime\Client\BaseEndpoint
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

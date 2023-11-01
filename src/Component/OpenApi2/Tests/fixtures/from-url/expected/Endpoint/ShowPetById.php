@@ -21,15 +21,15 @@ class ShowPetById extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client
     }
     public function getUri() : string
     {
-        return str_replace(array('{petId}'), array($this->petId), '/pets/{petId}');
+        return str_replace(['{petId}'], [$this->petId], '/pets/{petId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -48,6 +48,6 @@ class ShowPetById extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -11,7 +11,7 @@ class GetUsers extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
      *     @var string $userState User state
      * }
      */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -26,19 +26,19 @@ class GetUsers extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('userState'));
-        $optionsResolver->setRequired(array('userState'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('userState', array('string'));
+        $optionsResolver->setDefined(['userState']);
+        $optionsResolver->setRequired(['userState']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('userState', ['string']);
         return $optionsResolver;
     }
     /**
@@ -57,6 +57,6 @@ class GetUsers extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

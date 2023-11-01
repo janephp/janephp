@@ -16,7 +16,7 @@ class TestFormParameters extends \Jane\Component\OpenApi2\Tests\Expected\Runtime
      *     @var string $testDefault 
      * }
      */
-    public function __construct(array $formParameters = array())
+    public function __construct(array $formParameters = [])
     {
         $this->formParameters = $formParameters;
     }
@@ -36,15 +36,15 @@ class TestFormParameters extends \Jane\Component\OpenApi2\Tests\Expected\Runtime
     protected function getFormOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(array('testString', 'testInteger', 'testFloat', 'testArray', 'testRequired', 'testDefault'));
-        $optionsResolver->setRequired(array('testRequired'));
-        $optionsResolver->setDefaults(array('testDefault' => 'test'));
-        $optionsResolver->addAllowedTypes('testString', array('string'));
-        $optionsResolver->addAllowedTypes('testInteger', array('int'));
-        $optionsResolver->addAllowedTypes('testFloat', array('float'));
-        $optionsResolver->addAllowedTypes('testArray', array('array'));
-        $optionsResolver->addAllowedTypes('testRequired', array('string'));
-        $optionsResolver->addAllowedTypes('testDefault', array('string'));
+        $optionsResolver->setDefined(['testString', 'testInteger', 'testFloat', 'testArray', 'testRequired', 'testDefault']);
+        $optionsResolver->setRequired(['testRequired']);
+        $optionsResolver->setDefaults(['testDefault' => 'test']);
+        $optionsResolver->addAllowedTypes('testString', ['string']);
+        $optionsResolver->addAllowedTypes('testInteger', ['int']);
+        $optionsResolver->addAllowedTypes('testFloat', ['float']);
+        $optionsResolver->addAllowedTypes('testArray', ['array']);
+        $optionsResolver->addAllowedTypes('testRequired', ['string']);
+        $optionsResolver->addAllowedTypes('testDefault', ['string']);
         return $optionsResolver;
     }
     /**
@@ -63,6 +63,6 @@ class TestFormParameters extends \Jane\Component\OpenApi2\Tests\Expected\Runtime
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

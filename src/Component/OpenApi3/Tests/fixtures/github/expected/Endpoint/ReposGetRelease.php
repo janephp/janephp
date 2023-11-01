@@ -27,15 +27,15 @@ class ReposGetRelease extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{release_id}'), array($this->owner, $this->repo, $this->release_id), '/repos/{owner}/{repo}/releases/{release_id}');
+        return str_replace(['{owner}', '{repo}', '{release_id}'], [$this->owner, $this->repo, $this->release_id], '/repos/{owner}/{repo}/releases/{release_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -57,6 +57,6 @@ class ReposGetRelease extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -15,7 +15,7 @@ class ContainerKill extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     *     @var string $signal Signal to send to the container as an integer or string (e.g. `SIGINT`)
     * }
     */
-    public function __construct(string $id, array $queryParameters = array())
+    public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;
@@ -27,23 +27,23 @@ class ContainerKill extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/containers/{id}/kill');
+        return str_replace(['{id}'], [$this->id], '/containers/{id}/kill');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('signal'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('signal' => 'SIGKILL'));
-        $optionsResolver->addAllowedTypes('signal', array('string'));
+        $optionsResolver->setDefined(['signal']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['signal' => 'SIGKILL']);
+        $optionsResolver->addAllowedTypes('signal', ['string']);
         return $optionsResolver;
     }
     /**
@@ -74,6 +74,6 @@ class ContainerKill extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

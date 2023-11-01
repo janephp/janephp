@@ -29,18 +29,18 @@ class MigrationsMapCommitAuthor extends \Github\Runtime\Client\BaseEndpoint impl
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{author_id}'), array($this->owner, $this->repo, $this->author_id), '/repos/{owner}/{repo}/import/authors/{author_id}');
+        return str_replace(['{owner}', '{repo}', '{author_id}'], [$this->owner, $this->repo, $this->author_id], '/repos/{owner}/{repo}/import/authors/{author_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -66,6 +66,6 @@ class MigrationsMapCommitAuthor extends \Github\Runtime\Client\BaseEndpoint impl
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

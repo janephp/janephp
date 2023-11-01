@@ -28,15 +28,15 @@ class TeamsGetDiscussionInOrg extends \Github\Runtime\Client\BaseEndpoint implem
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}', '{team_slug}', '{discussion_number}'), array($this->org, $this->team_slug, $this->discussion_number), '/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}');
+        return str_replace(['{org}', '{team_slug}', '{discussion_number}'], [$this->org, $this->team_slug, $this->discussion_number], '/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -54,6 +54,6 @@ class TeamsGetDiscussionInOrg extends \Github\Runtime\Client\BaseEndpoint implem
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

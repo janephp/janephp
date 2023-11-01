@@ -32,11 +32,11 @@ class ReactionsDeleteForIssue extends \Github\Runtime\Client\BaseEndpoint implem
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{issue_number}', '{reaction_id}'), array($this->owner, $this->repo, $this->issue_number, $this->reaction_id), '/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}');
+        return str_replace(['{owner}', '{repo}', '{issue_number}', '{reaction_id}'], [$this->owner, $this->repo, $this->issue_number, $this->reaction_id], '/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -54,6 +54,6 @@ class ReactionsDeleteForIssue extends \Github\Runtime\Client\BaseEndpoint implem
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

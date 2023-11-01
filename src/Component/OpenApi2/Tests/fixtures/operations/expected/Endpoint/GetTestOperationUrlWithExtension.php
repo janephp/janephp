@@ -15,7 +15,7 @@ class GetTestOperationUrlWithExtension extends \Jane\Component\OpenApi2\Tests\Ex
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -33,6 +33,6 @@ class GetTestOperationUrlWithExtension extends \Jane\Component\OpenApi2\Tests\Ex
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

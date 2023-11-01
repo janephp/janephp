@@ -13,7 +13,7 @@ class ApiParchmentsGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEn
      * }
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      */
-    public function __construct(array $queryParameters = array(), array $accept = array())
+    public function __construct(array $queryParameters = [], array $accept = [])
     {
         $this->queryParameters = $queryParameters;
         $this->accept = $accept;
@@ -29,22 +29,22 @@ class ApiParchmentsGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEn
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/ld+json', 'application/hal+json', 'application/vnd.api+json', 'application/json', 'application/xml', 'text/xml', 'application/x-yaml', 'text/csv'));
+            return ['Accept' => ['application/ld+json', 'application/hal+json', 'application/vnd.api+json', 'application/json', 'application/xml', 'text/xml', 'application/x-yaml', 'text/csv']];
         }
         return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('page' => 1));
-        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->setDefined(['page']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['page' => 1]);
+        $optionsResolver->addAllowedTypes('page', ['int']);
         return $optionsResolver;
     }
     /**
@@ -74,6 +74,6 @@ class ApiParchmentsGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEn
     }
     public function getAuthenticationScopes() : array
     {
-        return array('apiKey');
+        return ['apiKey'];
     }
 }

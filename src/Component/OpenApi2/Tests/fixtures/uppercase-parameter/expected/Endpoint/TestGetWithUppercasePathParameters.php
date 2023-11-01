@@ -21,11 +21,11 @@ class TestGetWithUppercasePathParameters extends \Jane\Component\OpenApi2\Tests\
     }
     public function getUri() : string
     {
-        return str_replace(array('{TestParameter}'), array($this->TestParameter), '/test-uppercase-path-parameters/{TestParameter}');
+        return str_replace(['{TestParameter}'], [$this->TestParameter], '/test-uppercase-path-parameters/{TestParameter}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -40,6 +40,6 @@ class TestGetWithUppercasePathParameters extends \Jane\Component\OpenApi2\Tests\
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

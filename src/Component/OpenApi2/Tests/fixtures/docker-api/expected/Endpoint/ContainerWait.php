@@ -15,7 +15,7 @@ class ContainerWait extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     
     * }
     */
-    public function __construct(string $id, array $queryParameters = array())
+    public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;
@@ -27,23 +27,23 @@ class ContainerWait extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/containers/{id}/wait');
+        return str_replace(['{id}'], [$this->id], '/containers/{id}/wait');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('condition'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('condition' => 'not-running'));
-        $optionsResolver->addAllowedTypes('condition', array('string'));
+        $optionsResolver->setDefined(['condition']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['condition' => 'not-running']);
+        $optionsResolver->addAllowedTypes('condition', ['string']);
         return $optionsResolver;
     }
     /**
@@ -70,6 +70,6 @@ class ContainerWait extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

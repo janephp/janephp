@@ -27,15 +27,15 @@ class BillingGetGithubActionsBillingUser extends \Github\Runtime\Client\BaseEndp
     }
     public function getUri() : string
     {
-        return str_replace(array('{username}'), array($this->username), '/users/{username}/settings/billing/actions');
+        return str_replace(['{username}'], [$this->username], '/users/{username}/settings/billing/actions');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -53,6 +53,6 @@ class BillingGetGithubActionsBillingUser extends \Github\Runtime\Client\BaseEndp
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -15,7 +15,7 @@ class SchemaTransferOwnership extends \PicturePark\API\Runtime\Client\BaseEndpoi
                Only the waiting is aborted, and the calls returned.
     * }
     */
-    public function __construct(string $id, \PicturePark\API\Model\SchemaOwnershipTransferRequest $requestBody, array $queryParameters = array())
+    public function __construct(string $id, \PicturePark\API\Model\SchemaOwnershipTransferRequest $requestBody, array $queryParameters = [])
     {
         $this->id = $id;
         $this->body = $requestBody;
@@ -28,26 +28,26 @@ class SchemaTransferOwnership extends \PicturePark\API\Runtime\Client\BaseEndpoi
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/v1/Schemas/{id}/ownership');
+        return str_replace(['{id}'], [$this->id], '/v1/Schemas/{id}/ownership');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \PicturePark\API\Model\SchemaOwnershipTransferRequest) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('timeout'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('timeout', array('string', 'null'));
+        $optionsResolver->setDefined(['timeout']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('timeout', ['string', 'null']);
         return $optionsResolver;
     }
     /**
@@ -94,6 +94,6 @@ class SchemaTransferOwnership extends \PicturePark\API\Runtime\Client\BaseEndpoi
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

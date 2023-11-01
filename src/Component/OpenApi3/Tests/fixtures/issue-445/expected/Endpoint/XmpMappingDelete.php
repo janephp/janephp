@@ -21,15 +21,15 @@ class XmpMappingDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/v1/XmpMappings/{id}');
+        return str_replace(['{id}'], [$this->id], '/v1/XmpMappings/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -75,6 +75,6 @@ class XmpMappingDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

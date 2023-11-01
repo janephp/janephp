@@ -29,7 +29,7 @@ class PluginPull extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     
     * }
     */
-    public function __construct(array $body, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(array $body, array $queryParameters = [], array $headerParameters = [])
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;
@@ -50,25 +50,25 @@ class PluginPull extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('remote', 'name'));
-        $optionsResolver->setRequired(array('remote'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('remote', array('string'));
-        $optionsResolver->addAllowedTypes('name', array('string'));
+        $optionsResolver->setDefined(['remote', 'name']);
+        $optionsResolver->setRequired(['remote']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('remote', ['string']);
+        $optionsResolver->addAllowedTypes('name', ['string']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('X-Registry-Auth'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('X-Registry-Auth', array('string'));
+        $optionsResolver->setDefined(['X-Registry-Auth']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('X-Registry-Auth', ['string']);
         return $optionsResolver;
     }
     /**
@@ -91,6 +91,6 @@ class PluginPull extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

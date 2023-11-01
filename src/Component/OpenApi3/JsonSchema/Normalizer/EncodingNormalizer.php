@@ -18,18 +18,18 @@ class EncodingNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, $context = []) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Encoding';
     }
-    public function supportsNormalization($data, $format = null, $context = []) : bool
+    public function supportsNormalization($data, $format = null, array $context = []) : bool
     {
         return $data instanceof \Jane\Component\OpenApi3\JsonSchema\Model\Encoding;
     }
     /**
      * @return mixed
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -48,7 +48,7 @@ class EncodingNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setContentType(null);
         }
         if (\array_key_exists('headers', $data) && $data['headers'] !== null) {
-            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['headers'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Header', 'json', $context);
             }
@@ -80,28 +80,32 @@ class EncodingNormalizer implements DenormalizerInterface, NormalizerInterface, 
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if (null !== $object->getContentType()) {
+        $data = [];
+        if ($object->isInitialized('contentType') && null !== $object->getContentType()) {
             $data['contentType'] = $object->getContentType();
         }
-        if (null !== $object->getHeaders()) {
-            $values = array();
+        if ($object->isInitialized('headers') && null !== $object->getHeaders()) {
+            $values = [];
             foreach ($object->getHeaders() as $key => $value) {
                 $values[$key] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['headers'] = $values;
         }
-        if (null !== $object->getStyle()) {
+        if ($object->isInitialized('style') && null !== $object->getStyle()) {
             $data['style'] = $object->getStyle();
         }
-        if (null !== $object->getExplode()) {
+        if ($object->isInitialized('explode') && null !== $object->getExplode()) {
             $data['explode'] = $object->getExplode();
         }
-        if (null !== $object->getAllowReserved()) {
+        if ($object->isInitialized('allowReserved') && null !== $object->getAllowReserved()) {
             $data['allowReserved'] = $object->getAllowReserved();
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return ['Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Encoding' => false];
     }
 }

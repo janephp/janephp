@@ -28,11 +28,11 @@ class AppsRevokeGrantForApplication extends \Github\Runtime\Client\BaseEndpoint 
     }
     public function getUri() : string
     {
-        return str_replace(array('{client_id}', '{access_token}'), array($this->client_id, $this->access_token), '/applications/{client_id}/grants/{access_token}');
+        return str_replace(['{client_id}', '{access_token}'], [$this->client_id, $this->access_token], '/applications/{client_id}/grants/{access_token}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -50,6 +50,6 @@ class AppsRevokeGrantForApplication extends \Github\Runtime\Client\BaseEndpoint 
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -24,7 +24,7 @@ class GenerateCommand extends Command
 
     public function __construct(ConfigLoaderInterface $configLoader, SchemaLoaderInterface $schemaLoader)
     {
-        parent::__construct(null);
+        parent::__construct();
         $this->configLoader = $configLoader;
         $this->schemaLoader = $schemaLoader;
     }
@@ -41,10 +41,8 @@ class GenerateCommand extends Command
 
     /**
      * {@inheritdoc}
-     *
-     * @return int
      */
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): int
     {
         $options = $this->configLoader->load($input->getOption('config-file'));
         $registries = $this->registries($options);
@@ -57,7 +55,7 @@ class GenerateCommand extends Command
                 $fixerConfigFile = $options['fixer-config-file'];
             }
 
-            $printer = new Printer(new Standard(), $fixerConfigFile);
+            $printer = new Printer(new Standard(['shortArraySyntax' => true]), $fixerConfigFile);
 
             if (\array_key_exists('use-fixer', $options) && \is_bool($options['use-fixer'])) {
                 $printer->setUseFixer($options['use-fixer']);

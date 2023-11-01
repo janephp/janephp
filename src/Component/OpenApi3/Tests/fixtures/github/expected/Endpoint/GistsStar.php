@@ -21,15 +21,15 @@ class GistsStar extends \Github\Runtime\Client\BaseEndpoint implements \Github\R
     }
     public function getUri() : string
     {
-        return str_replace(array('{gist_id}'), array($this->gist_id), '/gists/{gist_id}/star');
+        return str_replace(['{gist_id}'], [$this->gist_id], '/gists/{gist_id}/star');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -58,6 +58,6 @@ class GistsStar extends \Github\Runtime\Client\BaseEndpoint implements \Github\R
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -12,65 +12,125 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class MountBindOptionsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class MountBindOptionsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Docker\\Api\\Model\\MountBindOptions';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\MountBindOptions';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Docker\\Api\\Model\\MountBindOptions';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\MountBindOptions';
         }
-        $object = new \Docker\Api\Model\MountBindOptions();
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Docker\Api\Validator\MountBindOptionsConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Docker\Api\Model\MountBindOptions();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\MountBindOptionsConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('Propagation', $data)) {
+                $object->setPropagation($data['Propagation']);
+            }
+            if (\array_key_exists('NonRecursive', $data)) {
+                $object->setNonRecursive($data['NonRecursive']);
+            }
             return $object;
         }
-        if (\array_key_exists('Propagation', $data)) {
-            $object->setPropagation($data['Propagation']);
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('propagation') && null !== $object->getPropagation()) {
+                $data['Propagation'] = $object->getPropagation();
+            }
+            if ($object->isInitialized('nonRecursive') && null !== $object->getNonRecursive()) {
+                $data['NonRecursive'] = $object->getNonRecursive();
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\MountBindOptionsConstraint());
+            }
+            return $data;
         }
-        if (\array_key_exists('NonRecursive', $data)) {
-            $object->setNonRecursive($data['NonRecursive']);
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Docker\\Api\\Model\\MountBindOptions' => false];
         }
-        return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+} else {
+    class MountBindOptionsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = array();
-        if ($object->isInitialized('propagation') && null !== $object->getPropagation()) {
-            $data['Propagation'] = $object->getPropagation();
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Docker\\Api\\Model\\MountBindOptions';
         }
-        if ($object->isInitialized('nonRecursive') && null !== $object->getNonRecursive()) {
-            $data['NonRecursive'] = $object->getNonRecursive();
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\MountBindOptions';
         }
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Docker\Api\Validator\MountBindOptionsConstraint());
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Docker\Api\Model\MountBindOptions();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\MountBindOptionsConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('Propagation', $data)) {
+                $object->setPropagation($data['Propagation']);
+            }
+            if (\array_key_exists('NonRecursive', $data)) {
+                $object->setNonRecursive($data['NonRecursive']);
+            }
+            return $object;
         }
-        return $data;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('Docker\\Api\\Model\\MountBindOptions' => false);
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            if ($object->isInitialized('propagation') && null !== $object->getPropagation()) {
+                $data['Propagation'] = $object->getPropagation();
+            }
+            if ($object->isInitialized('nonRecursive') && null !== $object->getNonRecursive()) {
+                $data['NonRecursive'] = $object->getNonRecursive();
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\MountBindOptionsConstraint());
+            }
+            return $data;
+        }
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Docker\\Api\\Model\\MountBindOptions' => false];
+        }
     }
 }

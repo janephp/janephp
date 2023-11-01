@@ -25,9 +25,9 @@ class PostMessageM700 extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Cl
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\Model\MessageM700PostBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -43,6 +43,6 @@ class PostMessageM700 extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Cl
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

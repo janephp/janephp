@@ -27,15 +27,15 @@ class IssuesGetMilestone extends \Github\Runtime\Client\BaseEndpoint implements 
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{milestone_number}'), array($this->owner, $this->repo, $this->milestone_number), '/repos/{owner}/{repo}/milestones/{milestone_number}');
+        return str_replace(['{owner}', '{repo}', '{milestone_number}'], [$this->owner, $this->repo, $this->milestone_number], '/repos/{owner}/{repo}/milestones/{milestone_number}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -57,6 +57,6 @@ class IssuesGetMilestone extends \Github\Runtime\Client\BaseEndpoint implements 
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

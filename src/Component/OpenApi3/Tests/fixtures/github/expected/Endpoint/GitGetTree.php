@@ -19,7 +19,7 @@ class GitGetTree extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     *     @var string $recursive Setting this parameter to any value returns the objects or subtrees referenced by the tree specified in `:tree_sha`. For example, setting `recursive` to any of the following will enable returning objects or subtrees: `0`, `1`, `"true"`, and `"false"`. Omit this parameter to prevent recursively returning objects or subtrees.
     * }
     */
-    public function __construct(string $owner, string $repo, string $treeSha, array $queryParameters = array())
+    public function __construct(string $owner, string $repo, string $treeSha, array $queryParameters = [])
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -33,23 +33,23 @@ class GitGetTree extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{tree_sha}'), array($this->owner, $this->repo, $this->tree_sha), '/repos/{owner}/{repo}/git/trees/{tree_sha}');
+        return str_replace(['{owner}', '{repo}', '{tree_sha}'], [$this->owner, $this->repo, $this->tree_sha], '/repos/{owner}/{repo}/git/trees/{tree_sha}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('recursive'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('recursive', array('string'));
+        $optionsResolver->setDefined(['recursive']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('recursive', ['string']);
         return $optionsResolver;
     }
     /**
@@ -76,6 +76,6 @@ class GitGetTree extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

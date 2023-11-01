@@ -24,11 +24,11 @@ class ReposEnableAutomatedSecurityFixes extends \Github\Runtime\Client\BaseEndpo
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}'), array($this->owner, $this->repo), '/repos/{owner}/{repo}/automated-security-fixes');
+        return str_replace(['{owner}', '{repo}'], [$this->owner, $this->repo], '/repos/{owner}/{repo}/automated-security-fixes');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -46,6 +46,6 @@ class ReposEnableAutomatedSecurityFixes extends \Github\Runtime\Client\BaseEndpo
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

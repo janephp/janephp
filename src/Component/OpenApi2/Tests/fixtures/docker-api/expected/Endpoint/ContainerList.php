@@ -45,7 +45,7 @@ class ContainerList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     
     * }
     */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -60,22 +60,22 @@ class ContainerList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('all', 'limit', 'size', 'filters'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('all' => false, 'size' => false));
-        $optionsResolver->addAllowedTypes('all', array('bool'));
-        $optionsResolver->addAllowedTypes('limit', array('int'));
-        $optionsResolver->addAllowedTypes('size', array('bool'));
-        $optionsResolver->addAllowedTypes('filters', array('string'));
+        $optionsResolver->setDefined(['all', 'limit', 'size', 'filters']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['all' => false, 'size' => false]);
+        $optionsResolver->addAllowedTypes('all', ['bool']);
+        $optionsResolver->addAllowedTypes('limit', ['int']);
+        $optionsResolver->addAllowedTypes('size', ['bool']);
+        $optionsResolver->addAllowedTypes('filters', ['string']);
         return $optionsResolver;
     }
     /**
@@ -102,6 +102,6 @@ class ContainerList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

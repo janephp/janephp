@@ -27,11 +27,11 @@ class ReposDeleteInvitation extends \Github\Runtime\Client\BaseEndpoint implemen
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{invitation_id}'), array($this->owner, $this->repo, $this->invitation_id), '/repos/{owner}/{repo}/invitations/{invitation_id}');
+        return str_replace(['{owner}', '{repo}', '{invitation_id}'], [$this->owner, $this->repo, $this->invitation_id], '/repos/{owner}/{repo}/invitations/{invitation_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -49,6 +49,6 @@ class ReposDeleteInvitation extends \Github\Runtime\Client\BaseEndpoint implemen
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

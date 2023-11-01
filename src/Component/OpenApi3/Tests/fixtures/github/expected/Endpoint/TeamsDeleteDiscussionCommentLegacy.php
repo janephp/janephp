@@ -29,11 +29,11 @@ class TeamsDeleteDiscussionCommentLegacy extends \Github\Runtime\Client\BaseEndp
     }
     public function getUri() : string
     {
-        return str_replace(array('{team_id}', '{discussion_number}', '{comment_number}'), array($this->team_id, $this->discussion_number, $this->comment_number), '/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}');
+        return str_replace(['{team_id}', '{discussion_number}', '{comment_number}'], [$this->team_id, $this->discussion_number, $this->comment_number], '/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -51,6 +51,6 @@ class TeamsDeleteDiscussionCommentLegacy extends \Github\Runtime\Client\BaseEndp
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

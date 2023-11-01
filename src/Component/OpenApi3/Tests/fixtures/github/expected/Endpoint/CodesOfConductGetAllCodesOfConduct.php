@@ -15,11 +15,11 @@ class CodesOfConductGetAllCodesOfConduct extends \Github\Runtime\Client\BaseEndp
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -44,6 +44,6 @@ class CodesOfConductGetAllCodesOfConduct extends \Github\Runtime\Client\BaseEndp
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -23,18 +23,18 @@ class OutputFormatSetDownloadFileNamePatterns extends \PicturePark\API\Runtime\C
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/v1/OutputFormats/{id}/downloadFileNamePatterns');
+        return str_replace(['{id}'], [$this->id], '/v1/OutputFormats/{id}/downloadFileNamePatterns');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \stdClass) {
-            return array(array('Content-Type' => array('application/json')), json_encode($this->body));
+            return [['Content-Type' => ['application/json']], json_encode($this->body)];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -80,6 +80,6 @@ class OutputFormatSetDownloadFileNamePatterns extends \PicturePark\API\Runtime\C
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

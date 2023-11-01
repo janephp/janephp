@@ -25,18 +25,18 @@ class AppsCreateInstallationAccessToken extends \Github\Runtime\Client\BaseEndpo
     }
     public function getUri() : string
     {
-        return str_replace(array('{installation_id}'), array($this->installation_id), '/app/installations/{installation_id}/access_tokens');
+        return str_replace(['{installation_id}'], [$this->installation_id], '/app/installations/{installation_id}/access_tokens');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\AppInstallationsInstallationIdAccessTokensPostBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -74,6 +74,6 @@ class AppsCreateInstallationAccessToken extends \Github\Runtime\Client\BaseEndpo
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

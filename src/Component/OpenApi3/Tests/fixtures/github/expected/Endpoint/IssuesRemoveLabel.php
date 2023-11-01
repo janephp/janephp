@@ -30,15 +30,15 @@ class IssuesRemoveLabel extends \Github\Runtime\Client\BaseEndpoint implements \
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{issue_number}', '{name}'), array($this->owner, $this->repo, $this->issue_number, $this->name), '/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}');
+        return str_replace(['{owner}', '{repo}', '{issue_number}', '{name}'], [$this->owner, $this->repo, $this->issue_number, $this->name], '/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -64,6 +64,6 @@ class IssuesRemoveLabel extends \Github\Runtime\Client\BaseEndpoint implements \
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

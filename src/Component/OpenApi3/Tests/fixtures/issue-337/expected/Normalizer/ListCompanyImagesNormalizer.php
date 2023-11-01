@@ -12,79 +12,153 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ListCompanyImagesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class ListCompanyImagesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'CreditSafe\\API\\Model\\ListCompanyImages';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'CreditSafe\\API\\Model\\ListCompanyImages';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'CreditSafe\\API\\Model\\ListCompanyImages';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'CreditSafe\\API\\Model\\ListCompanyImages';
         }
-        $object = new \CreditSafe\API\Model\ListCompanyImages();
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \CreditSafe\API\Model\ListCompanyImages();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('totalSize', $data)) {
+                $object->setTotalSize($data['totalSize']);
+                unset($data['totalSize']);
+            }
+            if (\array_key_exists('data', $data)) {
+                $values = [];
+                foreach ($data['data'] as $value) {
+                    $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\ListCompanyImagesDataItem', 'json', $context);
+                }
+                $object->setData($values);
+                unset($data['data']);
+            }
+            foreach ($data as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_1;
+                }
+            }
             return $object;
         }
-        if (\array_key_exists('totalSize', $data)) {
-            $object->setTotalSize($data['totalSize']);
-            unset($data['totalSize']);
-        }
-        if (\array_key_exists('data', $data)) {
-            $values = array();
-            foreach ($data['data'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\ListCompanyImagesDataItem', 'json', $context);
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('totalSize') && null !== $object->getTotalSize()) {
+                $data['totalSize'] = $object->getTotalSize();
             }
-            $object->setData($values);
-            unset($data['data']);
-        }
-        foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+            if ($object->isInitialized('data') && null !== $object->getData()) {
+                $values = [];
+                foreach ($object->getData() as $value) {
+                    $values[] = $this->normalizer->normalize($value, 'json', $context);
+                }
+                $data['data'] = $values;
             }
+            foreach ($object as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_1;
+                }
+            }
+            return $data;
         }
-        return $object;
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['CreditSafe\\API\\Model\\ListCompanyImages' => false];
+        }
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+} else {
+    class ListCompanyImagesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = array();
-        if ($object->isInitialized('totalSize') && null !== $object->getTotalSize()) {
-            $data['totalSize'] = $object->getTotalSize();
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'CreditSafe\\API\\Model\\ListCompanyImages';
         }
-        if ($object->isInitialized('data') && null !== $object->getData()) {
-            $values = array();
-            foreach ($object->getData() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'CreditSafe\\API\\Model\\ListCompanyImages';
+        }
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
             }
-            $data['data'] = $values;
-        }
-        foreach ($object as $key => $value_1) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
+            $object = new \CreditSafe\API\Model\ListCompanyImages();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('totalSize', $data)) {
+                $object->setTotalSize($data['totalSize']);
+                unset($data['totalSize']);
+            }
+            if (\array_key_exists('data', $data)) {
+                $values = [];
+                foreach ($data['data'] as $value) {
+                    $values[] = $this->denormalizer->denormalize($value, 'CreditSafe\\API\\Model\\ListCompanyImagesDataItem', 'json', $context);
+                }
+                $object->setData($values);
+                unset($data['data']);
+            }
+            foreach ($data as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_1;
+                }
+            }
+            return $object;
         }
-        return $data;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('CreditSafe\\API\\Model\\ListCompanyImages' => false);
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            if ($object->isInitialized('totalSize') && null !== $object->getTotalSize()) {
+                $data['totalSize'] = $object->getTotalSize();
+            }
+            if ($object->isInitialized('data') && null !== $object->getData()) {
+                $values = [];
+                foreach ($object->getData() as $value) {
+                    $values[] = $this->normalizer->normalize($value, 'json', $context);
+                }
+                $data['data'] = $values;
+            }
+            foreach ($object as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_1;
+                }
+            }
+            return $data;
+        }
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['CreditSafe\\API\\Model\\ListCompanyImages' => false];
+        }
     }
 }

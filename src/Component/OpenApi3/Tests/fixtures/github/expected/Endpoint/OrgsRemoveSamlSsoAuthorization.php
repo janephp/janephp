@@ -26,15 +26,15 @@ class OrgsRemoveSamlSsoAuthorization extends \Github\Runtime\Client\BaseEndpoint
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}', '{credential_id}'), array($this->org, $this->credential_id), '/orgs/{org}/credential-authorizations/{credential_id}');
+        return str_replace(['{org}', '{credential_id}'], [$this->org, $this->credential_id], '/orgs/{org}/credential-authorizations/{credential_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -56,6 +56,6 @@ class OrgsRemoveSamlSsoAuthorization extends \Github\Runtime\Client\BaseEndpoint
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

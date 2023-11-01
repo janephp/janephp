@@ -27,11 +27,11 @@ class IssuesDeleteLabel extends \Github\Runtime\Client\BaseEndpoint implements \
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{name}'), array($this->owner, $this->repo, $this->name), '/repos/{owner}/{repo}/labels/{name}');
+        return str_replace(['{owner}', '{repo}', '{name}'], [$this->owner, $this->repo, $this->name], '/repos/{owner}/{repo}/labels/{name}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -49,6 +49,6 @@ class IssuesDeleteLabel extends \Github\Runtime\Client\BaseEndpoint implements \
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

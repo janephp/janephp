@@ -26,15 +26,15 @@ class TeamsCheckPermissionsForProjectLegacy extends \Github\Runtime\Client\BaseE
     }
     public function getUri() : string
     {
-        return str_replace(array('{team_id}', '{project_id}'), array($this->team_id, $this->project_id), '/teams/{team_id}/projects/{project_id}');
+        return str_replace(['{team_id}', '{project_id}'], [$this->team_id, $this->project_id], '/teams/{team_id}/projects/{project_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -60,6 +60,6 @@ class TeamsCheckPermissionsForProjectLegacy extends \Github\Runtime\Client\BaseE
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

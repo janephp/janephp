@@ -6,6 +6,6 @@ class SystemInfoDefaultAddressPoolsItemConstraint extends \Symfony\Component\Val
 {
     protected function getConstraints($options) : array
     {
-        return array(new \Symfony\Component\Validator\Constraints\Collection(array('fields' => array('Base' => new \Symfony\Component\Validator\Constraints\Optional(array(new \Symfony\Component\Validator\Constraints\Type(array('0' => 'string')))), 'Size' => new \Symfony\Component\Validator\Constraints\Optional(array(new \Symfony\Component\Validator\Constraints\Type(array('0' => 'integer'))))), 'allowExtraFields' => true)));
+        return [new \Symfony\Component\Validator\Constraints\Collection(['fields' => ['Base' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\Type(['0' => 'string'])]), 'Size' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\Type(['0' => 'integer'])])], 'allowExtraFields' => true])];
     }
 }

@@ -15,7 +15,7 @@ class PluginEnable extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     *     @var int $timeout Set the HTTP client timeout (in seconds)
     * }
     */
-    public function __construct(string $name, array $queryParameters = array())
+    public function __construct(string $name, array $queryParameters = [])
     {
         $this->name = $name;
         $this->queryParameters = $queryParameters;
@@ -27,23 +27,23 @@ class PluginEnable extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     }
     public function getUri() : string
     {
-        return str_replace(array('{name}'), array($this->name), '/plugins/{name}/enable');
+        return str_replace(['{name}'], [$this->name], '/plugins/{name}/enable');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('timeout'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('timeout' => 0));
-        $optionsResolver->addAllowedTypes('timeout', array('int'));
+        $optionsResolver->setDefined(['timeout']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['timeout' => 0]);
+        $optionsResolver->addAllowedTypes('timeout', ['int']);
         return $optionsResolver;
     }
     /**
@@ -70,6 +70,6 @@ class PluginEnable extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

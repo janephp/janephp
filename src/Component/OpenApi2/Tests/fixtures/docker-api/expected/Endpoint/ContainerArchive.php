@@ -13,7 +13,7 @@ class ContainerArchive extends \Docker\Api\Runtime\Client\BaseEndpoint implement
      *     @var string $path Resource in the container’s filesystem to archive.
      * }
      */
-    public function __construct(string $id, array $queryParameters = array())
+    public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;
@@ -25,23 +25,23 @@ class ContainerArchive extends \Docker\Api\Runtime\Client\BaseEndpoint implement
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/containers/{id}/archive');
+        return str_replace(['{id}'], [$this->id], '/containers/{id}/archive');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('path'));
-        $optionsResolver->setRequired(array('path'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('path', array('string'));
+        $optionsResolver->setDefined(['path']);
+        $optionsResolver->setRequired(['path']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('path', ['string']);
         return $optionsResolver;
     }
     /**
@@ -72,6 +72,6 @@ class ContainerArchive extends \Docker\Api\Runtime\Client\BaseEndpoint implement
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

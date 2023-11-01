@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\JsonSchema\Model;
 class Responses extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var Response|Reference|null
@@ -28,6 +36,7 @@ class Responses extends \ArrayObject
      */
     public function setDefault($default) : self
     {
+        $this->initialized['default'] = true;
         $this->default = $default;
         return $this;
     }

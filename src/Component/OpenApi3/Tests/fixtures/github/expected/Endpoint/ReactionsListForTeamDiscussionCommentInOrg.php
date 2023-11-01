@@ -22,7 +22,7 @@ class ReactionsListForTeamDiscussionCommentInOrg extends \Github\Runtime\Client\
      *     @var int $page Page number of the results to fetch.
      * }
      */
-    public function __construct(string $org, string $teamSlug, int $discussionNumber, int $commentNumber, array $queryParameters = array())
+    public function __construct(string $org, string $teamSlug, int $discussionNumber, int $commentNumber, array $queryParameters = [])
     {
         $this->org = $org;
         $this->team_slug = $teamSlug;
@@ -37,25 +37,25 @@ class ReactionsListForTeamDiscussionCommentInOrg extends \Github\Runtime\Client\
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}', '{team_slug}', '{discussion_number}', '{comment_number}'), array($this->org, $this->team_slug, $this->discussion_number, $this->comment_number), '/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions');
+        return str_replace(['{org}', '{team_slug}', '{discussion_number}', '{comment_number}'], [$this->org, $this->team_slug, $this->discussion_number, $this->comment_number], '/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('content', 'per_page', 'page'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('per_page' => 30, 'page' => 1));
-        $optionsResolver->addAllowedTypes('content', array('string'));
-        $optionsResolver->addAllowedTypes('per_page', array('int'));
-        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->setDefined(['content', 'per_page', 'page']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['per_page' => 30, 'page' => 1]);
+        $optionsResolver->addAllowedTypes('content', ['string']);
+        $optionsResolver->addAllowedTypes('per_page', ['int']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
         return $optionsResolver;
     }
     /**
@@ -74,6 +74,6 @@ class ReactionsListForTeamDiscussionCommentInOrg extends \Github\Runtime\Client\
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

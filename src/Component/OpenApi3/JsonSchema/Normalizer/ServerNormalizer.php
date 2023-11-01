@@ -18,18 +18,18 @@ class ServerNormalizer implements DenormalizerInterface, NormalizerInterface, De
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, $context = []) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Server';
     }
-    public function supportsNormalization($data, $format = null, $context = []) : bool
+    public function supportsNormalization($data, $format = null, array $context = []) : bool
     {
         return $data instanceof \Jane\Component\OpenApi3\JsonSchema\Model\Server;
     }
     /**
      * @return mixed
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -56,7 +56,7 @@ class ServerNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setDescription(null);
         }
         if (\array_key_exists('variables', $data) && $data['variables'] !== null) {
-            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['variables'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\ServerVariable', 'json', $context);
             }
@@ -76,15 +76,15 @@ class ServerNormalizer implements DenormalizerInterface, NormalizerInterface, De
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
+        $data = [];
         $data['url'] = $object->getUrl();
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getVariables()) {
-            $values = array();
+        if ($object->isInitialized('variables') && null !== $object->getVariables()) {
+            $values = [];
             foreach ($object->getVariables() as $key => $value) {
                 $values[$key] = $this->normalizer->normalize($value, 'json', $context);
             }
@@ -96,5 +96,9 @@ class ServerNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return ['Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Server' => false];
     }
 }

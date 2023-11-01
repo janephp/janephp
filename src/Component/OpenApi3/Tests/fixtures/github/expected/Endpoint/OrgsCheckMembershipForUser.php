@@ -24,11 +24,11 @@ class OrgsCheckMembershipForUser extends \Github\Runtime\Client\BaseEndpoint imp
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}', '{username}'), array($this->org, $this->username), '/orgs/{org}/members/{username}');
+        return str_replace(['{org}', '{username}'], [$this->org, $this->username], '/orgs/{org}/members/{username}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -53,6 +53,6 @@ class OrgsCheckMembershipForUser extends \Github\Runtime\Client\BaseEndpoint imp
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

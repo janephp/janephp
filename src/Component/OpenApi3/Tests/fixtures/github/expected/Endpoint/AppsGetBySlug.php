@@ -23,15 +23,15 @@ class AppsGetBySlug extends \Github\Runtime\Client\BaseEndpoint implements \Gith
     }
     public function getUri() : string
     {
-        return str_replace(array('{app_slug}'), array($this->app_slug), '/apps/{app_slug}');
+        return str_replace(['{app_slug}'], [$this->app_slug], '/apps/{app_slug}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -61,6 +61,6 @@ class AppsGetBySlug extends \Github\Runtime\Client\BaseEndpoint implements \Gith
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

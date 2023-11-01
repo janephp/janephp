@@ -18,18 +18,18 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, $context = []) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Response';
     }
-    public function supportsNormalization($data, $format = null, $context = []) : bool
+    public function supportsNormalization($data, $format = null, array $context = []) : bool
     {
         return $data instanceof \Jane\Component\OpenApi3\JsonSchema\Model\Response;
     }
     /**
      * @return mixed
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -49,7 +49,7 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setDescription(null);
         }
         if (\array_key_exists('headers', $data) && $data['headers'] !== null) {
-            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['headers'] as $key => $value) {
                 $value_1 = $value;
                 if (is_array($value) and isset($value['$ref'])) {
@@ -66,7 +66,7 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setHeaders(null);
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
-            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['content'] as $key_1 => $value_2) {
                 $values_1[$key_1] = $this->denormalizer->denormalize($value_2, 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\MediaType', 'json', $context);
             }
@@ -77,7 +77,7 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setContent(null);
         }
         if (\array_key_exists('links', $data) && $data['links'] !== null) {
-            $values_2 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['links'] as $key_2 => $value_3) {
                 $value_4 = $value_3;
                 if (is_array($value_3) and isset($value_3['$ref'])) {
@@ -103,12 +103,12 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
+        $data = [];
         $data['description'] = $object->getDescription();
-        if (null !== $object->getHeaders()) {
-            $values = array();
+        if ($object->isInitialized('headers') && null !== $object->getHeaders()) {
+            $values = [];
             foreach ($object->getHeaders() as $key => $value) {
                 $value_1 = $value;
                 if (is_object($value)) {
@@ -120,15 +120,15 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $data['headers'] = $values;
         }
-        if (null !== $object->getContent()) {
-            $values_1 = array();
+        if ($object->isInitialized('content') && null !== $object->getContent()) {
+            $values_1 = [];
             foreach ($object->getContent() as $key_1 => $value_2) {
                 $values_1[$key_1] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['content'] = $values_1;
         }
-        if (null !== $object->getLinks()) {
-            $values_2 = array();
+        if ($object->isInitialized('links') && null !== $object->getLinks()) {
+            $values_2 = [];
             foreach ($object->getLinks() as $key_2 => $value_3) {
                 $value_4 = $value_3;
                 if (is_object($value_3)) {
@@ -146,5 +146,9 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return ['Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Response' => false];
     }
 }

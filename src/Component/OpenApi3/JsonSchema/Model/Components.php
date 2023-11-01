@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\JsonSchema\Model;
 class Components extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var Schema|Reference[]|null
@@ -76,6 +84,7 @@ class Components extends \ArrayObject
      */
     public function setSchemas($schemas) : self
     {
+        $this->initialized['schemas'] = true;
         $this->schemas = $schemas;
         return $this;
     }
@@ -97,6 +106,7 @@ class Components extends \ArrayObject
      */
     public function setResponses($responses) : self
     {
+        $this->initialized['responses'] = true;
         $this->responses = $responses;
         return $this;
     }
@@ -118,6 +128,7 @@ class Components extends \ArrayObject
      */
     public function setParameters($parameters) : self
     {
+        $this->initialized['parameters'] = true;
         $this->parameters = $parameters;
         return $this;
     }
@@ -139,6 +150,7 @@ class Components extends \ArrayObject
      */
     public function setExamples($examples) : self
     {
+        $this->initialized['examples'] = true;
         $this->examples = $examples;
         return $this;
     }
@@ -160,6 +172,7 @@ class Components extends \ArrayObject
      */
     public function setRequestBodies($requestBodies) : self
     {
+        $this->initialized['requestBodies'] = true;
         $this->requestBodies = $requestBodies;
         return $this;
     }
@@ -181,6 +194,7 @@ class Components extends \ArrayObject
      */
     public function setHeaders($headers) : self
     {
+        $this->initialized['headers'] = true;
         $this->headers = $headers;
         return $this;
     }
@@ -202,6 +216,7 @@ class Components extends \ArrayObject
      */
     public function setSecuritySchemes($securitySchemes) : self
     {
+        $this->initialized['securitySchemes'] = true;
         $this->securitySchemes = $securitySchemes;
         return $this;
     }
@@ -223,6 +238,7 @@ class Components extends \ArrayObject
      */
     public function setLinks($links) : self
     {
+        $this->initialized['links'] = true;
         $this->links = $links;
         return $this;
     }
@@ -244,6 +260,7 @@ class Components extends \ArrayObject
      */
     public function setCallbacks($callbacks) : self
     {
+        $this->initialized['callbacks'] = true;
         $this->callbacks = $callbacks;
         return $this;
     }

@@ -15,7 +15,7 @@ class ImageLoad extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
     *     @var bool $quiet Suppress progress details during load.
     * }
     */
-    public function __construct($imagesTarball, array $queryParameters = array())
+    public function __construct($imagesTarball, array $queryParameters = [])
     {
         $this->body = $imagesTarball;
         $this->queryParameters = $queryParameters;
@@ -31,19 +31,19 @@ class ImageLoad extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), $this->body);
+        return [[], $this->body];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('quiet'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('quiet' => false));
-        $optionsResolver->addAllowedTypes('quiet', array('bool'));
+        $optionsResolver->setDefined(['quiet']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['quiet' => false]);
+        $optionsResolver->addAllowedTypes('quiet', ['bool']);
         return $optionsResolver;
     }
     /**
@@ -66,6 +66,6 @@ class ImageLoad extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -29,18 +29,18 @@ class IssuesSetLabels extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{issue_number}'), array($this->owner, $this->repo, $this->issue_number), '/repos/{owner}/{repo}/issues/{issue_number}/labels');
+        return str_replace(['{owner}', '{repo}', '{issue_number}'], [$this->owner, $this->repo, $this->issue_number], '/repos/{owner}/{repo}/issues/{issue_number}/labels');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -66,6 +66,6 @@ class IssuesSetLabels extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

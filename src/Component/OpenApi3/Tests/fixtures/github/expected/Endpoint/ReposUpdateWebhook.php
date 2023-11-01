@@ -29,18 +29,18 @@ class ReposUpdateWebhook extends \Github\Runtime\Client\BaseEndpoint implements 
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{hook_id}'), array($this->owner, $this->repo, $this->hook_id), '/repos/{owner}/{repo}/hooks/{hook_id}');
+        return str_replace(['{owner}', '{repo}', '{hook_id}'], [$this->owner, $this->repo, $this->hook_id], '/repos/{owner}/{repo}/hooks/{hook_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\ReposOwnerRepoHooksHookIdPatchBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -66,6 +66,6 @@ class ReposUpdateWebhook extends \Github\Runtime\Client\BaseEndpoint implements 
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

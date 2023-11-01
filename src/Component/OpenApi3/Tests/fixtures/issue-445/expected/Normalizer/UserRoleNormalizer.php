@@ -12,80 +12,155 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class UserRoleNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class UserRoleNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'PicturePark\\API\\Model\\UserRole';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\UserRole';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'PicturePark\\API\\Model\\UserRole';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\UserRole';
         }
-        $object = new \PicturePark\API\Model\UserRole();
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \PicturePark\API\Model\UserRole();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('names', $data)) {
+                $object->setNames($data['names']);
+                unset($data['names']);
+            }
+            if (\array_key_exists('userRights', $data)) {
+                $values = [];
+                foreach ($data['userRights'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setUserRights($values);
+                unset($data['userRights']);
+            }
+            if (\array_key_exists('id', $data)) {
+                $object->setId($data['id']);
+                unset($data['id']);
+            }
+            foreach ($data as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_1;
+                }
+            }
             return $object;
         }
-        if (\array_key_exists('names', $data)) {
-            $object->setNames($data['names']);
-            unset($data['names']);
-        }
-        if (\array_key_exists('userRights', $data)) {
-            $values = array();
-            foreach ($data['userRights'] as $value) {
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['names'] = $object->getNames();
+            $values = [];
+            foreach ($object->getUserRights() as $value) {
                 $values[] = $value;
             }
-            $object->setUserRights($values);
-            unset($data['userRights']);
-        }
-        if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
-            unset($data['id']);
-        }
-        foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+            $data['userRights'] = $values;
+            $data['id'] = $object->getId();
+            foreach ($object as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_1;
+                }
             }
+            return $data;
         }
-        return $object;
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['PicturePark\\API\\Model\\UserRole' => false];
+        }
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+} else {
+    class UserRoleNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = array();
-        $data['names'] = $object->getNames();
-        $values = array();
-        foreach ($object->getUserRights() as $value) {
-            $values[] = $value;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'PicturePark\\API\\Model\\UserRole';
         }
-        $data['userRights'] = $values;
-        $data['id'] = $object->getId();
-        foreach ($object as $key => $value_1) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\UserRole';
+        }
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
             }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \PicturePark\API\Model\UserRole();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('names', $data)) {
+                $object->setNames($data['names']);
+                unset($data['names']);
+            }
+            if (\array_key_exists('userRights', $data)) {
+                $values = [];
+                foreach ($data['userRights'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setUserRights($values);
+                unset($data['userRights']);
+            }
+            if (\array_key_exists('id', $data)) {
+                $object->setId($data['id']);
+                unset($data['id']);
+            }
+            foreach ($data as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_1;
+                }
+            }
+            return $object;
         }
-        return $data;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('PicturePark\\API\\Model\\UserRole' => false);
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $data['names'] = $object->getNames();
+            $values = [];
+            foreach ($object->getUserRights() as $value) {
+                $values[] = $value;
+            }
+            $data['userRights'] = $values;
+            $data['id'] = $object->getId();
+            foreach ($object as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_1;
+                }
+            }
+            return $data;
+        }
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['PicturePark\\API\\Model\\UserRole' => false];
+        }
     }
 }

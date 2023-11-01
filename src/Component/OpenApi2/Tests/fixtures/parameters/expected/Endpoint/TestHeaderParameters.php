@@ -16,7 +16,7 @@ class TestHeaderParameters extends \Jane\Component\OpenApi2\Tests\Expected\Runti
      *     @var string $testDefault 
      * }
      */
-    public function __construct(array $headerParameters = array())
+    public function __construct(array $headerParameters = [])
     {
         $this->headerParameters = $headerParameters;
     }
@@ -31,20 +31,20 @@ class TestHeaderParameters extends \Jane\Component\OpenApi2\Tests\Expected\Runti
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('testString', 'testInteger', 'testFloat', 'testArray', 'testRequired', 'testDefault'));
-        $optionsResolver->setRequired(array('testRequired'));
-        $optionsResolver->setDefaults(array('testDefault' => 'test'));
-        $optionsResolver->addAllowedTypes('testString', array('string'));
-        $optionsResolver->addAllowedTypes('testInteger', array('int'));
-        $optionsResolver->addAllowedTypes('testFloat', array('float'));
-        $optionsResolver->addAllowedTypes('testArray', array('array'));
-        $optionsResolver->addAllowedTypes('testRequired', array('string'));
-        $optionsResolver->addAllowedTypes('testDefault', array('string'));
+        $optionsResolver->setDefined(['testString', 'testInteger', 'testFloat', 'testArray', 'testRequired', 'testDefault']);
+        $optionsResolver->setRequired(['testRequired']);
+        $optionsResolver->setDefaults(['testDefault' => 'test']);
+        $optionsResolver->addAllowedTypes('testString', ['string']);
+        $optionsResolver->addAllowedTypes('testInteger', ['int']);
+        $optionsResolver->addAllowedTypes('testFloat', ['float']);
+        $optionsResolver->addAllowedTypes('testArray', ['array']);
+        $optionsResolver->addAllowedTypes('testRequired', ['string']);
+        $optionsResolver->addAllowedTypes('testDefault', ['string']);
         return $optionsResolver;
     }
     /**
@@ -63,6 +63,6 @@ class TestHeaderParameters extends \Jane\Component\OpenApi2\Tests\Expected\Runti
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -32,18 +32,18 @@ class PullsDismissReview extends \Github\Runtime\Client\BaseEndpoint implements 
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{pull_number}', '{review_id}'), array($this->owner, $this->repo, $this->pull_number, $this->review_id), '/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals');
+        return str_replace(['{owner}', '{repo}', '{pull_number}', '{review_id}'], [$this->owner, $this->repo, $this->pull_number, $this->review_id], '/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -69,6 +69,6 @@ class PullsDismissReview extends \Github\Runtime\Client\BaseEndpoint implements 
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

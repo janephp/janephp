@@ -12,162 +12,319 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ScimUserNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class ScimUserNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Github\\Model\\ScimUser';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'Github\\Model\\ScimUser';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Github\\Model\\ScimUser';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Github\\Model\\ScimUser';
         }
-        $object = new \Github\Model\ScimUser();
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Github\Validator\ScimUserConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Github\Model\ScimUser();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Github\Validator\ScimUserConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('schemas', $data)) {
+                $values = [];
+                foreach ($data['schemas'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setSchemas($values);
+                unset($data['schemas']);
+            }
+            if (\array_key_exists('id', $data)) {
+                $object->setId($data['id']);
+                unset($data['id']);
+            }
+            if (\array_key_exists('externalId', $data) && $data['externalId'] !== null) {
+                $object->setExternalId($data['externalId']);
+                unset($data['externalId']);
+            }
+            elseif (\array_key_exists('externalId', $data) && $data['externalId'] === null) {
+                $object->setExternalId(null);
+            }
+            if (\array_key_exists('userName', $data) && $data['userName'] !== null) {
+                $object->setUserName($data['userName']);
+                unset($data['userName']);
+            }
+            elseif (\array_key_exists('userName', $data) && $data['userName'] === null) {
+                $object->setUserName(null);
+            }
+            if (\array_key_exists('name', $data)) {
+                $object->setName($this->denormalizer->denormalize($data['name'], 'Github\\Model\\ScimUserName', 'json', $context));
+                unset($data['name']);
+            }
+            if (\array_key_exists('emails', $data)) {
+                $values_1 = [];
+                foreach ($data['emails'] as $value_1) {
+                    $values_1[] = $this->denormalizer->denormalize($value_1, 'Github\\Model\\ScimUserEmailsItem', 'json', $context);
+                }
+                $object->setEmails($values_1);
+                unset($data['emails']);
+            }
+            if (\array_key_exists('active', $data)) {
+                $object->setActive($data['active']);
+                unset($data['active']);
+            }
+            if (\array_key_exists('meta', $data)) {
+                $object->setMeta($this->denormalizer->denormalize($data['meta'], 'Github\\Model\\ScimUserMeta', 'json', $context));
+                unset($data['meta']);
+            }
+            if (\array_key_exists('organization_id', $data)) {
+                $object->setOrganizationId($data['organization_id']);
+                unset($data['organization_id']);
+            }
+            if (\array_key_exists('operations', $data)) {
+                $values_2 = [];
+                foreach ($data['operations'] as $value_2) {
+                    $values_2[] = $this->denormalizer->denormalize($value_2, 'Github\\Model\\ScimUserOperationsItem', 'json', $context);
+                }
+                $object->setOperations($values_2);
+                unset($data['operations']);
+            }
+            if (\array_key_exists('groups', $data)) {
+                $values_3 = [];
+                foreach ($data['groups'] as $value_3) {
+                    $values_3[] = $this->denormalizer->denormalize($value_3, 'Github\\Model\\ScimUserGroupsItem', 'json', $context);
+                }
+                $object->setGroups($values_3);
+                unset($data['groups']);
+            }
+            foreach ($data as $key => $value_4) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_4;
+                }
+            }
             return $object;
         }
-        if (\array_key_exists('schemas', $data)) {
-            $values = array();
-            foreach ($data['schemas'] as $value) {
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $values = [];
+            foreach ($object->getSchemas() as $value) {
                 $values[] = $value;
             }
-            $object->setSchemas($values);
-            unset($data['schemas']);
-        }
-        if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
-            unset($data['id']);
-        }
-        if (\array_key_exists('externalId', $data) && $data['externalId'] !== null) {
-            $object->setExternalId($data['externalId']);
-            unset($data['externalId']);
-        }
-        elseif (\array_key_exists('externalId', $data) && $data['externalId'] === null) {
-            $object->setExternalId(null);
-        }
-        if (\array_key_exists('userName', $data) && $data['userName'] !== null) {
-            $object->setUserName($data['userName']);
-            unset($data['userName']);
-        }
-        elseif (\array_key_exists('userName', $data) && $data['userName'] === null) {
-            $object->setUserName(null);
-        }
-        if (\array_key_exists('name', $data)) {
-            $object->setName($this->denormalizer->denormalize($data['name'], 'Github\\Model\\ScimUserName', 'json', $context));
-            unset($data['name']);
-        }
-        if (\array_key_exists('emails', $data)) {
-            $values_1 = array();
-            foreach ($data['emails'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Github\\Model\\ScimUserEmailsItem', 'json', $context);
+            $data['schemas'] = $values;
+            $data['id'] = $object->getId();
+            $data['externalId'] = $object->getExternalId();
+            $data['userName'] = $object->getUserName();
+            $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
+            $values_1 = [];
+            foreach ($object->getEmails() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
-            $object->setEmails($values_1);
-            unset($data['emails']);
-        }
-        if (\array_key_exists('active', $data)) {
-            $object->setActive($data['active']);
-            unset($data['active']);
-        }
-        if (\array_key_exists('meta', $data)) {
-            $object->setMeta($this->denormalizer->denormalize($data['meta'], 'Github\\Model\\ScimUserMeta', 'json', $context));
-            unset($data['meta']);
-        }
-        if (\array_key_exists('organization_id', $data)) {
-            $object->setOrganizationId($data['organization_id']);
-            unset($data['organization_id']);
-        }
-        if (\array_key_exists('operations', $data)) {
-            $values_2 = array();
-            foreach ($data['operations'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, 'Github\\Model\\ScimUserOperationsItem', 'json', $context);
+            $data['emails'] = $values_1;
+            $data['active'] = $object->getActive();
+            $data['meta'] = $this->normalizer->normalize($object->getMeta(), 'json', $context);
+            if ($object->isInitialized('organizationId') && null !== $object->getOrganizationId()) {
+                $data['organization_id'] = $object->getOrganizationId();
             }
-            $object->setOperations($values_2);
-            unset($data['operations']);
-        }
-        if (\array_key_exists('groups', $data)) {
-            $values_3 = array();
-            foreach ($data['groups'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, 'Github\\Model\\ScimUserGroupsItem', 'json', $context);
+            if ($object->isInitialized('operations') && null !== $object->getOperations()) {
+                $values_2 = [];
+                foreach ($object->getOperations() as $value_2) {
+                    $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                }
+                $data['operations'] = $values_2;
             }
-            $object->setGroups($values_3);
-            unset($data['groups']);
-        }
-        foreach ($data as $key => $value_4) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_4;
+            if ($object->isInitialized('groups') && null !== $object->getGroups()) {
+                $values_3 = [];
+                foreach ($object->getGroups() as $value_3) {
+                    $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                }
+                $data['groups'] = $values_3;
             }
+            foreach ($object as $key => $value_4) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_4;
+                }
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Github\Validator\ScimUserConstraint());
+            }
+            return $data;
         }
-        return $object;
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Github\\Model\\ScimUser' => false];
+        }
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+} else {
+    class ScimUserNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = array();
-        $values = array();
-        foreach ($object->getSchemas() as $value) {
-            $values[] = $value;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Github\\Model\\ScimUser';
         }
-        $data['schemas'] = $values;
-        $data['id'] = $object->getId();
-        $data['externalId'] = $object->getExternalId();
-        $data['userName'] = $object->getUserName();
-        $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
-        $values_1 = array();
-        foreach ($object->getEmails() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Github\\Model\\ScimUser';
         }
-        $data['emails'] = $values_1;
-        $data['active'] = $object->getActive();
-        $data['meta'] = $this->normalizer->normalize($object->getMeta(), 'json', $context);
-        if ($object->isInitialized('organizationId') && null !== $object->getOrganizationId()) {
-            $data['organization_id'] = $object->getOrganizationId();
-        }
-        if ($object->isInitialized('operations') && null !== $object->getOperations()) {
-            $values_2 = array();
-            foreach ($object->getOperations() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
             }
-            $data['operations'] = $values_2;
-        }
-        if ($object->isInitialized('groups') && null !== $object->getGroups()) {
-            $values_3 = array();
-            foreach ($object->getGroups() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
-            $data['groups'] = $values_3;
-        }
-        foreach ($object as $key => $value_4) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_4;
+            $object = new \Github\Model\ScimUser();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Github\Validator\ScimUserConstraint());
             }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('schemas', $data)) {
+                $values = [];
+                foreach ($data['schemas'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setSchemas($values);
+                unset($data['schemas']);
+            }
+            if (\array_key_exists('id', $data)) {
+                $object->setId($data['id']);
+                unset($data['id']);
+            }
+            if (\array_key_exists('externalId', $data) && $data['externalId'] !== null) {
+                $object->setExternalId($data['externalId']);
+                unset($data['externalId']);
+            }
+            elseif (\array_key_exists('externalId', $data) && $data['externalId'] === null) {
+                $object->setExternalId(null);
+            }
+            if (\array_key_exists('userName', $data) && $data['userName'] !== null) {
+                $object->setUserName($data['userName']);
+                unset($data['userName']);
+            }
+            elseif (\array_key_exists('userName', $data) && $data['userName'] === null) {
+                $object->setUserName(null);
+            }
+            if (\array_key_exists('name', $data)) {
+                $object->setName($this->denormalizer->denormalize($data['name'], 'Github\\Model\\ScimUserName', 'json', $context));
+                unset($data['name']);
+            }
+            if (\array_key_exists('emails', $data)) {
+                $values_1 = [];
+                foreach ($data['emails'] as $value_1) {
+                    $values_1[] = $this->denormalizer->denormalize($value_1, 'Github\\Model\\ScimUserEmailsItem', 'json', $context);
+                }
+                $object->setEmails($values_1);
+                unset($data['emails']);
+            }
+            if (\array_key_exists('active', $data)) {
+                $object->setActive($data['active']);
+                unset($data['active']);
+            }
+            if (\array_key_exists('meta', $data)) {
+                $object->setMeta($this->denormalizer->denormalize($data['meta'], 'Github\\Model\\ScimUserMeta', 'json', $context));
+                unset($data['meta']);
+            }
+            if (\array_key_exists('organization_id', $data)) {
+                $object->setOrganizationId($data['organization_id']);
+                unset($data['organization_id']);
+            }
+            if (\array_key_exists('operations', $data)) {
+                $values_2 = [];
+                foreach ($data['operations'] as $value_2) {
+                    $values_2[] = $this->denormalizer->denormalize($value_2, 'Github\\Model\\ScimUserOperationsItem', 'json', $context);
+                }
+                $object->setOperations($values_2);
+                unset($data['operations']);
+            }
+            if (\array_key_exists('groups', $data)) {
+                $values_3 = [];
+                foreach ($data['groups'] as $value_3) {
+                    $values_3[] = $this->denormalizer->denormalize($value_3, 'Github\\Model\\ScimUserGroupsItem', 'json', $context);
+                }
+                $object->setGroups($values_3);
+                unset($data['groups']);
+            }
+            foreach ($data as $key => $value_4) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_4;
+                }
+            }
+            return $object;
         }
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Github\Validator\ScimUserConstraint());
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $values = [];
+            foreach ($object->getSchemas() as $value) {
+                $values[] = $value;
+            }
+            $data['schemas'] = $values;
+            $data['id'] = $object->getId();
+            $data['externalId'] = $object->getExternalId();
+            $data['userName'] = $object->getUserName();
+            $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
+            $values_1 = [];
+            foreach ($object->getEmails() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            }
+            $data['emails'] = $values_1;
+            $data['active'] = $object->getActive();
+            $data['meta'] = $this->normalizer->normalize($object->getMeta(), 'json', $context);
+            if ($object->isInitialized('organizationId') && null !== $object->getOrganizationId()) {
+                $data['organization_id'] = $object->getOrganizationId();
+            }
+            if ($object->isInitialized('operations') && null !== $object->getOperations()) {
+                $values_2 = [];
+                foreach ($object->getOperations() as $value_2) {
+                    $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                }
+                $data['operations'] = $values_2;
+            }
+            if ($object->isInitialized('groups') && null !== $object->getGroups()) {
+                $values_3 = [];
+                foreach ($object->getGroups() as $value_3) {
+                    $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                }
+                $data['groups'] = $values_3;
+            }
+            foreach ($object as $key => $value_4) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_4;
+                }
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Github\Validator\ScimUserConstraint());
+            }
+            return $data;
         }
-        return $data;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('Github\\Model\\ScimUser' => false);
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Github\\Model\\ScimUser' => false];
+        }
     }
 }

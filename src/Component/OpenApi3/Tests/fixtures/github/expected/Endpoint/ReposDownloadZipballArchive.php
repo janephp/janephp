@@ -30,11 +30,11 @@ class ReposDownloadZipballArchive extends \Github\Runtime\Client\BaseEndpoint im
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{ref}'), array($this->owner, $this->repo, $this->ref), '/repos/{owner}/{repo}/zipball/{ref}');
+        return str_replace(['{owner}', '{repo}', '{ref}'], [$this->owner, $this->repo, $this->ref], '/repos/{owner}/{repo}/zipball/{ref}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -52,6 +52,6 @@ class ReposDownloadZipballArchive extends \Github\Runtime\Client\BaseEndpoint im
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

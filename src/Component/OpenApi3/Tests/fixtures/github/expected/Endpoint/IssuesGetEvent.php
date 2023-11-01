@@ -27,15 +27,15 @@ class IssuesGetEvent extends \Github\Runtime\Client\BaseEndpoint implements \Git
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{event_id}'), array($this->owner, $this->repo, $this->event_id), '/repos/{owner}/{repo}/issues/events/{event_id}');
+        return str_replace(['{owner}', '{repo}', '{event_id}'], [$this->owner, $this->repo, $this->event_id], '/repos/{owner}/{repo}/issues/events/{event_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -65,6 +65,6 @@ class IssuesGetEvent extends \Github\Runtime\Client\BaseEndpoint implements \Git
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

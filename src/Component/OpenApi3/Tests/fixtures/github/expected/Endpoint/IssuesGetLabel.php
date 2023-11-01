@@ -27,15 +27,15 @@ class IssuesGetLabel extends \Github\Runtime\Client\BaseEndpoint implements \Git
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{name}'), array($this->owner, $this->repo, $this->name), '/repos/{owner}/{repo}/labels/{name}');
+        return str_replace(['{owner}', '{repo}', '{name}'], [$this->owner, $this->repo, $this->name], '/repos/{owner}/{repo}/labels/{name}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -57,6 +57,6 @@ class IssuesGetLabel extends \Github\Runtime\Client\BaseEndpoint implements \Git
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

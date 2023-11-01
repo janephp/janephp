@@ -25,7 +25,7 @@ class PluginSet extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
     }
     public function getUri() : string
     {
-        return str_replace(array('{name}'), array($this->name), '/plugins/{name}/set');
+        return str_replace(['{name}'], [$this->name], '/plugins/{name}/set');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
@@ -33,7 +33,7 @@ class PluginSet extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -59,6 +59,6 @@ class PluginSet extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -21,11 +21,11 @@ class ApiBooksIdDelete extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint imp
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/books/{id}');
+        return str_replace(['{id}'], [$this->id], '/books/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -47,6 +47,6 @@ class ApiBooksIdDelete extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint imp
     }
     public function getAuthenticationScopes() : array
     {
-        return array('apiKey');
+        return ['apiKey'];
     }
 }

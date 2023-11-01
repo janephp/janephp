@@ -24,7 +24,7 @@ class TweetsRecentSearch extends \Jane\Component\OpenApi3\Tests\Expected\Runtime
      * }
      * @param array $accept Accept content header application/json|application/problem+json
      */
-    public function __construct(array $queryParameters = array(), array $accept = array())
+    public function __construct(array $queryParameters = [], array $accept = [])
     {
         $this->queryParameters = $queryParameters;
         $this->accept = $accept;
@@ -40,33 +40,33 @@ class TweetsRecentSearch extends \Jane\Component\OpenApi3\Tests\Expected\Runtime
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/json', 'application/problem+json'));
+            return ['Accept' => ['application/json', 'application/problem+json']];
         }
         return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('query', 'start_time', 'end_time', 'since_id', 'until_id', 'max_results', 'next_token', 'format', 'tweet.format', 'user.format', 'place.format', 'expansions'));
-        $optionsResolver->setRequired(array('query'));
-        $optionsResolver->setDefaults(array('max_results' => 10));
-        $optionsResolver->addAllowedTypes('query', array('string'));
-        $optionsResolver->addAllowedTypes('start_time', array('string'));
-        $optionsResolver->addAllowedTypes('end_time', array('string'));
-        $optionsResolver->addAllowedTypes('since_id', array('string'));
-        $optionsResolver->addAllowedTypes('until_id', array('string'));
-        $optionsResolver->addAllowedTypes('max_results', array('int'));
-        $optionsResolver->addAllowedTypes('next_token', array('string'));
-        $optionsResolver->addAllowedTypes('format', array('string'));
-        $optionsResolver->addAllowedTypes('tweet.format', array('string'));
-        $optionsResolver->addAllowedTypes('user.format', array('string'));
-        $optionsResolver->addAllowedTypes('place.format', array('string'));
-        $optionsResolver->addAllowedTypes('expansions', array('array'));
+        $optionsResolver->setDefined(['query', 'start_time', 'end_time', 'since_id', 'until_id', 'max_results', 'next_token', 'format', 'tweet.format', 'user.format', 'place.format', 'expansions']);
+        $optionsResolver->setRequired(['query']);
+        $optionsResolver->setDefaults(['max_results' => 10]);
+        $optionsResolver->addAllowedTypes('query', ['string']);
+        $optionsResolver->addAllowedTypes('start_time', ['string']);
+        $optionsResolver->addAllowedTypes('end_time', ['string']);
+        $optionsResolver->addAllowedTypes('since_id', ['string']);
+        $optionsResolver->addAllowedTypes('until_id', ['string']);
+        $optionsResolver->addAllowedTypes('max_results', ['int']);
+        $optionsResolver->addAllowedTypes('next_token', ['string']);
+        $optionsResolver->addAllowedTypes('format', ['string']);
+        $optionsResolver->addAllowedTypes('tweet.format', ['string']);
+        $optionsResolver->addAllowedTypes('user.format', ['string']);
+        $optionsResolver->addAllowedTypes('place.format', ['string']);
+        $optionsResolver->addAllowedTypes('expansions', ['array']);
         return $optionsResolver;
     }
     /**
@@ -91,6 +91,6 @@ class TweetsRecentSearch extends \Jane\Component\OpenApi3\Tests\Expected\Runtime
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

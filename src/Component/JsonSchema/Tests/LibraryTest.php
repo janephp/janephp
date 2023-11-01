@@ -25,7 +25,7 @@ class LibraryTest extends TestCase
             'strict' => false,
             'skip-null-values' => false,
         ]);
-        $this->printer = new Printer(new Standard(), '');
+        $this->printer = new Printer(new Standard(['shortArraySyntax' => true]), '');
         $this->printer->setCleanGenerated(false);
     }
 

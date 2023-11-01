@@ -17,7 +17,7 @@ class ListItemCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
     * }
     */
-    public function __construct(\PicturePark\API\Model\ListItemCreateRequest $requestBody, array $queryParameters = array())
+    public function __construct(\PicturePark\API\Model\ListItemCreateRequest $requestBody, array $queryParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
@@ -34,24 +34,24 @@ class ListItemCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \PicturePark\API\Model\ListItemCreateRequest) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('resolveBehaviors', 'allowMissingDependencies', 'timeout', 'waitSearchDocCreation'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('allowMissingDependencies' => false, 'waitSearchDocCreation' => true));
-        $optionsResolver->addAllowedTypes('resolveBehaviors', array('array', 'null'));
-        $optionsResolver->addAllowedTypes('allowMissingDependencies', array('bool'));
-        $optionsResolver->addAllowedTypes('timeout', array('string', 'null'));
-        $optionsResolver->addAllowedTypes('waitSearchDocCreation', array('bool'));
+        $optionsResolver->setDefined(['resolveBehaviors', 'allowMissingDependencies', 'timeout', 'waitSearchDocCreation']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['allowMissingDependencies' => false, 'waitSearchDocCreation' => true]);
+        $optionsResolver->addAllowedTypes('resolveBehaviors', ['array', 'null']);
+        $optionsResolver->addAllowedTypes('allowMissingDependencies', ['bool']);
+        $optionsResolver->addAllowedTypes('timeout', ['string', 'null']);
+        $optionsResolver->addAllowedTypes('waitSearchDocCreation', ['bool']);
         return $optionsResolver;
     }
     /**
@@ -98,6 +98,6 @@ class ListItemCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

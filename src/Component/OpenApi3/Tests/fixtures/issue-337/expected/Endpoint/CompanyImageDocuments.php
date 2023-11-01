@@ -16,7 +16,7 @@ class CompanyImageDocuments extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(array $queryParameters = [], array $headerParameters = [])
     {
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
@@ -32,30 +32,30 @@ class CompanyImageDocuments extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('Id', 'olderThan', 'newerThan'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('Id', array('string'));
-        $optionsResolver->addAllowedTypes('olderThan', array('string'));
-        $optionsResolver->addAllowedTypes('newerThan', array('string'));
+        $optionsResolver->setDefined(['Id', 'olderThan', 'newerThan']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('Id', ['string']);
+        $optionsResolver->addAllowedTypes('olderThan', ['string']);
+        $optionsResolver->addAllowedTypes('newerThan', ['string']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('Authorization'));
-        $optionsResolver->setRequired(array('Authorization'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('Authorization', array('string'));
+        $optionsResolver->setDefined(['Authorization']);
+        $optionsResolver->setRequired(['Authorization']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('Authorization', ['string']);
         return $optionsResolver;
     }
     /**
@@ -82,6 +82,6 @@ class CompanyImageDocuments extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
     }
     public function getAuthenticationScopes() : array
     {
-        return array('bearerAuth');
+        return ['bearerAuth'];
     }
 }

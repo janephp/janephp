@@ -27,15 +27,15 @@ class ReposGetDeployment extends \Github\Runtime\Client\BaseEndpoint implements 
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{deployment_id}'), array($this->owner, $this->repo, $this->deployment_id), '/repos/{owner}/{repo}/deployments/{deployment_id}');
+        return str_replace(['{owner}', '{repo}', '{deployment_id}'], [$this->owner, $this->repo, $this->deployment_id], '/repos/{owner}/{repo}/deployments/{deployment_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -57,6 +57,6 @@ class ReposGetDeployment extends \Github\Runtime\Client\BaseEndpoint implements 
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

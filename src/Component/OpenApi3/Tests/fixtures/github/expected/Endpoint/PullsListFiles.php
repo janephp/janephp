@@ -18,7 +18,7 @@ class PullsListFiles extends \Github\Runtime\Client\BaseEndpoint implements \Git
      *     @var int $page Page number of the results to fetch.
      * }
      */
-    public function __construct(string $owner, string $repo, int $pullNumber, array $queryParameters = array())
+    public function __construct(string $owner, string $repo, int $pullNumber, array $queryParameters = [])
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -32,24 +32,24 @@ class PullsListFiles extends \Github\Runtime\Client\BaseEndpoint implements \Git
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{pull_number}'), array($this->owner, $this->repo, $this->pull_number), '/repos/{owner}/{repo}/pulls/{pull_number}/files');
+        return str_replace(['{owner}', '{repo}', '{pull_number}'], [$this->owner, $this->repo, $this->pull_number], '/repos/{owner}/{repo}/pulls/{pull_number}/files');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('per_page', 'page'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('per_page' => 30, 'page' => 1));
-        $optionsResolver->addAllowedTypes('per_page', array('int'));
-        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->setDefined(['per_page', 'page']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['per_page' => 30, 'page' => 1]);
+        $optionsResolver->addAllowedTypes('per_page', ['int']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
         return $optionsResolver;
     }
     /**
@@ -76,6 +76,6 @@ class PullsListFiles extends \Github\Runtime\Client\BaseEndpoint implements \Git
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

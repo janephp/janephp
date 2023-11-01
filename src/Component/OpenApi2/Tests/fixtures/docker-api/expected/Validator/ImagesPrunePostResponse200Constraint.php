@@ -6,6 +6,6 @@ class ImagesPrunePostResponse200Constraint extends \Symfony\Component\Validator\
 {
     protected function getConstraints($options) : array
     {
-        return array(new \Symfony\Component\Validator\Constraints\Collection(array('fields' => array('ImagesDeleted' => new \Symfony\Component\Validator\Constraints\Optional(array(new \Symfony\Component\Validator\Constraints\Type(array('0' => 'array')))), 'SpaceReclaimed' => new \Symfony\Component\Validator\Constraints\Optional(array(new \Symfony\Component\Validator\Constraints\Type(array('0' => 'integer'))))), 'allowExtraFields' => true)));
+        return [new \Symfony\Component\Validator\Constraints\Collection(['fields' => ['ImagesDeleted' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\Type(['0' => 'array'])]), 'SpaceReclaimed' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\Type(['0' => 'integer'])])], 'allowExtraFields' => true])];
     }
 }

@@ -24,15 +24,15 @@ class ActivityUnstarRepoForAuthenticatedUser extends \Github\Runtime\Client\Base
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}'), array($this->owner, $this->repo), '/user/starred/{owner}/{repo}');
+        return str_replace(['{owner}', '{repo}'], [$this->owner, $this->repo], '/user/starred/{owner}/{repo}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -65,6 +65,6 @@ class ActivityUnstarRepoForAuthenticatedUser extends \Github\Runtime\Client\Base
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

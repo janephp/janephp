@@ -14,7 +14,7 @@ class ContainerResize extends \Docker\Api\Runtime\Client\BaseEndpoint implements
      *     @var int $w Width of the TTY session in characters
      * }
      */
-    public function __construct(string $id, array $queryParameters = array())
+    public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;
@@ -26,24 +26,24 @@ class ContainerResize extends \Docker\Api\Runtime\Client\BaseEndpoint implements
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/containers/{id}/resize');
+        return str_replace(['{id}'], [$this->id], '/containers/{id}/resize');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('h', 'w'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('h', array('int'));
-        $optionsResolver->addAllowedTypes('w', array('int'));
+        $optionsResolver->setDefined(['h', 'w']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('h', ['int']);
+        $optionsResolver->addAllowedTypes('w', ['int']);
         return $optionsResolver;
     }
     /**
@@ -70,6 +70,6 @@ class ContainerResize extends \Docker\Api\Runtime\Client\BaseEndpoint implements
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

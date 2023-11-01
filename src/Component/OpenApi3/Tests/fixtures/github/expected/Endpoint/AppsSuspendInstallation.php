@@ -27,15 +27,15 @@ class AppsSuspendInstallation extends \Github\Runtime\Client\BaseEndpoint implem
     }
     public function getUri() : string
     {
-        return str_replace(array('{installation_id}'), array($this->installation_id), '/app/installations/{installation_id}/suspended');
+        return str_replace(['{installation_id}'], [$this->installation_id], '/app/installations/{installation_id}/suspended');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -57,6 +57,6 @@ class AppsSuspendInstallation extends \Github\Runtime\Client\BaseEndpoint implem
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

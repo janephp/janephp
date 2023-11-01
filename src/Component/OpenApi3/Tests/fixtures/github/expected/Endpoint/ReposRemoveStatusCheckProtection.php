@@ -27,11 +27,11 @@ class ReposRemoveStatusCheckProtection extends \Github\Runtime\Client\BaseEndpoi
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{branch}'), array($this->owner, $this->repo, $this->branch), '/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks');
+        return str_replace(['{owner}', '{repo}', '{branch}'], [$this->owner, $this->repo, $this->branch], '/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -49,6 +49,6 @@ class ReposRemoveStatusCheckProtection extends \Github\Runtime\Client\BaseEndpoi
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

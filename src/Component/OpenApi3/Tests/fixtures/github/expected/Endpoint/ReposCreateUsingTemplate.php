@@ -33,18 +33,18 @@ class ReposCreateUsingTemplate extends \Github\Runtime\Client\BaseEndpoint imple
     }
     public function getUri() : string
     {
-        return str_replace(array('{template_owner}', '{template_repo}'), array($this->template_owner, $this->template_repo), '/repos/{template_owner}/{template_repo}/generate');
+        return str_replace(['{template_owner}', '{template_repo}'], [$this->template_owner, $this->template_repo], '/repos/{template_owner}/{template_repo}/generate');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -62,6 +62,6 @@ class ReposCreateUsingTemplate extends \Github\Runtime\Client\BaseEndpoint imple
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

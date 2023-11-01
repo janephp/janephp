@@ -11,7 +11,7 @@ class TestDictionary extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Cli
      *     @var string $input 
      * }
      */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -26,15 +26,15 @@ class TestDictionary extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Cli
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('input'));
-        $optionsResolver->setRequired(array('input'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('input', array('string'));
+        $optionsResolver->setDefined(['input']);
+        $optionsResolver->setRequired(['input']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('input', ['string']);
         return $optionsResolver;
     }
     /**
@@ -50,6 +50,6 @@ class TestDictionary extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Cli
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

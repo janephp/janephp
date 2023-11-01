@@ -26,11 +26,11 @@ class AppsRevokeAuthorizationForApplication extends \Github\Runtime\Client\BaseE
     }
     public function getUri() : string
     {
-        return str_replace(array('{client_id}', '{access_token}'), array($this->client_id, $this->access_token), '/applications/{client_id}/tokens/{access_token}');
+        return str_replace(['{client_id}', '{access_token}'], [$this->client_id, $this->access_token], '/applications/{client_id}/tokens/{access_token}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -48,6 +48,6 @@ class AppsRevokeAuthorizationForApplication extends \Github\Runtime\Client\BaseE
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -21,15 +21,15 @@ class AppsCreateFromManifest extends \Github\Runtime\Client\BaseEndpoint impleme
     }
     public function getUri() : string
     {
-        return str_replace(array('{code}'), array($this->code), '/app-manifests/{code}/conversions');
+        return str_replace(['{code}'], [$this->code], '/app-manifests/{code}/conversions');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -55,6 +55,6 @@ class AppsCreateFromManifest extends \Github\Runtime\Client\BaseEndpoint impleme
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

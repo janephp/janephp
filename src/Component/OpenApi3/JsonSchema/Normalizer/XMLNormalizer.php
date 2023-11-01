@@ -18,18 +18,18 @@ class XMLNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, $context = []) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\XML';
     }
-    public function supportsNormalization($data, $format = null, $context = []) : bool
+    public function supportsNormalization($data, $format = null, array $context = []) : bool
     {
         return $data instanceof \Jane\Component\OpenApi3\JsonSchema\Model\XML;
     }
     /**
      * @return mixed
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -86,22 +86,22 @@ class XMLNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if (null !== $object->getName()) {
+        $data = [];
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getNamespace()) {
+        if ($object->isInitialized('namespace') && null !== $object->getNamespace()) {
             $data['namespace'] = $object->getNamespace();
         }
-        if (null !== $object->getPrefix()) {
+        if ($object->isInitialized('prefix') && null !== $object->getPrefix()) {
             $data['prefix'] = $object->getPrefix();
         }
-        if (null !== $object->getAttribute()) {
+        if ($object->isInitialized('attribute') && null !== $object->getAttribute()) {
             $data['attribute'] = $object->getAttribute();
         }
-        if (null !== $object->getWrapped()) {
+        if ($object->isInitialized('wrapped') && null !== $object->getWrapped()) {
             $data['wrapped'] = $object->getWrapped();
         }
         foreach ($object as $key => $value) {
@@ -110,5 +110,9 @@ class XMLNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return ['Jane\\Component\\OpenApi3\\JsonSchema\\Model\\XML' => false];
     }
 }

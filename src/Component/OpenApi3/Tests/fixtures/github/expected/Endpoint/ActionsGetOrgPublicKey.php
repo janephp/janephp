@@ -21,15 +21,15 @@ class ActionsGetOrgPublicKey extends \Github\Runtime\Client\BaseEndpoint impleme
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}'), array($this->org), '/orgs/{org}/actions/secrets/public-key');
+        return str_replace(['{org}'], [$this->org], '/orgs/{org}/actions/secrets/public-key');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -47,6 +47,6 @@ class ActionsGetOrgPublicKey extends \Github\Runtime\Client\BaseEndpoint impleme
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

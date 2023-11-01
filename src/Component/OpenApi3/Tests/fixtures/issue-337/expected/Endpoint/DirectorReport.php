@@ -17,7 +17,7 @@ class DirectorReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint impleme
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(string $personId, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(string $personId, array $queryParameters = [], array $headerParameters = [])
     {
         $this->personId = $personId;
         $this->queryParameters = $queryParameters;
@@ -30,33 +30,33 @@ class DirectorReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint impleme
     }
     public function getUri() : string
     {
-        return str_replace(array('{personId}'), array($this->personId), '/people/{personId}');
+        return str_replace(['{personId}'], [$this->personId], '/people/{personId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('language', 'callRef'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('language' => 'en'));
-        $optionsResolver->addAllowedTypes('language', array('string'));
-        $optionsResolver->addAllowedTypes('callRef', array('string'));
+        $optionsResolver->setDefined(['language', 'callRef']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['language' => 'en']);
+        $optionsResolver->addAllowedTypes('language', ['string']);
+        $optionsResolver->addAllowedTypes('callRef', ['string']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('Authorization'));
-        $optionsResolver->setRequired(array('Authorization'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('Authorization', array('string'));
+        $optionsResolver->setDefined(['Authorization']);
+        $optionsResolver->setRequired(['Authorization']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('Authorization', ['string']);
         return $optionsResolver;
     }
     /**
@@ -87,6 +87,6 @@ class DirectorReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint impleme
     }
     public function getAuthenticationScopes() : array
     {
-        return array('bearerAuth');
+        return ['bearerAuth'];
     }
 }

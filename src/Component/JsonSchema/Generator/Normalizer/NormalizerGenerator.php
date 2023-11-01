@@ -61,14 +61,14 @@ trait NormalizerGenerator
      *
      * @return Stmt\ClassMethod
      */
-    protected function createSupportsNormalizationMethod(string $modelFqdn)
+    protected function createSupportsNormalizationMethod(string $modelFqdn, bool $symfony7)
     {
         return new Stmt\ClassMethod('supportsNormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'returnType' => 'bool',
             'params' => [
-                new Param(new Expr\Variable('data')),
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                $symfony7 ? new Param(new Expr\Variable('data'), type: 'mixed') : new Param(new Expr\Variable('data')),
+                $symfony7 ? new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), 'string') : new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],
             'stmts' => [new Stmt\Return_(new Expr\Instanceof_(new Expr\Variable('data'), new Name('\\' . $modelFqdn)))],
@@ -80,7 +80,7 @@ trait NormalizerGenerator
      *
      * @return Stmt\ClassMethod
      */
-    protected function createNormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $skipNullValues = true, bool $skipRequiredFields = false)
+    protected function createNormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $symfony7, bool $skipNullValues = true, bool $skipRequiredFields = false)
     {
         $context->refreshScope();
         $dataVariable = new Expr\Variable('data');
@@ -170,14 +170,15 @@ trait NormalizerGenerator
 
         return new Stmt\ClassMethod('normalize', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'returnType' => $symfony7 ? 'array|string|int|float|bool|\ArrayObject|null' : null,
             'params' => [
-                new Param($objectVariable),
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                $symfony7 ? new Param($objectVariable, type: 'mixed') : new Param($objectVariable),
+                $symfony7 ? new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), 'string') : new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],
             'stmts' => $statements,
         ], [
-            'comments' => [new Doc(<<<EOD
+            'comments' => $symfony7 ? [] : [new Doc(<<<EOD
 /**
  * @return array|string|int|float|bool|\ArrayObject|null
  */

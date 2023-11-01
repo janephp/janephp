@@ -24,15 +24,15 @@ class InteractionsGetRestrictionsForRepo extends \Github\Runtime\Client\BaseEndp
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}'), array($this->owner, $this->repo), '/repos/{owner}/{repo}/interaction-limits');
+        return str_replace(['{owner}', '{repo}'], [$this->owner, $this->repo], '/repos/{owner}/{repo}/interaction-limits');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -50,6 +50,6 @@ class InteractionsGetRestrictionsForRepo extends \Github\Runtime\Client\BaseEndp
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

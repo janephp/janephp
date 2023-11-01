@@ -28,18 +28,18 @@ class TeamsUpdateDiscussionLegacy extends \Github\Runtime\Client\BaseEndpoint im
     }
     public function getUri() : string
     {
-        return str_replace(array('{team_id}', '{discussion_number}'), array($this->team_id, $this->discussion_number), '/teams/{team_id}/discussions/{discussion_number}');
+        return str_replace(['{team_id}', '{discussion_number}'], [$this->team_id, $this->discussion_number], '/teams/{team_id}/discussions/{discussion_number}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\TeamsTeamIdDiscussionsDiscussionNumberPatchBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -57,6 +57,6 @@ class TeamsUpdateDiscussionLegacy extends \Github\Runtime\Client\BaseEndpoint im
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

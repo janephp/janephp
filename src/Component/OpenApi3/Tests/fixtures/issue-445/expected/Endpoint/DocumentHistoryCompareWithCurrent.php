@@ -15,7 +15,7 @@ class DocumentHistoryCompareWithCurrent extends \PicturePark\API\Runtime\Client\
      *     @var int $version The version of the document to compare with.
      * }
      */
-    public function __construct(string $documentType, string $documentId, array $queryParameters = array())
+    public function __construct(string $documentType, string $documentId, array $queryParameters = [])
     {
         $this->documentType = $documentType;
         $this->documentId = $documentId;
@@ -28,23 +28,23 @@ class DocumentHistoryCompareWithCurrent extends \PicturePark\API\Runtime\Client\
     }
     public function getUri() : string
     {
-        return str_replace(array('{documentType}', '{documentId}'), array($this->documentType, $this->documentId), '/v1/history/{documentType}/{documentId}/current/compare');
+        return str_replace(['{documentType}', '{documentId}'], [$this->documentType, $this->documentId], '/v1/history/{documentType}/{documentId}/current/compare');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('version'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('version', array('int'));
+        $optionsResolver->setDefined(['version']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('version', ['int']);
         return $optionsResolver;
     }
     /**
@@ -91,6 +91,6 @@ class DocumentHistoryCompareWithCurrent extends \PicturePark\API\Runtime\Client\
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

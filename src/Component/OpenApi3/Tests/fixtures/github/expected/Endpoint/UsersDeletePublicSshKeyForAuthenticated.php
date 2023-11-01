@@ -21,15 +21,15 @@ class UsersDeletePublicSshKeyForAuthenticated extends \Github\Runtime\Client\Bas
     }
     public function getUri() : string
     {
-        return str_replace(array('{key_id}'), array($this->key_id), '/user/keys/{key_id}');
+        return str_replace(['{key_id}'], [$this->key_id], '/user/keys/{key_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -62,6 +62,6 @@ class UsersDeletePublicSshKeyForAuthenticated extends \Github\Runtime\Client\Bas
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

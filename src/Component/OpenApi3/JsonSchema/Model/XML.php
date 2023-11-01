@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\JsonSchema\Model;
 class XML extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -52,6 +60,7 @@ class XML extends \ArrayObject
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -73,6 +82,7 @@ class XML extends \ArrayObject
      */
     public function setNamespace(?string $namespace) : self
     {
+        $this->initialized['namespace'] = true;
         $this->namespace = $namespace;
         return $this;
     }
@@ -94,6 +104,7 @@ class XML extends \ArrayObject
      */
     public function setPrefix(?string $prefix) : self
     {
+        $this->initialized['prefix'] = true;
         $this->prefix = $prefix;
         return $this;
     }
@@ -115,6 +126,7 @@ class XML extends \ArrayObject
      */
     public function setAttribute(?bool $attribute) : self
     {
+        $this->initialized['attribute'] = true;
         $this->attribute = $attribute;
         return $this;
     }
@@ -136,6 +148,7 @@ class XML extends \ArrayObject
      */
     public function setWrapped(?bool $wrapped) : self
     {
+        $this->initialized['wrapped'] = true;
         $this->wrapped = $wrapped;
         return $this;
     }

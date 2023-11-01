@@ -27,7 +27,7 @@ class PeopleDirectorSearch extends \CreditSafe\API\Runtime\Client\BaseEndpoint i
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(array $queryParameters = [], array $headerParameters = [])
     {
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
@@ -43,41 +43,41 @@ class PeopleDirectorSearch extends \CreditSafe\API\Runtime\Client\BaseEndpoint i
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('countries', 'id', 'regNo', 'safeNumber', 'peopleId', 'firstName', 'lastName', 'companyName', 'companyNumber', 'localDirectorNumber', 'dateOfBirth', 'page', 'pageSize', 'callRef'));
-        $optionsResolver->setRequired(array('countries'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('countries', array('string'));
-        $optionsResolver->addAllowedTypes('id', array('string'));
-        $optionsResolver->addAllowedTypes('regNo', array('string'));
-        $optionsResolver->addAllowedTypes('safeNumber', array('string'));
-        $optionsResolver->addAllowedTypes('peopleId', array('string'));
-        $optionsResolver->addAllowedTypes('firstName', array('string'));
-        $optionsResolver->addAllowedTypes('lastName', array('string'));
-        $optionsResolver->addAllowedTypes('companyName', array('string'));
-        $optionsResolver->addAllowedTypes('companyNumber', array('string'));
-        $optionsResolver->addAllowedTypes('localDirectorNumber', array('string'));
-        $optionsResolver->addAllowedTypes('dateOfBirth', array('string'));
-        $optionsResolver->addAllowedTypes('page', array('int'));
-        $optionsResolver->addAllowedTypes('pageSize', array('int'));
-        $optionsResolver->addAllowedTypes('callRef', array('string'));
+        $optionsResolver->setDefined(['countries', 'id', 'regNo', 'safeNumber', 'peopleId', 'firstName', 'lastName', 'companyName', 'companyNumber', 'localDirectorNumber', 'dateOfBirth', 'page', 'pageSize', 'callRef']);
+        $optionsResolver->setRequired(['countries']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('countries', ['string']);
+        $optionsResolver->addAllowedTypes('id', ['string']);
+        $optionsResolver->addAllowedTypes('regNo', ['string']);
+        $optionsResolver->addAllowedTypes('safeNumber', ['string']);
+        $optionsResolver->addAllowedTypes('peopleId', ['string']);
+        $optionsResolver->addAllowedTypes('firstName', ['string']);
+        $optionsResolver->addAllowedTypes('lastName', ['string']);
+        $optionsResolver->addAllowedTypes('companyName', ['string']);
+        $optionsResolver->addAllowedTypes('companyNumber', ['string']);
+        $optionsResolver->addAllowedTypes('localDirectorNumber', ['string']);
+        $optionsResolver->addAllowedTypes('dateOfBirth', ['string']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
+        $optionsResolver->addAllowedTypes('pageSize', ['int']);
+        $optionsResolver->addAllowedTypes('callRef', ['string']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('Authorization'));
-        $optionsResolver->setRequired(array('Authorization'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('Authorization', array('string'));
+        $optionsResolver->setDefined(['Authorization']);
+        $optionsResolver->setRequired(['Authorization']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('Authorization', ['string']);
         return $optionsResolver;
     }
     /**
@@ -108,6 +108,6 @@ class PeopleDirectorSearch extends \CreditSafe\API\Runtime\Client\BaseEndpoint i
     }
     public function getAuthenticationScopes() : array
     {
-        return array('bearerAuth');
+        return ['bearerAuth'];
     }
 }

@@ -21,15 +21,15 @@ class LicensesGet extends \Github\Runtime\Client\BaseEndpoint implements \Github
     }
     public function getUri() : string
     {
-        return str_replace(array('{license}'), array($this->license), '/licenses/{license}');
+        return str_replace(['{license}'], [$this->license], '/licenses/{license}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -58,6 +58,6 @@ class LicensesGet extends \Github\Runtime\Client\BaseEndpoint implements \Github
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

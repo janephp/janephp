@@ -24,15 +24,15 @@ class OrgsGetWebhook extends \Github\Runtime\Client\BaseEndpoint implements \Git
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}', '{hook_id}'), array($this->org, $this->hook_id), '/orgs/{org}/hooks/{hook_id}');
+        return str_replace(['{org}', '{hook_id}'], [$this->org, $this->hook_id], '/orgs/{org}/hooks/{hook_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -54,6 +54,6 @@ class OrgsGetWebhook extends \Github\Runtime\Client\BaseEndpoint implements \Git
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

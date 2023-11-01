@@ -17,7 +17,7 @@ class ServiceCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     
     * }
     */
-    public function __construct(\Docker\Api\Model\ServicesCreatePostBody $body, array $headerParameters = array())
+    public function __construct(\Docker\Api\Model\ServicesCreatePostBody $body, array $headerParameters = [])
     {
         $this->body = $body;
         $this->headerParameters = $headerParameters;
@@ -37,15 +37,15 @@ class ServiceCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('X-Registry-Auth'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('X-Registry-Auth', array('string'));
+        $optionsResolver->setDefined(['X-Registry-Auth']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('X-Registry-Auth', ['string']);
         return $optionsResolver;
     }
     /**
@@ -84,6 +84,6 @@ class ServiceCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

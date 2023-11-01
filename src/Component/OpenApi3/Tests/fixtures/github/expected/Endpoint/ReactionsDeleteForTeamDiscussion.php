@@ -32,11 +32,11 @@ class ReactionsDeleteForTeamDiscussion extends \Github\Runtime\Client\BaseEndpoi
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}', '{team_slug}', '{discussion_number}', '{reaction_id}'), array($this->org, $this->team_slug, $this->discussion_number, $this->reaction_id), '/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}');
+        return str_replace(['{org}', '{team_slug}', '{discussion_number}', '{reaction_id}'], [$this->org, $this->team_slug, $this->discussion_number, $this->reaction_id], '/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -54,6 +54,6 @@ class ReactionsDeleteForTeamDiscussion extends \Github\Runtime\Client\BaseEndpoi
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

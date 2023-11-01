@@ -15,7 +15,7 @@ class BodyParameterTriggersContentTypeBeingSet extends \Jane\Component\OpenApi3\
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -33,6 +33,6 @@ class BodyParameterTriggersContentTypeBeingSet extends \Jane\Component\OpenApi3\
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

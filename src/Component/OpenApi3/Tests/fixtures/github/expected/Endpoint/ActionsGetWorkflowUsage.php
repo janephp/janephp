@@ -31,15 +31,15 @@ class ActionsGetWorkflowUsage extends \Github\Runtime\Client\BaseEndpoint implem
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{workflow_id}'), array($this->owner, $this->repo, $this->workflow_id), '/repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing');
+        return str_replace(['{owner}', '{repo}', '{workflow_id}'], [$this->owner, $this->repo, $this->workflow_id], '/repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -57,6 +57,6 @@ class ActionsGetWorkflowUsage extends \Github\Runtime\Client\BaseEndpoint implem
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

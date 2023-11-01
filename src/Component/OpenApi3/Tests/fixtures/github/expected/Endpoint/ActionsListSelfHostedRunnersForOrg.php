@@ -16,7 +16,7 @@ class ActionsListSelfHostedRunnersForOrg extends \Github\Runtime\Client\BaseEndp
     *     @var int $page Page number of the results to fetch.
     * }
     */
-    public function __construct(string $org, array $queryParameters = array())
+    public function __construct(string $org, array $queryParameters = [])
     {
         $this->org = $org;
         $this->queryParameters = $queryParameters;
@@ -28,24 +28,24 @@ class ActionsListSelfHostedRunnersForOrg extends \Github\Runtime\Client\BaseEndp
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}'), array($this->org), '/orgs/{org}/actions/runners');
+        return str_replace(['{org}'], [$this->org], '/orgs/{org}/actions/runners');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('per_page', 'page'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('per_page' => 30, 'page' => 1));
-        $optionsResolver->addAllowedTypes('per_page', array('int'));
-        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->setDefined(['per_page', 'page']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['per_page' => 30, 'page' => 1]);
+        $optionsResolver->addAllowedTypes('per_page', ['int']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
         return $optionsResolver;
     }
     /**
@@ -64,6 +64,6 @@ class ActionsListSelfHostedRunnersForOrg extends \Github\Runtime\Client\BaseEndp
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

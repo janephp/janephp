@@ -31,15 +31,15 @@ class IssuesCheckUserCanBeAssigned extends \Github\Runtime\Client\BaseEndpoint i
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{assignee}'), array($this->owner, $this->repo, $this->assignee), '/repos/{owner}/{repo}/assignees/{assignee}');
+        return str_replace(['{owner}', '{repo}', '{assignee}'], [$this->owner, $this->repo, $this->assignee], '/repos/{owner}/{repo}/assignees/{assignee}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -61,6 +61,6 @@ class IssuesCheckUserCanBeAssigned extends \Github\Runtime\Client\BaseEndpoint i
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

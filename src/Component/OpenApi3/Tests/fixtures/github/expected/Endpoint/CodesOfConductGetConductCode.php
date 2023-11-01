@@ -21,15 +21,15 @@ class CodesOfConductGetConductCode extends \Github\Runtime\Client\BaseEndpoint i
     }
     public function getUri() : string
     {
-        return str_replace(array('{key}'), array($this->key), '/codes_of_conduct/{key}');
+        return str_replace(['{key}'], [$this->key], '/codes_of_conduct/{key}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -58,6 +58,6 @@ class CodesOfConductGetConductCode extends \Github\Runtime\Client\BaseEndpoint i
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

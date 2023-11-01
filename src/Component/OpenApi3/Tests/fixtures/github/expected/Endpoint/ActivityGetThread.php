@@ -21,15 +21,15 @@ class ActivityGetThread extends \Github\Runtime\Client\BaseEndpoint implements \
     }
     public function getUri() : string
     {
-        return str_replace(array('{thread_id}'), array($this->thread_id), '/notifications/threads/{thread_id}');
+        return str_replace(['{thread_id}'], [$this->thread_id], '/notifications/threads/{thread_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -58,6 +58,6 @@ class ActivityGetThread extends \Github\Runtime\Client\BaseEndpoint implements \
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

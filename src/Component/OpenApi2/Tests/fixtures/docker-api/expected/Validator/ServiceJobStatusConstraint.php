@@ -6,6 +6,6 @@ class ServiceJobStatusConstraint extends \Symfony\Component\Validator\Constraint
 {
     protected function getConstraints($options) : array
     {
-        return array(new \Symfony\Component\Validator\Constraints\Collection(array('fields' => array('JobIteration' => new \Symfony\Component\Validator\Constraints\Optional(array()), 'LastExecution' => new \Symfony\Component\Validator\Constraints\Optional(array(new \Symfony\Component\Validator\Constraints\Type(array('0' => 'string'))))), 'allowExtraFields' => true)));
+        return [new \Symfony\Component\Validator\Constraints\Collection(['fields' => ['JobIteration' => new \Symfony\Component\Validator\Constraints\Optional([]), 'LastExecution' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\Type(['0' => 'string'])])], 'allowExtraFields' => true])];
     }
 }

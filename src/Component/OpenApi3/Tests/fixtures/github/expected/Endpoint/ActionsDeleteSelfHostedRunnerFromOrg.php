@@ -26,11 +26,11 @@ class ActionsDeleteSelfHostedRunnerFromOrg extends \Github\Runtime\Client\BaseEn
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}', '{runner_id}'), array($this->org, $this->runner_id), '/orgs/{org}/actions/runners/{runner_id}');
+        return str_replace(['{org}', '{runner_id}'], [$this->org, $this->runner_id], '/orgs/{org}/actions/runners/{runner_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -48,6 +48,6 @@ class ActionsDeleteSelfHostedRunnerFromOrg extends \Github\Runtime\Client\BaseEn
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

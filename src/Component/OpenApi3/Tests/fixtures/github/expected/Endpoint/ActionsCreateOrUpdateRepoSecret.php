@@ -103,14 +103,14 @@ class ActionsCreateOrUpdateRepoSecret extends \Github\Runtime\Client\BaseEndpoin
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{secret_name}'), array($this->owner, $this->repo, $this->secret_name), '/repos/{owner}/{repo}/actions/secrets/{secret_name}');
+        return str_replace(['{owner}', '{repo}', '{secret_name}'], [$this->owner, $this->repo, $this->secret_name], '/repos/{owner}/{repo}/actions/secrets/{secret_name}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\ReposOwnerRepoActionsSecretsSecretNamePutBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -131,6 +131,6 @@ class ActionsCreateOrUpdateRepoSecret extends \Github\Runtime\Client\BaseEndpoin
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

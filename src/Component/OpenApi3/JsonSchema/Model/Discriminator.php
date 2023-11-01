@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\JsonSchema\Model;
 class Discriminator
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -13,7 +21,7 @@ class Discriminator
     /**
      * 
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $mapping;
     /**
@@ -34,13 +42,14 @@ class Discriminator
      */
     public function setPropertyName(?string $propertyName) : self
     {
+        $this->initialized['propertyName'] = true;
         $this->propertyName = $propertyName;
         return $this;
     }
     /**
      * 
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getMapping() : ?iterable
     {
@@ -49,12 +58,13 @@ class Discriminator
     /**
      * 
      *
-     * @param string[]|null $mapping
+     * @param array<string, string>|null $mapping
      *
      * @return self
      */
     public function setMapping(?iterable $mapping) : self
     {
+        $this->initialized['mapping'] = true;
         $this->mapping = $mapping;
         return $this;
     }

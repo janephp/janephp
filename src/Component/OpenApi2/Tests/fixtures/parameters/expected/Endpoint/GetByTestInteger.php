@@ -21,11 +21,11 @@ class GetByTestInteger extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\C
     }
     public function getUri() : string
     {
-        return str_replace(array('{test_integer}'), array($this->test_integer), '/{test_integer}');
+        return str_replace(['{test_integer}'], [$this->test_integer], '/{test_integer}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -43,6 +43,6 @@ class GetByTestInteger extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\C
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -12,68 +12,131 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ShareContentNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class ShareContentNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'PicturePark\\API\\Model\\ShareContent';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\ShareContent';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'PicturePark\\API\\Model\\ShareContent';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\ShareContent';
         }
-        $object = new \PicturePark\API\Model\ShareContent();
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \PicturePark\API\Model\ShareContent();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('contentId', $data)) {
+                $object->setContentId($data['contentId']);
+            }
+            if (\array_key_exists('outputFormatIds', $data) && $data['outputFormatIds'] !== null) {
+                $values = [];
+                foreach ($data['outputFormatIds'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setOutputFormatIds($values);
+            }
+            elseif (\array_key_exists('outputFormatIds', $data) && $data['outputFormatIds'] === null) {
+                $object->setOutputFormatIds(null);
+            }
             return $object;
         }
-        if (\array_key_exists('contentId', $data)) {
-            $object->setContentId($data['contentId']);
-        }
-        if (\array_key_exists('outputFormatIds', $data) && $data['outputFormatIds'] !== null) {
-            $values = array();
-            foreach ($data['outputFormatIds'] as $value) {
-                $values[] = $value;
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['contentId'] = $object->getContentId();
+            if ($object->isInitialized('outputFormatIds') && null !== $object->getOutputFormatIds()) {
+                $values = [];
+                foreach ($object->getOutputFormatIds() as $value) {
+                    $values[] = $value;
+                }
+                $data['outputFormatIds'] = $values;
             }
-            $object->setOutputFormatIds($values);
+            return $data;
         }
-        elseif (\array_key_exists('outputFormatIds', $data) && $data['outputFormatIds'] === null) {
-            $object->setOutputFormatIds(null);
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['PicturePark\\API\\Model\\ShareContent' => false];
         }
-        return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+} else {
+    class ShareContentNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = array();
-        $data['contentId'] = $object->getContentId();
-        if ($object->isInitialized('outputFormatIds') && null !== $object->getOutputFormatIds()) {
-            $values = array();
-            foreach ($object->getOutputFormatIds() as $value) {
-                $values[] = $value;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'PicturePark\\API\\Model\\ShareContent';
+        }
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\ShareContent';
+        }
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
             }
-            $data['outputFormatIds'] = $values;
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \PicturePark\API\Model\ShareContent();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('contentId', $data)) {
+                $object->setContentId($data['contentId']);
+            }
+            if (\array_key_exists('outputFormatIds', $data) && $data['outputFormatIds'] !== null) {
+                $values = [];
+                foreach ($data['outputFormatIds'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setOutputFormatIds($values);
+            }
+            elseif (\array_key_exists('outputFormatIds', $data) && $data['outputFormatIds'] === null) {
+                $object->setOutputFormatIds(null);
+            }
+            return $object;
         }
-        return $data;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('PicturePark\\API\\Model\\ShareContent' => false);
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $data['contentId'] = $object->getContentId();
+            if ($object->isInitialized('outputFormatIds') && null !== $object->getOutputFormatIds()) {
+                $values = [];
+                foreach ($object->getOutputFormatIds() as $value) {
+                    $values[] = $value;
+                }
+                $data['outputFormatIds'] = $values;
+            }
+            return $data;
+        }
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['PicturePark\\API\\Model\\ShareContent' => false];
+        }
     }
 }

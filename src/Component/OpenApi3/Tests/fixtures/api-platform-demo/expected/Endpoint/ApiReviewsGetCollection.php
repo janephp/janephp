@@ -18,7 +18,7 @@ class ApiReviewsGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpo
      * }
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      */
-    public function __construct(array $queryParameters = array(), array $accept = array())
+    public function __construct(array $queryParameters = [], array $accept = [])
     {
         $this->queryParameters = $queryParameters;
         $this->accept = $accept;
@@ -34,27 +34,27 @@ class ApiReviewsGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpo
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/ld+json', 'application/hal+json', 'application/vnd.api+json', 'application/json', 'application/xml', 'text/xml', 'application/x-yaml', 'text/csv'));
+            return ['Accept' => ['application/ld+json', 'application/hal+json', 'application/vnd.api+json', 'application/json', 'application/xml', 'text/xml', 'application/x-yaml', 'text/csv']];
         }
         return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'itemsPerPage', 'order[id]', 'order[publicationDate]', 'book'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('page' => 1, 'itemsPerPage' => 30));
-        $optionsResolver->addAllowedTypes('page', array('int'));
-        $optionsResolver->addAllowedTypes('itemsPerPage', array('int'));
-        $optionsResolver->addAllowedTypes('order[id]', array('string'));
-        $optionsResolver->addAllowedTypes('order[publicationDate]', array('string'));
-        $optionsResolver->addAllowedTypes('book', array('string'));
-        $optionsResolver->addAllowedTypes('book', array('array'));
+        $optionsResolver->setDefined(['page', 'itemsPerPage', 'order[id]', 'order[publicationDate]', 'book']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['page' => 1, 'itemsPerPage' => 30]);
+        $optionsResolver->addAllowedTypes('page', ['int']);
+        $optionsResolver->addAllowedTypes('itemsPerPage', ['int']);
+        $optionsResolver->addAllowedTypes('order[id]', ['string']);
+        $optionsResolver->addAllowedTypes('order[publicationDate]', ['string']);
+        $optionsResolver->addAllowedTypes('book', ['string']);
+        $optionsResolver->addAllowedTypes('book', ['array']);
         return $optionsResolver;
     }
     /**
@@ -84,6 +84,6 @@ class ApiReviewsGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpo
     }
     public function getAuthenticationScopes() : array
     {
-        return array('apiKey');
+        return ['apiKey'];
     }
 }

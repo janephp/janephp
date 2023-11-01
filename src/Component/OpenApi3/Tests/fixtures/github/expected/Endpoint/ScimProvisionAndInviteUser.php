@@ -13,7 +13,7 @@ class ScimProvisionAndInviteUser extends \Github\Runtime\Client\BaseEndpoint imp
      * @param null|\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody 
      * @param array $accept Accept content header application/scim+json|application/json
      */
-    public function __construct(string $org, ?\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody = null, array $accept = array())
+    public function __construct(string $org, ?\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody = null, array $accept = [])
     {
         $this->org = $org;
         $this->body = $requestBody;
@@ -26,19 +26,19 @@ class ScimProvisionAndInviteUser extends \Github\Runtime\Client\BaseEndpoint imp
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}'), array($this->org), '/scim/v2/organizations/{org}/Users');
+        return str_replace(['{org}'], [$this->org], '/scim/v2/organizations/{org}/Users');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\ScimV2OrganizationsOrgUsersPostBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/scim+json', 'application/json'));
+            return ['Accept' => ['application/scim+json', 'application/json']];
         }
         return $this->accept;
     }
@@ -80,6 +80,6 @@ class ScimProvisionAndInviteUser extends \Github\Runtime\Client\BaseEndpoint imp
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

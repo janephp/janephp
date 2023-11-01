@@ -13,7 +13,7 @@ class ApiBooksIdPatch extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
      * @param \ApiPlatform\Demo\Model\Book $requestBody 
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      */
-    public function __construct(string $id, \ApiPlatform\Demo\Model\Book $requestBody, array $accept = array())
+    public function __construct(string $id, \ApiPlatform\Demo\Model\Book $requestBody, array $accept = [])
     {
         $this->id = $id;
         $this->body = $requestBody;
@@ -26,22 +26,22 @@ class ApiBooksIdPatch extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/books/{id}');
+        return str_replace(['{id}'], [$this->id], '/books/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \ApiPlatform\Demo\Model\Book) {
-            return array(array('Content-Type' => array('application/merge-patch+json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/merge-patch+json']], $serializer->serialize($this->body, 'json')];
         }
         if ($this->body instanceof \ApiPlatform\Demo\Model\Book) {
-            return array(array('Content-Type' => array('application/vnd.api+json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/vnd.api+json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/ld+json', 'application/hal+json', 'application/vnd.api+json', 'application/json', 'application/xml', 'text/xml', 'application/x-yaml', 'text/csv'));
+            return ['Accept' => ['application/ld+json', 'application/hal+json', 'application/vnd.api+json', 'application/json', 'application/xml', 'text/xml', 'application/x-yaml', 'text/csv']];
         }
         return $this->accept;
     }
@@ -84,6 +84,6 @@ class ApiBooksIdPatch extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
     }
     public function getAuthenticationScopes() : array
     {
-        return array('apiKey');
+        return ['apiKey'];
     }
 }

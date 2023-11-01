@@ -32,11 +32,11 @@ class TeamsRemoveMemberLegacy extends \Github\Runtime\Client\BaseEndpoint implem
     }
     public function getUri() : string
     {
-        return str_replace(array('{team_id}', '{username}'), array($this->team_id, $this->username), '/teams/{team_id}/members/{username}');
+        return str_replace(['{team_id}', '{username}'], [$this->team_id, $this->username], '/teams/{team_id}/members/{username}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -58,6 +58,6 @@ class TeamsRemoveMemberLegacy extends \Github\Runtime\Client\BaseEndpoint implem
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

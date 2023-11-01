@@ -14,7 +14,7 @@ class BusinessProcessWaitForStates extends \PicturePark\API\Runtime\Client\BaseE
      *     @var string $timeout The timeout to wait for completion.
      * }
      */
-    public function __construct(string $id, array $queryParameters = array())
+    public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;
@@ -26,24 +26,24 @@ class BusinessProcessWaitForStates extends \PicturePark\API\Runtime\Client\BaseE
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/v1/BusinessProcesses/{id}/waitStates');
+        return str_replace(['{id}'], [$this->id], '/v1/BusinessProcesses/{id}/waitStates');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('states', 'timeout'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('states', array('array', 'null'));
-        $optionsResolver->addAllowedTypes('timeout', array('string', 'null'));
+        $optionsResolver->setDefined(['states', 'timeout']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('states', ['array', 'null']);
+        $optionsResolver->addAllowedTypes('timeout', ['string', 'null']);
         return $optionsResolver;
     }
     /**
@@ -90,6 +90,6 @@ class BusinessProcessWaitForStates extends \PicturePark\API\Runtime\Client\BaseE
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

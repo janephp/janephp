@@ -24,15 +24,15 @@ class ReposGetCommunityProfileMetrics extends \Github\Runtime\Client\BaseEndpoin
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}'), array($this->owner, $this->repo), '/repos/{owner}/{repo}/community/profile');
+        return str_replace(['{owner}', '{repo}'], [$this->owner, $this->repo], '/repos/{owner}/{repo}/community/profile');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -50,6 +50,6 @@ class ReposGetCommunityProfileMetrics extends \Github\Runtime\Client\BaseEndpoin
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

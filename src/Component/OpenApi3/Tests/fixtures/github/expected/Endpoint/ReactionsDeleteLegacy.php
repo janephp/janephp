@@ -23,15 +23,15 @@ class ReactionsDeleteLegacy extends \Github\Runtime\Client\BaseEndpoint implemen
     }
     public function getUri() : string
     {
-        return str_replace(array('{reaction_id}'), array($this->reaction_id), '/reactions/{reaction_id}');
+        return str_replace(['{reaction_id}'], [$this->reaction_id], '/reactions/{reaction_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -68,6 +68,6 @@ class ReactionsDeleteLegacy extends \Github\Runtime\Client\BaseEndpoint implemen
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

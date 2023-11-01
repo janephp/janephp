@@ -28,11 +28,11 @@ class TeamsDeleteInOrg extends \Github\Runtime\Client\BaseEndpoint implements \G
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}', '{team_slug}'), array($this->org, $this->team_slug), '/orgs/{org}/teams/{team_slug}');
+        return str_replace(['{org}', '{team_slug}'], [$this->org, $this->team_slug], '/orgs/{org}/teams/{team_slug}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -50,6 +50,6 @@ class TeamsDeleteInOrg extends \Github\Runtime\Client\BaseEndpoint implements \G
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

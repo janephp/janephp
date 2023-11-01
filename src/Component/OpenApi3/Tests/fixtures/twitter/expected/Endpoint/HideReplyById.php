@@ -13,7 +13,7 @@ class HideReplyById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Clie
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody 
      * @param array $accept Accept content header application/json|application/problem+json
      */
-    public function __construct(string $id, ?\Jane\Component\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody = null, array $accept = array())
+    public function __construct(string $id, ?\Jane\Component\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody = null, array $accept = [])
     {
         $this->id = $id;
         $this->body = $requestBody;
@@ -26,19 +26,19 @@ class HideReplyById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Clie
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/labs/1/tweets/{id}/hidden');
+        return str_replace(['{id}'], [$this->id], '/labs/1/tweets/{id}/hidden');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\Model\HideReplyRequest) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/json', 'application/problem+json'));
+            return ['Accept' => ['application/json', 'application/problem+json']];
         }
         return $this->accept;
     }
@@ -64,6 +64,6 @@ class HideReplyById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Clie
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

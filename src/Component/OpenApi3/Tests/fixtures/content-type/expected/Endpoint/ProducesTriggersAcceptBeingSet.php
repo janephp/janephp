@@ -15,7 +15,7 @@ class ProducesTriggersAcceptBeingSet extends \Jane\Component\OpenApi3\Tests\Expe
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -33,6 +33,6 @@ class ProducesTriggersAcceptBeingSet extends \Jane\Component\OpenApi3\Tests\Expe
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -172,7 +172,7 @@ will be added accordingly.
 
 Inside the normalizer, you can find that validator usage with::
 
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
     {
         $validator = new BeerValidator();
         $validator->validate($data);

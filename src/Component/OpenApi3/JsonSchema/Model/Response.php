@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\JsonSchema\Model;
 class Response extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -13,19 +21,19 @@ class Response extends \ArrayObject
     /**
      * 
      *
-     * @var Header[]|Reference[]|null
+     * @var array<string, Header|Reference>|null
      */
     protected $headers;
     /**
      * 
      *
-     * @var MediaType[]|null
+     * @var array<string, MediaType>|null
      */
     protected $content;
     /**
      * 
      *
-     * @var Link[]|Reference[]|null
+     * @var array<string, Link|Reference>|null
      */
     protected $links;
     /**
@@ -46,13 +54,14 @@ class Response extends \ArrayObject
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
     /**
      * 
      *
-     * @return Header[]|Reference[]|null
+     * @return array<string, Header|Reference>|null
      */
     public function getHeaders() : ?iterable
     {
@@ -61,19 +70,20 @@ class Response extends \ArrayObject
     /**
      * 
      *
-     * @param Header[]|Reference[]|null $headers
+     * @param array<string, Header|Reference>|null $headers
      *
      * @return self
      */
     public function setHeaders(?iterable $headers) : self
     {
+        $this->initialized['headers'] = true;
         $this->headers = $headers;
         return $this;
     }
     /**
      * 
      *
-     * @return MediaType[]|null
+     * @return array<string, MediaType>|null
      */
     public function getContent() : ?iterable
     {
@@ -82,19 +92,20 @@ class Response extends \ArrayObject
     /**
      * 
      *
-     * @param MediaType[]|null $content
+     * @param array<string, MediaType>|null $content
      *
      * @return self
      */
     public function setContent(?iterable $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }
     /**
      * 
      *
-     * @return Link[]|Reference[]|null
+     * @return array<string, Link|Reference>|null
      */
     public function getLinks() : ?iterable
     {
@@ -103,12 +114,13 @@ class Response extends \ArrayObject
     /**
      * 
      *
-     * @param Link[]|Reference[]|null $links
+     * @param array<string, Link|Reference>|null $links
      *
      * @return self
      */
     public function setLinks(?iterable $links) : self
     {
+        $this->initialized['links'] = true;
         $this->links = $links;
         return $this;
     }

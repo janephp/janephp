@@ -12,7 +12,7 @@ class SchemaGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     *     @var array $ids Comma separated list of schema IDs.
     * }
     */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -27,19 +27,19 @@ class SchemaGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('ids'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('ids', array('array', 'null'));
+        $optionsResolver->setDefined(['ids']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('ids', ['array', 'null']);
         return $optionsResolver;
     }
     /**
@@ -86,6 +86,6 @@ class SchemaGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

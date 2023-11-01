@@ -36,15 +36,15 @@ class TeamsCheckPermissionsForRepoInOrg extends \Github\Runtime\Client\BaseEndpo
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}', '{team_slug}', '{owner}', '{repo}'), array($this->org, $this->team_slug, $this->owner, $this->repo), '/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}');
+        return str_replace(['{org}', '{team_slug}', '{owner}', '{repo}'], [$this->org, $this->team_slug, $this->owner, $this->repo], '/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/vnd.github.v3.repository+json'));
+        return ['Accept' => ['application/vnd.github.v3.repository+json']];
     }
     /**
      * {@inheritdoc}
@@ -68,6 +68,6 @@ class TeamsCheckPermissionsForRepoInOrg extends \Github\Runtime\Client\BaseEndpo
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

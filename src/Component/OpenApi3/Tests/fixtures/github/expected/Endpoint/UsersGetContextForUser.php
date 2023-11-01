@@ -21,7 +21,7 @@ class UsersGetContextForUser extends \Github\Runtime\Client\BaseEndpoint impleme
     *     @var string $subject_id Uses the ID for the `subject_type` you specified. **Required** when using `subject_type`.
     * }
     */
-    public function __construct(string $username, array $queryParameters = array())
+    public function __construct(string $username, array $queryParameters = [])
     {
         $this->username = $username;
         $this->queryParameters = $queryParameters;
@@ -33,24 +33,24 @@ class UsersGetContextForUser extends \Github\Runtime\Client\BaseEndpoint impleme
     }
     public function getUri() : string
     {
-        return str_replace(array('{username}'), array($this->username), '/users/{username}/hovercard');
+        return str_replace(['{username}'], [$this->username], '/users/{username}/hovercard');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('subject_type', 'subject_id'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('subject_type', array('string'));
-        $optionsResolver->addAllowedTypes('subject_id', array('string'));
+        $optionsResolver->setDefined(['subject_type', 'subject_id']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('subject_type', ['string']);
+        $optionsResolver->addAllowedTypes('subject_id', ['string']);
         return $optionsResolver;
     }
     /**
@@ -77,6 +77,6 @@ class UsersGetContextForUser extends \Github\Runtime\Client\BaseEndpoint impleme
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

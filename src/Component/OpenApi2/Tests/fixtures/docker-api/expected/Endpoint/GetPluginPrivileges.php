@@ -13,7 +13,7 @@ class GetPluginPrivileges extends \Docker\Api\Runtime\Client\BaseEndpoint implem
     
     * }
     */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -28,19 +28,19 @@ class GetPluginPrivileges extends \Docker\Api\Runtime\Client\BaseEndpoint implem
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('remote'));
-        $optionsResolver->setRequired(array('remote'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('remote', array('string'));
+        $optionsResolver->setDefined(['remote']);
+        $optionsResolver->setRequired(['remote']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('remote', ['string']);
         return $optionsResolver;
     }
     /**
@@ -63,6 +63,6 @@ class GetPluginPrivileges extends \Docker\Api\Runtime\Client\BaseEndpoint implem
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

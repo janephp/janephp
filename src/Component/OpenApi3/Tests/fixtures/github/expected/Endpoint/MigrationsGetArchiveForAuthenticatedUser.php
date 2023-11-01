@@ -41,15 +41,15 @@ class MigrationsGetArchiveForAuthenticatedUser extends \Github\Runtime\Client\Ba
     }
     public function getUri() : string
     {
-        return str_replace(array('{migration_id}'), array($this->migration_id), '/user/migrations/{migration_id}/archive');
+        return str_replace(['{migration_id}'], [$this->migration_id], '/user/migrations/{migration_id}/archive');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -78,6 +78,6 @@ class MigrationsGetArchiveForAuthenticatedUser extends \Github\Runtime\Client\Ba
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

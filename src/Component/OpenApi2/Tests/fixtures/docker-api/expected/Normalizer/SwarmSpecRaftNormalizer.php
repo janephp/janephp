@@ -12,83 +12,161 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class SwarmSpecRaftNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class SwarmSpecRaftNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Docker\\Api\\Model\\SwarmSpecRaft';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\SwarmSpecRaft';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Docker\\Api\\Model\\SwarmSpecRaft';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\SwarmSpecRaft';
         }
-        $object = new \Docker\Api\Model\SwarmSpecRaft();
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Docker\Api\Validator\SwarmSpecRaftConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Docker\Api\Model\SwarmSpecRaft();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\SwarmSpecRaftConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('SnapshotInterval', $data)) {
+                $object->setSnapshotInterval($data['SnapshotInterval']);
+            }
+            if (\array_key_exists('KeepOldSnapshots', $data)) {
+                $object->setKeepOldSnapshots($data['KeepOldSnapshots']);
+            }
+            if (\array_key_exists('LogEntriesForSlowFollowers', $data)) {
+                $object->setLogEntriesForSlowFollowers($data['LogEntriesForSlowFollowers']);
+            }
+            if (\array_key_exists('ElectionTick', $data)) {
+                $object->setElectionTick($data['ElectionTick']);
+            }
+            if (\array_key_exists('HeartbeatTick', $data)) {
+                $object->setHeartbeatTick($data['HeartbeatTick']);
+            }
             return $object;
         }
-        if (\array_key_exists('SnapshotInterval', $data)) {
-            $object->setSnapshotInterval($data['SnapshotInterval']);
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('snapshotInterval') && null !== $object->getSnapshotInterval()) {
+                $data['SnapshotInterval'] = $object->getSnapshotInterval();
+            }
+            if ($object->isInitialized('keepOldSnapshots') && null !== $object->getKeepOldSnapshots()) {
+                $data['KeepOldSnapshots'] = $object->getKeepOldSnapshots();
+            }
+            if ($object->isInitialized('logEntriesForSlowFollowers') && null !== $object->getLogEntriesForSlowFollowers()) {
+                $data['LogEntriesForSlowFollowers'] = $object->getLogEntriesForSlowFollowers();
+            }
+            if ($object->isInitialized('electionTick') && null !== $object->getElectionTick()) {
+                $data['ElectionTick'] = $object->getElectionTick();
+            }
+            if ($object->isInitialized('heartbeatTick') && null !== $object->getHeartbeatTick()) {
+                $data['HeartbeatTick'] = $object->getHeartbeatTick();
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\SwarmSpecRaftConstraint());
+            }
+            return $data;
         }
-        if (\array_key_exists('KeepOldSnapshots', $data)) {
-            $object->setKeepOldSnapshots($data['KeepOldSnapshots']);
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Docker\\Api\\Model\\SwarmSpecRaft' => false];
         }
-        if (\array_key_exists('LogEntriesForSlowFollowers', $data)) {
-            $object->setLogEntriesForSlowFollowers($data['LogEntriesForSlowFollowers']);
-        }
-        if (\array_key_exists('ElectionTick', $data)) {
-            $object->setElectionTick($data['ElectionTick']);
-        }
-        if (\array_key_exists('HeartbeatTick', $data)) {
-            $object->setHeartbeatTick($data['HeartbeatTick']);
-        }
-        return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+} else {
+    class SwarmSpecRaftNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = array();
-        if ($object->isInitialized('snapshotInterval') && null !== $object->getSnapshotInterval()) {
-            $data['SnapshotInterval'] = $object->getSnapshotInterval();
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Docker\\Api\\Model\\SwarmSpecRaft';
         }
-        if ($object->isInitialized('keepOldSnapshots') && null !== $object->getKeepOldSnapshots()) {
-            $data['KeepOldSnapshots'] = $object->getKeepOldSnapshots();
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\SwarmSpecRaft';
         }
-        if ($object->isInitialized('logEntriesForSlowFollowers') && null !== $object->getLogEntriesForSlowFollowers()) {
-            $data['LogEntriesForSlowFollowers'] = $object->getLogEntriesForSlowFollowers();
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Docker\Api\Model\SwarmSpecRaft();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\SwarmSpecRaftConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('SnapshotInterval', $data)) {
+                $object->setSnapshotInterval($data['SnapshotInterval']);
+            }
+            if (\array_key_exists('KeepOldSnapshots', $data)) {
+                $object->setKeepOldSnapshots($data['KeepOldSnapshots']);
+            }
+            if (\array_key_exists('LogEntriesForSlowFollowers', $data)) {
+                $object->setLogEntriesForSlowFollowers($data['LogEntriesForSlowFollowers']);
+            }
+            if (\array_key_exists('ElectionTick', $data)) {
+                $object->setElectionTick($data['ElectionTick']);
+            }
+            if (\array_key_exists('HeartbeatTick', $data)) {
+                $object->setHeartbeatTick($data['HeartbeatTick']);
+            }
+            return $object;
         }
-        if ($object->isInitialized('electionTick') && null !== $object->getElectionTick()) {
-            $data['ElectionTick'] = $object->getElectionTick();
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            if ($object->isInitialized('snapshotInterval') && null !== $object->getSnapshotInterval()) {
+                $data['SnapshotInterval'] = $object->getSnapshotInterval();
+            }
+            if ($object->isInitialized('keepOldSnapshots') && null !== $object->getKeepOldSnapshots()) {
+                $data['KeepOldSnapshots'] = $object->getKeepOldSnapshots();
+            }
+            if ($object->isInitialized('logEntriesForSlowFollowers') && null !== $object->getLogEntriesForSlowFollowers()) {
+                $data['LogEntriesForSlowFollowers'] = $object->getLogEntriesForSlowFollowers();
+            }
+            if ($object->isInitialized('electionTick') && null !== $object->getElectionTick()) {
+                $data['ElectionTick'] = $object->getElectionTick();
+            }
+            if ($object->isInitialized('heartbeatTick') && null !== $object->getHeartbeatTick()) {
+                $data['HeartbeatTick'] = $object->getHeartbeatTick();
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\SwarmSpecRaftConstraint());
+            }
+            return $data;
         }
-        if ($object->isInitialized('heartbeatTick') && null !== $object->getHeartbeatTick()) {
-            $data['HeartbeatTick'] = $object->getHeartbeatTick();
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Docker\\Api\\Model\\SwarmSpecRaft' => false];
         }
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Docker\Api\Validator\SwarmSpecRaftConstraint());
-        }
-        return $data;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('Docker\\Api\\Model\\SwarmSpecRaft' => false);
     }
 }

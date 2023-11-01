@@ -15,11 +15,11 @@ class ProfileRequestDeletion extends \PicturePark\API\Runtime\Client\BaseEndpoin
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -65,6 +65,6 @@ class ProfileRequestDeletion extends \PicturePark\API\Runtime\Client\BaseEndpoin
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

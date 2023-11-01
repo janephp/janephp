@@ -50,7 +50,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\ContainerSummary[]|\Psr\Http\Message\ResponseInterface
     */
-    public function containerList(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerList($queryParameters), $fetch);
     }
@@ -71,7 +71,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\ContainersCreatePostResponse201|\Psr\Http\Message\ResponseInterface
     */
-    public function containerCreate(\Docker\Api\Model\ContainersCreatePostBody $body, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerCreate(\Docker\Api\Model\ContainersCreatePostBody $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerCreate($body, $queryParameters), $fetch);
     }
@@ -88,7 +88,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null|\Docker\Api\Model\ContainersIdJsonGetResponse200|\Psr\Http\Message\ResponseInterface
      */
-    public function containerInspect(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerInspect(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerInspect($id, $queryParameters), $fetch);
     }
@@ -107,7 +107,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\ContainersIdTopGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function containerTop(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerTop(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerTop($id, $queryParameters), $fetch);
     }
@@ -136,7 +136,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function containerLogs(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerLogs(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerLogs($id, $queryParameters), $fetch);
     }
@@ -218,7 +218,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function containerStats(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerStats(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerStats($id, $queryParameters), $fetch);
     }
@@ -236,7 +236,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function containerResize(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerResize(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerResize($id, $queryParameters), $fetch);
     }
@@ -256,7 +256,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function containerStart(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerStart(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerStart($id, $queryParameters), $fetch);
     }
@@ -273,7 +273,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function containerStop(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerStop(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerStop($id, $queryParameters), $fetch);
     }
@@ -290,7 +290,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function containerRestart(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerRestart(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerRestart($id, $queryParameters), $fetch);
     }
@@ -310,7 +310,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function containerKill(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerKill(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerKill($id, $queryParameters), $fetch);
     }
@@ -345,7 +345,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function containerRename(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerRename(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerRename($id, $queryParameters), $fetch);
     }
@@ -507,7 +507,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function containerAttach(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerAttach(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerAttach($id, $queryParameters), $fetch);
     }
@@ -533,7 +533,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function containerAttachWebsocket(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerAttachWebsocket(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerAttachWebsocket($id, $queryParameters), $fetch);
     }
@@ -552,7 +552,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\ContainersIdWaitPostResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function containerWait(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerWait(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerWait($id, $queryParameters), $fetch);
     }
@@ -573,7 +573,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function containerDelete(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerDelete(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerDelete($id, $queryParameters), $fetch);
     }
@@ -591,7 +591,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function containerArchive(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerArchive(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerArchive($id, $queryParameters), $fetch);
     }
@@ -612,7 +612,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function containerArchiveInfo(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerArchiveInfo(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerArchiveInfo($id, $queryParameters), $fetch);
     }
@@ -642,7 +642,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function putContainerArchive(string $id, $inputStream, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function putContainerArchive(string $id, $inputStream, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\PutContainerArchive($id, $inputStream, $queryParameters), $fetch);
     }
@@ -662,7 +662,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\ContainersPrunePostResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function containerPrune(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function containerPrune(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ContainerPrune($queryParameters), $fetch);
     }
@@ -689,7 +689,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\ImageSummary[]|\Psr\Http\Message\ResponseInterface
     */
-    public function imageList(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function imageList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ImageList($queryParameters), $fetch);
     }
@@ -767,7 +767,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function imageBuild($inputStream, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function imageBuild($inputStream, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ImageBuild($inputStream, $queryParameters, $headerParameters), $fetch);
     }
@@ -797,7 +797,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\BuildPrunePostResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function buildPrune(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function buildPrune(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\BuildPrune($queryParameters), $fetch);
     }
@@ -833,7 +833,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function imageCreate(string $inputImage, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function imageCreate(string $inputImage, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ImageCreate($inputImage, $queryParameters, $headerParameters), $fetch);
     }
@@ -892,7 +892,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function imagePush(string $name, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function imagePush(string $name, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ImagePush($name, $queryParameters, $headerParameters), $fetch);
     }
@@ -912,7 +912,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function imageTag(string $name, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function imageTag(string $name, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ImageTag($name, $queryParameters), $fetch);
     }
@@ -936,7 +936,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\ImageDeleteResponseItem[]|\Psr\Http\Message\ResponseInterface
     */
-    public function imageDelete(string $name, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function imageDelete(string $name, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ImageDelete($name, $queryParameters), $fetch);
     }
@@ -958,7 +958,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\ImagesSearchGetResponse200Item[]|\Psr\Http\Message\ResponseInterface
     */
-    public function imageSearch(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function imageSearch(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ImageSearch($queryParameters), $fetch);
     }
@@ -980,7 +980,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\ImagesPrunePostResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function imagePrune(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function imagePrune(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ImagePrune($queryParameters), $fetch);
     }
@@ -1058,7 +1058,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null|\Docker\Api\Model\IdResponse|\Psr\Http\Message\ResponseInterface
      */
-    public function imageCommit(\Docker\Api\Model\ContainerConfig $containerConfig, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function imageCommit(\Docker\Api\Model\ContainerConfig $containerConfig, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ImageCommit($containerConfig, $queryParameters), $fetch);
     }
@@ -1115,7 +1115,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\EventMessage|\Psr\Http\Message\ResponseInterface
     */
-    public function systemEvents(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function systemEvents(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\SystemEvents($queryParameters), $fetch);
     }
@@ -1186,7 +1186,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function imageGetAll(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function imageGetAll(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ImageGetAll($queryParameters), $fetch);
     }
@@ -1205,7 +1205,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function imageLoad($imagesTarball, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function imageLoad($imagesTarball, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ImageLoad($imagesTarball, $queryParameters), $fetch);
     }
@@ -1260,7 +1260,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function execResize(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function execResize(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ExecResize($id, $queryParameters), $fetch);
     }
@@ -1300,7 +1300,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\VolumesGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function volumeList(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function volumeList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\VolumeList($queryParameters), $fetch);
     }
@@ -1331,7 +1331,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function volumeDelete(string $name, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function volumeDelete(string $name, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\VolumeDelete($name, $queryParameters), $fetch);
     }
@@ -1364,7 +1364,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\VolumesPrunePostResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function volumePrune(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function volumePrune(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\VolumePrune($queryParameters), $fetch);
     }
@@ -1400,7 +1400,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\Network[]|\Psr\Http\Message\ResponseInterface
     */
-    public function networkList(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function networkList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\NetworkList($queryParameters), $fetch);
     }
@@ -1433,7 +1433,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null|\Docker\Api\Model\Network|\Psr\Http\Message\ResponseInterface
      */
-    public function networkInspect(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function networkInspect(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\NetworkInspect($id, $queryParameters), $fetch);
     }
@@ -1500,7 +1500,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\NetworksPrunePostResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function networkPrune(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function networkPrune(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\NetworkPrune($queryParameters), $fetch);
     }
@@ -1522,7 +1522,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\Plugin[]|\Psr\Http\Message\ResponseInterface
     */
-    public function pluginList(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function pluginList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\PluginList($queryParameters), $fetch);
     }
@@ -1539,7 +1539,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\PluginPrivilege[]|\Psr\Http\Message\ResponseInterface
     */
-    public function getPluginPrivileges(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function getPluginPrivileges(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\GetPluginPrivileges($queryParameters), $fetch);
     }
@@ -1572,7 +1572,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function pluginPull(array $body, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function pluginPull(array $body, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\PluginPull($body, $queryParameters, $headerParameters), $fetch);
     }
@@ -1609,7 +1609,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\Plugin|\Psr\Http\Message\ResponseInterface
     */
-    public function pluginDelete(string $name, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function pluginDelete(string $name, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\PluginDelete($name, $queryParameters), $fetch);
     }
@@ -1628,7 +1628,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function pluginEnable(string $name, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function pluginEnable(string $name, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\PluginEnable($name, $queryParameters), $fetch);
     }
@@ -1675,7 +1675,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function pluginUpgrade(string $name, array $body, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function pluginUpgrade(string $name, array $body, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\PluginUpgrade($name, $body, $queryParameters, $headerParameters), $fetch);
     }
@@ -1693,7 +1693,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function pluginCreate($tarContext, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function pluginCreate($tarContext, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\PluginCreate($tarContext, $queryParameters), $fetch);
     }
@@ -1752,7 +1752,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\Node[]|\Psr\Http\Message\ResponseInterface
     */
-    public function nodeList(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function nodeList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\NodeList($queryParameters), $fetch);
     }
@@ -1770,7 +1770,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function nodeDelete(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function nodeDelete(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\NodeDelete($id, $queryParameters), $fetch);
     }
@@ -1807,7 +1807,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function nodeUpdate(string $id, \Docker\Api\Model\NodeSpec $body, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function nodeUpdate(string $id, \Docker\Api\Model\NodeSpec $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\NodeUpdate($id, $body, $queryParameters), $fetch);
     }
@@ -1867,7 +1867,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function swarmLeave(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function swarmLeave(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\SwarmLeave($queryParameters), $fetch);
     }
@@ -1890,7 +1890,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function swarmUpdate(\Docker\Api\Model\SwarmSpec $body, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function swarmUpdate(\Docker\Api\Model\SwarmSpec $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\SwarmUpdate($body, $queryParameters), $fetch);
     }
@@ -1942,7 +1942,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\Service[]|\Psr\Http\Message\ResponseInterface
     */
-    public function serviceList(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function serviceList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ServiceList($queryParameters), $fetch);
     }
@@ -1967,7 +1967,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\ServicesCreatePostResponse201|\Psr\Http\Message\ResponseInterface
     */
-    public function serviceCreate(\Docker\Api\Model\ServicesCreatePostBody $body, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function serviceCreate(\Docker\Api\Model\ServicesCreatePostBody $body, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ServiceCreate($body, $headerParameters), $fetch);
     }
@@ -2000,7 +2000,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @return null|\Docker\Api\Model\Service|\Psr\Http\Message\ResponseInterface
      */
-    public function serviceInspect(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function serviceInspect(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ServiceInspect($id, $queryParameters), $fetch);
     }
@@ -2040,7 +2040,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\ServiceUpdateResponse|\Psr\Http\Message\ResponseInterface
     */
-    public function serviceUpdate(string $id, \Docker\Api\Model\ServicesIdUpdatePostBody $body, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function serviceUpdate(string $id, \Docker\Api\Model\ServicesIdUpdatePostBody $body, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ServiceUpdate($id, $body, $queryParameters, $headerParameters), $fetch);
     }
@@ -2071,7 +2071,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function serviceLogs(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function serviceLogs(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ServiceLogs($id, $queryParameters), $fetch);
     }
@@ -2098,7 +2098,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\Task[]|\Psr\Http\Message\ResponseInterface
     */
-    public function taskList(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function taskList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\TaskList($queryParameters), $fetch);
     }
@@ -2144,7 +2144,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function taskLogs(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function taskLogs(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\TaskLogs($id, $queryParameters), $fetch);
     }
@@ -2169,7 +2169,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\Secret[]|\Psr\Http\Message\ResponseInterface
     */
-    public function secretList(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function secretList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\SecretList($queryParameters), $fetch);
     }
@@ -2239,7 +2239,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function secretUpdate(string $id, \Docker\Api\Model\SecretSpec $body, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function secretUpdate(string $id, \Docker\Api\Model\SecretSpec $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\SecretUpdate($id, $body, $queryParameters), $fetch);
     }
@@ -2264,7 +2264,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Docker\Api\Model\Config[]|\Psr\Http\Message\ResponseInterface
     */
-    public function configList(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function configList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ConfigList($queryParameters), $fetch);
     }
@@ -2334,7 +2334,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function configUpdate(string $id, \Docker\Api\Model\ConfigSpec $body, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function configUpdate(string $id, \Docker\Api\Model\ConfigSpec $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\ConfigUpdate($id, $body, $queryParameters), $fetch);
     }
@@ -2363,11 +2363,11 @@ class Client extends \Docker\Api\Runtime\Client\Client
     {
         return $this->executeEndpoint(new \Docker\Api\Endpoint\Session(), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = array(), array $additionalNormalizers = array())
+    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = array();
+            $plugins = [];
             if (count($additionalPlugins) > 0) {
                 $plugins = array_merge($plugins, $additionalPlugins);
             }
@@ -2375,11 +2375,11 @@ class Client extends \Docker\Api\Runtime\Client\Client
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = array(new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Docker\Api\Normalizer\JaneObjectNormalizer());
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Docker\Api\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(array('json_decode_associative' => true)))));
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true]))]);
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

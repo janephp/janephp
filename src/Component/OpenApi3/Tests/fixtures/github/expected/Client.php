@@ -19,7 +19,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reposListForOrg(string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListForOrg(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListForOrg($org, $queryParameters), $fetch);
     }
@@ -382,7 +382,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function reposGetContent(string $owner, string $repo, string $path, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function reposGetContent(string $owner, string $repo, string $path, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposGetContent($owner, $repo, $path, $queryParameters, $accept), $fetch);
     }
@@ -493,7 +493,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Deployment[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reposListDeployments(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListDeployments(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListDeployments($owner, $repo, $queryParameters), $fetch);
     }
@@ -630,7 +630,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function reposUpdateInformationAboutPagesSite(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPagesPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function reposUpdateInformationAboutPagesSite(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPagesPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposUpdateInformationAboutPagesSite($owner, $repo, $requestBody, $accept), $fetch);
     }
@@ -713,7 +713,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Status[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reposListCommitStatusesForRef(string $owner, string $repo, string $ref, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListCommitStatusesForRef(string $owner, string $repo, string $ref, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListCommitStatusesForRef($owner, $repo, $ref, $queryParameters), $fetch);
     }
@@ -781,7 +781,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\PullRequestSimple[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reposListPullRequestsAssociatedWithCommit(string $owner, string $repo, string $commitSha, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListPullRequestsAssociatedWithCommit(string $owner, string $repo, string $commitSha, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListPullRequestsAssociatedWithCommit($owner, $repo, $commitSha, $queryParameters), $fetch);
     }
@@ -1026,7 +1026,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reposListPublic(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListPublic(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListPublic($queryParameters), $fetch);
     }
@@ -1045,7 +1045,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\ShortBranch[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reposListBranches(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListBranches(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListBranches($owner, $repo, $queryParameters), $fetch);
     }
@@ -1063,7 +1063,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\RepositoryInvitation[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reposListInvitationsForAuthenticatedUser(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListInvitationsForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListInvitationsForAuthenticatedUser($queryParameters), $fetch);
     }
@@ -1096,7 +1096,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\DeployKey[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reposListDeployKeys(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListDeployKeys(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListDeployKeys($owner, $repo, $queryParameters), $fetch);
     }
@@ -1142,7 +1142,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\CloneTraffic|\Psr\Http\Message\ResponseInterface
      */
-    public function reposGetClones(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposGetClones(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposGetClones($owner, $repo, $queryParameters), $fetch);
     }
@@ -1209,7 +1209,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Release[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reposListReleases(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListReleases(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListReleases($owner, $repo, $queryParameters), $fetch);
     }
@@ -1266,7 +1266,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reposListForUser(string $username, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListForUser($username, $queryParameters), $fetch);
     }
@@ -1546,7 +1546,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\RepositoryInvitation[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reposListInvitations(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListInvitations(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListInvitations($owner, $repo, $queryParameters), $fetch);
     }
@@ -1608,7 +1608,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Tag[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reposListTags(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListTags(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListTags($owner, $repo, $queryParameters), $fetch);
     }
@@ -1625,7 +1625,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reposListTeams(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListTeams(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListTeams($owner, $repo, $queryParameters), $fetch);
     }
@@ -1738,7 +1738,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Repository[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reposListForAuthenticatedUser(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListForAuthenticatedUser($queryParameters), $fetch);
     }
@@ -1763,7 +1763,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Repository|\Psr\Http\Message\ResponseInterface
     */
-    public function reposCreateForAuthenticatedUser(?\Github\Model\UserReposPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function reposCreateForAuthenticatedUser(?\Github\Model\UserReposPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposCreateForAuthenticatedUser($requestBody, $accept), $fetch);
     }
@@ -1780,7 +1780,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\PageBuild[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reposListPagesBuilds(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListPagesBuilds(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListPagesBuilds($owner, $repo, $queryParameters), $fetch);
     }
@@ -1873,7 +1873,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reposListForks(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function reposListForks(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListForks($owner, $repo, $queryParameters, $accept), $fetch);
     }
@@ -1893,7 +1893,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Repository|\Psr\Http\Message\ResponseInterface
      */
-    public function reposCreateFork(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoForksPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function reposCreateFork(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoForksPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposCreateFork($owner, $repo, $requestBody, $accept), $fetch);
     }
@@ -1910,7 +1910,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\ViewTraffic|\Psr\Http\Message\ResponseInterface
      */
-    public function reposGetViews(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposGetViews(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposGetViews($owner, $repo, $queryParameters), $fetch);
     }
@@ -1928,7 +1928,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\ReleaseAsset[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reposListReleaseAssets(string $owner, string $repo, int $releaseId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListReleaseAssets(string $owner, string $repo, int $releaseId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListReleaseAssets($owner, $repo, $releaseId, $queryParameters), $fetch);
     }
@@ -1964,7 +1964,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\ReleaseAsset|\Psr\Http\Message\ResponseInterface
     */
-    public function reposUploadReleaseAsset(string $owner, string $repo, int $releaseId, ?string $requestBody = null, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposUploadReleaseAsset(string $owner, string $repo, int $releaseId, ?string $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposUploadReleaseAsset($owner, $repo, $releaseId, $requestBody, $queryParameters), $fetch);
     }
@@ -2044,7 +2044,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Hook[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reposListWebhooks(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListWebhooks(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListWebhooks($owner, $repo, $queryParameters), $fetch);
     }
@@ -2093,7 +2093,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\CommitComment[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reposListCommentsForCommit(string $owner, string $repo, string $commitSha, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListCommentsForCommit(string $owner, string $repo, string $commitSha, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListCommentsForCommit($owner, $repo, $commitSha, $queryParameters), $fetch);
     }
@@ -2175,7 +2175,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\SimpleCommit[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reposListCommits(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function reposListCommits(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListCommits($owner, $repo, $queryParameters, $accept), $fetch);
     }
@@ -2378,7 +2378,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\DeploymentStatus[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reposListDeploymentStatuses(string $owner, string $repo, int $deploymentId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListDeploymentStatuses(string $owner, string $repo, int $deploymentId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListDeploymentStatuses($owner, $repo, $deploymentId, $queryParameters), $fetch);
     }
@@ -2452,7 +2452,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\ContentFile|\Psr\Http\Message\ResponseInterface
     */
-    public function reposGetReadme(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposGetReadme(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposGetReadme($owner, $repo, $queryParameters), $fetch);
     }
@@ -2471,7 +2471,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\CommitComment[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reposListCommitCommentsForRepo(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListCommitCommentsForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListCommitCommentsForRepo($owner, $repo, $queryParameters), $fetch);
     }
@@ -2564,7 +2564,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Contributor[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reposListContributors(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListContributors(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListContributors($owner, $repo, $queryParameters), $fetch);
     }
@@ -2588,7 +2588,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Collaborator[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reposListCollaborators(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reposListCollaborators(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReposListCollaborators($owner, $repo, $queryParameters), $fetch);
     }
@@ -2637,7 +2637,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function scimDeleteUserFromOrg(string $org, string $scimUserId, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function scimDeleteUserFromOrg(string $org, string $scimUserId, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \Github\Endpoint\ScimDeleteUserFromOrg($org, $scimUserId, $accept), $fetch);
     }
@@ -2653,7 +2653,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function scimGetProvisioningInformationForUser(string $org, string $scimUserId, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function scimGetProvisioningInformationForUser(string $org, string $scimUserId, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \Github\Endpoint\ScimGetProvisioningInformationForUser($org, $scimUserId, $accept), $fetch);
     }
@@ -2687,7 +2687,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function scimUpdateAttributeForUser(string $org, string $scimUserId, ?\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function scimUpdateAttributeForUser(string $org, string $scimUserId, ?\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \Github\Endpoint\ScimUpdateAttributeForUser($org, $scimUserId, $requestBody, $accept), $fetch);
     }
@@ -2708,7 +2708,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function scimSetInformationForProvisionedUser(string $org, string $scimUserId, ?\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function scimSetInformationForProvisionedUser(string $org, string $scimUserId, ?\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \Github\Endpoint\ScimSetInformationForProvisionedUser($org, $scimUserId, $requestBody, $accept), $fetch);
     }
@@ -2750,7 +2750,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function scimListProvisionedIdentities(string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function scimListProvisionedIdentities(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \Github\Endpoint\ScimListProvisionedIdentities($org, $queryParameters, $accept), $fetch);
     }
@@ -2769,7 +2769,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function scimProvisionAndInviteUser(string $org, ?\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function scimProvisionAndInviteUser(string $org, ?\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \Github\Endpoint\ScimProvisionAndInviteUser($org, $requestBody, $accept), $fetch);
     }
@@ -2785,7 +2785,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Migration[]|\Psr\Http\Message\ResponseInterface
      */
-    public function migrationsListForOrg(string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function migrationsListForOrg(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\MigrationsListForOrg($org, $queryParameters), $fetch);
     }
@@ -2825,7 +2825,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Migration|\Psr\Http\Message\ResponseInterface
     */
-    public function migrationsGetStatusForAuthenticatedUser(int $migrationId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function migrationsGetStatusForAuthenticatedUser(int $migrationId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\MigrationsGetStatusForAuthenticatedUser($migrationId, $queryParameters), $fetch);
     }
@@ -2977,7 +2977,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
      */
-    public function migrationsListReposForUser(int $migrationId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function migrationsListReposForUser(int $migrationId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\MigrationsListReposForUser($migrationId, $queryParameters), $fetch);
     }
@@ -2995,7 +2995,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
      */
-    public function migrationsListReposForOrg(string $org, int $migrationId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function migrationsListReposForOrg(string $org, int $migrationId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\MigrationsListReposForOrg($org, $migrationId, $queryParameters), $fetch);
     }
@@ -3012,7 +3012,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Migration[]|\Psr\Http\Message\ResponseInterface
      */
-    public function migrationsListForAuthenticatedUser(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function migrationsListForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\MigrationsListForAuthenticatedUser($queryParameters), $fetch);
     }
@@ -3161,7 +3161,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\PorterAuthor[]|\Psr\Http\Message\ResponseInterface
     */
-    public function migrationsGetCommitAuthors(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function migrationsGetCommitAuthors(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\MigrationsGetCommitAuthors($owner, $repo, $queryParameters), $fetch);
     }
@@ -3298,7 +3298,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\LicenseSimple[]|\Psr\Http\Message\ResponseInterface
      */
-    public function licensesGetAllCommonlyUsed(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function licensesGetAllCommonlyUsed(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\LicensesGetAllCommonlyUsed($queryParameters), $fetch);
     }
@@ -3359,7 +3359,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
      */
-    public function activityListPublicEventsForRepoNetwork(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function activityListPublicEventsForRepoNetwork(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityListPublicEventsForRepoNetwork($owner, $repo, $queryParameters), $fetch);
     }
@@ -3376,7 +3376,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
      */
-    public function activityListRepoEvents(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function activityListRepoEvents(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityListRepoEvents($owner, $repo, $queryParameters), $fetch);
     }
@@ -3393,7 +3393,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
      */
-    public function activityListPublicEvents(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function activityListPublicEvents(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityListPublicEvents($queryParameters), $fetch);
     }
@@ -3457,7 +3457,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
      */
-    public function activityListPublicEventsForUser(string $username, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function activityListPublicEventsForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityListPublicEventsForUser($username, $queryParameters), $fetch);
     }
@@ -3478,7 +3478,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Thread[]|\Psr\Http\Message\ResponseInterface
      */
-    public function activityListRepoNotificationsForAuthenticatedUser(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function activityListRepoNotificationsForAuthenticatedUser(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityListRepoNotificationsForAuthenticatedUser($owner, $repo, $queryParameters), $fetch);
     }
@@ -3509,7 +3509,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
      */
-    public function activityListWatchersForRepo(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function activityListWatchersForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityListWatchersForRepo($owner, $repo, $queryParameters), $fetch);
     }
@@ -3526,7 +3526,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
      */
-    public function activityListOrgEventsForAuthenticatedUser(string $username, string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function activityListOrgEventsForAuthenticatedUser(string $username, string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityListOrgEventsForAuthenticatedUser($username, $org, $queryParameters), $fetch);
     }
@@ -3542,7 +3542,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
      */
-    public function activityListPublicOrgEvents(string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function activityListPublicOrgEvents(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityListPublicOrgEvents($org, $queryParameters), $fetch);
     }
@@ -3567,7 +3567,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
      */
-    public function activityListReceivedEventsForUser(string $username, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function activityListReceivedEventsForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityListReceivedEventsForUser($username, $queryParameters), $fetch);
     }
@@ -3588,7 +3588,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Repository[]|\Psr\Http\Message\ResponseInterface
     */
-    public function activityListReposStarredByUser(string $username, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function activityListReposStarredByUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityListReposStarredByUser($username, $queryParameters, $accept), $fetch);
     }
@@ -3604,7 +3604,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
      */
-    public function activityListReposWatchedByUser(string $username, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function activityListReposWatchedByUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityListReposWatchedByUser($username, $queryParameters), $fetch);
     }
@@ -3696,7 +3696,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
      */
-    public function activityListEventsForAuthenticatedUser(string $username, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function activityListEventsForAuthenticatedUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityListEventsForAuthenticatedUser($username, $queryParameters), $fetch);
     }
@@ -3718,7 +3718,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Thread[]|\Psr\Http\Message\ResponseInterface
      */
-    public function activityListNotificationsForAuthenticatedUser(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function activityListNotificationsForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityListNotificationsForAuthenticatedUser($queryParameters), $fetch);
     }
@@ -3749,7 +3749,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
      */
-    public function activityListWatchedReposForAuthenticatedUser(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function activityListWatchedReposForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityListWatchedReposForAuthenticatedUser($queryParameters), $fetch);
     }
@@ -3771,7 +3771,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Repository[]|\Psr\Http\Message\ResponseInterface
     */
-    public function activityListReposStarredByAuthenticatedUser(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function activityListReposStarredByAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityListReposStarredByAuthenticatedUser($queryParameters, $accept), $fetch);
     }
@@ -3792,7 +3792,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
     */
-    public function activityListStargazersForRepo(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function activityListStargazersForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityListStargazersForRepo($owner, $repo, $queryParameters, $accept), $fetch);
     }
@@ -3808,7 +3808,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
      */
-    public function activityListReceivedPublicEventsForUser(string $username, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function activityListReceivedPublicEventsForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActivityListReceivedPublicEventsForUser($username, $queryParameters), $fetch);
     }
@@ -3826,7 +3826,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\CheckAnnotation[]|\Psr\Http\Message\ResponseInterface
      */
-    public function checksListAnnotations(string $owner, string $repo, int $checkRunId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function checksListAnnotations(string $owner, string $repo, int $checkRunId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ChecksListAnnotations($owner, $repo, $checkRunId, $queryParameters), $fetch);
     }
@@ -3848,7 +3848,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\ReposOwnerRepoCommitsRefCheckSuitesGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function checksListSuitesForRef(string $owner, string $repo, string $ref, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function checksListSuitesForRef(string $owner, string $repo, string $ref, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ChecksListSuitesForRef($owner, $repo, $ref, $queryParameters), $fetch);
     }
@@ -3871,7 +3871,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\ReposOwnerRepoCommitsRefCheckRunsGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function checksListForRef(string $owner, string $repo, string $ref, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function checksListForRef(string $owner, string $repo, string $ref, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ChecksListForRef($owner, $repo, $ref, $queryParameters), $fetch);
     }
@@ -3894,7 +3894,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function checksListForSuite(string $owner, string $repo, int $checkSuiteId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function checksListForSuite(string $owner, string $repo, int $checkSuiteId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ChecksListForSuite($owner, $repo, $checkSuiteId, $queryParameters), $fetch);
     }
@@ -4047,7 +4047,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Project[]|\Psr\Http\Message\ResponseInterface
      */
-    public function projectsListForOrg(string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function projectsListForOrg(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ProjectsListForOrg($org, $queryParameters), $fetch);
     }
@@ -4191,7 +4191,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Project[]|\Psr\Http\Message\ResponseInterface
      */
-    public function projectsListForUser(string $username, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function projectsListForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ProjectsListForUser($username, $queryParameters), $fetch);
     }
@@ -4257,7 +4257,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\ProjectColumn[]|\Psr\Http\Message\ResponseInterface
      */
-    public function projectsListColumns(int $projectId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function projectsListColumns(int $projectId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ProjectsListColumns($projectId, $queryParameters), $fetch);
     }
@@ -4292,7 +4292,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\ProjectCard[]|\Psr\Http\Message\ResponseInterface
      */
-    public function projectsListCards(int $columnId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function projectsListCards(int $columnId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ProjectsListCards($columnId, $queryParameters), $fetch);
     }
@@ -4405,7 +4405,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Project[]|\Psr\Http\Message\ResponseInterface
      */
-    public function projectsListForRepo(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function projectsListForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ProjectsListForRepo($owner, $repo, $queryParameters), $fetch);
     }
@@ -4466,7 +4466,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
     */
-    public function projectsListCollaborators(int $projectId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function projectsListCollaborators(int $projectId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ProjectsListCollaborators($projectId, $queryParameters), $fetch);
     }
@@ -4487,7 +4487,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reactionsListForTeamDiscussionCommentLegacy(int $teamId, int $discussionNumber, int $commentNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reactionsListForTeamDiscussionCommentLegacy(int $teamId, int $discussionNumber, int $commentNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReactionsListForTeamDiscussionCommentLegacy($teamId, $discussionNumber, $commentNumber, $queryParameters), $fetch);
     }
@@ -4524,7 +4524,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
     */
-    public function reactionsListForTeamDiscussionLegacy(int $teamId, int $discussionNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reactionsListForTeamDiscussionLegacy(int $teamId, int $discussionNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReactionsListForTeamDiscussionLegacy($teamId, $discussionNumber, $queryParameters), $fetch);
     }
@@ -4561,7 +4561,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reactionsListForIssueComment(string $owner, string $repo, int $commentId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reactionsListForIssueComment(string $owner, string $repo, int $commentId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReactionsListForIssueComment($owner, $repo, $commentId, $queryParameters), $fetch);
     }
@@ -4617,7 +4617,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reactionsListForIssue(string $owner, string $repo, int $issueNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reactionsListForIssue(string $owner, string $repo, int $issueNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReactionsListForIssue($owner, $repo, $issueNumber, $queryParameters), $fetch);
     }
@@ -4655,7 +4655,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reactionsListForPullRequestReviewComment(string $owner, string $repo, int $commentId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reactionsListForPullRequestReviewComment(string $owner, string $repo, int $commentId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReactionsListForPullRequestReviewComment($owner, $repo, $commentId, $queryParameters), $fetch);
     }
@@ -4780,7 +4780,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reactionsListForTeamDiscussionCommentInOrg(string $org, string $teamSlug, int $discussionNumber, int $commentNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reactionsListForTeamDiscussionCommentInOrg(string $org, string $teamSlug, int $discussionNumber, int $commentNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReactionsListForTeamDiscussionCommentInOrg($org, $teamSlug, $discussionNumber, $commentNumber, $queryParameters), $fetch);
     }
@@ -4817,7 +4817,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reactionsListForTeamDiscussionInOrg(string $org, string $teamSlug, int $discussionNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reactionsListForTeamDiscussionInOrg(string $org, string $teamSlug, int $discussionNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReactionsListForTeamDiscussionInOrg($org, $teamSlug, $discussionNumber, $queryParameters), $fetch);
     }
@@ -4871,7 +4871,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
      */
-    public function reactionsListForCommitComment(string $owner, string $repo, int $commentId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function reactionsListForCommitComment(string $owner, string $repo, int $commentId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ReactionsListForCommitComment($owner, $repo, $commentId, $queryParameters), $fetch);
     }
@@ -4920,7 +4920,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function metaGetOctocat(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function metaGetOctocat(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\MetaGetOctocat($queryParameters), $fetch);
     }
@@ -4961,7 +4961,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
      */
-    public function orgsListInvitationTeams(string $org, int $invitationId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function orgsListInvitationTeams(string $org, int $invitationId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OrgsListInvitationTeams($org, $invitationId, $queryParameters), $fetch);
     }
@@ -4980,7 +4980,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\OrgMembership[]|\Psr\Http\Message\ResponseInterface
      */
-    public function orgsListMembershipsForAuthenticatedUser(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function orgsListMembershipsForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OrgsListMembershipsForAuthenticatedUser($queryParameters), $fetch);
     }
@@ -5157,7 +5157,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\OrganizationSimple[]|\Psr\Http\Message\ResponseInterface
     */
-    public function orgsListForUser(string $username, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function orgsListForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OrgsListForUser($username, $queryParameters), $fetch);
     }
@@ -5248,7 +5248,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\OrgsOrgInstallationsGetResponse200|\Psr\Http\Message\ResponseInterface
      */
-    public function orgsListAppInstallations(string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function orgsListAppInstallations(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OrgsListAppInstallations($org, $queryParameters), $fetch);
     }
@@ -5310,7 +5310,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
     */
-    public function orgsListOutsideCollaborators(string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function orgsListOutsideCollaborators(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OrgsListOutsideCollaborators($org, $queryParameters), $fetch);
     }
@@ -5327,7 +5327,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\OrganizationInvitation[]|\Psr\Http\Message\ResponseInterface
      */
-    public function orgsListPendingInvitations(string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function orgsListPendingInvitations(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OrgsListPendingInvitations($org, $queryParameters), $fetch);
     }
@@ -5360,7 +5360,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\OrganizationSimple[]|\Psr\Http\Message\ResponseInterface
      */
-    public function orgsList(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function orgsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OrgsList($queryParameters), $fetch);
     }
@@ -5377,7 +5377,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\OrgHook[]|\Psr\Http\Message\ResponseInterface
      */
-    public function orgsListWebhooks(string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function orgsListWebhooks(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OrgsListWebhooks($org, $queryParameters), $fetch);
     }
@@ -5470,7 +5470,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
     */
-    public function orgsListMembers(string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function orgsListMembers(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OrgsListMembers($org, $queryParameters), $fetch);
     }
@@ -5491,7 +5491,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\OrganizationSimple[]|\Psr\Http\Message\ResponseInterface
     */
-    public function orgsListForAuthenticatedUser(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function orgsListForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OrgsListForAuthenticatedUser($queryParameters), $fetch);
     }
@@ -5523,7 +5523,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
      */
-    public function orgsListPublicMembers(string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function orgsListPublicMembers(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OrgsListPublicMembers($org, $queryParameters), $fetch);
     }
@@ -5561,7 +5561,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\SearchCodeGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function searchCode(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function searchCode(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\SearchCode($queryParameters), $fetch);
     }
@@ -5589,7 +5589,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\SearchLabelsGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function searchLabels(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function searchLabels(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\SearchLabels($queryParameters), $fetch);
     }
@@ -5617,7 +5617,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\SearchUsersGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function searchUsers(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function searchUsers(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\SearchUsers($queryParameters), $fetch);
     }
@@ -5643,7 +5643,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\SearchCommitsGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function searchCommits(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function searchCommits(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\SearchCommits($queryParameters), $fetch);
     }
@@ -5673,7 +5673,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\SearchIssuesGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function searchIssuesAndPullRequests(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function searchIssuesAndPullRequests(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\SearchIssuesAndPullRequests($queryParameters), $fetch);
     }
@@ -5705,7 +5705,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\SearchRepositoriesGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function searchRepos(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function searchRepos(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\SearchRepos($queryParameters), $fetch);
     }
@@ -5728,7 +5728,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\SearchTopicsGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function searchTopics(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function searchTopics(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\SearchTopics($queryParameters), $fetch);
     }
@@ -5748,7 +5748,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\ApplicationGrant[]|\Psr\Http\Message\ResponseInterface
     */
-    public function oauthAuthorizationsListGrants(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function oauthAuthorizationsListGrants(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OauthAuthorizationsListGrants($queryParameters), $fetch);
     }
@@ -5796,7 +5796,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Authorization[]|\Psr\Http\Message\ResponseInterface
      */
-    public function oauthAuthorizationsListAuthorizations(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function oauthAuthorizationsListAuthorizations(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\OauthAuthorizationsListAuthorizations($queryParameters), $fetch);
     }
@@ -5967,7 +5967,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
      */
-    public function usersListFollowersForAuthenticatedUser(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function usersListFollowersForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\UsersListFollowersForAuthenticatedUser($queryParameters), $fetch);
     }
@@ -5984,7 +5984,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
      */
-    public function usersListFollowedByAuthenticated(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function usersListFollowedByAuthenticated(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\UsersListFollowedByAuthenticated($queryParameters), $fetch);
     }
@@ -6002,7 +6002,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\GpgKey[]|\Psr\Http\Message\ResponseInterface
      */
-    public function usersListGpgKeysForAuthenticated(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function usersListGpgKeysForAuthenticated(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\UsersListGpgKeysForAuthenticated($queryParameters), $fetch);
     }
@@ -6113,7 +6113,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function usersListEmailsForAuthenticated(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function usersListEmailsForAuthenticated(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\UsersListEmailsForAuthenticated($queryParameters), $fetch);
     }
@@ -6242,7 +6242,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function usersListPublicEmailsForAuthenticated(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function usersListPublicEmailsForAuthenticated(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\UsersListPublicEmailsForAuthenticated($queryParameters), $fetch);
     }
@@ -6258,7 +6258,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
      */
-    public function usersListFollowingForUser(string $username, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function usersListFollowingForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\UsersListFollowingForUser($username, $queryParameters), $fetch);
     }
@@ -6306,7 +6306,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\GpgKey[]|\Psr\Http\Message\ResponseInterface
      */
-    public function usersListGpgKeysForUser(string $username, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function usersListGpgKeysForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\UsersListGpgKeysForUser($username, $queryParameters), $fetch);
     }
@@ -6338,7 +6338,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Key[]|\Psr\Http\Message\ResponseInterface
      */
-    public function usersListPublicSshKeysForAuthenticated(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function usersListPublicSshKeysForAuthenticated(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\UsersListPublicSshKeysForAuthenticated($queryParameters), $fetch);
     }
@@ -6398,7 +6398,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
     */
-    public function usersList(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function usersList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\UsersList($queryParameters), $fetch);
     }
@@ -6423,7 +6423,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Hovercard|\Psr\Http\Message\ResponseInterface
     */
-    public function usersGetContextForUser(string $username, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function usersGetContextForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\UsersGetContextForUser($username, $queryParameters), $fetch);
     }
@@ -6455,7 +6455,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\KeySimple[]|\Psr\Http\Message\ResponseInterface
      */
-    public function usersListPublicKeysForUser(string $username, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function usersListPublicKeysForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\UsersListPublicKeysForUser($username, $queryParameters), $fetch);
     }
@@ -6471,7 +6471,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
      */
-    public function usersListFollowersForUser(string $username, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function usersListFollowersForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\UsersListFollowersForUser($username, $queryParameters), $fetch);
     }
@@ -6488,7 +6488,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\ReposOwnerRepoActionsWorkflowsGetResponse200|\Psr\Http\Message\ResponseInterface
      */
-    public function actionsListRepoWorkflows(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function actionsListRepoWorkflows(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActionsListRepoWorkflows($owner, $repo, $queryParameters), $fetch);
     }
@@ -6555,7 +6555,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\OrgsOrgActionsRunnersGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function actionsListSelfHostedRunnersForOrg(string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function actionsListSelfHostedRunnersForOrg(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActionsListSelfHostedRunnersForOrg($org, $queryParameters), $fetch);
     }
@@ -6585,7 +6585,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\ReposOwnerRepoActionsArtifactsGetResponse200|\Psr\Http\Message\ResponseInterface
      */
-    public function actionsListArtifactsForRepo(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function actionsListArtifactsForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActionsListArtifactsForRepo($owner, $repo, $queryParameters), $fetch);
     }
@@ -6602,7 +6602,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\ReposOwnerRepoActionsSecretsGetResponse200|\Psr\Http\Message\ResponseInterface
      */
-    public function actionsListRepoSecrets(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function actionsListRepoSecrets(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActionsListRepoSecrets($owner, $repo, $queryParameters), $fetch);
     }
@@ -6732,7 +6732,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\OrgsOrgActionsSecretsGetResponse200|\Psr\Http\Message\ResponseInterface
      */
-    public function actionsListOrgSecrets(string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function actionsListOrgSecrets(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActionsListOrgSecrets($org, $queryParameters), $fetch);
     }
@@ -7003,7 +7003,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\ReposOwnerRepoActionsRunsRunIdJobsGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function actionsListJobsForWorkflowRun(string $owner, string $repo, int $runId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function actionsListJobsForWorkflowRun(string $owner, string $repo, int $runId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActionsListJobsForWorkflowRun($owner, $repo, $runId, $queryParameters), $fetch);
     }
@@ -7020,7 +7020,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\ReposOwnerRepoActionsRunnersGetResponse200|\Psr\Http\Message\ResponseInterface
      */
-    public function actionsListSelfHostedRunnersForRepo(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function actionsListSelfHostedRunnersForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActionsListSelfHostedRunnersForRepo($owner, $repo, $queryParameters), $fetch);
     }
@@ -7295,7 +7295,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200|\Psr\Http\Message\ResponseInterface
      */
-    public function actionsListWorkflowRunArtifacts(string $owner, string $repo, int $runId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function actionsListWorkflowRunArtifacts(string $owner, string $repo, int $runId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActionsListWorkflowRunArtifacts($owner, $repo, $runId, $queryParameters), $fetch);
     }
@@ -7363,7 +7363,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function actionsListWorkflowRuns(string $owner, string $repo, int $workflowId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function actionsListWorkflowRuns(string $owner, string $repo, int $workflowId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActionsListWorkflowRuns($owner, $repo, $workflowId, $queryParameters), $fetch);
     }
@@ -7386,7 +7386,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\ReposOwnerRepoActionsRunsGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function actionsListWorkflowRunsForRepo(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function actionsListWorkflowRunsForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\ActionsListWorkflowRunsForRepo($owner, $repo, $queryParameters), $fetch);
     }
@@ -7533,7 +7533,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsListMembersInOrg(string $org, string $teamSlug, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function teamsListMembersInOrg(string $org, string $teamSlug, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsListMembersInOrg($org, $teamSlug, $queryParameters), $fetch);
     }
@@ -7725,7 +7725,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\TeamDiscussionComment[]|\Psr\Http\Message\ResponseInterface
      */
-    public function teamsListDiscussionCommentsInOrg(string $org, string $teamSlug, int $discussionNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function teamsListDiscussionCommentsInOrg(string $org, string $teamSlug, int $discussionNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsListDiscussionCommentsInOrg($org, $teamSlug, $discussionNumber, $queryParameters), $fetch);
     }
@@ -7860,7 +7860,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\TeamDiscussion[]|\Psr\Http\Message\ResponseInterface
      */
-    public function teamsListDiscussionsInOrg(string $org, string $teamSlug, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function teamsListDiscussionsInOrg(string $org, string $teamSlug, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsListDiscussionsInOrg($org, $teamSlug, $queryParameters), $fetch);
     }
@@ -7979,7 +7979,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\OrganizationInvitation[]|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsListPendingInvitationsLegacy(int $teamId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function teamsListPendingInvitationsLegacy(int $teamId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsListPendingInvitationsLegacy($teamId, $queryParameters), $fetch);
     }
@@ -7999,7 +7999,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\TeamDiscussionComment[]|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsListDiscussionCommentsLegacy(int $teamId, int $discussionNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function teamsListDiscussionCommentsLegacy(int $teamId, int $discussionNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsListDiscussionCommentsLegacy($teamId, $discussionNumber, $queryParameters), $fetch);
     }
@@ -8035,7 +8035,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\TeamProject[]|\Psr\Http\Message\ResponseInterface
      */
-    public function teamsListProjectsInOrg(string $org, string $teamSlug, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function teamsListProjectsInOrg(string $org, string $teamSlug, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsListProjectsInOrg($org, $teamSlug, $queryParameters), $fetch);
     }
@@ -8052,7 +8052,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
      */
-    public function teamsListReposLegacy(int $teamId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function teamsListReposLegacy(int $teamId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsListReposLegacy($teamId, $queryParameters), $fetch);
     }
@@ -8168,7 +8168,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
      */
-    public function teamsListChildLegacy(int $teamId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function teamsListChildLegacy(int $teamId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsListChildLegacy($teamId, $queryParameters), $fetch);
     }
@@ -8186,7 +8186,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
      */
-    public function teamsListReposInOrg(string $org, string $teamSlug, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function teamsListReposInOrg(string $org, string $teamSlug, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsListReposInOrg($org, $teamSlug, $queryParameters), $fetch);
     }
@@ -8206,7 +8206,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\GroupMapping|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsListIdpGroupsForOrg(string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function teamsListIdpGroupsForOrg(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsListIdpGroupsForOrg($org, $queryParameters), $fetch);
     }
@@ -8350,7 +8350,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\TeamProject[]|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsListProjectsLegacy(int $teamId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function teamsListProjectsLegacy(int $teamId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsListProjectsLegacy($teamId, $queryParameters), $fetch);
     }
@@ -8368,7 +8368,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\OrganizationInvitation[]|\Psr\Http\Message\ResponseInterface
      */
-    public function teamsListPendingInvitationsInOrg(string $org, string $teamSlug, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function teamsListPendingInvitationsInOrg(string $org, string $teamSlug, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsListPendingInvitationsInOrg($org, $teamSlug, $queryParameters), $fetch);
     }
@@ -8432,7 +8432,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
      */
-    public function teamsList(string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function teamsList(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsList($org, $queryParameters), $fetch);
     }
@@ -8467,7 +8467,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
      */
-    public function teamsListChildInOrg(string $org, string $teamSlug, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function teamsListChildInOrg(string $org, string $teamSlug, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsListChildInOrg($org, $teamSlug, $queryParameters), $fetch);
     }
@@ -8486,7 +8486,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\TeamDiscussion[]|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsListDiscussionsLegacy(int $teamId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function teamsListDiscussionsLegacy(int $teamId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsListDiscussionsLegacy($teamId, $queryParameters), $fetch);
     }
@@ -8561,7 +8561,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
     */
-    public function teamsListMembersLegacy(int $teamId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function teamsListMembersLegacy(int $teamId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsListMembersLegacy($teamId, $queryParameters), $fetch);
     }
@@ -8578,7 +8578,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\TeamFull[]|\Psr\Http\Message\ResponseInterface
      */
-    public function teamsListForAuthenticatedUser(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function teamsListForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\TeamsListForAuthenticatedUser($queryParameters), $fetch);
     }
@@ -8702,7 +8702,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\PullRequestReviewComment[]|\Psr\Http\Message\ResponseInterface
     */
-    public function pullsListReviewComments(string $owner, string $repo, int $pullNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function pullsListReviewComments(string $owner, string $repo, int $pullNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsListReviewComments($owner, $repo, $pullNumber, $queryParameters), $fetch);
     }
@@ -8783,7 +8783,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\PullRequestReviewComment[]|\Psr\Http\Message\ResponseInterface
     */
-    public function pullsListReviewCommentsForRepo(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function pullsListReviewCommentsForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsListReviewCommentsForRepo($owner, $repo, $queryParameters), $fetch);
     }
@@ -8885,7 +8885,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\PullRequestReviewRequest|\Psr\Http\Message\ResponseInterface
      */
-    public function pullsListRequestedReviewers(string $owner, string $repo, int $pullNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function pullsListRequestedReviewers(string $owner, string $repo, int $pullNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsListRequestedReviewers($owner, $repo, $pullNumber, $queryParameters), $fetch);
     }
@@ -8969,7 +8969,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\PullRequestReview[]|\Psr\Http\Message\ResponseInterface
      */
-    public function pullsListReviews(string $owner, string $repo, int $pullNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function pullsListReviews(string $owner, string $repo, int $pullNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsListReviews($owner, $repo, $pullNumber, $queryParameters), $fetch);
     }
@@ -9065,7 +9065,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\DiffEntry[]|\Psr\Http\Message\ResponseInterface
      */
-    public function pullsListFiles(string $owner, string $repo, int $pullNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function pullsListFiles(string $owner, string $repo, int $pullNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsListFiles($owner, $repo, $pullNumber, $queryParameters), $fetch);
     }
@@ -9088,7 +9088,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\PullRequestSimple[]|\Psr\Http\Message\ResponseInterface
      */
-    public function pullsList(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function pullsList(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsList($owner, $repo, $queryParameters), $fetch);
     }
@@ -9147,7 +9147,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\SimpleCommit[]|\Psr\Http\Message\ResponseInterface
      */
-    public function pullsListCommits(string $owner, string $repo, int $pullNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function pullsListCommits(string $owner, string $repo, int $pullNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsListCommits($owner, $repo, $pullNumber, $queryParameters), $fetch);
     }
@@ -9186,7 +9186,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\ReviewComment[]|\Psr\Http\Message\ResponseInterface
      */
-    public function pullsListCommentsForReview(string $owner, string $repo, int $pullNumber, int $reviewId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function pullsListCommentsForReview(string $owner, string $repo, int $pullNumber, int $reviewId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\PullsListCommentsForReview($owner, $repo, $pullNumber, $reviewId, $queryParameters), $fetch);
     }
@@ -9214,7 +9214,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\CodeScanningAlert[]|\Psr\Http\Message\ResponseInterface
      */
-    public function codeScanningListAlertsForRepo(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function codeScanningListAlertsForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\CodeScanningListAlertsForRepo($owner, $repo, $queryParameters), $fetch);
     }
@@ -9265,7 +9265,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Issue[]|\Psr\Http\Message\ResponseInterface
     */
-    public function issuesListForOrg(string $org, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function issuesListForOrg(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesListForOrg($org, $queryParameters), $fetch);
     }
@@ -9385,7 +9385,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Milestone[]|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesListMilestones(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function issuesListMilestones(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesListMilestones($owner, $repo, $queryParameters), $fetch);
     }
@@ -9554,7 +9554,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Label[]|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesListLabelsForRepo(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function issuesListLabelsForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesListLabelsForRepo($owner, $repo, $queryParameters), $fetch);
     }
@@ -9591,7 +9591,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\IssueEventForIssue[]|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesListEventsForTimeline(string $owner, string $repo, int $issueNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function issuesListEventsForTimeline(string $owner, string $repo, int $issueNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesListEventsForTimeline($owner, $repo, $issueNumber, $queryParameters), $fetch);
     }
@@ -9609,7 +9609,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesListAssignees(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function issuesListAssignees(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesListAssignees($owner, $repo, $queryParameters), $fetch);
     }
@@ -9650,7 +9650,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Issue[]|\Psr\Http\Message\ResponseInterface
     */
-    public function issuesList(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function issuesList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesList($queryParameters), $fetch);
     }
@@ -9684,7 +9684,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Label[]|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesListLabelsOnIssue(string $owner, string $repo, int $issueNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function issuesListLabelsOnIssue(string $owner, string $repo, int $issueNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesListLabelsOnIssue($owner, $repo, $issueNumber, $queryParameters), $fetch);
     }
@@ -9737,7 +9737,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\IssueEventForIssue[]|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesListEvents(string $owner, string $repo, int $issueNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function issuesListEvents(string $owner, string $repo, int $issueNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesListEvents($owner, $repo, $issueNumber, $queryParameters), $fetch);
     }
@@ -9770,7 +9770,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\IssueSimple[]|\Psr\Http\Message\ResponseInterface
     */
-    public function issuesListForRepo(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function issuesListForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesListForRepo($owner, $repo, $queryParameters), $fetch);
     }
@@ -9812,7 +9812,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\IssueComment[]|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesListComments(string $owner, string $repo, int $issueNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function issuesListComments(string $owner, string $repo, int $issueNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesListComments($owner, $repo, $issueNumber, $queryParameters), $fetch);
     }
@@ -9879,7 +9879,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\IssueEvent[]|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesListEventsForRepo(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function issuesListEventsForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesListEventsForRepo($owner, $repo, $queryParameters), $fetch);
     }
@@ -9930,7 +9930,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Issue[]|\Psr\Http\Message\ResponseInterface
     */
-    public function issuesListForAuthenticatedUser(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function issuesListForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesListForAuthenticatedUser($queryParameters), $fetch);
     }
@@ -9948,7 +9948,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\Label[]|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesListLabelsForMilestone(string $owner, string $repo, int $milestoneNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function issuesListLabelsForMilestone(string $owner, string $repo, int $milestoneNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesListLabelsForMilestone($owner, $repo, $milestoneNumber, $queryParameters), $fetch);
     }
@@ -9987,7 +9987,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\IssueComment[]|\Psr\Http\Message\ResponseInterface
      */
-    public function issuesListCommentsForRepo(string $owner, string $repo, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function issuesListCommentsForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\IssuesListCommentsForRepo($owner, $repo, $queryParameters), $fetch);
     }
@@ -10067,7 +10067,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\MarketplacePurchase[]|\Psr\Http\Message\ResponseInterface
     */
-    public function appsListAccountsForPlan(int $planId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function appsListAccountsForPlan(int $planId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\AppsListAccountsForPlan($planId, $queryParameters), $fetch);
     }
@@ -10142,7 +10142,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\MarketplacePurchase[]|\Psr\Http\Message\ResponseInterface
     */
-    public function appsListAccountsForPlanStubbed(int $planId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function appsListAccountsForPlanStubbed(int $planId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\AppsListAccountsForPlanStubbed($planId, $queryParameters), $fetch);
     }
@@ -10166,7 +10166,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\UserInstallationsGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function appsListInstallationsForAuthenticatedUser(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function appsListInstallationsForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\AppsListInstallationsForAuthenticatedUser($queryParameters), $fetch);
     }
@@ -10223,7 +10223,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\InstallationRepositoriesGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function appsListReposAccessibleToInstallation(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function appsListReposAccessibleToInstallation(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\AppsListReposAccessibleToInstallation($queryParameters), $fetch);
     }
@@ -10247,7 +10247,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\UserInstallationsInstallationIdRepositoriesGetResponse200|\Psr\Http\Message\ResponseInterface
     */
-    public function appsListInstallationReposForAuthenticatedUser(int $installationId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function appsListInstallationReposForAuthenticatedUser(int $installationId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\AppsListInstallationReposForAuthenticatedUser($installationId, $queryParameters), $fetch);
     }
@@ -10327,7 +10327,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\MarketplaceListingPlan[]|\Psr\Http\Message\ResponseInterface
     */
-    public function appsListPlansStubbed(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function appsListPlansStubbed(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\AppsListPlansStubbed($queryParameters), $fetch);
     }
@@ -10392,7 +10392,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\Installation[]|\Psr\Http\Message\ResponseInterface
     */
-    public function appsListInstallations(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function appsListInstallations(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\AppsListInstallations($queryParameters), $fetch);
     }
@@ -10492,7 +10492,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\UserMarketplacePurchase[]|\Psr\Http\Message\ResponseInterface
      */
-    public function appsListSubscriptionsForAuthenticatedUser(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function appsListSubscriptionsForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\AppsListSubscriptionsForAuthenticatedUser($queryParameters), $fetch);
     }
@@ -10559,7 +10559,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\UserMarketplacePurchase[]|\Psr\Http\Message\ResponseInterface
      */
-    public function appsListSubscriptionsForAuthenticatedUserStubbed(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function appsListSubscriptionsForAuthenticatedUserStubbed(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\AppsListSubscriptionsForAuthenticatedUserStubbed($queryParameters), $fetch);
     }
@@ -10578,7 +10578,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\MarketplaceListingPlan[]|\Psr\Http\Message\ResponseInterface
     */
-    public function appsListPlans(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function appsListPlans(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\AppsListPlans($queryParameters), $fetch);
     }
@@ -10638,7 +10638,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\BaseGist[]|\Psr\Http\Message\ResponseInterface
      */
-    public function gistsListStarred(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function gistsListStarred(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GistsListStarred($queryParameters), $fetch);
     }
@@ -10703,7 +10703,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\BaseGist[]|\Psr\Http\Message\ResponseInterface
     */
-    public function gistsListPublic(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function gistsListPublic(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GistsListPublic($queryParameters), $fetch);
     }
@@ -10721,7 +10721,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\BaseGist[]|\Psr\Http\Message\ResponseInterface
      */
-    public function gistsListForUser(string $username, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function gistsListForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GistsListForUser($username, $queryParameters), $fetch);
     }
@@ -10782,7 +10782,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\GistFull[]|\Psr\Http\Message\ResponseInterface
      */
-    public function gistsListForks(string $gistId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function gistsListForks(string $gistId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GistsListForks($gistId, $queryParameters), $fetch);
     }
@@ -10814,7 +10814,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\BaseGist[]|\Psr\Http\Message\ResponseInterface
      */
-    public function gistsList(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function gistsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GistsList($queryParameters), $fetch);
     }
@@ -10848,7 +10848,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\GistCommit[]|\Psr\Http\Message\ResponseInterface
      */
-    public function gistsListCommits(string $gistId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function gistsListCommits(string $gistId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GistsListCommits($gistId, $queryParameters), $fetch);
     }
@@ -10866,7 +10866,7 @@ class Client extends \Github\Runtime\Client\Client
      *
      * @return null|\Github\Model\GistComment[]|\Psr\Http\Message\ResponseInterface
      */
-    public function gistsListComments(string $gistId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function gistsListComments(string $gistId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GistsListComments($gistId, $queryParameters), $fetch);
     }
@@ -11090,7 +11090,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\GitTree|\Psr\Http\Message\ResponseInterface
     */
-    public function gitGetTree(string $owner, string $repo, string $treeSha, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function gitGetTree(string $owner, string $repo, string $treeSha, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GitGetTree($owner, $repo, $treeSha, $queryParameters), $fetch);
     }
@@ -11114,7 +11114,7 @@ class Client extends \Github\Runtime\Client\Client
     *
     * @return null|\Github\Model\GitRef[]|\Psr\Http\Message\ResponseInterface
     */
-    public function gitListMatchingRefs(string $owner, string $repo, string $ref, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function gitListMatchingRefs(string $owner, string $repo, string $ref, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Github\Endpoint\GitListMatchingRefs($owner, $repo, $ref, $queryParameters), $fetch);
     }
@@ -11409,11 +11409,11 @@ class Client extends \Github\Runtime\Client\Client
     {
         return $this->executeEndpoint(new \Github\Endpoint\GitignoreGetAllTemplates(), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = array(), array $additionalNormalizers = array())
+    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = array();
+            $plugins = [];
             $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('https://api.github.com');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             if (count($additionalPlugins) > 0) {
@@ -11423,11 +11423,11 @@ class Client extends \Github\Runtime\Client\Client
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = array(new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Github\Normalizer\JaneObjectNormalizer());
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Github\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(array('json_decode_associative' => true)))));
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true]))]);
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

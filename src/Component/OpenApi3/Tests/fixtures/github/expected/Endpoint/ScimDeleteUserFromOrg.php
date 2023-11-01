@@ -14,7 +14,7 @@ class ScimDeleteUserFromOrg extends \Github\Runtime\Client\BaseEndpoint implemen
      * @param string $scimUserId scim_user_id parameter
      * @param array $accept Accept content header application/json|application/scim+json
      */
-    public function __construct(string $org, string $scimUserId, array $accept = array())
+    public function __construct(string $org, string $scimUserId, array $accept = [])
     {
         $this->org = $org;
         $this->scim_user_id = $scimUserId;
@@ -27,16 +27,16 @@ class ScimDeleteUserFromOrg extends \Github\Runtime\Client\BaseEndpoint implemen
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}', '{scim_user_id}'), array($this->org, $this->scim_user_id), '/scim/v2/organizations/{org}/Users/{scim_user_id}');
+        return str_replace(['{org}', '{scim_user_id}'], [$this->org, $this->scim_user_id], '/scim/v2/organizations/{org}/Users/{scim_user_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/json', 'application/scim+json'));
+            return ['Accept' => ['application/json', 'application/scim+json']];
         }
         return $this->accept;
     }
@@ -67,6 +67,6 @@ class ScimDeleteUserFromOrg extends \Github\Runtime\Client\BaseEndpoint implemen
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

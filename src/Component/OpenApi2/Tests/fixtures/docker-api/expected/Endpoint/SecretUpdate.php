@@ -19,7 +19,7 @@ class SecretUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     
     * }
     */
-    public function __construct(string $id, \Docker\Api\Model\SecretSpec $body, array $queryParameters = array())
+    public function __construct(string $id, \Docker\Api\Model\SecretSpec $body, array $queryParameters = [])
     {
         $this->id = $id;
         $this->body = $body;
@@ -32,7 +32,7 @@ class SecretUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/secrets/{id}/update');
+        return str_replace(['{id}'], [$this->id], '/secrets/{id}/update');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
@@ -40,15 +40,15 @@ class SecretUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('version'));
-        $optionsResolver->setRequired(array('version'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('version', array('int'));
+        $optionsResolver->setDefined(['version']);
+        $optionsResolver->setRequired(['version']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('version', ['int']);
         return $optionsResolver;
     }
     /**
@@ -83,6 +83,6 @@ class SecretUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -16,7 +16,7 @@ class FreshInvestigationReport extends \CreditSafe\API\Runtime\Client\BaseEndpoi
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(string $orderId, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(string $orderId, array $queryParameters = [], array $headerParameters = [])
     {
         $this->orderId = $orderId;
         $this->queryParameters = $queryParameters;
@@ -29,32 +29,32 @@ class FreshInvestigationReport extends \CreditSafe\API\Runtime\Client\BaseEndpoi
     }
     public function getUri() : string
     {
-        return str_replace(array('{orderId}'), array($this->orderId), '/freshInvestigations/{orderId}');
+        return str_replace(['{orderId}'], [$this->orderId], '/freshInvestigations/{orderId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('sections'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('sections', array('string'));
+        $optionsResolver->setDefined(['sections']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('sections', ['string']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('Authorization'));
-        $optionsResolver->setRequired(array('Authorization'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('Authorization', array('string'));
+        $optionsResolver->setDefined(['Authorization']);
+        $optionsResolver->setRequired(['Authorization']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('Authorization', ['string']);
         return $optionsResolver;
     }
     /**
@@ -85,6 +85,6 @@ class FreshInvestigationReport extends \CreditSafe\API\Runtime\Client\BaseEndpoi
     }
     public function getAuthenticationScopes() : array
     {
-        return array('bearerAuth');
+        return ['bearerAuth'];
     }
 }

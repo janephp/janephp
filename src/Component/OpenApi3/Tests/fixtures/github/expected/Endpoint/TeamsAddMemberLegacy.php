@@ -34,15 +34,15 @@ class TeamsAddMemberLegacy extends \Github\Runtime\Client\BaseEndpoint implement
     }
     public function getUri() : string
     {
-        return str_replace(array('{team_id}', '{username}'), array($this->team_id, $this->username), '/teams/{team_id}/members/{username}');
+        return str_replace(['{team_id}', '{username}'], [$this->team_id, $this->username], '/teams/{team_id}/members/{username}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -72,6 +72,6 @@ class TeamsAddMemberLegacy extends \Github\Runtime\Client\BaseEndpoint implement
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

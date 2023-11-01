@@ -13,7 +13,7 @@ class SchemaCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
                Only the waiting is aborted, and the calls returned.
     * }
     */
-    public function __construct(\PicturePark\API\Model\SchemaCreateRequest $requestBody, array $queryParameters = array())
+    public function __construct(\PicturePark\API\Model\SchemaCreateRequest $requestBody, array $queryParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
@@ -30,21 +30,21 @@ class SchemaCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \PicturePark\API\Model\SchemaCreateRequest) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('timeout'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('timeout', array('string', 'null'));
+        $optionsResolver->setDefined(['timeout']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('timeout', ['string', 'null']);
         return $optionsResolver;
     }
     /**
@@ -91,6 +91,6 @@ class SchemaCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

@@ -12,65 +12,125 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class PortBindingNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class PortBindingNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Docker\\Api\\Model\\PortBinding';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\PortBinding';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Docker\\Api\\Model\\PortBinding';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\PortBinding';
         }
-        $object = new \Docker\Api\Model\PortBinding();
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Docker\Api\Validator\PortBindingConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Docker\Api\Model\PortBinding();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\PortBindingConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('HostIp', $data)) {
+                $object->setHostIp($data['HostIp']);
+            }
+            if (\array_key_exists('HostPort', $data)) {
+                $object->setHostPort($data['HostPort']);
+            }
             return $object;
         }
-        if (\array_key_exists('HostIp', $data)) {
-            $object->setHostIp($data['HostIp']);
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('hostIp') && null !== $object->getHostIp()) {
+                $data['HostIp'] = $object->getHostIp();
+            }
+            if ($object->isInitialized('hostPort') && null !== $object->getHostPort()) {
+                $data['HostPort'] = $object->getHostPort();
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\PortBindingConstraint());
+            }
+            return $data;
         }
-        if (\array_key_exists('HostPort', $data)) {
-            $object->setHostPort($data['HostPort']);
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Docker\\Api\\Model\\PortBinding' => false];
         }
-        return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+} else {
+    class PortBindingNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = array();
-        if ($object->isInitialized('hostIp') && null !== $object->getHostIp()) {
-            $data['HostIp'] = $object->getHostIp();
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Docker\\Api\\Model\\PortBinding';
         }
-        if ($object->isInitialized('hostPort') && null !== $object->getHostPort()) {
-            $data['HostPort'] = $object->getHostPort();
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\PortBinding';
         }
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Docker\Api\Validator\PortBindingConstraint());
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Docker\Api\Model\PortBinding();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\PortBindingConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('HostIp', $data)) {
+                $object->setHostIp($data['HostIp']);
+            }
+            if (\array_key_exists('HostPort', $data)) {
+                $object->setHostPort($data['HostPort']);
+            }
+            return $object;
         }
-        return $data;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('Docker\\Api\\Model\\PortBinding' => false);
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            if ($object->isInitialized('hostIp') && null !== $object->getHostIp()) {
+                $data['HostIp'] = $object->getHostIp();
+            }
+            if ($object->isInitialized('hostPort') && null !== $object->getHostPort()) {
+                $data['HostPort'] = $object->getHostPort();
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\PortBindingConstraint());
+            }
+            return $data;
+        }
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Docker\\Api\\Model\\PortBinding' => false];
+        }
     }
 }

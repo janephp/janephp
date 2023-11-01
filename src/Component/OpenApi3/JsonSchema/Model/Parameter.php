@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\JsonSchema\Model;
 class Parameter extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -67,7 +75,7 @@ class Parameter extends \ArrayObject
     /**
      * 
      *
-     * @var MediaType[]|null
+     * @var array<string, MediaType>|null
      */
     protected $content;
     /**
@@ -79,7 +87,7 @@ class Parameter extends \ArrayObject
     /**
      * 
      *
-     * @var Example[]|Reference[]|null
+     * @var array<string, Example|Reference>|null
      */
     protected $examples;
     /**
@@ -100,6 +108,7 @@ class Parameter extends \ArrayObject
      */
     public function setName(?string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
@@ -121,6 +130,7 @@ class Parameter extends \ArrayObject
      */
     public function setIn(?string $in) : self
     {
+        $this->initialized['in'] = true;
         $this->in = $in;
         return $this;
     }
@@ -142,6 +152,7 @@ class Parameter extends \ArrayObject
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -163,6 +174,7 @@ class Parameter extends \ArrayObject
      */
     public function setRequired(?bool $required) : self
     {
+        $this->initialized['required'] = true;
         $this->required = $required;
         return $this;
     }
@@ -184,6 +196,7 @@ class Parameter extends \ArrayObject
      */
     public function setDeprecated(?bool $deprecated) : self
     {
+        $this->initialized['deprecated'] = true;
         $this->deprecated = $deprecated;
         return $this;
     }
@@ -205,6 +218,7 @@ class Parameter extends \ArrayObject
      */
     public function setAllowEmptyValue(?bool $allowEmptyValue) : self
     {
+        $this->initialized['allowEmptyValue'] = true;
         $this->allowEmptyValue = $allowEmptyValue;
         return $this;
     }
@@ -226,6 +240,7 @@ class Parameter extends \ArrayObject
      */
     public function setStyle(?string $style) : self
     {
+        $this->initialized['style'] = true;
         $this->style = $style;
         return $this;
     }
@@ -247,6 +262,7 @@ class Parameter extends \ArrayObject
      */
     public function setExplode(?bool $explode) : self
     {
+        $this->initialized['explode'] = true;
         $this->explode = $explode;
         return $this;
     }
@@ -268,6 +284,7 @@ class Parameter extends \ArrayObject
      */
     public function setAllowReserved(?bool $allowReserved) : self
     {
+        $this->initialized['allowReserved'] = true;
         $this->allowReserved = $allowReserved;
         return $this;
     }
@@ -289,13 +306,14 @@ class Parameter extends \ArrayObject
      */
     public function setSchema($schema) : self
     {
+        $this->initialized['schema'] = true;
         $this->schema = $schema;
         return $this;
     }
     /**
      * 
      *
-     * @return MediaType[]|null
+     * @return array<string, MediaType>|null
      */
     public function getContent() : ?iterable
     {
@@ -304,12 +322,13 @@ class Parameter extends \ArrayObject
     /**
      * 
      *
-     * @param MediaType[]|null $content
+     * @param array<string, MediaType>|null $content
      *
      * @return self
      */
     public function setContent(?iterable $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }
@@ -331,13 +350,14 @@ class Parameter extends \ArrayObject
      */
     public function setExample($example) : self
     {
+        $this->initialized['example'] = true;
         $this->example = $example;
         return $this;
     }
     /**
      * 
      *
-     * @return Example[]|Reference[]|null
+     * @return array<string, Example|Reference>|null
      */
     public function getExamples() : ?iterable
     {
@@ -346,12 +366,13 @@ class Parameter extends \ArrayObject
     /**
      * 
      *
-     * @param Example[]|Reference[]|null $examples
+     * @param array<string, Example|Reference>|null $examples
      *
      * @return self
      */
     public function setExamples(?iterable $examples) : self
     {
+        $this->initialized['examples'] = true;
         $this->examples = $examples;
         return $this;
     }

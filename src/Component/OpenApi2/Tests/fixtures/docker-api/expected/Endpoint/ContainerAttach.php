@@ -123,7 +123,7 @@ class ContainerAttach extends \Docker\Api\Runtime\Client\BaseEndpoint implements
     *     @var bool $stderr Attach to `stderr`
     * }
     */
-    public function __construct(string $id, array $queryParameters = array())
+    public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;
@@ -135,28 +135,28 @@ class ContainerAttach extends \Docker\Api\Runtime\Client\BaseEndpoint implements
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/containers/{id}/attach');
+        return str_replace(['{id}'], [$this->id], '/containers/{id}/attach');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('detachKeys', 'logs', 'stream', 'stdin', 'stdout', 'stderr'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('logs' => false, 'stream' => false, 'stdin' => false, 'stdout' => false, 'stderr' => false));
-        $optionsResolver->addAllowedTypes('detachKeys', array('string'));
-        $optionsResolver->addAllowedTypes('logs', array('bool'));
-        $optionsResolver->addAllowedTypes('stream', array('bool'));
-        $optionsResolver->addAllowedTypes('stdin', array('bool'));
-        $optionsResolver->addAllowedTypes('stdout', array('bool'));
-        $optionsResolver->addAllowedTypes('stderr', array('bool'));
+        $optionsResolver->setDefined(['detachKeys', 'logs', 'stream', 'stdin', 'stdout', 'stderr']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['logs' => false, 'stream' => false, 'stdin' => false, 'stdout' => false, 'stderr' => false]);
+        $optionsResolver->addAllowedTypes('detachKeys', ['string']);
+        $optionsResolver->addAllowedTypes('logs', ['bool']);
+        $optionsResolver->addAllowedTypes('stream', ['bool']);
+        $optionsResolver->addAllowedTypes('stdin', ['bool']);
+        $optionsResolver->addAllowedTypes('stdout', ['bool']);
+        $optionsResolver->addAllowedTypes('stderr', ['bool']);
         return $optionsResolver;
     }
     /**
@@ -190,6 +190,6 @@ class ContainerAttach extends \Docker\Api\Runtime\Client\BaseEndpoint implements
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

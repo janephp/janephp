@@ -33,15 +33,15 @@ class TeamsGetMembershipForUserInOrg extends \Github\Runtime\Client\BaseEndpoint
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}', '{team_slug}', '{username}'), array($this->org, $this->team_slug, $this->username), '/orgs/{org}/teams/{team_slug}/memberships/{username}');
+        return str_replace(['{org}', '{team_slug}', '{username}'], [$this->org, $this->team_slug, $this->username], '/orgs/{org}/teams/{team_slug}/memberships/{username}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -63,6 +63,6 @@ class TeamsGetMembershipForUserInOrg extends \Github\Runtime\Client\BaseEndpoint
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

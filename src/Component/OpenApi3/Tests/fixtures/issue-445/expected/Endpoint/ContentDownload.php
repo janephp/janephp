@@ -21,7 +21,7 @@ class ContentDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
      * }
      * @param array $accept Accept content header application/json|application/octet-stream
      */
-    public function __construct(string $contentId, string $outputFormatId, array $queryParameters = array(), array $headerParameters = array(), array $accept = array())
+    public function __construct(string $contentId, string $outputFormatId, array $queryParameters = [], array $headerParameters = [], array $accept = [])
     {
         $this->contentId = $contentId;
         $this->outputFormatId = $outputFormatId;
@@ -36,36 +36,36 @@ class ContentDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
     }
     public function getUri() : string
     {
-        return str_replace(array('{contentId}', '{outputFormatId}'), array($this->contentId, $this->outputFormatId), '/v1/Contents/downloads/{contentId}/{outputFormatId}');
+        return str_replace(['{contentId}', '{outputFormatId}'], [$this->contentId, $this->outputFormatId], '/v1/Contents/downloads/{contentId}/{outputFormatId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/json', 'application/octet-stream'));
+            return ['Accept' => ['application/json', 'application/octet-stream']];
         }
         return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('width', 'height'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('width', array('int', 'null'));
-        $optionsResolver->addAllowedTypes('height', array('int', 'null'));
+        $optionsResolver->setDefined(['width', 'height']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('width', ['int', 'null']);
+        $optionsResolver->addAllowedTypes('height', ['int', 'null']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('range'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('range', array('string', 'null'));
+        $optionsResolver->setDefined(['range']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('range', ['string', 'null']);
         return $optionsResolver;
     }
     /**
@@ -117,6 +117,6 @@ class ContentDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

@@ -21,15 +21,15 @@ class ExecInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/exec/{id}/json');
+        return str_replace(['{id}'], [$this->id], '/exec/{id}/json');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -55,6 +55,6 @@ class ExecInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

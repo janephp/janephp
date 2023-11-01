@@ -16,7 +16,7 @@ class NodeUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     
     * }
     */
-    public function __construct(string $id, \Docker\Api\Model\NodeSpec $body, array $queryParameters = array())
+    public function __construct(string $id, \Docker\Api\Model\NodeSpec $body, array $queryParameters = [])
     {
         $this->id = $id;
         $this->body = $body;
@@ -29,7 +29,7 @@ class NodeUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/nodes/{id}/update');
+        return str_replace(['{id}'], [$this->id], '/nodes/{id}/update');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
@@ -37,15 +37,15 @@ class NodeUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('version'));
-        $optionsResolver->setRequired(array('version'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('version', array('int'));
+        $optionsResolver->setDefined(['version']);
+        $optionsResolver->setRequired(['version']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('version', ['int']);
         return $optionsResolver;
     }
     /**
@@ -80,6 +80,6 @@ class NodeUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -29,18 +29,18 @@ class PullsRemoveRequestedReviewers extends \Github\Runtime\Client\BaseEndpoint 
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{pull_number}'), array($this->owner, $this->repo, $this->pull_number), '/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers');
+        return str_replace(['{owner}', '{repo}', '{pull_number}'], [$this->owner, $this->repo, $this->pull_number], '/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -62,6 +62,6 @@ class PullsRemoveRequestedReviewers extends \Github\Runtime\Client\BaseEndpoint 
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

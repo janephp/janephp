@@ -120,7 +120,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\PicturePark\API\Model\BusinessProcessWaitForStateResult|\Psr\Http\Message\ResponseInterface
      */
-    public function businessProcessWaitForStates(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function businessProcessWaitForStates(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessWaitForStates($id, $queryParameters), $fetch);
     }
@@ -143,7 +143,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\PicturePark\API\Model\BusinessProcessWaitForLifeCycleResult|\Psr\Http\Message\ResponseInterface
      */
-    public function businessProcessWaitForLifeCycles(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function businessProcessWaitForLifeCycles(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessWaitForLifeCycles($id, $queryParameters), $fetch);
     }
@@ -171,7 +171,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\PicturePark\API\Model\BusinessProcessWaitForLifeCycleResult|\Psr\Http\Message\ResponseInterface
     */
-    public function businessProcessWaitForCompletion(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function businessProcessWaitForCompletion(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\BusinessProcessWaitForCompletion($id, $queryParameters), $fetch);
     }
@@ -435,7 +435,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\PicturePark\API\Model\ContentPermissionSetDetail[]|\Psr\Http\Message\ResponseInterface
      */
-    public function contentPermissionSetGetMany(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function contentPermissionSetGetMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetGetMany($queryParameters), $fetch);
     }
@@ -590,7 +590,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\PicturePark\API\Model\PermissionSetUserPermissionRights[]|\Psr\Http\Message\ResponseInterface
      */
-    public function contentPermissionSetGetPermissionsMany(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function contentPermissionSetGetPermissionsMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentPermissionSetGetPermissionsMany($queryParameters), $fetch);
     }
@@ -635,7 +635,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function contentDelete(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function contentDelete(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentDelete($id, $queryParameters), $fetch);
     }
@@ -657,7 +657,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\PicturePark\API\Model\ContentDetail|\Psr\Http\Message\ResponseInterface
      */
-    public function contentGet(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function contentGet(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentGet($id, $queryParameters), $fetch);
     }
@@ -686,7 +686,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function contentDownload(string $contentId, string $outputFormatId, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function contentDownload(string $contentId, string $outputFormatId, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentDownload($contentId, $outputFormatId, $queryParameters, $headerParameters, $accept), $fetch);
     }
@@ -712,7 +712,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function contentDownloadThumbnail(string $id, string $size, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function contentDownloadThumbnail(string $id, string $size, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentDownloadThumbnail($id, $size, $queryParameters, $accept), $fetch);
     }
@@ -735,7 +735,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\PicturePark\API\Model\ContentDetail[]|\Psr\Http\Message\ResponseInterface
     */
-    public function contentGetMany(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function contentGetMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentGetMany($queryParameters), $fetch);
     }
@@ -762,7 +762,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\PicturePark\API\Model\ContentDetail|\Psr\Http\Message\ResponseInterface
     */
-    public function contentCreate(\PicturePark\API\Model\ContentCreateRequest $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function contentCreate(\PicturePark\API\Model\ContentCreateRequest $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentCreate($requestBody, $queryParameters), $fetch);
     }
@@ -793,7 +793,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\PicturePark\API\Model\ContentDetail|\Psr\Http\Message\ResponseInterface
     */
-    public function contentUpdateMetadata(string $id, \PicturePark\API\Model\ContentMetadataUpdateRequest $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function contentUpdateMetadata(string $id, \PicturePark\API\Model\ContentMetadataUpdateRequest $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentUpdateMetadata($id, $requestBody, $queryParameters), $fetch);
     }
@@ -820,7 +820,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\PicturePark\API\Model\ContentDetail|\Psr\Http\Message\ResponseInterface
     */
-    public function contentUpdatePermissions(string $id, \PicturePark\API\Model\ContentPermissionsUpdateRequest $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function contentUpdatePermissions(string $id, \PicturePark\API\Model\ContentPermissionsUpdateRequest $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentUpdatePermissions($id, $requestBody, $queryParameters), $fetch);
     }
@@ -846,7 +846,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function contentRestore(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function contentRestore(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentRestore($id, $queryParameters), $fetch);
     }
@@ -872,7 +872,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function contentTransferOwnership(string $id, \PicturePark\API\Model\ContentOwnershipTransferRequest $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function contentTransferOwnership(string $id, \PicturePark\API\Model\ContentOwnershipTransferRequest $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ContentTransferOwnership($id, $requestBody, $queryParameters), $fetch);
     }
@@ -1347,7 +1347,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\PicturePark\API\Model\DocumentHistoryDifference|\Psr\Http\Message\ResponseInterface
      */
-    public function documentHistoryCompareWithCurrent(string $documentType, string $documentId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function documentHistoryCompareWithCurrent(string $documentType, string $documentId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\DocumentHistoryCompareWithCurrent($documentType, $documentId, $queryParameters), $fetch);
     }
@@ -1371,7 +1371,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\PicturePark\API\Model\DocumentHistoryDifference|\Psr\Http\Message\ResponseInterface
      */
-    public function documentHistoryCompareWithVersion(string $documentType, string $documentId, int $documentVersion, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function documentHistoryCompareWithVersion(string $documentType, string $documentId, int $documentVersion, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\DocumentHistoryCompareWithVersion($documentType, $documentId, $documentVersion, $queryParameters), $fetch);
     }
@@ -1549,7 +1549,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function listItemDelete(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listItemDelete(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemDelete($id, $queryParameters), $fetch);
     }
@@ -1571,7 +1571,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\PicturePark\API\Model\ListItemDetail|\Psr\Http\Message\ResponseInterface
      */
-    public function listItemGet(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listItemGet(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemGet($id, $queryParameters), $fetch);
     }
@@ -1599,7 +1599,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\PicturePark\API\Model\ListItemDetail|\Psr\Http\Message\ResponseInterface
     */
-    public function listItemUpdate(string $id, \PicturePark\API\Model\ListItemUpdateRequest $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listItemUpdate(string $id, \PicturePark\API\Model\ListItemUpdateRequest $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemUpdate($id, $requestBody, $queryParameters), $fetch);
     }
@@ -1625,7 +1625,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function listItemRestore(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listItemRestore(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemRestore($id, $queryParameters), $fetch);
     }
@@ -1668,7 +1668,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\PicturePark\API\Model\ListItemDetail[]|\Psr\Http\Message\ResponseInterface
     */
-    public function listItemGetMany(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listItemGetMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemGetMany($queryParameters), $fetch);
     }
@@ -1695,7 +1695,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\PicturePark\API\Model\ListItemDetail|\Psr\Http\Message\ResponseInterface
     */
-    public function listItemCreate(\PicturePark\API\Model\ListItemCreateRequest $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listItemCreate(\PicturePark\API\Model\ListItemCreateRequest $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ListItemCreate($requestBody, $queryParameters), $fetch);
     }
@@ -2045,7 +2045,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function outputFormatRenderFormatPreview(\PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function outputFormatRenderFormatPreview(\PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatRenderFormatPreview($requestBody, $accept), $fetch);
     }
@@ -2066,7 +2066,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\PicturePark\API\Model\OutputFormatDetail[]|\Psr\Http\Message\ResponseInterface
      */
-    public function outputFormatGetMany(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function outputFormatGetMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\OutputFormatGetMany($queryParameters), $fetch);
     }
@@ -2389,7 +2389,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\PicturePark\API\Model\SchemaPermissionSetDetail[]|\Psr\Http\Message\ResponseInterface
      */
-    public function schemaPermissionSetGetMany(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function schemaPermissionSetGetMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetGetMany($queryParameters), $fetch);
     }
@@ -2544,7 +2544,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\PicturePark\API\Model\PermissionSetUserPermissionRights[]|\Psr\Http\Message\ResponseInterface
      */
-    public function schemaPermissionSetGetPermissionsMany(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function schemaPermissionSetGetPermissionsMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaPermissionSetGetPermissionsMany($queryParameters), $fetch);
     }
@@ -2587,7 +2587,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function schemaDelete(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function schemaDelete(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaDelete($id, $queryParameters), $fetch);
     }
@@ -2631,7 +2631,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\PicturePark\API\Model\SchemaUpdateResult|\Psr\Http\Message\ResponseInterface
     */
-    public function schemaUpdate(string $id, \PicturePark\API\Model\SchemaUpdateRequest $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function schemaUpdate(string $id, \PicturePark\API\Model\SchemaUpdateRequest $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaUpdate($id, $requestBody, $queryParameters), $fetch);
     }
@@ -2714,7 +2714,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function schemaTransferOwnership(string $id, \PicturePark\API\Model\SchemaOwnershipTransferRequest $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function schemaTransferOwnership(string $id, \PicturePark\API\Model\SchemaOwnershipTransferRequest $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaTransferOwnership($id, $requestBody, $queryParameters), $fetch);
     }
@@ -2736,7 +2736,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\PicturePark\API\Model\SchemaDetail[]|\Psr\Http\Message\ResponseInterface
     */
-    public function schemaGetMany(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function schemaGetMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaGetMany($queryParameters), $fetch);
     }
@@ -2759,7 +2759,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\PicturePark\API\Model\SchemaCreateResult|\Psr\Http\Message\ResponseInterface
     */
-    public function schemaCreate(\PicturePark\API\Model\SchemaCreateRequest $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function schemaCreate(\PicturePark\API\Model\SchemaCreateRequest $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaCreate($requestBody, $queryParameters), $fetch);
     }
@@ -2819,7 +2819,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\PicturePark\API\Model\SchemaDetail[]|\Psr\Http\Message\ResponseInterface
      */
-    public function schemaGetManyReferenced(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function schemaGetManyReferenced(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaGetManyReferenced($queryParameters), $fetch);
     }
@@ -2923,7 +2923,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\PicturePark\API\Model\ShareDetail|\Psr\Http\Message\ResponseInterface
      */
-    public function shareGetShareJson(string $token, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function shareGetShareJson(string $token, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareGetShareJson($token, $queryParameters), $fetch);
     }
@@ -2951,7 +2951,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function shareDownload(string $token, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function shareDownload(string $token, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareDownload($token, $queryParameters, $headerParameters, $accept), $fetch);
     }
@@ -2981,7 +2981,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function shareDownloadSingleContent(string $token, string $contentId, string $outputFormatId, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function shareDownloadSingleContent(string $token, string $contentId, string $outputFormatId, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareDownloadSingleContent($token, $contentId, $outputFormatId, $queryParameters, $headerParameters, $accept), $fetch);
     }
@@ -3003,7 +3003,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\PicturePark\API\Model\ShareDetail|\Psr\Http\Message\ResponseInterface
      */
-    public function shareGet(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function shareGet(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\ShareGet($id, $queryParameters), $fetch);
     }
@@ -3367,7 +3367,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     *
     * @return null|\Psr\Http\Message\ResponseInterface
     */
-    public function transferUploadFile(string $transferId, string $requestId, $requestBody = null, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function transferUploadFile(string $transferId, string $requestId, $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\TransferUploadFile($transferId, $requestId, $requestBody, $queryParameters), $fetch);
     }
@@ -3407,7 +3407,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\PicturePark\API\Model\UserRoleDetail[]|\Psr\Http\Message\ResponseInterface
      */
-    public function userRoleGetMany(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function userRoleGetMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserRoleGetMany($queryParameters), $fetch);
     }
@@ -3872,7 +3872,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\PicturePark\API\Model\UserDetail[]|\Psr\Http\Message\ResponseInterface
      */
-    public function userGetMany(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function userGetMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\UserGetMany($queryParameters), $fetch);
     }
@@ -4043,7 +4043,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      *
      * @return null|\PicturePark\API\Model\XmpMappingEntry[]|\Psr\Http\Message\ResponseInterface
      */
-    public function xmpMappingGetMany(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function xmpMappingGetMany(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingGetMany($queryParameters), $fetch);
     }
@@ -4123,11 +4123,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     {
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\XmpMappingDeleteMany($requestBody), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = array(), array $additionalNormalizers = array())
+    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = array();
+            $plugins = [];
             if (count($additionalPlugins) > 0) {
                 $plugins = array_merge($plugins, $additionalPlugins);
             }
@@ -4135,11 +4135,11 @@ class Client extends \PicturePark\API\Runtime\Client\Client
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = array(new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \PicturePark\API\Normalizer\JaneObjectNormalizer());
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \PicturePark\API\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(array('json_decode_associative' => true)))));
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true]))]);
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

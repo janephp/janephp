@@ -30,18 +30,18 @@ class ReactionsCreateForTeamDiscussionInOrg extends \Github\Runtime\Client\BaseE
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}', '{team_slug}', '{discussion_number}'), array($this->org, $this->team_slug, $this->discussion_number), '/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions');
+        return str_replace(['{org}', '{team_slug}', '{discussion_number}'], [$this->org, $this->team_slug, $this->discussion_number], '/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -59,6 +59,6 @@ class ReactionsCreateForTeamDiscussionInOrg extends \Github\Runtime\Client\BaseE
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

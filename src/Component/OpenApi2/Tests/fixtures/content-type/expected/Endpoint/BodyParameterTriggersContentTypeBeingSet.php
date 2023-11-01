@@ -28,7 +28,7 @@ class BodyParameterTriggersContentTypeBeingSet extends \Jane\Component\OpenApi2\
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -46,6 +46,6 @@ class BodyParameterTriggersContentTypeBeingSet extends \Jane\Component\OpenApi2\
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

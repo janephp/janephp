@@ -18,18 +18,18 @@ class ServerVariableNormalizer implements DenormalizerInterface, NormalizerInter
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, $context = []) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\ServerVariable';
     }
-    public function supportsNormalization($data, $format = null, $context = []) : bool
+    public function supportsNormalization($data, $format = null, array $context = []) : bool
     {
         return $data instanceof \Jane\Component\OpenApi3\JsonSchema\Model\ServerVariable;
     }
     /**
      * @return mixed
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -42,7 +42,7 @@ class ServerVariableNormalizer implements DenormalizerInterface, NormalizerInter
             return $object;
         }
         if (\array_key_exists('enum', $data) && $data['enum'] !== null) {
-            $values = array();
+            $values = [];
             foreach ($data['enum'] as $value) {
                 $values[] = $value;
             }
@@ -76,18 +76,18 @@ class ServerVariableNormalizer implements DenormalizerInterface, NormalizerInter
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if (null !== $object->getEnum()) {
-            $values = array();
+        $data = [];
+        if ($object->isInitialized('enum') && null !== $object->getEnum()) {
+            $values = [];
             foreach ($object->getEnum() as $value) {
                 $values[] = $value;
             }
             $data['enum'] = $values;
         }
         $data['default'] = $object->getDefault();
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
         foreach ($object as $key => $value_1) {
@@ -96,5 +96,9 @@ class ServerVariableNormalizer implements DenormalizerInterface, NormalizerInter
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return ['Jane\\Component\\OpenApi3\\JsonSchema\\Model\\ServerVariable' => false];
     }
 }

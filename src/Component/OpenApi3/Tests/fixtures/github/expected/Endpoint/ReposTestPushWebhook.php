@@ -28,15 +28,15 @@ class ReposTestPushWebhook extends \Github\Runtime\Client\BaseEndpoint implement
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{hook_id}'), array($this->owner, $this->repo, $this->hook_id), '/repos/{owner}/{repo}/hooks/{hook_id}/tests');
+        return str_replace(['{owner}', '{repo}', '{hook_id}'], [$this->owner, $this->repo, $this->hook_id], '/repos/{owner}/{repo}/hooks/{hook_id}/tests');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -58,6 +58,6 @@ class ReposTestPushWebhook extends \Github\Runtime\Client\BaseEndpoint implement
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

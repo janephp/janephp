@@ -22,7 +22,7 @@ class ServiceList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     
     * }
     */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -37,20 +37,20 @@ class ServiceList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('filters', 'status'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('filters', array('string'));
-        $optionsResolver->addAllowedTypes('status', array('bool'));
+        $optionsResolver->setDefined(['filters', 'status']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('filters', ['string']);
+        $optionsResolver->addAllowedTypes('status', ['bool']);
         return $optionsResolver;
     }
     /**
@@ -77,6 +77,6 @@ class ServiceList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

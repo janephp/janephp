@@ -15,7 +15,7 @@ class ContainerDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements
      *     @var bool $link Remove the specified link associated with the container.
      * }
      */
-    public function __construct(string $id, array $queryParameters = array())
+    public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;
@@ -27,25 +27,25 @@ class ContainerDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/containers/{id}');
+        return str_replace(['{id}'], [$this->id], '/containers/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('v', 'force', 'link'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('v' => false, 'force' => false, 'link' => false));
-        $optionsResolver->addAllowedTypes('v', array('bool'));
-        $optionsResolver->addAllowedTypes('force', array('bool'));
-        $optionsResolver->addAllowedTypes('link', array('bool'));
+        $optionsResolver->setDefined(['v', 'force', 'link']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['v' => false, 'force' => false, 'link' => false]);
+        $optionsResolver->addAllowedTypes('v', ['bool']);
+        $optionsResolver->addAllowedTypes('force', ['bool']);
+        $optionsResolver->addAllowedTypes('link', ['bool']);
         return $optionsResolver;
     }
     /**
@@ -80,6 +80,6 @@ class ContainerDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

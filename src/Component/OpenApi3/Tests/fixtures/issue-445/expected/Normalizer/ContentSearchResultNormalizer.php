@@ -12,161 +12,317 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ContentSearchResultNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class ContentSearchResultNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'PicturePark\\API\\Model\\ContentSearchResult';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\ContentSearchResult';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'PicturePark\\API\\Model\\ContentSearchResult';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\ContentSearchResult';
         }
-        $object = new \PicturePark\API\Model\ContentSearchResult();
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \PicturePark\API\Model\ContentSearchResult();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('totalResults', $data)) {
+                $object->setTotalResults($data['totalResults']);
+                unset($data['totalResults']);
+            }
+            if (\array_key_exists('results', $data)) {
+                $values = [];
+                foreach ($data['results'] as $value) {
+                    $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\Content', 'json', $context);
+                }
+                $object->setResults($values);
+                unset($data['results']);
+            }
+            if (\array_key_exists('elapsedMilliseconds', $data)) {
+                $object->setElapsedMilliseconds($data['elapsedMilliseconds']);
+                unset($data['elapsedMilliseconds']);
+            }
+            if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
+                $object->setPageToken($data['pageToken']);
+                unset($data['pageToken']);
+            }
+            elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
+                $object->setPageToken(null);
+            }
+            if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
+                $object->setSearchString($data['searchString']);
+                unset($data['searchString']);
+            }
+            elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
+                $object->setSearchString(null);
+            }
+            if (\array_key_exists('isSearchStringRewritten', $data)) {
+                $object->setIsSearchStringRewritten($data['isSearchStringRewritten']);
+                unset($data['isSearchStringRewritten']);
+            }
+            if (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] !== null) {
+                $values_1 = [];
+                foreach ($data['queryDebugInformation'] as $value_1) {
+                    $values_1[] = $this->denormalizer->denormalize($value_1, 'PicturePark\\API\\Model\\QueryDebugInformation', 'json', $context);
+                }
+                $object->setQueryDebugInformation($values_1);
+                unset($data['queryDebugInformation']);
+            }
+            elseif (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] === null) {
+                $object->setQueryDebugInformation(null);
+            }
+            if (\array_key_exists('aggregationResults', $data) && $data['aggregationResults'] !== null) {
+                $values_2 = [];
+                foreach ($data['aggregationResults'] as $value_2) {
+                    $values_2[] = $this->denormalizer->denormalize($value_2, 'PicturePark\\API\\Model\\AggregationResult', 'json', $context);
+                }
+                $object->setAggregationResults($values_2);
+                unset($data['aggregationResults']);
+            }
+            elseif (\array_key_exists('aggregationResults', $data) && $data['aggregationResults'] === null) {
+                $object->setAggregationResults(null);
+            }
+            if (\array_key_exists('rightsAggregationsCounts', $data) && $data['rightsAggregationsCounts'] !== null) {
+                $values_3 = [];
+                foreach ($data['rightsAggregationsCounts'] as $value_3) {
+                    $values_3[] = $this->denormalizer->denormalize($value_3, 'PicturePark\\API\\Model\\ContentRightAggregationCount', 'json', $context);
+                }
+                $object->setRightsAggregationsCounts($values_3);
+                unset($data['rightsAggregationsCounts']);
+            }
+            elseif (\array_key_exists('rightsAggregationsCounts', $data) && $data['rightsAggregationsCounts'] === null) {
+                $object->setRightsAggregationsCounts(null);
+            }
+            foreach ($data as $key => $value_4) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_4;
+                }
+            }
             return $object;
         }
-        if (\array_key_exists('totalResults', $data)) {
-            $object->setTotalResults($data['totalResults']);
-            unset($data['totalResults']);
-        }
-        if (\array_key_exists('results', $data)) {
-            $values = array();
-            foreach ($data['results'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\Content', 'json', $context);
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['totalResults'] = $object->getTotalResults();
+            $values = [];
+            foreach ($object->getResults() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $object->setResults($values);
-            unset($data['results']);
-        }
-        if (\array_key_exists('elapsedMilliseconds', $data)) {
-            $object->setElapsedMilliseconds($data['elapsedMilliseconds']);
-            unset($data['elapsedMilliseconds']);
-        }
-        if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
-            $object->setPageToken($data['pageToken']);
-            unset($data['pageToken']);
-        }
-        elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
-            $object->setPageToken(null);
-        }
-        if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
-            $object->setSearchString($data['searchString']);
-            unset($data['searchString']);
-        }
-        elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
-            $object->setSearchString(null);
-        }
-        if (\array_key_exists('isSearchStringRewritten', $data)) {
-            $object->setIsSearchStringRewritten($data['isSearchStringRewritten']);
-            unset($data['isSearchStringRewritten']);
-        }
-        if (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] !== null) {
-            $values_1 = array();
-            foreach ($data['queryDebugInformation'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'PicturePark\\API\\Model\\QueryDebugInformation', 'json', $context);
+            $data['results'] = $values;
+            $data['elapsedMilliseconds'] = $object->getElapsedMilliseconds();
+            if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
+                $data['pageToken'] = $object->getPageToken();
             }
-            $object->setQueryDebugInformation($values_1);
-            unset($data['queryDebugInformation']);
-        }
-        elseif (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] === null) {
-            $object->setQueryDebugInformation(null);
-        }
-        if (\array_key_exists('aggregationResults', $data) && $data['aggregationResults'] !== null) {
-            $values_2 = array();
-            foreach ($data['aggregationResults'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, 'PicturePark\\API\\Model\\AggregationResult', 'json', $context);
+            if ($object->isInitialized('searchString') && null !== $object->getSearchString()) {
+                $data['searchString'] = $object->getSearchString();
             }
-            $object->setAggregationResults($values_2);
-            unset($data['aggregationResults']);
-        }
-        elseif (\array_key_exists('aggregationResults', $data) && $data['aggregationResults'] === null) {
-            $object->setAggregationResults(null);
-        }
-        if (\array_key_exists('rightsAggregationsCounts', $data) && $data['rightsAggregationsCounts'] !== null) {
-            $values_3 = array();
-            foreach ($data['rightsAggregationsCounts'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, 'PicturePark\\API\\Model\\ContentRightAggregationCount', 'json', $context);
+            if ($object->isInitialized('isSearchStringRewritten') && null !== $object->getIsSearchStringRewritten()) {
+                $data['isSearchStringRewritten'] = $object->getIsSearchStringRewritten();
             }
-            $object->setRightsAggregationsCounts($values_3);
-            unset($data['rightsAggregationsCounts']);
-        }
-        elseif (\array_key_exists('rightsAggregationsCounts', $data) && $data['rightsAggregationsCounts'] === null) {
-            $object->setRightsAggregationsCounts(null);
-        }
-        foreach ($data as $key => $value_4) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_4;
+            if ($object->isInitialized('queryDebugInformation') && null !== $object->getQueryDebugInformation()) {
+                $values_1 = [];
+                foreach ($object->getQueryDebugInformation() as $value_1) {
+                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                }
+                $data['queryDebugInformation'] = $values_1;
             }
+            if ($object->isInitialized('aggregationResults') && null !== $object->getAggregationResults()) {
+                $values_2 = [];
+                foreach ($object->getAggregationResults() as $value_2) {
+                    $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                }
+                $data['aggregationResults'] = $values_2;
+            }
+            if ($object->isInitialized('rightsAggregationsCounts') && null !== $object->getRightsAggregationsCounts()) {
+                $values_3 = [];
+                foreach ($object->getRightsAggregationsCounts() as $value_3) {
+                    $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                }
+                $data['rightsAggregationsCounts'] = $values_3;
+            }
+            foreach ($object as $key => $value_4) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_4;
+                }
+            }
+            return $data;
         }
-        return $object;
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['PicturePark\\API\\Model\\ContentSearchResult' => false];
+        }
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+} else {
+    class ContentSearchResultNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = array();
-        $data['totalResults'] = $object->getTotalResults();
-        $values = array();
-        foreach ($object->getResults() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'PicturePark\\API\\Model\\ContentSearchResult';
         }
-        $data['results'] = $values;
-        $data['elapsedMilliseconds'] = $object->getElapsedMilliseconds();
-        if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
-            $data['pageToken'] = $object->getPageToken();
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\ContentSearchResult';
         }
-        if ($object->isInitialized('searchString') && null !== $object->getSearchString()) {
-            $data['searchString'] = $object->getSearchString();
-        }
-        if ($object->isInitialized('isSearchStringRewritten') && null !== $object->getIsSearchStringRewritten()) {
-            $data['isSearchStringRewritten'] = $object->getIsSearchStringRewritten();
-        }
-        if ($object->isInitialized('queryDebugInformation') && null !== $object->getQueryDebugInformation()) {
-            $values_1 = array();
-            foreach ($object->getQueryDebugInformation() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
             }
-            $data['queryDebugInformation'] = $values_1;
-        }
-        if ($object->isInitialized('aggregationResults') && null !== $object->getAggregationResults()) {
-            $values_2 = array();
-            foreach ($object->getAggregationResults() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
-            $data['aggregationResults'] = $values_2;
-        }
-        if ($object->isInitialized('rightsAggregationsCounts') && null !== $object->getRightsAggregationsCounts()) {
-            $values_3 = array();
-            foreach ($object->getRightsAggregationsCounts() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+            $object = new \PicturePark\API\Model\ContentSearchResult();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
             }
-            $data['rightsAggregationsCounts'] = $values_3;
-        }
-        foreach ($object as $key => $value_4) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_4;
+            if (\array_key_exists('totalResults', $data)) {
+                $object->setTotalResults($data['totalResults']);
+                unset($data['totalResults']);
             }
+            if (\array_key_exists('results', $data)) {
+                $values = [];
+                foreach ($data['results'] as $value) {
+                    $values[] = $this->denormalizer->denormalize($value, 'PicturePark\\API\\Model\\Content', 'json', $context);
+                }
+                $object->setResults($values);
+                unset($data['results']);
+            }
+            if (\array_key_exists('elapsedMilliseconds', $data)) {
+                $object->setElapsedMilliseconds($data['elapsedMilliseconds']);
+                unset($data['elapsedMilliseconds']);
+            }
+            if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
+                $object->setPageToken($data['pageToken']);
+                unset($data['pageToken']);
+            }
+            elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
+                $object->setPageToken(null);
+            }
+            if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
+                $object->setSearchString($data['searchString']);
+                unset($data['searchString']);
+            }
+            elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
+                $object->setSearchString(null);
+            }
+            if (\array_key_exists('isSearchStringRewritten', $data)) {
+                $object->setIsSearchStringRewritten($data['isSearchStringRewritten']);
+                unset($data['isSearchStringRewritten']);
+            }
+            if (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] !== null) {
+                $values_1 = [];
+                foreach ($data['queryDebugInformation'] as $value_1) {
+                    $values_1[] = $this->denormalizer->denormalize($value_1, 'PicturePark\\API\\Model\\QueryDebugInformation', 'json', $context);
+                }
+                $object->setQueryDebugInformation($values_1);
+                unset($data['queryDebugInformation']);
+            }
+            elseif (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] === null) {
+                $object->setQueryDebugInformation(null);
+            }
+            if (\array_key_exists('aggregationResults', $data) && $data['aggregationResults'] !== null) {
+                $values_2 = [];
+                foreach ($data['aggregationResults'] as $value_2) {
+                    $values_2[] = $this->denormalizer->denormalize($value_2, 'PicturePark\\API\\Model\\AggregationResult', 'json', $context);
+                }
+                $object->setAggregationResults($values_2);
+                unset($data['aggregationResults']);
+            }
+            elseif (\array_key_exists('aggregationResults', $data) && $data['aggregationResults'] === null) {
+                $object->setAggregationResults(null);
+            }
+            if (\array_key_exists('rightsAggregationsCounts', $data) && $data['rightsAggregationsCounts'] !== null) {
+                $values_3 = [];
+                foreach ($data['rightsAggregationsCounts'] as $value_3) {
+                    $values_3[] = $this->denormalizer->denormalize($value_3, 'PicturePark\\API\\Model\\ContentRightAggregationCount', 'json', $context);
+                }
+                $object->setRightsAggregationsCounts($values_3);
+                unset($data['rightsAggregationsCounts']);
+            }
+            elseif (\array_key_exists('rightsAggregationsCounts', $data) && $data['rightsAggregationsCounts'] === null) {
+                $object->setRightsAggregationsCounts(null);
+            }
+            foreach ($data as $key => $value_4) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_4;
+                }
+            }
+            return $object;
         }
-        return $data;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('PicturePark\\API\\Model\\ContentSearchResult' => false);
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $data['totalResults'] = $object->getTotalResults();
+            $values = [];
+            foreach ($object->getResults() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data['results'] = $values;
+            $data['elapsedMilliseconds'] = $object->getElapsedMilliseconds();
+            if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
+                $data['pageToken'] = $object->getPageToken();
+            }
+            if ($object->isInitialized('searchString') && null !== $object->getSearchString()) {
+                $data['searchString'] = $object->getSearchString();
+            }
+            if ($object->isInitialized('isSearchStringRewritten') && null !== $object->getIsSearchStringRewritten()) {
+                $data['isSearchStringRewritten'] = $object->getIsSearchStringRewritten();
+            }
+            if ($object->isInitialized('queryDebugInformation') && null !== $object->getQueryDebugInformation()) {
+                $values_1 = [];
+                foreach ($object->getQueryDebugInformation() as $value_1) {
+                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                }
+                $data['queryDebugInformation'] = $values_1;
+            }
+            if ($object->isInitialized('aggregationResults') && null !== $object->getAggregationResults()) {
+                $values_2 = [];
+                foreach ($object->getAggregationResults() as $value_2) {
+                    $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                }
+                $data['aggregationResults'] = $values_2;
+            }
+            if ($object->isInitialized('rightsAggregationsCounts') && null !== $object->getRightsAggregationsCounts()) {
+                $values_3 = [];
+                foreach ($object->getRightsAggregationsCounts() as $value_3) {
+                    $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                }
+                $data['rightsAggregationsCounts'] = $values_3;
+            }
+            foreach ($object as $key => $value_4) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_4;
+                }
+            }
+            return $data;
+        }
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['PicturePark\\API\\Model\\ContentSearchResult' => false];
+        }
     }
 }

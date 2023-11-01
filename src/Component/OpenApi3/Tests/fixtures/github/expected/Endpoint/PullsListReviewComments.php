@@ -41,7 +41,7 @@ class PullsListReviewComments extends \Github\Runtime\Client\BaseEndpoint implem
     *     @var int $page Page number of the results to fetch.
     * }
     */
-    public function __construct(string $owner, string $repo, int $pullNumber, array $queryParameters = array())
+    public function __construct(string $owner, string $repo, int $pullNumber, array $queryParameters = [])
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -55,27 +55,27 @@ class PullsListReviewComments extends \Github\Runtime\Client\BaseEndpoint implem
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{pull_number}'), array($this->owner, $this->repo, $this->pull_number), '/repos/{owner}/{repo}/pulls/{pull_number}/comments');
+        return str_replace(['{owner}', '{repo}', '{pull_number}'], [$this->owner, $this->repo, $this->pull_number], '/repos/{owner}/{repo}/pulls/{pull_number}/comments');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('sort', 'direction', 'since', 'per_page', 'page'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('sort' => 'created', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->addAllowedTypes('sort', array('string'));
-        $optionsResolver->addAllowedTypes('direction', array('string'));
-        $optionsResolver->addAllowedTypes('since', array('string'));
-        $optionsResolver->addAllowedTypes('per_page', array('int'));
-        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->setDefined(['sort', 'direction', 'since', 'per_page', 'page']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['sort' => 'created', 'per_page' => 30, 'page' => 1]);
+        $optionsResolver->addAllowedTypes('sort', ['string']);
+        $optionsResolver->addAllowedTypes('direction', ['string']);
+        $optionsResolver->addAllowedTypes('since', ['string']);
+        $optionsResolver->addAllowedTypes('per_page', ['int']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
         return $optionsResolver;
     }
     /**
@@ -94,6 +94,6 @@ class PullsListReviewComments extends \Github\Runtime\Client\BaseEndpoint implem
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

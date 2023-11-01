@@ -23,15 +23,15 @@ class OrgsListSamlSsoAuthorizations extends \Github\Runtime\Client\BaseEndpoint 
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}'), array($this->org), '/orgs/{org}/credential-authorizations');
+        return str_replace(['{org}'], [$this->org], '/orgs/{org}/credential-authorizations');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -49,6 +49,6 @@ class OrgsListSamlSsoAuthorizations extends \Github\Runtime\Client\BaseEndpoint 
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

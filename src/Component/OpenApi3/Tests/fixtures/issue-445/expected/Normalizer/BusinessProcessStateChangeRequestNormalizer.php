@@ -12,64 +12,123 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class BusinessProcessStateChangeRequestNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class BusinessProcessStateChangeRequestNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'PicturePark\\API\\Model\\BusinessProcessStateChangeRequest';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\BusinessProcessStateChangeRequest';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'PicturePark\\API\\Model\\BusinessProcessStateChangeRequest';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\BusinessProcessStateChangeRequest';
         }
-        $object = new \PicturePark\API\Model\BusinessProcessStateChangeRequest();
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \PicturePark\API\Model\BusinessProcessStateChangeRequest();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('state', $data)) {
+                $object->setState($data['state']);
+            }
+            if (\array_key_exists('lifeCycle', $data)) {
+                $object->setLifeCycle($data['lifeCycle']);
+            }
+            if (\array_key_exists('notification', $data) && $data['notification'] !== null) {
+                $object->setNotification($data['notification']);
+            }
+            elseif (\array_key_exists('notification', $data) && $data['notification'] === null) {
+                $object->setNotification(null);
+            }
             return $object;
         }
-        if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['state'] = $object->getState();
+            $data['lifeCycle'] = $object->getLifeCycle();
+            if ($object->isInitialized('notification') && null !== $object->getNotification()) {
+                $data['notification'] = $object->getNotification();
+            }
+            return $data;
         }
-        if (\array_key_exists('lifeCycle', $data)) {
-            $object->setLifeCycle($data['lifeCycle']);
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['PicturePark\\API\\Model\\BusinessProcessStateChangeRequest' => false];
         }
-        if (\array_key_exists('notification', $data) && $data['notification'] !== null) {
-            $object->setNotification($data['notification']);
-        }
-        elseif (\array_key_exists('notification', $data) && $data['notification'] === null) {
-            $object->setNotification(null);
-        }
-        return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+} else {
+    class BusinessProcessStateChangeRequestNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = array();
-        $data['state'] = $object->getState();
-        $data['lifeCycle'] = $object->getLifeCycle();
-        if ($object->isInitialized('notification') && null !== $object->getNotification()) {
-            $data['notification'] = $object->getNotification();
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'PicturePark\\API\\Model\\BusinessProcessStateChangeRequest';
         }
-        return $data;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('PicturePark\\API\\Model\\BusinessProcessStateChangeRequest' => false);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'PicturePark\\API\\Model\\BusinessProcessStateChangeRequest';
+        }
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \PicturePark\API\Model\BusinessProcessStateChangeRequest();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('state', $data)) {
+                $object->setState($data['state']);
+            }
+            if (\array_key_exists('lifeCycle', $data)) {
+                $object->setLifeCycle($data['lifeCycle']);
+            }
+            if (\array_key_exists('notification', $data) && $data['notification'] !== null) {
+                $object->setNotification($data['notification']);
+            }
+            elseif (\array_key_exists('notification', $data) && $data['notification'] === null) {
+                $object->setNotification(null);
+            }
+            return $object;
+        }
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $data['state'] = $object->getState();
+            $data['lifeCycle'] = $object->getLifeCycle();
+            if ($object->isInitialized('notification') && null !== $object->getNotification()) {
+                $data['notification'] = $object->getNotification();
+            }
+            return $data;
+        }
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['PicturePark\\API\\Model\\BusinessProcessStateChangeRequest' => false];
+        }
     }
 }

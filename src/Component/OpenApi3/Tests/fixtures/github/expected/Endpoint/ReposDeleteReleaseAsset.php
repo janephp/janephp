@@ -27,11 +27,11 @@ class ReposDeleteReleaseAsset extends \Github\Runtime\Client\BaseEndpoint implem
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{asset_id}'), array($this->owner, $this->repo, $this->asset_id), '/repos/{owner}/{repo}/releases/assets/{asset_id}');
+        return str_replace(['{owner}', '{repo}', '{asset_id}'], [$this->owner, $this->repo, $this->asset_id], '/repos/{owner}/{repo}/releases/assets/{asset_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -49,6 +49,6 @@ class ReposDeleteReleaseAsset extends \Github\Runtime\Client\BaseEndpoint implem
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

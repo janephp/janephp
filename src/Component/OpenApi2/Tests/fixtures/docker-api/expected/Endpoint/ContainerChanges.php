@@ -27,15 +27,15 @@ class ContainerChanges extends \Docker\Api\Runtime\Client\BaseEndpoint implement
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/containers/{id}/changes');
+        return str_replace(['{id}'], [$this->id], '/containers/{id}/changes');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -61,6 +61,6 @@ class ContainerChanges extends \Docker\Api\Runtime\Client\BaseEndpoint implement
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

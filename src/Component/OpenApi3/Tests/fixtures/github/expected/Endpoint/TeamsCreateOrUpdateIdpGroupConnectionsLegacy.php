@@ -27,18 +27,18 @@ class TeamsCreateOrUpdateIdpGroupConnectionsLegacy extends \Github\Runtime\Clien
     }
     public function getUri() : string
     {
-        return str_replace(array('{team_id}'), array($this->team_id), '/teams/{team_id}/team-sync/group-mappings');
+        return str_replace(['{team_id}'], [$this->team_id], '/teams/{team_id}/team-sync/group-mappings');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -64,6 +64,6 @@ class TeamsCreateOrUpdateIdpGroupConnectionsLegacy extends \Github\Runtime\Clien
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }
