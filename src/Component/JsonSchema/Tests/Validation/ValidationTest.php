@@ -15,6 +15,7 @@ use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\SimpleObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\SimpleObjectSubProperty;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\StringObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\TypeObject;
+use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\VerifyNullableStringPropertyWithMinLengthValidatesCorrectly;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\ArrayObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\FormatObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\NumericObjectNormalizer;
@@ -27,6 +28,7 @@ use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\SimpleObject
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\SimpleObjectSubPropertyNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\StringObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\TypeObjectNormalizer;
+use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\VerifyNullableStringPropertyWithMinLengthValidatesCorrectlyNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Runtime\Normalizer\ValidationException;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -76,6 +78,9 @@ class ValidationTest extends TestCase
 
         // 11. Nested SubModel
         $this->nestedSubModelValidation();
+
+        // 12.
+        $this->verifyNullableStringPropertyWithMinLengthValidatesCorrectly();
     }
 
     private function numericValidation(): void
@@ -913,5 +918,32 @@ class ValidationTest extends TestCase
         $violation = $caughtException->getViolationList()[0];
         $this->assertEquals('[subLevel-1][subLevel-2][end]', $violation->getPropertyPath());
         $this->assertEquals('This value is not valid.', $violation->getMessage());
+    }
+
+    private function verifyNullableStringPropertyWithMinLengthValidatesCorrectly(): void
+    {
+        $normalizer = new VerifyNullableStringPropertyWithMinLengthValidatesCorrectlyNormalizer();
+
+        $caughtException = null;
+        try {
+            $normalizer->denormalize([
+                'name' => '',
+            ], VerifyNullableStringPropertyWithMinLengthValidatesCorrectly::class);
+        } catch (ValidationException $exception) {
+            $caughtException = $exception;
+        }
+
+        self::assertInstanceOf(ValidationException::class, $caughtException);
+        self::assertEquals(400, $caughtException->getCode());
+        self::assertEquals(2, $caughtException->getViolationList()->count());
+        self::assertEquals('[name]', $caughtException->getViolationList()->get(0)->getPropertyPath());
+
+        $caughtException = null;
+        $data = $normalizer->denormalize([
+            'name' => null,
+        ], VerifyNullableStringPropertyWithMinLengthValidatesCorrectly::class);
+
+        self::assertInstanceOf(VerifyNullableStringPropertyWithMinLengthValidatesCorrectly::class, $data);
+        self::assertEquals(null, $data->getName());
     }
 }

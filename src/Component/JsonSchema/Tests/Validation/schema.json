@@ -224,6 +224,18 @@
                     "pattern": "^[a-z]+$"
                 }
             }
+        },
+        "VerifyNullableStringPropertyWithMinLengthValidatesCorrectly":{
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "minLength": 1
+                }
+            }
         }
     }
 }
