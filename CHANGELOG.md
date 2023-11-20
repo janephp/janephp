@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [JsonSchema] [GH#747](https://github.com/janephp/janephp/pull/747) Allow league/uri v7
 - [JsonSchema] [GH#698](https://github.com/janephp/janephp/pull/698) Consider nullable property for minLengthValidator
 - [OpenApiCommon] [GH#750](https://github.com/janephp/janephp/pull/750) Replace 'findUrlFactory' with 'findUriFactory'
+- [JsonSchema] [GH#758](https://github.com/janephp/janephp/pull/758) Fixed subproperty validator overwriting
 
 ### Removed
 - Removed the AutoMapper component to let him live in [its own repository](https://github.com/jolicode/automapper)

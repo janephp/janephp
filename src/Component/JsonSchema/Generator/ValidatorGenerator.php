@@ -65,10 +65,10 @@ class ValidatorGenerator implements GeneratorInterface
 
                         $classGuess->setConstraintClass(sprintf('%s\%s', $localNamespace, $classGuess->getConstraintClass()));
 
-                        if (!\array_key_exists($name, $collectionItemsConstraints)) {
+                        if (!\array_key_exists($classGuess->getSubProperty(), $collectionItemsConstraints)) {
                             $collectionItemsConstraints[$classGuess->getSubProperty()] = [$this->generateConstraint($classGuess)];
                         } else {
-                            $collectionItemsConstraints[$classGuess->getSubProperty()] = array_merge($collectionItemsConstraints[$name], [$this->generateConstraint($classGuess)]);
+                            $collectionItemsConstraints[$classGuess->getSubProperty()] = array_merge($collectionItemsConstraints[$classGuess->getSubProperty()], [$this->generateConstraint($classGuess)]);
                         }
                     }
                 }
