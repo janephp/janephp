@@ -6,14 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- [JsonSchema] [GH#698](https://github.com/janephp/janephp/pull/698) Consider nullable property for minLengthValidator
+
+### Fixed
+- [JsonSchema] [GH#758](https://github.com/janephp/janephp/pull/758) Fixed subproperty validator overwriting
 
 ## [7.5.4] - 2023-10-09
 ### Changed
 - [Jane] [GH#748](https://github.com/janephp/janephp/pull/748) Move PHP CS Fixer to a separate composer.json file
 - [JsonSchema] [GH#747](https://github.com/janephp/janephp/pull/747) Allow league/uri v7
-- [JsonSchema] [GH#698](https://github.com/janephp/janephp/pull/698) Consider nullable property for minLengthValidator
 - [OpenApiCommon] [GH#750](https://github.com/janephp/janephp/pull/750) Replace 'findUrlFactory' with 'findUriFactory'
-- [JsonSchema] [GH#758](https://github.com/janephp/janephp/pull/758) Fixed subproperty validator overwriting
 
 ### Removed
 - Removed the AutoMapper component to let him live in [its own repository](https://github.com/jolicode/automapper)
