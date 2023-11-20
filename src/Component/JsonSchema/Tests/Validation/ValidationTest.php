@@ -944,6 +944,6 @@ class ValidationTest extends TestCase
         ], VerifyNullableStringPropertyWithMinLengthValidatesCorrectly::class);
 
         self::assertInstanceOf(VerifyNullableStringPropertyWithMinLengthValidatesCorrectly::class, $data);
-        self::assertEquals(null, $data->getName());
+        self::assertNull($data->getName());
     }
 }
