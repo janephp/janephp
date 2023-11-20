@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [Jane] [GH#748](https://github.com/janephp/janephp/pull/748) Move PHP CS Fixer to a separate composer.json file
 - [JsonSchema] [GH#747](https://github.com/janephp/janephp/pull/747) Allow league/uri v7
 - [OpenApiCommon] [GH#750](https://github.com/janephp/janephp/pull/750) Replace 'findUrlFactory' with 'findUriFactory'
+- [JsonSchema] [GH#758](https://github.com/janephp/janephp/pull/758) Fixed subclass property validator overwriting
 
 ### Removed
 - Removed the AutoMapper component to let him live in [its own repository](https://github.com/jolicode/automapper)
