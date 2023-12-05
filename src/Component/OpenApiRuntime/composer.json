@@ -29,12 +29,12 @@
         "php-http/discovery": "^1.6",
         "psr/http-client": "^1.0",
         "psr/http-factory": "^1.0",
-        "symfony/options-resolver": "^4.4 || ^5.0 || ^6.0",
+        "symfony/options-resolver": "^5.0 || ^6.0 || ^7.0",
         "jane-php/json-schema-runtime": "^7.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0",
-        "symfony/serializer": "^4.4 || ^5.0 || ^6.0"
+        "symfony/serializer": "^5.0 || ^6.0 || ^7.0"
     },
     "extra": {
         "branch-alias": {

@@ -25,15 +25,15 @@
         "php-jsonpointer/php-jsonpointer": "^3.0 || ^4.0",
         "psr/http-client": "^1.0",
         "psr/http-factory": "^1.0",
-        "symfony/console": "^4.4 || ^5.0 || ^6.0",
-        "symfony/filesystem": "^4.4 || ^5.0 || ^6.0",
-        "symfony/options-resolver": "^4.4 || ^5.0 || ^6.0",
-        "symfony/property-info": "^5.3 || ^6.0",
-        "symfony/serializer": "^5.1 || ^6.0",
-        "symfony/string": "^5.0 || ^6.0",
-        "symfony/var-dumper": "^4.4 || ^5.0 || ^6.0",
-        "symfony/yaml": "~4.4.9 || ^5.0 || ^6.0",
-        "symfony/validator": "^5.1 || ^6.0"
+        "symfony/console": "^5.0 || ^6.0 || ^7.0",
+        "symfony/filesystem": "^5.0 || ^6.0 || ^7.0",
+        "symfony/options-resolver": "^5.0 || ^6.0 || ^7.0",
+        "symfony/property-info": "^5.3 || ^6.0 || ^7.0",
+        "symfony/serializer": "^5.1 || ^6.0 || ^7.0",
+        "symfony/string": "^5.0 || ^6.0 || ^7.0",
+        "symfony/var-dumper": "^5.0 || ^6.0 || ^7.0",
+        "symfony/yaml": "^5.0 || ^6.0 || ^7.0",
+        "symfony/validator": "^5.1 || ^6.0 || ^7.0"
     },
     "replace": {
         "jane-php/json-schema": "self.version",
@@ -55,8 +55,8 @@
         "phpbench/phpbench": "^1.1",
         "phpdocumentor/reflection-docblock": "^3.0 || ^4.0 || ^5.0",
         "phpunit/phpunit": "^8.0",
-        "symfony/framework-bundle": "^4.4 || ^5.0 || ^6.0",
-        "symfony/uid": "^5.2 || ^6.0"
+        "symfony/framework-bundle": "^4.4 || ^5.0 || ^6.0 || ^7.0",
+        "symfony/uid": "^5.2 || ^6.0 || ^7.0"
     },
     "suggest": {
         "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation",
