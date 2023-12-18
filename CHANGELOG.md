@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [7.5.5] - 2023-11-20
 ### Changed
 - [JsonSchema] [GH#698](https://github.com/janephp/janephp/pull/698) Consider nullable property for minLengthValidator
+- [OpenApiCommon] [GH#775](https://github.com/janephp/janephp/pull/775) Added support for boolean HTTP headers
 
 ### Fixed
 - [JsonSchema] [GH#758](https://github.com/janephp/janephp/pull/758) Fixed subproperty validator overwriting
