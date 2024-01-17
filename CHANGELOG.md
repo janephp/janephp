@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - [OpenApiCommon] [GH#775](https://github.com/janephp/janephp/pull/775) Added support for boolean HTTP headers
+- [OpenApiCommon] [GH#777](https://github.com/janephp/janephp/pull/777) Add class property formParameters to BaseEndpoint
 
 ### Fixed
 - [GH#780](https://github.com/janephp/janephp/pull/780) Fix CI
