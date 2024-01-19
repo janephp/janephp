@@ -7,7 +7,7 @@
                 "operationId": "Test No Tag",
                 "responses": {
                     "200": {
-                        "description": "Bad request on test exception",
+                        "description": "Bad request on test exception"
                     }
                 }
             }
