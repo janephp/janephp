@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+    version: ''
+    title: ''
+paths: {}
+components:
+    schemas:
+        WithImplicitAdditionalProps:
+            type: object
+            properties:
+                a:
+                    type: string
+                    
+        WithExplicitAdditionalProps:
+            type: object
+            additionalProperties: true
+            properties:
+                a:
+                    type: string
+
+        WithoutImplicitAdditionalProps:
+            type: object
+            additionalProperties: false
+            properties:
+                a:
+                    type: string
