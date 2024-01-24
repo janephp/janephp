@@ -5,7 +5,6 @@ namespace Jane\Component\OpenApiCommon\Generator;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Comment;
-use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -53,7 +52,7 @@ class OperationGenerator
         $methodDocSplit[] = ' */';
         $documentation = implode("\n", $methodDocSplit);
         $paramsPosition = $lastMethodParam === 'accept' ? \count($methodParams) - 1 : \count($methodParams);
-        array_splice($methodParams, $paramsPosition, 0, [new Param(new Node\Expr\Variable('fetch'), new Expr\ClassConstFetch(new Name('self'), 'FETCH_OBJECT'), new Name('string'))]);
+        array_splice($methodParams, $paramsPosition, 0, [new Param(new Expr\Variable('fetch'), new Expr\ClassConstFetch(new Name('self'), 'FETCH_OBJECT'), new Name('string'))]);
 
         return new Stmt\ClassMethod($name, [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,

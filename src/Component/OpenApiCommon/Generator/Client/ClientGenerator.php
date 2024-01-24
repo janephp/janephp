@@ -31,7 +31,7 @@ trait ClientGenerator
         $naming = new Naming();
 
         return new Stmt\Class_($name, [
-            'extends' => new Node\Name\FullyQualified($naming->getRuntimeClassFQCN($schema->getNamespace(), ['Client'], 'Client')),
+            'extends' => new Name\FullyQualified($naming->getRuntimeClassFQCN($schema->getNamespace(), ['Client'], 'Client')),
         ]);
     }
 

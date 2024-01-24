@@ -123,20 +123,20 @@ EOD
                             new Stmt\ClassMethod('__construct', [
                                                             'type' => Stmt\Class_::MODIFIER_PUBLIC,
                                                             'params' => [
-                                                                new Param(new Node\Expr\Variable($realPropertyName), null, $isArray ? null : new Name('\\' . $classFqdn)),
-                                                                new Param(new Node\Expr\Variable('response'), null, new Name('\\Psr\\Http\\Message\\ResponseInterface')),
+                                                                new Param(new Expr\Variable($realPropertyName), null, $isArray ? null : new Name('\\' . $classFqdn)),
+                                                                new Param(new Expr\Variable('response'), null, new Name('\\Psr\\Http\\Message\\ResponseInterface')),
                                                             ],
                                                             'stmts' => [
-                                                                new Node\Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
+                                                                new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
                                                                     new Scalar\String_($description),
                                                                 ])),
-                                                                new Node\Stmt\Expression(new Expr\Assign(
+                                                                new Stmt\Expression(new Expr\Assign(
                                                                     new Expr\PropertyFetch(
                                                                         new Expr\Variable('this'),
                                                                         $propertyName
                                                                     ), new Expr\Variable($realPropertyName)
                                                                 )),
-                                                                new Node\Stmt\Expression(new Expr\Assign(
+                                                                new Stmt\Expression(new Expr\Assign(
                                                                     new Expr\PropertyFetch(
                                                                         new Expr\Variable('this'),
                                                                         'response'
@@ -195,13 +195,13 @@ EOD
                         new Stmt\ClassMethod('__construct', [
                             'type' => Stmt\Class_::MODIFIER_PUBLIC,
                             'params' => [
-                                new Param(new Node\Expr\Variable('response'), new Expr\ConstFetch(new Name('null')), new Name('\\Psr\\Http\\Message\\ResponseInterface')),
+                                new Param(new Expr\Variable('response'), new Expr\ConstFetch(new Name('null')), new Name('\\Psr\\Http\\Message\\ResponseInterface')),
                             ],
                             'stmts' => [
-                                new Node\Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
+                                new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
                                     new Node\Arg(new Scalar\String_($description)),
                                 ])),
-                                new Node\Stmt\Expression(new Expr\Assign(
+                                new Stmt\Expression(new Expr\Assign(
                                     new Expr\PropertyFetch(
                                         new Expr\Variable('this'),
                                         'response'
@@ -336,7 +336,7 @@ EOD
                                 new Param(new Expr\Variable('message'), null, new Name('string')),
                             ],
                             'stmts' => [
-                                new Node\Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
+                                new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
                                     new Node\Arg(new Expr\Variable('message')),
                                     new Node\Arg(new Scalar\LNumber($code)),
                                 ])),

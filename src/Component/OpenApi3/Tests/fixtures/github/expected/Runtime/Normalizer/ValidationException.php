@@ -2,8 +2,9 @@
 
 namespace Github\Runtime\Normalizer;
 
+use RuntimeException;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
-class ValidationException extends \RuntimeException
+class ValidationException extends RuntimeException
 {
     /** @var ConstraintViolationListInterface */
     private $violationList;

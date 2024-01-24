@@ -6,7 +6,6 @@ use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\OpenApi2\JsonSchema\Model\BodyParameter;
 use Jane\Component\OpenApi2\JsonSchema\Model\FormDataParameterSubSchema;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
-use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -52,8 +51,8 @@ trait GetGetBodyTrait
         $method = new Stmt\ClassMethod('getBody', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'params' => [
-                new Param(new Node\Expr\Variable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
-                new Param(new Node\Expr\Variable('streamFactory'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
+                new Param(new Expr\Variable('streamFactory'), new Expr\ConstFetch(new Name('null'))),
             ],
             'returnType' => new Name('array'),
         ]);

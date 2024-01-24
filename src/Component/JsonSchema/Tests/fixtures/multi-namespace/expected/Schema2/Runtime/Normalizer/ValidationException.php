@@ -2,8 +2,9 @@
 
 namespace Jane\Component\JsonSchema\Tests\Expected\Schema2\Runtime\Normalizer;
 
+use RuntimeException;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
-class ValidationException extends \RuntimeException
+class ValidationException extends RuntimeException
 {
     /** @var ConstraintViolationListInterface */
     private $violationList;
