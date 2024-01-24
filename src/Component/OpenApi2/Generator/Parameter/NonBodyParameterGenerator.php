@@ -26,7 +26,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     public function generateMethodParameter($parameter, Context $context, string $reference): Node\Param
     {
         $name = $this->getInflector()->camelize($parameter->getName());
-        $methodParameter = new Node\Param(new Node\Expr\Variable($name));
+        $methodParameter = new Node\Param(new Expr\Variable($name));
 
         if (!$parameter->getRequired() || null !== $parameter->getDefault()) {
             $methodParameter->default = $this->getDefaultAsExpr($parameter);

@@ -27,7 +27,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
     use GuesserResolverTrait;
 
     /**
-     * @var \Jane\Component\JsonSchema\Generator\Naming
+     * @var Naming
      */
     protected $naming;
 

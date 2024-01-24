@@ -45,7 +45,7 @@ trait GetConstructorTrait
             if ($parameter instanceof PathParameterSubSchema) {
                 $pathParams[] = $nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $pathParamsDoc[] = $nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
-                $methodStatements[] = new Node\Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), $parameter->getName()), new Expr\Variable($this->getInflector()->camelize($parameter->getName()))));
+                $methodStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), $parameter->getName()), new Expr\Variable($this->getInflector()->camelize($parameter->getName()))));
                 $pathProperties[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
                     new Stmt\PropertyProperty(new Name($parameter->getName())),
                 ]);
@@ -54,7 +54,7 @@ trait GetConstructorTrait
             if ($parameter instanceof BodyParameter) {
                 $bodyParam = $bodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $bodyDoc = $bodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
-                $bodyAssign = new Node\Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'), new Expr\Variable($this->getInflector()->camelize($parameter->getName()))));
+                $bodyAssign = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'), new Expr\Variable($this->getInflector()->camelize($parameter->getName()))));
             }
 
             if ($parameter instanceof QueryParameterSubSchema) {
@@ -73,9 +73,9 @@ trait GetConstructorTrait
         $methodStatements = array_merge(
             $methodStatements,
             $bodyAssign !== null ? [$bodyAssign] : [],
-            \count($queryParamsDoc) > 0 ? [new Node\Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'queryParameters'), new Expr\Variable('queryParameters')))] : [],
-            \count($formParamsDoc) > 0 ? [new Node\Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'formParameters'), new Expr\Variable('formParameters')))] : [],
-            \count($headerParamsDoc) > 0 ? [new Node\Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'headerParameters'), new Expr\Variable('headerParameters')))] : []
+            \count($queryParamsDoc) > 0 ? [new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'queryParameters'), new Expr\Variable('queryParameters')))] : [],
+            \count($formParamsDoc) > 0 ? [new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'formParameters'), new Expr\Variable('formParameters')))] : [],
+            \count($headerParamsDoc) > 0 ? [new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), 'headerParameters'), new Expr\Variable('headerParameters')))] : []
         );
 
         if (\count($methodStatements) === 0) {
@@ -85,9 +85,9 @@ trait GetConstructorTrait
         $methodParams = array_merge(
             $pathParams,
             $bodyParam ? [$bodyParam] : [],
-            \count($queryParamsDoc) > 0 ? [new Node\Param(new Node\Expr\Variable('queryParameters'), new Expr\Array_(), new Name('array'))] : [],
-            \count($formParamsDoc) > 0 ? [new Node\Param(new Node\Expr\Variable('formParameters'), new Expr\Array_(), new Name('array'))] : [],
-            \count($headerParamsDoc) > 0 ? [new Node\Param(new Node\Expr\Variable('headerParameters'), new Expr\Array_(), new Name('array'))] : []
+            \count($queryParamsDoc) > 0 ? [new Node\Param(new Expr\Variable('queryParameters'), new Expr\Array_(), new Name('array'))] : [],
+            \count($formParamsDoc) > 0 ? [new Node\Param(new Expr\Variable('formParameters'), new Expr\Array_(), new Name('array'))] : [],
+            \count($headerParamsDoc) > 0 ? [new Node\Param(new Expr\Variable('headerParameters'), new Expr\Array_(), new Name('array'))] : []
         );
 
         $methodDocumentations = array_merge(
