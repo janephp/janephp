@@ -19,13 +19,16 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\ListPets($queryParameters), $fetch);
     }
     /**
+     * 
+     *
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\Pet $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
      */
-    public function createPets(string $fetch = self::FETCH_OBJECT)
+    public function createPets(\Jane\Component\OpenApi3\Tests\Expected\Model\Pet $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\CreatePets(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\CreatePets($requestBody), $fetch);
     }
     /**
      * 
