@@ -108,7 +108,7 @@ class ShareEmbedCreateRequestNormalizer implements DenormalizerInterface, Normal
         }
         $values = array();
         foreach ($object->getContents() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['contents'] = $values;
         if ($object->isInitialized('layerSchemaIds') && null !== $object->getLayerSchemaIds()) {

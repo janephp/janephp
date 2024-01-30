@@ -80,7 +80,7 @@ class CreateFreshInvestigationRequestContactInfoNormalizer implements Denormaliz
             $data['telephoneNumber'] = $object->getTelephoneNumber();
         }
         if ($object->isInitialized('company') && null !== $object->getCompany()) {
-            $data['company'] = $this->normalizer->normalize($object->getCompany(), 'json', $context);
+            $data['company'] = $object->getCompany() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCompany(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

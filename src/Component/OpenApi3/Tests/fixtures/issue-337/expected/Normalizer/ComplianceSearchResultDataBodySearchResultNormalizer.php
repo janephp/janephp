@@ -69,7 +69,7 @@ class ComplianceSearchResultDataBodySearchResultNormalizer implements Denormaliz
         if ($object->isInitialized('records') && null !== $object->getRecords()) {
             $values = array();
             foreach ($object->getRecords() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['records'] = $values;
         }

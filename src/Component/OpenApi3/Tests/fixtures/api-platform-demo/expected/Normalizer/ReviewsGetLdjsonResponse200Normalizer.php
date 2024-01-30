@@ -76,17 +76,17 @@ class ReviewsGetLdjsonResponse200Normalizer implements DenormalizerInterface, No
         $data = array();
         $values = array();
         foreach ($object->getHydraMember() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['hydra:member'] = $values;
         if ($object->isInitialized('hydraTotalItems') && null !== $object->getHydraTotalItems()) {
             $data['hydra:totalItems'] = $object->getHydraTotalItems();
         }
         if ($object->isInitialized('hydraView') && null !== $object->getHydraView()) {
-            $data['hydra:view'] = $this->normalizer->normalize($object->getHydraView(), 'json', $context);
+            $data['hydra:view'] = $object->getHydraView() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getHydraView(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('hydraSearch') && null !== $object->getHydraSearch()) {
-            $data['hydra:search'] = $this->normalizer->normalize($object->getHydraSearch(), 'json', $context);
+            $data['hydra:search'] = $object->getHydraSearch() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getHydraSearch(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

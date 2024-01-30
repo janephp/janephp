@@ -160,7 +160,7 @@ class IssueEventForIssueNormalizer implements DenormalizerInterface, NormalizerI
             $data['url'] = $object->getUrl();
         }
         if ($object->isInitialized('actor') && null !== $object->getActor()) {
-            $data['actor'] = $this->normalizer->normalize($object->getActor(), 'json', $context);
+            $data['actor'] = $object->getActor() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getActor(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('event') && null !== $object->getEvent()) {
             $data['event'] = $object->getEvent();

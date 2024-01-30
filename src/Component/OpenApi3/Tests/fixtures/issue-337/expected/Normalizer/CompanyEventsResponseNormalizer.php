@@ -79,12 +79,12 @@ class CompanyEventsResponseNormalizer implements DenormalizerInterface, Normaliz
         if ($object->isInitialized('data') && null !== $object->getData()) {
             $values = array();
             foreach ($object->getData() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['data'] = $values;
         }
         if ($object->isInitialized('paging') && null !== $object->getPaging()) {
-            $data['paging'] = $this->normalizer->normalize($object->getPaging(), 'json', $context);
+            $data['paging'] = $object->getPaging() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPaging(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

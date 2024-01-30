@@ -132,12 +132,12 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $data['public_key'] = $object->getPublicKey();
         $values = array();
         foreach ($object->getEmails() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['emails'] = $values;
         $values_1 = array();
         foreach ($object->getSubkeys() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['subkeys'] = $values_1;
         $data['can_sign'] = $object->getCanSign();

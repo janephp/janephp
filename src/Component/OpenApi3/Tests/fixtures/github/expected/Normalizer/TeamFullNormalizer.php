@@ -149,13 +149,13 @@ class TeamFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['members_url'] = $object->getMembersUrl();
         $data['repositories_url'] = $object->getRepositoriesUrl();
         if ($object->isInitialized('parent') && null !== $object->getParent()) {
-            $data['parent'] = $this->normalizer->normalize($object->getParent(), 'json', $context);
+            $data['parent'] = $object->getParent() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getParent(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['members_count'] = $object->getMembersCount();
         $data['repos_count'] = $object->getReposCount();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        $data['organization'] = $this->normalizer->normalize($object->getOrganization(), 'json', $context);
+        $data['organization'] = $object->getOrganization() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getOrganization(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('ldapDn') && null !== $object->getLdapDn()) {
             $data['ldap_dn'] = $object->getLdapDn();
         }

@@ -122,7 +122,7 @@ class NetworkNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['EnableIPv6'] = $object->getEnableIPv6();
         }
         if ($object->isInitialized('iPAM') && null !== $object->getIPAM()) {
-            $data['IPAM'] = $this->normalizer->normalize($object->getIPAM(), 'json', $context);
+            $data['IPAM'] = $object->getIPAM() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getIPAM(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('internal') && null !== $object->getInternal()) {
             $data['Internal'] = $object->getInternal();
@@ -134,21 +134,21 @@ class NetworkNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['Ingress'] = $object->getIngress();
         }
         if ($object->isInitialized('containers') && null !== $object->getContainers()) {
-            $values = array();
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getContainers() as $key => $value) {
-                $values[$key] = $this->normalizer->normalize($value, 'json', $context);
+                $values[$key] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['Containers'] = $values;
         }
         if ($object->isInitialized('options') && null !== $object->getOptions()) {
-            $values_1 = array();
+            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getOptions() as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
             $data['Options'] = $values_1;
         }
         if ($object->isInitialized('labels') && null !== $object->getLabels()) {
-            $values_2 = array();
+            $values_2 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getLabels() as $key_2 => $value_2) {
                 $values_2[$key_2] = $value_2;
             }

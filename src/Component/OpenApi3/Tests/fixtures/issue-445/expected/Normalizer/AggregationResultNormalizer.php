@@ -75,7 +75,7 @@ class AggregationResultNormalizer implements DenormalizerInterface, NormalizerIn
         if ($object->isInitialized('aggregationResultItems') && null !== $object->getAggregationResultItems()) {
             $values = array();
             foreach ($object->getAggregationResultItems() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['aggregationResultItems'] = $values;
         }

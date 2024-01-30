@@ -127,7 +127,7 @@ class DeploymentStatusNormalizer implements DenormalizerInterface, NormalizerInt
         $data['id'] = $object->getId();
         $data['node_id'] = $object->getNodeId();
         $data['state'] = $object->getState();
-        $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
+        $data['creator'] = $object->getCreator() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCreator(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['description'] = $object->getDescription();
         if ($object->isInitialized('environment') && null !== $object->getEnvironment()) {
             $data['environment'] = $object->getEnvironment();
@@ -144,7 +144,7 @@ class DeploymentStatusNormalizer implements DenormalizerInterface, NormalizerInt
             $data['log_url'] = $object->getLogUrl();
         }
         if ($object->isInitialized('performedViaGithubApp') && null !== $object->getPerformedViaGithubApp()) {
-            $data['performed_via_github_app'] = $this->normalizer->normalize($object->getPerformedViaGithubApp(), 'json', $context);
+            $data['performed_via_github_app'] = $object->getPerformedViaGithubApp() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPerformedViaGithubApp(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

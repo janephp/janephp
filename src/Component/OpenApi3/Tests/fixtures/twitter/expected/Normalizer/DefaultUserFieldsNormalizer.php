@@ -84,7 +84,7 @@ class DefaultUserFieldsNormalizer implements DenormalizerInterface, NormalizerIn
         $data['url'] = $object->getUrl();
         $data['description'] = $object->getDescription();
         if ($object->isInitialized('entities') && null !== $object->getEntities()) {
-            $data['entities'] = $this->normalizer->normalize($object->getEntities(), 'json', $context);
+            $data['entities'] = $object->getEntities() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getEntities(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('mostRecentTweetId') && null !== $object->getMostRecentTweetId()) {
             $data['most_recent_tweet_id'] = $object->getMostRecentTweetId();

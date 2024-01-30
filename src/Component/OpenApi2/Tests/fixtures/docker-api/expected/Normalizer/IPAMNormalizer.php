@@ -79,7 +79,7 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if ($object->isInitialized('config') && null !== $object->getConfig()) {
             $values = array();
             foreach ($object->getConfig() as $value) {
-                $values_1 = array();
+                $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;
                 }
@@ -88,7 +88,7 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['Config'] = $values;
         }
         if ($object->isInitialized('options') && null !== $object->getOptions()) {
-            $values_2 = array();
+            $values_2 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getOptions() as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }

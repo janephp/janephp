@@ -59,7 +59,7 @@ class HideReplyResponseNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $data = array();
         if ($object->isInitialized('data') && null !== $object->getData()) {
-            $data['data'] = $this->normalizer->normalize($object->getData(), 'json', $context);
+            $data['data'] = $object->getData() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getData(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

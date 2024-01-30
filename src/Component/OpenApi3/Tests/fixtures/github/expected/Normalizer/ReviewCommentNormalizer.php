@@ -196,14 +196,14 @@ class ReviewCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($object->isInitialized('inReplyToId') && null !== $object->getInReplyToId()) {
             $data['in_reply_to_id'] = $object->getInReplyToId();
         }
-        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $data['user'] = $object->getUser() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getUser(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['body'] = $object->getBody();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['html_url'] = $object->getHtmlUrl();
         $data['pull_request_url'] = $object->getPullRequestUrl();
         $data['author_association'] = $object->getAuthorAssociation();
-        $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+        $data['_links'] = $object->getLinks() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLinks(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('bodyText') && null !== $object->getBodyText()) {
             $data['body_text'] = $object->getBodyText();
         }

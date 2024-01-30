@@ -65,7 +65,7 @@ class GbCompanyReportExampleResponseReportGroupStructureNormalizer implements De
         if ($object->isInitialized('subsidiaryCompanies') && null !== $object->getSubsidiaryCompanies()) {
             $values = array();
             foreach ($object->getSubsidiaryCompanies() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['subsidiaryCompanies'] = $values;
         }

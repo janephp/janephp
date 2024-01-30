@@ -74,7 +74,7 @@ class BusinessProcessDetailsDataCdnPurgeNormalizer implements DenormalizerInterf
         $data['serializedCdnConfiguration'] = $object->getSerializedCdnConfiguration();
         $values = array();
         foreach ($object->getJobs() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['jobs'] = $values;
         foreach ($object as $key => $value_1) {

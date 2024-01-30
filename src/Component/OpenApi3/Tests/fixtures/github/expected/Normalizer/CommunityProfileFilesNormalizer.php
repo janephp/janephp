@@ -99,12 +99,12 @@ class CommunityProfileFilesNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['code_of_conduct'] = $this->normalizer->normalize($object->getCodeOfConduct(), 'json', $context);
-        $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
-        $data['contributing'] = $this->normalizer->normalize($object->getContributing(), 'json', $context);
-        $data['readme'] = $this->normalizer->normalize($object->getReadme(), 'json', $context);
-        $data['issue_template'] = $this->normalizer->normalize($object->getIssueTemplate(), 'json', $context);
-        $data['pull_request_template'] = $this->normalizer->normalize($object->getPullRequestTemplate(), 'json', $context);
+        $data['code_of_conduct'] = $object->getCodeOfConduct() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCodeOfConduct(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['license'] = $object->getLicense() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLicense(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['contributing'] = $object->getContributing() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getContributing(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['readme'] = $object->getReadme() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getReadme(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['issue_template'] = $object->getIssueTemplate() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getIssueTemplate(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['pull_request_template'] = $object->getPullRequestTemplate() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPullRequestTemplate(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

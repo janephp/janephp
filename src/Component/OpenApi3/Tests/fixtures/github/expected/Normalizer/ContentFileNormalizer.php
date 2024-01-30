@@ -133,7 +133,7 @@ class ContentFileNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['git_url'] = $object->getGitUrl();
         $data['html_url'] = $object->getHtmlUrl();
         $data['download_url'] = $object->getDownloadUrl();
-        $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+        $data['_links'] = $object->getLinks() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLinks(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('target') && null !== $object->getTarget()) {
             $data['target'] = $object->getTarget();
         }

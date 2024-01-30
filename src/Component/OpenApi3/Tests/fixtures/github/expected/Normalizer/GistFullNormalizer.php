@@ -190,9 +190,9 @@ class GistFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data['html_url'] = $object->getHtmlUrl();
         }
         if ($object->isInitialized('files') && null !== $object->getFiles()) {
-            $values = array();
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getFiles() as $key => $value) {
-                $values[$key] = $this->normalizer->normalize($value, 'json', $context);
+                $values[$key] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['files'] = $values;
         }
@@ -218,7 +218,7 @@ class GistFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data['comments_url'] = $object->getCommentsUrl();
         }
         if ($object->isInitialized('owner') && null !== $object->getOwner()) {
-            $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
+            $data['owner'] = $object->getOwner() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getOwner(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('truncated') && null !== $object->getTruncated()) {
             $data['truncated'] = $object->getTruncated();
@@ -226,19 +226,19 @@ class GistFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($object->isInitialized('forks') && null !== $object->getForks()) {
             $values_1 = array();
             foreach ($object->getForks() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['forks'] = $values_1;
         }
         if ($object->isInitialized('history') && null !== $object->getHistory()) {
             $values_2 = array();
             foreach ($object->getHistory() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['history'] = $values_2;
         }
         if ($object->isInitialized('forkOf') && null !== $object->getForkOf()) {
-            $data['fork_of'] = $this->normalizer->normalize($object->getForkOf(), 'json', $context);
+            $data['fork_of'] = $object->getForkOf() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getForkOf(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key_1 => $value_3) {
             if (preg_match('/.*/', (string) $key_1)) {

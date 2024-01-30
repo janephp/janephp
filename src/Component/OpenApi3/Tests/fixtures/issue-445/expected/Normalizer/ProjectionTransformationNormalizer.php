@@ -83,7 +83,7 @@ class ProjectionTransformationNormalizer implements DenormalizerInterface, Norma
         if ($object->isInitialized('transformations') && null !== $object->getTransformations()) {
             $values = array();
             foreach ($object->getTransformations() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['transformations'] = $values;
         }

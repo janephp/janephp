@@ -151,7 +151,7 @@ class ContentAggregationRequestNormalizer implements DenormalizerInterface, Norm
         if ($object->isInitialized('aggregationFilters') && null !== $object->getAggregationFilters()) {
             $values_1 = array();
             foreach ($object->getAggregationFilters() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['aggregationFilters'] = $values_1;
         }
@@ -173,7 +173,7 @@ class ContentAggregationRequestNormalizer implements DenormalizerInterface, Norm
         $data['searchType'] = $object->getSearchType();
         $values_3 = array();
         foreach ($object->getAggregators() as $value_3) {
-            $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+            $values_3[] = $value_3 == null ? null : new \ArrayObject($this->normalizer->normalize($value_3, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['aggregators'] = $values_3;
         foreach ($object as $key => $value_4) {

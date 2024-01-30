@@ -63,10 +63,10 @@ class DefaultTweetFieldsNormalizer implements DenormalizerInterface, NormalizerI
     {
         $data = array();
         if ($object->isInitialized('geo') && null !== $object->getGeo()) {
-            $data['geo'] = $this->normalizer->normalize($object->getGeo(), 'json', $context);
+            $data['geo'] = $object->getGeo() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getGeo(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('entities') && null !== $object->getEntities()) {
-            $data['entities'] = $this->normalizer->normalize($object->getEntities(), 'json', $context);
+            $data['entities'] = $object->getEntities() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getEntities(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

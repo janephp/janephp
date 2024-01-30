@@ -109,45 +109,45 @@ class GbCompanyReportExampleResponseReportAdditionalInformationNormalizer implem
         if ($object->isInitialized('companyHistory') && null !== $object->getCompanyHistory()) {
             $values = array();
             foreach ($object->getCompanyHistory() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['companyHistory'] = $values;
         }
         if ($object->isInitialized('mortgageSummary') && null !== $object->getMortgageSummary()) {
-            $data['mortgageSummary'] = $this->normalizer->normalize($object->getMortgageSummary(), 'json', $context);
+            $data['mortgageSummary'] = $object->getMortgageSummary() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getMortgageSummary(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('mortgageDetails') && null !== $object->getMortgageDetails()) {
             $values_1 = array();
             foreach ($object->getMortgageDetails() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['mortgageDetails'] = $values_1;
         }
         if ($object->isInitialized('commentaries') && null !== $object->getCommentaries()) {
             $values_2 = array();
             foreach ($object->getCommentaries() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['commentaries'] = $values_2;
         }
         if ($object->isInitialized('ratingHistory') && null !== $object->getRatingHistory()) {
             $values_3 = array();
             foreach ($object->getRatingHistory() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 == null ? null : new \ArrayObject($this->normalizer->normalize($value_3, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['ratingHistory'] = $values_3;
         }
         if ($object->isInitialized('creditLimitHistory') && null !== $object->getCreditLimitHistory()) {
             $values_4 = array();
             foreach ($object->getCreditLimitHistory() as $value_4) {
-                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = $value_4 == null ? null : new \ArrayObject($this->normalizer->normalize($value_4, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['creditLimitHistory'] = $values_4;
         }
         if ($object->isInitialized('badDebtDetails') && null !== $object->getBadDebtDetails()) {
             $values_5 = array();
             foreach ($object->getBadDebtDetails() as $value_5) {
-                $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
+                $values_5[] = $value_5 == null ? null : new \ArrayObject($this->normalizer->normalize($value_5, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['badDebtDetails'] = $values_5;
         }

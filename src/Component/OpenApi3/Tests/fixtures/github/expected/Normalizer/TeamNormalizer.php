@@ -125,7 +125,7 @@ class TeamNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $data['members_url'] = $object->getMembersUrl();
         $data['repositories_url'] = $object->getRepositoriesUrl();
         if ($object->isInitialized('parent') && null !== $object->getParent()) {
-            $data['parent'] = $this->normalizer->normalize($object->getParent(), 'json', $context);
+            $data['parent'] = $object->getParent() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getParent(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

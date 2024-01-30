@@ -102,7 +102,7 @@ class MetadataStatusNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $data['state'] = $object->getState();
         if ($object->isInitialized('fieldIdsToCleanup') && null !== $object->getFieldIdsToCleanup()) {
-            $values_2 = array();
+            $values_2 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getFieldIdsToCleanup() as $key => $value_2) {
                 $values_3 = array();
                 foreach ($value_2 as $value_3) {

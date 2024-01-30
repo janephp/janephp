@@ -71,7 +71,7 @@ class InvalidRequestProblemErrorsItemNormalizer implements DenormalizerInterface
     {
         $data = array();
         if ($object->isInitialized('parameters') && null !== $object->getParameters()) {
-            $values = array();
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getParameters() as $key => $value) {
                 $values_1 = array();
                 foreach ($value as $value_1) {

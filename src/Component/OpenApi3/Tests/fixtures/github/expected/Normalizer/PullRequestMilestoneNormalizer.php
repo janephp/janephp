@@ -142,7 +142,7 @@ class PullRequestMilestoneNormalizer implements DenormalizerInterface, Normalize
         $data['state'] = $object->getState();
         $data['title'] = $object->getTitle();
         $data['description'] = $object->getDescription();
-        $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
+        $data['creator'] = $object->getCreator() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCreator(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['open_issues'] = $object->getOpenIssues();
         $data['closed_issues'] = $object->getClosedIssues();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');

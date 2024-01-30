@@ -87,7 +87,7 @@ class ScopedInstallationNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $values = array();
+        $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object->getPermissions() as $key => $value) {
             $values[$key] = $value;
         }
@@ -95,7 +95,7 @@ class ScopedInstallationNormalizer implements DenormalizerInterface, NormalizerI
         $data['repository_selection'] = $object->getRepositorySelection();
         $data['single_file_name'] = $object->getSingleFileName();
         $data['repositories_url'] = $object->getRepositoriesUrl();
-        $data['account'] = $this->normalizer->normalize($object->getAccount(), 'json', $context);
+        $data['account'] = $object->getAccount() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAccount(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $data[$key_1] = $value_1;

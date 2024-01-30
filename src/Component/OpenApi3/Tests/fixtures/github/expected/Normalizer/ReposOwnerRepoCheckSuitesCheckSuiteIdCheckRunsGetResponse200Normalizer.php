@@ -75,7 +75,7 @@ class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Normalizer imp
         if ($object->isInitialized('checkRuns') && null !== $object->getCheckRuns()) {
             $values = array();
             foreach ($object->getCheckRuns() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['check_runs'] = $values;
         }

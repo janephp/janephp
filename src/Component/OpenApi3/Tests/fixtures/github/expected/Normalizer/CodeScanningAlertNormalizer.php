@@ -139,7 +139,7 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
             $data['open'] = $object->getOpen();
         }
         if ($object->isInitialized('closedBy') && null !== $object->getClosedBy()) {
-            $data['closed_by'] = $this->normalizer->normalize($object->getClosedBy(), 'json', $context);
+            $data['closed_by'] = $object->getClosedBy() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getClosedBy(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('closedAt') && null !== $object->getClosedAt()) {
             $data['closed_at'] = $object->getClosedAt()->format('Y-m-d\\TH:i:sP');

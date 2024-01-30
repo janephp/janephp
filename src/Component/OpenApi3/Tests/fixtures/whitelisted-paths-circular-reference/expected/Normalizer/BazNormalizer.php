@@ -66,7 +66,7 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $data['label'] = $object->getLabel();
         }
         if ($object->isInitialized('sub') && null !== $object->getSub()) {
-            $data['sub'] = $this->normalizer->normalize($object->getSub(), 'json', $context);
+            $data['sub'] = $object->getSub() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSub(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -66,7 +66,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistor
             $data['date'] = $object->getDate();
         }
         if ($object->isInitialized('companyValue') && null !== $object->getCompanyValue()) {
-            $data['companyValue'] = $this->normalizer->normalize($object->getCompanyValue(), 'json', $context);
+            $data['companyValue'] = $object->getCompanyValue() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCompanyValue(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

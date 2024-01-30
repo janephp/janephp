@@ -68,7 +68,7 @@ class VolumesGetResponse200Normalizer implements DenormalizerInterface, Normaliz
         $data = array();
         $values = array();
         foreach ($object->getVolumes() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['Volumes'] = $values;
         $values_1 = array();

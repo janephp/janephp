@@ -127,7 +127,7 @@ class ReleaseAssetNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['download_count'] = $object->getDownloadCount();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        $data['uploader'] = $this->normalizer->normalize($object->getUploader(), 'json', $context);
+        $data['uploader'] = $object->getUploader() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getUploader(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

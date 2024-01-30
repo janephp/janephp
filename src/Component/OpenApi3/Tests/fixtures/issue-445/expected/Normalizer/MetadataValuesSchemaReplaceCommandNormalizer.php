@@ -72,7 +72,7 @@ class MetadataValuesSchemaReplaceCommandNormalizer implements DenormalizerInterf
         $data = array();
         $data['schemaId'] = $object->getSchemaId();
         $data['kind'] = $object->getKind();
-        $values = array();
+        $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object->getValue() as $key => $value) {
             $values[$key] = $value;
         }

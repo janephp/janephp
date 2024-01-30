@@ -147,7 +147,7 @@ class OutputDataVideoNormalizer implements DenormalizerInterface, NormalizerInte
         if ($object->isInitialized('sprites') && null !== $object->getSprites()) {
             $values = array();
             foreach ($object->getSprites() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['sprites'] = $values;
         }

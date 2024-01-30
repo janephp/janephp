@@ -126,7 +126,7 @@ class CodeSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         $data['url'] = $object->getUrl();
         $data['git_url'] = $object->getGitUrl();
         $data['html_url'] = $object->getHtmlUrl();
-        $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
+        $data['repository'] = $object->getRepository() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRepository(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['score'] = $object->getScore();
         if ($object->isInitialized('fileSize') && null !== $object->getFileSize()) {
             $data['file_size'] = $object->getFileSize();
@@ -147,7 +147,7 @@ class CodeSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         if ($object->isInitialized('textMatches') && null !== $object->getTextMatches()) {
             $values_1 = array();
             foreach ($object->getTextMatches() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['text_matches'] = $values_1;
         }

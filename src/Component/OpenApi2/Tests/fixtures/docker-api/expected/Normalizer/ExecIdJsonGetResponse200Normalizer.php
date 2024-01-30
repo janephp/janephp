@@ -101,7 +101,7 @@ class ExecIdJsonGetResponse200Normalizer implements DenormalizerInterface, Norma
             $data['ExitCode'] = $object->getExitCode();
         }
         if ($object->isInitialized('processConfig') && null !== $object->getProcessConfig()) {
-            $data['ProcessConfig'] = $this->normalizer->normalize($object->getProcessConfig(), 'json', $context);
+            $data['ProcessConfig'] = $object->getProcessConfig() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getProcessConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('openStdin') && null !== $object->getOpenStdin()) {
             $data['OpenStdin'] = $object->getOpenStdin();

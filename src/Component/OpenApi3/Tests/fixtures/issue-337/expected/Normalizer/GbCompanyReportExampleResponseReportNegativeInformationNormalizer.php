@@ -63,10 +63,10 @@ class GbCompanyReportExampleResponseReportNegativeInformationNormalizer implemen
     {
         $data = array();
         if ($object->isInitialized('ccjSummary') && null !== $object->getCcjSummary()) {
-            $data['ccjSummary'] = $this->normalizer->normalize($object->getCcjSummary(), 'json', $context);
+            $data['ccjSummary'] = $object->getCcjSummary() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCcjSummary(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('countyCourtJudgements') && null !== $object->getCountyCourtJudgements()) {
-            $data['countyCourtJudgements'] = $this->normalizer->normalize($object->getCountyCourtJudgements(), 'json', $context);
+            $data['countyCourtJudgements'] = $object->getCountyCourtJudgements() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCountyCourtJudgements(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

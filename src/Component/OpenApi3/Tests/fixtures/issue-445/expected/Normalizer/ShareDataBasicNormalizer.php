@@ -89,12 +89,12 @@ class ShareDataBasicNormalizer implements DenormalizerInterface, NormalizerInter
         $data['kind'] = $object->getKind();
         $values = array();
         foreach ($object->getMailRecipients() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['mailRecipients'] = $values;
         $values_1 = array();
         foreach ($object->getInternalRecipients() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['internalRecipients'] = $values_1;
         if ($object->isInitialized('languageCode') && null !== $object->getLanguageCode()) {

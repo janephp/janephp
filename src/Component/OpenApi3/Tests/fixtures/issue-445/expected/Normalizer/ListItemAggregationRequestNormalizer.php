@@ -148,7 +148,7 @@ class ListItemAggregationRequestNormalizer implements DenormalizerInterface, Nor
         if ($object->isInitialized('aggregationFilters') && null !== $object->getAggregationFilters()) {
             $values_1 = array();
             foreach ($object->getAggregationFilters() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['aggregationFilters'] = $values_1;
         }
@@ -171,7 +171,7 @@ class ListItemAggregationRequestNormalizer implements DenormalizerInterface, Nor
         $data['lifeCycleFilter'] = $object->getLifeCycleFilter();
         $values_4 = array();
         foreach ($object->getAggregators() as $value_4) {
-            $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+            $values_4[] = $value_4 == null ? null : new \ArrayObject($this->normalizer->normalize($value_4, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['aggregators'] = $values_4;
         foreach ($object as $key => $value_5) {

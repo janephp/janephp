@@ -105,7 +105,7 @@ class URLFieldsNormalizer implements DenormalizerInterface, NormalizerInterface,
         if ($object->isInitialized('images') && null !== $object->getImages()) {
             $values = array();
             foreach ($object->getImages() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['images'] = $values;
         }

@@ -88,14 +88,14 @@ class CommitSearchResultItemCommitNormalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
-        $data['committer'] = $this->normalizer->normalize($object->getCommitter(), 'json', $context);
+        $data['author'] = $object->getAuthor() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAuthor(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['committer'] = $object->getCommitter() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCommitter(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['comment_count'] = $object->getCommentCount();
         $data['message'] = $object->getMessage();
-        $data['tree'] = $this->normalizer->normalize($object->getTree(), 'json', $context);
+        $data['tree'] = $object->getTree() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getTree(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['url'] = $object->getUrl();
         if ($object->isInitialized('verification') && null !== $object->getVerification()) {
-            $data['verification'] = $this->normalizer->normalize($object->getVerification(), 'json', $context);
+            $data['verification'] = $object->getVerification() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getVerification(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

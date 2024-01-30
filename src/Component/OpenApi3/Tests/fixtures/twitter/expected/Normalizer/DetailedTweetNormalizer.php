@@ -139,27 +139,27 @@ class DetailedTweetNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($object->isInitialized('referencedTweets') && null !== $object->getReferencedTweets()) {
             $values = array();
             foreach ($object->getReferencedTweets() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['referenced_tweets'] = $values;
         }
         if ($object->isInitialized('attachments') && null !== $object->getAttachments()) {
-            $data['attachments'] = $this->normalizer->normalize($object->getAttachments(), 'json', $context);
+            $data['attachments'] = $object->getAttachments() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAttachments(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('withheld') && null !== $object->getWithheld()) {
-            $data['withheld'] = $this->normalizer->normalize($object->getWithheld(), 'json', $context);
+            $data['withheld'] = $object->getWithheld() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getWithheld(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('geo') && null !== $object->getGeo()) {
-            $data['geo'] = $this->normalizer->normalize($object->getGeo(), 'json', $context);
+            $data['geo'] = $object->getGeo() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getGeo(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('entities') && null !== $object->getEntities()) {
-            $data['entities'] = $this->normalizer->normalize($object->getEntities(), 'json', $context);
+            $data['entities'] = $object->getEntities() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getEntities(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
-        $data['stats'] = $this->normalizer->normalize($object->getStats(), 'json', $context);
+        $data['stats'] = $object->getStats() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getStats(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('contextAnnotation') && null !== $object->getContextAnnotation()) {
             $values_1 = array();
             foreach ($object->getContextAnnotation() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['context_annotation'] = $values_1;
         }

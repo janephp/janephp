@@ -131,28 +131,28 @@ class ScimUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['id'] = $object->getId();
         $data['externalId'] = $object->getExternalId();
         $data['userName'] = $object->getUserName();
-        $data['name'] = $this->normalizer->normalize($object->getName(), 'json', $context);
+        $data['name'] = $object->getName() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getName(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $values_1 = array();
         foreach ($object->getEmails() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['emails'] = $values_1;
         $data['active'] = $object->getActive();
-        $data['meta'] = $this->normalizer->normalize($object->getMeta(), 'json', $context);
+        $data['meta'] = $object->getMeta() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getMeta(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('organizationId') && null !== $object->getOrganizationId()) {
             $data['organization_id'] = $object->getOrganizationId();
         }
         if ($object->isInitialized('operations') && null !== $object->getOperations()) {
             $values_2 = array();
             foreach ($object->getOperations() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['operations'] = $values_2;
         }
         if ($object->isInitialized('groups') && null !== $object->getGroups()) {
             $values_3 = array();
             foreach ($object->getGroups() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 == null ? null : new \ArrayObject($this->normalizer->normalize($value_3, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['groups'] = $values_3;
         }

@@ -79,7 +79,7 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data = array();
         $values = array();
         foreach ($object->getProjects() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['projects'] = $values;
         $data['per_page'] = $object->getPerPage();
@@ -88,7 +88,7 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data['next_page'] = $object->getNextPage();
         $data['previous_page'] = $object->getPreviousPage();
         $data['page'] = $object->getPage();
-        $data['links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+        $data['links'] = $object->getLinks() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLinks(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         return $data;
     }
     public function getSupportedTypes(?string $format = null) : array

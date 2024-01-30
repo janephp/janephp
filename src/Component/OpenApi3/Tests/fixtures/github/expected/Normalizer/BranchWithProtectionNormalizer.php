@@ -90,10 +90,10 @@ class BranchWithProtectionNormalizer implements DenormalizerInterface, Normalize
     {
         $data = array();
         $data['name'] = $object->getName();
-        $data['commit'] = $this->normalizer->normalize($object->getCommit(), 'json', $context);
-        $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+        $data['commit'] = $object->getCommit() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCommit(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['_links'] = $object->getLinks() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLinks(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['protected'] = $object->getProtected();
-        $data['protection'] = $this->normalizer->normalize($object->getProtection(), 'json', $context);
+        $data['protection'] = $object->getProtection() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getProtection(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['protection_url'] = $object->getProtectionUrl();
         if ($object->isInitialized('pattern') && null !== $object->getPattern()) {
             $data['pattern'] = $object->getPattern();

@@ -78,7 +78,7 @@ class GistFullforksItemNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $data = array();
         if ($object->isInitialized('user') && null !== $object->getUser()) {
-            $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+            $data['user'] = $object->getUser() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getUser(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('url') && null !== $object->getUrl()) {
             $data['url'] = $object->getUrl();

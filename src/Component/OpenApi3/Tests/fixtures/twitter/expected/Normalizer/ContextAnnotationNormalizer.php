@@ -62,8 +62,8 @@ class ContextAnnotationNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['domain'] = $this->normalizer->normalize($object->getDomain(), 'json', $context);
-        $data['entity'] = $this->normalizer->normalize($object->getEntity(), 'json', $context);
+        $data['domain'] = $object->getDomain() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getDomain(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['entity'] = $object->getEntity() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getEntity(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

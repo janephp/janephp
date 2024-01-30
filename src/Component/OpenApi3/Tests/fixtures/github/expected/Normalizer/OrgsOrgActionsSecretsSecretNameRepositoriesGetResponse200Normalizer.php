@@ -75,7 +75,7 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Normalizer implem
         if ($object->isInitialized('repositories') && null !== $object->getRepositories()) {
             $values = array();
             foreach ($object->getRepositories() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['repositories'] = $values;
         }

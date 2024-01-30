@@ -119,12 +119,12 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['languageConfiguration'] = $object->getLanguageConfiguration();
         $values = array();
         foreach ($object->getLanguages() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['languages'] = $values;
         $values_1 = array();
         foreach ($object->getOutputFormats() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['outputFormats'] = $values_1;
         $values_2 = array();
@@ -135,7 +135,7 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($object->isInitialized('apps') && null !== $object->getApps()) {
             $values_3 = array();
             foreach ($object->getApps() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 == null ? null : new \ArrayObject($this->normalizer->normalize($value_3, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['apps'] = $values_3;
         }

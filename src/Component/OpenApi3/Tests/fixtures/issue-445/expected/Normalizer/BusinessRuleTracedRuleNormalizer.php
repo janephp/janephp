@@ -71,7 +71,7 @@ class BusinessRuleTracedRuleNormalizer implements DenormalizerInterface, Normali
         if ($object->isInitialized('evaluations') && null !== $object->getEvaluations()) {
             $values = array();
             foreach ($object->getEvaluations() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['evaluations'] = $values;
         }

@@ -71,7 +71,7 @@ class BaseResultOfUserRoleNormalizer implements DenormalizerInterface, Normalize
         $data['totalResults'] = $object->getTotalResults();
         $values = array();
         foreach ($object->getResults() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['results'] = $values;
         $data['elapsedMilliseconds'] = $object->getElapsedMilliseconds();

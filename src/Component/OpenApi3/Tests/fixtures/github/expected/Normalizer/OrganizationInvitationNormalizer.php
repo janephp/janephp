@@ -122,7 +122,7 @@ class OrganizationInvitationNormalizer implements DenormalizerInterface, Normali
             $data['created_at'] = $object->getCreatedAt();
         }
         if ($object->isInitialized('inviter') && null !== $object->getInviter()) {
-            $data['inviter'] = $this->normalizer->normalize($object->getInviter(), 'json', $context);
+            $data['inviter'] = $object->getInviter() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getInviter(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('teamCount') && null !== $object->getTeamCount()) {
             $data['team_count'] = $object->getTeamCount();

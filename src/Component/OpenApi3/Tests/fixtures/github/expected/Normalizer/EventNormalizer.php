@@ -97,12 +97,12 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $data = array();
         $data['id'] = $object->getId();
         $data['type'] = $object->getType();
-        $data['actor'] = $this->normalizer->normalize($object->getActor(), 'json', $context);
-        $data['repo'] = $this->normalizer->normalize($object->getRepo(), 'json', $context);
+        $data['actor'] = $object->getActor() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getActor(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['repo'] = $object->getRepo() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRepo(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('org') && null !== $object->getOrg()) {
-            $data['org'] = $this->normalizer->normalize($object->getOrg(), 'json', $context);
+            $data['org'] = $object->getOrg() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getOrg(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
-        $data['payload'] = $this->normalizer->normalize($object->getPayload(), 'json', $context);
+        $data['payload'] = $object->getPayload() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPayload(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['public'] = $object->getPublic();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         foreach ($object as $key => $value) {

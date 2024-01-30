@@ -59,7 +59,7 @@ class DetailedPlaceFieldsNormalizer implements DenormalizerInterface, Normalizer
     {
         $data = array();
         if ($object->isInitialized('geo') && null !== $object->getGeo()) {
-            $data['geo'] = $this->normalizer->normalize($object->getGeo(), 'json', $context);
+            $data['geo'] = $object->getGeo() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getGeo(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

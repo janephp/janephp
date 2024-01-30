@@ -219,7 +219,7 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if ($object->isInitialized('projectChoices') && null !== $object->getProjectChoices()) {
             $values = array();
             foreach ($object->getProjectChoices() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['project_choices'] = $values;
         }

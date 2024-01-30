@@ -96,7 +96,7 @@ class GistCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['node_id'] = $object->getNodeId();
         $data['url'] = $object->getUrl();
         $data['body'] = $object->getBody();
-        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $data['user'] = $object->getUser() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getUser(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['author_association'] = $object->getAuthorAssociation();

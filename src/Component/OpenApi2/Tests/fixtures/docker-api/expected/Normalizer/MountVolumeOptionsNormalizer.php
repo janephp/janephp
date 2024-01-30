@@ -69,14 +69,14 @@ class MountVolumeOptionsNormalizer implements DenormalizerInterface, NormalizerI
             $data['NoCopy'] = $object->getNoCopy();
         }
         if ($object->isInitialized('labels') && null !== $object->getLabels()) {
-            $values = array();
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getLabels() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['Labels'] = $values;
         }
         if ($object->isInitialized('driverConfig') && null !== $object->getDriverConfig()) {
-            $data['DriverConfig'] = $this->normalizer->normalize($object->getDriverConfig(), 'json', $context);
+            $data['DriverConfig'] = $object->getDriverConfig() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getDriverConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\MountVolumeOptionsConstraint());

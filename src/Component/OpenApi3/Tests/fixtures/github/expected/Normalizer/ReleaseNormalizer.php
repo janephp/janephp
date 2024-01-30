@@ -177,10 +177,10 @@ class ReleaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data['prerelease'] = $object->getPrerelease();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['published_at'] = $object->getPublishedAt()->format('Y-m-d\\TH:i:sP');
-        $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
+        $data['author'] = $object->getAuthor() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAuthor(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $values = array();
         foreach ($object->getAssets() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['assets'] = $values;
         if ($object->isInitialized('bodyHtml') && null !== $object->getBodyHtml()) {

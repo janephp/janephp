@@ -140,7 +140,7 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['id'] = $object->getId();
         }
         if ($object->isInitialized('client') && null !== $object->getClient()) {
-            $data['client'] = $this->normalizer->normalize($object->getClient(), 'json', $context);
+            $data['client'] = $object->getClient() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getClient(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();

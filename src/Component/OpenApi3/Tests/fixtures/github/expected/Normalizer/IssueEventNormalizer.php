@@ -168,43 +168,43 @@ class IssueEventNormalizer implements DenormalizerInterface, NormalizerInterface
         $data['id'] = $object->getId();
         $data['node_id'] = $object->getNodeId();
         $data['url'] = $object->getUrl();
-        $data['actor'] = $this->normalizer->normalize($object->getActor(), 'json', $context);
+        $data['actor'] = $object->getActor() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getActor(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['event'] = $object->getEvent();
         $data['commit_id'] = $object->getCommitId();
         $data['commit_url'] = $object->getCommitUrl();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         if ($object->isInitialized('issue') && null !== $object->getIssue()) {
-            $data['issue'] = $this->normalizer->normalize($object->getIssue(), 'json', $context);
+            $data['issue'] = $object->getIssue() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getIssue(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('label') && null !== $object->getLabel()) {
-            $data['label'] = $this->normalizer->normalize($object->getLabel(), 'json', $context);
+            $data['label'] = $object->getLabel() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLabel(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('assignee') && null !== $object->getAssignee()) {
-            $data['assignee'] = $this->normalizer->normalize($object->getAssignee(), 'json', $context);
+            $data['assignee'] = $object->getAssignee() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAssignee(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('assigner') && null !== $object->getAssigner()) {
-            $data['assigner'] = $this->normalizer->normalize($object->getAssigner(), 'json', $context);
+            $data['assigner'] = $object->getAssigner() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAssigner(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('reviewRequester') && null !== $object->getReviewRequester()) {
-            $data['review_requester'] = $this->normalizer->normalize($object->getReviewRequester(), 'json', $context);
+            $data['review_requester'] = $object->getReviewRequester() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getReviewRequester(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('requestedReviewer') && null !== $object->getRequestedReviewer()) {
-            $data['requested_reviewer'] = $this->normalizer->normalize($object->getRequestedReviewer(), 'json', $context);
+            $data['requested_reviewer'] = $object->getRequestedReviewer() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRequestedReviewer(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('requestedTeam') && null !== $object->getRequestedTeam()) {
-            $data['requested_team'] = $this->normalizer->normalize($object->getRequestedTeam(), 'json', $context);
+            $data['requested_team'] = $object->getRequestedTeam() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRequestedTeam(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('dismissedReview') && null !== $object->getDismissedReview()) {
-            $data['dismissed_review'] = $this->normalizer->normalize($object->getDismissedReview(), 'json', $context);
+            $data['dismissed_review'] = $object->getDismissedReview() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getDismissedReview(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('milestone') && null !== $object->getMilestone()) {
-            $data['milestone'] = $this->normalizer->normalize($object->getMilestone(), 'json', $context);
+            $data['milestone'] = $object->getMilestone() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getMilestone(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('projectCard') && null !== $object->getProjectCard()) {
-            $data['project_card'] = $this->normalizer->normalize($object->getProjectCard(), 'json', $context);
+            $data['project_card'] = $object->getProjectCard() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getProjectCard(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('rename') && null !== $object->getRename()) {
-            $data['rename'] = $this->normalizer->normalize($object->getRename(), 'json', $context);
+            $data['rename'] = $object->getRename() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRename(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('authorAssociation') && null !== $object->getAuthorAssociation()) {
             $data['author_association'] = $object->getAuthorAssociation();

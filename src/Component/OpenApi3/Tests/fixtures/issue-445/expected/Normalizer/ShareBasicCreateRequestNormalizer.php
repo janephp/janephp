@@ -127,7 +127,7 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
         }
         $values = array();
         foreach ($object->getContents() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['contents'] = $values;
         if ($object->isInitialized('layerSchemaIds') && null !== $object->getLayerSchemaIds()) {
@@ -142,7 +142,7 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
         if ($object->isInitialized('recipientEmails') && null !== $object->getRecipientEmails()) {
             $values_2 = array();
             foreach ($object->getRecipientEmails() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['recipientEmails'] = $values_2;
         }

@@ -105,17 +105,17 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data['arrayProperty'] = $values;
         }
         if ($object->isInitialized('mapProperty') && null !== $object->getMapProperty()) {
-            $values_1 = array();
+            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getMapProperty() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $data['mapProperty'] = $values_1;
         }
         if ($object->isInitialized('objectProperty') && null !== $object->getObjectProperty()) {
-            $data['objectProperty'] = $this->normalizer->normalize($object->getObjectProperty(), 'json', $context);
+            $data['objectProperty'] = $object->getObjectProperty() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getObjectProperty(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('objectRefProperty') && null !== $object->getObjectRefProperty()) {
-            $data['objectRefProperty'] = $this->normalizer->normalize($object->getObjectRefProperty(), 'json', $context);
+            $data['objectRefProperty'] = $object->getObjectRefProperty() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getObjectRefProperty(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         return $data;
     }

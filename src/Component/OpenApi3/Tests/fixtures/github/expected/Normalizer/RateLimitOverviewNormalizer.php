@@ -65,8 +65,8 @@ class RateLimitOverviewNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['resources'] = $this->normalizer->normalize($object->getResources(), 'json', $context);
-        $data['rate'] = $this->normalizer->normalize($object->getRate(), 'json', $context);
+        $data['resources'] = $object->getResources() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getResources(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['rate'] = $object->getRate() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRate(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

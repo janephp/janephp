@@ -452,7 +452,7 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         $data['node_id'] = $object->getNodeId();
         $data['name'] = $object->getName();
         $data['full_name'] = $object->getFullName();
-        $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
+        $data['owner'] = $object->getOwner() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getOwner(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['private'] = $object->getPrivate();
         $data['html_url'] = $object->getHtmlUrl();
         $data['description'] = $object->getDescription();
@@ -531,13 +531,13 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
-            $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
+            $data['permissions'] = $object->getPermissions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPermissions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('allowRebaseMerge') && null !== $object->getAllowRebaseMerge()) {
             $data['allow_rebase_merge'] = $object->getAllowRebaseMerge();
         }
         if ($object->isInitialized('templateRepository') && null !== $object->getTemplateRepository()) {
-            $data['template_repository'] = $this->normalizer->normalize($object->getTemplateRepository(), 'json', $context);
+            $data['template_repository'] = $object->getTemplateRepository() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getTemplateRepository(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('tempCloneToken') && null !== $object->getTempCloneToken()) {
             $data['temp_clone_token'] = $object->getTempCloneToken();
@@ -553,15 +553,15 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $data['subscribers_count'] = $object->getSubscribersCount();
         $data['network_count'] = $object->getNetworkCount();
-        $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
+        $data['license'] = $object->getLicense() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLicense(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('organization') && null !== $object->getOrganization()) {
-            $data['organization'] = $this->normalizer->normalize($object->getOrganization(), 'json', $context);
+            $data['organization'] = $object->getOrganization() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getOrganization(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('parent') && null !== $object->getParent()) {
-            $data['parent'] = $this->normalizer->normalize($object->getParent(), 'json', $context);
+            $data['parent'] = $object->getParent() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getParent(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('source') && null !== $object->getSource()) {
-            $data['source'] = $this->normalizer->normalize($object->getSource(), 'json', $context);
+            $data['source'] = $object->getSource() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSource(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['forks'] = $object->getForks();
         if ($object->isInitialized('masterBranch') && null !== $object->getMasterBranch()) {

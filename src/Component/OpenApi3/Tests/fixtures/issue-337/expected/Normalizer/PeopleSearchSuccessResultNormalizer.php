@@ -72,7 +72,7 @@ class PeopleSearchSuccessResultNormalizer implements DenormalizerInterface, Norm
         if ($object->isInitialized('directors') && null !== $object->getDirectors()) {
             $values = array();
             foreach ($object->getDirectors() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['directors'] = $values;
         }

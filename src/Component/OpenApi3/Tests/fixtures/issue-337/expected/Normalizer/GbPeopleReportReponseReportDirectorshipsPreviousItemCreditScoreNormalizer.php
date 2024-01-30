@@ -59,7 +59,7 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreNormalizer 
     {
         $data = array();
         if ($object->isInitialized('currentCreditRating') && null !== $object->getCurrentCreditRating()) {
-            $data['currentCreditRating'] = $this->normalizer->normalize($object->getCurrentCreditRating(), 'json', $context);
+            $data['currentCreditRating'] = $object->getCurrentCreditRating() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCurrentCreditRating(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

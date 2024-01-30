@@ -92,12 +92,12 @@ class CombinedCommitStatusNormalizer implements DenormalizerInterface, Normalize
         $data['state'] = $object->getState();
         $values = array();
         foreach ($object->getStatuses() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['statuses'] = $values;
         $data['sha'] = $object->getSha();
         $data['total_count'] = $object->getTotalCount();
-        $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
+        $data['repository'] = $object->getRepository() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRepository(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['commit_url'] = $object->getCommitUrl();
         $data['url'] = $object->getUrl();
         foreach ($object as $key => $value_1) {

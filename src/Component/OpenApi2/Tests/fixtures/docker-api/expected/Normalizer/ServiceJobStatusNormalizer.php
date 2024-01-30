@@ -59,7 +59,7 @@ class ServiceJobStatusNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $data = array();
         if ($object->isInitialized('jobIteration') && null !== $object->getJobIteration()) {
-            $data['JobIteration'] = $this->normalizer->normalize($object->getJobIteration(), 'json', $context);
+            $data['JobIteration'] = $object->getJobIteration() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getJobIteration(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('lastExecution') && null !== $object->getLastExecution()) {
             $data['LastExecution'] = $object->getLastExecution();

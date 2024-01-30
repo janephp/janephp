@@ -59,7 +59,7 @@ class SubLevel1Normalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $data = array();
         if ($object->isInitialized('subLevel2') && null !== $object->getSubLevel2()) {
-            $data['subLevel-2'] = $this->normalizer->normalize($object->getSubLevel2(), 'json', $context);
+            $data['subLevel-2'] = $object->getSubLevel2() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSubLevel2(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

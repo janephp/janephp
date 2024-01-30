@@ -77,14 +77,14 @@ class SearchNoResultsErrorNormalizer implements DenormalizerInterface, Normalize
             $data['totalSize'] = $object->getTotalSize();
         }
         if ($object->isInitialized('companies') && null !== $object->getCompanies()) {
-            $values = array();
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getCompanies() as $key => $value) {
                 $values[$key] = $value;
             }
             $data['companies'] = $values;
         }
         if ($object->isInitialized('messages') && null !== $object->getMessages()) {
-            $data['messages'] = $this->normalizer->normalize($object->getMessages(), 'json', $context);
+            $data['messages'] = $object->getMessages() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getMessages(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {

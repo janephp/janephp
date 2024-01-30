@@ -80,7 +80,7 @@ class MonitoringPortfoliosPortfolioIdPatchBodyNormalizer implements Denormalizer
         if ($object->isInitialized('emails') && null !== $object->getEmails()) {
             $values = array();
             foreach ($object->getEmails() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['emails'] = $values;
         }

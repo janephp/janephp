@@ -96,26 +96,26 @@ class BusinessRuleTracedEvaluationNormalizer implements DenormalizerInterface, N
         if ($object->isInitialized('conditions') && null !== $object->getConditions()) {
             $values = array();
             foreach ($object->getConditions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['conditions'] = $values;
         }
         if ($object->isInitialized('transformationGroups') && null !== $object->getTransformationGroups()) {
             $values_1 = array();
             foreach ($object->getTransformationGroups() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['transformationGroups'] = $values_1;
         }
         if ($object->isInitialized('actions') && null !== $object->getActions()) {
             $values_2 = array();
             foreach ($object->getActions() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['actions'] = $values_2;
         }
         if ($object->isInitialized('variables') && null !== $object->getVariables()) {
-            $values_3 = array();
+            $values_3 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getVariables() as $key => $value_3) {
                 $values_3[$key] = $value_3;
             }

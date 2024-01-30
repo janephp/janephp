@@ -87,10 +87,10 @@ class GistFullhistoryItemNormalizer implements DenormalizerInterface, Normalizer
             $data['version'] = $object->getVersion();
         }
         if ($object->isInitialized('user') && null !== $object->getUser()) {
-            $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+            $data['user'] = $object->getUser() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getUser(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('changeStatus') && null !== $object->getChangeStatus()) {
-            $data['change_status'] = $this->normalizer->normalize($object->getChangeStatus(), 'json', $context);
+            $data['change_status'] = $object->getChangeStatus() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getChangeStatus(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('committedAt') && null !== $object->getCommittedAt()) {
             $data['committed_at'] = $object->getCommittedAt();

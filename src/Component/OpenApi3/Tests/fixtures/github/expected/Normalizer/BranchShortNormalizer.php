@@ -73,7 +73,7 @@ class BranchShortNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['name'] = $object->getName();
         }
         if ($object->isInitialized('commit') && null !== $object->getCommit()) {
-            $data['commit'] = $this->normalizer->normalize($object->getCommit(), 'json', $context);
+            $data['commit'] = $object->getCommit() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCommit(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('protected') && null !== $object->getProtected()) {
             $data['protected'] = $object->getProtected();

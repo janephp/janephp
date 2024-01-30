@@ -138,7 +138,7 @@ class StatusNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data['updated_at'] = $object->getUpdatedAt();
         }
         if ($object->isInitialized('creator') && null !== $object->getCreator()) {
-            $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
+            $data['creator'] = $object->getCreator() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCreator(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

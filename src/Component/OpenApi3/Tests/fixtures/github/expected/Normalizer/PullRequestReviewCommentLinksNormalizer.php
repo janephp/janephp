@@ -69,9 +69,9 @@ class PullRequestReviewCommentLinksNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
-        $data['html'] = $this->normalizer->normalize($object->getHtml(), 'json', $context);
-        $data['pull_request'] = $this->normalizer->normalize($object->getPullRequest(), 'json', $context);
+        $data['self'] = $object->getSelf() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSelf(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['html'] = $object->getHtml() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getHtml(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['pull_request'] = $object->getPullRequest() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPullRequest(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

@@ -123,7 +123,7 @@ class ApiOverviewNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data = array();
         $data['verifiable_password_authentication'] = $object->getVerifiablePasswordAuthentication();
         if ($object->isInitialized('sshKeyFingerprints') && null !== $object->getSshKeyFingerprints()) {
-            $data['ssh_key_fingerprints'] = $this->normalizer->normalize($object->getSshKeyFingerprints(), 'json', $context);
+            $data['ssh_key_fingerprints'] = $object->getSshKeyFingerprints() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSshKeyFingerprints(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('hooks') && null !== $object->getHooks()) {
             $values = array();

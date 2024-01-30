@@ -120,17 +120,17 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data['names'] = $object->getNames();
         $values = array();
         foreach ($object->getSort() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['sort'] = $values;
         $values_1 = array();
         foreach ($object->getSortFields() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['sortFields'] = $values_1;
         $values_2 = array();
         foreach ($object->getAggregations() as $value_2) {
-            $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+            $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['aggregations'] = $values_2;
         $values_3 = array();

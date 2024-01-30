@@ -72,7 +72,7 @@ class AccessCountriesResponseNormalizer implements DenormalizerInterface, Normal
         if ($object->isInitialized('countryAccess') && null !== $object->getCountryAccess()) {
             $values = array();
             foreach ($object->getCountryAccess() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['countryAccess'] = $values;
         }

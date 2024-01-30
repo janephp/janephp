@@ -72,7 +72,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassific
         if ($object->isInitialized('activities') && null !== $object->getActivities()) {
             $values = array();
             foreach ($object->getActivities() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['activities'] = $values;
         }

@@ -93,7 +93,7 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['ID'] = $object->getID();
         }
         if ($object->isInitialized('version') && null !== $object->getVersion()) {
-            $data['Version'] = $this->normalizer->normalize($object->getVersion(), 'json', $context);
+            $data['Version'] = $object->getVersion() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getVersion(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
             $data['CreatedAt'] = $object->getCreatedAt();
@@ -102,10 +102,10 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['UpdatedAt'] = $object->getUpdatedAt();
         }
         if ($object->isInitialized('spec') && null !== $object->getSpec()) {
-            $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
+            $data['Spec'] = $object->getSpec() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSpec(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('tLSInfo') && null !== $object->getTLSInfo()) {
-            $data['TLSInfo'] = $this->normalizer->normalize($object->getTLSInfo(), 'json', $context);
+            $data['TLSInfo'] = $object->getTLSInfo() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getTLSInfo(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('rootRotationInProgress') && null !== $object->getRootRotationInProgress()) {
             $data['RootRotationInProgress'] = $object->getRootRotationInProgress();
@@ -124,7 +124,7 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['SubnetSize'] = $object->getSubnetSize();
         }
         if ($object->isInitialized('joinTokens') && null !== $object->getJoinTokens()) {
-            $data['JoinTokens'] = $this->normalizer->normalize($object->getJoinTokens(), 'json', $context);
+            $data['JoinTokens'] = $object->getJoinTokens() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getJoinTokens(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SwarmConstraint());

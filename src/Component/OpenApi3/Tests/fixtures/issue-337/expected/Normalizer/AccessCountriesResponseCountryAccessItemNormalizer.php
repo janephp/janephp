@@ -113,49 +113,49 @@ class AccessCountriesResponseCountryAccessItemNormalizer implements Denormalizer
         if ($object->isInitialized('creditsafeConnectOnlineReports') && null !== $object->getCreditsafeConnectOnlineReports()) {
             $values = array();
             foreach ($object->getCreditsafeConnectOnlineReports() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['creditsafeConnectOnlineReports'] = $values;
         }
         if ($object->isInitialized('creditsafeConnectOfflineReports') && null !== $object->getCreditsafeConnectOfflineReports()) {
             $values_1 = array();
             foreach ($object->getCreditsafeConnectOfflineReports() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['creditsafeConnectOfflineReports'] = $values_1;
         }
         if ($object->isInitialized('creditsafeConnectMonitoring') && null !== $object->getCreditsafeConnectMonitoring()) {
             $values_2 = array();
             foreach ($object->getCreditsafeConnectMonitoring() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['creditsafeConnectMonitoring'] = $values_2;
         }
         if ($object->isInitialized('creditsafeConnectDirectorReports') && null !== $object->getCreditsafeConnectDirectorReports()) {
             $values_3 = array();
             foreach ($object->getCreditsafeConnectDirectorReports() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 == null ? null : new \ArrayObject($this->normalizer->normalize($value_3, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['creditsafeConnectDirectorReports'] = $values_3;
         }
         if ($object->isInitialized('creditsafeConnectImageDocuments') && null !== $object->getCreditsafeConnectImageDocuments()) {
             $values_4 = array();
             foreach ($object->getCreditsafeConnectImageDocuments() as $value_4) {
-                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = $value_4 == null ? null : new \ArrayObject($this->normalizer->normalize($value_4, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['creditsafeConnectImageDocuments'] = $values_4;
         }
         if ($object->isInitialized('creditsafeConnectBankValidation') && null !== $object->getCreditsafeConnectBankValidation()) {
             $values_5 = array();
             foreach ($object->getCreditsafeConnectBankValidation() as $value_5) {
-                $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
+                $values_5[] = $value_5 == null ? null : new \ArrayObject($this->normalizer->normalize($value_5, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['creditsafeConnectBankValidation'] = $values_5;
         }
         if ($object->isInitialized('creditsafeConnectBankVerification') && null !== $object->getCreditsafeConnectBankVerification()) {
             $values_6 = array();
             foreach ($object->getCreditsafeConnectBankVerification() as $value_6) {
-                $values_6[] = $this->normalizer->normalize($value_6, 'json', $context);
+                $values_6[] = $value_6 == null ? null : new \ArrayObject($this->normalizer->normalize($value_6, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['creditsafeConnectBankVerification'] = $values_6;
         }

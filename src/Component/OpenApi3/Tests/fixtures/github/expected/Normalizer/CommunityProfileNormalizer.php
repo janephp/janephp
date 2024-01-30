@@ -89,7 +89,7 @@ class CommunityProfileNormalizer implements DenormalizerInterface, NormalizerInt
         $data['health_percentage'] = $object->getHealthPercentage();
         $data['description'] = $object->getDescription();
         $data['documentation'] = $object->getDocumentation();
-        $data['files'] = $this->normalizer->normalize($object->getFiles(), 'json', $context);
+        $data['files'] = $object->getFiles() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getFiles(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -115,7 +115,7 @@ class TeamDiscussionCommentNormalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['author'] = $this->normalizer->normalize($object->getAuthor(), 'json', $context);
+        $data['author'] = $object->getAuthor() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAuthor(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['body'] = $object->getBody();
         $data['body_html'] = $object->getBodyHtml();
         $data['body_version'] = $object->getBodyVersion();
@@ -128,7 +128,7 @@ class TeamDiscussionCommentNormalizer implements DenormalizerInterface, Normaliz
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $data['url'] = $object->getUrl();
         if ($object->isInitialized('reactions') && null !== $object->getReactions()) {
-            $data['reactions'] = $this->normalizer->normalize($object->getReactions(), 'json', $context);
+            $data['reactions'] = $object->getReactions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getReactions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

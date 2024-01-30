@@ -93,7 +93,7 @@ class MarketplacePurchaseMarketplacePendingChangeNormalizer implements Denormali
             $data['id'] = $object->getId();
         }
         if ($object->isInitialized('plan') && null !== $object->getPlan()) {
-            $data['plan'] = $this->normalizer->normalize($object->getPlan(), 'json', $context);
+            $data['plan'] = $object->getPlan() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPlan(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

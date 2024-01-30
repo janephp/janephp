@@ -74,7 +74,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureNormalizer implem
     {
         $data = array();
         if ($object->isInitialized('issuedShareCapital') && null !== $object->getIssuedShareCapital()) {
-            $data['issuedShareCapital'] = $this->normalizer->normalize($object->getIssuedShareCapital(), 'json', $context);
+            $data['issuedShareCapital'] = $object->getIssuedShareCapital() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getIssuedShareCapital(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('numberOfSharesIssued') && null !== $object->getNumberOfSharesIssued()) {
             $data['numberOfSharesIssued'] = $object->getNumberOfSharesIssued();
@@ -82,7 +82,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureNormalizer implem
         if ($object->isInitialized('shareHolders') && null !== $object->getShareHolders()) {
             $values = array();
             foreach ($object->getShareHolders() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['shareHolders'] = $values;
         }

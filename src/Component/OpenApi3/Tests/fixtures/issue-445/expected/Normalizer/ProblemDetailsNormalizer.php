@@ -105,7 +105,7 @@ class ProblemDetailsNormalizer implements DenormalizerInterface, NormalizerInter
             $data['instance'] = $object->getInstance();
         }
         if ($object->isInitialized('extensions') && null !== $object->getExtensions()) {
-            $values = array();
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getExtensions() as $key => $value) {
                 $values[$key] = $value;
             }

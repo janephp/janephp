@@ -82,9 +82,9 @@ class PullRequestSimpleHeadNormalizer implements DenormalizerInterface, Normaliz
         $data = array();
         $data['label'] = $object->getLabel();
         $data['ref'] = $object->getRef();
-        $data['repo'] = $this->normalizer->normalize($object->getRepo(), 'json', $context);
+        $data['repo'] = $object->getRepo() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRepo(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['sha'] = $object->getSha();
-        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $data['user'] = $object->getUser() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getUser(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

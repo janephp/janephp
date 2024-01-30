@@ -122,12 +122,12 @@ class ReposOwnerRepoCheckRunsPostBodyNormalizer implements DenormalizerInterface
             $data['completed_at'] = $object->getCompletedAt();
         }
         if ($object->isInitialized('output') && null !== $object->getOutput()) {
-            $data['output'] = $this->normalizer->normalize($object->getOutput(), 'json', $context);
+            $data['output'] = $object->getOutput() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getOutput(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('actions') && null !== $object->getActions()) {
             $values = array();
             foreach ($object->getActions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['actions'] = $values;
         }

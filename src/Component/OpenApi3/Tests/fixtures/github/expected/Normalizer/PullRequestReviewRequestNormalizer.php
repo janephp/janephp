@@ -76,14 +76,14 @@ class PullRequestReviewRequestNormalizer implements DenormalizerInterface, Norma
         if ($object->isInitialized('users') && null !== $object->getUsers()) {
             $values = array();
             foreach ($object->getUsers() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['users'] = $values;
         }
         if ($object->isInitialized('teams') && null !== $object->getTeams()) {
             $values_1 = array();
             foreach ($object->getTeams() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['teams'] = $values_1;
         }

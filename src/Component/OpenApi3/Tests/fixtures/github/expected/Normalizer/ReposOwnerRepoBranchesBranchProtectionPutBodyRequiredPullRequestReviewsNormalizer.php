@@ -74,7 +74,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsNor
     {
         $data = array();
         if ($object->isInitialized('dismissalRestrictions') && null !== $object->getDismissalRestrictions()) {
-            $data['dismissal_restrictions'] = $this->normalizer->normalize($object->getDismissalRestrictions(), 'json', $context);
+            $data['dismissal_restrictions'] = $object->getDismissalRestrictions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getDismissalRestrictions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('dismissStaleReviews') && null !== $object->getDismissStaleReviews()) {
             $data['dismiss_stale_reviews'] = $object->getDismissStaleReviews();

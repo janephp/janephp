@@ -75,19 +75,19 @@ class BooksBookIdReviewsGetHaljsonResponse200LinksNormalizer implements Denormal
     {
         $data = array();
         if ($object->isInitialized('self') && null !== $object->getSelf()) {
-            $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
+            $data['self'] = $object->getSelf() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSelf(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('first') && null !== $object->getFirst()) {
-            $data['first'] = $this->normalizer->normalize($object->getFirst(), 'json', $context);
+            $data['first'] = $object->getFirst() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getFirst(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('last') && null !== $object->getLast()) {
-            $data['last'] = $this->normalizer->normalize($object->getLast(), 'json', $context);
+            $data['last'] = $object->getLast() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLast(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('next') && null !== $object->getNext()) {
-            $data['next'] = $this->normalizer->normalize($object->getNext(), 'json', $context);
+            $data['next'] = $object->getNext() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getNext(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('previous') && null !== $object->getPrevious()) {
-            $data['previous'] = $this->normalizer->normalize($object->getPrevious(), 'json', $context);
+            $data['previous'] = $object->getPrevious() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPrevious(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

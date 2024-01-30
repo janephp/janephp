@@ -91,7 +91,7 @@ class FileTransferCreateItemNormalizer implements DenormalizerInterface, Normali
             $data['layerSchemaIds'] = $values;
         }
         if ($object->isInitialized('metadata') && null !== $object->getMetadata()) {
-            $values_1 = array();
+            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getMetadata() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }

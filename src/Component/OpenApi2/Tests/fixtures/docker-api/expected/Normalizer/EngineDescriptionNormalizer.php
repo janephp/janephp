@@ -73,7 +73,7 @@ class EngineDescriptionNormalizer implements DenormalizerInterface, NormalizerIn
             $data['EngineVersion'] = $object->getEngineVersion();
         }
         if ($object->isInitialized('labels') && null !== $object->getLabels()) {
-            $values = array();
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getLabels() as $key => $value) {
                 $values[$key] = $value;
             }
@@ -82,7 +82,7 @@ class EngineDescriptionNormalizer implements DenormalizerInterface, NormalizerIn
         if ($object->isInitialized('plugins') && null !== $object->getPlugins()) {
             $values_1 = array();
             foreach ($object->getPlugins() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['Plugins'] = $values_1;
         }

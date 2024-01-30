@@ -89,28 +89,28 @@ class SystemDfGetResponse200Normalizer implements DenormalizerInterface, Normali
         if ($object->isInitialized('images') && null !== $object->getImages()) {
             $values = array();
             foreach ($object->getImages() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['Images'] = $values;
         }
         if ($object->isInitialized('containers') && null !== $object->getContainers()) {
             $values_1 = array();
             foreach ($object->getContainers() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['Containers'] = $values_1;
         }
         if ($object->isInitialized('volumes') && null !== $object->getVolumes()) {
             $values_2 = array();
             foreach ($object->getVolumes() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['Volumes'] = $values_2;
         }
         if ($object->isInitialized('buildCache') && null !== $object->getBuildCache()) {
             $values_3 = array();
             foreach ($object->getBuildCache() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 == null ? null : new \ArrayObject($this->normalizer->normalize($value_3, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['BuildCache'] = $values_3;
         }

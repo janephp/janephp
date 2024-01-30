@@ -103,19 +103,19 @@ class GbCompanyReportExampleResponseReportCompanySummaryNormalizer implements De
             $data['companyRegistrationNumber'] = $object->getCompanyRegistrationNumber();
         }
         if ($object->isInitialized('mainActivity') && null !== $object->getMainActivity()) {
-            $data['mainActivity'] = $this->normalizer->normalize($object->getMainActivity(), 'json', $context);
+            $data['mainActivity'] = $object->getMainActivity() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getMainActivity(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('companyStatus') && null !== $object->getCompanyStatus()) {
-            $data['companyStatus'] = $this->normalizer->normalize($object->getCompanyStatus(), 'json', $context);
+            $data['companyStatus'] = $object->getCompanyStatus() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCompanyStatus(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('latestTurnoverFigure') && null !== $object->getLatestTurnoverFigure()) {
-            $data['latestTurnoverFigure'] = $this->normalizer->normalize($object->getLatestTurnoverFigure(), 'json', $context);
+            $data['latestTurnoverFigure'] = $object->getLatestTurnoverFigure() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLatestTurnoverFigure(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('latestShareholdersEquityFigure') && null !== $object->getLatestShareholdersEquityFigure()) {
-            $data['latestShareholdersEquityFigure'] = $this->normalizer->normalize($object->getLatestShareholdersEquityFigure(), 'json', $context);
+            $data['latestShareholdersEquityFigure'] = $object->getLatestShareholdersEquityFigure() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLatestShareholdersEquityFigure(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('creditRating') && null !== $object->getCreditRating()) {
-            $data['creditRating'] = $this->normalizer->normalize($object->getCreditRating(), 'json', $context);
+            $data['creditRating'] = $object->getCreditRating() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCreditRating(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

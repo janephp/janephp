@@ -59,7 +59,7 @@ class ComplianceSearchResultDataBodyNormalizer implements DenormalizerInterface,
     {
         $data = array();
         if ($object->isInitialized('searchResult') && null !== $object->getSearchResult()) {
-            $data['searchResult'] = $this->normalizer->normalize($object->getSearchResult(), 'json', $context);
+            $data['searchResult'] = $object->getSearchResult() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSearchResult(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

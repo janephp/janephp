@@ -154,7 +154,7 @@ class FieldSingleRelationNormalizer implements DenormalizerInterface, Normalizer
         }
         $values = array();
         foreach ($object->getRelationTypes() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['relationTypes'] = $values;
         foreach ($object as $key => $value_1) {

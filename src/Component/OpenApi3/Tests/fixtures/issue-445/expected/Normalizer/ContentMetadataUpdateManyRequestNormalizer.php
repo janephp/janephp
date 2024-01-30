@@ -62,7 +62,7 @@ class ContentMetadataUpdateManyRequestNormalizer implements DenormalizerInterfac
         $data['allowMissingDependencies'] = $object->getAllowMissingDependencies();
         $values = array();
         foreach ($object->getItems() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['items'] = $values;
         return $data;

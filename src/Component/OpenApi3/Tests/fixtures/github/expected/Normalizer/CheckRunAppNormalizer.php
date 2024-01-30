@@ -140,14 +140,14 @@ class CheckRunAppNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['slug'] = $object->getSlug();
         }
         $data['node_id'] = $object->getNodeId();
-        $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
+        $data['owner'] = $object->getOwner() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getOwner(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['name'] = $object->getName();
         $data['description'] = $object->getDescription();
         $data['external_url'] = $object->getExternalUrl();
         $data['html_url'] = $object->getHtmlUrl();
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
+        $data['permissions'] = $object->getPermissions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPermissions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $values = array();
         foreach ($object->getEvents() as $value) {
             $values[] = $value;

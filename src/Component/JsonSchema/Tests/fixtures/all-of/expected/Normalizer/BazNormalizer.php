@@ -56,10 +56,10 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $data['foo'] = $object->getFoo();
         }
         if ($object->isInitialized('bar') && null !== $object->getBar()) {
-            $data['Bar'] = $this->normalizer->normalize($object->getBar(), 'json', $context);
+            $data['Bar'] = $object->getBar() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getBar(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('baz') && null !== $object->getBaz()) {
-            $data['Baz'] = $this->normalizer->normalize($object->getBaz(), 'json', $context);
+            $data['Baz'] = $object->getBaz() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getBaz(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         return $data;
     }

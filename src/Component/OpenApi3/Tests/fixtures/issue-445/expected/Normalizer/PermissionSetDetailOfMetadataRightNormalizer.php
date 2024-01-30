@@ -92,14 +92,14 @@ class PermissionSetDetailOfMetadataRightNormalizer implements DenormalizerInterf
         if ($object->isInitialized('userRolesRights') && null !== $object->getUserRolesRights()) {
             $values = array();
             foreach ($object->getUserRolesRights() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['userRolesRights'] = $values;
         }
         if ($object->isInitialized('userRolesPermissionSetRights') && null !== $object->getUserRolesPermissionSetRights()) {
             $values_1 = array();
             foreach ($object->getUserRolesPermissionSetRights() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['userRolesPermissionSetRights'] = $values_1;
         }

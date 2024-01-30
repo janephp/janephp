@@ -114,12 +114,12 @@ class PullRequestReviewNormalizer implements DenormalizerInterface, NormalizerIn
         $data = array();
         $data['id'] = $object->getId();
         $data['node_id'] = $object->getNodeId();
-        $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        $data['user'] = $object->getUser() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getUser(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['body'] = $object->getBody();
         $data['state'] = $object->getState();
         $data['html_url'] = $object->getHtmlUrl();
         $data['pull_request_url'] = $object->getPullRequestUrl();
-        $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+        $data['_links'] = $object->getLinks() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLinks(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('submittedAt') && null !== $object->getSubmittedAt()) {
             $data['submitted_at'] = $object->getSubmittedAt()->format('Y-m-d\\TH:i:sP');
         }

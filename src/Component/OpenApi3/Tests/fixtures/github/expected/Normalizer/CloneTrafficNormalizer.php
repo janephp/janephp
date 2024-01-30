@@ -77,7 +77,7 @@ class CloneTrafficNormalizer implements DenormalizerInterface, NormalizerInterfa
         $data['uniques'] = $object->getUniques();
         $values = array();
         foreach ($object->getClones() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['clones'] = $values;
         foreach ($object as $key => $value_1) {

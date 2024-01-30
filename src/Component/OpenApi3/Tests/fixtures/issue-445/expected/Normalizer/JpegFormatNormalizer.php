@@ -148,7 +148,7 @@ class JpegFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($object->isInitialized('actions') && null !== $object->getActions()) {
             $values = array();
             foreach ($object->getActions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['actions'] = $values;
         }

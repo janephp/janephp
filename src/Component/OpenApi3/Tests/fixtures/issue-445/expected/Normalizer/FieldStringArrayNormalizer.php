@@ -230,14 +230,14 @@ class FieldStringArrayNormalizer implements DenormalizerInterface, NormalizerInt
         if ($object->isInitialized('indexAnalyzers') && null !== $object->getIndexAnalyzers()) {
             $values = array();
             foreach ($object->getIndexAnalyzers() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['indexAnalyzers'] = $values;
         }
         if ($object->isInitialized('simpleSearchAnalyzers') && null !== $object->getSimpleSearchAnalyzers()) {
             $values_1 = array();
             foreach ($object->getSimpleSearchAnalyzers() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['simpleSearchAnalyzers'] = $values_1;
         }

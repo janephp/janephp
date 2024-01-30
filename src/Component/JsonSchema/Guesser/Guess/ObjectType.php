@@ -53,11 +53,25 @@ class ObjectType extends Type
             $normalizerVar = new Expr\Variable('normalizer');
         }
 
-        return new Expr\MethodCall($normalizerVar, 'normalize', [
-            new Arg($input),
-            new Arg(new Scalar\String_('json')),
-            new Arg(new Expr\Variable('context')),
+        $arrayObjectExpr = new Expr\New_(new Name('\ArrayObject'), [
+            new Expr\MethodCall($normalizerVar, 'normalize', [
+                new Arg($input),
+                new Arg(new Scalar\String_('json')),
+                new Arg(new Expr\Variable('context')),
+            ]),
+            new Expr\ClassConstFetch(new Name('\ArrayObject'), 'ARRAY_AS_PROPS'),
         ]);
+
+        $condition = new Expr\BinaryOp\Equal(
+            $input,
+            new Expr\ConstFetch(new Name('null'))
+        );
+
+        return new Expr\Ternary(
+            $condition,
+            new Expr\ConstFetch(new Name('null')),
+            $arrayObjectExpr
+        );
     }
 
     /**

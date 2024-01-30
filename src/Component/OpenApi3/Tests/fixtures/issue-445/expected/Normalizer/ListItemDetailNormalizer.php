@@ -116,7 +116,7 @@ class ListItemDetailNormalizer implements DenormalizerInterface, NormalizerInter
         $data['id'] = $object->getId();
         $data['contentSchemaId'] = $object->getContentSchemaId();
         if ($object->isInitialized('content') && null !== $object->getContent()) {
-            $values = array();
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($object->getContent() as $key => $value) {
                 $values[$key] = $value;
             }

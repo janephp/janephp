@@ -99,14 +99,14 @@ class ReviewJsonhalReviewReadNormalizer implements DenormalizerInterface, Normal
     {
         $data = array();
         if ($object->isInitialized('links') && null !== $object->getLinks()) {
-            $data['_links'] = $this->normalizer->normalize($object->getLinks(), 'json', $context);
+            $data['_links'] = $object->getLinks() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLinks(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['body'] = $object->getBody();
         $data['rating'] = $object->getRating();
         if ($object->isInitialized('letter') && null !== $object->getLetter()) {
             $data['letter'] = $object->getLetter();
         }
-        $data['book'] = $this->normalizer->normalize($object->getBook(), 'json', $context);
+        $data['book'] = $object->getBook() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getBook(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('author') && null !== $object->getAuthor()) {
             $data['author'] = $object->getAuthor();
         }

@@ -67,9 +67,9 @@ class TweetMetricsNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $data = array();
         $data['tweet_id'] = $object->getTweetId();
-        $data['tweet'] = $this->normalizer->normalize($object->getTweet(), 'json', $context);
+        $data['tweet'] = $object->getTweet() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getTweet(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         if ($object->isInitialized('video') && null !== $object->getVideo()) {
-            $data['video'] = $this->normalizer->normalize($object->getVideo(), 'json', $context);
+            $data['video'] = $object->getVideo() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getVideo(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -100,10 +100,10 @@ class ThreadNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $data['id'] = $object->getId();
         }
         if ($object->isInitialized('repository') && null !== $object->getRepository()) {
-            $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
+            $data['repository'] = $object->getRepository() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRepository(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('subject') && null !== $object->getSubject()) {
-            $data['subject'] = $this->normalizer->normalize($object->getSubject(), 'json', $context);
+            $data['subject'] = $object->getSubject() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getSubject(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('reason') && null !== $object->getReason()) {
             $data['reason'] = $object->getReason();

@@ -121,14 +121,14 @@ class MigrationNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $data = array();
         $data['id'] = $object->getId();
-        $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
+        $data['owner'] = $object->getOwner() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getOwner(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['guid'] = $object->getGuid();
         $data['state'] = $object->getState();
         $data['lock_repositories'] = $object->getLockRepositories();
         $data['exclude_attachments'] = $object->getExcludeAttachments();
         $values = array();
         foreach ($object->getRepositories() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['repositories'] = $values;
         $data['url'] = $object->getUrl();

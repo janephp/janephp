@@ -75,12 +75,12 @@ class GbCompanyReportExampleResponseReportContactInformationNormalizer implement
     {
         $data = array();
         if ($object->isInitialized('mainAddress') && null !== $object->getMainAddress()) {
-            $data['mainAddress'] = $this->normalizer->normalize($object->getMainAddress(), 'json', $context);
+            $data['mainAddress'] = $object->getMainAddress() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getMainAddress(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('otherAddresses') && null !== $object->getOtherAddresses()) {
             $values = array();
             foreach ($object->getOtherAddresses() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['otherAddresses'] = $values;
         }

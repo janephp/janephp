@@ -97,35 +97,35 @@ class FullTextEntitiesNormalizer implements DenormalizerInterface, NormalizerInt
         if ($object->isInitialized('urls') && null !== $object->getUrls()) {
             $values = array();
             foreach ($object->getUrls() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['urls'] = $values;
         }
         if ($object->isInitialized('hashtags') && null !== $object->getHashtags()) {
             $values_1 = array();
             foreach ($object->getHashtags() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['hashtags'] = $values_1;
         }
         if ($object->isInitialized('mentions') && null !== $object->getMentions()) {
             $values_2 = array();
             foreach ($object->getMentions() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['mentions'] = $values_2;
         }
         if ($object->isInitialized('cashtags') && null !== $object->getCashtags()) {
             $values_3 = array();
             foreach ($object->getCashtags() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 == null ? null : new \ArrayObject($this->normalizer->normalize($value_3, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['cashtags'] = $values_3;
         }
         if ($object->isInitialized('annotations') && null !== $object->getAnnotations()) {
             $values_4 = array();
             foreach ($object->getAnnotations() as $value_4) {
-                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = $value_4 == null ? null : new \ArrayObject($this->normalizer->normalize($value_4, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['annotations'] = $values_4;
         }

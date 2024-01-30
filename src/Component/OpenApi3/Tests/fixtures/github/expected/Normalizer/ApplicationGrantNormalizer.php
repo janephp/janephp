@@ -94,7 +94,7 @@ class ApplicationGrantNormalizer implements DenormalizerInterface, NormalizerInt
         $data = array();
         $data['id'] = $object->getId();
         $data['url'] = $object->getUrl();
-        $data['app'] = $this->normalizer->normalize($object->getApp(), 'json', $context);
+        $data['app'] = $object->getApp() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getApp(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
         $values = array();
@@ -103,7 +103,7 @@ class ApplicationGrantNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $data['scopes'] = $values;
         if ($object->isInitialized('user') && null !== $object->getUser()) {
-            $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
+            $data['user'] = $object->getUser() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getUser(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

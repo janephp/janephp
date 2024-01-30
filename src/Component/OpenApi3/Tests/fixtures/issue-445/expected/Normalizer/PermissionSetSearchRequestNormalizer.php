@@ -122,7 +122,7 @@ class PermissionSetSearchRequestNormalizer implements DenormalizerInterface, Nor
         if ($object->isInitialized('sort') && null !== $object->getSort()) {
             $values_1 = array();
             foreach ($object->getSort() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['sort'] = $values_1;
         }

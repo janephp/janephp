@@ -75,7 +75,7 @@ class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Normalizer implements
         if ($object->isInitialized('artifacts') && null !== $object->getArtifacts()) {
             $values = array();
             foreach ($object->getArtifacts() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['artifacts'] = $values;
         }

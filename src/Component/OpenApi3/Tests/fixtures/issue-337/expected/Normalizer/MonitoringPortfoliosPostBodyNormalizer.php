@@ -83,7 +83,7 @@ class MonitoringPortfoliosPostBodyNormalizer implements DenormalizerInterface, N
             $data['isDefault'] = $object->getIsDefault();
         }
         if ($object->isInitialized('emails') && null !== $object->getEmails()) {
-            $data['emails'] = $this->normalizer->normalize($object->getEmails(), 'json', $context);
+            $data['emails'] = $object->getEmails() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getEmails(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('emailSubject') && null !== $object->getEmailSubject()) {
             $data['emailSubject'] = $object->getEmailSubject();

@@ -75,7 +75,7 @@ class CompanySearchSuccessResultNormalizer implements DenormalizerInterface, Nor
         if ($object->isInitialized('companies') && null !== $object->getCompanies()) {
             $values = array();
             foreach ($object->getCompanies() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['companies'] = $values;
         }

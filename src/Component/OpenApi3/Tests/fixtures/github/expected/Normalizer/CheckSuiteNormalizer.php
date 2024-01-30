@@ -170,14 +170,14 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
         $data['after'] = $object->getAfter();
         $values = array();
         foreach ($object->getPullRequests() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['pull_requests'] = $values;
-        $data['app'] = $this->normalizer->normalize($object->getApp(), 'json', $context);
-        $data['repository'] = $this->normalizer->normalize($object->getRepository(), 'json', $context);
+        $data['app'] = $object->getApp() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getApp(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['repository'] = $object->getRepository() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getRepository(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\\TH:i:sP');
         $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\\TH:i:sP');
-        $data['head_commit'] = $this->normalizer->normalize($object->getHeadCommit(), 'json', $context);
+        $data['head_commit'] = $object->getHeadCommit() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getHeadCommit(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['latest_check_runs_count'] = $object->getLatestCheckRunsCount();
         $data['check_runs_url'] = $object->getCheckRunsUrl();
         foreach ($object as $key => $value_1) {

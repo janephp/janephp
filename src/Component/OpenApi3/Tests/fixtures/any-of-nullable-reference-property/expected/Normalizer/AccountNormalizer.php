@@ -107,21 +107,21 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($object->isInitialized('countryOfBirth') && null !== $object->getCountryOfBirth()) {
             $value = $object->getCountryOfBirth();
             if (is_object($object->getCountryOfBirth())) {
-                $value = $this->normalizer->normalize($object->getCountryOfBirth(), 'json', $context);
+                $value = $object->getCountryOfBirth() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCountryOfBirth(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['countryOfBirth'] = $value;
         }
         if ($object->isInitialized('country') && null !== $object->getCountry()) {
-            $data['country'] = $this->normalizer->normalize($object->getCountry(), 'json', $context);
+            $data['country'] = $object->getCountry() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCountry(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('nationality') && null !== $object->getNationality()) {
             $value_1 = $object->getNationality();
             if (is_object($object->getNationality())) {
-                $value_1 = $this->normalizer->normalize($object->getNationality(), 'json', $context);
+                $value_1 = $object->getNationality() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getNationality(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             } elseif (is_array($object->getNationality())) {
                 $values = array();
                 foreach ($object->getNationality() as $value_2) {
-                    $values[] = $this->normalizer->normalize($value_2, 'json', $context);
+                    $values[] = $value_2 == null ? null : new \ArrayObject($this->normalizer->normalize($value_2, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
                 }
                 $value_1 = $values;
             }

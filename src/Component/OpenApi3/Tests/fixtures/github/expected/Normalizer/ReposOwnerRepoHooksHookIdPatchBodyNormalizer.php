@@ -90,7 +90,7 @@ class ReposOwnerRepoHooksHookIdPatchBodyNormalizer implements DenormalizerInterf
     {
         $data = array();
         if ($object->isInitialized('config') && null !== $object->getConfig()) {
-            $data['config'] = $this->normalizer->normalize($object->getConfig(), 'json', $context);
+            $data['config'] = $object->getConfig() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getConfig(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('events') && null !== $object->getEvents()) {
             $values = array();

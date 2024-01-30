@@ -100,15 +100,15 @@ class CompactTweetFieldsNormalizer implements DenormalizerInterface, NormalizerI
         if ($object->isInitialized('referencedTweets') && null !== $object->getReferencedTweets()) {
             $values = array();
             foreach ($object->getReferencedTweets() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['referenced_tweets'] = $values;
         }
         if ($object->isInitialized('attachments') && null !== $object->getAttachments()) {
-            $data['attachments'] = $this->normalizer->normalize($object->getAttachments(), 'json', $context);
+            $data['attachments'] = $object->getAttachments() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getAttachments(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('withheld') && null !== $object->getWithheld()) {
-            $data['withheld'] = $this->normalizer->normalize($object->getWithheld(), 'json', $context);
+            $data['withheld'] = $object->getWithheld() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getWithheld(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

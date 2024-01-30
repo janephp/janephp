@@ -89,14 +89,14 @@ class CreateTransferRequestNormalizer implements DenormalizerInterface, Normaliz
         if ($object->isInitialized('files') && null !== $object->getFiles()) {
             $values = array();
             foreach ($object->getFiles() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['files'] = $values;
         }
         if ($object->isInitialized('webLinks') && null !== $object->getWebLinks()) {
             $values_1 = array();
             foreach ($object->getWebLinks() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 == null ? null : new \ArrayObject($this->normalizer->normalize($value_1, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
             }
             $data['webLinks'] = $values_1;
         }

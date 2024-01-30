@@ -80,8 +80,8 @@ class PullRequestMinimalNormalizer implements DenormalizerInterface, NormalizerI
         $data['id'] = $object->getId();
         $data['number'] = $object->getNumber();
         $data['url'] = $object->getUrl();
-        $data['head'] = $this->normalizer->normalize($object->getHead(), 'json', $context);
-        $data['base'] = $this->normalizer->normalize($object->getBase(), 'json', $context);
+        $data['head'] = $object->getHead() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getHead(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
+        $data['base'] = $object->getBase() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getBase(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

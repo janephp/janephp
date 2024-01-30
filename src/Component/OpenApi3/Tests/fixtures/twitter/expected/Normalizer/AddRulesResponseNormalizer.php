@@ -68,10 +68,10 @@ class AddRulesResponseNormalizer implements DenormalizerInterface, NormalizerInt
         $data = array();
         $values = array();
         foreach ($object->getData() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value == null ? null : new \ArrayObject($this->normalizer->normalize($value, 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         $data['data'] = $values;
-        $data['meta'] = $this->normalizer->normalize($object->getMeta(), 'json', $context);
+        $data['meta'] = $object->getMeta() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getMeta(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value_1;

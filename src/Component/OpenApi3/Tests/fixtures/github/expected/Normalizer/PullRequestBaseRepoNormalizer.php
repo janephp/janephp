@@ -430,7 +430,7 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         $data['milestones_url'] = $object->getMilestonesUrl();
         $data['name'] = $object->getName();
         $data['notifications_url'] = $object->getNotificationsUrl();
-        $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
+        $data['owner'] = $object->getOwner() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getOwner(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['private'] = $object->getPrivate();
         $data['pulls_url'] = $object->getPullsUrl();
         $data['releases_url'] = $object->getReleasesUrl();
@@ -463,7 +463,7 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         $data['open_issues'] = $object->getOpenIssues();
         $data['open_issues_count'] = $object->getOpenIssuesCount();
         if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
-            $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
+            $data['permissions'] = $object->getPermissions() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPermissions(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('tempCloneToken') && null !== $object->getTempCloneToken()) {
             $data['temp_clone_token'] = $object->getTempCloneToken();
@@ -477,7 +477,7 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         if ($object->isInitialized('allowRebaseMerge') && null !== $object->getAllowRebaseMerge()) {
             $data['allow_rebase_merge'] = $object->getAllowRebaseMerge();
         }
-        $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
+        $data['license'] = $object->getLicense() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getLicense(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         $data['pushed_at'] = $object->getPushedAt()->format('Y-m-d\\TH:i:sP');
         $data['size'] = $object->getSize();
         $data['ssh_url'] = $object->getSshUrl();

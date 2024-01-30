@@ -59,7 +59,7 @@ class Endpoint3PostBodyNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $data = array();
         if ($object->isInitialized('postField3') && null !== $object->getPostField3()) {
-            $data['post-field-3'] = $this->normalizer->normalize($object->getPostField3(), 'json', $context);
+            $data['post-field-3'] = $object->getPostField3() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getPostField3(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

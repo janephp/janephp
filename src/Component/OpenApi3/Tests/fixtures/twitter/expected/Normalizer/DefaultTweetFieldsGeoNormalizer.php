@@ -63,7 +63,7 @@ class DefaultTweetFieldsGeoNormalizer implements DenormalizerInterface, Normaliz
     {
         $data = array();
         if ($object->isInitialized('coordinates') && null !== $object->getCoordinates()) {
-            $data['coordinates'] = $this->normalizer->normalize($object->getCoordinates(), 'json', $context);
+            $data['coordinates'] = $object->getCoordinates() == null ? null : new \ArrayObject($this->normalizer->normalize($object->getCoordinates(), 'json', $context), \ArrayObject::ARRAY_AS_PROPS);
         }
         if ($object->isInitialized('placeId') && null !== $object->getPlaceId()) {
             $data['place_id'] = $object->getPlaceId();
