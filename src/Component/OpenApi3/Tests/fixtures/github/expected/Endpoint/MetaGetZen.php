@@ -15,11 +15,11 @@ class MetaGetZen extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('text/plain'));
+        return ['Accept' => ['text/plain']];
     }
     /**
      * {@inheritdoc}
@@ -36,6 +36,6 @@ class MetaGetZen extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

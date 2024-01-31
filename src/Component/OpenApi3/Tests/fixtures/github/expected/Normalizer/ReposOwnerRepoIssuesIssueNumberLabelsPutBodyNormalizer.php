@@ -12,78 +12,151 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Github\\Model\\ReposOwnerRepoIssuesIssueNumberLabelsPutBody';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'Github\\Model\\ReposOwnerRepoIssuesIssueNumberLabelsPutBody';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Github\\Model\\ReposOwnerRepoIssuesIssueNumberLabelsPutBody';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Github\\Model\\ReposOwnerRepoIssuesIssueNumberLabelsPutBody';
         }
-        $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody();
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLabelsPutBodyConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLabelsPutBodyConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('labels', $data)) {
+                $values = [];
+                foreach ($data['labels'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setLabels($values);
+                unset($data['labels']);
+            }
+            foreach ($data as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_1;
+                }
+            }
             return $object;
         }
-        if (\array_key_exists('labels', $data)) {
-            $values = array();
-            foreach ($data['labels'] as $value) {
-                $values[] = $value;
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('labels') && null !== $object->getLabels()) {
+                $values = [];
+                foreach ($object->getLabels() as $value) {
+                    $values[] = $value;
+                }
+                $data['labels'] = $values;
             }
-            $object->setLabels($values);
-            unset($data['labels']);
-        }
-        foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+            foreach ($object as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_1;
+                }
             }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLabelsPutBodyConstraint());
+            }
+            return $data;
         }
-        return $object;
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Github\\Model\\ReposOwnerRepoIssuesIssueNumberLabelsPutBody' => false];
+        }
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+} else {
+    class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = array();
-        if ($object->isInitialized('labels') && null !== $object->getLabels()) {
-            $values = array();
-            foreach ($object->getLabels() as $value) {
-                $values[] = $value;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Github\\Model\\ReposOwnerRepoIssuesIssueNumberLabelsPutBody';
+        }
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Github\\Model\\ReposOwnerRepoIssuesIssueNumberLabelsPutBody';
+        }
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
             }
-            $data['labels'] = $values;
-        }
-        foreach ($object as $key => $value_1) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
+            $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLabelsPutBodyConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('labels', $data)) {
+                $values = [];
+                foreach ($data['labels'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setLabels($values);
+                unset($data['labels']);
+            }
+            foreach ($data as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_1;
+                }
+            }
+            return $object;
         }
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLabelsPutBodyConstraint());
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            if ($object->isInitialized('labels') && null !== $object->getLabels()) {
+                $values = [];
+                foreach ($object->getLabels() as $value) {
+                    $values[] = $value;
+                }
+                $data['labels'] = $values;
+            }
+            foreach ($object as $key => $value_1) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_1;
+                }
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Github\Validator\ReposOwnerRepoIssuesIssueNumberLabelsPutBodyConstraint());
+            }
+            return $data;
         }
-        return $data;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('Github\\Model\\ReposOwnerRepoIssuesIssueNumberLabelsPutBody' => false);
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Github\\Model\\ReposOwnerRepoIssuesIssueNumberLabelsPutBody' => false];
+        }
     }
 }

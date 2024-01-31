@@ -11,7 +11,7 @@ class GetFoo extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Base
      *     @var bool $testBoolean 
      * }
      */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -26,16 +26,16 @@ class GetFoo extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Base
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('testBoolean'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('testBoolean', array('bool'));
-        $optionsResolver->setNormalizer('testBoolean', \Closure::fromCallable(array(new \Jane\Component\OpenApi2\Tests\Expected\AllBooleanQueryResolver\BooleanCustomQueryResolver(), '__invoke')));
+        $optionsResolver->setDefined(['testBoolean']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('testBoolean', ['bool']);
+        $optionsResolver->setNormalizer('testBoolean', \Closure::fromCallable([new \Jane\Component\OpenApi2\Tests\Expected\AllBooleanQueryResolver\BooleanCustomQueryResolver(), '__invoke']));
         return $optionsResolver;
     }
     /**
@@ -51,6 +51,6 @@ class GetFoo extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Base
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

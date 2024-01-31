@@ -24,15 +24,15 @@ class MigrationsUnlockRepoForAuthenticatedUser extends \Github\Runtime\Client\Ba
     }
     public function getUri() : string
     {
-        return str_replace(array('{migration_id}', '{repo_name}'), array($this->migration_id, $this->repo_name), '/user/migrations/{migration_id}/repos/{repo_name}/lock');
+        return str_replace(['{migration_id}', '{repo_name}'], [$this->migration_id, $this->repo_name], '/user/migrations/{migration_id}/repos/{repo_name}/lock');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -65,6 +65,6 @@ class MigrationsUnlockRepoForAuthenticatedUser extends \Github\Runtime\Client\Ba
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -14,7 +14,7 @@ class ContainerCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements
     
     * }
     */
-    public function __construct(\Docker\Api\Model\ContainersCreatePostBody $body, array $queryParameters = array())
+    public function __construct(\Docker\Api\Model\ContainersCreatePostBody $body, array $queryParameters = [])
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;
@@ -34,15 +34,15 @@ class ContainerCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('name'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('name', array('string'));
+        $optionsResolver->setDefined(['name']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('name', ['string']);
         return $optionsResolver;
     }
     /**
@@ -77,6 +77,6 @@ class ContainerCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

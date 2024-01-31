@@ -20,7 +20,7 @@ class ActivityListStargazersForRepo extends \Github\Runtime\Client\BaseEndpoint 
     * }
     * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
     */
-    public function __construct(string $owner, string $repo, array $queryParameters = array(), array $accept = array())
+    public function __construct(string $owner, string $repo, array $queryParameters = [], array $accept = [])
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -34,27 +34,27 @@ class ActivityListStargazersForRepo extends \Github\Runtime\Client\BaseEndpoint 
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}'), array($this->owner, $this->repo), '/repos/{owner}/{repo}/stargazers');
+        return str_replace(['{owner}', '{repo}'], [$this->owner, $this->repo], '/repos/{owner}/{repo}/stargazers');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/json', 'application/vnd.github.v3.star+json'));
+            return ['Accept' => ['application/json', 'application/vnd.github.v3.star+json']];
         }
         return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('per_page', 'page'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('per_page' => 30, 'page' => 1));
-        $optionsResolver->addAllowedTypes('per_page', array('int'));
-        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->setDefined(['per_page', 'page']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['per_page' => 30, 'page' => 1]);
+        $optionsResolver->addAllowedTypes('per_page', ['int']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
         return $optionsResolver;
     }
     /**
@@ -77,6 +77,6 @@ class ActivityListStargazersForRepo extends \Github\Runtime\Client\BaseEndpoint 
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -25,9 +25,9 @@ class TestObjectBodyParameter extends \Jane\Component\OpenApi3\Tests\Expected\Ru
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\Model\Schema) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -45,6 +45,6 @@ class TestObjectBodyParameter extends \Jane\Component\OpenApi3\Tests\Expected\Ru
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -24,7 +24,7 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         return is_object($data) && get_class($data) === 'Jane\\Component\\OpenApi2\\Tests\\Client\\Model\\Error';
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -41,7 +41,7 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $data = array();
         if (null !== $object->getMessage()) {

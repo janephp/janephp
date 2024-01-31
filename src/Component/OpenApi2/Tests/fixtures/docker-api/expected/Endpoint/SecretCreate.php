@@ -28,7 +28,7 @@ class SecretCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -58,6 +58,6 @@ class SecretCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -13,7 +13,7 @@ class NodeDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
      *     @var bool $force Force remove a node from the swarm
      * }
      */
-    public function __construct(string $id, array $queryParameters = array())
+    public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;
@@ -25,23 +25,23 @@ class NodeDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/nodes/{id}');
+        return str_replace(['{id}'], [$this->id], '/nodes/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('force'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('force' => false));
-        $optionsResolver->addAllowedTypes('force', array('bool'));
+        $optionsResolver->setDefined(['force']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['force' => false]);
+        $optionsResolver->addAllowedTypes('force', ['bool']);
         return $optionsResolver;
     }
     /**
@@ -72,6 +72,6 @@ class NodeDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

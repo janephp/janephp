@@ -11,7 +11,7 @@ class ContentPermissionSetGetPermissionsMany extends \PicturePark\API\Runtime\Cl
      *     @var array $ids Ids
      * }
      */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -26,19 +26,19 @@ class ContentPermissionSetGetPermissionsMany extends \PicturePark\API\Runtime\Cl
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('ids'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('ids', array('array', 'null'));
+        $optionsResolver->setDefined(['ids']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('ids', ['array', 'null']);
         return $optionsResolver;
     }
     /**
@@ -85,6 +85,6 @@ class ContentPermissionSetGetPermissionsMany extends \PicturePark\API\Runtime\Cl
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

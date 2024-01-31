@@ -22,7 +22,7 @@ class TaskList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
     
     * }
     */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -37,19 +37,19 @@ class TaskList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('filters'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('filters', array('string'));
+        $optionsResolver->setDefined(['filters']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('filters', ['string']);
         return $optionsResolver;
     }
     /**
@@ -76,6 +76,6 @@ class TaskList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

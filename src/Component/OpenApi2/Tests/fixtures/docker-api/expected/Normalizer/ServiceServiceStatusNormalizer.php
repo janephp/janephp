@@ -12,71 +12,137 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ServiceServiceStatusNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class ServiceServiceStatusNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Docker\\Api\\Model\\ServiceServiceStatus';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\ServiceServiceStatus';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Docker\\Api\\Model\\ServiceServiceStatus';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\ServiceServiceStatus';
         }
-        $object = new \Docker\Api\Model\ServiceServiceStatus();
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Docker\Api\Validator\ServiceServiceStatusConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Docker\Api\Model\ServiceServiceStatus();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\ServiceServiceStatusConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('RunningTasks', $data)) {
+                $object->setRunningTasks($data['RunningTasks']);
+            }
+            if (\array_key_exists('DesiredTasks', $data)) {
+                $object->setDesiredTasks($data['DesiredTasks']);
+            }
+            if (\array_key_exists('CompletedTasks', $data)) {
+                $object->setCompletedTasks($data['CompletedTasks']);
+            }
             return $object;
         }
-        if (\array_key_exists('RunningTasks', $data)) {
-            $object->setRunningTasks($data['RunningTasks']);
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('runningTasks') && null !== $object->getRunningTasks()) {
+                $data['RunningTasks'] = $object->getRunningTasks();
+            }
+            if ($object->isInitialized('desiredTasks') && null !== $object->getDesiredTasks()) {
+                $data['DesiredTasks'] = $object->getDesiredTasks();
+            }
+            if ($object->isInitialized('completedTasks') && null !== $object->getCompletedTasks()) {
+                $data['CompletedTasks'] = $object->getCompletedTasks();
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\ServiceServiceStatusConstraint());
+            }
+            return $data;
         }
-        if (\array_key_exists('DesiredTasks', $data)) {
-            $object->setDesiredTasks($data['DesiredTasks']);
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Docker\\Api\\Model\\ServiceServiceStatus' => false];
         }
-        if (\array_key_exists('CompletedTasks', $data)) {
-            $object->setCompletedTasks($data['CompletedTasks']);
-        }
-        return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+} else {
+    class ServiceServiceStatusNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = array();
-        if ($object->isInitialized('runningTasks') && null !== $object->getRunningTasks()) {
-            $data['RunningTasks'] = $object->getRunningTasks();
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Docker\\Api\\Model\\ServiceServiceStatus';
         }
-        if ($object->isInitialized('desiredTasks') && null !== $object->getDesiredTasks()) {
-            $data['DesiredTasks'] = $object->getDesiredTasks();
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\ServiceServiceStatus';
         }
-        if ($object->isInitialized('completedTasks') && null !== $object->getCompletedTasks()) {
-            $data['CompletedTasks'] = $object->getCompletedTasks();
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Docker\Api\Model\ServiceServiceStatus();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\ServiceServiceStatusConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('RunningTasks', $data)) {
+                $object->setRunningTasks($data['RunningTasks']);
+            }
+            if (\array_key_exists('DesiredTasks', $data)) {
+                $object->setDesiredTasks($data['DesiredTasks']);
+            }
+            if (\array_key_exists('CompletedTasks', $data)) {
+                $object->setCompletedTasks($data['CompletedTasks']);
+            }
+            return $object;
         }
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Docker\Api\Validator\ServiceServiceStatusConstraint());
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            if ($object->isInitialized('runningTasks') && null !== $object->getRunningTasks()) {
+                $data['RunningTasks'] = $object->getRunningTasks();
+            }
+            if ($object->isInitialized('desiredTasks') && null !== $object->getDesiredTasks()) {
+                $data['DesiredTasks'] = $object->getDesiredTasks();
+            }
+            if ($object->isInitialized('completedTasks') && null !== $object->getCompletedTasks()) {
+                $data['CompletedTasks'] = $object->getCompletedTasks();
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\ServiceServiceStatusConstraint());
+            }
+            return $data;
         }
-        return $data;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('Docker\\Api\\Model\\ServiceServiceStatus' => false);
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Docker\\Api\\Model\\ServiceServiceStatus' => false];
+        }
     }
 }

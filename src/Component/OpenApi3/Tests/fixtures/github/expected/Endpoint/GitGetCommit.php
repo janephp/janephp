@@ -49,15 +49,15 @@ class GitGetCommit extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{commit_sha}'), array($this->owner, $this->repo, $this->commit_sha), '/repos/{owner}/{repo}/git/commits/{commit_sha}');
+        return str_replace(['{owner}', '{repo}', '{commit_sha}'], [$this->owner, $this->repo, $this->commit_sha], '/repos/{owner}/{repo}/git/commits/{commit_sha}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -79,6 +79,6 @@ class GitGetCommit extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

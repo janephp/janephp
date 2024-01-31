@@ -11,7 +11,7 @@ class TestNullableQueryParameters extends \Jane\Component\OpenApi3\Tests\Expecte
      *     @var int $testNullableInteger 
      * }
      */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -26,15 +26,15 @@ class TestNullableQueryParameters extends \Jane\Component\OpenApi3\Tests\Expecte
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('testNullableInteger'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('testNullableInteger', array('int', 'null'));
+        $optionsResolver->setDefined(['testNullableInteger']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('testNullableInteger', ['int', 'null']);
         return $optionsResolver;
     }
     /**
@@ -53,6 +53,6 @@ class TestNullableQueryParameters extends \Jane\Component\OpenApi3\Tests\Expecte
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

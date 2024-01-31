@@ -16,7 +16,7 @@ class CustomReportParameters extends \CreditSafe\API\Runtime\Client\BaseEndpoint
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(string $country, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(string $country, array $queryParameters = [], array $headerParameters = [])
     {
         $this->country = $country;
         $this->queryParameters = $queryParameters;
@@ -29,32 +29,32 @@ class CustomReportParameters extends \CreditSafe\API\Runtime\Client\BaseEndpoint
     }
     public function getUri() : string
     {
-        return str_replace(array('{country}'), array($this->country), '/reportcustomdata/{country}');
+        return str_replace(['{country}'], [$this->country], '/reportcustomdata/{country}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('template'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('template' => 'full'));
-        $optionsResolver->addAllowedTypes('template', array('string'));
+        $optionsResolver->setDefined(['template']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['template' => 'full']);
+        $optionsResolver->addAllowedTypes('template', ['string']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('Authorization'));
-        $optionsResolver->setRequired(array('Authorization'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('Authorization', array('string'));
+        $optionsResolver->setDefined(['Authorization']);
+        $optionsResolver->setRequired(['Authorization']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('Authorization', ['string']);
         return $optionsResolver;
     }
     /**
@@ -89,6 +89,6 @@ class CustomReportParameters extends \CreditSafe\API\Runtime\Client\BaseEndpoint
     }
     public function getAuthenticationScopes() : array
     {
-        return array('bearerAuth');
+        return ['bearerAuth'];
     }
 }

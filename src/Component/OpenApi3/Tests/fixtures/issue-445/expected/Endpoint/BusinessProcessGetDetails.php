@@ -21,15 +21,15 @@ class BusinessProcessGetDetails extends \PicturePark\API\Runtime\Client\BaseEndp
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/v1/BusinessProcesses/{id}/details');
+        return str_replace(['{id}'], [$this->id], '/v1/BusinessProcesses/{id}/details');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -75,6 +75,6 @@ class BusinessProcessGetDetails extends \PicturePark\API\Runtime\Client\BaseEndp
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

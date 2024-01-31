@@ -12,118 +12,231 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class SwarmSpecNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class SwarmSpecNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Docker\\Api\\Model\\SwarmSpec';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\SwarmSpec';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Docker\\Api\\Model\\SwarmSpec';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\SwarmSpec';
         }
-        $object = new \Docker\Api\Model\SwarmSpec();
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Docker\Api\Validator\SwarmSpecConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Docker\Api\Model\SwarmSpec();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\SwarmSpecConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('Name', $data)) {
+                $object->setName($data['Name']);
+            }
+            if (\array_key_exists('Labels', $data)) {
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['Labels'] as $key => $value) {
+                    $values[$key] = $value;
+                }
+                $object->setLabels($values);
+            }
+            if (\array_key_exists('Orchestration', $data) && $data['Orchestration'] !== null) {
+                $object->setOrchestration($this->denormalizer->denormalize($data['Orchestration'], 'Docker\\Api\\Model\\SwarmSpecOrchestration', 'json', $context));
+            }
+            elseif (\array_key_exists('Orchestration', $data) && $data['Orchestration'] === null) {
+                $object->setOrchestration(null);
+            }
+            if (\array_key_exists('Raft', $data)) {
+                $object->setRaft($this->denormalizer->denormalize($data['Raft'], 'Docker\\Api\\Model\\SwarmSpecRaft', 'json', $context));
+            }
+            if (\array_key_exists('Dispatcher', $data) && $data['Dispatcher'] !== null) {
+                $object->setDispatcher($this->denormalizer->denormalize($data['Dispatcher'], 'Docker\\Api\\Model\\SwarmSpecDispatcher', 'json', $context));
+            }
+            elseif (\array_key_exists('Dispatcher', $data) && $data['Dispatcher'] === null) {
+                $object->setDispatcher(null);
+            }
+            if (\array_key_exists('CAConfig', $data) && $data['CAConfig'] !== null) {
+                $object->setCAConfig($this->denormalizer->denormalize($data['CAConfig'], 'Docker\\Api\\Model\\SwarmSpecCAConfig', 'json', $context));
+            }
+            elseif (\array_key_exists('CAConfig', $data) && $data['CAConfig'] === null) {
+                $object->setCAConfig(null);
+            }
+            if (\array_key_exists('EncryptionConfig', $data)) {
+                $object->setEncryptionConfig($this->denormalizer->denormalize($data['EncryptionConfig'], 'Docker\\Api\\Model\\SwarmSpecEncryptionConfig', 'json', $context));
+            }
+            if (\array_key_exists('TaskDefaults', $data)) {
+                $object->setTaskDefaults($this->denormalizer->denormalize($data['TaskDefaults'], 'Docker\\Api\\Model\\SwarmSpecTaskDefaults', 'json', $context));
+            }
             return $object;
         }
-        if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
-        }
-        if (\array_key_exists('Labels', $data)) {
-            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data['Labels'] as $key => $value) {
-                $values[$key] = $value;
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('name') && null !== $object->getName()) {
+                $data['Name'] = $object->getName();
             }
-            $object->setLabels($values);
-        }
-        if (\array_key_exists('Orchestration', $data) && $data['Orchestration'] !== null) {
-            $object->setOrchestration($this->denormalizer->denormalize($data['Orchestration'], 'Docker\\Api\\Model\\SwarmSpecOrchestration', 'json', $context));
-        }
-        elseif (\array_key_exists('Orchestration', $data) && $data['Orchestration'] === null) {
-            $object->setOrchestration(null);
-        }
-        if (\array_key_exists('Raft', $data)) {
-            $object->setRaft($this->denormalizer->denormalize($data['Raft'], 'Docker\\Api\\Model\\SwarmSpecRaft', 'json', $context));
-        }
-        if (\array_key_exists('Dispatcher', $data) && $data['Dispatcher'] !== null) {
-            $object->setDispatcher($this->denormalizer->denormalize($data['Dispatcher'], 'Docker\\Api\\Model\\SwarmSpecDispatcher', 'json', $context));
-        }
-        elseif (\array_key_exists('Dispatcher', $data) && $data['Dispatcher'] === null) {
-            $object->setDispatcher(null);
-        }
-        if (\array_key_exists('CAConfig', $data) && $data['CAConfig'] !== null) {
-            $object->setCAConfig($this->denormalizer->denormalize($data['CAConfig'], 'Docker\\Api\\Model\\SwarmSpecCAConfig', 'json', $context));
-        }
-        elseif (\array_key_exists('CAConfig', $data) && $data['CAConfig'] === null) {
-            $object->setCAConfig(null);
-        }
-        if (\array_key_exists('EncryptionConfig', $data)) {
-            $object->setEncryptionConfig($this->denormalizer->denormalize($data['EncryptionConfig'], 'Docker\\Api\\Model\\SwarmSpecEncryptionConfig', 'json', $context));
-        }
-        if (\array_key_exists('TaskDefaults', $data)) {
-            $object->setTaskDefaults($this->denormalizer->denormalize($data['TaskDefaults'], 'Docker\\Api\\Model\\SwarmSpecTaskDefaults', 'json', $context));
-        }
-        return $object;
-    }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
-    {
-        $data = array();
-        if ($object->isInitialized('name') && null !== $object->getName()) {
-            $data['Name'] = $object->getName();
-        }
-        if ($object->isInitialized('labels') && null !== $object->getLabels()) {
-            $values = array();
-            foreach ($object->getLabels() as $key => $value) {
-                $values[$key] = $value;
+            if ($object->isInitialized('labels') && null !== $object->getLabels()) {
+                $values = [];
+                foreach ($object->getLabels() as $key => $value) {
+                    $values[$key] = $value;
+                }
+                $data['Labels'] = $values;
             }
-            $data['Labels'] = $values;
+            if ($object->isInitialized('orchestration') && null !== $object->getOrchestration()) {
+                $data['Orchestration'] = $this->normalizer->normalize($object->getOrchestration(), 'json', $context);
+            }
+            if ($object->isInitialized('raft') && null !== $object->getRaft()) {
+                $data['Raft'] = $this->normalizer->normalize($object->getRaft(), 'json', $context);
+            }
+            if ($object->isInitialized('dispatcher') && null !== $object->getDispatcher()) {
+                $data['Dispatcher'] = $this->normalizer->normalize($object->getDispatcher(), 'json', $context);
+            }
+            if ($object->isInitialized('cAConfig') && null !== $object->getCAConfig()) {
+                $data['CAConfig'] = $this->normalizer->normalize($object->getCAConfig(), 'json', $context);
+            }
+            if ($object->isInitialized('encryptionConfig') && null !== $object->getEncryptionConfig()) {
+                $data['EncryptionConfig'] = $this->normalizer->normalize($object->getEncryptionConfig(), 'json', $context);
+            }
+            if ($object->isInitialized('taskDefaults') && null !== $object->getTaskDefaults()) {
+                $data['TaskDefaults'] = $this->normalizer->normalize($object->getTaskDefaults(), 'json', $context);
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\SwarmSpecConstraint());
+            }
+            return $data;
         }
-        if ($object->isInitialized('orchestration') && null !== $object->getOrchestration()) {
-            $data['Orchestration'] = $this->normalizer->normalize($object->getOrchestration(), 'json', $context);
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Docker\\Api\\Model\\SwarmSpec' => false];
         }
-        if ($object->isInitialized('raft') && null !== $object->getRaft()) {
-            $data['Raft'] = $this->normalizer->normalize($object->getRaft(), 'json', $context);
-        }
-        if ($object->isInitialized('dispatcher') && null !== $object->getDispatcher()) {
-            $data['Dispatcher'] = $this->normalizer->normalize($object->getDispatcher(), 'json', $context);
-        }
-        if ($object->isInitialized('cAConfig') && null !== $object->getCAConfig()) {
-            $data['CAConfig'] = $this->normalizer->normalize($object->getCAConfig(), 'json', $context);
-        }
-        if ($object->isInitialized('encryptionConfig') && null !== $object->getEncryptionConfig()) {
-            $data['EncryptionConfig'] = $this->normalizer->normalize($object->getEncryptionConfig(), 'json', $context);
-        }
-        if ($object->isInitialized('taskDefaults') && null !== $object->getTaskDefaults()) {
-            $data['TaskDefaults'] = $this->normalizer->normalize($object->getTaskDefaults(), 'json', $context);
-        }
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Docker\Api\Validator\SwarmSpecConstraint());
-        }
-        return $data;
     }
-    public function getSupportedTypes(?string $format = null) : array
+} else {
+    class SwarmSpecNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return array('Docker\\Api\\Model\\SwarmSpec' => false);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Docker\\Api\\Model\\SwarmSpec';
+        }
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\SwarmSpec';
+        }
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Docker\Api\Model\SwarmSpec();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\SwarmSpecConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('Name', $data)) {
+                $object->setName($data['Name']);
+            }
+            if (\array_key_exists('Labels', $data)) {
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['Labels'] as $key => $value) {
+                    $values[$key] = $value;
+                }
+                $object->setLabels($values);
+            }
+            if (\array_key_exists('Orchestration', $data) && $data['Orchestration'] !== null) {
+                $object->setOrchestration($this->denormalizer->denormalize($data['Orchestration'], 'Docker\\Api\\Model\\SwarmSpecOrchestration', 'json', $context));
+            }
+            elseif (\array_key_exists('Orchestration', $data) && $data['Orchestration'] === null) {
+                $object->setOrchestration(null);
+            }
+            if (\array_key_exists('Raft', $data)) {
+                $object->setRaft($this->denormalizer->denormalize($data['Raft'], 'Docker\\Api\\Model\\SwarmSpecRaft', 'json', $context));
+            }
+            if (\array_key_exists('Dispatcher', $data) && $data['Dispatcher'] !== null) {
+                $object->setDispatcher($this->denormalizer->denormalize($data['Dispatcher'], 'Docker\\Api\\Model\\SwarmSpecDispatcher', 'json', $context));
+            }
+            elseif (\array_key_exists('Dispatcher', $data) && $data['Dispatcher'] === null) {
+                $object->setDispatcher(null);
+            }
+            if (\array_key_exists('CAConfig', $data) && $data['CAConfig'] !== null) {
+                $object->setCAConfig($this->denormalizer->denormalize($data['CAConfig'], 'Docker\\Api\\Model\\SwarmSpecCAConfig', 'json', $context));
+            }
+            elseif (\array_key_exists('CAConfig', $data) && $data['CAConfig'] === null) {
+                $object->setCAConfig(null);
+            }
+            if (\array_key_exists('EncryptionConfig', $data)) {
+                $object->setEncryptionConfig($this->denormalizer->denormalize($data['EncryptionConfig'], 'Docker\\Api\\Model\\SwarmSpecEncryptionConfig', 'json', $context));
+            }
+            if (\array_key_exists('TaskDefaults', $data)) {
+                $object->setTaskDefaults($this->denormalizer->denormalize($data['TaskDefaults'], 'Docker\\Api\\Model\\SwarmSpecTaskDefaults', 'json', $context));
+            }
+            return $object;
+        }
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            if ($object->isInitialized('name') && null !== $object->getName()) {
+                $data['Name'] = $object->getName();
+            }
+            if ($object->isInitialized('labels') && null !== $object->getLabels()) {
+                $values = [];
+                foreach ($object->getLabels() as $key => $value) {
+                    $values[$key] = $value;
+                }
+                $data['Labels'] = $values;
+            }
+            if ($object->isInitialized('orchestration') && null !== $object->getOrchestration()) {
+                $data['Orchestration'] = $this->normalizer->normalize($object->getOrchestration(), 'json', $context);
+            }
+            if ($object->isInitialized('raft') && null !== $object->getRaft()) {
+                $data['Raft'] = $this->normalizer->normalize($object->getRaft(), 'json', $context);
+            }
+            if ($object->isInitialized('dispatcher') && null !== $object->getDispatcher()) {
+                $data['Dispatcher'] = $this->normalizer->normalize($object->getDispatcher(), 'json', $context);
+            }
+            if ($object->isInitialized('cAConfig') && null !== $object->getCAConfig()) {
+                $data['CAConfig'] = $this->normalizer->normalize($object->getCAConfig(), 'json', $context);
+            }
+            if ($object->isInitialized('encryptionConfig') && null !== $object->getEncryptionConfig()) {
+                $data['EncryptionConfig'] = $this->normalizer->normalize($object->getEncryptionConfig(), 'json', $context);
+            }
+            if ($object->isInitialized('taskDefaults') && null !== $object->getTaskDefaults()) {
+                $data['TaskDefaults'] = $this->normalizer->normalize($object->getTaskDefaults(), 'json', $context);
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\SwarmSpecConstraint());
+            }
+            return $data;
+        }
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Docker\\Api\\Model\\SwarmSpec' => false];
+        }
     }
 }

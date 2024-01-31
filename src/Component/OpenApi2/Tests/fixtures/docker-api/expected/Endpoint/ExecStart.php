@@ -26,7 +26,7 @@ class ExecStart extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/exec/{id}/start');
+        return str_replace(['{id}'], [$this->id], '/exec/{id}/start');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
@@ -34,7 +34,7 @@ class ExecStart extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -60,6 +60,6 @@ class ExecStart extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

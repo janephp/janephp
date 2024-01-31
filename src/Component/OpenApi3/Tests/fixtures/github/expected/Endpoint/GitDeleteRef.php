@@ -27,15 +27,15 @@ class GitDeleteRef extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{ref}'), array($this->owner, $this->repo, $this->ref), '/repos/{owner}/{repo}/git/refs/{ref}');
+        return str_replace(['{owner}', '{repo}', '{ref}'], [$this->owner, $this->repo, $this->ref], '/repos/{owner}/{repo}/git/refs/{ref}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -57,6 +57,6 @@ class GitDeleteRef extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

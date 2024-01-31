@@ -12,70 +12,135 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class SystemVersionComponentsItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class SystemVersionComponentsItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Docker\\Api\\Model\\SystemVersionComponentsItem';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\SystemVersionComponentsItem';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Docker\\Api\\Model\\SystemVersionComponentsItem';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\SystemVersionComponentsItem';
         }
-        $object = new \Docker\Api\Model\SystemVersionComponentsItem();
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Docker\Api\Validator\SystemVersionComponentsItemConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Docker\Api\Model\SystemVersionComponentsItem();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\SystemVersionComponentsItemConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('Name', $data)) {
+                $object->setName($data['Name']);
+            }
+            if (\array_key_exists('Version', $data)) {
+                $object->setVersion($data['Version']);
+            }
+            if (\array_key_exists('Details', $data) && $data['Details'] !== null) {
+                $object->setDetails($data['Details']);
+            }
+            elseif (\array_key_exists('Details', $data) && $data['Details'] === null) {
+                $object->setDetails(null);
+            }
             return $object;
         }
-        if (\array_key_exists('Name', $data)) {
-            $object->setName($data['Name']);
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['Name'] = $object->getName();
+            $data['Version'] = $object->getVersion();
+            if ($object->isInitialized('details') && null !== $object->getDetails()) {
+                $data['Details'] = $object->getDetails();
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\SystemVersionComponentsItemConstraint());
+            }
+            return $data;
         }
-        if (\array_key_exists('Version', $data)) {
-            $object->setVersion($data['Version']);
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Docker\\Api\\Model\\SystemVersionComponentsItem' => false];
         }
-        if (\array_key_exists('Details', $data) && $data['Details'] !== null) {
-            $object->setDetails($data['Details']);
-        }
-        elseif (\array_key_exists('Details', $data) && $data['Details'] === null) {
-            $object->setDetails(null);
-        }
-        return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+} else {
+    class SystemVersionComponentsItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = array();
-        $data['Name'] = $object->getName();
-        $data['Version'] = $object->getVersion();
-        if ($object->isInitialized('details') && null !== $object->getDetails()) {
-            $data['Details'] = $object->getDetails();
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Docker\\Api\\Model\\SystemVersionComponentsItem';
         }
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Docker\Api\Validator\SystemVersionComponentsItemConstraint());
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\SystemVersionComponentsItem';
         }
-        return $data;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('Docker\\Api\\Model\\SystemVersionComponentsItem' => false);
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Docker\Api\Model\SystemVersionComponentsItem();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\SystemVersionComponentsItemConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('Name', $data)) {
+                $object->setName($data['Name']);
+            }
+            if (\array_key_exists('Version', $data)) {
+                $object->setVersion($data['Version']);
+            }
+            if (\array_key_exists('Details', $data) && $data['Details'] !== null) {
+                $object->setDetails($data['Details']);
+            }
+            elseif (\array_key_exists('Details', $data) && $data['Details'] === null) {
+                $object->setDetails(null);
+            }
+            return $object;
+        }
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $data['Name'] = $object->getName();
+            $data['Version'] = $object->getVersion();
+            if ($object->isInitialized('details') && null !== $object->getDetails()) {
+                $data['Details'] = $object->getDetails();
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\SystemVersionComponentsItemConstraint());
+            }
+            return $data;
+        }
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Docker\\Api\\Model\\SystemVersionComponentsItem' => false];
+        }
     }
 }

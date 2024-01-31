@@ -27,11 +27,11 @@ class ActionsRemoveSelectedRepoFromOrgSecret extends \Github\Runtime\Client\Base
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}', '{secret_name}', '{repository_id}'), array($this->org, $this->secret_name, $this->repository_id), '/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}');
+        return str_replace(['{org}', '{secret_name}', '{repository_id}'], [$this->org, $this->secret_name, $this->repository_id], '/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -53,6 +53,6 @@ class ActionsRemoveSelectedRepoFromOrgSecret extends \Github\Runtime\Client\Base
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

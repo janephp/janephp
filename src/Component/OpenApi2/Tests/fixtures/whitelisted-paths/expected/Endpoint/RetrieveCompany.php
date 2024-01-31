@@ -15,7 +15,7 @@ class RetrieveCompany extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseE
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -34,6 +34,6 @@ class RetrieveCompany extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseE
     }
     public function getAuthenticationScopes() : array
     {
-        return array('BearerAuth', 'AccountAuth');
+        return ['BearerAuth', 'AccountAuth'];
     }
 }

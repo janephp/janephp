@@ -15,7 +15,7 @@ class TestPostWithPathParameters extends \Jane\Component\OpenApi2\Tests\Expected
      *     @var string $testHeader 
      * }
      */
-    public function __construct(array $testBody, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(array $testBody, array $queryParameters = [], array $headerParameters = [])
     {
         $this->body = $testBody;
         $this->queryParameters = $queryParameters;
@@ -37,19 +37,19 @@ class TestPostWithPathParameters extends \Jane\Component\OpenApi2\Tests\Expected
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('testQuery'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('testQuery', array('string'));
+        $optionsResolver->setDefined(['testQuery']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('testQuery', ['string']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('testHeader'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('testHeader', array('string'));
+        $optionsResolver->setDefined(['testHeader']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('testHeader', ['string']);
         return $optionsResolver;
     }
     /**
@@ -65,6 +65,6 @@ class TestPostWithPathParameters extends \Jane\Component\OpenApi2\Tests\Expected
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

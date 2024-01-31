@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\JsonSchema\Model;
 class OAuthFlows extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var ImplicitOAuthFlow|null
@@ -46,6 +54,7 @@ class OAuthFlows extends \ArrayObject
      */
     public function setImplicit(?ImplicitOAuthFlow $implicit) : self
     {
+        $this->initialized['implicit'] = true;
         $this->implicit = $implicit;
         return $this;
     }
@@ -67,6 +76,7 @@ class OAuthFlows extends \ArrayObject
      */
     public function setPassword(?PasswordOAuthFlow $password) : self
     {
+        $this->initialized['password'] = true;
         $this->password = $password;
         return $this;
     }
@@ -88,6 +98,7 @@ class OAuthFlows extends \ArrayObject
      */
     public function setClientCredentials(?ClientCredentialsFlow $clientCredentials) : self
     {
+        $this->initialized['clientCredentials'] = true;
         $this->clientCredentials = $clientCredentials;
         return $this;
     }
@@ -109,6 +120,7 @@ class OAuthFlows extends \ArrayObject
      */
     public function setAuthorizationCode(?AuthorizationCodeOAuthFlow $authorizationCode) : self
     {
+        $this->initialized['authorizationCode'] = true;
         $this->authorizationCode = $authorizationCode;
         return $this;
     }

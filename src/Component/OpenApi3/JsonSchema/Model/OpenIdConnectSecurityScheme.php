@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\JsonSchema\Model;
 class OpenIdConnectSecurityScheme extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -40,6 +48,7 @@ class OpenIdConnectSecurityScheme extends \ArrayObject
      */
     public function setType(?string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -61,6 +70,7 @@ class OpenIdConnectSecurityScheme extends \ArrayObject
      */
     public function setOpenIdConnectUrl(?string $openIdConnectUrl) : self
     {
+        $this->initialized['openIdConnectUrl'] = true;
         $this->openIdConnectUrl = $openIdConnectUrl;
         return $this;
     }
@@ -82,6 +92,7 @@ class OpenIdConnectSecurityScheme extends \ArrayObject
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }

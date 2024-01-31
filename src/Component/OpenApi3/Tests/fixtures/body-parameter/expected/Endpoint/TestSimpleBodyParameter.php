@@ -25,9 +25,9 @@ class TestSimpleBodyParameter extends \Jane\Component\OpenApi3\Tests\Expected\Ru
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if (is_string($this->body) or is_resource($this->body) or $this->body instanceof \Psr\Http\Message\StreamInterface) {
-            return array(array('Content-Type' => array('text/plain')), $this->body);
+            return [['Content-Type' => ['text/plain']], $this->body];
         }
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -45,6 +45,6 @@ class TestSimpleBodyParameter extends \Jane\Component\OpenApi3\Tests\Expected\Ru
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

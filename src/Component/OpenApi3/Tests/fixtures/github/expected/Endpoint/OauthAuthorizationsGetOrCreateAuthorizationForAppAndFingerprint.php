@@ -32,18 +32,18 @@ class OauthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint extends \G
     }
     public function getUri() : string
     {
-        return str_replace(array('{client_id}', '{fingerprint}'), array($this->client_id, $this->fingerprint), '/authorizations/clients/{client_id}/{fingerprint}');
+        return str_replace(['{client_id}', '{fingerprint}'], [$this->client_id, $this->fingerprint], '/authorizations/clients/{client_id}/{fingerprint}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\AuthorizationsClientsClientIdFingerprintPutBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -68,6 +68,6 @@ class OauthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint extends \G
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

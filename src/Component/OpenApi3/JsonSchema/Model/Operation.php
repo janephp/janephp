@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\JsonSchema\Model;
 class Operation extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string[]|null
@@ -55,7 +63,7 @@ class Operation extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[][]|Reference[]|null
+     * @var array<string, mixed[]|Reference>|null
      */
     protected $callbacks;
     /**
@@ -67,7 +75,7 @@ class Operation extends \ArrayObject
     /**
      * 
      *
-     * @var string[][][]|null
+     * @var array<string, string[]>[]|null
      */
     protected $security;
     /**
@@ -94,6 +102,7 @@ class Operation extends \ArrayObject
      */
     public function setTags(?array $tags) : self
     {
+        $this->initialized['tags'] = true;
         $this->tags = $tags;
         return $this;
     }
@@ -115,6 +124,7 @@ class Operation extends \ArrayObject
      */
     public function setSummary(?string $summary) : self
     {
+        $this->initialized['summary'] = true;
         $this->summary = $summary;
         return $this;
     }
@@ -136,6 +146,7 @@ class Operation extends \ArrayObject
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -157,6 +168,7 @@ class Operation extends \ArrayObject
      */
     public function setExternalDocs(?ExternalDocumentation $externalDocs) : self
     {
+        $this->initialized['externalDocs'] = true;
         $this->externalDocs = $externalDocs;
         return $this;
     }
@@ -178,6 +190,7 @@ class Operation extends \ArrayObject
      */
     public function setOperationId(?string $operationId) : self
     {
+        $this->initialized['operationId'] = true;
         $this->operationId = $operationId;
         return $this;
     }
@@ -199,6 +212,7 @@ class Operation extends \ArrayObject
      */
     public function setParameters(?array $parameters) : self
     {
+        $this->initialized['parameters'] = true;
         $this->parameters = $parameters;
         return $this;
     }
@@ -220,6 +234,7 @@ class Operation extends \ArrayObject
      */
     public function setRequestBody($requestBody) : self
     {
+        $this->initialized['requestBody'] = true;
         $this->requestBody = $requestBody;
         return $this;
     }
@@ -241,13 +256,14 @@ class Operation extends \ArrayObject
      */
     public function setResponses(?Responses $responses) : self
     {
+        $this->initialized['responses'] = true;
         $this->responses = $responses;
         return $this;
     }
     /**
      * 
      *
-     * @return mixed[][]|Reference[]|null
+     * @return array<string, mixed[]|Reference>|null
      */
     public function getCallbacks() : ?iterable
     {
@@ -256,12 +272,13 @@ class Operation extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[][]|Reference[]|null $callbacks
+     * @param array<string, mixed[]|Reference>|null $callbacks
      *
      * @return self
      */
     public function setCallbacks(?iterable $callbacks) : self
     {
+        $this->initialized['callbacks'] = true;
         $this->callbacks = $callbacks;
         return $this;
     }
@@ -283,13 +300,14 @@ class Operation extends \ArrayObject
      */
     public function setDeprecated(?bool $deprecated) : self
     {
+        $this->initialized['deprecated'] = true;
         $this->deprecated = $deprecated;
         return $this;
     }
     /**
      * 
      *
-     * @return string[][][]|null
+     * @return array<string, string[]>[]|null
      */
     public function getSecurity() : ?array
     {
@@ -298,12 +316,13 @@ class Operation extends \ArrayObject
     /**
      * 
      *
-     * @param string[][][]|null $security
+     * @param array<string, string[]>[]|null $security
      *
      * @return self
      */
     public function setSecurity(?array $security) : self
     {
+        $this->initialized['security'] = true;
         $this->security = $security;
         return $this;
     }
@@ -325,6 +344,7 @@ class Operation extends \ArrayObject
      */
     public function setServers(?array $servers) : self
     {
+        $this->initialized['servers'] = true;
         $this->servers = $servers;
         return $this;
     }

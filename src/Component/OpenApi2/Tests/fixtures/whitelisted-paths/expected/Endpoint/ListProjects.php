@@ -17,7 +17,7 @@ class ListProjects extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseEndp
     *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
     * }
     */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -32,19 +32,19 @@ class ListProjects extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseEndp
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('is_active', 'client_id', 'updated_since', 'page', 'per_page'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('is_active', array('bool'));
-        $optionsResolver->addAllowedTypes('client_id', array('int'));
-        $optionsResolver->addAllowedTypes('updated_since', array('string'));
-        $optionsResolver->addAllowedTypes('page', array('int'));
-        $optionsResolver->addAllowedTypes('per_page', array('int'));
+        $optionsResolver->setDefined(['is_active', 'client_id', 'updated_since', 'page', 'per_page']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('is_active', ['bool']);
+        $optionsResolver->addAllowedTypes('client_id', ['int']);
+        $optionsResolver->addAllowedTypes('updated_since', ['string']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
+        $optionsResolver->addAllowedTypes('per_page', ['int']);
         return $optionsResolver;
     }
     /**
@@ -64,6 +64,6 @@ class ListProjects extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseEndp
     }
     public function getAuthenticationScopes() : array
     {
-        return array('BearerAuth', 'AccountAuth');
+        return ['BearerAuth', 'AccountAuth'];
     }
 }

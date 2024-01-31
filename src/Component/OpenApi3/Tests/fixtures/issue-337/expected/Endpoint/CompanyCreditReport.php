@@ -19,7 +19,7 @@ class CompanyCreditReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint im
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(string $id, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(string $id, array $queryParameters = [], array $headerParameters = [])
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;
@@ -32,35 +32,35 @@ class CompanyCreditReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint im
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/companies/{id}');
+        return str_replace(['{id}'], [$this->id], '/companies/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('language', 'template', 'customData', 'callRef'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('language' => 'en', 'template' => 'full'));
-        $optionsResolver->addAllowedTypes('language', array('string'));
-        $optionsResolver->addAllowedTypes('template', array('string'));
-        $optionsResolver->addAllowedTypes('customData', array('string'));
-        $optionsResolver->addAllowedTypes('callRef', array('string'));
+        $optionsResolver->setDefined(['language', 'template', 'customData', 'callRef']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['language' => 'en', 'template' => 'full']);
+        $optionsResolver->addAllowedTypes('language', ['string']);
+        $optionsResolver->addAllowedTypes('template', ['string']);
+        $optionsResolver->addAllowedTypes('customData', ['string']);
+        $optionsResolver->addAllowedTypes('callRef', ['string']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('Authorization'));
-        $optionsResolver->setRequired(array('Authorization'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('Authorization', array('string'));
+        $optionsResolver->setDefined(['Authorization']);
+        $optionsResolver->setRequired(['Authorization']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('Authorization', ['string']);
         return $optionsResolver;
     }
     /**
@@ -91,6 +91,6 @@ class CompanyCreditReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint im
     }
     public function getAuthenticationScopes() : array
     {
-        return array('bearerAuth');
+        return ['bearerAuth'];
     }
 }

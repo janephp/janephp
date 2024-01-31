@@ -12,104 +12,203 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class NodeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class NodeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Docker\\Api\\Model\\Node';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\Node';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Docker\\Api\\Model\\Node';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\Node';
         }
-        $object = new \Docker\Api\Model\Node();
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Docker\Api\Validator\NodeConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Docker\Api\Model\Node();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\NodeConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('ID', $data)) {
+                $object->setID($data['ID']);
+            }
+            if (\array_key_exists('Version', $data)) {
+                $object->setVersion($this->denormalizer->denormalize($data['Version'], 'Docker\\Api\\Model\\ObjectVersion', 'json', $context));
+            }
+            if (\array_key_exists('CreatedAt', $data)) {
+                $object->setCreatedAt($data['CreatedAt']);
+            }
+            if (\array_key_exists('UpdatedAt', $data)) {
+                $object->setUpdatedAt($data['UpdatedAt']);
+            }
+            if (\array_key_exists('Spec', $data)) {
+                $object->setSpec($this->denormalizer->denormalize($data['Spec'], 'Docker\\Api\\Model\\NodeSpec', 'json', $context));
+            }
+            if (\array_key_exists('Description', $data)) {
+                $object->setDescription($this->denormalizer->denormalize($data['Description'], 'Docker\\Api\\Model\\NodeDescription', 'json', $context));
+            }
+            if (\array_key_exists('Status', $data)) {
+                $object->setStatus($this->denormalizer->denormalize($data['Status'], 'Docker\\Api\\Model\\NodeStatus', 'json', $context));
+            }
+            if (\array_key_exists('ManagerStatus', $data) && $data['ManagerStatus'] !== null) {
+                $object->setManagerStatus($this->denormalizer->denormalize($data['ManagerStatus'], 'Docker\\Api\\Model\\ManagerStatus', 'json', $context));
+            }
+            elseif (\array_key_exists('ManagerStatus', $data) && $data['ManagerStatus'] === null) {
+                $object->setManagerStatus(null);
+            }
             return $object;
         }
-        if (\array_key_exists('ID', $data)) {
-            $object->setID($data['ID']);
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('iD') && null !== $object->getID()) {
+                $data['ID'] = $object->getID();
+            }
+            if ($object->isInitialized('version') && null !== $object->getVersion()) {
+                $data['Version'] = $this->normalizer->normalize($object->getVersion(), 'json', $context);
+            }
+            if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
+                $data['CreatedAt'] = $object->getCreatedAt();
+            }
+            if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
+                $data['UpdatedAt'] = $object->getUpdatedAt();
+            }
+            if ($object->isInitialized('spec') && null !== $object->getSpec()) {
+                $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
+            }
+            if ($object->isInitialized('description') && null !== $object->getDescription()) {
+                $data['Description'] = $this->normalizer->normalize($object->getDescription(), 'json', $context);
+            }
+            if ($object->isInitialized('status') && null !== $object->getStatus()) {
+                $data['Status'] = $this->normalizer->normalize($object->getStatus(), 'json', $context);
+            }
+            if ($object->isInitialized('managerStatus') && null !== $object->getManagerStatus()) {
+                $data['ManagerStatus'] = $this->normalizer->normalize($object->getManagerStatus(), 'json', $context);
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\NodeConstraint());
+            }
+            return $data;
         }
-        if (\array_key_exists('Version', $data)) {
-            $object->setVersion($this->denormalizer->denormalize($data['Version'], 'Docker\\Api\\Model\\ObjectVersion', 'json', $context));
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Docker\\Api\\Model\\Node' => false];
         }
-        if (\array_key_exists('CreatedAt', $data)) {
-            $object->setCreatedAt($data['CreatedAt']);
-        }
-        if (\array_key_exists('UpdatedAt', $data)) {
-            $object->setUpdatedAt($data['UpdatedAt']);
-        }
-        if (\array_key_exists('Spec', $data)) {
-            $object->setSpec($this->denormalizer->denormalize($data['Spec'], 'Docker\\Api\\Model\\NodeSpec', 'json', $context));
-        }
-        if (\array_key_exists('Description', $data)) {
-            $object->setDescription($this->denormalizer->denormalize($data['Description'], 'Docker\\Api\\Model\\NodeDescription', 'json', $context));
-        }
-        if (\array_key_exists('Status', $data)) {
-            $object->setStatus($this->denormalizer->denormalize($data['Status'], 'Docker\\Api\\Model\\NodeStatus', 'json', $context));
-        }
-        if (\array_key_exists('ManagerStatus', $data) && $data['ManagerStatus'] !== null) {
-            $object->setManagerStatus($this->denormalizer->denormalize($data['ManagerStatus'], 'Docker\\Api\\Model\\ManagerStatus', 'json', $context));
-        }
-        elseif (\array_key_exists('ManagerStatus', $data) && $data['ManagerStatus'] === null) {
-            $object->setManagerStatus(null);
-        }
-        return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+} else {
+    class NodeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = array();
-        if ($object->isInitialized('iD') && null !== $object->getID()) {
-            $data['ID'] = $object->getID();
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Docker\\Api\\Model\\Node';
         }
-        if ($object->isInitialized('version') && null !== $object->getVersion()) {
-            $data['Version'] = $this->normalizer->normalize($object->getVersion(), 'json', $context);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Docker\\Api\\Model\\Node';
         }
-        if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
-            $data['CreatedAt'] = $object->getCreatedAt();
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Docker\Api\Model\Node();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\NodeConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('ID', $data)) {
+                $object->setID($data['ID']);
+            }
+            if (\array_key_exists('Version', $data)) {
+                $object->setVersion($this->denormalizer->denormalize($data['Version'], 'Docker\\Api\\Model\\ObjectVersion', 'json', $context));
+            }
+            if (\array_key_exists('CreatedAt', $data)) {
+                $object->setCreatedAt($data['CreatedAt']);
+            }
+            if (\array_key_exists('UpdatedAt', $data)) {
+                $object->setUpdatedAt($data['UpdatedAt']);
+            }
+            if (\array_key_exists('Spec', $data)) {
+                $object->setSpec($this->denormalizer->denormalize($data['Spec'], 'Docker\\Api\\Model\\NodeSpec', 'json', $context));
+            }
+            if (\array_key_exists('Description', $data)) {
+                $object->setDescription($this->denormalizer->denormalize($data['Description'], 'Docker\\Api\\Model\\NodeDescription', 'json', $context));
+            }
+            if (\array_key_exists('Status', $data)) {
+                $object->setStatus($this->denormalizer->denormalize($data['Status'], 'Docker\\Api\\Model\\NodeStatus', 'json', $context));
+            }
+            if (\array_key_exists('ManagerStatus', $data) && $data['ManagerStatus'] !== null) {
+                $object->setManagerStatus($this->denormalizer->denormalize($data['ManagerStatus'], 'Docker\\Api\\Model\\ManagerStatus', 'json', $context));
+            }
+            elseif (\array_key_exists('ManagerStatus', $data) && $data['ManagerStatus'] === null) {
+                $object->setManagerStatus(null);
+            }
+            return $object;
         }
-        if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
-            $data['UpdatedAt'] = $object->getUpdatedAt();
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            if ($object->isInitialized('iD') && null !== $object->getID()) {
+                $data['ID'] = $object->getID();
+            }
+            if ($object->isInitialized('version') && null !== $object->getVersion()) {
+                $data['Version'] = $this->normalizer->normalize($object->getVersion(), 'json', $context);
+            }
+            if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
+                $data['CreatedAt'] = $object->getCreatedAt();
+            }
+            if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
+                $data['UpdatedAt'] = $object->getUpdatedAt();
+            }
+            if ($object->isInitialized('spec') && null !== $object->getSpec()) {
+                $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
+            }
+            if ($object->isInitialized('description') && null !== $object->getDescription()) {
+                $data['Description'] = $this->normalizer->normalize($object->getDescription(), 'json', $context);
+            }
+            if ($object->isInitialized('status') && null !== $object->getStatus()) {
+                $data['Status'] = $this->normalizer->normalize($object->getStatus(), 'json', $context);
+            }
+            if ($object->isInitialized('managerStatus') && null !== $object->getManagerStatus()) {
+                $data['ManagerStatus'] = $this->normalizer->normalize($object->getManagerStatus(), 'json', $context);
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Docker\Api\Validator\NodeConstraint());
+            }
+            return $data;
         }
-        if ($object->isInitialized('spec') && null !== $object->getSpec()) {
-            $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Docker\\Api\\Model\\Node' => false];
         }
-        if ($object->isInitialized('description') && null !== $object->getDescription()) {
-            $data['Description'] = $this->normalizer->normalize($object->getDescription(), 'json', $context);
-        }
-        if ($object->isInitialized('status') && null !== $object->getStatus()) {
-            $data['Status'] = $this->normalizer->normalize($object->getStatus(), 'json', $context);
-        }
-        if ($object->isInitialized('managerStatus') && null !== $object->getManagerStatus()) {
-            $data['ManagerStatus'] = $this->normalizer->normalize($object->getManagerStatus(), 'json', $context);
-        }
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Docker\Api\Validator\NodeConstraint());
-        }
-        return $data;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('Docker\\Api\\Model\\Node' => false);
     }
 }

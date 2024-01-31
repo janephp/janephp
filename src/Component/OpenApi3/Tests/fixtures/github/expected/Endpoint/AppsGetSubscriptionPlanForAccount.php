@@ -23,15 +23,15 @@ class AppsGetSubscriptionPlanForAccount extends \Github\Runtime\Client\BaseEndpo
     }
     public function getUri() : string
     {
-        return str_replace(array('{account_id}'), array($this->account_id), '/marketplace_listing/accounts/{account_id}');
+        return str_replace(['{account_id}'], [$this->account_id], '/marketplace_listing/accounts/{account_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -57,6 +57,6 @@ class AppsGetSubscriptionPlanForAccount extends \Github\Runtime\Client\BaseEndpo
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

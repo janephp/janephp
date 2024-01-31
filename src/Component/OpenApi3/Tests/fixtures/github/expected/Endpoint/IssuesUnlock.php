@@ -27,15 +27,15 @@ class IssuesUnlock extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{issue_number}'), array($this->owner, $this->repo, $this->issue_number), '/repos/{owner}/{repo}/issues/{issue_number}/lock');
+        return str_replace(['{owner}', '{repo}', '{issue_number}'], [$this->owner, $this->repo, $this->issue_number], '/repos/{owner}/{repo}/issues/{issue_number}/lock');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -61,6 +61,6 @@ class IssuesUnlock extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

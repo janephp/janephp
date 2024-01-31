@@ -15,7 +15,7 @@ class ProjectsListCards extends \Github\Runtime\Client\BaseEndpoint implements \
      *     @var int $page Page number of the results to fetch.
      * }
      */
-    public function __construct(int $columnId, array $queryParameters = array())
+    public function __construct(int $columnId, array $queryParameters = [])
     {
         $this->column_id = $columnId;
         $this->queryParameters = $queryParameters;
@@ -27,25 +27,25 @@ class ProjectsListCards extends \Github\Runtime\Client\BaseEndpoint implements \
     }
     public function getUri() : string
     {
-        return str_replace(array('{column_id}'), array($this->column_id), '/projects/columns/{column_id}/cards');
+        return str_replace(['{column_id}'], [$this->column_id], '/projects/columns/{column_id}/cards');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('archived_state', 'per_page', 'page'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('archived_state' => 'not_archived', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->addAllowedTypes('archived_state', array('string'));
-        $optionsResolver->addAllowedTypes('per_page', array('int'));
-        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->setDefined(['archived_state', 'per_page', 'page']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['archived_state' => 'not_archived', 'per_page' => 30, 'page' => 1]);
+        $optionsResolver->addAllowedTypes('archived_state', ['string']);
+        $optionsResolver->addAllowedTypes('per_page', ['int']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
         return $optionsResolver;
     }
     /**
@@ -75,6 +75,6 @@ class ProjectsListCards extends \Github\Runtime\Client\BaseEndpoint implements \
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

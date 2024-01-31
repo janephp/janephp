@@ -18,18 +18,18 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, $context = []) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Components';
     }
-    public function supportsNormalization($data, $format = null, $context = []) : bool
+    public function supportsNormalization($data, $format = null, array $context = []) : bool
     {
         return $data instanceof \Jane\Component\OpenApi3\JsonSchema\Model\Components;
     }
     /**
      * @return mixed
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -42,7 +42,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             return $object;
         }
         if (\array_key_exists('schemas', $data) && $data['schemas'] !== null) {
-            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['schemas'] as $key => $value) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key) && isset($value)) {
                     $value_1 = $value;
@@ -62,7 +62,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setSchemas(null);
         }
         if (\array_key_exists('responses', $data) && $data['responses'] !== null) {
-            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['responses'] as $key_1 => $value_2) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_1) && isset($value_2)) {
                     $value_3 = $value_2;
@@ -82,7 +82,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setResponses(null);
         }
         if (\array_key_exists('parameters', $data) && $data['parameters'] !== null) {
-            $values_2 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['parameters'] as $key_2 => $value_4) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_2) && isset($value_4)) {
                     $value_5 = $value_4;
@@ -102,7 +102,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setParameters(null);
         }
         if (\array_key_exists('examples', $data) && $data['examples'] !== null) {
-            $values_3 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['examples'] as $key_3 => $value_6) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_3) && isset($value_6)) {
                     $value_7 = $value_6;
@@ -122,7 +122,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setExamples(null);
         }
         if (\array_key_exists('requestBodies', $data) && $data['requestBodies'] !== null) {
-            $values_4 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values_4 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['requestBodies'] as $key_4 => $value_8) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_4) && isset($value_8)) {
                     $value_9 = $value_8;
@@ -142,7 +142,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setRequestBodies(null);
         }
         if (\array_key_exists('headers', $data) && $data['headers'] !== null) {
-            $values_5 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['headers'] as $key_5 => $value_10) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_5) && isset($value_10)) {
                     $value_11 = $value_10;
@@ -162,7 +162,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setHeaders(null);
         }
         if (\array_key_exists('securitySchemes', $data) && $data['securitySchemes'] !== null) {
-            $values_6 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values_6 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['securitySchemes'] as $key_6 => $value_12) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_6) && isset($value_12)) {
                     $value_13 = $value_12;
@@ -188,7 +188,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setSecuritySchemes(null);
         }
         if (\array_key_exists('links', $data) && $data['links'] !== null) {
-            $values_7 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values_7 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['links'] as $key_7 => $value_14) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_7) && isset($value_14)) {
                     $value_15 = $value_14;
@@ -208,14 +208,14 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setLinks(null);
         }
         if (\array_key_exists('callbacks', $data) && $data['callbacks'] !== null) {
-            $values_8 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values_8 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['callbacks'] as $key_8 => $value_16) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_8) && isset($value_16)) {
                     $value_17 = $value_16;
                     if (is_array($value_16) and isset($value_16['$ref'])) {
                         $value_17 = $this->denormalizer->denormalize($value_16, 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Reference', 'json', $context);
                     } elseif (isset($value_16)) {
-                        $values_9 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+                        $values_9 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
                         foreach ($value_16 as $key_9 => $value_18) {
                             if (preg_match('/^x-/', (string) $key_9) && isset($value_18)) {
                                 $values_9[$key_9] = $value_18;
@@ -244,11 +244,11 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if (null !== $object->getSchemas()) {
-            $values = array();
+        $data = [];
+        if ($object->isInitialized('schemas') && null !== $object->getSchemas()) {
+            $values = [];
             foreach ($object->getSchemas() as $key => $value) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key) && !is_null($value)) {
                     $value_1 = $value;
@@ -263,8 +263,8 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $data['schemas'] = $values;
         }
-        if (null !== $object->getResponses()) {
-            $values_1 = array();
+        if ($object->isInitialized('responses') && null !== $object->getResponses()) {
+            $values_1 = [];
             foreach ($object->getResponses() as $key_1 => $value_2) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_1) && !is_null($value_2)) {
                     $value_3 = $value_2;
@@ -279,8 +279,8 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $data['responses'] = $values_1;
         }
-        if (null !== $object->getParameters()) {
-            $values_2 = array();
+        if ($object->isInitialized('parameters') && null !== $object->getParameters()) {
+            $values_2 = [];
             foreach ($object->getParameters() as $key_2 => $value_4) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_2) && !is_null($value_4)) {
                     $value_5 = $value_4;
@@ -295,8 +295,8 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $data['parameters'] = $values_2;
         }
-        if (null !== $object->getExamples()) {
-            $values_3 = array();
+        if ($object->isInitialized('examples') && null !== $object->getExamples()) {
+            $values_3 = [];
             foreach ($object->getExamples() as $key_3 => $value_6) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_3) && !is_null($value_6)) {
                     $value_7 = $value_6;
@@ -311,8 +311,8 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $data['examples'] = $values_3;
         }
-        if (null !== $object->getRequestBodies()) {
-            $values_4 = array();
+        if ($object->isInitialized('requestBodies') && null !== $object->getRequestBodies()) {
+            $values_4 = [];
             foreach ($object->getRequestBodies() as $key_4 => $value_8) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_4) && !is_null($value_8)) {
                     $value_9 = $value_8;
@@ -327,8 +327,8 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $data['requestBodies'] = $values_4;
         }
-        if (null !== $object->getHeaders()) {
-            $values_5 = array();
+        if ($object->isInitialized('headers') && null !== $object->getHeaders()) {
+            $values_5 = [];
             foreach ($object->getHeaders() as $key_5 => $value_10) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_5) && !is_null($value_10)) {
                     $value_11 = $value_10;
@@ -343,8 +343,8 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $data['headers'] = $values_5;
         }
-        if (null !== $object->getSecuritySchemes()) {
-            $values_6 = array();
+        if ($object->isInitialized('securitySchemes') && null !== $object->getSecuritySchemes()) {
+            $values_6 = [];
             foreach ($object->getSecuritySchemes() as $key_6 => $value_12) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_6) && !is_null($value_12)) {
                     $value_13 = $value_12;
@@ -365,8 +365,8 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $data['securitySchemes'] = $values_6;
         }
-        if (null !== $object->getLinks()) {
-            $values_7 = array();
+        if ($object->isInitialized('links') && null !== $object->getLinks()) {
+            $values_7 = [];
             foreach ($object->getLinks() as $key_7 => $value_14) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_7) && !is_null($value_14)) {
                     $value_15 = $value_14;
@@ -381,15 +381,15 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $data['links'] = $values_7;
         }
-        if (null !== $object->getCallbacks()) {
-            $values_8 = array();
+        if ($object->isInitialized('callbacks') && null !== $object->getCallbacks()) {
+            $values_8 = [];
             foreach ($object->getCallbacks() as $key_8 => $value_16) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_8) && !is_null($value_16)) {
                     $value_17 = $value_16;
                     if (is_object($value_16)) {
                         $value_17 = $this->normalizer->normalize($value_16, 'json', $context);
                     } elseif (!is_null($value_16)) {
-                        $values_9 = array();
+                        $values_9 = [];
                         foreach ($value_16 as $key_9 => $value_18) {
                             if (preg_match('/^x-/', (string) $key_9) && !is_null($value_18)) {
                                 $values_9[$key_9] = $value_18;
@@ -410,5 +410,9 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return ['Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Components' => false];
     }
 }

@@ -25,9 +25,9 @@ class TestFormParameters extends \Jane\Component\OpenApi3\Tests\Expected\Runtime
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\Model\TestFormPostBody) {
-            return array(array('Content-Type' => array('application/x-www-form-urlencoded')), http_build_query($serializer->normalize($this->body, 'json')));
+            return [['Content-Type' => ['application/x-www-form-urlencoded']], http_build_query($serializer->normalize($this->body, 'json'))];
         }
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -45,6 +45,6 @@ class TestFormParameters extends \Jane\Component\OpenApi3\Tests\Expected\Runtime
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

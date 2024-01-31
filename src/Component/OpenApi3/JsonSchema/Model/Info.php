@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\JsonSchema\Model;
 class Info extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -58,6 +66,7 @@ class Info extends \ArrayObject
      */
     public function setTitle(?string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -79,6 +88,7 @@ class Info extends \ArrayObject
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -100,6 +110,7 @@ class Info extends \ArrayObject
      */
     public function setTermsOfService(?string $termsOfService) : self
     {
+        $this->initialized['termsOfService'] = true;
         $this->termsOfService = $termsOfService;
         return $this;
     }
@@ -121,6 +132,7 @@ class Info extends \ArrayObject
      */
     public function setContact(?Contact $contact) : self
     {
+        $this->initialized['contact'] = true;
         $this->contact = $contact;
         return $this;
     }
@@ -142,6 +154,7 @@ class Info extends \ArrayObject
      */
     public function setLicense(?License $license) : self
     {
+        $this->initialized['license'] = true;
         $this->license = $license;
         return $this;
     }
@@ -163,6 +176,7 @@ class Info extends \ArrayObject
      */
     public function setVersion(?string $version) : self
     {
+        $this->initialized['version'] = true;
         $this->version = $version;
         return $this;
     }

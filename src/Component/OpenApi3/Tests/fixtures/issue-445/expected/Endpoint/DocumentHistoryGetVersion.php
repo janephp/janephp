@@ -27,15 +27,15 @@ class DocumentHistoryGetVersion extends \PicturePark\API\Runtime\Client\BaseEndp
     }
     public function getUri() : string
     {
-        return str_replace(array('{documentType}', '{documentId}', '{documentVersion}'), array($this->documentType, $this->documentId, $this->documentVersion), '/v1/history/{documentType}/{documentId}/{documentVersion}');
+        return str_replace(['{documentType}', '{documentId}', '{documentVersion}'], [$this->documentType, $this->documentId, $this->documentVersion], '/v1/history/{documentType}/{documentId}/{documentVersion}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -81,6 +81,6 @@ class DocumentHistoryGetVersion extends \PicturePark\API\Runtime\Client\BaseEndp
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

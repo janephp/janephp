@@ -25,7 +25,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\ApiPlatform\Demo\Model\BooksGetLdjsonResponse200|\ApiPlatform\Demo\Model\BooksGetHaljsonResponse200|\ApiPlatform\Demo\Model\BookBookRead[]|\Psr\Http\Message\ResponseInterface
      */
-    public function apiBooksGetCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiBooksGetCollection(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiBooksGetCollection($queryParameters, $accept), $fetch);
     }
@@ -40,7 +40,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\ApiPlatform\Demo\Model\BookJsonldBookRead|\ApiPlatform\Demo\Model\BookJsonhalBookRead|\ApiPlatform\Demo\Model\BookBookRead|\Psr\Http\Message\ResponseInterface
      */
-    public function apiBooksPost($requestBody, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiBooksPost($requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiBooksPost($requestBody, $accept), $fetch);
     }
@@ -60,7 +60,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\ApiPlatform\Demo\Model\BooksBookIdReviewsGetLdjsonResponse200|\ApiPlatform\Demo\Model\BooksBookIdReviewsGetHaljsonResponse200|\ApiPlatform\Demo\Model\ReviewReviewRead[]|\Psr\Http\Message\ResponseInterface
      */
-    public function apiBooksBookIdreviewsGetCollection(string $bookId, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiBooksBookIdreviewsGetCollection(string $bookId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiBooksBookIdreviewsGetCollection($bookId, $queryParameters, $accept), $fetch);
     }
@@ -87,7 +87,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\ApiPlatform\Demo\Model\BookJsonldBookRead|\ApiPlatform\Demo\Model\BookJsonhalBookRead|\ApiPlatform\Demo\Model\BookBookRead|\Psr\Http\Message\ResponseInterface
      */
-    public function apiBooksIdGet(string $id, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiBooksIdGet(string $id, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiBooksIdGet($id, $accept), $fetch);
     }
@@ -104,7 +104,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\ApiPlatform\Demo\Model\BookJsonldBookRead|\ApiPlatform\Demo\Model\BookJsonhalBookRead|\ApiPlatform\Demo\Model\BookBookRead|\Psr\Http\Message\ResponseInterface
      */
-    public function apiBooksIdPatch(string $id, \ApiPlatform\Demo\Model\Book $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiBooksIdPatch(string $id, \ApiPlatform\Demo\Model\Book $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiBooksIdPatch($id, $requestBody, $accept), $fetch);
     }
@@ -121,7 +121,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\ApiPlatform\Demo\Model\BookJsonldBookRead|\ApiPlatform\Demo\Model\BookJsonhalBookRead|\ApiPlatform\Demo\Model\BookBookRead|\Psr\Http\Message\ResponseInterface
      */
-    public function apiBooksIdPut(string $id, $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiBooksIdPut(string $id, $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiBooksIdPut($id, $requestBody, $accept), $fetch);
     }
@@ -138,7 +138,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function apiBooksIdgenerateCoverPut(string $id, $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiBooksIdgenerateCoverPut(string $id, $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiBooksIdgenerateCoverPut($id, $requestBody, $accept), $fetch);
     }
@@ -153,7 +153,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\ApiPlatform\Demo\Model\ParchmentsGetLdjsonResponse200|\ApiPlatform\Demo\Model\ParchmentsGetHaljsonResponse200|\ApiPlatform\Demo\Model\Parchment[]|\Psr\Http\Message\ResponseInterface
      */
-    public function apiParchmentsGetCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiParchmentsGetCollection(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiParchmentsGetCollection($queryParameters, $accept), $fetch);
     }
@@ -168,7 +168,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment|\Psr\Http\Message\ResponseInterface
      */
-    public function apiParchmentsPost($requestBody, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiParchmentsPost($requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiParchmentsPost($requestBody, $accept), $fetch);
     }
@@ -195,7 +195,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment|\Psr\Http\Message\ResponseInterface
      */
-    public function apiParchmentsIdGet(string $id, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiParchmentsIdGet(string $id, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiParchmentsIdGet($id, $accept), $fetch);
     }
@@ -212,7 +212,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment|\Psr\Http\Message\ResponseInterface
      */
-    public function apiParchmentsIdPatch(string $id, \ApiPlatform\Demo\Model\Parchment $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiParchmentsIdPatch(string $id, \ApiPlatform\Demo\Model\Parchment $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiParchmentsIdPatch($id, $requestBody, $accept), $fetch);
     }
@@ -229,7 +229,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment|\Psr\Http\Message\ResponseInterface
      */
-    public function apiParchmentsIdPut(string $id, $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiParchmentsIdPut(string $id, $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiParchmentsIdPut($id, $requestBody, $accept), $fetch);
     }
@@ -249,7 +249,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\ApiPlatform\Demo\Model\ReviewsGetLdjsonResponse200|\ApiPlatform\Demo\Model\ReviewsGetHaljsonResponse200|\ApiPlatform\Demo\Model\ReviewReviewRead[]|\Psr\Http\Message\ResponseInterface
      */
-    public function apiReviewsGetCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiReviewsGetCollection(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiReviewsGetCollection($queryParameters, $accept), $fetch);
     }
@@ -264,7 +264,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\ApiPlatform\Demo\Model\ReviewJsonldReviewRead|\ApiPlatform\Demo\Model\ReviewJsonhalReviewRead|\ApiPlatform\Demo\Model\ReviewReviewRead|\Psr\Http\Message\ResponseInterface
      */
-    public function apiReviewsPost($requestBody, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiReviewsPost($requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiReviewsPost($requestBody, $accept), $fetch);
     }
@@ -291,7 +291,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\ApiPlatform\Demo\Model\ReviewJsonldReviewRead|\ApiPlatform\Demo\Model\ReviewJsonhalReviewRead|\ApiPlatform\Demo\Model\ReviewReviewRead|\Psr\Http\Message\ResponseInterface
      */
-    public function apiReviewsIdGet(string $id, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiReviewsIdGet(string $id, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiReviewsIdGet($id, $accept), $fetch);
     }
@@ -308,7 +308,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\ApiPlatform\Demo\Model\ReviewJsonldReviewRead|\ApiPlatform\Demo\Model\ReviewJsonhalReviewRead|\ApiPlatform\Demo\Model\ReviewReviewRead|\Psr\Http\Message\ResponseInterface
      */
-    public function apiReviewsIdPatch(string $id, \ApiPlatform\Demo\Model\ReviewReviewWrite $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiReviewsIdPatch(string $id, \ApiPlatform\Demo\Model\ReviewReviewWrite $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiReviewsIdPatch($id, $requestBody, $accept), $fetch);
     }
@@ -325,7 +325,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\ApiPlatform\Demo\Model\ReviewJsonldReviewRead|\ApiPlatform\Demo\Model\ReviewJsonhalReviewRead|\ApiPlatform\Demo\Model\ReviewReviewRead|\Psr\Http\Message\ResponseInterface
      */
-    public function apiReviewsIdPut(string $id, $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiReviewsIdPut(string $id, $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiReviewsIdPut($id, $requestBody, $accept), $fetch);
     }
@@ -349,7 +349,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\ApiPlatform\Demo\Model\TopBooksGetLdjsonResponse200|\ApiPlatform\Demo\Model\TopBooksGetHaljsonResponse200|\ApiPlatform\Demo\Model\TopBook[]|\Psr\Http\Message\ResponseInterface
      */
-    public function apiTopBooksGetCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiTopBooksGetCollection(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiTopBooksGetCollection($queryParameters, $accept), $fetch);
     }
@@ -363,15 +363,15 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
      *
      * @return null|\ApiPlatform\Demo\Model\TopBookJsonld|\ApiPlatform\Demo\Model\TopBookJsonhal|\ApiPlatform\Demo\Model\TopBook|\Psr\Http\Message\ResponseInterface
      */
-    public function apiTopBooksIdGet(string $id, string $fetch = self::FETCH_OBJECT, array $accept = array())
+    public function apiTopBooksIdGet(string $id, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
         return $this->executeEndpoint(new \ApiPlatform\Demo\Endpoint\ApiTopBooksIdGet($id, $accept), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = array(), array $additionalNormalizers = array())
+    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = array();
+            $plugins = [];
             if (count($additionalPlugins) > 0) {
                 $plugins = array_merge($plugins, $additionalPlugins);
             }
@@ -379,11 +379,11 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = array(new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \ApiPlatform\Demo\Normalizer\JaneObjectNormalizer());
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \ApiPlatform\Demo\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(array('json_decode_associative' => true)))));
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true]))]);
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

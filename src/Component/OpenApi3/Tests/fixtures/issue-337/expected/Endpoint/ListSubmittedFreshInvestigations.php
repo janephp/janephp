@@ -27,7 +27,7 @@ class ListSubmittedFreshInvestigations extends \CreditSafe\API\Runtime\Client\Ba
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(array $queryParameters = [], array $headerParameters = [])
     {
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
@@ -43,41 +43,41 @@ class ListSubmittedFreshInvestigations extends \CreditSafe\API\Runtime\Client\Ba
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'transactionId', 'reportCreatedAfter', 'reportCreatedBefore', 'createdBefore', 'createdSince', 'lookUpOrderBy', 'companyDetailsCountry', 'companyDetailsName', 'searchCriteriaCountry', 'searchCriteriaName', 'sortBy', 'sortDir'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('page' => 0, 'pageSize' => 50));
-        $optionsResolver->addAllowedTypes('page', array('int'));
-        $optionsResolver->addAllowedTypes('pageSize', array('int'));
-        $optionsResolver->addAllowedTypes('transactionId', array('string'));
-        $optionsResolver->addAllowedTypes('reportCreatedAfter', array('string'));
-        $optionsResolver->addAllowedTypes('reportCreatedBefore', array('string'));
-        $optionsResolver->addAllowedTypes('createdBefore', array('string'));
-        $optionsResolver->addAllowedTypes('createdSince', array('string'));
-        $optionsResolver->addAllowedTypes('lookUpOrderBy', array('string'));
-        $optionsResolver->addAllowedTypes('companyDetailsCountry', array('string'));
-        $optionsResolver->addAllowedTypes('companyDetailsName', array('string'));
-        $optionsResolver->addAllowedTypes('searchCriteriaCountry', array('string'));
-        $optionsResolver->addAllowedTypes('searchCriteriaName', array('string'));
-        $optionsResolver->addAllowedTypes('sortBy', array('string'));
-        $optionsResolver->addAllowedTypes('sortDir', array('string'));
+        $optionsResolver->setDefined(['page', 'pageSize', 'transactionId', 'reportCreatedAfter', 'reportCreatedBefore', 'createdBefore', 'createdSince', 'lookUpOrderBy', 'companyDetailsCountry', 'companyDetailsName', 'searchCriteriaCountry', 'searchCriteriaName', 'sortBy', 'sortDir']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['page' => 0, 'pageSize' => 50]);
+        $optionsResolver->addAllowedTypes('page', ['int']);
+        $optionsResolver->addAllowedTypes('pageSize', ['int']);
+        $optionsResolver->addAllowedTypes('transactionId', ['string']);
+        $optionsResolver->addAllowedTypes('reportCreatedAfter', ['string']);
+        $optionsResolver->addAllowedTypes('reportCreatedBefore', ['string']);
+        $optionsResolver->addAllowedTypes('createdBefore', ['string']);
+        $optionsResolver->addAllowedTypes('createdSince', ['string']);
+        $optionsResolver->addAllowedTypes('lookUpOrderBy', ['string']);
+        $optionsResolver->addAllowedTypes('companyDetailsCountry', ['string']);
+        $optionsResolver->addAllowedTypes('companyDetailsName', ['string']);
+        $optionsResolver->addAllowedTypes('searchCriteriaCountry', ['string']);
+        $optionsResolver->addAllowedTypes('searchCriteriaName', ['string']);
+        $optionsResolver->addAllowedTypes('sortBy', ['string']);
+        $optionsResolver->addAllowedTypes('sortDir', ['string']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('Authorization'));
-        $optionsResolver->setRequired(array('Authorization'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('Authorization', array('string'));
+        $optionsResolver->setDefined(['Authorization']);
+        $optionsResolver->setRequired(['Authorization']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('Authorization', ['string']);
         return $optionsResolver;
     }
     /**
@@ -112,6 +112,6 @@ class ListSubmittedFreshInvestigations extends \CreditSafe\API\Runtime\Client\Ba
     }
     public function getAuthenticationScopes() : array
     {
-        return array('bearerAuth');
+        return ['bearerAuth'];
     }
 }

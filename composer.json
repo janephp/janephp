@@ -13,27 +13,27 @@
         }
     ],
     "require": {
-        "php": "^7.2 || ^8.0",
+        "php": "^8.1",
         "ext-json": "*",
         "doctrine/inflector": "^1.4 || ^2.0",
-        "league/uri": "^6.0 || ^7.0",
-        "nikic/php-parser": "^4.0",
-        "php-http/client-common": "^2.0",
-        "php-http/message-factory": "^1.0.2",
-        "php-http/multipart-stream-builder": "^1.0",
-        "php-http/discovery": "^1.11",
+        "league/uri": "^6.7.2 || ^7.4",
+        "nikic/php-parser": "^4.18",
+        "php-http/client-common": "^2.7",
+        "php-http/message-factory": "^1.1",
+        "php-http/multipart-stream-builder": "^1.3",
+        "php-http/discovery": "^1.19",
         "php-jsonpointer/php-jsonpointer": "^3.0 || ^4.0",
         "psr/http-client": "^1.0",
         "psr/http-factory": "^1.0",
-        "symfony/console": "^4.4 || ^5.0 || ^6.0",
-        "symfony/filesystem": "^4.4 || ^5.0 || ^6.0",
-        "symfony/options-resolver": "^4.4 || ^5.0 || ^6.0",
-        "symfony/property-info": "^5.3 || ^6.0",
-        "symfony/serializer": "^5.1 || ^6.0",
-        "symfony/string": "^5.0 || ^6.0",
-        "symfony/var-dumper": "^4.4 || ^5.0 || ^6.0",
-        "symfony/yaml": "~4.4.9 || ^5.0 || ^6.0",
-        "symfony/validator": "^5.1 || ^6.0"
+        "symfony/console": "^6.4 || ^7.0",
+        "symfony/filesystem": "^6.4 || ^7.0",
+        "symfony/options-resolver": "^6.4 || ^7.0",
+        "symfony/property-info": "^6.4 || ^7.0",
+        "symfony/serializer": "^6.4 || ^7.0",
+        "symfony/string": "^6.4 || ^7.0",
+        "symfony/var-dumper": "^6.4 || ^7.0",
+        "symfony/yaml": "^6.4 || ^7.0",
+        "symfony/validator": "^6.4 || ^7.0"
     },
     "replace": {
         "jane-php/json-schema": "self.version",
@@ -47,17 +47,18 @@
         "jane-php/open-api-runtime": "self.version"
     },
     "require-dev": {
-        "doctrine/annotations": "~1.0",
-        "jms/serializer": "^3.12",
-        "kriswallsmith/buzz": "^1.1",
-        "moneyphp/money": "^3.0",
-        "nyholm/psr7": "^1.3",
-        "phpbench/phpbench": "^1.1",
-        "phpdocumentor/reflection-docblock": "^3.0 || ^4.0 || ^5.0",
-        "phpunit/phpunit": "^8.0",
-        "symfony/framework-bundle": "^4.4 || ^5.0 || ^6.0",
-        "symfony/uid": "^5.2 || ^6.0"
+        "doctrine/annotations": "^1.14",
+        "jms/serializer": "^3.28",
+        "kriswallsmith/buzz": "^1.2",
+        "moneyphp/money": "^3.3",
+        "nyholm/psr7": "^1.8",
+        "phpbench/phpbench": "^1.2",
+        "phpdocumentor/reflection-docblock": "^3.3 || ^4.3 || ^5.3",
+        "phpunit/phpunit": "^8.5.23",
+        "symfony/framework-bundle": "^6.4 || ^7.0",
+        "symfony/uid": "^6.4  || ^7.0"
     },
+
     "suggest": {
         "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation",
         "phpdocumentor/reflection-docblock": "Allow to extract informations from PHP Doc blocks"

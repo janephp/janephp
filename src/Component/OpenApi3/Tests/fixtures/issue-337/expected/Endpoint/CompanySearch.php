@@ -36,7 +36,7 @@ class CompanySearch extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(array $queryParameters = [], array $headerParameters = [])
     {
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
@@ -52,50 +52,50 @@ class CompanySearch extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('countries', 'language', 'id', 'safeNo', 'regNo', 'vatNo', 'name', 'tradeName', 'acronym', 'exact', 'address', 'street', 'houseNo', 'city', 'postCode', 'province', 'phone', 'officeType', 'status', 'type', 'page', 'pageSize', 'callRef'));
-        $optionsResolver->setRequired(array('countries'));
-        $optionsResolver->setDefaults(array('language' => 'en'));
-        $optionsResolver->addAllowedTypes('countries', array('string'));
-        $optionsResolver->addAllowedTypes('language', array('string'));
-        $optionsResolver->addAllowedTypes('id', array('string'));
-        $optionsResolver->addAllowedTypes('safeNo', array('string'));
-        $optionsResolver->addAllowedTypes('regNo', array('string'));
-        $optionsResolver->addAllowedTypes('vatNo', array('string'));
-        $optionsResolver->addAllowedTypes('name', array('string'));
-        $optionsResolver->addAllowedTypes('tradeName', array('string'));
-        $optionsResolver->addAllowedTypes('acronym', array('string'));
-        $optionsResolver->addAllowedTypes('exact', array('bool'));
-        $optionsResolver->addAllowedTypes('address', array('string'));
-        $optionsResolver->addAllowedTypes('street', array('string'));
-        $optionsResolver->addAllowedTypes('houseNo', array('string'));
-        $optionsResolver->addAllowedTypes('city', array('string'));
-        $optionsResolver->addAllowedTypes('postCode', array('string'));
-        $optionsResolver->addAllowedTypes('province', array('string'));
-        $optionsResolver->addAllowedTypes('phone', array('string'));
-        $optionsResolver->addAllowedTypes('officeType', array('string'));
-        $optionsResolver->addAllowedTypes('status', array('string'));
-        $optionsResolver->addAllowedTypes('type', array('string'));
-        $optionsResolver->addAllowedTypes('page', array('int'));
-        $optionsResolver->addAllowedTypes('pageSize', array('int'));
-        $optionsResolver->addAllowedTypes('callRef', array('string'));
+        $optionsResolver->setDefined(['countries', 'language', 'id', 'safeNo', 'regNo', 'vatNo', 'name', 'tradeName', 'acronym', 'exact', 'address', 'street', 'houseNo', 'city', 'postCode', 'province', 'phone', 'officeType', 'status', 'type', 'page', 'pageSize', 'callRef']);
+        $optionsResolver->setRequired(['countries']);
+        $optionsResolver->setDefaults(['language' => 'en']);
+        $optionsResolver->addAllowedTypes('countries', ['string']);
+        $optionsResolver->addAllowedTypes('language', ['string']);
+        $optionsResolver->addAllowedTypes('id', ['string']);
+        $optionsResolver->addAllowedTypes('safeNo', ['string']);
+        $optionsResolver->addAllowedTypes('regNo', ['string']);
+        $optionsResolver->addAllowedTypes('vatNo', ['string']);
+        $optionsResolver->addAllowedTypes('name', ['string']);
+        $optionsResolver->addAllowedTypes('tradeName', ['string']);
+        $optionsResolver->addAllowedTypes('acronym', ['string']);
+        $optionsResolver->addAllowedTypes('exact', ['bool']);
+        $optionsResolver->addAllowedTypes('address', ['string']);
+        $optionsResolver->addAllowedTypes('street', ['string']);
+        $optionsResolver->addAllowedTypes('houseNo', ['string']);
+        $optionsResolver->addAllowedTypes('city', ['string']);
+        $optionsResolver->addAllowedTypes('postCode', ['string']);
+        $optionsResolver->addAllowedTypes('province', ['string']);
+        $optionsResolver->addAllowedTypes('phone', ['string']);
+        $optionsResolver->addAllowedTypes('officeType', ['string']);
+        $optionsResolver->addAllowedTypes('status', ['string']);
+        $optionsResolver->addAllowedTypes('type', ['string']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
+        $optionsResolver->addAllowedTypes('pageSize', ['int']);
+        $optionsResolver->addAllowedTypes('callRef', ['string']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('Authorization'));
-        $optionsResolver->setRequired(array('Authorization'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('Authorization', array('string'));
+        $optionsResolver->setDefined(['Authorization']);
+        $optionsResolver->setRequired(['Authorization']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('Authorization', ['string']);
         return $optionsResolver;
     }
     /**
@@ -126,6 +126,6 @@ class CompanySearch extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
     }
     public function getAuthenticationScopes() : array
     {
-        return array('bearerAuth');
+        return ['bearerAuth'];
     }
 }

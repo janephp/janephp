@@ -23,7 +23,7 @@ class CompanyComplianceSearch extends \CreditSafe\API\Runtime\Client\BaseEndpoin
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
      */
-    public function __construct(string $predefinedSearch, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(string $predefinedSearch, array $queryParameters = [], array $headerParameters = [])
     {
         $this->predefinedSearch = $predefinedSearch;
         $this->queryParameters = $queryParameters;
@@ -36,39 +36,39 @@ class CompanyComplianceSearch extends \CreditSafe\API\Runtime\Client\BaseEndpoin
     }
     public function getUri() : string
     {
-        return str_replace(array('{predefinedSearch}'), array($this->predefinedSearch), '/compliancetemp/companies/{predefinedSearch}');
+        return str_replace(['{predefinedSearch}'], [$this->predefinedSearch], '/compliancetemp/companies/{predefinedSearch}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('countries', 'name', 'street', 'houseNo', 'city', 'postCode', 'province', 'phoneNo'));
-        $optionsResolver->setRequired(array('name'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('countries', array('string'));
-        $optionsResolver->addAllowedTypes('name', array('string'));
-        $optionsResolver->addAllowedTypes('street', array('string'));
-        $optionsResolver->addAllowedTypes('houseNo', array('string'));
-        $optionsResolver->addAllowedTypes('city', array('string'));
-        $optionsResolver->addAllowedTypes('postCode', array('string'));
-        $optionsResolver->addAllowedTypes('province', array('string'));
-        $optionsResolver->addAllowedTypes('phoneNo', array('string'));
+        $optionsResolver->setDefined(['countries', 'name', 'street', 'houseNo', 'city', 'postCode', 'province', 'phoneNo']);
+        $optionsResolver->setRequired(['name']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('countries', ['string']);
+        $optionsResolver->addAllowedTypes('name', ['string']);
+        $optionsResolver->addAllowedTypes('street', ['string']);
+        $optionsResolver->addAllowedTypes('houseNo', ['string']);
+        $optionsResolver->addAllowedTypes('city', ['string']);
+        $optionsResolver->addAllowedTypes('postCode', ['string']);
+        $optionsResolver->addAllowedTypes('province', ['string']);
+        $optionsResolver->addAllowedTypes('phoneNo', ['string']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('Authorization'));
-        $optionsResolver->setRequired(array('Authorization'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('Authorization', array('string'));
+        $optionsResolver->setDefined(['Authorization']);
+        $optionsResolver->setRequired(['Authorization']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('Authorization', ['string']);
         return $optionsResolver;
     }
     /**
@@ -99,6 +99,6 @@ class CompanyComplianceSearch extends \CreditSafe\API\Runtime\Client\BaseEndpoin
     }
     public function getAuthenticationScopes() : array
     {
-        return array('bearerAuth');
+        return ['bearerAuth'];
     }
 }

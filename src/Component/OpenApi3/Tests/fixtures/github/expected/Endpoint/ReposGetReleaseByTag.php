@@ -27,15 +27,15 @@ class ReposGetReleaseByTag extends \Github\Runtime\Client\BaseEndpoint implement
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{tag}'), array($this->owner, $this->repo, $this->tag), '/repos/{owner}/{repo}/releases/tags/{tag}');
+        return str_replace(['{owner}', '{repo}', '{tag}'], [$this->owner, $this->repo, $this->tag], '/repos/{owner}/{repo}/releases/tags/{tag}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -57,6 +57,6 @@ class ReposGetReleaseByTag extends \Github\Runtime\Client\BaseEndpoint implement
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

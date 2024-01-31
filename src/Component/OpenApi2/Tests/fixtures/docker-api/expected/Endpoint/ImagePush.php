@@ -27,7 +27,7 @@ class ImagePush extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
     
     * }
     */
-    public function __construct(string $name, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(string $name, array $queryParameters = [], array $headerParameters = [])
     {
         $this->name = $name;
         $this->queryParameters = $queryParameters;
@@ -40,32 +40,32 @@ class ImagePush extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
     }
     public function getUri() : string
     {
-        return str_replace(array('{name}'), array($this->name), '/images/{name}/push');
+        return str_replace(['{name}'], [$this->name], '/images/{name}/push');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('tag'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('tag', array('string'));
+        $optionsResolver->setDefined(['tag']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('tag', ['string']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('X-Registry-Auth'));
-        $optionsResolver->setRequired(array('X-Registry-Auth'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('X-Registry-Auth', array('string'));
+        $optionsResolver->setDefined(['X-Registry-Auth']);
+        $optionsResolver->setRequired(['X-Registry-Auth']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('X-Registry-Auth', ['string']);
         return $optionsResolver;
     }
     /**
@@ -92,6 +92,6 @@ class ImagePush extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

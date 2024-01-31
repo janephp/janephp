@@ -13,7 +13,7 @@ class StreamSample extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Clien
      * }
      * @param array $accept Accept content header application/json|application/problem+json
      */
-    public function __construct(array $queryParameters = array(), array $accept = array())
+    public function __construct(array $queryParameters = [], array $accept = [])
     {
         $this->queryParameters = $queryParameters;
         $this->accept = $accept;
@@ -29,22 +29,22 @@ class StreamSample extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Clien
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/json', 'application/problem+json'));
+            return ['Accept' => ['application/json', 'application/problem+json']];
         }
         return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('expansions'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('expansions', array('array'));
+        $optionsResolver->setDefined(['expansions']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('expansions', ['array']);
         return $optionsResolver;
     }
     /**
@@ -69,6 +69,6 @@ class StreamSample extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Clien
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

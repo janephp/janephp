@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\JsonSchema\Model;
 class RequestBody extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -13,7 +21,7 @@ class RequestBody extends \ArrayObject
     /**
      * 
      *
-     * @var MediaType[]|null
+     * @var array<string, MediaType>|null
      */
     protected $content;
     /**
@@ -40,13 +48,14 @@ class RequestBody extends \ArrayObject
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
     /**
      * 
      *
-     * @return MediaType[]|null
+     * @return array<string, MediaType>|null
      */
     public function getContent() : ?iterable
     {
@@ -55,12 +64,13 @@ class RequestBody extends \ArrayObject
     /**
      * 
      *
-     * @param MediaType[]|null $content
+     * @param array<string, MediaType>|null $content
      *
      * @return self
      */
     public function setContent(?iterable $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }
@@ -82,6 +92,7 @@ class RequestBody extends \ArrayObject
      */
     public function setRequired(?bool $required) : self
     {
+        $this->initialized['required'] = true;
         $this->required = $required;
         return $this;
     }

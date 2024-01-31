@@ -24,15 +24,15 @@ class ActionsListSelectedReposForOrgSecret extends \Github\Runtime\Client\BaseEn
     }
     public function getUri() : string
     {
-        return str_replace(array('{org}', '{secret_name}'), array($this->org, $this->secret_name), '/orgs/{org}/actions/secrets/{secret_name}/repositories');
+        return str_replace(['{org}', '{secret_name}'], [$this->org, $this->secret_name], '/orgs/{org}/actions/secrets/{secret_name}/repositories');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -50,6 +50,6 @@ class ActionsListSelectedReposForOrgSecret extends \Github\Runtime\Client\BaseEn
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

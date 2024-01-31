@@ -15,7 +15,7 @@ class GetTest extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -33,6 +33,6 @@ class GetTest extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

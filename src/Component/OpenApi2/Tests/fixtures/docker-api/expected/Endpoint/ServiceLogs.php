@@ -26,7 +26,7 @@ class ServiceLogs extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     
     * }
     */
-    public function __construct(string $id, array $queryParameters = array())
+    public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;
@@ -38,29 +38,29 @@ class ServiceLogs extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/services/{id}/logs');
+        return str_replace(['{id}'], [$this->id], '/services/{id}/logs');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('details', 'follow', 'stdout', 'stderr', 'since', 'timestamps', 'tail'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('details' => false, 'follow' => false, 'stdout' => false, 'stderr' => false, 'since' => 0, 'timestamps' => false, 'tail' => 'all'));
-        $optionsResolver->addAllowedTypes('details', array('bool'));
-        $optionsResolver->addAllowedTypes('follow', array('bool'));
-        $optionsResolver->addAllowedTypes('stdout', array('bool'));
-        $optionsResolver->addAllowedTypes('stderr', array('bool'));
-        $optionsResolver->addAllowedTypes('since', array('int'));
-        $optionsResolver->addAllowedTypes('timestamps', array('bool'));
-        $optionsResolver->addAllowedTypes('tail', array('string'));
+        $optionsResolver->setDefined(['details', 'follow', 'stdout', 'stderr', 'since', 'timestamps', 'tail']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['details' => false, 'follow' => false, 'stdout' => false, 'stderr' => false, 'since' => 0, 'timestamps' => false, 'tail' => 'all']);
+        $optionsResolver->addAllowedTypes('details', ['bool']);
+        $optionsResolver->addAllowedTypes('follow', ['bool']);
+        $optionsResolver->addAllowedTypes('stdout', ['bool']);
+        $optionsResolver->addAllowedTypes('stderr', ['bool']);
+        $optionsResolver->addAllowedTypes('since', ['int']);
+        $optionsResolver->addAllowedTypes('timestamps', ['bool']);
+        $optionsResolver->addAllowedTypes('tail', ['string']);
         return $optionsResolver;
     }
     /**
@@ -91,6 +91,6 @@ class ServiceLogs extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

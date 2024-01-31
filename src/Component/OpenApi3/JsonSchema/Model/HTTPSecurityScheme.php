@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\JsonSchema\Model;
 class HTTPSecurityScheme extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -46,6 +54,7 @@ class HTTPSecurityScheme extends \ArrayObject
      */
     public function setScheme(?string $scheme) : self
     {
+        $this->initialized['scheme'] = true;
         $this->scheme = $scheme;
         return $this;
     }
@@ -67,6 +76,7 @@ class HTTPSecurityScheme extends \ArrayObject
      */
     public function setBearerFormat(?string $bearerFormat) : self
     {
+        $this->initialized['bearerFormat'] = true;
         $this->bearerFormat = $bearerFormat;
         return $this;
     }
@@ -88,6 +98,7 @@ class HTTPSecurityScheme extends \ArrayObject
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -109,6 +120,7 @@ class HTTPSecurityScheme extends \ArrayObject
      */
     public function setType(?string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }

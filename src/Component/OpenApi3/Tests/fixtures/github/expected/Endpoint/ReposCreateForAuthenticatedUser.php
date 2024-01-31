@@ -18,7 +18,7 @@ class ReposCreateForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoin
     * @param null|\Github\Model\UserReposPostBody $requestBody 
     * @param array $accept Accept content header application/json|application/scim+json
     */
-    public function __construct(?\Github\Model\UserReposPostBody $requestBody = null, array $accept = array())
+    public function __construct(?\Github\Model\UserReposPostBody $requestBody = null, array $accept = [])
     {
         $this->body = $requestBody;
         $this->accept = $accept;
@@ -35,14 +35,14 @@ class ReposCreateForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoin
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\UserReposPostBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/json', 'application/scim+json'));
+            return ['Accept' => ['application/json', 'application/scim+json']];
         }
         return $this->accept;
     }
@@ -85,6 +85,6 @@ class ReposCreateForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoin
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -24,15 +24,15 @@ class DocumentHistoryGetCurrent extends \PicturePark\API\Runtime\Client\BaseEndp
     }
     public function getUri() : string
     {
-        return str_replace(array('{documentType}', '{documentId}'), array($this->documentType, $this->documentId), '/v1/history/{documentType}/{documentId}/current');
+        return str_replace(['{documentType}', '{documentId}'], [$this->documentType, $this->documentId], '/v1/history/{documentType}/{documentId}/current');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -78,6 +78,6 @@ class DocumentHistoryGetCurrent extends \PicturePark\API\Runtime\Client\BaseEndp
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

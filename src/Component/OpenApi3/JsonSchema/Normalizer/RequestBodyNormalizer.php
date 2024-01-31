@@ -18,18 +18,18 @@ class RequestBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, $context = []) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\RequestBody';
     }
-    public function supportsNormalization($data, $format = null, $context = []) : bool
+    public function supportsNormalization($data, $format = null, array $context = []) : bool
     {
         return $data instanceof \Jane\Component\OpenApi3\JsonSchema\Model\RequestBody;
     }
     /**
      * @return mixed
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -49,7 +49,7 @@ class RequestBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setDescription(null);
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
-            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['content'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\MediaType', 'json', $context);
             }
@@ -76,18 +76,18 @@ class RequestBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if (null !== $object->getDescription()) {
+        $data = [];
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        $values = array();
+        $values = [];
         foreach ($object->getContent() as $key => $value) {
             $values[$key] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['content'] = $values;
-        if (null !== $object->getRequired()) {
+        if ($object->isInitialized('required') && null !== $object->getRequired()) {
             $data['required'] = $object->getRequired();
         }
         foreach ($object as $key_1 => $value_1) {
@@ -96,5 +96,9 @@ class RequestBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return ['Jane\\Component\\OpenApi3\\JsonSchema\\Model\\RequestBody' => false];
     }
 }

@@ -18,7 +18,7 @@ class ActivityListReposStarredByAuthenticatedUser extends \Github\Runtime\Client
     * }
     * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
     */
-    public function __construct(array $queryParameters = array(), array $accept = array())
+    public function __construct(array $queryParameters = [], array $accept = [])
     {
         $this->queryParameters = $queryParameters;
         $this->accept = $accept;
@@ -34,25 +34,25 @@ class ActivityListReposStarredByAuthenticatedUser extends \Github\Runtime\Client
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/json', 'application/vnd.github.v3.star+json'));
+            return ['Accept' => ['application/json', 'application/vnd.github.v3.star+json']];
         }
         return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('sort', 'direction', 'per_page', 'page'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('sort' => 'created', 'direction' => 'desc', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->addAllowedTypes('sort', array('string'));
-        $optionsResolver->addAllowedTypes('direction', array('string'));
-        $optionsResolver->addAllowedTypes('per_page', array('int'));
-        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->setDefined(['sort', 'direction', 'per_page', 'page']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['sort' => 'created', 'direction' => 'desc', 'per_page' => 30, 'page' => 1]);
+        $optionsResolver->addAllowedTypes('sort', ['string']);
+        $optionsResolver->addAllowedTypes('direction', ['string']);
+        $optionsResolver->addAllowedTypes('per_page', ['int']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
         return $optionsResolver;
     }
     /**
@@ -82,6 +82,6 @@ class ActivityListReposStarredByAuthenticatedUser extends \Github\Runtime\Client
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

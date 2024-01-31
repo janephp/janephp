@@ -33,7 +33,7 @@ class GenerateCommand extends BaseGenerateCommand
         $this->addOption('config-file', 'c', InputOption::VALUE_REQUIRED, 'File to use for Jane OpenAPI configuration', '.jane-openapi');
     }
 
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): int
     {
         $options = $this->configLoader->load($input->getOption('config-file'));
         $registries = $this->registries($options);
@@ -49,7 +49,7 @@ class GenerateCommand extends BaseGenerateCommand
                 $fixerConfigFile = $options['fixer-config-file'];
             }
 
-            $printer = new Printer(new Standard(), $fixerConfigFile);
+            $printer = new Printer(new Standard(['shortArraySyntax' => true]), $fixerConfigFile);
 
             if (\array_key_exists('use-fixer', $options) && \is_bool($options['use-fixer'])) {
                 $printer->setUseFixer($options['use-fixer']);

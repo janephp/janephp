@@ -24,7 +24,7 @@ class TestBinaryBody extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Cli
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), $this->body);
+        return [[], $this->body];
     }
     /**
      * {@inheritdoc}
@@ -42,6 +42,6 @@ class TestBinaryBody extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Cli
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

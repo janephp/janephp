@@ -17,7 +17,7 @@ class ListItemRestore extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
     * }
     */
-    public function __construct(string $id, array $queryParameters = array())
+    public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;
@@ -29,25 +29,25 @@ class ListItemRestore extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/v1/ListItems/{id}/restore');
+        return str_replace(['{id}'], [$this->id], '/v1/ListItems/{id}/restore');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('allowMissingDependencies', 'timeout', 'waitSearchDocCreation'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('allowMissingDependencies' => false, 'waitSearchDocCreation' => true));
-        $optionsResolver->addAllowedTypes('allowMissingDependencies', array('bool'));
-        $optionsResolver->addAllowedTypes('timeout', array('string', 'null'));
-        $optionsResolver->addAllowedTypes('waitSearchDocCreation', array('bool'));
+        $optionsResolver->setDefined(['allowMissingDependencies', 'timeout', 'waitSearchDocCreation']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['allowMissingDependencies' => false, 'waitSearchDocCreation' => true]);
+        $optionsResolver->addAllowedTypes('allowMissingDependencies', ['bool']);
+        $optionsResolver->addAllowedTypes('timeout', ['string', 'null']);
+        $optionsResolver->addAllowedTypes('waitSearchDocCreation', ['bool']);
         return $optionsResolver;
     }
     /**
@@ -94,6 +94,6 @@ class ListItemRestore extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

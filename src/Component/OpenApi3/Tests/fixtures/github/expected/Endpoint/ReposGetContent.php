@@ -50,7 +50,7 @@ class ReposGetContent extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     * }
     * @param array $accept Accept content header application/vnd.github.v3.object|application/json
     */
-    public function __construct(string $owner, string $repo, string $path, array $queryParameters = array(), array $accept = array())
+    public function __construct(string $owner, string $repo, string $path, array $queryParameters = [], array $accept = [])
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -65,26 +65,26 @@ class ReposGetContent extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{path}'), array($this->owner, $this->repo, $this->path), '/repos/{owner}/{repo}/contents/{path}');
+        return str_replace(['{owner}', '{repo}', '{path}'], [$this->owner, $this->repo, $this->path], '/repos/{owner}/{repo}/contents/{path}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/vnd.github.v3.object', 'application/json'));
+            return ['Accept' => ['application/vnd.github.v3.object', 'application/json']];
         }
         return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('ref'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('ref', array('string'));
+        $optionsResolver->setDefined(['ref']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('ref', ['string']);
         return $optionsResolver;
     }
     /**
@@ -114,6 +114,6 @@ class ReposGetContent extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

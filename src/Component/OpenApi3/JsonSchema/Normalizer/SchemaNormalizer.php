@@ -18,18 +18,18 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, $context = []) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Schema';
     }
-    public function supportsNormalization($data, $format = null, $context = []) : bool
+    public function supportsNormalization($data, $format = null, array $context = []) : bool
     {
         return $data instanceof \Jane\Component\OpenApi3\JsonSchema\Model\Schema;
     }
     /**
      * @return mixed
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -149,7 +149,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setMinProperties(null);
         }
         if (\array_key_exists('required', $data) && $data['required'] !== null) {
-            $values = array();
+            $values = [];
             foreach ($data['required'] as $value) {
                 $values[] = $value;
             }
@@ -160,7 +160,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setRequired(null);
         }
         if (\array_key_exists('enum', $data) && $data['enum'] !== null) {
-            $values_1 = array();
+            $values_1 = [];
             foreach ($data['enum'] as $value_1) {
                 $values_1[] = $value_1;
             }
@@ -191,7 +191,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setNot(null);
         }
         if (\array_key_exists('allOf', $data) && $data['allOf'] !== null) {
-            $values_2 = array();
+            $values_2 = [];
             foreach ($data['allOf'] as $value_3) {
                 $value_4 = $value_3;
                 if (is_array($value_3) and isset($value_3['$ref'])) {
@@ -208,7 +208,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setAllOf(null);
         }
         if (\array_key_exists('oneOf', $data) && $data['oneOf'] !== null) {
-            $values_3 = array();
+            $values_3 = [];
             foreach ($data['oneOf'] as $value_5) {
                 $value_6 = $value_5;
                 if (is_array($value_5) and isset($value_5['$ref'])) {
@@ -225,7 +225,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setOneOf(null);
         }
         if (\array_key_exists('anyOf', $data) && $data['anyOf'] !== null) {
-            $values_4 = array();
+            $values_4 = [];
             foreach ($data['anyOf'] as $value_7) {
                 $value_8 = $value_7;
                 if (is_array($value_7) and isset($value_7['$ref'])) {
@@ -255,7 +255,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setItems(null);
         }
         if (\array_key_exists('properties', $data) && $data['properties'] !== null) {
-            $values_5 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['properties'] as $key => $value_10) {
                 $value_11 = $value_10;
                 if (is_array($value_10) and isset($value_10['$ref'])) {
@@ -373,69 +373,69 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if (null !== $object->getTitle()) {
+        $data = [];
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getMultipleOf()) {
+        if ($object->isInitialized('multipleOf') && null !== $object->getMultipleOf()) {
             $data['multipleOf'] = $object->getMultipleOf();
         }
-        if (null !== $object->getMaximum()) {
+        if ($object->isInitialized('maximum') && null !== $object->getMaximum()) {
             $data['maximum'] = $object->getMaximum();
         }
-        if (null !== $object->getExclusiveMaximum()) {
+        if ($object->isInitialized('exclusiveMaximum') && null !== $object->getExclusiveMaximum()) {
             $data['exclusiveMaximum'] = $object->getExclusiveMaximum();
         }
-        if (null !== $object->getMinimum()) {
+        if ($object->isInitialized('minimum') && null !== $object->getMinimum()) {
             $data['minimum'] = $object->getMinimum();
         }
-        if (null !== $object->getExclusiveMinimum()) {
+        if ($object->isInitialized('exclusiveMinimum') && null !== $object->getExclusiveMinimum()) {
             $data['exclusiveMinimum'] = $object->getExclusiveMinimum();
         }
-        if (null !== $object->getMaxLength()) {
+        if ($object->isInitialized('maxLength') && null !== $object->getMaxLength()) {
             $data['maxLength'] = $object->getMaxLength();
         }
-        if (null !== $object->getMinLength()) {
+        if ($object->isInitialized('minLength') && null !== $object->getMinLength()) {
             $data['minLength'] = $object->getMinLength();
         }
-        if (null !== $object->getPattern()) {
+        if ($object->isInitialized('pattern') && null !== $object->getPattern()) {
             $data['pattern'] = $object->getPattern();
         }
-        if (null !== $object->getMaxItems()) {
+        if ($object->isInitialized('maxItems') && null !== $object->getMaxItems()) {
             $data['maxItems'] = $object->getMaxItems();
         }
-        if (null !== $object->getMinItems()) {
+        if ($object->isInitialized('minItems') && null !== $object->getMinItems()) {
             $data['minItems'] = $object->getMinItems();
         }
-        if (null !== $object->getUniqueItems()) {
+        if ($object->isInitialized('uniqueItems') && null !== $object->getUniqueItems()) {
             $data['uniqueItems'] = $object->getUniqueItems();
         }
-        if (null !== $object->getMaxProperties()) {
+        if ($object->isInitialized('maxProperties') && null !== $object->getMaxProperties()) {
             $data['maxProperties'] = $object->getMaxProperties();
         }
-        if (null !== $object->getMinProperties()) {
+        if ($object->isInitialized('minProperties') && null !== $object->getMinProperties()) {
             $data['minProperties'] = $object->getMinProperties();
         }
-        if (null !== $object->getRequired()) {
-            $values = array();
+        if ($object->isInitialized('required') && null !== $object->getRequired()) {
+            $values = [];
             foreach ($object->getRequired() as $value) {
                 $values[] = $value;
             }
             $data['required'] = $values;
         }
-        if (null !== $object->getEnum()) {
-            $values_1 = array();
+        if ($object->isInitialized('enum') && null !== $object->getEnum()) {
+            $values_1 = [];
             foreach ($object->getEnum() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['enum'] = $values_1;
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getNot()) {
+        if ($object->isInitialized('not') && null !== $object->getNot()) {
             $value_2 = $object->getNot();
             if (is_object($object->getNot())) {
                 $value_2 = $this->normalizer->normalize($object->getNot(), 'json', $context);
@@ -444,8 +444,8 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $data['not'] = $value_2;
         }
-        if (null !== $object->getAllOf()) {
-            $values_2 = array();
+        if ($object->isInitialized('allOf') && null !== $object->getAllOf()) {
+            $values_2 = [];
             foreach ($object->getAllOf() as $value_3) {
                 $value_4 = $value_3;
                 if (is_object($value_3)) {
@@ -457,8 +457,8 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $data['allOf'] = $values_2;
         }
-        if (null !== $object->getOneOf()) {
-            $values_3 = array();
+        if ($object->isInitialized('oneOf') && null !== $object->getOneOf()) {
+            $values_3 = [];
             foreach ($object->getOneOf() as $value_5) {
                 $value_6 = $value_5;
                 if (is_object($value_5)) {
@@ -470,8 +470,8 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $data['oneOf'] = $values_3;
         }
-        if (null !== $object->getAnyOf()) {
-            $values_4 = array();
+        if ($object->isInitialized('anyOf') && null !== $object->getAnyOf()) {
+            $values_4 = [];
             foreach ($object->getAnyOf() as $value_7) {
                 $value_8 = $value_7;
                 if (is_object($value_7)) {
@@ -483,7 +483,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $data['anyOf'] = $values_4;
         }
-        if (null !== $object->getItems()) {
+        if ($object->isInitialized('items') && null !== $object->getItems()) {
             $value_9 = $object->getItems();
             if (is_object($object->getItems())) {
                 $value_9 = $this->normalizer->normalize($object->getItems(), 'json', $context);
@@ -492,8 +492,8 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $data['items'] = $value_9;
         }
-        if (null !== $object->getProperties()) {
-            $values_5 = array();
+        if ($object->isInitialized('properties') && null !== $object->getProperties()) {
+            $values_5 = [];
             foreach ($object->getProperties() as $key => $value_10) {
                 $value_11 = $value_10;
                 if (is_object($value_10)) {
@@ -505,7 +505,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $data['properties'] = $values_5;
         }
-        if (null !== $object->getAdditionalProperties()) {
+        if ($object->isInitialized('additionalProperties') && null !== $object->getAdditionalProperties()) {
             $value_12 = $object->getAdditionalProperties();
             if (is_object($object->getAdditionalProperties())) {
                 $value_12 = $this->normalizer->normalize($object->getAdditionalProperties(), 'json', $context);
@@ -516,37 +516,37 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
             $data['additionalProperties'] = $value_12;
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getFormat()) {
+        if ($object->isInitialized('format') && null !== $object->getFormat()) {
             $data['format'] = $object->getFormat();
         }
-        if (null !== $object->getDefault()) {
+        if ($object->isInitialized('default') && null !== $object->getDefault()) {
             $data['default'] = $object->getDefault();
         }
-        if (null !== $object->getNullable()) {
+        if ($object->isInitialized('nullable') && null !== $object->getNullable()) {
             $data['nullable'] = $object->getNullable();
         }
-        if (null !== $object->getDiscriminator()) {
+        if ($object->isInitialized('discriminator') && null !== $object->getDiscriminator()) {
             $data['discriminator'] = $this->normalizer->normalize($object->getDiscriminator(), 'json', $context);
         }
-        if (null !== $object->getReadOnly()) {
+        if ($object->isInitialized('readOnly') && null !== $object->getReadOnly()) {
             $data['readOnly'] = $object->getReadOnly();
         }
-        if (null !== $object->getWriteOnly()) {
+        if ($object->isInitialized('writeOnly') && null !== $object->getWriteOnly()) {
             $data['writeOnly'] = $object->getWriteOnly();
         }
-        if (null !== $object->getExample()) {
+        if ($object->isInitialized('example') && null !== $object->getExample()) {
             $data['example'] = $object->getExample();
         }
-        if (null !== $object->getExternalDocs()) {
+        if ($object->isInitialized('externalDocs') && null !== $object->getExternalDocs()) {
             $data['externalDocs'] = $this->normalizer->normalize($object->getExternalDocs(), 'json', $context);
         }
-        if (null !== $object->getDeprecated()) {
+        if ($object->isInitialized('deprecated') && null !== $object->getDeprecated()) {
             $data['deprecated'] = $object->getDeprecated();
         }
-        if (null !== $object->getXml()) {
+        if ($object->isInitialized('xml') && null !== $object->getXml()) {
             $data['xml'] = $this->normalizer->normalize($object->getXml(), 'json', $context);
         }
         foreach ($object as $key_1 => $value_13) {
@@ -555,5 +555,9 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return ['Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Schema' => false];
     }
 }

@@ -27,7 +27,7 @@ class SearchRepos extends \Github\Runtime\Client\BaseEndpoint implements \Github
     *     @var int $page Page number of the results to fetch.
     * }
     */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -42,23 +42,23 @@ class SearchRepos extends \Github\Runtime\Client\BaseEndpoint implements \Github
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('q', 'sort', 'order', 'per_page', 'page'));
-        $optionsResolver->setRequired(array('q'));
-        $optionsResolver->setDefaults(array('order' => 'desc', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->addAllowedTypes('q', array('string'));
-        $optionsResolver->addAllowedTypes('sort', array('string'));
-        $optionsResolver->addAllowedTypes('order', array('string'));
-        $optionsResolver->addAllowedTypes('per_page', array('int'));
-        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->setDefined(['q', 'sort', 'order', 'per_page', 'page']);
+        $optionsResolver->setRequired(['q']);
+        $optionsResolver->setDefaults(['order' => 'desc', 'per_page' => 30, 'page' => 1]);
+        $optionsResolver->addAllowedTypes('q', ['string']);
+        $optionsResolver->addAllowedTypes('sort', ['string']);
+        $optionsResolver->addAllowedTypes('order', ['string']);
+        $optionsResolver->addAllowedTypes('per_page', ['int']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
         return $optionsResolver;
     }
     /**
@@ -88,6 +88,6 @@ class SearchRepos extends \Github\Runtime\Client\BaseEndpoint implements \Github
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

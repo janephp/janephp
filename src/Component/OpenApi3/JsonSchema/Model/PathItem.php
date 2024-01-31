@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\JsonSchema\Model;
 class PathItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -100,6 +108,7 @@ class PathItem extends \ArrayObject
      */
     public function setDollarRef(?string $dollarRef) : self
     {
+        $this->initialized['dollarRef'] = true;
         $this->dollarRef = $dollarRef;
         return $this;
     }
@@ -121,6 +130,7 @@ class PathItem extends \ArrayObject
      */
     public function setSummary(?string $summary) : self
     {
+        $this->initialized['summary'] = true;
         $this->summary = $summary;
         return $this;
     }
@@ -142,6 +152,7 @@ class PathItem extends \ArrayObject
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -163,6 +174,7 @@ class PathItem extends \ArrayObject
      */
     public function setGet(?Operation $get) : self
     {
+        $this->initialized['get'] = true;
         $this->get = $get;
         return $this;
     }
@@ -184,6 +196,7 @@ class PathItem extends \ArrayObject
      */
     public function setPut(?Operation $put) : self
     {
+        $this->initialized['put'] = true;
         $this->put = $put;
         return $this;
     }
@@ -205,6 +218,7 @@ class PathItem extends \ArrayObject
      */
     public function setPost(?Operation $post) : self
     {
+        $this->initialized['post'] = true;
         $this->post = $post;
         return $this;
     }
@@ -226,6 +240,7 @@ class PathItem extends \ArrayObject
      */
     public function setDelete(?Operation $delete) : self
     {
+        $this->initialized['delete'] = true;
         $this->delete = $delete;
         return $this;
     }
@@ -247,6 +262,7 @@ class PathItem extends \ArrayObject
      */
     public function setOptions(?Operation $options) : self
     {
+        $this->initialized['options'] = true;
         $this->options = $options;
         return $this;
     }
@@ -268,6 +284,7 @@ class PathItem extends \ArrayObject
      */
     public function setHead(?Operation $head) : self
     {
+        $this->initialized['head'] = true;
         $this->head = $head;
         return $this;
     }
@@ -289,6 +306,7 @@ class PathItem extends \ArrayObject
      */
     public function setPatch(?Operation $patch) : self
     {
+        $this->initialized['patch'] = true;
         $this->patch = $patch;
         return $this;
     }
@@ -310,6 +328,7 @@ class PathItem extends \ArrayObject
      */
     public function setTrace(?Operation $trace) : self
     {
+        $this->initialized['trace'] = true;
         $this->trace = $trace;
         return $this;
     }
@@ -331,6 +350,7 @@ class PathItem extends \ArrayObject
      */
     public function setServers(?array $servers) : self
     {
+        $this->initialized['servers'] = true;
         $this->servers = $servers;
         return $this;
     }
@@ -352,6 +372,7 @@ class PathItem extends \ArrayObject
      */
     public function setParameters(?array $parameters) : self
     {
+        $this->initialized['parameters'] = true;
         $this->parameters = $parameters;
         return $this;
     }

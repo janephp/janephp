@@ -21,15 +21,15 @@ class UserGetByOwnerToken extends \PicturePark\API\Runtime\Client\BaseEndpoint i
     }
     public function getUri() : string
     {
-        return str_replace(array('{tokenId}'), array($this->tokenId), '/v1/Users/owner/{tokenId}');
+        return str_replace(['{tokenId}'], [$this->tokenId], '/v1/Users/owner/{tokenId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -75,6 +75,6 @@ class UserGetByOwnerToken extends \PicturePark\API\Runtime\Client\BaseEndpoint i
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

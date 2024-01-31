@@ -25,17 +25,17 @@ class MarkdownRenderRaw extends \Github\Runtime\Client\BaseEndpoint implements \
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if (is_string($this->body)) {
-            return array(array('Content-Type' => array('text/plain')), $this->body);
+            return [['Content-Type' => ['text/plain']], $this->body];
         }
         if (is_string($this->body)) {
-            return array(array('Content-Type' => array('text/x-markdown')), $this->body);
+            return [['Content-Type' => ['text/x-markdown']], $this->body];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array());
+            return ['Accept' => []];
         }
         return $this->accept;
     }
@@ -57,6 +57,6 @@ class MarkdownRenderRaw extends \Github\Runtime\Client\BaseEndpoint implements \
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

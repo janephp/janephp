@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\JsonSchema\Model;
 class Server extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -19,7 +27,7 @@ class Server extends \ArrayObject
     /**
      * 
      *
-     * @var ServerVariable[]|null
+     * @var array<string, ServerVariable>|null
      */
     protected $variables;
     /**
@@ -40,6 +48,7 @@ class Server extends \ArrayObject
      */
     public function setUrl(?string $url) : self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
     }
@@ -61,13 +70,14 @@ class Server extends \ArrayObject
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
     /**
      * 
      *
-     * @return ServerVariable[]|null
+     * @return array<string, ServerVariable>|null
      */
     public function getVariables() : ?iterable
     {
@@ -76,12 +86,13 @@ class Server extends \ArrayObject
     /**
      * 
      *
-     * @param ServerVariable[]|null $variables
+     * @param array<string, ServerVariable>|null $variables
      *
      * @return self
      */
     public function setVariables(?iterable $variables) : self
     {
+        $this->initialized['variables'] = true;
         $this->variables = $variables;
         return $this;
     }

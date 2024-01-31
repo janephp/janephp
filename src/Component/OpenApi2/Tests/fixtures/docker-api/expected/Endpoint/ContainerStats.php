@@ -44,7 +44,7 @@ class ContainerStats extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
     
     * }
     */
-    public function __construct(string $id, array $queryParameters = array())
+    public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;
@@ -56,24 +56,24 @@ class ContainerStats extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/containers/{id}/stats');
+        return str_replace(['{id}'], [$this->id], '/containers/{id}/stats');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('stream', 'one-shot'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('stream' => true, 'one-shot' => false));
-        $optionsResolver->addAllowedTypes('stream', array('bool'));
-        $optionsResolver->addAllowedTypes('one-shot', array('bool'));
+        $optionsResolver->setDefined(['stream', 'one-shot']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['stream' => true, 'one-shot' => false]);
+        $optionsResolver->addAllowedTypes('stream', ['bool']);
+        $optionsResolver->addAllowedTypes('one-shot', ['bool']);
         return $optionsResolver;
     }
     /**
@@ -100,6 +100,6 @@ class ContainerStats extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

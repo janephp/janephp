@@ -14,7 +14,7 @@ class ShareGetShareJson extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
      *     @var array $resolveBehaviors List of enums that control which parts of the share are resolved and returned.
      * }
      */
-    public function __construct(string $token, array $queryParameters = array())
+    public function __construct(string $token, array $queryParameters = [])
     {
         $this->token = $token;
         $this->queryParameters = $queryParameters;
@@ -26,24 +26,24 @@ class ShareGetShareJson extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
     }
     public function getUri() : string
     {
-        return str_replace(array('{token}'), array($this->token), '/v1/Shares/json/{token}');
+        return str_replace(['{token}'], [$this->token], '/v1/Shares/json/{token}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('lang', 'resolveBehaviors'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('lang', array('string', 'null'));
-        $optionsResolver->addAllowedTypes('resolveBehaviors', array('array', 'null'));
+        $optionsResolver->setDefined(['lang', 'resolveBehaviors']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('lang', ['string', 'null']);
+        $optionsResolver->addAllowedTypes('resolveBehaviors', ['array', 'null']);
         return $optionsResolver;
     }
     /**
@@ -90,6 +90,6 @@ class ShareGetShareJson extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

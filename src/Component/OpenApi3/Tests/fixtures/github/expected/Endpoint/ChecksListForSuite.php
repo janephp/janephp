@@ -23,7 +23,7 @@ class ChecksListForSuite extends \Github\Runtime\Client\BaseEndpoint implements 
     *     @var int $page Page number of the results to fetch.
     * }
     */
-    public function __construct(string $owner, string $repo, int $checkSuiteId, array $queryParameters = array())
+    public function __construct(string $owner, string $repo, int $checkSuiteId, array $queryParameters = [])
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -37,27 +37,27 @@ class ChecksListForSuite extends \Github\Runtime\Client\BaseEndpoint implements 
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{check_suite_id}'), array($this->owner, $this->repo, $this->check_suite_id), '/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs');
+        return str_replace(['{owner}', '{repo}', '{check_suite_id}'], [$this->owner, $this->repo, $this->check_suite_id], '/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('check_name', 'status', 'filter', 'per_page', 'page'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('filter' => 'latest', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->addAllowedTypes('check_name', array('string'));
-        $optionsResolver->addAllowedTypes('status', array('string'));
-        $optionsResolver->addAllowedTypes('filter', array('string'));
-        $optionsResolver->addAllowedTypes('per_page', array('int'));
-        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->setDefined(['check_name', 'status', 'filter', 'per_page', 'page']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['filter' => 'latest', 'per_page' => 30, 'page' => 1]);
+        $optionsResolver->addAllowedTypes('check_name', ['string']);
+        $optionsResolver->addAllowedTypes('status', ['string']);
+        $optionsResolver->addAllowedTypes('filter', ['string']);
+        $optionsResolver->addAllowedTypes('per_page', ['int']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
         return $optionsResolver;
     }
     /**
@@ -76,6 +76,6 @@ class ChecksListForSuite extends \Github\Runtime\Client\BaseEndpoint implements 
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -17,7 +17,7 @@ class PluginDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     
     * }
     */
-    public function __construct(string $name, array $queryParameters = array())
+    public function __construct(string $name, array $queryParameters = [])
     {
         $this->name = $name;
         $this->queryParameters = $queryParameters;
@@ -29,23 +29,23 @@ class PluginDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     }
     public function getUri() : string
     {
-        return str_replace(array('{name}'), array($this->name), '/plugins/{name}');
+        return str_replace(['{name}'], [$this->name], '/plugins/{name}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('force'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('force' => false));
-        $optionsResolver->addAllowedTypes('force', array('bool'));
+        $optionsResolver->setDefined(['force']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['force' => false]);
+        $optionsResolver->addAllowedTypes('force', ['bool']);
         return $optionsResolver;
     }
     /**
@@ -72,6 +72,6 @@ class PluginDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

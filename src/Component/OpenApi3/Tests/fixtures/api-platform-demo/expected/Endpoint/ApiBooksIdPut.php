@@ -13,7 +13,7 @@ class ApiBooksIdPut extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implem
      * @param \ApiPlatform\Demo\Model\BookJsonld|\ApiPlatform\Demo\Model\BookJsonhal|\ApiPlatform\Demo\Model\Book $requestBody 
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      */
-    public function __construct(string $id, $requestBody, array $accept = array())
+    public function __construct(string $id, $requestBody, array $accept = [])
     {
         $this->id = $id;
         $this->body = $requestBody;
@@ -26,43 +26,43 @@ class ApiBooksIdPut extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implem
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/books/{id}');
+        return str_replace(['{id}'], [$this->id], '/books/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \ApiPlatform\Demo\Model\BookJsonld) {
-            return array(array('Content-Type' => array('application/ld+json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/ld+json']], $serializer->serialize($this->body, 'json')];
         }
         if ($this->body instanceof \ApiPlatform\Demo\Model\BookJsonhal) {
-            return array(array('Content-Type' => array('application/hal+json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/hal+json']], $serializer->serialize($this->body, 'json')];
         }
         if ($this->body instanceof \ApiPlatform\Demo\Model\Book) {
-            return array(array('Content-Type' => array('application/vnd.api+json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/vnd.api+json']], $serializer->serialize($this->body, 'json')];
         }
         if ($this->body instanceof \ApiPlatform\Demo\Model\Book) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
         if ($this->body instanceof \ApiPlatform\Demo\Model\Book) {
-            return array(array('Content-Type' => array('application/xml')), $this->body);
+            return [['Content-Type' => ['application/xml']], $this->body];
         }
         if ($this->body instanceof \ApiPlatform\Demo\Model\Book) {
-            return array(array('Content-Type' => array('text/xml')), $this->body);
+            return [['Content-Type' => ['text/xml']], $this->body];
         }
         if ($this->body instanceof \ApiPlatform\Demo\Model\Book) {
-            return array(array('Content-Type' => array('application/x-yaml')), $this->body);
+            return [['Content-Type' => ['application/x-yaml']], $this->body];
         }
         if ($this->body instanceof \ApiPlatform\Demo\Model\Book) {
-            return array(array('Content-Type' => array('text/csv')), $this->body);
+            return [['Content-Type' => ['text/csv']], $this->body];
         }
         if ($this->body instanceof \ApiPlatform\Demo\Model\Book) {
-            return array(array('Content-Type' => array('text/html')), $this->body);
+            return [['Content-Type' => ['text/html']], $this->body];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/ld+json', 'application/hal+json', 'application/vnd.api+json', 'application/json', 'application/xml', 'text/xml', 'application/x-yaml', 'text/csv'));
+            return ['Accept' => ['application/ld+json', 'application/hal+json', 'application/vnd.api+json', 'application/json', 'application/xml', 'text/xml', 'application/x-yaml', 'text/csv']];
         }
         return $this->accept;
     }
@@ -105,6 +105,6 @@ class ApiBooksIdPut extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint implem
     }
     public function getAuthenticationScopes() : array
     {
-        return array('apiKey');
+        return ['apiKey'];
     }
 }

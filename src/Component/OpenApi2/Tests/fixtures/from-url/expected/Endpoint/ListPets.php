@@ -11,7 +11,7 @@ class ListPets extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Ba
      *     @var int $limit How many items to return at one time (max 100)
      * }
      */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -26,19 +26,19 @@ class ListPets extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Ba
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('limit'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('limit', array('int'));
+        $optionsResolver->setDefined(['limit']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('limit', ['int']);
         return $optionsResolver;
     }
     /**
@@ -58,6 +58,6 @@ class ListPets extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Ba
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

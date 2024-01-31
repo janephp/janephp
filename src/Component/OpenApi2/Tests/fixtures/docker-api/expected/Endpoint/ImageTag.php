@@ -14,7 +14,7 @@ class ImageTag extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
      *     @var string $tag The name of the new tag.
      * }
      */
-    public function __construct(string $name, array $queryParameters = array())
+    public function __construct(string $name, array $queryParameters = [])
     {
         $this->name = $name;
         $this->queryParameters = $queryParameters;
@@ -26,24 +26,24 @@ class ImageTag extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
     }
     public function getUri() : string
     {
-        return str_replace(array('{name}'), array($this->name), '/images/{name}/tag');
+        return str_replace(['{name}'], [$this->name], '/images/{name}/tag');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('repo', 'tag'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('repo', array('string'));
-        $optionsResolver->addAllowedTypes('tag', array('string'));
+        $optionsResolver->setDefined(['repo', 'tag']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('repo', ['string']);
+        $optionsResolver->addAllowedTypes('tag', ['string']);
         return $optionsResolver;
     }
     /**
@@ -78,6 +78,6 @@ class ImageTag extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -12,197 +12,389 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class GbCompanyReportExampleResponseReportFinancialStatementsItemRatiosNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class GbCompanyReportExampleResponseReportFinancialStatementsItemRatiosNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportFinancialStatementsItemRatios';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportFinancialStatementsItemRatios';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportFinancialStatementsItemRatios';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportFinancialStatementsItemRatios';
         }
-        $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportFinancialStatementsItemRatios();
-        if (\array_key_exists('preTaxProfitMargin', $data) && \is_int($data['preTaxProfitMargin'])) {
-            $data['preTaxProfitMargin'] = (double) $data['preTaxProfitMargin'];
-        }
-        if (\array_key_exists('returnOnCapitalEmployed', $data) && \is_int($data['returnOnCapitalEmployed'])) {
-            $data['returnOnCapitalEmployed'] = (double) $data['returnOnCapitalEmployed'];
-        }
-        if (\array_key_exists('returnOnTotalAssetsEmployed', $data) && \is_int($data['returnOnTotalAssetsEmployed'])) {
-            $data['returnOnTotalAssetsEmployed'] = (double) $data['returnOnTotalAssetsEmployed'];
-        }
-        if (\array_key_exists('returnOnNetAssetsEmployed', $data) && \is_int($data['returnOnNetAssetsEmployed'])) {
-            $data['returnOnNetAssetsEmployed'] = (double) $data['returnOnNetAssetsEmployed'];
-        }
-        if (\array_key_exists('salesOrNetWorkingCapital', $data) && \is_int($data['salesOrNetWorkingCapital'])) {
-            $data['salesOrNetWorkingCapital'] = (double) $data['salesOrNetWorkingCapital'];
-        }
-        if (\array_key_exists('stockTurnoverRatio', $data) && \is_int($data['stockTurnoverRatio'])) {
-            $data['stockTurnoverRatio'] = (double) $data['stockTurnoverRatio'];
-        }
-        if (\array_key_exists('debtorDays', $data) && \is_int($data['debtorDays'])) {
-            $data['debtorDays'] = (double) $data['debtorDays'];
-        }
-        if (\array_key_exists('creditorDays', $data) && \is_int($data['creditorDays'])) {
-            $data['creditorDays'] = (double) $data['creditorDays'];
-        }
-        if (\array_key_exists('currentRatio', $data) && \is_int($data['currentRatio'])) {
-            $data['currentRatio'] = (double) $data['currentRatio'];
-        }
-        if (\array_key_exists('liquidityRatioOrAcidTest', $data) && \is_int($data['liquidityRatioOrAcidTest'])) {
-            $data['liquidityRatioOrAcidTest'] = (double) $data['liquidityRatioOrAcidTest'];
-        }
-        if (\array_key_exists('currentDebtRatio', $data) && \is_int($data['currentDebtRatio'])) {
-            $data['currentDebtRatio'] = (double) $data['currentDebtRatio'];
-        }
-        if (\array_key_exists('gearing', $data) && \is_int($data['gearing'])) {
-            $data['gearing'] = (double) $data['gearing'];
-        }
-        if (\array_key_exists('equityInPercentage', $data) && \is_int($data['equityInPercentage'])) {
-            $data['equityInPercentage'] = (double) $data['equityInPercentage'];
-        }
-        if (\array_key_exists('totalDebtRatio', $data) && \is_int($data['totalDebtRatio'])) {
-            $data['totalDebtRatio'] = (double) $data['totalDebtRatio'];
-        }
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportFinancialStatementsItemRatios();
+            if (\array_key_exists('preTaxProfitMargin', $data) && \is_int($data['preTaxProfitMargin'])) {
+                $data['preTaxProfitMargin'] = (double) $data['preTaxProfitMargin'];
+            }
+            if (\array_key_exists('returnOnCapitalEmployed', $data) && \is_int($data['returnOnCapitalEmployed'])) {
+                $data['returnOnCapitalEmployed'] = (double) $data['returnOnCapitalEmployed'];
+            }
+            if (\array_key_exists('returnOnTotalAssetsEmployed', $data) && \is_int($data['returnOnTotalAssetsEmployed'])) {
+                $data['returnOnTotalAssetsEmployed'] = (double) $data['returnOnTotalAssetsEmployed'];
+            }
+            if (\array_key_exists('returnOnNetAssetsEmployed', $data) && \is_int($data['returnOnNetAssetsEmployed'])) {
+                $data['returnOnNetAssetsEmployed'] = (double) $data['returnOnNetAssetsEmployed'];
+            }
+            if (\array_key_exists('salesOrNetWorkingCapital', $data) && \is_int($data['salesOrNetWorkingCapital'])) {
+                $data['salesOrNetWorkingCapital'] = (double) $data['salesOrNetWorkingCapital'];
+            }
+            if (\array_key_exists('stockTurnoverRatio', $data) && \is_int($data['stockTurnoverRatio'])) {
+                $data['stockTurnoverRatio'] = (double) $data['stockTurnoverRatio'];
+            }
+            if (\array_key_exists('debtorDays', $data) && \is_int($data['debtorDays'])) {
+                $data['debtorDays'] = (double) $data['debtorDays'];
+            }
+            if (\array_key_exists('creditorDays', $data) && \is_int($data['creditorDays'])) {
+                $data['creditorDays'] = (double) $data['creditorDays'];
+            }
+            if (\array_key_exists('currentRatio', $data) && \is_int($data['currentRatio'])) {
+                $data['currentRatio'] = (double) $data['currentRatio'];
+            }
+            if (\array_key_exists('liquidityRatioOrAcidTest', $data) && \is_int($data['liquidityRatioOrAcidTest'])) {
+                $data['liquidityRatioOrAcidTest'] = (double) $data['liquidityRatioOrAcidTest'];
+            }
+            if (\array_key_exists('currentDebtRatio', $data) && \is_int($data['currentDebtRatio'])) {
+                $data['currentDebtRatio'] = (double) $data['currentDebtRatio'];
+            }
+            if (\array_key_exists('gearing', $data) && \is_int($data['gearing'])) {
+                $data['gearing'] = (double) $data['gearing'];
+            }
+            if (\array_key_exists('equityInPercentage', $data) && \is_int($data['equityInPercentage'])) {
+                $data['equityInPercentage'] = (double) $data['equityInPercentage'];
+            }
+            if (\array_key_exists('totalDebtRatio', $data) && \is_int($data['totalDebtRatio'])) {
+                $data['totalDebtRatio'] = (double) $data['totalDebtRatio'];
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('preTaxProfitMargin', $data)) {
+                $object->setPreTaxProfitMargin($data['preTaxProfitMargin']);
+                unset($data['preTaxProfitMargin']);
+            }
+            if (\array_key_exists('returnOnCapitalEmployed', $data)) {
+                $object->setReturnOnCapitalEmployed($data['returnOnCapitalEmployed']);
+                unset($data['returnOnCapitalEmployed']);
+            }
+            if (\array_key_exists('returnOnTotalAssetsEmployed', $data)) {
+                $object->setReturnOnTotalAssetsEmployed($data['returnOnTotalAssetsEmployed']);
+                unset($data['returnOnTotalAssetsEmployed']);
+            }
+            if (\array_key_exists('returnOnNetAssetsEmployed', $data)) {
+                $object->setReturnOnNetAssetsEmployed($data['returnOnNetAssetsEmployed']);
+                unset($data['returnOnNetAssetsEmployed']);
+            }
+            if (\array_key_exists('salesOrNetWorkingCapital', $data)) {
+                $object->setSalesOrNetWorkingCapital($data['salesOrNetWorkingCapital']);
+                unset($data['salesOrNetWorkingCapital']);
+            }
+            if (\array_key_exists('stockTurnoverRatio', $data)) {
+                $object->setStockTurnoverRatio($data['stockTurnoverRatio']);
+                unset($data['stockTurnoverRatio']);
+            }
+            if (\array_key_exists('debtorDays', $data)) {
+                $object->setDebtorDays($data['debtorDays']);
+                unset($data['debtorDays']);
+            }
+            if (\array_key_exists('creditorDays', $data)) {
+                $object->setCreditorDays($data['creditorDays']);
+                unset($data['creditorDays']);
+            }
+            if (\array_key_exists('currentRatio', $data)) {
+                $object->setCurrentRatio($data['currentRatio']);
+                unset($data['currentRatio']);
+            }
+            if (\array_key_exists('liquidityRatioOrAcidTest', $data)) {
+                $object->setLiquidityRatioOrAcidTest($data['liquidityRatioOrAcidTest']);
+                unset($data['liquidityRatioOrAcidTest']);
+            }
+            if (\array_key_exists('currentDebtRatio', $data)) {
+                $object->setCurrentDebtRatio($data['currentDebtRatio']);
+                unset($data['currentDebtRatio']);
+            }
+            if (\array_key_exists('gearing', $data)) {
+                $object->setGearing($data['gearing']);
+                unset($data['gearing']);
+            }
+            if (\array_key_exists('equityInPercentage', $data)) {
+                $object->setEquityInPercentage($data['equityInPercentage']);
+                unset($data['equityInPercentage']);
+            }
+            if (\array_key_exists('totalDebtRatio', $data)) {
+                $object->setTotalDebtRatio($data['totalDebtRatio']);
+                unset($data['totalDebtRatio']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
             return $object;
         }
-        if (\array_key_exists('preTaxProfitMargin', $data)) {
-            $object->setPreTaxProfitMargin($data['preTaxProfitMargin']);
-            unset($data['preTaxProfitMargin']);
-        }
-        if (\array_key_exists('returnOnCapitalEmployed', $data)) {
-            $object->setReturnOnCapitalEmployed($data['returnOnCapitalEmployed']);
-            unset($data['returnOnCapitalEmployed']);
-        }
-        if (\array_key_exists('returnOnTotalAssetsEmployed', $data)) {
-            $object->setReturnOnTotalAssetsEmployed($data['returnOnTotalAssetsEmployed']);
-            unset($data['returnOnTotalAssetsEmployed']);
-        }
-        if (\array_key_exists('returnOnNetAssetsEmployed', $data)) {
-            $object->setReturnOnNetAssetsEmployed($data['returnOnNetAssetsEmployed']);
-            unset($data['returnOnNetAssetsEmployed']);
-        }
-        if (\array_key_exists('salesOrNetWorkingCapital', $data)) {
-            $object->setSalesOrNetWorkingCapital($data['salesOrNetWorkingCapital']);
-            unset($data['salesOrNetWorkingCapital']);
-        }
-        if (\array_key_exists('stockTurnoverRatio', $data)) {
-            $object->setStockTurnoverRatio($data['stockTurnoverRatio']);
-            unset($data['stockTurnoverRatio']);
-        }
-        if (\array_key_exists('debtorDays', $data)) {
-            $object->setDebtorDays($data['debtorDays']);
-            unset($data['debtorDays']);
-        }
-        if (\array_key_exists('creditorDays', $data)) {
-            $object->setCreditorDays($data['creditorDays']);
-            unset($data['creditorDays']);
-        }
-        if (\array_key_exists('currentRatio', $data)) {
-            $object->setCurrentRatio($data['currentRatio']);
-            unset($data['currentRatio']);
-        }
-        if (\array_key_exists('liquidityRatioOrAcidTest', $data)) {
-            $object->setLiquidityRatioOrAcidTest($data['liquidityRatioOrAcidTest']);
-            unset($data['liquidityRatioOrAcidTest']);
-        }
-        if (\array_key_exists('currentDebtRatio', $data)) {
-            $object->setCurrentDebtRatio($data['currentDebtRatio']);
-            unset($data['currentDebtRatio']);
-        }
-        if (\array_key_exists('gearing', $data)) {
-            $object->setGearing($data['gearing']);
-            unset($data['gearing']);
-        }
-        if (\array_key_exists('equityInPercentage', $data)) {
-            $object->setEquityInPercentage($data['equityInPercentage']);
-            unset($data['equityInPercentage']);
-        }
-        if (\array_key_exists('totalDebtRatio', $data)) {
-            $object->setTotalDebtRatio($data['totalDebtRatio']);
-            unset($data['totalDebtRatio']);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('preTaxProfitMargin') && null !== $object->getPreTaxProfitMargin()) {
+                $data['preTaxProfitMargin'] = $object->getPreTaxProfitMargin();
             }
-        }
-        return $object;
-    }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
-    {
-        $data = array();
-        if ($object->isInitialized('preTaxProfitMargin') && null !== $object->getPreTaxProfitMargin()) {
-            $data['preTaxProfitMargin'] = $object->getPreTaxProfitMargin();
-        }
-        if ($object->isInitialized('returnOnCapitalEmployed') && null !== $object->getReturnOnCapitalEmployed()) {
-            $data['returnOnCapitalEmployed'] = $object->getReturnOnCapitalEmployed();
-        }
-        if ($object->isInitialized('returnOnTotalAssetsEmployed') && null !== $object->getReturnOnTotalAssetsEmployed()) {
-            $data['returnOnTotalAssetsEmployed'] = $object->getReturnOnTotalAssetsEmployed();
-        }
-        if ($object->isInitialized('returnOnNetAssetsEmployed') && null !== $object->getReturnOnNetAssetsEmployed()) {
-            $data['returnOnNetAssetsEmployed'] = $object->getReturnOnNetAssetsEmployed();
-        }
-        if ($object->isInitialized('salesOrNetWorkingCapital') && null !== $object->getSalesOrNetWorkingCapital()) {
-            $data['salesOrNetWorkingCapital'] = $object->getSalesOrNetWorkingCapital();
-        }
-        if ($object->isInitialized('stockTurnoverRatio') && null !== $object->getStockTurnoverRatio()) {
-            $data['stockTurnoverRatio'] = $object->getStockTurnoverRatio();
-        }
-        if ($object->isInitialized('debtorDays') && null !== $object->getDebtorDays()) {
-            $data['debtorDays'] = $object->getDebtorDays();
-        }
-        if ($object->isInitialized('creditorDays') && null !== $object->getCreditorDays()) {
-            $data['creditorDays'] = $object->getCreditorDays();
-        }
-        if ($object->isInitialized('currentRatio') && null !== $object->getCurrentRatio()) {
-            $data['currentRatio'] = $object->getCurrentRatio();
-        }
-        if ($object->isInitialized('liquidityRatioOrAcidTest') && null !== $object->getLiquidityRatioOrAcidTest()) {
-            $data['liquidityRatioOrAcidTest'] = $object->getLiquidityRatioOrAcidTest();
-        }
-        if ($object->isInitialized('currentDebtRatio') && null !== $object->getCurrentDebtRatio()) {
-            $data['currentDebtRatio'] = $object->getCurrentDebtRatio();
-        }
-        if ($object->isInitialized('gearing') && null !== $object->getGearing()) {
-            $data['gearing'] = $object->getGearing();
-        }
-        if ($object->isInitialized('equityInPercentage') && null !== $object->getEquityInPercentage()) {
-            $data['equityInPercentage'] = $object->getEquityInPercentage();
-        }
-        if ($object->isInitialized('totalDebtRatio') && null !== $object->getTotalDebtRatio()) {
-            $data['totalDebtRatio'] = $object->getTotalDebtRatio();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+            if ($object->isInitialized('returnOnCapitalEmployed') && null !== $object->getReturnOnCapitalEmployed()) {
+                $data['returnOnCapitalEmployed'] = $object->getReturnOnCapitalEmployed();
             }
+            if ($object->isInitialized('returnOnTotalAssetsEmployed') && null !== $object->getReturnOnTotalAssetsEmployed()) {
+                $data['returnOnTotalAssetsEmployed'] = $object->getReturnOnTotalAssetsEmployed();
+            }
+            if ($object->isInitialized('returnOnNetAssetsEmployed') && null !== $object->getReturnOnNetAssetsEmployed()) {
+                $data['returnOnNetAssetsEmployed'] = $object->getReturnOnNetAssetsEmployed();
+            }
+            if ($object->isInitialized('salesOrNetWorkingCapital') && null !== $object->getSalesOrNetWorkingCapital()) {
+                $data['salesOrNetWorkingCapital'] = $object->getSalesOrNetWorkingCapital();
+            }
+            if ($object->isInitialized('stockTurnoverRatio') && null !== $object->getStockTurnoverRatio()) {
+                $data['stockTurnoverRatio'] = $object->getStockTurnoverRatio();
+            }
+            if ($object->isInitialized('debtorDays') && null !== $object->getDebtorDays()) {
+                $data['debtorDays'] = $object->getDebtorDays();
+            }
+            if ($object->isInitialized('creditorDays') && null !== $object->getCreditorDays()) {
+                $data['creditorDays'] = $object->getCreditorDays();
+            }
+            if ($object->isInitialized('currentRatio') && null !== $object->getCurrentRatio()) {
+                $data['currentRatio'] = $object->getCurrentRatio();
+            }
+            if ($object->isInitialized('liquidityRatioOrAcidTest') && null !== $object->getLiquidityRatioOrAcidTest()) {
+                $data['liquidityRatioOrAcidTest'] = $object->getLiquidityRatioOrAcidTest();
+            }
+            if ($object->isInitialized('currentDebtRatio') && null !== $object->getCurrentDebtRatio()) {
+                $data['currentDebtRatio'] = $object->getCurrentDebtRatio();
+            }
+            if ($object->isInitialized('gearing') && null !== $object->getGearing()) {
+                $data['gearing'] = $object->getGearing();
+            }
+            if ($object->isInitialized('equityInPercentage') && null !== $object->getEquityInPercentage()) {
+                $data['equityInPercentage'] = $object->getEquityInPercentage();
+            }
+            if ($object->isInitialized('totalDebtRatio') && null !== $object->getTotalDebtRatio()) {
+                $data['totalDebtRatio'] = $object->getTotalDebtRatio();
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+            return $data;
         }
-        return $data;
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportFinancialStatementsItemRatios' => false];
+        }
     }
-    public function getSupportedTypes(?string $format = null) : array
+} else {
+    class GbCompanyReportExampleResponseReportFinancialStatementsItemRatiosNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return array('CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportFinancialStatementsItemRatios' => false);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportFinancialStatementsItemRatios';
+        }
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportFinancialStatementsItemRatios';
+        }
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportFinancialStatementsItemRatios();
+            if (\array_key_exists('preTaxProfitMargin', $data) && \is_int($data['preTaxProfitMargin'])) {
+                $data['preTaxProfitMargin'] = (double) $data['preTaxProfitMargin'];
+            }
+            if (\array_key_exists('returnOnCapitalEmployed', $data) && \is_int($data['returnOnCapitalEmployed'])) {
+                $data['returnOnCapitalEmployed'] = (double) $data['returnOnCapitalEmployed'];
+            }
+            if (\array_key_exists('returnOnTotalAssetsEmployed', $data) && \is_int($data['returnOnTotalAssetsEmployed'])) {
+                $data['returnOnTotalAssetsEmployed'] = (double) $data['returnOnTotalAssetsEmployed'];
+            }
+            if (\array_key_exists('returnOnNetAssetsEmployed', $data) && \is_int($data['returnOnNetAssetsEmployed'])) {
+                $data['returnOnNetAssetsEmployed'] = (double) $data['returnOnNetAssetsEmployed'];
+            }
+            if (\array_key_exists('salesOrNetWorkingCapital', $data) && \is_int($data['salesOrNetWorkingCapital'])) {
+                $data['salesOrNetWorkingCapital'] = (double) $data['salesOrNetWorkingCapital'];
+            }
+            if (\array_key_exists('stockTurnoverRatio', $data) && \is_int($data['stockTurnoverRatio'])) {
+                $data['stockTurnoverRatio'] = (double) $data['stockTurnoverRatio'];
+            }
+            if (\array_key_exists('debtorDays', $data) && \is_int($data['debtorDays'])) {
+                $data['debtorDays'] = (double) $data['debtorDays'];
+            }
+            if (\array_key_exists('creditorDays', $data) && \is_int($data['creditorDays'])) {
+                $data['creditorDays'] = (double) $data['creditorDays'];
+            }
+            if (\array_key_exists('currentRatio', $data) && \is_int($data['currentRatio'])) {
+                $data['currentRatio'] = (double) $data['currentRatio'];
+            }
+            if (\array_key_exists('liquidityRatioOrAcidTest', $data) && \is_int($data['liquidityRatioOrAcidTest'])) {
+                $data['liquidityRatioOrAcidTest'] = (double) $data['liquidityRatioOrAcidTest'];
+            }
+            if (\array_key_exists('currentDebtRatio', $data) && \is_int($data['currentDebtRatio'])) {
+                $data['currentDebtRatio'] = (double) $data['currentDebtRatio'];
+            }
+            if (\array_key_exists('gearing', $data) && \is_int($data['gearing'])) {
+                $data['gearing'] = (double) $data['gearing'];
+            }
+            if (\array_key_exists('equityInPercentage', $data) && \is_int($data['equityInPercentage'])) {
+                $data['equityInPercentage'] = (double) $data['equityInPercentage'];
+            }
+            if (\array_key_exists('totalDebtRatio', $data) && \is_int($data['totalDebtRatio'])) {
+                $data['totalDebtRatio'] = (double) $data['totalDebtRatio'];
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('preTaxProfitMargin', $data)) {
+                $object->setPreTaxProfitMargin($data['preTaxProfitMargin']);
+                unset($data['preTaxProfitMargin']);
+            }
+            if (\array_key_exists('returnOnCapitalEmployed', $data)) {
+                $object->setReturnOnCapitalEmployed($data['returnOnCapitalEmployed']);
+                unset($data['returnOnCapitalEmployed']);
+            }
+            if (\array_key_exists('returnOnTotalAssetsEmployed', $data)) {
+                $object->setReturnOnTotalAssetsEmployed($data['returnOnTotalAssetsEmployed']);
+                unset($data['returnOnTotalAssetsEmployed']);
+            }
+            if (\array_key_exists('returnOnNetAssetsEmployed', $data)) {
+                $object->setReturnOnNetAssetsEmployed($data['returnOnNetAssetsEmployed']);
+                unset($data['returnOnNetAssetsEmployed']);
+            }
+            if (\array_key_exists('salesOrNetWorkingCapital', $data)) {
+                $object->setSalesOrNetWorkingCapital($data['salesOrNetWorkingCapital']);
+                unset($data['salesOrNetWorkingCapital']);
+            }
+            if (\array_key_exists('stockTurnoverRatio', $data)) {
+                $object->setStockTurnoverRatio($data['stockTurnoverRatio']);
+                unset($data['stockTurnoverRatio']);
+            }
+            if (\array_key_exists('debtorDays', $data)) {
+                $object->setDebtorDays($data['debtorDays']);
+                unset($data['debtorDays']);
+            }
+            if (\array_key_exists('creditorDays', $data)) {
+                $object->setCreditorDays($data['creditorDays']);
+                unset($data['creditorDays']);
+            }
+            if (\array_key_exists('currentRatio', $data)) {
+                $object->setCurrentRatio($data['currentRatio']);
+                unset($data['currentRatio']);
+            }
+            if (\array_key_exists('liquidityRatioOrAcidTest', $data)) {
+                $object->setLiquidityRatioOrAcidTest($data['liquidityRatioOrAcidTest']);
+                unset($data['liquidityRatioOrAcidTest']);
+            }
+            if (\array_key_exists('currentDebtRatio', $data)) {
+                $object->setCurrentDebtRatio($data['currentDebtRatio']);
+                unset($data['currentDebtRatio']);
+            }
+            if (\array_key_exists('gearing', $data)) {
+                $object->setGearing($data['gearing']);
+                unset($data['gearing']);
+            }
+            if (\array_key_exists('equityInPercentage', $data)) {
+                $object->setEquityInPercentage($data['equityInPercentage']);
+                unset($data['equityInPercentage']);
+            }
+            if (\array_key_exists('totalDebtRatio', $data)) {
+                $object->setTotalDebtRatio($data['totalDebtRatio']);
+                unset($data['totalDebtRatio']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+            return $object;
+        }
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            if ($object->isInitialized('preTaxProfitMargin') && null !== $object->getPreTaxProfitMargin()) {
+                $data['preTaxProfitMargin'] = $object->getPreTaxProfitMargin();
+            }
+            if ($object->isInitialized('returnOnCapitalEmployed') && null !== $object->getReturnOnCapitalEmployed()) {
+                $data['returnOnCapitalEmployed'] = $object->getReturnOnCapitalEmployed();
+            }
+            if ($object->isInitialized('returnOnTotalAssetsEmployed') && null !== $object->getReturnOnTotalAssetsEmployed()) {
+                $data['returnOnTotalAssetsEmployed'] = $object->getReturnOnTotalAssetsEmployed();
+            }
+            if ($object->isInitialized('returnOnNetAssetsEmployed') && null !== $object->getReturnOnNetAssetsEmployed()) {
+                $data['returnOnNetAssetsEmployed'] = $object->getReturnOnNetAssetsEmployed();
+            }
+            if ($object->isInitialized('salesOrNetWorkingCapital') && null !== $object->getSalesOrNetWorkingCapital()) {
+                $data['salesOrNetWorkingCapital'] = $object->getSalesOrNetWorkingCapital();
+            }
+            if ($object->isInitialized('stockTurnoverRatio') && null !== $object->getStockTurnoverRatio()) {
+                $data['stockTurnoverRatio'] = $object->getStockTurnoverRatio();
+            }
+            if ($object->isInitialized('debtorDays') && null !== $object->getDebtorDays()) {
+                $data['debtorDays'] = $object->getDebtorDays();
+            }
+            if ($object->isInitialized('creditorDays') && null !== $object->getCreditorDays()) {
+                $data['creditorDays'] = $object->getCreditorDays();
+            }
+            if ($object->isInitialized('currentRatio') && null !== $object->getCurrentRatio()) {
+                $data['currentRatio'] = $object->getCurrentRatio();
+            }
+            if ($object->isInitialized('liquidityRatioOrAcidTest') && null !== $object->getLiquidityRatioOrAcidTest()) {
+                $data['liquidityRatioOrAcidTest'] = $object->getLiquidityRatioOrAcidTest();
+            }
+            if ($object->isInitialized('currentDebtRatio') && null !== $object->getCurrentDebtRatio()) {
+                $data['currentDebtRatio'] = $object->getCurrentDebtRatio();
+            }
+            if ($object->isInitialized('gearing') && null !== $object->getGearing()) {
+                $data['gearing'] = $object->getGearing();
+            }
+            if ($object->isInitialized('equityInPercentage') && null !== $object->getEquityInPercentage()) {
+                $data['equityInPercentage'] = $object->getEquityInPercentage();
+            }
+            if ($object->isInitialized('totalDebtRatio') && null !== $object->getTotalDebtRatio()) {
+                $data['totalDebtRatio'] = $object->getTotalDebtRatio();
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+            return $data;
+        }
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['CreditSafe\\API\\Model\\GbCompanyReportExampleResponseReportFinancialStatementsItemRatios' => false];
+        }
     }
 }

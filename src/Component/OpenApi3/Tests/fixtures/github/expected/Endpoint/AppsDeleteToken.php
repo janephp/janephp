@@ -23,18 +23,18 @@ class AppsDeleteToken extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     }
     public function getUri() : string
     {
-        return str_replace(array('{client_id}'), array($this->client_id), '/applications/{client_id}/token');
+        return str_replace(['{client_id}'], [$this->client_id], '/applications/{client_id}/token');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\ApplicationsClientIdTokenDeleteBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -56,6 +56,6 @@ class AppsDeleteToken extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

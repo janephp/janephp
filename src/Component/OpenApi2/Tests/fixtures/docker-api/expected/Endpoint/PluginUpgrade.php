@@ -27,7 +27,7 @@ class PluginUpgrade extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     
     * }
     */
-    public function __construct(string $name, array $body, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(string $name, array $body, array $queryParameters = [], array $headerParameters = [])
     {
         $this->name = $name;
         $this->body = $body;
@@ -41,7 +41,7 @@ class PluginUpgrade extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getUri() : string
     {
-        return str_replace(array('{name}'), array($this->name), '/plugins/{name}/upgrade');
+        return str_replace(['{name}'], [$this->name], '/plugins/{name}/upgrade');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
@@ -49,24 +49,24 @@ class PluginUpgrade extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('remote'));
-        $optionsResolver->setRequired(array('remote'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('remote', array('string'));
+        $optionsResolver->setDefined(['remote']);
+        $optionsResolver->setRequired(['remote']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('remote', ['string']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('X-Registry-Auth'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('X-Registry-Auth', array('string'));
+        $optionsResolver->setDefined(['X-Registry-Auth']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('X-Registry-Auth', ['string']);
         return $optionsResolver;
     }
     /**
@@ -93,6 +93,6 @@ class PluginUpgrade extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

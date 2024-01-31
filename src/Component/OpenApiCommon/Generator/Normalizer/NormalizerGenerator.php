@@ -59,7 +59,7 @@ trait NormalizerGenerator
      * We want stricly same class for OpenApi Normalizers since we can have inheritance and this could avoid
      * normalization to use child classes. This is why we use `get_class` and not `instanceof`.
      */
-    protected function createSupportsNormalizationMethod(string $modelFqdn): Stmt\ClassMethod
+    protected function createSupportsNormalizationMethod(string $modelFqdn, bool $symfony7): Stmt\ClassMethod
     {
         $exprTestClassFunction = function ($class) {
             return new Expr\BinaryOp\Identical(
@@ -72,8 +72,8 @@ trait NormalizerGenerator
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'returnType' => 'bool',
             'params' => [
-                new Param(new Expr\Variable('data')),
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('data'), type: 'mixed'),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), 'string'),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],
             'stmts' => [

@@ -14,7 +14,7 @@ class AddOrDeleteRules extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\Base
      * }
      * @param array $accept Accept content header application/json|application/problem+json
      */
-    public function __construct($requestBody, array $queryParameters = array(), array $accept = array())
+    public function __construct($requestBody, array $queryParameters = [], array $accept = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
@@ -32,24 +32,24 @@ class AddOrDeleteRules extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\Base
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if (isset($this->body)) {
-            return array(array('Content-Type' => array('application/json')), json_encode($this->body));
+            return [['Content-Type' => ['application/json']], json_encode($this->body)];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/json', 'application/problem+json'));
+            return ['Accept' => ['application/json', 'application/problem+json']];
         }
         return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('dry_run'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('dry_run', array('bool'));
+        $optionsResolver->setDefined(['dry_run']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('dry_run', ['bool']);
         return $optionsResolver;
     }
     /**
@@ -74,6 +74,6 @@ class AddOrDeleteRules extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\Base
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -15,7 +15,7 @@ class GetTestComplexList extends \Jane\Component\OpenApi2\Tests\Expected\Runtime
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -34,6 +34,6 @@ class GetTestComplexList extends \Jane\Component\OpenApi2\Tests\Expected\Runtime
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

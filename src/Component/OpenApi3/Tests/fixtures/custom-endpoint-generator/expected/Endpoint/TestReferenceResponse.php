@@ -15,7 +15,7 @@ class TestReferenceResponse extends \Jane\Component\OpenApi3\Tests\Expected\Runt
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -33,6 +33,6 @@ class TestReferenceResponse extends \Jane\Component\OpenApi3\Tests\Expected\Runt
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

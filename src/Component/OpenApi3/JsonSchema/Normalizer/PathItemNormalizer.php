@@ -18,18 +18,18 @@ class PathItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, $context = []) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\PathItem';
     }
-    public function supportsNormalization($data, $format = null, $context = []) : bool
+    public function supportsNormalization($data, $format = null, array $context = []) : bool
     {
         return $data instanceof \Jane\Component\OpenApi3\JsonSchema\Model\PathItem;
     }
     /**
      * @return mixed
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -119,7 +119,7 @@ class PathItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setTrace(null);
         }
         if (\array_key_exists('servers', $data) && $data['servers'] !== null) {
-            $values = array();
+            $values = [];
             foreach ($data['servers'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Server', 'json', $context);
             }
@@ -130,7 +130,7 @@ class PathItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setServers(null);
         }
         if (\array_key_exists('parameters', $data) && $data['parameters'] !== null) {
-            $values_1 = array();
+            $values_1 = [];
             foreach ($data['parameters'] as $value_1) {
                 $value_2 = $value_1;
                 if (is_array($value_1) and isset($value_1['$ref'])) {
@@ -159,51 +159,51 @@ class PathItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if (null !== $object->getDollarRef()) {
+        $data = [];
+        if ($object->isInitialized('dollarRef') && null !== $object->getDollarRef()) {
             $data['$ref'] = $object->getDollarRef();
         }
-        if (null !== $object->getSummary()) {
+        if ($object->isInitialized('summary') && null !== $object->getSummary()) {
             $data['summary'] = $object->getSummary();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $data['description'] = $object->getDescription();
         }
-        if (null !== $object->getGet()) {
+        if ($object->isInitialized('get') && null !== $object->getGet()) {
             $data['get'] = $this->normalizer->normalize($object->getGet(), 'json', $context);
         }
-        if (null !== $object->getPut()) {
+        if ($object->isInitialized('put') && null !== $object->getPut()) {
             $data['put'] = $this->normalizer->normalize($object->getPut(), 'json', $context);
         }
-        if (null !== $object->getPost()) {
+        if ($object->isInitialized('post') && null !== $object->getPost()) {
             $data['post'] = $this->normalizer->normalize($object->getPost(), 'json', $context);
         }
-        if (null !== $object->getDelete()) {
+        if ($object->isInitialized('delete') && null !== $object->getDelete()) {
             $data['delete'] = $this->normalizer->normalize($object->getDelete(), 'json', $context);
         }
-        if (null !== $object->getOptions()) {
+        if ($object->isInitialized('options') && null !== $object->getOptions()) {
             $data['options'] = $this->normalizer->normalize($object->getOptions(), 'json', $context);
         }
-        if (null !== $object->getHead()) {
+        if ($object->isInitialized('head') && null !== $object->getHead()) {
             $data['head'] = $this->normalizer->normalize($object->getHead(), 'json', $context);
         }
-        if (null !== $object->getPatch()) {
+        if ($object->isInitialized('patch') && null !== $object->getPatch()) {
             $data['patch'] = $this->normalizer->normalize($object->getPatch(), 'json', $context);
         }
-        if (null !== $object->getTrace()) {
+        if ($object->isInitialized('trace') && null !== $object->getTrace()) {
             $data['trace'] = $this->normalizer->normalize($object->getTrace(), 'json', $context);
         }
-        if (null !== $object->getServers()) {
-            $values = array();
+        if ($object->isInitialized('servers') && null !== $object->getServers()) {
+            $values = [];
             foreach ($object->getServers() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['servers'] = $values;
         }
-        if (null !== $object->getParameters()) {
-            $values_1 = array();
+        if ($object->isInitialized('parameters') && null !== $object->getParameters()) {
+            $values_1 = [];
             foreach ($object->getParameters() as $value_1) {
                 $value_2 = $value_1;
                 if (is_object($value_1)) {
@@ -224,5 +224,9 @@ class PathItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return ['Jane\\Component\\OpenApi3\\JsonSchema\\Model\\PathItem' => false];
     }
 }

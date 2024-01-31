@@ -18,18 +18,18 @@ class MediaTypeNormalizer implements DenormalizerInterface, NormalizerInterface,
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, $context = []) : bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\MediaType';
     }
-    public function supportsNormalization($data, $format = null, $context = []) : bool
+    public function supportsNormalization($data, $format = null, array $context = []) : bool
     {
         return $data instanceof \Jane\Component\OpenApi3\JsonSchema\Model\MediaType;
     }
     /**
      * @return mixed
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -62,7 +62,7 @@ class MediaTypeNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setExample(null);
         }
         if (\array_key_exists('examples', $data) && $data['examples'] !== null) {
-            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['examples'] as $key => $value_1) {
                 $value_2 = $value_1;
                 if (is_array($value_1) and isset($value_1['$ref'])) {
@@ -79,7 +79,7 @@ class MediaTypeNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setExamples(null);
         }
         if (\array_key_exists('encoding', $data) && $data['encoding'] !== null) {
-            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['encoding'] as $key_1 => $value_3) {
                 $values_1[$key_1] = $this->denormalizer->denormalize($value_3, 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Encoding', 'json', $context);
             }
@@ -99,10 +99,10 @@ class MediaTypeNormalizer implements DenormalizerInterface, NormalizerInterface,
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if (null !== $object->getSchema()) {
+        $data = [];
+        if ($object->isInitialized('schema') && null !== $object->getSchema()) {
             $value = $object->getSchema();
             if (is_object($object->getSchema())) {
                 $value = $this->normalizer->normalize($object->getSchema(), 'json', $context);
@@ -111,11 +111,11 @@ class MediaTypeNormalizer implements DenormalizerInterface, NormalizerInterface,
             }
             $data['schema'] = $value;
         }
-        if (null !== $object->getExample()) {
+        if ($object->isInitialized('example') && null !== $object->getExample()) {
             $data['example'] = $object->getExample();
         }
-        if (null !== $object->getExamples()) {
-            $values = array();
+        if ($object->isInitialized('examples') && null !== $object->getExamples()) {
+            $values = [];
             foreach ($object->getExamples() as $key => $value_1) {
                 $value_2 = $value_1;
                 if (is_object($value_1)) {
@@ -127,8 +127,8 @@ class MediaTypeNormalizer implements DenormalizerInterface, NormalizerInterface,
             }
             $data['examples'] = $values;
         }
-        if (null !== $object->getEncoding()) {
-            $values_1 = array();
+        if ($object->isInitialized('encoding') && null !== $object->getEncoding()) {
+            $values_1 = [];
             foreach ($object->getEncoding() as $key_1 => $value_3) {
                 $values_1[$key_1] = $this->normalizer->normalize($value_3, 'json', $context);
             }
@@ -140,5 +140,9 @@ class MediaTypeNormalizer implements DenormalizerInterface, NormalizerInterface,
             }
         }
         return $data;
+    }
+    public function getSupportedTypes(?string $format = null) : array
+    {
+        return ['Jane\\Component\\OpenApi3\\JsonSchema\\Model\\MediaType' => false];
     }
 }

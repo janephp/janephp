@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\JsonSchema\Model;
 class OpenApi extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -31,7 +39,7 @@ class OpenApi extends \ArrayObject
     /**
      * 
      *
-     * @var string[][][]|null
+     * @var array<string, string[]>[]|null
      */
     protected $security;
     /**
@@ -70,6 +78,7 @@ class OpenApi extends \ArrayObject
      */
     public function setOpenapi(?string $openapi) : self
     {
+        $this->initialized['openapi'] = true;
         $this->openapi = $openapi;
         return $this;
     }
@@ -91,6 +100,7 @@ class OpenApi extends \ArrayObject
      */
     public function setInfo(?Info $info) : self
     {
+        $this->initialized['info'] = true;
         $this->info = $info;
         return $this;
     }
@@ -112,6 +122,7 @@ class OpenApi extends \ArrayObject
      */
     public function setExternalDocs(?ExternalDocumentation $externalDocs) : self
     {
+        $this->initialized['externalDocs'] = true;
         $this->externalDocs = $externalDocs;
         return $this;
     }
@@ -133,13 +144,14 @@ class OpenApi extends \ArrayObject
      */
     public function setServers(?array $servers) : self
     {
+        $this->initialized['servers'] = true;
         $this->servers = $servers;
         return $this;
     }
     /**
      * 
      *
-     * @return string[][][]|null
+     * @return array<string, string[]>[]|null
      */
     public function getSecurity() : ?array
     {
@@ -148,12 +160,13 @@ class OpenApi extends \ArrayObject
     /**
      * 
      *
-     * @param string[][][]|null $security
+     * @param array<string, string[]>[]|null $security
      *
      * @return self
      */
     public function setSecurity(?array $security) : self
     {
+        $this->initialized['security'] = true;
         $this->security = $security;
         return $this;
     }
@@ -175,6 +188,7 @@ class OpenApi extends \ArrayObject
      */
     public function setTags(?array $tags) : self
     {
+        $this->initialized['tags'] = true;
         $this->tags = $tags;
         return $this;
     }
@@ -196,6 +210,7 @@ class OpenApi extends \ArrayObject
      */
     public function setPaths($paths) : self
     {
+        $this->initialized['paths'] = true;
         $this->paths = $paths;
         return $this;
     }
@@ -217,6 +232,7 @@ class OpenApi extends \ArrayObject
      */
     public function setComponents(?Components $components) : self
     {
+        $this->initialized['components'] = true;
         $this->components = $components;
         return $this;
     }

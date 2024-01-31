@@ -29,15 +29,15 @@ class ChecksGet extends \Github\Runtime\Client\BaseEndpoint implements \Github\R
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{check_run_id}'), array($this->owner, $this->repo, $this->check_run_id), '/repos/{owner}/{repo}/check-runs/{check_run_id}');
+        return str_replace(['{owner}', '{repo}', '{check_run_id}'], [$this->owner, $this->repo, $this->check_run_id], '/repos/{owner}/{repo}/check-runs/{check_run_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -55,6 +55,6 @@ class ChecksGet extends \Github\Runtime\Client\BaseEndpoint implements \Github\R
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

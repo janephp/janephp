@@ -27,25 +27,26 @@ trait DenormalizerGenerator
      * Create method to check if denormalization is supported.
      *
      * @param string $modelFqdn Fully Qualified name of the model class denormalized
+     * @param bool   $symfony7  Use Symfony 7 prototype or not
      *
      * @return Stmt\ClassMethod
      */
-    protected function createSupportsDenormalizationMethod(string $modelFqdn)
+    protected function createSupportsDenormalizationMethod(string $modelFqdn, bool $symfony7)
     {
         return new Stmt\ClassMethod('supportsDenormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'returnType' => 'bool',
             'params' => [
-                new Param(new Expr\Variable('data')),
-                new Param(new Expr\Variable('type')),
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                $symfony7 ? new Param(new Expr\Variable('data'), type: 'mixed') : new Param(new Expr\Variable('data')),
+                $symfony7 ? new Param(new Expr\Variable('type'), type: 'string') : new Param(new Expr\Variable('type')),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), 'string'),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],
             'stmts' => [new Stmt\Return_(new Expr\BinaryOp\Identical(new Expr\Variable('type'), new Scalar\String_($modelFqdn)))],
         ]);
     }
 
-    protected function createDenormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess): Stmt\ClassMethod
+    protected function createDenormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $symfony7): Stmt\ClassMethod
     {
         $context->refreshScope();
         $objectVariable = new Expr\Variable('object');
@@ -189,15 +190,16 @@ trait DenormalizerGenerator
 
         return new Stmt\ClassMethod('denormalize', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'returnType' => $symfony7 ? 'mixed' : null,
             'params' => [
-                new Param($dataVariable),
-                new Param(new Expr\Variable('class')),
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                $symfony7 ? new Param($dataVariable, type: 'mixed') : new Param($dataVariable),
+                $symfony7 ? new Param(new Expr\Variable('type'), type: 'string') : new Param(new Expr\Variable('type')),
+                $symfony7 ? new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), 'string') : new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],
             'stmts' => $statements,
         ], [
-            'comments' => [new Doc(<<<EOD
+            'comments' => $symfony7 ? [] : [new Doc(<<<EOD
 /**
  * @return mixed
  */

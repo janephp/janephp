@@ -21,15 +21,15 @@ class ReposAcceptInvitation extends \Github\Runtime\Client\BaseEndpoint implemen
     }
     public function getUri() : string
     {
-        return str_replace(array('{invitation_id}'), array($this->invitation_id), '/user/repository_invitations/{invitation_id}');
+        return str_replace(['{invitation_id}'], [$this->invitation_id], '/user/repository_invitations/{invitation_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -62,6 +62,6 @@ class ReposAcceptInvitation extends \Github\Runtime\Client\BaseEndpoint implemen
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

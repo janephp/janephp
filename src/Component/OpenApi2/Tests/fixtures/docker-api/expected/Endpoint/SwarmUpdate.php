@@ -17,7 +17,7 @@ class SwarmUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     *     @var bool $rotateManagerUnlockKey Rotate the manager unlock key.
     * }
     */
-    public function __construct(\Docker\Api\Model\SwarmSpec $body, array $queryParameters = array())
+    public function __construct(\Docker\Api\Model\SwarmSpec $body, array $queryParameters = [])
     {
         $this->body = $body;
         $this->queryParameters = $queryParameters;
@@ -37,18 +37,18 @@ class SwarmUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('version', 'rotateWorkerToken', 'rotateManagerToken', 'rotateManagerUnlockKey'));
-        $optionsResolver->setRequired(array('version'));
-        $optionsResolver->setDefaults(array('rotateWorkerToken' => false, 'rotateManagerToken' => false, 'rotateManagerUnlockKey' => false));
-        $optionsResolver->addAllowedTypes('version', array('int'));
-        $optionsResolver->addAllowedTypes('rotateWorkerToken', array('bool'));
-        $optionsResolver->addAllowedTypes('rotateManagerToken', array('bool'));
-        $optionsResolver->addAllowedTypes('rotateManagerUnlockKey', array('bool'));
+        $optionsResolver->setDefined(['version', 'rotateWorkerToken', 'rotateManagerToken', 'rotateManagerUnlockKey']);
+        $optionsResolver->setRequired(['version']);
+        $optionsResolver->setDefaults(['rotateWorkerToken' => false, 'rotateManagerToken' => false, 'rotateManagerUnlockKey' => false]);
+        $optionsResolver->addAllowedTypes('version', ['int']);
+        $optionsResolver->addAllowedTypes('rotateWorkerToken', ['bool']);
+        $optionsResolver->addAllowedTypes('rotateManagerToken', ['bool']);
+        $optionsResolver->addAllowedTypes('rotateManagerUnlockKey', ['bool']);
         return $optionsResolver;
     }
     /**
@@ -79,6 +79,6 @@ class SwarmUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

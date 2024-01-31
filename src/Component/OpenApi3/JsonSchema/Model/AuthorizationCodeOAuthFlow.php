@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\JsonSchema\Model;
 class AuthorizationCodeOAuthFlow extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -25,7 +33,7 @@ class AuthorizationCodeOAuthFlow extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var array<string, string>|null
      */
     protected $scopes;
     /**
@@ -46,6 +54,7 @@ class AuthorizationCodeOAuthFlow extends \ArrayObject
      */
     public function setAuthorizationUrl(?string $authorizationUrl) : self
     {
+        $this->initialized['authorizationUrl'] = true;
         $this->authorizationUrl = $authorizationUrl;
         return $this;
     }
@@ -67,6 +76,7 @@ class AuthorizationCodeOAuthFlow extends \ArrayObject
      */
     public function setTokenUrl(?string $tokenUrl) : self
     {
+        $this->initialized['tokenUrl'] = true;
         $this->tokenUrl = $tokenUrl;
         return $this;
     }
@@ -88,13 +98,14 @@ class AuthorizationCodeOAuthFlow extends \ArrayObject
      */
     public function setRefreshUrl(?string $refreshUrl) : self
     {
+        $this->initialized['refreshUrl'] = true;
         $this->refreshUrl = $refreshUrl;
         return $this;
     }
     /**
      * 
      *
-     * @return string[]|null
+     * @return array<string, string>|null
      */
     public function getScopes() : ?iterable
     {
@@ -103,12 +114,13 @@ class AuthorizationCodeOAuthFlow extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $scopes
+     * @param array<string, string>|null $scopes
      *
      * @return self
      */
     public function setScopes(?iterable $scopes) : self
     {
+        $this->initialized['scopes'] = true;
         $this->scopes = $scopes;
         return $this;
     }

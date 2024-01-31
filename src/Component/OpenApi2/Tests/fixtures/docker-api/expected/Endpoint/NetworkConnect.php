@@ -23,7 +23,7 @@ class NetworkConnect extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/networks/{id}/connect');
+        return str_replace(['{id}'], [$this->id], '/networks/{id}/connect');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
@@ -31,7 +31,7 @@ class NetworkConnect extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -61,6 +61,6 @@ class NetworkConnect extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

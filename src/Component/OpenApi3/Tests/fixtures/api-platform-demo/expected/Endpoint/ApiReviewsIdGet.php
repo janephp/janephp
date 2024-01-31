@@ -12,7 +12,7 @@ class ApiReviewsIdGet extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
      * @param string $id Review identifier
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      */
-    public function __construct(string $id, array $accept = array())
+    public function __construct(string $id, array $accept = [])
     {
         $this->id = $id;
         $this->accept = $accept;
@@ -24,16 +24,16 @@ class ApiReviewsIdGet extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/reviews/{id}');
+        return str_replace(['{id}'], [$this->id], '/reviews/{id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/ld+json', 'application/hal+json', 'application/vnd.api+json', 'application/json', 'application/xml', 'text/xml', 'application/x-yaml', 'text/csv'));
+            return ['Accept' => ['application/ld+json', 'application/hal+json', 'application/vnd.api+json', 'application/json', 'application/xml', 'text/xml', 'application/x-yaml', 'text/csv']];
         }
         return $this->accept;
     }
@@ -68,6 +68,6 @@ class ApiReviewsIdGet extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
     }
     public function getAuthenticationScopes() : array
     {
-        return array('apiKey');
+        return ['apiKey'];
     }
 }

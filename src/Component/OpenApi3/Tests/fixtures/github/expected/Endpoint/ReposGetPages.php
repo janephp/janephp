@@ -24,15 +24,15 @@ class ReposGetPages extends \Github\Runtime\Client\BaseEndpoint implements \Gith
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}'), array($this->owner, $this->repo), '/repos/{owner}/{repo}/pages');
+        return str_replace(['{owner}', '{repo}'], [$this->owner, $this->repo], '/repos/{owner}/{repo}/pages');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -54,6 +54,6 @@ class ReposGetPages extends \Github\Runtime\Client\BaseEndpoint implements \Gith
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

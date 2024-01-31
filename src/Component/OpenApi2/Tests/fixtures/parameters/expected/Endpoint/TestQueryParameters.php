@@ -16,7 +16,7 @@ class TestQueryParameters extends \Jane\Component\OpenApi2\Tests\Expected\Runtim
      *     @var string $testDefault 
      * }
      */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -31,20 +31,20 @@ class TestQueryParameters extends \Jane\Component\OpenApi2\Tests\Expected\Runtim
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('testString', 'testInteger', 'testFloat', 'testArray', 'testRequired', 'testDefault'));
-        $optionsResolver->setRequired(array('testRequired'));
-        $optionsResolver->setDefaults(array('testDefault' => 'test'));
-        $optionsResolver->addAllowedTypes('testString', array('string'));
-        $optionsResolver->addAllowedTypes('testInteger', array('int'));
-        $optionsResolver->addAllowedTypes('testFloat', array('float'));
-        $optionsResolver->addAllowedTypes('testArray', array('array'));
-        $optionsResolver->addAllowedTypes('testRequired', array('string'));
-        $optionsResolver->addAllowedTypes('testDefault', array('string'));
+        $optionsResolver->setDefined(['testString', 'testInteger', 'testFloat', 'testArray', 'testRequired', 'testDefault']);
+        $optionsResolver->setRequired(['testRequired']);
+        $optionsResolver->setDefaults(['testDefault' => 'test']);
+        $optionsResolver->addAllowedTypes('testString', ['string']);
+        $optionsResolver->addAllowedTypes('testInteger', ['int']);
+        $optionsResolver->addAllowedTypes('testFloat', ['float']);
+        $optionsResolver->addAllowedTypes('testArray', ['array']);
+        $optionsResolver->addAllowedTypes('testRequired', ['string']);
+        $optionsResolver->addAllowedTypes('testDefault', ['string']);
         return $optionsResolver;
     }
     /**
@@ -63,6 +63,6 @@ class TestQueryParameters extends \Jane\Component\OpenApi2\Tests\Expected\Runtim
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -30,7 +30,7 @@ class SystemAuth extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -55,6 +55,6 @@ class SystemAuth extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Doc
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

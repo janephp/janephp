@@ -24,15 +24,15 @@ class GistsGetRevision extends \Github\Runtime\Client\BaseEndpoint implements \G
     }
     public function getUri() : string
     {
-        return str_replace(array('{gist_id}', '{sha}'), array($this->gist_id, $this->sha), '/gists/{gist_id}/{sha}');
+        return str_replace(['{gist_id}', '{sha}'], [$this->gist_id, $this->sha], '/gists/{gist_id}/{sha}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -62,6 +62,6 @@ class GistsGetRevision extends \Github\Runtime\Client\BaseEndpoint implements \G
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

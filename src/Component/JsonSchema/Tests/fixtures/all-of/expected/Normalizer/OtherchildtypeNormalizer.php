@@ -12,53 +12,101 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class OtherchildtypeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class OtherchildtypeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Otherchildtype';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype;
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype();
-        if (null === $data || false === \is_array($data)) {
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Otherchildtype';
+        }
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype;
+        }
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('inheritedProperty', $data)) {
+                $object->setInheritedProperty($data['inheritedProperty']);
+            }
+            if (\array_key_exists('childProperty', $data)) {
+                $object->setChildProperty($data['childProperty']);
+            }
             return $object;
         }
-        if (\array_key_exists('inheritedProperty', $data)) {
-            $object->setInheritedProperty($data['inheritedProperty']);
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            if ($object->isInitialized('inheritedProperty') && null !== $object->getInheritedProperty()) {
+                $data['inheritedProperty'] = $object->getInheritedProperty();
+            }
+            if ($object->isInitialized('childProperty') && null !== $object->getChildProperty()) {
+                $data['childProperty'] = $object->getChildProperty();
+            }
+            return $data;
         }
-        if (\array_key_exists('childProperty', $data)) {
-            $object->setChildProperty($data['childProperty']);
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Otherchildtype' => false];
         }
-        return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+} else {
+    class OtherchildtypeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = array();
-        if ($object->isInitialized('inheritedProperty') && null !== $object->getInheritedProperty()) {
-            $data['inheritedProperty'] = $object->getInheritedProperty();
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Otherchildtype';
         }
-        if ($object->isInitialized('childProperty') && null !== $object->getChildProperty()) {
-            $data['childProperty'] = $object->getChildProperty();
+        public function supportsNormalization($data, $format = null, array $context = []) : bool
+        {
+            return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype;
         }
-        return $data;
-    }
-    public function getSupportedTypes(?string $format = null) : array
-    {
-        return array('Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Otherchildtype' => false);
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('inheritedProperty', $data)) {
+                $object->setInheritedProperty($data['inheritedProperty']);
+            }
+            if (\array_key_exists('childProperty', $data)) {
+                $object->setChildProperty($data['childProperty']);
+            }
+            return $object;
+        }
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            if ($object->isInitialized('inheritedProperty') && null !== $object->getInheritedProperty()) {
+                $data['inheritedProperty'] = $object->getInheritedProperty();
+            }
+            if ($object->isInitialized('childProperty') && null !== $object->getChildProperty()) {
+                $data['childProperty'] = $object->getChildProperty();
+            }
+            return $data;
+        }
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Otherchildtype' => false];
+        }
     }
 }

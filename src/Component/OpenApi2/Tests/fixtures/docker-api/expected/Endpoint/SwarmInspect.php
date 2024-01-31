@@ -15,11 +15,11 @@ class SwarmInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -49,6 +49,6 @@ class SwarmInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

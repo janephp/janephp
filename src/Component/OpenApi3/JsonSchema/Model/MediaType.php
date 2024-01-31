@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\JsonSchema\Model;
 class MediaType extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var Schema|Reference|null
@@ -19,13 +27,13 @@ class MediaType extends \ArrayObject
     /**
      * 
      *
-     * @var Example[]|Reference[]|null
+     * @var array<string, Example|Reference>|null
      */
     protected $examples;
     /**
      * 
      *
-     * @var Encoding[]|null
+     * @var array<string, Encoding>|null
      */
     protected $encoding;
     /**
@@ -46,6 +54,7 @@ class MediaType extends \ArrayObject
      */
     public function setSchema($schema) : self
     {
+        $this->initialized['schema'] = true;
         $this->schema = $schema;
         return $this;
     }
@@ -67,13 +76,14 @@ class MediaType extends \ArrayObject
      */
     public function setExample($example) : self
     {
+        $this->initialized['example'] = true;
         $this->example = $example;
         return $this;
     }
     /**
      * 
      *
-     * @return Example[]|Reference[]|null
+     * @return array<string, Example|Reference>|null
      */
     public function getExamples() : ?iterable
     {
@@ -82,19 +92,20 @@ class MediaType extends \ArrayObject
     /**
      * 
      *
-     * @param Example[]|Reference[]|null $examples
+     * @param array<string, Example|Reference>|null $examples
      *
      * @return self
      */
     public function setExamples(?iterable $examples) : self
     {
+        $this->initialized['examples'] = true;
         $this->examples = $examples;
         return $this;
     }
     /**
      * 
      *
-     * @return Encoding[]|null
+     * @return array<string, Encoding>|null
      */
     public function getEncoding() : ?iterable
     {
@@ -103,12 +114,13 @@ class MediaType extends \ArrayObject
     /**
      * 
      *
-     * @param Encoding[]|null $encoding
+     * @param array<string, Encoding>|null $encoding
      *
      * @return self
      */
     public function setEncoding(?iterable $encoding) : self
     {
+        $this->initialized['encoding'] = true;
         $this->encoding = $encoding;
         return $this;
     }

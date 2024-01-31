@@ -23,15 +23,15 @@ class UsersFollow extends \Github\Runtime\Client\BaseEndpoint implements \Github
     }
     public function getUri() : string
     {
-        return str_replace(array('{username}'), array($this->username), '/user/following/{username}');
+        return str_replace(['{username}'], [$this->username], '/user/following/{username}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -64,6 +64,6 @@ class UsersFollow extends \Github\Runtime\Client\BaseEndpoint implements \Github
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

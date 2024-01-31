@@ -43,6 +43,6 @@ class UpdateCompany extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseEnd
     }
     public function getAuthenticationScopes() : array
     {
-        return array('BearerAuth', 'AccountAuth');
+        return ['BearerAuth', 'AccountAuth'];
     }
 }

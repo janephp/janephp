@@ -34,7 +34,7 @@ class ServiceUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     
     * }
     */
-    public function __construct(string $id, \Docker\Api\Model\ServicesIdUpdatePostBody $body, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(string $id, \Docker\Api\Model\ServicesIdUpdatePostBody $body, array $queryParameters = [], array $headerParameters = [])
     {
         $this->id = $id;
         $this->body = $body;
@@ -48,7 +48,7 @@ class ServiceUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/services/{id}/update');
+        return str_replace(['{id}'], [$this->id], '/services/{id}/update');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
@@ -56,26 +56,26 @@ class ServiceUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('version', 'registryAuthFrom', 'rollback'));
-        $optionsResolver->setRequired(array('version'));
-        $optionsResolver->setDefaults(array('registryAuthFrom' => 'spec'));
-        $optionsResolver->addAllowedTypes('version', array('int'));
-        $optionsResolver->addAllowedTypes('registryAuthFrom', array('string'));
-        $optionsResolver->addAllowedTypes('rollback', array('string'));
+        $optionsResolver->setDefined(['version', 'registryAuthFrom', 'rollback']);
+        $optionsResolver->setRequired(['version']);
+        $optionsResolver->setDefaults(['registryAuthFrom' => 'spec']);
+        $optionsResolver->addAllowedTypes('version', ['int']);
+        $optionsResolver->addAllowedTypes('registryAuthFrom', ['string']);
+        $optionsResolver->addAllowedTypes('rollback', ['string']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('X-Registry-Auth'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('X-Registry-Auth', array('string'));
+        $optionsResolver->setDefined(['X-Registry-Auth']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('X-Registry-Auth', ['string']);
         return $optionsResolver;
     }
     /**
@@ -110,6 +110,6 @@ class ServiceUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

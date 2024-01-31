@@ -15,7 +15,7 @@ class ReposUpdateInformationAboutPagesSite extends \Github\Runtime\Client\BaseEn
      * @param null|\Github\Model\ReposOwnerRepoPagesPutBody $requestBody 
      * @param array $accept Accept content header application/json|application/scim+json
      */
-    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPagesPutBody $requestBody = null, array $accept = array())
+    public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPagesPutBody $requestBody = null, array $accept = [])
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -29,19 +29,19 @@ class ReposUpdateInformationAboutPagesSite extends \Github\Runtime\Client\BaseEn
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}'), array($this->owner, $this->repo), '/repos/{owner}/{repo}/pages');
+        return str_replace(['{owner}', '{repo}'], [$this->owner, $this->repo], '/repos/{owner}/{repo}/pages');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if ($this->body instanceof \Github\Model\ReposOwnerRepoPagesPutBody) {
-            return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/json', 'application/scim+json'));
+            return ['Accept' => ['application/json', 'application/scim+json']];
         }
         return $this->accept;
     }
@@ -69,6 +69,6 @@ class ReposUpdateInformationAboutPagesSite extends \Github\Runtime\Client\BaseEn
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

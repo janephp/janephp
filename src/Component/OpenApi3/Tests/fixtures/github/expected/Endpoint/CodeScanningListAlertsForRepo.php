@@ -16,7 +16,7 @@ class CodeScanningListAlertsForRepo extends \Github\Runtime\Client\BaseEndpoint 
      *     @var string $ref Returns a list of code scanning alerts for a specific brach reference. The `ref` must be formatted as `heads/<branch name>`.
      * }
      */
-    public function __construct(string $owner, string $repo, array $queryParameters = array())
+    public function __construct(string $owner, string $repo, array $queryParameters = [])
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -29,24 +29,24 @@ class CodeScanningListAlertsForRepo extends \Github\Runtime\Client\BaseEndpoint 
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}'), array($this->owner, $this->repo), '/repos/{owner}/{repo}/code-scanning/alerts');
+        return str_replace(['{owner}', '{repo}'], [$this->owner, $this->repo], '/repos/{owner}/{repo}/code-scanning/alerts');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('state', 'ref'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('state' => 'open'));
-        $optionsResolver->addAllowedTypes('state', array('string'));
-        $optionsResolver->addAllowedTypes('ref', array('string'));
+        $optionsResolver->setDefined(['state', 'ref']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['state' => 'open']);
+        $optionsResolver->addAllowedTypes('state', ['string']);
+        $optionsResolver->addAllowedTypes('ref', ['string']);
         return $optionsResolver;
     }
     /**
@@ -73,6 +73,6 @@ class CodeScanningListAlertsForRepo extends \Github\Runtime\Client\BaseEndpoint 
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

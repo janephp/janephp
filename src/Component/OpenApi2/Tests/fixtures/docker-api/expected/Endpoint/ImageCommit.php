@@ -18,7 +18,7 @@ class ImageCommit extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
      *     @var string $changes `Dockerfile` instructions to apply while committing
      * }
      */
-    public function __construct(\Docker\Api\Model\ContainerConfig $containerConfig, array $queryParameters = array())
+    public function __construct(\Docker\Api\Model\ContainerConfig $containerConfig, array $queryParameters = [])
     {
         $this->body = $containerConfig;
         $this->queryParameters = $queryParameters;
@@ -38,21 +38,21 @@ class ImageCommit extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('container', 'repo', 'tag', 'comment', 'author', 'pause', 'changes'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('pause' => true));
-        $optionsResolver->addAllowedTypes('container', array('string'));
-        $optionsResolver->addAllowedTypes('repo', array('string'));
-        $optionsResolver->addAllowedTypes('tag', array('string'));
-        $optionsResolver->addAllowedTypes('comment', array('string'));
-        $optionsResolver->addAllowedTypes('author', array('string'));
-        $optionsResolver->addAllowedTypes('pause', array('bool'));
-        $optionsResolver->addAllowedTypes('changes', array('string'));
+        $optionsResolver->setDefined(['container', 'repo', 'tag', 'comment', 'author', 'pause', 'changes']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['pause' => true]);
+        $optionsResolver->addAllowedTypes('container', ['string']);
+        $optionsResolver->addAllowedTypes('repo', ['string']);
+        $optionsResolver->addAllowedTypes('tag', ['string']);
+        $optionsResolver->addAllowedTypes('comment', ['string']);
+        $optionsResolver->addAllowedTypes('author', ['string']);
+        $optionsResolver->addAllowedTypes('pause', ['bool']);
+        $optionsResolver->addAllowedTypes('changes', ['string']);
         return $optionsResolver;
     }
     /**
@@ -79,6 +79,6 @@ class ImageCommit extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

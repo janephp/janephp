@@ -56,7 +56,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function companySearch(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function companySearch(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CompanySearch($queryParameters, $headerParameters), $fetch);
     }
@@ -80,7 +80,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function companyCreditReport(string $id, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function companyCreditReport(string $id, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CompanyCreditReport($id, $queryParameters, $headerParameters), $fetch);
     }
@@ -101,7 +101,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function companySearchCriteria(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function companySearchCriteria(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CompanySearchCriteria($queryParameters, $headerParameters), $fetch);
     }
@@ -121,7 +121,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function companyReportJSONSchema(string $countryCode, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function companyReportJSONSchema(string $countryCode, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CompanyReportJSONSchema($countryCode, $queryParameters, $headerParameters), $fetch);
     }
@@ -137,7 +137,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\AccessCountriesResponse|\Psr\Http\Message\ResponseInterface
      */
-    public function countriesInSubscription(array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function countriesInSubscription(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CountriesInSubscription($headerParameters), $fetch);
     }
@@ -170,7 +170,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function peopleDirectorSearch(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function peopleDirectorSearch(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\PeopleDirectorSearch($queryParameters, $headerParameters), $fetch);
     }
@@ -192,7 +192,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\GbPeopleReportReponse|\Psr\Http\Message\ResponseInterface
      */
-    public function directorReport(string $personId, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function directorReport(string $personId, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\DirectorReport($personId, $queryParameters, $headerParameters), $fetch);
     }
@@ -212,7 +212,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function peopleDirectorSearchCriteria(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function peopleDirectorSearchCriteria(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\PeopleDirectorSearchCriteria($queryParameters, $headerParameters), $fetch);
     }
@@ -233,7 +233,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\ListCompanyImages|\Psr\Http\Message\ResponseInterface
      */
-    public function companyImageDocuments(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function companyImageDocuments(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CompanyImageDocuments($queryParameters, $headerParameters), $fetch);
     }
@@ -252,7 +252,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\GbImageTypesResponse|\Psr\Http\Message\ResponseInterface
      */
-    public function imageDocumentCategoryTypes(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function imageDocumentCategoryTypes(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ImageDocumentCategoryTypes($queryParameters, $headerParameters), $fetch);
     }
@@ -270,7 +270,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function companyImage(string $imageId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function companyImage(string $imageId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CompanyImage($imageId, $headerParameters), $fetch);
     }
@@ -304,7 +304,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\ListFreshInvestigationResponse|\Psr\Http\Message\ResponseInterface
      */
-    public function listSubmittedFreshInvestigations(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listSubmittedFreshInvestigations(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListSubmittedFreshInvestigations($queryParameters, $headerParameters), $fetch);
     }
@@ -323,7 +323,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\SubmittedFreshInvestigationRepsonse|\Psr\Http\Message\ResponseInterface
      */
-    public function requestFreshInvestigation(?\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody = null, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function requestFreshInvestigation(?\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\RequestFreshInvestigation($requestBody, $headerParameters), $fetch);
     }
@@ -341,7 +341,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function deletePendingFreshInvesitgation(string $orderId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function deletePendingFreshInvesitgation(string $orderId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\DeletePendingFreshInvesitgation($orderId, $headerParameters), $fetch);
     }
@@ -362,7 +362,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\CompletedFreshInvestigation|\Psr\Http\Message\ResponseInterface
      */
-    public function freshInvestigationReport(string $orderId, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function freshInvestigationReport(string $orderId, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\FreshInvestigationReport($orderId, $queryParameters, $headerParameters), $fetch);
     }
@@ -381,7 +381,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function editPendingFreshInvestigation(string $orderId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function editPendingFreshInvestigation(string $orderId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\EditPendingFreshInvestigation($orderId, $headerParameters), $fetch);
     }
@@ -406,7 +406,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function bankMatch(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function bankMatch(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\BankMatch($queryParameters, $headerParameters), $fetch);
     }
@@ -420,7 +420,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\UserDetails|\Psr\Http\Message\ResponseInterface
      */
-    public function monitoringUserDetails(array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function monitoringUserDetails(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\MonitoringUserDetails($headerParameters), $fetch);
     }
@@ -445,7 +445,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\CompanyEventsResponse|\Psr\Http\Message\ResponseInterface
      */
-    public function companyEvents(string $id, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function companyEvents(string $id, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CompanyEvents($id, $queryParameters, $headerParameters), $fetch);
     }
@@ -463,7 +463,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\EventRulesResponse|\Psr\Http\Message\ResponseInterface
      */
-    public function allEventRules(array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function allEventRules(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\AllEventRules($headerParameters), $fetch);
     }
@@ -481,7 +481,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\EventRulesResponse|\Psr\Http\Message\ResponseInterface
      */
-    public function filteredEventRules(string $countryCode, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function filteredEventRules(string $countryCode, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\FilteredEventRules($countryCode, $headerParameters), $fetch);
     }
@@ -508,7 +508,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\NotificationEventsResponse|\Psr\Http\Message\ResponseInterface
      */
-    public function notificationEvents(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function notificationEvents(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\NotificationEvents($queryParameters, $headerParameters), $fetch);
     }
@@ -531,7 +531,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function listAllPortfolios(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listAllPortfolios(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListAllPortfolios($queryParameters, $headerParameters), $fetch);
     }
@@ -550,7 +550,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function createMonitoringPortfolio(\CreditSafe\API\Model\MonitoringPortfoliosPostBody $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function createMonitoringPortfolio(\CreditSafe\API\Model\MonitoringPortfoliosPostBody $requestBody, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CreateMonitoringPortfolio($requestBody, $headerParameters), $fetch);
     }
@@ -569,7 +569,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function deleteMonitoringPortfolioByPortfolioId(string $portfolioId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function deleteMonitoringPortfolioByPortfolioId(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\DeleteMonitoringPortfolioByPortfolioId($portfolioId, $headerParameters), $fetch);
     }
@@ -588,7 +588,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function retrievePortfolioById(string $portfolioId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function retrievePortfolioById(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\RetrievePortfolioById($portfolioId, $headerParameters), $fetch);
     }
@@ -607,7 +607,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function updatePortfolioDetails(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody = null, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function updatePortfolioDetails(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\UpdatePortfolioDetails($portfolioId, $requestBody, $headerParameters), $fetch);
     }
@@ -626,7 +626,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function listCountriesOfMonitoredCompanies(string $portfolioId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listCountriesOfMonitoredCompanies(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListCountriesOfMonitoredCompanies($portfolioId, $headerParameters), $fetch);
     }
@@ -645,7 +645,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\EventRulesResponse|\Psr\Http\Message\ResponseInterface
      */
-    public function listPortfolioEventRules(string $portfolioId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listPortfolioEventRules(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListPortfolioEventRules($portfolioId, $headerParameters), $fetch);
     }
@@ -665,7 +665,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function getFilteredPortfolioEventRules(string $portfolioId, string $countryCode, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function getFilteredPortfolioEventRules(string $portfolioId, string $countryCode, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\GetFilteredPortfolioEventRules($portfolioId, $countryCode, $headerParameters), $fetch);
     }
@@ -686,7 +686,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function putMonitoringPortfoliosByPortfolioIdEventRuleByCountryCode(string $portfolioId, string $countryCode, ?array $requestBody = null, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function putMonitoringPortfoliosByPortfolioIdEventRuleByCountryCode(string $portfolioId, string $countryCode, ?array $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCode($portfolioId, $countryCode, $requestBody, $headerParameters), $fetch);
     }
@@ -705,7 +705,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function resetPortfolioEventRulesToDefaultValues(string $portfolioId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function resetPortfolioEventRulesToDefaultValues(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ResetPortfolioEventRulesToDefaultValues($portfolioId, $headerParameters), $fetch);
     }
@@ -725,7 +725,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function postMonitoringPortfoliosByPortfolioIdImport(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdImportPostBody $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function postMonitoringPortfoliosByPortfolioIdImport(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdImportPostBody $requestBody, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\PostMonitoringPortfoliosByPortfolioIdImport($portfolioId, $requestBody, $headerParameters), $fetch);
     }
@@ -745,7 +745,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function syncPortfolioCompaniesToCSVRecords(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSyncPostBody $requestBody, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function syncPortfolioCompaniesToCSVRecords(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSyncPostBody $requestBody, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\SyncPortfolioCompaniesToCSVRecords($portfolioId, $requestBody, $headerParameters), $fetch);
     }
@@ -764,7 +764,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function portoflioRiskSummary(string $portfolioId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function portoflioRiskSummary(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\PortoflioRiskSummary($portfolioId, $headerParameters), $fetch);
     }
@@ -790,7 +790,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function listNotificationEventsInAPortfolioFiltered(string $portfolioId, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listNotificationEventsInAPortfolioFiltered(string $portfolioId, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListNotificationEventsInAPortfolioFiltered($portfolioId, $queryParameters, $headerParameters), $fetch);
     }
@@ -811,7 +811,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function updateIsProcessedFlagOnAnNotificationEvent(string $portfolioId, string $notificationEventId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody $requestBody = null, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function updateIsProcessedFlagOnAnNotificationEvent(string $portfolioId, string $notificationEventId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\UpdateIsProcessedFlagOnAnNotificationEvent($portfolioId, $notificationEventId, $requestBody, $headerParameters), $fetch);
     }
@@ -837,7 +837,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function listFilteredCompaniesInAPortfolio(string $portfolioId, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listFilteredCompaniesInAPortfolio(string $portfolioId, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListFilteredCompaniesInAPortfolio($portfolioId, $queryParameters, $headerParameters), $fetch);
     }
@@ -857,7 +857,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function postMonitoringPortfoliosByPortfolioIdCompany(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesPostBody $requestBody = null, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function postMonitoringPortfoliosByPortfolioIdCompany(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesPostBody $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\PostMonitoringPortfoliosByPortfolioIdCompany($portfolioId, $requestBody, $headerParameters), $fetch);
     }
@@ -880,7 +880,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function copyCompaniesFromOneToAnotherPortfolioS(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody $requestBody, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function copyCompaniesFromOneToAnotherPortfolioS(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody $requestBody, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CopyCompaniesFromOneToAnotherPortfolioS($portfolioId, $requestBody, $queryParameters, $headerParameters), $fetch);
     }
@@ -903,7 +903,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function moveCompaniesFromOneToAnotherPortfolioS(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBody $requestBody = null, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function moveCompaniesFromOneToAnotherPortfolioS(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBody $requestBody = null, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\MoveCompaniesFromOneToAnotherPortfolioS($portfolioId, $requestBody, $queryParameters, $headerParameters), $fetch);
     }
@@ -926,7 +926,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function clearCompaniesFromAPortfolio(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody = null, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function clearCompaniesFromAPortfolio(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody = null, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ClearCompaniesFromAPortfolio($portfolioId, $requestBody, $queryParameters, $headerParameters), $fetch);
     }
@@ -946,7 +946,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function deleteMonitoringPortfoliosByPortfolioIdCompanyById(string $portfolioId, string $id, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function deleteMonitoringPortfoliosByPortfolioIdCompanyById(string $portfolioId, string $id, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\DeleteMonitoringPortfoliosByPortfolioIdCompanyById($portfolioId, $id, $headerParameters), $fetch);
     }
@@ -966,7 +966,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function getAMonitoredCompanyFromAPortfolio(string $portfolioId, string $id, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function getAMonitoredCompanyFromAPortfolio(string $portfolioId, string $id, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\GetAMonitoredCompanyFromAPortfolio($portfolioId, $id, $headerParameters), $fetch);
     }
@@ -987,7 +987,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function updateCompanyDetailsInAPortfolio(string $portfolioId, string $id, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody = null, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function updateCompanyDetailsInAPortfolio(string $portfolioId, string $id, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\UpdateCompanyDetailsInAPortfolio($portfolioId, $id, $requestBody, $headerParameters), $fetch);
     }
@@ -1015,7 +1015,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function listCompanySpecificNotificationEvents(string $portfolioId, string $id, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listCompanySpecificNotificationEvents(string $portfolioId, string $id, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListCompanySpecificNotificationEvents($portfolioId, $id, $queryParameters, $headerParameters), $fetch);
     }
@@ -1034,7 +1034,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function portfolioUserPermissions(string $portfolioId, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function portfolioUserPermissions(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\PortfolioUserPermissions($portfolioId, $headerParameters), $fetch);
     }
@@ -1054,7 +1054,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function sharePortfolioId(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody $requestBody = null, array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function sharePortfolioId(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\SharePortfolioId($portfolioId, $requestBody, $headerParameters), $fetch);
     }
@@ -1077,7 +1077,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\GuidSuccessResponse|\Psr\Http\Message\ResponseInterface
      */
-    public function listDecisionTrees(array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listDecisionTrees(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListDecisionTrees($queryParameters, $headerParameters), $fetch);
     }
@@ -1102,7 +1102,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function runDecisionTree(string $provenirId, ?\stdClass $requestBody = null, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function runDecisionTree(string $provenirId, ?\stdClass $requestBody = null, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\RunDecisionTree($provenirId, $requestBody, $queryParameters, $headerParameters), $fetch);
     }
@@ -1120,7 +1120,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function companyComplianceSearchCriteria(array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function companyComplianceSearchCriteria(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CompanyComplianceSearchCriteria($headerParameters), $fetch);
     }
@@ -1137,7 +1137,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\CompliancePreDefinedSearches|\Psr\Http\Message\ResponseInterface
      */
-    public function listOfCompanyPreDefinedSearches(array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listOfCompanyPreDefinedSearches(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListOfCompanyPreDefinedSearches($headerParameters), $fetch);
     }
@@ -1165,7 +1165,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\ComplianceSearchResult|\Psr\Http\Message\ResponseInterface
      */
-    public function companyComplianceSearch(string $predefinedSearch, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function companyComplianceSearch(string $predefinedSearch, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CompanyComplianceSearch($predefinedSearch, $queryParameters, $headerParameters), $fetch);
     }
@@ -1183,7 +1183,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function individualsComplianceSearchCriteria(array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function individualsComplianceSearchCriteria(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\IndividualsComplianceSearchCriteria($headerParameters), $fetch);
     }
@@ -1200,7 +1200,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\CompliancePreDefinedSearches|\Psr\Http\Message\ResponseInterface
      */
-    public function listOfIndividualsPreDefinedSearches(array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function listOfIndividualsPreDefinedSearches(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListOfIndividualsPreDefinedSearches($headerParameters), $fetch);
     }
@@ -1228,7 +1228,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\CreditSafe\API\Model\ComplianceSearchResult|\Psr\Http\Message\ResponseInterface
      */
-    public function individualPersonComplianceSearch(string $predefinedSearch, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function individualPersonComplianceSearch(string $predefinedSearch, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\IndividualPersonComplianceSearch($predefinedSearch, $queryParameters, $headerParameters), $fetch);
     }
@@ -1250,15 +1250,15 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function customReportParameters(string $country, array $queryParameters = array(), array $headerParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function customReportParameters(string $country, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CustomReportParameters($country, $queryParameters, $headerParameters), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = array(), array $additionalNormalizers = array())
+    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = array();
+            $plugins = [];
             $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('https://connect.creditsafe.com/v1');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
@@ -1269,11 +1269,11 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = array(new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \CreditSafe\API\Normalizer\JaneObjectNormalizer());
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \CreditSafe\API\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, array(new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(array('json_decode_associative' => true)))));
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true]))]);
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

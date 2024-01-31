@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi3\JsonSchema\Model;
 class Schema extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string|null
@@ -139,7 +147,7 @@ class Schema extends \ArrayObject
     /**
      * 
      *
-     * @var Schema[]|Reference[]|null
+     * @var array<string, Schema|Reference>|null
      */
     protected $properties;
     /**
@@ -232,6 +240,7 @@ class Schema extends \ArrayObject
      */
     public function setTitle(?string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -253,6 +262,7 @@ class Schema extends \ArrayObject
      */
     public function setMultipleOf(?float $multipleOf) : self
     {
+        $this->initialized['multipleOf'] = true;
         $this->multipleOf = $multipleOf;
         return $this;
     }
@@ -274,6 +284,7 @@ class Schema extends \ArrayObject
      */
     public function setMaximum(?float $maximum) : self
     {
+        $this->initialized['maximum'] = true;
         $this->maximum = $maximum;
         return $this;
     }
@@ -295,6 +306,7 @@ class Schema extends \ArrayObject
      */
     public function setExclusiveMaximum(?bool $exclusiveMaximum) : self
     {
+        $this->initialized['exclusiveMaximum'] = true;
         $this->exclusiveMaximum = $exclusiveMaximum;
         return $this;
     }
@@ -316,6 +328,7 @@ class Schema extends \ArrayObject
      */
     public function setMinimum(?float $minimum) : self
     {
+        $this->initialized['minimum'] = true;
         $this->minimum = $minimum;
         return $this;
     }
@@ -337,6 +350,7 @@ class Schema extends \ArrayObject
      */
     public function setExclusiveMinimum(?bool $exclusiveMinimum) : self
     {
+        $this->initialized['exclusiveMinimum'] = true;
         $this->exclusiveMinimum = $exclusiveMinimum;
         return $this;
     }
@@ -358,6 +372,7 @@ class Schema extends \ArrayObject
      */
     public function setMaxLength(?int $maxLength) : self
     {
+        $this->initialized['maxLength'] = true;
         $this->maxLength = $maxLength;
         return $this;
     }
@@ -379,6 +394,7 @@ class Schema extends \ArrayObject
      */
     public function setMinLength(?int $minLength) : self
     {
+        $this->initialized['minLength'] = true;
         $this->minLength = $minLength;
         return $this;
     }
@@ -400,6 +416,7 @@ class Schema extends \ArrayObject
      */
     public function setPattern(?string $pattern) : self
     {
+        $this->initialized['pattern'] = true;
         $this->pattern = $pattern;
         return $this;
     }
@@ -421,6 +438,7 @@ class Schema extends \ArrayObject
      */
     public function setMaxItems(?int $maxItems) : self
     {
+        $this->initialized['maxItems'] = true;
         $this->maxItems = $maxItems;
         return $this;
     }
@@ -442,6 +460,7 @@ class Schema extends \ArrayObject
      */
     public function setMinItems(?int $minItems) : self
     {
+        $this->initialized['minItems'] = true;
         $this->minItems = $minItems;
         return $this;
     }
@@ -463,6 +482,7 @@ class Schema extends \ArrayObject
      */
     public function setUniqueItems(?bool $uniqueItems) : self
     {
+        $this->initialized['uniqueItems'] = true;
         $this->uniqueItems = $uniqueItems;
         return $this;
     }
@@ -484,6 +504,7 @@ class Schema extends \ArrayObject
      */
     public function setMaxProperties(?int $maxProperties) : self
     {
+        $this->initialized['maxProperties'] = true;
         $this->maxProperties = $maxProperties;
         return $this;
     }
@@ -505,6 +526,7 @@ class Schema extends \ArrayObject
      */
     public function setMinProperties(?int $minProperties) : self
     {
+        $this->initialized['minProperties'] = true;
         $this->minProperties = $minProperties;
         return $this;
     }
@@ -526,6 +548,7 @@ class Schema extends \ArrayObject
      */
     public function setRequired(?array $required) : self
     {
+        $this->initialized['required'] = true;
         $this->required = $required;
         return $this;
     }
@@ -547,6 +570,7 @@ class Schema extends \ArrayObject
      */
     public function setEnum(?array $enum) : self
     {
+        $this->initialized['enum'] = true;
         $this->enum = $enum;
         return $this;
     }
@@ -568,6 +592,7 @@ class Schema extends \ArrayObject
      */
     public function setType(?string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -589,6 +614,7 @@ class Schema extends \ArrayObject
      */
     public function setNot($not) : self
     {
+        $this->initialized['not'] = true;
         $this->not = $not;
         return $this;
     }
@@ -610,6 +636,7 @@ class Schema extends \ArrayObject
      */
     public function setAllOf(?array $allOf) : self
     {
+        $this->initialized['allOf'] = true;
         $this->allOf = $allOf;
         return $this;
     }
@@ -631,6 +658,7 @@ class Schema extends \ArrayObject
      */
     public function setOneOf(?array $oneOf) : self
     {
+        $this->initialized['oneOf'] = true;
         $this->oneOf = $oneOf;
         return $this;
     }
@@ -652,6 +680,7 @@ class Schema extends \ArrayObject
      */
     public function setAnyOf(?array $anyOf) : self
     {
+        $this->initialized['anyOf'] = true;
         $this->anyOf = $anyOf;
         return $this;
     }
@@ -673,13 +702,14 @@ class Schema extends \ArrayObject
      */
     public function setItems($items) : self
     {
+        $this->initialized['items'] = true;
         $this->items = $items;
         return $this;
     }
     /**
      * 
      *
-     * @return Schema[]|Reference[]|null
+     * @return array<string, Schema|Reference>|null
      */
     public function getProperties() : ?iterable
     {
@@ -688,12 +718,13 @@ class Schema extends \ArrayObject
     /**
      * 
      *
-     * @param Schema[]|Reference[]|null $properties
+     * @param array<string, Schema|Reference>|null $properties
      *
      * @return self
      */
     public function setProperties(?iterable $properties) : self
     {
+        $this->initialized['properties'] = true;
         $this->properties = $properties;
         return $this;
     }
@@ -715,6 +746,7 @@ class Schema extends \ArrayObject
      */
     public function setAdditionalProperties($additionalProperties) : self
     {
+        $this->initialized['additionalProperties'] = true;
         $this->additionalProperties = $additionalProperties;
         return $this;
     }
@@ -736,6 +768,7 @@ class Schema extends \ArrayObject
      */
     public function setDescription(?string $description) : self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
     }
@@ -757,6 +790,7 @@ class Schema extends \ArrayObject
      */
     public function setFormat(?string $format) : self
     {
+        $this->initialized['format'] = true;
         $this->format = $format;
         return $this;
     }
@@ -778,6 +812,7 @@ class Schema extends \ArrayObject
      */
     public function setDefault($default) : self
     {
+        $this->initialized['default'] = true;
         $this->default = $default;
         return $this;
     }
@@ -799,6 +834,7 @@ class Schema extends \ArrayObject
      */
     public function setNullable(?bool $nullable) : self
     {
+        $this->initialized['nullable'] = true;
         $this->nullable = $nullable;
         return $this;
     }
@@ -820,6 +856,7 @@ class Schema extends \ArrayObject
      */
     public function setDiscriminator(?Discriminator $discriminator) : self
     {
+        $this->initialized['discriminator'] = true;
         $this->discriminator = $discriminator;
         return $this;
     }
@@ -841,6 +878,7 @@ class Schema extends \ArrayObject
      */
     public function setReadOnly(?bool $readOnly) : self
     {
+        $this->initialized['readOnly'] = true;
         $this->readOnly = $readOnly;
         return $this;
     }
@@ -862,6 +900,7 @@ class Schema extends \ArrayObject
      */
     public function setWriteOnly(?bool $writeOnly) : self
     {
+        $this->initialized['writeOnly'] = true;
         $this->writeOnly = $writeOnly;
         return $this;
     }
@@ -883,6 +922,7 @@ class Schema extends \ArrayObject
      */
     public function setExample($example) : self
     {
+        $this->initialized['example'] = true;
         $this->example = $example;
         return $this;
     }
@@ -904,6 +944,7 @@ class Schema extends \ArrayObject
      */
     public function setExternalDocs(?ExternalDocumentation $externalDocs) : self
     {
+        $this->initialized['externalDocs'] = true;
         $this->externalDocs = $externalDocs;
         return $this;
     }
@@ -925,6 +966,7 @@ class Schema extends \ArrayObject
      */
     public function setDeprecated(?bool $deprecated) : self
     {
+        $this->initialized['deprecated'] = true;
         $this->deprecated = $deprecated;
         return $this;
     }
@@ -946,6 +988,7 @@ class Schema extends \ArrayObject
      */
     public function setXml(?XML $xml) : self
     {
+        $this->initialized['xml'] = true;
         $this->xml = $xml;
         return $this;
     }

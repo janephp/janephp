@@ -18,7 +18,7 @@ class AppsListAccountsForPlanStubbed extends \Github\Runtime\Client\BaseEndpoint
     *     @var int $page Page number of the results to fetch.
     * }
     */
-    public function __construct(int $planId, array $queryParameters = array())
+    public function __construct(int $planId, array $queryParameters = [])
     {
         $this->plan_id = $planId;
         $this->queryParameters = $queryParameters;
@@ -30,26 +30,26 @@ class AppsListAccountsForPlanStubbed extends \Github\Runtime\Client\BaseEndpoint
     }
     public function getUri() : string
     {
-        return str_replace(array('{plan_id}'), array($this->plan_id), '/marketplace_listing/stubbed/plans/{plan_id}/accounts');
+        return str_replace(['{plan_id}'], [$this->plan_id], '/marketplace_listing/stubbed/plans/{plan_id}/accounts');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('sort', 'direction', 'per_page', 'page'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('sort' => 'created', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->addAllowedTypes('sort', array('string'));
-        $optionsResolver->addAllowedTypes('direction', array('string'));
-        $optionsResolver->addAllowedTypes('per_page', array('int'));
-        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->setDefined(['sort', 'direction', 'per_page', 'page']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['sort' => 'created', 'per_page' => 30, 'page' => 1]);
+        $optionsResolver->addAllowedTypes('sort', ['string']);
+        $optionsResolver->addAllowedTypes('direction', ['string']);
+        $optionsResolver->addAllowedTypes('per_page', ['int']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
         return $optionsResolver;
     }
     /**
@@ -72,6 +72,6 @@ class AppsListAccountsForPlanStubbed extends \Github\Runtime\Client\BaseEndpoint
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

@@ -12,110 +12,215 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class MarketplaceAccountNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+use Symfony\Component\HttpKernel\Kernel;
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class MarketplaceAccountNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Github\\Model\\MarketplaceAccount';
-    }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
-    {
-        return is_object($data) && get_class($data) === 'Github\\Model\\MarketplaceAccount';
-    }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Github\\Model\\MarketplaceAccount';
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Github\\Model\\MarketplaceAccount';
         }
-        $object = new \Github\Model\MarketplaceAccount();
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Github\Validator\MarketplaceAccountConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Github\Model\MarketplaceAccount();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Github\Validator\MarketplaceAccountConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('url', $data)) {
+                $object->setUrl($data['url']);
+                unset($data['url']);
+            }
+            if (\array_key_exists('id', $data)) {
+                $object->setId($data['id']);
+                unset($data['id']);
+            }
+            if (\array_key_exists('type', $data)) {
+                $object->setType($data['type']);
+                unset($data['type']);
+            }
+            if (\array_key_exists('node_id', $data)) {
+                $object->setNodeId($data['node_id']);
+                unset($data['node_id']);
+            }
+            if (\array_key_exists('login', $data)) {
+                $object->setLogin($data['login']);
+                unset($data['login']);
+            }
+            if (\array_key_exists('email', $data) && $data['email'] !== null) {
+                $object->setEmail($data['email']);
+                unset($data['email']);
+            }
+            elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+                $object->setEmail(null);
+            }
+            if (\array_key_exists('organization_billing_email', $data) && $data['organization_billing_email'] !== null) {
+                $object->setOrganizationBillingEmail($data['organization_billing_email']);
+                unset($data['organization_billing_email']);
+            }
+            elseif (\array_key_exists('organization_billing_email', $data) && $data['organization_billing_email'] === null) {
+                $object->setOrganizationBillingEmail(null);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
             return $object;
         }
-        if (\array_key_exists('url', $data)) {
-            $object->setUrl($data['url']);
-            unset($data['url']);
-        }
-        if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
-            unset($data['id']);
-        }
-        if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
-            unset($data['type']);
-        }
-        if (\array_key_exists('node_id', $data)) {
-            $object->setNodeId($data['node_id']);
-            unset($data['node_id']);
-        }
-        if (\array_key_exists('login', $data)) {
-            $object->setLogin($data['login']);
-            unset($data['login']);
-        }
-        if (\array_key_exists('email', $data) && $data['email'] !== null) {
-            $object->setEmail($data['email']);
-            unset($data['email']);
-        }
-        elseif (\array_key_exists('email', $data) && $data['email'] === null) {
-            $object->setEmail(null);
-        }
-        if (\array_key_exists('organization_billing_email', $data) && $data['organization_billing_email'] !== null) {
-            $object->setOrganizationBillingEmail($data['organization_billing_email']);
-            unset($data['organization_billing_email']);
-        }
-        elseif (\array_key_exists('organization_billing_email', $data) && $data['organization_billing_email'] === null) {
-            $object->setOrganizationBillingEmail(null);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['url'] = $object->getUrl();
+            $data['id'] = $object->getId();
+            $data['type'] = $object->getType();
+            if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
+                $data['node_id'] = $object->getNodeId();
             }
-        }
-        return $object;
-    }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
-    {
-        $data = array();
-        $data['url'] = $object->getUrl();
-        $data['id'] = $object->getId();
-        $data['type'] = $object->getType();
-        if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
-            $data['node_id'] = $object->getNodeId();
-        }
-        $data['login'] = $object->getLogin();
-        if ($object->isInitialized('email') && null !== $object->getEmail()) {
-            $data['email'] = $object->getEmail();
-        }
-        if ($object->isInitialized('organizationBillingEmail') && null !== $object->getOrganizationBillingEmail()) {
-            $data['organization_billing_email'] = $object->getOrganizationBillingEmail();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+            $data['login'] = $object->getLogin();
+            if ($object->isInitialized('email') && null !== $object->getEmail()) {
+                $data['email'] = $object->getEmail();
             }
+            if ($object->isInitialized('organizationBillingEmail') && null !== $object->getOrganizationBillingEmail()) {
+                $data['organization_billing_email'] = $object->getOrganizationBillingEmail();
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Github\Validator\MarketplaceAccountConstraint());
+            }
+            return $data;
         }
-        if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Github\Validator\MarketplaceAccountConstraint());
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Github\\Model\\MarketplaceAccount' => false];
         }
-        return $data;
     }
-    public function getSupportedTypes(?string $format = null) : array
+} else {
+    class MarketplaceAccountNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return array('Github\\Model\\MarketplaceAccount' => false);
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        {
+            return $type === 'Github\\Model\\MarketplaceAccount';
+        }
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        {
+            return is_object($data) && get_class($data) === 'Github\\Model\\MarketplaceAccount';
+        }
+        /**
+         * @return mixed
+         */
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Github\Model\MarketplaceAccount();
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Github\Validator\MarketplaceAccountConstraint());
+            }
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('url', $data)) {
+                $object->setUrl($data['url']);
+                unset($data['url']);
+            }
+            if (\array_key_exists('id', $data)) {
+                $object->setId($data['id']);
+                unset($data['id']);
+            }
+            if (\array_key_exists('type', $data)) {
+                $object->setType($data['type']);
+                unset($data['type']);
+            }
+            if (\array_key_exists('node_id', $data)) {
+                $object->setNodeId($data['node_id']);
+                unset($data['node_id']);
+            }
+            if (\array_key_exists('login', $data)) {
+                $object->setLogin($data['login']);
+                unset($data['login']);
+            }
+            if (\array_key_exists('email', $data) && $data['email'] !== null) {
+                $object->setEmail($data['email']);
+                unset($data['email']);
+            }
+            elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+                $object->setEmail(null);
+            }
+            if (\array_key_exists('organization_billing_email', $data) && $data['organization_billing_email'] !== null) {
+                $object->setOrganizationBillingEmail($data['organization_billing_email']);
+                unset($data['organization_billing_email']);
+            }
+            elseif (\array_key_exists('organization_billing_email', $data) && $data['organization_billing_email'] === null) {
+                $object->setOrganizationBillingEmail(null);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+            return $object;
+        }
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $data['url'] = $object->getUrl();
+            $data['id'] = $object->getId();
+            $data['type'] = $object->getType();
+            if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
+                $data['node_id'] = $object->getNodeId();
+            }
+            $data['login'] = $object->getLogin();
+            if ($object->isInitialized('email') && null !== $object->getEmail()) {
+                $data['email'] = $object->getEmail();
+            }
+            if ($object->isInitialized('organizationBillingEmail') && null !== $object->getOrganizationBillingEmail()) {
+                $data['organization_billing_email'] = $object->getOrganizationBillingEmail();
+            }
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+            if (!($context['skip_validation'] ?? false)) {
+                $this->validate($data, new \Github\Validator\MarketplaceAccountConstraint());
+            }
+            return $data;
+        }
+        public function getSupportedTypes(?string $format = null) : array
+        {
+            return ['Github\\Model\\MarketplaceAccount' => false];
+        }
     }
 }

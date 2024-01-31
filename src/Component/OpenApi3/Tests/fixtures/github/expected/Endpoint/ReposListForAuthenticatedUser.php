@@ -26,7 +26,7 @@ class ReposListForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint 
     *     @var string $before Only show notifications updated before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
     * }
     */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -41,27 +41,27 @@ class ReposListForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint 
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('visibility', 'affiliation', 'type', 'sort', 'direction', 'per_page', 'page', 'since', 'before'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('visibility' => 'all', 'affiliation' => 'owner,collaborator,organization_member', 'type' => 'all', 'sort' => 'full_name', 'per_page' => 30, 'page' => 1));
-        $optionsResolver->addAllowedTypes('visibility', array('string'));
-        $optionsResolver->addAllowedTypes('affiliation', array('string'));
-        $optionsResolver->addAllowedTypes('type', array('string'));
-        $optionsResolver->addAllowedTypes('sort', array('string'));
-        $optionsResolver->addAllowedTypes('direction', array('string'));
-        $optionsResolver->addAllowedTypes('per_page', array('int'));
-        $optionsResolver->addAllowedTypes('page', array('int'));
-        $optionsResolver->addAllowedTypes('since', array('string'));
-        $optionsResolver->addAllowedTypes('before', array('string'));
+        $optionsResolver->setDefined(['visibility', 'affiliation', 'type', 'sort', 'direction', 'per_page', 'page', 'since', 'before']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['visibility' => 'all', 'affiliation' => 'owner,collaborator,organization_member', 'type' => 'all', 'sort' => 'full_name', 'per_page' => 30, 'page' => 1]);
+        $optionsResolver->addAllowedTypes('visibility', ['string']);
+        $optionsResolver->addAllowedTypes('affiliation', ['string']);
+        $optionsResolver->addAllowedTypes('type', ['string']);
+        $optionsResolver->addAllowedTypes('sort', ['string']);
+        $optionsResolver->addAllowedTypes('direction', ['string']);
+        $optionsResolver->addAllowedTypes('per_page', ['int']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
+        $optionsResolver->addAllowedTypes('since', ['string']);
+        $optionsResolver->addAllowedTypes('before', ['string']);
         return $optionsResolver;
     }
     /**
@@ -99,6 +99,6 @@ class ReposListForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint 
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

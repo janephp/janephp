@@ -31,7 +31,7 @@ class ImageCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     
     * }
     */
-    public function __construct(string $inputImage, array $queryParameters = array(), array $headerParameters = array())
+    public function __construct(string $inputImage, array $queryParameters = [], array $headerParameters = [])
     {
         $this->body = $inputImage;
         $this->queryParameters = $queryParameters;
@@ -48,34 +48,34 @@ class ImageCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), $this->body);
+        return [[], $this->body];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('fromImage', 'fromSrc', 'repo', 'tag', 'message', 'changes', 'platform'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('platform' => ''));
-        $optionsResolver->addAllowedTypes('fromImage', array('string'));
-        $optionsResolver->addAllowedTypes('fromSrc', array('string'));
-        $optionsResolver->addAllowedTypes('repo', array('string'));
-        $optionsResolver->addAllowedTypes('tag', array('string'));
-        $optionsResolver->addAllowedTypes('message', array('string'));
-        $optionsResolver->addAllowedTypes('changes', array('array'));
-        $optionsResolver->addAllowedTypes('platform', array('string'));
+        $optionsResolver->setDefined(['fromImage', 'fromSrc', 'repo', 'tag', 'message', 'changes', 'platform']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['platform' => '']);
+        $optionsResolver->addAllowedTypes('fromImage', ['string']);
+        $optionsResolver->addAllowedTypes('fromSrc', ['string']);
+        $optionsResolver->addAllowedTypes('repo', ['string']);
+        $optionsResolver->addAllowedTypes('tag', ['string']);
+        $optionsResolver->addAllowedTypes('message', ['string']);
+        $optionsResolver->addAllowedTypes('changes', ['array']);
+        $optionsResolver->addAllowedTypes('platform', ['string']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('X-Registry-Auth'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('X-Registry-Auth', array('string'));
+        $optionsResolver->setDefined(['X-Registry-Auth']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('X-Registry-Auth', ['string']);
         return $optionsResolver;
     }
     /**
@@ -102,6 +102,6 @@ class ImageCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

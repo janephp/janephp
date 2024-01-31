@@ -6,6 +6,6 @@ class DistributionInspectConstraint extends \Symfony\Component\Validator\Constra
 {
     protected function getConstraints($options) : array
     {
-        return array(new \Symfony\Component\Validator\Constraints\Collection(array('fields' => array('Descriptor' => new \Symfony\Component\Validator\Constraints\Required(array(new \Docker\Api\Validator\OCIDescriptorConstraint(array()))), 'Platforms' => new \Symfony\Component\Validator\Constraints\Required(array(new \Symfony\Component\Validator\Constraints\Type(array('0' => 'array'))))), 'allowExtraFields' => true)));
+        return [new \Symfony\Component\Validator\Constraints\Collection(['fields' => ['Descriptor' => new \Symfony\Component\Validator\Constraints\Required([new \Docker\Api\Validator\OCIDescriptorConstraint([])]), 'Platforms' => new \Symfony\Component\Validator\Constraints\Required([new \Symfony\Component\Validator\Constraints\Type(['0' => 'array'])])], 'allowExtraFields' => true])];
     }
 }

@@ -15,7 +15,7 @@ class GetTestOperationUrl extends \Jane\Component\OpenApi2\Tests\Expected\Runtim
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     /**
      * {@inheritdoc}
@@ -33,6 +33,6 @@ class GetTestOperationUrl extends \Jane\Component\OpenApi2\Tests\Expected\Runtim
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

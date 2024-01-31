@@ -50,13 +50,14 @@ trait JaneObjectNormalizerGenerator
         ]);
     }
 
-    protected function createBaseNormalizerNormalizeMethod(): Stmt\ClassMethod
+    protected function createBaseNormalizerNormalizeMethod(bool $symfony7): Stmt\ClassMethod
     {
         return new Stmt\ClassMethod('normalize', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'returnType' => $symfony7 ? 'array|string|int|float|bool|\ArrayObject|null' : null,
             'params' => [
-                new Param(new Expr\Variable('object')),
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                $symfony7 ? new Param(new Expr\Variable('object'), type: 'mixed') : new Param(new Expr\Variable('object')),
+                $symfony7 ? new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), 'string') : new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],
             'stmts' => [
@@ -80,7 +81,7 @@ trait JaneObjectNormalizerGenerator
                 ])),
             ],
         ], [
-            'comments' => [new Doc(<<<EOD
+            'comments' => $symfony7 ? [] : [new Doc(<<<EOD
 /**
  * @return array|string|int|float|bool|\ArrayObject|null
  */
@@ -89,14 +90,15 @@ EOD
         ]);
     }
 
-    protected function createBaseNormalizerDenormalizeMethod(): Stmt\ClassMethod
+    protected function createBaseNormalizerDenormalizeMethod(bool $symfony7): Stmt\ClassMethod
     {
         return new Stmt\ClassMethod('denormalize', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'returnType' => $symfony7 ? 'mixed' : null,
             'params' => [
-                new Param(new Expr\Variable('data')),
-                new Param(new Expr\Variable('class')),
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                $symfony7 ? new Param(new Expr\Variable('data'), type: 'mixed') : new Param(new Expr\Variable('data')),
+                $symfony7 ? new Param(new Expr\Variable('type'), type: 'string') : new Param(new Expr\Variable('type')),
+                $symfony7 ? new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), 'string') : new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
             ],
             'stmts' => [
@@ -104,7 +106,7 @@ EOD
                     new Expr\Variable('denormalizerClass'),
                     new Expr\ArrayDimFetch(
                         new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizers'),
-                        new Expr\Variable('class')
+                        new Expr\Variable('type')
                     )
                 )),
                 new Stmt\Expression(new Expr\Assign(
@@ -115,13 +117,13 @@ EOD
                 )),
                 new Stmt\Return_(new Expr\MethodCall(new Expr\Variable('denormalizer'), 'denormalize', [
                     new Arg(new Expr\Variable('data')),
-                    new Arg(new Expr\Variable('class')),
+                    new Arg(new Expr\Variable('type')),
                     new Arg(new Expr\Variable('format')),
                     new Arg(new Expr\Variable('context')),
                 ])),
             ],
         ], [
-            'comments' => [new Doc(<<<EOD
+            'comments' => $symfony7 ? [] : [new Doc(<<<EOD
 /**
  * @return mixed
  */

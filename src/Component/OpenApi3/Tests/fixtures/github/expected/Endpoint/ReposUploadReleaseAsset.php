@@ -36,7 +36,7 @@ class ReposUploadReleaseAsset extends \Github\Runtime\Client\BaseEndpoint implem
     *     @var string $label label parameter
     * }
     */
-    public function __construct(string $owner, string $repo, int $releaseId, ?string $requestBody = null, array $queryParameters = array())
+    public function __construct(string $owner, string $repo, int $releaseId, ?string $requestBody = null, array $queryParameters = [])
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -51,27 +51,27 @@ class ReposUploadReleaseAsset extends \Github\Runtime\Client\BaseEndpoint implem
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}', '{release_id}'), array($this->owner, $this->repo, $this->release_id), '/repos/{owner}/{repo}/releases/{release_id}/assets');
+        return str_replace(['{owner}', '{repo}', '{release_id}'], [$this->owner, $this->repo, $this->release_id], '/repos/{owner}/{repo}/releases/{release_id}/assets');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
         if (is_string($this->body)) {
-            return array(array('Content-Type' => array('*/*')), $this->body);
+            return [['Content-Type' => ['*/*']], $this->body];
         }
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('name', 'label'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('name', array('string'));
-        $optionsResolver->addAllowedTypes('label', array('string'));
+        $optionsResolver->setDefined(['name', 'label']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('name', ['string']);
+        $optionsResolver->addAllowedTypes('label', ['string']);
         return $optionsResolver;
     }
     /**
@@ -90,6 +90,6 @@ class ReposUploadReleaseAsset extends \Github\Runtime\Client\BaseEndpoint implem
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

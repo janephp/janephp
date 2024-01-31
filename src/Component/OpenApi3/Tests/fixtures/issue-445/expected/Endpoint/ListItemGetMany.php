@@ -13,7 +13,7 @@ class ListItemGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
     *     @var array $resolveBehaviors List of enums that control which parts of the list items are resolved and returned.
     * }
     */
-    public function __construct(array $queryParameters = array())
+    public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
@@ -28,20 +28,20 @@ class ListItemGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('ids', 'resolveBehaviors'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('ids', array('array', 'null'));
-        $optionsResolver->addAllowedTypes('resolveBehaviors', array('array', 'null'));
+        $optionsResolver->setDefined(['ids', 'resolveBehaviors']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('ids', ['array', 'null']);
+        $optionsResolver->addAllowedTypes('resolveBehaviors', ['array', 'null']);
         return $optionsResolver;
     }
     /**
@@ -88,6 +88,6 @@ class ListItemGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

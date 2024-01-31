@@ -14,7 +14,7 @@ class PluginCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     
     * }
     */
-    public function __construct($tarContext, array $queryParameters = array())
+    public function __construct($tarContext, array $queryParameters = [])
     {
         $this->body = $tarContext;
         $this->queryParameters = $queryParameters;
@@ -30,19 +30,19 @@ class PluginCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), $this->body);
+        return [[], $this->body];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('name'));
-        $optionsResolver->setRequired(array('name'));
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('name', array('string'));
+        $optionsResolver->setDefined(['name']);
+        $optionsResolver->setRequired(['name']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('name', ['string']);
         return $optionsResolver;
     }
     /**
@@ -65,6 +65,6 @@ class PluginCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

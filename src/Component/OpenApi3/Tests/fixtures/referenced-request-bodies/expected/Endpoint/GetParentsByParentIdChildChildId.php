@@ -24,15 +24,15 @@ class GetParentsByParentIdChildChildId extends \Jane\Component\OpenApi3\Tests\Ex
     }
     public function getUri() : string
     {
-        return str_replace(array('{parent_id}', '{child_id}'), array($this->parent_id, $this->child_id), '/parents/{parent_id}/child/child_id/');
+        return str_replace(['{parent_id}', '{child_id}'], [$this->parent_id, $this->child_id], '/parents/{parent_id}/child/child_id/');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -50,6 +50,6 @@ class GetParentsByParentIdChildChildId extends \Jane\Component\OpenApi3\Tests\Ex
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

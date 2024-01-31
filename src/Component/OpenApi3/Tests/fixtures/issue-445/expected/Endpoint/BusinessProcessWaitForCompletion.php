@@ -19,7 +19,7 @@ class BusinessProcessWaitForCompletion extends \PicturePark\API\Runtime\Client\B
     *     @var bool $waitForContinuationCompletion Waits for the completion of the continuation business process (if existing, recursively). Default to true.
     * }
     */
-    public function __construct(string $id, array $queryParameters = array())
+    public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;
         $this->queryParameters = $queryParameters;
@@ -31,24 +31,24 @@ class BusinessProcessWaitForCompletion extends \PicturePark\API\Runtime\Client\B
     }
     public function getUri() : string
     {
-        return str_replace(array('{id}'), array($this->id), '/v1/BusinessProcesses/{id}/waitCompletion');
+        return str_replace(['{id}'], [$this->id], '/v1/BusinessProcesses/{id}/waitCompletion');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('timeout', 'waitForContinuationCompletion'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('waitForContinuationCompletion' => true));
-        $optionsResolver->addAllowedTypes('timeout', array('string', 'null'));
-        $optionsResolver->addAllowedTypes('waitForContinuationCompletion', array('bool'));
+        $optionsResolver->setDefined(['timeout', 'waitForContinuationCompletion']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['waitForContinuationCompletion' => true]);
+        $optionsResolver->addAllowedTypes('timeout', ['string', 'null']);
+        $optionsResolver->addAllowedTypes('waitForContinuationCompletion', ['bool']);
         return $optionsResolver;
     }
     /**
@@ -95,6 +95,6 @@ class BusinessProcessWaitForCompletion extends \PicturePark\API\Runtime\Client\B
     }
     public function getAuthenticationScopes() : array
     {
-        return array('Bearer');
+        return ['Bearer'];
     }
 }

@@ -6,6 +6,6 @@ class TaskSpecContainerSpecConfigsItemConstraint extends \Symfony\Component\Vali
 {
     protected function getConstraints($options) : array
     {
-        return array(new \Symfony\Component\Validator\Constraints\Collection(array('fields' => array('File' => new \Symfony\Component\Validator\Constraints\Optional(array()), 'Runtime' => new \Symfony\Component\Validator\Constraints\Optional(array()), 'ConfigID' => new \Symfony\Component\Validator\Constraints\Optional(array(new \Symfony\Component\Validator\Constraints\Type(array('0' => 'string')))), 'ConfigName' => new \Symfony\Component\Validator\Constraints\Optional(array(new \Symfony\Component\Validator\Constraints\Type(array('0' => 'string'))))), 'allowExtraFields' => true)));
+        return [new \Symfony\Component\Validator\Constraints\Collection(['fields' => ['File' => new \Symfony\Component\Validator\Constraints\Optional([]), 'Runtime' => new \Symfony\Component\Validator\Constraints\Optional([]), 'ConfigID' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\Type(['0' => 'string'])]), 'ConfigName' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\Type(['0' => 'string'])])], 'allowExtraFields' => true])];
     }
 }

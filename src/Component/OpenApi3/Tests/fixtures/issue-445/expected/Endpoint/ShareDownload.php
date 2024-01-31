@@ -19,7 +19,7 @@ class ShareDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
      * }
      * @param array $accept Accept content header application/json|application/octet-stream
      */
-    public function __construct(string $token, array $queryParameters = array(), array $headerParameters = array(), array $accept = array())
+    public function __construct(string $token, array $queryParameters = [], array $headerParameters = [], array $accept = [])
     {
         $this->token = $token;
         $this->queryParameters = $queryParameters;
@@ -33,36 +33,36 @@ class ShareDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     }
     public function getUri() : string
     {
-        return str_replace(array('{token}'), array($this->token), '/v1/Shares/d/{token}');
+        return str_replace(['{token}'], [$this->token], '/v1/Shares/d/{token}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/json', 'application/octet-stream'));
+            return ['Accept' => ['application/json', 'application/octet-stream']];
         }
         return $this->accept;
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('width', 'height'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('width', array('int', 'null'));
-        $optionsResolver->addAllowedTypes('height', array('int', 'null'));
+        $optionsResolver->setDefined(['width', 'height']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('width', ['int', 'null']);
+        $optionsResolver->addAllowedTypes('height', ['int', 'null']);
         return $optionsResolver;
     }
     protected function getHeadersOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(array('range'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
-        $optionsResolver->addAllowedTypes('range', array('string', 'null'));
+        $optionsResolver->setDefined(['range']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('range', ['string', 'null']);
         return $optionsResolver;
     }
     /**
@@ -114,6 +114,6 @@ class ShareDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

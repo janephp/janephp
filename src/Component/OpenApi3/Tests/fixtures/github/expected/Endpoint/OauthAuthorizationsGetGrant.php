@@ -21,15 +21,15 @@ class OauthAuthorizationsGetGrant extends \Github\Runtime\Client\BaseEndpoint im
     }
     public function getUri() : string
     {
-        return str_replace(array('{grant_id}'), array($this->grant_id), '/applications/grants/{grant_id}');
+        return str_replace(['{grant_id}'], [$this->grant_id], '/applications/grants/{grant_id}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -58,6 +58,6 @@ class OauthAuthorizationsGetGrant extends \Github\Runtime\Client\BaseEndpoint im
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }

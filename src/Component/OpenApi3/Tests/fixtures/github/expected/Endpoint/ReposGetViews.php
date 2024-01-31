@@ -15,7 +15,7 @@ class ReposGetViews extends \Github\Runtime\Client\BaseEndpoint implements \Gith
      *     @var string $per Must be one of: `day`, `week`.
      * }
      */
-    public function __construct(string $owner, string $repo, array $queryParameters = array())
+    public function __construct(string $owner, string $repo, array $queryParameters = [])
     {
         $this->owner = $owner;
         $this->repo = $repo;
@@ -28,23 +28,23 @@ class ReposGetViews extends \Github\Runtime\Client\BaseEndpoint implements \Gith
     }
     public function getUri() : string
     {
-        return str_replace(array('{owner}', '{repo}'), array($this->owner, $this->repo), '/repos/{owner}/{repo}/traffic/views');
+        return str_replace(['{owner}', '{repo}'], [$this->owner, $this->repo], '/repos/{owner}/{repo}/traffic/views');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('per'));
-        $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array('per' => 'day'));
-        $optionsResolver->addAllowedTypes('per', array('string'));
+        $optionsResolver->setDefined(['per']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['per' => 'day']);
+        $optionsResolver->addAllowedTypes('per', ['string']);
         return $optionsResolver;
     }
     /**
@@ -67,6 +67,6 @@ class ReposGetViews extends \Github\Runtime\Client\BaseEndpoint implements \Gith
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }
