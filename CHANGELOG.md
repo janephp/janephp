@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - [Jane] Add support for Symfony 7
 
+### Removed
+- [OpenApi] Remove unused abandoned package "php-http/message-factory"
+
 ## [7.5.6] - 2024-01-24
 ### Changed
 - [OpenApiCommon] [GH#775](https://github.com/janephp/janephp/pull/775) Added support for boolean HTTP headers
