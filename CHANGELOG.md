@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [7.6.0] - 2024-01-31
 ### Changed
 - [Jane] Add support for Symfony 7
 
@@ -732,7 +734,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.5.6...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.6.0...HEAD
+[7.6.0]: https://github.com/janephp/janephp/compare/v7.5.6...v7.6.0
 [7.5.6]: https://github.com/janephp/janephp/compare/v7.5.5...v7.5.6
 [7.5.5]: https://github.com/janephp/janephp/compare/v7.5.4...v7.5.5
 [7.5.4]: https://github.com/janephp/janephp/compare/v7.5.3...v7.5.4
