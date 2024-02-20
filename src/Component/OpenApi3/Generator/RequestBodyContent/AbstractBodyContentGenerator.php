@@ -32,7 +32,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         $classGuess = $this->guessClass->guessClass($schema, $reference . '/schema', $context->getRegistry(), $array);
 
         if ($classGuess === null) {
-            $types = $this->schemaTypeToPHP($schema->getType(), $schema->getFormat());
+            $types = $this->schemaTypeToPHP($schema?->getType(), $schema?->getFormat());
 
             if ($array) {
                 $types = array_map(function ($type) {
@@ -81,7 +81,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
                 );
             }
 
-            return $this->typeToCondition($schema->getType(), $schema->getFormat(), new Expr\PropertyFetch(new Expr\Variable('this'), 'body'));
+            return $this->typeToCondition($schema?->getType(), $schema?->getFormat(), new Expr\PropertyFetch(new Expr\Variable('this'), 'body'));
         }
 
         $class = $context->getRegistry()->getSchema($classGuess->getReference())->getNamespace() . '\\Model\\' . $classGuess->getName();
