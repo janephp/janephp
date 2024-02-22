@@ -21,7 +21,7 @@ class Model extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[]|null
+     * @var list<mixed>|null
      */
     protected $bar;
     /**
@@ -49,7 +49,7 @@ class Model extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]|null
+     * @return list<mixed>|null
      */
     public function getBar() : ?array
     {
@@ -58,7 +58,7 @@ class Model extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[]|null $bar
+     * @param list<mixed>|null $bar
      *
      * @return self
      */

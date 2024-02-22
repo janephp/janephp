@@ -93,19 +93,19 @@ class TopicSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @var SearchResultTextMatchesItem[]
+     * @var list<SearchResultTextMatchesItem>
      */
     protected $textMatches;
     /**
      * 
      *
-     * @var TopicSearchResultItemRelatedItem[]|null
+     * @var list<TopicSearchResultItemRelatedItem>|null
      */
     protected $related;
     /**
      * 
      *
-     * @var TopicSearchResultItemAliasesItem[]|null
+     * @var list<TopicSearchResultItemAliasesItem>|null
      */
     protected $aliases;
     /**
@@ -397,7 +397,7 @@ class TopicSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @return SearchResultTextMatchesItem[]
+     * @return list<SearchResultTextMatchesItem>
      */
     public function getTextMatches() : array
     {
@@ -406,7 +406,7 @@ class TopicSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @param SearchResultTextMatchesItem[] $textMatches
+     * @param list<SearchResultTextMatchesItem> $textMatches
      *
      * @return self
      */
@@ -419,7 +419,7 @@ class TopicSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @return TopicSearchResultItemRelatedItem[]|null
+     * @return list<TopicSearchResultItemRelatedItem>|null
      */
     public function getRelated() : ?array
     {
@@ -428,7 +428,7 @@ class TopicSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @param TopicSearchResultItemRelatedItem[]|null $related
+     * @param list<TopicSearchResultItemRelatedItem>|null $related
      *
      * @return self
      */
@@ -441,7 +441,7 @@ class TopicSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @return TopicSearchResultItemAliasesItem[]|null
+     * @return list<TopicSearchResultItemAliasesItem>|null
      */
     public function getAliases() : ?array
     {
@@ -450,7 +450,7 @@ class TopicSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @param TopicSearchResultItemAliasesItem[]|null $aliases
+     * @param list<TopicSearchResultItemAliasesItem>|null $aliases
      *
      * @return self
      */

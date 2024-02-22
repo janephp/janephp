@@ -21,7 +21,7 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200 extends \ArrayOb
     /**
      * 
      *
-     * @var MinimalRepository[]
+     * @var list<MinimalRepository>
      */
     protected $repositories;
     /**
@@ -49,7 +49,7 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200 extends \ArrayOb
     /**
      * 
      *
-     * @return MinimalRepository[]
+     * @return list<MinimalRepository>
      */
     public function getRepositories() : array
     {
@@ -58,7 +58,7 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200 extends \ArrayOb
     /**
      * 
      *
-     * @param MinimalRepository[] $repositories
+     * @param list<MinimalRepository> $repositories
      *
      * @return self
      */

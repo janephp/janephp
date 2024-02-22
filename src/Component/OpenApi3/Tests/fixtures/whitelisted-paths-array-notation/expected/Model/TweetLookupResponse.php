@@ -15,7 +15,7 @@ class TweetLookupResponse extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $data;
     /**
@@ -27,13 +27,13 @@ class TweetLookupResponse extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $errors;
     /**
      * 
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getData() : array
     {
@@ -42,7 +42,7 @@ class TweetLookupResponse extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $data
+     * @param list<mixed> $data
      *
      * @return self
      */
@@ -77,7 +77,7 @@ class TweetLookupResponse extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getErrors() : array
     {
@@ -86,7 +86,7 @@ class TweetLookupResponse extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $errors
+     * @param list<mixed> $errors
      *
      * @return self
      */

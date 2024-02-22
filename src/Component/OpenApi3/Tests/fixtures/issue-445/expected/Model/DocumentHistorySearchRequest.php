@@ -57,7 +57,7 @@ class DocumentHistorySearchRequest
     /**
      * Sorts the search results. Sorting on a not indexed field will throw an exception.
      *
-     * @var SortInfo[]|null
+     * @var list<SortInfo>|null
      */
     protected $sort;
     /**
@@ -217,7 +217,7 @@ class DocumentHistorySearchRequest
     /**
      * Sorts the search results. Sorting on a not indexed field will throw an exception.
      *
-     * @return SortInfo[]|null
+     * @return list<SortInfo>|null
      */
     public function getSort() : ?array
     {
@@ -226,7 +226,7 @@ class DocumentHistorySearchRequest
     /**
      * Sorts the search results. Sorting on a not indexed field will throw an exception.
      *
-     * @param SortInfo[]|null $sort
+     * @param list<SortInfo>|null $sort
      *
      * @return self
      */

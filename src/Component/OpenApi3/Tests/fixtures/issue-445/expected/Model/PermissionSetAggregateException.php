@@ -69,7 +69,7 @@ class PermissionSetAggregateException extends \ArrayObject
     /**
      * 
      *
-     * @var PictureparkException[]|null
+     * @var list<PictureparkException>|null
      */
     protected $exceptions;
     /**
@@ -273,7 +273,7 @@ class PermissionSetAggregateException extends \ArrayObject
     /**
      * 
      *
-     * @return PictureparkException[]|null
+     * @return list<PictureparkException>|null
      */
     public function getExceptions() : ?array
     {
@@ -282,7 +282,7 @@ class PermissionSetAggregateException extends \ArrayObject
     /**
      * 
      *
-     * @param PictureparkException[]|null $exceptions
+     * @param list<PictureparkException>|null $exceptions
      *
      * @return self
      */

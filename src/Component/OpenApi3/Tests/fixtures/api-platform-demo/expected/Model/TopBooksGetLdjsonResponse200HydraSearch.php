@@ -33,7 +33,7 @@ class TopBooksGetLdjsonResponse200HydraSearch extends \ArrayObject
     /**
      * 
      *
-     * @var TopBooksGetLdjsonResponse200HydraSearchHydraMappingItem[]
+     * @var list<TopBooksGetLdjsonResponse200HydraSearchHydraMappingItem>
      */
     protected $hydraMapping;
     /**
@@ -105,7 +105,7 @@ class TopBooksGetLdjsonResponse200HydraSearch extends \ArrayObject
     /**
      * 
      *
-     * @return TopBooksGetLdjsonResponse200HydraSearchHydraMappingItem[]
+     * @return list<TopBooksGetLdjsonResponse200HydraSearchHydraMappingItem>
      */
     public function getHydraMapping() : array
     {
@@ -114,7 +114,7 @@ class TopBooksGetLdjsonResponse200HydraSearch extends \ArrayObject
     /**
      * 
      *
-     * @param TopBooksGetLdjsonResponse200HydraSearchHydraMappingItem[] $hydraMapping
+     * @param list<TopBooksGetLdjsonResponse200HydraSearchHydraMappingItem> $hydraMapping
      *
      * @return self
      */

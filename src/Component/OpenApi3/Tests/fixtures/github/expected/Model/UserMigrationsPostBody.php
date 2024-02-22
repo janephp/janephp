@@ -27,13 +27,13 @@ class UserMigrationsPostBody extends \ArrayObject
     /**
      * Exclude attributes from the API response to improve performance
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $exclude;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $repositories;
     /**
@@ -83,7 +83,7 @@ class UserMigrationsPostBody extends \ArrayObject
     /**
      * Exclude attributes from the API response to improve performance
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getExclude() : array
     {
@@ -92,7 +92,7 @@ class UserMigrationsPostBody extends \ArrayObject
     /**
      * Exclude attributes from the API response to improve performance
      *
-     * @param string[] $exclude
+     * @param list<string> $exclude
      *
      * @return self
      */
@@ -105,7 +105,7 @@ class UserMigrationsPostBody extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getRepositories() : array
     {
@@ -114,7 +114,7 @@ class UserMigrationsPostBody extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $repositories
+     * @param list<string> $repositories
      *
      * @return self
      */

@@ -33,7 +33,7 @@ class ReviewsGetLdjsonResponse200HydraSearch extends \ArrayObject
     /**
      * 
      *
-     * @var ReviewsGetLdjsonResponse200HydraSearchHydraMappingItem[]
+     * @var list<ReviewsGetLdjsonResponse200HydraSearchHydraMappingItem>
      */
     protected $hydraMapping;
     /**
@@ -105,7 +105,7 @@ class ReviewsGetLdjsonResponse200HydraSearch extends \ArrayObject
     /**
      * 
      *
-     * @return ReviewsGetLdjsonResponse200HydraSearchHydraMappingItem[]
+     * @return list<ReviewsGetLdjsonResponse200HydraSearchHydraMappingItem>
      */
     public function getHydraMapping() : array
     {
@@ -114,7 +114,7 @@ class ReviewsGetLdjsonResponse200HydraSearch extends \ArrayObject
     /**
      * 
      *
-     * @param ReviewsGetLdjsonResponse200HydraSearchHydraMappingItem[] $hydraMapping
+     * @param list<ReviewsGetLdjsonResponse200HydraSearchHydraMappingItem> $hydraMapping
      *
      * @return self
      */

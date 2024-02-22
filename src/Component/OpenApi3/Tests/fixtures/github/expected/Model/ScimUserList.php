@@ -15,7 +15,7 @@ class ScimUserList extends \ArrayObject
     /**
      * SCIM schema used.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $schemas;
     /**
@@ -39,13 +39,13 @@ class ScimUserList extends \ArrayObject
     /**
      * 
      *
-     * @var ScimUser[]
+     * @var list<ScimUser>
      */
     protected $resources;
     /**
      * SCIM schema used.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getSchemas() : array
     {
@@ -54,7 +54,7 @@ class ScimUserList extends \ArrayObject
     /**
      * SCIM schema used.
      *
-     * @param string[] $schemas
+     * @param list<string> $schemas
      *
      * @return self
      */
@@ -133,7 +133,7 @@ class ScimUserList extends \ArrayObject
     /**
      * 
      *
-     * @return ScimUser[]
+     * @return list<ScimUser>
      */
     public function getResources() : array
     {
@@ -142,7 +142,7 @@ class ScimUserList extends \ArrayObject
     /**
      * 
      *
-     * @param ScimUser[] $resources
+     * @param list<ScimUser> $resources
      *
      * @return self
      */

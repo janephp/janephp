@@ -33,7 +33,7 @@ class Schema extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $arrayProperty;
     /**
@@ -123,7 +123,7 @@ class Schema extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getArrayProperty() : array
     {
@@ -132,7 +132,7 @@ class Schema extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $arrayProperty
+     * @param list<mixed> $arrayProperty
      *
      * @return self
      */

@@ -51,7 +51,7 @@ class Migration extends \ArrayObject
     /**
      * 
      *
-     * @var Repository[]
+     * @var list<Repository>
      */
     protected $repositories;
     /**
@@ -87,7 +87,7 @@ class Migration extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $exclude;
     /**
@@ -225,7 +225,7 @@ class Migration extends \ArrayObject
     /**
      * 
      *
-     * @return Repository[]
+     * @return list<Repository>
      */
     public function getRepositories() : array
     {
@@ -234,7 +234,7 @@ class Migration extends \ArrayObject
     /**
      * 
      *
-     * @param Repository[] $repositories
+     * @param list<Repository> $repositories
      *
      * @return self
      */
@@ -357,7 +357,7 @@ class Migration extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getExclude() : array
     {
@@ -366,7 +366,7 @@ class Migration extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $exclude
+     * @param list<mixed> $exclude
      *
      * @return self
      */

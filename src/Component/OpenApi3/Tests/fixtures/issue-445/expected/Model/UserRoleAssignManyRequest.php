@@ -15,13 +15,13 @@ class UserRoleAssignManyRequest extends \ArrayObject
     /**
      * User IDs.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $userIds;
     /**
      * Users roles to modify.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $userRoleIds;
     /**
@@ -34,7 +34,7 @@ class UserRoleAssignManyRequest extends \ArrayObject
     /**
      * User IDs.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getUserIds() : array
     {
@@ -43,7 +43,7 @@ class UserRoleAssignManyRequest extends \ArrayObject
     /**
      * User IDs.
      *
-     * @param string[] $userIds
+     * @param list<string> $userIds
      *
      * @return self
      */
@@ -56,7 +56,7 @@ class UserRoleAssignManyRequest extends \ArrayObject
     /**
      * Users roles to modify.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getUserRoleIds() : array
     {
@@ -65,7 +65,7 @@ class UserRoleAssignManyRequest extends \ArrayObject
     /**
      * Users roles to modify.
      *
-     * @param string[] $userRoleIds
+     * @param list<string> $userRoleIds
      *
      * @return self
      */

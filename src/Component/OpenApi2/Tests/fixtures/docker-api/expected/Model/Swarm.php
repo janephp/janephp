@@ -84,7 +84,7 @@ class Swarm
     networks.
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $defaultAddrPool;
     /**
@@ -320,7 +320,7 @@ class Swarm
     networks.
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getDefaultAddrPool() : array
     {
@@ -331,7 +331,7 @@ class Swarm
     networks.
     
     *
-    * @param string[] $defaultAddrPool
+    * @param list<string> $defaultAddrPool
     *
     * @return self
     */

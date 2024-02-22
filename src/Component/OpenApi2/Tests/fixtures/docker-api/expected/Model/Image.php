@@ -21,13 +21,13 @@ class Image
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $repoTags;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $repoDigests;
     /**
@@ -151,7 +151,7 @@ class Image
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getRepoTags() : array
     {
@@ -160,7 +160,7 @@ class Image
     /**
      * 
      *
-     * @param string[] $repoTags
+     * @param list<string> $repoTags
      *
      * @return self
      */
@@ -173,7 +173,7 @@ class Image
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getRepoDigests() : array
     {
@@ -182,7 +182,7 @@ class Image
     /**
      * 
      *
-     * @param string[] $repoDigests
+     * @param list<string> $repoDigests
      *
      * @return self
      */

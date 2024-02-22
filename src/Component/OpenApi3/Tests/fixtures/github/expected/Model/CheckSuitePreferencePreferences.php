@@ -15,13 +15,13 @@ class CheckSuitePreferencePreferences extends \ArrayObject
     /**
      * 
      *
-     * @var CheckSuitePreferencePreferencesAutoTriggerChecksItem[]
+     * @var list<CheckSuitePreferencePreferencesAutoTriggerChecksItem>
      */
     protected $autoTriggerChecks;
     /**
      * 
      *
-     * @return CheckSuitePreferencePreferencesAutoTriggerChecksItem[]
+     * @return list<CheckSuitePreferencePreferencesAutoTriggerChecksItem>
      */
     public function getAutoTriggerChecks() : array
     {
@@ -30,7 +30,7 @@ class CheckSuitePreferencePreferences extends \ArrayObject
     /**
      * 
      *
-     * @param CheckSuitePreferencePreferencesAutoTriggerChecksItem[] $autoTriggerChecks
+     * @param list<CheckSuitePreferencePreferencesAutoTriggerChecksItem> $autoTriggerChecks
      *
      * @return self
      */

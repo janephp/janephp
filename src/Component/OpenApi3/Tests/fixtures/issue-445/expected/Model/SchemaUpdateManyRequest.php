@@ -15,13 +15,13 @@ class SchemaUpdateManyRequest
     /**
      * The schemas to update.
      *
-     * @var SchemaUpdateItem[]
+     * @var list<SchemaUpdateItem>
      */
     protected $schemas;
     /**
      * The schemas to update.
      *
-     * @return SchemaUpdateItem[]
+     * @return list<SchemaUpdateItem>
      */
     public function getSchemas() : array
     {
@@ -30,7 +30,7 @@ class SchemaUpdateManyRequest
     /**
      * The schemas to update.
      *
-     * @param SchemaUpdateItem[] $schemas
+     * @param list<SchemaUpdateItem> $schemas
      *
      * @return self
      */

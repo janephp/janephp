@@ -15,19 +15,19 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredExactItem[]
+     * @var list<GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredExactItem>
      */
     protected $exact;
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredPossibleItem[]
+     * @var list<GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredPossibleItem>
      */
     protected $possible;
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredExactItem[]
+     * @return list<GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredExactItem>
      */
     public function getExact() : array
     {
@@ -36,7 +36,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredExactItem[] $exact
+     * @param list<GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredExactItem> $exact
      *
      * @return self
      */
@@ -49,7 +49,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredPossibleItem[]
+     * @return list<GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredPossibleItem>
      */
     public function getPossible() : array
     {
@@ -58,7 +58,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredPossibleItem[] $possible
+     * @param list<GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredPossibleItem> $possible
      *
      * @return self
      */

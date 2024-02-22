@@ -21,7 +21,7 @@ class BusinessRuleTraceLogSearchResult extends \ArrayObject
     /**
      * The matched documents.
      *
-     * @var BusinessRuleTraceLog[]
+     * @var list<BusinessRuleTraceLog>
      */
     protected $results;
     /**
@@ -51,13 +51,13 @@ class BusinessRuleTraceLogSearchResult extends \ArrayObject
     /**
      * Additional information regarding the query execution and reason of the matched documents. Multiple items are returned if multiple queries were performed.
      *
-     * @var QueryDebugInformation[]|null
+     * @var list<QueryDebugInformation>|null
      */
     protected $queryDebugInformation;
     /**
      * Results of the aggregation, if any aggregators was passed in the request.
      *
-     * @var AggregationResult[]|null
+     * @var list<AggregationResult>|null
      */
     protected $aggregationResults;
     /**
@@ -85,7 +85,7 @@ class BusinessRuleTraceLogSearchResult extends \ArrayObject
     /**
      * The matched documents.
      *
-     * @return BusinessRuleTraceLog[]
+     * @return list<BusinessRuleTraceLog>
      */
     public function getResults() : array
     {
@@ -94,7 +94,7 @@ class BusinessRuleTraceLogSearchResult extends \ArrayObject
     /**
      * The matched documents.
      *
-     * @param BusinessRuleTraceLog[] $results
+     * @param list<BusinessRuleTraceLog> $results
      *
      * @return self
      */
@@ -195,7 +195,7 @@ class BusinessRuleTraceLogSearchResult extends \ArrayObject
     /**
      * Additional information regarding the query execution and reason of the matched documents. Multiple items are returned if multiple queries were performed.
      *
-     * @return QueryDebugInformation[]|null
+     * @return list<QueryDebugInformation>|null
      */
     public function getQueryDebugInformation() : ?array
     {
@@ -204,7 +204,7 @@ class BusinessRuleTraceLogSearchResult extends \ArrayObject
     /**
      * Additional information regarding the query execution and reason of the matched documents. Multiple items are returned if multiple queries were performed.
      *
-     * @param QueryDebugInformation[]|null $queryDebugInformation
+     * @param list<QueryDebugInformation>|null $queryDebugInformation
      *
      * @return self
      */
@@ -217,7 +217,7 @@ class BusinessRuleTraceLogSearchResult extends \ArrayObject
     /**
      * Results of the aggregation, if any aggregators was passed in the request.
      *
-     * @return AggregationResult[]|null
+     * @return list<AggregationResult>|null
      */
     public function getAggregationResults() : ?array
     {
@@ -226,7 +226,7 @@ class BusinessRuleTraceLogSearchResult extends \ArrayObject
     /**
      * Results of the aggregation, if any aggregators was passed in the request.
      *
-     * @param AggregationResult[]|null $aggregationResults
+     * @param list<AggregationResult>|null $aggregationResults
      *
      * @return self
      */

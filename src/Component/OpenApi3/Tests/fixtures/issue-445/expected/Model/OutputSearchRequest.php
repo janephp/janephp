@@ -27,25 +27,25 @@ class OutputSearchRequest
     /**
      * List of Content ids you want to use to fetch the outputs.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $contentIds;
     /**
      * The allowed rendering states of the outputs you want to fetch.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $renderingStates;
     /**
      * The file extension of the outputs you want to fetch.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $fileExtensions;
     /**
      * The output format id of the outputs you want to fetch.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $outputFormatIds;
     /**
@@ -95,7 +95,7 @@ class OutputSearchRequest
     /**
      * List of Content ids you want to use to fetch the outputs.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getContentIds() : ?array
     {
@@ -104,7 +104,7 @@ class OutputSearchRequest
     /**
      * List of Content ids you want to use to fetch the outputs.
      *
-     * @param string[]|null $contentIds
+     * @param list<string>|null $contentIds
      *
      * @return self
      */
@@ -117,7 +117,7 @@ class OutputSearchRequest
     /**
      * The allowed rendering states of the outputs you want to fetch.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getRenderingStates() : ?array
     {
@@ -126,7 +126,7 @@ class OutputSearchRequest
     /**
      * The allowed rendering states of the outputs you want to fetch.
      *
-     * @param string[]|null $renderingStates
+     * @param list<string>|null $renderingStates
      *
      * @return self
      */
@@ -139,7 +139,7 @@ class OutputSearchRequest
     /**
      * The file extension of the outputs you want to fetch.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getFileExtensions() : ?array
     {
@@ -148,7 +148,7 @@ class OutputSearchRequest
     /**
      * The file extension of the outputs you want to fetch.
      *
-     * @param string[]|null $fileExtensions
+     * @param list<string>|null $fileExtensions
      *
      * @return self
      */
@@ -161,7 +161,7 @@ class OutputSearchRequest
     /**
      * The output format id of the outputs you want to fetch.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getOutputFormatIds() : ?array
     {
@@ -170,7 +170,7 @@ class OutputSearchRequest
     /**
      * The output format id of the outputs you want to fetch.
      *
-     * @param string[]|null $outputFormatIds
+     * @param list<string>|null $outputFormatIds
      *
      * @return self
      */

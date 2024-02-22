@@ -37,7 +37,7 @@ class OCIPlatform
     OS feature (for example on Windows `win32k`).
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $osFeatures;
     /**
@@ -123,7 +123,7 @@ class OCIPlatform
     OS feature (for example on Windows `win32k`).
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getOsFeatures() : array
     {
@@ -134,7 +134,7 @@ class OCIPlatform
     OS feature (for example on Windows `win32k`).
     
     *
-    * @param string[] $osFeatures
+    * @param list<string> $osFeatures
     *
     * @return self
     */

@@ -15,13 +15,13 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody extends \ArrayObject
     /**
      * Usernames of assignees to remove from an issue. _NOTE: Only users with push access can remove assignees from an issue. Assignees are silently ignored otherwise._
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $assignees;
     /**
      * Usernames of assignees to remove from an issue. _NOTE: Only users with push access can remove assignees from an issue. Assignees are silently ignored otherwise._
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getAssignees() : array
     {
@@ -30,7 +30,7 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody extends \ArrayObject
     /**
      * Usernames of assignees to remove from an issue. _NOTE: Only users with push access can remove assignees from an issue. Assignees are silently ignored otherwise._
      *
-     * @param string[] $assignees
+     * @param list<string> $assignees
      *
      * @return self
      */

@@ -21,19 +21,19 @@ class BusinessRuleTracedEvaluation
     /**
      * Detailed evaluation results for each condition.
      *
-     * @var BusinessRuleTracedEvaluationCondition[]|null
+     * @var list<BusinessRuleTracedEvaluationCondition>|null
      */
     protected $conditions;
     /**
      * Detailed results for transformation groups.
      *
-     * @var BusinessRuleTracedTransformationGroup[]|null
+     * @var list<BusinessRuleTracedTransformationGroup>|null
      */
     protected $transformationGroups;
     /**
      * Detailed steps performed by actions.
      *
-     * @var BusinessRuleTracedAction[]|null
+     * @var list<BusinessRuleTracedAction>|null
      */
     protected $actions;
     /**
@@ -67,7 +67,7 @@ class BusinessRuleTracedEvaluation
     /**
      * Detailed evaluation results for each condition.
      *
-     * @return BusinessRuleTracedEvaluationCondition[]|null
+     * @return list<BusinessRuleTracedEvaluationCondition>|null
      */
     public function getConditions() : ?array
     {
@@ -76,7 +76,7 @@ class BusinessRuleTracedEvaluation
     /**
      * Detailed evaluation results for each condition.
      *
-     * @param BusinessRuleTracedEvaluationCondition[]|null $conditions
+     * @param list<BusinessRuleTracedEvaluationCondition>|null $conditions
      *
      * @return self
      */
@@ -89,7 +89,7 @@ class BusinessRuleTracedEvaluation
     /**
      * Detailed results for transformation groups.
      *
-     * @return BusinessRuleTracedTransformationGroup[]|null
+     * @return list<BusinessRuleTracedTransformationGroup>|null
      */
     public function getTransformationGroups() : ?array
     {
@@ -98,7 +98,7 @@ class BusinessRuleTracedEvaluation
     /**
      * Detailed results for transformation groups.
      *
-     * @param BusinessRuleTracedTransformationGroup[]|null $transformationGroups
+     * @param list<BusinessRuleTracedTransformationGroup>|null $transformationGroups
      *
      * @return self
      */
@@ -111,7 +111,7 @@ class BusinessRuleTracedEvaluation
     /**
      * Detailed steps performed by actions.
      *
-     * @return BusinessRuleTracedAction[]|null
+     * @return list<BusinessRuleTracedAction>|null
      */
     public function getActions() : ?array
     {
@@ -120,7 +120,7 @@ class BusinessRuleTracedEvaluation
     /**
      * Detailed steps performed by actions.
      *
-     * @param BusinessRuleTracedAction[]|null $actions
+     * @param list<BusinessRuleTracedAction>|null $actions
      *
      * @return self
      */

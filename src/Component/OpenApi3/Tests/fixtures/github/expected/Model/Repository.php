@@ -393,7 +393,7 @@ class Repository extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $topics;
     /**
@@ -1923,7 +1923,7 @@ class Repository extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getTopics() : array
     {
@@ -1932,7 +1932,7 @@ class Repository extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $topics
+     * @param list<string> $topics
      *
      * @return self
      */

@@ -21,19 +21,19 @@ class ReposOwnerRepoHooksHookIdPatchBody extends \ArrayObject
     /**
      * Determines what [events](https://developer.github.com/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $events = array(0 => 'push');
     /**
      * Determines a list of events to be added to the list of events that the Hook triggers for.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $addEvents;
     /**
      * Determines a list of events to be removed from the list of events that the Hook triggers for.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $removeEvents;
     /**
@@ -67,7 +67,7 @@ class ReposOwnerRepoHooksHookIdPatchBody extends \ArrayObject
     /**
      * Determines what [events](https://developer.github.com/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getEvents() : array
     {
@@ -76,7 +76,7 @@ class ReposOwnerRepoHooksHookIdPatchBody extends \ArrayObject
     /**
      * Determines what [events](https://developer.github.com/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.
      *
-     * @param string[] $events
+     * @param list<string> $events
      *
      * @return self
      */
@@ -89,7 +89,7 @@ class ReposOwnerRepoHooksHookIdPatchBody extends \ArrayObject
     /**
      * Determines a list of events to be added to the list of events that the Hook triggers for.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getAddEvents() : array
     {
@@ -98,7 +98,7 @@ class ReposOwnerRepoHooksHookIdPatchBody extends \ArrayObject
     /**
      * Determines a list of events to be added to the list of events that the Hook triggers for.
      *
-     * @param string[] $addEvents
+     * @param list<string> $addEvents
      *
      * @return self
      */
@@ -111,7 +111,7 @@ class ReposOwnerRepoHooksHookIdPatchBody extends \ArrayObject
     /**
      * Determines a list of events to be removed from the list of events that the Hook triggers for.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getRemoveEvents() : array
     {
@@ -120,7 +120,7 @@ class ReposOwnerRepoHooksHookIdPatchBody extends \ArrayObject
     /**
      * Determines a list of events to be removed from the list of events that the Hook triggers for.
      *
-     * @param string[] $removeEvents
+     * @param list<string> $removeEvents
      *
      * @return self
      */

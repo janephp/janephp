@@ -15,13 +15,13 @@ class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody extends \ArrayObjec
     /**
      * 
      *
-     * @var MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyCompaniesItem[]
+     * @var list<MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyCompaniesItem>
      */
     protected $companies;
     /**
      * 
      *
-     * @return MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyCompaniesItem[]
+     * @return list<MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyCompaniesItem>
      */
     public function getCompanies() : array
     {
@@ -30,7 +30,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody extends \ArrayObjec
     /**
      * 
      *
-     * @param MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyCompaniesItem[] $companies
+     * @param list<MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyCompaniesItem> $companies
      *
      * @return self
      */

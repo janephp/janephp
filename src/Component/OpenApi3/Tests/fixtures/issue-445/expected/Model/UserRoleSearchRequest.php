@@ -21,13 +21,13 @@ class UserRoleSearchRequest
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $searchBehaviors;
     /**
      * Fields and respective directions requested to sort the search results.
      *
-     * @var SortInfo[]|null
+     * @var list<SortInfo>|null
      */
     protected $sort;
     /**
@@ -57,7 +57,7 @@ class UserRoleSearchRequest
     /**
      * Which languages to search against when using the search string.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $searchLanguages;
     /**
@@ -91,7 +91,7 @@ class UserRoleSearchRequest
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSearchBehaviors() : ?array
     {
@@ -100,7 +100,7 @@ class UserRoleSearchRequest
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied.
      *
-     * @param string[]|null $searchBehaviors
+     * @param list<string>|null $searchBehaviors
      *
      * @return self
      */
@@ -113,7 +113,7 @@ class UserRoleSearchRequest
     /**
      * Fields and respective directions requested to sort the search results.
      *
-     * @return SortInfo[]|null
+     * @return list<SortInfo>|null
      */
     public function getSort() : ?array
     {
@@ -122,7 +122,7 @@ class UserRoleSearchRequest
     /**
      * Fields and respective directions requested to sort the search results.
      *
-     * @param SortInfo[]|null $sort
+     * @param list<SortInfo>|null $sort
      *
      * @return self
      */
@@ -223,7 +223,7 @@ class UserRoleSearchRequest
     /**
      * Which languages to search against when using the search string.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSearchLanguages() : ?array
     {
@@ -232,7 +232,7 @@ class UserRoleSearchRequest
     /**
      * Which languages to search against when using the search string.
      *
-     * @param string[]|null $searchLanguages
+     * @param list<string>|null $searchLanguages
      *
      * @return self
      */

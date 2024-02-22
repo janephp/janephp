@@ -27,13 +27,13 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
     /**
      * user emails
      *
-     * @var ScimV2OrganizationsOrgUsersPostBodyEmailsItem[]
+     * @var list<ScimV2OrganizationsOrgUsersPostBodyEmailsItem>
      */
     protected $emails;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $schemas;
     /**
@@ -51,7 +51,7 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $groups;
     /**
@@ -107,7 +107,7 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
     /**
      * user emails
      *
-     * @return ScimV2OrganizationsOrgUsersPostBodyEmailsItem[]
+     * @return list<ScimV2OrganizationsOrgUsersPostBodyEmailsItem>
      */
     public function getEmails() : array
     {
@@ -116,7 +116,7 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
     /**
      * user emails
      *
-     * @param ScimV2OrganizationsOrgUsersPostBodyEmailsItem[] $emails
+     * @param list<ScimV2OrganizationsOrgUsersPostBodyEmailsItem> $emails
      *
      * @return self
      */
@@ -129,7 +129,7 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getSchemas() : array
     {
@@ -138,7 +138,7 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $schemas
+     * @param list<string> $schemas
      *
      * @return self
      */
@@ -195,7 +195,7 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getGroups() : array
     {
@@ -204,7 +204,7 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $groups
+     * @param list<string> $groups
      *
      * @return self
      */

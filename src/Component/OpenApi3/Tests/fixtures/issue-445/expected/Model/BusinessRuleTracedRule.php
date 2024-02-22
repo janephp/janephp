@@ -21,7 +21,7 @@ class BusinessRuleTracedRule
     /**
      * Evaluations performed for this rule.
      *
-     * @var BusinessRuleTracedEvaluation[]|null
+     * @var list<BusinessRuleTracedEvaluation>|null
      */
     protected $evaluations;
     /**
@@ -49,7 +49,7 @@ class BusinessRuleTracedRule
     /**
      * Evaluations performed for this rule.
      *
-     * @return BusinessRuleTracedEvaluation[]|null
+     * @return list<BusinessRuleTracedEvaluation>|null
      */
     public function getEvaluations() : ?array
     {
@@ -58,7 +58,7 @@ class BusinessRuleTracedRule
     /**
      * Evaluations performed for this rule.
      *
-     * @param BusinessRuleTracedEvaluation[]|null $evaluations
+     * @param list<BusinessRuleTracedEvaluation>|null $evaluations
      *
      * @return self
      */

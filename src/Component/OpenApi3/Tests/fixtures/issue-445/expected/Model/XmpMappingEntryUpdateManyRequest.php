@@ -15,13 +15,13 @@ class XmpMappingEntryUpdateManyRequest
     /**
      * Items to update.
      *
-     * @var XmpMappingEntry[]|null
+     * @var list<XmpMappingEntry>|null
      */
     protected $items;
     /**
      * Items to update.
      *
-     * @return XmpMappingEntry[]|null
+     * @return list<XmpMappingEntry>|null
      */
     public function getItems() : ?array
     {
@@ -30,7 +30,7 @@ class XmpMappingEntryUpdateManyRequest
     /**
      * Items to update.
      *
-     * @param XmpMappingEntry[]|null $items
+     * @param list<XmpMappingEntry>|null $items
      *
      * @return self
      */

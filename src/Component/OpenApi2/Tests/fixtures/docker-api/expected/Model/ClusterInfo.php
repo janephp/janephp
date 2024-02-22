@@ -84,7 +84,7 @@ class ClusterInfo
     networks.
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $defaultAddrPool;
     /**
@@ -314,7 +314,7 @@ class ClusterInfo
     networks.
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getDefaultAddrPool() : array
     {
@@ -325,7 +325,7 @@ class ClusterInfo
     networks.
     
     *
-    * @param string[] $defaultAddrPool
+    * @param list<string> $defaultAddrPool
     *
     * @return self
     */

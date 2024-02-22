@@ -69,7 +69,7 @@ class BookJsonldBookRead extends \ArrayObject
     /**
      * The book's reviews.
      *
-     * @var ReviewJsonldBookRead[]
+     * @var list<ReviewJsonldBookRead>
      */
     protected $reviews;
     /**
@@ -273,7 +273,7 @@ class BookJsonldBookRead extends \ArrayObject
     /**
      * The book's reviews.
      *
-     * @return ReviewJsonldBookRead[]
+     * @return list<ReviewJsonldBookRead>
      */
     public function getReviews() : array
     {
@@ -282,7 +282,7 @@ class BookJsonldBookRead extends \ArrayObject
     /**
      * The book's reviews.
      *
-     * @param ReviewJsonldBookRead[] $reviews
+     * @param list<ReviewJsonldBookRead> $reviews
      *
      * @return self
      */

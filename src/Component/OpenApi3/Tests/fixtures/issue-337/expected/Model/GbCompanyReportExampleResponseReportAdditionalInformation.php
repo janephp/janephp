@@ -15,7 +15,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportAdditionalInformationCompanyHistoryItem[]
+     * @var list<GbCompanyReportExampleResponseReportAdditionalInformationCompanyHistoryItem>
      */
     protected $companyHistory;
     /**
@@ -27,37 +27,37 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsItem[]
+     * @var list<GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsItem>
      */
     protected $mortgageDetails;
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItem[]
+     * @var list<GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItem>
      */
     protected $commentaries;
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem[]
+     * @var list<GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem>
      */
     protected $ratingHistory;
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistoryItem[]
+     * @var list<GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistoryItem>
      */
     protected $creditLimitHistory;
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsItem[]
+     * @var list<GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsItem>
      */
     protected $badDebtDetails;
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportAdditionalInformationCompanyHistoryItem[]
+     * @return list<GbCompanyReportExampleResponseReportAdditionalInformationCompanyHistoryItem>
      */
     public function getCompanyHistory() : array
     {
@@ -66,7 +66,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportAdditionalInformationCompanyHistoryItem[] $companyHistory
+     * @param list<GbCompanyReportExampleResponseReportAdditionalInformationCompanyHistoryItem> $companyHistory
      *
      * @return self
      */
@@ -101,7 +101,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsItem[]
+     * @return list<GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsItem>
      */
     public function getMortgageDetails() : array
     {
@@ -110,7 +110,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsItem[] $mortgageDetails
+     * @param list<GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsItem> $mortgageDetails
      *
      * @return self
      */
@@ -123,7 +123,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItem[]
+     * @return list<GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItem>
      */
     public function getCommentaries() : array
     {
@@ -132,7 +132,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItem[] $commentaries
+     * @param list<GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItem> $commentaries
      *
      * @return self
      */
@@ -145,7 +145,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem[]
+     * @return list<GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem>
      */
     public function getRatingHistory() : array
     {
@@ -154,7 +154,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem[] $ratingHistory
+     * @param list<GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem> $ratingHistory
      *
      * @return self
      */
@@ -167,7 +167,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistoryItem[]
+     * @return list<GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistoryItem>
      */
     public function getCreditLimitHistory() : array
     {
@@ -176,7 +176,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistoryItem[] $creditLimitHistory
+     * @param list<GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistoryItem> $creditLimitHistory
      *
      * @return self
      */
@@ -189,7 +189,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsItem[]
+     * @return list<GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsItem>
      */
     public function getBadDebtDetails() : array
     {
@@ -198,7 +198,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformation extends \ArrayOb
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsItem[] $badDebtDetails
+     * @param list<GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsItem> $badDebtDetails
      *
      * @return self
      */

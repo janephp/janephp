@@ -63,7 +63,7 @@ class Commit extends \ArrayObject
     /**
      * 
      *
-     * @var CommitParentsItem[]
+     * @var list<CommitParentsItem>
      */
     protected $parents;
     /**
@@ -75,7 +75,7 @@ class Commit extends \ArrayObject
     /**
      * 
      *
-     * @var CommitFilesItem[]
+     * @var list<CommitFilesItem>
      */
     protected $files;
     /**
@@ -257,7 +257,7 @@ class Commit extends \ArrayObject
     /**
      * 
      *
-     * @return CommitParentsItem[]
+     * @return list<CommitParentsItem>
      */
     public function getParents() : array
     {
@@ -266,7 +266,7 @@ class Commit extends \ArrayObject
     /**
      * 
      *
-     * @param CommitParentsItem[] $parents
+     * @param list<CommitParentsItem> $parents
      *
      * @return self
      */
@@ -301,7 +301,7 @@ class Commit extends \ArrayObject
     /**
      * 
      *
-     * @return CommitFilesItem[]
+     * @return list<CommitFilesItem>
      */
     public function getFiles() : array
     {
@@ -310,7 +310,7 @@ class Commit extends \ArrayObject
     /**
      * 
      *
-     * @param CommitFilesItem[] $files
+     * @param list<CommitFilesItem> $files
      *
      * @return self
      */

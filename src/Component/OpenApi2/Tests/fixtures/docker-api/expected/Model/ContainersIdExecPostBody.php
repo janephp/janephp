@@ -48,13 +48,13 @@ class ContainersIdExecPostBody
     /**
      * A list of environment variables in the form `["VAR=value", ...]`.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $env;
     /**
      * Command to run, as a string or array of strings.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $cmd;
     /**
@@ -197,7 +197,7 @@ class ContainersIdExecPostBody
     /**
      * A list of environment variables in the form `["VAR=value", ...]`.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getEnv() : array
     {
@@ -206,7 +206,7 @@ class ContainersIdExecPostBody
     /**
      * A list of environment variables in the form `["VAR=value", ...]`.
      *
-     * @param string[] $env
+     * @param list<string> $env
      *
      * @return self
      */
@@ -219,7 +219,7 @@ class ContainersIdExecPostBody
     /**
      * Command to run, as a string or array of strings.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getCmd() : array
     {
@@ -228,7 +228,7 @@ class ContainersIdExecPostBody
     /**
      * Command to run, as a string or array of strings.
      *
-     * @param string[] $cmd
+     * @param list<string> $cmd
      *
      * @return self
      */

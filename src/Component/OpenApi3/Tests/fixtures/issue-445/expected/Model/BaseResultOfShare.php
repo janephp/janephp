@@ -21,7 +21,7 @@ class BaseResultOfShare
     /**
      * The matched documents.
      *
-     * @var Share[]
+     * @var list<Share>
      */
     protected $results;
     /**
@@ -61,7 +61,7 @@ class BaseResultOfShare
     /**
      * The matched documents.
      *
-     * @return Share[]
+     * @return list<Share>
      */
     public function getResults() : array
     {
@@ -70,7 +70,7 @@ class BaseResultOfShare
     /**
      * The matched documents.
      *
-     * @param Share[] $results
+     * @param list<Share> $results
      *
      * @return self
      */

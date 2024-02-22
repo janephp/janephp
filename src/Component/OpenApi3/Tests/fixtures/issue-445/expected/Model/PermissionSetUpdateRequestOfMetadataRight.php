@@ -21,13 +21,13 @@ class PermissionSetUpdateRequestOfMetadataRight
     /**
      * A list of content or metadata rights authorizing operations on Content Items or List Items.
      *
-     * @var UserRoleRightsOfMetadataRight[]|null
+     * @var list<UserRoleRightsOfMetadataRight>|null
      */
     protected $userRolesRights;
     /**
      * A list of permission set rights authorizing operations on this permission set.
      *
-     * @var UserRoleRightsOfPermissionSetRight[]|null
+     * @var list<UserRoleRightsOfPermissionSetRight>|null
      */
     protected $userRolesPermissionSetRights;
     /**
@@ -55,7 +55,7 @@ class PermissionSetUpdateRequestOfMetadataRight
     /**
      * A list of content or metadata rights authorizing operations on Content Items or List Items.
      *
-     * @return UserRoleRightsOfMetadataRight[]|null
+     * @return list<UserRoleRightsOfMetadataRight>|null
      */
     public function getUserRolesRights() : ?array
     {
@@ -64,7 +64,7 @@ class PermissionSetUpdateRequestOfMetadataRight
     /**
      * A list of content or metadata rights authorizing operations on Content Items or List Items.
      *
-     * @param UserRoleRightsOfMetadataRight[]|null $userRolesRights
+     * @param list<UserRoleRightsOfMetadataRight>|null $userRolesRights
      *
      * @return self
      */
@@ -77,7 +77,7 @@ class PermissionSetUpdateRequestOfMetadataRight
     /**
      * A list of permission set rights authorizing operations on this permission set.
      *
-     * @return UserRoleRightsOfPermissionSetRight[]|null
+     * @return list<UserRoleRightsOfPermissionSetRight>|null
      */
     public function getUserRolesPermissionSetRights() : ?array
     {
@@ -86,7 +86,7 @@ class PermissionSetUpdateRequestOfMetadataRight
     /**
      * A list of permission set rights authorizing operations on this permission set.
      *
-     * @param UserRoleRightsOfPermissionSetRight[]|null $userRolesPermissionSetRights
+     * @param list<UserRoleRightsOfPermissionSetRight>|null $userRolesPermissionSetRights
      *
      * @return self
      */

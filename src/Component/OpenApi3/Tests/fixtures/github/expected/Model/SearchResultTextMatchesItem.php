@@ -39,7 +39,7 @@ class SearchResultTextMatchesItem extends \ArrayObject
     /**
      * 
      *
-     * @var SearchResultTextMatchesItemMatchesItem[]
+     * @var list<SearchResultTextMatchesItemMatchesItem>
      */
     protected $matches;
     /**
@@ -133,7 +133,7 @@ class SearchResultTextMatchesItem extends \ArrayObject
     /**
      * 
      *
-     * @return SearchResultTextMatchesItemMatchesItem[]
+     * @return list<SearchResultTextMatchesItemMatchesItem>
      */
     public function getMatches() : array
     {
@@ -142,7 +142,7 @@ class SearchResultTextMatchesItem extends \ArrayObject
     /**
      * 
      *
-     * @param SearchResultTextMatchesItemMatchesItem[] $matches
+     * @param list<SearchResultTextMatchesItemMatchesItem> $matches
      *
      * @return self
      */

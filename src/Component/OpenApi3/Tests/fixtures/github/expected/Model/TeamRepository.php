@@ -393,7 +393,7 @@ class TeamRepository extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $topics;
     /**
@@ -1917,7 +1917,7 @@ class TeamRepository extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getTopics() : array
     {
@@ -1926,7 +1926,7 @@ class TeamRepository extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $topics
+     * @param list<string> $topics
      *
      * @return self
      */

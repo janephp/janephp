@@ -21,7 +21,7 @@ class SearchResultTextMatchesItemMatchesItem extends \ArrayObject
     /**
      * 
      *
-     * @var int[]
+     * @var list<int>
      */
     protected $indices;
     /**
@@ -49,7 +49,7 @@ class SearchResultTextMatchesItemMatchesItem extends \ArrayObject
     /**
      * 
      *
-     * @return int[]
+     * @return list<int>
      */
     public function getIndices() : array
     {
@@ -58,7 +58,7 @@ class SearchResultTextMatchesItemMatchesItem extends \ArrayObject
     /**
      * 
      *
-     * @param int[] $indices
+     * @param list<int> $indices
      *
      * @return self
      */

@@ -75,7 +75,7 @@ class ContentNotFoundException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $contentIds;
     /**
@@ -301,7 +301,7 @@ class ContentNotFoundException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getContentIds() : ?array
     {
@@ -310,7 +310,7 @@ class ContentNotFoundException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $contentIds
+     * @param list<string>|null $contentIds
      *
      * @return self
      */

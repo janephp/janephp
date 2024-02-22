@@ -21,7 +21,7 @@ class NetworkAttachmentConfig
     /**
      * Discoverable alternate names for the service on this network.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $aliases;
     /**
@@ -55,7 +55,7 @@ class NetworkAttachmentConfig
     /**
      * Discoverable alternate names for the service on this network.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getAliases() : array
     {
@@ -64,7 +64,7 @@ class NetworkAttachmentConfig
     /**
      * Discoverable alternate names for the service on this network.
      *
-     * @param string[] $aliases
+     * @param list<string> $aliases
      *
      * @return self
      */

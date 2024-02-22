@@ -15,7 +15,7 @@ class ContainersIdTopGetResponse200
     /**
      * The ps column titles
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $titles;
     /**
@@ -23,13 +23,13 @@ class ContainersIdTopGetResponse200
     is an array of values corresponding to the titles.
     
     *
-    * @var string[][]
+    * @var list<list<string>>
     */
     protected $processes;
     /**
      * The ps column titles
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getTitles() : array
     {
@@ -38,7 +38,7 @@ class ContainersIdTopGetResponse200
     /**
      * The ps column titles
      *
-     * @param string[] $titles
+     * @param list<string> $titles
      *
      * @return self
      */
@@ -53,7 +53,7 @@ class ContainersIdTopGetResponse200
     is an array of values corresponding to the titles.
     
     *
-    * @return string[][]
+    * @return list<list<string>>
     */
     public function getProcesses() : array
     {
@@ -64,7 +64,7 @@ class ContainersIdTopGetResponse200
     is an array of values corresponding to the titles.
     
     *
-    * @param string[][] $processes
+    * @param list<list<string>> $processes
     *
     * @return self
     */

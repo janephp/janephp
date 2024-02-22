@@ -21,13 +21,13 @@ class PermissionSetSearchRequest
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied in the specified order.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $searchBehaviors;
     /**
      * 
      *
-     * @var SortInfo[]|null
+     * @var list<SortInfo>|null
      */
     protected $sort;
     /**
@@ -65,7 +65,7 @@ class PermissionSetSearchRequest
     * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
     If not specified, all metadata languages defined in the system are used.
     *
-    * @var string[]|null
+    * @var list<string>|null
     */
     protected $searchLanguages;
     /**
@@ -93,7 +93,7 @@ class PermissionSetSearchRequest
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied in the specified order.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSearchBehaviors() : ?array
     {
@@ -102,7 +102,7 @@ class PermissionSetSearchRequest
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied in the specified order.
      *
-     * @param string[]|null $searchBehaviors
+     * @param list<string>|null $searchBehaviors
      *
      * @return self
      */
@@ -115,7 +115,7 @@ class PermissionSetSearchRequest
     /**
      * 
      *
-     * @return SortInfo[]|null
+     * @return list<SortInfo>|null
      */
     public function getSort() : ?array
     {
@@ -124,7 +124,7 @@ class PermissionSetSearchRequest
     /**
      * 
      *
-     * @param SortInfo[]|null $sort
+     * @param list<SortInfo>|null $sort
      *
      * @return self
      */
@@ -250,7 +250,7 @@ class PermissionSetSearchRequest
     * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
     If not specified, all metadata languages defined in the system are used.
     *
-    * @return string[]|null
+    * @return list<string>|null
     */
     public function getSearchLanguages() : ?array
     {
@@ -260,7 +260,7 @@ class PermissionSetSearchRequest
     * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
     If not specified, all metadata languages defined in the system are used.
     *
-    * @param string[]|null $searchLanguages
+    * @param list<string>|null $searchLanguages
     *
     * @return self
     */

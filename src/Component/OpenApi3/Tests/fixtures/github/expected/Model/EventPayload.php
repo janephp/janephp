@@ -33,7 +33,7 @@ class EventPayload extends \ArrayObject
     /**
      * 
      *
-     * @var EventPayloadPagesItem[]
+     * @var list<EventPayloadPagesItem>
      */
     protected $pages;
     /**
@@ -105,7 +105,7 @@ class EventPayload extends \ArrayObject
     /**
      * 
      *
-     * @return EventPayloadPagesItem[]
+     * @return list<EventPayloadPagesItem>
      */
     public function getPages() : array
     {
@@ -114,7 +114,7 @@ class EventPayload extends \ArrayObject
     /**
      * 
      *
-     * @param EventPayloadPagesItem[] $pages
+     * @param list<EventPayloadPagesItem> $pages
      *
      * @return self
      */

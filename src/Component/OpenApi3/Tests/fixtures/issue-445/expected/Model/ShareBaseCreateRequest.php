@@ -33,13 +33,13 @@ class ShareBaseCreateRequest
     /**
      * List of contents including outputs to share.
      *
-     * @var ShareContent[]
+     * @var list<ShareContent>
      */
     protected $contents;
     /**
      * List of content layers to share.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $layerSchemaIds;
     /**
@@ -114,7 +114,7 @@ class ShareBaseCreateRequest
     /**
      * List of contents including outputs to share.
      *
-     * @return ShareContent[]
+     * @return list<ShareContent>
      */
     public function getContents() : array
     {
@@ -123,7 +123,7 @@ class ShareBaseCreateRequest
     /**
      * List of contents including outputs to share.
      *
-     * @param ShareContent[] $contents
+     * @param list<ShareContent> $contents
      */
     public function setContents(array $contents)
     {
@@ -133,7 +133,7 @@ class ShareBaseCreateRequest
     /**
      * List of content layers to share.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getLayerSchemaIds() : ?array
     {
@@ -142,7 +142,7 @@ class ShareBaseCreateRequest
     /**
      * List of content layers to share.
      *
-     * @param string[]|null $layerSchemaIds
+     * @param list<string>|null $layerSchemaIds
      */
     public function setLayerSchemaIds(?array $layerSchemaIds)
     {

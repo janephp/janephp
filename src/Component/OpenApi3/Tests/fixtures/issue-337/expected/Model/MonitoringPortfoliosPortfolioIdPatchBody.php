@@ -21,7 +21,7 @@ class MonitoringPortfoliosPortfolioIdPatchBody extends \ArrayObject
     /**
      * 
      *
-     * @var MonitoringPortfoliosPortfolioIdPatchBodyEmailsItem[]
+     * @var list<MonitoringPortfoliosPortfolioIdPatchBodyEmailsItem>
      */
     protected $emails;
     /**
@@ -61,7 +61,7 @@ class MonitoringPortfoliosPortfolioIdPatchBody extends \ArrayObject
     /**
      * 
      *
-     * @return MonitoringPortfoliosPortfolioIdPatchBodyEmailsItem[]
+     * @return list<MonitoringPortfoliosPortfolioIdPatchBodyEmailsItem>
      */
     public function getEmails() : array
     {
@@ -70,7 +70,7 @@ class MonitoringPortfoliosPortfolioIdPatchBody extends \ArrayObject
     /**
      * 
      *
-     * @param MonitoringPortfoliosPortfolioIdPatchBodyEmailsItem[] $emails
+     * @param list<MonitoringPortfoliosPortfolioIdPatchBodyEmailsItem> $emails
      *
      * @return self
      */

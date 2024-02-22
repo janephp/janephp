@@ -105,7 +105,7 @@ class Import extends \ArrayObject
     /**
      * 
      *
-     * @var ImportProjectChoicesItem[]
+     * @var list<ImportProjectChoicesItem>
      */
     protected $projectChoices;
     /**
@@ -483,7 +483,7 @@ class Import extends \ArrayObject
     /**
      * 
      *
-     * @return ImportProjectChoicesItem[]
+     * @return list<ImportProjectChoicesItem>
      */
     public function getProjectChoices() : array
     {
@@ -492,7 +492,7 @@ class Import extends \ArrayObject
     /**
      * 
      *
-     * @param ImportProjectChoicesItem[] $projectChoices
+     * @param list<ImportProjectChoicesItem> $projectChoices
      *
      * @return self
      */

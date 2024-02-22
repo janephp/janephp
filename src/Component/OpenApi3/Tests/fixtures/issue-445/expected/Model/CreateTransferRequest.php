@@ -29,7 +29,7 @@ class CreateTransferRequest
     The client is responsible for uploading files to backend.
     Required when TransferType is FileUpload or FileUploadAutoImport.
     *
-    * @var TransferUploadFile[]|null
+    * @var list<TransferUploadFile>|null
     */
     protected $files;
     /**
@@ -37,7 +37,7 @@ class CreateTransferRequest
     The backend will download files using HTTP, therefore public access to files is needed.
     Required when TransferType is WebDownload.
     *
-    * @var TransferWebLink[]|null
+    * @var list<TransferWebLink>|null
     */
     protected $webLinks;
     /**
@@ -101,7 +101,7 @@ class CreateTransferRequest
     The client is responsible for uploading files to backend.
     Required when TransferType is FileUpload or FileUploadAutoImport.
     *
-    * @return TransferUploadFile[]|null
+    * @return list<TransferUploadFile>|null
     */
     public function getFiles() : ?array
     {
@@ -112,7 +112,7 @@ class CreateTransferRequest
     The client is responsible for uploading files to backend.
     Required when TransferType is FileUpload or FileUploadAutoImport.
     *
-    * @param TransferUploadFile[]|null $files
+    * @param list<TransferUploadFile>|null $files
     *
     * @return self
     */
@@ -127,7 +127,7 @@ class CreateTransferRequest
     The backend will download files using HTTP, therefore public access to files is needed.
     Required when TransferType is WebDownload.
     *
-    * @return TransferWebLink[]|null
+    * @return list<TransferWebLink>|null
     */
     public function getWebLinks() : ?array
     {
@@ -138,7 +138,7 @@ class CreateTransferRequest
     The backend will download files using HTTP, therefore public access to files is needed.
     Required when TransferType is WebDownload.
     *
-    * @param TransferWebLink[]|null $webLinks
+    * @param list<TransferWebLink>|null $webLinks
     *
     * @return self
     */

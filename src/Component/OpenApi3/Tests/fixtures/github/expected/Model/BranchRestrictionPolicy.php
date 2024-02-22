@@ -39,19 +39,19 @@ class BranchRestrictionPolicy extends \ArrayObject
     /**
      * 
      *
-     * @var BranchRestrictionPolicyUsersItem[]
+     * @var list<BranchRestrictionPolicyUsersItem>
      */
     protected $users;
     /**
      * 
      *
-     * @var BranchRestrictionPolicyTeamsItem[]
+     * @var list<BranchRestrictionPolicyTeamsItem>
      */
     protected $teams;
     /**
      * 
      *
-     * @var BranchRestrictionPolicyAppsItem[]
+     * @var list<BranchRestrictionPolicyAppsItem>
      */
     protected $apps;
     /**
@@ -145,7 +145,7 @@ class BranchRestrictionPolicy extends \ArrayObject
     /**
      * 
      *
-     * @return BranchRestrictionPolicyUsersItem[]
+     * @return list<BranchRestrictionPolicyUsersItem>
      */
     public function getUsers() : array
     {
@@ -154,7 +154,7 @@ class BranchRestrictionPolicy extends \ArrayObject
     /**
      * 
      *
-     * @param BranchRestrictionPolicyUsersItem[] $users
+     * @param list<BranchRestrictionPolicyUsersItem> $users
      *
      * @return self
      */
@@ -167,7 +167,7 @@ class BranchRestrictionPolicy extends \ArrayObject
     /**
      * 
      *
-     * @return BranchRestrictionPolicyTeamsItem[]
+     * @return list<BranchRestrictionPolicyTeamsItem>
      */
     public function getTeams() : array
     {
@@ -176,7 +176,7 @@ class BranchRestrictionPolicy extends \ArrayObject
     /**
      * 
      *
-     * @param BranchRestrictionPolicyTeamsItem[] $teams
+     * @param list<BranchRestrictionPolicyTeamsItem> $teams
      *
      * @return self
      */
@@ -189,7 +189,7 @@ class BranchRestrictionPolicy extends \ArrayObject
     /**
      * 
      *
-     * @return BranchRestrictionPolicyAppsItem[]
+     * @return list<BranchRestrictionPolicyAppsItem>
      */
     public function getApps() : array
     {
@@ -198,7 +198,7 @@ class BranchRestrictionPolicy extends \ArrayObject
     /**
      * 
      *
-     * @param BranchRestrictionPolicyAppsItem[] $apps
+     * @param list<BranchRestrictionPolicyAppsItem> $apps
      *
      * @return self
      */

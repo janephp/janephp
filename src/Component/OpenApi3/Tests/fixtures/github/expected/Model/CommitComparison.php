@@ -81,13 +81,13 @@ class CommitComparison extends \ArrayObject
     /**
      * 
      *
-     * @var Commit[]
+     * @var list<Commit>
      */
     protected $commits;
     /**
      * 
      *
-     * @var DiffEntry[]
+     * @var list<DiffEntry>
      */
     protected $files;
     /**
@@ -335,7 +335,7 @@ class CommitComparison extends \ArrayObject
     /**
      * 
      *
-     * @return Commit[]
+     * @return list<Commit>
      */
     public function getCommits() : array
     {
@@ -344,7 +344,7 @@ class CommitComparison extends \ArrayObject
     /**
      * 
      *
-     * @param Commit[] $commits
+     * @param list<Commit> $commits
      *
      * @return self
      */
@@ -357,7 +357,7 @@ class CommitComparison extends \ArrayObject
     /**
      * 
      *
-     * @return DiffEntry[]
+     * @return list<DiffEntry>
      */
     public function getFiles() : array
     {
@@ -366,7 +366,7 @@ class CommitComparison extends \ArrayObject
     /**
      * 
      *
-     * @param DiffEntry[] $files
+     * @param list<DiffEntry> $files
      *
      * @return self
      */

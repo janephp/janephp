@@ -15,7 +15,7 @@ class ReposOwnerRepoGitTreesPostBody extends \ArrayObject
     /**
      * Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure.
      *
-     * @var ReposOwnerRepoGitTreesPostBodyTreeItem[]
+     * @var list<ReposOwnerRepoGitTreesPostBodyTreeItem>
      */
     protected $tree;
     /**
@@ -27,7 +27,7 @@ class ReposOwnerRepoGitTreesPostBody extends \ArrayObject
     /**
      * Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure.
      *
-     * @return ReposOwnerRepoGitTreesPostBodyTreeItem[]
+     * @return list<ReposOwnerRepoGitTreesPostBodyTreeItem>
      */
     public function getTree() : array
     {
@@ -36,7 +36,7 @@ class ReposOwnerRepoGitTreesPostBody extends \ArrayObject
     /**
      * Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure.
      *
-     * @param ReposOwnerRepoGitTreesPostBodyTreeItem[] $tree
+     * @param list<ReposOwnerRepoGitTreesPostBodyTreeItem> $tree
      *
      * @return self
      */

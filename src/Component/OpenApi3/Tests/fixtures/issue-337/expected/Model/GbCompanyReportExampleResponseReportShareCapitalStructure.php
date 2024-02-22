@@ -27,7 +27,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructure extends \ArrayOb
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem[]
+     * @var list<GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem>
      */
     protected $shareHolders;
     /**
@@ -77,7 +77,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructure extends \ArrayOb
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem[]
+     * @return list<GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem>
      */
     public function getShareHolders() : array
     {
@@ -86,7 +86,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructure extends \ArrayOb
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem[] $shareHolders
+     * @param list<GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem> $shareHolders
      *
      * @return self
      */

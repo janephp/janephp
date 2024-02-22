@@ -75,7 +75,7 @@ class PermissionSetNotFoundException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $permissionSetIds;
     /**
@@ -301,7 +301,7 @@ class PermissionSetNotFoundException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getPermissionSetIds() : ?array
     {
@@ -310,7 +310,7 @@ class PermissionSetNotFoundException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $permissionSetIds
+     * @param list<string>|null $permissionSetIds
      *
      * @return self
      */

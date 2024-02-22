@@ -21,7 +21,7 @@ class CombinedCommitStatus extends \ArrayObject
     /**
      * 
      *
-     * @var SimpleCommitStatus[]
+     * @var list<SimpleCommitStatus>
      */
     protected $statuses;
     /**
@@ -79,7 +79,7 @@ class CombinedCommitStatus extends \ArrayObject
     /**
      * 
      *
-     * @return SimpleCommitStatus[]
+     * @return list<SimpleCommitStatus>
      */
     public function getStatuses() : array
     {
@@ -88,7 +88,7 @@ class CombinedCommitStatus extends \ArrayObject
     /**
      * 
      *
-     * @param SimpleCommitStatus[] $statuses
+     * @param list<SimpleCommitStatus> $statuses
      *
      * @return self
      */

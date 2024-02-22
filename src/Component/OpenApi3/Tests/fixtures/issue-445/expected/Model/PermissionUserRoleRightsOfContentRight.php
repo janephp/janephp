@@ -28,7 +28,7 @@ class PermissionUserRoleRightsOfContentRight
     * List of rights: they can be content, metadata or permission set rights, depending on the type defined on the class
     (ContentRight, MetadataRight, PermissionSetRight).
     *
-    * @var string[]|null
+    * @var list<string>|null
     */
     protected $rights;
     /**
@@ -79,7 +79,7 @@ class PermissionUserRoleRightsOfContentRight
     * List of rights: they can be content, metadata or permission set rights, depending on the type defined on the class
     (ContentRight, MetadataRight, PermissionSetRight).
     *
-    * @return string[]|null
+    * @return list<string>|null
     */
     public function getRights() : ?array
     {
@@ -89,7 +89,7 @@ class PermissionUserRoleRightsOfContentRight
     * List of rights: they can be content, metadata or permission set rights, depending on the type defined on the class
     (ContentRight, MetadataRight, PermissionSetRight).
     *
-    * @param string[]|null $rights
+    * @param list<string>|null $rights
     *
     * @return self
     */

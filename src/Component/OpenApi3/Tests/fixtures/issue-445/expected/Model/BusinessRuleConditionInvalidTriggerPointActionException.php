@@ -69,7 +69,7 @@ class BusinessRuleConditionInvalidTriggerPointActionException extends \ArrayObje
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $allowedActions;
     /**
@@ -273,7 +273,7 @@ class BusinessRuleConditionInvalidTriggerPointActionException extends \ArrayObje
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getAllowedActions() : ?array
     {
@@ -282,7 +282,7 @@ class BusinessRuleConditionInvalidTriggerPointActionException extends \ArrayObje
     /**
      * 
      *
-     * @param string[]|null $allowedActions
+     * @param list<string>|null $allowedActions
      *
      * @return self
      */

@@ -36,7 +36,7 @@ class RegistryServiceConfig
     > nondistributable artifacts.
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $allowNondistributableArtifactsCIDRs;
     /**
@@ -62,7 +62,7 @@ class RegistryServiceConfig
     > nondistributable artifacts.
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $allowNondistributableArtifactsHostnames;
     /**
@@ -91,7 +91,7 @@ class RegistryServiceConfig
     > CAs instead of enabling this option.
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $insecureRegistryCIDRs;
     /**
@@ -105,7 +105,7 @@ class RegistryServiceConfig
     (`docker.io`) registry.
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $mirrors;
     /**
@@ -132,7 +132,7 @@ class RegistryServiceConfig
     > nondistributable artifacts.
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getAllowNondistributableArtifactsCIDRs() : array
     {
@@ -162,7 +162,7 @@ class RegistryServiceConfig
     > nondistributable artifacts.
     
     *
-    * @param string[] $allowNondistributableArtifactsCIDRs
+    * @param list<string> $allowNondistributableArtifactsCIDRs
     *
     * @return self
     */
@@ -195,7 +195,7 @@ class RegistryServiceConfig
     > nondistributable artifacts.
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getAllowNondistributableArtifactsHostnames() : array
     {
@@ -224,7 +224,7 @@ class RegistryServiceConfig
     > nondistributable artifacts.
     
     *
-    * @param string[] $allowNondistributableArtifactsHostnames
+    * @param list<string> $allowNondistributableArtifactsHostnames
     *
     * @return self
     */
@@ -260,7 +260,7 @@ class RegistryServiceConfig
     > CAs instead of enabling this option.
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getInsecureRegistryCIDRs() : array
     {
@@ -292,7 +292,7 @@ class RegistryServiceConfig
     > CAs instead of enabling this option.
     
     *
-    * @param string[] $insecureRegistryCIDRs
+    * @param list<string> $insecureRegistryCIDRs
     *
     * @return self
     */
@@ -329,7 +329,7 @@ class RegistryServiceConfig
     (`docker.io`) registry.
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getMirrors() : array
     {
@@ -340,7 +340,7 @@ class RegistryServiceConfig
     (`docker.io`) registry.
     
     *
-    * @param string[] $mirrors
+    * @param list<string> $mirrors
     *
     * @return self
     */

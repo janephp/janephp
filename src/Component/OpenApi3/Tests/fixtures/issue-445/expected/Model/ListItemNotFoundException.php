@@ -75,7 +75,7 @@ class ListItemNotFoundException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $listItemIds;
     /**
@@ -301,7 +301,7 @@ class ListItemNotFoundException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getListItemIds() : ?array
     {
@@ -310,7 +310,7 @@ class ListItemNotFoundException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $listItemIds
+     * @param list<string>|null $listItemIds
      *
      * @return self
      */

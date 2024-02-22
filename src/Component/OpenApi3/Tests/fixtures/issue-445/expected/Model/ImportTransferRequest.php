@@ -15,7 +15,7 @@ class ImportTransferRequest
     /**
      * An optional id list of schemas with type layer.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $layerSchemaIds;
     /**
@@ -28,13 +28,13 @@ class ImportTransferRequest
     /**
      * An optional id list of content permission sets. Controls content accessibility outside of content ownership.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $contentPermissionSetIds;
     /**
      * An optional id list of schemas with type layer.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getLayerSchemaIds() : ?array
     {
@@ -43,7 +43,7 @@ class ImportTransferRequest
     /**
      * An optional id list of schemas with type layer.
      *
-     * @param string[]|null $layerSchemaIds
+     * @param list<string>|null $layerSchemaIds
      *
      * @return self
      */
@@ -80,7 +80,7 @@ class ImportTransferRequest
     /**
      * An optional id list of content permission sets. Controls content accessibility outside of content ownership.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getContentPermissionSetIds() : ?array
     {
@@ -89,7 +89,7 @@ class ImportTransferRequest
     /**
      * An optional id list of content permission sets. Controls content accessibility outside of content ownership.
      *
-     * @param string[]|null $contentPermissionSetIds
+     * @param list<string>|null $contentPermissionSetIds
      *
      * @return self
      */

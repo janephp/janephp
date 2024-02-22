@@ -69,7 +69,7 @@ class BusinessRuleConfigurationValidationException extends \ArrayObject
     /**
      * 
      *
-     * @var PictureparkValidationException[]|null
+     * @var list<PictureparkValidationException>|null
      */
     protected $innerExceptions;
     /**
@@ -273,7 +273,7 @@ class BusinessRuleConfigurationValidationException extends \ArrayObject
     /**
      * 
      *
-     * @return PictureparkValidationException[]|null
+     * @return list<PictureparkValidationException>|null
      */
     public function getInnerExceptions() : ?array
     {
@@ -282,7 +282,7 @@ class BusinessRuleConfigurationValidationException extends \ArrayObject
     /**
      * 
      *
-     * @param PictureparkValidationException[]|null $innerExceptions
+     * @param list<PictureparkValidationException>|null $innerExceptions
      *
      * @return self
      */

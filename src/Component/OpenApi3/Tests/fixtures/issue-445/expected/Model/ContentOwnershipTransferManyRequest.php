@@ -15,13 +15,13 @@ class ContentOwnershipTransferManyRequest
     /**
      * List of Content Permissions ownership transfer items.
      *
-     * @var ContentOwnershipTransferItem[]
+     * @var list<ContentOwnershipTransferItem>
      */
     protected $items;
     /**
      * List of Content Permissions ownership transfer items.
      *
-     * @return ContentOwnershipTransferItem[]
+     * @return list<ContentOwnershipTransferItem>
      */
     public function getItems() : array
     {
@@ -30,7 +30,7 @@ class ContentOwnershipTransferManyRequest
     /**
      * List of Content Permissions ownership transfer items.
      *
-     * @param ContentOwnershipTransferItem[] $items
+     * @param list<ContentOwnershipTransferItem> $items
      *
      * @return self
      */

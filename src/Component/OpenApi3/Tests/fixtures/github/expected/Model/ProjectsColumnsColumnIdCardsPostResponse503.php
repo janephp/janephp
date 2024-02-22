@@ -33,7 +33,7 @@ class ProjectsColumnsColumnIdCardsPostResponse503 extends \ArrayObject
     /**
      * 
      *
-     * @var ProjectsColumnsColumnIdCardsPostResponse503ErrorsItem[]
+     * @var list<ProjectsColumnsColumnIdCardsPostResponse503ErrorsItem>
      */
     protected $errors;
     /**
@@ -105,7 +105,7 @@ class ProjectsColumnsColumnIdCardsPostResponse503 extends \ArrayObject
     /**
      * 
      *
-     * @return ProjectsColumnsColumnIdCardsPostResponse503ErrorsItem[]
+     * @return list<ProjectsColumnsColumnIdCardsPostResponse503ErrorsItem>
      */
     public function getErrors() : array
     {
@@ -114,7 +114,7 @@ class ProjectsColumnsColumnIdCardsPostResponse503 extends \ArrayObject
     /**
      * 
      *
-     * @param ProjectsColumnsColumnIdCardsPostResponse503ErrorsItem[] $errors
+     * @param list<ProjectsColumnsColumnIdCardsPostResponse503ErrorsItem> $errors
      *
      * @return self
      */

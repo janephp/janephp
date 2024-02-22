@@ -15,13 +15,13 @@ class AddRulesRequest extends \ArrayObject
     /**
      * 
      *
-     * @var RuleNoId[]
+     * @var list<RuleNoId>
      */
     protected $add;
     /**
      * 
      *
-     * @return RuleNoId[]
+     * @return list<RuleNoId>
      */
     public function getAdd() : array
     {
@@ -30,7 +30,7 @@ class AddRulesRequest extends \ArrayObject
     /**
      * 
      *
-     * @param RuleNoId[] $add
+     * @param list<RuleNoId> $add
      *
      * @return self
      */

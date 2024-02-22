@@ -21,25 +21,25 @@ class SystemDfGetResponse200
     /**
      * 
      *
-     * @var ImageSummary[]
+     * @var list<ImageSummary>
      */
     protected $images;
     /**
      * 
      *
-     * @var ContainerSummary[]
+     * @var list<ContainerSummary>
      */
     protected $containers;
     /**
      * 
      *
-     * @var Volume[]
+     * @var list<Volume>
      */
     protected $volumes;
     /**
      * 
      *
-     * @var BuildCache[]
+     * @var list<BuildCache>
      */
     protected $buildCache;
     /**
@@ -67,7 +67,7 @@ class SystemDfGetResponse200
     /**
      * 
      *
-     * @return ImageSummary[]
+     * @return list<ImageSummary>
      */
     public function getImages() : array
     {
@@ -76,7 +76,7 @@ class SystemDfGetResponse200
     /**
      * 
      *
-     * @param ImageSummary[] $images
+     * @param list<ImageSummary> $images
      *
      * @return self
      */
@@ -89,7 +89,7 @@ class SystemDfGetResponse200
     /**
      * 
      *
-     * @return ContainerSummary[]
+     * @return list<ContainerSummary>
      */
     public function getContainers() : array
     {
@@ -98,7 +98,7 @@ class SystemDfGetResponse200
     /**
      * 
      *
-     * @param ContainerSummary[] $containers
+     * @param list<ContainerSummary> $containers
      *
      * @return self
      */
@@ -111,7 +111,7 @@ class SystemDfGetResponse200
     /**
      * 
      *
-     * @return Volume[]
+     * @return list<Volume>
      */
     public function getVolumes() : array
     {
@@ -120,7 +120,7 @@ class SystemDfGetResponse200
     /**
      * 
      *
-     * @param Volume[] $volumes
+     * @param list<Volume> $volumes
      *
      * @return self
      */
@@ -133,7 +133,7 @@ class SystemDfGetResponse200
     /**
      * 
      *
-     * @return BuildCache[]
+     * @return list<BuildCache>
      */
     public function getBuildCache() : array
     {
@@ -142,7 +142,7 @@ class SystemDfGetResponse200
     /**
      * 
      *
-     * @param BuildCache[] $buildCache
+     * @param list<BuildCache> $buildCache
      *
      * @return self
      */

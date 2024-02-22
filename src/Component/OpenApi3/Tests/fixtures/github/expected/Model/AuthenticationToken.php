@@ -33,7 +33,7 @@ class AuthenticationToken extends \ArrayObject
     /**
      * The repositories this token has access to
      *
-     * @var Repository[]
+     * @var list<Repository>
      */
     protected $repositories;
     /**
@@ -117,7 +117,7 @@ class AuthenticationToken extends \ArrayObject
     /**
      * The repositories this token has access to
      *
-     * @return Repository[]
+     * @return list<Repository>
      */
     public function getRepositories() : array
     {
@@ -126,7 +126,7 @@ class AuthenticationToken extends \ArrayObject
     /**
      * The repositories this token has access to
      *
-     * @param Repository[] $repositories
+     * @param list<Repository> $repositories
      *
      * @return self
      */

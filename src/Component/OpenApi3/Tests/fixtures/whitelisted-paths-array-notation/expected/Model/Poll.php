@@ -21,7 +21,7 @@ class Poll extends \ArrayObject
     /**
      * 
      *
-     * @var PollOption[]
+     * @var list<PollOption>
      */
     protected $options;
     /**
@@ -67,7 +67,7 @@ class Poll extends \ArrayObject
     /**
      * 
      *
-     * @return PollOption[]
+     * @return list<PollOption>
      */
     public function getOptions() : array
     {
@@ -76,7 +76,7 @@ class Poll extends \ArrayObject
     /**
      * 
      *
-     * @param PollOption[] $options
+     * @param list<PollOption> $options
      *
      * @return self
      */

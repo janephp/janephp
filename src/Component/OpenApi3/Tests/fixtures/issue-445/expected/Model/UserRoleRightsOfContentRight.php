@@ -21,7 +21,7 @@ class UserRoleRightsOfContentRight
     /**
      * A permission container which can hold content, metadata or permission set rights.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $rights;
     /**
@@ -49,7 +49,7 @@ class UserRoleRightsOfContentRight
     /**
      * A permission container which can hold content, metadata or permission set rights.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getRights() : ?array
     {
@@ -58,7 +58,7 @@ class UserRoleRightsOfContentRight
     /**
      * A permission container which can hold content, metadata or permission set rights.
      *
-     * @param string[]|null $rights
+     * @param list<string>|null $rights
      *
      * @return self
      */

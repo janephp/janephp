@@ -69,7 +69,7 @@ class ContentTree extends \ArrayObject
     /**
      * 
      *
-     * @var ContentTreeEntriesItem[]
+     * @var list<ContentTreeEntriesItem>
      */
     protected $entries;
     /**
@@ -279,7 +279,7 @@ class ContentTree extends \ArrayObject
     /**
      * 
      *
-     * @return ContentTreeEntriesItem[]
+     * @return list<ContentTreeEntriesItem>
      */
     public function getEntries() : array
     {
@@ -288,7 +288,7 @@ class ContentTree extends \ArrayObject
     /**
      * 
      *
-     * @param ContentTreeEntriesItem[] $entries
+     * @param list<ContentTreeEntriesItem> $entries
      *
      * @return self
      */

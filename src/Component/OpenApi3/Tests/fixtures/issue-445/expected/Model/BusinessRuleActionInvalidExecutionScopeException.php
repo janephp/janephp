@@ -69,7 +69,7 @@ class BusinessRuleActionInvalidExecutionScopeException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $allowedScopes;
     /**
@@ -273,7 +273,7 @@ class BusinessRuleActionInvalidExecutionScopeException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getAllowedScopes() : ?array
     {
@@ -282,7 +282,7 @@ class BusinessRuleActionInvalidExecutionScopeException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $allowedScopes
+     * @param list<string>|null $allowedScopes
      *
      * @return self
      */

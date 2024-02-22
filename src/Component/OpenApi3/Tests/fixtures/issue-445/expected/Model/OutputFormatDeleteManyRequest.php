@@ -15,13 +15,13 @@ class OutputFormatDeleteManyRequest
     /**
      * List of IDs of output formats to remove.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $ids;
     /**
      * List of IDs of output formats to remove.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getIds() : ?array
     {
@@ -30,7 +30,7 @@ class OutputFormatDeleteManyRequest
     /**
      * List of IDs of output formats to remove.
      *
-     * @param string[]|null $ids
+     * @param list<string>|null $ids
      *
      * @return self
      */

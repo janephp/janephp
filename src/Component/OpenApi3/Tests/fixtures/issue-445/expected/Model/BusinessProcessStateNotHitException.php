@@ -75,7 +75,7 @@ class BusinessProcessStateNotHitException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $expected;
     /**
@@ -307,7 +307,7 @@ class BusinessProcessStateNotHitException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getExpected() : ?array
     {
@@ -316,7 +316,7 @@ class BusinessProcessStateNotHitException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $expected
+     * @param list<string>|null $expected
      *
      * @return self
      */

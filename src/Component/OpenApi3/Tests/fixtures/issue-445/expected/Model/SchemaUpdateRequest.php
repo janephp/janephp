@@ -27,34 +27,34 @@ class SchemaUpdateRequest
     /**
      * Language specific DotLiquid templates. These templates will be resolved into display values in content documents and/or list items.
      *
-     * @var DisplayPattern[]|null
+     * @var list<DisplayPattern>|null
      */
     protected $displayPatterns;
     /**
      * The schema fields.
      *
-     * @var FieldBase[]|null
+     * @var list<FieldBase>|null
      */
     protected $fields;
     /**
     * A list of schema fields overwrite information. It is used to overwrite the field configuration coming from the parent schema.
     Only a subset of properties of a FieldSingleTagbox and FieldMultiTagbox can be be overwritten. All other properties and fields cannot.
     *
-    * @var FieldOverwriteBase[]|null
+    * @var list<FieldOverwriteBase>|null
     */
     protected $fieldsOverwrite;
     /**
     * An optional list of aggregations to show grouped list item documents. When aggregations are defined for a List,
     the UI uses such information to show the available filters and grouped results.
     *
-    * @var AggregatorBase[]|null
+    * @var list<AggregatorBase>|null
     */
     protected $aggregations;
     /**
     * Sorts content documents and/or list items. In order for the sorting to work properly, the Sortable property of the related field
     must be set to true. Multiple sorting is supported: they are applied in the specified order.
     *
-    * @var SortInfo[]|null
+    * @var list<SortInfo>|null
     */
     protected $sort;
     /**
@@ -66,20 +66,20 @@ class SchemaUpdateRequest
     /**
      * An optional list of schema permission set IDs which control schema permissions.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $schemaPermissionSetIds;
     /**
      * An optional list of schemas' IDs with type layer. For a Content schema it stores the layers that can be assigned to a content.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $layerSchemaIds;
     /**
     * If the schema if of type Layer, the list contains the schemas with type Content
     that reference the layer.
     *
-    * @var string[]|null
+    * @var list<string>|null
     */
     protected $referencedInContentSchemaIds;
     /**
@@ -129,7 +129,7 @@ class SchemaUpdateRequest
     /**
      * Language specific DotLiquid templates. These templates will be resolved into display values in content documents and/or list items.
      *
-     * @return DisplayPattern[]|null
+     * @return list<DisplayPattern>|null
      */
     public function getDisplayPatterns() : ?array
     {
@@ -138,7 +138,7 @@ class SchemaUpdateRequest
     /**
      * Language specific DotLiquid templates. These templates will be resolved into display values in content documents and/or list items.
      *
-     * @param DisplayPattern[]|null $displayPatterns
+     * @param list<DisplayPattern>|null $displayPatterns
      *
      * @return self
      */
@@ -151,7 +151,7 @@ class SchemaUpdateRequest
     /**
      * The schema fields.
      *
-     * @return FieldBase[]|null
+     * @return list<FieldBase>|null
      */
     public function getFields() : ?array
     {
@@ -160,7 +160,7 @@ class SchemaUpdateRequest
     /**
      * The schema fields.
      *
-     * @param FieldBase[]|null $fields
+     * @param list<FieldBase>|null $fields
      *
      * @return self
      */
@@ -174,7 +174,7 @@ class SchemaUpdateRequest
     * A list of schema fields overwrite information. It is used to overwrite the field configuration coming from the parent schema.
     Only a subset of properties of a FieldSingleTagbox and FieldMultiTagbox can be be overwritten. All other properties and fields cannot.
     *
-    * @return FieldOverwriteBase[]|null
+    * @return list<FieldOverwriteBase>|null
     */
     public function getFieldsOverwrite() : ?array
     {
@@ -184,7 +184,7 @@ class SchemaUpdateRequest
     * A list of schema fields overwrite information. It is used to overwrite the field configuration coming from the parent schema.
     Only a subset of properties of a FieldSingleTagbox and FieldMultiTagbox can be be overwritten. All other properties and fields cannot.
     *
-    * @param FieldOverwriteBase[]|null $fieldsOverwrite
+    * @param list<FieldOverwriteBase>|null $fieldsOverwrite
     *
     * @return self
     */
@@ -198,7 +198,7 @@ class SchemaUpdateRequest
     * An optional list of aggregations to show grouped list item documents. When aggregations are defined for a List,
     the UI uses such information to show the available filters and grouped results.
     *
-    * @return AggregatorBase[]|null
+    * @return list<AggregatorBase>|null
     */
     public function getAggregations() : ?array
     {
@@ -208,7 +208,7 @@ class SchemaUpdateRequest
     * An optional list of aggregations to show grouped list item documents. When aggregations are defined for a List,
     the UI uses such information to show the available filters and grouped results.
     *
-    * @param AggregatorBase[]|null $aggregations
+    * @param list<AggregatorBase>|null $aggregations
     *
     * @return self
     */
@@ -222,7 +222,7 @@ class SchemaUpdateRequest
     * Sorts content documents and/or list items. In order for the sorting to work properly, the Sortable property of the related field
     must be set to true. Multiple sorting is supported: they are applied in the specified order.
     *
-    * @return SortInfo[]|null
+    * @return list<SortInfo>|null
     */
     public function getSort() : ?array
     {
@@ -232,7 +232,7 @@ class SchemaUpdateRequest
     * Sorts content documents and/or list items. In order for the sorting to work properly, the Sortable property of the related field
     must be set to true. Multiple sorting is supported: they are applied in the specified order.
     *
-    * @param SortInfo[]|null $sort
+    * @param list<SortInfo>|null $sort
     *
     * @return self
     */
@@ -267,7 +267,7 @@ class SchemaUpdateRequest
     /**
      * An optional list of schema permission set IDs which control schema permissions.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSchemaPermissionSetIds() : ?array
     {
@@ -276,7 +276,7 @@ class SchemaUpdateRequest
     /**
      * An optional list of schema permission set IDs which control schema permissions.
      *
-     * @param string[]|null $schemaPermissionSetIds
+     * @param list<string>|null $schemaPermissionSetIds
      *
      * @return self
      */
@@ -289,7 +289,7 @@ class SchemaUpdateRequest
     /**
      * An optional list of schemas' IDs with type layer. For a Content schema it stores the layers that can be assigned to a content.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getLayerSchemaIds() : ?array
     {
@@ -298,7 +298,7 @@ class SchemaUpdateRequest
     /**
      * An optional list of schemas' IDs with type layer. For a Content schema it stores the layers that can be assigned to a content.
      *
-     * @param string[]|null $layerSchemaIds
+     * @param list<string>|null $layerSchemaIds
      *
      * @return self
      */
@@ -312,7 +312,7 @@ class SchemaUpdateRequest
     * If the schema if of type Layer, the list contains the schemas with type Content
     that reference the layer.
     *
-    * @return string[]|null
+    * @return list<string>|null
     */
     public function getReferencedInContentSchemaIds() : ?array
     {
@@ -322,7 +322,7 @@ class SchemaUpdateRequest
     * If the schema if of type Layer, the list contains the schemas with type Content
     that reference the layer.
     *
-    * @param string[]|null $referencedInContentSchemaIds
+    * @param list<string>|null $referencedInContentSchemaIds
     *
     * @return self
     */

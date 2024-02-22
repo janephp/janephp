@@ -15,7 +15,7 @@ class ShareBasicCreateRequest extends ShareBaseCreateRequest
     /**
      * List of external mail recipients which are no Picturepark users.
      *
-     * @var UserEmail[]|null
+     * @var list<UserEmail>|null
      */
     protected $recipientEmails;
     /**
@@ -33,7 +33,7 @@ class ShareBasicCreateRequest extends ShareBaseCreateRequest
     /**
      * List of external mail recipients which are no Picturepark users.
      *
-     * @return UserEmail[]|null
+     * @return list<UserEmail>|null
      */
     public function getRecipientEmails() : ?array
     {
@@ -42,7 +42,7 @@ class ShareBasicCreateRequest extends ShareBaseCreateRequest
     /**
      * List of external mail recipients which are no Picturepark users.
      *
-     * @param UserEmail[]|null $recipientEmails
+     * @param list<UserEmail>|null $recipientEmails
      *
      * @return self
      */

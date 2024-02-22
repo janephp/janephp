@@ -28,7 +28,7 @@ class AggregationResult
     * Items returned for the aggregation. Each item consists of a bucket with the matched value and the number of matches.
     Optionally inner aggregations for further drill down can be available.
     *
-    * @var AggregationResultItem[]|null
+    * @var list<AggregationResultItem>|null
     */
     protected $aggregationResultItems;
     /**
@@ -79,7 +79,7 @@ class AggregationResult
     * Items returned for the aggregation. Each item consists of a bucket with the matched value and the number of matches.
     Optionally inner aggregations for further drill down can be available.
     *
-    * @return AggregationResultItem[]|null
+    * @return list<AggregationResultItem>|null
     */
     public function getAggregationResultItems() : ?array
     {
@@ -89,7 +89,7 @@ class AggregationResult
     * Items returned for the aggregation. Each item consists of a bucket with the matched value and the number of matches.
     Optionally inner aggregations for further drill down can be available.
     *
-    * @param AggregationResultItem[]|null $aggregationResultItems
+    * @param list<AggregationResultItem>|null $aggregationResultItems
     *
     * @return self
     */

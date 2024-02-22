@@ -21,7 +21,7 @@ class BaseResultOfXmpMappingEntry
     /**
      * The matched documents.
      *
-     * @var XmpMappingEntry[]
+     * @var list<XmpMappingEntry>
      */
     protected $results;
     /**
@@ -61,7 +61,7 @@ class BaseResultOfXmpMappingEntry
     /**
      * The matched documents.
      *
-     * @return XmpMappingEntry[]
+     * @return list<XmpMappingEntry>
      */
     public function getResults() : array
     {
@@ -70,7 +70,7 @@ class BaseResultOfXmpMappingEntry
     /**
      * The matched documents.
      *
-     * @param XmpMappingEntry[] $results
+     * @param list<XmpMappingEntry> $results
      *
      * @return self
      */

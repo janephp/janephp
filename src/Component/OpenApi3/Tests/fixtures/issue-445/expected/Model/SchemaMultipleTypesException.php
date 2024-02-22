@@ -75,7 +75,7 @@ class SchemaMultipleTypesException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $schemaTypes;
     /**
@@ -301,7 +301,7 @@ class SchemaMultipleTypesException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSchemaTypes() : ?array
     {
@@ -310,7 +310,7 @@ class SchemaMultipleTypesException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $schemaTypes
+     * @param list<string>|null $schemaTypes
      *
      * @return self
      */

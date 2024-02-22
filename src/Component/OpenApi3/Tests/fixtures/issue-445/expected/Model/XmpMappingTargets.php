@@ -15,19 +15,19 @@ class XmpMappingTargets
     /**
      * Fields in XMP/Exif.
      *
-     * @var XmpField[]
+     * @var list<XmpField>
      */
     protected $xmpFields;
     /**
      * Fields in metadata.
      *
-     * @var MetadataField[]
+     * @var list<MetadataField>
      */
     protected $metadataFields;
     /**
      * Fields in XMP/Exif.
      *
-     * @return XmpField[]
+     * @return list<XmpField>
      */
     public function getXmpFields() : array
     {
@@ -36,7 +36,7 @@ class XmpMappingTargets
     /**
      * Fields in XMP/Exif.
      *
-     * @param XmpField[] $xmpFields
+     * @param list<XmpField> $xmpFields
      *
      * @return self
      */
@@ -49,7 +49,7 @@ class XmpMappingTargets
     /**
      * Fields in metadata.
      *
-     * @return MetadataField[]
+     * @return list<MetadataField>
      */
     public function getMetadataFields() : array
     {
@@ -58,7 +58,7 @@ class XmpMappingTargets
     /**
      * Fields in metadata.
      *
-     * @param MetadataField[] $metadataFields
+     * @param list<MetadataField> $metadataFields
      *
      * @return self
      */

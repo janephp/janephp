@@ -93,7 +93,7 @@ class IssueSimple extends \ArrayObject
     /**
      * 
      *
-     * @var IssueSimpleLabelsItem[]
+     * @var list<IssueSimpleLabelsItem>
      */
     protected $labels;
     /**
@@ -105,7 +105,7 @@ class IssueSimple extends \ArrayObject
     /**
      * 
      *
-     * @var SimpleUser[]|null
+     * @var list<SimpleUser>|null
      */
     protected $assignees;
     /**
@@ -481,7 +481,7 @@ class IssueSimple extends \ArrayObject
     /**
      * 
      *
-     * @return IssueSimpleLabelsItem[]
+     * @return list<IssueSimpleLabelsItem>
      */
     public function getLabels() : array
     {
@@ -490,7 +490,7 @@ class IssueSimple extends \ArrayObject
     /**
      * 
      *
-     * @param IssueSimpleLabelsItem[] $labels
+     * @param list<IssueSimpleLabelsItem> $labels
      *
      * @return self
      */
@@ -525,7 +525,7 @@ class IssueSimple extends \ArrayObject
     /**
      * 
      *
-     * @return SimpleUser[]|null
+     * @return list<SimpleUser>|null
      */
     public function getAssignees() : ?array
     {
@@ -534,7 +534,7 @@ class IssueSimple extends \ArrayObject
     /**
      * 
      *
-     * @param SimpleUser[]|null $assignees
+     * @param list<SimpleUser>|null $assignees
      *
      * @return self
      */

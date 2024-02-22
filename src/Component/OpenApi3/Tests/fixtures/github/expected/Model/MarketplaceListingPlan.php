@@ -87,7 +87,7 @@ class MarketplaceListingPlan extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $bullets;
     /**
@@ -357,7 +357,7 @@ class MarketplaceListingPlan extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getBullets() : array
     {
@@ -366,7 +366,7 @@ class MarketplaceListingPlan extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $bullets
+     * @param list<string> $bullets
      *
      * @return self
      */

@@ -15,13 +15,13 @@ class BatchResponse
     /**
      * Rows in the response.
      *
-     * @var BatchResponseRow[]
+     * @var list<BatchResponseRow>
      */
     protected $rows;
     /**
      * Rows in the response.
      *
-     * @return BatchResponseRow[]
+     * @return list<BatchResponseRow>
      */
     public function getRows() : array
     {
@@ -30,7 +30,7 @@ class BatchResponse
     /**
      * Rows in the response.
      *
-     * @param BatchResponseRow[] $rows
+     * @param list<BatchResponseRow> $rows
      *
      * @return self
      */

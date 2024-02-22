@@ -15,7 +15,7 @@ class ChannelUpdateRequest
     /**
      * Default sort order specified for the channel to sort the results of a content search.
      *
-     * @var SortInfo[]|null
+     * @var list<SortInfo>|null
      */
     protected $sort;
     /**
@@ -27,7 +27,7 @@ class ChannelUpdateRequest
     /**
      * Fields to be used for sorting in content browser when displaying the channel. The information is only set and consumed by the client, not by the server.
      *
-     * @var SortField[]
+     * @var list<SortField>
      */
     protected $sortFields;
     /**
@@ -45,13 +45,13 @@ class ChannelUpdateRequest
     /**
      * User roles granted access to the channel.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $grantedUserRoleIds;
     /**
      * An optional list of aggregators. These aggregations are added by default on each aggregation requests.
      *
-     * @var AggregatorBase[]|null
+     * @var list<AggregatorBase>|null
      */
     protected $aggregations;
     /**
@@ -63,7 +63,7 @@ class ChannelUpdateRequest
     /**
      * An Optional list of fields. These fields extend the list of simple search fields outside the bounds of any schema field configuration.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $extendedSimpleSearchFields;
     /**
@@ -81,7 +81,7 @@ class ChannelUpdateRequest
     /**
      * Default sort order specified for the channel to sort the results of a content search.
      *
-     * @return SortInfo[]|null
+     * @return list<SortInfo>|null
      */
     public function getSort() : ?array
     {
@@ -90,7 +90,7 @@ class ChannelUpdateRequest
     /**
      * Default sort order specified for the channel to sort the results of a content search.
      *
-     * @param SortInfo[]|null $sort
+     * @param list<SortInfo>|null $sort
      *
      * @return self
      */
@@ -125,7 +125,7 @@ class ChannelUpdateRequest
     /**
      * Fields to be used for sorting in content browser when displaying the channel. The information is only set and consumed by the client, not by the server.
      *
-     * @return SortField[]
+     * @return list<SortField>
      */
     public function getSortFields() : array
     {
@@ -134,7 +134,7 @@ class ChannelUpdateRequest
     /**
      * Fields to be used for sorting in content browser when displaying the channel. The information is only set and consumed by the client, not by the server.
      *
-     * @param SortField[] $sortFields
+     * @param list<SortField> $sortFields
      *
      * @return self
      */
@@ -191,7 +191,7 @@ class ChannelUpdateRequest
     /**
      * User roles granted access to the channel.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getGrantedUserRoleIds() : ?array
     {
@@ -200,7 +200,7 @@ class ChannelUpdateRequest
     /**
      * User roles granted access to the channel.
      *
-     * @param string[]|null $grantedUserRoleIds
+     * @param list<string>|null $grantedUserRoleIds
      *
      * @return self
      */
@@ -213,7 +213,7 @@ class ChannelUpdateRequest
     /**
      * An optional list of aggregators. These aggregations are added by default on each aggregation requests.
      *
-     * @return AggregatorBase[]|null
+     * @return list<AggregatorBase>|null
      */
     public function getAggregations() : ?array
     {
@@ -222,7 +222,7 @@ class ChannelUpdateRequest
     /**
      * An optional list of aggregators. These aggregations are added by default on each aggregation requests.
      *
-     * @param AggregatorBase[]|null $aggregations
+     * @param list<AggregatorBase>|null $aggregations
      *
      * @return self
      */
@@ -257,7 +257,7 @@ class ChannelUpdateRequest
     /**
      * An Optional list of fields. These fields extend the list of simple search fields outside the bounds of any schema field configuration.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getExtendedSimpleSearchFields() : ?array
     {
@@ -266,7 +266,7 @@ class ChannelUpdateRequest
     /**
      * An Optional list of fields. These fields extend the list of simple search fields outside the bounds of any schema field configuration.
      *
-     * @param string[]|null $extendedSimpleSearchFields
+     * @param list<string>|null $extendedSimpleSearchFields
      *
      * @return self
      */

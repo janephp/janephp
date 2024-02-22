@@ -75,7 +75,7 @@ class ContentLayerSameRootException extends \ArrayObject
     /**
      * 
      *
-     * @var LayerIdsByRootSchema[]|null
+     * @var list<LayerIdsByRootSchema>|null
      */
     protected $layerIdsByRootSchema;
     /**
@@ -301,7 +301,7 @@ class ContentLayerSameRootException extends \ArrayObject
     /**
      * 
      *
-     * @return LayerIdsByRootSchema[]|null
+     * @return list<LayerIdsByRootSchema>|null
      */
     public function getLayerIdsByRootSchema() : ?array
     {
@@ -310,7 +310,7 @@ class ContentLayerSameRootException extends \ArrayObject
     /**
      * 
      *
-     * @param LayerIdsByRootSchema[]|null $layerIdsByRootSchema
+     * @param list<LayerIdsByRootSchema>|null $layerIdsByRootSchema
      *
      * @return self
      */

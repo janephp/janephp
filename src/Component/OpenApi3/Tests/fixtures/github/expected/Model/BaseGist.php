@@ -123,13 +123,13 @@ class BaseGist extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $forks;
     /**
      * 
      *
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $history;
     /**
@@ -531,7 +531,7 @@ class BaseGist extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getForks() : array
     {
@@ -540,7 +540,7 @@ class BaseGist extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $forks
+     * @param list<mixed> $forks
      *
      * @return self
      */
@@ -553,7 +553,7 @@ class BaseGist extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getHistory() : array
     {
@@ -562,7 +562,7 @@ class BaseGist extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $history
+     * @param list<mixed> $history
      *
      * @return self
      */

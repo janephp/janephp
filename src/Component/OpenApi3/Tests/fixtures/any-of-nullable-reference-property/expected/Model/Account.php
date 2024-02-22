@@ -45,7 +45,7 @@ class Account extends \ArrayObject
     /**
      * 
      *
-     * @var Country|Country[]|null
+     * @var Country|list<Country>|null
      */
     protected $nationality;
     /**
@@ -161,7 +161,7 @@ class Account extends \ArrayObject
     /**
      * 
      *
-     * @return Country|Country[]|null
+     * @return Country|list<Country>|null
      */
     public function getNationality()
     {
@@ -170,7 +170,7 @@ class Account extends \ArrayObject
     /**
      * 
      *
-     * @param Country|Country[]|null $nationality
+     * @param Country|list<Country>|null $nationality
      *
      * @return self
      */

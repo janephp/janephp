@@ -27,7 +27,7 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
     /**
      * A list of scopes that this authorization is in.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $scopes;
     /**
@@ -143,7 +143,7 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
     /**
      * A list of scopes that this authorization is in.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getScopes() : ?array
     {
@@ -152,7 +152,7 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
     /**
      * A list of scopes that this authorization is in.
      *
-     * @param string[]|null $scopes
+     * @param list<string>|null $scopes
      *
      * @return self
      */

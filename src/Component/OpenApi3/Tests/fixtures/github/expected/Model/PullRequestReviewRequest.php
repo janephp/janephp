@@ -15,19 +15,19 @@ class PullRequestReviewRequest extends \ArrayObject
     /**
      * 
      *
-     * @var PullRequestReviewRequestUsersItem[]
+     * @var list<PullRequestReviewRequestUsersItem>
      */
     protected $users;
     /**
      * 
      *
-     * @var PullRequestReviewRequestTeamsItem[]
+     * @var list<PullRequestReviewRequestTeamsItem>
      */
     protected $teams;
     /**
      * 
      *
-     * @return PullRequestReviewRequestUsersItem[]
+     * @return list<PullRequestReviewRequestUsersItem>
      */
     public function getUsers() : array
     {
@@ -36,7 +36,7 @@ class PullRequestReviewRequest extends \ArrayObject
     /**
      * 
      *
-     * @param PullRequestReviewRequestUsersItem[] $users
+     * @param list<PullRequestReviewRequestUsersItem> $users
      *
      * @return self
      */
@@ -49,7 +49,7 @@ class PullRequestReviewRequest extends \ArrayObject
     /**
      * 
      *
-     * @return PullRequestReviewRequestTeamsItem[]
+     * @return list<PullRequestReviewRequestTeamsItem>
      */
     public function getTeams() : array
     {
@@ -58,7 +58,7 @@ class PullRequestReviewRequest extends \ArrayObject
     /**
      * 
      *
-     * @param PullRequestReviewRequestTeamsItem[] $teams
+     * @param list<PullRequestReviewRequestTeamsItem> $teams
      *
      * @return self
      */

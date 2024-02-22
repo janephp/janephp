@@ -21,7 +21,7 @@ class BaseResultOfDocumentHistory
     /**
      * The matched documents.
      *
-     * @var DocumentHistory[]
+     * @var list<DocumentHistory>
      */
     protected $results;
     /**
@@ -61,7 +61,7 @@ class BaseResultOfDocumentHistory
     /**
      * The matched documents.
      *
-     * @return DocumentHistory[]
+     * @return list<DocumentHistory>
      */
     public function getResults() : array
     {
@@ -70,7 +70,7 @@ class BaseResultOfDocumentHistory
     /**
      * The matched documents.
      *
-     * @param DocumentHistory[] $results
+     * @param list<DocumentHistory> $results
      *
      * @return self
      */

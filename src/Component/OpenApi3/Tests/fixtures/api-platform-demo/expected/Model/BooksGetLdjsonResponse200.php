@@ -15,7 +15,7 @@ class BooksGetLdjsonResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var BookJsonldBookRead[]
+     * @var list<BookJsonldBookRead>
      */
     protected $hydraMember;
     /**
@@ -39,7 +39,7 @@ class BooksGetLdjsonResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return BookJsonldBookRead[]
+     * @return list<BookJsonldBookRead>
      */
     public function getHydraMember() : array
     {
@@ -48,7 +48,7 @@ class BooksGetLdjsonResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param BookJsonldBookRead[] $hydraMember
+     * @param list<BookJsonldBookRead> $hydraMember
      *
      * @return self
      */

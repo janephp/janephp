@@ -15,7 +15,7 @@ class ContentDownloadLinkCreateRequest
     /**
      * List of content information to generate the download link
      *
-     * @var ContentDownloadRequestItem[]
+     * @var list<ContentDownloadRequestItem>
      */
     protected $contents;
     /**
@@ -27,7 +27,7 @@ class ContentDownloadLinkCreateRequest
     /**
      * List of content information to generate the download link
      *
-     * @return ContentDownloadRequestItem[]
+     * @return list<ContentDownloadRequestItem>
      */
     public function getContents() : array
     {
@@ -36,7 +36,7 @@ class ContentDownloadLinkCreateRequest
     /**
      * List of content information to generate the download link
      *
-     * @param ContentDownloadRequestItem[] $contents
+     * @param list<ContentDownloadRequestItem> $contents
      *
      * @return self
      */

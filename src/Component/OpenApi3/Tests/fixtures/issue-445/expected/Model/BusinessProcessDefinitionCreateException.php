@@ -69,7 +69,7 @@ class BusinessProcessDefinitionCreateException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $processDefinitionIds;
     /**
@@ -273,7 +273,7 @@ class BusinessProcessDefinitionCreateException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getProcessDefinitionIds() : ?array
     {
@@ -282,7 +282,7 @@ class BusinessProcessDefinitionCreateException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $processDefinitionIds
+     * @param list<string>|null $processDefinitionIds
      *
      * @return self
      */

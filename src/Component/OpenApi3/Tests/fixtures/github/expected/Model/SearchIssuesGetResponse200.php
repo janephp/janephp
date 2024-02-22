@@ -27,7 +27,7 @@ class SearchIssuesGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var IssueSearchResultItem[]
+     * @var list<IssueSearchResultItem>
      */
     protected $items;
     /**
@@ -77,7 +77,7 @@ class SearchIssuesGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return IssueSearchResultItem[]
+     * @return list<IssueSearchResultItem>
      */
     public function getItems() : array
     {
@@ -86,7 +86,7 @@ class SearchIssuesGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param IssueSearchResultItem[] $items
+     * @param list<IssueSearchResultItem> $items
      *
      * @return self
      */

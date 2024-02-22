@@ -27,37 +27,37 @@ class ApiOverview extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $hooks;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $web;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $api;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $git;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $pages;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $importer;
     /**
@@ -119,7 +119,7 @@ class ApiOverview extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getHooks() : array
     {
@@ -128,7 +128,7 @@ class ApiOverview extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $hooks
+     * @param list<string> $hooks
      *
      * @return self
      */
@@ -141,7 +141,7 @@ class ApiOverview extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getWeb() : array
     {
@@ -150,7 +150,7 @@ class ApiOverview extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $web
+     * @param list<string> $web
      *
      * @return self
      */
@@ -163,7 +163,7 @@ class ApiOverview extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getApi() : array
     {
@@ -172,7 +172,7 @@ class ApiOverview extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $api
+     * @param list<string> $api
      *
      * @return self
      */
@@ -185,7 +185,7 @@ class ApiOverview extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getGit() : array
     {
@@ -194,7 +194,7 @@ class ApiOverview extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $git
+     * @param list<string> $git
      *
      * @return self
      */
@@ -207,7 +207,7 @@ class ApiOverview extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getPages() : array
     {
@@ -216,7 +216,7 @@ class ApiOverview extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $pages
+     * @param list<string> $pages
      *
      * @return self
      */
@@ -229,7 +229,7 @@ class ApiOverview extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getImporter() : array
     {
@@ -238,7 +238,7 @@ class ApiOverview extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $importer
+     * @param list<string> $importer
      *
      * @return self
      */

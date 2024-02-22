@@ -21,7 +21,7 @@ class BusinessProcessDetailsDataCdnPurge extends BusinessProcessDetailsDataBase
     /**
      * Jobs that were processed in the operation.
      *
-     * @var CdnPurgeJobBase[]
+     * @var list<CdnPurgeJobBase>
      */
     protected $jobs;
     /**
@@ -49,7 +49,7 @@ class BusinessProcessDetailsDataCdnPurge extends BusinessProcessDetailsDataBase
     /**
      * Jobs that were processed in the operation.
      *
-     * @return CdnPurgeJobBase[]
+     * @return list<CdnPurgeJobBase>
      */
     public function getJobs() : array
     {
@@ -58,7 +58,7 @@ class BusinessProcessDetailsDataCdnPurge extends BusinessProcessDetailsDataBase
     /**
      * Jobs that were processed in the operation.
      *
-     * @param CdnPurgeJobBase[] $jobs
+     * @param list<CdnPurgeJobBase> $jobs
      *
      * @return self
      */

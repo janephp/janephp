@@ -21,7 +21,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecks extends 
     /**
      * The list of status checks to require in order to merge into this branch
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $contexts;
     /**
@@ -49,7 +49,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecks extends 
     /**
      * The list of status checks to require in order to merge into this branch
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getContexts() : array
     {
@@ -58,7 +58,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecks extends 
     /**
      * The list of status checks to require in order to merge into this branch
      *
-     * @param string[] $contexts
+     * @param list<string> $contexts
      *
      * @return self
      */

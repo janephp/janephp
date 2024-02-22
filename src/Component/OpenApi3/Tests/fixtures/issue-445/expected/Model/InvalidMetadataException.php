@@ -69,13 +69,13 @@ class InvalidMetadataException extends \ArrayObject
     /**
      * 
      *
-     * @var MetadataError[]|null
+     * @var list<MetadataError>|null
      */
     protected $metadataErrors;
     /**
      * 
      *
-     * @var PictureparkBusinessException[]|null
+     * @var list<PictureparkBusinessException>|null
      */
     protected $validationErrors;
     /**
@@ -279,7 +279,7 @@ class InvalidMetadataException extends \ArrayObject
     /**
      * 
      *
-     * @return MetadataError[]|null
+     * @return list<MetadataError>|null
      */
     public function getMetadataErrors() : ?array
     {
@@ -288,7 +288,7 @@ class InvalidMetadataException extends \ArrayObject
     /**
      * 
      *
-     * @param MetadataError[]|null $metadataErrors
+     * @param list<MetadataError>|null $metadataErrors
      *
      * @return self
      */
@@ -301,7 +301,7 @@ class InvalidMetadataException extends \ArrayObject
     /**
      * 
      *
-     * @return PictureparkBusinessException[]|null
+     * @return list<PictureparkBusinessException>|null
      */
     public function getValidationErrors() : ?array
     {
@@ -310,7 +310,7 @@ class InvalidMetadataException extends \ArrayObject
     /**
      * 
      *
-     * @param PictureparkBusinessException[]|null $validationErrors
+     * @param list<PictureparkBusinessException>|null $validationErrors
      *
      * @return self
      */

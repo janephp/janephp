@@ -16,7 +16,7 @@ class ContentMetadataUpdateItem extends \ArrayObject
     * An optional list of IDs of the schemas that should be updated/replaced based on the options below and Metadata provided.
     The SchemaType of the specified schemas must be Layer.
     *
-    * @var string[]|null
+    * @var list<string>|null
     */
     protected $layerSchemaIds;
     /**
@@ -76,7 +76,7 @@ class ContentMetadataUpdateItem extends \ArrayObject
     * An optional list of IDs of the schemas that should be updated/replaced based on the options below and Metadata provided.
     The SchemaType of the specified schemas must be Layer.
     *
-    * @return string[]|null
+    * @return list<string>|null
     */
     public function getLayerSchemaIds() : ?array
     {
@@ -86,7 +86,7 @@ class ContentMetadataUpdateItem extends \ArrayObject
     * An optional list of IDs of the schemas that should be updated/replaced based on the options below and Metadata provided.
     The SchemaType of the specified schemas must be Layer.
     *
-    * @param string[]|null $layerSchemaIds
+    * @param list<string>|null $layerSchemaIds
     *
     * @return self
     */

@@ -21,7 +21,7 @@ class OrgsOrgActionsSecretsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var OrganizationActionsSecret[]
+     * @var list<OrganizationActionsSecret>
      */
     protected $secrets;
     /**
@@ -49,7 +49,7 @@ class OrgsOrgActionsSecretsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return OrganizationActionsSecret[]
+     * @return list<OrganizationActionsSecret>
      */
     public function getSecrets() : array
     {
@@ -58,7 +58,7 @@ class OrgsOrgActionsSecretsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param OrganizationActionsSecret[] $secrets
+     * @param list<OrganizationActionsSecret> $secrets
      *
      * @return self
      */

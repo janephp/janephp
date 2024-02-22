@@ -15,13 +15,13 @@ class SchemaIndexingInfo
     /**
      * A collection of indexing information for the fields of a schema
      *
-     * @var FieldIndexingInfo[]|null
+     * @var list<FieldIndexingInfo>|null
      */
     protected $fields;
     /**
      * A collection of indexing information for the fields of a schema
      *
-     * @return FieldIndexingInfo[]|null
+     * @return list<FieldIndexingInfo>|null
      */
     public function getFields() : ?array
     {
@@ -30,7 +30,7 @@ class SchemaIndexingInfo
     /**
      * A collection of indexing information for the fields of a schema
      *
-     * @param FieldIndexingInfo[]|null $fields
+     * @param list<FieldIndexingInfo>|null $fields
      *
      * @return self
      */

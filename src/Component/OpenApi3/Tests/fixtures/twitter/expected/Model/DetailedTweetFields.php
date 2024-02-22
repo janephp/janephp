@@ -21,7 +21,7 @@ class DetailedTweetFields extends \ArrayObject
     /**
      * 
      *
-     * @var ContextAnnotation[]
+     * @var list<ContextAnnotation>
      */
     protected $contextAnnotation;
     /**
@@ -67,7 +67,7 @@ class DetailedTweetFields extends \ArrayObject
     /**
      * 
      *
-     * @return ContextAnnotation[]
+     * @return list<ContextAnnotation>
      */
     public function getContextAnnotation() : array
     {
@@ -76,7 +76,7 @@ class DetailedTweetFields extends \ArrayObject
     /**
      * 
      *
-     * @param ContextAnnotation[] $contextAnnotation
+     * @param list<ContextAnnotation> $contextAnnotation
      *
      * @return self
      */

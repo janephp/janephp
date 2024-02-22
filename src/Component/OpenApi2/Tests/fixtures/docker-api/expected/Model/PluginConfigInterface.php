@@ -15,7 +15,7 @@ class PluginConfigInterface
     /**
      * 
      *
-     * @var PluginInterfaceType[]
+     * @var list<PluginInterfaceType>
      */
     protected $types;
     /**
@@ -33,7 +33,7 @@ class PluginConfigInterface
     /**
      * 
      *
-     * @return PluginInterfaceType[]
+     * @return list<PluginInterfaceType>
      */
     public function getTypes() : array
     {
@@ -42,7 +42,7 @@ class PluginConfigInterface
     /**
      * 
      *
-     * @param PluginInterfaceType[] $types
+     * @param list<PluginInterfaceType> $types
      *
      * @return self
      */

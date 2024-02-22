@@ -21,7 +21,7 @@ class UserRoleSearchResult extends \ArrayObject
     /**
      * The matched documents.
      *
-     * @var UserRole[]
+     * @var list<UserRole>
      */
     protected $results;
     /**
@@ -51,7 +51,7 @@ class UserRoleSearchResult extends \ArrayObject
     /**
      * Additional information regarding the query execution and reason of the matched documents. Multiple items are returned if multiple queries were performed.
      *
-     * @var QueryDebugInformation[]|null
+     * @var list<QueryDebugInformation>|null
      */
     protected $queryDebugInformation;
     /**
@@ -79,7 +79,7 @@ class UserRoleSearchResult extends \ArrayObject
     /**
      * The matched documents.
      *
-     * @return UserRole[]
+     * @return list<UserRole>
      */
     public function getResults() : array
     {
@@ -88,7 +88,7 @@ class UserRoleSearchResult extends \ArrayObject
     /**
      * The matched documents.
      *
-     * @param UserRole[] $results
+     * @param list<UserRole> $results
      *
      * @return self
      */
@@ -189,7 +189,7 @@ class UserRoleSearchResult extends \ArrayObject
     /**
      * Additional information regarding the query execution and reason of the matched documents. Multiple items are returned if multiple queries were performed.
      *
-     * @return QueryDebugInformation[]|null
+     * @return list<QueryDebugInformation>|null
      */
     public function getQueryDebugInformation() : ?array
     {
@@ -198,7 +198,7 @@ class UserRoleSearchResult extends \ArrayObject
     /**
      * Additional information regarding the query execution and reason of the matched documents. Multiple items are returned if multiple queries were performed.
      *
-     * @param QueryDebugInformation[]|null $queryDebugInformation
+     * @param list<QueryDebugInformation>|null $queryDebugInformation
      *
      * @return self
      */

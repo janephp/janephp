@@ -69,7 +69,7 @@ class BusinessRuleConditionInvalidTriggerPointDocumentTypeException extends \Arr
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $allowedDocumentTypes;
     /**
@@ -273,7 +273,7 @@ class BusinessRuleConditionInvalidTriggerPointDocumentTypeException extends \Arr
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getAllowedDocumentTypes() : ?array
     {
@@ -282,7 +282,7 @@ class BusinessRuleConditionInvalidTriggerPointDocumentTypeException extends \Arr
     /**
      * 
      *
-     * @param string[]|null $allowedDocumentTypes
+     * @param list<string>|null $allowedDocumentTypes
      *
      * @return self
      */

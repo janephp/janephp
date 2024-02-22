@@ -21,7 +21,7 @@ class BaseResultOfOutput
     /**
      * The matched documents.
      *
-     * @var Output[]
+     * @var list<Output>
      */
     protected $results;
     /**
@@ -61,7 +61,7 @@ class BaseResultOfOutput
     /**
      * The matched documents.
      *
-     * @return Output[]
+     * @return list<Output>
      */
     public function getResults() : array
     {
@@ -70,7 +70,7 @@ class BaseResultOfOutput
     /**
      * The matched documents.
      *
-     * @param Output[] $results
+     * @param list<Output> $results
      *
      * @return self
      */

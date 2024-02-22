@@ -15,19 +15,19 @@ class CompactTweetFieldsAttachments extends \ArrayObject
     /**
      * A list of Media Keys for each one of the media attachments (if media are attached).
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $mediaKeys;
     /**
      * A list of poll IDs (if polls are attached).
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $pollIds;
     /**
      * A list of Media Keys for each one of the media attachments (if media are attached).
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getMediaKeys() : array
     {
@@ -36,7 +36,7 @@ class CompactTweetFieldsAttachments extends \ArrayObject
     /**
      * A list of Media Keys for each one of the media attachments (if media are attached).
      *
-     * @param string[] $mediaKeys
+     * @param list<string> $mediaKeys
      *
      * @return self
      */
@@ -49,7 +49,7 @@ class CompactTweetFieldsAttachments extends \ArrayObject
     /**
      * A list of poll IDs (if polls are attached).
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getPollIds() : array
     {
@@ -58,7 +58,7 @@ class CompactTweetFieldsAttachments extends \ArrayObject
     /**
      * A list of poll IDs (if polls are attached).
      *
-     * @param string[] $pollIds
+     * @param list<string> $pollIds
      *
      * @return self
      */

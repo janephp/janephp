@@ -23,7 +23,7 @@ class EndpointSpec
     outside. Ports can only be provided if `vip` resolution mode is used.
     
     *
-    * @var EndpointPortConfig[]
+    * @var list<EndpointPortConfig>
     */
     protected $ports;
     /**
@@ -53,7 +53,7 @@ class EndpointSpec
     outside. Ports can only be provided if `vip` resolution mode is used.
     
     *
-    * @return EndpointPortConfig[]
+    * @return list<EndpointPortConfig>
     */
     public function getPorts() : array
     {
@@ -64,7 +64,7 @@ class EndpointSpec
     outside. Ports can only be provided if `vip` resolution mode is used.
     
     *
-    * @param EndpointPortConfig[] $ports
+    * @param list<EndpointPortConfig> $ports
     *
     * @return self
     */

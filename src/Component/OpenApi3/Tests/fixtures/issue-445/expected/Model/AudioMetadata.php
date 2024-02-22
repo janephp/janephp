@@ -75,7 +75,7 @@ class AudioMetadata extends \ArrayObject
     /**
      * 
      *
-     * @var AudioStream[]|null
+     * @var list<AudioStream>|null
      */
     protected $audioStreams;
     /**
@@ -301,7 +301,7 @@ class AudioMetadata extends \ArrayObject
     /**
      * 
      *
-     * @return AudioStream[]|null
+     * @return list<AudioStream>|null
      */
     public function getAudioStreams() : ?array
     {
@@ -310,7 +310,7 @@ class AudioMetadata extends \ArrayObject
     /**
      * 
      *
-     * @param AudioStream[]|null $audioStreams
+     * @param list<AudioStream>|null $audioStreams
      *
      * @return self
      */

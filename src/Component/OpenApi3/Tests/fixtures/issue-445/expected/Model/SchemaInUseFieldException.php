@@ -75,7 +75,7 @@ class SchemaInUseFieldException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $fieldNamespaces;
     /**
@@ -301,7 +301,7 @@ class SchemaInUseFieldException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getFieldNamespaces() : ?array
     {
@@ -310,7 +310,7 @@ class SchemaInUseFieldException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $fieldNamespaces
+     * @param list<string>|null $fieldNamespaces
      *
      * @return self
      */

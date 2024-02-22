@@ -117,7 +117,7 @@ class Release extends \ArrayObject
     /**
      * 
      *
-     * @var ReleaseAsset[]
+     * @var list<ReleaseAsset>
      */
     protected $assets;
     /**
@@ -509,7 +509,7 @@ class Release extends \ArrayObject
     /**
      * 
      *
-     * @return ReleaseAsset[]
+     * @return list<ReleaseAsset>
      */
     public function getAssets() : array
     {
@@ -518,7 +518,7 @@ class Release extends \ArrayObject
     /**
      * 
      *
-     * @param ReleaseAsset[] $assets
+     * @param list<ReleaseAsset> $assets
      *
      * @return self
      */

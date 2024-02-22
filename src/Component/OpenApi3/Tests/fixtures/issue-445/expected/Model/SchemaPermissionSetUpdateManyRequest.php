@@ -15,13 +15,13 @@ class SchemaPermissionSetUpdateManyRequest
     /**
      * Schema permission sets update requests.
      *
-     * @var SchemaPermissionSetUpdateRequestItem[]|null
+     * @var list<SchemaPermissionSetUpdateRequestItem>|null
      */
     protected $items;
     /**
      * Schema permission sets update requests.
      *
-     * @return SchemaPermissionSetUpdateRequestItem[]|null
+     * @return list<SchemaPermissionSetUpdateRequestItem>|null
      */
     public function getItems() : ?array
     {
@@ -30,7 +30,7 @@ class SchemaPermissionSetUpdateManyRequest
     /**
      * Schema permission sets update requests.
      *
-     * @param SchemaPermissionSetUpdateRequestItem[]|null $items
+     * @param list<SchemaPermissionSetUpdateRequestItem>|null $items
      *
      * @return self
      */

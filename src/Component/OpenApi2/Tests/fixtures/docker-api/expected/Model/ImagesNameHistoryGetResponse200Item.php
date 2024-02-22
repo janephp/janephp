@@ -33,7 +33,7 @@ class ImagesNameHistoryGetResponse200Item
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $tags;
     /**
@@ -117,7 +117,7 @@ class ImagesNameHistoryGetResponse200Item
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getTags() : array
     {
@@ -126,7 +126,7 @@ class ImagesNameHistoryGetResponse200Item
     /**
      * 
      *
-     * @param string[] $tags
+     * @param list<string> $tags
      *
      * @return self
      */

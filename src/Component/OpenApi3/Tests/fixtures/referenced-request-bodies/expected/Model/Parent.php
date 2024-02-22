@@ -21,7 +21,7 @@ class Parent extends \ArrayObject
     /**
      * 
      *
-     * @var Child[]
+     * @var list<Child>
      */
     protected $child;
     /**
@@ -49,7 +49,7 @@ class Parent extends \ArrayObject
     /**
      * 
      *
-     * @return Child[]
+     * @return list<Child>
      */
     public function getChild() : array
     {
@@ -58,7 +58,7 @@ class Parent extends \ArrayObject
     /**
      * 
      *
-     * @param Child[] $child
+     * @param list<Child> $child
      *
      * @return self
      */

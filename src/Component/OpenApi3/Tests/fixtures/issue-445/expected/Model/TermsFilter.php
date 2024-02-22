@@ -22,7 +22,7 @@ class TermsFilter extends FilterBase
     /**
      * The list of values to be filtered on. At least one must match to return results.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $terms;
     /**
@@ -52,7 +52,7 @@ class TermsFilter extends FilterBase
     /**
      * The list of values to be filtered on. At least one must match to return results.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getTerms() : array
     {
@@ -61,7 +61,7 @@ class TermsFilter extends FilterBase
     /**
      * The list of values to be filtered on. At least one must match to return results.
      *
-     * @param string[] $terms
+     * @param list<string> $terms
      *
      * @return self
      */

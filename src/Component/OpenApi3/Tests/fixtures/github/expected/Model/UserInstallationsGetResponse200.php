@@ -21,7 +21,7 @@ class UserInstallationsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var Installation[]
+     * @var list<Installation>
      */
     protected $installations;
     /**
@@ -49,7 +49,7 @@ class UserInstallationsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return Installation[]
+     * @return list<Installation>
      */
     public function getInstallations() : array
     {
@@ -58,7 +58,7 @@ class UserInstallationsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param Installation[] $installations
+     * @param list<Installation> $installations
      *
      * @return self
      */

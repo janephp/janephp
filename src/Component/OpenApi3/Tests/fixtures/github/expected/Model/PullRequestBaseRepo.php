@@ -465,7 +465,7 @@ class PullRequestBaseRepo extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $topics;
     /**
@@ -2145,7 +2145,7 @@ class PullRequestBaseRepo extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getTopics() : array
     {
@@ -2154,7 +2154,7 @@ class PullRequestBaseRepo extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $topics
+     * @param list<string> $topics
      *
      * @return self
      */

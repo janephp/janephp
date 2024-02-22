@@ -40,7 +40,7 @@ class AggregationResultItem
     /**
      * Inner aggregation results, if inner aggregations were provided in the query.
      *
-     * @var AggregationResult[]|null
+     * @var list<AggregationResult>|null
      */
     protected $aggregationResults;
     /**
@@ -136,7 +136,7 @@ class AggregationResultItem
     /**
      * Inner aggregation results, if inner aggregations were provided in the query.
      *
-     * @return AggregationResult[]|null
+     * @return list<AggregationResult>|null
      */
     public function getAggregationResults() : ?array
     {
@@ -145,7 +145,7 @@ class AggregationResultItem
     /**
      * Inner aggregation results, if inner aggregations were provided in the query.
      *
-     * @param AggregationResult[]|null $aggregationResults
+     * @param list<AggregationResult>|null $aggregationResults
      *
      * @return self
      */

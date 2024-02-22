@@ -21,7 +21,7 @@ class BaseResultOfPermissionSet
     /**
      * The matched documents.
      *
-     * @var PermissionSet[]
+     * @var list<PermissionSet>
      */
     protected $results;
     /**
@@ -61,7 +61,7 @@ class BaseResultOfPermissionSet
     /**
      * The matched documents.
      *
-     * @return PermissionSet[]
+     * @return list<PermissionSet>
      */
     public function getResults() : array
     {
@@ -70,7 +70,7 @@ class BaseResultOfPermissionSet
     /**
      * The matched documents.
      *
-     * @param PermissionSet[] $results
+     * @param list<PermissionSet> $results
      *
      * @return self
      */

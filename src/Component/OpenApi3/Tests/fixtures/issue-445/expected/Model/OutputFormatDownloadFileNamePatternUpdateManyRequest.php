@@ -15,13 +15,13 @@ class OutputFormatDownloadFileNamePatternUpdateManyRequest
     /**
      * Download file name update requests to be processed.
      *
-     * @var OutputFormatDownloadFileNamePatternUpdateRequestItem[]
+     * @var list<OutputFormatDownloadFileNamePatternUpdateRequestItem>
      */
     protected $items;
     /**
      * Download file name update requests to be processed.
      *
-     * @return OutputFormatDownloadFileNamePatternUpdateRequestItem[]
+     * @return list<OutputFormatDownloadFileNamePatternUpdateRequestItem>
      */
     public function getItems() : array
     {
@@ -30,7 +30,7 @@ class OutputFormatDownloadFileNamePatternUpdateManyRequest
     /**
      * Download file name update requests to be processed.
      *
-     * @param OutputFormatDownloadFileNamePatternUpdateRequestItem[] $items
+     * @param list<OutputFormatDownloadFileNamePatternUpdateRequestItem> $items
      *
      * @return self
      */

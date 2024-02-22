@@ -21,7 +21,7 @@ class UserRoleDetail extends \ArrayObject
     /**
      * All user rights for this user role.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $userRights;
     /**
@@ -61,7 +61,7 @@ class UserRoleDetail extends \ArrayObject
     /**
      * All user rights for this user role.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getUserRights() : array
     {
@@ -70,7 +70,7 @@ class UserRoleDetail extends \ArrayObject
     /**
      * All user rights for this user role.
      *
-     * @param string[] $userRights
+     * @param list<string> $userRights
      *
      * @return self
      */

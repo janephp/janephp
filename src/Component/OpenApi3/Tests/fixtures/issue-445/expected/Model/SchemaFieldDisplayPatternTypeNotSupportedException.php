@@ -81,7 +81,7 @@ class SchemaFieldDisplayPatternTypeNotSupportedException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $supportedDisplayPatternTypes;
     /**
@@ -329,7 +329,7 @@ class SchemaFieldDisplayPatternTypeNotSupportedException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSupportedDisplayPatternTypes() : ?array
     {
@@ -338,7 +338,7 @@ class SchemaFieldDisplayPatternTypeNotSupportedException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $supportedDisplayPatternTypes
+     * @param list<string>|null $supportedDisplayPatternTypes
      *
      * @return self
      */

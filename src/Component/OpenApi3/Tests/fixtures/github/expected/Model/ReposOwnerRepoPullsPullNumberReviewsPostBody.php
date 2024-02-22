@@ -33,7 +33,7 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBody extends \ArrayObject
     /**
      * Use the following table to specify the location, destination, and contents of the draft review comment.
      *
-     * @var ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem[]
+     * @var list<ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem>
      */
     protected $comments;
     /**
@@ -105,7 +105,7 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBody extends \ArrayObject
     /**
      * Use the following table to specify the location, destination, and contents of the draft review comment.
      *
-     * @return ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem[]
+     * @return list<ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem>
      */
     public function getComments() : array
     {
@@ -114,7 +114,7 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBody extends \ArrayObject
     /**
      * Use the following table to specify the location, destination, and contents of the draft review comment.
      *
-     * @param ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem[] $comments
+     * @param list<ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem> $comments
      *
      * @return self
      */

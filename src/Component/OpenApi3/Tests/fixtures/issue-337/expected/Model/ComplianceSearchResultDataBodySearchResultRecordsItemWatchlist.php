@@ -15,7 +15,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlist extends \Ar
     /**
      * 
      *
-     * @var ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem[]
+     * @var list<ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem>
      */
     protected $matches;
     /**
@@ -27,7 +27,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlist extends \Ar
     /**
      * 
      *
-     * @return ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem[]
+     * @return list<ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem>
      */
     public function getMatches() : array
     {
@@ -36,7 +36,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlist extends \Ar
     /**
      * 
      *
-     * @param ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem[] $matches
+     * @param list<ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem> $matches
      *
      * @return self
      */

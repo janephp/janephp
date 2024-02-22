@@ -15,13 +15,13 @@ class BooleanCondition extends BusinessRuleCondition
     /**
      * The conditions.
      *
-     * @var BusinessRuleCondition[]|null
+     * @var list<BusinessRuleCondition>|null
      */
     protected $conditions;
     /**
      * The conditions.
      *
-     * @return BusinessRuleCondition[]|null
+     * @return list<BusinessRuleCondition>|null
      */
     public function getConditions() : ?array
     {
@@ -30,7 +30,7 @@ class BooleanCondition extends BusinessRuleCondition
     /**
      * The conditions.
      *
-     * @param BusinessRuleCondition[]|null $conditions
+     * @param list<BusinessRuleCondition>|null $conditions
      *
      * @return self
      */

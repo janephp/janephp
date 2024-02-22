@@ -111,13 +111,13 @@ class VideoMetadata extends \ArrayObject
     /**
      * 
      *
-     * @var VideoStream[]|null
+     * @var list<VideoStream>|null
      */
     protected $videoStreams;
     /**
      * 
      *
-     * @var AudioStream[]|null
+     * @var list<AudioStream>|null
      */
     protected $audioStreams;
     /**
@@ -475,7 +475,7 @@ class VideoMetadata extends \ArrayObject
     /**
      * 
      *
-     * @return VideoStream[]|null
+     * @return list<VideoStream>|null
      */
     public function getVideoStreams() : ?array
     {
@@ -484,7 +484,7 @@ class VideoMetadata extends \ArrayObject
     /**
      * 
      *
-     * @param VideoStream[]|null $videoStreams
+     * @param list<VideoStream>|null $videoStreams
      *
      * @return self
      */
@@ -497,7 +497,7 @@ class VideoMetadata extends \ArrayObject
     /**
      * 
      *
-     * @return AudioStream[]|null
+     * @return list<AudioStream>|null
      */
     public function getAudioStreams() : ?array
     {
@@ -506,7 +506,7 @@ class VideoMetadata extends \ArrayObject
     /**
      * 
      *
-     * @param AudioStream[]|null $audioStreams
+     * @param list<AudioStream>|null $audioStreams
      *
      * @return self
      */

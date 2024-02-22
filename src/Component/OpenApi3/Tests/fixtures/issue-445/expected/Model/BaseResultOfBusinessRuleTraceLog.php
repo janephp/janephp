@@ -21,7 +21,7 @@ class BaseResultOfBusinessRuleTraceLog
     /**
      * The matched documents.
      *
-     * @var BusinessRuleTraceLog[]
+     * @var list<BusinessRuleTraceLog>
      */
     protected $results;
     /**
@@ -61,7 +61,7 @@ class BaseResultOfBusinessRuleTraceLog
     /**
      * The matched documents.
      *
-     * @return BusinessRuleTraceLog[]
+     * @return list<BusinessRuleTraceLog>
      */
     public function getResults() : array
     {
@@ -70,7 +70,7 @@ class BaseResultOfBusinessRuleTraceLog
     /**
      * The matched documents.
      *
-     * @param BusinessRuleTraceLog[] $results
+     * @param list<BusinessRuleTraceLog> $results
      *
      * @return self
      */

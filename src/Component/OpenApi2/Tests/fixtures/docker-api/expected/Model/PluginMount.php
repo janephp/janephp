@@ -27,7 +27,7 @@ class PluginMount
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $settable;
     /**
@@ -51,7 +51,7 @@ class PluginMount
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $options;
     /**
@@ -101,7 +101,7 @@ class PluginMount
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getSettable() : array
     {
@@ -110,7 +110,7 @@ class PluginMount
     /**
      * 
      *
-     * @param string[] $settable
+     * @param list<string> $settable
      *
      * @return self
      */
@@ -189,7 +189,7 @@ class PluginMount
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getOptions() : array
     {
@@ -198,7 +198,7 @@ class PluginMount
     /**
      * 
      *
-     * @param string[] $options
+     * @param list<string> $options
      *
      * @return self
      */

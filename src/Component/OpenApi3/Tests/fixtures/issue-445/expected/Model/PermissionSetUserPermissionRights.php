@@ -21,7 +21,7 @@ class PermissionSetUserPermissionRights
     /**
      * List of rights on the permission set specified by PermissionSetId
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $permissionSetRights;
     /**
@@ -49,7 +49,7 @@ class PermissionSetUserPermissionRights
     /**
      * List of rights on the permission set specified by PermissionSetId
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getPermissionSetRights() : ?array
     {
@@ -58,7 +58,7 @@ class PermissionSetUserPermissionRights
     /**
      * List of rights on the permission set specified by PermissionSetId
      *
-     * @param string[]|null $permissionSetRights
+     * @param list<string>|null $permissionSetRights
      *
      * @return self
      */

@@ -27,7 +27,7 @@ class GeoDistanceAggregator extends AggregatorBase
     /**
      * A list of distance ranges.
      *
-     * @var GeoDistance[]
+     * @var list<GeoDistance>
      */
     protected $ranges;
     /**
@@ -77,7 +77,7 @@ class GeoDistanceAggregator extends AggregatorBase
     /**
      * A list of distance ranges.
      *
-     * @return GeoDistance[]
+     * @return list<GeoDistance>
      */
     public function getRanges() : array
     {
@@ -86,7 +86,7 @@ class GeoDistanceAggregator extends AggregatorBase
     /**
      * A list of distance ranges.
      *
-     * @param GeoDistance[] $ranges
+     * @param list<GeoDistance> $ranges
      *
      * @return self
      */

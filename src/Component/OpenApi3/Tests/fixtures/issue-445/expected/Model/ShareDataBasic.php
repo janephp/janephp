@@ -15,13 +15,13 @@ class ShareDataBasic extends ShareDataBase
     /**
      * List of recipients added using email address
      *
-     * @var MailRecipient[]
+     * @var list<MailRecipient>
      */
     protected $mailRecipients;
     /**
      * List of recipients that exist in Picturepark.
      *
-     * @var InternalRecipient[]
+     * @var list<InternalRecipient>
      */
     protected $internalRecipients;
     /**
@@ -33,7 +33,7 @@ class ShareDataBasic extends ShareDataBase
     /**
      * List of recipients added using email address
      *
-     * @return MailRecipient[]
+     * @return list<MailRecipient>
      */
     public function getMailRecipients() : array
     {
@@ -42,7 +42,7 @@ class ShareDataBasic extends ShareDataBase
     /**
      * List of recipients added using email address
      *
-     * @param MailRecipient[] $mailRecipients
+     * @param list<MailRecipient> $mailRecipients
      *
      * @return self
      */
@@ -55,7 +55,7 @@ class ShareDataBasic extends ShareDataBase
     /**
      * List of recipients that exist in Picturepark.
      *
-     * @return InternalRecipient[]
+     * @return list<InternalRecipient>
      */
     public function getInternalRecipients() : array
     {
@@ -64,7 +64,7 @@ class ShareDataBasic extends ShareDataBase
     /**
      * List of recipients that exist in Picturepark.
      *
-     * @param InternalRecipient[] $internalRecipients
+     * @param list<InternalRecipient> $internalRecipients
      *
      * @return self
      */

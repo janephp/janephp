@@ -15,37 +15,37 @@ class Expansions extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $users;
     /**
      * 
      *
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $tweets;
     /**
      * 
      *
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $places;
     /**
      * 
      *
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $media;
     /**
      * 
      *
-     * @var Poll[]
+     * @var list<Poll>
      */
     protected $polls;
     /**
      * 
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getUsers() : array
     {
@@ -54,7 +54,7 @@ class Expansions extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $users
+     * @param list<mixed> $users
      *
      * @return self
      */
@@ -67,7 +67,7 @@ class Expansions extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getTweets() : array
     {
@@ -76,7 +76,7 @@ class Expansions extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $tweets
+     * @param list<mixed> $tweets
      *
      * @return self
      */
@@ -89,7 +89,7 @@ class Expansions extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getPlaces() : array
     {
@@ -98,7 +98,7 @@ class Expansions extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $places
+     * @param list<mixed> $places
      *
      * @return self
      */
@@ -111,7 +111,7 @@ class Expansions extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getMedia() : array
     {
@@ -120,7 +120,7 @@ class Expansions extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $media
+     * @param list<mixed> $media
      *
      * @return self
      */
@@ -133,7 +133,7 @@ class Expansions extends \ArrayObject
     /**
      * 
      *
-     * @return Poll[]
+     * @return list<Poll>
      */
     public function getPolls() : array
     {
@@ -142,7 +142,7 @@ class Expansions extends \ArrayObject
     /**
      * 
      *
-     * @param Poll[] $polls
+     * @param list<Poll> $polls
      *
      * @return self
      */

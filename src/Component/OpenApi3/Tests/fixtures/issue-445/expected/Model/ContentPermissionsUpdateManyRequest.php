@@ -15,13 +15,13 @@ class ContentPermissionsUpdateManyRequest
     /**
      * Content permissions update items
      *
-     * @var ContentPermissionsUpdateItem[]
+     * @var list<ContentPermissionsUpdateItem>
      */
     protected $items;
     /**
      * Content permissions update items
      *
-     * @return ContentPermissionsUpdateItem[]
+     * @return list<ContentPermissionsUpdateItem>
      */
     public function getItems() : array
     {
@@ -30,7 +30,7 @@ class ContentPermissionsUpdateManyRequest
     /**
      * Content permissions update items
      *
-     * @param ContentPermissionsUpdateItem[] $items
+     * @param list<ContentPermissionsUpdateItem> $items
      *
      * @return self
      */

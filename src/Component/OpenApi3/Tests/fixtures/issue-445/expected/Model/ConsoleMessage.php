@@ -21,7 +21,7 @@ class ConsoleMessage extends Message
     /**
      * 
      *
-     * @var TupleOfStringAndString[]|null
+     * @var list<TupleOfStringAndString>|null
      */
     protected $arguments;
     /**
@@ -55,7 +55,7 @@ class ConsoleMessage extends Message
     /**
      * 
      *
-     * @return TupleOfStringAndString[]|null
+     * @return list<TupleOfStringAndString>|null
      */
     public function getArguments() : ?array
     {
@@ -64,7 +64,7 @@ class ConsoleMessage extends Message
     /**
      * 
      *
-     * @param TupleOfStringAndString[]|null $arguments
+     * @param list<TupleOfStringAndString>|null $arguments
      *
      * @return self
      */

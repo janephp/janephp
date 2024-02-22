@@ -15,7 +15,7 @@ class IdentityProvider extends \ArrayObject
     /**
      * Mapping of identity provider claims to user attributes
      *
-     * @var IdpClaimToUserAttributeMapping[]|null
+     * @var list<IdpClaimToUserAttributeMapping>|null
      */
     protected $claimMapping;
     /**
@@ -27,7 +27,7 @@ class IdentityProvider extends \ArrayObject
     /**
      * IdP (AD) group to user role ID mapping
      *
-     * @var IdpGroupToUserRoleMapping[]|null
+     * @var list<IdpGroupToUserRoleMapping>|null
      */
     protected $groupMapping;
     /**
@@ -57,7 +57,7 @@ class IdentityProvider extends \ArrayObject
     /**
      * Mapping of identity provider claims to user attributes
      *
-     * @return IdpClaimToUserAttributeMapping[]|null
+     * @return list<IdpClaimToUserAttributeMapping>|null
      */
     public function getClaimMapping() : ?array
     {
@@ -66,7 +66,7 @@ class IdentityProvider extends \ArrayObject
     /**
      * Mapping of identity provider claims to user attributes
      *
-     * @param IdpClaimToUserAttributeMapping[]|null $claimMapping
+     * @param list<IdpClaimToUserAttributeMapping>|null $claimMapping
      *
      * @return self
      */
@@ -101,7 +101,7 @@ class IdentityProvider extends \ArrayObject
     /**
      * IdP (AD) group to user role ID mapping
      *
-     * @return IdpGroupToUserRoleMapping[]|null
+     * @return list<IdpGroupToUserRoleMapping>|null
      */
     public function getGroupMapping() : ?array
     {
@@ -110,7 +110,7 @@ class IdentityProvider extends \ArrayObject
     /**
      * IdP (AD) group to user role ID mapping
      *
-     * @param IdpGroupToUserRoleMapping[]|null $groupMapping
+     * @param list<IdpGroupToUserRoleMapping>|null $groupMapping
      *
      * @return self
      */

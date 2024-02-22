@@ -81,13 +81,13 @@ class SchemaFieldAnalyzerInvalidException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $analyzers;
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $allowedAnalyzers;
     /**
@@ -335,7 +335,7 @@ class SchemaFieldAnalyzerInvalidException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getAnalyzers() : ?array
     {
@@ -344,7 +344,7 @@ class SchemaFieldAnalyzerInvalidException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $analyzers
+     * @param list<string>|null $analyzers
      *
      * @return self
      */
@@ -357,7 +357,7 @@ class SchemaFieldAnalyzerInvalidException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getAllowedAnalyzers() : ?array
     {
@@ -366,7 +366,7 @@ class SchemaFieldAnalyzerInvalidException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $allowedAnalyzers
+     * @param list<string>|null $allowedAnalyzers
      *
      * @return self
      */

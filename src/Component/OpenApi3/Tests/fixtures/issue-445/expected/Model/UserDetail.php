@@ -45,7 +45,7 @@ class UserDetail extends \ArrayObject
     /**
      * User roles the user should be assigned to. Overwrites the original user roles.
      *
-     * @var UserRoleAssignment[]|null
+     * @var list<UserRoleAssignment>|null
      */
     protected $userRoles;
     /**
@@ -75,7 +75,7 @@ class UserDetail extends \ArrayObject
     /**
      * Owner tokens referencing the user.
      *
-     * @var OwnerToken[]|null
+     * @var list<OwnerToken>|null
      */
     protected $ownerTokens;
     /**
@@ -233,7 +233,7 @@ class UserDetail extends \ArrayObject
     /**
      * User roles the user should be assigned to. Overwrites the original user roles.
      *
-     * @return UserRoleAssignment[]|null
+     * @return list<UserRoleAssignment>|null
      */
     public function getUserRoles() : ?array
     {
@@ -242,7 +242,7 @@ class UserDetail extends \ArrayObject
     /**
      * User roles the user should be assigned to. Overwrites the original user roles.
      *
-     * @param UserRoleAssignment[]|null $userRoles
+     * @param list<UserRoleAssignment>|null $userRoles
      *
      * @return self
      */
@@ -343,7 +343,7 @@ class UserDetail extends \ArrayObject
     /**
      * Owner tokens referencing the user.
      *
-     * @return OwnerToken[]|null
+     * @return list<OwnerToken>|null
      */
     public function getOwnerTokens() : ?array
     {
@@ -352,7 +352,7 @@ class UserDetail extends \ArrayObject
     /**
      * Owner tokens referencing the user.
      *
-     * @param OwnerToken[]|null $ownerTokens
+     * @param list<OwnerToken>|null $ownerTokens
      *
      * @return self
      */

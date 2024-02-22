@@ -21,7 +21,7 @@ class AccessCountriesResponse extends \ArrayObject
     /**
      * 
      *
-     * @var AccessCountriesResponseCountryAccessItem[]
+     * @var list<AccessCountriesResponseCountryAccessItem>
      */
     protected $countryAccess;
     /**
@@ -49,7 +49,7 @@ class AccessCountriesResponse extends \ArrayObject
     /**
      * 
      *
-     * @return AccessCountriesResponseCountryAccessItem[]
+     * @return list<AccessCountriesResponseCountryAccessItem>
      */
     public function getCountryAccess() : array
     {
@@ -58,7 +58,7 @@ class AccessCountriesResponse extends \ArrayObject
     /**
      * 
      *
-     * @param AccessCountriesResponseCountryAccessItem[] $countryAccess
+     * @param list<AccessCountriesResponseCountryAccessItem> $countryAccess
      *
      * @return self
      */

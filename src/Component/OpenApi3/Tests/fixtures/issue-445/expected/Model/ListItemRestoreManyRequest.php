@@ -15,7 +15,7 @@ class ListItemRestoreManyRequest
     /**
      * The IDs of the list items to restore.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $listItemIds;
     /**
@@ -27,7 +27,7 @@ class ListItemRestoreManyRequest
     /**
      * The IDs of the list items to restore.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getListItemIds() : array
     {
@@ -36,7 +36,7 @@ class ListItemRestoreManyRequest
     /**
      * The IDs of the list items to restore.
      *
-     * @param string[] $listItemIds
+     * @param list<string> $listItemIds
      *
      * @return self
      */

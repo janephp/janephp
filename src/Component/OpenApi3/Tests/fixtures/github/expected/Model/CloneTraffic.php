@@ -27,7 +27,7 @@ class CloneTraffic extends \ArrayObject
     /**
      * 
      *
-     * @var Traffic[]
+     * @var list<Traffic>
      */
     protected $clones;
     /**
@@ -77,7 +77,7 @@ class CloneTraffic extends \ArrayObject
     /**
      * 
      *
-     * @return Traffic[]
+     * @return list<Traffic>
      */
     public function getClones() : array
     {
@@ -86,7 +86,7 @@ class CloneTraffic extends \ArrayObject
     /**
      * 
      *
-     * @param Traffic[] $clones
+     * @param list<Traffic> $clones
      *
      * @return self
      */

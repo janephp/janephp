@@ -33,25 +33,25 @@ class BusinessRuleTraceLog
     /**
      * IDs of rules that were traced for this document.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $ruleIds;
     /**
      * Detailed information about rules traced.
      *
-     * @var BusinessRuleTracedRule[]|null
+     * @var list<BusinessRuleTracedRule>|null
      */
     protected $rules;
     /**
      * Validation errors occuring after all rules have ran.
      *
-     * @var ErrorResponse[]|null
+     * @var list<ErrorResponse>|null
      */
     protected $validationErrors;
     /**
      * General errors occuring when saving the document.
      *
-     * @var ErrorResponse[]|null
+     * @var list<ErrorResponse>|null
      */
     protected $generalErrors;
     /**
@@ -129,7 +129,7 @@ class BusinessRuleTraceLog
     /**
      * IDs of rules that were traced for this document.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getRuleIds() : ?array
     {
@@ -138,7 +138,7 @@ class BusinessRuleTraceLog
     /**
      * IDs of rules that were traced for this document.
      *
-     * @param string[]|null $ruleIds
+     * @param list<string>|null $ruleIds
      *
      * @return self
      */
@@ -151,7 +151,7 @@ class BusinessRuleTraceLog
     /**
      * Detailed information about rules traced.
      *
-     * @return BusinessRuleTracedRule[]|null
+     * @return list<BusinessRuleTracedRule>|null
      */
     public function getRules() : ?array
     {
@@ -160,7 +160,7 @@ class BusinessRuleTraceLog
     /**
      * Detailed information about rules traced.
      *
-     * @param BusinessRuleTracedRule[]|null $rules
+     * @param list<BusinessRuleTracedRule>|null $rules
      *
      * @return self
      */
@@ -173,7 +173,7 @@ class BusinessRuleTraceLog
     /**
      * Validation errors occuring after all rules have ran.
      *
-     * @return ErrorResponse[]|null
+     * @return list<ErrorResponse>|null
      */
     public function getValidationErrors() : ?array
     {
@@ -182,7 +182,7 @@ class BusinessRuleTraceLog
     /**
      * Validation errors occuring after all rules have ran.
      *
-     * @param ErrorResponse[]|null $validationErrors
+     * @param list<ErrorResponse>|null $validationErrors
      *
      * @return self
      */
@@ -195,7 +195,7 @@ class BusinessRuleTraceLog
     /**
      * General errors occuring when saving the document.
      *
-     * @return ErrorResponse[]|null
+     * @return list<ErrorResponse>|null
      */
     public function getGeneralErrors() : ?array
     {
@@ -204,7 +204,7 @@ class BusinessRuleTraceLog
     /**
      * General errors occuring when saving the document.
      *
-     * @param ErrorResponse[]|null $generalErrors
+     * @param list<ErrorResponse>|null $generalErrors
      *
      * @return self
      */

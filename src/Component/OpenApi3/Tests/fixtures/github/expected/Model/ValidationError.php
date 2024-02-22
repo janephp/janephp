@@ -27,7 +27,7 @@ class ValidationError extends \ArrayObject
     /**
      * 
      *
-     * @var ValidationErrorErrorsItem[]
+     * @var list<ValidationErrorErrorsItem>
      */
     protected $errors;
     /**
@@ -77,7 +77,7 @@ class ValidationError extends \ArrayObject
     /**
      * 
      *
-     * @return ValidationErrorErrorsItem[]
+     * @return list<ValidationErrorErrorsItem>
      */
     public function getErrors() : array
     {
@@ -86,7 +86,7 @@ class ValidationError extends \ArrayObject
     /**
      * 
      *
-     * @param ValidationErrorErrorsItem[] $errors
+     * @param list<ValidationErrorErrorsItem> $errors
      *
      * @return self
      */

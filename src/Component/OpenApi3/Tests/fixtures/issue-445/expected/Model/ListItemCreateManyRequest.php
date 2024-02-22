@@ -21,7 +21,7 @@ class ListItemCreateManyRequest
     /**
      * Items to be created.
      *
-     * @var ListItemCreateRequest[]
+     * @var list<ListItemCreateRequest>
      */
     protected $items;
     /**
@@ -49,7 +49,7 @@ class ListItemCreateManyRequest
     /**
      * Items to be created.
      *
-     * @return ListItemCreateRequest[]
+     * @return list<ListItemCreateRequest>
      */
     public function getItems() : array
     {
@@ -58,7 +58,7 @@ class ListItemCreateManyRequest
     /**
      * Items to be created.
      *
-     * @param ListItemCreateRequest[] $items
+     * @param list<ListItemCreateRequest> $items
      *
      * @return self
      */

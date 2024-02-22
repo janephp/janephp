@@ -39,7 +39,7 @@ class GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItem extends
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $positions;
     /**
@@ -133,7 +133,7 @@ class GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItem extends
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getPositions() : array
     {
@@ -142,7 +142,7 @@ class GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItem extends
     /**
      * 
      *
-     * @param string[] $positions
+     * @param list<string> $positions
      *
      * @return self
      */

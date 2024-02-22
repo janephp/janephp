@@ -375,7 +375,7 @@ class FullRepository extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $topics;
     /**
@@ -1875,7 +1875,7 @@ class FullRepository extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getTopics() : array
     {
@@ -1884,7 +1884,7 @@ class FullRepository extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $topics
+     * @param list<string> $topics
      *
      * @return self
      */

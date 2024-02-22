@@ -15,13 +15,13 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody extends \ArrayObject
     /**
      * Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $assignees;
     /**
      * Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getAssignees() : array
     {
@@ -30,7 +30,7 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody extends \ArrayObject
     /**
      * Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._
      *
-     * @param string[] $assignees
+     * @param list<string> $assignees
      *
      * @return self
      */

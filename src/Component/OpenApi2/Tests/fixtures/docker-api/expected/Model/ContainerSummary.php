@@ -21,7 +21,7 @@ class ContainerSummary
     /**
      * The names that this container has been given
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $names;
     /**
@@ -51,7 +51,7 @@ class ContainerSummary
     /**
      * The ports exposed by this container
      *
-     * @var Port[]
+     * @var list<Port>
      */
     protected $ports;
     /**
@@ -99,7 +99,7 @@ class ContainerSummary
     /**
      * 
      *
-     * @var Mount[]
+     * @var list<Mount>
      */
     protected $mounts;
     /**
@@ -127,7 +127,7 @@ class ContainerSummary
     /**
      * The names that this container has been given
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getNames() : array
     {
@@ -136,7 +136,7 @@ class ContainerSummary
     /**
      * The names that this container has been given
      *
-     * @param string[] $names
+     * @param list<string> $names
      *
      * @return self
      */
@@ -237,7 +237,7 @@ class ContainerSummary
     /**
      * The ports exposed by this container
      *
-     * @return Port[]
+     * @return list<Port>
      */
     public function getPorts() : array
     {
@@ -246,7 +246,7 @@ class ContainerSummary
     /**
      * The ports exposed by this container
      *
-     * @param Port[] $ports
+     * @param list<Port> $ports
      *
      * @return self
      */
@@ -413,7 +413,7 @@ class ContainerSummary
     /**
      * 
      *
-     * @return Mount[]
+     * @return list<Mount>
      */
     public function getMounts() : array
     {
@@ -422,7 +422,7 @@ class ContainerSummary
     /**
      * 
      *
-     * @param Mount[] $mounts
+     * @param list<Mount> $mounts
      *
      * @return self
      */

@@ -15,13 +15,13 @@ class ListItemFieldsBatchUpdateRequest
     /**
      * The ids of the list items whose fields need to be updated.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $listItemIds;
     /**
      * Changes that need to be applied to the existing list items. The same set of changes is applied to all list items.
      *
-     * @var MetadataValuesChangeCommandBase[]
+     * @var list<MetadataValuesChangeCommandBase>
      */
     protected $changeCommands;
     /**
@@ -39,7 +39,7 @@ class ListItemFieldsBatchUpdateRequest
     /**
      * The ids of the list items whose fields need to be updated.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getListItemIds() : array
     {
@@ -48,7 +48,7 @@ class ListItemFieldsBatchUpdateRequest
     /**
      * The ids of the list items whose fields need to be updated.
      *
-     * @param string[] $listItemIds
+     * @param list<string> $listItemIds
      *
      * @return self
      */
@@ -61,7 +61,7 @@ class ListItemFieldsBatchUpdateRequest
     /**
      * Changes that need to be applied to the existing list items. The same set of changes is applied to all list items.
      *
-     * @return MetadataValuesChangeCommandBase[]
+     * @return list<MetadataValuesChangeCommandBase>
      */
     public function getChangeCommands() : array
     {
@@ -70,7 +70,7 @@ class ListItemFieldsBatchUpdateRequest
     /**
      * Changes that need to be applied to the existing list items. The same set of changes is applied to all list items.
      *
-     * @param MetadataValuesChangeCommandBase[] $changeCommands
+     * @param list<MetadataValuesChangeCommandBase> $changeCommands
      *
      * @return self
      */

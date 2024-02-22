@@ -57,7 +57,7 @@ class CommitSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @var CommitSearchResultItemParentsItem[]
+     * @var list<CommitSearchResultItemParentsItem>
      */
     protected $parents;
     /**
@@ -81,7 +81,7 @@ class CommitSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @var SearchResultTextMatchesItem[]
+     * @var list<SearchResultTextMatchesItem>
      */
     protected $textMatches;
     /**
@@ -241,7 +241,7 @@ class CommitSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @return CommitSearchResultItemParentsItem[]
+     * @return list<CommitSearchResultItemParentsItem>
      */
     public function getParents() : array
     {
@@ -250,7 +250,7 @@ class CommitSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @param CommitSearchResultItemParentsItem[] $parents
+     * @param list<CommitSearchResultItemParentsItem> $parents
      *
      * @return self
      */
@@ -329,7 +329,7 @@ class CommitSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @return SearchResultTextMatchesItem[]
+     * @return list<SearchResultTextMatchesItem>
      */
     public function getTextMatches() : array
     {
@@ -338,7 +338,7 @@ class CommitSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @param SearchResultTextMatchesItem[] $textMatches
+     * @param list<SearchResultTextMatchesItem> $textMatches
      *
      * @return self
      */

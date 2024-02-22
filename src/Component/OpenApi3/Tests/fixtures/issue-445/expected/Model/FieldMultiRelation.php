@@ -27,7 +27,7 @@ class FieldMultiRelation extends FieldBase
     /**
      * The relation types supported by the field.
      *
-     * @var RelationType[]
+     * @var list<RelationType>
      */
     protected $relationTypes;
     /**
@@ -89,7 +89,7 @@ class FieldMultiRelation extends FieldBase
     /**
      * The relation types supported by the field.
      *
-     * @return RelationType[]
+     * @return list<RelationType>
      */
     public function getRelationTypes() : array
     {
@@ -98,7 +98,7 @@ class FieldMultiRelation extends FieldBase
     /**
      * The relation types supported by the field.
      *
-     * @param RelationType[] $relationTypes
+     * @param list<RelationType> $relationTypes
      *
      * @return self
      */

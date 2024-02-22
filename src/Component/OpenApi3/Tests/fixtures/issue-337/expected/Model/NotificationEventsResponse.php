@@ -21,7 +21,7 @@ class NotificationEventsResponse extends \ArrayObject
     /**
      * 
      *
-     * @var NotificationEvent[]
+     * @var list<NotificationEvent>
      */
     protected $data;
     /**
@@ -55,7 +55,7 @@ class NotificationEventsResponse extends \ArrayObject
     /**
      * 
      *
-     * @return NotificationEvent[]
+     * @return list<NotificationEvent>
      */
     public function getData() : array
     {
@@ -64,7 +64,7 @@ class NotificationEventsResponse extends \ArrayObject
     /**
      * 
      *
-     * @param NotificationEvent[] $data
+     * @param list<NotificationEvent> $data
      *
      * @return self
      */

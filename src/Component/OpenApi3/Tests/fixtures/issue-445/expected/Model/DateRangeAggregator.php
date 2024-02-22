@@ -21,7 +21,7 @@ class DateRangeAggregator extends AggregatorBase
     /**
      * A list of date time ranges.
      *
-     * @var DateRangeForAggregator[]
+     * @var list<DateRangeForAggregator>
      */
     protected $ranges;
     /**
@@ -49,7 +49,7 @@ class DateRangeAggregator extends AggregatorBase
     /**
      * A list of date time ranges.
      *
-     * @return DateRangeForAggregator[]
+     * @return list<DateRangeForAggregator>
      */
     public function getRanges() : array
     {
@@ -58,7 +58,7 @@ class DateRangeAggregator extends AggregatorBase
     /**
      * A list of date time ranges.
      *
-     * @param DateRangeForAggregator[] $ranges
+     * @param list<DateRangeForAggregator> $ranges
      *
      * @return self
      */

@@ -15,13 +15,13 @@ class MetadataStatus
     /**
      * The schema ids (of type Content or Layer) for which the contents are outdated and need to be updated.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $contentOrLayerSchemaIds;
     /**
      * The schema ids (of type List) for which the the list items are outdated and need to be updated.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $listSchemaIds;
     /**
@@ -33,13 +33,13 @@ class MetadataStatus
     /**
      * The field ids that that cannot be used and needs to be cleaned up after updating the outdated contents and list items.
      *
-     * @var array<string, string[]>|null
+     * @var array<string, list<string>>|null
      */
     protected $fieldIdsToCleanup;
     /**
      * The schema ids (of type Content or Layer) for which the contents are outdated and need to be updated.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getContentOrLayerSchemaIds() : ?array
     {
@@ -48,7 +48,7 @@ class MetadataStatus
     /**
      * The schema ids (of type Content or Layer) for which the contents are outdated and need to be updated.
      *
-     * @param string[]|null $contentOrLayerSchemaIds
+     * @param list<string>|null $contentOrLayerSchemaIds
      *
      * @return self
      */
@@ -61,7 +61,7 @@ class MetadataStatus
     /**
      * The schema ids (of type List) for which the the list items are outdated and need to be updated.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getListSchemaIds() : ?array
     {
@@ -70,7 +70,7 @@ class MetadataStatus
     /**
      * The schema ids (of type List) for which the the list items are outdated and need to be updated.
      *
-     * @param string[]|null $listSchemaIds
+     * @param list<string>|null $listSchemaIds
      *
      * @return self
      */
@@ -105,7 +105,7 @@ class MetadataStatus
     /**
      * The field ids that that cannot be used and needs to be cleaned up after updating the outdated contents and list items.
      *
-     * @return array<string, string[]>|null
+     * @return array<string, list<string>>|null
      */
     public function getFieldIdsToCleanup() : ?iterable
     {
@@ -114,7 +114,7 @@ class MetadataStatus
     /**
      * The field ids that that cannot be used and needs to be cleaned up after updating the outdated contents and list items.
      *
-     * @param array<string, string[]>|null $fieldIdsToCleanup
+     * @param array<string, list<string>>|null $fieldIdsToCleanup
      *
      * @return self
      */

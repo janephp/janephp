@@ -40,20 +40,20 @@ class ListItemDetail
     /**
      * All the IDs of the referenced list items (tagboxes) that do not exist in the system.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $brokenReferenceIds;
     /**
      * All the IDs of the contents or list items target of a relation that do not exist in the system.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $brokenRelationTargetIds;
     /**
     * All the IDs of the indirectly referenced list items (tagboxes) that do not exist in the system.
     They are referenced list items that reference at least a list item that do not exist in the system.
     *
-    * @var string[]|null
+    * @var list<string>|null
     */
     protected $brokenIndirectReferenceIds;
     /**
@@ -161,7 +161,7 @@ class ListItemDetail
     /**
      * All the IDs of the referenced list items (tagboxes) that do not exist in the system.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getBrokenReferenceIds() : ?array
     {
@@ -170,7 +170,7 @@ class ListItemDetail
     /**
      * All the IDs of the referenced list items (tagboxes) that do not exist in the system.
      *
-     * @param string[]|null $brokenReferenceIds
+     * @param list<string>|null $brokenReferenceIds
      *
      * @return self
      */
@@ -183,7 +183,7 @@ class ListItemDetail
     /**
      * All the IDs of the contents or list items target of a relation that do not exist in the system.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getBrokenRelationTargetIds() : ?array
     {
@@ -192,7 +192,7 @@ class ListItemDetail
     /**
      * All the IDs of the contents or list items target of a relation that do not exist in the system.
      *
-     * @param string[]|null $brokenRelationTargetIds
+     * @param list<string>|null $brokenRelationTargetIds
      *
      * @return self
      */
@@ -206,7 +206,7 @@ class ListItemDetail
     * All the IDs of the indirectly referenced list items (tagboxes) that do not exist in the system.
     They are referenced list items that reference at least a list item that do not exist in the system.
     *
-    * @return string[]|null
+    * @return list<string>|null
     */
     public function getBrokenIndirectReferenceIds() : ?array
     {
@@ -216,7 +216,7 @@ class ListItemDetail
     * All the IDs of the indirectly referenced list items (tagboxes) that do not exist in the system.
     They are referenced list items that reference at least a list item that do not exist in the system.
     *
-    * @param string[]|null $brokenIndirectReferenceIds
+    * @param list<string>|null $brokenIndirectReferenceIds
     *
     * @return self
     */

@@ -26,7 +26,7 @@ class IPAM
     ```
     
     *
-    * @var array<string, string>[]
+    * @var list<array<string, string>>
     */
     protected $config;
     /**
@@ -65,7 +65,7 @@ class IPAM
     ```
     
     *
-    * @return array<string, string>[]
+    * @return list<array<string, string>>
     */
     public function getConfig() : array
     {
@@ -79,7 +79,7 @@ class IPAM
     ```
     
     *
-    * @param array<string, string>[] $config
+    * @param list<array<string, string>> $config
     *
     * @return self
     */

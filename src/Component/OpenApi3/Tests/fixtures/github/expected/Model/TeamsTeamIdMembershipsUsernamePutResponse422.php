@@ -21,7 +21,7 @@ class TeamsTeamIdMembershipsUsernamePutResponse422 extends \ArrayObject
     /**
      * 
      *
-     * @var TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItem[]
+     * @var list<TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItem>
      */
     protected $errors;
     /**
@@ -55,7 +55,7 @@ class TeamsTeamIdMembershipsUsernamePutResponse422 extends \ArrayObject
     /**
      * 
      *
-     * @return TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItem[]
+     * @return list<TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItem>
      */
     public function getErrors() : array
     {
@@ -64,7 +64,7 @@ class TeamsTeamIdMembershipsUsernamePutResponse422 extends \ArrayObject
     /**
      * 
      *
-     * @param TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItem[] $errors
+     * @param list<TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItem> $errors
      *
      * @return self
      */

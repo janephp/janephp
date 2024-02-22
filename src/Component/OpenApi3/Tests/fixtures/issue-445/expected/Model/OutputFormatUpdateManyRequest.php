@@ -15,13 +15,13 @@ class OutputFormatUpdateManyRequest
     /**
      * Output format items to be modified.
      *
-     * @var OutputFormatUpdateManyRequestItem[]|null
+     * @var list<OutputFormatUpdateManyRequestItem>|null
      */
     protected $items;
     /**
      * Output format items to be modified.
      *
-     * @return OutputFormatUpdateManyRequestItem[]|null
+     * @return list<OutputFormatUpdateManyRequestItem>|null
      */
     public function getItems() : ?array
     {
@@ -30,7 +30,7 @@ class OutputFormatUpdateManyRequest
     /**
      * Output format items to be modified.
      *
-     * @param OutputFormatUpdateManyRequestItem[]|null $items
+     * @param list<OutputFormatUpdateManyRequestItem>|null $items
      *
      * @return self
      */

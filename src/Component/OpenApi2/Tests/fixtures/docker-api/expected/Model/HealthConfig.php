@@ -21,7 +21,7 @@ class HealthConfig
     - `["CMD-SHELL", command]` run command with system's default shell
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $test;
     /**
@@ -66,7 +66,7 @@ class HealthConfig
     - `["CMD-SHELL", command]` run command with system's default shell
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getTest() : array
     {
@@ -81,7 +81,7 @@ class HealthConfig
     - `["CMD-SHELL", command]` run command with system's default shell
     
     *
-    * @param string[] $test
+    * @param list<string> $test
     *
     * @return self
     */

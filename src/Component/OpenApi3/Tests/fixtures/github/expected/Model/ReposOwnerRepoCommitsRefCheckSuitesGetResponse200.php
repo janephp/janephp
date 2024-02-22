@@ -21,7 +21,7 @@ class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var CheckSuite[]
+     * @var list<CheckSuite>
      */
     protected $checkSuites;
     /**
@@ -49,7 +49,7 @@ class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return CheckSuite[]
+     * @return list<CheckSuite>
      */
     public function getCheckSuites() : array
     {
@@ -58,7 +58,7 @@ class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param CheckSuite[] $checkSuites
+     * @param list<CheckSuite> $checkSuites
      *
      * @return self
      */

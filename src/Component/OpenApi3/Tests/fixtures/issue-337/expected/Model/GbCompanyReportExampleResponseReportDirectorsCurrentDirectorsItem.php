@@ -69,7 +69,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem extends 
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemPositionsItem[]
+     * @var list<GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemPositionsItem>
      */
     protected $positions;
     /**
@@ -273,7 +273,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem extends 
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemPositionsItem[]
+     * @return list<GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemPositionsItem>
      */
     public function getPositions() : array
     {
@@ -282,7 +282,7 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem extends 
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemPositionsItem[] $positions
+     * @param list<GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemPositionsItem> $positions
      *
      * @return self
      */

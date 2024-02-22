@@ -81,7 +81,7 @@ class CheckRunApp extends \ArrayObject
     /**
      * The list of events for the GitHub app
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $events;
     /**
@@ -359,7 +359,7 @@ class CheckRunApp extends \ArrayObject
     /**
      * The list of events for the GitHub app
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getEvents() : array
     {
@@ -368,7 +368,7 @@ class CheckRunApp extends \ArrayObject
     /**
      * The list of events for the GitHub app
      *
-     * @param string[] $events
+     * @param list<string> $events
      *
      * @return self
      */

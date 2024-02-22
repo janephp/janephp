@@ -15,13 +15,13 @@ class BusinessRuleTransformationGroup
     /**
      * The inputs of the transformation group.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $inputs;
     /**
      * A list of transformations to apply.
      *
-     * @var BusinessRuleTransformation[]|null
+     * @var list<BusinessRuleTransformation>|null
      */
     protected $transformations;
     /**
@@ -39,7 +39,7 @@ class BusinessRuleTransformationGroup
     /**
      * The inputs of the transformation group.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getInputs() : ?array
     {
@@ -48,7 +48,7 @@ class BusinessRuleTransformationGroup
     /**
      * The inputs of the transformation group.
      *
-     * @param string[]|null $inputs
+     * @param list<string>|null $inputs
      *
      * @return self
      */
@@ -61,7 +61,7 @@ class BusinessRuleTransformationGroup
     /**
      * A list of transformations to apply.
      *
-     * @return BusinessRuleTransformation[]|null
+     * @return list<BusinessRuleTransformation>|null
      */
     public function getTransformations() : ?array
     {
@@ -70,7 +70,7 @@ class BusinessRuleTransformationGroup
     /**
      * A list of transformations to apply.
      *
-     * @param BusinessRuleTransformation[]|null $transformations
+     * @param list<BusinessRuleTransformation>|null $transformations
      *
      * @return self
      */

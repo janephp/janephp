@@ -15,13 +15,13 @@ class Hovercard extends \ArrayObject
     /**
      * 
      *
-     * @var HovercardContextsItem[]
+     * @var list<HovercardContextsItem>
      */
     protected $contexts;
     /**
      * 
      *
-     * @return HovercardContextsItem[]
+     * @return list<HovercardContextsItem>
      */
     public function getContexts() : array
     {
@@ -30,7 +30,7 @@ class Hovercard extends \ArrayObject
     /**
      * 
      *
-     * @param HovercardContextsItem[] $contexts
+     * @param list<HovercardContextsItem> $contexts
      *
      * @return self
      */

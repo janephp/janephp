@@ -15,13 +15,13 @@ class BulkResponse
     /**
      * Rows of the bulk response.
      *
-     * @var BulkResponseRow[]|null
+     * @var list<BulkResponseRow>|null
      */
     protected $rows;
     /**
      * Rows of the bulk response.
      *
-     * @return BulkResponseRow[]|null
+     * @return list<BulkResponseRow>|null
      */
     public function getRows() : ?array
     {
@@ -30,7 +30,7 @@ class BulkResponse
     /**
      * Rows of the bulk response.
      *
-     * @param BulkResponseRow[]|null $rows
+     * @param list<BulkResponseRow>|null $rows
      *
      * @return self
      */

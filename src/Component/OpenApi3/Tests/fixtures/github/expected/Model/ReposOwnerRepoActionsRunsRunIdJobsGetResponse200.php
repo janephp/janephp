@@ -21,7 +21,7 @@ class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var Job[]
+     * @var list<Job>
      */
     protected $jobs;
     /**
@@ -49,7 +49,7 @@ class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return Job[]
+     * @return list<Job>
      */
     public function getJobs() : array
     {
@@ -58,7 +58,7 @@ class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param Job[] $jobs
+     * @param list<Job> $jobs
      *
      * @return self
      */

@@ -15,7 +15,7 @@ class ReviewsGetLdjsonResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var ReviewJsonldReviewRead[]
+     * @var list<ReviewJsonldReviewRead>
      */
     protected $hydraMember;
     /**
@@ -39,7 +39,7 @@ class ReviewsGetLdjsonResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return ReviewJsonldReviewRead[]
+     * @return list<ReviewJsonldReviewRead>
      */
     public function getHydraMember() : array
     {
@@ -48,7 +48,7 @@ class ReviewsGetLdjsonResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param ReviewJsonldReviewRead[] $hydraMember
+     * @param list<ReviewJsonldReviewRead> $hydraMember
      *
      * @return self
      */

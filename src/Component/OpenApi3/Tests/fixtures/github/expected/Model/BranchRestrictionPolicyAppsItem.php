@@ -81,7 +81,7 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $events;
     /**
@@ -329,7 +329,7 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getEvents() : array
     {
@@ -338,7 +338,7 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $events
+     * @param list<string> $events
      *
      * @return self
      */

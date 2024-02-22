@@ -33,7 +33,7 @@ class TestFormPostBody extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $testArray;
     /**
@@ -117,7 +117,7 @@ class TestFormPostBody extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getTestArray() : array
     {
@@ -126,7 +126,7 @@ class TestFormPostBody extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $testArray
+     * @param list<mixed> $testArray
      *
      * @return self
      */

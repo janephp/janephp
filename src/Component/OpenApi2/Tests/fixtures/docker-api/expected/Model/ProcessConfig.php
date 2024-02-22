@@ -39,7 +39,7 @@ class ProcessConfig
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $arguments;
     /**
@@ -133,7 +133,7 @@ class ProcessConfig
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getArguments() : array
     {
@@ -142,7 +142,7 @@ class ProcessConfig
     /**
      * 
      *
-     * @param string[] $arguments
+     * @param list<string> $arguments
      *
      * @return self
      */

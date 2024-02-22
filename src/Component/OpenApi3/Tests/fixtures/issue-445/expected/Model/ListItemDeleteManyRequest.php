@@ -15,7 +15,7 @@ class ListItemDeleteManyRequest
     /**
      * IDs of the list items to delete.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $listItemIds;
     /**
@@ -33,7 +33,7 @@ class ListItemDeleteManyRequest
     /**
      * IDs of the list items to delete.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getListItemIds() : array
     {
@@ -42,7 +42,7 @@ class ListItemDeleteManyRequest
     /**
      * IDs of the list items to delete.
      *
-     * @param string[] $listItemIds
+     * @param list<string> $listItemIds
      *
      * @return self
      */

@@ -22,7 +22,7 @@ class GeoPointWithinPolygonCondition extends BusinessRuleCondition
     * List of points that form the polygon for the geo fence.
     Must include at least 3 points.
     *
-    * @var LatLon[]|null
+    * @var list<LatLon>|null
     */
     protected $polygon;
     /**
@@ -51,7 +51,7 @@ class GeoPointWithinPolygonCondition extends BusinessRuleCondition
     * List of points that form the polygon for the geo fence.
     Must include at least 3 points.
     *
-    * @return LatLon[]|null
+    * @return list<LatLon>|null
     */
     public function getPolygon() : ?array
     {
@@ -61,7 +61,7 @@ class GeoPointWithinPolygonCondition extends BusinessRuleCondition
     * List of points that form the polygon for the geo fence.
     Must include at least 3 points.
     *
-    * @param LatLon[]|null $polygon
+    * @param list<LatLon>|null $polygon
     *
     * @return self
     */

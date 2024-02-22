@@ -33,7 +33,7 @@ class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $availableFormats;
     /**
@@ -105,7 +105,7 @@ class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getAvailableFormats() : array
     {
@@ -114,7 +114,7 @@ class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $availableFormats
+     * @param list<string> $availableFormats
      *
      * @return self
      */

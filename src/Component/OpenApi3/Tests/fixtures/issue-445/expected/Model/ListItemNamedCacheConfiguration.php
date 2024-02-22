@@ -21,7 +21,7 @@ class ListItemNamedCacheConfiguration extends NamedCacheConfigurationBase
     /**
      * List of IDs of fields to use as a composite key
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $keyFields;
     /**
@@ -61,7 +61,7 @@ class ListItemNamedCacheConfiguration extends NamedCacheConfigurationBase
     /**
      * List of IDs of fields to use as a composite key
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getKeyFields() : ?array
     {
@@ -70,7 +70,7 @@ class ListItemNamedCacheConfiguration extends NamedCacheConfigurationBase
     /**
      * List of IDs of fields to use as a composite key
      *
-     * @param string[]|null $keyFields
+     * @param list<string>|null $keyFields
      *
      * @return self
      */

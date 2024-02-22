@@ -69,7 +69,7 @@ class ReferencesUpdateException extends \ArrayObject
     /**
      * 
      *
-     * @var ReferenceUpdateException[]|null
+     * @var list<ReferenceUpdateException>|null
      */
     protected $exceptions;
     /**
@@ -273,7 +273,7 @@ class ReferencesUpdateException extends \ArrayObject
     /**
      * 
      *
-     * @return ReferenceUpdateException[]|null
+     * @return list<ReferenceUpdateException>|null
      */
     public function getExceptions() : ?array
     {
@@ -282,7 +282,7 @@ class ReferencesUpdateException extends \ArrayObject
     /**
      * 
      *
-     * @param ReferenceUpdateException[]|null $exceptions
+     * @param list<ReferenceUpdateException>|null $exceptions
      *
      * @return self
      */

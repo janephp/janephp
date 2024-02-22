@@ -21,7 +21,7 @@ class ReposOwnerRepoCommitsRefCheckRunsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var CheckRun[]
+     * @var list<CheckRun>
      */
     protected $checkRuns;
     /**
@@ -49,7 +49,7 @@ class ReposOwnerRepoCommitsRefCheckRunsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return CheckRun[]
+     * @return list<CheckRun>
      */
     public function getCheckRuns() : array
     {
@@ -58,7 +58,7 @@ class ReposOwnerRepoCommitsRefCheckRunsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param CheckRun[] $checkRuns
+     * @param list<CheckRun> $checkRuns
      *
      * @return self
      */

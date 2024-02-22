@@ -51,7 +51,7 @@ class ServicesIdUpdatePostBody
     /**
      * Specifies which networks the service should attach to.
      *
-     * @var NetworkAttachmentConfig[]
+     * @var list<NetworkAttachmentConfig>
      */
     protected $networks;
     /**
@@ -195,7 +195,7 @@ class ServicesIdUpdatePostBody
     /**
      * Specifies which networks the service should attach to.
      *
-     * @return NetworkAttachmentConfig[]
+     * @return list<NetworkAttachmentConfig>
      */
     public function getNetworks() : array
     {
@@ -204,7 +204,7 @@ class ServicesIdUpdatePostBody
     /**
      * Specifies which networks the service should attach to.
      *
-     * @param NetworkAttachmentConfig[] $networks
+     * @param list<NetworkAttachmentConfig> $networks
      *
      * @return self
      */

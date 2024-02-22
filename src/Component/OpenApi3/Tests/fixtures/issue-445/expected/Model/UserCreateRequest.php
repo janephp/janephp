@@ -39,7 +39,7 @@ class UserCreateRequest
     /**
      * IDs of user roles the user is assigned to.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $userRoleIds;
     /**
@@ -139,7 +139,7 @@ class UserCreateRequest
     /**
      * IDs of user roles the user is assigned to.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getUserRoleIds() : ?array
     {
@@ -148,7 +148,7 @@ class UserCreateRequest
     /**
      * IDs of user roles the user is assigned to.
      *
-     * @param string[]|null $userRoleIds
+     * @param list<string>|null $userRoleIds
      *
      * @return self
      */

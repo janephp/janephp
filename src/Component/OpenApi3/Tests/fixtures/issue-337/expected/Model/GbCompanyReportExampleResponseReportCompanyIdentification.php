@@ -21,13 +21,13 @@ class GbCompanyReportExampleResponseReportCompanyIdentification extends \ArrayOb
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItem[]
+     * @var list<GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItem>
      */
     protected $activityClassifications;
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportCompanyIdentificationPreviousNamesItem[]
+     * @var list<GbCompanyReportExampleResponseReportCompanyIdentificationPreviousNamesItem>
      */
     protected $previousNames;
     /**
@@ -55,7 +55,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentification extends \ArrayOb
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItem[]
+     * @return list<GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItem>
      */
     public function getActivityClassifications() : array
     {
@@ -64,7 +64,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentification extends \ArrayOb
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItem[] $activityClassifications
+     * @param list<GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItem> $activityClassifications
      *
      * @return self
      */
@@ -77,7 +77,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentification extends \ArrayOb
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportCompanyIdentificationPreviousNamesItem[]
+     * @return list<GbCompanyReportExampleResponseReportCompanyIdentificationPreviousNamesItem>
      */
     public function getPreviousNames() : array
     {
@@ -86,7 +86,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentification extends \ArrayOb
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportCompanyIdentificationPreviousNamesItem[] $previousNames
+     * @param list<GbCompanyReportExampleResponseReportCompanyIdentificationPreviousNamesItem> $previousNames
      *
      * @return self
      */

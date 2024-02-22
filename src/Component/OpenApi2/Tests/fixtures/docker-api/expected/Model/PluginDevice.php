@@ -27,7 +27,7 @@ class PluginDevice
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $settable;
     /**
@@ -83,7 +83,7 @@ class PluginDevice
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getSettable() : array
     {
@@ -92,7 +92,7 @@ class PluginDevice
     /**
      * 
      *
-     * @param string[] $settable
+     * @param list<string> $settable
      *
      * @return self
      */

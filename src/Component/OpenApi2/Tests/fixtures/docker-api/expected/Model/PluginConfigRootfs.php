@@ -21,7 +21,7 @@ class PluginConfigRootfs
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $diffIds;
     /**
@@ -49,7 +49,7 @@ class PluginConfigRootfs
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getDiffIds() : array
     {
@@ -58,7 +58,7 @@ class PluginConfigRootfs
     /**
      * 
      *
-     * @param string[] $diffIds
+     * @param list<string> $diffIds
      *
      * @return self
      */

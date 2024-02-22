@@ -51,7 +51,7 @@ class Feed extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $currentUserOrganizationUrls;
     /**
@@ -201,7 +201,7 @@ class Feed extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getCurrentUserOrganizationUrls() : array
     {
@@ -210,7 +210,7 @@ class Feed extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $currentUserOrganizationUrls
+     * @param list<string> $currentUserOrganizationUrls
      *
      * @return self
      */

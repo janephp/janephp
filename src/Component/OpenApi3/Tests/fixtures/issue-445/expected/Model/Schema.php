@@ -27,7 +27,7 @@ class Schema
     /**
      * List of schema types. Currently only one schema type can be assigned to this list, and it cannot be modified once the schema is created.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $types;
     /**
@@ -45,7 +45,7 @@ class Schema
     /**
      * An optional list of schemas' IDs with type layer. For a Content schema it stores the layers that can be assigned to a content.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $layerSchemaIds;
     /**
@@ -119,7 +119,7 @@ class Schema
     /**
      * List of schema types. Currently only one schema type can be assigned to this list, and it cannot be modified once the schema is created.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getTypes() : ?array
     {
@@ -128,7 +128,7 @@ class Schema
     /**
      * List of schema types. Currently only one schema type can be assigned to this list, and it cannot be modified once the schema is created.
      *
-     * @param string[]|null $types
+     * @param list<string>|null $types
      *
      * @return self
      */
@@ -185,7 +185,7 @@ class Schema
     /**
      * An optional list of schemas' IDs with type layer. For a Content schema it stores the layers that can be assigned to a content.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getLayerSchemaIds() : ?array
     {
@@ -194,7 +194,7 @@ class Schema
     /**
      * An optional list of schemas' IDs with type layer. For a Content schema it stores the layers that can be assigned to a content.
      *
-     * @param string[]|null $layerSchemaIds
+     * @param list<string>|null $layerSchemaIds
      *
      * @return self
      */

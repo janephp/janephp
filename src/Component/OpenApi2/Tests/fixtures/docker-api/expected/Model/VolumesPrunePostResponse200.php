@@ -15,7 +15,7 @@ class VolumesPrunePostResponse200
     /**
      * Volumes that were deleted
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $volumesDeleted;
     /**
@@ -27,7 +27,7 @@ class VolumesPrunePostResponse200
     /**
      * Volumes that were deleted
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getVolumesDeleted() : array
     {
@@ -36,7 +36,7 @@ class VolumesPrunePostResponse200
     /**
      * Volumes that were deleted
      *
-     * @param string[] $volumesDeleted
+     * @param list<string> $volumesDeleted
      *
      * @return self
      */

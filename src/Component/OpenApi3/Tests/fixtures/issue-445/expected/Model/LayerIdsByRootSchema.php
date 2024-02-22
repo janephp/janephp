@@ -21,7 +21,7 @@ class LayerIdsByRootSchema
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $layerSchemaIds;
     /**
@@ -49,7 +49,7 @@ class LayerIdsByRootSchema
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getLayerSchemaIds() : ?array
     {
@@ -58,7 +58,7 @@ class LayerIdsByRootSchema
     /**
      * 
      *
-     * @param string[]|null $layerSchemaIds
+     * @param list<string>|null $layerSchemaIds
      *
      * @return self
      */

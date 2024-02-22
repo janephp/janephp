@@ -21,7 +21,7 @@ class Point extends \ArrayObject
     /**
      * A [GeoJson Position](https://tools.ietf.org/html/rfc7946#section-3.1.1) in the format `[longitude,latitude]`.
      *
-     * @var float[]
+     * @var list<float>
      */
     protected $coordinates;
     /**
@@ -49,7 +49,7 @@ class Point extends \ArrayObject
     /**
      * A [GeoJson Position](https://tools.ietf.org/html/rfc7946#section-3.1.1) in the format `[longitude,latitude]`.
      *
-     * @return float[]
+     * @return list<float>
      */
     public function getCoordinates() : array
     {
@@ -58,7 +58,7 @@ class Point extends \ArrayObject
     /**
      * A [GeoJson Position](https://tools.ietf.org/html/rfc7946#section-3.1.1) in the format `[longitude,latitude]`.
      *
-     * @param float[] $coordinates
+     * @param list<float> $coordinates
      *
      * @return self
      */

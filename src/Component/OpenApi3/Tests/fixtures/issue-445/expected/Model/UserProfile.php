@@ -63,13 +63,13 @@ class UserProfile
     /**
      * A list of user rights assigned to the user.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $userRights;
     /**
      * A list of user role IDs assigned to the user.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $userRoleIds;
     /**
@@ -81,7 +81,7 @@ class UserProfile
     /**
      * A list of system user roles assigned to the user.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $systemUserRoles;
     /**
@@ -275,7 +275,7 @@ class UserProfile
     /**
      * A list of user rights assigned to the user.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getUserRights() : ?array
     {
@@ -284,7 +284,7 @@ class UserProfile
     /**
      * A list of user rights assigned to the user.
      *
-     * @param string[]|null $userRights
+     * @param list<string>|null $userRights
      *
      * @return self
      */
@@ -297,7 +297,7 @@ class UserProfile
     /**
      * A list of user role IDs assigned to the user.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getUserRoleIds() : ?array
     {
@@ -306,7 +306,7 @@ class UserProfile
     /**
      * A list of user role IDs assigned to the user.
      *
-     * @param string[]|null $userRoleIds
+     * @param list<string>|null $userRoleIds
      *
      * @return self
      */
@@ -341,7 +341,7 @@ class UserProfile
     /**
      * A list of system user roles assigned to the user.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSystemUserRoles() : ?array
     {
@@ -350,7 +350,7 @@ class UserProfile
     /**
      * A list of system user roles assigned to the user.
      *
-     * @param string[]|null $systemUserRoles
+     * @param list<string>|null $systemUserRoles
      *
      * @return self
      */

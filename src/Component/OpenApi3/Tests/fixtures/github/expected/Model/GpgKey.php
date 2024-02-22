@@ -39,13 +39,13 @@ class GpgKey extends \ArrayObject
     /**
      * 
      *
-     * @var GpgKeyEmailsItem[]
+     * @var list<GpgKeyEmailsItem>
      */
     protected $emails;
     /**
      * 
      *
-     * @var GpgKeySubkeysItem[]
+     * @var list<GpgKeySubkeysItem>
      */
     protected $subkeys;
     /**
@@ -181,7 +181,7 @@ class GpgKey extends \ArrayObject
     /**
      * 
      *
-     * @return GpgKeyEmailsItem[]
+     * @return list<GpgKeyEmailsItem>
      */
     public function getEmails() : array
     {
@@ -190,7 +190,7 @@ class GpgKey extends \ArrayObject
     /**
      * 
      *
-     * @param GpgKeyEmailsItem[] $emails
+     * @param list<GpgKeyEmailsItem> $emails
      *
      * @return self
      */
@@ -203,7 +203,7 @@ class GpgKey extends \ArrayObject
     /**
      * 
      *
-     * @return GpgKeySubkeysItem[]
+     * @return list<GpgKeySubkeysItem>
      */
     public function getSubkeys() : array
     {
@@ -212,7 +212,7 @@ class GpgKey extends \ArrayObject
     /**
      * 
      *
-     * @param GpgKeySubkeysItem[] $subkeys
+     * @param list<GpgKeySubkeysItem> $subkeys
      *
      * @return self
      */

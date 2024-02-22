@@ -39,7 +39,7 @@ class BusinessProcessSearchRequest
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $searchBehaviors;
     /**
@@ -140,7 +140,7 @@ class BusinessProcessSearchRequest
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSearchBehaviors() : ?array
     {
@@ -149,7 +149,7 @@ class BusinessProcessSearchRequest
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied.
      *
-     * @param string[]|null $searchBehaviors
+     * @param list<string>|null $searchBehaviors
      *
      * @return self
      */

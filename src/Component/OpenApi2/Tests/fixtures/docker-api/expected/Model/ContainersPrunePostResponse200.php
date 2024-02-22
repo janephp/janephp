@@ -15,7 +15,7 @@ class ContainersPrunePostResponse200
     /**
      * Container IDs that were deleted
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $containersDeleted;
     /**
@@ -27,7 +27,7 @@ class ContainersPrunePostResponse200
     /**
      * Container IDs that were deleted
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getContainersDeleted() : array
     {
@@ -36,7 +36,7 @@ class ContainersPrunePostResponse200
     /**
      * Container IDs that were deleted
      *
-     * @param string[] $containersDeleted
+     * @param list<string> $containersDeleted
      *
      * @return self
      */

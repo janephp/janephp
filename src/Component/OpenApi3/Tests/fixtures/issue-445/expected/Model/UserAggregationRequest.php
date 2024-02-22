@@ -21,7 +21,7 @@ class UserAggregationRequest extends \ArrayObject
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $searchBehaviors;
     /**
@@ -39,7 +39,7 @@ class UserAggregationRequest extends \ArrayObject
     /**
      * Return only users with certain user rights.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $userRightsFilter;
     /**
@@ -50,7 +50,7 @@ class UserAggregationRequest extends \ArrayObject
     aggregation results of that aggregation: depending if the AggregationName of the AggregationFilter matches the AggregationName of the Aggregator, the filter is put in OR (if it matches) or in AND (if it does not match it).
     Moreover, an AggregationFilter ensures that the related value is returned in the AggregationResults also if the top aggregation values returned by default do not contain it.
     *
-    * @var AggregationFilter[]|null
+    * @var list<AggregationFilter>|null
     */
     protected $aggregationFilters;
     /**
@@ -69,7 +69,7 @@ class UserAggregationRequest extends \ArrayObject
     /**
      * List of aggregators that defines how the items should be aggregated.
      *
-     * @var AggregatorBase[]
+     * @var list<AggregatorBase>
      */
     protected $aggregators;
     /**
@@ -97,7 +97,7 @@ class UserAggregationRequest extends \ArrayObject
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSearchBehaviors() : ?array
     {
@@ -106,7 +106,7 @@ class UserAggregationRequest extends \ArrayObject
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied.
      *
-     * @param string[]|null $searchBehaviors
+     * @param list<string>|null $searchBehaviors
      *
      * @return self
      */
@@ -163,7 +163,7 @@ class UserAggregationRequest extends \ArrayObject
     /**
      * Return only users with certain user rights.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getUserRightsFilter() : ?array
     {
@@ -172,7 +172,7 @@ class UserAggregationRequest extends \ArrayObject
     /**
      * Return only users with certain user rights.
      *
-     * @param string[]|null $userRightsFilter
+     * @param list<string>|null $userRightsFilter
      *
      * @return self
      */
@@ -190,7 +190,7 @@ class UserAggregationRequest extends \ArrayObject
     aggregation results of that aggregation: depending if the AggregationName of the AggregationFilter matches the AggregationName of the Aggregator, the filter is put in OR (if it matches) or in AND (if it does not match it).
     Moreover, an AggregationFilter ensures that the related value is returned in the AggregationResults also if the top aggregation values returned by default do not contain it.
     *
-    * @return AggregationFilter[]|null
+    * @return list<AggregationFilter>|null
     */
     public function getAggregationFilters() : ?array
     {
@@ -204,7 +204,7 @@ class UserAggregationRequest extends \ArrayObject
     aggregation results of that aggregation: depending if the AggregationName of the AggregationFilter matches the AggregationName of the Aggregator, the filter is put in OR (if it matches) or in AND (if it does not match it).
     Moreover, an AggregationFilter ensures that the related value is returned in the AggregationResults also if the top aggregation values returned by default do not contain it.
     *
-    * @param AggregationFilter[]|null $aggregationFilters
+    * @param list<AggregationFilter>|null $aggregationFilters
     *
     * @return self
     */
@@ -263,7 +263,7 @@ class UserAggregationRequest extends \ArrayObject
     /**
      * List of aggregators that defines how the items should be aggregated.
      *
-     * @return AggregatorBase[]
+     * @return list<AggregatorBase>
      */
     public function getAggregators() : array
     {
@@ -272,7 +272,7 @@ class UserAggregationRequest extends \ArrayObject
     /**
      * List of aggregators that defines how the items should be aggregated.
      *
-     * @param AggregatorBase[] $aggregators
+     * @param list<AggregatorBase> $aggregators
      *
      * @return self
      */

@@ -15,13 +15,13 @@ class UserRoleCreateManyRequest
     /**
      * Multiple user creation requests.
      *
-     * @var UserRoleCreateRequest[]
+     * @var list<UserRoleCreateRequest>
      */
     protected $items;
     /**
      * Multiple user creation requests.
      *
-     * @return UserRoleCreateRequest[]
+     * @return list<UserRoleCreateRequest>
      */
     public function getItems() : array
     {
@@ -30,7 +30,7 @@ class UserRoleCreateManyRequest
     /**
      * Multiple user creation requests.
      *
-     * @param UserRoleCreateRequest[] $items
+     * @param list<UserRoleCreateRequest> $items
      *
      * @return self
      */

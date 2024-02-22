@@ -34,7 +34,7 @@ class TaskSpecPlacement
     purposes by using the [`node update endpoint`](#operation/NodeUpdate).
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $constraints;
     /**
@@ -43,7 +43,7 @@ class TaskSpecPlacement
     lowest precedence.
     
     *
-    * @var TaskSpecPlacementPreferencesItem[]
+    * @var list<TaskSpecPlacementPreferencesItem>
     */
     protected $preferences;
     /**
@@ -61,7 +61,7 @@ class TaskSpecPlacement
     scheduling restrictions.
     
     *
-    * @var Platform[]
+    * @var list<Platform>
     */
     protected $platforms;
     /**
@@ -86,7 +86,7 @@ class TaskSpecPlacement
     purposes by using the [`node update endpoint`](#operation/NodeUpdate).
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getConstraints() : array
     {
@@ -114,7 +114,7 @@ class TaskSpecPlacement
     purposes by using the [`node update endpoint`](#operation/NodeUpdate).
     
     *
-    * @param string[] $constraints
+    * @param list<string> $constraints
     *
     * @return self
     */
@@ -130,7 +130,7 @@ class TaskSpecPlacement
     lowest precedence.
     
     *
-    * @return TaskSpecPlacementPreferencesItem[]
+    * @return list<TaskSpecPlacementPreferencesItem>
     */
     public function getPreferences() : array
     {
@@ -142,7 +142,7 @@ class TaskSpecPlacement
     lowest precedence.
     
     *
-    * @param TaskSpecPlacementPreferencesItem[] $preferences
+    * @param list<TaskSpecPlacementPreferencesItem> $preferences
     *
     * @return self
     */
@@ -185,7 +185,7 @@ class TaskSpecPlacement
     scheduling restrictions.
     
     *
-    * @return Platform[]
+    * @return list<Platform>
     */
     public function getPlatforms() : array
     {
@@ -198,7 +198,7 @@ class TaskSpecPlacement
     scheduling restrictions.
     
     *
-    * @param Platform[] $platforms
+    * @param list<Platform> $platforms
     *
     * @return self
     */

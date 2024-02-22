@@ -15,13 +15,13 @@ class BusinessRuleFiredEvent extends ApplicationEvent
     /**
      * 
      *
-     * @var BusinessRuleFiredEventDetail[]|null
+     * @var list<BusinessRuleFiredEventDetail>|null
      */
     protected $details;
     /**
      * 
      *
-     * @return BusinessRuleFiredEventDetail[]|null
+     * @return list<BusinessRuleFiredEventDetail>|null
      */
     public function getDetails() : ?array
     {
@@ -30,7 +30,7 @@ class BusinessRuleFiredEvent extends ApplicationEvent
     /**
      * 
      *
-     * @param BusinessRuleFiredEventDetail[]|null $details
+     * @param list<BusinessRuleFiredEventDetail>|null $details
      *
      * @return self
      */

@@ -15,19 +15,19 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBody extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $schemas;
     /**
      * Set of operations to be performed
      *
-     * @var ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem[]
+     * @var list<ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem>
      */
     protected $operations;
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getSchemas() : array
     {
@@ -36,7 +36,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBody extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $schemas
+     * @param list<string> $schemas
      *
      * @return self
      */
@@ -49,7 +49,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBody extends \ArrayObject
     /**
      * Set of operations to be performed
      *
-     * @return ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem[]
+     * @return list<ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem>
      */
     public function getOperations() : array
     {
@@ -58,7 +58,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBody extends \ArrayObject
     /**
      * Set of operations to be performed
      *
-     * @param ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem[] $operations
+     * @param list<ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem> $operations
      *
      * @return self
      */

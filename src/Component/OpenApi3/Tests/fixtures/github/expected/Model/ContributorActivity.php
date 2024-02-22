@@ -27,7 +27,7 @@ class ContributorActivity extends \ArrayObject
     /**
      * 
      *
-     * @var ContributorActivityWeeksItem[]
+     * @var list<ContributorActivityWeeksItem>
      */
     protected $weeks;
     /**
@@ -77,7 +77,7 @@ class ContributorActivity extends \ArrayObject
     /**
      * 
      *
-     * @return ContributorActivityWeeksItem[]
+     * @return list<ContributorActivityWeeksItem>
      */
     public function getWeeks() : array
     {
@@ -86,7 +86,7 @@ class ContributorActivity extends \ArrayObject
     /**
      * 
      *
-     * @param ContributorActivityWeeksItem[] $weeks
+     * @param list<ContributorActivityWeeksItem> $weeks
      *
      * @return self
      */

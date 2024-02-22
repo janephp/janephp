@@ -15,13 +15,13 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBody extends \ArrayObject
     /**
      * Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default. See the [`auto_trigger_checks` object](https://developer.github.com/v3/checks/suites/#auto_trigger_checks-object) description for details.
      *
-     * @var ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItem[]
+     * @var list<ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItem>
      */
     protected $autoTriggerChecks;
     /**
      * Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default. See the [`auto_trigger_checks` object](https://developer.github.com/v3/checks/suites/#auto_trigger_checks-object) description for details.
      *
-     * @return ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItem[]
+     * @return list<ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItem>
      */
     public function getAutoTriggerChecks() : array
     {
@@ -30,7 +30,7 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBody extends \ArrayObject
     /**
      * Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default. See the [`auto_trigger_checks` object](https://developer.github.com/v3/checks/suites/#auto_trigger_checks-object) description for details.
      *
-     * @param ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItem[] $autoTriggerChecks
+     * @param list<ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItem> $autoTriggerChecks
      *
      * @return self
      */

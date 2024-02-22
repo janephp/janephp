@@ -15,25 +15,25 @@ class OutputResetRetryAttemptsRequest
     /**
      * List of output IDs you want to filter on. If this field is not empty, the other will be ignored.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $outputIds;
     /**
      * List of Content IDs you want to filter on.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $contentIds;
     /**
      * The file extension of the outputs you want to filter on.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $fileExtensions;
     /**
      * The IDs of the output formats you want to filter on.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $outputFormatIds;
     /**
@@ -45,7 +45,7 @@ class OutputResetRetryAttemptsRequest
     /**
      * List of output IDs you want to filter on. If this field is not empty, the other will be ignored.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getOutputIds() : ?array
     {
@@ -54,7 +54,7 @@ class OutputResetRetryAttemptsRequest
     /**
      * List of output IDs you want to filter on. If this field is not empty, the other will be ignored.
      *
-     * @param string[]|null $outputIds
+     * @param list<string>|null $outputIds
      *
      * @return self
      */
@@ -67,7 +67,7 @@ class OutputResetRetryAttemptsRequest
     /**
      * List of Content IDs you want to filter on.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getContentIds() : ?array
     {
@@ -76,7 +76,7 @@ class OutputResetRetryAttemptsRequest
     /**
      * List of Content IDs you want to filter on.
      *
-     * @param string[]|null $contentIds
+     * @param list<string>|null $contentIds
      *
      * @return self
      */
@@ -89,7 +89,7 @@ class OutputResetRetryAttemptsRequest
     /**
      * The file extension of the outputs you want to filter on.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getFileExtensions() : ?array
     {
@@ -98,7 +98,7 @@ class OutputResetRetryAttemptsRequest
     /**
      * The file extension of the outputs you want to filter on.
      *
-     * @param string[]|null $fileExtensions
+     * @param list<string>|null $fileExtensions
      *
      * @return self
      */
@@ -111,7 +111,7 @@ class OutputResetRetryAttemptsRequest
     /**
      * The IDs of the output formats you want to filter on.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getOutputFormatIds() : ?array
     {
@@ -120,7 +120,7 @@ class OutputResetRetryAttemptsRequest
     /**
      * The IDs of the output formats you want to filter on.
      *
-     * @param string[]|null $outputFormatIds
+     * @param list<string>|null $outputFormatIds
      *
      * @return self
      */

@@ -15,13 +15,13 @@ class Blacklist
     /**
      * Blacklist entries.
      *
-     * @var BlacklistItem[]
+     * @var list<BlacklistItem>
      */
     protected $items;
     /**
      * Blacklist entries.
      *
-     * @return BlacklistItem[]
+     * @return list<BlacklistItem>
      */
     public function getItems() : array
     {
@@ -30,7 +30,7 @@ class Blacklist
     /**
      * Blacklist entries.
      *
-     * @param BlacklistItem[] $items
+     * @param list<BlacklistItem> $items
      *
      * @return self
      */

@@ -21,7 +21,7 @@ class FileTransferDeleteRequest
     /**
      * List of IDs of file transfers to delete.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $fileTransferIds;
     /**
@@ -49,7 +49,7 @@ class FileTransferDeleteRequest
     /**
      * List of IDs of file transfers to delete.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getFileTransferIds() : array
     {
@@ -58,7 +58,7 @@ class FileTransferDeleteRequest
     /**
      * List of IDs of file transfers to delete.
      *
-     * @param string[] $fileTransferIds
+     * @param list<string> $fileTransferIds
      *
      * @return self
      */

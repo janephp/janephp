@@ -33,14 +33,14 @@ class ListItemFilterRequest
     /**
      * Limits the search among the list items of the provided schemas.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $schemaIds;
     /**
     * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
     If not specified, all metadata languages defined in the system are used.
     *
-    * @var string[]|null
+    * @var list<string>|null
     */
     protected $searchLanguages;
     /**
@@ -118,7 +118,7 @@ class ListItemFilterRequest
     /**
      * Limits the search among the list items of the provided schemas.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSchemaIds() : ?array
     {
@@ -127,7 +127,7 @@ class ListItemFilterRequest
     /**
      * Limits the search among the list items of the provided schemas.
      *
-     * @param string[]|null $schemaIds
+     * @param list<string>|null $schemaIds
      *
      * @return self
      */
@@ -141,7 +141,7 @@ class ListItemFilterRequest
     * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
     If not specified, all metadata languages defined in the system are used.
     *
-    * @return string[]|null
+    * @return list<string>|null
     */
     public function getSearchLanguages() : ?array
     {
@@ -151,7 +151,7 @@ class ListItemFilterRequest
     * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
     If not specified, all metadata languages defined in the system are used.
     *
-    * @param string[]|null $searchLanguages
+    * @param list<string>|null $searchLanguages
     *
     * @return self
     */

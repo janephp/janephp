@@ -87,7 +87,7 @@ class IssueSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @var SimpleUser[]|null
+     * @var list<SimpleUser>|null
      */
     protected $assignees;
     /**
@@ -99,7 +99,7 @@ class IssueSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @var IssueSearchResultItemLabelsItem[]
+     * @var list<IssueSearchResultItemLabelsItem>
      */
     protected $labels;
     /**
@@ -147,7 +147,7 @@ class IssueSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @var SearchResultTextMatchesItem[]
+     * @var list<SearchResultTextMatchesItem>
      */
     protected $textMatches;
     /**
@@ -477,7 +477,7 @@ class IssueSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @return SimpleUser[]|null
+     * @return list<SimpleUser>|null
      */
     public function getAssignees() : ?array
     {
@@ -486,7 +486,7 @@ class IssueSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @param SimpleUser[]|null $assignees
+     * @param list<SimpleUser>|null $assignees
      *
      * @return self
      */
@@ -521,7 +521,7 @@ class IssueSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @return IssueSearchResultItemLabelsItem[]
+     * @return list<IssueSearchResultItemLabelsItem>
      */
     public function getLabels() : array
     {
@@ -530,7 +530,7 @@ class IssueSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @param IssueSearchResultItemLabelsItem[] $labels
+     * @param list<IssueSearchResultItemLabelsItem> $labels
      *
      * @return self
      */
@@ -697,7 +697,7 @@ class IssueSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @return SearchResultTextMatchesItem[]
+     * @return list<SearchResultTextMatchesItem>
      */
     public function getTextMatches() : array
     {
@@ -706,7 +706,7 @@ class IssueSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @param SearchResultTextMatchesItem[] $textMatches
+     * @param list<SearchResultTextMatchesItem> $textMatches
      *
      * @return self
      */

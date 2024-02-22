@@ -27,7 +27,7 @@ class StatusCheckPolicy extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $contexts;
     /**
@@ -83,7 +83,7 @@ class StatusCheckPolicy extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getContexts() : array
     {
@@ -92,7 +92,7 @@ class StatusCheckPolicy extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $contexts
+     * @param list<string> $contexts
      *
      * @return self
      */

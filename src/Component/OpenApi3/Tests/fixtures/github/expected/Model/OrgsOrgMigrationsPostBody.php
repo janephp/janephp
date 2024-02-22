@@ -15,7 +15,7 @@ class OrgsOrgMigrationsPostBody extends \ArrayObject
     /**
      * A list of arrays indicating which repositories should be migrated.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $repositories;
     /**
@@ -33,13 +33,13 @@ class OrgsOrgMigrationsPostBody extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $exclude;
     /**
      * A list of arrays indicating which repositories should be migrated.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getRepositories() : array
     {
@@ -48,7 +48,7 @@ class OrgsOrgMigrationsPostBody extends \ArrayObject
     /**
      * A list of arrays indicating which repositories should be migrated.
      *
-     * @param string[] $repositories
+     * @param list<string> $repositories
      *
      * @return self
      */
@@ -105,7 +105,7 @@ class OrgsOrgMigrationsPostBody extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getExclude() : array
     {
@@ -114,7 +114,7 @@ class OrgsOrgMigrationsPostBody extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $exclude
+     * @param list<string> $exclude
      *
      * @return self
      */

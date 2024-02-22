@@ -15,13 +15,13 @@ class UserRoleUpdateManyRequest
     /**
      * New value for user roles with specified IDs.
      *
-     * @var UserRole[]
+     * @var list<UserRole>
      */
     protected $items;
     /**
      * New value for user roles with specified IDs.
      *
-     * @return UserRole[]
+     * @return list<UserRole>
      */
     public function getItems() : array
     {
@@ -30,7 +30,7 @@ class UserRoleUpdateManyRequest
     /**
      * New value for user roles with specified IDs.
      *
-     * @param UserRole[] $items
+     * @param list<UserRole> $items
      *
      * @return self
      */

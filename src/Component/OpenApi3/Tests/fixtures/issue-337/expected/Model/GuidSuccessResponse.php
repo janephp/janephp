@@ -15,13 +15,13 @@ class GuidSuccessResponse extends \ArrayObject
     /**
      * 
      *
-     * @var GuidSuccessResponseGUIDListItem[]
+     * @var list<GuidSuccessResponseGUIDListItem>
      */
     protected $gUIDList;
     /**
      * 
      *
-     * @return GuidSuccessResponseGUIDListItem[]
+     * @return list<GuidSuccessResponseGUIDListItem>
      */
     public function getGUIDList() : array
     {
@@ -30,7 +30,7 @@ class GuidSuccessResponse extends \ArrayObject
     /**
      * 
      *
-     * @param GuidSuccessResponseGUIDListItem[] $gUIDList
+     * @param list<GuidSuccessResponseGUIDListItem> $gUIDList
      *
      * @return self
      */

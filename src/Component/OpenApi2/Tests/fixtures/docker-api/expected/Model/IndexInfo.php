@@ -21,7 +21,7 @@ class IndexInfo
     /**
      * List of mirrors, expressed as URIs.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $mirrors;
     /**
@@ -73,7 +73,7 @@ class IndexInfo
     /**
      * List of mirrors, expressed as URIs.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getMirrors() : array
     {
@@ -82,7 +82,7 @@ class IndexInfo
     /**
      * List of mirrors, expressed as URIs.
      *
-     * @param string[] $mirrors
+     * @param list<string> $mirrors
      *
      * @return self
      */

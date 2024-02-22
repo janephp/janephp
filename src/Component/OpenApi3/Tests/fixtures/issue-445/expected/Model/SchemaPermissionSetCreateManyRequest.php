@@ -15,13 +15,13 @@ class SchemaPermissionSetCreateManyRequest
     /**
      * Schema permission sets create requests.
      *
-     * @var SchemaPermissionSetCreateRequest[]|null
+     * @var list<SchemaPermissionSetCreateRequest>|null
      */
     protected $items;
     /**
      * Schema permission sets create requests.
      *
-     * @return SchemaPermissionSetCreateRequest[]|null
+     * @return list<SchemaPermissionSetCreateRequest>|null
      */
     public function getItems() : ?array
     {
@@ -30,7 +30,7 @@ class SchemaPermissionSetCreateManyRequest
     /**
      * Schema permission sets create requests.
      *
-     * @param SchemaPermissionSetCreateRequest[]|null $items
+     * @param list<SchemaPermissionSetCreateRequest>|null $items
      *
      * @return self
      */

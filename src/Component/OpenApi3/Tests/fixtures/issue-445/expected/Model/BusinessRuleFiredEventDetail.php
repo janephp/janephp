@@ -27,7 +27,7 @@ class BusinessRuleFiredEventDetail
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $ruleIds;
     /**
@@ -77,7 +77,7 @@ class BusinessRuleFiredEventDetail
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getRuleIds() : ?array
     {
@@ -86,7 +86,7 @@ class BusinessRuleFiredEventDetail
     /**
      * 
      *
-     * @param string[]|null $ruleIds
+     * @param list<string>|null $ruleIds
      *
      * @return self
      */

@@ -15,7 +15,7 @@ class ContentDownloadEvent extends ApplicationEvent
     /**
      * 
      *
-     * @var DownloadTrackingInfo[]|null
+     * @var list<DownloadTrackingInfo>|null
      */
     protected $downloadInfos;
     /**
@@ -39,7 +39,7 @@ class ContentDownloadEvent extends ApplicationEvent
     /**
      * 
      *
-     * @return DownloadTrackingInfo[]|null
+     * @return list<DownloadTrackingInfo>|null
      */
     public function getDownloadInfos() : ?array
     {
@@ -48,7 +48,7 @@ class ContentDownloadEvent extends ApplicationEvent
     /**
      * 
      *
-     * @param DownloadTrackingInfo[]|null $downloadInfos
+     * @param list<DownloadTrackingInfo>|null $downloadInfos
      *
      * @return self
      */

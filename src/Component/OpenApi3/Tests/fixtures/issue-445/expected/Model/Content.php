@@ -33,7 +33,7 @@ class Content
     /**
      * An optional id list of schemas with schema type layer.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $layerSchemaIds;
     /**
@@ -51,19 +51,19 @@ class Content
     /**
      * All the ids of the broken references (tagboxes)
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $brokenReferenceIds;
     /**
      * All the ids of the broken indirect references (tagbox that has a property that reference a broken tagbox)
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $brokenIndirectReferenceIds;
     /**
      * All the target ids of the broken relations
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $brokenRelationTargetIds;
     /**
@@ -141,7 +141,7 @@ class Content
     /**
      * An optional id list of schemas with schema type layer.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getLayerSchemaIds() : ?array
     {
@@ -150,7 +150,7 @@ class Content
     /**
      * An optional id list of schemas with schema type layer.
      *
-     * @param string[]|null $layerSchemaIds
+     * @param list<string>|null $layerSchemaIds
      *
      * @return self
      */
@@ -207,7 +207,7 @@ class Content
     /**
      * All the ids of the broken references (tagboxes)
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getBrokenReferenceIds() : ?array
     {
@@ -216,7 +216,7 @@ class Content
     /**
      * All the ids of the broken references (tagboxes)
      *
-     * @param string[]|null $brokenReferenceIds
+     * @param list<string>|null $brokenReferenceIds
      *
      * @return self
      */
@@ -229,7 +229,7 @@ class Content
     /**
      * All the ids of the broken indirect references (tagbox that has a property that reference a broken tagbox)
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getBrokenIndirectReferenceIds() : ?array
     {
@@ -238,7 +238,7 @@ class Content
     /**
      * All the ids of the broken indirect references (tagbox that has a property that reference a broken tagbox)
      *
-     * @param string[]|null $brokenIndirectReferenceIds
+     * @param list<string>|null $brokenIndirectReferenceIds
      *
      * @return self
      */
@@ -251,7 +251,7 @@ class Content
     /**
      * All the target ids of the broken relations
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getBrokenRelationTargetIds() : ?array
     {
@@ -260,7 +260,7 @@ class Content
     /**
      * All the target ids of the broken relations
      *
-     * @param string[]|null $brokenRelationTargetIds
+     * @param list<string>|null $brokenRelationTargetIds
      *
      * @return self
      */

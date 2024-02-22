@@ -15,13 +15,13 @@ class DefaultUserFieldsEntitiesUrl extends \ArrayObject
     /**
      * 
      *
-     * @var UrlEntity[]
+     * @var list<UrlEntity>
      */
     protected $urls;
     /**
      * 
      *
-     * @return UrlEntity[]
+     * @return list<UrlEntity>
      */
     public function getUrls() : array
     {
@@ -30,7 +30,7 @@ class DefaultUserFieldsEntitiesUrl extends \ArrayObject
     /**
      * 
      *
-     * @param UrlEntity[] $urls
+     * @param list<UrlEntity> $urls
      *
      * @return self
      */

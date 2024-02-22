@@ -39,7 +39,7 @@ class InstallationToken extends \ArrayObject
     /**
      * 
      *
-     * @var Repository[]
+     * @var list<Repository>
      */
     protected $repositories;
     /**
@@ -139,7 +139,7 @@ class InstallationToken extends \ArrayObject
     /**
      * 
      *
-     * @return Repository[]
+     * @return list<Repository>
      */
     public function getRepositories() : array
     {
@@ -148,7 +148,7 @@ class InstallationToken extends \ArrayObject
     /**
      * 
      *
-     * @param Repository[] $repositories
+     * @param list<Repository> $repositories
      *
      * @return self
      */

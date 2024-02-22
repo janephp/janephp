@@ -45,7 +45,7 @@ class ApplicationGrant extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $scopes;
     /**
@@ -167,7 +167,7 @@ class ApplicationGrant extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getScopes() : array
     {
@@ -176,7 +176,7 @@ class ApplicationGrant extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $scopes
+     * @param list<string> $scopes
      *
      * @return self
      */

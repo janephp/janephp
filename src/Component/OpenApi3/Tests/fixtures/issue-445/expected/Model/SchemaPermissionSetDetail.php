@@ -27,13 +27,13 @@ class SchemaPermissionSetDetail extends \ArrayObject
     /**
      * A list of content or metadata rights authorizing operations on Content Items or List Items.
      *
-     * @var PermissionUserRoleRightsOfMetadataRight[]|null
+     * @var list<PermissionUserRoleRightsOfMetadataRight>|null
      */
     protected $userRolesRights;
     /**
      * A list of permission set rights authorizing operations on this permission set.
      *
-     * @var PermissionUserRoleRightsOfPermissionSetRight[]|null
+     * @var list<PermissionUserRoleRightsOfPermissionSetRight>|null
      */
     protected $userRolesPermissionSetRights;
     /**
@@ -101,7 +101,7 @@ class SchemaPermissionSetDetail extends \ArrayObject
     /**
      * A list of content or metadata rights authorizing operations on Content Items or List Items.
      *
-     * @return PermissionUserRoleRightsOfMetadataRight[]|null
+     * @return list<PermissionUserRoleRightsOfMetadataRight>|null
      */
     public function getUserRolesRights() : ?array
     {
@@ -110,7 +110,7 @@ class SchemaPermissionSetDetail extends \ArrayObject
     /**
      * A list of content or metadata rights authorizing operations on Content Items or List Items.
      *
-     * @param PermissionUserRoleRightsOfMetadataRight[]|null $userRolesRights
+     * @param list<PermissionUserRoleRightsOfMetadataRight>|null $userRolesRights
      *
      * @return self
      */
@@ -123,7 +123,7 @@ class SchemaPermissionSetDetail extends \ArrayObject
     /**
      * A list of permission set rights authorizing operations on this permission set.
      *
-     * @return PermissionUserRoleRightsOfPermissionSetRight[]|null
+     * @return list<PermissionUserRoleRightsOfPermissionSetRight>|null
      */
     public function getUserRolesPermissionSetRights() : ?array
     {
@@ -132,7 +132,7 @@ class SchemaPermissionSetDetail extends \ArrayObject
     /**
      * A list of permission set rights authorizing operations on this permission set.
      *
-     * @param PermissionUserRoleRightsOfPermissionSetRight[]|null $userRolesPermissionSetRights
+     * @param list<PermissionUserRoleRightsOfPermissionSetRight>|null $userRolesPermissionSetRights
      *
      * @return self
      */

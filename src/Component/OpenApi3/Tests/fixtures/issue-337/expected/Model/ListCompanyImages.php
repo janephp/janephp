@@ -21,7 +21,7 @@ class ListCompanyImages extends \ArrayObject
     /**
      * 
      *
-     * @var ListCompanyImagesDataItem[]
+     * @var list<ListCompanyImagesDataItem>
      */
     protected $data;
     /**
@@ -49,7 +49,7 @@ class ListCompanyImages extends \ArrayObject
     /**
      * 
      *
-     * @return ListCompanyImagesDataItem[]
+     * @return list<ListCompanyImagesDataItem>
      */
     public function getData() : array
     {
@@ -58,7 +58,7 @@ class ListCompanyImages extends \ArrayObject
     /**
      * 
      *
-     * @param ListCompanyImagesDataItem[] $data
+     * @param list<ListCompanyImagesDataItem> $data
      *
      * @return self
      */

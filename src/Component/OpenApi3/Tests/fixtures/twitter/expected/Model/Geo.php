@@ -21,7 +21,7 @@ class Geo extends \ArrayObject
     /**
      * 
      *
-     * @var float[]
+     * @var list<float>
      */
     protected $bbox;
     /**
@@ -61,7 +61,7 @@ class Geo extends \ArrayObject
     /**
      * 
      *
-     * @return float[]
+     * @return list<float>
      */
     public function getBbox() : array
     {
@@ -70,7 +70,7 @@ class Geo extends \ArrayObject
     /**
      * 
      *
-     * @param float[] $bbox
+     * @param list<float> $bbox
      *
      * @return self
      */

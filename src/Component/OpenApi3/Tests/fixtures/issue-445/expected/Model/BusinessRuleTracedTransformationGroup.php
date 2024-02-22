@@ -33,7 +33,7 @@ class BusinessRuleTracedTransformationGroup
     /**
      * Detailed traces for each step performed by transformations in group.
      *
-     * @var BusinessRuleTracedTransformation[]|null
+     * @var list<BusinessRuleTracedTransformation>|null
      */
     protected $transformations;
     /**
@@ -105,7 +105,7 @@ class BusinessRuleTracedTransformationGroup
     /**
      * Detailed traces for each step performed by transformations in group.
      *
-     * @return BusinessRuleTracedTransformation[]|null
+     * @return list<BusinessRuleTracedTransformation>|null
      */
     public function getTransformations() : ?array
     {
@@ -114,7 +114,7 @@ class BusinessRuleTracedTransformationGroup
     /**
      * Detailed traces for each step performed by transformations in group.
      *
-     * @param BusinessRuleTracedTransformation[]|null $transformations
+     * @param list<BusinessRuleTracedTransformation>|null $transformations
      *
      * @return self
      */

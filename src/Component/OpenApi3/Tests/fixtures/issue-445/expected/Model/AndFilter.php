@@ -15,13 +15,13 @@ class AndFilter extends FilterBase
     /**
      * The filters to put in "and". All kinds of filters are accepted.
      *
-     * @var FilterBase[]|null
+     * @var list<FilterBase>|null
      */
     protected $filters;
     /**
      * The filters to put in "and". All kinds of filters are accepted.
      *
-     * @return FilterBase[]|null
+     * @return list<FilterBase>|null
      */
     public function getFilters() : ?array
     {
@@ -30,7 +30,7 @@ class AndFilter extends FilterBase
     /**
      * The filters to put in "and". All kinds of filters are accepted.
      *
-     * @param FilterBase[]|null $filters
+     * @param list<FilterBase>|null $filters
      *
      * @return self
      */

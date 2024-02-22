@@ -15,13 +15,13 @@ class LanguageConfiguration
     /**
      * A list of languages serving as system languages.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $systemLanguages;
     /**
      * A list of languages serving as metadata languages.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $metadataLanguages;
     /**
@@ -33,7 +33,7 @@ class LanguageConfiguration
     /**
      * A list of languages serving as system languages.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSystemLanguages() : ?array
     {
@@ -42,7 +42,7 @@ class LanguageConfiguration
     /**
      * A list of languages serving as system languages.
      *
-     * @param string[]|null $systemLanguages
+     * @param list<string>|null $systemLanguages
      *
      * @return self
      */
@@ -55,7 +55,7 @@ class LanguageConfiguration
     /**
      * A list of languages serving as metadata languages.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getMetadataLanguages() : ?array
     {
@@ -64,7 +64,7 @@ class LanguageConfiguration
     /**
      * A list of languages serving as metadata languages.
      *
-     * @param string[]|null $metadataLanguages
+     * @param list<string>|null $metadataLanguages
      *
      * @return self
      */

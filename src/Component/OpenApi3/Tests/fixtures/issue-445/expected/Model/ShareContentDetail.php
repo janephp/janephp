@@ -21,7 +21,7 @@ class ShareContentDetail
     /**
      * An optional id list of schemas with type layer.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $layerSchemaIds;
     /**
@@ -47,7 +47,7 @@ class ShareContentDetail
     /**
      * List of shared outputs for this content.
      *
-     * @var ShareOutputBase[]
+     * @var list<ShareOutputBase>
      */
     protected $outputs;
     /**
@@ -93,7 +93,7 @@ class ShareContentDetail
     /**
      * An optional id list of schemas with type layer.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getLayerSchemaIds() : ?array
     {
@@ -102,7 +102,7 @@ class ShareContentDetail
     /**
      * An optional id list of schemas with type layer.
      *
-     * @param string[]|null $layerSchemaIds
+     * @param list<string>|null $layerSchemaIds
      *
      * @return self
      */
@@ -185,7 +185,7 @@ class ShareContentDetail
     /**
      * List of shared outputs for this content.
      *
-     * @return ShareOutputBase[]
+     * @return list<ShareOutputBase>
      */
     public function getOutputs() : array
     {
@@ -194,7 +194,7 @@ class ShareContentDetail
     /**
      * List of shared outputs for this content.
      *
-     * @param ShareOutputBase[] $outputs
+     * @param list<ShareOutputBase> $outputs
      *
      * @return self
      */

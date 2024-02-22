@@ -15,7 +15,7 @@ class ComplianceSearchResultDataBodySearchResult extends \ArrayObject
     /**
      * 
      *
-     * @var ComplianceSearchResultDataBodySearchResultRecordsItem[]
+     * @var list<ComplianceSearchResultDataBodySearchResultRecordsItem>
      */
     protected $records;
     /**
@@ -27,7 +27,7 @@ class ComplianceSearchResultDataBodySearchResult extends \ArrayObject
     /**
      * 
      *
-     * @return ComplianceSearchResultDataBodySearchResultRecordsItem[]
+     * @return list<ComplianceSearchResultDataBodySearchResultRecordsItem>
      */
     public function getRecords() : array
     {
@@ -36,7 +36,7 @@ class ComplianceSearchResultDataBodySearchResult extends \ArrayObject
     /**
      * 
      *
-     * @param ComplianceSearchResultDataBodySearchResultRecordsItem[] $records
+     * @param list<ComplianceSearchResultDataBodySearchResultRecordsItem> $records
      *
      * @return self
      */

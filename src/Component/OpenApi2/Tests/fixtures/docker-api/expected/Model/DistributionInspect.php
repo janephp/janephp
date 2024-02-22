@@ -23,7 +23,7 @@ class DistributionInspect
     /**
      * An array containing all platforms supported by the image.
      *
-     * @var OCIPlatform[]
+     * @var list<OCIPlatform>
      */
     protected $platforms;
     /**
@@ -55,7 +55,7 @@ class DistributionInspect
     /**
      * An array containing all platforms supported by the image.
      *
-     * @return OCIPlatform[]
+     * @return list<OCIPlatform>
      */
     public function getPlatforms() : array
     {
@@ -64,7 +64,7 @@ class DistributionInspect
     /**
      * An array containing all platforms supported by the image.
      *
-     * @param OCIPlatform[] $platforms
+     * @param list<OCIPlatform> $platforms
      *
      * @return self
      */

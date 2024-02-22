@@ -33,7 +33,7 @@ class DefaultPlaceFields extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $containedWithin;
     /**
@@ -105,7 +105,7 @@ class DefaultPlaceFields extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getContainedWithin() : array
     {
@@ -114,7 +114,7 @@ class DefaultPlaceFields extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $containedWithin
+     * @param list<string> $containedWithin
      *
      * @return self
      */

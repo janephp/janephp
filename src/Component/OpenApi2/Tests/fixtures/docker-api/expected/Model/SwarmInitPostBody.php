@@ -66,7 +66,7 @@ class SwarmInitPostBody
     scope networks.
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $defaultAddrPool;
     /**
@@ -232,7 +232,7 @@ class SwarmInitPostBody
     scope networks.
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getDefaultAddrPool() : array
     {
@@ -243,7 +243,7 @@ class SwarmInitPostBody
     scope networks.
     
     *
-    * @param string[] $defaultAddrPool
+    * @param list<string> $defaultAddrPool
     *
     * @return self
     */

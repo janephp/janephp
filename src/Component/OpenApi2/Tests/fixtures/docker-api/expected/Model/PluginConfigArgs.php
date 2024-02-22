@@ -27,13 +27,13 @@ class PluginConfigArgs
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $settable;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $value;
     /**
@@ -83,7 +83,7 @@ class PluginConfigArgs
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getSettable() : array
     {
@@ -92,7 +92,7 @@ class PluginConfigArgs
     /**
      * 
      *
-     * @param string[] $settable
+     * @param list<string> $settable
      *
      * @return self
      */
@@ -105,7 +105,7 @@ class PluginConfigArgs
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getValue() : array
     {
@@ -114,7 +114,7 @@ class PluginConfigArgs
     /**
      * 
      *
-     * @param string[] $value
+     * @param list<string> $value
      *
      * @return self
      */

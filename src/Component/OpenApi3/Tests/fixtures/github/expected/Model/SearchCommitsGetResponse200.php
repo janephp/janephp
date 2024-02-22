@@ -27,7 +27,7 @@ class SearchCommitsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var CommitSearchResultItem[]
+     * @var list<CommitSearchResultItem>
      */
     protected $items;
     /**
@@ -77,7 +77,7 @@ class SearchCommitsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return CommitSearchResultItem[]
+     * @return list<CommitSearchResultItem>
      */
     public function getItems() : array
     {
@@ -86,7 +86,7 @@ class SearchCommitsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param CommitSearchResultItem[] $items
+     * @param list<CommitSearchResultItem> $items
      *
      * @return self
      */

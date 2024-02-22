@@ -27,7 +27,7 @@ class SearchUsersGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var UserSearchResultItem[]
+     * @var list<UserSearchResultItem>
      */
     protected $items;
     /**
@@ -77,7 +77,7 @@ class SearchUsersGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return UserSearchResultItem[]
+     * @return list<UserSearchResultItem>
      */
     public function getItems() : array
     {
@@ -86,7 +86,7 @@ class SearchUsersGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param UserSearchResultItem[] $items
+     * @param list<UserSearchResultItem> $items
      *
      * @return self
      */

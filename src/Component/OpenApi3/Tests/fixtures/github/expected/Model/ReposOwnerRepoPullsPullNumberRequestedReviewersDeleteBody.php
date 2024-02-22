@@ -15,19 +15,19 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody extends \ArrayOb
     /**
      * An array of user `login`s that will be removed.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $reviewers;
     /**
      * An array of team `slug`s that will be removed.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $teamReviewers;
     /**
      * An array of user `login`s that will be removed.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getReviewers() : array
     {
@@ -36,7 +36,7 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody extends \ArrayOb
     /**
      * An array of user `login`s that will be removed.
      *
-     * @param string[] $reviewers
+     * @param list<string> $reviewers
      *
      * @return self
      */
@@ -49,7 +49,7 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody extends \ArrayOb
     /**
      * An array of team `slug`s that will be removed.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getTeamReviewers() : array
     {
@@ -58,7 +58,7 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody extends \ArrayOb
     /**
      * An array of team `slug`s that will be removed.
      *
-     * @param string[] $teamReviewers
+     * @param list<string> $teamReviewers
      *
      * @return self
      */

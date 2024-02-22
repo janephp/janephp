@@ -75,7 +75,7 @@ class MissingDisplayPatternForCustomerDefaultLanguageException extends \ArrayObj
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $missingTypes;
     /**
@@ -301,7 +301,7 @@ class MissingDisplayPatternForCustomerDefaultLanguageException extends \ArrayObj
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getMissingTypes() : ?array
     {
@@ -310,7 +310,7 @@ class MissingDisplayPatternForCustomerDefaultLanguageException extends \ArrayObj
     /**
      * 
      *
-     * @param string[]|null $missingTypes
+     * @param list<string>|null $missingTypes
      *
      * @return self
      */

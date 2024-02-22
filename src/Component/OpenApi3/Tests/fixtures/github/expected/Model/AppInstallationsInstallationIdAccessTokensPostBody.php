@@ -15,13 +15,13 @@ class AppInstallationsInstallationIdAccessTokensPostBody extends \ArrayObject
     /**
      * List of repository names that the token should have access to
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $repositories;
     /**
      * List of repository IDs that the token should have access to
      *
-     * @var int[]
+     * @var list<int>
      */
     protected $repositoryIds;
     /**
@@ -33,7 +33,7 @@ class AppInstallationsInstallationIdAccessTokensPostBody extends \ArrayObject
     /**
      * List of repository names that the token should have access to
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getRepositories() : array
     {
@@ -42,7 +42,7 @@ class AppInstallationsInstallationIdAccessTokensPostBody extends \ArrayObject
     /**
      * List of repository names that the token should have access to
      *
-     * @param string[] $repositories
+     * @param list<string> $repositories
      *
      * @return self
      */
@@ -55,7 +55,7 @@ class AppInstallationsInstallationIdAccessTokensPostBody extends \ArrayObject
     /**
      * List of repository IDs that the token should have access to
      *
-     * @return int[]
+     * @return list<int>
      */
     public function getRepositoryIds() : array
     {
@@ -64,7 +64,7 @@ class AppInstallationsInstallationIdAccessTokensPostBody extends \ArrayObject
     /**
      * List of repository IDs that the token should have access to
      *
-     * @param int[] $repositoryIds
+     * @param list<int> $repositoryIds
      *
      * @return self
      */

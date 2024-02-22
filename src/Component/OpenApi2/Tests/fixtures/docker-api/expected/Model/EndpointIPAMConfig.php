@@ -27,7 +27,7 @@ class EndpointIPAMConfig
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $linkLocalIPs;
     /**
@@ -77,7 +77,7 @@ class EndpointIPAMConfig
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getLinkLocalIPs() : array
     {
@@ -86,7 +86,7 @@ class EndpointIPAMConfig
     /**
      * 
      *
-     * @param string[] $linkLocalIPs
+     * @param list<string> $linkLocalIPs
      *
      * @return self
      */

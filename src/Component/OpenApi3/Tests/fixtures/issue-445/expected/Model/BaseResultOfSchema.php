@@ -21,7 +21,7 @@ class BaseResultOfSchema
     /**
      * The matched documents.
      *
-     * @var Schema[]
+     * @var list<Schema>
      */
     protected $results;
     /**
@@ -61,7 +61,7 @@ class BaseResultOfSchema
     /**
      * The matched documents.
      *
-     * @return Schema[]
+     * @return list<Schema>
      */
     public function getResults() : array
     {
@@ -70,7 +70,7 @@ class BaseResultOfSchema
     /**
      * The matched documents.
      *
-     * @param Schema[] $results
+     * @param list<Schema> $results
      *
      * @return self
      */

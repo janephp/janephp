@@ -123,13 +123,13 @@ class GistFull extends \ArrayObject
     /**
      * 
      *
-     * @var GistFullforksItem[]
+     * @var list<GistFullforksItem>
      */
     protected $forks;
     /**
      * 
      *
-     * @var GistFullhistoryItem[]
+     * @var list<GistFullhistoryItem>
      */
     protected $history;
     /**
@@ -537,7 +537,7 @@ class GistFull extends \ArrayObject
     /**
      * 
      *
-     * @return GistFullforksItem[]
+     * @return list<GistFullforksItem>
      */
     public function getForks() : array
     {
@@ -546,7 +546,7 @@ class GistFull extends \ArrayObject
     /**
      * 
      *
-     * @param GistFullforksItem[] $forks
+     * @param list<GistFullforksItem> $forks
      *
      * @return self
      */
@@ -559,7 +559,7 @@ class GistFull extends \ArrayObject
     /**
      * 
      *
-     * @return GistFullhistoryItem[]
+     * @return list<GistFullhistoryItem>
      */
     public function getHistory() : array
     {
@@ -568,7 +568,7 @@ class GistFull extends \ArrayObject
     /**
      * 
      *
-     * @param GistFullhistoryItem[] $history
+     * @param list<GistFullhistoryItem> $history
      *
      * @return self
      */

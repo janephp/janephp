@@ -21,7 +21,7 @@ class OrgsOrgActionsRunnersGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var Runner[]
+     * @var list<Runner>
      */
     protected $runners;
     /**
@@ -49,7 +49,7 @@ class OrgsOrgActionsRunnersGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return Runner[]
+     * @return list<Runner>
      */
     public function getRunners() : array
     {
@@ -58,7 +58,7 @@ class OrgsOrgActionsRunnersGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param Runner[] $runners
+     * @param list<Runner> $runners
      *
      * @return self
      */

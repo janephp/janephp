@@ -15,13 +15,13 @@ class ProjectionTransformation extends BusinessRuleTransformation
     /**
      * Transformations to apply.
      *
-     * @var BusinessRuleTransformation[]|null
+     * @var list<BusinessRuleTransformation>|null
      */
     protected $transformations;
     /**
      * Transformations to apply.
      *
-     * @return BusinessRuleTransformation[]|null
+     * @return list<BusinessRuleTransformation>|null
      */
     public function getTransformations() : ?array
     {
@@ -30,7 +30,7 @@ class ProjectionTransformation extends BusinessRuleTransformation
     /**
      * Transformations to apply.
      *
-     * @param BusinessRuleTransformation[]|null $transformations
+     * @param list<BusinessRuleTransformation>|null $transformations
      *
      * @return self
      */

@@ -33,13 +33,13 @@ class ListItemImportResult
     /**
      * Ids of the list items that were not imported because already found in the system
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $skippedListItemIds;
     /**
      * Ids of the list items that were successfully imported
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $importedListItemIds;
     /**
@@ -111,7 +111,7 @@ class ListItemImportResult
     /**
      * Ids of the list items that were not imported because already found in the system
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSkippedListItemIds() : ?array
     {
@@ -120,7 +120,7 @@ class ListItemImportResult
     /**
      * Ids of the list items that were not imported because already found in the system
      *
-     * @param string[]|null $skippedListItemIds
+     * @param list<string>|null $skippedListItemIds
      *
      * @return self
      */
@@ -133,7 +133,7 @@ class ListItemImportResult
     /**
      * Ids of the list items that were successfully imported
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getImportedListItemIds() : ?array
     {
@@ -142,7 +142,7 @@ class ListItemImportResult
     /**
      * Ids of the list items that were successfully imported
      *
-     * @param string[]|null $importedListItemIds
+     * @param list<string>|null $importedListItemIds
      *
      * @return self
      */

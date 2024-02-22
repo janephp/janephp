@@ -21,7 +21,7 @@ class GbImageTypesResponse extends \ArrayObject
     /**
      * 
      *
-     * @var GbImageTypesResponseAvailableTypesItem[]
+     * @var list<GbImageTypesResponseAvailableTypesItem>
      */
     protected $availableTypes;
     /**
@@ -49,7 +49,7 @@ class GbImageTypesResponse extends \ArrayObject
     /**
      * 
      *
-     * @return GbImageTypesResponseAvailableTypesItem[]
+     * @return list<GbImageTypesResponseAvailableTypesItem>
      */
     public function getAvailableTypes() : array
     {
@@ -58,7 +58,7 @@ class GbImageTypesResponse extends \ArrayObject
     /**
      * 
      *
-     * @param GbImageTypesResponseAvailableTypesItem[] $availableTypes
+     * @param list<GbImageTypesResponseAvailableTypesItem> $availableTypes
      *
      * @return self
      */

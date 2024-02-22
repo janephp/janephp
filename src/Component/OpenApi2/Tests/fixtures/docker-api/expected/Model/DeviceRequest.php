@@ -27,13 +27,13 @@ class DeviceRequest
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $deviceIDs;
     /**
      * A list of capabilities; an OR list of AND lists of capabilities.
      *
-     * @var string[][]
+     * @var list<list<string>>
      */
     protected $capabilities;
     /**
@@ -91,7 +91,7 @@ class DeviceRequest
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getDeviceIDs() : array
     {
@@ -100,7 +100,7 @@ class DeviceRequest
     /**
      * 
      *
-     * @param string[] $deviceIDs
+     * @param list<string> $deviceIDs
      *
      * @return self
      */
@@ -113,7 +113,7 @@ class DeviceRequest
     /**
      * A list of capabilities; an OR list of AND lists of capabilities.
      *
-     * @return string[][]
+     * @return list<list<string>>
      */
     public function getCapabilities() : array
     {
@@ -122,7 +122,7 @@ class DeviceRequest
     /**
      * A list of capabilities; an OR list of AND lists of capabilities.
      *
-     * @param string[][] $capabilities
+     * @param list<list<string>> $capabilities
      *
      * @return self
      */

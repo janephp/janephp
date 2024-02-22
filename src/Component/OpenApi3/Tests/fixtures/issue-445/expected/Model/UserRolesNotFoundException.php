@@ -75,7 +75,7 @@ class UserRolesNotFoundException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $userRoleIds;
     /**
@@ -301,7 +301,7 @@ class UserRolesNotFoundException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getUserRoleIds() : ?array
     {
@@ -310,7 +310,7 @@ class UserRolesNotFoundException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $userRoleIds
+     * @param list<string>|null $userRoleIds
      *
      * @return self
      */

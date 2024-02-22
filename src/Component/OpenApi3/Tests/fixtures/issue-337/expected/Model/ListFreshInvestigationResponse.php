@@ -21,7 +21,7 @@ class ListFreshInvestigationResponse extends \ArrayObject
     /**
      * 
      *
-     * @var ListFreshInvestigationResponseOrdersItem[]
+     * @var list<ListFreshInvestigationResponseOrdersItem>
      */
     protected $orders;
     /**
@@ -49,7 +49,7 @@ class ListFreshInvestigationResponse extends \ArrayObject
     /**
      * 
      *
-     * @return ListFreshInvestigationResponseOrdersItem[]
+     * @return list<ListFreshInvestigationResponseOrdersItem>
      */
     public function getOrders() : array
     {
@@ -58,7 +58,7 @@ class ListFreshInvestigationResponse extends \ArrayObject
     /**
      * 
      *
-     * @param ListFreshInvestigationResponseOrdersItem[] $orders
+     * @param list<ListFreshInvestigationResponseOrdersItem> $orders
      *
      * @return self
      */

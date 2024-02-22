@@ -75,7 +75,7 @@ class Installation extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $events;
     /**
@@ -343,7 +343,7 @@ class Installation extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getEvents() : array
     {
@@ -352,7 +352,7 @@ class Installation extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $events
+     * @param list<string> $events
      *
      * @return self
      */
