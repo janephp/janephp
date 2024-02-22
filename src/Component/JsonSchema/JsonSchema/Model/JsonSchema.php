@@ -21,7 +21,7 @@ class JsonSchema
     /**
      * 
      *
-     * @var array<string, JsonSchema|bool|string[]>|null
+     * @var array<string, JsonSchema|bool|list<string>>|null
      */
     protected $dependencies;
     /**
@@ -39,7 +39,7 @@ class JsonSchema
     /**
      * 
      *
-     * @var JsonSchema|bool|JsonSchema[]|bool[]|null
+     * @var JsonSchema|bool|list<JsonSchema>|list<bool>|null
      */
     protected $items;
     /**
@@ -105,19 +105,19 @@ class JsonSchema
     /**
      * 
      *
-     * @var JsonSchema[]|bool[]|null
+     * @var list<JsonSchema>|list<bool>|null
      */
     protected $allOf;
     /**
      * 
      *
-     * @var JsonSchema[]|bool[]|null
+     * @var list<JsonSchema>|list<bool>|null
      */
     protected $anyOf;
     /**
      * 
      *
-     * @var JsonSchema[]|bool[]|null
+     * @var list<JsonSchema>|list<bool>|null
      */
     protected $oneOf;
     /**
@@ -243,7 +243,7 @@ class JsonSchema
     /**
      * 
      *
-     * @var mixed[]|null
+     * @var list<mixed>|null
      */
     protected $examples;
     /**
@@ -339,13 +339,13 @@ class JsonSchema
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $required = array();
     /**
      * 
      *
-     * @var array<string, string[]>|null
+     * @var array<string, list<string>>|null
      */
     protected $dependentRequired;
     /**
@@ -357,13 +357,13 @@ class JsonSchema
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $enum;
     /**
      * 
      *
-     * @var mixed|mixed[]|null
+     * @var mixed|list<mixed>|null
      */
     protected $type;
     /**
@@ -391,7 +391,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return array<string, JsonSchema|bool|string[]>|null
+     * @return array<string, JsonSchema|bool|list<string>>|null
      */
     public function getDependencies() : ?iterable
     {
@@ -400,7 +400,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param array<string, JsonSchema|bool|string[]>|null $dependencies
+     * @param array<string, JsonSchema|bool|list<string>>|null $dependencies
      *
      * @return self
      */
@@ -457,7 +457,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return JsonSchema|bool|JsonSchema[]|bool[]|null
+     * @return JsonSchema|bool|list<JsonSchema>|list<bool>|null
      */
     public function getItems()
     {
@@ -466,7 +466,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param JsonSchema|bool|JsonSchema[]|bool[]|null $items
+     * @param JsonSchema|bool|list<JsonSchema>|list<bool>|null $items
      *
      * @return self
      */
@@ -699,7 +699,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return JsonSchema[]|bool[]|null
+     * @return list<JsonSchema>|list<bool>|null
      */
     public function getAllOf() : ?array
     {
@@ -708,7 +708,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param JsonSchema[]|bool[]|null $allOf
+     * @param list<JsonSchema>|list<bool>|null $allOf
      *
      * @return self
      */
@@ -721,7 +721,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return JsonSchema[]|bool[]|null
+     * @return list<JsonSchema>|list<bool>|null
      */
     public function getAnyOf() : ?array
     {
@@ -730,7 +730,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param JsonSchema[]|bool[]|null $anyOf
+     * @param list<JsonSchema>|list<bool>|null $anyOf
      *
      * @return self
      */
@@ -743,7 +743,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return JsonSchema[]|bool[]|null
+     * @return list<JsonSchema>|list<bool>|null
      */
     public function getOneOf() : ?array
     {
@@ -752,7 +752,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param JsonSchema[]|bool[]|null $oneOf
+     * @param list<JsonSchema>|list<bool>|null $oneOf
      *
      * @return self
      */
@@ -1205,7 +1205,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return mixed[]|null
+     * @return list<mixed>|null
      */
     public function getExamples() : ?array
     {
@@ -1214,7 +1214,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param mixed[]|null $examples
+     * @param list<mixed>|null $examples
      *
      * @return self
      */
@@ -1557,7 +1557,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getRequired() : ?array
     {
@@ -1566,7 +1566,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param string[]|null $required
+     * @param list<string>|null $required
      *
      * @return self
      */
@@ -1579,7 +1579,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return array<string, string[]>|null
+     * @return array<string, list<string>>|null
      */
     public function getDependentRequired() : ?iterable
     {
@@ -1588,7 +1588,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param array<string, string[]>|null $dependentRequired
+     * @param array<string, list<string>>|null $dependentRequired
      *
      * @return self
      */
@@ -1623,7 +1623,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getEnum() : ?array
     {
@@ -1632,7 +1632,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param string[]|null $enum
+     * @param list<string>|null $enum
      *
      * @return self
      */
@@ -1645,7 +1645,7 @@ class JsonSchema
     /**
      * 
      *
-     * @return mixed|mixed[]
+     * @return mixed|list<mixed>
      */
     public function getType()
     {
@@ -1654,7 +1654,7 @@ class JsonSchema
     /**
      * 
      *
-     * @param mixed|mixed[] $type
+     * @param mixed|list<mixed> $type
      *
      * @return self
      */
