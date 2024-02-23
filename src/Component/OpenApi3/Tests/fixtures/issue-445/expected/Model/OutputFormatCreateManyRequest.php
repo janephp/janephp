@@ -15,13 +15,13 @@ class OutputFormatCreateManyRequest
     /**
      * Output format items to be created.
      *
-     * @var OutputFormat[]|null
+     * @var list<OutputFormat>|null
      */
     protected $items;
     /**
      * Output format items to be created.
      *
-     * @return OutputFormat[]|null
+     * @return list<OutputFormat>|null
      */
     public function getItems() : ?array
     {
@@ -30,7 +30,7 @@ class OutputFormatCreateManyRequest
     /**
      * Output format items to be created.
      *
-     * @param OutputFormat[]|null $items
+     * @param list<OutputFormat>|null $items
      *
      * @return self
      */

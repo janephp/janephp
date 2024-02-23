@@ -21,7 +21,7 @@ class ContentShareReferenceResult extends \ArrayObject
     /**
      * The matched documents.
      *
-     * @var ContentShareReference[]
+     * @var list<ContentShareReference>
      */
     protected $results;
     /**
@@ -61,7 +61,7 @@ class ContentShareReferenceResult extends \ArrayObject
     /**
      * The matched documents.
      *
-     * @return ContentShareReference[]
+     * @return list<ContentShareReference>
      */
     public function getResults() : array
     {
@@ -70,7 +70,7 @@ class ContentShareReferenceResult extends \ArrayObject
     /**
      * The matched documents.
      *
-     * @param ContentShareReference[] $results
+     * @param list<ContentShareReference> $results
      *
      * @return self
      */

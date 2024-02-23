@@ -63,19 +63,19 @@ class License extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $permissions;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $conditions;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $limitations;
     /**
@@ -269,7 +269,7 @@ class License extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getPermissions() : array
     {
@@ -278,7 +278,7 @@ class License extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $permissions
+     * @param list<string> $permissions
      *
      * @return self
      */
@@ -291,7 +291,7 @@ class License extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getConditions() : array
     {
@@ -300,7 +300,7 @@ class License extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $conditions
+     * @param list<string> $conditions
      *
      * @return self
      */
@@ -313,7 +313,7 @@ class License extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getLimitations() : array
     {
@@ -322,7 +322,7 @@ class License extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $limitations
+     * @param list<string> $limitations
      *
      * @return self
      */

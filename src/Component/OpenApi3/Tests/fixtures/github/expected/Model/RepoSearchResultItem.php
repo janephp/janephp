@@ -411,7 +411,7 @@ class RepoSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $topics;
     /**
@@ -477,7 +477,7 @@ class RepoSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @var SearchResultTextMatchesItem[]
+     * @var list<SearchResultTextMatchesItem>
      */
     protected $textMatches;
     /**
@@ -1965,7 +1965,7 @@ class RepoSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getTopics() : array
     {
@@ -1974,7 +1974,7 @@ class RepoSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $topics
+     * @param list<string> $topics
      *
      * @return self
      */
@@ -2207,7 +2207,7 @@ class RepoSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @return SearchResultTextMatchesItem[]
+     * @return list<SearchResultTextMatchesItem>
      */
     public function getTextMatches() : array
     {
@@ -2216,7 +2216,7 @@ class RepoSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @param SearchResultTextMatchesItem[] $textMatches
+     * @param list<SearchResultTextMatchesItem> $textMatches
      *
      * @return self
      */

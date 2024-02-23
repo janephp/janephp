@@ -27,7 +27,7 @@ class FieldSingleRelation extends FieldBase
     /**
      * Defines the allowed elation types.
      *
-     * @var RelationType[]
+     * @var list<RelationType>
      */
     protected $relationTypes;
     /**
@@ -77,7 +77,7 @@ class FieldSingleRelation extends FieldBase
     /**
      * Defines the allowed elation types.
      *
-     * @return RelationType[]
+     * @return list<RelationType>
      */
     public function getRelationTypes() : array
     {
@@ -86,7 +86,7 @@ class FieldSingleRelation extends FieldBase
     /**
      * Defines the allowed elation types.
      *
-     * @param RelationType[] $relationTypes
+     * @param list<RelationType> $relationTypes
      *
      * @return self
      */

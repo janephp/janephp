@@ -81,7 +81,7 @@ class ReferenceUpdateException extends \ArrayObject
     /**
      * These exceptions describe why the source metadata item could not be updated.
      *
-     * @var PictureparkException[]|null
+     * @var list<PictureparkException>|null
      */
     protected $exceptions;
     /**
@@ -329,7 +329,7 @@ class ReferenceUpdateException extends \ArrayObject
     /**
      * These exceptions describe why the source metadata item could not be updated.
      *
-     * @return PictureparkException[]|null
+     * @return list<PictureparkException>|null
      */
     public function getExceptions() : ?array
     {
@@ -338,7 +338,7 @@ class ReferenceUpdateException extends \ArrayObject
     /**
      * These exceptions describe why the source metadata item could not be updated.
      *
-     * @param PictureparkException[]|null $exceptions
+     * @param list<PictureparkException>|null $exceptions
      *
      * @return self
      */

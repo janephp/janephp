@@ -64,7 +64,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBody extends \ArrayObject
     /**
      * Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. See the [`actions` object](https://developer.github.com/v3/checks/runs/#actions-object) description. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://developer.github.com/v3/checks/runs/#check-runs-and-requested-actions)."
      *
-     * @var ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItem[]
+     * @var list<ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItem>
      */
     protected $actions;
     /**
@@ -248,7 +248,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBody extends \ArrayObject
     /**
      * Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. See the [`actions` object](https://developer.github.com/v3/checks/runs/#actions-object) description. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://developer.github.com/v3/checks/runs/#check-runs-and-requested-actions)."
      *
-     * @return ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItem[]
+     * @return list<ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItem>
      */
     public function getActions() : array
     {
@@ -257,7 +257,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBody extends \ArrayObject
     /**
      * Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. See the [`actions` object](https://developer.github.com/v3/checks/runs/#actions-object) description. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://developer.github.com/v3/checks/runs/#check-runs-and-requested-actions)."
      *
-     * @param ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItem[] $actions
+     * @param list<ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItem> $actions
      *
      * @return self
      */

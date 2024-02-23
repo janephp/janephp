@@ -33,13 +33,13 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions extends \Ar
     /**
      * 
      *
-     * @var SimpleUser[]
+     * @var list<SimpleUser>
      */
     protected $users;
     /**
      * 
      *
-     * @var Team[]
+     * @var list<Team>
      */
     protected $teams;
     /**
@@ -111,7 +111,7 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions extends \Ar
     /**
      * 
      *
-     * @return SimpleUser[]
+     * @return list<SimpleUser>
      */
     public function getUsers() : array
     {
@@ -120,7 +120,7 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions extends \Ar
     /**
      * 
      *
-     * @param SimpleUser[] $users
+     * @param list<SimpleUser> $users
      *
      * @return self
      */
@@ -133,7 +133,7 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions extends \Ar
     /**
      * 
      *
-     * @return Team[]
+     * @return list<Team>
      */
     public function getTeams() : array
     {
@@ -142,7 +142,7 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions extends \Ar
     /**
      * 
      *
-     * @param Team[] $teams
+     * @param list<Team> $teams
      *
      * @return self
      */

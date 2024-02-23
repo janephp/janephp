@@ -21,7 +21,7 @@ class ReposOwnerRepoTransferPostBody extends \ArrayObject
     /**
      * ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.
      *
-     * @var int[]
+     * @var list<int>
      */
     protected $teamIds;
     /**
@@ -49,7 +49,7 @@ class ReposOwnerRepoTransferPostBody extends \ArrayObject
     /**
      * ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.
      *
-     * @return int[]
+     * @return list<int>
      */
     public function getTeamIds() : array
     {
@@ -58,7 +58,7 @@ class ReposOwnerRepoTransferPostBody extends \ArrayObject
     /**
      * ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.
      *
-     * @param int[] $teamIds
+     * @param list<int> $teamIds
      *
      * @return self
      */

@@ -69,7 +69,7 @@ class CheckSuite extends \ArrayObject
     /**
      * 
      *
-     * @var PullRequestMinimal[]|null
+     * @var list<PullRequestMinimal>|null
      */
     protected $pullRequests;
     /**
@@ -315,7 +315,7 @@ class CheckSuite extends \ArrayObject
     /**
      * 
      *
-     * @return PullRequestMinimal[]|null
+     * @return list<PullRequestMinimal>|null
      */
     public function getPullRequests() : ?array
     {
@@ -324,7 +324,7 @@ class CheckSuite extends \ArrayObject
     /**
      * 
      *
-     * @param PullRequestMinimal[]|null $pullRequests
+     * @param list<PullRequestMinimal>|null $pullRequests
      *
      * @return self
      */

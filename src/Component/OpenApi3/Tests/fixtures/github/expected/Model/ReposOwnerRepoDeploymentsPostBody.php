@@ -33,7 +33,7 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
     /**
      * The [status](https://developer.github.com/v3/repos/statuses/) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $requiredContexts;
     /**
@@ -143,7 +143,7 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
     /**
      * The [status](https://developer.github.com/v3/repos/statuses/) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getRequiredContexts() : array
     {
@@ -152,7 +152,7 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
     /**
      * The [status](https://developer.github.com/v3/repos/statuses/) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts.
      *
-     * @param string[] $requiredContexts
+     * @param list<string> $requiredContexts
      *
      * @return self
      */

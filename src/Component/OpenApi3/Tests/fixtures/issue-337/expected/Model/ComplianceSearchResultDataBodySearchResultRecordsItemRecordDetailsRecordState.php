@@ -27,7 +27,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $assignedTo;
     /**
@@ -45,13 +45,13 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
     /**
      * 
      *
-     * @var ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateHistoryItem[]
+     * @var list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateHistoryItem>
      */
     protected $history;
     /**
      * 
      *
-     * @var ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateMatchStatesItem[]
+     * @var list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateMatchStatesItem>
      */
     protected $matchStates;
     /**
@@ -101,7 +101,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getAssignedTo() : array
     {
@@ -110,7 +110,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
     /**
      * 
      *
-     * @param string[] $assignedTo
+     * @param list<string> $assignedTo
      *
      * @return self
      */
@@ -167,7 +167,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
     /**
      * 
      *
-     * @return ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateHistoryItem[]
+     * @return list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateHistoryItem>
      */
     public function getHistory() : array
     {
@@ -176,7 +176,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
     /**
      * 
      *
-     * @param ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateHistoryItem[] $history
+     * @param list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateHistoryItem> $history
      *
      * @return self
      */
@@ -189,7 +189,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
     /**
      * 
      *
-     * @return ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateMatchStatesItem[]
+     * @return list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateMatchStatesItem>
      */
     public function getMatchStates() : array
     {
@@ -198,7 +198,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
     /**
      * 
      *
-     * @param ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateMatchStatesItem[] $matchStates
+     * @param list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateMatchStatesItem> $matchStates
      *
      * @return self
      */

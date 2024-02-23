@@ -15,25 +15,25 @@ class SystemStatus
     /**
      * The status of the search indices.
      *
-     * @var StatusOfSearchIndexState[]|null
+     * @var list<StatusOfSearchIndexState>|null
      */
     protected $searchIndicesStatus;
     /**
      * The status of the display values.
      *
-     * @var StatusOfDisplayValuesState[]|null
+     * @var list<StatusOfDisplayValuesState>|null
      */
     protected $displayValuesStatus;
     /**
      * The status of the contents and list items.
      *
-     * @var StatusOfMetadataState[]|null
+     * @var list<StatusOfMetadataState>|null
      */
     protected $metadataStatus;
     /**
      * The status of the search indices.
      *
-     * @return StatusOfSearchIndexState[]|null
+     * @return list<StatusOfSearchIndexState>|null
      */
     public function getSearchIndicesStatus() : ?array
     {
@@ -42,7 +42,7 @@ class SystemStatus
     /**
      * The status of the search indices.
      *
-     * @param StatusOfSearchIndexState[]|null $searchIndicesStatus
+     * @param list<StatusOfSearchIndexState>|null $searchIndicesStatus
      *
      * @return self
      */
@@ -55,7 +55,7 @@ class SystemStatus
     /**
      * The status of the display values.
      *
-     * @return StatusOfDisplayValuesState[]|null
+     * @return list<StatusOfDisplayValuesState>|null
      */
     public function getDisplayValuesStatus() : ?array
     {
@@ -64,7 +64,7 @@ class SystemStatus
     /**
      * The status of the display values.
      *
-     * @param StatusOfDisplayValuesState[]|null $displayValuesStatus
+     * @param list<StatusOfDisplayValuesState>|null $displayValuesStatus
      *
      * @return self
      */
@@ -77,7 +77,7 @@ class SystemStatus
     /**
      * The status of the contents and list items.
      *
-     * @return StatusOfMetadataState[]|null
+     * @return list<StatusOfMetadataState>|null
      */
     public function getMetadataStatus() : ?array
     {
@@ -86,7 +86,7 @@ class SystemStatus
     /**
      * The status of the contents and list items.
      *
-     * @param StatusOfMetadataState[]|null $metadataStatus
+     * @param list<StatusOfMetadataState>|null $metadataStatus
      *
      * @return self
      */

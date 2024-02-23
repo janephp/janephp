@@ -15,7 +15,7 @@ class SchemaOwnershipTransferManyRequest
     /**
      * The schema ids.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $schemaIds;
     /**
@@ -27,7 +27,7 @@ class SchemaOwnershipTransferManyRequest
     /**
      * The schema ids.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSchemaIds() : ?array
     {
@@ -36,7 +36,7 @@ class SchemaOwnershipTransferManyRequest
     /**
      * The schema ids.
      *
-     * @param string[]|null $schemaIds
+     * @param list<string>|null $schemaIds
      *
      * @return self
      */

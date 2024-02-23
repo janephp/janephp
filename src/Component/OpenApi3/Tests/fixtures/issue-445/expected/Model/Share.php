@@ -27,7 +27,7 @@ class Share
     /**
      * List of shared content IDs.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $contentIds;
     /**
@@ -101,7 +101,7 @@ class Share
     /**
      * List of shared content IDs.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getContentIds() : array
     {
@@ -110,7 +110,7 @@ class Share
     /**
      * List of shared content IDs.
      *
-     * @param string[] $contentIds
+     * @param list<string> $contentIds
      *
      * @return self
      */

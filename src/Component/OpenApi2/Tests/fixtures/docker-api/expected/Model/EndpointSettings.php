@@ -21,13 +21,13 @@ class EndpointSettings
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $links;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $aliases;
     /**
@@ -117,7 +117,7 @@ class EndpointSettings
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getLinks() : array
     {
@@ -126,7 +126,7 @@ class EndpointSettings
     /**
      * 
      *
-     * @param string[] $links
+     * @param list<string> $links
      *
      * @return self
      */
@@ -139,7 +139,7 @@ class EndpointSettings
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getAliases() : array
     {
@@ -148,7 +148,7 @@ class EndpointSettings
     /**
      * 
      *
-     * @param string[] $aliases
+     * @param list<string> $aliases
      *
      * @return self
      */

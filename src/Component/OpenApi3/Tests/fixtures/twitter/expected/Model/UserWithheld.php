@@ -15,7 +15,7 @@ class UserWithheld extends \ArrayObject
     /**
      * Provides a list of countries where this content is not available.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $countryCodes;
     /**
@@ -27,7 +27,7 @@ class UserWithheld extends \ArrayObject
     /**
      * Provides a list of countries where this content is not available.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getCountryCodes() : array
     {
@@ -36,7 +36,7 @@ class UserWithheld extends \ArrayObject
     /**
      * Provides a list of countries where this content is not available.
      *
-     * @param string[] $countryCodes
+     * @param list<string> $countryCodes
      *
      * @return self
      */

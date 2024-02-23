@@ -15,7 +15,7 @@ class XmpMappingEntryConfigurationTagbox extends XmpMappingEntryConfigurationBas
     /**
      * IDs of key fields.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $keyFieldIds;
     /**
@@ -33,7 +33,7 @@ class XmpMappingEntryConfigurationTagbox extends XmpMappingEntryConfigurationBas
     /**
      * IDs of key fields.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getKeyFieldIds() : array
     {
@@ -42,7 +42,7 @@ class XmpMappingEntryConfigurationTagbox extends XmpMappingEntryConfigurationBas
     /**
      * IDs of key fields.
      *
-     * @param string[] $keyFieldIds
+     * @param list<string> $keyFieldIds
      *
      * @return self
      */

@@ -15,7 +15,7 @@ class ContentDeleteManyRequest
     /**
      * IDs of the contents to delete.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $contentIds;
     /**
@@ -33,7 +33,7 @@ class ContentDeleteManyRequest
     /**
      * IDs of the contents to delete.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getContentIds() : array
     {
@@ -42,7 +42,7 @@ class ContentDeleteManyRequest
     /**
      * IDs of the contents to delete.
      *
-     * @param string[] $contentIds
+     * @param list<string> $contentIds
      *
      * @return self
      */

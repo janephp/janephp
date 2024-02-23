@@ -47,7 +47,7 @@ class SwarmInfo
     /**
      * List of ID's and addresses of other managers in the swarm.
      *
-     * @var PeerNode[]|null
+     * @var list<PeerNode>|null
      */
     protected $remoteManagers;
     /**
@@ -187,7 +187,7 @@ class SwarmInfo
     /**
      * List of ID's and addresses of other managers in the swarm.
      *
-     * @return PeerNode[]|null
+     * @return list<PeerNode>|null
      */
     public function getRemoteManagers() : ?array
     {
@@ -196,7 +196,7 @@ class SwarmInfo
     /**
      * List of ID's and addresses of other managers in the swarm.
      *
-     * @param PeerNode[]|null $remoteManagers
+     * @param list<PeerNode>|null $remoteManagers
      *
      * @return self
      */

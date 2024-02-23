@@ -15,7 +15,7 @@ class MetadataValuesChangeRequestBase
     /**
      * Changes that need to be applied to the existing content metadata. The same set of changes is applied to all contents.
      *
-     * @var MetadataValuesChangeCommandBase[]
+     * @var list<MetadataValuesChangeCommandBase>
      */
     protected $changeCommands;
     /**
@@ -39,7 +39,7 @@ class MetadataValuesChangeRequestBase
     /**
      * Changes that need to be applied to the existing content metadata. The same set of changes is applied to all contents.
      *
-     * @return MetadataValuesChangeCommandBase[]
+     * @return list<MetadataValuesChangeCommandBase>
      */
     public function getChangeCommands() : array
     {
@@ -48,7 +48,7 @@ class MetadataValuesChangeRequestBase
     /**
      * Changes that need to be applied to the existing content metadata. The same set of changes is applied to all contents.
      *
-     * @param MetadataValuesChangeCommandBase[] $changeCommands
+     * @param list<MetadataValuesChangeCommandBase> $changeCommands
      */
     public function setChangeCommands(array $changeCommands)
     {

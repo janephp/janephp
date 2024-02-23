@@ -34,14 +34,14 @@ class FieldTranslatedString extends FieldBase
     * Defines how the value must be analyzed for filtering by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
     The analyzers are applied only if the Index property is set to true.
     *
-    * @var AnalyzerBase[]|null
+    * @var list<AnalyzerBase>|null
     */
     protected $indexAnalyzers;
     /**
     * Defines how the value must be analyzed for searches by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
     The analyzers are applied only if the SimpleSearch property is set to true.
     *
-    * @var AnalyzerBase[]|null
+    * @var list<AnalyzerBase>|null
     */
     protected $simpleSearchAnalyzers;
     /**
@@ -55,7 +55,7 @@ class FieldTranslatedString extends FieldBase
     If Required is true, the field and all its metadata languages are required.
     If Required is false, the field can be left empty, but as soon as a value is entered all required metadata languages are mandatory.
     *
-    * @var string[]|null
+    * @var list<string>|null
     */
     protected $requiredMetadataLanguages;
     /**
@@ -140,7 +140,7 @@ class FieldTranslatedString extends FieldBase
     * Defines how the value must be analyzed for filtering by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
     The analyzers are applied only if the Index property is set to true.
     *
-    * @return AnalyzerBase[]|null
+    * @return list<AnalyzerBase>|null
     */
     public function getIndexAnalyzers() : ?array
     {
@@ -150,7 +150,7 @@ class FieldTranslatedString extends FieldBase
     * Defines how the value must be analyzed for filtering by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
     The analyzers are applied only if the Index property is set to true.
     *
-    * @param AnalyzerBase[]|null $indexAnalyzers
+    * @param list<AnalyzerBase>|null $indexAnalyzers
     *
     * @return self
     */
@@ -164,7 +164,7 @@ class FieldTranslatedString extends FieldBase
     * Defines how the value must be analyzed for searches by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
     The analyzers are applied only if the SimpleSearch property is set to true.
     *
-    * @return AnalyzerBase[]|null
+    * @return list<AnalyzerBase>|null
     */
     public function getSimpleSearchAnalyzers() : ?array
     {
@@ -174,7 +174,7 @@ class FieldTranslatedString extends FieldBase
     * Defines how the value must be analyzed for searches by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
     The analyzers are applied only if the SimpleSearch property is set to true.
     *
-    * @param AnalyzerBase[]|null $simpleSearchAnalyzers
+    * @param list<AnalyzerBase>|null $simpleSearchAnalyzers
     *
     * @return self
     */
@@ -211,7 +211,7 @@ class FieldTranslatedString extends FieldBase
     If Required is true, the field and all its metadata languages are required.
     If Required is false, the field can be left empty, but as soon as a value is entered all required metadata languages are mandatory.
     *
-    * @return string[]|null
+    * @return list<string>|null
     */
     public function getRequiredMetadataLanguages() : ?array
     {
@@ -222,7 +222,7 @@ class FieldTranslatedString extends FieldBase
     If Required is true, the field and all its metadata languages are required.
     If Required is false, the field can be left empty, but as soon as a value is entered all required metadata languages are mandatory.
     *
-    * @param string[]|null $requiredMetadataLanguages
+    * @param list<string>|null $requiredMetadataLanguages
     *
     * @return self
     */

@@ -39,13 +39,13 @@ class GpgKeySubkeysItem extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $emails;
     /**
      * 
      *
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $subkeys;
     /**
@@ -181,7 +181,7 @@ class GpgKeySubkeysItem extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getEmails() : array
     {
@@ -190,7 +190,7 @@ class GpgKeySubkeysItem extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $emails
+     * @param list<mixed> $emails
      *
      * @return self
      */
@@ -203,7 +203,7 @@ class GpgKeySubkeysItem extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getSubkeys() : array
     {
@@ -212,7 +212,7 @@ class GpgKeySubkeysItem extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $subkeys
+     * @param list<mixed> $subkeys
      *
      * @return self
      */

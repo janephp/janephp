@@ -21,7 +21,7 @@ class BaseResultOfFileTransfer
     /**
      * The matched documents.
      *
-     * @var FileTransfer[]
+     * @var list<FileTransfer>
      */
     protected $results;
     /**
@@ -61,7 +61,7 @@ class BaseResultOfFileTransfer
     /**
      * The matched documents.
      *
-     * @return FileTransfer[]
+     * @return list<FileTransfer>
      */
     public function getResults() : array
     {
@@ -70,7 +70,7 @@ class BaseResultOfFileTransfer
     /**
      * The matched documents.
      *
-     * @param FileTransfer[] $results
+     * @param list<FileTransfer> $results
      *
      * @return self
      */

@@ -33,7 +33,7 @@ class OutputDataVideo extends OutputDataBase
     /**
      * The sprites making up the key frames of the video.
      *
-     * @var Sprite[]|null
+     * @var list<Sprite>|null
      */
     protected $sprites;
     /**
@@ -105,7 +105,7 @@ class OutputDataVideo extends OutputDataBase
     /**
      * The sprites making up the key frames of the video.
      *
-     * @return Sprite[]|null
+     * @return list<Sprite>|null
      */
     public function getSprites() : ?array
     {
@@ -114,7 +114,7 @@ class OutputDataVideo extends OutputDataBase
     /**
      * The sprites making up the key frames of the video.
      *
-     * @param Sprite[]|null $sprites
+     * @param list<Sprite>|null $sprites
      *
      * @return self
      */

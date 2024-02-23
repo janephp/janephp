@@ -27,13 +27,13 @@ class TaskSpecContainerSpec
     /**
      * The command to be run in the image.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $command;
     /**
      * Arguments to the command.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $args;
     /**
@@ -47,7 +47,7 @@ class TaskSpecContainerSpec
     /**
      * A list of environment variables in the form `VAR=value`.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $env;
     /**
@@ -65,7 +65,7 @@ class TaskSpecContainerSpec
     /**
      * A list of additional groups that the container process will run as.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $groups;
     /**
@@ -97,7 +97,7 @@ class TaskSpecContainerSpec
     of the service.
     
     *
-    * @var Mount[]
+    * @var list<Mount>
     */
     protected $mounts;
     /**
@@ -129,7 +129,7 @@ class TaskSpecContainerSpec
        IP_address canonical_hostname [aliases...]
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $hosts;
     /**
@@ -145,7 +145,7 @@ class TaskSpecContainerSpec
     exposed to the service.
     
     *
-    * @var TaskSpecContainerSpecSecretsItem[]
+    * @var list<TaskSpecContainerSpecSecretsItem>
     */
     protected $secrets;
     /**
@@ -153,7 +153,7 @@ class TaskSpecContainerSpec
     exposed to the service.
     
     *
-    * @var TaskSpecContainerSpecConfigsItem[]
+    * @var list<TaskSpecContainerSpecConfigsItem>
     */
     protected $configs;
     /**
@@ -191,7 +191,7 @@ class TaskSpecContainerSpec
     for the container.
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $capabilityAdd;
     /**
@@ -199,13 +199,13 @@ class TaskSpecContainerSpec
     for the container.
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $capabilityDrop;
     /**
      * A list of resource limits to set in the container. For example: `{"Name": "nofile", "Soft": 1024, "Hard": 2048}`"
      *
-     * @var TaskSpecContainerSpecUlimitsItem[]
+     * @var list<TaskSpecContainerSpecUlimitsItem>
      */
     protected $ulimits;
     /**
@@ -255,7 +255,7 @@ class TaskSpecContainerSpec
     /**
      * The command to be run in the image.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getCommand() : array
     {
@@ -264,7 +264,7 @@ class TaskSpecContainerSpec
     /**
      * The command to be run in the image.
      *
-     * @param string[] $command
+     * @param list<string> $command
      *
      * @return self
      */
@@ -277,7 +277,7 @@ class TaskSpecContainerSpec
     /**
      * Arguments to the command.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getArgs() : array
     {
@@ -286,7 +286,7 @@ class TaskSpecContainerSpec
     /**
      * Arguments to the command.
      *
-     * @param string[] $args
+     * @param list<string> $args
      *
      * @return self
      */
@@ -325,7 +325,7 @@ class TaskSpecContainerSpec
     /**
      * A list of environment variables in the form `VAR=value`.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getEnv() : array
     {
@@ -334,7 +334,7 @@ class TaskSpecContainerSpec
     /**
      * A list of environment variables in the form `VAR=value`.
      *
-     * @param string[] $env
+     * @param list<string> $env
      *
      * @return self
      */
@@ -391,7 +391,7 @@ class TaskSpecContainerSpec
     /**
      * A list of additional groups that the container process will run as.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getGroups() : array
     {
@@ -400,7 +400,7 @@ class TaskSpecContainerSpec
     /**
      * A list of additional groups that the container process will run as.
      *
-     * @param string[] $groups
+     * @param list<string> $groups
      *
      * @return self
      */
@@ -503,7 +503,7 @@ class TaskSpecContainerSpec
     of the service.
     
     *
-    * @return Mount[]
+    * @return list<Mount>
     */
     public function getMounts() : array
     {
@@ -514,7 +514,7 @@ class TaskSpecContainerSpec
     of the service.
     
     *
-    * @param Mount[] $mounts
+    * @param list<Mount> $mounts
     *
     * @return self
     */
@@ -603,7 +603,7 @@ class TaskSpecContainerSpec
        IP_address canonical_hostname [aliases...]
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getHosts() : array
     {
@@ -618,7 +618,7 @@ class TaskSpecContainerSpec
        IP_address canonical_hostname [aliases...]
     
     *
-    * @param string[] $hosts
+    * @param list<string> $hosts
     *
     * @return self
     */
@@ -659,7 +659,7 @@ class TaskSpecContainerSpec
     exposed to the service.
     
     *
-    * @return TaskSpecContainerSpecSecretsItem[]
+    * @return list<TaskSpecContainerSpecSecretsItem>
     */
     public function getSecrets() : array
     {
@@ -670,7 +670,7 @@ class TaskSpecContainerSpec
     exposed to the service.
     
     *
-    * @param TaskSpecContainerSpecSecretsItem[] $secrets
+    * @param list<TaskSpecContainerSpecSecretsItem> $secrets
     *
     * @return self
     */
@@ -685,7 +685,7 @@ class TaskSpecContainerSpec
     exposed to the service.
     
     *
-    * @return TaskSpecContainerSpecConfigsItem[]
+    * @return list<TaskSpecContainerSpecConfigsItem>
     */
     public function getConfigs() : array
     {
@@ -696,7 +696,7 @@ class TaskSpecContainerSpec
     exposed to the service.
     
     *
-    * @param TaskSpecContainerSpecConfigsItem[] $configs
+    * @param list<TaskSpecContainerSpecConfigsItem> $configs
     *
     * @return self
     */
@@ -801,7 +801,7 @@ class TaskSpecContainerSpec
     for the container.
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getCapabilityAdd() : array
     {
@@ -812,7 +812,7 @@ class TaskSpecContainerSpec
     for the container.
     
     *
-    * @param string[] $capabilityAdd
+    * @param list<string> $capabilityAdd
     *
     * @return self
     */
@@ -827,7 +827,7 @@ class TaskSpecContainerSpec
     for the container.
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getCapabilityDrop() : array
     {
@@ -838,7 +838,7 @@ class TaskSpecContainerSpec
     for the container.
     
     *
-    * @param string[] $capabilityDrop
+    * @param list<string> $capabilityDrop
     *
     * @return self
     */
@@ -851,7 +851,7 @@ class TaskSpecContainerSpec
     /**
      * A list of resource limits to set in the container. For example: `{"Name": "nofile", "Soft": 1024, "Hard": 2048}`"
      *
-     * @return TaskSpecContainerSpecUlimitsItem[]
+     * @return list<TaskSpecContainerSpecUlimitsItem>
      */
     public function getUlimits() : array
     {
@@ -860,7 +860,7 @@ class TaskSpecContainerSpec
     /**
      * A list of resource limits to set in the container. For example: `{"Name": "nofile", "Soft": 1024, "Hard": 2048}`"
      *
-     * @param TaskSpecContainerSpecUlimitsItem[] $ulimits
+     * @param list<TaskSpecContainerSpecUlimitsItem> $ulimits
      *
      * @return self
      */

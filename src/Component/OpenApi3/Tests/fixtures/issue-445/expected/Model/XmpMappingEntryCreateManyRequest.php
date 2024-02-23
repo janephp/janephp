@@ -15,13 +15,13 @@ class XmpMappingEntryCreateManyRequest
     /**
      * Mappings to create.
      *
-     * @var XmpMappingEntryCreateRequest[]|null
+     * @var list<XmpMappingEntryCreateRequest>|null
      */
     protected $items;
     /**
      * Mappings to create.
      *
-     * @return XmpMappingEntryCreateRequest[]|null
+     * @return list<XmpMappingEntryCreateRequest>|null
      */
     public function getItems() : ?array
     {
@@ -30,7 +30,7 @@ class XmpMappingEntryCreateManyRequest
     /**
      * Mappings to create.
      *
-     * @param XmpMappingEntryCreateRequest[]|null $items
+     * @param list<XmpMappingEntryCreateRequest>|null $items
      *
      * @return self
      */

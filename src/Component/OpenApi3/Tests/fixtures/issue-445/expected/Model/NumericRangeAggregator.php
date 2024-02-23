@@ -21,7 +21,7 @@ class NumericRangeAggregator extends AggregatorBase
     /**
      * A list of numeric ranges on which aggregate.
      *
-     * @var NumericRangeForAggregator[]
+     * @var list<NumericRangeForAggregator>
      */
     protected $ranges;
     /**
@@ -49,7 +49,7 @@ class NumericRangeAggregator extends AggregatorBase
     /**
      * A list of numeric ranges on which aggregate.
      *
-     * @return NumericRangeForAggregator[]
+     * @return list<NumericRangeForAggregator>
      */
     public function getRanges() : array
     {
@@ -58,7 +58,7 @@ class NumericRangeAggregator extends AggregatorBase
     /**
      * A list of numeric ranges on which aggregate.
      *
-     * @param NumericRangeForAggregator[] $ranges
+     * @param list<NumericRangeForAggregator> $ranges
      *
      * @return self
      */

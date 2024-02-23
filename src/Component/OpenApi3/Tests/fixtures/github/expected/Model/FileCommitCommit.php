@@ -63,7 +63,7 @@ class FileCommitCommit extends \ArrayObject
     /**
      * 
      *
-     * @var FileCommitCommitParentsItem[]
+     * @var list<FileCommitCommitParentsItem>
      */
     protected $parents;
     /**
@@ -251,7 +251,7 @@ class FileCommitCommit extends \ArrayObject
     /**
      * 
      *
-     * @return FileCommitCommitParentsItem[]
+     * @return list<FileCommitCommitParentsItem>
      */
     public function getParents() : array
     {
@@ -260,7 +260,7 @@ class FileCommitCommit extends \ArrayObject
     /**
      * 
      *
-     * @param FileCommitCommitParentsItem[] $parents
+     * @param list<FileCommitCommitParentsItem> $parents
      *
      * @return self
      */

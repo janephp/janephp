@@ -21,7 +21,7 @@ class MetadataReferenceResult extends \ArrayObject
     /**
      * The matched documents.
      *
-     * @var MetadataReference[]
+     * @var list<MetadataReference>
      */
     protected $results;
     /**
@@ -67,7 +67,7 @@ class MetadataReferenceResult extends \ArrayObject
     /**
      * The matched documents.
      *
-     * @return MetadataReference[]
+     * @return list<MetadataReference>
      */
     public function getResults() : array
     {
@@ -76,7 +76,7 @@ class MetadataReferenceResult extends \ArrayObject
     /**
      * The matched documents.
      *
-     * @param MetadataReference[] $results
+     * @param list<MetadataReference> $results
      *
      * @return self
      */

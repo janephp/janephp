@@ -21,7 +21,7 @@ class BaseResultOfUserWithRoles
     /**
      * The matched documents.
      *
-     * @var UserWithRoles[]
+     * @var list<UserWithRoles>
      */
     protected $results;
     /**
@@ -61,7 +61,7 @@ class BaseResultOfUserWithRoles
     /**
      * The matched documents.
      *
-     * @return UserWithRoles[]
+     * @return list<UserWithRoles>
      */
     public function getResults() : array
     {
@@ -70,7 +70,7 @@ class BaseResultOfUserWithRoles
     /**
      * The matched documents.
      *
-     * @param UserWithRoles[] $results
+     * @param list<UserWithRoles> $results
      *
      * @return self
      */

@@ -15,19 +15,19 @@ class DeleteRulesRequest extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $ids;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $values;
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getIds() : array
     {
@@ -36,7 +36,7 @@ class DeleteRulesRequest extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $ids
+     * @param list<string> $ids
      *
      * @return self
      */
@@ -49,7 +49,7 @@ class DeleteRulesRequest extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getValues() : array
     {
@@ -58,7 +58,7 @@ class DeleteRulesRequest extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $values
+     * @param list<string> $values
      *
      * @return self
      */

@@ -21,7 +21,7 @@ class SearchBehaviorBaseResultOfUserWithRoles extends \ArrayObject
     /**
      * The matched documents.
      *
-     * @var UserWithRoles[]
+     * @var list<UserWithRoles>
      */
     protected $results;
     /**
@@ -51,7 +51,7 @@ class SearchBehaviorBaseResultOfUserWithRoles extends \ArrayObject
     /**
      * Additional information regarding the query execution and reason of the matched documents. Multiple items are returned if multiple queries were performed.
      *
-     * @var QueryDebugInformation[]|null
+     * @var list<QueryDebugInformation>|null
      */
     protected $queryDebugInformation;
     /**
@@ -79,7 +79,7 @@ class SearchBehaviorBaseResultOfUserWithRoles extends \ArrayObject
     /**
      * The matched documents.
      *
-     * @return UserWithRoles[]
+     * @return list<UserWithRoles>
      */
     public function getResults() : array
     {
@@ -88,7 +88,7 @@ class SearchBehaviorBaseResultOfUserWithRoles extends \ArrayObject
     /**
      * The matched documents.
      *
-     * @param UserWithRoles[] $results
+     * @param list<UserWithRoles> $results
      *
      * @return self
      */
@@ -189,7 +189,7 @@ class SearchBehaviorBaseResultOfUserWithRoles extends \ArrayObject
     /**
      * Additional information regarding the query execution and reason of the matched documents. Multiple items are returned if multiple queries were performed.
      *
-     * @return QueryDebugInformation[]|null
+     * @return list<QueryDebugInformation>|null
      */
     public function getQueryDebugInformation() : ?array
     {
@@ -198,7 +198,7 @@ class SearchBehaviorBaseResultOfUserWithRoles extends \ArrayObject
     /**
      * Additional information regarding the query execution and reason of the matched documents. Multiple items are returned if multiple queries were performed.
      *
-     * @param QueryDebugInformation[]|null $queryDebugInformation
+     * @param list<QueryDebugInformation>|null $queryDebugInformation
      *
      * @return self
      */

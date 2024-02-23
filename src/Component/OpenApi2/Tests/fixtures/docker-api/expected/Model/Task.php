@@ -87,7 +87,7 @@ class Task
     String resources (e.g, `GPU=UUID1`).
     
     *
-    * @var GenericResourcesItem[]
+    * @var list<GenericResourcesItem>
     */
     protected $assignedGenericResources;
     /**
@@ -363,7 +363,7 @@ class Task
     String resources (e.g, `GPU=UUID1`).
     
     *
-    * @return GenericResourcesItem[]
+    * @return list<GenericResourcesItem>
     */
     public function getAssignedGenericResources() : array
     {
@@ -374,7 +374,7 @@ class Task
     String resources (e.g, `GPU=UUID1`).
     
     *
-    * @param GenericResourcesItem[] $assignedGenericResources
+    * @param list<GenericResourcesItem> $assignedGenericResources
     *
     * @return self
     */

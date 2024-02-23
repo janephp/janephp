@@ -15,19 +15,19 @@ class ParticipationStats extends \ArrayObject
     /**
      * 
      *
-     * @var int[]
+     * @var list<int>
      */
     protected $all;
     /**
      * 
      *
-     * @var int[]
+     * @var list<int>
      */
     protected $owner;
     /**
      * 
      *
-     * @return int[]
+     * @return list<int>
      */
     public function getAll() : array
     {
@@ -36,7 +36,7 @@ class ParticipationStats extends \ArrayObject
     /**
      * 
      *
-     * @param int[] $all
+     * @param list<int> $all
      *
      * @return self
      */
@@ -49,7 +49,7 @@ class ParticipationStats extends \ArrayObject
     /**
      * 
      *
-     * @return int[]
+     * @return list<int>
      */
     public function getOwner() : array
     {
@@ -58,7 +58,7 @@ class ParticipationStats extends \ArrayObject
     /**
      * 
      *
-     * @param int[] $owner
+     * @param list<int> $owner
      *
      * @return self
      */

@@ -39,7 +39,7 @@ class PluginConfig
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $entrypoint;
     /**
@@ -87,13 +87,13 @@ class PluginConfig
     /**
      * 
      *
-     * @var PluginMount[]
+     * @var list<PluginMount>
      */
     protected $mounts;
     /**
      * 
      *
-     * @var PluginEnv[]
+     * @var list<PluginEnv>
      */
     protected $env;
     /**
@@ -199,7 +199,7 @@ class PluginConfig
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getEntrypoint() : array
     {
@@ -208,7 +208,7 @@ class PluginConfig
     /**
      * 
      *
-     * @param string[] $entrypoint
+     * @param list<string> $entrypoint
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class PluginConfig
     /**
      * 
      *
-     * @return PluginMount[]
+     * @return list<PluginMount>
      */
     public function getMounts() : array
     {
@@ -384,7 +384,7 @@ class PluginConfig
     /**
      * 
      *
-     * @param PluginMount[] $mounts
+     * @param list<PluginMount> $mounts
      *
      * @return self
      */
@@ -397,7 +397,7 @@ class PluginConfig
     /**
      * 
      *
-     * @return PluginEnv[]
+     * @return list<PluginEnv>
      */
     public function getEnv() : array
     {
@@ -406,7 +406,7 @@ class PluginConfig
     /**
      * 
      *
-     * @param PluginEnv[] $env
+     * @param list<PluginEnv> $env
      *
      * @return self
      */

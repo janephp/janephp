@@ -15,13 +15,13 @@ class UserRoleDeleteManyRequest
     /**
      * IDs of the user roles to delete.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $ids;
     /**
      * IDs of the user roles to delete.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getIds() : array
     {
@@ -30,7 +30,7 @@ class UserRoleDeleteManyRequest
     /**
      * IDs of the user roles to delete.
      *
-     * @param string[] $ids
+     * @param list<string> $ids
      *
      * @return self
      */

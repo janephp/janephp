@@ -15,13 +15,13 @@ class Topic extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $names;
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getNames() : array
     {
@@ -30,7 +30,7 @@ class Topic extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $names
+     * @param list<string> $names
      *
      * @return self
      */

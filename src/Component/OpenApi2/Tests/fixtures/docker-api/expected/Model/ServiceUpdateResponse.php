@@ -15,13 +15,13 @@ class ServiceUpdateResponse
     /**
      * Optional warning messages
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $warnings;
     /**
      * Optional warning messages
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getWarnings() : array
     {
@@ -30,7 +30,7 @@ class ServiceUpdateResponse
     /**
      * Optional warning messages
      *
-     * @param string[] $warnings
+     * @param list<string> $warnings
      *
      * @return self
      */

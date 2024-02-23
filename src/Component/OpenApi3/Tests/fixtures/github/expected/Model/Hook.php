@@ -39,7 +39,7 @@ class Hook extends \ArrayObject
     /**
      * Determines what events the hook is triggered for. Default: ['push'].
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $events;
     /**
@@ -175,7 +175,7 @@ class Hook extends \ArrayObject
     /**
      * Determines what events the hook is triggered for. Default: ['push'].
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getEvents() : array
     {
@@ -184,7 +184,7 @@ class Hook extends \ArrayObject
     /**
      * Determines what events the hook is triggered for. Default: ['push'].
      *
-     * @param string[] $events
+     * @param list<string> $events
      *
      * @return self
      */

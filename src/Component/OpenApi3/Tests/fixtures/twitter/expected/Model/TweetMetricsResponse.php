@@ -15,19 +15,19 @@ class TweetMetricsResponse extends \ArrayObject
     /**
      * 
      *
-     * @var TweetMetrics[]
+     * @var list<TweetMetrics>
      */
     protected $data;
     /**
      * 
      *
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $errors;
     /**
      * 
      *
-     * @return TweetMetrics[]
+     * @return list<TweetMetrics>
      */
     public function getData() : array
     {
@@ -36,7 +36,7 @@ class TweetMetricsResponse extends \ArrayObject
     /**
      * 
      *
-     * @param TweetMetrics[] $data
+     * @param list<TweetMetrics> $data
      *
      * @return self
      */
@@ -49,7 +49,7 @@ class TweetMetricsResponse extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getErrors() : array
     {
@@ -58,7 +58,7 @@ class TweetMetricsResponse extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $errors
+     * @param list<mixed> $errors
      *
      * @return self
      */

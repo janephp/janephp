@@ -15,7 +15,7 @@ class ImagesPrunePostResponse200
     /**
      * Images that were deleted
      *
-     * @var ImageDeleteResponseItem[]
+     * @var list<ImageDeleteResponseItem>
      */
     protected $imagesDeleted;
     /**
@@ -27,7 +27,7 @@ class ImagesPrunePostResponse200
     /**
      * Images that were deleted
      *
-     * @return ImageDeleteResponseItem[]
+     * @return list<ImageDeleteResponseItem>
      */
     public function getImagesDeleted() : array
     {
@@ -36,7 +36,7 @@ class ImagesPrunePostResponse200
     /**
      * Images that were deleted
      *
-     * @param ImageDeleteResponseItem[] $imagesDeleted
+     * @param list<ImageDeleteResponseItem> $imagesDeleted
      *
      * @return self
      */

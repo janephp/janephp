@@ -69,7 +69,7 @@ class IndexedFieldThresholdExceededException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $schemaIds;
     /**
@@ -285,7 +285,7 @@ class IndexedFieldThresholdExceededException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSchemaIds() : ?array
     {
@@ -294,7 +294,7 @@ class IndexedFieldThresholdExceededException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $schemaIds
+     * @param list<string>|null $schemaIds
      *
      * @return self
      */

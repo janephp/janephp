@@ -75,7 +75,7 @@ class SchemaValidationException extends \ArrayObject
     /**
      * 
      *
-     * @var PictureparkBusinessException[]|null
+     * @var list<PictureparkBusinessException>|null
      */
     protected $exceptions;
     /**
@@ -301,7 +301,7 @@ class SchemaValidationException extends \ArrayObject
     /**
      * 
      *
-     * @return PictureparkBusinessException[]|null
+     * @return list<PictureparkBusinessException>|null
      */
     public function getExceptions() : ?array
     {
@@ -310,7 +310,7 @@ class SchemaValidationException extends \ArrayObject
     /**
      * 
      *
-     * @param PictureparkBusinessException[]|null $exceptions
+     * @param list<PictureparkBusinessException>|null $exceptions
      *
      * @return self
      */

@@ -21,7 +21,7 @@ class BaseResultOfListItem
     /**
      * The matched documents.
      *
-     * @var ListItem[]
+     * @var list<ListItem>
      */
     protected $results;
     /**
@@ -61,7 +61,7 @@ class BaseResultOfListItem
     /**
      * The matched documents.
      *
-     * @return ListItem[]
+     * @return list<ListItem>
      */
     public function getResults() : array
     {
@@ -70,7 +70,7 @@ class BaseResultOfListItem
     /**
      * The matched documents.
      *
-     * @param ListItem[] $results
+     * @param list<ListItem> $results
      *
      * @return self
      */

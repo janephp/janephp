@@ -75,7 +75,7 @@ class OwnerTokenNotFoundException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $ownerTokenUserIds;
     /**
@@ -301,7 +301,7 @@ class OwnerTokenNotFoundException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getOwnerTokenUserIds() : ?array
     {
@@ -310,7 +310,7 @@ class OwnerTokenNotFoundException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $ownerTokenUserIds
+     * @param list<string>|null $ownerTokenUserIds
      *
      * @return self
      */

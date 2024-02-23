@@ -45,7 +45,7 @@ class CredentialAuthorization extends \ArrayObject
     /**
      * List of oauth scopes the token has been granted.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $scopes;
     /**
@@ -173,7 +173,7 @@ class CredentialAuthorization extends \ArrayObject
     /**
      * List of oauth scopes the token has been granted.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getScopes() : array
     {
@@ -182,7 +182,7 @@ class CredentialAuthorization extends \ArrayObject
     /**
      * List of oauth scopes the token has been granted.
      *
-     * @param string[] $scopes
+     * @param list<string> $scopes
      *
      * @return self
      */

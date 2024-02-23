@@ -15,13 +15,13 @@ class ContentDetailViewEvent extends ApplicationEvent
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $contentIds;
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getContentIds() : ?array
     {
@@ -30,7 +30,7 @@ class ContentDetailViewEvent extends ApplicationEvent
     /**
      * 
      *
-     * @param string[]|null $contentIds
+     * @param list<string>|null $contentIds
      *
      * @return self
      */

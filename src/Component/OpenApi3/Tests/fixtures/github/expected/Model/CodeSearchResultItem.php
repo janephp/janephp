@@ -81,13 +81,13 @@ class CodeSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $lineNumbers;
     /**
      * 
      *
-     * @var SearchResultTextMatchesItem[]
+     * @var list<SearchResultTextMatchesItem>
      */
     protected $textMatches;
     /**
@@ -335,7 +335,7 @@ class CodeSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getLineNumbers() : array
     {
@@ -344,7 +344,7 @@ class CodeSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $lineNumbers
+     * @param list<string> $lineNumbers
      *
      * @return self
      */
@@ -357,7 +357,7 @@ class CodeSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @return SearchResultTextMatchesItem[]
+     * @return list<SearchResultTextMatchesItem>
      */
     public function getTextMatches() : array
     {
@@ -366,7 +366,7 @@ class CodeSearchResultItem extends \ArrayObject
     /**
      * 
      *
-     * @param SearchResultTextMatchesItem[] $textMatches
+     * @param list<SearchResultTextMatchesItem> $textMatches
      *
      * @return self
      */

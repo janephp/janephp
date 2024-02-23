@@ -75,7 +75,7 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $identityProviderIds;
     /**
@@ -301,7 +301,7 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getIdentityProviderIds() : ?array
     {
@@ -310,7 +310,7 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
     /**
      * 
      *
-     * @param string[]|null $identityProviderIds
+     * @param list<string>|null $identityProviderIds
      *
      * @return self
      */

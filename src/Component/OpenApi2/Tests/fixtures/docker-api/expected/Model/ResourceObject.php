@@ -29,7 +29,7 @@ class ResourceObject
     String resources (e.g, `GPU=UUID1`).
     
     *
-    * @var GenericResourcesItem[]
+    * @var list<GenericResourcesItem>
     */
     protected $genericResources;
     /**
@@ -81,7 +81,7 @@ class ResourceObject
     String resources (e.g, `GPU=UUID1`).
     
     *
-    * @return GenericResourcesItem[]
+    * @return list<GenericResourcesItem>
     */
     public function getGenericResources() : array
     {
@@ -92,7 +92,7 @@ class ResourceObject
     String resources (e.g, `GPU=UUID1`).
     
     *
-    * @param GenericResourcesItem[] $genericResources
+    * @param list<GenericResourcesItem> $genericResources
     *
     * @return self
     */

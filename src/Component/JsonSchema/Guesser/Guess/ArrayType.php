@@ -32,13 +32,13 @@ class ArrayType extends Type
             $typesString = [];
 
             foreach ($this->itemType->getTypes() as $type) {
-                $typesString[] = $type->getDocTypeHint($namespace) . '[]';
+                $typesString[] = sprintf('list<%1$s>', $type->getDocTypeHint($namespace));
             }
 
             return implode('|', $typesString);
         }
 
-        return $this->itemType->getDocTypeHint($namespace) . '[]';
+        return sprintf('list<%1$s>', $this->itemType->getDocTypeHint($namespace));
     }
 
     /**

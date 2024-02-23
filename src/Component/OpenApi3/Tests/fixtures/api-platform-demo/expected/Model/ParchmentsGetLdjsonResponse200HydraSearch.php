@@ -33,7 +33,7 @@ class ParchmentsGetLdjsonResponse200HydraSearch extends \ArrayObject
     /**
      * 
      *
-     * @var ParchmentsGetLdjsonResponse200HydraSearchHydraMappingItem[]
+     * @var list<ParchmentsGetLdjsonResponse200HydraSearchHydraMappingItem>
      */
     protected $hydraMapping;
     /**
@@ -105,7 +105,7 @@ class ParchmentsGetLdjsonResponse200HydraSearch extends \ArrayObject
     /**
      * 
      *
-     * @return ParchmentsGetLdjsonResponse200HydraSearchHydraMappingItem[]
+     * @return list<ParchmentsGetLdjsonResponse200HydraSearchHydraMappingItem>
      */
     public function getHydraMapping() : array
     {
@@ -114,7 +114,7 @@ class ParchmentsGetLdjsonResponse200HydraSearch extends \ArrayObject
     /**
      * 
      *
-     * @param ParchmentsGetLdjsonResponse200HydraSearchHydraMappingItem[] $hydraMapping
+     * @param list<ParchmentsGetLdjsonResponse200HydraSearchHydraMappingItem> $hydraMapping
      *
      * @return self
      */

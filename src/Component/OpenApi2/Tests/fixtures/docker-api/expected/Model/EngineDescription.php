@@ -27,7 +27,7 @@ class EngineDescription
     /**
      * 
      *
-     * @var EngineDescriptionPluginsItem[]
+     * @var list<EngineDescriptionPluginsItem>
      */
     protected $plugins;
     /**
@@ -77,7 +77,7 @@ class EngineDescription
     /**
      * 
      *
-     * @return EngineDescriptionPluginsItem[]
+     * @return list<EngineDescriptionPluginsItem>
      */
     public function getPlugins() : array
     {
@@ -86,7 +86,7 @@ class EngineDescription
     /**
      * 
      *
-     * @param EngineDescriptionPluginsItem[] $plugins
+     * @param list<EngineDescriptionPluginsItem> $plugins
      *
      * @return self
      */

@@ -75,7 +75,7 @@ class LayerAssignmentInUseWithContentsException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $usedAssignmentSchemaIds;
     /**
@@ -301,7 +301,7 @@ class LayerAssignmentInUseWithContentsException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getUsedAssignmentSchemaIds() : ?array
     {
@@ -310,7 +310,7 @@ class LayerAssignmentInUseWithContentsException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $usedAssignmentSchemaIds
+     * @param list<string>|null $usedAssignmentSchemaIds
      *
      * @return self
      */

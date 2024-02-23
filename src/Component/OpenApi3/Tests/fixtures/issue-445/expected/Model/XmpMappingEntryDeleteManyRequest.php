@@ -15,13 +15,13 @@ class XmpMappingEntryDeleteManyRequest
     /**
      * IDs to delete.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $ids;
     /**
      * IDs to delete.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getIds() : ?array
     {
@@ -30,7 +30,7 @@ class XmpMappingEntryDeleteManyRequest
     /**
      * IDs to delete.
      *
-     * @param string[]|null $ids
+     * @param list<string>|null $ids
      *
      * @return self
      */

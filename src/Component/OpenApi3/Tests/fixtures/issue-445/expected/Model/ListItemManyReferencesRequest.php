@@ -15,7 +15,7 @@ class ListItemManyReferencesRequest
     /**
      * The IDs of the list items whose references need to be retrieved.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $listItemIds;
     /**
@@ -27,7 +27,7 @@ class ListItemManyReferencesRequest
     /**
      * The IDs of the list items whose references need to be retrieved.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getListItemIds() : array
     {
@@ -36,7 +36,7 @@ class ListItemManyReferencesRequest
     /**
      * The IDs of the list items whose references need to be retrieved.
      *
-     * @param string[] $listItemIds
+     * @param list<string> $listItemIds
      *
      * @return self
      */

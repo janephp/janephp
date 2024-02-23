@@ -33,13 +33,13 @@ class SchemaImportResult
     /**
      * Ids of the schemas that were not imported because already found in the system
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $skippedSchemaIds;
     /**
      * Ids of the schemas that were successfully imported
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $importedSchemaIds;
     /**
@@ -111,7 +111,7 @@ class SchemaImportResult
     /**
      * Ids of the schemas that were not imported because already found in the system
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSkippedSchemaIds() : ?array
     {
@@ -120,7 +120,7 @@ class SchemaImportResult
     /**
      * Ids of the schemas that were not imported because already found in the system
      *
-     * @param string[]|null $skippedSchemaIds
+     * @param list<string>|null $skippedSchemaIds
      *
      * @return self
      */
@@ -133,7 +133,7 @@ class SchemaImportResult
     /**
      * Ids of the schemas that were successfully imported
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getImportedSchemaIds() : ?array
     {
@@ -142,7 +142,7 @@ class SchemaImportResult
     /**
      * Ids of the schemas that were successfully imported
      *
-     * @param string[]|null $importedSchemaIds
+     * @param list<string>|null $importedSchemaIds
      *
      * @return self
      */

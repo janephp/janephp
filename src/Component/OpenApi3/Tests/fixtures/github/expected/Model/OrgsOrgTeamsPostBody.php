@@ -27,13 +27,13 @@ class OrgsOrgTeamsPostBody extends \ArrayObject
     /**
      * List GitHub IDs for organization members who will become team maintainers.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $maintainers;
     /**
      * The full name (e.g., "organization-name/repository-name") of repositories to add the team to.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $repoNames;
     /**
@@ -111,7 +111,7 @@ class OrgsOrgTeamsPostBody extends \ArrayObject
     /**
      * List GitHub IDs for organization members who will become team maintainers.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getMaintainers() : array
     {
@@ -120,7 +120,7 @@ class OrgsOrgTeamsPostBody extends \ArrayObject
     /**
      * List GitHub IDs for organization members who will become team maintainers.
      *
-     * @param string[] $maintainers
+     * @param list<string> $maintainers
      *
      * @return self
      */
@@ -133,7 +133,7 @@ class OrgsOrgTeamsPostBody extends \ArrayObject
     /**
      * The full name (e.g., "organization-name/repository-name") of repositories to add the team to.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getRepoNames() : array
     {
@@ -142,7 +142,7 @@ class OrgsOrgTeamsPostBody extends \ArrayObject
     /**
      * The full name (e.g., "organization-name/repository-name") of repositories to add the team to.
      *
-     * @param string[] $repoNames
+     * @param list<string> $repoNames
      *
      * @return self
      */

@@ -23,7 +23,7 @@ class ContentCreateRequest
     * An optional list of IDs of the schemas that form the layers of the content.
     The SchemaType of the specified schemas must be Layer.
     *
-    * @var string[]|null
+    * @var list<string>|null
     */
     protected $layerSchemaIds;
     /**
@@ -43,7 +43,7 @@ class ContentCreateRequest
     /**
      * An optional list of content permission set IDs which control content permissions. These permissions control content accessibility for the users that do not own the content.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $contentPermissionSetIds;
     /**
@@ -82,7 +82,7 @@ class ContentCreateRequest
     * An optional list of IDs of the schemas that form the layers of the content.
     The SchemaType of the specified schemas must be Layer.
     *
-    * @return string[]|null
+    * @return list<string>|null
     */
     public function getLayerSchemaIds() : ?array
     {
@@ -92,7 +92,7 @@ class ContentCreateRequest
     * An optional list of IDs of the schemas that form the layers of the content.
     The SchemaType of the specified schemas must be Layer.
     *
-    * @param string[]|null $layerSchemaIds
+    * @param list<string>|null $layerSchemaIds
     *
     * @return self
     */
@@ -153,7 +153,7 @@ class ContentCreateRequest
     /**
      * An optional list of content permission set IDs which control content permissions. These permissions control content accessibility for the users that do not own the content.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getContentPermissionSetIds() : ?array
     {
@@ -162,7 +162,7 @@ class ContentCreateRequest
     /**
      * An optional list of content permission set IDs which control content permissions. These permissions control content accessibility for the users that do not own the content.
      *
-     * @param string[]|null $contentPermissionSetIds
+     * @param list<string>|null $contentPermissionSetIds
      *
      * @return self
      */

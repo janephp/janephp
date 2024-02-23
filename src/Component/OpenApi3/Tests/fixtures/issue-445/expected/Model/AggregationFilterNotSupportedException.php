@@ -81,7 +81,7 @@ class AggregationFilterNotSupportedException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $supportedFilterTypes;
     /**
@@ -329,7 +329,7 @@ class AggregationFilterNotSupportedException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSupportedFilterTypes() : ?array
     {
@@ -338,7 +338,7 @@ class AggregationFilterNotSupportedException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $supportedFilterTypes
+     * @param list<string>|null $supportedFilterTypes
      *
      * @return self
      */

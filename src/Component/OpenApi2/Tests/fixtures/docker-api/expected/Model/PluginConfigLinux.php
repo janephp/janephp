@@ -15,7 +15,7 @@ class PluginConfigLinux
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $capabilities;
     /**
@@ -27,13 +27,13 @@ class PluginConfigLinux
     /**
      * 
      *
-     * @var PluginDevice[]
+     * @var list<PluginDevice>
      */
     protected $devices;
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getCapabilities() : array
     {
@@ -42,7 +42,7 @@ class PluginConfigLinux
     /**
      * 
      *
-     * @param string[] $capabilities
+     * @param list<string> $capabilities
      *
      * @return self
      */
@@ -77,7 +77,7 @@ class PluginConfigLinux
     /**
      * 
      *
-     * @return PluginDevice[]
+     * @return list<PluginDevice>
      */
     public function getDevices() : array
     {
@@ -86,7 +86,7 @@ class PluginConfigLinux
     /**
      * 
      *
-     * @param PluginDevice[] $devices
+     * @param list<PluginDevice> $devices
      *
      * @return self
      */

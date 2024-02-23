@@ -15,13 +15,13 @@ class ContainersIdUpdatePostResponse200
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $warnings;
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getWarnings() : array
     {
@@ -30,7 +30,7 @@ class ContainersIdUpdatePostResponse200
     /**
      * 
      *
-     * @param string[] $warnings
+     * @param list<string> $warnings
      *
      * @return self
      */

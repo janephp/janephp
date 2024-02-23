@@ -15,13 +15,13 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody extends \ArrayObject
     /**
      * The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove.
      *
-     * @var OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyGroupsItem[]
+     * @var list<OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyGroupsItem>
      */
     protected $groups;
     /**
      * The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove.
      *
-     * @return OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyGroupsItem[]
+     * @return list<OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyGroupsItem>
      */
     public function getGroups() : array
     {
@@ -30,7 +30,7 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody extends \ArrayObject
     /**
      * The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove.
      *
-     * @param OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyGroupsItem[] $groups
+     * @param list<OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyGroupsItem> $groups
      *
      * @return self
      */

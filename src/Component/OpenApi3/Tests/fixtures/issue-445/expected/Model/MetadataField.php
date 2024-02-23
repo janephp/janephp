@@ -34,7 +34,7 @@ class MetadataField
     /**
      * A list of field IDs that can be used as a key field when a tagbox is mapped.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $availableKeyFields;
     /**
@@ -108,7 +108,7 @@ class MetadataField
     /**
      * A list of field IDs that can be used as a key field when a tagbox is mapped.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getAvailableKeyFields() : ?array
     {
@@ -117,7 +117,7 @@ class MetadataField
     /**
      * A list of field IDs that can be used as a key field when a tagbox is mapped.
      *
-     * @param string[]|null $availableKeyFields
+     * @param list<string>|null $availableKeyFields
      *
      * @return self
      */

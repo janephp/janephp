@@ -71,7 +71,7 @@ class FileTransferDetail extends \ArrayObject
     /**
      * Outputs rendered during data extraction phase.
      *
-     * @var FileTransferOutput[]|null
+     * @var list<FileTransferOutput>|null
      */
     protected $outputItems;
     /**
@@ -279,7 +279,7 @@ class FileTransferDetail extends \ArrayObject
     /**
      * Outputs rendered during data extraction phase.
      *
-     * @return FileTransferOutput[]|null
+     * @return list<FileTransferOutput>|null
      */
     public function getOutputItems() : ?array
     {
@@ -288,7 +288,7 @@ class FileTransferDetail extends \ArrayObject
     /**
      * Outputs rendered during data extraction phase.
      *
-     * @param FileTransferOutput[]|null $outputItems
+     * @param list<FileTransferOutput>|null $outputItems
      *
      * @return self
      */

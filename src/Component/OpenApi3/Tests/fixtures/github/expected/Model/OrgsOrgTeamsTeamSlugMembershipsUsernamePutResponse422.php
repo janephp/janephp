@@ -21,7 +21,7 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422 extends \ArrayObject
     /**
      * 
      *
-     * @var OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItem[]
+     * @var list<OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItem>
      */
     protected $errors;
     /**
@@ -49,7 +49,7 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422 extends \ArrayObject
     /**
      * 
      *
-     * @return OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItem[]
+     * @return list<OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItem>
      */
     public function getErrors() : array
     {
@@ -58,7 +58,7 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422 extends \ArrayObject
     /**
      * 
      *
-     * @param OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItem[] $errors
+     * @param list<OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItem> $errors
      *
      * @return self
      */

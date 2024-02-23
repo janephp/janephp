@@ -27,7 +27,7 @@ class AggregatorBase
     /**
      * An optional aggregator list for nested aggregations.
      *
-     * @var AggregatorBase[]|null
+     * @var list<AggregatorBase>|null
      */
     protected $aggregators;
     /**
@@ -83,7 +83,7 @@ class AggregatorBase
     /**
      * An optional aggregator list for nested aggregations.
      *
-     * @return AggregatorBase[]|null
+     * @return list<AggregatorBase>|null
      */
     public function getAggregators() : ?array
     {
@@ -92,7 +92,7 @@ class AggregatorBase
     /**
      * An optional aggregator list for nested aggregations.
      *
-     * @param AggregatorBase[]|null $aggregators
+     * @param list<AggregatorBase>|null $aggregators
      */
     public function setAggregators(?array $aggregators)
     {

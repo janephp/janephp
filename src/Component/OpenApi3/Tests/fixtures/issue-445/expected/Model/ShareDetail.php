@@ -45,13 +45,13 @@ class ShareDetail
     /**
      * Detailed information about contents in the share.
      *
-     * @var ShareContentDetail[]
+     * @var list<ShareContentDetail>
      */
     protected $contentSelections;
     /**
      * List of shared layers.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $layerSchemaIds;
     /**
@@ -87,7 +87,7 @@ class ShareDetail
     /**
      * Schema detail of the content and the layers.
      *
-     * @var SchemaDetail[]|null
+     * @var list<SchemaDetail>|null
      */
     protected $schemas;
     /**
@@ -203,7 +203,7 @@ class ShareDetail
     /**
      * Detailed information about contents in the share.
      *
-     * @return ShareContentDetail[]
+     * @return list<ShareContentDetail>
      */
     public function getContentSelections() : array
     {
@@ -212,7 +212,7 @@ class ShareDetail
     /**
      * Detailed information about contents in the share.
      *
-     * @param ShareContentDetail[] $contentSelections
+     * @param list<ShareContentDetail> $contentSelections
      *
      * @return self
      */
@@ -225,7 +225,7 @@ class ShareDetail
     /**
      * List of shared layers.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getLayerSchemaIds() : ?array
     {
@@ -234,7 +234,7 @@ class ShareDetail
     /**
      * List of shared layers.
      *
-     * @param string[]|null $layerSchemaIds
+     * @param list<string>|null $layerSchemaIds
      *
      * @return self
      */
@@ -357,7 +357,7 @@ class ShareDetail
     /**
      * Schema detail of the content and the layers.
      *
-     * @return SchemaDetail[]|null
+     * @return list<SchemaDetail>|null
      */
     public function getSchemas() : ?array
     {
@@ -366,7 +366,7 @@ class ShareDetail
     /**
      * Schema detail of the content and the layers.
      *
-     * @param SchemaDetail[]|null $schemas
+     * @param list<SchemaDetail>|null $schemas
      *
      * @return self
      */

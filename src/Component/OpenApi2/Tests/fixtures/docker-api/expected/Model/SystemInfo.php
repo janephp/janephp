@@ -78,7 +78,7 @@ class SystemInfo
     > and may change without notice.
     
     *
-    * @var string[][]
+    * @var list<list<string>>
     */
     protected $driverStatus;
     /**
@@ -336,7 +336,7 @@ class SystemInfo
     String resources (e.g, `GPU=UUID1`).
     
     *
-    * @var GenericResourcesItem[]
+    * @var list<GenericResourcesItem>
     */
     protected $genericResources;
     /**
@@ -392,7 +392,7 @@ class SystemInfo
     > on a manager node in the Swarm.
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $labels;
     /**
@@ -546,7 +546,7 @@ class SystemInfo
     pairs.
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $securityOptions;
     /**
@@ -567,7 +567,7 @@ class SystemInfo
     10.10.[0-255].0/24 address pools.
     
     *
-    * @var SystemInfoDefaultAddressPoolsItem[]
+    * @var list<SystemInfoDefaultAddressPoolsItem>
     */
     protected $defaultAddressPools;
     /**
@@ -577,7 +577,7 @@ class SystemInfo
     These messages can be printed by the client as information to the user.
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $warnings;
     /**
@@ -767,7 +767,7 @@ class SystemInfo
     > and may change without notice.
     
     *
-    * @return string[][]
+    * @return list<list<string>>
     */
     public function getDriverStatus() : array
     {
@@ -788,7 +788,7 @@ class SystemInfo
     > and may change without notice.
     
     *
-    * @param string[][] $driverStatus
+    * @param list<list<string>> $driverStatus
     *
     * @return self
     */
@@ -1613,7 +1613,7 @@ class SystemInfo
     String resources (e.g, `GPU=UUID1`).
     
     *
-    * @return GenericResourcesItem[]
+    * @return list<GenericResourcesItem>
     */
     public function getGenericResources() : array
     {
@@ -1624,7 +1624,7 @@ class SystemInfo
     String resources (e.g, `GPU=UUID1`).
     
     *
-    * @param GenericResourcesItem[] $genericResources
+    * @param list<GenericResourcesItem> $genericResources
     *
     * @return self
     */
@@ -1768,7 +1768,7 @@ class SystemInfo
     > on a manager node in the Swarm.
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getLabels() : array
     {
@@ -1786,7 +1786,7 @@ class SystemInfo
     > on a manager node in the Swarm.
     
     *
-    * @param string[] $labels
+    * @param list<string> $labels
     *
     * @return self
     */
@@ -2219,7 +2219,7 @@ class SystemInfo
     pairs.
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getSecurityOptions() : array
     {
@@ -2234,7 +2234,7 @@ class SystemInfo
     pairs.
     
     *
-    * @param string[] $securityOptions
+    * @param list<string> $securityOptions
     *
     * @return self
     */
@@ -2282,7 +2282,7 @@ class SystemInfo
     10.10.[0-255].0/24 address pools.
     
     *
-    * @return SystemInfoDefaultAddressPoolsItem[]
+    * @return list<SystemInfoDefaultAddressPoolsItem>
     */
     public function getDefaultAddressPools() : array
     {
@@ -2296,7 +2296,7 @@ class SystemInfo
     10.10.[0-255].0/24 address pools.
     
     *
-    * @param SystemInfoDefaultAddressPoolsItem[] $defaultAddressPools
+    * @param list<SystemInfoDefaultAddressPoolsItem> $defaultAddressPools
     *
     * @return self
     */
@@ -2313,7 +2313,7 @@ class SystemInfo
     These messages can be printed by the client as information to the user.
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getWarnings() : array
     {
@@ -2326,7 +2326,7 @@ class SystemInfo
     These messages can be printed by the client as information to the user.
     
     *
-    * @param string[] $warnings
+    * @param list<string> $warnings
     *
     * @return self
     */

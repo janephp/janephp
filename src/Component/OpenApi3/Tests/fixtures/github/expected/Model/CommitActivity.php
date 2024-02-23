@@ -15,7 +15,7 @@ class CommitActivity extends \ArrayObject
     /**
      * 
      *
-     * @var int[]
+     * @var list<int>
      */
     protected $days;
     /**
@@ -33,7 +33,7 @@ class CommitActivity extends \ArrayObject
     /**
      * 
      *
-     * @return int[]
+     * @return list<int>
      */
     public function getDays() : array
     {
@@ -42,7 +42,7 @@ class CommitActivity extends \ArrayObject
     /**
      * 
      *
-     * @param int[] $days
+     * @param list<int> $days
      *
      * @return self
      */

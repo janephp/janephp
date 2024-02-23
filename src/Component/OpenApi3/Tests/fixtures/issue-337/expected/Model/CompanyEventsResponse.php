@@ -21,7 +21,7 @@ class CompanyEventsResponse extends \ArrayObject
     /**
      * 
      *
-     * @var Event[]
+     * @var list<Event>
      */
     protected $data;
     /**
@@ -55,7 +55,7 @@ class CompanyEventsResponse extends \ArrayObject
     /**
      * 
      *
-     * @return Event[]
+     * @return list<Event>
      */
     public function getData() : array
     {
@@ -64,7 +64,7 @@ class CompanyEventsResponse extends \ArrayObject
     /**
      * 
      *
-     * @param Event[] $data
+     * @param list<Event> $data
      *
      * @return self
      */

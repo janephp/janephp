@@ -15,19 +15,19 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDis
     /**
      * The list of user `login`s with dismissal access
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $users;
     /**
      * The list of team `slug`s with dismissal access
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $teams;
     /**
      * The list of user `login`s with dismissal access
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getUsers() : array
     {
@@ -36,7 +36,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDis
     /**
      * The list of user `login`s with dismissal access
      *
-     * @param string[] $users
+     * @param list<string> $users
      *
      * @return self
      */
@@ -49,7 +49,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDis
     /**
      * The list of team `slug`s with dismissal access
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getTeams() : array
     {
@@ -58,7 +58,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviewsDis
     /**
      * The list of team `slug`s with dismissal access
      *
-     * @param string[] $teams
+     * @param list<string> $teams
      *
      * @return self
      */

@@ -45,7 +45,7 @@ class CompactTweetFields extends \ArrayObject
     /**
      * A list of Tweets this Tweet refers to. For example, if the parent Tweet is a Retweet, a Quoted Tweet or a Reply, it will include the related Tweet referenced to by its parent.
      *
-     * @var CompactTweetFieldsReferencedTweetsItem[]
+     * @var list<CompactTweetFieldsReferencedTweetsItem>
      */
     protected $referencedTweets;
     /**
@@ -173,7 +173,7 @@ class CompactTweetFields extends \ArrayObject
     /**
      * A list of Tweets this Tweet refers to. For example, if the parent Tweet is a Retweet, a Quoted Tweet or a Reply, it will include the related Tweet referenced to by its parent.
      *
-     * @return CompactTweetFieldsReferencedTweetsItem[]
+     * @return list<CompactTweetFieldsReferencedTweetsItem>
      */
     public function getReferencedTweets() : array
     {
@@ -182,7 +182,7 @@ class CompactTweetFields extends \ArrayObject
     /**
      * A list of Tweets this Tweet refers to. For example, if the parent Tweet is a Retweet, a Quoted Tweet or a Reply, it will include the related Tweet referenced to by its parent.
      *
-     * @param CompactTweetFieldsReferencedTweetsItem[] $referencedTweets
+     * @param list<CompactTweetFieldsReferencedTweetsItem> $referencedTweets
      *
      * @return self
      */

@@ -21,7 +21,7 @@ class BaseResultOfBusinessProcess
     /**
      * The matched documents.
      *
-     * @var BusinessProcess[]
+     * @var list<BusinessProcess>
      */
     protected $results;
     /**
@@ -61,7 +61,7 @@ class BaseResultOfBusinessProcess
     /**
      * The matched documents.
      *
-     * @return BusinessProcess[]
+     * @return list<BusinessProcess>
      */
     public function getResults() : array
     {
@@ -70,7 +70,7 @@ class BaseResultOfBusinessProcess
     /**
      * The matched documents.
      *
-     * @param BusinessProcess[] $results
+     * @param list<BusinessProcess> $results
      *
      * @return self
      */

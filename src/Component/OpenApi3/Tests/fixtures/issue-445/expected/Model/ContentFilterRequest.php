@@ -21,7 +21,7 @@ class ContentFilterRequest
     /**
      * Only searches the specified language values. Defaults to all metadata languages of the language configuration.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $searchLanguages;
     /**
@@ -63,7 +63,7 @@ class ContentFilterRequest
     /**
      * Limits the content document result set to specific ContentRights the user has
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $rightsFilter;
     /**
@@ -91,7 +91,7 @@ class ContentFilterRequest
     /**
      * Only searches the specified language values. Defaults to all metadata languages of the language configuration.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSearchLanguages() : ?array
     {
@@ -100,7 +100,7 @@ class ContentFilterRequest
     /**
      * Only searches the specified language values. Defaults to all metadata languages of the language configuration.
      *
-     * @param string[]|null $searchLanguages
+     * @param list<string>|null $searchLanguages
      *
      * @return self
      */
@@ -245,7 +245,7 @@ class ContentFilterRequest
     /**
      * Limits the content document result set to specific ContentRights the user has
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getRightsFilter() : ?array
     {
@@ -254,7 +254,7 @@ class ContentFilterRequest
     /**
      * Limits the content document result set to specific ContentRights the user has
      *
-     * @param string[]|null $rightsFilter
+     * @param list<string>|null $rightsFilter
      *
      * @return self
      */

@@ -27,13 +27,13 @@ class TermsEnumAggregator extends AggregatorBase
     /**
      * Includes values for which buckets will be created. Supports regular expression strings or arrays of exact values.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $includes;
     /**
      * Excludes values for which buckets will be created. Supports regular expression strings or arrays of exact values.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $excludes;
     /**
@@ -45,7 +45,7 @@ class TermsEnumAggregator extends AggregatorBase
     /**
      * Search fields to be used to search the SearchString value into. If no search field is specified, the Field value is used.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $searchFields;
     /**
@@ -101,7 +101,7 @@ class TermsEnumAggregator extends AggregatorBase
     /**
      * Includes values for which buckets will be created. Supports regular expression strings or arrays of exact values.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getIncludes() : ?array
     {
@@ -110,7 +110,7 @@ class TermsEnumAggregator extends AggregatorBase
     /**
      * Includes values for which buckets will be created. Supports regular expression strings or arrays of exact values.
      *
-     * @param string[]|null $includes
+     * @param list<string>|null $includes
      *
      * @return self
      */
@@ -123,7 +123,7 @@ class TermsEnumAggregator extends AggregatorBase
     /**
      * Excludes values for which buckets will be created. Supports regular expression strings or arrays of exact values.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getExcludes() : ?array
     {
@@ -132,7 +132,7 @@ class TermsEnumAggregator extends AggregatorBase
     /**
      * Excludes values for which buckets will be created. Supports regular expression strings or arrays of exact values.
      *
-     * @param string[]|null $excludes
+     * @param list<string>|null $excludes
      *
      * @return self
      */
@@ -167,7 +167,7 @@ class TermsEnumAggregator extends AggregatorBase
     /**
      * Search fields to be used to search the SearchString value into. If no search field is specified, the Field value is used.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSearchFields() : ?array
     {
@@ -176,7 +176,7 @@ class TermsEnumAggregator extends AggregatorBase
     /**
      * Search fields to be used to search the SearchString value into. If no search field is specified, the Field value is used.
      *
-     * @param string[]|null $searchFields
+     * @param list<string>|null $searchFields
      *
      * @return self
      */

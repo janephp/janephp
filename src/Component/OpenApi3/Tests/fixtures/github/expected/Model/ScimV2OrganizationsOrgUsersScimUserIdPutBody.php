@@ -15,7 +15,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBody extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $schemas;
     /**
@@ -33,7 +33,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBody extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $groups;
     /**
@@ -57,13 +57,13 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBody extends \ArrayObject
     /**
      * user emails
      *
-     * @var ScimV2OrganizationsOrgUsersScimUserIdPutBodyEmailsItem[]
+     * @var list<ScimV2OrganizationsOrgUsersScimUserIdPutBodyEmailsItem>
      */
     protected $emails;
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getSchemas() : array
     {
@@ -72,7 +72,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBody extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $schemas
+     * @param list<string> $schemas
      *
      * @return self
      */
@@ -129,7 +129,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBody extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getGroups() : array
     {
@@ -138,7 +138,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBody extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $groups
+     * @param list<string> $groups
      *
      * @return self
      */
@@ -217,7 +217,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBody extends \ArrayObject
     /**
      * user emails
      *
-     * @return ScimV2OrganizationsOrgUsersScimUserIdPutBodyEmailsItem[]
+     * @return list<ScimV2OrganizationsOrgUsersScimUserIdPutBodyEmailsItem>
      */
     public function getEmails() : array
     {
@@ -226,7 +226,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBody extends \ArrayObject
     /**
      * user emails
      *
-     * @param ScimV2OrganizationsOrgUsersScimUserIdPutBodyEmailsItem[] $emails
+     * @param list<ScimV2OrganizationsOrgUsersScimUserIdPutBodyEmailsItem> $emails
      *
      * @return self
      */

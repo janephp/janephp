@@ -15,13 +15,13 @@ class PermissionSetDeleteManyRequest
     /**
      * Permission set IDs.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $permissionSetIds;
     /**
      * Permission set IDs.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getPermissionSetIds() : ?array
     {
@@ -30,7 +30,7 @@ class PermissionSetDeleteManyRequest
     /**
      * Permission set IDs.
      *
-     * @param string[]|null $permissionSetIds
+     * @param list<string>|null $permissionSetIds
      *
      * @return self
      */

@@ -15,7 +15,7 @@ class ScimUser extends \ArrayObject
     /**
      * SCIM schema used.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $schemas;
     /**
@@ -45,7 +45,7 @@ class ScimUser extends \ArrayObject
     /**
      * user emails
      *
-     * @var ScimUserEmailsItem[]
+     * @var list<ScimUserEmailsItem>
      */
     protected $emails;
     /**
@@ -69,19 +69,19 @@ class ScimUser extends \ArrayObject
     /**
      * Set of operations to be performed
      *
-     * @var ScimUserOperationsItem[]
+     * @var list<ScimUserOperationsItem>
      */
     protected $operations;
     /**
      * associated groups
      *
-     * @var ScimUserGroupsItem[]
+     * @var list<ScimUserGroupsItem>
      */
     protected $groups;
     /**
      * SCIM schema used.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getSchemas() : array
     {
@@ -90,7 +90,7 @@ class ScimUser extends \ArrayObject
     /**
      * SCIM schema used.
      *
-     * @param string[] $schemas
+     * @param list<string> $schemas
      *
      * @return self
      */
@@ -191,7 +191,7 @@ class ScimUser extends \ArrayObject
     /**
      * user emails
      *
-     * @return ScimUserEmailsItem[]
+     * @return list<ScimUserEmailsItem>
      */
     public function getEmails() : array
     {
@@ -200,7 +200,7 @@ class ScimUser extends \ArrayObject
     /**
      * user emails
      *
-     * @param ScimUserEmailsItem[] $emails
+     * @param list<ScimUserEmailsItem> $emails
      *
      * @return self
      */
@@ -279,7 +279,7 @@ class ScimUser extends \ArrayObject
     /**
      * Set of operations to be performed
      *
-     * @return ScimUserOperationsItem[]
+     * @return list<ScimUserOperationsItem>
      */
     public function getOperations() : array
     {
@@ -288,7 +288,7 @@ class ScimUser extends \ArrayObject
     /**
      * Set of operations to be performed
      *
-     * @param ScimUserOperationsItem[] $operations
+     * @param list<ScimUserOperationsItem> $operations
      *
      * @return self
      */
@@ -301,7 +301,7 @@ class ScimUser extends \ArrayObject
     /**
      * associated groups
      *
-     * @return ScimUserGroupsItem[]
+     * @return list<ScimUserGroupsItem>
      */
     public function getGroups() : array
     {
@@ -310,7 +310,7 @@ class ScimUser extends \ArrayObject
     /**
      * associated groups
      *
-     * @param ScimUserGroupsItem[] $groups
+     * @param list<ScimUserGroupsItem> $groups
      *
      * @return self
      */

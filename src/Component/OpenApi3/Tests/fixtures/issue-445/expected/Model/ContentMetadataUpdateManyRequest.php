@@ -21,7 +21,7 @@ class ContentMetadataUpdateManyRequest
     /**
      * Update items
      *
-     * @var ContentMetadataUpdateItem[]
+     * @var list<ContentMetadataUpdateItem>
      */
     protected $items;
     /**
@@ -49,7 +49,7 @@ class ContentMetadataUpdateManyRequest
     /**
      * Update items
      *
-     * @return ContentMetadataUpdateItem[]
+     * @return list<ContentMetadataUpdateItem>
      */
     public function getItems() : array
     {
@@ -58,7 +58,7 @@ class ContentMetadataUpdateManyRequest
     /**
      * Update items
      *
-     * @param ContentMetadataUpdateItem[] $items
+     * @param list<ContentMetadataUpdateItem> $items
      *
      * @return self
      */

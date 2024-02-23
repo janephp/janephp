@@ -81,13 +81,13 @@ class ContainerConfig
     environment, rather than to have an empty value.
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $env;
     /**
      * Command to run specified as a string or an array of strings.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $cmd;
     /**
@@ -130,7 +130,7 @@ class ContainerConfig
     docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $entrypoint;
     /**
@@ -148,7 +148,7 @@ class ContainerConfig
     /**
      * `ONBUILD` metadata that were defined in the image's `Dockerfile`.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $onBuild;
     /**
@@ -172,7 +172,7 @@ class ContainerConfig
     /**
      * Shell for when `RUN`, `CMD`, and `ENTRYPOINT` uses a shell.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $shell;
     /**
@@ -407,7 +407,7 @@ class ContainerConfig
     environment, rather than to have an empty value.
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getEnv() : array
     {
@@ -419,7 +419,7 @@ class ContainerConfig
     environment, rather than to have an empty value.
     
     *
-    * @param string[] $env
+    * @param list<string> $env
     *
     * @return self
     */
@@ -432,7 +432,7 @@ class ContainerConfig
     /**
      * Command to run specified as a string or an array of strings.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getCmd() : array
     {
@@ -441,7 +441,7 @@ class ContainerConfig
     /**
      * Command to run specified as a string or an array of strings.
      *
-     * @param string[] $cmd
+     * @param list<string> $cmd
      *
      * @return self
      */
@@ -573,7 +573,7 @@ class ContainerConfig
     docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getEntrypoint() : array
     {
@@ -587,7 +587,7 @@ class ContainerConfig
     docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
     
     *
-    * @param string[] $entrypoint
+    * @param list<string> $entrypoint
     *
     * @return self
     */
@@ -644,7 +644,7 @@ class ContainerConfig
     /**
      * `ONBUILD` metadata that were defined in the image's `Dockerfile`.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getOnBuild() : array
     {
@@ -653,7 +653,7 @@ class ContainerConfig
     /**
      * `ONBUILD` metadata that were defined in the image's `Dockerfile`.
      *
-     * @param string[] $onBuild
+     * @param list<string> $onBuild
      *
      * @return self
      */
@@ -732,7 +732,7 @@ class ContainerConfig
     /**
      * Shell for when `RUN`, `CMD`, and `ENTRYPOINT` uses a shell.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getShell() : array
     {
@@ -741,7 +741,7 @@ class ContainerConfig
     /**
      * Shell for when `RUN`, `CMD`, and `ENTRYPOINT` uses a shell.
      *
-     * @param string[] $shell
+     * @param list<string> $shell
      *
      * @return self
      */

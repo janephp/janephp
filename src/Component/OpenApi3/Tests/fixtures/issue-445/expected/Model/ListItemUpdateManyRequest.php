@@ -21,7 +21,7 @@ class ListItemUpdateManyRequest
     /**
      * Items to be updated.
      *
-     * @var ListItemUpdateItem[]
+     * @var list<ListItemUpdateItem>
      */
     protected $items;
     /**
@@ -49,7 +49,7 @@ class ListItemUpdateManyRequest
     /**
      * Items to be updated.
      *
-     * @return ListItemUpdateItem[]
+     * @return list<ListItemUpdateItem>
      */
     public function getItems() : array
     {
@@ -58,7 +58,7 @@ class ListItemUpdateManyRequest
     /**
      * Items to be updated.
      *
-     * @param ListItemUpdateItem[] $items
+     * @param list<ListItemUpdateItem> $items
      *
      * @return self
      */

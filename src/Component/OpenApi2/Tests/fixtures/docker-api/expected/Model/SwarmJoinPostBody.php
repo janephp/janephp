@@ -52,7 +52,7 @@ class SwarmJoinPostBody
     /**
      * Addresses of manager nodes already participating in the swarm.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $remoteAddrs;
     /**
@@ -168,7 +168,7 @@ class SwarmJoinPostBody
     /**
      * Addresses of manager nodes already participating in the swarm.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getRemoteAddrs() : array
     {
@@ -177,7 +177,7 @@ class SwarmJoinPostBody
     /**
      * Addresses of manager nodes already participating in the swarm.
      *
-     * @param string[] $remoteAddrs
+     * @param list<string> $remoteAddrs
      *
      * @return self
      */

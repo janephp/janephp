@@ -21,7 +21,7 @@ class CompliancePreDefinedSearches extends \ArrayObject
     /**
      * 
      *
-     * @var CompliancePreDefinedSearchesPredefinedSearchesItem[]
+     * @var list<CompliancePreDefinedSearchesPredefinedSearchesItem>
      */
     protected $predefinedSearches;
     /**
@@ -49,7 +49,7 @@ class CompliancePreDefinedSearches extends \ArrayObject
     /**
      * 
      *
-     * @return CompliancePreDefinedSearchesPredefinedSearchesItem[]
+     * @return list<CompliancePreDefinedSearchesPredefinedSearchesItem>
      */
     public function getPredefinedSearches() : array
     {
@@ -58,7 +58,7 @@ class CompliancePreDefinedSearches extends \ArrayObject
     /**
      * 
      *
-     * @param CompliancePreDefinedSearchesPredefinedSearchesItem[] $predefinedSearches
+     * @param list<CompliancePreDefinedSearchesPredefinedSearchesItem> $predefinedSearches
      *
      * @return self
      */

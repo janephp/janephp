@@ -21,7 +21,7 @@ class ContentSearchResult extends \ArrayObject
     /**
      * The matched documents.
      *
-     * @var Content[]
+     * @var list<Content>
      */
     protected $results;
     /**
@@ -51,19 +51,19 @@ class ContentSearchResult extends \ArrayObject
     /**
      * Additional information regarding the query execution and reason of the matched documents. Multiple items are returned if multiple queries were performed.
      *
-     * @var QueryDebugInformation[]|null
+     * @var list<QueryDebugInformation>|null
      */
     protected $queryDebugInformation;
     /**
      * Results of the aggregation, if any aggregators was passed in the request.
      *
-     * @var AggregationResult[]|null
+     * @var list<AggregationResult>|null
      */
     protected $aggregationResults;
     /**
      * Result of rights aggregation count requested in rightsAggregations in the ContentSearchRequest.
      *
-     * @var ContentRightAggregationCount[]|null
+     * @var list<ContentRightAggregationCount>|null
      */
     protected $rightsAggregationsCounts;
     /**
@@ -91,7 +91,7 @@ class ContentSearchResult extends \ArrayObject
     /**
      * The matched documents.
      *
-     * @return Content[]
+     * @return list<Content>
      */
     public function getResults() : array
     {
@@ -100,7 +100,7 @@ class ContentSearchResult extends \ArrayObject
     /**
      * The matched documents.
      *
-     * @param Content[] $results
+     * @param list<Content> $results
      *
      * @return self
      */
@@ -201,7 +201,7 @@ class ContentSearchResult extends \ArrayObject
     /**
      * Additional information regarding the query execution and reason of the matched documents. Multiple items are returned if multiple queries were performed.
      *
-     * @return QueryDebugInformation[]|null
+     * @return list<QueryDebugInformation>|null
      */
     public function getQueryDebugInformation() : ?array
     {
@@ -210,7 +210,7 @@ class ContentSearchResult extends \ArrayObject
     /**
      * Additional information regarding the query execution and reason of the matched documents. Multiple items are returned if multiple queries were performed.
      *
-     * @param QueryDebugInformation[]|null $queryDebugInformation
+     * @param list<QueryDebugInformation>|null $queryDebugInformation
      *
      * @return self
      */
@@ -223,7 +223,7 @@ class ContentSearchResult extends \ArrayObject
     /**
      * Results of the aggregation, if any aggregators was passed in the request.
      *
-     * @return AggregationResult[]|null
+     * @return list<AggregationResult>|null
      */
     public function getAggregationResults() : ?array
     {
@@ -232,7 +232,7 @@ class ContentSearchResult extends \ArrayObject
     /**
      * Results of the aggregation, if any aggregators was passed in the request.
      *
-     * @param AggregationResult[]|null $aggregationResults
+     * @param list<AggregationResult>|null $aggregationResults
      *
      * @return self
      */
@@ -245,7 +245,7 @@ class ContentSearchResult extends \ArrayObject
     /**
      * Result of rights aggregation count requested in rightsAggregations in the ContentSearchRequest.
      *
-     * @return ContentRightAggregationCount[]|null
+     * @return list<ContentRightAggregationCount>|null
      */
     public function getRightsAggregationsCounts() : ?array
     {
@@ -254,7 +254,7 @@ class ContentSearchResult extends \ArrayObject
     /**
      * Result of rights aggregation count requested in rightsAggregations in the ContentSearchRequest.
      *
-     * @param ContentRightAggregationCount[]|null $rightsAggregationsCounts
+     * @param list<ContentRightAggregationCount>|null $rightsAggregationsCounts
      *
      * @return self
      */

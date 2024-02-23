@@ -21,7 +21,7 @@ class SystemVersion
     /**
      * Information about system components
      *
-     * @var SystemVersionComponentsItem[]
+     * @var list<SystemVersionComponentsItem>
      */
     protected $components;
     /**
@@ -117,7 +117,7 @@ class SystemVersion
     /**
      * Information about system components
      *
-     * @return SystemVersionComponentsItem[]
+     * @return list<SystemVersionComponentsItem>
      */
     public function getComponents() : array
     {
@@ -126,7 +126,7 @@ class SystemVersion
     /**
      * Information about system components
      *
-     * @param SystemVersionComponentsItem[] $components
+     * @param list<SystemVersionComponentsItem> $components
      *
      * @return self
      */

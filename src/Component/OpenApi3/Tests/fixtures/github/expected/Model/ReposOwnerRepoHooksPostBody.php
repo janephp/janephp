@@ -27,7 +27,7 @@ class ReposOwnerRepoHooksPostBody extends \ArrayObject
     /**
      * Determines what [events](https://developer.github.com/webhooks/event-payloads) the hook is triggered for.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $events = array(0 => 'push');
     /**
@@ -83,7 +83,7 @@ class ReposOwnerRepoHooksPostBody extends \ArrayObject
     /**
      * Determines what [events](https://developer.github.com/webhooks/event-payloads) the hook is triggered for.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getEvents() : array
     {
@@ -92,7 +92,7 @@ class ReposOwnerRepoHooksPostBody extends \ArrayObject
     /**
      * Determines what [events](https://developer.github.com/webhooks/event-payloads) the hook is triggered for.
      *
-     * @param string[] $events
+     * @param list<string> $events
      *
      * @return self
      */

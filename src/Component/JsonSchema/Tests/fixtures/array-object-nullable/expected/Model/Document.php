@@ -15,13 +15,13 @@ class Document
     /**
      * 
      *
-     * @var Attributes[]|null
+     * @var list<Attributes>|null
      */
     protected $attributes;
     /**
      * 
      *
-     * @return Attributes[]|null
+     * @return list<Attributes>|null
      */
     public function getAttributes() : ?array
     {
@@ -30,7 +30,7 @@ class Document
     /**
      * 
      *
-     * @param Attributes[]|null $attributes
+     * @param list<Attributes>|null $attributes
      *
      * @return self
      */

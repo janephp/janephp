@@ -15,13 +15,13 @@ class OutputResolveManyRequest
     /**
      * The IDs of the contents whose outputs should to be retrieved.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $contentIds;
     /**
      * The IDs of the contents whose outputs should to be retrieved.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getContentIds() : array
     {
@@ -30,7 +30,7 @@ class OutputResolveManyRequest
     /**
      * The IDs of the contents whose outputs should to be retrieved.
      *
-     * @param string[] $contentIds
+     * @param list<string> $contentIds
      *
      * @return self
      */

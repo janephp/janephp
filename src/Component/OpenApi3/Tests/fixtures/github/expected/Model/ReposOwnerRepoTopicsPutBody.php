@@ -15,13 +15,13 @@ class ReposOwnerRepoTopicsPutBody extends \ArrayObject
     /**
      * An array of topics to add to the repository. Pass one or more topics to _replace_ the set of existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:** Topic `names` cannot contain uppercase letters.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $names;
     /**
      * An array of topics to add to the repository. Pass one or more topics to _replace_ the set of existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:** Topic `names` cannot contain uppercase letters.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getNames() : array
     {
@@ -30,7 +30,7 @@ class ReposOwnerRepoTopicsPutBody extends \ArrayObject
     /**
      * An array of topics to add to the repository. Pass one or more topics to _replace_ the set of existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:** Topic `names` cannot contain uppercase letters.
      *
-     * @param string[] $names
+     * @param list<string> $names
      *
      * @return self
      */

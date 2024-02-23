@@ -21,7 +21,7 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $searchBehaviors;
     /**
@@ -38,7 +38,7 @@ class ContentSearchRequest extends \ArrayObject
     aggregation results of that aggregation: depending if the AggregationName of the AggregationFilter matches the AggregationName of the Aggregator, the filter is put in OR (if it matches) or in AND (if it does not match it).
     Moreover, an AggregationFilter ensures that the related value is returned in the AggregationResults also if the top aggregation values returned by default do not contain it.
     *
-    * @var AggregationFilter[]|null
+    * @var list<AggregationFilter>|null
     */
     protected $aggregationFilters;
     /**
@@ -52,7 +52,7 @@ class ContentSearchRequest extends \ArrayObject
     * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
     If not specified, all metadata languages defined in the system are used.
     *
-    * @var string[]|null
+    * @var list<string>|null
     */
     protected $searchLanguages;
     /**
@@ -82,13 +82,13 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * Limits the display values included in the search response. Defaults to all display values.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $displayPatternIds;
     /**
      * Sorts the search results. Sorting on a field not marked as Sortable in the Content schema will throw an exception.
      *
-     * @var SortInfo[]|null
+     * @var list<SortInfo>|null
      */
     protected $sort;
     /**
@@ -106,14 +106,14 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * Limits the contents to the ones the user has the specified ContentRights.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $rightsFilter;
     /**
     * Returns the aggregated document counts to the ones the user has the specified ContentRights.
     Produces the rightsAggregationCounts on the ContentSearchResult. View will be ignored as the totalResults already gives this information.
     *
-    * @var string[]|null
+    * @var list<string>|null
     */
     protected $rightsAggregations;
     /**
@@ -126,7 +126,7 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * List of aggregators that defines how the items should be aggregated.
      *
-     * @var AggregatorBase[]|null
+     * @var list<AggregatorBase>|null
      */
     protected $aggregators;
     /**
@@ -154,7 +154,7 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSearchBehaviors() : ?array
     {
@@ -163,7 +163,7 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied.
      *
-     * @param string[]|null $searchBehaviors
+     * @param list<string>|null $searchBehaviors
      *
      * @return self
      */
@@ -203,7 +203,7 @@ class ContentSearchRequest extends \ArrayObject
     aggregation results of that aggregation: depending if the AggregationName of the AggregationFilter matches the AggregationName of the Aggregator, the filter is put in OR (if it matches) or in AND (if it does not match it).
     Moreover, an AggregationFilter ensures that the related value is returned in the AggregationResults also if the top aggregation values returned by default do not contain it.
     *
-    * @return AggregationFilter[]|null
+    * @return list<AggregationFilter>|null
     */
     public function getAggregationFilters() : ?array
     {
@@ -217,7 +217,7 @@ class ContentSearchRequest extends \ArrayObject
     aggregation results of that aggregation: depending if the AggregationName of the AggregationFilter matches the AggregationName of the Aggregator, the filter is put in OR (if it matches) or in AND (if it does not match it).
     Moreover, an AggregationFilter ensures that the related value is returned in the AggregationResults also if the top aggregation values returned by default do not contain it.
     *
-    * @param AggregationFilter[]|null $aggregationFilters
+    * @param list<AggregationFilter>|null $aggregationFilters
     *
     * @return self
     */
@@ -255,7 +255,7 @@ class ContentSearchRequest extends \ArrayObject
     * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
     If not specified, all metadata languages defined in the system are used.
     *
-    * @return string[]|null
+    * @return list<string>|null
     */
     public function getSearchLanguages() : ?array
     {
@@ -265,7 +265,7 @@ class ContentSearchRequest extends \ArrayObject
     * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
     If not specified, all metadata languages defined in the system are used.
     *
-    * @param string[]|null $searchLanguages
+    * @param list<string>|null $searchLanguages
     *
     * @return self
     */
@@ -366,7 +366,7 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * Limits the display values included in the search response. Defaults to all display values.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getDisplayPatternIds() : ?array
     {
@@ -375,7 +375,7 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * Limits the display values included in the search response. Defaults to all display values.
      *
-     * @param string[]|null $displayPatternIds
+     * @param list<string>|null $displayPatternIds
      *
      * @return self
      */
@@ -388,7 +388,7 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * Sorts the search results. Sorting on a field not marked as Sortable in the Content schema will throw an exception.
      *
-     * @return SortInfo[]|null
+     * @return list<SortInfo>|null
      */
     public function getSort() : ?array
     {
@@ -397,7 +397,7 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * Sorts the search results. Sorting on a field not marked as Sortable in the Content schema will throw an exception.
      *
-     * @param SortInfo[]|null $sort
+     * @param list<SortInfo>|null $sort
      *
      * @return self
      */
@@ -454,7 +454,7 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * Limits the contents to the ones the user has the specified ContentRights.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getRightsFilter() : ?array
     {
@@ -463,7 +463,7 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * Limits the contents to the ones the user has the specified ContentRights.
      *
-     * @param string[]|null $rightsFilter
+     * @param list<string>|null $rightsFilter
      *
      * @return self
      */
@@ -477,7 +477,7 @@ class ContentSearchRequest extends \ArrayObject
     * Returns the aggregated document counts to the ones the user has the specified ContentRights.
     Produces the rightsAggregationCounts on the ContentSearchResult. View will be ignored as the totalResults already gives this information.
     *
-    * @return string[]|null
+    * @return list<string>|null
     */
     public function getRightsAggregations() : ?array
     {
@@ -487,7 +487,7 @@ class ContentSearchRequest extends \ArrayObject
     * Returns the aggregated document counts to the ones the user has the specified ContentRights.
     Produces the rightsAggregationCounts on the ContentSearchResult. View will be ignored as the totalResults already gives this information.
     *
-    * @param string[]|null $rightsAggregations
+    * @param list<string>|null $rightsAggregations
     *
     * @return self
     */
@@ -524,7 +524,7 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * List of aggregators that defines how the items should be aggregated.
      *
-     * @return AggregatorBase[]|null
+     * @return list<AggregatorBase>|null
      */
     public function getAggregators() : ?array
     {
@@ -533,7 +533,7 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * List of aggregators that defines how the items should be aggregated.
      *
-     * @param AggregatorBase[]|null $aggregators
+     * @param list<AggregatorBase>|null $aggregators
      *
      * @return self
      */

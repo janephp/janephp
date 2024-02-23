@@ -57,7 +57,7 @@ class FeedLinks extends \ArrayObject
     /**
      * 
      *
-     * @var LinkWithType[]
+     * @var list<LinkWithType>
      */
     protected $currentUserOrganizations;
     /**
@@ -217,7 +217,7 @@ class FeedLinks extends \ArrayObject
     /**
      * 
      *
-     * @return LinkWithType[]
+     * @return list<LinkWithType>
      */
     public function getCurrentUserOrganizations() : array
     {
@@ -226,7 +226,7 @@ class FeedLinks extends \ArrayObject
     /**
      * 
      *
-     * @param LinkWithType[] $currentUserOrganizations
+     * @param list<LinkWithType> $currentUserOrganizations
      *
      * @return self
      */

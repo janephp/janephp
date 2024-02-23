@@ -36,7 +36,7 @@ class OrgsOrgInvitationsPostBody extends \ArrayObject
     /**
      * Specify IDs for the teams you want to invite new members to.
      *
-     * @var int[]
+     * @var list<int>
      */
     protected $teamIds;
     /**
@@ -114,7 +114,7 @@ class OrgsOrgInvitationsPostBody extends \ArrayObject
     /**
      * Specify IDs for the teams you want to invite new members to.
      *
-     * @return int[]
+     * @return list<int>
      */
     public function getTeamIds() : array
     {
@@ -123,7 +123,7 @@ class OrgsOrgInvitationsPostBody extends \ArrayObject
     /**
      * Specify IDs for the teams you want to invite new members to.
      *
-     * @param int[] $teamIds
+     * @param list<int> $teamIds
      *
      * @return self
      */

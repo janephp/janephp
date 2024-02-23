@@ -39,13 +39,13 @@ class Test
     /**
      * 
      *
-     * @var mixed[]|null
+     * @var list<mixed>|null
      */
     protected $array = array(0 => 'value');
     /**
      * 
      *
-     * @var mixed[]|null
+     * @var list<mixed>|null
      */
     protected $object = array('key' => 'value');
     /**
@@ -145,7 +145,7 @@ class Test
     /**
      * 
      *
-     * @return mixed[]|null
+     * @return list<mixed>|null
      */
     public function getArray() : ?array
     {
@@ -154,7 +154,7 @@ class Test
     /**
      * 
      *
-     * @param mixed[]|null $array
+     * @param list<mixed>|null $array
      *
      * @return self
      */
@@ -167,7 +167,7 @@ class Test
     /**
      * 
      *
-     * @return mixed[]|null
+     * @return list<mixed>|null
      */
     public function getObject() : ?array
     {
@@ -176,7 +176,7 @@ class Test
     /**
      * 
      *
-     * @param mixed[]|null $object
+     * @param list<mixed>|null $object
      *
      * @return self
      */

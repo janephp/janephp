@@ -21,7 +21,7 @@ class CompanySearchSuccessResult extends \ArrayObject
     /**
      * 
      *
-     * @var CompanySearchSuccessResultCompaniesItem[]
+     * @var list<CompanySearchSuccessResultCompaniesItem>
      */
     protected $companies;
     /**
@@ -49,7 +49,7 @@ class CompanySearchSuccessResult extends \ArrayObject
     /**
      * 
      *
-     * @return CompanySearchSuccessResultCompaniesItem[]
+     * @return list<CompanySearchSuccessResultCompaniesItem>
      */
     public function getCompanies() : array
     {
@@ -58,7 +58,7 @@ class CompanySearchSuccessResult extends \ArrayObject
     /**
      * 
      *
-     * @param CompanySearchSuccessResultCompaniesItem[] $companies
+     * @param list<CompanySearchSuccessResultCompaniesItem> $companies
      *
      * @return self
      */

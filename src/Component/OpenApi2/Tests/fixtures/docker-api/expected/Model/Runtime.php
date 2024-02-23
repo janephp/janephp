@@ -25,7 +25,7 @@ class Runtime
     /**
      * List of command-line arguments to pass to the runtime when invoked.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $runtimeArgs;
     /**
@@ -61,7 +61,7 @@ class Runtime
     /**
      * List of command-line arguments to pass to the runtime when invoked.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getRuntimeArgs() : ?array
     {
@@ -70,7 +70,7 @@ class Runtime
     /**
      * List of command-line arguments to pass to the runtime when invoked.
      *
-     * @param string[]|null $runtimeArgs
+     * @param list<string>|null $runtimeArgs
      *
      * @return self
      */

@@ -15,7 +15,7 @@ class ParchmentsGetHaljsonResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var ParchmentJsonhal[]
+     * @var list<ParchmentJsonhal>
      */
     protected $embedded;
     /**
@@ -39,7 +39,7 @@ class ParchmentsGetHaljsonResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return ParchmentJsonhal[]
+     * @return list<ParchmentJsonhal>
      */
     public function getEmbedded() : array
     {
@@ -48,7 +48,7 @@ class ParchmentsGetHaljsonResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param ParchmentJsonhal[] $embedded
+     * @param list<ParchmentJsonhal> $embedded
      *
      * @return self
      */

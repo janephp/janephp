@@ -57,7 +57,7 @@ class BookJsonhal extends \ArrayObject
     /**
      * The book's reviews.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $reviews;
     /**
@@ -229,7 +229,7 @@ class BookJsonhal extends \ArrayObject
     /**
      * The book's reviews.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getReviews() : array
     {
@@ -238,7 +238,7 @@ class BookJsonhal extends \ArrayObject
     /**
      * The book's reviews.
      *
-     * @param string[] $reviews
+     * @param list<string> $reviews
      *
      * @return self
      */

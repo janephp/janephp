@@ -39,7 +39,7 @@ class Schema
     /**
      * 
      *
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $arrayProperty;
     /**
@@ -151,7 +151,7 @@ class Schema
     /**
      * 
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getArrayProperty() : array
     {
@@ -160,7 +160,7 @@ class Schema
     /**
      * 
      *
-     * @param mixed[] $arrayProperty
+     * @param list<mixed> $arrayProperty
      *
      * @return self
      */

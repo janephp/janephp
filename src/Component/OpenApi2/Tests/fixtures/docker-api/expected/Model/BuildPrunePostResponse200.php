@@ -15,7 +15,7 @@ class BuildPrunePostResponse200
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $cachesDeleted;
     /**
@@ -27,7 +27,7 @@ class BuildPrunePostResponse200
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getCachesDeleted() : array
     {
@@ -36,7 +36,7 @@ class BuildPrunePostResponse200
     /**
      * 
      *
-     * @param string[] $cachesDeleted
+     * @param list<string> $cachesDeleted
      *
      * @return self
      */

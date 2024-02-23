@@ -69,7 +69,7 @@ class NamedCacheConfigurationException extends \ArrayObject
     /**
      * 
      *
-     * @var PictureparkValidationException[]|null
+     * @var list<PictureparkValidationException>|null
      */
     protected $innerExceptions;
     /**
@@ -273,7 +273,7 @@ class NamedCacheConfigurationException extends \ArrayObject
     /**
      * 
      *
-     * @return PictureparkValidationException[]|null
+     * @return list<PictureparkValidationException>|null
      */
     public function getInnerExceptions() : ?array
     {
@@ -282,7 +282,7 @@ class NamedCacheConfigurationException extends \ArrayObject
     /**
      * 
      *
-     * @param PictureparkValidationException[]|null $innerExceptions
+     * @param list<PictureparkValidationException>|null $innerExceptions
      *
      * @return self
      */

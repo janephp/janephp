@@ -15,7 +15,7 @@ class IndexFieldsSearchBySchemaIdsRequest
     /**
      * The IDs of the schemas for which the indexed fields should be returned.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $schemaIds;
     /**
@@ -29,7 +29,7 @@ class IndexFieldsSearchBySchemaIdsRequest
     /**
      * The IDs of the schemas for which the indexed fields should be returned.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSchemaIds() : ?array
     {
@@ -38,7 +38,7 @@ class IndexFieldsSearchBySchemaIdsRequest
     /**
      * The IDs of the schemas for which the indexed fields should be returned.
      *
-     * @param string[]|null $schemaIds
+     * @param list<string>|null $schemaIds
      *
      * @return self
      */

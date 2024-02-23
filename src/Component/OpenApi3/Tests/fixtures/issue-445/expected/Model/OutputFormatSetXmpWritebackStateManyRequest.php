@@ -15,13 +15,13 @@ class OutputFormatSetXmpWritebackStateManyRequest
     /**
      * XMP writeback state changes to be processed.
      *
-     * @var OutputFormatSetXmpWritebackStateRequestItem[]|null
+     * @var list<OutputFormatSetXmpWritebackStateRequestItem>|null
      */
     protected $items;
     /**
      * XMP writeback state changes to be processed.
      *
-     * @return OutputFormatSetXmpWritebackStateRequestItem[]|null
+     * @return list<OutputFormatSetXmpWritebackStateRequestItem>|null
      */
     public function getItems() : ?array
     {
@@ -30,7 +30,7 @@ class OutputFormatSetXmpWritebackStateManyRequest
     /**
      * XMP writeback state changes to be processed.
      *
-     * @param OutputFormatSetXmpWritebackStateRequestItem[]|null $items
+     * @param list<OutputFormatSetXmpWritebackStateRequestItem>|null $items
      *
      * @return self
      */

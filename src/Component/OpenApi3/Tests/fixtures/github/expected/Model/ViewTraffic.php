@@ -27,7 +27,7 @@ class ViewTraffic extends \ArrayObject
     /**
      * 
      *
-     * @var Traffic[]
+     * @var list<Traffic>
      */
     protected $views;
     /**
@@ -77,7 +77,7 @@ class ViewTraffic extends \ArrayObject
     /**
      * 
      *
-     * @return Traffic[]
+     * @return list<Traffic>
      */
     public function getViews() : array
     {
@@ -86,7 +86,7 @@ class ViewTraffic extends \ArrayObject
     /**
      * 
      *
-     * @param Traffic[] $views
+     * @param list<Traffic> $views
      *
      * @return self
      */

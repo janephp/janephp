@@ -57,25 +57,25 @@ class CustomerInfo
     /**
      * Languages including translations for the configured system and metadata languages.
      *
-     * @var Language[]
+     * @var list<Language>
      */
     protected $languages;
     /**
      * Configured rendering outputs including translations for the customer instance.
      *
-     * @var OutputFormatInfo[]
+     * @var list<OutputFormatInfo>
      */
     protected $outputFormats;
     /**
      * Boost levels that can be applied to a metadata field to boost the the significance of the field in a search operation.
      *
-     * @var float[]
+     * @var list<float>
      */
     protected $boostValues;
     /**
      * Apps registered for this customer
      *
-     * @var CustomerApp[]|null
+     * @var list<CustomerApp>|null
      */
     protected $apps;
     /**
@@ -253,7 +253,7 @@ class CustomerInfo
     /**
      * Languages including translations for the configured system and metadata languages.
      *
-     * @return Language[]
+     * @return list<Language>
      */
     public function getLanguages() : array
     {
@@ -262,7 +262,7 @@ class CustomerInfo
     /**
      * Languages including translations for the configured system and metadata languages.
      *
-     * @param Language[] $languages
+     * @param list<Language> $languages
      *
      * @return self
      */
@@ -275,7 +275,7 @@ class CustomerInfo
     /**
      * Configured rendering outputs including translations for the customer instance.
      *
-     * @return OutputFormatInfo[]
+     * @return list<OutputFormatInfo>
      */
     public function getOutputFormats() : array
     {
@@ -284,7 +284,7 @@ class CustomerInfo
     /**
      * Configured rendering outputs including translations for the customer instance.
      *
-     * @param OutputFormatInfo[] $outputFormats
+     * @param list<OutputFormatInfo> $outputFormats
      *
      * @return self
      */
@@ -297,7 +297,7 @@ class CustomerInfo
     /**
      * Boost levels that can be applied to a metadata field to boost the the significance of the field in a search operation.
      *
-     * @return float[]
+     * @return list<float>
      */
     public function getBoostValues() : array
     {
@@ -306,7 +306,7 @@ class CustomerInfo
     /**
      * Boost levels that can be applied to a metadata field to boost the the significance of the field in a search operation.
      *
-     * @param float[] $boostValues
+     * @param list<float> $boostValues
      *
      * @return self
      */
@@ -319,7 +319,7 @@ class CustomerInfo
     /**
      * Apps registered for this customer
      *
-     * @return CustomerApp[]|null
+     * @return list<CustomerApp>|null
      */
     public function getApps() : ?array
     {
@@ -328,7 +328,7 @@ class CustomerInfo
     /**
      * Apps registered for this customer
      *
-     * @param CustomerApp[]|null $apps
+     * @param list<CustomerApp>|null $apps
      *
      * @return self
      */

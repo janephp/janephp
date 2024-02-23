@@ -15,7 +15,7 @@ class ParchmentsGetLdjsonResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var ParchmentJsonld[]
+     * @var list<ParchmentJsonld>
      */
     protected $hydraMember;
     /**
@@ -39,7 +39,7 @@ class ParchmentsGetLdjsonResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return ParchmentJsonld[]
+     * @return list<ParchmentJsonld>
      */
     public function getHydraMember() : array
     {
@@ -48,7 +48,7 @@ class ParchmentsGetLdjsonResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param ParchmentJsonld[] $hydraMember
+     * @param list<ParchmentJsonld> $hydraMember
      *
      * @return self
      */

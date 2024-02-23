@@ -23,7 +23,7 @@ class SwarmSpecCAConfig
     certificate authority.
     
     *
-    * @var SwarmSpecCAConfigExternalCAsItem[]
+    * @var list<SwarmSpecCAConfigExternalCAsItem>
     */
     protected $externalCAs;
     /**
@@ -78,7 +78,7 @@ class SwarmSpecCAConfig
     certificate authority.
     
     *
-    * @return SwarmSpecCAConfigExternalCAsItem[]
+    * @return list<SwarmSpecCAConfigExternalCAsItem>
     */
     public function getExternalCAs() : array
     {
@@ -89,7 +89,7 @@ class SwarmSpecCAConfig
     certificate authority.
     
     *
-    * @param SwarmSpecCAConfigExternalCAsItem[] $externalCAs
+    * @param list<SwarmSpecCAConfigExternalCAsItem> $externalCAs
     *
     * @return self
     */

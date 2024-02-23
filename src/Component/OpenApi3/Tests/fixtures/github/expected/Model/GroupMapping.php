@@ -15,7 +15,7 @@ class GroupMapping extends \ArrayObject
     /**
      * Array of groups to be mapped to this team
      *
-     * @var GroupMappingGroupsItem[]
+     * @var list<GroupMappingGroupsItem>
      */
     protected $groups;
     /**
@@ -51,7 +51,7 @@ class GroupMapping extends \ArrayObject
     /**
      * Array of groups to be mapped to this team
      *
-     * @return GroupMappingGroupsItem[]
+     * @return list<GroupMappingGroupsItem>
      */
     public function getGroups() : array
     {
@@ -60,7 +60,7 @@ class GroupMapping extends \ArrayObject
     /**
      * Array of groups to be mapped to this team
      *
-     * @param GroupMappingGroupsItem[] $groups
+     * @param list<GroupMappingGroupsItem> $groups
      *
      * @return self
      */

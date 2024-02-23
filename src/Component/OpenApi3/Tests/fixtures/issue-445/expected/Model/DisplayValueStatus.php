@@ -15,13 +15,13 @@ class DisplayValueStatus
     /**
      * The schema ids (of type Content or Layer) for which the re-rendering of the display values is needed.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $contentOrLayerSchemaIds;
     /**
      * The schema ids (of type List) for which the re-rendering of the display values is needed.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $listSchemaIds;
     /**
@@ -33,7 +33,7 @@ class DisplayValueStatus
     /**
      * The schema ids (of type Content or Layer) for which the re-rendering of the display values is needed.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getContentOrLayerSchemaIds() : ?array
     {
@@ -42,7 +42,7 @@ class DisplayValueStatus
     /**
      * The schema ids (of type Content or Layer) for which the re-rendering of the display values is needed.
      *
-     * @param string[]|null $contentOrLayerSchemaIds
+     * @param list<string>|null $contentOrLayerSchemaIds
      *
      * @return self
      */
@@ -55,7 +55,7 @@ class DisplayValueStatus
     /**
      * The schema ids (of type List) for which the re-rendering of the display values is needed.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getListSchemaIds() : ?array
     {
@@ -64,7 +64,7 @@ class DisplayValueStatus
     /**
      * The schema ids (of type List) for which the re-rendering of the display values is needed.
      *
-     * @param string[]|null $listSchemaIds
+     * @param list<string>|null $listSchemaIds
      *
      * @return self
      */

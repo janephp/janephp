@@ -15,19 +15,19 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $portfolios;
     /**
      * 
      *
-     * @var MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyCompaniesItem[]
+     * @var list<MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyCompaniesItem>
      */
     protected $companies;
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getPortfolios() : array
     {
@@ -36,7 +36,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $portfolios
+     * @param list<string> $portfolios
      *
      * @return self
      */
@@ -49,7 +49,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody extends \ArrayObject
     /**
      * 
      *
-     * @return MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyCompaniesItem[]
+     * @return list<MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyCompaniesItem>
      */
     public function getCompanies() : array
     {
@@ -58,7 +58,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody extends \ArrayObject
     /**
      * 
      *
-     * @param MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyCompaniesItem[] $companies
+     * @param list<MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyCompaniesItem> $companies
      *
      * @return self
      */

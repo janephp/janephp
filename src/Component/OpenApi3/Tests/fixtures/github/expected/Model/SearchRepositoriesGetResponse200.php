@@ -27,7 +27,7 @@ class SearchRepositoriesGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var RepoSearchResultItem[]
+     * @var list<RepoSearchResultItem>
      */
     protected $items;
     /**
@@ -77,7 +77,7 @@ class SearchRepositoriesGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return RepoSearchResultItem[]
+     * @return list<RepoSearchResultItem>
      */
     public function getItems() : array
     {
@@ -86,7 +86,7 @@ class SearchRepositoriesGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param RepoSearchResultItem[] $items
+     * @param list<RepoSearchResultItem> $items
      *
      * @return self
      */

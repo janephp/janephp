@@ -21,7 +21,7 @@ class ReposOwnerRepoActionsArtifactsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var Artifact[]
+     * @var list<Artifact>
      */
     protected $artifacts;
     /**
@@ -49,7 +49,7 @@ class ReposOwnerRepoActionsArtifactsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return Artifact[]
+     * @return list<Artifact>
      */
     public function getArtifacts() : array
     {
@@ -58,7 +58,7 @@ class ReposOwnerRepoActionsArtifactsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param Artifact[] $artifacts
+     * @param list<Artifact> $artifacts
      *
      * @return self
      */

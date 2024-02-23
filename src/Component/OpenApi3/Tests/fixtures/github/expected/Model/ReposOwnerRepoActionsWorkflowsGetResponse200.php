@@ -21,7 +21,7 @@ class ReposOwnerRepoActionsWorkflowsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var Workflow[]
+     * @var list<Workflow>
      */
     protected $workflows;
     /**
@@ -49,7 +49,7 @@ class ReposOwnerRepoActionsWorkflowsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return Workflow[]
+     * @return list<Workflow>
      */
     public function getWorkflows() : array
     {
@@ -58,7 +58,7 @@ class ReposOwnerRepoActionsWorkflowsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param Workflow[] $workflows
+     * @param list<Workflow> $workflows
      *
      * @return self
      */

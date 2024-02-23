@@ -87,7 +87,7 @@ class SchemaFieldInvalidBoostException extends \ArrayObject
     /**
      * 
      *
-     * @var float[]|null
+     * @var list<float>|null
      */
     protected $allowedBoostValues;
     /**
@@ -357,7 +357,7 @@ class SchemaFieldInvalidBoostException extends \ArrayObject
     /**
      * 
      *
-     * @return float[]|null
+     * @return list<float>|null
      */
     public function getAllowedBoostValues() : ?array
     {
@@ -366,7 +366,7 @@ class SchemaFieldInvalidBoostException extends \ArrayObject
     /**
      * 
      *
-     * @param float[]|null $allowedBoostValues
+     * @param list<float>|null $allowedBoostValues
      *
      * @return self
      */

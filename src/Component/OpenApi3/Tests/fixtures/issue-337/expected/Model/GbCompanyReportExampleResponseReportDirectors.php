@@ -15,19 +15,19 @@ class GbCompanyReportExampleResponseReportDirectors extends \ArrayObject
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem[]
+     * @var list<GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem>
      */
     protected $currentDirectors;
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItem[]
+     * @var list<GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItem>
      */
     protected $previousDirectors;
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem[]
+     * @return list<GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem>
      */
     public function getCurrentDirectors() : array
     {
@@ -36,7 +36,7 @@ class GbCompanyReportExampleResponseReportDirectors extends \ArrayObject
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem[] $currentDirectors
+     * @param list<GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem> $currentDirectors
      *
      * @return self
      */
@@ -49,7 +49,7 @@ class GbCompanyReportExampleResponseReportDirectors extends \ArrayObject
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItem[]
+     * @return list<GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItem>
      */
     public function getPreviousDirectors() : array
     {
@@ -58,7 +58,7 @@ class GbCompanyReportExampleResponseReportDirectors extends \ArrayObject
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItem[] $previousDirectors
+     * @param list<GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItem> $previousDirectors
      *
      * @return self
      */

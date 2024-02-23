@@ -33,7 +33,7 @@ class GbPeopleReportReponseReport extends \ArrayObject
     /**
      * 
      *
-     * @var GbPeopleReportReponseReportOtherAddressesItem[]
+     * @var list<GbPeopleReportReponseReportOtherAddressesItem>
      */
     protected $otherAddresses;
     /**
@@ -111,7 +111,7 @@ class GbPeopleReportReponseReport extends \ArrayObject
     /**
      * 
      *
-     * @return GbPeopleReportReponseReportOtherAddressesItem[]
+     * @return list<GbPeopleReportReponseReportOtherAddressesItem>
      */
     public function getOtherAddresses() : array
     {
@@ -120,7 +120,7 @@ class GbPeopleReportReponseReport extends \ArrayObject
     /**
      * 
      *
-     * @param GbPeopleReportReponseReportOtherAddressesItem[] $otherAddresses
+     * @param list<GbPeopleReportReponseReportOtherAddressesItem> $otherAddresses
      *
      * @return self
      */

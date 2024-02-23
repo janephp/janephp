@@ -21,7 +21,7 @@ class ReposOwnerRepoActionsSecretsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var ActionsSecret[]
+     * @var list<ActionsSecret>
      */
     protected $secrets;
     /**
@@ -49,7 +49,7 @@ class ReposOwnerRepoActionsSecretsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return ActionsSecret[]
+     * @return list<ActionsSecret>
      */
     public function getSecrets() : array
     {
@@ -58,7 +58,7 @@ class ReposOwnerRepoActionsSecretsGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param ActionsSecret[] $secrets
+     * @param list<ActionsSecret> $secrets
      *
      * @return self
      */

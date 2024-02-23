@@ -15,7 +15,7 @@ class BooksGetHaljsonResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var BookJsonhalBookRead[]
+     * @var list<BookJsonhalBookRead>
      */
     protected $embedded;
     /**
@@ -39,7 +39,7 @@ class BooksGetHaljsonResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return BookJsonhalBookRead[]
+     * @return list<BookJsonhalBookRead>
      */
     public function getEmbedded() : array
     {
@@ -48,7 +48,7 @@ class BooksGetHaljsonResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param BookJsonhalBookRead[] $embedded
+     * @param list<BookJsonhalBookRead> $embedded
      *
      * @return self
      */

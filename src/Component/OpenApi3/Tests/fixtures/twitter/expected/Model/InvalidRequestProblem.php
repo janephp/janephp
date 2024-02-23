@@ -21,7 +21,7 @@ class InvalidRequestProblem extends \ArrayObject
     /**
      * 
      *
-     * @var InvalidRequestProblemErrorsItem[]
+     * @var list<InvalidRequestProblemErrorsItem>
      */
     protected $errors;
     /**
@@ -61,7 +61,7 @@ class InvalidRequestProblem extends \ArrayObject
     /**
      * 
      *
-     * @return InvalidRequestProblemErrorsItem[]
+     * @return list<InvalidRequestProblemErrorsItem>
      */
     public function getErrors() : array
     {
@@ -70,7 +70,7 @@ class InvalidRequestProblem extends \ArrayObject
     /**
      * 
      *
-     * @param InvalidRequestProblemErrorsItem[] $errors
+     * @param list<InvalidRequestProblemErrorsItem> $errors
      *
      * @return self
      */

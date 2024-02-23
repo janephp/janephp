@@ -15,13 +15,13 @@ class Test
     /**
      * 
      *
-     * @var TestFooItem[]
+     * @var list<TestFooItem>
      */
     protected $foo;
     /**
      * 
      *
-     * @return TestFooItem[]
+     * @return list<TestFooItem>
      */
     public function getFoo() : array
     {
@@ -30,7 +30,7 @@ class Test
     /**
      * 
      *
-     * @param TestFooItem[] $foo
+     * @param list<TestFooItem> $foo
      *
      * @return self
      */

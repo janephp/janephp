@@ -15,7 +15,7 @@ class ContentRestoreManyRequest
     /**
      * IDs of the contents to restore.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $contentIds;
     /**
@@ -27,7 +27,7 @@ class ContentRestoreManyRequest
     /**
      * IDs of the contents to restore.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getContentIds() : array
     {
@@ -36,7 +36,7 @@ class ContentRestoreManyRequest
     /**
      * IDs of the contents to restore.
      *
-     * @param string[] $contentIds
+     * @param list<string> $contentIds
      *
      * @return self
      */

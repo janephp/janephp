@@ -87,7 +87,7 @@ class Job extends \ArrayObject
     /**
      * Steps in this job.
      *
-     * @var JobStepsItem[]
+     * @var list<JobStepsItem>
      */
     protected $steps;
     /**
@@ -363,7 +363,7 @@ class Job extends \ArrayObject
     /**
      * Steps in this job.
      *
-     * @return JobStepsItem[]
+     * @return list<JobStepsItem>
      */
     public function getSteps() : array
     {
@@ -372,7 +372,7 @@ class Job extends \ArrayObject
     /**
      * Steps in this job.
      *
-     * @param JobStepsItem[] $steps
+     * @param list<JobStepsItem> $steps
      *
      * @return self
      */

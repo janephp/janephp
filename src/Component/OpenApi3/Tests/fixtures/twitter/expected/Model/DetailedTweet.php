@@ -51,7 +51,7 @@ class DetailedTweet extends \ArrayObject
     /**
      * A list of Tweets this Tweet refers to. For example, if the parent Tweet is a Retweet, a Quoted Tweet or a Reply, it will include the related Tweet referenced to by its parent.
      *
-     * @var CompactTweetFieldsReferencedTweetsItem[]
+     * @var list<CompactTweetFieldsReferencedTweetsItem>
      */
     protected $referencedTweets;
     /**
@@ -87,7 +87,7 @@ class DetailedTweet extends \ArrayObject
     /**
      * 
      *
-     * @var ContextAnnotation[]
+     * @var list<ContextAnnotation>
      */
     protected $contextAnnotation;
     /**
@@ -243,7 +243,7 @@ class DetailedTweet extends \ArrayObject
     /**
      * A list of Tweets this Tweet refers to. For example, if the parent Tweet is a Retweet, a Quoted Tweet or a Reply, it will include the related Tweet referenced to by its parent.
      *
-     * @return CompactTweetFieldsReferencedTweetsItem[]
+     * @return list<CompactTweetFieldsReferencedTweetsItem>
      */
     public function getReferencedTweets() : array
     {
@@ -252,7 +252,7 @@ class DetailedTweet extends \ArrayObject
     /**
      * A list of Tweets this Tweet refers to. For example, if the parent Tweet is a Retweet, a Quoted Tweet or a Reply, it will include the related Tweet referenced to by its parent.
      *
-     * @param CompactTweetFieldsReferencedTweetsItem[] $referencedTweets
+     * @param list<CompactTweetFieldsReferencedTweetsItem> $referencedTweets
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class DetailedTweet extends \ArrayObject
     /**
      * 
      *
-     * @return ContextAnnotation[]
+     * @return list<ContextAnnotation>
      */
     public function getContextAnnotation() : array
     {
@@ -384,7 +384,7 @@ class DetailedTweet extends \ArrayObject
     /**
      * 
      *
-     * @param ContextAnnotation[] $contextAnnotation
+     * @param list<ContextAnnotation> $contextAnnotation
      *
      * @return self
      */

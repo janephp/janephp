@@ -15,7 +15,7 @@ class ContentManyReferencesRequest
     /**
      * The IDs of the contents whose references need to be retrieved.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $contentIds;
     /**
@@ -33,7 +33,7 @@ class ContentManyReferencesRequest
     /**
      * The IDs of the contents whose references need to be retrieved.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getContentIds() : array
     {
@@ -42,7 +42,7 @@ class ContentManyReferencesRequest
     /**
      * The IDs of the contents whose references need to be retrieved.
      *
-     * @param string[] $contentIds
+     * @param list<string> $contentIds
      *
      * @return self
      */

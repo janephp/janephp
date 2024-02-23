@@ -33,7 +33,7 @@ class BooksBookIdReviewsGetLdjsonResponse200HydraSearch extends \ArrayObject
     /**
      * 
      *
-     * @var BooksBookIdReviewsGetLdjsonResponse200HydraSearchHydraMappingItem[]
+     * @var list<BooksBookIdReviewsGetLdjsonResponse200HydraSearchHydraMappingItem>
      */
     protected $hydraMapping;
     /**
@@ -105,7 +105,7 @@ class BooksBookIdReviewsGetLdjsonResponse200HydraSearch extends \ArrayObject
     /**
      * 
      *
-     * @return BooksBookIdReviewsGetLdjsonResponse200HydraSearchHydraMappingItem[]
+     * @return list<BooksBookIdReviewsGetLdjsonResponse200HydraSearchHydraMappingItem>
      */
     public function getHydraMapping() : array
     {
@@ -114,7 +114,7 @@ class BooksBookIdReviewsGetLdjsonResponse200HydraSearch extends \ArrayObject
     /**
      * 
      *
-     * @param BooksBookIdReviewsGetLdjsonResponse200HydraSearchHydraMappingItem[] $hydraMapping
+     * @param list<BooksBookIdReviewsGetLdjsonResponse200HydraSearchHydraMappingItem> $hydraMapping
      *
      * @return self
      */

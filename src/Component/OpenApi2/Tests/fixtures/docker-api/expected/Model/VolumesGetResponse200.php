@@ -15,19 +15,19 @@ class VolumesGetResponse200
     /**
      * List of volumes
      *
-     * @var Volume[]
+     * @var list<Volume>
      */
     protected $volumes;
     /**
      * Warnings that occurred when fetching the list of volumes.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $warnings;
     /**
      * List of volumes
      *
-     * @return Volume[]
+     * @return list<Volume>
      */
     public function getVolumes() : array
     {
@@ -36,7 +36,7 @@ class VolumesGetResponse200
     /**
      * List of volumes
      *
-     * @param Volume[] $volumes
+     * @param list<Volume> $volumes
      *
      * @return self
      */
@@ -49,7 +49,7 @@ class VolumesGetResponse200
     /**
      * Warnings that occurred when fetching the list of volumes.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getWarnings() : array
     {
@@ -58,7 +58,7 @@ class VolumesGetResponse200
     /**
      * Warnings that occurred when fetching the list of volumes.
      *
-     * @param string[] $warnings
+     * @param list<string> $warnings
      *
      * @return self
      */

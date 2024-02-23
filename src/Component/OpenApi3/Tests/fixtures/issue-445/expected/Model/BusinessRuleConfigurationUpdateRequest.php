@@ -21,13 +21,13 @@ class BusinessRuleConfigurationUpdateRequest
     /**
      * Rules.
      *
-     * @var BusinessRule[]|null
+     * @var list<BusinessRule>|null
      */
     protected $rules;
     /**
      * Named caches.
      *
-     * @var NamedCacheConfigurationBase[]|null
+     * @var list<NamedCacheConfigurationBase>|null
      */
     protected $caches;
     /**
@@ -55,7 +55,7 @@ class BusinessRuleConfigurationUpdateRequest
     /**
      * Rules.
      *
-     * @return BusinessRule[]|null
+     * @return list<BusinessRule>|null
      */
     public function getRules() : ?array
     {
@@ -64,7 +64,7 @@ class BusinessRuleConfigurationUpdateRequest
     /**
      * Rules.
      *
-     * @param BusinessRule[]|null $rules
+     * @param list<BusinessRule>|null $rules
      *
      * @return self
      */
@@ -77,7 +77,7 @@ class BusinessRuleConfigurationUpdateRequest
     /**
      * Named caches.
      *
-     * @return NamedCacheConfigurationBase[]|null
+     * @return list<NamedCacheConfigurationBase>|null
      */
     public function getCaches() : ?array
     {
@@ -86,7 +86,7 @@ class BusinessRuleConfigurationUpdateRequest
     /**
      * Named caches.
      *
-     * @param NamedCacheConfigurationBase[]|null $caches
+     * @param list<NamedCacheConfigurationBase>|null $caches
      *
      * @return self
      */

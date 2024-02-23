@@ -81,7 +81,7 @@ class WorkflowRun extends \ArrayObject
     /**
      * 
      *
-     * @var PullRequestMinimal[]|null
+     * @var list<PullRequestMinimal>|null
      */
     protected $pullRequests;
     /**
@@ -407,7 +407,7 @@ class WorkflowRun extends \ArrayObject
     /**
      * 
      *
-     * @return PullRequestMinimal[]|null
+     * @return list<PullRequestMinimal>|null
      */
     public function getPullRequests() : ?array
     {
@@ -416,7 +416,7 @@ class WorkflowRun extends \ArrayObject
     /**
      * 
      *
-     * @param PullRequestMinimal[]|null $pullRequests
+     * @param list<PullRequestMinimal>|null $pullRequests
      *
      * @return self
      */

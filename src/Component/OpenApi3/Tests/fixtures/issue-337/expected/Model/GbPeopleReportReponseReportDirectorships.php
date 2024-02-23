@@ -15,25 +15,25 @@ class GbPeopleReportReponseReportDirectorships extends \ArrayObject
     /**
      * 
      *
-     * @var GbPeopleReportReponseReportDirectorshipsCurrentItem[]
+     * @var list<GbPeopleReportReponseReportDirectorshipsCurrentItem>
      */
     protected $current;
     /**
      * 
      *
-     * @var GbPeopleReportReponseReportDirectorshipsInactiveItem[]
+     * @var list<GbPeopleReportReponseReportDirectorshipsInactiveItem>
      */
     protected $inactive;
     /**
      * 
      *
-     * @var GbPeopleReportReponseReportDirectorshipsPreviousItem[]
+     * @var list<GbPeopleReportReponseReportDirectorshipsPreviousItem>
      */
     protected $previous;
     /**
      * 
      *
-     * @return GbPeopleReportReponseReportDirectorshipsCurrentItem[]
+     * @return list<GbPeopleReportReponseReportDirectorshipsCurrentItem>
      */
     public function getCurrent() : array
     {
@@ -42,7 +42,7 @@ class GbPeopleReportReponseReportDirectorships extends \ArrayObject
     /**
      * 
      *
-     * @param GbPeopleReportReponseReportDirectorshipsCurrentItem[] $current
+     * @param list<GbPeopleReportReponseReportDirectorshipsCurrentItem> $current
      *
      * @return self
      */
@@ -55,7 +55,7 @@ class GbPeopleReportReponseReportDirectorships extends \ArrayObject
     /**
      * 
      *
-     * @return GbPeopleReportReponseReportDirectorshipsInactiveItem[]
+     * @return list<GbPeopleReportReponseReportDirectorshipsInactiveItem>
      */
     public function getInactive() : array
     {
@@ -64,7 +64,7 @@ class GbPeopleReportReponseReportDirectorships extends \ArrayObject
     /**
      * 
      *
-     * @param GbPeopleReportReponseReportDirectorshipsInactiveItem[] $inactive
+     * @param list<GbPeopleReportReponseReportDirectorshipsInactiveItem> $inactive
      *
      * @return self
      */
@@ -77,7 +77,7 @@ class GbPeopleReportReponseReportDirectorships extends \ArrayObject
     /**
      * 
      *
-     * @return GbPeopleReportReponseReportDirectorshipsPreviousItem[]
+     * @return list<GbPeopleReportReponseReportDirectorshipsPreviousItem>
      */
     public function getPrevious() : array
     {
@@ -86,7 +86,7 @@ class GbPeopleReportReponseReportDirectorships extends \ArrayObject
     /**
      * 
      *
-     * @param GbPeopleReportReponseReportDirectorshipsPreviousItem[] $previous
+     * @param list<GbPeopleReportReponseReportDirectorshipsPreviousItem> $previous
      *
      * @return self
      */

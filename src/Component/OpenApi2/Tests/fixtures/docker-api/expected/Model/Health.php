@@ -33,7 +33,7 @@ class Health
     /**
      * Log contains the last few results (oldest first)
      *
-     * @var HealthcheckResult[]
+     * @var list<HealthcheckResult>
      */
     protected $log;
     /**
@@ -95,7 +95,7 @@ class Health
     /**
      * Log contains the last few results (oldest first)
      *
-     * @return HealthcheckResult[]
+     * @return list<HealthcheckResult>
      */
     public function getLog() : array
     {
@@ -104,7 +104,7 @@ class Health
     /**
      * Log contains the last few results (oldest first)
      *
-     * @param HealthcheckResult[] $log
+     * @param list<HealthcheckResult> $log
      *
      * @return self
      */

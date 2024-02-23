@@ -21,7 +21,7 @@ class BaseResultOfMetadataReference
     /**
      * The matched documents.
      *
-     * @var MetadataReference[]
+     * @var list<MetadataReference>
      */
     protected $results;
     /**
@@ -61,7 +61,7 @@ class BaseResultOfMetadataReference
     /**
      * The matched documents.
      *
-     * @return MetadataReference[]
+     * @return list<MetadataReference>
      */
     public function getResults() : array
     {
@@ -70,7 +70,7 @@ class BaseResultOfMetadataReference
     /**
      * The matched documents.
      *
-     * @param MetadataReference[] $results
+     * @param list<MetadataReference> $results
      *
      * @return self
      */

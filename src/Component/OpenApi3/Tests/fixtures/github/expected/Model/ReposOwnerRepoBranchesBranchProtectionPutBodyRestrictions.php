@@ -15,25 +15,25 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictions extends \ArrayOb
     /**
      * The list of user `login`s with push access
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $users;
     /**
      * The list of team `slug`s with push access
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $teams;
     /**
      * The list of app `slug`s with push access
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $apps;
     /**
      * The list of user `login`s with push access
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getUsers() : array
     {
@@ -42,7 +42,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictions extends \ArrayOb
     /**
      * The list of user `login`s with push access
      *
-     * @param string[] $users
+     * @param list<string> $users
      *
      * @return self
      */
@@ -55,7 +55,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictions extends \ArrayOb
     /**
      * The list of team `slug`s with push access
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getTeams() : array
     {
@@ -64,7 +64,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictions extends \ArrayOb
     /**
      * The list of team `slug`s with push access
      *
-     * @param string[] $teams
+     * @param list<string> $teams
      *
      * @return self
      */
@@ -77,7 +77,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictions extends \ArrayOb
     /**
      * The list of app `slug`s with push access
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getApps() : array
     {
@@ -86,7 +86,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictions extends \ArrayOb
     /**
      * The list of app `slug`s with push access
      *
-     * @param string[] $apps
+     * @param list<string> $apps
      *
      * @return self
      */

@@ -21,7 +21,7 @@ class BaseResultOfLiveStream
     /**
      * The matched documents.
      *
-     * @var LiveStream[]
+     * @var list<LiveStream>
      */
     protected $results;
     /**
@@ -61,7 +61,7 @@ class BaseResultOfLiveStream
     /**
      * The matched documents.
      *
-     * @return LiveStream[]
+     * @return list<LiveStream>
      */
     public function getResults() : array
     {
@@ -70,7 +70,7 @@ class BaseResultOfLiveStream
     /**
      * The matched documents.
      *
-     * @param LiveStream[] $results
+     * @param list<LiveStream> $results
      *
      * @return self
      */

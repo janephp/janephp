@@ -27,7 +27,7 @@ class PluginPrivilege
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $value;
     /**
@@ -77,7 +77,7 @@ class PluginPrivilege
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getValue() : array
     {
@@ -86,7 +86,7 @@ class PluginPrivilege
     /**
      * 
      *
-     * @param string[] $value
+     * @param list<string> $value
      *
      * @return self
      */

@@ -375,7 +375,7 @@ class RepositoryTemplateRepository extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $topics;
     /**
@@ -1821,7 +1821,7 @@ class RepositoryTemplateRepository extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getTopics() : array
     {
@@ -1830,7 +1830,7 @@ class RepositoryTemplateRepository extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $topics
+     * @param list<string> $topics
      *
      * @return self
      */

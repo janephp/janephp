@@ -15,13 +15,13 @@ class ContentFieldsBatchUpdateRequest extends MetadataValuesChangeRequestBase
     /**
      * The IDs of the contents whose fields need to be updated.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $contentIds;
     /**
      * The IDs of the contents whose fields need to be updated.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getContentIds() : array
     {
@@ -30,7 +30,7 @@ class ContentFieldsBatchUpdateRequest extends MetadataValuesChangeRequestBase
     /**
      * The IDs of the contents whose fields need to be updated.
      *
-     * @param string[] $contentIds
+     * @param list<string> $contentIds
      *
      * @return self
      */

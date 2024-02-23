@@ -45,7 +45,7 @@ class UserUpdateRequest extends \ArrayObject
     /**
      * User roles the user should be assigned to. Overwrites the original user roles.
      *
-     * @var UserRole[]|null
+     * @var list<UserRole>|null
      */
     protected $userRoles;
     /**
@@ -185,7 +185,7 @@ class UserUpdateRequest extends \ArrayObject
     /**
      * User roles the user should be assigned to. Overwrites the original user roles.
      *
-     * @return UserRole[]|null
+     * @return list<UserRole>|null
      */
     public function getUserRoles() : ?array
     {
@@ -194,7 +194,7 @@ class UserUpdateRequest extends \ArrayObject
     /**
      * User roles the user should be assigned to. Overwrites the original user roles.
      *
-     * @param UserRole[]|null $userRoles
+     * @param list<UserRole>|null $userRoles
      *
      * @return self
      */

@@ -45,7 +45,7 @@ class ScimError extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $schemas;
     /**
@@ -161,7 +161,7 @@ class ScimError extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getSchemas() : array
     {
@@ -170,7 +170,7 @@ class ScimError extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $schemas
+     * @param list<string> $schemas
      *
      * @return self
      */

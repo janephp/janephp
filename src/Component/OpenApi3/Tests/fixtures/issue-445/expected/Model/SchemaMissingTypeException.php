@@ -75,7 +75,7 @@ class SchemaMissingTypeException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $expectedSchemaTypes;
     /**
@@ -301,7 +301,7 @@ class SchemaMissingTypeException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getExpectedSchemaTypes() : ?array
     {
@@ -310,7 +310,7 @@ class SchemaMissingTypeException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $expectedSchemaTypes
+     * @param list<string>|null $expectedSchemaTypes
      *
      * @return self
      */

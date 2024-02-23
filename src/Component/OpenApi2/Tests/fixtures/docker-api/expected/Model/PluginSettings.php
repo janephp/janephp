@@ -15,31 +15,31 @@ class PluginSettings
     /**
      * 
      *
-     * @var PluginMount[]
+     * @var list<PluginMount>
      */
     protected $mounts;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $env;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $args;
     /**
      * 
      *
-     * @var PluginDevice[]
+     * @var list<PluginDevice>
      */
     protected $devices;
     /**
      * 
      *
-     * @return PluginMount[]
+     * @return list<PluginMount>
      */
     public function getMounts() : array
     {
@@ -48,7 +48,7 @@ class PluginSettings
     /**
      * 
      *
-     * @param PluginMount[] $mounts
+     * @param list<PluginMount> $mounts
      *
      * @return self
      */
@@ -61,7 +61,7 @@ class PluginSettings
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getEnv() : array
     {
@@ -70,7 +70,7 @@ class PluginSettings
     /**
      * 
      *
-     * @param string[] $env
+     * @param list<string> $env
      *
      * @return self
      */
@@ -83,7 +83,7 @@ class PluginSettings
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getArgs() : array
     {
@@ -92,7 +92,7 @@ class PluginSettings
     /**
      * 
      *
-     * @param string[] $args
+     * @param list<string> $args
      *
      * @return self
      */
@@ -105,7 +105,7 @@ class PluginSettings
     /**
      * 
      *
-     * @return PluginDevice[]
+     * @return list<PluginDevice>
      */
     public function getDevices() : array
     {
@@ -114,7 +114,7 @@ class PluginSettings
     /**
      * 
      *
-     * @param PluginDevice[] $devices
+     * @param list<PluginDevice> $devices
      *
      * @return self
      */

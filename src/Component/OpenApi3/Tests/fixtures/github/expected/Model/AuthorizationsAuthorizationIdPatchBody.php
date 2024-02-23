@@ -15,19 +15,19 @@ class AuthorizationsAuthorizationIdPatchBody extends \ArrayObject
     /**
      * A list of scopes that this authorization is in.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $scopes;
     /**
      * A list of scopes to add to this authorization.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $addScopes;
     /**
      * A list of scopes to remove from this authorization.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $removeScopes;
     /**
@@ -51,7 +51,7 @@ class AuthorizationsAuthorizationIdPatchBody extends \ArrayObject
     /**
      * A list of scopes that this authorization is in.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getScopes() : ?array
     {
@@ -60,7 +60,7 @@ class AuthorizationsAuthorizationIdPatchBody extends \ArrayObject
     /**
      * A list of scopes that this authorization is in.
      *
-     * @param string[]|null $scopes
+     * @param list<string>|null $scopes
      *
      * @return self
      */
@@ -73,7 +73,7 @@ class AuthorizationsAuthorizationIdPatchBody extends \ArrayObject
     /**
      * A list of scopes to add to this authorization.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getAddScopes() : array
     {
@@ -82,7 +82,7 @@ class AuthorizationsAuthorizationIdPatchBody extends \ArrayObject
     /**
      * A list of scopes to add to this authorization.
      *
-     * @param string[] $addScopes
+     * @param list<string> $addScopes
      *
      * @return self
      */
@@ -95,7 +95,7 @@ class AuthorizationsAuthorizationIdPatchBody extends \ArrayObject
     /**
      * A list of scopes to remove from this authorization.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getRemoveScopes() : array
     {
@@ -104,7 +104,7 @@ class AuthorizationsAuthorizationIdPatchBody extends \ArrayObject
     /**
      * A list of scopes to remove from this authorization.
      *
-     * @param string[] $removeScopes
+     * @param list<string> $removeScopes
      *
      * @return self
      */

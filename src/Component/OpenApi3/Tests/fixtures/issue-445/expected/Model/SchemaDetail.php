@@ -33,7 +33,7 @@ class SchemaDetail
     /**
      * List of schema types. Currently only one schema type can be assigned to this list, and it cannot be modified once the schema is created.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $types;
     /**
@@ -51,40 +51,40 @@ class SchemaDetail
     /**
      * An optional list of schemas' IDs with type layer. For a Content schema it stores the layers that can be assigned to a content.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $layerSchemaIds;
     /**
      * Language specific DotLiquid templates. These templates will be resolved into display values in content documents and/or list items.
      *
-     * @var DisplayPattern[]
+     * @var list<DisplayPattern>
      */
     protected $displayPatterns;
     /**
      * The schema fields.
      *
-     * @var FieldBase[]|null
+     * @var list<FieldBase>|null
      */
     protected $fields;
     /**
     * A list of schema fields overwrite information. It is used to overwrite the field configuration coming from the parent schema.
     Only a subset of properties of a FieldSingleTagbox and FieldMultiTagbox can be be overwritten. All other properties and fields cannot.
     *
-    * @var FieldOverwriteBase[]|null
+    * @var list<FieldOverwriteBase>|null
     */
     protected $fieldsOverwrite;
     /**
     * Sorts content documents and/or list items. In order for the sorting to work properly, the Sortable property of the related field
     must be set to true. Multiple sorting is supported: they are applied in the specified order.
     *
-    * @var SortInfo[]|null
+    * @var list<SortInfo>|null
     */
     protected $sort;
     /**
     * An optional list of aggregations to show grouped list item documents. When aggregations are defined for a List,
     the UI uses such information to show the available filters and grouped results.
     *
-    * @var AggregatorBase[]|null
+    * @var list<AggregatorBase>|null
     */
     protected $aggregations;
     /**
@@ -108,20 +108,20 @@ class SchemaDetail
     /**
      * An optional list of schema permission set IDs which control schema permissions.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $schemaPermissionSetIds;
     /**
     * If the schema if of type Layer, the list contains the schemas with type Content
     that reference the layer.
     *
-    * @var string[]|null
+    * @var list<string>|null
     */
     protected $referencedInContentSchemaIds;
     /**
      * The complete list of all descendant schema IDs.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $descendantSchemaIds;
     /**
@@ -205,7 +205,7 @@ class SchemaDetail
     /**
      * List of schema types. Currently only one schema type can be assigned to this list, and it cannot be modified once the schema is created.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getTypes() : array
     {
@@ -214,7 +214,7 @@ class SchemaDetail
     /**
      * List of schema types. Currently only one schema type can be assigned to this list, and it cannot be modified once the schema is created.
      *
-     * @param string[] $types
+     * @param list<string> $types
      *
      * @return self
      */
@@ -271,7 +271,7 @@ class SchemaDetail
     /**
      * An optional list of schemas' IDs with type layer. For a Content schema it stores the layers that can be assigned to a content.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getLayerSchemaIds() : ?array
     {
@@ -280,7 +280,7 @@ class SchemaDetail
     /**
      * An optional list of schemas' IDs with type layer. For a Content schema it stores the layers that can be assigned to a content.
      *
-     * @param string[]|null $layerSchemaIds
+     * @param list<string>|null $layerSchemaIds
      *
      * @return self
      */
@@ -293,7 +293,7 @@ class SchemaDetail
     /**
      * Language specific DotLiquid templates. These templates will be resolved into display values in content documents and/or list items.
      *
-     * @return DisplayPattern[]
+     * @return list<DisplayPattern>
      */
     public function getDisplayPatterns() : array
     {
@@ -302,7 +302,7 @@ class SchemaDetail
     /**
      * Language specific DotLiquid templates. These templates will be resolved into display values in content documents and/or list items.
      *
-     * @param DisplayPattern[] $displayPatterns
+     * @param list<DisplayPattern> $displayPatterns
      *
      * @return self
      */
@@ -315,7 +315,7 @@ class SchemaDetail
     /**
      * The schema fields.
      *
-     * @return FieldBase[]|null
+     * @return list<FieldBase>|null
      */
     public function getFields() : ?array
     {
@@ -324,7 +324,7 @@ class SchemaDetail
     /**
      * The schema fields.
      *
-     * @param FieldBase[]|null $fields
+     * @param list<FieldBase>|null $fields
      *
      * @return self
      */
@@ -338,7 +338,7 @@ class SchemaDetail
     * A list of schema fields overwrite information. It is used to overwrite the field configuration coming from the parent schema.
     Only a subset of properties of a FieldSingleTagbox and FieldMultiTagbox can be be overwritten. All other properties and fields cannot.
     *
-    * @return FieldOverwriteBase[]|null
+    * @return list<FieldOverwriteBase>|null
     */
     public function getFieldsOverwrite() : ?array
     {
@@ -348,7 +348,7 @@ class SchemaDetail
     * A list of schema fields overwrite information. It is used to overwrite the field configuration coming from the parent schema.
     Only a subset of properties of a FieldSingleTagbox and FieldMultiTagbox can be be overwritten. All other properties and fields cannot.
     *
-    * @param FieldOverwriteBase[]|null $fieldsOverwrite
+    * @param list<FieldOverwriteBase>|null $fieldsOverwrite
     *
     * @return self
     */
@@ -362,7 +362,7 @@ class SchemaDetail
     * Sorts content documents and/or list items. In order for the sorting to work properly, the Sortable property of the related field
     must be set to true. Multiple sorting is supported: they are applied in the specified order.
     *
-    * @return SortInfo[]|null
+    * @return list<SortInfo>|null
     */
     public function getSort() : ?array
     {
@@ -372,7 +372,7 @@ class SchemaDetail
     * Sorts content documents and/or list items. In order for the sorting to work properly, the Sortable property of the related field
     must be set to true. Multiple sorting is supported: they are applied in the specified order.
     *
-    * @param SortInfo[]|null $sort
+    * @param list<SortInfo>|null $sort
     *
     * @return self
     */
@@ -386,7 +386,7 @@ class SchemaDetail
     * An optional list of aggregations to show grouped list item documents. When aggregations are defined for a List,
     the UI uses such information to show the available filters and grouped results.
     *
-    * @return AggregatorBase[]|null
+    * @return list<AggregatorBase>|null
     */
     public function getAggregations() : ?array
     {
@@ -396,7 +396,7 @@ class SchemaDetail
     * An optional list of aggregations to show grouped list item documents. When aggregations are defined for a List,
     the UI uses such information to show the available filters and grouped results.
     *
-    * @param AggregatorBase[]|null $aggregations
+    * @param list<AggregatorBase>|null $aggregations
     *
     * @return self
     */
@@ -475,7 +475,7 @@ class SchemaDetail
     /**
      * An optional list of schema permission set IDs which control schema permissions.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSchemaPermissionSetIds() : ?array
     {
@@ -484,7 +484,7 @@ class SchemaDetail
     /**
      * An optional list of schema permission set IDs which control schema permissions.
      *
-     * @param string[]|null $schemaPermissionSetIds
+     * @param list<string>|null $schemaPermissionSetIds
      *
      * @return self
      */
@@ -498,7 +498,7 @@ class SchemaDetail
     * If the schema if of type Layer, the list contains the schemas with type Content
     that reference the layer.
     *
-    * @return string[]|null
+    * @return list<string>|null
     */
     public function getReferencedInContentSchemaIds() : ?array
     {
@@ -508,7 +508,7 @@ class SchemaDetail
     * If the schema if of type Layer, the list contains the schemas with type Content
     that reference the layer.
     *
-    * @param string[]|null $referencedInContentSchemaIds
+    * @param list<string>|null $referencedInContentSchemaIds
     *
     * @return self
     */
@@ -521,7 +521,7 @@ class SchemaDetail
     /**
      * The complete list of all descendant schema IDs.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getDescendantSchemaIds() : ?array
     {
@@ -530,7 +530,7 @@ class SchemaDetail
     /**
      * The complete list of all descendant schema IDs.
      *
-     * @param string[]|null $descendantSchemaIds
+     * @param list<string>|null $descendantSchemaIds
      *
      * @return self
      */

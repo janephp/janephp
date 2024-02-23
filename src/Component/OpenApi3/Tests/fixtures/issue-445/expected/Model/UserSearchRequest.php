@@ -21,7 +21,7 @@ class UserSearchRequest extends \ArrayObject
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $searchBehaviors;
     /**
@@ -39,7 +39,7 @@ class UserSearchRequest extends \ArrayObject
     /**
      * Return only users with certain user rights.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $userRightsFilter;
     /**
@@ -50,7 +50,7 @@ class UserSearchRequest extends \ArrayObject
     aggregation results of that aggregation: depending if the AggregationName of the AggregationFilter matches the AggregationName of the Aggregator, the filter is put in OR (if it matches) or in AND (if it does not match it).
     Moreover, an AggregationFilter ensures that the related value is returned in the AggregationResults also if the top aggregation values returned by default do not contain it.
     *
-    * @var AggregationFilter[]|null
+    * @var list<AggregationFilter>|null
     */
     protected $aggregationFilters;
     /**
@@ -69,7 +69,7 @@ class UserSearchRequest extends \ArrayObject
     /**
      * Fields and respective directions requested to sort the search results. Sorting on a not indexed field will throw an exception.
      *
-     * @var SortInfo[]|null
+     * @var list<SortInfo>|null
      */
     protected $sort;
     /**
@@ -93,7 +93,7 @@ class UserSearchRequest extends \ArrayObject
     /**
      * List of aggregators that defines how the items should be aggregated.
      *
-     * @var AggregatorBase[]|null
+     * @var list<AggregatorBase>|null
      */
     protected $aggregators;
     /**
@@ -121,7 +121,7 @@ class UserSearchRequest extends \ArrayObject
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSearchBehaviors() : ?array
     {
@@ -130,7 +130,7 @@ class UserSearchRequest extends \ArrayObject
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied.
      *
-     * @param string[]|null $searchBehaviors
+     * @param list<string>|null $searchBehaviors
      *
      * @return self
      */
@@ -187,7 +187,7 @@ class UserSearchRequest extends \ArrayObject
     /**
      * Return only users with certain user rights.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getUserRightsFilter() : ?array
     {
@@ -196,7 +196,7 @@ class UserSearchRequest extends \ArrayObject
     /**
      * Return only users with certain user rights.
      *
-     * @param string[]|null $userRightsFilter
+     * @param list<string>|null $userRightsFilter
      *
      * @return self
      */
@@ -214,7 +214,7 @@ class UserSearchRequest extends \ArrayObject
     aggregation results of that aggregation: depending if the AggregationName of the AggregationFilter matches the AggregationName of the Aggregator, the filter is put in OR (if it matches) or in AND (if it does not match it).
     Moreover, an AggregationFilter ensures that the related value is returned in the AggregationResults also if the top aggregation values returned by default do not contain it.
     *
-    * @return AggregationFilter[]|null
+    * @return list<AggregationFilter>|null
     */
     public function getAggregationFilters() : ?array
     {
@@ -228,7 +228,7 @@ class UserSearchRequest extends \ArrayObject
     aggregation results of that aggregation: depending if the AggregationName of the AggregationFilter matches the AggregationName of the Aggregator, the filter is put in OR (if it matches) or in AND (if it does not match it).
     Moreover, an AggregationFilter ensures that the related value is returned in the AggregationResults also if the top aggregation values returned by default do not contain it.
     *
-    * @param AggregationFilter[]|null $aggregationFilters
+    * @param list<AggregationFilter>|null $aggregationFilters
     *
     * @return self
     */
@@ -287,7 +287,7 @@ class UserSearchRequest extends \ArrayObject
     /**
      * Fields and respective directions requested to sort the search results. Sorting on a not indexed field will throw an exception.
      *
-     * @return SortInfo[]|null
+     * @return list<SortInfo>|null
      */
     public function getSort() : ?array
     {
@@ -296,7 +296,7 @@ class UserSearchRequest extends \ArrayObject
     /**
      * Fields and respective directions requested to sort the search results. Sorting on a not indexed field will throw an exception.
      *
-     * @param SortInfo[]|null $sort
+     * @param list<SortInfo>|null $sort
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class UserSearchRequest extends \ArrayObject
     /**
      * List of aggregators that defines how the items should be aggregated.
      *
-     * @return AggregatorBase[]|null
+     * @return list<AggregatorBase>|null
      */
     public function getAggregators() : ?array
     {
@@ -384,7 +384,7 @@ class UserSearchRequest extends \ArrayObject
     /**
      * List of aggregators that defines how the items should be aggregated.
      *
-     * @param AggregatorBase[]|null $aggregators
+     * @param list<AggregatorBase>|null $aggregators
      *
      * @return self
      */

@@ -51,7 +51,7 @@ class URLFields extends \ArrayObject
     /**
      * 
      *
-     * @var URLImage[]
+     * @var list<URLImage>
      */
     protected $images;
     /**
@@ -189,7 +189,7 @@ class URLFields extends \ArrayObject
     /**
      * 
      *
-     * @return URLImage[]
+     * @return list<URLImage>
      */
     public function getImages() : array
     {
@@ -198,7 +198,7 @@ class URLFields extends \ArrayObject
     /**
      * 
      *
-     * @param URLImage[] $images
+     * @param list<URLImage> $images
      *
      * @return self
      */

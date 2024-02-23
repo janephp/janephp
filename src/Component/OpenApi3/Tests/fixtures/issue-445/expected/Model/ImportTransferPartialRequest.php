@@ -15,13 +15,13 @@ class ImportTransferPartialRequest
     /**
      * 
      *
-     * @var FileTransferCreateItem[]|null
+     * @var list<FileTransferCreateItem>|null
      */
     protected $items;
     /**
      * 
      *
-     * @return FileTransferCreateItem[]|null
+     * @return list<FileTransferCreateItem>|null
      */
     public function getItems() : ?array
     {
@@ -30,7 +30,7 @@ class ImportTransferPartialRequest
     /**
      * 
      *
-     * @param FileTransferCreateItem[]|null $items
+     * @param list<FileTransferCreateItem>|null $items
      *
      * @return self
      */

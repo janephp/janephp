@@ -27,7 +27,7 @@ class SingleTweetLookupResponse extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $errors;
     /**
@@ -77,7 +77,7 @@ class SingleTweetLookupResponse extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getErrors() : array
     {
@@ -86,7 +86,7 @@ class SingleTweetLookupResponse extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $errors
+     * @param list<mixed> $errors
      *
      * @return self
      */

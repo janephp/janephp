@@ -21,7 +21,7 @@ class ImageRootFS
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $layers;
     /**
@@ -55,7 +55,7 @@ class ImageRootFS
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getLayers() : array
     {
@@ -64,7 +64,7 @@ class ImageRootFS
     /**
      * 
      *
-     * @param string[] $layers
+     * @param list<string> $layers
      *
      * @return self
      */

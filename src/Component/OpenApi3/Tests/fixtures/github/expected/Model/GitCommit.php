@@ -57,7 +57,7 @@ class GitCommit extends \ArrayObject
     /**
      * 
      *
-     * @var GitCommitParentsItem[]
+     * @var list<GitCommitParentsItem>
      */
     protected $parents;
     /**
@@ -229,7 +229,7 @@ class GitCommit extends \ArrayObject
     /**
      * 
      *
-     * @return GitCommitParentsItem[]
+     * @return list<GitCommitParentsItem>
      */
     public function getParents() : array
     {
@@ -238,7 +238,7 @@ class GitCommit extends \ArrayObject
     /**
      * 
      *
-     * @param GitCommitParentsItem[] $parents
+     * @param list<GitCommitParentsItem> $parents
      *
      * @return self
      */

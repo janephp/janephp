@@ -21,7 +21,7 @@ class InstallationRepositoriesGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @var Repository[]
+     * @var list<Repository>
      */
     protected $repositories;
     /**
@@ -55,7 +55,7 @@ class InstallationRepositoriesGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @return Repository[]
+     * @return list<Repository>
      */
     public function getRepositories() : array
     {
@@ -64,7 +64,7 @@ class InstallationRepositoriesGetResponse200 extends \ArrayObject
     /**
      * 
      *
-     * @param Repository[] $repositories
+     * @param list<Repository> $repositories
      *
      * @return self
      */

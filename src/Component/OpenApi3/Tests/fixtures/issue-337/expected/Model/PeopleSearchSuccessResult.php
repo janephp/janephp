@@ -21,7 +21,7 @@ class PeopleSearchSuccessResult extends \ArrayObject
     /**
      * 
      *
-     * @var PeopleSearchSuccessResultDirectorsItem[]
+     * @var list<PeopleSearchSuccessResultDirectorsItem>
      */
     protected $directors;
     /**
@@ -49,7 +49,7 @@ class PeopleSearchSuccessResult extends \ArrayObject
     /**
      * 
      *
-     * @return PeopleSearchSuccessResultDirectorsItem[]
+     * @return list<PeopleSearchSuccessResultDirectorsItem>
      */
     public function getDirectors() : array
     {
@@ -58,7 +58,7 @@ class PeopleSearchSuccessResult extends \ArrayObject
     /**
      * 
      *
-     * @param PeopleSearchSuccessResultDirectorsItem[] $directors
+     * @param list<PeopleSearchSuccessResultDirectorsItem> $directors
      *
      * @return self
      */

@@ -21,7 +21,7 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody extends \ArrayO
     /**
      * 
      *
-     * @var MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem[]
+     * @var list<MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem>
      */
     protected $companies;
     /**
@@ -49,7 +49,7 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody extends \ArrayO
     /**
      * 
      *
-     * @return MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem[]
+     * @return list<MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem>
      */
     public function getCompanies() : array
     {
@@ -58,7 +58,7 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody extends \ArrayO
     /**
      * 
      *
-     * @param MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem[] $companies
+     * @param list<MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem> $companies
      *
      * @return self
      */

@@ -63,7 +63,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
     /**
      * 
      *
-     * @var ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsIDsItem[]
+     * @var list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsIDsItem>
      */
     protected $iDs;
     /**
@@ -269,7 +269,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
     /**
      * 
      *
-     * @return ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsIDsItem[]
+     * @return list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsIDsItem>
      */
     public function getIDs() : array
     {
@@ -278,7 +278,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
     /**
      * 
      *
-     * @param ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsIDsItem[] $iDs
+     * @param list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsIDsItem> $iDs
      *
      * @return self
      */

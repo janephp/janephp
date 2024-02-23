@@ -45,13 +45,13 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody extends \ArrayObject
     /**
      * Labels to associate with this issue. Pass one or more Labels to _replace_ the set of Labels on this Issue. Send an empty array (`[]`) to clear all Labels from the Issue. _NOTE: Only users with push access can set labels for issues. Labels are silently dropped otherwise._
      *
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $labels;
     /**
      * Logins for Users to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this Issue. Send an empty array (`[]`) to clear all assignees from the Issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $assignees;
     /**
@@ -167,7 +167,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody extends \ArrayObject
     /**
      * Labels to associate with this issue. Pass one or more Labels to _replace_ the set of Labels on this Issue. Send an empty array (`[]`) to clear all Labels from the Issue. _NOTE: Only users with push access can set labels for issues. Labels are silently dropped otherwise._
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getLabels() : array
     {
@@ -176,7 +176,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody extends \ArrayObject
     /**
      * Labels to associate with this issue. Pass one or more Labels to _replace_ the set of Labels on this Issue. Send an empty array (`[]`) to clear all Labels from the Issue. _NOTE: Only users with push access can set labels for issues. Labels are silently dropped otherwise._
      *
-     * @param mixed[] $labels
+     * @param list<mixed> $labels
      *
      * @return self
      */
@@ -189,7 +189,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody extends \ArrayObject
     /**
      * Logins for Users to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this Issue. Send an empty array (`[]`) to clear all assignees from the Issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getAssignees() : array
     {
@@ -198,7 +198,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody extends \ArrayObject
     /**
      * Logins for Users to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this Issue. Send an empty array (`[]`) to clear all assignees from the Issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._
      *
-     * @param string[] $assignees
+     * @param list<string> $assignees
      *
      * @return self
      */

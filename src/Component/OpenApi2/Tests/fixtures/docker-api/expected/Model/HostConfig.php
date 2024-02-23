@@ -50,7 +50,7 @@ class HostConfig
     ```
     
     *
-    * @var ResourcesBlkioWeightDeviceItem[]
+    * @var list<ResourcesBlkioWeightDeviceItem>
     */
     protected $blkioWeightDevice;
     /**
@@ -61,7 +61,7 @@ class HostConfig
     ```
     
     *
-    * @var ThrottleDevice[]
+    * @var list<ThrottleDevice>
     */
     protected $blkioDeviceReadBps;
     /**
@@ -72,7 +72,7 @@ class HostConfig
     ```
     
     *
-    * @var ThrottleDevice[]
+    * @var list<ThrottleDevice>
     */
     protected $blkioDeviceWriteBps;
     /**
@@ -83,7 +83,7 @@ class HostConfig
     ```
     
     *
-    * @var ThrottleDevice[]
+    * @var list<ThrottleDevice>
     */
     protected $blkioDeviceReadIOps;
     /**
@@ -94,7 +94,7 @@ class HostConfig
     ```
     
     *
-    * @var ThrottleDevice[]
+    * @var list<ThrottleDevice>
     */
     protected $blkioDeviceWriteIOps;
     /**
@@ -142,19 +142,19 @@ class HostConfig
     /**
      * A list of devices to add to the container.
      *
-     * @var DeviceMapping[]
+     * @var list<DeviceMapping>
      */
     protected $devices;
     /**
      * a list of cgroup rules to apply to the container
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $deviceCgroupRules;
     /**
      * A list of requests for devices to be sent to device drivers.
      *
-     * @var DeviceRequest[]
+     * @var list<DeviceRequest>
      */
     protected $deviceRequests;
     /**
@@ -234,7 +234,7 @@ class HostConfig
     ```
     
     *
-    * @var ResourcesUlimitsItem[]
+    * @var list<ResourcesUlimitsItem>
     */
     protected $ulimits;
     /**
@@ -314,7 +314,7 @@ class HostConfig
      `slave`.
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $binds;
     /**
@@ -348,7 +348,7 @@ class HostConfig
     are added to the mapping table.
     
     *
-    * @var array<string, PortBinding[]>
+    * @var array<string, list<PortBinding>>
     */
     protected $portBindings;
     /**
@@ -381,13 +381,13 @@ class HostConfig
     the form `<container name>[:<ro|rw>]`.
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $volumesFrom;
     /**
      * Specification for mounts to be added to the container.
      *
-     * @var Mount[]
+     * @var list<Mount>
      */
     protected $mounts;
     /**
@@ -395,7 +395,7 @@ class HostConfig
     with option 'Capabilities'.
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $capAdd;
     /**
@@ -403,7 +403,7 @@ class HostConfig
     with option 'Capabilities'.
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $capDrop;
     /**
@@ -422,19 +422,19 @@ class HostConfig
     /**
      * A list of DNS servers for the container to use.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $dns;
     /**
      * A list of DNS options.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $dnsOptions;
     /**
      * A list of DNS search domains.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $dnsSearch;
     /**
@@ -442,13 +442,13 @@ class HostConfig
     file. Specified in the form `["hostname:IP"]`.
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $extraHosts;
     /**
      * A list of additional groups that the container process will run as.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $groupAdd;
     /**
@@ -476,7 +476,7 @@ class HostConfig
     /**
      * A list of links for the container in the form `container_name:alias`.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $links;
     /**
@@ -529,7 +529,7 @@ class HostConfig
     /**
      * A list of string values to customize labels for MLS systems, such as SELinux.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $securityOpt;
     /**
@@ -591,7 +591,7 @@ class HostConfig
     /**
      * Initial console size, as an `[height, width]` array. (Windows only)
      *
-     * @var int[]
+     * @var list<int>
      */
     protected $consoleSize;
     /**
@@ -605,7 +605,7 @@ class HostConfig
     the default set of paths).
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $maskedPaths;
     /**
@@ -613,7 +613,7 @@ class HostConfig
     (this overrides the default set of paths).
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $readonlyPaths;
     /**
@@ -724,7 +724,7 @@ class HostConfig
     ```
     
     *
-    * @return ResourcesBlkioWeightDeviceItem[]
+    * @return list<ResourcesBlkioWeightDeviceItem>
     */
     public function getBlkioWeightDevice() : array
     {
@@ -738,7 +738,7 @@ class HostConfig
     ```
     
     *
-    * @param ResourcesBlkioWeightDeviceItem[] $blkioWeightDevice
+    * @param list<ResourcesBlkioWeightDeviceItem> $blkioWeightDevice
     *
     * @return self
     */
@@ -756,7 +756,7 @@ class HostConfig
     ```
     
     *
-    * @return ThrottleDevice[]
+    * @return list<ThrottleDevice>
     */
     public function getBlkioDeviceReadBps() : array
     {
@@ -770,7 +770,7 @@ class HostConfig
     ```
     
     *
-    * @param ThrottleDevice[] $blkioDeviceReadBps
+    * @param list<ThrottleDevice> $blkioDeviceReadBps
     *
     * @return self
     */
@@ -788,7 +788,7 @@ class HostConfig
     ```
     
     *
-    * @return ThrottleDevice[]
+    * @return list<ThrottleDevice>
     */
     public function getBlkioDeviceWriteBps() : array
     {
@@ -802,7 +802,7 @@ class HostConfig
     ```
     
     *
-    * @param ThrottleDevice[] $blkioDeviceWriteBps
+    * @param list<ThrottleDevice> $blkioDeviceWriteBps
     *
     * @return self
     */
@@ -820,7 +820,7 @@ class HostConfig
     ```
     
     *
-    * @return ThrottleDevice[]
+    * @return list<ThrottleDevice>
     */
     public function getBlkioDeviceReadIOps() : array
     {
@@ -834,7 +834,7 @@ class HostConfig
     ```
     
     *
-    * @param ThrottleDevice[] $blkioDeviceReadIOps
+    * @param list<ThrottleDevice> $blkioDeviceReadIOps
     *
     * @return self
     */
@@ -852,7 +852,7 @@ class HostConfig
     ```
     
     *
-    * @return ThrottleDevice[]
+    * @return list<ThrottleDevice>
     */
     public function getBlkioDeviceWriteIOps() : array
     {
@@ -866,7 +866,7 @@ class HostConfig
     ```
     
     *
-    * @param ThrottleDevice[] $blkioDeviceWriteIOps
+    * @param list<ThrottleDevice> $blkioDeviceWriteIOps
     *
     * @return self
     */
@@ -1023,7 +1023,7 @@ class HostConfig
     /**
      * A list of devices to add to the container.
      *
-     * @return DeviceMapping[]
+     * @return list<DeviceMapping>
      */
     public function getDevices() : array
     {
@@ -1032,7 +1032,7 @@ class HostConfig
     /**
      * A list of devices to add to the container.
      *
-     * @param DeviceMapping[] $devices
+     * @param list<DeviceMapping> $devices
      *
      * @return self
      */
@@ -1045,7 +1045,7 @@ class HostConfig
     /**
      * a list of cgroup rules to apply to the container
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getDeviceCgroupRules() : array
     {
@@ -1054,7 +1054,7 @@ class HostConfig
     /**
      * a list of cgroup rules to apply to the container
      *
-     * @param string[] $deviceCgroupRules
+     * @param list<string> $deviceCgroupRules
      *
      * @return self
      */
@@ -1067,7 +1067,7 @@ class HostConfig
     /**
      * A list of requests for devices to be sent to device drivers.
      *
-     * @return DeviceRequest[]
+     * @return list<DeviceRequest>
      */
     public function getDeviceRequests() : array
     {
@@ -1076,7 +1076,7 @@ class HostConfig
     /**
      * A list of requests for devices to be sent to device drivers.
      *
-     * @param DeviceRequest[] $deviceRequests
+     * @param list<DeviceRequest> $deviceRequests
      *
      * @return self
      */
@@ -1322,7 +1322,7 @@ class HostConfig
     ```
     
     *
-    * @return ResourcesUlimitsItem[]
+    * @return list<ResourcesUlimitsItem>
     */
     public function getUlimits() : array
     {
@@ -1336,7 +1336,7 @@ class HostConfig
     ```
     
     *
-    * @param ResourcesUlimitsItem[] $ulimits
+    * @param list<ResourcesUlimitsItem> $ulimits
     *
     * @return self
     */
@@ -1499,7 +1499,7 @@ class HostConfig
      `slave`.
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getBinds() : array
     {
@@ -1546,7 +1546,7 @@ class HostConfig
      `slave`.
     
     *
-    * @param string[] $binds
+    * @param list<string> $binds
     *
     * @return self
     */
@@ -1639,7 +1639,7 @@ class HostConfig
     are added to the mapping table.
     
     *
-    * @return array<string, PortBinding[]>
+    * @return array<string, list<PortBinding>>
     */
     public function getPortBindings() : iterable
     {
@@ -1654,7 +1654,7 @@ class HostConfig
     are added to the mapping table.
     
     *
-    * @param array<string, PortBinding[]> $portBindings
+    * @param array<string, list<PortBinding>> $portBindings
     *
     * @return self
     */
@@ -1749,7 +1749,7 @@ class HostConfig
     the form `<container name>[:<ro|rw>]`.
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getVolumesFrom() : array
     {
@@ -1760,7 +1760,7 @@ class HostConfig
     the form `<container name>[:<ro|rw>]`.
     
     *
-    * @param string[] $volumesFrom
+    * @param list<string> $volumesFrom
     *
     * @return self
     */
@@ -1773,7 +1773,7 @@ class HostConfig
     /**
      * Specification for mounts to be added to the container.
      *
-     * @return Mount[]
+     * @return list<Mount>
      */
     public function getMounts() : array
     {
@@ -1782,7 +1782,7 @@ class HostConfig
     /**
      * Specification for mounts to be added to the container.
      *
-     * @param Mount[] $mounts
+     * @param list<Mount> $mounts
      *
      * @return self
      */
@@ -1797,7 +1797,7 @@ class HostConfig
     with option 'Capabilities'.
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getCapAdd() : array
     {
@@ -1808,7 +1808,7 @@ class HostConfig
     with option 'Capabilities'.
     
     *
-    * @param string[] $capAdd
+    * @param list<string> $capAdd
     *
     * @return self
     */
@@ -1823,7 +1823,7 @@ class HostConfig
     with option 'Capabilities'.
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getCapDrop() : array
     {
@@ -1834,7 +1834,7 @@ class HostConfig
     with option 'Capabilities'.
     
     *
-    * @param string[] $capDrop
+    * @param list<string> $capDrop
     *
     * @return self
     */
@@ -1883,7 +1883,7 @@ class HostConfig
     /**
      * A list of DNS servers for the container to use.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getDns() : array
     {
@@ -1892,7 +1892,7 @@ class HostConfig
     /**
      * A list of DNS servers for the container to use.
      *
-     * @param string[] $dns
+     * @param list<string> $dns
      *
      * @return self
      */
@@ -1905,7 +1905,7 @@ class HostConfig
     /**
      * A list of DNS options.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getDnsOptions() : array
     {
@@ -1914,7 +1914,7 @@ class HostConfig
     /**
      * A list of DNS options.
      *
-     * @param string[] $dnsOptions
+     * @param list<string> $dnsOptions
      *
      * @return self
      */
@@ -1927,7 +1927,7 @@ class HostConfig
     /**
      * A list of DNS search domains.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getDnsSearch() : array
     {
@@ -1936,7 +1936,7 @@ class HostConfig
     /**
      * A list of DNS search domains.
      *
-     * @param string[] $dnsSearch
+     * @param list<string> $dnsSearch
      *
      * @return self
      */
@@ -1951,7 +1951,7 @@ class HostConfig
     file. Specified in the form `["hostname:IP"]`.
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getExtraHosts() : array
     {
@@ -1962,7 +1962,7 @@ class HostConfig
     file. Specified in the form `["hostname:IP"]`.
     
     *
-    * @param string[] $extraHosts
+    * @param list<string> $extraHosts
     *
     * @return self
     */
@@ -1975,7 +1975,7 @@ class HostConfig
     /**
      * A list of additional groups that the container process will run as.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getGroupAdd() : array
     {
@@ -1984,7 +1984,7 @@ class HostConfig
     /**
      * A list of additional groups that the container process will run as.
      *
-     * @param string[] $groupAdd
+     * @param list<string> $groupAdd
      *
      * @return self
      */
@@ -2061,7 +2061,7 @@ class HostConfig
     /**
      * A list of links for the container in the form `container_name:alias`.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getLinks() : array
     {
@@ -2070,7 +2070,7 @@ class HostConfig
     /**
      * A list of links for the container in the form `container_name:alias`.
      *
-     * @param string[] $links
+     * @param list<string> $links
      *
      * @return self
      */
@@ -2227,7 +2227,7 @@ class HostConfig
     /**
      * A list of string values to customize labels for MLS systems, such as SELinux.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getSecurityOpt() : array
     {
@@ -2236,7 +2236,7 @@ class HostConfig
     /**
      * A list of string values to customize labels for MLS systems, such as SELinux.
      *
-     * @param string[] $securityOpt
+     * @param list<string> $securityOpt
      *
      * @return self
      */
@@ -2431,7 +2431,7 @@ class HostConfig
     /**
      * Initial console size, as an `[height, width]` array. (Windows only)
      *
-     * @return int[]
+     * @return list<int>
      */
     public function getConsoleSize() : array
     {
@@ -2440,7 +2440,7 @@ class HostConfig
     /**
      * Initial console size, as an `[height, width]` array. (Windows only)
      *
-     * @param int[] $consoleSize
+     * @param list<int> $consoleSize
      *
      * @return self
      */
@@ -2477,7 +2477,7 @@ class HostConfig
     the default set of paths).
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getMaskedPaths() : array
     {
@@ -2488,7 +2488,7 @@ class HostConfig
     the default set of paths).
     
     *
-    * @param string[] $maskedPaths
+    * @param list<string> $maskedPaths
     *
     * @return self
     */
@@ -2503,7 +2503,7 @@ class HostConfig
     (this overrides the default set of paths).
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getReadonlyPaths() : array
     {
@@ -2514,7 +2514,7 @@ class HostConfig
     (this overrides the default set of paths).
     
     *
-    * @param string[] $readonlyPaths
+    * @param list<string> $readonlyPaths
     *
     * @return self
     */

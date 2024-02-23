@@ -159,13 +159,13 @@ class DocumentMetadata extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $titles;
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $imageTitles;
     /**
@@ -705,7 +705,7 @@ class DocumentMetadata extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getTitles() : ?array
     {
@@ -714,7 +714,7 @@ class DocumentMetadata extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $titles
+     * @param list<string>|null $titles
      *
      * @return self
      */
@@ -727,7 +727,7 @@ class DocumentMetadata extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getImageTitles() : ?array
     {
@@ -736,7 +736,7 @@ class DocumentMetadata extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $imageTitles
+     * @param list<string>|null $imageTitles
      *
      * @return self
      */

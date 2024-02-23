@@ -15,13 +15,13 @@ class ShareRevokeManyRequest
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $ids;
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getIds() : ?array
     {
@@ -30,7 +30,7 @@ class ShareRevokeManyRequest
     /**
      * 
      *
-     * @param string[]|null $ids
+     * @param list<string>|null $ids
      *
      * @return self
      */

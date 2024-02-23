@@ -21,13 +21,13 @@ class GbCompanyReportExampleResponseReportContactInformation extends \ArrayObjec
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem[]
+     * @var list<GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem>
      */
     protected $otherAddresses;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $websites;
     /**
@@ -55,7 +55,7 @@ class GbCompanyReportExampleResponseReportContactInformation extends \ArrayObjec
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem[]
+     * @return list<GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem>
      */
     public function getOtherAddresses() : array
     {
@@ -64,7 +64,7 @@ class GbCompanyReportExampleResponseReportContactInformation extends \ArrayObjec
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem[] $otherAddresses
+     * @param list<GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem> $otherAddresses
      *
      * @return self
      */
@@ -77,7 +77,7 @@ class GbCompanyReportExampleResponseReportContactInformation extends \ArrayObjec
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getWebsites() : array
     {
@@ -86,7 +86,7 @@ class GbCompanyReportExampleResponseReportContactInformation extends \ArrayObjec
     /**
      * 
      *
-     * @param string[] $websites
+     * @param list<string> $websites
      *
      * @return self
      */

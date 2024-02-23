@@ -21,13 +21,13 @@ class BusinessRuleConfigurable extends BusinessRule
     /**
      * Optional transformations to apply.
      *
-     * @var BusinessRuleTransformationGroup[]|null
+     * @var list<BusinessRuleTransformationGroup>|null
      */
     protected $transformationGroups;
     /**
      * The actions that are performed when this rule triggers.
      *
-     * @var BusinessRuleAction[]|null
+     * @var list<BusinessRuleAction>|null
      */
     protected $actions;
     /**
@@ -55,7 +55,7 @@ class BusinessRuleConfigurable extends BusinessRule
     /**
      * Optional transformations to apply.
      *
-     * @return BusinessRuleTransformationGroup[]|null
+     * @return list<BusinessRuleTransformationGroup>|null
      */
     public function getTransformationGroups() : ?array
     {
@@ -64,7 +64,7 @@ class BusinessRuleConfigurable extends BusinessRule
     /**
      * Optional transformations to apply.
      *
-     * @param BusinessRuleTransformationGroup[]|null $transformationGroups
+     * @param list<BusinessRuleTransformationGroup>|null $transformationGroups
      *
      * @return self
      */
@@ -77,7 +77,7 @@ class BusinessRuleConfigurable extends BusinessRule
     /**
      * The actions that are performed when this rule triggers.
      *
-     * @return BusinessRuleAction[]|null
+     * @return list<BusinessRuleAction>|null
      */
     public function getActions() : ?array
     {
@@ -86,7 +86,7 @@ class BusinessRuleConfigurable extends BusinessRule
     /**
      * The actions that are performed when this rule triggers.
      *
-     * @param BusinessRuleAction[]|null $actions
+     * @param list<BusinessRuleAction>|null $actions
      *
      * @return self
      */

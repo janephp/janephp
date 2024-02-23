@@ -33,7 +33,7 @@ class GitTree extends \ArrayObject
     /**
      * Objects specifying a tree structure
      *
-     * @var GitTreeTreeItem[]
+     * @var list<GitTreeTreeItem>
      */
     protected $tree;
     /**
@@ -105,7 +105,7 @@ class GitTree extends \ArrayObject
     /**
      * Objects specifying a tree structure
      *
-     * @return GitTreeTreeItem[]
+     * @return list<GitTreeTreeItem>
      */
     public function getTree() : array
     {
@@ -114,7 +114,7 @@ class GitTree extends \ArrayObject
     /**
      * Objects specifying a tree structure
      *
-     * @param GitTreeTreeItem[] $tree
+     * @param list<GitTreeTreeItem> $tree
      *
      * @return self
      */

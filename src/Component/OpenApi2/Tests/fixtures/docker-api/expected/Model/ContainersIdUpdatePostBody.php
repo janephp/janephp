@@ -50,7 +50,7 @@ class ContainersIdUpdatePostBody
     ```
     
     *
-    * @var ResourcesBlkioWeightDeviceItem[]
+    * @var list<ResourcesBlkioWeightDeviceItem>
     */
     protected $blkioWeightDevice;
     /**
@@ -61,7 +61,7 @@ class ContainersIdUpdatePostBody
     ```
     
     *
-    * @var ThrottleDevice[]
+    * @var list<ThrottleDevice>
     */
     protected $blkioDeviceReadBps;
     /**
@@ -72,7 +72,7 @@ class ContainersIdUpdatePostBody
     ```
     
     *
-    * @var ThrottleDevice[]
+    * @var list<ThrottleDevice>
     */
     protected $blkioDeviceWriteBps;
     /**
@@ -83,7 +83,7 @@ class ContainersIdUpdatePostBody
     ```
     
     *
-    * @var ThrottleDevice[]
+    * @var list<ThrottleDevice>
     */
     protected $blkioDeviceReadIOps;
     /**
@@ -94,7 +94,7 @@ class ContainersIdUpdatePostBody
     ```
     
     *
-    * @var ThrottleDevice[]
+    * @var list<ThrottleDevice>
     */
     protected $blkioDeviceWriteIOps;
     /**
@@ -142,19 +142,19 @@ class ContainersIdUpdatePostBody
     /**
      * A list of devices to add to the container.
      *
-     * @var DeviceMapping[]
+     * @var list<DeviceMapping>
      */
     protected $devices;
     /**
      * a list of cgroup rules to apply to the container
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $deviceCgroupRules;
     /**
      * A list of requests for devices to be sent to device drivers.
      *
-     * @var DeviceRequest[]
+     * @var list<DeviceRequest>
      */
     protected $deviceRequests;
     /**
@@ -234,7 +234,7 @@ class ContainersIdUpdatePostBody
     ```
     
     *
-    * @var ResourcesUlimitsItem[]
+    * @var list<ResourcesUlimitsItem>
     */
     protected $ulimits;
     /**
@@ -392,7 +392,7 @@ class ContainersIdUpdatePostBody
     ```
     
     *
-    * @return ResourcesBlkioWeightDeviceItem[]
+    * @return list<ResourcesBlkioWeightDeviceItem>
     */
     public function getBlkioWeightDevice() : array
     {
@@ -406,7 +406,7 @@ class ContainersIdUpdatePostBody
     ```
     
     *
-    * @param ResourcesBlkioWeightDeviceItem[] $blkioWeightDevice
+    * @param list<ResourcesBlkioWeightDeviceItem> $blkioWeightDevice
     *
     * @return self
     */
@@ -424,7 +424,7 @@ class ContainersIdUpdatePostBody
     ```
     
     *
-    * @return ThrottleDevice[]
+    * @return list<ThrottleDevice>
     */
     public function getBlkioDeviceReadBps() : array
     {
@@ -438,7 +438,7 @@ class ContainersIdUpdatePostBody
     ```
     
     *
-    * @param ThrottleDevice[] $blkioDeviceReadBps
+    * @param list<ThrottleDevice> $blkioDeviceReadBps
     *
     * @return self
     */
@@ -456,7 +456,7 @@ class ContainersIdUpdatePostBody
     ```
     
     *
-    * @return ThrottleDevice[]
+    * @return list<ThrottleDevice>
     */
     public function getBlkioDeviceWriteBps() : array
     {
@@ -470,7 +470,7 @@ class ContainersIdUpdatePostBody
     ```
     
     *
-    * @param ThrottleDevice[] $blkioDeviceWriteBps
+    * @param list<ThrottleDevice> $blkioDeviceWriteBps
     *
     * @return self
     */
@@ -488,7 +488,7 @@ class ContainersIdUpdatePostBody
     ```
     
     *
-    * @return ThrottleDevice[]
+    * @return list<ThrottleDevice>
     */
     public function getBlkioDeviceReadIOps() : array
     {
@@ -502,7 +502,7 @@ class ContainersIdUpdatePostBody
     ```
     
     *
-    * @param ThrottleDevice[] $blkioDeviceReadIOps
+    * @param list<ThrottleDevice> $blkioDeviceReadIOps
     *
     * @return self
     */
@@ -520,7 +520,7 @@ class ContainersIdUpdatePostBody
     ```
     
     *
-    * @return ThrottleDevice[]
+    * @return list<ThrottleDevice>
     */
     public function getBlkioDeviceWriteIOps() : array
     {
@@ -534,7 +534,7 @@ class ContainersIdUpdatePostBody
     ```
     
     *
-    * @param ThrottleDevice[] $blkioDeviceWriteIOps
+    * @param list<ThrottleDevice> $blkioDeviceWriteIOps
     *
     * @return self
     */
@@ -691,7 +691,7 @@ class ContainersIdUpdatePostBody
     /**
      * A list of devices to add to the container.
      *
-     * @return DeviceMapping[]
+     * @return list<DeviceMapping>
      */
     public function getDevices() : array
     {
@@ -700,7 +700,7 @@ class ContainersIdUpdatePostBody
     /**
      * A list of devices to add to the container.
      *
-     * @param DeviceMapping[] $devices
+     * @param list<DeviceMapping> $devices
      *
      * @return self
      */
@@ -713,7 +713,7 @@ class ContainersIdUpdatePostBody
     /**
      * a list of cgroup rules to apply to the container
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getDeviceCgroupRules() : array
     {
@@ -722,7 +722,7 @@ class ContainersIdUpdatePostBody
     /**
      * a list of cgroup rules to apply to the container
      *
-     * @param string[] $deviceCgroupRules
+     * @param list<string> $deviceCgroupRules
      *
      * @return self
      */
@@ -735,7 +735,7 @@ class ContainersIdUpdatePostBody
     /**
      * A list of requests for devices to be sent to device drivers.
      *
-     * @return DeviceRequest[]
+     * @return list<DeviceRequest>
      */
     public function getDeviceRequests() : array
     {
@@ -744,7 +744,7 @@ class ContainersIdUpdatePostBody
     /**
      * A list of requests for devices to be sent to device drivers.
      *
-     * @param DeviceRequest[] $deviceRequests
+     * @param list<DeviceRequest> $deviceRequests
      *
      * @return self
      */
@@ -990,7 +990,7 @@ class ContainersIdUpdatePostBody
     ```
     
     *
-    * @return ResourcesUlimitsItem[]
+    * @return list<ResourcesUlimitsItem>
     */
     public function getUlimits() : array
     {
@@ -1004,7 +1004,7 @@ class ContainersIdUpdatePostBody
     ```
     
     *
-    * @param ResourcesUlimitsItem[] $ulimits
+    * @param list<ResourcesUlimitsItem> $ulimits
     *
     * @return self
     */

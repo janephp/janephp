@@ -75,7 +75,7 @@ class BusinessProcess
     /**
      * List containing the history of all the state transitions of the business process.
      *
-     * @var BusinessProcessState[]|null
+     * @var list<BusinessProcessState>|null
      */
     protected $stateHistory;
     /**
@@ -295,7 +295,7 @@ class BusinessProcess
     /**
      * List containing the history of all the state transitions of the business process.
      *
-     * @return BusinessProcessState[]|null
+     * @return list<BusinessProcessState>|null
      */
     public function getStateHistory() : ?array
     {
@@ -304,7 +304,7 @@ class BusinessProcess
     /**
      * List containing the history of all the state transitions of the business process.
      *
-     * @param BusinessProcessState[]|null $stateHistory
+     * @param list<BusinessProcessState>|null $stateHistory
      */
     public function setStateHistory(?array $stateHistory)
     {

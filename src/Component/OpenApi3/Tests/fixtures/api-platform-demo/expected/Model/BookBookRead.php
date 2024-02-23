@@ -51,7 +51,7 @@ class BookBookRead extends \ArrayObject
     /**
      * The book's reviews.
      *
-     * @var ReviewBookRead[]
+     * @var list<ReviewBookRead>
      */
     protected $reviews;
     /**
@@ -189,7 +189,7 @@ class BookBookRead extends \ArrayObject
     /**
      * The book's reviews.
      *
-     * @return ReviewBookRead[]
+     * @return list<ReviewBookRead>
      */
     public function getReviews() : array
     {
@@ -198,7 +198,7 @@ class BookBookRead extends \ArrayObject
     /**
      * The book's reviews.
      *
-     * @param ReviewBookRead[] $reviews
+     * @param list<ReviewBookRead> $reviews
      *
      * @return self
      */

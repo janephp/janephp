@@ -33,7 +33,7 @@ class TaskSpecPluginSpec
     /**
      * 
      *
-     * @var PluginPrivilege[]
+     * @var list<PluginPrivilege>
      */
     protected $pluginPrivilege;
     /**
@@ -105,7 +105,7 @@ class TaskSpecPluginSpec
     /**
      * 
      *
-     * @return PluginPrivilege[]
+     * @return list<PluginPrivilege>
      */
     public function getPluginPrivilege() : array
     {
@@ -114,7 +114,7 @@ class TaskSpecPluginSpec
     /**
      * 
      *
-     * @param PluginPrivilege[] $pluginPrivilege
+     * @param list<PluginPrivilege> $pluginPrivilege
      *
      * @return self
      */

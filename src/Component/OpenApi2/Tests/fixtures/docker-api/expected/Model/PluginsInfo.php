@@ -15,31 +15,31 @@ class PluginsInfo
     /**
      * Names of available volume-drivers, and network-driver plugins.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $volume;
     /**
      * Names of available network-drivers, and network-driver plugins.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $network;
     /**
      * Names of available authorization plugins.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $authorization;
     /**
      * Names of available logging-drivers, and logging-driver plugins.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $log;
     /**
      * Names of available volume-drivers, and network-driver plugins.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getVolume() : array
     {
@@ -48,7 +48,7 @@ class PluginsInfo
     /**
      * Names of available volume-drivers, and network-driver plugins.
      *
-     * @param string[] $volume
+     * @param list<string> $volume
      *
      * @return self
      */
@@ -61,7 +61,7 @@ class PluginsInfo
     /**
      * Names of available network-drivers, and network-driver plugins.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getNetwork() : array
     {
@@ -70,7 +70,7 @@ class PluginsInfo
     /**
      * Names of available network-drivers, and network-driver plugins.
      *
-     * @param string[] $network
+     * @param list<string> $network
      *
      * @return self
      */
@@ -83,7 +83,7 @@ class PluginsInfo
     /**
      * Names of available authorization plugins.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getAuthorization() : array
     {
@@ -92,7 +92,7 @@ class PluginsInfo
     /**
      * Names of available authorization plugins.
      *
-     * @param string[] $authorization
+     * @param list<string> $authorization
      *
      * @return self
      */
@@ -105,7 +105,7 @@ class PluginsInfo
     /**
      * Names of available logging-drivers, and logging-driver plugins.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getLog() : array
     {
@@ -114,7 +114,7 @@ class PluginsInfo
     /**
      * Names of available logging-drivers, and logging-driver plugins.
      *
-     * @param string[] $log
+     * @param list<string> $log
      *
      * @return self
      */

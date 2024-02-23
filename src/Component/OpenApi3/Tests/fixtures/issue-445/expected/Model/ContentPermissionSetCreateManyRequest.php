@@ -15,13 +15,13 @@ class ContentPermissionSetCreateManyRequest
     /**
      * Content permission set update requests.
      *
-     * @var ContentPermissionSetCreateRequest[]|null
+     * @var list<ContentPermissionSetCreateRequest>|null
      */
     protected $items;
     /**
      * Content permission set update requests.
      *
-     * @return ContentPermissionSetCreateRequest[]|null
+     * @return list<ContentPermissionSetCreateRequest>|null
      */
     public function getItems() : ?array
     {
@@ -30,7 +30,7 @@ class ContentPermissionSetCreateManyRequest
     /**
      * Content permission set update requests.
      *
-     * @param ContentPermissionSetCreateRequest[]|null $items
+     * @param list<ContentPermissionSetCreateRequest>|null $items
      *
      * @return self
      */

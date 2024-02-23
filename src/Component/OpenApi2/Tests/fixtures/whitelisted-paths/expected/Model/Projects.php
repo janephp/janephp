@@ -15,7 +15,7 @@ class Projects
     /**
      * 
      *
-     * @var Project[]
+     * @var list<Project>
      */
     protected $projects;
     /**
@@ -63,7 +63,7 @@ class Projects
     /**
      * 
      *
-     * @return Project[]
+     * @return list<Project>
      */
     public function getProjects() : array
     {
@@ -72,7 +72,7 @@ class Projects
     /**
      * 
      *
-     * @param Project[] $projects
+     * @param list<Project> $projects
      *
      * @return self
      */

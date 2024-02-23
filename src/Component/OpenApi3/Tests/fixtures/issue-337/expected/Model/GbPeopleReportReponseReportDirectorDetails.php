@@ -87,7 +87,7 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
     /**
      * 
      *
-     * @var GbPeopleReportReponseReportDirectorDetailsPositionsItem[]
+     * @var list<GbPeopleReportReponseReportDirectorDetailsPositionsItem>
      */
     protected $positions;
     /**
@@ -363,7 +363,7 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
     /**
      * 
      *
-     * @return GbPeopleReportReponseReportDirectorDetailsPositionsItem[]
+     * @return list<GbPeopleReportReponseReportDirectorDetailsPositionsItem>
      */
     public function getPositions() : array
     {
@@ -372,7 +372,7 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
     /**
      * 
      *
-     * @param GbPeopleReportReponseReportDirectorDetailsPositionsItem[] $positions
+     * @param list<GbPeopleReportReponseReportDirectorDetailsPositionsItem> $positions
      *
      * @return self
      */

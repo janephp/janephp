@@ -21,7 +21,7 @@ class BaseResultOfContent
     /**
      * The matched documents.
      *
-     * @var Content[]
+     * @var list<Content>
      */
     protected $results;
     /**
@@ -61,7 +61,7 @@ class BaseResultOfContent
     /**
      * The matched documents.
      *
-     * @return Content[]
+     * @return list<Content>
      */
     public function getResults() : array
     {
@@ -70,7 +70,7 @@ class BaseResultOfContent
     /**
      * The matched documents.
      *
-     * @param Content[] $results
+     * @param list<Content> $results
      *
      * @return self
      */

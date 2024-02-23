@@ -21,7 +21,7 @@ class ContentAggregationOnChannelRequest
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $searchBehaviors;
     /**
@@ -38,7 +38,7 @@ class ContentAggregationOnChannelRequest
     aggregation results of that aggregation: depending if the AggregationName of the AggregationFilter matches the AggregationName of the Aggregator, the filter is put in OR (if it matches) or in AND (if it does not match it).
     Moreover, an AggregationFilter ensures that the related value is returned in the AggregationResults also if the top aggregation values returned by default do not contain it.
     *
-    * @var AggregationFilter[]|null
+    * @var list<AggregationFilter>|null
     */
     protected $aggregationFilters;
     /**
@@ -52,7 +52,7 @@ class ContentAggregationOnChannelRequest
     * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
     If not specified, all metadata languages defined in the system are used.
     *
-    * @var string[]|null
+    * @var list<string>|null
     */
     protected $searchLanguages;
     /**
@@ -104,7 +104,7 @@ class ContentAggregationOnChannelRequest
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSearchBehaviors() : ?array
     {
@@ -113,7 +113,7 @@ class ContentAggregationOnChannelRequest
     /**
      * An optional list of search behaviors. All the passed behaviors will be applied.
      *
-     * @param string[]|null $searchBehaviors
+     * @param list<string>|null $searchBehaviors
      *
      * @return self
      */
@@ -153,7 +153,7 @@ class ContentAggregationOnChannelRequest
     aggregation results of that aggregation: depending if the AggregationName of the AggregationFilter matches the AggregationName of the Aggregator, the filter is put in OR (if it matches) or in AND (if it does not match it).
     Moreover, an AggregationFilter ensures that the related value is returned in the AggregationResults also if the top aggregation values returned by default do not contain it.
     *
-    * @return AggregationFilter[]|null
+    * @return list<AggregationFilter>|null
     */
     public function getAggregationFilters() : ?array
     {
@@ -167,7 +167,7 @@ class ContentAggregationOnChannelRequest
     aggregation results of that aggregation: depending if the AggregationName of the AggregationFilter matches the AggregationName of the Aggregator, the filter is put in OR (if it matches) or in AND (if it does not match it).
     Moreover, an AggregationFilter ensures that the related value is returned in the AggregationResults also if the top aggregation values returned by default do not contain it.
     *
-    * @param AggregationFilter[]|null $aggregationFilters
+    * @param list<AggregationFilter>|null $aggregationFilters
     *
     * @return self
     */
@@ -205,7 +205,7 @@ class ContentAggregationOnChannelRequest
     * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
     If not specified, all metadata languages defined in the system are used.
     *
-    * @return string[]|null
+    * @return list<string>|null
     */
     public function getSearchLanguages() : ?array
     {
@@ -215,7 +215,7 @@ class ContentAggregationOnChannelRequest
     * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
     If not specified, all metadata languages defined in the system are used.
     *
-    * @param string[]|null $searchLanguages
+    * @param list<string>|null $searchLanguages
     *
     * @return self
     */

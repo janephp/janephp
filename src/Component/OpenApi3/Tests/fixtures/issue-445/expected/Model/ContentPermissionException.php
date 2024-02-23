@@ -75,7 +75,7 @@ class ContentPermissionException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $contentRights;
     /**
@@ -301,7 +301,7 @@ class ContentPermissionException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getContentRights() : ?array
     {
@@ -310,7 +310,7 @@ class ContentPermissionException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $contentRights
+     * @param list<string>|null $contentRights
      *
      * @return self
      */

@@ -15,13 +15,13 @@ class GbCompanyReportExampleResponseReportGroupStructure extends \ArrayObject
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem[]
+     * @var list<GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem>
      */
     protected $subsidiaryCompanies;
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem[]
+     * @return list<GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem>
      */
     public function getSubsidiaryCompanies() : array
     {
@@ -30,7 +30,7 @@ class GbCompanyReportExampleResponseReportGroupStructure extends \ArrayObject
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem[] $subsidiaryCompanies
+     * @param list<GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem> $subsidiaryCompanies
      *
      * @return self
      */

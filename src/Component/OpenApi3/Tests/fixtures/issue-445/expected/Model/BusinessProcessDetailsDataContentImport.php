@@ -15,13 +15,13 @@ class BusinessProcessDetailsDataContentImport extends BusinessProcessDetailsData
     /**
      * Items that were imported.
      *
-     * @var ContentImportResult[]|null
+     * @var list<ContentImportResult>|null
      */
     protected $items;
     /**
      * Items that were imported.
      *
-     * @return ContentImportResult[]|null
+     * @return list<ContentImportResult>|null
      */
     public function getItems() : ?array
     {
@@ -30,7 +30,7 @@ class BusinessProcessDetailsDataContentImport extends BusinessProcessDetailsData
     /**
      * Items that were imported.
      *
-     * @param ContentImportResult[]|null $items
+     * @param list<ContentImportResult>|null $items
      *
      * @return self
      */

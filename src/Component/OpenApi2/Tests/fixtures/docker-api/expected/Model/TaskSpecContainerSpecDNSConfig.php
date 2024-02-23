@@ -15,13 +15,13 @@ class TaskSpecContainerSpecDNSConfig
     /**
      * The IP addresses of the name servers.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $nameservers;
     /**
      * A search list for host-name lookup.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $search;
     /**
@@ -29,13 +29,13 @@ class TaskSpecContainerSpecDNSConfig
     `debug`, `ndots:3`, etc.).
     
     *
-    * @var string[]
+    * @var list<string>
     */
     protected $options;
     /**
      * The IP addresses of the name servers.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getNameservers() : array
     {
@@ -44,7 +44,7 @@ class TaskSpecContainerSpecDNSConfig
     /**
      * The IP addresses of the name servers.
      *
-     * @param string[] $nameservers
+     * @param list<string> $nameservers
      *
      * @return self
      */
@@ -57,7 +57,7 @@ class TaskSpecContainerSpecDNSConfig
     /**
      * A search list for host-name lookup.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getSearch() : array
     {
@@ -66,7 +66,7 @@ class TaskSpecContainerSpecDNSConfig
     /**
      * A search list for host-name lookup.
      *
-     * @param string[] $search
+     * @param list<string> $search
      *
      * @return self
      */
@@ -81,7 +81,7 @@ class TaskSpecContainerSpecDNSConfig
     `debug`, `ndots:3`, etc.).
     
     *
-    * @return string[]
+    * @return list<string>
     */
     public function getOptions() : array
     {
@@ -92,7 +92,7 @@ class TaskSpecContainerSpecDNSConfig
     `debug`, `ndots:3`, etc.).
     
     *
-    * @param string[] $options
+    * @param list<string> $options
     *
     * @return self
     */

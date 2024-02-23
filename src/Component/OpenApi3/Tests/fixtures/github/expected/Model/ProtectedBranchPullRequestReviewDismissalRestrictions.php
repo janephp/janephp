@@ -15,13 +15,13 @@ class ProtectedBranchPullRequestReviewDismissalRestrictions extends \ArrayObject
     /**
      * The list of users with review dismissal access.
      *
-     * @var SimpleUser[]
+     * @var list<SimpleUser>
      */
     protected $users;
     /**
      * The list of teams with review dismissal access.
      *
-     * @var Team[]
+     * @var list<Team>
      */
     protected $teams;
     /**
@@ -45,7 +45,7 @@ class ProtectedBranchPullRequestReviewDismissalRestrictions extends \ArrayObject
     /**
      * The list of users with review dismissal access.
      *
-     * @return SimpleUser[]
+     * @return list<SimpleUser>
      */
     public function getUsers() : array
     {
@@ -54,7 +54,7 @@ class ProtectedBranchPullRequestReviewDismissalRestrictions extends \ArrayObject
     /**
      * The list of users with review dismissal access.
      *
-     * @param SimpleUser[] $users
+     * @param list<SimpleUser> $users
      *
      * @return self
      */
@@ -67,7 +67,7 @@ class ProtectedBranchPullRequestReviewDismissalRestrictions extends \ArrayObject
     /**
      * The list of teams with review dismissal access.
      *
-     * @return Team[]
+     * @return list<Team>
      */
     public function getTeams() : array
     {
@@ -76,7 +76,7 @@ class ProtectedBranchPullRequestReviewDismissalRestrictions extends \ArrayObject
     /**
      * The list of teams with review dismissal access.
      *
-     * @param Team[] $teams
+     * @param list<Team> $teams
      *
      * @return self
      */

@@ -81,7 +81,7 @@ class SchemaFieldSortableInUseException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $channelIds;
     /**
@@ -329,7 +329,7 @@ class SchemaFieldSortableInUseException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getChannelIds() : ?array
     {
@@ -338,7 +338,7 @@ class SchemaFieldSortableInUseException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $channelIds
+     * @param list<string>|null $channelIds
      *
      * @return self
      */

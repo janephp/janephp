@@ -51,7 +51,7 @@ class ImageFormatBase extends FormatBase
     /**
      * A collection of actions to be applied during rendering.
      *
-     * @var ImageActionBase[]|null
+     * @var list<ImageActionBase>|null
      */
     protected $actions;
     /**
@@ -189,7 +189,7 @@ class ImageFormatBase extends FormatBase
     /**
      * A collection of actions to be applied during rendering.
      *
-     * @return ImageActionBase[]|null
+     * @return list<ImageActionBase>|null
      */
     public function getActions() : ?array
     {
@@ -198,7 +198,7 @@ class ImageFormatBase extends FormatBase
     /**
      * A collection of actions to be applied during rendering.
      *
-     * @param ImageActionBase[]|null $actions
+     * @param list<ImageActionBase>|null $actions
      *
      * @return self
      */

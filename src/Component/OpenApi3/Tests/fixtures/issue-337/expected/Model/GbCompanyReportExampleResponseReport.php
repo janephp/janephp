@@ -75,19 +75,19 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportExtendedGroupStructureItem[]
+     * @var list<GbCompanyReportExampleResponseReportExtendedGroupStructureItem>
      */
     protected $extendedGroupStructure;
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportFinancialStatementsItem[]
+     * @var list<GbCompanyReportExampleResponseReportFinancialStatementsItem>
      */
     protected $financialStatements;
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportLocalFinancialStatementsItem[]
+     * @var list<GbCompanyReportExampleResponseReportLocalFinancialStatementsItem>
      */
     protected $localFinancialStatements;
     /**
@@ -331,7 +331,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportExtendedGroupStructureItem[]
+     * @return list<GbCompanyReportExampleResponseReportExtendedGroupStructureItem>
      */
     public function getExtendedGroupStructure() : array
     {
@@ -340,7 +340,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportExtendedGroupStructureItem[] $extendedGroupStructure
+     * @param list<GbCompanyReportExampleResponseReportExtendedGroupStructureItem> $extendedGroupStructure
      *
      * @return self
      */
@@ -353,7 +353,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportFinancialStatementsItem[]
+     * @return list<GbCompanyReportExampleResponseReportFinancialStatementsItem>
      */
     public function getFinancialStatements() : array
     {
@@ -362,7 +362,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportFinancialStatementsItem[] $financialStatements
+     * @param list<GbCompanyReportExampleResponseReportFinancialStatementsItem> $financialStatements
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportLocalFinancialStatementsItem[]
+     * @return list<GbCompanyReportExampleResponseReportLocalFinancialStatementsItem>
      */
     public function getLocalFinancialStatements() : array
     {
@@ -384,7 +384,7 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportLocalFinancialStatementsItem[] $localFinancialStatements
+     * @param list<GbCompanyReportExampleResponseReportLocalFinancialStatementsItem> $localFinancialStatements
      *
      * @return self
      */

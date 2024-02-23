@@ -27,7 +27,7 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200 extends \ArrayOb
     /**
      * 
      *
-     * @var Repository[]
+     * @var list<Repository>
      */
     protected $repositories;
     /**
@@ -77,7 +77,7 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200 extends \ArrayOb
     /**
      * 
      *
-     * @return Repository[]
+     * @return list<Repository>
      */
     public function getRepositories() : array
     {
@@ -86,7 +86,7 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200 extends \ArrayOb
     /**
      * 
      *
-     * @param Repository[] $repositories
+     * @param list<Repository> $repositories
      *
      * @return self
      */

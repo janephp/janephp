@@ -21,7 +21,7 @@ class ObjectAggregationResult
     /**
      * Results of the aggregation.
      *
-     * @var AggregationResult[]
+     * @var list<AggregationResult>
      */
     protected $aggregationResults;
     /**
@@ -39,7 +39,7 @@ class ObjectAggregationResult
     /**
      * Additional information regarding the query execution and reason of the matched documents. Multiple items are returned if multiple queries were performed.
      *
-     * @var QueryDebugInformation[]|null
+     * @var list<QueryDebugInformation>|null
      */
     protected $queryDebugInformation;
     /**
@@ -67,7 +67,7 @@ class ObjectAggregationResult
     /**
      * Results of the aggregation.
      *
-     * @return AggregationResult[]
+     * @return list<AggregationResult>
      */
     public function getAggregationResults() : array
     {
@@ -76,7 +76,7 @@ class ObjectAggregationResult
     /**
      * Results of the aggregation.
      *
-     * @param AggregationResult[] $aggregationResults
+     * @param list<AggregationResult> $aggregationResults
      *
      * @return self
      */
@@ -133,7 +133,7 @@ class ObjectAggregationResult
     /**
      * Additional information regarding the query execution and reason of the matched documents. Multiple items are returned if multiple queries were performed.
      *
-     * @return QueryDebugInformation[]|null
+     * @return list<QueryDebugInformation>|null
      */
     public function getQueryDebugInformation() : ?array
     {
@@ -142,7 +142,7 @@ class ObjectAggregationResult
     /**
      * Additional information regarding the query execution and reason of the matched documents. Multiple items are returned if multiple queries were performed.
      *
-     * @param QueryDebugInformation[]|null $queryDebugInformation
+     * @param list<QueryDebugInformation>|null $queryDebugInformation
      *
      * @return self
      */

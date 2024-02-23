@@ -15,7 +15,7 @@ class AddRulesResponse extends \ArrayObject
     /**
      * 
      *
-     * @var Rule[]
+     * @var list<Rule>
      */
     protected $data;
     /**
@@ -27,7 +27,7 @@ class AddRulesResponse extends \ArrayObject
     /**
      * 
      *
-     * @return Rule[]
+     * @return list<Rule>
      */
     public function getData() : array
     {
@@ -36,7 +36,7 @@ class AddRulesResponse extends \ArrayObject
     /**
      * 
      *
-     * @param Rule[] $data
+     * @param list<Rule> $data
      *
      * @return self
      */

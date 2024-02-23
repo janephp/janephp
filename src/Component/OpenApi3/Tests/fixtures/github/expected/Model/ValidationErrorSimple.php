@@ -27,7 +27,7 @@ class ValidationErrorSimple extends \ArrayObject
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $errors;
     /**
@@ -77,7 +77,7 @@ class ValidationErrorSimple extends \ArrayObject
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getErrors() : array
     {
@@ -86,7 +86,7 @@ class ValidationErrorSimple extends \ArrayObject
     /**
      * 
      *
-     * @param string[] $errors
+     * @param list<string> $errors
      *
      * @return self
      */

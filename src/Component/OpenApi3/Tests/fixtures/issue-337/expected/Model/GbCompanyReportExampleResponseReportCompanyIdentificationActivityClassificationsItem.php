@@ -21,7 +21,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassific
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItemActivitiesItem[]
+     * @var list<GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItemActivitiesItem>
      */
     protected $activities;
     /**
@@ -49,7 +49,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassific
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItemActivitiesItem[]
+     * @return list<GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItemActivitiesItem>
      */
     public function getActivities() : array
     {
@@ -58,7 +58,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassific
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItemActivitiesItem[] $activities
+     * @param list<GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItemActivitiesItem> $activities
      *
      * @return self
      */

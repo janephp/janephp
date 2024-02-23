@@ -33,7 +33,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The arguments to the command being run
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $args;
     /**
@@ -119,7 +119,7 @@ class ContainersIdJsonGetResponse200
     /**
      * IDs of exec instances that are running in the container.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $execIDs;
     /**
@@ -151,7 +151,7 @@ class ContainersIdJsonGetResponse200
     /**
      * 
      *
-     * @var MountPoint[]
+     * @var list<MountPoint>
      */
     protected $mounts;
     /**
@@ -235,7 +235,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The arguments to the command being run
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getArgs() : array
     {
@@ -244,7 +244,7 @@ class ContainersIdJsonGetResponse200
     /**
      * The arguments to the command being run
      *
-     * @param string[] $args
+     * @param list<string> $args
      *
      * @return self
      */
@@ -547,7 +547,7 @@ class ContainersIdJsonGetResponse200
     /**
      * IDs of exec instances that are running in the container.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getExecIDs() : ?array
     {
@@ -556,7 +556,7 @@ class ContainersIdJsonGetResponse200
     /**
      * IDs of exec instances that are running in the container.
      *
-     * @param string[]|null $execIDs
+     * @param list<string>|null $execIDs
      *
      * @return self
      */
@@ -661,7 +661,7 @@ class ContainersIdJsonGetResponse200
     /**
      * 
      *
-     * @return MountPoint[]
+     * @return list<MountPoint>
      */
     public function getMounts() : array
     {
@@ -670,7 +670,7 @@ class ContainersIdJsonGetResponse200
     /**
      * 
      *
-     * @param MountPoint[] $mounts
+     * @param list<MountPoint> $mounts
      *
      * @return self
      */

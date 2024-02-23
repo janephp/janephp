@@ -45,31 +45,31 @@ class Channel
     /**
      * Default sort order specified for the channel to sort the results of a content search.
      *
-     * @var SortInfo[]
+     * @var list<SortInfo>
      */
     protected $sort;
     /**
      * Fields to be used for sorting in content browser when displaying the channel. The information is only set and consumed by the client, not by the server.
      *
-     * @var SortField[]
+     * @var list<SortField>
      */
     protected $sortFields;
     /**
      * An optional list of aggregators. These aggregations are added by default on each aggregation requests.
      *
-     * @var AggregatorBase[]
+     * @var list<AggregatorBase>
      */
     protected $aggregations;
     /**
      * An Optional list of fields. These fields extend the list of simple search fields outside the bounds of any schema field configuration.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $extendedSimpleSearchFields;
     /**
      * User roles granted access to the channel.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $grantedUserRoleIds;
     /**
@@ -203,7 +203,7 @@ class Channel
     /**
      * Default sort order specified for the channel to sort the results of a content search.
      *
-     * @return SortInfo[]
+     * @return list<SortInfo>
      */
     public function getSort() : array
     {
@@ -212,7 +212,7 @@ class Channel
     /**
      * Default sort order specified for the channel to sort the results of a content search.
      *
-     * @param SortInfo[] $sort
+     * @param list<SortInfo> $sort
      *
      * @return self
      */
@@ -225,7 +225,7 @@ class Channel
     /**
      * Fields to be used for sorting in content browser when displaying the channel. The information is only set and consumed by the client, not by the server.
      *
-     * @return SortField[]
+     * @return list<SortField>
      */
     public function getSortFields() : array
     {
@@ -234,7 +234,7 @@ class Channel
     /**
      * Fields to be used for sorting in content browser when displaying the channel. The information is only set and consumed by the client, not by the server.
      *
-     * @param SortField[] $sortFields
+     * @param list<SortField> $sortFields
      *
      * @return self
      */
@@ -247,7 +247,7 @@ class Channel
     /**
      * An optional list of aggregators. These aggregations are added by default on each aggregation requests.
      *
-     * @return AggregatorBase[]
+     * @return list<AggregatorBase>
      */
     public function getAggregations() : array
     {
@@ -256,7 +256,7 @@ class Channel
     /**
      * An optional list of aggregators. These aggregations are added by default on each aggregation requests.
      *
-     * @param AggregatorBase[] $aggregations
+     * @param list<AggregatorBase> $aggregations
      *
      * @return self
      */
@@ -269,7 +269,7 @@ class Channel
     /**
      * An Optional list of fields. These fields extend the list of simple search fields outside the bounds of any schema field configuration.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getExtendedSimpleSearchFields() : array
     {
@@ -278,7 +278,7 @@ class Channel
     /**
      * An Optional list of fields. These fields extend the list of simple search fields outside the bounds of any schema field configuration.
      *
-     * @param string[] $extendedSimpleSearchFields
+     * @param list<string> $extendedSimpleSearchFields
      *
      * @return self
      */
@@ -291,7 +291,7 @@ class Channel
     /**
      * User roles granted access to the channel.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getGrantedUserRoleIds() : array
     {
@@ -300,7 +300,7 @@ class Channel
     /**
      * User roles granted access to the channel.
      *
-     * @param string[] $grantedUserRoleIds
+     * @param list<string> $grantedUserRoleIds
      *
      * @return self
      */

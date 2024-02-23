@@ -63,25 +63,25 @@ class ModelFooooooo
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $arrayMinItems;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $arrayMaxItems;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $arrayMinMaxItems;
     /**
      * 
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $arrayUnique;
     /**
@@ -335,7 +335,7 @@ class ModelFooooooo
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getArrayMinItems() : array
     {
@@ -344,7 +344,7 @@ class ModelFooooooo
     /**
      * 
      *
-     * @param string[] $arrayMinItems
+     * @param list<string> $arrayMinItems
      *
      * @return self
      */
@@ -357,7 +357,7 @@ class ModelFooooooo
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getArrayMaxItems() : array
     {
@@ -366,7 +366,7 @@ class ModelFooooooo
     /**
      * 
      *
-     * @param string[] $arrayMaxItems
+     * @param list<string> $arrayMaxItems
      *
      * @return self
      */
@@ -379,7 +379,7 @@ class ModelFooooooo
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getArrayMinMaxItems() : array
     {
@@ -388,7 +388,7 @@ class ModelFooooooo
     /**
      * 
      *
-     * @param string[] $arrayMinMaxItems
+     * @param list<string> $arrayMinMaxItems
      *
      * @return self
      */
@@ -401,7 +401,7 @@ class ModelFooooooo
     /**
      * 
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getArrayUnique() : array
     {
@@ -410,7 +410,7 @@ class ModelFooooooo
     /**
      * 
      *
-     * @param string[] $arrayUnique
+     * @param list<string> $arrayUnique
      *
      * @return self
      */

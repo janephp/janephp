@@ -15,13 +15,13 @@ class PermissionSetOwnershipTransferManyRequest
     /**
      * Permission set ownership transfer requests.
      *
-     * @var PermissionSetOwnershipTransferItem[]|null
+     * @var list<PermissionSetOwnershipTransferItem>|null
      */
     protected $items;
     /**
      * Permission set ownership transfer requests.
      *
-     * @return PermissionSetOwnershipTransferItem[]|null
+     * @return list<PermissionSetOwnershipTransferItem>|null
      */
     public function getItems() : ?array
     {
@@ -30,7 +30,7 @@ class PermissionSetOwnershipTransferManyRequest
     /**
      * Permission set ownership transfer requests.
      *
-     * @param PermissionSetOwnershipTransferItem[]|null $items
+     * @param list<PermissionSetOwnershipTransferItem>|null $items
      *
      * @return self
      */

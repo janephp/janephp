@@ -15,19 +15,19 @@ class GbCompanyReportExampleResponseReportOtherInformation extends \ArrayObject
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportOtherInformationAdvisorsItem[]
+     * @var list<GbCompanyReportExampleResponseReportOtherInformationAdvisorsItem>
      */
     protected $advisors;
     /**
      * 
      *
-     * @var GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationItem[]
+     * @var list<GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationItem>
      */
     protected $employeesInformation;
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportOtherInformationAdvisorsItem[]
+     * @return list<GbCompanyReportExampleResponseReportOtherInformationAdvisorsItem>
      */
     public function getAdvisors() : array
     {
@@ -36,7 +36,7 @@ class GbCompanyReportExampleResponseReportOtherInformation extends \ArrayObject
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportOtherInformationAdvisorsItem[] $advisors
+     * @param list<GbCompanyReportExampleResponseReportOtherInformationAdvisorsItem> $advisors
      *
      * @return self
      */
@@ -49,7 +49,7 @@ class GbCompanyReportExampleResponseReportOtherInformation extends \ArrayObject
     /**
      * 
      *
-     * @return GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationItem[]
+     * @return list<GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationItem>
      */
     public function getEmployeesInformation() : array
     {
@@ -58,7 +58,7 @@ class GbCompanyReportExampleResponseReportOtherInformation extends \ArrayObject
     /**
      * 
      *
-     * @param GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationItem[] $employeesInformation
+     * @param list<GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationItem> $employeesInformation
      *
      * @return self
      */

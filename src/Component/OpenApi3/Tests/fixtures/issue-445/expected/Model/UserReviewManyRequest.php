@@ -15,7 +15,7 @@ class UserReviewManyRequest extends \ArrayObject
     /**
      * User IDs.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $userIds;
     /**
@@ -28,7 +28,7 @@ class UserReviewManyRequest extends \ArrayObject
     /**
      * User IDs.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getUserIds() : array
     {
@@ -37,7 +37,7 @@ class UserReviewManyRequest extends \ArrayObject
     /**
      * User IDs.
      *
-     * @param string[] $userIds
+     * @param list<string> $userIds
      *
      * @return self
      */

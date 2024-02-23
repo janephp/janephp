@@ -75,7 +75,7 @@ class UnableToChangeMappedUserRolesForFederatedUserException extends \ArrayObjec
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $userRoleIds;
     /**
@@ -301,7 +301,7 @@ class UnableToChangeMappedUserRolesForFederatedUserException extends \ArrayObjec
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getUserRoleIds() : ?array
     {
@@ -310,7 +310,7 @@ class UnableToChangeMappedUserRolesForFederatedUserException extends \ArrayObjec
     /**
      * 
      *
-     * @param string[]|null $userRoleIds
+     * @param list<string>|null $userRoleIds
      *
      * @return self
      */

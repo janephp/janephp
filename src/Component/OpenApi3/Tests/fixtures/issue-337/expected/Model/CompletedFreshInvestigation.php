@@ -57,7 +57,7 @@ class CompletedFreshInvestigation extends \ArrayObject
     /**
      * 
      *
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $sections;
     /**
@@ -229,7 +229,7 @@ class CompletedFreshInvestigation extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getSections() : array
     {
@@ -238,7 +238,7 @@ class CompletedFreshInvestigation extends \ArrayObject
     /**
      * 
      *
-     * @param mixed[] $sections
+     * @param list<mixed> $sections
      *
      * @return self
      */

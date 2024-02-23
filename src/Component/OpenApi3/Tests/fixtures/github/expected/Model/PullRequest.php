@@ -123,7 +123,7 @@ class PullRequest extends \ArrayObject
     /**
      * 
      *
-     * @var PullRequestLabelsItem[]
+     * @var list<PullRequestLabelsItem>
      */
     protected $labels;
     /**
@@ -177,19 +177,19 @@ class PullRequest extends \ArrayObject
     /**
      * 
      *
-     * @var SimpleUser[]|null
+     * @var list<SimpleUser>|null
      */
     protected $assignees;
     /**
      * 
      *
-     * @var SimpleUser[]|null
+     * @var list<SimpleUser>|null
      */
     protected $requestedReviewers;
     /**
      * 
      *
-     * @var TeamSimple[]|null
+     * @var list<TeamSimple>|null
      */
     protected $requestedTeams;
     /**
@@ -693,7 +693,7 @@ class PullRequest extends \ArrayObject
     /**
      * 
      *
-     * @return PullRequestLabelsItem[]
+     * @return list<PullRequestLabelsItem>
      */
     public function getLabels() : array
     {
@@ -702,7 +702,7 @@ class PullRequest extends \ArrayObject
     /**
      * 
      *
-     * @param PullRequestLabelsItem[] $labels
+     * @param list<PullRequestLabelsItem> $labels
      *
      * @return self
      */
@@ -891,7 +891,7 @@ class PullRequest extends \ArrayObject
     /**
      * 
      *
-     * @return SimpleUser[]|null
+     * @return list<SimpleUser>|null
      */
     public function getAssignees() : ?array
     {
@@ -900,7 +900,7 @@ class PullRequest extends \ArrayObject
     /**
      * 
      *
-     * @param SimpleUser[]|null $assignees
+     * @param list<SimpleUser>|null $assignees
      *
      * @return self
      */
@@ -913,7 +913,7 @@ class PullRequest extends \ArrayObject
     /**
      * 
      *
-     * @return SimpleUser[]|null
+     * @return list<SimpleUser>|null
      */
     public function getRequestedReviewers() : ?array
     {
@@ -922,7 +922,7 @@ class PullRequest extends \ArrayObject
     /**
      * 
      *
-     * @param SimpleUser[]|null $requestedReviewers
+     * @param list<SimpleUser>|null $requestedReviewers
      *
      * @return self
      */
@@ -935,7 +935,7 @@ class PullRequest extends \ArrayObject
     /**
      * 
      *
-     * @return TeamSimple[]|null
+     * @return list<TeamSimple>|null
      */
     public function getRequestedTeams() : ?array
     {
@@ -944,7 +944,7 @@ class PullRequest extends \ArrayObject
     /**
      * 
      *
-     * @param TeamSimple[]|null $requestedTeams
+     * @param list<TeamSimple>|null $requestedTeams
      *
      * @return self
      */

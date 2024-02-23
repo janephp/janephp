@@ -27,7 +27,7 @@ class Test
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $array;
     /**
@@ -83,7 +83,7 @@ class Test
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getArray() : ?array
     {
@@ -92,7 +92,7 @@ class Test
     /**
      * 
      *
-     * @param string[]|null $array
+     * @param list<string>|null $array
      *
      * @return self
      */

@@ -15,7 +15,7 @@ class UserWithRoles
     /**
      * IDs of user roles user is assigned to
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $userRoleIds;
     /**
@@ -81,7 +81,7 @@ class UserWithRoles
     /**
      * IDs of user roles user is assigned to
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getUserRoleIds() : ?array
     {
@@ -90,7 +90,7 @@ class UserWithRoles
     /**
      * IDs of user roles user is assigned to
      *
-     * @param string[]|null $userRoleIds
+     * @param list<string>|null $userRoleIds
      *
      * @return self
      */

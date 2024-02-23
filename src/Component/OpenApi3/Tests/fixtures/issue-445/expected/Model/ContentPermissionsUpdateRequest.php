@@ -16,14 +16,14 @@ class ContentPermissionsUpdateRequest
     * A list of content permission set IDs which control content permissions that will be updated on the content.
     These permissions control content accessibility for the users that do not own the content.
     *
-    * @var string[]|null
+    * @var list<string>|null
     */
     protected $contentPermissionSetIds;
     /**
     * A list of content permission set IDs which control content permissions that will be updated on the content.
     These permissions control content accessibility for the users that do not own the content.
     *
-    * @return string[]|null
+    * @return list<string>|null
     */
     public function getContentPermissionSetIds() : ?array
     {
@@ -33,7 +33,7 @@ class ContentPermissionsUpdateRequest
     * A list of content permission set IDs which control content permissions that will be updated on the content.
     These permissions control content accessibility for the users that do not own the content.
     *
-    * @param string[]|null $contentPermissionSetIds
+    * @param list<string>|null $contentPermissionSetIds
     *
     * @return self
     */

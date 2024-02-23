@@ -16,14 +16,14 @@ class SchemaCreateManyRequest
     * The schemas to create. Cyclic dependencies between schemas are supported, if they
     are all in the same request.
     *
-    * @var SchemaCreateRequest[]
+    * @var list<SchemaCreateRequest>
     */
     protected $schemas;
     /**
     * The schemas to create. Cyclic dependencies between schemas are supported, if they
     are all in the same request.
     *
-    * @return SchemaCreateRequest[]
+    * @return list<SchemaCreateRequest>
     */
     public function getSchemas() : array
     {
@@ -33,7 +33,7 @@ class SchemaCreateManyRequest
     * The schemas to create. Cyclic dependencies between schemas are supported, if they
     are all in the same request.
     *
-    * @param SchemaCreateRequest[] $schemas
+    * @param list<SchemaCreateRequest> $schemas
     *
     * @return self
     */

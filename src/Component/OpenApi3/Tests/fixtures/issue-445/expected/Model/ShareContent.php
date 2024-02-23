@@ -21,7 +21,7 @@ class ShareContent
     /**
      * List of output formats for this content to share. If not specified outer OutputAccess is used.
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $outputFormatIds;
     /**
@@ -49,7 +49,7 @@ class ShareContent
     /**
      * List of output formats for this content to share. If not specified outer OutputAccess is used.
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getOutputFormatIds() : ?array
     {
@@ -58,7 +58,7 @@ class ShareContent
     /**
      * List of output formats for this content to share. If not specified outer OutputAccess is used.
      *
-     * @param string[]|null $outputFormatIds
+     * @param list<string>|null $outputFormatIds
      *
      * @return self
      */

@@ -75,7 +75,7 @@ class SchemaInUseContentSchemaException extends \ArrayObject
     /**
      * 
      *
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $contentSchemaIds;
     /**
@@ -301,7 +301,7 @@ class SchemaInUseContentSchemaException extends \ArrayObject
     /**
      * 
      *
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getContentSchemaIds() : ?array
     {
@@ -310,7 +310,7 @@ class SchemaInUseContentSchemaException extends \ArrayObject
     /**
      * 
      *
-     * @param string[]|null $contentSchemaIds
+     * @param list<string>|null $contentSchemaIds
      *
      * @return self
      */
