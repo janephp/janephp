@@ -47,7 +47,7 @@ installing our packages:
 
 Then when installing ``jane-php/open-api-*``, it will add all required files:
 
-- ``bin/open-api-generate``: a binary file to run JSON Schema generation based on ``config/jane/open-api.php``
+- ``bin/jane-open-api-generate``: a binary file to run JSON Schema generation based on ``config/jane/open-api.php``
   configuration.
 - ``config/jane/open-api.php``: your Jane configuration (see "Configuration file")
 - ``config/packages/open-api.yaml``: Symfony Serializer configured to be optimized for Jane
