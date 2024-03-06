@@ -80,7 +80,7 @@ trait NormalizerGenerator
      *
      * @return Stmt\ClassMethod
      */
-    protected function createNormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $symfony7, bool $skipNullValues = true, bool $skipRequiredFields = false)
+    protected function createNormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $symfony7, bool $skipNullValues = true, bool $skipRequiredFields = false, bool $includeNullValue = true)
     {
         $context->refreshScope();
         $dataVariable = new Expr\Variable('data');
@@ -102,6 +102,22 @@ trait NormalizerGenerator
                     continue;
                 }
 
+                if (!$includeNullValue) {
+                    if (!$property->isRequired()) {
+                        $statements[] = new Stmt\If_(
+                            new Expr\MethodCall($objectVariable, 'isInitialized', [new Arg(new Scalar\String_($property->getPhpName()))]),
+                            ['stmts' => $normalizationStatements]
+                        );
+                    } else {
+                        $statements[] = new Stmt\If_(
+                            new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),
+                            ['stmts' => $normalizationStatements]
+                        );
+                    }
+
+                    continue;
+                }
+
                 if (!$property->isRequired()) {
                     $statements[] = new Stmt\If_(
                         new Expr\BinaryOp\BooleanAnd(
@@ -118,8 +134,8 @@ trait NormalizerGenerator
                 }
 
                 if ((!$context->isStrict() || $property->isNullable()
-                    || ($property->getType() instanceof MultipleType && \count(array_intersect([Type::TYPE_NULL], $property->getType()->getTypes())) === 1)
-                    || ($property->getType()->getName() === Type::TYPE_NULL)) && !$skipNullValues) {
+                        || ($property->getType() instanceof MultipleType && \count(array_intersect([Type::TYPE_NULL], $property->getType()->getTypes())) === 1)
+                        || ($property->getType()->getName() === Type::TYPE_NULL)) && !$skipNullValues) {
                     $statements[] = new Stmt\Else_(
                         [new Stmt\Expression(new Expr\Assign(new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName())), new Expr\ConstFetch(new Name('null'))))]
                     );

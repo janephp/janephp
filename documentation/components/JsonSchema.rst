@@ -148,6 +148,7 @@ Other options are available to customize the generated code:
    that forces them to be present during denormalization. By default it is disabled.
  * ``validation``: Will enable validation following JSON Schema validation specification. By default it is disabled. You
    can read more about it on the dedicated guide: :doc:`/guides/validation`.
+ * ``include-null-value``: Will enable a way to manage null values. By default it is enabled.
 
 .. _`JSON Reference`: https://tools.ietf.org/id/draft-pbryan-zyp-json-ref-03.html
 .. _`Carbon`: https://carbon.nesbot.com/

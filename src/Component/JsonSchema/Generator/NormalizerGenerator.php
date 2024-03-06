@@ -60,11 +60,16 @@ class NormalizerGenerator implements GeneratorInterface
     protected $validation;
 
     /**
+     * @var bool include null value in conditions
+     */
+    protected $includeNullValue;
+
+    /**
      * @param bool $useReference               Whether to generate the JSON Reference system
      * @param bool $useCacheableSupportsMethod Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
      * @param bool $skipNullValues             Skip null values or not
      */
-    public function __construct(Naming $naming, Parser $parser, bool $useReference = true, bool $useCacheableSupportsMethod = null, bool $skipNullValues = true, bool $skipRequiedFields = false, bool $validation = false)
+    public function __construct(Naming $naming, Parser $parser, bool $useReference = true, bool $useCacheableSupportsMethod = null, bool $skipNullValues = true, bool $skipRequiedFields = false, bool $validation = false, bool $includeNullValue = true)
     {
         $this->naming = $naming;
         $this->parser = $parser;
@@ -73,6 +78,7 @@ class NormalizerGenerator implements GeneratorInterface
         $this->skipNullValues = $skipNullValues;
         $this->skipRequiedFields = $skipRequiedFields;
         $this->validation = $validation;
+        $this->includeNullValue = $includeNullValue;
     }
 
     /**
@@ -97,7 +103,7 @@ class NormalizerGenerator implements GeneratorInterface
             $methods[] = $this->createSupportsDenormalizationMethod($modelFqdn, true);
             $methods[] = $this->createSupportsNormalizationMethod($modelFqdn, true);
             $methods[] = $this->createDenormalizeMethod($modelFqdn, $context, $class, true);
-            $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class, true, $this->skipNullValues, $this->skipRequiedFields);
+            $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class, true, $this->skipNullValues, $this->skipRequiedFields, $this->includeNullValue);
             $methods[] = $this->createGetSupportedTypesMethod($modelFqdn, $this->useCacheableSupportsMethod);
 
             if ($this->useCacheableSupportsMethod) {
@@ -114,7 +120,7 @@ class NormalizerGenerator implements GeneratorInterface
             $methods[] = $this->createSupportsDenormalizationMethod($modelFqdn, false);
             $methods[] = $this->createSupportsNormalizationMethod($modelFqdn, false);
             $methods[] = $this->createDenormalizeMethod($modelFqdn, $context, $class, false);
-            $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class, false, $this->skipNullValues, $this->skipRequiedFields);
+            $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class, false, $this->skipNullValues, $this->skipRequiedFields, $this->includeNullValue);
             $methods[] = $this->createGetSupportedTypesMethod($modelFqdn, $this->useCacheableSupportsMethod);
 
             if ($this->useCacheableSupportsMethod) {
