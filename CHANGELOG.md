@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- [Jane] [GH#792](https://github.com/janephp/janephp/pull/792) Improve Normalizer generation by including null values or not
+
+### Fixed
+- [Documentation] [GH#791](https://github.com/janephp/janephp/pull/791) OpenAPI binary name
+
 ## [7.6.0] - 2024-01-31
 ### Changed
 - [Jane] Add support for Symfony 7
