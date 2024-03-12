@@ -69,6 +69,7 @@ class ConfigLoader implements ConfigLoaderInterface
             'skip-required-fields' => false,
             'custom-string-format-mapping' => [],
             'validation' => false,
+            'include-null-value' => true,
         ];
     }
 }

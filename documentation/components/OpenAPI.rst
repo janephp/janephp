@@ -147,6 +147,7 @@ Other options are available to customize the generated code:
    that forces them to be present during denormalization. By default it is disabled
  * ``validation``: Will enable validation following JSON Schema validation specification. By default it is disabled. You
    can read more about it on the dedicated guide: :doc:`/guides/validation`.
+ * ``include-null-value``: Will enable a way to manage null values. By default it is enabled.
  * ``whitelisted-paths``: This option allows you to generate only needed endpoints and related models. Be carefull,
    that option will filter models used by whitelisted endpoints and generate model & normalizer only for them. Here is
    some examples about how to use it::

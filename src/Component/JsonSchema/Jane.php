@@ -98,7 +98,7 @@ class Jane extends ChainGenerator
 
         $self = new self($serializer, $chainGuesser, $naming, $options['strict']);
         $self->addGenerator(new ModelGenerator($naming, $parser));
-        $self->addGenerator(new NormalizerGenerator($naming, $parser, $options['reference'], $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true, $options['skip-required-fields'] ?? false, $options['validation'] ?? false));
+        $self->addGenerator(new NormalizerGenerator($naming, $parser, $options['reference'], $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true, $options['skip-required-fields'] ?? false, $options['validation'] ?? false, $options['include-null-value'] ?? true));
         $self->addGenerator(new RuntimeGenerator($naming, $parser));
         if ($options['validation'] ?? false) {
             $self->addGenerator(new ValidatorGenerator($naming));

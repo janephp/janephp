@@ -39,7 +39,7 @@ class JaneOpenApi extends CommonJaneOpenApi
         $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
 
         yield new ModelGenerator($naming, $parser);
-        yield new NormalizerGenerator($naming, $parser, $options['reference'] ?? false, $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true, $options['skip-required-fields'] ?? false, $options['validation'] ?? false);
+        yield new NormalizerGenerator($naming, $parser, $options['reference'] ?? false, $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true, $options['skip-required-fields'] ?? false, $options['validation'] ?? false, $options['include-null-value'] ?? true);
         yield new AuthenticationGenerator();
         yield GeneratorFactory::build($denormalizer, $options['endpoint-generator'] ?: EndpointGenerator::class);
         yield new RuntimeGenerator($naming, $parser, $options['validation'] ?? false);
