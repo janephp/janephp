@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [7.6.1] - 2024-03-12
 ### Changed
 - [Jane] [GH#792](https://github.com/janephp/janephp/pull/792) Improve Normalizer generation by including null values or not
 
@@ -740,7 +741,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.6.0...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.6.1...HEAD
+[7.6.1]: https://github.com/janephp/janephp/compare/v7.6.0...v7.6.1
 [7.6.0]: https://github.com/janephp/janephp/compare/v7.5.6...v7.6.0
 [7.5.6]: https://github.com/janephp/janephp/compare/v7.5.5...v7.5.6
 [7.5.5]: https://github.com/janephp/janephp/compare/v7.5.4...v7.5.5
