@@ -23,7 +23,19 @@ class SchemaGuesser extends ObjectGuesser
      */
     protected function isPropertyNullable($property): bool
     {
-        return $property->offsetExists('x-nullable') && \is_bool($property->offsetGet('x-nullable')) && $property->offsetGet('x-nullable');
+        return
+            (
+                $property->offsetExists('x-nullable') &&
+                \is_bool($property->offsetGet('x-nullable')) &&
+                $property->offsetGet('x-nullable')
+            ) || (
+                null !== $property->getAdditionalProperties() &&
+                Schema::class === \get_class($property->getAdditionalProperties()) &&
+                $property->getAdditionalProperties()->offsetExists('x-nullable') &&
+                \is_bool($property->getAdditionalProperties()->offsetGet('x-nullable')) &&
+                $property->getAdditionalProperties()->offsetGet('x-nullable')
+            )
+        ;
     }
 
     /**
