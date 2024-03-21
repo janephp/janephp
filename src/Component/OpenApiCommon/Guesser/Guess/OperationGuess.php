@@ -27,7 +27,7 @@ class OperationGuess
     public function __construct(object $pathItem, object $operation, string $path, string $method, string $reference, array $securityScopes = [])
     {
         $this->operation = $operation;
-        $this->path = preg_replace('#^/+#', '/', $path);
+        $this->path = ltrim(preg_replace('#^/+#', '/', $path), '/');
         $this->method = $method;
         $this->reference = $reference;
         $this->parameters = array_merge(
