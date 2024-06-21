@@ -170,6 +170,10 @@ class NormalizerGenerator implements GeneratorInterface
         $propertyName = $this->getNaming()->getPropertyName('normalizers');
         $propertyStmt = new Stmt\PropertyProperty($propertyName);
         $propertyStmt->default = $this->parser->parse('<?php ' . var_export($normalizers, true) . ';')[0]->expr;
+        if (isset($propertyStmt->default->items[0]) && $propertyStmt->default->items[0] instanceof Expr\ArrayItem) {
+            // force the array to be dumped multiline by adding a comment
+            $propertyStmt->default->items[0]->setAttribute('comments', [new \PhpParser\Comment('')]);
+        }
         $properties[] = $propertyStmt;
         $propertyStmt = new Stmt\PropertyProperty('normalizersCache');
         $propertyStmt->default = new Expr\Array_();
