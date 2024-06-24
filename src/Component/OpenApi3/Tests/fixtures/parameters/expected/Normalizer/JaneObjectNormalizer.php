@@ -18,7 +18,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = array('Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestFormPostBody' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestFormPostBodyNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestFormFilePostBody' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestFormFilePostBodyNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\Component\\OpenApi3\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = [];
+        protected $normalizers = array(
+            
+            'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestFormPostBody' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestFormPostBodyNormalizer',
+            'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestFormFilePostBody' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestFormFilePostBodyNormalizer',
+            '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\Component\\OpenApi3\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer',
+        ), $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
         {
             return array_key_exists($type, $this->normalizers);
@@ -63,7 +68,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = array('Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestFormPostBody' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestFormPostBodyNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestFormFilePostBody' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestFormFilePostBodyNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\Component\\OpenApi3\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = [];
+        protected $normalizers = array(
+            
+            'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestFormPostBody' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestFormPostBodyNormalizer',
+            'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestFormFilePostBody' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestFormFilePostBodyNormalizer',
+            '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\Component\\OpenApi3\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer',
+        ), $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
         {
             return array_key_exists($type, $this->normalizers);

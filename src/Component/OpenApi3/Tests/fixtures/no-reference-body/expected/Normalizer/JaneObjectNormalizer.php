@@ -18,7 +18,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = array('Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Foo' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\FooNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Bar' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\BarNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestGetBody' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestGetBodyNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestGetBodyBaz' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestGetBodyBazNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestPostBody' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestPostBodyNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\Component\\OpenApi3\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = [];
+        protected $normalizers = array(
+            
+            'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Foo' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\FooNormalizer',
+            'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Bar' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\BarNormalizer',
+            'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestGetBody' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestGetBodyNormalizer',
+            'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestGetBodyBaz' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestGetBodyBazNormalizer',
+            'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestPostBody' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestPostBodyNormalizer',
+            '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\Component\\OpenApi3\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer',
+        ), $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
         {
             return array_key_exists($type, $this->normalizers);
@@ -63,7 +71,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = array('Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Foo' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\FooNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Bar' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\BarNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestGetBody' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestGetBodyNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestGetBodyBaz' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestGetBodyBazNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestPostBody' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestPostBodyNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\Component\\OpenApi3\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = [];
+        protected $normalizers = array(
+            
+            'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Foo' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\FooNormalizer',
+            'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\Bar' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\BarNormalizer',
+            'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestGetBody' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestGetBodyNormalizer',
+            'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestGetBodyBaz' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestGetBodyBazNormalizer',
+            'Jane\\Component\\OpenApi3\\Tests\\Expected\\Model\\TestPostBody' => 'Jane\\Component\\OpenApi3\\Tests\\Expected\\Normalizer\\TestPostBodyNormalizer',
+            '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\Component\\OpenApi3\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer',
+        ), $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
         {
             return array_key_exists($type, $this->normalizers);

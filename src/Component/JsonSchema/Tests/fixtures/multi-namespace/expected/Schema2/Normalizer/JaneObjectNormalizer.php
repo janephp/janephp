@@ -18,7 +18,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = array('Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema2\\Model\\Foo' => 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema2\\Normalizer\\FooNormalizer'), $normalizersCache = [];
+        protected $normalizers = array(
+            
+            'Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema2\\Model\\Foo' => 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema2\\Normalizer\\FooNormalizer',
+        ), $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
         {
             return array_key_exists($type, $this->normalizers);
@@ -63,7 +66,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = array('Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema2\\Model\\Foo' => 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema2\\Normalizer\\FooNormalizer'), $normalizersCache = [];
+        protected $normalizers = array(
+            
+            'Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema2\\Model\\Foo' => 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema2\\Normalizer\\FooNormalizer',
+        ), $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
         {
             return array_key_exists($type, $this->normalizers);
