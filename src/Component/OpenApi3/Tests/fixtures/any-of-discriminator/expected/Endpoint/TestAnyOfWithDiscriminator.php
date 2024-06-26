@@ -15,11 +15,11 @@ class TestAnyOfWithDiscriminator extends \Jane\Component\OpenApi3\Tests\Expected
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        return array(array(), null);
+        return [[], null];
     }
     public function getExtraHeaders() : array
     {
-        return array('Accept' => array('application/json'));
+        return ['Accept' => ['application/json']];
     }
     /**
      * {@inheritdoc}
@@ -41,6 +41,6 @@ class TestAnyOfWithDiscriminator extends \Jane\Component\OpenApi3\Tests\Expected
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return [];
     }
 }
