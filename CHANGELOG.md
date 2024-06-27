@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - [JsonSchema] [GH#725](https://github.com/janephp/janephp/pull/725) Add discriminator support to anyOf
 
+### Fixed
+- [JsonSchema] [GH#807](https://github.com/janephp/janephp/pull/807) Force classmap to be dumped multiline
+
 ## [7.6.2] - 2024-05-23
 ### Fixed
 - [JsonSchema] [GH#799](https://github.com/janephp/janephp/pull/799) Do not implement `CacheableSupportsMethodInterface` when generating SF7 normalizers for schema and schema object properties
