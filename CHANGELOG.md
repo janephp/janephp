@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [7.7.0] - 2024-06-27
 ### Added
 - [JsonSchema] [GH#725](https://github.com/janephp/janephp/pull/725) Add discriminator support to anyOf
 
@@ -751,7 +753,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.6.2...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.7.0...HEAD
+[7.7.0]: https://github.com/janephp/janephp/compare/v7.6.2...v7.7.0
 [7.6.2]: https://github.com/janephp/janephp/compare/v7.6.1...v7.6.2
 [7.6.1]: https://github.com/janephp/janephp/compare/v7.6.0...v7.6.1
 [7.6.0]: https://github.com/janephp/janephp/compare/v7.5.6...v7.6.0
