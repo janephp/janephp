@@ -1,0 +1,100 @@
+{
+    "info": {
+        "description": " ",
+        "title": "Sponsored Products",
+        "version": "3.0"
+    },
+    "paths": {
+        "/sp/campaigns/list": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/vnd.spCampaign.v3+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SponsoredProductsListSponsoredProductsCampaignsRequestContent"
+                            }
+                        }
+                    }
+                },
+                "description": "List campaigns\n\n**Requires one of these permissions**:\n[\"advertiser_campaign_edit\",\"advertiser_campaign_view\"]",
+                "operationId": "ListSponsoredProductsCampaigns",
+                "responses": {
+                    "200": {
+                        "description": "ListSponsoredProductsCampaigns 200 response",
+                        "content": {
+                            "application/vnd.spCampaign.v3+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SponsoredProductsListSponsoredProductsCampaignsResponseContent"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "description": "The identifier of a client associated with a \"Login with Amazon\" account.",
+                            "type": "string"
+                        },
+                        "in": "header",
+                        "name": "Amazon-Advertising-API-ClientId",
+                        "description": "The identifier of a client associated with a \"Login with Amazon\" account.",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "description": "The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list\nprofiles associated with the access token passed in the HTTP Authorization header.",
+                            "type": "string"
+                        },
+                        "in": "header",
+                        "name": "Amazon-Advertising-API-Scope",
+                        "description": "The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list\nprofiles associated with the access token passed in the HTTP Authorization header.",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Campaigns"
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "SponsoredProductsListSponsoredProductsCampaignsRequestContent": {
+                "type": "object",
+                "properties": {
+                    "maxResults": {
+                        "format": "int32",
+                        "description": "Number of records to include in the paginated response. Defaults to max page size for given API",
+                        "type": "integer"
+                    },
+                    "nextToken": {
+                        "description": "token value allowing to navigate to the next response page",
+                        "type": "string"
+                    },
+                    "includeExtendedDataFields": {
+                        "description": "Whether to get entity with extended data fields such as creationDate, lastUpdateDate, servingStatus",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "SponsoredProductsListSponsoredProductsCampaignsResponseContent": {
+                "type": "object",
+                "properties": {
+                    "totalResults": {
+                        "format": "int64",
+                        "description": "The total number of entities",
+                        "type": "integer"
+                    },
+                    "campaigns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "openapi": "3.0.1"
+}
