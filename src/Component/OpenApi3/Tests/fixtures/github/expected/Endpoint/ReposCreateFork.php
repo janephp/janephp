@@ -1,6 +1,6 @@
 <?php
 
-namespace Github\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\fixtures\github\expected\Endpoint;
 
 class ReposCreateFork extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
