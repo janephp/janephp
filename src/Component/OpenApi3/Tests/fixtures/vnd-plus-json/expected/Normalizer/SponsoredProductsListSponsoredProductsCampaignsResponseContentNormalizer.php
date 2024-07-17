@@ -1,10 +1,10 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -23,11 +23,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use ValidatorTrait;
         public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
         {
-            return $type === \Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class;
+            return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class;
         }
         public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class;
+            return is_object($data) && get_class($data) === Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class;
         }
         public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
         {
@@ -37,7 +37,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (isset($data['$recursiveRef'])) {
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
-            $object = new \Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent();
+            $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent();
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -82,7 +82,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null): array
         {
-            return [\Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class => true];
+            return [\Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class => true];
         }
     }
 } else {
@@ -94,11 +94,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use ValidatorTrait;
         public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
         {
-            return $type === \Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class;
+            return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class;
         }
         public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
         {
-            return is_object($data) && get_class($data) === Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class;
+            return is_object($data) && get_class($data) === Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class;
         }
         /**
          * @return mixed
@@ -111,7 +111,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (isset($data['$recursiveRef'])) {
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
-            $object = new \Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent();
+            $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent();
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -159,7 +159,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null): array
         {
-            return [\Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class => true];
+            return [\Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class => true];
         }
         public function hasCacheableSupportsMethod(): bool
         {

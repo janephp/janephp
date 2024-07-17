@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected;
+namespace Jane\Component\OpenApi3\Tests\Expected;
 
-class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
 {
     /**
     * List campaigns
@@ -10,7 +10,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
     **Requires one of these permissions**:
     ["advertiser_campaign_edit","advertiser_campaign_view"]
     *
-    * @param null|\Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody 
+    * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody 
     * @param array $headerParameters {
     *     @var string $Amazon-Advertising-API-ClientId The identifier of a client associated with a "Login with Amazon" account.
     *     @var string $Amazon-Advertising-API-Scope The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list
@@ -18,11 +18,11 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
-    * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent|\Psr\Http\Message\ResponseInterface
+    * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent|\Psr\Http\Message\ResponseInterface
     */
-    public function listSponsoredProductsCampaigns(?\Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function listSponsoredProductsCampaigns(?\Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\ListSponsoredProductsCampaigns($requestBody, $headerParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\ListSponsoredProductsCampaigns($requestBody, $headerParameters), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
@@ -36,7 +36,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi2\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }

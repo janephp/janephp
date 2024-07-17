@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
 
-use Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -21,11 +21,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use ValidatorTrait;
         protected $normalizers = [
             
-            \Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent::class => \Jane\Component\OpenApi2\Tests\Expected\Normalizer\SponsoredProductsListSponsoredProductsCampaignsRequestContentNormalizer::class,
+            \Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\SponsoredProductsListSponsoredProductsCampaignsRequestContentNormalizer::class,
             
-            \Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class => \Jane\Component\OpenApi2\Tests\Expected\Normalizer\SponsoredProductsListSponsoredProductsCampaignsResponseContentNormalizer::class,
+            \Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\SponsoredProductsListSponsoredProductsCampaignsResponseContentNormalizer::class,
             
-            \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+            \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
         ], $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
         {
@@ -61,7 +61,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null): array
         {
-            return [\Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent::class => false, \Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class => false, \Jane\Component\JsonSchemaRuntime\Reference::class => false];
+            return [\Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent::class => false, \Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class => false, \Jane\Component\JsonSchemaRuntime\Reference::class => false];
         }
     }
 } else {
@@ -73,11 +73,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use ValidatorTrait;
         protected $normalizers = [
             
-            \Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent::class => \Jane\Component\OpenApi2\Tests\Expected\Normalizer\SponsoredProductsListSponsoredProductsCampaignsRequestContentNormalizer::class,
+            \Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\SponsoredProductsListSponsoredProductsCampaignsRequestContentNormalizer::class,
             
-            \Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class => \Jane\Component\OpenApi2\Tests\Expected\Normalizer\SponsoredProductsListSponsoredProductsCampaignsResponseContentNormalizer::class,
+            \Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\SponsoredProductsListSponsoredProductsCampaignsResponseContentNormalizer::class,
             
-            \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+            \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
         ], $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
         {
@@ -119,7 +119,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null): array
         {
-            return [\Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent::class => false, \Jane\Component\OpenApi2\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class => false, \Jane\Component\JsonSchemaRuntime\Reference::class => false];
+            return [\Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent::class => false, \Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent::class => false, \Jane\Component\JsonSchemaRuntime\Reference::class => false];
         }
         public function hasCacheableSupportsMethod(): bool
         {

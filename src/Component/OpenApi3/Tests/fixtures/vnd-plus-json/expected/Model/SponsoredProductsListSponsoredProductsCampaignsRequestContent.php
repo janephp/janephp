@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Model;
+namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
 class SponsoredProductsListSponsoredProductsCampaignsRequestContent extends \ArrayObject
 {
