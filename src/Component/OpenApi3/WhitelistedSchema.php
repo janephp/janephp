@@ -48,7 +48,7 @@ class WhitelistedSchema implements WhitelistFetchInterface
             if (null !== $requestBody->getContent() && is_iterable($requestBody->getContent())) {
                 /** @var MediaType $content */
                 foreach ($requestBody->getContent() as $contentType => $content) {
-                    if (\in_array($contentType, ['application/json', 'application/x-www-form-urlencoded'], true)) {
+                    if (\in_array($contentType, ['application/json', 'application/x-www-form-urlencoded'], true) || str_ends_with($contentType, '+json')) {
                         $contentReference = $operationGuess->getReference() . '/content/' . $contentType . '/schema';
                         $schema = $content->getSchema();
                         $classGuess = $this->guessClass->guessClass($schema, $contentReference, $registry);
@@ -82,7 +82,7 @@ class WhitelistedSchema implements WhitelistFetchInterface
                 if (null !== $response->getContent() && is_iterable($response->getContent())) {
                     /** @var MediaType $content */
                     foreach ($response->getContent() as $contentType => $content) {
-                        if ('application/json' === $contentType) {
+                        if ('application/json' === $contentType || str_ends_with($contentType, '+json')) {
                             $contentReference = $operationGuess->getReference() . '/content/' . $contentType . '/schema';
                             $schema = $content->getSchema();
                             $classGuess = $this->guessClass->guessClass($schema, $contentReference, $registry);

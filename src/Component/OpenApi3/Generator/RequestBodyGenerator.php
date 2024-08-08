@@ -114,6 +114,8 @@ class RequestBodyGenerator
 
             if (isset($this->generators[$contentType])) {
                 $generator = $this->generators[$contentType];
+            } elseif (str_ends_with($contentType, '+json')) {
+                $generator = $this->generators['application/json'];
             }
 
             $statements[] = new Stmt\If_(

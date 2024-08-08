@@ -34,7 +34,7 @@ class ListSponsoredProductsCampaigns extends \Jane\Component\OpenApi3\Tests\Expe
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent) {
-            return [['Content-Type' => ['application/vnd.spCampaign.v3+json']], $this->body];
+            return [['Content-Type' => ['application/vnd.spCampaign.v3+json']], $serializer->serialize($this->body, 'json')];
         }
         return [[], null];
     }
