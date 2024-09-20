@@ -30,7 +30,6 @@ trait ClassGenerator
         if ($deprecated) {
             $attributes['comments'] = [new Doc(<<<EOD
 /**
- *
  * @deprecated
  */
 EOD

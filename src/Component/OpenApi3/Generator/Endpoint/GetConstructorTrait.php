@@ -97,20 +97,23 @@ trait GetConstructorTrait
                 str_replace('*/', '*\\/', implode('|', $this->getContentTypes($operation, $guessClass)))] : []
         );
 
-        $methodParamsDoc = <<<EOD
-/**
- * {$operation->getOperation()->getDescription()}
- *
+        $methodParamsDoc = ['/**'];
+        if ($operation->getOperation()->getDescription()) {
+            foreach (explode("\n", $operation->getOperation()->getDescription()) as $line) {
+                $methodParamsDoc[] = rtrim(' * ' . $line);
+            }
+        }
+        $methodParamsDoc[] = implode("\n", $methodDocumentations);
+        $methodParamsDoc[] = ' */';
 
-EOD
-            . implode("\n", $methodDocumentations);
+        $methodParamsDoc = implode("\n", $methodParamsDoc);
 
         return [new Stmt\ClassMethod('__construct', [
             'flags' => Modifiers::PUBLIC,
             'params' => $methodParams,
             'stmts' => $methodStatements,
         ], [
-            'comments' => [new Doc($methodParamsDoc . "\n */"),
+            'comments' => [new Doc($methodParamsDoc),
             ], ]), $methodParams, $methodParamsDoc, $pathProperties];
     }
 }

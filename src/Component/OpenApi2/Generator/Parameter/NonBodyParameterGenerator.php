@@ -110,15 +110,27 @@ class NonBodyParameterGenerator extends ParameterGenerator
     public function generateMethodDocParameter($parameter, Context $context, string $reference): string
     {
         $type = implode('|', $this->convertParameterType($parameter->getType()));
+        $description = array_map(rtrim(...), explode("\n", $parameter->getDescription() ?: ''));
 
-        return \sprintf(' * @param %s $%s %s', $type, $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: '');
+        $param = [rtrim(\sprintf(' * @param %s $%s %s', $type, $this->getInflector()->camelize($parameter->getName()), array_shift($description)))];
+        foreach ($description as $line) {
+            $param[] = \sprintf(' * %s', $line);
+        }
+
+        return implode("\n", $param);
     }
 
     public function generateOptionDocParameter(PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter): string
     {
         $type = implode('|', $this->convertParameterType($parameter->getType()));
+        $description = array_map(rtrim(...), explode("\n", $parameter->getDescription() ?: ''));
 
-        return \sprintf(' *     @var %s $%s %s', $type, $parameter->getName(), $parameter->getDescription() ?: '');
+        $var = [rtrim(\sprintf(' *     @var %s $%s %s', $type, $parameter->getName(), array_shift($description)))];
+        foreach ($description as $line) {
+            $var[] = \sprintf(' *     %s', $line);
+        }
+
+        return implode("\n", $var);
     }
 
     /**
