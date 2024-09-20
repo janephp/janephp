@@ -31,12 +31,12 @@ class AssignValueAction extends BusinessRuleAction
      */
     protected $value;
     /**
-    * Indicates whether existing values should be replaced.
-    Note: for multi fieldsets and relations, this setting controls, if the value is added
-    to the already existing values or if the existing values shall be overwritten.
-    *
-    * @var bool
-    */
+     * Indicates whether existing values should be replaced.
+     * Note: for multi fieldsets and relations, this setting controls, if the value is added
+     * to the already existing values or if the existing values shall be overwritten.
+     *
+     * @var bool
+     */
     protected $replace;
     /**
      * Path to the object the value should be inserted in.
@@ -105,12 +105,12 @@ class AssignValueAction extends BusinessRuleAction
         return $this;
     }
     /**
-    * Indicates whether existing values should be replaced.
-    Note: for multi fieldsets and relations, this setting controls, if the value is added
-    to the already existing values or if the existing values shall be overwritten.
-    *
-    * @return bool
-    */
+     * Indicates whether existing values should be replaced.
+     * Note: for multi fieldsets and relations, this setting controls, if the value is added
+     * to the already existing values or if the existing values shall be overwritten.
+     *
+     * @return bool
+     */
     public function getReplace(): bool
     {
         return $this->replace;

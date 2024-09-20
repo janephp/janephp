@@ -7,7 +7,6 @@ class UserRoleDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
     protected $id;
     /**
      * Deletes the user role specified by the ID.
-     *
      * @param string $id User role ID.
      */
     public function __construct(string $id)

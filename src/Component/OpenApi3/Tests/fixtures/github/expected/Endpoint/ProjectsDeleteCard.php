@@ -6,8 +6,6 @@ class ProjectsDeleteCard extends \Github\Runtime\Client\BaseEndpoint implements 
 {
     protected $card_id;
     /**
-     * 
-     *
      * @param int $cardId card_id parameter
      */
     public function __construct(int $cardId)

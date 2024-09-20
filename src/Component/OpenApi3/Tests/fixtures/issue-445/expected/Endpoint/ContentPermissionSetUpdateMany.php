@@ -6,8 +6,7 @@ class ContentPermissionSetUpdateMany extends \PicturePark\API\Runtime\Client\Bas
 {
     /**
      * Updates the content permission sets specified by the IDs and based on supplied request.
-     *
-     * @param \PicturePark\API\Model\ContentPermissionSetUpdateManyRequest $requestBody 
+     * @param \PicturePark\API\Model\ContentPermissionSetUpdateManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\ContentPermissionSetUpdateManyRequest $requestBody)
     {

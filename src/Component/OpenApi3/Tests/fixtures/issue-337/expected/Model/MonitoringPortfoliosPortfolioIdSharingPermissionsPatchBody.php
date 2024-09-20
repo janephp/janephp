@@ -19,8 +19,6 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody extends \ArrayO
      */
     protected $revokeAll;
     /**
-     * 
-     *
      * @var list<MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem>
      */
     protected $companies;
@@ -47,8 +45,6 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody extends \ArrayO
         return $this;
     }
     /**
-     * 
-     *
      * @return list<MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem>
      */
     public function getCompanies(): array
@@ -56,8 +52,6 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody extends \ArrayO
         return $this->companies;
     }
     /**
-     * 
-     *
      * @param list<MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem> $companies
      *
      * @return self

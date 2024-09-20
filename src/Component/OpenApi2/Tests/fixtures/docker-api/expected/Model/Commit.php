@@ -20,6 +20,7 @@ class Commit
     protected $iD;
     /**
      * Commit ID of external tool expected by dockerd as set at build time.
+     * 
      *
      * @var string
      */
@@ -48,6 +49,7 @@ class Commit
     }
     /**
      * Commit ID of external tool expected by dockerd as set at build time.
+     * 
      *
      * @return string
      */

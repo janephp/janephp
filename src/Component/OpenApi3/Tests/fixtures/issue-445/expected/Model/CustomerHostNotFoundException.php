@@ -13,50 +13,34 @@ class CustomerHostNotFoundException extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $traceLevel;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $traceId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $traceJobId;
     /**
-     * 
-     *
      * @var int
      */
     protected $httpStatusCode;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $exceptionMessage;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $hostName;
     /**
-     * 
-     *
      * @return string
      */
     public function getTraceLevel(): string
@@ -64,8 +48,6 @@ class CustomerHostNotFoundException extends \ArrayObject
         return $this->traceLevel;
     }
     /**
-     * 
-     *
      * @param string $traceLevel
      *
      * @return self
@@ -77,8 +59,6 @@ class CustomerHostNotFoundException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTraceId(): ?string
@@ -86,8 +66,6 @@ class CustomerHostNotFoundException extends \ArrayObject
         return $this->traceId;
     }
     /**
-     * 
-     *
      * @param string|null $traceId
      *
      * @return self
@@ -99,8 +77,6 @@ class CustomerHostNotFoundException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTraceJobId(): ?string
@@ -108,8 +84,6 @@ class CustomerHostNotFoundException extends \ArrayObject
         return $this->traceJobId;
     }
     /**
-     * 
-     *
      * @param string|null $traceJobId
      *
      * @return self
@@ -121,8 +95,6 @@ class CustomerHostNotFoundException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getHttpStatusCode(): int
@@ -130,8 +102,6 @@ class CustomerHostNotFoundException extends \ArrayObject
         return $this->httpStatusCode;
     }
     /**
-     * 
-     *
      * @param int $httpStatusCode
      *
      * @return self
@@ -143,8 +113,6 @@ class CustomerHostNotFoundException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExceptionMessage(): ?string
@@ -152,8 +120,6 @@ class CustomerHostNotFoundException extends \ArrayObject
         return $this->exceptionMessage;
     }
     /**
-     * 
-     *
      * @param string|null $exceptionMessage
      *
      * @return self
@@ -165,8 +131,6 @@ class CustomerHostNotFoundException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -174,8 +138,6 @@ class CustomerHostNotFoundException extends \ArrayObject
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      *
      * @return self
@@ -187,8 +149,6 @@ class CustomerHostNotFoundException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getHostName(): ?string
@@ -196,8 +156,6 @@ class CustomerHostNotFoundException extends \ArrayObject
         return $this->hostName;
     }
     /**
-     * 
-     *
      * @param string|null $hostName
      *
      * @return self

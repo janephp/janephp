@@ -7,7 +7,6 @@ class UsersDeleteGpgKeyForAuthenticated extends \Github\Runtime\Client\BaseEndpo
     protected $gpg_key_id;
     /**
      * Removes a GPG key from the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth or via OAuth with at least `admin:gpg_key` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-     *
      * @param int $gpgKeyId gpg_key_id parameter
      */
     public function __construct(int $gpgKeyId)

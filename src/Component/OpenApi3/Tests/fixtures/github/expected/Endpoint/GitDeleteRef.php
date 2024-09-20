@@ -8,10 +8,8 @@ class GitDeleteRef extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     protected $repo;
     protected $ref;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param string $ref ref+ parameter
      */
     public function __construct(string $owner, string $repo, string $ref)

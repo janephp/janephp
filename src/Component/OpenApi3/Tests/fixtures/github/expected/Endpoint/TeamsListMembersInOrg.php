@@ -8,15 +8,14 @@ class TeamsListMembersInOrg extends \Github\Runtime\Client\BaseEndpoint implemen
     protected $team_slug;
     /**
     * Team members will include the members of child teams.
-    
-    To list members in a team, the team must be visible to the authenticated user.
     *
-    * @param string $org 
+    * To list members in a team, the team must be visible to the authenticated user.
+    * @param string $org
     * @param string $teamSlug team_slug parameter
     * @param array $queryParameters {
-    *     @var string $role Filters members returned by their role in the team. Can be one of:  
-    \* `member` - normal members of the team.  
-    \* `maintainer` - team maintainers.  
+    *     @var string $role Filters members returned by their role in the team. Can be one of:
+    \* `member` - normal members of the team.
+    \* `maintainer` - team maintainers.
     \* `all` - all members of the team.
     *     @var int $per_page Results per page (max 100)
     *     @var int $page Page number of the results to fetch.

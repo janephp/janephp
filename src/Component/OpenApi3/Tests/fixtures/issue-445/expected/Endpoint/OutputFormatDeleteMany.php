@@ -6,8 +6,7 @@ class OutputFormatDeleteMany extends \PicturePark\API\Runtime\Client\BaseEndpoin
 {
     /**
      * Deletes the output formats specified by the IDs. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
-     * @param \PicturePark\API\Model\OutputFormatDeleteManyRequest $requestBody 
+     * @param \PicturePark\API\Model\OutputFormatDeleteManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\OutputFormatDeleteManyRequest $requestBody)
     {

@@ -13,68 +13,46 @@ class FileMetadata
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $names;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $descriptions;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $fileExtension;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $fileName;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $filePath;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $fileSizeInBytes;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $sha1Hash;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $xmpMetadata;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $exifMetadata;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $language;
     /**
-     * 
-     *
      * @return mixed
      */
     public function getNames()
@@ -82,8 +60,6 @@ class FileMetadata
         return $this->names;
     }
     /**
-     * 
-     *
      * @param mixed $names
      *
      * @return self
@@ -95,8 +71,6 @@ class FileMetadata
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getDescriptions()
@@ -104,8 +78,6 @@ class FileMetadata
         return $this->descriptions;
     }
     /**
-     * 
-     *
      * @param mixed $descriptions
      *
      * @return self
@@ -117,8 +89,6 @@ class FileMetadata
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFileExtension(): ?string
@@ -126,8 +96,6 @@ class FileMetadata
         return $this->fileExtension;
     }
     /**
-     * 
-     *
      * @param string|null $fileExtension
      *
      * @return self
@@ -139,8 +107,6 @@ class FileMetadata
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFileName(): ?string
@@ -148,8 +114,6 @@ class FileMetadata
         return $this->fileName;
     }
     /**
-     * 
-     *
      * @param string|null $fileName
      *
      * @return self
@@ -161,8 +125,6 @@ class FileMetadata
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFilePath(): ?string
@@ -170,8 +132,6 @@ class FileMetadata
         return $this->filePath;
     }
     /**
-     * 
-     *
      * @param string|null $filePath
      *
      * @return self
@@ -183,8 +143,6 @@ class FileMetadata
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getFileSizeInBytes(): ?int
@@ -192,8 +150,6 @@ class FileMetadata
         return $this->fileSizeInBytes;
     }
     /**
-     * 
-     *
      * @param int|null $fileSizeInBytes
      *
      * @return self
@@ -205,8 +161,6 @@ class FileMetadata
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getSha1Hash(): ?string
@@ -214,8 +168,6 @@ class FileMetadata
         return $this->sha1Hash;
     }
     /**
-     * 
-     *
      * @param string|null $sha1Hash
      *
      * @return self
@@ -227,8 +179,6 @@ class FileMetadata
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getXmpMetadata()
@@ -236,8 +186,6 @@ class FileMetadata
         return $this->xmpMetadata;
     }
     /**
-     * 
-     *
      * @param mixed $xmpMetadata
      *
      * @return self
@@ -249,8 +197,6 @@ class FileMetadata
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getExifMetadata()
@@ -258,8 +204,6 @@ class FileMetadata
         return $this->exifMetadata;
     }
     /**
-     * 
-     *
      * @param mixed $exifMetadata
      *
      * @return self
@@ -271,8 +215,6 @@ class FileMetadata
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getLanguage(): ?string
@@ -280,8 +222,6 @@ class FileMetadata
         return $this->language;
     }
     /**
-     * 
-     *
      * @param string|null $language
      *
      * @return self

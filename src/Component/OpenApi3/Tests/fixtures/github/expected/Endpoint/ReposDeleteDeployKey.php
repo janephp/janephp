@@ -9,9 +9,8 @@ class ReposDeleteDeployKey extends \Github\Runtime\Client\BaseEndpoint implement
     protected $key_id;
     /**
      * Deploy keys are immutable. If you need to update a key, remove the key and create a new one instead.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $keyId key_id parameter
      */
     public function __construct(string $owner, string $repo, int $keyId)

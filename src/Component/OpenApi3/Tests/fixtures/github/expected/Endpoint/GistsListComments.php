@@ -6,8 +6,6 @@ class GistsListComments extends \Github\Runtime\Client\BaseEndpoint implements \
 {
     protected $gist_id;
     /**
-     * 
-     *
      * @param string $gistId gist_id parameter
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)

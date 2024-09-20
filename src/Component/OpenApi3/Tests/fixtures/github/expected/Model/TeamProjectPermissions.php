@@ -13,26 +13,18 @@ class TeamProjectPermissions extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var bool
      */
     protected $read;
     /**
-     * 
-     *
      * @var bool
      */
     protected $write;
     /**
-     * 
-     *
      * @var bool
      */
     protected $admin;
     /**
-     * 
-     *
      * @return bool
      */
     public function getRead(): bool
@@ -40,8 +32,6 @@ class TeamProjectPermissions extends \ArrayObject
         return $this->read;
     }
     /**
-     * 
-     *
      * @param bool $read
      *
      * @return self
@@ -53,8 +43,6 @@ class TeamProjectPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getWrite(): bool
@@ -62,8 +50,6 @@ class TeamProjectPermissions extends \ArrayObject
         return $this->write;
     }
     /**
-     * 
-     *
      * @param bool $write
      *
      * @return self
@@ -75,8 +61,6 @@ class TeamProjectPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getAdmin(): bool
@@ -84,8 +68,6 @@ class TeamProjectPermissions extends \ArrayObject
         return $this->admin;
     }
     /**
-     * 
-     *
      * @param bool $admin
      *
      * @return self

@@ -13,38 +13,26 @@ class ProcessConfig
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var bool
      */
     protected $privileged;
     /**
-     * 
-     *
      * @var string
      */
     protected $user;
     /**
-     * 
-     *
      * @var bool
      */
     protected $tty;
     /**
-     * 
-     *
      * @var string
      */
     protected $entrypoint;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $arguments;
     /**
-     * 
-     *
      * @return bool
      */
     public function getPrivileged(): bool
@@ -52,8 +40,6 @@ class ProcessConfig
         return $this->privileged;
     }
     /**
-     * 
-     *
      * @param bool $privileged
      *
      * @return self
@@ -65,8 +51,6 @@ class ProcessConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUser(): string
@@ -74,8 +58,6 @@ class ProcessConfig
         return $this->user;
     }
     /**
-     * 
-     *
      * @param string $user
      *
      * @return self
@@ -87,8 +69,6 @@ class ProcessConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getTty(): bool
@@ -96,8 +76,6 @@ class ProcessConfig
         return $this->tty;
     }
     /**
-     * 
-     *
      * @param bool $tty
      *
      * @return self
@@ -109,8 +87,6 @@ class ProcessConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEntrypoint(): string
@@ -118,8 +94,6 @@ class ProcessConfig
         return $this->entrypoint;
     }
     /**
-     * 
-     *
      * @param string $entrypoint
      *
      * @return self
@@ -131,8 +105,6 @@ class ProcessConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getArguments(): array
@@ -140,8 +112,6 @@ class ProcessConfig
         return $this->arguments;
     }
     /**
-     * 
-     *
      * @param list<string> $arguments
      *
      * @return self

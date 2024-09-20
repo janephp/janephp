@@ -13,38 +13,26 @@ class CommunityProfile extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $healthPercentage;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $documentation;
     /**
-     * 
-     *
      * @var CommunityProfileFiles
      */
     protected $files;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @return int
      */
     public function getHealthPercentage(): int
@@ -52,8 +40,6 @@ class CommunityProfile extends \ArrayObject
         return $this->healthPercentage;
     }
     /**
-     * 
-     *
      * @param int $healthPercentage
      *
      * @return self
@@ -65,8 +51,6 @@ class CommunityProfile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription(): ?string
@@ -74,8 +58,6 @@ class CommunityProfile extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -87,8 +69,6 @@ class CommunityProfile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDocumentation(): ?string
@@ -96,8 +76,6 @@ class CommunityProfile extends \ArrayObject
         return $this->documentation;
     }
     /**
-     * 
-     *
      * @param string|null $documentation
      *
      * @return self
@@ -109,8 +87,6 @@ class CommunityProfile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CommunityProfileFiles
      */
     public function getFiles(): CommunityProfileFiles
@@ -118,8 +94,6 @@ class CommunityProfile extends \ArrayObject
         return $this->files;
     }
     /**
-     * 
-     *
      * @param CommunityProfileFiles $files
      *
      * @return self
@@ -131,8 +105,6 @@ class CommunityProfile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
@@ -140,8 +112,6 @@ class CommunityProfile extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $updatedAt
      *
      * @return self

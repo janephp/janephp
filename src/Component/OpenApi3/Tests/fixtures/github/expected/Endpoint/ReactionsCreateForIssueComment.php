@@ -9,11 +9,10 @@ class ReactionsCreateForIssueComment extends \Github\Runtime\Client\BaseEndpoint
     protected $comment_id;
     /**
      * Create a reaction to an [issue comment](https://developer.github.com/v3/issues/comments/). A response with a `Status: 200 OK` means that you already added the reaction type to this issue comment.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $commentId comment_id parameter
-     * @param null|\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody $requestBody = null)
     {

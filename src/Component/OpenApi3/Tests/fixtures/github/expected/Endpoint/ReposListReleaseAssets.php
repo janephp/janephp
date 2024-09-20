@@ -8,10 +8,8 @@ class ReposListReleaseAssets extends \Github\Runtime\Client\BaseEndpoint impleme
     protected $repo;
     protected $release_id;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $releaseId release_id parameter
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)

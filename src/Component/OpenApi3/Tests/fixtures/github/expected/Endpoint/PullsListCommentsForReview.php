@@ -10,10 +10,9 @@ class PullsListCommentsForReview extends \Github\Runtime\Client\BaseEndpoint imp
     protected $review_id;
     /**
      * List comments for a specific pull request review.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $pullNumber 
+     * @param string $owner
+     * @param string $repo
+     * @param int $pullNumber
      * @param int $reviewId review_id parameter
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)

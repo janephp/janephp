@@ -13,14 +13,10 @@ class Tag extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $name;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
@@ -31,8 +27,6 @@ class Tag extends \ArrayObject
      */
     protected $externalDocs;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getName() : ?string
@@ -40,8 +34,6 @@ class Tag extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string|null $name
      *
      * @return self
@@ -53,8 +45,6 @@ class Tag extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription() : ?string
@@ -62,8 +52,6 @@ class Tag extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self

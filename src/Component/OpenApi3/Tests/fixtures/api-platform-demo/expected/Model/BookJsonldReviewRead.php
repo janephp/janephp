@@ -13,20 +13,14 @@ class BookJsonldReviewRead extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var mixed
      */
     protected $context;
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
@@ -37,8 +31,6 @@ class BookJsonldReviewRead extends \ArrayObject
      */
     protected $title;
     /**
-     * 
-     *
      * @return mixed
      */
     public function getContext()
@@ -46,8 +38,6 @@ class BookJsonldReviewRead extends \ArrayObject
         return $this->context;
     }
     /**
-     * 
-     *
      * @param mixed $context
      *
      * @return self
@@ -59,8 +49,6 @@ class BookJsonldReviewRead extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -68,8 +56,6 @@ class BookJsonldReviewRead extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -81,8 +67,6 @@ class BookJsonldReviewRead extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -90,8 +74,6 @@ class BookJsonldReviewRead extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self

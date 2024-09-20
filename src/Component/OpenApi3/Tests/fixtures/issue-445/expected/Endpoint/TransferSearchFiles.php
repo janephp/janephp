@@ -5,9 +5,7 @@ namespace PicturePark\API\Endpoint;
 class TransferSearchFiles extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-     * 
-     *
-     * @param \PicturePark\API\Model\FileTransferSearchRequest $requestBody 
+     * @param \PicturePark\API\Model\FileTransferSearchRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\FileTransferSearchRequest $requestBody)
     {

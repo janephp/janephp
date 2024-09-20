@@ -5,9 +5,7 @@ namespace PicturePark\API\Endpoint;
 class UserUpdateIdentityProviderMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-     * 
-     *
-     * @param \PicturePark\API\Model\UserUpdateIdentityProviderManyRequest $requestBody 
+     * @param \PicturePark\API\Model\UserUpdateIdentityProviderManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\UserUpdateIdentityProviderManyRequest $requestBody)
     {

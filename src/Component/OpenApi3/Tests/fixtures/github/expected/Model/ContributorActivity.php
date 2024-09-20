@@ -13,26 +13,18 @@ class ContributorActivity extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var ContributorActivityAuthor|null
      */
     protected $author;
     /**
-     * 
-     *
      * @var int
      */
     protected $total;
     /**
-     * 
-     *
      * @var list<ContributorActivityWeeksItem>
      */
     protected $weeks;
     /**
-     * 
-     *
      * @return ContributorActivityAuthor|null
      */
     public function getAuthor(): ?ContributorActivityAuthor
@@ -40,8 +32,6 @@ class ContributorActivity extends \ArrayObject
         return $this->author;
     }
     /**
-     * 
-     *
      * @param ContributorActivityAuthor|null $author
      *
      * @return self
@@ -53,8 +43,6 @@ class ContributorActivity extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getTotal(): int
@@ -62,8 +50,6 @@ class ContributorActivity extends \ArrayObject
         return $this->total;
     }
     /**
-     * 
-     *
      * @param int $total
      *
      * @return self
@@ -75,8 +61,6 @@ class ContributorActivity extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ContributorActivityWeeksItem>
      */
     public function getWeeks(): array
@@ -84,8 +68,6 @@ class ContributorActivity extends \ArrayObject
         return $this->weeks;
     }
     /**
-     * 
-     *
      * @param list<ContributorActivityWeeksItem> $weeks
      *
      * @return self

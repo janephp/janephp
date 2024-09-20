@@ -9,11 +9,10 @@ class ReposCreateOrUpdateFileContents extends \Github\Runtime\Client\BaseEndpoin
     protected $path;
     /**
      * Creates a new file or replaces an existing file in a repository.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param string $path path+ parameter
-     * @param null|\Github\Model\ReposOwnerRepoContentsPathPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoContentsPathPutBody $requestBody
      */
     public function __construct(string $owner, string $repo, string $path, ?\Github\Model\ReposOwnerRepoContentsPathPutBody $requestBody = null)
     {

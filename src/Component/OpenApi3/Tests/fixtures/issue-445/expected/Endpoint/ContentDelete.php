@@ -7,7 +7,6 @@ class ContentDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     protected $id;
     /**
     * Deletes a single content. The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the content and all files will be hard deleted.
-    *
     * @param string $id The ID of the content to delete.
     * @param array $queryParameters {
     *     @var bool $forceReferenceRemoval A value indicating whether references to the content should be removed.

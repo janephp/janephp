@@ -19,12 +19,12 @@ class SwarmInfo
      */
     protected $nodeID = '';
     /**
-    * IP address at which this node can be reached by other nodes in the
-    swarm.
-    
-    *
-    * @var string
-    */
+     * IP address at which this node can be reached by other nodes in the
+     * swarm.
+     * 
+     *
+     * @var string
+     */
     protected $nodeAddr = '';
     /**
      * Current local status of this node.
@@ -33,19 +33,16 @@ class SwarmInfo
      */
     protected $localNodeState = '';
     /**
-     * 
-     *
      * @var bool
      */
     protected $controlAvailable = false;
     /**
-     * 
-     *
      * @var string
      */
     protected $error = '';
     /**
      * List of ID's and addresses of other managers in the swarm.
+     * 
      *
      * @var list<PeerNode>|null
      */
@@ -63,12 +60,12 @@ class SwarmInfo
      */
     protected $managers;
     /**
-    * ClusterInfo represents information about the swarm as is returned by the
-    "/info" endpoint. Join-tokens are not included.
-    
-    *
-    * @var ClusterInfo|null
-    */
+     * ClusterInfo represents information about the swarm as is returned by the
+     * "/info" endpoint. Join-tokens are not included.
+     * 
+     *
+     * @var ClusterInfo|null
+     */
     protected $cluster;
     /**
      * Unique identifier of for this node in the swarm.
@@ -93,12 +90,12 @@ class SwarmInfo
         return $this;
     }
     /**
-    * IP address at which this node can be reached by other nodes in the
-    swarm.
-    
-    *
-    * @return string
-    */
+     * IP address at which this node can be reached by other nodes in the
+     * swarm.
+     * 
+     *
+     * @return string
+     */
     public function getNodeAddr(): string
     {
         return $this->nodeAddr;
@@ -141,8 +138,6 @@ class SwarmInfo
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getControlAvailable(): bool
@@ -150,8 +145,6 @@ class SwarmInfo
         return $this->controlAvailable;
     }
     /**
-     * 
-     *
      * @param bool $controlAvailable
      *
      * @return self
@@ -163,8 +156,6 @@ class SwarmInfo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getError(): string
@@ -172,8 +163,6 @@ class SwarmInfo
         return $this->error;
     }
     /**
-     * 
-     *
      * @param string $error
      *
      * @return self
@@ -186,6 +175,7 @@ class SwarmInfo
     }
     /**
      * List of ID's and addresses of other managers in the swarm.
+     * 
      *
      * @return list<PeerNode>|null
      */
@@ -251,12 +241,12 @@ class SwarmInfo
         return $this;
     }
     /**
-    * ClusterInfo represents information about the swarm as is returned by the
-    "/info" endpoint. Join-tokens are not included.
-    
-    *
-    * @return ClusterInfo|null
-    */
+     * ClusterInfo represents information about the swarm as is returned by the
+     * "/info" endpoint. Join-tokens are not included.
+     * 
+     *
+     * @return ClusterInfo|null
+     */
     public function getCluster(): ?ClusterInfo
     {
         return $this->cluster;

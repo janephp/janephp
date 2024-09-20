@@ -6,8 +6,6 @@ class GistsUnstar extends \Github\Runtime\Client\BaseEndpoint implements \Github
 {
     protected $gist_id;
     /**
-     * 
-     *
      * @param string $gistId gist_id parameter
      */
     public function __construct(string $gistId)

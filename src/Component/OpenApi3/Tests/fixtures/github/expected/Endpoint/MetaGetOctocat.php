@@ -6,7 +6,6 @@ class MetaGetOctocat extends \Github\Runtime\Client\BaseEndpoint implements \Git
 {
     /**
      * Get the octocat as ASCII art
-     *
      * @param array $queryParameters {
      *     @var string $s The words to show in Octocat's speech bubble
      * }

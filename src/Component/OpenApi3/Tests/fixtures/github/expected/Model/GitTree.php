@@ -13,20 +13,14 @@ class GitTree extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $sha;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var bool
      */
     protected $truncated;
@@ -37,8 +31,6 @@ class GitTree extends \ArrayObject
      */
     protected $tree;
     /**
-     * 
-     *
      * @return string
      */
     public function getSha(): string
@@ -46,8 +38,6 @@ class GitTree extends \ArrayObject
         return $this->sha;
     }
     /**
-     * 
-     *
      * @param string $sha
      *
      * @return self
@@ -59,8 +49,6 @@ class GitTree extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -68,8 +56,6 @@ class GitTree extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -81,8 +67,6 @@ class GitTree extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getTruncated(): bool
@@ -90,8 +74,6 @@ class GitTree extends \ArrayObject
         return $this->truncated;
     }
     /**
-     * 
-     *
      * @param bool $truncated
      *
      * @return self

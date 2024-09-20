@@ -6,8 +6,7 @@ class ListItemCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
 {
     /**
     * Create a new list item.
-    *
-    * @param \PicturePark\API\Model\ListItemCreateRequest $requestBody 
+    * @param \PicturePark\API\Model\ListItemCreateRequest $requestBody
     * @param array $queryParameters {
     *     @var array $resolveBehaviors List of enums that control which parts of the list item are resolved and returned.
     *     @var bool $allowMissingDependencies Allows creating list items that refer to list items or contents that don't exist in the system.

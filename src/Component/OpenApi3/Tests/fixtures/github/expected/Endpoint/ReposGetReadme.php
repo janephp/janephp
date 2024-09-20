@@ -7,16 +7,15 @@ class ReposGetReadme extends \Github\Runtime\Client\BaseEndpoint implements \Git
     protected $owner;
     protected $repo;
     /**
-    * Gets the preferred README for a repository.
-    
-    READMEs support [custom media types](https://developer.github.com/v3/repos/contents/#custom-media-types) for retrieving the raw content or rendered HTML.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param array $queryParameters {
-    *     @var string $ref The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`)
-    * }
-    */
+     * Gets the preferred README for a repository.
+     *
+     * READMEs support [custom media types](https://developer.github.com/v3/repos/contents/#custom-media-types) for retrieving the raw content or rendered HTML.
+     * @param string $owner
+     * @param string $repo
+     * @param array $queryParameters {
+     *     @var string $ref The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`)
+     * }
+     */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {
         $this->owner = $owner;

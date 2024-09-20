@@ -6,8 +6,7 @@ class ShareCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint implement
 {
     /**
      * Create a new share (basic or embed). The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
-     * @param \PicturePark\API\Model\ShareBaseCreateRequest $requestBody 
+     * @param \PicturePark\API\Model\ShareBaseCreateRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\ShareBaseCreateRequest $requestBody)
     {

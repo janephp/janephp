@@ -13,20 +13,14 @@ class FooGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $bar;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -34,8 +28,6 @@ class FooGetResponse200 extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -47,8 +39,6 @@ class FooGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBar(): string
@@ -56,8 +46,6 @@ class FooGetResponse200 extends \ArrayObject
         return $this->bar;
     }
     /**
-     * 
-     *
      * @param string $bar
      *
      * @return self

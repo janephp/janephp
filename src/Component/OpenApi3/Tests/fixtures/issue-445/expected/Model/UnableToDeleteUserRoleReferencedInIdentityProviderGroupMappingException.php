@@ -13,74 +13,50 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $traceLevel;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $traceId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $traceJobId;
     /**
-     * 
-     *
      * @var int
      */
     protected $httpStatusCode;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $exceptionMessage;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $customerId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $customerAlias;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $userId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $userRoleId;
     /**
-     * 
-     *
      * @var list<string>|null
      */
     protected $identityProviderIds;
     /**
-     * 
-     *
      * @return string
      */
     public function getTraceLevel(): string
@@ -88,8 +64,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this->traceLevel;
     }
     /**
-     * 
-     *
      * @param string $traceLevel
      *
      * @return self
@@ -101,8 +75,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTraceId(): ?string
@@ -110,8 +82,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this->traceId;
     }
     /**
-     * 
-     *
      * @param string|null $traceId
      *
      * @return self
@@ -123,8 +93,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTraceJobId(): ?string
@@ -132,8 +100,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this->traceJobId;
     }
     /**
-     * 
-     *
      * @param string|null $traceJobId
      *
      * @return self
@@ -145,8 +111,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getHttpStatusCode(): int
@@ -154,8 +118,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this->httpStatusCode;
     }
     /**
-     * 
-     *
      * @param int $httpStatusCode
      *
      * @return self
@@ -167,8 +129,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExceptionMessage(): ?string
@@ -176,8 +136,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this->exceptionMessage;
     }
     /**
-     * 
-     *
      * @param string|null $exceptionMessage
      *
      * @return self
@@ -189,8 +147,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -198,8 +154,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      *
      * @return self
@@ -211,8 +165,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCustomerId(): ?string
@@ -220,8 +172,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this->customerId;
     }
     /**
-     * 
-     *
      * @param string|null $customerId
      *
      * @return self
@@ -233,8 +183,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCustomerAlias(): ?string
@@ -242,8 +190,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this->customerAlias;
     }
     /**
-     * 
-     *
      * @param string|null $customerAlias
      *
      * @return self
@@ -255,8 +201,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getUserId(): ?string
@@ -264,8 +208,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this->userId;
     }
     /**
-     * 
-     *
      * @param string|null $userId
      *
      * @return self
@@ -277,8 +219,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getUserRoleId(): ?string
@@ -286,8 +226,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this->userRoleId;
     }
     /**
-     * 
-     *
      * @param string|null $userRoleId
      *
      * @return self
@@ -299,8 +237,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>|null
      */
     public function getIdentityProviderIds(): ?array
@@ -308,8 +244,6 @@ class UnableToDeleteUserRoleReferencedInIdentityProviderGroupMappingException ex
         return $this->identityProviderIds;
     }
     /**
-     * 
-     *
      * @param list<string>|null $identityProviderIds
      *
      * @return self

@@ -7,8 +7,7 @@ class ApiParchmentsPost extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint im
     protected $accept;
     /**
      * Creates a Parchment resource.
-     *
-     * @param \ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment $requestBody 
+     * @param \ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment $requestBody
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      */
     public function __construct($requestBody, array $accept = [])

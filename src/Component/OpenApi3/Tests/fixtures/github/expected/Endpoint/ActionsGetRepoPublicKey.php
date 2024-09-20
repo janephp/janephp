@@ -8,9 +8,8 @@ class ActionsGetRepoPublicKey extends \Github\Runtime\Client\BaseEndpoint implem
     protected $repo;
     /**
      * Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `secrets` repository permission to use this endpoint.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      */
     public function __construct(string $owner, string $repo)
     {

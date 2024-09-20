@@ -13,14 +13,10 @@ class FooBar extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var Foo|Bar
      */
     protected $what;
     /**
-     * 
-     *
      * @return Foo|Bar
      */
     public function getWhat()
@@ -28,8 +24,6 @@ class FooBar extends \ArrayObject
         return $this->what;
     }
     /**
-     * 
-     *
      * @param Foo|Bar $what
      *
      * @return self

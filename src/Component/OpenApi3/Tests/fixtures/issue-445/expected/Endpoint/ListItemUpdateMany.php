@@ -6,8 +6,7 @@ class ListItemUpdateMany extends \PicturePark\API\Runtime\Client\BaseEndpoint im
 {
     /**
      * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
-     * @param \PicturePark\API\Model\ListItemUpdateManyRequest $requestBody 
+     * @param \PicturePark\API\Model\ListItemUpdateManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\ListItemUpdateManyRequest $requestBody)
     {

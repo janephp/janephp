@@ -9,11 +9,10 @@ class ReposUpdateRelease extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $release_id;
     /**
      * Users with push access to the repository can edit a release.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $releaseId release_id parameter
-     * @param null|\Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $releaseId, ?\Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody $requestBody = null)
     {

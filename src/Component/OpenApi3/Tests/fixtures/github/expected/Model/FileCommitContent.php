@@ -13,68 +13,46 @@ class FileCommitContent extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $path;
     /**
-     * 
-     *
      * @var string
      */
     protected $sha;
     /**
-     * 
-     *
      * @var int
      */
     protected $size;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $gitUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $downloadUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var FileCommitContentLinks
      */
     protected $links;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -82,8 +60,6 @@ class FileCommitContent extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -95,8 +71,6 @@ class FileCommitContent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPath(): string
@@ -104,8 +78,6 @@ class FileCommitContent extends \ArrayObject
         return $this->path;
     }
     /**
-     * 
-     *
      * @param string $path
      *
      * @return self
@@ -117,8 +89,6 @@ class FileCommitContent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSha(): string
@@ -126,8 +96,6 @@ class FileCommitContent extends \ArrayObject
         return $this->sha;
     }
     /**
-     * 
-     *
      * @param string $sha
      *
      * @return self
@@ -139,8 +107,6 @@ class FileCommitContent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getSize(): int
@@ -148,8 +114,6 @@ class FileCommitContent extends \ArrayObject
         return $this->size;
     }
     /**
-     * 
-     *
      * @param int $size
      *
      * @return self
@@ -161,8 +125,6 @@ class FileCommitContent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -170,8 +132,6 @@ class FileCommitContent extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -183,8 +143,6 @@ class FileCommitContent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -192,8 +150,6 @@ class FileCommitContent extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -205,8 +161,6 @@ class FileCommitContent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGitUrl(): string
@@ -214,8 +168,6 @@ class FileCommitContent extends \ArrayObject
         return $this->gitUrl;
     }
     /**
-     * 
-     *
      * @param string $gitUrl
      *
      * @return self
@@ -227,8 +179,6 @@ class FileCommitContent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDownloadUrl(): string
@@ -236,8 +186,6 @@ class FileCommitContent extends \ArrayObject
         return $this->downloadUrl;
     }
     /**
-     * 
-     *
      * @param string $downloadUrl
      *
      * @return self
@@ -249,8 +197,6 @@ class FileCommitContent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -258,8 +204,6 @@ class FileCommitContent extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -271,8 +215,6 @@ class FileCommitContent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return FileCommitContentLinks
      */
     public function getLinks(): FileCommitContentLinks
@@ -280,8 +222,6 @@ class FileCommitContent extends \ArrayObject
         return $this->links;
     }
     /**
-     * 
-     *
      * @param FileCommitContentLinks $links
      *
      * @return self

@@ -7,9 +7,8 @@ class UserReview extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
     protected $id;
     /**
      * Users with AuthorizationState != ToBeReviewed are considered reviewed.
-     *
      * @param string $id User ID to action on.
-     * @param \PicturePark\API\Model\UserReviewRequest $requestBody 
+     * @param \PicturePark\API\Model\UserReviewRequest $requestBody
      */
     public function __construct(string $id, \PicturePark\API\Model\UserReviewRequest $requestBody)
     {

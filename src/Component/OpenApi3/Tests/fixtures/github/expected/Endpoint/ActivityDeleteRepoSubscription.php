@@ -8,9 +8,8 @@ class ActivityDeleteRepoSubscription extends \Github\Runtime\Client\BaseEndpoint
     protected $repo;
     /**
      * This endpoint should only be used to stop watching a repository. To control whether or not you wish to receive notifications from a repository, [set the repository's subscription manually](https://developer.github.com/v3/activity/watching/#set-a-repository-subscription).
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      */
     public function __construct(string $owner, string $repo)
     {

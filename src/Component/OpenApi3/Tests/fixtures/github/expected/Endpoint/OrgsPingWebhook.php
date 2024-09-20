@@ -8,9 +8,8 @@ class OrgsPingWebhook extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     protected $hook_id;
     /**
      * This will trigger a [ping event](https://developer.github.com/webhooks/#ping-event) to be sent to the hook.
-     *
-     * @param string $org 
-     * @param int $hookId 
+     * @param string $org
+     * @param int $hookId
      */
     public function __construct(string $org, int $hookId)
     {

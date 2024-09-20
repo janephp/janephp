@@ -8,10 +8,9 @@ class MigrationsStartImport extends \Github\Runtime\Client\BaseEndpoint implemen
     protected $repo;
     /**
      * Start a source import to a GitHub repository using GitHub Importer.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param null|\Github\Model\ReposOwnerRepoImportPutBody $requestBody 
+     * @param string $owner
+     * @param string $repo
+     * @param null|\Github\Model\ReposOwnerRepoImportPutBody $requestBody
      */
     public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoImportPutBody $requestBody = null)
     {

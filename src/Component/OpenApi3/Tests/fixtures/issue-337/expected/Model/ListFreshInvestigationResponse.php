@@ -13,20 +13,14 @@ class ListFreshInvestigationResponse extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $totalCount;
     /**
-     * 
-     *
      * @var list<ListFreshInvestigationResponseOrdersItem>
      */
     protected $orders;
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalCount(): int
@@ -34,8 +28,6 @@ class ListFreshInvestigationResponse extends \ArrayObject
         return $this->totalCount;
     }
     /**
-     * 
-     *
      * @param int $totalCount
      *
      * @return self
@@ -47,8 +39,6 @@ class ListFreshInvestigationResponse extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ListFreshInvestigationResponseOrdersItem>
      */
     public function getOrders(): array
@@ -56,8 +46,6 @@ class ListFreshInvestigationResponse extends \ArrayObject
         return $this->orders;
     }
     /**
-     * 
-     *
      * @param list<ListFreshInvestigationResponseOrdersItem> $orders
      *
      * @return self

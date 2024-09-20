@@ -6,10 +6,8 @@ class PatchEntity extends \Gounlaf\JanephpBug\Runtime\Client\BaseEndpoint implem
 {
     protected $id;
     /**
-     * 
-     *
      * @param int $id ID of the entity
-     * @param \Gounlaf\JanephpBug\Model\PatchableEntity $requestBody 
+     * @param \Gounlaf\JanephpBug\Model\PatchableEntity $requestBody
      */
     public function __construct(int $id, \Gounlaf\JanephpBug\Model\PatchableEntity $requestBody)
     {

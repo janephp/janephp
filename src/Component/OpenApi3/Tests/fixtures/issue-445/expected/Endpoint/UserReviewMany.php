@@ -6,8 +6,7 @@ class UserReviewMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
 {
     /**
      * Users with AuthorizationState != ToBeReviewed are considered reviewed. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
-     * @param \PicturePark\API\Model\UserReviewManyRequest $requestBody 
+     * @param \PicturePark\API\Model\UserReviewManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\UserReviewManyRequest $requestBody)
     {

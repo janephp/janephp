@@ -67,8 +67,6 @@ class Output
      */
     protected $dynamicRendering;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
@@ -244,8 +242,6 @@ class Output
         $this->dynamicRendering = $dynamicRendering;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -253,8 +249,6 @@ class Output
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      */
     public function setKind(string $kind)

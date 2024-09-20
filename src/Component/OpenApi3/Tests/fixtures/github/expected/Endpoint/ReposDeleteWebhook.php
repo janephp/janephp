@@ -8,11 +8,9 @@ class ReposDeleteWebhook extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $repo;
     protected $hook_id;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $hookId 
+     * @param string $owner
+     * @param string $repo
+     * @param int $hookId
      */
     public function __construct(string $owner, string $repo, int $hookId)
     {

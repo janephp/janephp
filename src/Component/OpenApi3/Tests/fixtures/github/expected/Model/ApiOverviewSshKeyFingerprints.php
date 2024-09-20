@@ -13,32 +13,22 @@ class ApiOverviewSshKeyFingerprints extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $mD5RSA;
     /**
-     * 
-     *
      * @var string
      */
     protected $mD5DSA;
     /**
-     * 
-     *
      * @var string
      */
     protected $sHA256RSA;
     /**
-     * 
-     *
      * @var string
      */
     protected $sHA256DSA;
     /**
-     * 
-     *
      * @return string
      */
     public function getMD5RSA(): string
@@ -46,8 +36,6 @@ class ApiOverviewSshKeyFingerprints extends \ArrayObject
         return $this->mD5RSA;
     }
     /**
-     * 
-     *
      * @param string $mD5RSA
      *
      * @return self
@@ -59,8 +47,6 @@ class ApiOverviewSshKeyFingerprints extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMD5DSA(): string
@@ -68,8 +54,6 @@ class ApiOverviewSshKeyFingerprints extends \ArrayObject
         return $this->mD5DSA;
     }
     /**
-     * 
-     *
      * @param string $mD5DSA
      *
      * @return self
@@ -81,8 +65,6 @@ class ApiOverviewSshKeyFingerprints extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSHA256RSA(): string
@@ -90,8 +72,6 @@ class ApiOverviewSshKeyFingerprints extends \ArrayObject
         return $this->sHA256RSA;
     }
     /**
-     * 
-     *
      * @param string $sHA256RSA
      *
      * @return self
@@ -103,8 +83,6 @@ class ApiOverviewSshKeyFingerprints extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSHA256DSA(): string
@@ -112,8 +90,6 @@ class ApiOverviewSshKeyFingerprints extends \ArrayObject
         return $this->sHA256DSA;
     }
     /**
-     * 
-     *
      * @param string $sHA256DSA
      *
      * @return self

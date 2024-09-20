@@ -13,26 +13,18 @@ class ReviewJsonldReviewRead extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var mixed
      */
     protected $context;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $id2;
@@ -57,8 +49,6 @@ class ReviewJsonldReviewRead extends \ArrayObject
      */
     protected $letter;
     /**
-     * 
-     *
      * @var BookJsonldReviewRead
      */
     protected $book;
@@ -75,8 +65,6 @@ class ReviewJsonldReviewRead extends \ArrayObject
      */
     protected $publicationDate;
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -84,8 +72,6 @@ class ReviewJsonldReviewRead extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -97,8 +83,6 @@ class ReviewJsonldReviewRead extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -106,8 +90,6 @@ class ReviewJsonldReviewRead extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -119,8 +101,6 @@ class ReviewJsonldReviewRead extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getContext()
@@ -128,8 +108,6 @@ class ReviewJsonldReviewRead extends \ArrayObject
         return $this->context;
     }
     /**
-     * 
-     *
      * @param mixed $context
      *
      * @return self
@@ -141,8 +119,6 @@ class ReviewJsonldReviewRead extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getId2(): ?string
@@ -150,8 +126,6 @@ class ReviewJsonldReviewRead extends \ArrayObject
         return $this->id2;
     }
     /**
-     * 
-     *
      * @param string|null $id2
      *
      * @return self
@@ -233,8 +207,6 @@ class ReviewJsonldReviewRead extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BookJsonldReviewRead
      */
     public function getBook(): BookJsonldReviewRead
@@ -242,8 +214,6 @@ class ReviewJsonldReviewRead extends \ArrayObject
         return $this->book;
     }
     /**
-     * 
-     *
      * @param BookJsonldReviewRead $book
      *
      * @return self

@@ -6,15 +6,13 @@ class PluginEnable extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
 {
     protected $name;
     /**
-    * 
-    *
-    * @param string $name The name of the plugin. The `:latest` tag is optional, and is the
-    default if omitted.
-    
-    * @param array $queryParameters {
-    *     @var int $timeout Set the HTTP client timeout (in seconds)
-    * }
-    */
+     * @param string $name The name of the plugin. The `:latest` tag is optional, and is the
+     * default if omitted.
+     * 
+     * @param array $queryParameters {
+     *     @var int $timeout Set the HTTP client timeout (in seconds)
+     * }
+     */
     public function __construct(string $name, array $queryParameters = [])
     {
         $this->name = $name;

@@ -8,8 +8,7 @@ class MigrationsDeleteArchiveForOrg extends \Github\Runtime\Client\BaseEndpoint 
     protected $migration_id;
     /**
      * Deletes a previous migration archive. Migration archives are automatically deleted after seven days.
-     *
-     * @param string $org 
+     * @param string $org
      * @param int $migrationId migration_id parameter
      */
     public function __construct(string $org, int $migrationId)

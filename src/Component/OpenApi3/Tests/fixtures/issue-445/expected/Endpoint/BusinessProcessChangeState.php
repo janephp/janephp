@@ -7,9 +7,8 @@ class BusinessProcessChangeState extends \PicturePark\API\Runtime\Client\BaseEnd
     protected $id;
     /**
      * Only available for business processes created through BusinessProcessCreateRequest). The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
      * @param string $id The business process id.
-     * @param \PicturePark\API\Model\BusinessProcessStateChangeRequest $requestBody 
+     * @param \PicturePark\API\Model\BusinessProcessStateChangeRequest $requestBody
      */
     public function __construct(string $id, \PicturePark\API\Model\BusinessProcessStateChangeRequest $requestBody)
     {

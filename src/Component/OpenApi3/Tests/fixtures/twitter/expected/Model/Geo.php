@@ -13,14 +13,10 @@ class Geo extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var list<float>
      */
     protected $bbox;
@@ -31,14 +27,10 @@ class Geo extends \ArrayObject
      */
     protected $geometry;
     /**
-     * 
-     *
      * @var array<string, mixed>
      */
     protected $properties;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -46,8 +38,6 @@ class Geo extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -59,8 +49,6 @@ class Geo extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<float>
      */
     public function getBbox(): array
@@ -68,8 +56,6 @@ class Geo extends \ArrayObject
         return $this->bbox;
     }
     /**
-     * 
-     *
      * @param list<float> $bbox
      *
      * @return self
@@ -103,8 +89,6 @@ class Geo extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, mixed>
      */
     public function getProperties(): iterable
@@ -112,8 +96,6 @@ class Geo extends \ArrayObject
         return $this->properties;
     }
     /**
-     * 
-     *
      * @param array<string, mixed> $properties
      *
      * @return self

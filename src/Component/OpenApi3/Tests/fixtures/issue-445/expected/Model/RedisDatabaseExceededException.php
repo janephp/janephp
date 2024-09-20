@@ -13,74 +13,50 @@ class RedisDatabaseExceededException extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $traceLevel;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $traceId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $traceJobId;
     /**
-     * 
-     *
      * @var int
      */
     protected $httpStatusCode;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $exceptionMessage;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $customerId;
     /**
-     * 
-     *
      * @var int
      */
     protected $customerCount;
     /**
-     * 
-     *
      * @var int
      */
     protected $maxCount;
     /**
-     * 
-     *
      * @var int
      */
     protected $startIndex;
     /**
-     * 
-     *
      * @var int
      */
     protected $redisDatabaseCount;
     /**
-     * 
-     *
      * @return string
      */
     public function getTraceLevel(): string
@@ -88,8 +64,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this->traceLevel;
     }
     /**
-     * 
-     *
      * @param string $traceLevel
      *
      * @return self
@@ -101,8 +75,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTraceId(): ?string
@@ -110,8 +82,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this->traceId;
     }
     /**
-     * 
-     *
      * @param string|null $traceId
      *
      * @return self
@@ -123,8 +93,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTraceJobId(): ?string
@@ -132,8 +100,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this->traceJobId;
     }
     /**
-     * 
-     *
      * @param string|null $traceJobId
      *
      * @return self
@@ -145,8 +111,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getHttpStatusCode(): int
@@ -154,8 +118,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this->httpStatusCode;
     }
     /**
-     * 
-     *
      * @param int $httpStatusCode
      *
      * @return self
@@ -167,8 +129,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExceptionMessage(): ?string
@@ -176,8 +136,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this->exceptionMessage;
     }
     /**
-     * 
-     *
      * @param string|null $exceptionMessage
      *
      * @return self
@@ -189,8 +147,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -198,8 +154,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      *
      * @return self
@@ -211,8 +165,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCustomerId(): ?string
@@ -220,8 +172,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this->customerId;
     }
     /**
-     * 
-     *
      * @param string|null $customerId
      *
      * @return self
@@ -233,8 +183,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getCustomerCount(): int
@@ -242,8 +190,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this->customerCount;
     }
     /**
-     * 
-     *
      * @param int $customerCount
      *
      * @return self
@@ -255,8 +201,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getMaxCount(): int
@@ -264,8 +208,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this->maxCount;
     }
     /**
-     * 
-     *
      * @param int $maxCount
      *
      * @return self
@@ -277,8 +219,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getStartIndex(): int
@@ -286,8 +226,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this->startIndex;
     }
     /**
-     * 
-     *
      * @param int $startIndex
      *
      * @return self
@@ -299,8 +237,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getRedisDatabaseCount(): int
@@ -308,8 +244,6 @@ class RedisDatabaseExceededException extends \ArrayObject
         return $this->redisDatabaseCount;
     }
     /**
-     * 
-     *
      * @param int $redisDatabaseCount
      *
      * @return self

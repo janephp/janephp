@@ -7,7 +7,6 @@ class OutputFormatDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint im
     protected $id;
     /**
      * Deletes the output format specified by the ID. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
      * @param string $id Output format ID.
      */
     public function __construct(string $id)

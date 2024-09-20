@@ -13,26 +13,18 @@ class GbCompanyReportExampleResponseReportShareCapitalStructure extends \ArrayOb
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportShareCapitalStructureIssuedShareCapital
      */
     protected $issuedShareCapital;
     /**
-     * 
-     *
      * @var float
      */
     protected $numberOfSharesIssued;
     /**
-     * 
-     *
      * @var list<GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem>
      */
     protected $shareHolders;
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportShareCapitalStructureIssuedShareCapital
      */
     public function getIssuedShareCapital(): GbCompanyReportExampleResponseReportShareCapitalStructureIssuedShareCapital
@@ -40,8 +32,6 @@ class GbCompanyReportExampleResponseReportShareCapitalStructure extends \ArrayOb
         return $this->issuedShareCapital;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportShareCapitalStructureIssuedShareCapital $issuedShareCapital
      *
      * @return self
@@ -53,8 +43,6 @@ class GbCompanyReportExampleResponseReportShareCapitalStructure extends \ArrayOb
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getNumberOfSharesIssued(): float
@@ -62,8 +50,6 @@ class GbCompanyReportExampleResponseReportShareCapitalStructure extends \ArrayOb
         return $this->numberOfSharesIssued;
     }
     /**
-     * 
-     *
      * @param float $numberOfSharesIssued
      *
      * @return self
@@ -75,8 +61,6 @@ class GbCompanyReportExampleResponseReportShareCapitalStructure extends \ArrayOb
         return $this;
     }
     /**
-     * 
-     *
      * @return list<GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem>
      */
     public function getShareHolders(): array
@@ -84,8 +68,6 @@ class GbCompanyReportExampleResponseReportShareCapitalStructure extends \ArrayOb
         return $this->shareHolders;
     }
     /**
-     * 
-     *
      * @param list<GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem> $shareHolders
      *
      * @return self

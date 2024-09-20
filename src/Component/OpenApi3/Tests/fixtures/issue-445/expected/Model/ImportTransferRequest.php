@@ -19,11 +19,11 @@ class ImportTransferRequest
      */
     protected $layerSchemaIds;
     /**
-    * The metadata to be assigned to the imported content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
-    by the LayerSchemaIds property.
-    *
-    * @var array<string, mixed>|null
-    */
+     * The metadata to be assigned to the imported content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
+     * by the LayerSchemaIds property.
+     *
+     * @var array<string, mixed>|null
+     */
     protected $metadata;
     /**
      * An optional id list of content permission sets. Controls content accessibility outside of content ownership.
@@ -54,11 +54,11 @@ class ImportTransferRequest
         return $this;
     }
     /**
-    * The metadata to be assigned to the imported content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
-    by the LayerSchemaIds property.
-    *
-    * @return array<string, mixed>|null
-    */
+     * The metadata to be assigned to the imported content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
+     * by the LayerSchemaIds property.
+     *
+     * @return array<string, mixed>|null
+     */
     public function getMetadata(): ?iterable
     {
         return $this->metadata;

@@ -6,7 +6,6 @@ class ContentPermissionSetGetPermissionsMany extends \PicturePark\API\Runtime\Cl
 {
     /**
      * Returns permissions for multiple content permission sets for the current user.
-     *
      * @param array $queryParameters {
      *     @var array $ids Ids
      * }

@@ -5,11 +5,10 @@ namespace PicturePark\API\Endpoint;
 class SchemaUpdateMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Updates multiple existing schemas.
-    Prefer this whenever you have updates for multiple schemas. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param \PicturePark\API\Model\SchemaUpdateManyRequest $requestBody 
-    */
+     * Updates multiple existing schemas.
+     * Prefer this whenever you have updates for multiple schemas. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param \PicturePark\API\Model\SchemaUpdateManyRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\SchemaUpdateManyRequest $requestBody)
     {
         $this->body = $requestBody;

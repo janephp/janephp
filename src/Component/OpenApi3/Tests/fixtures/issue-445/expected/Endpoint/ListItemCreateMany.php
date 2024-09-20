@@ -6,8 +6,7 @@ class ListItemCreateMany extends \PicturePark\API\Runtime\Client\BaseEndpoint im
 {
     /**
      * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
-     * @param \PicturePark\API\Model\ListItemCreateManyRequest $requestBody 
+     * @param \PicturePark\API\Model\ListItemCreateManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\ListItemCreateManyRequest $requestBody)
     {

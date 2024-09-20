@@ -13,32 +13,22 @@ class CreateFreshInvestigationRequest extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var bool
      */
     protected $consent;
     /**
-     * 
-     *
      * @var CreateFreshInvestigationRequestContactInfo
      */
     protected $contactInfo;
     /**
-     * 
-     *
      * @var string
      */
     protected $chargeReference;
     /**
-     * 
-     *
      * @var CreateFreshInvestigationRequestSearchCriteria
      */
     protected $searchCriteria;
     /**
-     * 
-     *
      * @return bool
      */
     public function getConsent(): bool
@@ -46,8 +36,6 @@ class CreateFreshInvestigationRequest extends \ArrayObject
         return $this->consent;
     }
     /**
-     * 
-     *
      * @param bool $consent
      *
      * @return self
@@ -59,8 +47,6 @@ class CreateFreshInvestigationRequest extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CreateFreshInvestigationRequestContactInfo
      */
     public function getContactInfo(): CreateFreshInvestigationRequestContactInfo
@@ -68,8 +54,6 @@ class CreateFreshInvestigationRequest extends \ArrayObject
         return $this->contactInfo;
     }
     /**
-     * 
-     *
      * @param CreateFreshInvestigationRequestContactInfo $contactInfo
      *
      * @return self
@@ -81,8 +65,6 @@ class CreateFreshInvestigationRequest extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getChargeReference(): string
@@ -90,8 +72,6 @@ class CreateFreshInvestigationRequest extends \ArrayObject
         return $this->chargeReference;
     }
     /**
-     * 
-     *
      * @param string $chargeReference
      *
      * @return self
@@ -103,8 +83,6 @@ class CreateFreshInvestigationRequest extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CreateFreshInvestigationRequestSearchCriteria
      */
     public function getSearchCriteria(): CreateFreshInvestigationRequestSearchCriteria
@@ -112,8 +90,6 @@ class CreateFreshInvestigationRequest extends \ArrayObject
         return $this->searchCriteria;
     }
     /**
-     * 
-     *
      * @param CreateFreshInvestigationRequestSearchCriteria $searchCriteria
      *
      * @return self

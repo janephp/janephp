@@ -13,20 +13,14 @@ class ProgressDetail
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $current;
     /**
-     * 
-     *
      * @var int
      */
     protected $total;
     /**
-     * 
-     *
      * @return int
      */
     public function getCurrent(): int
@@ -34,8 +28,6 @@ class ProgressDetail
         return $this->current;
     }
     /**
-     * 
-     *
      * @param int $current
      *
      * @return self
@@ -47,8 +39,6 @@ class ProgressDetail
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getTotal(): int
@@ -56,8 +46,6 @@ class ProgressDetail
         return $this->total;
     }
     /**
-     * 
-     *
      * @param int $total
      *
      * @return self

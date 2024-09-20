@@ -7,8 +7,7 @@ class TeamsGetLegacy extends \Github\Runtime\Client\BaseEndpoint implements \Git
     protected $team_id;
     /**
      * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the [Get a team by name](https://developer.github.com/v3/teams/#get-a-team-by-name) endpoint.
-     *
-     * @param int $teamId 
+     * @param int $teamId
      */
     public function __construct(int $teamId)
     {

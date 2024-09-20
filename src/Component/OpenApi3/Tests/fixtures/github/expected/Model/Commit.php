@@ -13,74 +13,50 @@ class Commit extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $url;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $sha;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $commentsUrl;
     /**
-     * 
-     *
      * @var CommitCommit
      */
     protected $commit;
     /**
-     * 
-     *
      * @var CommitAuthor|null
      */
     protected $author;
     /**
-     * 
-     *
      * @var CommitCommitter|null
      */
     protected $committer;
     /**
-     * 
-     *
      * @var list<CommitParentsItem>
      */
     protected $parents;
     /**
-     * 
-     *
      * @var CommitStats
      */
     protected $stats;
     /**
-     * 
-     *
      * @var list<CommitFilesItem>
      */
     protected $files;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getUrl(): ?string
@@ -88,8 +64,6 @@ class Commit extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string|null $url
      *
      * @return self
@@ -101,8 +75,6 @@ class Commit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getSha(): ?string
@@ -110,8 +82,6 @@ class Commit extends \ArrayObject
         return $this->sha;
     }
     /**
-     * 
-     *
      * @param string|null $sha
      *
      * @return self
@@ -123,8 +93,6 @@ class Commit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -132,8 +100,6 @@ class Commit extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -145,8 +111,6 @@ class Commit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -154,8 +118,6 @@ class Commit extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -167,8 +129,6 @@ class Commit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommentsUrl(): string
@@ -176,8 +136,6 @@ class Commit extends \ArrayObject
         return $this->commentsUrl;
     }
     /**
-     * 
-     *
      * @param string $commentsUrl
      *
      * @return self
@@ -189,8 +147,6 @@ class Commit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CommitCommit
      */
     public function getCommit(): CommitCommit
@@ -198,8 +154,6 @@ class Commit extends \ArrayObject
         return $this->commit;
     }
     /**
-     * 
-     *
      * @param CommitCommit $commit
      *
      * @return self
@@ -211,8 +165,6 @@ class Commit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CommitAuthor|null
      */
     public function getAuthor(): ?CommitAuthor
@@ -220,8 +172,6 @@ class Commit extends \ArrayObject
         return $this->author;
     }
     /**
-     * 
-     *
      * @param CommitAuthor|null $author
      *
      * @return self
@@ -233,8 +183,6 @@ class Commit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CommitCommitter|null
      */
     public function getCommitter(): ?CommitCommitter
@@ -242,8 +190,6 @@ class Commit extends \ArrayObject
         return $this->committer;
     }
     /**
-     * 
-     *
      * @param CommitCommitter|null $committer
      *
      * @return self
@@ -255,8 +201,6 @@ class Commit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<CommitParentsItem>
      */
     public function getParents(): array
@@ -264,8 +208,6 @@ class Commit extends \ArrayObject
         return $this->parents;
     }
     /**
-     * 
-     *
      * @param list<CommitParentsItem> $parents
      *
      * @return self
@@ -277,8 +219,6 @@ class Commit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CommitStats
      */
     public function getStats(): CommitStats
@@ -286,8 +226,6 @@ class Commit extends \ArrayObject
         return $this->stats;
     }
     /**
-     * 
-     *
      * @param CommitStats $stats
      *
      * @return self
@@ -299,8 +237,6 @@ class Commit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<CommitFilesItem>
      */
     public function getFiles(): array
@@ -308,8 +244,6 @@ class Commit extends \ArrayObject
         return $this->files;
     }
     /**
-     * 
-     *
      * @param list<CommitFilesItem> $files
      *
      * @return self

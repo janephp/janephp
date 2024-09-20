@@ -13,26 +13,18 @@ class PullRequestMinimalBase extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $ref;
     /**
-     * 
-     *
      * @var string
      */
     protected $sha;
     /**
-     * 
-     *
      * @var PullRequestMinimalBaseRepo
      */
     protected $repo;
     /**
-     * 
-     *
      * @return string
      */
     public function getRef(): string
@@ -40,8 +32,6 @@ class PullRequestMinimalBase extends \ArrayObject
         return $this->ref;
     }
     /**
-     * 
-     *
      * @param string $ref
      *
      * @return self
@@ -53,8 +43,6 @@ class PullRequestMinimalBase extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSha(): string
@@ -62,8 +50,6 @@ class PullRequestMinimalBase extends \ArrayObject
         return $this->sha;
     }
     /**
-     * 
-     *
      * @param string $sha
      *
      * @return self
@@ -75,8 +61,6 @@ class PullRequestMinimalBase extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PullRequestMinimalBaseRepo
      */
     public function getRepo(): PullRequestMinimalBaseRepo
@@ -84,8 +68,6 @@ class PullRequestMinimalBase extends \ArrayObject
         return $this->repo;
     }
     /**
-     * 
-     *
      * @param PullRequestMinimalBaseRepo $repo
      *
      * @return self

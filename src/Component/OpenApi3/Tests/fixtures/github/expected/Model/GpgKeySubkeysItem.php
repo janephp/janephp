@@ -13,86 +13,58 @@ class GpgKeySubkeysItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var int
      */
     protected $primaryKeyId;
     /**
-     * 
-     *
      * @var string
      */
     protected $keyId;
     /**
-     * 
-     *
      * @var string
      */
     protected $publicKey;
     /**
-     * 
-     *
      * @var list<mixed>
      */
     protected $emails;
     /**
-     * 
-     *
      * @var list<mixed>
      */
     protected $subkeys;
     /**
-     * 
-     *
      * @var bool
      */
     protected $canSign;
     /**
-     * 
-     *
      * @var bool
      */
     protected $canEncryptComms;
     /**
-     * 
-     *
      * @var bool
      */
     protected $canEncryptStorage;
     /**
-     * 
-     *
      * @var bool
      */
     protected $canCertify;
     /**
-     * 
-     *
      * @var string
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $expiresAt;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $rawKey;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -100,8 +72,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -113,8 +83,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getPrimaryKeyId(): int
@@ -122,8 +90,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this->primaryKeyId;
     }
     /**
-     * 
-     *
      * @param int $primaryKeyId
      *
      * @return self
@@ -135,8 +101,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKeyId(): string
@@ -144,8 +108,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this->keyId;
     }
     /**
-     * 
-     *
      * @param string $keyId
      *
      * @return self
@@ -157,8 +119,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPublicKey(): string
@@ -166,8 +126,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this->publicKey;
     }
     /**
-     * 
-     *
      * @param string $publicKey
      *
      * @return self
@@ -179,8 +137,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<mixed>
      */
     public function getEmails(): array
@@ -188,8 +144,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this->emails;
     }
     /**
-     * 
-     *
      * @param list<mixed> $emails
      *
      * @return self
@@ -201,8 +155,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<mixed>
      */
     public function getSubkeys(): array
@@ -210,8 +162,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this->subkeys;
     }
     /**
-     * 
-     *
      * @param list<mixed> $subkeys
      *
      * @return self
@@ -223,8 +173,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getCanSign(): bool
@@ -232,8 +180,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this->canSign;
     }
     /**
-     * 
-     *
      * @param bool $canSign
      *
      * @return self
@@ -245,8 +191,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getCanEncryptComms(): bool
@@ -254,8 +198,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this->canEncryptComms;
     }
     /**
-     * 
-     *
      * @param bool $canEncryptComms
      *
      * @return self
@@ -267,8 +209,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getCanEncryptStorage(): bool
@@ -276,8 +216,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this->canEncryptStorage;
     }
     /**
-     * 
-     *
      * @param bool $canEncryptStorage
      *
      * @return self
@@ -289,8 +227,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getCanCertify(): bool
@@ -298,8 +234,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this->canCertify;
     }
     /**
-     * 
-     *
      * @param bool $canCertify
      *
      * @return self
@@ -311,8 +245,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCreatedAt(): string
@@ -320,8 +252,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param string $createdAt
      *
      * @return self
@@ -333,8 +263,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExpiresAt(): ?string
@@ -342,8 +270,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this->expiresAt;
     }
     /**
-     * 
-     *
      * @param string|null $expiresAt
      *
      * @return self
@@ -355,8 +281,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getRawKey(): ?string
@@ -364,8 +288,6 @@ class GpgKeySubkeysItem extends \ArrayObject
         return $this->rawKey;
     }
     /**
-     * 
-     *
      * @param string|null $rawKey
      *
      * @return self

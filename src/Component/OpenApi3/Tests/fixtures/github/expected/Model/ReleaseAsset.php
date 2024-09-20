@@ -13,26 +13,18 @@ class ReleaseAsset extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $browserDownloadUrl;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
@@ -43,8 +35,6 @@ class ReleaseAsset extends \ArrayObject
      */
     protected $name;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $label;
@@ -55,44 +45,30 @@ class ReleaseAsset extends \ArrayObject
      */
     protected $state;
     /**
-     * 
-     *
      * @var string
      */
     protected $contentType;
     /**
-     * 
-     *
      * @var int
      */
     protected $size;
     /**
-     * 
-     *
      * @var int
      */
     protected $downloadCount;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var ReleaseAssetUploader|null
      */
     protected $uploader;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -100,8 +76,6 @@ class ReleaseAsset extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -113,8 +87,6 @@ class ReleaseAsset extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBrowserDownloadUrl(): string
@@ -122,8 +94,6 @@ class ReleaseAsset extends \ArrayObject
         return $this->browserDownloadUrl;
     }
     /**
-     * 
-     *
      * @param string $browserDownloadUrl
      *
      * @return self
@@ -135,8 +105,6 @@ class ReleaseAsset extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -144,8 +112,6 @@ class ReleaseAsset extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -157,8 +123,6 @@ class ReleaseAsset extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -166,8 +130,6 @@ class ReleaseAsset extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -201,8 +163,6 @@ class ReleaseAsset extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getLabel(): ?string
@@ -210,8 +170,6 @@ class ReleaseAsset extends \ArrayObject
         return $this->label;
     }
     /**
-     * 
-     *
      * @param string|null $label
      *
      * @return self
@@ -245,8 +203,6 @@ class ReleaseAsset extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContentType(): string
@@ -254,8 +210,6 @@ class ReleaseAsset extends \ArrayObject
         return $this->contentType;
     }
     /**
-     * 
-     *
      * @param string $contentType
      *
      * @return self
@@ -267,8 +221,6 @@ class ReleaseAsset extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getSize(): int
@@ -276,8 +228,6 @@ class ReleaseAsset extends \ArrayObject
         return $this->size;
     }
     /**
-     * 
-     *
      * @param int $size
      *
      * @return self
@@ -289,8 +239,6 @@ class ReleaseAsset extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getDownloadCount(): int
@@ -298,8 +246,6 @@ class ReleaseAsset extends \ArrayObject
         return $this->downloadCount;
     }
     /**
-     * 
-     *
      * @param int $downloadCount
      *
      * @return self
@@ -311,8 +257,6 @@ class ReleaseAsset extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -320,8 +264,6 @@ class ReleaseAsset extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -333,8 +275,6 @@ class ReleaseAsset extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -342,8 +282,6 @@ class ReleaseAsset extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -355,8 +293,6 @@ class ReleaseAsset extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ReleaseAssetUploader|null
      */
     public function getUploader(): ?ReleaseAssetUploader
@@ -364,8 +300,6 @@ class ReleaseAsset extends \ArrayObject
         return $this->uploader;
     }
     /**
-     * 
-     *
      * @param ReleaseAssetUploader|null $uploader
      *
      * @return self

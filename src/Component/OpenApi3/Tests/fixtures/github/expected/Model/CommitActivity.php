@@ -13,26 +13,18 @@ class CommitActivity extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<int>
      */
     protected $days;
     /**
-     * 
-     *
      * @var int
      */
     protected $total;
     /**
-     * 
-     *
      * @var int
      */
     protected $week;
     /**
-     * 
-     *
      * @return list<int>
      */
     public function getDays(): array
@@ -40,8 +32,6 @@ class CommitActivity extends \ArrayObject
         return $this->days;
     }
     /**
-     * 
-     *
      * @param list<int> $days
      *
      * @return self
@@ -53,8 +43,6 @@ class CommitActivity extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getTotal(): int
@@ -62,8 +50,6 @@ class CommitActivity extends \ArrayObject
         return $this->total;
     }
     /**
-     * 
-     *
      * @param int $total
      *
      * @return self
@@ -75,8 +61,6 @@ class CommitActivity extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getWeek(): int
@@ -84,8 +68,6 @@ class CommitActivity extends \ArrayObject
         return $this->week;
     }
     /**
-     * 
-     *
      * @param int $week
      *
      * @return self

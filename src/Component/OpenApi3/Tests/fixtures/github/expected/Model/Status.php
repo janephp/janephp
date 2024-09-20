@@ -13,62 +13,42 @@ class Status extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $avatarUrl;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $state;
     /**
-     * 
-     *
      * @var string
      */
     protected $description;
     /**
-     * 
-     *
      * @var string
      */
     protected $targetUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $context;
     /**
-     * 
-     *
      * @var string
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $updatedAt;
@@ -79,8 +59,6 @@ class Status extends \ArrayObject
      */
     protected $creator;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -88,8 +66,6 @@ class Status extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -101,8 +77,6 @@ class Status extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getAvatarUrl(): ?string
@@ -110,8 +84,6 @@ class Status extends \ArrayObject
         return $this->avatarUrl;
     }
     /**
-     * 
-     *
      * @param string|null $avatarUrl
      *
      * @return self
@@ -123,8 +95,6 @@ class Status extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -132,8 +102,6 @@ class Status extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -145,8 +113,6 @@ class Status extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -154,8 +120,6 @@ class Status extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -167,8 +131,6 @@ class Status extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getState(): string
@@ -176,8 +138,6 @@ class Status extends \ArrayObject
         return $this->state;
     }
     /**
-     * 
-     *
      * @param string $state
      *
      * @return self
@@ -189,8 +149,6 @@ class Status extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDescription(): string
@@ -198,8 +156,6 @@ class Status extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string $description
      *
      * @return self
@@ -211,8 +167,6 @@ class Status extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTargetUrl(): string
@@ -220,8 +174,6 @@ class Status extends \ArrayObject
         return $this->targetUrl;
     }
     /**
-     * 
-     *
      * @param string $targetUrl
      *
      * @return self
@@ -233,8 +185,6 @@ class Status extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContext(): string
@@ -242,8 +192,6 @@ class Status extends \ArrayObject
         return $this->context;
     }
     /**
-     * 
-     *
      * @param string $context
      *
      * @return self
@@ -255,8 +203,6 @@ class Status extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCreatedAt(): string
@@ -264,8 +210,6 @@ class Status extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param string $createdAt
      *
      * @return self
@@ -277,8 +221,6 @@ class Status extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUpdatedAt(): string
@@ -286,8 +228,6 @@ class Status extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param string $updatedAt
      *
      * @return self

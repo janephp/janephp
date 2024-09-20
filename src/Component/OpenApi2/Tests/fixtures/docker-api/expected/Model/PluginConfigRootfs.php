@@ -13,20 +13,14 @@ class PluginConfigRootfs
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $diffIds;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -34,8 +28,6 @@ class PluginConfigRootfs
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -47,8 +39,6 @@ class PluginConfigRootfs
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getDiffIds(): array
@@ -56,8 +46,6 @@ class PluginConfigRootfs
         return $this->diffIds;
     }
     /**
-     * 
-     *
      * @param list<string> $diffIds
      *
      * @return self

@@ -25,18 +25,18 @@ class ShareContentDetail
      */
     protected $layerSchemaIds;
     /**
-    * The content data. It's an object of dynamic metadata whose structure is defined in the Content schema specified
-    by the ContentSchemaId property.
-    *
-    * @var array<string, mixed>
-    */
+     * The content data. It's an object of dynamic metadata whose structure is defined in the Content schema specified
+     * by the ContentSchemaId property.
+     *
+     * @var array<string, mixed>
+     */
     protected $content;
     /**
-    * The metadata belonging to the layers of the content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
-    by the LayerSchemaIds property.
-    *
-    * @var array<string, mixed>|null
-    */
+     * The metadata belonging to the layers of the content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
+     * by the LayerSchemaIds property.
+     *
+     * @var array<string, mixed>|null
+     */
     protected $metadata;
     /**
      * Content ID.
@@ -113,11 +113,11 @@ class ShareContentDetail
         return $this;
     }
     /**
-    * The content data. It's an object of dynamic metadata whose structure is defined in the Content schema specified
-    by the ContentSchemaId property.
-    *
-    * @return array<string, mixed>
-    */
+     * The content data. It's an object of dynamic metadata whose structure is defined in the Content schema specified
+     * by the ContentSchemaId property.
+     *
+     * @return array<string, mixed>
+     */
     public function getContent(): iterable
     {
         return $this->content;
@@ -137,11 +137,11 @@ class ShareContentDetail
         return $this;
     }
     /**
-    * The metadata belonging to the layers of the content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
-    by the LayerSchemaIds property.
-    *
-    * @return array<string, mixed>|null
-    */
+     * The metadata belonging to the layers of the content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
+     * by the LayerSchemaIds property.
+     *
+     * @return array<string, mixed>|null
+     */
     public function getMetadata(): ?iterable
     {
         return $this->metadata;

@@ -13,20 +13,14 @@ class GenericResourcesItem
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var GenericResourcesItemNamedResourceSpec
      */
     protected $namedResourceSpec;
     /**
-     * 
-     *
      * @var GenericResourcesItemDiscreteResourceSpec
      */
     protected $discreteResourceSpec;
     /**
-     * 
-     *
      * @return GenericResourcesItemNamedResourceSpec
      */
     public function getNamedResourceSpec(): GenericResourcesItemNamedResourceSpec
@@ -34,8 +28,6 @@ class GenericResourcesItem
         return $this->namedResourceSpec;
     }
     /**
-     * 
-     *
      * @param GenericResourcesItemNamedResourceSpec $namedResourceSpec
      *
      * @return self
@@ -47,8 +39,6 @@ class GenericResourcesItem
         return $this;
     }
     /**
-     * 
-     *
      * @return GenericResourcesItemDiscreteResourceSpec
      */
     public function getDiscreteResourceSpec(): GenericResourcesItemDiscreteResourceSpec
@@ -56,8 +46,6 @@ class GenericResourcesItem
         return $this->discreteResourceSpec;
     }
     /**
-     * 
-     *
      * @param GenericResourcesItemDiscreteResourceSpec $discreteResourceSpec
      *
      * @return self

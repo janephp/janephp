@@ -6,8 +6,7 @@ class UsersDeleteEmailForAuthenticated extends \Github\Runtime\Client\BaseEndpoi
 {
     /**
      * This endpoint is accessible with the `user` scope.
-     *
-     * @param null|mixed $requestBody 
+     * @param null|mixed $requestBody
      */
     public function __construct($requestBody = null)
     {

@@ -8,9 +8,8 @@ class ReposListDeployments extends \Github\Runtime\Client\BaseEndpoint implement
     protected $repo;
     /**
      * Simple filtering of deployments is available via query parameters:
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param array $queryParameters {
      *     @var string $sha The SHA recorded at creation time.
      *     @var string $ref The name of the ref. This can be a branch, tag, or SHA.

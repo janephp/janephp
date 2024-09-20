@@ -7,8 +7,7 @@ class UsersListPublicKeysForUser extends \Github\Runtime\Client\BaseEndpoint imp
     protected $username;
     /**
      * Lists the _verified_ public SSH keys for a user. This is accessible by anyone.
-     *
-     * @param string $username 
+     * @param string $username
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.

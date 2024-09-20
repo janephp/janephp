@@ -13,32 +13,22 @@ class CustomerApp
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $appId;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $name;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $icon;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getAppId(): ?string
@@ -46,8 +36,6 @@ class CustomerApp
         return $this->appId;
     }
     /**
-     * 
-     *
      * @param string|null $appId
      *
      * @return self
@@ -59,8 +47,6 @@ class CustomerApp
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getName()
@@ -68,8 +54,6 @@ class CustomerApp
         return $this->name;
     }
     /**
-     * 
-     *
      * @param mixed $name
      *
      * @return self
@@ -81,8 +65,6 @@ class CustomerApp
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getDescription()
@@ -90,8 +72,6 @@ class CustomerApp
         return $this->description;
     }
     /**
-     * 
-     *
      * @param mixed $description
      *
      * @return self
@@ -103,8 +83,6 @@ class CustomerApp
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getIcon(): ?string
@@ -112,8 +90,6 @@ class CustomerApp
         return $this->icon;
     }
     /**
-     * 
-     *
      * @param string|null $icon
      *
      * @return self

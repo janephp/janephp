@@ -7,7 +7,6 @@ class SchemaGetReferenced extends \PicturePark\API\Runtime\Client\BaseEndpoint i
     protected $id;
     /**
      * Can fetch referencing schemas for 100 schemas at most.
-     *
      * @param string $id The schema ID.
      */
     public function __construct(string $id)

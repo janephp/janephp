@@ -7,7 +7,6 @@ class FilteredEventRules extends \CreditSafe\API\Runtime\Client\BaseEndpoint imp
     protected $countryCode;
     /**
      * Get all available notification event rules for the given `countryCode`. Notification event rules allow you to control which events you wish to monitor for the `companies` contained within a given `portfolio`.
-     *
      * @param string $countryCode ISO/Alpha 2 format country code for which notification event rules will be retured.
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.

@@ -13,20 +13,14 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $message;
     /**
-     * 
-     *
      * @var list<OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItem>
      */
     protected $errors;
     /**
-     * 
-     *
      * @return string
      */
     public function getMessage(): string
@@ -34,8 +28,6 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422 extends \ArrayObject
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string $message
      *
      * @return self
@@ -47,8 +39,6 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItem>
      */
     public function getErrors(): array
@@ -56,8 +46,6 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422 extends \ArrayObject
         return $this->errors;
     }
     /**
-     * 
-     *
      * @param list<OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItem> $errors
      *
      * @return self

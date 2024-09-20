@@ -8,11 +8,9 @@ class ReposUpdateInformationAboutPagesSite extends \Github\Runtime\Client\BaseEn
     protected $repo;
     protected $accept;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param null|\Github\Model\ReposOwnerRepoPagesPutBody $requestBody 
+     * @param string $owner
+     * @param string $repo
+     * @param null|\Github\Model\ReposOwnerRepoPagesPutBody $requestBody
      * @param array $accept Accept content header application/json|application/scim+json
      */
     public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPagesPutBody $requestBody = null, array $accept = [])

@@ -9,10 +9,9 @@ class ActionsCancelWorkflowRun extends \Github\Runtime\Client\BaseEndpoint imple
     protected $run_id;
     /**
      * Cancels a workflow run using its `id`. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this endpoint.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $runId 
+     * @param string $owner
+     * @param string $repo
+     * @param int $runId
      */
     public function __construct(string $owner, string $repo, int $runId)
     {

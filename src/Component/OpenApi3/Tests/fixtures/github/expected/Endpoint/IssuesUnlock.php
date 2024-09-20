@@ -9,9 +9,8 @@ class IssuesUnlock extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     protected $issue_number;
     /**
      * Users with push access can unlock an issue's conversation.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $issueNumber issue_number parameter
      */
     public function __construct(string $owner, string $repo, int $issueNumber)

@@ -6,8 +6,7 @@ class UsersAddEmailForAuthenticated extends \Github\Runtime\Client\BaseEndpoint 
 {
     /**
      * This endpoint is accessible with the `user` scope.
-     *
-     * @param null|mixed $requestBody 
+     * @param null|mixed $requestBody
      */
     public function __construct($requestBody = null)
     {

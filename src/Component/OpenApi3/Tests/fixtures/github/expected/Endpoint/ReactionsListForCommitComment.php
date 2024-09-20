@@ -9,9 +9,8 @@ class ReactionsListForCommitComment extends \Github\Runtime\Client\BaseEndpoint 
     protected $comment_id;
     /**
      * List the reactions to a [commit comment](https://developer.github.com/v3/repos/comments/).
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $commentId comment_id parameter
      * @param array $queryParameters {
      *     @var string $content Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to a commit comment.

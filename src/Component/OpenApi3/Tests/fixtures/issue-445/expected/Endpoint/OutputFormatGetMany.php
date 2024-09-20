@@ -6,7 +6,6 @@ class OutputFormatGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint i
 {
     /**
      * Gets multiple output format details by the output format IDs. Can fetch maximum of 100 output formats at once.
-     *
      * @param array $queryParameters {
      *     @var array $ids Output format IDs to get information about. If this is omitted, all output formats in the system will be returned.
      * }

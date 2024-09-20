@@ -13,14 +13,10 @@ class TestSubObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $foo = 'subContent';
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFoo(): ?string
@@ -28,8 +24,6 @@ class TestSubObject
         return $this->foo;
     }
     /**
-     * 
-     *
      * @param string|null $foo
      *
      * @return self

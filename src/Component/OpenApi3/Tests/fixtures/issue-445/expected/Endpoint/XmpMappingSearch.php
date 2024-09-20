@@ -5,9 +5,7 @@ namespace PicturePark\API\Endpoint;
 class XmpMappingSearch extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-     * 
-     *
-     * @param \PicturePark\API\Model\XmpMappingEntrySearchRequest $requestBody 
+     * @param \PicturePark\API\Model\XmpMappingEntrySearchRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\XmpMappingEntrySearchRequest $requestBody)
     {

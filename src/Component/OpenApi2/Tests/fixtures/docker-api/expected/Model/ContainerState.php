@@ -13,28 +13,28 @@ class ContainerState
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * String representation of the container state. Can be one of "created",
-    "running", "paused", "restarting", "removing", "exited", or "dead".
-    
-    *
-    * @var string
-    */
+     * String representation of the container state. Can be one of "created",
+     * "running", "paused", "restarting", "removing", "exited", or "dead".
+     * 
+     *
+     * @var string
+     */
     protected $status;
     /**
-    * Whether this container is running.
-    
-    Note that a running container can be _paused_. The `Running` and `Paused`
-    booleans are not mutually exclusive:
-    
-    When pausing a container (on Linux), the freezer cgroup is used to suspend
-    all processes in the container. Freezing the process requires the process to
-    be running. As a result, paused containers are both `Running` _and_ `Paused`.
-    
-    Use the `Status` field instead to determine if a container's state is "running".
-    
-    *
-    * @var bool
-    */
+     * Whether this container is running.
+     * 
+     * Note that a running container can be _paused_. The `Running` and `Paused`
+     * booleans are not mutually exclusive:
+     * 
+     * When pausing a container (on Linux), the freezer cgroup is used to suspend
+     * all processes in the container. Freezing the process requires the process to
+     * be running. As a result, paused containers are both `Running` _and_ `Paused`.
+     * 
+     * Use the `Status` field instead to determine if a container's state is "running".
+     * 
+     *
+     * @var bool
+     */
     protected $running;
     /**
      * Whether this container is paused.
@@ -50,13 +50,12 @@ class ContainerState
     protected $restarting;
     /**
      * Whether this container has been killed because it ran out of memory.
+     * 
      *
      * @var bool
      */
     protected $oOMKilled;
     /**
-     * 
-     *
      * @var bool
      */
     protected $dead;
@@ -73,8 +72,6 @@ class ContainerState
      */
     protected $exitCode;
     /**
-     * 
-     *
      * @var string
      */
     protected $error;
@@ -92,17 +89,18 @@ class ContainerState
     protected $finishedAt;
     /**
      * Health stores information about the container's healthcheck results.
+     * 
      *
      * @var Health
      */
     protected $health;
     /**
-    * String representation of the container state. Can be one of "created",
-    "running", "paused", "restarting", "removing", "exited", or "dead".
-    
-    *
-    * @return string
-    */
+     * String representation of the container state. Can be one of "created",
+     * "running", "paused", "restarting", "removing", "exited", or "dead".
+     * 
+     *
+     * @return string
+     */
     public function getStatus(): string
     {
         return $this->status;
@@ -123,20 +121,20 @@ class ContainerState
         return $this;
     }
     /**
-    * Whether this container is running.
-    
-    Note that a running container can be _paused_. The `Running` and `Paused`
-    booleans are not mutually exclusive:
-    
-    When pausing a container (on Linux), the freezer cgroup is used to suspend
-    all processes in the container. Freezing the process requires the process to
-    be running. As a result, paused containers are both `Running` _and_ `Paused`.
-    
-    Use the `Status` field instead to determine if a container's state is "running".
-    
-    *
-    * @return bool
-    */
+     * Whether this container is running.
+     * 
+     * Note that a running container can be _paused_. The `Running` and `Paused`
+     * booleans are not mutually exclusive:
+     * 
+     * When pausing a container (on Linux), the freezer cgroup is used to suspend
+     * all processes in the container. Freezing the process requires the process to
+     * be running. As a result, paused containers are both `Running` _and_ `Paused`.
+     * 
+     * Use the `Status` field instead to determine if a container's state is "running".
+     * 
+     *
+     * @return bool
+     */
     public function getRunning(): bool
     {
         return $this->running;
@@ -210,6 +208,7 @@ class ContainerState
     }
     /**
      * Whether this container has been killed because it ran out of memory.
+     * 
      *
      * @return bool
      */
@@ -231,8 +230,6 @@ class ContainerState
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getDead(): bool
@@ -240,8 +237,6 @@ class ContainerState
         return $this->dead;
     }
     /**
-     * 
-     *
      * @param bool $dead
      *
      * @return self
@@ -297,8 +292,6 @@ class ContainerState
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getError(): string
@@ -306,8 +299,6 @@ class ContainerState
         return $this->error;
     }
     /**
-     * 
-     *
      * @param string $error
      *
      * @return self
@@ -364,6 +355,7 @@ class ContainerState
     }
     /**
      * Health stores information about the container's healthcheck results.
+     * 
      *
      * @return Health
      */

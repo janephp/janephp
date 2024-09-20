@@ -55,8 +55,6 @@ class FeedLinks extends \ArrayObject
      */
     protected $currentUserOrganization;
     /**
-     * 
-     *
      * @var list<LinkWithType>
      */
     protected $currentUserOrganizations;
@@ -215,8 +213,6 @@ class FeedLinks extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<LinkWithType>
      */
     public function getCurrentUserOrganizations(): array
@@ -224,8 +220,6 @@ class FeedLinks extends \ArrayObject
         return $this->currentUserOrganizations;
     }
     /**
-     * 
-     *
      * @param list<LinkWithType> $currentUserOrganizations
      *
      * @return self

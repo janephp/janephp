@@ -8,17 +8,16 @@ class GitGetTree extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     protected $repo;
     protected $tree_sha;
     /**
-    * Returns a single tree using the SHA1 value for that tree.
-    
-    If `truncated` is `true` in the response then the number of items in the `tree` array exceeded our maximum limit. If you need to fetch more items, use the non-recursive method of fetching trees, and fetch one sub-tree at a time.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param string $treeSha tree_sha parameter
-    * @param array $queryParameters {
-    *     @var string $recursive Setting this parameter to any value returns the objects or subtrees referenced by the tree specified in `:tree_sha`. For example, setting `recursive` to any of the following will enable returning objects or subtrees: `0`, `1`, `"true"`, and `"false"`. Omit this parameter to prevent recursively returning objects or subtrees.
-    * }
-    */
+     * Returns a single tree using the SHA1 value for that tree.
+     *
+     * If `truncated` is `true` in the response then the number of items in the `tree` array exceeded our maximum limit. If you need to fetch more items, use the non-recursive method of fetching trees, and fetch one sub-tree at a time.
+     * @param string $owner
+     * @param string $repo
+     * @param string $treeSha tree_sha parameter
+     * @param array $queryParameters {
+     *     @var string $recursive Setting this parameter to any value returns the objects or subtrees referenced by the tree specified in `:tree_sha`. For example, setting `recursive` to any of the following will enable returning objects or subtrees: `0`, `1`, `"true"`, and `"false"`. Omit this parameter to prevent recursively returning objects or subtrees.
+     * }
+     */
     public function __construct(string $owner, string $repo, string $treeSha, array $queryParameters = [])
     {
         $this->owner = $owner;

@@ -7,8 +7,7 @@ class OutputFormatRenderFormatPreview extends \PicturePark\API\Runtime\Client\Ba
     protected $accept;
     /**
      * Request rendering of the given OutputFormat for a given content.
-     *
-     * @param \PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody 
+     * @param \PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody
      * @param array $accept Accept content header application/octet-stream|application/json
      */
     public function __construct(\PicturePark\API\Model\OutputFormatRenderPreviewRequest $requestBody, array $accept = [])

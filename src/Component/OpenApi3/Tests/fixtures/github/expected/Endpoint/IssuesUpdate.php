@@ -9,11 +9,10 @@ class IssuesUpdate extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     protected $issue_number;
     /**
      * Issue owners and users with push access can edit an issue.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $issueNumber issue_number parameter
-     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberPatchBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberPatchBody $requestBody = null)
     {

@@ -7,7 +7,6 @@ class ContentRestore extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
     protected $id;
     /**
     * Restores a previously deleted content.
-    *
     * @param string $id The content ID.
     * @param array $queryParameters {
     *     @var bool $allowMissingDependencies Allows restoring contents that refer to list items or contents that don't exist in the system.

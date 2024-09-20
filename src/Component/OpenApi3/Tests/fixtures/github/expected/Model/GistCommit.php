@@ -13,38 +13,26 @@ class GistCommit extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $version;
     /**
-     * 
-     *
      * @var GistCommitUser|null
      */
     protected $user;
     /**
-     * 
-     *
      * @var GistCommitChangeStatus
      */
     protected $changeStatus;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $committedAt;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -52,8 +40,6 @@ class GistCommit extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -65,8 +51,6 @@ class GistCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getVersion(): string
@@ -74,8 +58,6 @@ class GistCommit extends \ArrayObject
         return $this->version;
     }
     /**
-     * 
-     *
      * @param string $version
      *
      * @return self
@@ -87,8 +69,6 @@ class GistCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GistCommitUser|null
      */
     public function getUser(): ?GistCommitUser
@@ -96,8 +76,6 @@ class GistCommit extends \ArrayObject
         return $this->user;
     }
     /**
-     * 
-     *
      * @param GistCommitUser|null $user
      *
      * @return self
@@ -109,8 +87,6 @@ class GistCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GistCommitChangeStatus
      */
     public function getChangeStatus(): GistCommitChangeStatus
@@ -118,8 +94,6 @@ class GistCommit extends \ArrayObject
         return $this->changeStatus;
     }
     /**
-     * 
-     *
      * @param GistCommitChangeStatus $changeStatus
      *
      * @return self
@@ -131,8 +105,6 @@ class GistCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCommittedAt(): \DateTime
@@ -140,8 +112,6 @@ class GistCommit extends \ArrayObject
         return $this->committedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $committedAt
      *
      * @return self

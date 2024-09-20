@@ -37,11 +37,11 @@ class ListItemFilterRequest
      */
     protected $schemaIds;
     /**
-    * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
-    If not specified, all metadata languages defined in the system are used.
-    *
-    * @var list<string>|null
-    */
+     * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
+     * If not specified, all metadata languages defined in the system are used.
+     *
+     * @var list<string>|null
+     */
     protected $searchLanguages;
     /**
      * Limits the search to the list items that have or not have broken references. By default it includes both.
@@ -138,11 +138,11 @@ class ListItemFilterRequest
         return $this;
     }
     /**
-    * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
-    If not specified, all metadata languages defined in the system are used.
-    *
-    * @return list<string>|null
-    */
+     * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
+     * If not specified, all metadata languages defined in the system are used.
+     *
+     * @return list<string>|null
+     */
     public function getSearchLanguages(): ?array
     {
         return $this->searchLanguages;

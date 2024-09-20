@@ -8,10 +8,8 @@ class ReposDeleteReleaseAsset extends \Github\Runtime\Client\BaseEndpoint implem
     protected $repo;
     protected $asset_id;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $assetId asset_id parameter
      */
     public function __construct(string $owner, string $repo, int $assetId)

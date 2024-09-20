@@ -8,10 +8,9 @@ class ReposTransfer extends \Github\Runtime\Client\BaseEndpoint implements \Gith
     protected $repo;
     /**
      * A transfer request will need to be accepted by the new owner when transferring a personal repository to another user. The response will contain the original `owner`, and the transfer will continue asynchronously. For more details on the requirements to transfer personal and organization-owned repositories, see [about repository transfers](https://help.github.com/articles/about-repository-transfers/).
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param null|\Github\Model\ReposOwnerRepoTransferPostBody $requestBody 
+     * @param string $owner
+     * @param string $repo
+     * @param null|\Github\Model\ReposOwnerRepoTransferPostBody $requestBody
      */
     public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoTransferPostBody $requestBody = null)
     {

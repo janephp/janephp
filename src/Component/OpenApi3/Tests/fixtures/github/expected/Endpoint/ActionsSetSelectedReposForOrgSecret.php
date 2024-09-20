@@ -8,10 +8,9 @@ class ActionsSetSelectedReposForOrgSecret extends \Github\Runtime\Client\BaseEnd
     protected $secret_name;
     /**
      * Replaces all repositories for an organization secret when the `visibility` for repository access is set to `selected`. The visibility is set when you [Create or update an organization secret](https://developer.github.com/v3/actions/secrets/#create-or-update-an-organization-secret). You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
-     *
-     * @param string $org 
+     * @param string $org
      * @param string $secretName secret_name parameter
-     * @param null|\Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesPutBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesPutBody $requestBody
      */
     public function __construct(string $org, string $secretName, ?\Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesPutBody $requestBody = null)
     {

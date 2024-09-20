@@ -8,11 +8,9 @@ class PullsCheckIfMerged extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $repo;
     protected $pull_number;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $pullNumber 
+     * @param string $owner
+     * @param string $repo
+     * @param int $pullNumber
      */
     public function __construct(string $owner, string $repo, int $pullNumber)
     {

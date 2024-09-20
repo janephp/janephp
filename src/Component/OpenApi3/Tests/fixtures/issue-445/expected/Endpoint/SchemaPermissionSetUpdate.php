@@ -7,9 +7,8 @@ class SchemaPermissionSetUpdate extends \PicturePark\API\Runtime\Client\BaseEndp
     protected $id;
     /**
      * Updates the schema permission set specified by the ID and based on supplied request.
-     *
      * @param string $id Schema permission set ID.
-     * @param \PicturePark\API\Model\SchemaPermissionSetUpdateRequest $requestBody 
+     * @param \PicturePark\API\Model\SchemaPermissionSetUpdateRequest $requestBody
      */
     public function __construct(string $id, \PicturePark\API\Model\SchemaPermissionSetUpdateRequest $requestBody)
     {

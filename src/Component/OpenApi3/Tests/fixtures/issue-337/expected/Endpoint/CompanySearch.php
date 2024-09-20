@@ -6,7 +6,6 @@ class CompanySearch extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
 {
     /**
      * Endpoint to search for Companies based on the provided Search Criteria. To get the most relevant results, it is recommended to use a unique identifier such as `regNo` where available. If a unique identifier is not available, use a combination of the companies registered `postCode` and `name` for the next best hit rate.
-     *
      * @param array $queryParameters {
      *     @var string $countries A Comma-separated list of country codes to search for Companies in. The list takes ISO/Alpha 2 format country codes. For example US,GB represents searching for Companies in the United States and Great Britain.
      *     @var string $language Search Language -  Typically only used for Countries where more than one  Company Names exist in different languages. Such as Companies with a Japanese Kanji and English names.
@@ -18,7 +17,7 @@ class CompanySearch extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
      *     @var string $tradeName Trade Name of the Company, typically used in Countries where Name is not uniquely registered.
      *     @var string $acronym A (non-unique) identifier to look for Companies by their more commonly known acronym rather than their lesser known full name. Acronym is predominantly available on French Companies.
      *     @var bool $exact Provide as true to find Companies matching a Name exactly.
-     *     @var string $address 
+     *     @var string $address
      *     @var string $street Address part identifier - Street of the Company
      *     @var string $houseNo Address part identifier - House/Building Number of the Company
      *     @var string $city Address part identifier - City of the Company

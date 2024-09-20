@@ -3,7 +3,6 @@
 namespace ApiPlatform\Demo\Model;
 
 /**
- *
  * @deprecated
  */
 class ParchmentJsonhal extends \ArrayObject
@@ -17,14 +16,10 @@ class ParchmentJsonhal extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var ParchmentJsonhalLinks
      */
     protected $links;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $id;
@@ -41,8 +36,6 @@ class ParchmentJsonhal extends \ArrayObject
      */
     protected $description;
     /**
-     * 
-     *
      * @return ParchmentJsonhalLinks
      */
     public function getLinks(): ParchmentJsonhalLinks
@@ -50,8 +43,6 @@ class ParchmentJsonhal extends \ArrayObject
         return $this->links;
     }
     /**
-     * 
-     *
      * @param ParchmentJsonhalLinks $links
      *
      * @return self
@@ -63,8 +54,6 @@ class ParchmentJsonhal extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getId(): ?string
@@ -72,8 +61,6 @@ class ParchmentJsonhal extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string|null $id
      *
      * @return self

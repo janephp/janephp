@@ -9,10 +9,9 @@ class PullsListFiles extends \Github\Runtime\Client\BaseEndpoint implements \Git
     protected $pull_number;
     /**
      * **Note:** Responses include a maximum of 3000 files. The paginated response returns 30 files per page by default.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $pullNumber 
+     * @param string $owner
+     * @param string $repo
+     * @param int $pullNumber
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.

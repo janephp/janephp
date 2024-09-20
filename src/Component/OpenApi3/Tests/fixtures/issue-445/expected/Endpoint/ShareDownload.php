@@ -7,8 +7,6 @@ class ShareDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     protected $token;
     protected $accept;
     /**
-     * 
-     *
      * @param string $token Share token
      * @param array $queryParameters {
      *     @var int $width Optional width in pixels to resize image

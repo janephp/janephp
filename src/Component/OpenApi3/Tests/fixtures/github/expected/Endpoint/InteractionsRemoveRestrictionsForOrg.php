@@ -7,8 +7,7 @@ class InteractionsRemoveRestrictionsForOrg extends \Github\Runtime\Client\BaseEn
     protected $org;
     /**
      * Removes all interaction restrictions from public repositories in the given organization. You must be an organization owner to remove restrictions.
-     *
-     * @param string $org 
+     * @param string $org
      */
     public function __construct(string $org)
     {

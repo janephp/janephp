@@ -5,16 +5,14 @@ namespace Docker\Api\Endpoint;
 class VolumePrune extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docker\Api\Runtime\Client\Endpoint
 {
     /**
-    * 
-    *
-    * @param array $queryParameters {
-    *     @var string $filters Filters to process on the prune list, encoded as JSON (a `map[string][]string`).
-    
-    Available filters:
-    - `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune volumes with (or without, in case `label!=...` is used) the specified labels.
-    
-    * }
-    */
+     * @param array $queryParameters {
+     *     @var string $filters Filters to process on the prune list, encoded as JSON (a `map[string][]string`).
+     *     
+     *     Available filters:
+     *     - `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune volumes with (or without, in case `label!=...` is used) the specified labels.
+     *     
+     * }
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

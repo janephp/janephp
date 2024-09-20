@@ -13,20 +13,14 @@ class OrgsOrgActionsRunnersGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $totalCount;
     /**
-     * 
-     *
      * @var list<Runner>
      */
     protected $runners;
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalCount(): int
@@ -34,8 +28,6 @@ class OrgsOrgActionsRunnersGetResponse200 extends \ArrayObject
         return $this->totalCount;
     }
     /**
-     * 
-     *
      * @param int $totalCount
      *
      * @return self
@@ -47,8 +39,6 @@ class OrgsOrgActionsRunnersGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<Runner>
      */
     public function getRunners(): array
@@ -56,8 +46,6 @@ class OrgsOrgActionsRunnersGetResponse200 extends \ArrayObject
         return $this->runners;
     }
     /**
-     * 
-     *
      * @param list<Runner> $runners
      *
      * @return self

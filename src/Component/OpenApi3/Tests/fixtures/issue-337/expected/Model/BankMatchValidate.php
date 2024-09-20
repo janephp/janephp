@@ -13,14 +13,10 @@ class BankMatchValidate extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $accountNumber;
     /**
-     * 
-     *
      * @var string
      */
     protected $iban;
@@ -31,20 +27,14 @@ class BankMatchValidate extends \ArrayObject
      */
     protected $ibanResult;
     /**
-     * 
-     *
      * @var string
      */
     protected $ibanText;
     /**
-     * 
-     *
      * @var string
      */
     protected $logDate;
     /**
-     * 
-     *
      * @var string
      */
     protected $safeNumber;
@@ -55,14 +45,10 @@ class BankMatchValidate extends \ArrayObject
      */
     protected $scanResult;
     /**
-     * 
-     *
      * @var string
      */
     protected $scanText;
     /**
-     * 
-     *
      * @var string
      */
     protected $sortCode;
@@ -85,14 +71,10 @@ class BankMatchValidate extends \ArrayObject
      */
     protected $vatResult;
     /**
-     * 
-     *
      * @var string
      */
     protected $vatText;
     /**
-     * 
-     *
      * @return string
      */
     public function getAccountNumber(): string
@@ -100,8 +82,6 @@ class BankMatchValidate extends \ArrayObject
         return $this->accountNumber;
     }
     /**
-     * 
-     *
      * @param string $accountNumber
      *
      * @return self
@@ -113,8 +93,6 @@ class BankMatchValidate extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIban(): string
@@ -122,8 +100,6 @@ class BankMatchValidate extends \ArrayObject
         return $this->iban;
     }
     /**
-     * 
-     *
      * @param string $iban
      *
      * @return self
@@ -157,8 +133,6 @@ class BankMatchValidate extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIbanText(): string
@@ -166,8 +140,6 @@ class BankMatchValidate extends \ArrayObject
         return $this->ibanText;
     }
     /**
-     * 
-     *
      * @param string $ibanText
      *
      * @return self
@@ -179,8 +151,6 @@ class BankMatchValidate extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLogDate(): string
@@ -188,8 +158,6 @@ class BankMatchValidate extends \ArrayObject
         return $this->logDate;
     }
     /**
-     * 
-     *
      * @param string $logDate
      *
      * @return self
@@ -201,8 +169,6 @@ class BankMatchValidate extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSafeNumber(): string
@@ -210,8 +176,6 @@ class BankMatchValidate extends \ArrayObject
         return $this->safeNumber;
     }
     /**
-     * 
-     *
      * @param string $safeNumber
      *
      * @return self
@@ -245,8 +209,6 @@ class BankMatchValidate extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getScanText(): string
@@ -254,8 +216,6 @@ class BankMatchValidate extends \ArrayObject
         return $this->scanText;
     }
     /**
-     * 
-     *
      * @param string $scanText
      *
      * @return self
@@ -267,8 +227,6 @@ class BankMatchValidate extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSortCode(): string
@@ -276,8 +234,6 @@ class BankMatchValidate extends \ArrayObject
         return $this->sortCode;
     }
     /**
-     * 
-     *
      * @param string $sortCode
      *
      * @return self
@@ -355,8 +311,6 @@ class BankMatchValidate extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getVatText(): string
@@ -364,8 +318,6 @@ class BankMatchValidate extends \ArrayObject
         return $this->vatText;
     }
     /**
-     * 
-     *
      * @param string $vatText
      *
      * @return self

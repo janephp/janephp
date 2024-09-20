@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApi3\Tests\Client\Model;
 class SimpleResponse extends \ArrayObject
 {
     /**
+<<<<<<< HEAD
      * @var array
      */
     protected $initialized = [];
@@ -15,18 +16,19 @@ class SimpleResponse extends \ArrayObject
     /**
      * 
      *
+||||||| parent of 6c3127df5 (Update fixtures for tests)
+     * 
+     *
+=======
+>>>>>>> 6c3127df5 (Update fixtures for tests)
      * @var string
      */
     protected $foo;
     /**
-     * 
-     *
      * @var bool
      */
     protected $baz;
     /**
-     * 
-     *
      * @return string
      */
     public function getFoo(): string
@@ -34,8 +36,6 @@ class SimpleResponse extends \ArrayObject
         return $this->foo;
     }
     /**
-     * 
-     *
      * @param string $foo
      *
      * @return self
@@ -47,8 +47,6 @@ class SimpleResponse extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getBaz(): bool
@@ -56,8 +54,6 @@ class SimpleResponse extends \ArrayObject
         return $this->baz;
     }
     /**
-     * 
-     *
      * @param bool $baz
      *
      * @return self

@@ -5,12 +5,11 @@ namespace PicturePark\API\Endpoint;
 class OutputResetRetryAttempts extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Resets retry attempt counters on failed (optionally also completed) outputs and they will be subsequently picked up for re-rendering.
-    The number the counters are reset to is determined by a global configuration value. If OutputIds are specified, the rest of the fields are ignored.
-    Can reset 100 outputs at most. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param \PicturePark\API\Model\OutputResetRetryAttemptsRequest $requestBody 
-    */
+     * Resets retry attempt counters on failed (optionally also completed) outputs and they will be subsequently picked up for re-rendering.
+     * The number the counters are reset to is determined by a global configuration value. If OutputIds are specified, the rest of the fields are ignored.
+     * Can reset 100 outputs at most. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param \PicturePark\API\Model\OutputResetRetryAttemptsRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\OutputResetRetryAttemptsRequest $requestBody)
     {
         $this->body = $requestBody;

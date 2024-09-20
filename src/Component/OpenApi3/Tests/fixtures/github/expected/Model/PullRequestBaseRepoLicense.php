@@ -13,44 +13,30 @@ class PullRequestBaseRepoLicense extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $key;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $url;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $spdxId;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @return string
      */
     public function getKey(): string
@@ -58,8 +44,6 @@ class PullRequestBaseRepoLicense extends \ArrayObject
         return $this->key;
     }
     /**
-     * 
-     *
      * @param string $key
      *
      * @return self
@@ -71,8 +55,6 @@ class PullRequestBaseRepoLicense extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -80,8 +62,6 @@ class PullRequestBaseRepoLicense extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -93,8 +73,6 @@ class PullRequestBaseRepoLicense extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getUrl(): ?string
@@ -102,8 +80,6 @@ class PullRequestBaseRepoLicense extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string|null $url
      *
      * @return self
@@ -115,8 +91,6 @@ class PullRequestBaseRepoLicense extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getSpdxId(): ?string
@@ -124,8 +98,6 @@ class PullRequestBaseRepoLicense extends \ArrayObject
         return $this->spdxId;
     }
     /**
-     * 
-     *
      * @param string|null $spdxId
      *
      * @return self
@@ -137,8 +109,6 @@ class PullRequestBaseRepoLicense extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -146,8 +116,6 @@ class PullRequestBaseRepoLicense extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -159,8 +127,6 @@ class PullRequestBaseRepoLicense extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -168,8 +134,6 @@ class PullRequestBaseRepoLicense extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self

@@ -8,12 +8,10 @@ class ReposUpdateWebhook extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $repo;
     protected $hook_id;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $hookId 
-     * @param null|\Github\Model\ReposOwnerRepoHooksHookIdPatchBody $requestBody 
+     * @param string $owner
+     * @param string $repo
+     * @param int $hookId
+     * @param null|\Github\Model\ReposOwnerRepoHooksHookIdPatchBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $hookId, ?\Github\Model\ReposOwnerRepoHooksHookIdPatchBody $requestBody = null)
     {

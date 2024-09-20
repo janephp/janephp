@@ -5,9 +5,7 @@ namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
 class TestObjectListBodyParameter extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-     * 
-     *
-     * @param \Jane\Component\OpenApi2\Tests\Expected\Model\Schema[] $testObjectList 
+     * @param \Jane\Component\OpenApi2\Tests\Expected\Model\Schema[] $testObjectList
      */
     public function __construct(array $testObjectList)
     {

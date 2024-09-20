@@ -13,32 +13,22 @@ class CommitComparison extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $permalinkUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $diffUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $patchUrl;
@@ -55,44 +45,30 @@ class CommitComparison extends \ArrayObject
      */
     protected $mergeBaseCommit;
     /**
-     * 
-     *
      * @var string
      */
     protected $status;
     /**
-     * 
-     *
      * @var int
      */
     protected $aheadBy;
     /**
-     * 
-     *
      * @var int
      */
     protected $behindBy;
     /**
-     * 
-     *
      * @var int
      */
     protected $totalCommits;
     /**
-     * 
-     *
      * @var list<Commit>
      */
     protected $commits;
     /**
-     * 
-     *
      * @var list<DiffEntry>
      */
     protected $files;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -100,8 +76,6 @@ class CommitComparison extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -113,8 +87,6 @@ class CommitComparison extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -122,8 +94,6 @@ class CommitComparison extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -135,8 +105,6 @@ class CommitComparison extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPermalinkUrl(): string
@@ -144,8 +112,6 @@ class CommitComparison extends \ArrayObject
         return $this->permalinkUrl;
     }
     /**
-     * 
-     *
      * @param string $permalinkUrl
      *
      * @return self
@@ -157,8 +123,6 @@ class CommitComparison extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDiffUrl(): string
@@ -166,8 +130,6 @@ class CommitComparison extends \ArrayObject
         return $this->diffUrl;
     }
     /**
-     * 
-     *
      * @param string $diffUrl
      *
      * @return self
@@ -179,8 +141,6 @@ class CommitComparison extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPatchUrl(): string
@@ -188,8 +148,6 @@ class CommitComparison extends \ArrayObject
         return $this->patchUrl;
     }
     /**
-     * 
-     *
      * @param string $patchUrl
      *
      * @return self
@@ -245,8 +203,6 @@ class CommitComparison extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStatus(): string
@@ -254,8 +210,6 @@ class CommitComparison extends \ArrayObject
         return $this->status;
     }
     /**
-     * 
-     *
      * @param string $status
      *
      * @return self
@@ -267,8 +221,6 @@ class CommitComparison extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getAheadBy(): int
@@ -276,8 +228,6 @@ class CommitComparison extends \ArrayObject
         return $this->aheadBy;
     }
     /**
-     * 
-     *
      * @param int $aheadBy
      *
      * @return self
@@ -289,8 +239,6 @@ class CommitComparison extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getBehindBy(): int
@@ -298,8 +246,6 @@ class CommitComparison extends \ArrayObject
         return $this->behindBy;
     }
     /**
-     * 
-     *
      * @param int $behindBy
      *
      * @return self
@@ -311,8 +257,6 @@ class CommitComparison extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalCommits(): int
@@ -320,8 +264,6 @@ class CommitComparison extends \ArrayObject
         return $this->totalCommits;
     }
     /**
-     * 
-     *
      * @param int $totalCommits
      *
      * @return self
@@ -333,8 +275,6 @@ class CommitComparison extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<Commit>
      */
     public function getCommits(): array
@@ -342,8 +282,6 @@ class CommitComparison extends \ArrayObject
         return $this->commits;
     }
     /**
-     * 
-     *
      * @param list<Commit> $commits
      *
      * @return self
@@ -355,8 +293,6 @@ class CommitComparison extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<DiffEntry>
      */
     public function getFiles(): array
@@ -364,8 +300,6 @@ class CommitComparison extends \ArrayObject
         return $this->files;
     }
     /**
-     * 
-     *
      * @param list<DiffEntry> $files
      *
      * @return self

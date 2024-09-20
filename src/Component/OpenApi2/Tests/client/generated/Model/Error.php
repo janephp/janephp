@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApi2\Tests\Client\Model;
 class Error
 {
     /**
+<<<<<<< HEAD
      * @var array
      */
     protected $initialized = [];
@@ -15,12 +16,15 @@ class Error
     /**
      * 
      *
+||||||| parent of 6c3127df5 (Update fixtures for tests)
+     * 
+     *
+=======
+>>>>>>> 6c3127df5 (Update fixtures for tests)
      * @var string
      */
     protected $message;
     /**
-     * 
-     *
      * @return string
      */
     public function getMessage(): string
@@ -28,8 +32,6 @@ class Error
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string $message
      *
      * @return self

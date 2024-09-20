@@ -13,18 +13,18 @@ class ContentCreateRequest
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * The ID of the content schema. The SchemaType of the specified schema must be Content.
-    The schema specifies the structure of the Content dictionary.
-    *
-    * @var string
-    */
+     * The ID of the content schema. The SchemaType of the specified schema must be Content.
+     * The schema specifies the structure of the Content dictionary.
+     *
+     * @var string
+     */
     protected $contentSchemaId;
     /**
-    * An optional list of IDs of the schemas that form the layers of the content.
-    The SchemaType of the specified schemas must be Layer.
-    *
-    * @var list<string>|null
-    */
+     * An optional list of IDs of the schemas that form the layers of the content.
+     * The SchemaType of the specified schemas must be Layer.
+     *
+     * @var list<string>|null
+     */
     protected $layerSchemaIds;
     /**
      * The content data of the content. It's an object of dynamic metadata whose structure is defined in the Content schema identified by the ContentSchemaId property.
@@ -33,12 +33,12 @@ class ContentCreateRequest
      */
     protected $content;
     /**
-    * The dynamic data structure matching the field schematics of the schemas with type layer (LayerSchemaIds).
-    The metadata belonging to the layers of the content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
-    by the LayerSchemaIds property.
-    *
-    * @var array<string, mixed>|null
-    */
+     * The dynamic data structure matching the field schematics of the schemas with type layer (LayerSchemaIds).
+     * The metadata belonging to the layers of the content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
+     * by the LayerSchemaIds property.
+     *
+     * @var array<string, mixed>|null
+     */
     protected $metadata;
     /**
      * An optional list of content permission set IDs which control content permissions. These permissions control content accessibility for the users that do not own the content.
@@ -47,19 +47,19 @@ class ContentCreateRequest
      */
     protected $contentPermissionSetIds;
     /**
-    * Optional client reference for this request.
-    Will be returned back in response to make easier for clients to match request items with the respective results.
-    It is not persisted anywhere and it is ignored in single operations.
-    *
-    * @var string|null
-    */
+     * Optional client reference for this request.
+     * Will be returned back in response to make easier for clients to match request items with the respective results.
+     * It is not persisted anywhere and it is ignored in single operations.
+     *
+     * @var string|null
+     */
     protected $requestId;
     /**
-    * The ID of the content schema. The SchemaType of the specified schema must be Content.
-    The schema specifies the structure of the Content dictionary.
-    *
-    * @return string
-    */
+     * The ID of the content schema. The SchemaType of the specified schema must be Content.
+     * The schema specifies the structure of the Content dictionary.
+     *
+     * @return string
+     */
     public function getContentSchemaId(): string
     {
         return $this->contentSchemaId;
@@ -79,11 +79,11 @@ class ContentCreateRequest
         return $this;
     }
     /**
-    * An optional list of IDs of the schemas that form the layers of the content.
-    The SchemaType of the specified schemas must be Layer.
-    *
-    * @return list<string>|null
-    */
+     * An optional list of IDs of the schemas that form the layers of the content.
+     * The SchemaType of the specified schemas must be Layer.
+     *
+     * @return list<string>|null
+     */
     public function getLayerSchemaIds(): ?array
     {
         return $this->layerSchemaIds;
@@ -125,12 +125,12 @@ class ContentCreateRequest
         return $this;
     }
     /**
-    * The dynamic data structure matching the field schematics of the schemas with type layer (LayerSchemaIds).
-    The metadata belonging to the layers of the content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
-    by the LayerSchemaIds property.
-    *
-    * @return array<string, mixed>|null
-    */
+     * The dynamic data structure matching the field schematics of the schemas with type layer (LayerSchemaIds).
+     * The metadata belonging to the layers of the content. It's a dictionary of dynamic metadata whose structure is defined in the Layer schemas identified
+     * by the LayerSchemaIds property.
+     *
+     * @return array<string, mixed>|null
+     */
     public function getMetadata(): ?iterable
     {
         return $this->metadata;
@@ -173,12 +173,12 @@ class ContentCreateRequest
         return $this;
     }
     /**
-    * Optional client reference for this request.
-    Will be returned back in response to make easier for clients to match request items with the respective results.
-    It is not persisted anywhere and it is ignored in single operations.
-    *
-    * @return string|null
-    */
+     * Optional client reference for this request.
+     * Will be returned back in response to make easier for clients to match request items with the respective results.
+     * It is not persisted anywhere and it is ignored in single operations.
+     *
+     * @return string|null
+     */
     public function getRequestId(): ?string
     {
         return $this->requestId;

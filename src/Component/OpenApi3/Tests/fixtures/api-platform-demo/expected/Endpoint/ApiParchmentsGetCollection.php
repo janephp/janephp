@@ -7,7 +7,6 @@ class ApiParchmentsGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEn
     protected $accept;
     /**
      * Retrieves the collection of Parchment resources.
-     *
      * @param array $queryParameters {
      *     @var int $page The collection page number
      * }

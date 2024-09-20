@@ -7,7 +7,6 @@ class CompanyEvents extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
     protected $id;
     /**
      * Endpoint to return a collection of `events` for the given company, optionally filtered on the supplied search criteria. Event information will only be returned if the company exists in at least one of your `portfolios`.
-     *
      * @param string $id The connectId of the company that you wish to retrieve events for.
      * @param array $queryParameters {
      *     @var string $startDate The start date on which results are filtered.

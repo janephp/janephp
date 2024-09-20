@@ -6,8 +6,7 @@ class OutputFormatSetDownloadFileNamePatternsMany extends \PicturePark\API\Runti
 {
     /**
      * This is allowed for both static and dynamic formats. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
-     * @param \PicturePark\API\Model\OutputFormatDownloadFileNamePatternUpdateManyRequest $requestBody 
+     * @param \PicturePark\API\Model\OutputFormatDownloadFileNamePatternUpdateManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\OutputFormatDownloadFileNamePatternUpdateManyRequest $requestBody)
     {

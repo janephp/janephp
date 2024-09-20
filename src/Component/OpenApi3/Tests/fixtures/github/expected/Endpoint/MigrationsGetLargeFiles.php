@@ -8,9 +8,8 @@ class MigrationsGetLargeFiles extends \Github\Runtime\Client\BaseEndpoint implem
     protected $repo;
     /**
      * List files larger than 100MB found during the import
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      */
     public function __construct(string $owner, string $repo)
     {

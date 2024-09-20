@@ -8,9 +8,9 @@ class TeamsListPendingInvitationsInOrg extends \Github\Runtime\Client\BaseEndpoi
     protected $team_slug;
     /**
      * The return hash contains a `role` field which refers to the Organization Invitation role and will be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or `reinstate`. If the invitee is not a GitHub member, the `login` field in the return hash will be `null`.
-     **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/invitations`.
      *
-     * @param string $org 
+     * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/invitations`.
+     * @param string $org
      * @param string $teamSlug team_slug parameter
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)

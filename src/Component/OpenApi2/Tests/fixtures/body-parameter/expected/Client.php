@@ -5,9 +5,8 @@ namespace Jane\Component\OpenApi2\Tests\Expected;
 class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Client
 {
     /**
-     * 
-     *
-     * @param string|resource|\Psr\Http\Message\StreamInterface $testString 
+     * @param string|resource|\Psr\Http\Message\StreamInterface $testString
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -17,9 +16,8 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\TestSimpleBodyParameter($testString), $fetch);
     }
     /**
-     * 
-     *
-     * @param \Jane\Component\OpenApi2\Tests\Expected\Model\Schema $testObject 
+     * @param \Jane\Component\OpenApi2\Tests\Expected\Model\Schema $testObject
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -29,9 +27,8 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Expected\Endpoint\TestObjectBodyParameter($testObject), $fetch);
     }
     /**
-     * 
-     *
-     * @param \Jane\Component\OpenApi2\Tests\Expected\Model\Schema[] $testObjectList 
+     * @param \Jane\Component\OpenApi2\Tests\Expected\Model\Schema[] $testObjectList
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface

@@ -13,20 +13,20 @@ class UserLockRequest
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * Indicates the requested lock state of the user.
-    If _true_ was specified, the user will be _locked_. _False_ will unlock the previously _locked_ user.
-    If User is already in desired state, this will be returned as error.
-    *
-    * @var bool
-    */
+     * Indicates the requested lock state of the user.
+     * If _true_ was specified, the user will be _locked_. _False_ will unlock the previously _locked_ user.
+     * If User is already in desired state, this will be returned as error.
+     *
+     * @var bool
+     */
     protected $lock;
     /**
-    * Indicates the requested lock state of the user.
-    If _true_ was specified, the user will be _locked_. _False_ will unlock the previously _locked_ user.
-    If User is already in desired state, this will be returned as error.
-    *
-    * @return bool
-    */
+     * Indicates the requested lock state of the user.
+     * If _true_ was specified, the user will be _locked_. _False_ will unlock the previously _locked_ user.
+     * If User is already in desired state, this will be returned as error.
+     *
+     * @return bool
+     */
     public function getLock(): bool
     {
         return $this->lock;

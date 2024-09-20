@@ -13,20 +13,14 @@ class GistComment extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
@@ -37,32 +31,22 @@ class GistComment extends \ArrayObject
      */
     protected $body;
     /**
-     * 
-     *
      * @var GistCommentUser|null
      */
     protected $user;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $authorAssociation;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -70,8 +54,6 @@ class GistComment extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -83,8 +65,6 @@ class GistComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -92,8 +72,6 @@ class GistComment extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -105,8 +83,6 @@ class GistComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -114,8 +90,6 @@ class GistComment extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -149,8 +123,6 @@ class GistComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GistCommentUser|null
      */
     public function getUser(): ?GistCommentUser
@@ -158,8 +130,6 @@ class GistComment extends \ArrayObject
         return $this->user;
     }
     /**
-     * 
-     *
      * @param GistCommentUser|null $user
      *
      * @return self
@@ -171,8 +141,6 @@ class GistComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -180,8 +148,6 @@ class GistComment extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -193,8 +159,6 @@ class GistComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -202,8 +166,6 @@ class GistComment extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -215,8 +177,6 @@ class GistComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAuthorAssociation(): string
@@ -224,8 +184,6 @@ class GistComment extends \ArrayObject
         return $this->authorAssociation;
     }
     /**
-     * 
-     *
      * @param string $authorAssociation
      *
      * @return self

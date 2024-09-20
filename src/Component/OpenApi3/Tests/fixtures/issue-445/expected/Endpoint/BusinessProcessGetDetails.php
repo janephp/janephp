@@ -7,7 +7,6 @@ class BusinessProcessGetDetails extends \PicturePark\API\Runtime\Client\BaseEndp
     protected $id;
     /**
      * Gets details of the given business process.
-     *
      * @param string $id The business process id.
      */
     public function __construct(string $id)

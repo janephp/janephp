@@ -7,7 +7,6 @@ class UserReinvite extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
     protected $id;
     /**
      * Formally re-invites a user, e.g. sends an invitation email.
-     *
      * @param string $id User ID to action on.
      */
     public function __construct(string $id)

@@ -73,8 +73,6 @@ class FieldBase
      */
     protected $sortable;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
@@ -269,8 +267,6 @@ class FieldBase
         $this->sortable = $sortable;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -278,8 +274,6 @@ class FieldBase
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      */
     public function setKind(string $kind)

@@ -13,20 +13,14 @@ class IssueEventRename extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $from;
     /**
-     * 
-     *
      * @var string
      */
     protected $to;
     /**
-     * 
-     *
      * @return string
      */
     public function getFrom(): string
@@ -34,8 +28,6 @@ class IssueEventRename extends \ArrayObject
         return $this->from;
     }
     /**
-     * 
-     *
      * @param string $from
      *
      * @return self
@@ -47,8 +39,6 @@ class IssueEventRename extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTo(): string
@@ -56,8 +46,6 @@ class IssueEventRename extends \ArrayObject
         return $this->to;
     }
     /**
-     * 
-     *
      * @param string $to
      *
      * @return self

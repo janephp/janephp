@@ -6,8 +6,7 @@ class MigrationsStartForAuthenticatedUser extends \Github\Runtime\Client\BaseEnd
 {
     /**
      * Initiates the generation of a user migration archive.
-     *
-     * @param null|\Github\Model\UserMigrationsPostBody $requestBody 
+     * @param null|\Github\Model\UserMigrationsPostBody $requestBody
      */
     public function __construct(?\Github\Model\UserMigrationsPostBody $requestBody = null)
     {

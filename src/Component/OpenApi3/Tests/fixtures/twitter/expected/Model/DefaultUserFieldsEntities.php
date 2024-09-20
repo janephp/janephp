@@ -19,8 +19,6 @@ class DefaultUserFieldsEntities extends \ArrayObject
      */
     protected $url;
     /**
-     * 
-     *
      * @var FullTextEntities
      */
     protected $description;
@@ -47,8 +45,6 @@ class DefaultUserFieldsEntities extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return FullTextEntities
      */
     public function getDescription(): FullTextEntities
@@ -56,8 +52,6 @@ class DefaultUserFieldsEntities extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param FullTextEntities $description
      *
      * @return self

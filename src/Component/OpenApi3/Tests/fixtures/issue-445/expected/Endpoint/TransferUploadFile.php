@@ -7,23 +7,22 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
     protected $transferId;
     protected $requestId;
     /**
-    * Uploads the specified chunk data.
-               
-    Use `Content-Type: application/octet-stream` for uploading chunked data.
-    The chunk data should be contained in the body of your request.
-               
-    To upload a file, split it into chunks of reasonable size (accepted range is 1MB-100MB). The last chunk may be smaller than 1MB.
-    *
-    * @param string $transferId ID of transfer.
-    * @param string $requestId Identifier of file.
-    * @param null|string|resource|\Psr\Http\Message\StreamInterface $requestBody 
-    * @param array $queryParameters {
-    *     @var int $ChunkNumber Information about chunk.
-    *     @var int $CurrentChunkSize Information about chunk.
-    *     @var int $TotalSize Information about chunk.
-    *     @var int $TotalChunks Information about chunk.
-    * }
-    */
+     * Uploads the specified chunk data.
+     *
+     * Use `Content-Type: application/octet-stream` for uploading chunked data.
+     * The chunk data should be contained in the body of your request.
+     *
+     * To upload a file, split it into chunks of reasonable size (accepted range is 1MB-100MB). The last chunk may be smaller than 1MB.
+     * @param string $transferId ID of transfer.
+     * @param string $requestId Identifier of file.
+     * @param null|string|resource|\Psr\Http\Message\StreamInterface $requestBody
+     * @param array $queryParameters {
+     *     @var int $ChunkNumber Information about chunk.
+     *     @var int $CurrentChunkSize Information about chunk.
+     *     @var int $TotalSize Information about chunk.
+     *     @var int $TotalChunks Information about chunk.
+     * }
+     */
     public function __construct(string $transferId, string $requestId, $requestBody = null, array $queryParameters = [])
     {
         $this->transferId = $transferId;

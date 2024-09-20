@@ -7,9 +7,8 @@ class PostMonitoringPortfoliosByPortfolioIdCompany extends \CreditSafe\API\Runti
     protected $portfolioId;
     /**
      * Add new company to portfolio
-     *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesPostBody $requestBody 
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesPostBody $requestBody
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }

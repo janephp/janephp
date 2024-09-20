@@ -19,14 +19,10 @@ class GitCommitParentsItem extends \ArrayObject
      */
     protected $sha;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
@@ -53,8 +49,6 @@ class GitCommitParentsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -62,8 +56,6 @@ class GitCommitParentsItem extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -75,8 +67,6 @@ class GitCommitParentsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -84,8 +74,6 @@ class GitCommitParentsItem extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self

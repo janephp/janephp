@@ -13,56 +13,38 @@ class OpenApi extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $openapi;
     /**
-     * 
-     *
      * @var Info|null
      */
     protected $info;
     /**
-     * 
-     *
      * @var ExternalDocumentation|null
      */
     protected $externalDocs;
     /**
-     * 
-     *
      * @var Server[]|null
      */
     protected $servers;
     /**
-     * 
-     *
      * @var array<string, string[]>[]|null
      */
     protected $security;
     /**
-     * 
-     *
      * @var Tag[]|null
      */
     protected $tags;
     /**
-     * 
-     *
      * @var PathItem[]|mixed[]|null
      */
     protected $paths;
     /**
-     * 
-     *
      * @var Components|null
      */
     protected $components;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getOpenapi() : ?string
@@ -70,8 +52,6 @@ class OpenApi extends \ArrayObject
         return $this->openapi;
     }
     /**
-     * 
-     *
      * @param string|null $openapi
      *
      * @return self
@@ -83,8 +63,6 @@ class OpenApi extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Info|null
      */
     public function getInfo() : ?Info
@@ -92,8 +70,6 @@ class OpenApi extends \ArrayObject
         return $this->info;
     }
     /**
-     * 
-     *
      * @param Info|null $info
      *
      * @return self
@@ -105,8 +81,6 @@ class OpenApi extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ExternalDocumentation|null
      */
     public function getExternalDocs() : ?ExternalDocumentation
@@ -114,8 +88,6 @@ class OpenApi extends \ArrayObject
         return $this->externalDocs;
     }
     /**
-     * 
-     *
      * @param ExternalDocumentation|null $externalDocs
      *
      * @return self
@@ -127,8 +99,6 @@ class OpenApi extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Server[]|null
      */
     public function getServers() : ?array
@@ -136,8 +106,6 @@ class OpenApi extends \ArrayObject
         return $this->servers;
     }
     /**
-     * 
-     *
      * @param Server[]|null $servers
      *
      * @return self
@@ -149,8 +117,6 @@ class OpenApi extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, string[]>[]|null
      */
     public function getSecurity() : ?array
@@ -158,8 +124,6 @@ class OpenApi extends \ArrayObject
         return $this->security;
     }
     /**
-     * 
-     *
      * @param array<string, string[]>[]|null $security
      *
      * @return self
@@ -171,8 +135,6 @@ class OpenApi extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Tag[]|null
      */
     public function getTags() : ?array
@@ -180,8 +142,6 @@ class OpenApi extends \ArrayObject
         return $this->tags;
     }
     /**
-     * 
-     *
      * @param Tag[]|null $tags
      *
      * @return self
@@ -193,8 +153,6 @@ class OpenApi extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PathItem[]|mixed[]
      */
     public function getPaths()
@@ -202,8 +160,6 @@ class OpenApi extends \ArrayObject
         return $this->paths;
     }
     /**
-     * 
-     *
      * @param PathItem[]|mixed[] $paths
      *
      * @return self
@@ -215,8 +171,6 @@ class OpenApi extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Components|null
      */
     public function getComponents() : ?Components
@@ -224,8 +178,6 @@ class OpenApi extends \ArrayObject
         return $this->components;
     }
     /**
-     * 
-     *
      * @param Components|null $components
      *
      * @return self

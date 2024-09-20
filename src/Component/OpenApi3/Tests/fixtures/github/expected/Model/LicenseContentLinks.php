@@ -13,26 +13,18 @@ class LicenseContentLinks extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $git;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $html;
     /**
-     * 
-     *
      * @var string
      */
     protected $self;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getGit(): ?string
@@ -40,8 +32,6 @@ class LicenseContentLinks extends \ArrayObject
         return $this->git;
     }
     /**
-     * 
-     *
      * @param string|null $git
      *
      * @return self
@@ -53,8 +43,6 @@ class LicenseContentLinks extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getHtml(): ?string
@@ -62,8 +50,6 @@ class LicenseContentLinks extends \ArrayObject
         return $this->html;
     }
     /**
-     * 
-     *
      * @param string|null $html
      *
      * @return self
@@ -75,8 +61,6 @@ class LicenseContentLinks extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSelf(): string
@@ -84,8 +68,6 @@ class LicenseContentLinks extends \ArrayObject
         return $this->self;
     }
     /**
-     * 
-     *
      * @param string $self
      *
      * @return self

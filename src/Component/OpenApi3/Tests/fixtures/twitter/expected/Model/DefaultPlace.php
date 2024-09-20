@@ -13,8 +13,6 @@ class DefaultPlace extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $format;
@@ -31,38 +29,26 @@ class DefaultPlace extends \ArrayObject
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $countryCode;
     /**
-     * 
-     *
      * @var string
      */
     protected $placeType;
     /**
-     * 
-     *
      * @var string
      */
     protected $fullName;
     /**
-     * 
-     *
      * @var string
      */
     protected $country;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $containedWithin;
     /**
-     * 
-     *
      * @return string
      */
     public function getFormat(): string
@@ -70,8 +56,6 @@ class DefaultPlace extends \ArrayObject
         return $this->format;
     }
     /**
-     * 
-     *
      * @param string $format
      *
      * @return self
@@ -127,8 +111,6 @@ class DefaultPlace extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountryCode(): string
@@ -136,8 +118,6 @@ class DefaultPlace extends \ArrayObject
         return $this->countryCode;
     }
     /**
-     * 
-     *
      * @param string $countryCode
      *
      * @return self
@@ -149,8 +129,6 @@ class DefaultPlace extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPlaceType(): string
@@ -158,8 +136,6 @@ class DefaultPlace extends \ArrayObject
         return $this->placeType;
     }
     /**
-     * 
-     *
      * @param string $placeType
      *
      * @return self
@@ -171,8 +147,6 @@ class DefaultPlace extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFullName(): string
@@ -180,8 +154,6 @@ class DefaultPlace extends \ArrayObject
         return $this->fullName;
     }
     /**
-     * 
-     *
      * @param string $fullName
      *
      * @return self
@@ -193,8 +165,6 @@ class DefaultPlace extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountry(): string
@@ -202,8 +172,6 @@ class DefaultPlace extends \ArrayObject
         return $this->country;
     }
     /**
-     * 
-     *
      * @param string $country
      *
      * @return self
@@ -215,8 +183,6 @@ class DefaultPlace extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getContainedWithin(): array
@@ -224,8 +190,6 @@ class DefaultPlace extends \ArrayObject
         return $this->containedWithin;
     }
     /**
-     * 
-     *
      * @param list<string> $containedWithin
      *
      * @return self

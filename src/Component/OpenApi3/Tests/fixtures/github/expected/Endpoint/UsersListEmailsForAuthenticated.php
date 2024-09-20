@@ -6,7 +6,6 @@ class UsersListEmailsForAuthenticated extends \Github\Runtime\Client\BaseEndpoin
 {
     /**
      * Lists all of your email addresses, and specifies which one is visible to the public. This endpoint is accessible with the `user:email` scope.
-     *
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.

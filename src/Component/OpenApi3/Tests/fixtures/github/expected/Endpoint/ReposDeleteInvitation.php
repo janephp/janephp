@@ -8,10 +8,8 @@ class ReposDeleteInvitation extends \Github\Runtime\Client\BaseEndpoint implemen
     protected $repo;
     protected $invitation_id;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $invitationId invitation_id parameter
      */
     public function __construct(string $owner, string $repo, int $invitationId)

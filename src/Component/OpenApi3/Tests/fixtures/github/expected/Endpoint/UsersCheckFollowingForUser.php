@@ -7,9 +7,7 @@ class UsersCheckFollowingForUser extends \Github\Runtime\Client\BaseEndpoint imp
     protected $username;
     protected $target_user;
     /**
-     * 
-     *
-     * @param string $username 
+     * @param string $username
      * @param string $targetUser target_user parameter
      */
     public function __construct(string $username, string $targetUser)

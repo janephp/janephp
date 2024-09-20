@@ -13,20 +13,14 @@ class PatchableEntity extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $nullableProperty;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $nullableAndRequiredProperty;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getNullableProperty(): ?string
@@ -34,8 +28,6 @@ class PatchableEntity extends \ArrayObject
         return $this->nullableProperty;
     }
     /**
-     * 
-     *
      * @param string|null $nullableProperty
      *
      * @return self
@@ -47,8 +39,6 @@ class PatchableEntity extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getNullableAndRequiredProperty(): ?string
@@ -56,8 +46,6 @@ class PatchableEntity extends \ArrayObject
         return $this->nullableAndRequiredProperty;
     }
     /**
-     * 
-     *
      * @param string|null $nullableAndRequiredProperty
      *
      * @return self

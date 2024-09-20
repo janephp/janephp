@@ -13,14 +13,10 @@ class Plugin
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
@@ -49,8 +45,6 @@ class Plugin
      */
     protected $config;
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -58,8 +52,6 @@ class Plugin
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -71,8 +63,6 @@ class Plugin
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -80,8 +70,6 @@ class Plugin
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self

@@ -13,20 +13,14 @@ class ScimUserEmailsItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $value;
     /**
-     * 
-     *
      * @var bool
      */
     protected $primary;
     /**
-     * 
-     *
      * @return string
      */
     public function getValue(): string
@@ -34,8 +28,6 @@ class ScimUserEmailsItem extends \ArrayObject
         return $this->value;
     }
     /**
-     * 
-     *
      * @param string $value
      *
      * @return self
@@ -47,8 +39,6 @@ class ScimUserEmailsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getPrimary(): bool
@@ -56,8 +46,6 @@ class ScimUserEmailsItem extends \ArrayObject
         return $this->primary;
     }
     /**
-     * 
-     *
      * @param bool $primary
      *
      * @return self

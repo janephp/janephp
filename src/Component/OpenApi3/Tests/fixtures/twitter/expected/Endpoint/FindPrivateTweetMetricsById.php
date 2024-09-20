@@ -7,7 +7,6 @@ class FindPrivateTweetMetricsById extends \Jane\Component\OpenApi3\Tests\Expecte
     protected $accept;
     /**
      * Returns various metrics about a Tweet, including metrics for an embedded Video if one exists
-     *
      * @param array $queryParameters {
      *     @var array $ids A comma separated list of Tweet IDs. Up to 50 are allowed in a single request.
      * }

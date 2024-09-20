@@ -7,7 +7,6 @@ class ApiReviewsIdDelete extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint i
     protected $id;
     /**
      * Removes the Review resource.
-     *
      * @param string $id Review identifier
      */
     public function __construct(string $id)

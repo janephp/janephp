@@ -7,10 +7,8 @@ class OrgsGetWebhook extends \Github\Runtime\Client\BaseEndpoint implements \Git
     protected $org;
     protected $hook_id;
     /**
-     * 
-     *
-     * @param string $org 
-     * @param int $hookId 
+     * @param string $org
+     * @param int $hookId
      */
     public function __construct(string $org, int $hookId)
     {

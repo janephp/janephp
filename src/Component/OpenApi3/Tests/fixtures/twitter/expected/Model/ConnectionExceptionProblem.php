@@ -13,32 +13,22 @@ class ConnectionExceptionProblem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $connectionIssue;
     /**
-     * 
-     *
      * @var string
      */
     protected $title;
     /**
-     * 
-     *
      * @var string
      */
     protected $detail;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -46,8 +36,6 @@ class ConnectionExceptionProblem extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -59,8 +47,6 @@ class ConnectionExceptionProblem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getConnectionIssue(): string
@@ -68,8 +54,6 @@ class ConnectionExceptionProblem extends \ArrayObject
         return $this->connectionIssue;
     }
     /**
-     * 
-     *
      * @param string $connectionIssue
      *
      * @return self
@@ -81,8 +65,6 @@ class ConnectionExceptionProblem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTitle(): string
@@ -90,8 +72,6 @@ class ConnectionExceptionProblem extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string $title
      *
      * @return self
@@ -103,8 +83,6 @@ class ConnectionExceptionProblem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDetail(): string
@@ -112,8 +90,6 @@ class ConnectionExceptionProblem extends \ArrayObject
         return $this->detail;
     }
     /**
-     * 
-     *
      * @param string $detail
      *
      * @return self

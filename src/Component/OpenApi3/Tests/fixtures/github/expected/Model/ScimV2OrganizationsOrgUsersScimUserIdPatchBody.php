@@ -13,8 +13,6 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $schemas;
@@ -25,8 +23,6 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBody extends \ArrayObject
      */
     protected $operations;
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getSchemas(): array
@@ -34,8 +30,6 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBody extends \ArrayObject
         return $this->schemas;
     }
     /**
-     * 
-     *
      * @param list<string> $schemas
      *
      * @return self

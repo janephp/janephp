@@ -13,20 +13,14 @@ class FileCommit extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var FileCommitContent|null
      */
     protected $content;
     /**
-     * 
-     *
      * @var FileCommitCommit
      */
     protected $commit;
     /**
-     * 
-     *
      * @return FileCommitContent|null
      */
     public function getContent(): ?FileCommitContent
@@ -34,8 +28,6 @@ class FileCommit extends \ArrayObject
         return $this->content;
     }
     /**
-     * 
-     *
      * @param FileCommitContent|null $content
      *
      * @return self
@@ -47,8 +39,6 @@ class FileCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return FileCommitCommit
      */
     public function getCommit(): FileCommitCommit
@@ -56,8 +46,6 @@ class FileCommit extends \ArrayObject
         return $this->commit;
     }
     /**
-     * 
-     *
      * @param FileCommitCommit $commit
      *
      * @return self

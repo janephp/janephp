@@ -25,8 +25,6 @@ class ReposOwnerRepoGitRefsPostBody extends \ArrayObject
      */
     protected $sha;
     /**
-     * 
-     *
      * @var string
      */
     protected $key;
@@ -75,8 +73,6 @@ class ReposOwnerRepoGitRefsPostBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKey(): string
@@ -84,8 +80,6 @@ class ReposOwnerRepoGitRefsPostBody extends \ArrayObject
         return $this->key;
     }
     /**
-     * 
-     *
      * @param string $key
      *
      * @return self

@@ -7,8 +7,7 @@ class DeletePendingFreshInvesitgation extends \CreditSafe\API\Runtime\Client\Bas
     protected $orderId;
     /**
      * Currently depreciated as the order may already be in progress with our investigation team. To delete an ongoing Fresh Investigation, please get in touch with us at Group.Help@creditsafe.com quoting the `Transaction Id` against the order in `/freshinvestigations/{orderId}`
-     *
-     * @param string $orderId 
+     * @param string $orderId
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }

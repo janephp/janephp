@@ -13,32 +13,22 @@ class OAuthFlows extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var ImplicitOAuthFlow|null
      */
     protected $implicit;
     /**
-     * 
-     *
      * @var PasswordOAuthFlow|null
      */
     protected $password;
     /**
-     * 
-     *
      * @var ClientCredentialsFlow|null
      */
     protected $clientCredentials;
     /**
-     * 
-     *
      * @var AuthorizationCodeOAuthFlow|null
      */
     protected $authorizationCode;
     /**
-     * 
-     *
      * @return ImplicitOAuthFlow|null
      */
     public function getImplicit() : ?ImplicitOAuthFlow
@@ -46,8 +36,6 @@ class OAuthFlows extends \ArrayObject
         return $this->implicit;
     }
     /**
-     * 
-     *
      * @param ImplicitOAuthFlow|null $implicit
      *
      * @return self
@@ -59,8 +47,6 @@ class OAuthFlows extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PasswordOAuthFlow|null
      */
     public function getPassword() : ?PasswordOAuthFlow
@@ -68,8 +54,6 @@ class OAuthFlows extends \ArrayObject
         return $this->password;
     }
     /**
-     * 
-     *
      * @param PasswordOAuthFlow|null $password
      *
      * @return self
@@ -81,8 +65,6 @@ class OAuthFlows extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ClientCredentialsFlow|null
      */
     public function getClientCredentials() : ?ClientCredentialsFlow
@@ -90,8 +72,6 @@ class OAuthFlows extends \ArrayObject
         return $this->clientCredentials;
     }
     /**
-     * 
-     *
      * @param ClientCredentialsFlow|null $clientCredentials
      *
      * @return self
@@ -103,8 +83,6 @@ class OAuthFlows extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return AuthorizationCodeOAuthFlow|null
      */
     public function getAuthorizationCode() : ?AuthorizationCodeOAuthFlow
@@ -112,8 +90,6 @@ class OAuthFlows extends \ArrayObject
         return $this->authorizationCode;
     }
     /**
-     * 
-     *
      * @param AuthorizationCodeOAuthFlow|null $authorizationCode
      *
      * @return self

@@ -7,7 +7,6 @@ class MigrationsDeleteArchiveForAuthenticatedUser extends \Github\Runtime\Client
     protected $migration_id;
     /**
      * Deletes a previous migration archive. Downloadable migration archives are automatically deleted after seven days. Migration metadata, which is returned in the [List user migrations](https://developer.github.com/v3/migrations/users/#list-user-migrations) and [Get a user migration status](https://developer.github.com/v3/migrations/users/#get-a-user-migration-status) endpoints, will continue to be available even after an archive is deleted.
-     *
      * @param int $migrationId migration_id parameter
      */
     public function __construct(int $migrationId)

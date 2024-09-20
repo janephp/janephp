@@ -6,7 +6,6 @@ class ActivityListWatchedReposForAuthenticatedUser extends \Github\Runtime\Clien
 {
     /**
      * Lists repositories the authenticated user is watching.
-     *
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.

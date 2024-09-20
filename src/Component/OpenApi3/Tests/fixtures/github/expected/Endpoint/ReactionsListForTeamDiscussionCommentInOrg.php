@@ -10,12 +10,12 @@ class ReactionsListForTeamDiscussionCommentInOrg extends \Github\Runtime\Client\
     protected $comment_number;
     /**
      * List the reactions to a [team discussion comment](https://developer.github.com/v3/teams/discussion_comments/). OAuth access tokens require the `read:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-     **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
      *
-     * @param string $org 
+     * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
+     * @param string $org
      * @param string $teamSlug team_slug parameter
-     * @param int $discussionNumber 
-     * @param int $commentNumber 
+     * @param int $discussionNumber
+     * @param int $commentNumber
      * @param array $queryParameters {
      *     @var string $content Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to a team discussion comment.
      *     @var int $per_page Results per page (max 100)

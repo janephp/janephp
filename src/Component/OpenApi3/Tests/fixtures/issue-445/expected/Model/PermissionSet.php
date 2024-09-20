@@ -19,11 +19,11 @@ class PermissionSet
      */
     protected $id;
     /**
-    * When true this permission set will derogate all other configured permission sets.
-    Cannot be changed after creation.
-    *
-    * @var bool
-    */
+     * When true this permission set will derogate all other configured permission sets.
+     * Cannot be changed after creation.
+     *
+     * @var bool
+     */
     protected $exclusive;
     /**
      * Language specific permission set names.
@@ -54,11 +54,11 @@ class PermissionSet
         return $this;
     }
     /**
-    * When true this permission set will derogate all other configured permission sets.
-    Cannot be changed after creation.
-    *
-    * @return bool
-    */
+     * When true this permission set will derogate all other configured permission sets.
+     * Cannot be changed after creation.
+     *
+     * @return bool
+     */
     public function getExclusive(): bool
     {
         return $this->exclusive;

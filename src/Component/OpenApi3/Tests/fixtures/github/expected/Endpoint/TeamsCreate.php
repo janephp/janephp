@@ -6,13 +6,12 @@ class TeamsCreate extends \Github\Runtime\Client\BaseEndpoint implements \Github
 {
     protected $org;
     /**
-    * To create a team, the authenticated user must be a member or owner of `{org}`. By default, organization members can create teams. Organization owners can limit team creation to organization owners. For more information, see "[Setting team creation permissions](https://help.github.com/en/articles/setting-team-creation-permissions-in-your-organization)."
-    
-    When you create a new team, you automatically become a team maintainer without explicitly adding yourself to the optional array of `maintainers`. For more information, see "[About teams](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-teams)".
-    *
-    * @param string $org 
-    * @param null|\Github\Model\OrgsOrgTeamsPostBody $requestBody 
-    */
+     * To create a team, the authenticated user must be a member or owner of `{org}`. By default, organization members can create teams. Organization owners can limit team creation to organization owners. For more information, see "[Setting team creation permissions](https://help.github.com/en/articles/setting-team-creation-permissions-in-your-organization)."
+     *
+     * When you create a new team, you automatically become a team maintainer without explicitly adding yourself to the optional array of `maintainers`. For more information, see "[About teams](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-teams)".
+     * @param string $org
+     * @param null|\Github\Model\OrgsOrgTeamsPostBody $requestBody
+     */
     public function __construct(string $org, ?\Github\Model\OrgsOrgTeamsPostBody $requestBody = null)
     {
         $this->org = $org;

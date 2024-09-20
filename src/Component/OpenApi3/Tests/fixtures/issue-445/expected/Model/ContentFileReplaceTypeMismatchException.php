@@ -13,62 +13,42 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $traceLevel;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $traceId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $traceJobId;
     /**
-     * 
-     *
      * @var int
      */
     protected $httpStatusCode;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $exceptionMessage;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $customerId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $customerAlias;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $userId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $contentId;
@@ -85,8 +65,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
      */
     protected $newContentType;
     /**
-     * 
-     *
      * @return string
      */
     public function getTraceLevel(): string
@@ -94,8 +72,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this->traceLevel;
     }
     /**
-     * 
-     *
      * @param string $traceLevel
      *
      * @return self
@@ -107,8 +83,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTraceId(): ?string
@@ -116,8 +90,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this->traceId;
     }
     /**
-     * 
-     *
      * @param string|null $traceId
      *
      * @return self
@@ -129,8 +101,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTraceJobId(): ?string
@@ -138,8 +108,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this->traceJobId;
     }
     /**
-     * 
-     *
      * @param string|null $traceJobId
      *
      * @return self
@@ -151,8 +119,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getHttpStatusCode(): int
@@ -160,8 +126,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this->httpStatusCode;
     }
     /**
-     * 
-     *
      * @param int $httpStatusCode
      *
      * @return self
@@ -173,8 +137,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExceptionMessage(): ?string
@@ -182,8 +144,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this->exceptionMessage;
     }
     /**
-     * 
-     *
      * @param string|null $exceptionMessage
      *
      * @return self
@@ -195,8 +155,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -204,8 +162,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      *
      * @return self
@@ -217,8 +173,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCustomerId(): ?string
@@ -226,8 +180,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this->customerId;
     }
     /**
-     * 
-     *
      * @param string|null $customerId
      *
      * @return self
@@ -239,8 +191,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCustomerAlias(): ?string
@@ -248,8 +198,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this->customerAlias;
     }
     /**
-     * 
-     *
      * @param string|null $customerAlias
      *
      * @return self
@@ -261,8 +209,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getUserId(): ?string
@@ -270,8 +216,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this->userId;
     }
     /**
-     * 
-     *
      * @param string|null $userId
      *
      * @return self
@@ -283,8 +227,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getContentId(): ?string
@@ -292,8 +234,6 @@ class ContentFileReplaceTypeMismatchException extends \ArrayObject
         return $this->contentId;
     }
     /**
-     * 
-     *
      * @param string|null $contentId
      *
      * @return self

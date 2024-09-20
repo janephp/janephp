@@ -6,8 +6,7 @@ class SchemaPermissionSetCreate extends \PicturePark\API\Runtime\Client\BaseEndp
 {
     /**
      * Creates new schema permission set based on supplied request.
-     *
-     * @param \PicturePark\API\Model\SchemaPermissionSetCreateRequest $requestBody 
+     * @param \PicturePark\API\Model\SchemaPermissionSetCreateRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\SchemaPermissionSetCreateRequest $requestBody)
     {

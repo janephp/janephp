@@ -13,74 +13,50 @@ class AudioMetadata extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $names;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $descriptions;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $fileExtension;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $fileName;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $filePath;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $fileSizeInBytes;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $sha1Hash;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $xmpMetadata;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $exifMetadata;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $language;
     /**
-     * 
-     *
      * @var list<AudioStream>|null
      */
     protected $audioStreams;
     /**
-     * 
-     *
      * @return mixed
      */
     public function getNames()
@@ -88,8 +64,6 @@ class AudioMetadata extends \ArrayObject
         return $this->names;
     }
     /**
-     * 
-     *
      * @param mixed $names
      *
      * @return self
@@ -101,8 +75,6 @@ class AudioMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getDescriptions()
@@ -110,8 +82,6 @@ class AudioMetadata extends \ArrayObject
         return $this->descriptions;
     }
     /**
-     * 
-     *
      * @param mixed $descriptions
      *
      * @return self
@@ -123,8 +93,6 @@ class AudioMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFileExtension(): ?string
@@ -132,8 +100,6 @@ class AudioMetadata extends \ArrayObject
         return $this->fileExtension;
     }
     /**
-     * 
-     *
      * @param string|null $fileExtension
      *
      * @return self
@@ -145,8 +111,6 @@ class AudioMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFileName(): ?string
@@ -154,8 +118,6 @@ class AudioMetadata extends \ArrayObject
         return $this->fileName;
     }
     /**
-     * 
-     *
      * @param string|null $fileName
      *
      * @return self
@@ -167,8 +129,6 @@ class AudioMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFilePath(): ?string
@@ -176,8 +136,6 @@ class AudioMetadata extends \ArrayObject
         return $this->filePath;
     }
     /**
-     * 
-     *
      * @param string|null $filePath
      *
      * @return self
@@ -189,8 +147,6 @@ class AudioMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getFileSizeInBytes(): ?int
@@ -198,8 +154,6 @@ class AudioMetadata extends \ArrayObject
         return $this->fileSizeInBytes;
     }
     /**
-     * 
-     *
      * @param int|null $fileSizeInBytes
      *
      * @return self
@@ -211,8 +165,6 @@ class AudioMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getSha1Hash(): ?string
@@ -220,8 +172,6 @@ class AudioMetadata extends \ArrayObject
         return $this->sha1Hash;
     }
     /**
-     * 
-     *
      * @param string|null $sha1Hash
      *
      * @return self
@@ -233,8 +183,6 @@ class AudioMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getXmpMetadata()
@@ -242,8 +190,6 @@ class AudioMetadata extends \ArrayObject
         return $this->xmpMetadata;
     }
     /**
-     * 
-     *
      * @param mixed $xmpMetadata
      *
      * @return self
@@ -255,8 +201,6 @@ class AudioMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getExifMetadata()
@@ -264,8 +208,6 @@ class AudioMetadata extends \ArrayObject
         return $this->exifMetadata;
     }
     /**
-     * 
-     *
      * @param mixed $exifMetadata
      *
      * @return self
@@ -277,8 +219,6 @@ class AudioMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getLanguage(): ?string
@@ -286,8 +226,6 @@ class AudioMetadata extends \ArrayObject
         return $this->language;
     }
     /**
-     * 
-     *
      * @param string|null $language
      *
      * @return self
@@ -299,8 +237,6 @@ class AudioMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<AudioStream>|null
      */
     public function getAudioStreams(): ?array
@@ -308,8 +244,6 @@ class AudioMetadata extends \ArrayObject
         return $this->audioStreams;
     }
     /**
-     * 
-     *
      * @param list<AudioStream>|null $audioStreams
      *
      * @return self

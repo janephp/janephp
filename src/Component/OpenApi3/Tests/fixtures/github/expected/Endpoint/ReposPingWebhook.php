@@ -9,10 +9,9 @@ class ReposPingWebhook extends \Github\Runtime\Client\BaseEndpoint implements \G
     protected $hook_id;
     /**
      * This will trigger a [ping event](https://developer.github.com/webhooks/#ping-event) to be sent to the hook.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $hookId 
+     * @param string $owner
+     * @param string $repo
+     * @param int $hookId
      */
     public function __construct(string $owner, string $repo, int $hookId)
     {

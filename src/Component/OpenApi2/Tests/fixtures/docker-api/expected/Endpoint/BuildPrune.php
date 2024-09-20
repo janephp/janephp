@@ -5,27 +5,25 @@ namespace Docker\Api\Endpoint;
 class BuildPrune extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docker\Api\Runtime\Client\Endpoint
 {
     /**
-    * 
-    *
-    * @param array $queryParameters {
-    *     @var int $keep-storage Amount of disk space in bytes to keep for cache
-    *     @var bool $all Remove all types of build cache
-    *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
-    process on the list of build cache objects.
-    
-    Available filters:
-    
-    - `until=<duration>`: duration relative to daemon's time, during which build cache was not used, in Go's duration format (e.g., '24h')
-    - `id=<id>`
-    - `parent=<id>`
-    - `type=<string>`
-    - `description=<string>`
-    - `inuse`
-    - `shared`
-    - `private`
-    
-    * }
-    */
+     * @param array $queryParameters {
+     *     @var int $keep-storage Amount of disk space in bytes to keep for cache
+     *     @var bool $all Remove all types of build cache
+     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
+     *     process on the list of build cache objects.
+     *     
+     *     Available filters:
+     *     
+     *     - `until=<duration>`: duration relative to daemon's time, during which build cache was not used, in Go's duration format (e.g., '24h')
+     *     - `id=<id>`
+     *     - `parent=<id>`
+     *     - `type=<string>`
+     *     - `description=<string>`
+     *     - `inuse`
+     *     - `shared`
+     *     - `private`
+     *     
+     * }
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

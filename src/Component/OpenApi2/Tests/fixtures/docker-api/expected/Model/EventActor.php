@@ -20,6 +20,7 @@ class EventActor
     protected $iD;
     /**
      * Various key/value attributes of the object, depending on its type.
+     * 
      *
      * @var array<string, string>
      */
@@ -48,6 +49,7 @@ class EventActor
     }
     /**
      * Various key/value attributes of the object, depending on its type.
+     * 
      *
      * @return array<string, string>
      */

@@ -6,12 +6,11 @@ class ContentUpdateFile extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
 {
     protected $id;
     /**
-    * Updates binary file of existing content. The file must already be uploaded before calling this endpoint. See [Transfer](#tag/Transfer).
-    The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param string $id The ID of the content to replace.
-    * @param \PicturePark\API\Model\ContentFileUpdateRequest $requestBody 
-    */
+     * Updates binary file of existing content. The file must already be uploaded before calling this endpoint. See [Transfer](#tag/Transfer).
+     * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param string $id The ID of the content to replace.
+     * @param \PicturePark\API\Model\ContentFileUpdateRequest $requestBody
+     */
     public function __construct(string $id, \PicturePark\API\Model\ContentFileUpdateRequest $requestBody)
     {
         $this->id = $id;

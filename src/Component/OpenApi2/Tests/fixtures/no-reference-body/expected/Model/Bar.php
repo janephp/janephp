@@ -13,20 +13,14 @@ class Bar
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $foo;
     /**
-     * 
-     *
      * @var string
      */
     protected $bar;
     /**
-     * 
-     *
      * @return string
      */
     public function getFoo(): string
@@ -34,8 +28,6 @@ class Bar
         return $this->foo;
     }
     /**
-     * 
-     *
      * @param string $foo
      *
      * @return self
@@ -47,8 +39,6 @@ class Bar
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBar(): string
@@ -56,8 +46,6 @@ class Bar
         return $this->bar;
     }
     /**
-     * 
-     *
      * @param string $bar
      *
      * @return self

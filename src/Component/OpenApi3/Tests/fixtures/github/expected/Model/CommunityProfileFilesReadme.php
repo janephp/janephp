@@ -13,20 +13,14 @@ class CommunityProfileFilesReadme extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -34,8 +28,6 @@ class CommunityProfileFilesReadme extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -47,8 +39,6 @@ class CommunityProfileFilesReadme extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -56,8 +46,6 @@ class CommunityProfileFilesReadme extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self

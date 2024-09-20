@@ -31,18 +31,18 @@ class FieldTranslatedString extends FieldBase
      */
     protected $maximumLength;
     /**
-    * Defines how the value must be analyzed for filtering by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
-    The analyzers are applied only if the Index property is set to true.
-    *
-    * @var list<AnalyzerBase>|null
-    */
+     * Defines how the value must be analyzed for filtering by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
+     * The analyzers are applied only if the Index property is set to true.
+     *
+     * @var list<AnalyzerBase>|null
+     */
     protected $indexAnalyzers;
     /**
-    * Defines how the value must be analyzed for searches by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
-    The analyzers are applied only if the SimpleSearch property is set to true.
-    *
-    * @var list<AnalyzerBase>|null
-    */
+     * Defines how the value must be analyzed for searches by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
+     * The analyzers are applied only if the SimpleSearch property is set to true.
+     *
+     * @var list<AnalyzerBase>|null
+     */
     protected $simpleSearchAnalyzers;
     /**
      * Defines that the field value must be displayed in a multiline component.
@@ -51,15 +51,16 @@ class FieldTranslatedString extends FieldBase
      */
     protected $multiLine;
     /**
-    * Sets the required metadata languages for the translation field. The langauge configuration limits the available metadata languages.
-    If Required is true, the field and all its metadata languages are required.
-    If Required is false, the field can be left empty, but as soon as a value is entered all required metadata languages are mandatory.
-    *
-    * @var list<string>|null
-    */
+     * Sets the required metadata languages for the translation field. The langauge configuration limits the available metadata languages.
+     * If Required is true, the field and all its metadata languages are required.
+     * If Required is false, the field can be left empty, but as soon as a value is entered all required metadata languages are mandatory.
+     *
+     * @var list<string>|null
+     */
     protected $requiredMetadataLanguages;
     /**
      * A DotLiquid template. If set, it transforms the field in a calculated field, so that its value is calculated based on this template.
+     * 
      *
      * @var string|null
      */
@@ -137,11 +138,11 @@ class FieldTranslatedString extends FieldBase
         return $this;
     }
     /**
-    * Defines how the value must be analyzed for filtering by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
-    The analyzers are applied only if the Index property is set to true.
-    *
-    * @return list<AnalyzerBase>|null
-    */
+     * Defines how the value must be analyzed for filtering by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
+     * The analyzers are applied only if the Index property is set to true.
+     *
+     * @return list<AnalyzerBase>|null
+     */
     public function getIndexAnalyzers(): ?array
     {
         return $this->indexAnalyzers;
@@ -161,11 +162,11 @@ class FieldTranslatedString extends FieldBase
         return $this;
     }
     /**
-    * Defines how the value must be analyzed for searches by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
-    The analyzers are applied only if the SimpleSearch property is set to true.
-    *
-    * @return list<AnalyzerBase>|null
-    */
+     * Defines how the value must be analyzed for searches by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
+     * The analyzers are applied only if the SimpleSearch property is set to true.
+     *
+     * @return list<AnalyzerBase>|null
+     */
     public function getSimpleSearchAnalyzers(): ?array
     {
         return $this->simpleSearchAnalyzers;
@@ -207,12 +208,12 @@ class FieldTranslatedString extends FieldBase
         return $this;
     }
     /**
-    * Sets the required metadata languages for the translation field. The langauge configuration limits the available metadata languages.
-    If Required is true, the field and all its metadata languages are required.
-    If Required is false, the field can be left empty, but as soon as a value is entered all required metadata languages are mandatory.
-    *
-    * @return list<string>|null
-    */
+     * Sets the required metadata languages for the translation field. The langauge configuration limits the available metadata languages.
+     * If Required is true, the field and all its metadata languages are required.
+     * If Required is false, the field can be left empty, but as soon as a value is entered all required metadata languages are mandatory.
+     *
+     * @return list<string>|null
+     */
     public function getRequiredMetadataLanguages(): ?array
     {
         return $this->requiredMetadataLanguages;
@@ -234,6 +235,7 @@ class FieldTranslatedString extends FieldBase
     }
     /**
      * A DotLiquid template. If set, it transforms the field in a calculated field, so that its value is calculated based on this template.
+     * 
      *
      * @return string|null
      */

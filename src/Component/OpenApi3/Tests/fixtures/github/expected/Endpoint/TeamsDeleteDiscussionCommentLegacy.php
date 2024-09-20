@@ -8,14 +8,13 @@ class TeamsDeleteDiscussionCommentLegacy extends \Github\Runtime\Client\BaseEndp
     protected $discussion_number;
     protected $comment_number;
     /**
-    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Delete a discussion comment](https://developer.github.com/v3/teams/discussion_comments/#delete-a-discussion-comment) endpoint.
-    
-    Deletes a comment on a team discussion. OAuth access tokens require the `write:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    *
-    * @param int $teamId 
-    * @param int $discussionNumber 
-    * @param int $commentNumber 
-    */
+     * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Delete a discussion comment](https://developer.github.com/v3/teams/discussion_comments/#delete-a-discussion-comment) endpoint.
+     *
+     * Deletes a comment on a team discussion. OAuth access tokens require the `write:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+     * @param int $teamId
+     * @param int $discussionNumber
+     * @param int $commentNumber
+     */
     public function __construct(int $teamId, int $discussionNumber, int $commentNumber)
     {
         $this->team_id = $teamId;

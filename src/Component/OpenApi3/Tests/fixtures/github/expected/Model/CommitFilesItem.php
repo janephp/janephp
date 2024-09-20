@@ -13,74 +13,50 @@ class CommitFilesItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $filename;
     /**
-     * 
-     *
      * @var int
      */
     protected $additions;
     /**
-     * 
-     *
      * @var int
      */
     protected $deletions;
     /**
-     * 
-     *
      * @var int
      */
     protected $changes;
     /**
-     * 
-     *
      * @var string
      */
     protected $status;
     /**
-     * 
-     *
      * @var string
      */
     protected $rawUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $blobUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $patch;
     /**
-     * 
-     *
      * @var string
      */
     protected $sha;
     /**
-     * 
-     *
      * @var string
      */
     protected $contentsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $previousFilename;
     /**
-     * 
-     *
      * @return string
      */
     public function getFilename(): string
@@ -88,8 +64,6 @@ class CommitFilesItem extends \ArrayObject
         return $this->filename;
     }
     /**
-     * 
-     *
      * @param string $filename
      *
      * @return self
@@ -101,8 +75,6 @@ class CommitFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getAdditions(): int
@@ -110,8 +82,6 @@ class CommitFilesItem extends \ArrayObject
         return $this->additions;
     }
     /**
-     * 
-     *
      * @param int $additions
      *
      * @return self
@@ -123,8 +93,6 @@ class CommitFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getDeletions(): int
@@ -132,8 +100,6 @@ class CommitFilesItem extends \ArrayObject
         return $this->deletions;
     }
     /**
-     * 
-     *
      * @param int $deletions
      *
      * @return self
@@ -145,8 +111,6 @@ class CommitFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getChanges(): int
@@ -154,8 +118,6 @@ class CommitFilesItem extends \ArrayObject
         return $this->changes;
     }
     /**
-     * 
-     *
      * @param int $changes
      *
      * @return self
@@ -167,8 +129,6 @@ class CommitFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStatus(): string
@@ -176,8 +136,6 @@ class CommitFilesItem extends \ArrayObject
         return $this->status;
     }
     /**
-     * 
-     *
      * @param string $status
      *
      * @return self
@@ -189,8 +147,6 @@ class CommitFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRawUrl(): string
@@ -198,8 +154,6 @@ class CommitFilesItem extends \ArrayObject
         return $this->rawUrl;
     }
     /**
-     * 
-     *
      * @param string $rawUrl
      *
      * @return self
@@ -211,8 +165,6 @@ class CommitFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBlobUrl(): string
@@ -220,8 +172,6 @@ class CommitFilesItem extends \ArrayObject
         return $this->blobUrl;
     }
     /**
-     * 
-     *
      * @param string $blobUrl
      *
      * @return self
@@ -233,8 +183,6 @@ class CommitFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPatch(): string
@@ -242,8 +190,6 @@ class CommitFilesItem extends \ArrayObject
         return $this->patch;
     }
     /**
-     * 
-     *
      * @param string $patch
      *
      * @return self
@@ -255,8 +201,6 @@ class CommitFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSha(): string
@@ -264,8 +208,6 @@ class CommitFilesItem extends \ArrayObject
         return $this->sha;
     }
     /**
-     * 
-     *
      * @param string $sha
      *
      * @return self
@@ -277,8 +219,6 @@ class CommitFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContentsUrl(): string
@@ -286,8 +226,6 @@ class CommitFilesItem extends \ArrayObject
         return $this->contentsUrl;
     }
     /**
-     * 
-     *
      * @param string $contentsUrl
      *
      * @return self
@@ -299,8 +237,6 @@ class CommitFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPreviousFilename(): string
@@ -308,8 +244,6 @@ class CommitFilesItem extends \ArrayObject
         return $this->previousFilename;
     }
     /**
-     * 
-     *
      * @param string $previousFilename
      *
      * @return self

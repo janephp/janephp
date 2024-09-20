@@ -7,7 +7,6 @@ class ApiBooksIdDelete extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint imp
     protected $id;
     /**
      * Removes the Book resource.
-     *
      * @param string $id Book identifier
      */
     public function __construct(string $id)

@@ -7,8 +7,7 @@ class ActivityListReposWatchedByUser extends \Github\Runtime\Client\BaseEndpoint
     protected $username;
     /**
      * Lists repositories a user is watching.
-     *
-     * @param string $username 
+     * @param string $username
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.

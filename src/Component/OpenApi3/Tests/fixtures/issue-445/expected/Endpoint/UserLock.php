@@ -6,12 +6,11 @@ class UserLock extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \
 {
     protected $id;
     /**
-    * Does not affect AuthorizationState of user.
-    If User is already in desired state, this will be returned as error.
-    *
-    * @param string $id User ID to action on.
-    * @param \PicturePark\API\Model\UserLockRequest $requestBody 
-    */
+     * Does not affect AuthorizationState of user.
+     * If User is already in desired state, this will be returned as error.
+     * @param string $id User ID to action on.
+     * @param \PicturePark\API\Model\UserLockRequest $requestBody
+     */
     public function __construct(string $id, \PicturePark\API\Model\UserLockRequest $requestBody)
     {
         $this->id = $id;

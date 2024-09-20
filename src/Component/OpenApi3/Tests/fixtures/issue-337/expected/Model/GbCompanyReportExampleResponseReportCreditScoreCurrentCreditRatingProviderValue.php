@@ -13,26 +13,18 @@ class GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRatingProvider
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $maxValue;
     /**
-     * 
-     *
      * @var string
      */
     protected $minValue;
     /**
-     * 
-     *
      * @var string
      */
     protected $value;
     /**
-     * 
-     *
      * @return string
      */
     public function getMaxValue(): string
@@ -40,8 +32,6 @@ class GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRatingProvider
         return $this->maxValue;
     }
     /**
-     * 
-     *
      * @param string $maxValue
      *
      * @return self
@@ -53,8 +43,6 @@ class GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRatingProvider
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMinValue(): string
@@ -62,8 +50,6 @@ class GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRatingProvider
         return $this->minValue;
     }
     /**
-     * 
-     *
      * @param string $minValue
      *
      * @return self
@@ -75,8 +61,6 @@ class GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRatingProvider
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getValue(): string
@@ -84,8 +68,6 @@ class GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRatingProvider
         return $this->value;
     }
     /**
-     * 
-     *
      * @param string $value
      *
      * @return self

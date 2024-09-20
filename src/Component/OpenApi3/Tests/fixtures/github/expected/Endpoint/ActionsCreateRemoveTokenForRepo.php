@@ -7,20 +7,19 @@ class ActionsCreateRemoveTokenForRepo extends \Github\Runtime\Client\BaseEndpoin
     protected $owner;
     protected $repo;
     /**
-    * Returns a token that you can pass to remove a self-hosted runner from a repository. The token expires after one hour.
-    You must authenticate using an access token with the `repo` scope to use this endpoint.
-    
-    #### Example using remove token
-    
-    To remove your self-hosted runner from a repository, replace TOKEN with the remove token provided by this endpoint.
-    
-    ```
-    ./config.sh remove --token TOKEN
-    ```
-    *
-    * @param string $owner 
-    * @param string $repo 
-    */
+     * Returns a token that you can pass to remove a self-hosted runner from a repository. The token expires after one hour.
+     * You must authenticate using an access token with the `repo` scope to use this endpoint.
+     *
+     * #### Example using remove token
+     *
+     * To remove your self-hosted runner from a repository, replace TOKEN with the remove token provided by this endpoint.
+     *
+     * ```
+     * ./config.sh remove --token TOKEN
+     * ```
+     * @param string $owner
+     * @param string $repo
+     */
     public function __construct(string $owner, string $repo)
     {
         $this->owner = $owner;

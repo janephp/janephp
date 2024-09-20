@@ -14,20 +14,22 @@ class TaskSpecResources
     }
     /**
      * An object describing a limit on resources which can be requested by a task.
+     * 
      *
      * @var Limit
      */
     protected $limits;
     /**
-    * An object describing the resources which can be advertised by a node and
-    requested by a task.
-    
-    *
-    * @var ResourceObject
-    */
+     * An object describing the resources which can be advertised by a node and
+     * requested by a task.
+     * 
+     *
+     * @var ResourceObject
+     */
     protected $reservation;
     /**
      * An object describing a limit on resources which can be requested by a task.
+     * 
      *
      * @return Limit
      */
@@ -49,12 +51,12 @@ class TaskSpecResources
         return $this;
     }
     /**
-    * An object describing the resources which can be advertised by a node and
-    requested by a task.
-    
-    *
-    * @return ResourceObject
-    */
+     * An object describing the resources which can be advertised by a node and
+     * requested by a task.
+     * 
+     *
+     * @return ResourceObject
+     */
     public function getReservation(): ResourceObject
     {
         return $this->reservation;

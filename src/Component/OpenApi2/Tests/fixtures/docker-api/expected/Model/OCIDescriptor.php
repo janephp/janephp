@@ -14,24 +14,28 @@ class OCIDescriptor
     }
     /**
      * The media type of the object this schema refers to.
+     * 
      *
      * @var string
      */
     protected $mediaType;
     /**
      * The digest of the targeted content.
+     * 
      *
      * @var string
      */
     protected $digest;
     /**
      * The size in bytes of the blob.
+     * 
      *
      * @var int
      */
     protected $size;
     /**
      * The media type of the object this schema refers to.
+     * 
      *
      * @return string
      */
@@ -54,6 +58,7 @@ class OCIDescriptor
     }
     /**
      * The digest of the targeted content.
+     * 
      *
      * @return string
      */
@@ -76,6 +81,7 @@ class OCIDescriptor
     }
     /**
      * The size in bytes of the blob.
+     * 
      *
      * @return int
      */

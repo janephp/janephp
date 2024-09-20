@@ -13,110 +13,74 @@ class PrimitivesItems extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $type;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $format;
     /**
-     * 
-     *
      * @var PrimitivesItems|null
      */
     protected $items;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $collectionFormat = 'csv';
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $default;
     /**
-     * 
-     *
      * @var float|null
      */
     protected $maximum;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $exclusiveMaximum = false;
     /**
-     * 
-     *
      * @var float|null
      */
     protected $minimum;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $exclusiveMinimum = false;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $maxLength;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $minLength;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $pattern;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $maxItems;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $minItems;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $uniqueItems = false;
     /**
-     * 
-     *
      * @var mixed[]|null
      */
     protected $enum;
     /**
-     * 
-     *
      * @var float|null
      */
     protected $multipleOf;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getType() : ?string
@@ -124,8 +88,6 @@ class PrimitivesItems extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string|null $type
      *
      * @return self
@@ -137,8 +99,6 @@ class PrimitivesItems extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFormat() : ?string
@@ -146,8 +106,6 @@ class PrimitivesItems extends \ArrayObject
         return $this->format;
     }
     /**
-     * 
-     *
      * @param string|null $format
      *
      * @return self
@@ -159,8 +117,6 @@ class PrimitivesItems extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PrimitivesItems|null
      */
     public function getItems() : ?PrimitivesItems
@@ -168,8 +124,6 @@ class PrimitivesItems extends \ArrayObject
         return $this->items;
     }
     /**
-     * 
-     *
      * @param PrimitivesItems|null $items
      *
      * @return self
@@ -181,8 +135,6 @@ class PrimitivesItems extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCollectionFormat() : ?string
@@ -190,8 +142,6 @@ class PrimitivesItems extends \ArrayObject
         return $this->collectionFormat;
     }
     /**
-     * 
-     *
      * @param string|null $collectionFormat
      *
      * @return self
@@ -203,8 +153,6 @@ class PrimitivesItems extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getDefault()
@@ -212,8 +160,6 @@ class PrimitivesItems extends \ArrayObject
         return $this->default;
     }
     /**
-     * 
-     *
      * @param mixed $default
      *
      * @return self
@@ -225,8 +171,6 @@ class PrimitivesItems extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return float|null
      */
     public function getMaximum() : ?float
@@ -234,8 +178,6 @@ class PrimitivesItems extends \ArrayObject
         return $this->maximum;
     }
     /**
-     * 
-     *
      * @param float|null $maximum
      *
      * @return self
@@ -247,8 +189,6 @@ class PrimitivesItems extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getExclusiveMaximum() : ?bool
@@ -256,8 +196,6 @@ class PrimitivesItems extends \ArrayObject
         return $this->exclusiveMaximum;
     }
     /**
-     * 
-     *
      * @param bool|null $exclusiveMaximum
      *
      * @return self
@@ -269,8 +207,6 @@ class PrimitivesItems extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return float|null
      */
     public function getMinimum() : ?float
@@ -278,8 +214,6 @@ class PrimitivesItems extends \ArrayObject
         return $this->minimum;
     }
     /**
-     * 
-     *
      * @param float|null $minimum
      *
      * @return self
@@ -291,8 +225,6 @@ class PrimitivesItems extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getExclusiveMinimum() : ?bool
@@ -300,8 +232,6 @@ class PrimitivesItems extends \ArrayObject
         return $this->exclusiveMinimum;
     }
     /**
-     * 
-     *
      * @param bool|null $exclusiveMinimum
      *
      * @return self
@@ -313,8 +243,6 @@ class PrimitivesItems extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getMaxLength() : ?int
@@ -322,8 +250,6 @@ class PrimitivesItems extends \ArrayObject
         return $this->maxLength;
     }
     /**
-     * 
-     *
      * @param int|null $maxLength
      *
      * @return self
@@ -335,8 +261,6 @@ class PrimitivesItems extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getMinLength() : ?int
@@ -344,8 +268,6 @@ class PrimitivesItems extends \ArrayObject
         return $this->minLength;
     }
     /**
-     * 
-     *
      * @param int|null $minLength
      *
      * @return self
@@ -357,8 +279,6 @@ class PrimitivesItems extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getPattern() : ?string
@@ -366,8 +286,6 @@ class PrimitivesItems extends \ArrayObject
         return $this->pattern;
     }
     /**
-     * 
-     *
      * @param string|null $pattern
      *
      * @return self
@@ -379,8 +297,6 @@ class PrimitivesItems extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getMaxItems() : ?int
@@ -388,8 +304,6 @@ class PrimitivesItems extends \ArrayObject
         return $this->maxItems;
     }
     /**
-     * 
-     *
      * @param int|null $maxItems
      *
      * @return self
@@ -401,8 +315,6 @@ class PrimitivesItems extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getMinItems() : ?int
@@ -410,8 +322,6 @@ class PrimitivesItems extends \ArrayObject
         return $this->minItems;
     }
     /**
-     * 
-     *
      * @param int|null $minItems
      *
      * @return self
@@ -423,8 +333,6 @@ class PrimitivesItems extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getUniqueItems() : ?bool
@@ -432,8 +340,6 @@ class PrimitivesItems extends \ArrayObject
         return $this->uniqueItems;
     }
     /**
-     * 
-     *
      * @param bool|null $uniqueItems
      *
      * @return self
@@ -445,8 +351,6 @@ class PrimitivesItems extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed[]|null
      */
     public function getEnum() : ?array
@@ -454,8 +358,6 @@ class PrimitivesItems extends \ArrayObject
         return $this->enum;
     }
     /**
-     * 
-     *
      * @param mixed[]|null $enum
      *
      * @return self
@@ -467,8 +369,6 @@ class PrimitivesItems extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return float|null
      */
     public function getMultipleOf() : ?float
@@ -476,8 +376,6 @@ class PrimitivesItems extends \ArrayObject
         return $this->multipleOf;
     }
     /**
-     * 
-     *
      * @param float|null $multipleOf
      *
      * @return self

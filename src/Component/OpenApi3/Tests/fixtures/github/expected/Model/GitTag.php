@@ -13,8 +13,6 @@ class GitTag extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
@@ -25,8 +23,6 @@ class GitTag extends \ArrayObject
      */
     protected $tag;
     /**
-     * 
-     *
      * @var string
      */
     protected $sha;
@@ -43,26 +39,18 @@ class GitTag extends \ArrayObject
      */
     protected $message;
     /**
-     * 
-     *
      * @var GitTagTagger
      */
     protected $tagger;
     /**
-     * 
-     *
      * @var GitTagObject
      */
     protected $object;
     /**
-     * 
-     *
      * @var Verification
      */
     protected $verification;
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -70,8 +58,6 @@ class GitTag extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -105,8 +91,6 @@ class GitTag extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSha(): string
@@ -114,8 +98,6 @@ class GitTag extends \ArrayObject
         return $this->sha;
     }
     /**
-     * 
-     *
      * @param string $sha
      *
      * @return self
@@ -171,8 +153,6 @@ class GitTag extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GitTagTagger
      */
     public function getTagger(): GitTagTagger
@@ -180,8 +160,6 @@ class GitTag extends \ArrayObject
         return $this->tagger;
     }
     /**
-     * 
-     *
      * @param GitTagTagger $tagger
      *
      * @return self
@@ -193,8 +171,6 @@ class GitTag extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GitTagObject
      */
     public function getObject(): GitTagObject
@@ -202,8 +178,6 @@ class GitTag extends \ArrayObject
         return $this->object;
     }
     /**
-     * 
-     *
      * @param GitTagObject $object
      *
      * @return self
@@ -215,8 +189,6 @@ class GitTag extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Verification
      */
     public function getVerification(): Verification
@@ -224,8 +196,6 @@ class GitTag extends \ArrayObject
         return $this->verification;
     }
     /**
-     * 
-     *
      * @param Verification $verification
      *
      * @return self

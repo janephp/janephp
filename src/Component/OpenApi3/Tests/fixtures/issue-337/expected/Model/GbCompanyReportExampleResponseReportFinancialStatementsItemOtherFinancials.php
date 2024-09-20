@@ -13,26 +13,18 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $contingentLiabilities;
     /**
-     * 
-     *
      * @var float
      */
     protected $workingCapital;
     /**
-     * 
-     *
      * @var float
      */
     protected $netWorth;
     /**
-     * 
-     *
      * @return string
      */
     public function getContingentLiabilities(): string
@@ -40,8 +32,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials
         return $this->contingentLiabilities;
     }
     /**
-     * 
-     *
      * @param string $contingentLiabilities
      *
      * @return self
@@ -53,8 +43,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getWorkingCapital(): float
@@ -62,8 +50,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials
         return $this->workingCapital;
     }
     /**
-     * 
-     *
      * @param float $workingCapital
      *
      * @return self
@@ -75,8 +61,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getNetWorth(): float
@@ -84,8 +68,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials
         return $this->netWorth;
     }
     /**
-     * 
-     *
      * @param float $netWorth
      *
      * @return self

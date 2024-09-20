@@ -7,9 +7,8 @@ class ListItemUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
     protected $id;
     /**
     * Updates a single list item.
-    *
     * @param string $id The list item ID.
-    * @param \PicturePark\API\Model\ListItemUpdateRequest $requestBody 
+    * @param \PicturePark\API\Model\ListItemUpdateRequest $requestBody
     * @param array $queryParameters {
     *     @var array $resolveBehaviors List of enums that control which parts of the list item are resolved and returned.
     *     @var bool $allowMissingDependencies Allows creating list items that refer to list items or contents that don't exist in the system.

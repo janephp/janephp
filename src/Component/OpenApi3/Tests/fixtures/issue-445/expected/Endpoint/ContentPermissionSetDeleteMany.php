@@ -6,8 +6,7 @@ class ContentPermissionSetDeleteMany extends \PicturePark\API\Runtime\Client\Bas
 {
     /**
      * Deletes the content permission sets specified by the IDs.
-     *
-     * @param \PicturePark\API\Model\PermissionSetDeleteManyRequest $requestBody 
+     * @param \PicturePark\API\Model\PermissionSetDeleteManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\PermissionSetDeleteManyRequest $requestBody)
     {

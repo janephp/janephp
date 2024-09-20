@@ -6,8 +6,6 @@ class CodesOfConductGetConductCode extends \Github\Runtime\Client\BaseEndpoint i
 {
     protected $key;
     /**
-     * 
-     *
      * @param string $key key parameter
      */
     public function __construct(string $key)

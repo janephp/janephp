@@ -5,15 +5,14 @@ namespace Github\Endpoint;
 class UsersList extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
-    * Lists all users, in the order that they signed up on GitHub. This list includes personal user accounts and organization accounts.
-    
-    Note: Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://developer.github.com/v3/#link-header) to get the URL for the next page of users.
-    *
-    * @param array $queryParameters {
-    *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-    *     @var int $per_page Results per page (max 100)
-    * }
-    */
+     * Lists all users, in the order that they signed up on GitHub. This list includes personal user accounts and organization accounts.
+     *
+     * Note: Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://developer.github.com/v3/#link-header) to get the URL for the next page of users.
+     * @param array $queryParameters {
+     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *     @var int $per_page Results per page (max 100)
+     * }
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

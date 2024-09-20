@@ -13,38 +13,26 @@ class CompanySearchSuccessResultCompaniesItemAddress extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $simpleValue;
     /**
-     * 
-     *
      * @var string
      */
     protected $street;
     /**
-     * 
-     *
      * @var string
      */
     protected $city;
     /**
-     * 
-     *
      * @var string
      */
     protected $postCode;
     /**
-     * 
-     *
      * @var string
      */
     protected $province;
     /**
-     * 
-     *
      * @return string
      */
     public function getSimpleValue(): string
@@ -52,8 +40,6 @@ class CompanySearchSuccessResultCompaniesItemAddress extends \ArrayObject
         return $this->simpleValue;
     }
     /**
-     * 
-     *
      * @param string $simpleValue
      *
      * @return self
@@ -65,8 +51,6 @@ class CompanySearchSuccessResultCompaniesItemAddress extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStreet(): string
@@ -74,8 +58,6 @@ class CompanySearchSuccessResultCompaniesItemAddress extends \ArrayObject
         return $this->street;
     }
     /**
-     * 
-     *
      * @param string $street
      *
      * @return self
@@ -87,8 +69,6 @@ class CompanySearchSuccessResultCompaniesItemAddress extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCity(): string
@@ -96,8 +76,6 @@ class CompanySearchSuccessResultCompaniesItemAddress extends \ArrayObject
         return $this->city;
     }
     /**
-     * 
-     *
      * @param string $city
      *
      * @return self
@@ -109,8 +87,6 @@ class CompanySearchSuccessResultCompaniesItemAddress extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPostCode(): string
@@ -118,8 +94,6 @@ class CompanySearchSuccessResultCompaniesItemAddress extends \ArrayObject
         return $this->postCode;
     }
     /**
-     * 
-     *
      * @param string $postCode
      *
      * @return self
@@ -131,8 +105,6 @@ class CompanySearchSuccessResultCompaniesItemAddress extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getProvince(): string
@@ -140,8 +112,6 @@ class CompanySearchSuccessResultCompaniesItemAddress extends \ArrayObject
         return $this->province;
     }
     /**
-     * 
-     *
      * @param string $province
      *
      * @return self

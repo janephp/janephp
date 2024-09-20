@@ -13,32 +13,22 @@ class OutputRenderedEvent extends ApplicationEvent
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $outputId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $contentId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $outputFormatId;
     /**
-     * 
-     *
      * @var string
      */
     protected $renderingState;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getOutputId(): ?string
@@ -46,8 +36,6 @@ class OutputRenderedEvent extends ApplicationEvent
         return $this->outputId;
     }
     /**
-     * 
-     *
      * @param string|null $outputId
      *
      * @return self
@@ -59,8 +47,6 @@ class OutputRenderedEvent extends ApplicationEvent
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getContentId(): ?string
@@ -68,8 +54,6 @@ class OutputRenderedEvent extends ApplicationEvent
         return $this->contentId;
     }
     /**
-     * 
-     *
      * @param string|null $contentId
      *
      * @return self
@@ -81,8 +65,6 @@ class OutputRenderedEvent extends ApplicationEvent
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getOutputFormatId(): ?string
@@ -90,8 +72,6 @@ class OutputRenderedEvent extends ApplicationEvent
         return $this->outputFormatId;
     }
     /**
-     * 
-     *
      * @param string|null $outputFormatId
      *
      * @return self
@@ -103,8 +83,6 @@ class OutputRenderedEvent extends ApplicationEvent
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRenderingState(): string
@@ -112,8 +90,6 @@ class OutputRenderedEvent extends ApplicationEvent
         return $this->renderingState;
     }
     /**
-     * 
-     *
      * @param string $renderingState
      *
      * @return self

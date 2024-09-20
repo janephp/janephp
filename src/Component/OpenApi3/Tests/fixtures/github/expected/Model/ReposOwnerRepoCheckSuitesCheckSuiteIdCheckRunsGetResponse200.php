@@ -13,20 +13,14 @@ class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200 extends \Arra
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $totalCount;
     /**
-     * 
-     *
      * @var list<CheckRun>
      */
     protected $checkRuns;
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalCount(): int
@@ -34,8 +28,6 @@ class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200 extends \Arra
         return $this->totalCount;
     }
     /**
-     * 
-     *
      * @param int $totalCount
      *
      * @return self
@@ -47,8 +39,6 @@ class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200 extends \Arra
         return $this;
     }
     /**
-     * 
-     *
      * @return list<CheckRun>
      */
     public function getCheckRuns(): array
@@ -56,8 +46,6 @@ class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200 extends \Arra
         return $this->checkRuns;
     }
     /**
-     * 
-     *
      * @param list<CheckRun> $checkRuns
      *
      * @return self

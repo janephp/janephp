@@ -13,14 +13,10 @@ class Message extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $message;
     /**
-     * 
-     *
      * @return string
      */
     public function getMessage(): string
@@ -28,8 +24,6 @@ class Message extends \ArrayObject
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string $message
      *
      * @return self

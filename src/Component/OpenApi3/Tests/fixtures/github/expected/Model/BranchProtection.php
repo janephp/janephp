@@ -13,14 +13,10 @@ class BranchProtection extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var BranchProtectionRequiredStatusChecks
      */
     protected $requiredStatusChecks;
@@ -43,44 +39,30 @@ class BranchProtection extends \ArrayObject
      */
     protected $restrictions;
     /**
-     * 
-     *
      * @var BranchProtectionRequiredLinearHistory
      */
     protected $requiredLinearHistory;
     /**
-     * 
-     *
      * @var BranchProtectionAllowForcePushes
      */
     protected $allowForcePushes;
     /**
-     * 
-     *
      * @var BranchProtectionAllowDeletions
      */
     protected $allowDeletions;
     /**
-     * 
-     *
      * @var bool
      */
     protected $enabled;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $protectionUrl;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -88,8 +70,6 @@ class BranchProtection extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -101,8 +81,6 @@ class BranchProtection extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BranchProtectionRequiredStatusChecks
      */
     public function getRequiredStatusChecks(): BranchProtectionRequiredStatusChecks
@@ -110,8 +88,6 @@ class BranchProtection extends \ArrayObject
         return $this->requiredStatusChecks;
     }
     /**
-     * 
-     *
      * @param BranchProtectionRequiredStatusChecks $requiredStatusChecks
      *
      * @return self
@@ -189,8 +165,6 @@ class BranchProtection extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BranchProtectionRequiredLinearHistory
      */
     public function getRequiredLinearHistory(): BranchProtectionRequiredLinearHistory
@@ -198,8 +172,6 @@ class BranchProtection extends \ArrayObject
         return $this->requiredLinearHistory;
     }
     /**
-     * 
-     *
      * @param BranchProtectionRequiredLinearHistory $requiredLinearHistory
      *
      * @return self
@@ -211,8 +183,6 @@ class BranchProtection extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BranchProtectionAllowForcePushes
      */
     public function getAllowForcePushes(): BranchProtectionAllowForcePushes
@@ -220,8 +190,6 @@ class BranchProtection extends \ArrayObject
         return $this->allowForcePushes;
     }
     /**
-     * 
-     *
      * @param BranchProtectionAllowForcePushes $allowForcePushes
      *
      * @return self
@@ -233,8 +201,6 @@ class BranchProtection extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BranchProtectionAllowDeletions
      */
     public function getAllowDeletions(): BranchProtectionAllowDeletions
@@ -242,8 +208,6 @@ class BranchProtection extends \ArrayObject
         return $this->allowDeletions;
     }
     /**
-     * 
-     *
      * @param BranchProtectionAllowDeletions $allowDeletions
      *
      * @return self
@@ -255,8 +219,6 @@ class BranchProtection extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getEnabled(): bool
@@ -264,8 +226,6 @@ class BranchProtection extends \ArrayObject
         return $this->enabled;
     }
     /**
-     * 
-     *
      * @param bool $enabled
      *
      * @return self
@@ -277,8 +237,6 @@ class BranchProtection extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -286,8 +244,6 @@ class BranchProtection extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -299,8 +255,6 @@ class BranchProtection extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getProtectionUrl(): string
@@ -308,8 +262,6 @@ class BranchProtection extends \ArrayObject
         return $this->protectionUrl;
     }
     /**
-     * 
-     *
      * @param string $protectionUrl
      *
      * @return self

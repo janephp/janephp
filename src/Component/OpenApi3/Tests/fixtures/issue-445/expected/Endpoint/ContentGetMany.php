@@ -5,14 +5,13 @@ namespace PicturePark\API\Endpoint;
 class ContentGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Gets multiple content details by IDs.
-    Can fetch 100 contents at most.
-    *
-    * @param array $queryParameters {
-    *     @var array $ids List of content IDs
-    *     @var array $resolveBehaviors List of enums that control which parts of the content are resolved and returned.
-    * }
-    */
+     * Gets multiple content details by IDs.
+     * Can fetch 100 contents at most.
+     * @param array $queryParameters {
+     *     @var array $ids List of content IDs
+     *     @var array $resolveBehaviors List of enums that control which parts of the content are resolved and returned.
+     * }
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

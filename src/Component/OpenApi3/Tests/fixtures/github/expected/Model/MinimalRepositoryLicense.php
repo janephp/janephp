@@ -13,38 +13,26 @@ class MinimalRepositoryLicense extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $key;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $spdxId;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @return string
      */
     public function getKey(): string
@@ -52,8 +40,6 @@ class MinimalRepositoryLicense extends \ArrayObject
         return $this->key;
     }
     /**
-     * 
-     *
      * @param string $key
      *
      * @return self
@@ -65,8 +51,6 @@ class MinimalRepositoryLicense extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -74,8 +58,6 @@ class MinimalRepositoryLicense extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -87,8 +69,6 @@ class MinimalRepositoryLicense extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSpdxId(): string
@@ -96,8 +76,6 @@ class MinimalRepositoryLicense extends \ArrayObject
         return $this->spdxId;
     }
     /**
-     * 
-     *
      * @param string $spdxId
      *
      * @return self
@@ -109,8 +87,6 @@ class MinimalRepositoryLicense extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -118,8 +94,6 @@ class MinimalRepositoryLicense extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -131,8 +105,6 @@ class MinimalRepositoryLicense extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -140,8 +112,6 @@ class MinimalRepositoryLicense extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self

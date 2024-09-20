@@ -13,32 +13,22 @@ class TopBooksGetLdjsonResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<TopBookJsonld>
      */
     protected $hydraMember;
     /**
-     * 
-     *
      * @var int
      */
     protected $hydraTotalItems;
     /**
-     * 
-     *
      * @var TopBooksGetLdjsonResponse200HydraView
      */
     protected $hydraView;
     /**
-     * 
-     *
      * @var TopBooksGetLdjsonResponse200HydraSearch
      */
     protected $hydraSearch;
     /**
-     * 
-     *
      * @return list<TopBookJsonld>
      */
     public function getHydraMember(): array
@@ -46,8 +36,6 @@ class TopBooksGetLdjsonResponse200 extends \ArrayObject
         return $this->hydraMember;
     }
     /**
-     * 
-     *
      * @param list<TopBookJsonld> $hydraMember
      *
      * @return self
@@ -59,8 +47,6 @@ class TopBooksGetLdjsonResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getHydraTotalItems(): int
@@ -68,8 +54,6 @@ class TopBooksGetLdjsonResponse200 extends \ArrayObject
         return $this->hydraTotalItems;
     }
     /**
-     * 
-     *
      * @param int $hydraTotalItems
      *
      * @return self
@@ -81,8 +65,6 @@ class TopBooksGetLdjsonResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return TopBooksGetLdjsonResponse200HydraView
      */
     public function getHydraView(): TopBooksGetLdjsonResponse200HydraView
@@ -90,8 +72,6 @@ class TopBooksGetLdjsonResponse200 extends \ArrayObject
         return $this->hydraView;
     }
     /**
-     * 
-     *
      * @param TopBooksGetLdjsonResponse200HydraView $hydraView
      *
      * @return self
@@ -103,8 +83,6 @@ class TopBooksGetLdjsonResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return TopBooksGetLdjsonResponse200HydraSearch
      */
     public function getHydraSearch(): TopBooksGetLdjsonResponse200HydraSearch
@@ -112,8 +90,6 @@ class TopBooksGetLdjsonResponse200 extends \ArrayObject
         return $this->hydraSearch;
     }
     /**
-     * 
-     *
      * @param TopBooksGetLdjsonResponse200HydraSearch $hydraSearch
      *
      * @return self

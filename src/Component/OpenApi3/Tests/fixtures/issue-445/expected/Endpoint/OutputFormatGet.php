@@ -7,7 +7,6 @@ class OutputFormatGet extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
     protected $id;
     /**
      * Gets the output format by the output format ID.
-     *
      * @param string $id Output format ID.
      */
     public function __construct(string $id)

@@ -25,8 +25,6 @@ class ReposOwnerRepoContentsPathPutBodyAuthor extends \ArrayObject
      */
     protected $email;
     /**
-     * 
-     *
      * @var string
      */
     protected $date;
@@ -75,8 +73,6 @@ class ReposOwnerRepoContentsPathPutBodyAuthor extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDate(): string
@@ -84,8 +80,6 @@ class ReposOwnerRepoContentsPathPutBodyAuthor extends \ArrayObject
         return $this->date;
     }
     /**
-     * 
-     *
      * @param string $date
      *
      * @return self

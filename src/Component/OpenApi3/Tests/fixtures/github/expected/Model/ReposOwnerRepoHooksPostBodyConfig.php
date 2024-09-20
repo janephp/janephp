@@ -37,14 +37,10 @@ class ReposOwnerRepoHooksPostBodyConfig extends \ArrayObject
      */
     protected $insecureSsl;
     /**
-     * 
-     *
      * @var string
      */
     protected $token;
     /**
-     * 
-     *
      * @var string
      */
     protected $digest;
@@ -137,8 +133,6 @@ class ReposOwnerRepoHooksPostBodyConfig extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getToken(): string
@@ -146,8 +140,6 @@ class ReposOwnerRepoHooksPostBodyConfig extends \ArrayObject
         return $this->token;
     }
     /**
-     * 
-     *
      * @param string $token
      *
      * @return self
@@ -159,8 +151,6 @@ class ReposOwnerRepoHooksPostBodyConfig extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDigest(): string
@@ -168,8 +158,6 @@ class ReposOwnerRepoHooksPostBodyConfig extends \ArrayObject
         return $this->digest;
     }
     /**
-     * 
-     *
      * @param string $digest
      *
      * @return self

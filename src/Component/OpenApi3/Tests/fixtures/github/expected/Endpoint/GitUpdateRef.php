@@ -8,12 +8,10 @@ class GitUpdateRef extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     protected $repo;
     protected $ref;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param string $ref ref+ parameter
-     * @param null|\Github\Model\ReposOwnerRepoGitRefsRefPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoGitRefsRefPatchBody $requestBody
      */
     public function __construct(string $owner, string $repo, string $ref, ?\Github\Model\ReposOwnerRepoGitRefsRefPatchBody $requestBody = null)
     {

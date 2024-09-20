@@ -13,86 +13,58 @@ class MarketplaceListingPlan extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $accountsUrl;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var int
      */
     protected $number;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $description;
     /**
-     * 
-     *
      * @var int
      */
     protected $monthlyPriceInCents;
     /**
-     * 
-     *
      * @var int
      */
     protected $yearlyPriceInCents;
     /**
-     * 
-     *
      * @var string
      */
     protected $priceModel;
     /**
-     * 
-     *
      * @var bool
      */
     protected $hasFreeTrial;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $unitName;
     /**
-     * 
-     *
      * @var string
      */
     protected $state;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $bullets;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -100,8 +72,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -113,8 +83,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAccountsUrl(): string
@@ -122,8 +90,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this->accountsUrl;
     }
     /**
-     * 
-     *
      * @param string $accountsUrl
      *
      * @return self
@@ -135,8 +101,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -144,8 +108,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -157,8 +119,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getNumber(): int
@@ -166,8 +126,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this->number;
     }
     /**
-     * 
-     *
      * @param int $number
      *
      * @return self
@@ -179,8 +137,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -188,8 +144,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -201,8 +155,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDescription(): string
@@ -210,8 +162,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string $description
      *
      * @return self
@@ -223,8 +173,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getMonthlyPriceInCents(): int
@@ -232,8 +180,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this->monthlyPriceInCents;
     }
     /**
-     * 
-     *
      * @param int $monthlyPriceInCents
      *
      * @return self
@@ -245,8 +191,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getYearlyPriceInCents(): int
@@ -254,8 +198,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this->yearlyPriceInCents;
     }
     /**
-     * 
-     *
      * @param int $yearlyPriceInCents
      *
      * @return self
@@ -267,8 +209,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPriceModel(): string
@@ -276,8 +216,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this->priceModel;
     }
     /**
-     * 
-     *
      * @param string $priceModel
      *
      * @return self
@@ -289,8 +227,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getHasFreeTrial(): bool
@@ -298,8 +234,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this->hasFreeTrial;
     }
     /**
-     * 
-     *
      * @param bool $hasFreeTrial
      *
      * @return self
@@ -311,8 +245,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getUnitName(): ?string
@@ -320,8 +252,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this->unitName;
     }
     /**
-     * 
-     *
      * @param string|null $unitName
      *
      * @return self
@@ -333,8 +263,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getState(): string
@@ -342,8 +270,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this->state;
     }
     /**
-     * 
-     *
      * @param string $state
      *
      * @return self
@@ -355,8 +281,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getBullets(): array
@@ -364,8 +288,6 @@ class MarketplaceListingPlan extends \ArrayObject
         return $this->bullets;
     }
     /**
-     * 
-     *
      * @param list<string> $bullets
      *
      * @return self

@@ -5,18 +5,17 @@ namespace Jane\OpenApi2\Tests\Expected;
 class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
 {
     /**
-     * 
-     *
-     * @param string $testPath 
-     * @param array $testBody 
+     * @param string $testPath
+     * @param array $testBody
      * @param array $queryParameters {
-     *     @var string $testQuery 
-     *     @var string $testQuerySkipped 
+     *     @var string $testQuery
+     *     @var string $testQuerySkipped
      * }
      * @param array $headerParameters {
-     *     @var string $testHeader 
-     *     @var string $testHeaderSkipped 
+     *     @var string $testHeader
+     *     @var string $testHeaderSkipped
      * }
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface

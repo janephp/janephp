@@ -13,20 +13,14 @@ class GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationIt
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var float
      */
     protected $year;
     /**
-     * 
-     *
      * @var string
      */
     protected $numberOfEmployees;
     /**
-     * 
-     *
      * @return float
      */
     public function getYear(): float
@@ -34,8 +28,6 @@ class GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationIt
         return $this->year;
     }
     /**
-     * 
-     *
      * @param float $year
      *
      * @return self
@@ -47,8 +39,6 @@ class GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationIt
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNumberOfEmployees(): string
@@ -56,8 +46,6 @@ class GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationIt
         return $this->numberOfEmployees;
     }
     /**
-     * 
-     *
      * @param string $numberOfEmployees
      *
      * @return self

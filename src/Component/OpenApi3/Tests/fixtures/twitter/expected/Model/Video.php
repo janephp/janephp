@@ -13,20 +13,14 @@ class Video extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $previewImageUrl;
     /**
-     * 
-     *
      * @var int
      */
     protected $durationMs;
@@ -49,8 +43,6 @@ class Video extends \ArrayObject
      */
     protected $width;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -58,8 +50,6 @@ class Video extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -71,8 +61,6 @@ class Video extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPreviewImageUrl(): string
@@ -80,8 +68,6 @@ class Video extends \ArrayObject
         return $this->previewImageUrl;
     }
     /**
-     * 
-     *
      * @param string $previewImageUrl
      *
      * @return self
@@ -93,8 +79,6 @@ class Video extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getDurationMs(): int
@@ -102,8 +86,6 @@ class Video extends \ArrayObject
         return $this->durationMs;
     }
     /**
-     * 
-     *
      * @param int $durationMs
      *
      * @return self

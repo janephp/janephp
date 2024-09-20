@@ -13,20 +13,14 @@ class LayerIdsByRootSchema
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $rootSchemaId;
     /**
-     * 
-     *
      * @var list<string>|null
      */
     protected $layerSchemaIds;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getRootSchemaId(): ?string
@@ -34,8 +28,6 @@ class LayerIdsByRootSchema
         return $this->rootSchemaId;
     }
     /**
-     * 
-     *
      * @param string|null $rootSchemaId
      *
      * @return self
@@ -47,8 +39,6 @@ class LayerIdsByRootSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>|null
      */
     public function getLayerSchemaIds(): ?array
@@ -56,8 +46,6 @@ class LayerIdsByRootSchema
         return $this->layerSchemaIds;
     }
     /**
-     * 
-     *
      * @param list<string>|null $layerSchemaIds
      *
      * @return self

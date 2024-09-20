@@ -13,20 +13,14 @@ class GbPeopleReportReponseReportDirectorDetailsAdditionalData extends \ArrayObj
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var bool
      */
     protected $disqualified;
     /**
-     * 
-     *
      * @var bool
      */
     protected $disqualifiedException;
     /**
-     * 
-     *
      * @return bool
      */
     public function getDisqualified(): bool
@@ -34,8 +28,6 @@ class GbPeopleReportReponseReportDirectorDetailsAdditionalData extends \ArrayObj
         return $this->disqualified;
     }
     /**
-     * 
-     *
      * @param bool $disqualified
      *
      * @return self
@@ -47,8 +39,6 @@ class GbPeopleReportReponseReportDirectorDetailsAdditionalData extends \ArrayObj
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getDisqualifiedException(): bool
@@ -56,8 +46,6 @@ class GbPeopleReportReponseReportDirectorDetailsAdditionalData extends \ArrayObj
         return $this->disqualifiedException;
     }
     /**
-     * 
-     *
      * @param bool $disqualifiedException
      *
      * @return self

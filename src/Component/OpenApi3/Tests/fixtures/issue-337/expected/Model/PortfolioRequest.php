@@ -13,44 +13,30 @@ class PortfolioRequest extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var bool
      */
     protected $isDefault;
     /**
-     * 
-     *
      * @var PortfolioRequestEmails
      */
     protected $emails;
     /**
-     * 
-     *
      * @var string
      */
     protected $emailSubject;
     /**
-     * 
-     *
      * @var string
      */
     protected $emailLanguage;
     /**
-     * 
-     *
      * @var string
      */
     protected $frequency;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -58,8 +44,6 @@ class PortfolioRequest extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -71,8 +55,6 @@ class PortfolioRequest extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getIsDefault(): bool
@@ -80,8 +62,6 @@ class PortfolioRequest extends \ArrayObject
         return $this->isDefault;
     }
     /**
-     * 
-     *
      * @param bool $isDefault
      *
      * @return self
@@ -93,8 +73,6 @@ class PortfolioRequest extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PortfolioRequestEmails
      */
     public function getEmails(): PortfolioRequestEmails
@@ -102,8 +80,6 @@ class PortfolioRequest extends \ArrayObject
         return $this->emails;
     }
     /**
-     * 
-     *
      * @param PortfolioRequestEmails $emails
      *
      * @return self
@@ -115,8 +91,6 @@ class PortfolioRequest extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEmailSubject(): string
@@ -124,8 +98,6 @@ class PortfolioRequest extends \ArrayObject
         return $this->emailSubject;
     }
     /**
-     * 
-     *
      * @param string $emailSubject
      *
      * @return self
@@ -137,8 +109,6 @@ class PortfolioRequest extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEmailLanguage(): string
@@ -146,8 +116,6 @@ class PortfolioRequest extends \ArrayObject
         return $this->emailLanguage;
     }
     /**
-     * 
-     *
      * @param string $emailLanguage
      *
      * @return self
@@ -159,8 +127,6 @@ class PortfolioRequest extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFrequency(): string
@@ -168,8 +134,6 @@ class PortfolioRequest extends \ArrayObject
         return $this->frequency;
     }
     /**
-     * 
-     *
      * @param string $frequency
      *
      * @return self

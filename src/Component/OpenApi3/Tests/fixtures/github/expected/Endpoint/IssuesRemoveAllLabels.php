@@ -8,10 +8,8 @@ class IssuesRemoveAllLabels extends \Github\Runtime\Client\BaseEndpoint implemen
     protected $repo;
     protected $issue_number;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $issueNumber issue_number parameter
      */
     public function __construct(string $owner, string $repo, int $issueNumber)

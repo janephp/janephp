@@ -13,20 +13,14 @@ class CompanySearchSuccessResult extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var float
      */
     protected $totalSize;
     /**
-     * 
-     *
      * @var list<CompanySearchSuccessResultCompaniesItem>
      */
     protected $companies;
     /**
-     * 
-     *
      * @return float
      */
     public function getTotalSize(): float
@@ -34,8 +28,6 @@ class CompanySearchSuccessResult extends \ArrayObject
         return $this->totalSize;
     }
     /**
-     * 
-     *
      * @param float $totalSize
      *
      * @return self
@@ -47,8 +39,6 @@ class CompanySearchSuccessResult extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<CompanySearchSuccessResultCompaniesItem>
      */
     public function getCompanies(): array
@@ -56,8 +46,6 @@ class CompanySearchSuccessResult extends \ArrayObject
         return $this->companies;
     }
     /**
-     * 
-     *
      * @param list<CompanySearchSuccessResultCompaniesItem> $companies
      *
      * @return self

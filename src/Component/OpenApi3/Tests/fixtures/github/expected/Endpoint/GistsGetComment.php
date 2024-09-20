@@ -7,8 +7,6 @@ class GistsGetComment extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     protected $gist_id;
     protected $comment_id;
     /**
-     * 
-     *
      * @param string $gistId gist_id parameter
      * @param int $commentId comment_id parameter
      */

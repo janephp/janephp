@@ -6,9 +6,7 @@ class OrgsGetMembershipForAuthenticatedUser extends \Github\Runtime\Client\BaseE
 {
     protected $org;
     /**
-     * 
-     *
-     * @param string $org 
+     * @param string $org
      */
     public function __construct(string $org)
     {

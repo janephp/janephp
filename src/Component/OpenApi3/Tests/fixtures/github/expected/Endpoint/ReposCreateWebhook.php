@@ -7,13 +7,12 @@ class ReposCreateWebhook extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $owner;
     protected $repo;
     /**
-    * Repositories can have multiple webhooks installed. Each webhook should have a unique `config`. Multiple webhooks can
-    share the same `config` as long as those webhooks do not have any `events` that overlap.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param null|\Github\Model\ReposOwnerRepoHooksPostBody $requestBody 
-    */
+     * Repositories can have multiple webhooks installed. Each webhook should have a unique `config`. Multiple webhooks can
+     * share the same `config` as long as those webhooks do not have any `events` that overlap.
+     * @param string $owner
+     * @param string $repo
+     * @param null|\Github\Model\ReposOwnerRepoHooksPostBody $requestBody
+     */
     public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoHooksPostBody $requestBody = null)
     {
         $this->owner = $owner;

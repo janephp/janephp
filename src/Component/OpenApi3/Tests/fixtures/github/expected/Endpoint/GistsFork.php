@@ -7,7 +7,6 @@ class GistsFork extends \Github\Runtime\Client\BaseEndpoint implements \Github\R
     protected $gist_id;
     /**
      * **Note**: This was previously `/gists/:gist_id/fork`.
-     *
      * @param string $gistId gist_id parameter
      */
     public function __construct(string $gistId)

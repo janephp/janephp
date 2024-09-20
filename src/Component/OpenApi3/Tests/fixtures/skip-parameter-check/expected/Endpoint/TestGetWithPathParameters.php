@@ -6,16 +6,14 @@ class TestGetWithPathParameters extends \Jane\OpenApi3\Tests\Expected\Runtime\Cl
 {
     protected $testPath;
     /**
-     * 
-     *
-     * @param string $testPath 
+     * @param string $testPath
      * @param array $queryParameters {
-     *     @var string $testQuery 
-     *     @var string $testQuerySkipped 
+     *     @var string $testQuery
+     *     @var string $testQuerySkipped
      * }
      * @param array $headerParameters {
-     *     @var string $testHeader 
-     *     @var string $testHeaderSkipped 
+     *     @var string $testHeader
+     *     @var string $testHeaderSkipped
      * }
      */
     public function __construct(string $testPath, array $queryParameters = [], array $headerParameters = [])

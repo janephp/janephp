@@ -43,8 +43,6 @@ class OutputDataBase
      */
     protected $originalFileName;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
@@ -144,8 +142,6 @@ class OutputDataBase
         $this->originalFileName = $originalFileName;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -153,8 +149,6 @@ class OutputDataBase
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      */
     public function setKind(string $kind)

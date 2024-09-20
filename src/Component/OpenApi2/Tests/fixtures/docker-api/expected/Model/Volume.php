@@ -37,16 +37,16 @@ class Volume
      */
     protected $createdAt;
     /**
-    * Low-level details about the volume, provided by the volume driver.
-    Details are returned as a map with key/value pairs:
-    `{"key":"value","key2":"value2"}`.
-    
-    The `Status` field is optional, and is omitted if the volume driver
-    does not support this feature.
-    
-    *
-    * @var array<string, mixed>
-    */
+     * Low-level details about the volume, provided by the volume driver.
+     * Details are returned as a map with key/value pairs:
+     * `{"key":"value","key2":"value2"}`.
+     * 
+     * The `Status` field is optional, and is omitted if the volume driver
+     * does not support this feature.
+     * 
+     *
+     * @var array<string, mixed>
+     */
     protected $status;
     /**
      * User-defined key/value metadata.
@@ -55,26 +55,27 @@ class Volume
      */
     protected $labels;
     /**
-    * The level at which the volume exists. Either `global` for cluster-wide,
-    or `local` for machine level.
-    
-    *
-    * @var string
-    */
+     * The level at which the volume exists. Either `global` for cluster-wide,
+     * or `local` for machine level.
+     * 
+     *
+     * @var string
+     */
     protected $scope = 'local';
     /**
      * The driver specific options used when creating the volume.
+     * 
      *
      * @var array<string, string>
      */
     protected $options;
     /**
-    * Usage details about the volume. This information is used by the
-    `GET /system/df` endpoint, and omitted in other endpoints.
-    
-    *
-    * @var VolumeUsageData|null
-    */
+     * Usage details about the volume. This information is used by the
+     * `GET /system/df` endpoint, and omitted in other endpoints.
+     * 
+     *
+     * @var VolumeUsageData|null
+     */
     protected $usageData;
     /**
      * Name of the volume.
@@ -165,16 +166,16 @@ class Volume
         return $this;
     }
     /**
-    * Low-level details about the volume, provided by the volume driver.
-    Details are returned as a map with key/value pairs:
-    `{"key":"value","key2":"value2"}`.
-    
-    The `Status` field is optional, and is omitted if the volume driver
-    does not support this feature.
-    
-    *
-    * @return array<string, mixed>
-    */
+     * Low-level details about the volume, provided by the volume driver.
+     * Details are returned as a map with key/value pairs:
+     * `{"key":"value","key2":"value2"}`.
+     * 
+     * The `Status` field is optional, and is omitted if the volume driver
+     * does not support this feature.
+     * 
+     *
+     * @return array<string, mixed>
+     */
     public function getStatus(): iterable
     {
         return $this->status;
@@ -221,12 +222,12 @@ class Volume
         return $this;
     }
     /**
-    * The level at which the volume exists. Either `global` for cluster-wide,
-    or `local` for machine level.
-    
-    *
-    * @return string
-    */
+     * The level at which the volume exists. Either `global` for cluster-wide,
+     * or `local` for machine level.
+     * 
+     *
+     * @return string
+     */
     public function getScope(): string
     {
         return $this->scope;
@@ -248,6 +249,7 @@ class Volume
     }
     /**
      * The driver specific options used when creating the volume.
+     * 
      *
      * @return array<string, string>
      */
@@ -269,12 +271,12 @@ class Volume
         return $this;
     }
     /**
-    * Usage details about the volume. This information is used by the
-    `GET /system/df` endpoint, and omitted in other endpoints.
-    
-    *
-    * @return VolumeUsageData|null
-    */
+     * Usage details about the volume. This information is used by the
+     * `GET /system/df` endpoint, and omitted in other endpoints.
+     * 
+     *
+     * @return VolumeUsageData|null
+     */
     public function getUsageData(): ?VolumeUsageData
     {
         return $this->usageData;

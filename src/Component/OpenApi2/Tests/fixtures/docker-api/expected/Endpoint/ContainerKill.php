@@ -6,15 +6,14 @@ class ContainerKill extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
 {
     protected $id;
     /**
-    * Send a POSIX signal to a container, defaulting to killing to the
-    container.
-    
-    *
-    * @param string $id ID or name of the container
-    * @param array $queryParameters {
-    *     @var string $signal Signal to send to the container as an integer or string (e.g. `SIGINT`)
-    * }
-    */
+     * Send a POSIX signal to a container, defaulting to killing to the
+     * container.
+     *
+     * @param string $id ID or name of the container
+     * @param array $queryParameters {
+     *     @var string $signal Signal to send to the container as an integer or string (e.g. `SIGINT`)
+     * }
+     */
     public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;

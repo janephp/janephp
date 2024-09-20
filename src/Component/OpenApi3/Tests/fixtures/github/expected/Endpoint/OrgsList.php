@@ -6,8 +6,8 @@ class OrgsList extends \Github\Runtime\Client\BaseEndpoint implements \Github\Ru
 {
     /**
      * Lists all organizations, in the order that they were created on GitHub.
-     **Note:** Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://developer.github.com/v3/#link-header) to get the URL for the next page of organizations.
      *
+     * **Note:** Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://developer.github.com/v3/#link-header) to get the URL for the next page of organizations.
      * @param array $queryParameters {
      *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
      *     @var int $per_page Results per page (max 100)

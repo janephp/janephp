@@ -13,26 +13,27 @@ class Platform
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * Architecture represents the hardware architecture (for example,
-    `x86_64`).
-    
-    *
-    * @var string
-    */
+     * Architecture represents the hardware architecture (for example,
+     * `x86_64`).
+     * 
+     *
+     * @var string
+     */
     protected $architecture;
     /**
      * OS represents the Operating System (for example, `linux` or `windows`).
+     * 
      *
      * @var string
      */
     protected $oS;
     /**
-    * Architecture represents the hardware architecture (for example,
-    `x86_64`).
-    
-    *
-    * @return string
-    */
+     * Architecture represents the hardware architecture (for example,
+     * `x86_64`).
+     * 
+     *
+     * @return string
+     */
     public function getArchitecture(): string
     {
         return $this->architecture;
@@ -54,6 +55,7 @@ class Platform
     }
     /**
      * OS represents the Operating System (for example, `linux` or `windows`).
+     * 
      *
      * @return string
      */

@@ -7,7 +7,6 @@ class ShareGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \
     protected $id;
     /**
      * Get share by id (basic or embed).
-     *
      * @param string $id Share Id (not token, use [GetShareJson](#operation/Share_GetShareJson) to get share by token)
      * @param array $queryParameters {
      *     @var array $resolveBehaviors List of enums that control which parts of the share are resolved and returned.

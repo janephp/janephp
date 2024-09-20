@@ -6,8 +6,7 @@ class SchemaPermissionSetSearch extends \PicturePark\API\Runtime\Client\BaseEndp
 {
     /**
      * Searches schema permission sets as specified in the search request.
-     *
-     * @param \PicturePark\API\Model\PermissionSetSearchRequest $requestBody 
+     * @param \PicturePark\API\Model\PermissionSetSearchRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\PermissionSetSearchRequest $requestBody)
     {

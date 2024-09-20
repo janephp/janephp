@@ -13,14 +13,10 @@ class Import extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $vcs;
     /**
-     * 
-     *
      * @var string
      */
     protected $useLfs;
@@ -31,128 +27,86 @@ class Import extends \ArrayObject
      */
     protected $vcsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $svcRoot;
     /**
-     * 
-     *
      * @var string
      */
     protected $tfvcProject;
     /**
-     * 
-     *
      * @var string
      */
     protected $status;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $statusText;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $failedStep;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $errorMessage;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $importPercent;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $commitCount;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $pushPercent;
     /**
-     * 
-     *
      * @var bool
      */
     protected $hasLargeFiles;
     /**
-     * 
-     *
      * @var int
      */
     protected $largeFilesSize;
     /**
-     * 
-     *
      * @var int
      */
     protected $largeFilesCount;
     /**
-     * 
-     *
      * @var list<ImportProjectChoicesItem>
      */
     protected $projectChoices;
     /**
-     * 
-     *
      * @var string
      */
     protected $message;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $authorsCount;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $authorsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $repositoryUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $svnRoot;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getVcs(): ?string
@@ -160,8 +114,6 @@ class Import extends \ArrayObject
         return $this->vcs;
     }
     /**
-     * 
-     *
      * @param string|null $vcs
      *
      * @return self
@@ -173,8 +125,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUseLfs(): string
@@ -182,8 +132,6 @@ class Import extends \ArrayObject
         return $this->useLfs;
     }
     /**
-     * 
-     *
      * @param string $useLfs
      *
      * @return self
@@ -217,8 +165,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSvcRoot(): string
@@ -226,8 +172,6 @@ class Import extends \ArrayObject
         return $this->svcRoot;
     }
     /**
-     * 
-     *
      * @param string $svcRoot
      *
      * @return self
@@ -239,8 +183,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTfvcProject(): string
@@ -248,8 +190,6 @@ class Import extends \ArrayObject
         return $this->tfvcProject;
     }
     /**
-     * 
-     *
      * @param string $tfvcProject
      *
      * @return self
@@ -261,8 +201,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStatus(): string
@@ -270,8 +208,6 @@ class Import extends \ArrayObject
         return $this->status;
     }
     /**
-     * 
-     *
      * @param string $status
      *
      * @return self
@@ -283,8 +219,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getStatusText(): ?string
@@ -292,8 +226,6 @@ class Import extends \ArrayObject
         return $this->statusText;
     }
     /**
-     * 
-     *
      * @param string|null $statusText
      *
      * @return self
@@ -305,8 +237,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFailedStep(): ?string
@@ -314,8 +244,6 @@ class Import extends \ArrayObject
         return $this->failedStep;
     }
     /**
-     * 
-     *
      * @param string|null $failedStep
      *
      * @return self
@@ -327,8 +255,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getErrorMessage(): ?string
@@ -336,8 +262,6 @@ class Import extends \ArrayObject
         return $this->errorMessage;
     }
     /**
-     * 
-     *
      * @param string|null $errorMessage
      *
      * @return self
@@ -349,8 +273,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getImportPercent(): ?int
@@ -358,8 +280,6 @@ class Import extends \ArrayObject
         return $this->importPercent;
     }
     /**
-     * 
-     *
      * @param int|null $importPercent
      *
      * @return self
@@ -371,8 +291,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getCommitCount(): ?int
@@ -380,8 +298,6 @@ class Import extends \ArrayObject
         return $this->commitCount;
     }
     /**
-     * 
-     *
      * @param int|null $commitCount
      *
      * @return self
@@ -393,8 +309,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getPushPercent(): ?int
@@ -402,8 +316,6 @@ class Import extends \ArrayObject
         return $this->pushPercent;
     }
     /**
-     * 
-     *
      * @param int|null $pushPercent
      *
      * @return self
@@ -415,8 +327,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getHasLargeFiles(): bool
@@ -424,8 +334,6 @@ class Import extends \ArrayObject
         return $this->hasLargeFiles;
     }
     /**
-     * 
-     *
      * @param bool $hasLargeFiles
      *
      * @return self
@@ -437,8 +345,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getLargeFilesSize(): int
@@ -446,8 +352,6 @@ class Import extends \ArrayObject
         return $this->largeFilesSize;
     }
     /**
-     * 
-     *
      * @param int $largeFilesSize
      *
      * @return self
@@ -459,8 +363,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getLargeFilesCount(): int
@@ -468,8 +370,6 @@ class Import extends \ArrayObject
         return $this->largeFilesCount;
     }
     /**
-     * 
-     *
      * @param int $largeFilesCount
      *
      * @return self
@@ -481,8 +381,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ImportProjectChoicesItem>
      */
     public function getProjectChoices(): array
@@ -490,8 +388,6 @@ class Import extends \ArrayObject
         return $this->projectChoices;
     }
     /**
-     * 
-     *
      * @param list<ImportProjectChoicesItem> $projectChoices
      *
      * @return self
@@ -503,8 +399,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMessage(): string
@@ -512,8 +406,6 @@ class Import extends \ArrayObject
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string $message
      *
      * @return self
@@ -525,8 +417,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getAuthorsCount(): ?int
@@ -534,8 +424,6 @@ class Import extends \ArrayObject
         return $this->authorsCount;
     }
     /**
-     * 
-     *
      * @param int|null $authorsCount
      *
      * @return self
@@ -547,8 +435,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -556,8 +442,6 @@ class Import extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -569,8 +453,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -578,8 +460,6 @@ class Import extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -591,8 +471,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAuthorsUrl(): string
@@ -600,8 +478,6 @@ class Import extends \ArrayObject
         return $this->authorsUrl;
     }
     /**
-     * 
-     *
      * @param string $authorsUrl
      *
      * @return self
@@ -613,8 +489,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRepositoryUrl(): string
@@ -622,8 +496,6 @@ class Import extends \ArrayObject
         return $this->repositoryUrl;
     }
     /**
-     * 
-     *
      * @param string $repositoryUrl
      *
      * @return self
@@ -635,8 +507,6 @@ class Import extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSvnRoot(): string
@@ -644,8 +514,6 @@ class Import extends \ArrayObject
         return $this->svnRoot;
     }
     /**
-     * 
-     *
      * @param string $svnRoot
      *
      * @return self

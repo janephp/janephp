@@ -8,12 +8,10 @@ class IssuesUpdateComment extends \Github\Runtime\Client\BaseEndpoint implements
     protected $repo;
     protected $comment_id;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $commentId comment_id parameter
-     * @param null|\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdPatchBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdPatchBody $requestBody = null)
     {

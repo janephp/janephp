@@ -13,26 +13,18 @@ class FileCommitCommitAuthor extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $date;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $email;
     /**
-     * 
-     *
      * @return string
      */
     public function getDate(): string
@@ -40,8 +32,6 @@ class FileCommitCommitAuthor extends \ArrayObject
         return $this->date;
     }
     /**
-     * 
-     *
      * @param string $date
      *
      * @return self
@@ -53,8 +43,6 @@ class FileCommitCommitAuthor extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -62,8 +50,6 @@ class FileCommitCommitAuthor extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -75,8 +61,6 @@ class FileCommitCommitAuthor extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEmail(): string
@@ -84,8 +68,6 @@ class FileCommitCommitAuthor extends \ArrayObject
         return $this->email;
     }
     /**
-     * 
-     *
      * @param string $email
      *
      * @return self

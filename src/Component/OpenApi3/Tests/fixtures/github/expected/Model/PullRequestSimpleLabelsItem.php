@@ -13,50 +13,34 @@ class PullRequestSimpleLabelsItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $description;
     /**
-     * 
-     *
      * @var string
      */
     protected $color;
     /**
-     * 
-     *
      * @var bool
      */
     protected $default;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -64,8 +48,6 @@ class PullRequestSimpleLabelsItem extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -77,8 +59,6 @@ class PullRequestSimpleLabelsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -86,8 +66,6 @@ class PullRequestSimpleLabelsItem extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -99,8 +77,6 @@ class PullRequestSimpleLabelsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -108,8 +84,6 @@ class PullRequestSimpleLabelsItem extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -121,8 +95,6 @@ class PullRequestSimpleLabelsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -130,8 +102,6 @@ class PullRequestSimpleLabelsItem extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -143,8 +113,6 @@ class PullRequestSimpleLabelsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDescription(): string
@@ -152,8 +120,6 @@ class PullRequestSimpleLabelsItem extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string $description
      *
      * @return self
@@ -165,8 +131,6 @@ class PullRequestSimpleLabelsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getColor(): string
@@ -174,8 +138,6 @@ class PullRequestSimpleLabelsItem extends \ArrayObject
         return $this->color;
     }
     /**
-     * 
-     *
      * @param string $color
      *
      * @return self
@@ -187,8 +149,6 @@ class PullRequestSimpleLabelsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getDefault(): bool
@@ -196,8 +156,6 @@ class PullRequestSimpleLabelsItem extends \ArrayObject
         return $this->default;
     }
     /**
-     * 
-     *
      * @param bool $default
      *
      * @return self

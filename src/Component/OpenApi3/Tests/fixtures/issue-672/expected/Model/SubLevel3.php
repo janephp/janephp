@@ -13,14 +13,10 @@ class SubLevel3 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $end;
     /**
-     * 
-     *
      * @return string
      */
     public function getEnd(): string
@@ -28,8 +24,6 @@ class SubLevel3 extends \ArrayObject
         return $this->end;
     }
     /**
-     * 
-     *
      * @param string $end
      *
      * @return self

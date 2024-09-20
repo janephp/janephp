@@ -6,8 +6,7 @@ class ContentPermissionSetSearch extends \PicturePark\API\Runtime\Client\BaseEnd
 {
     /**
      * Searches content permission sets as specified in the search request.
-     *
-     * @param \PicturePark\API\Model\PermissionSetSearchRequest $requestBody 
+     * @param \PicturePark\API\Model\PermissionSetSearchRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\PermissionSetSearchRequest $requestBody)
     {

@@ -13,44 +13,30 @@ class ImagesNameHistoryGetResponse200Item
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var int
      */
     protected $created;
     /**
-     * 
-     *
      * @var string
      */
     protected $createdBy;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $tags;
     /**
-     * 
-     *
      * @var int
      */
     protected $size;
     /**
-     * 
-     *
      * @var string
      */
     protected $comment;
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -58,8 +44,6 @@ class ImagesNameHistoryGetResponse200Item
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -71,8 +55,6 @@ class ImagesNameHistoryGetResponse200Item
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getCreated(): int
@@ -80,8 +62,6 @@ class ImagesNameHistoryGetResponse200Item
         return $this->created;
     }
     /**
-     * 
-     *
      * @param int $created
      *
      * @return self
@@ -93,8 +73,6 @@ class ImagesNameHistoryGetResponse200Item
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCreatedBy(): string
@@ -102,8 +80,6 @@ class ImagesNameHistoryGetResponse200Item
         return $this->createdBy;
     }
     /**
-     * 
-     *
      * @param string $createdBy
      *
      * @return self
@@ -115,8 +91,6 @@ class ImagesNameHistoryGetResponse200Item
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getTags(): array
@@ -124,8 +98,6 @@ class ImagesNameHistoryGetResponse200Item
         return $this->tags;
     }
     /**
-     * 
-     *
      * @param list<string> $tags
      *
      * @return self
@@ -137,8 +109,6 @@ class ImagesNameHistoryGetResponse200Item
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getSize(): int
@@ -146,8 +116,6 @@ class ImagesNameHistoryGetResponse200Item
         return $this->size;
     }
     /**
-     * 
-     *
      * @param int $size
      *
      * @return self
@@ -159,8 +127,6 @@ class ImagesNameHistoryGetResponse200Item
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getComment(): string
@@ -168,8 +134,6 @@ class ImagesNameHistoryGetResponse200Item
         return $this->comment;
     }
     /**
-     * 
-     *
      * @param string $comment
      *
      * @return self

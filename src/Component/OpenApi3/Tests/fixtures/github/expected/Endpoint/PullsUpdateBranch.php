@@ -9,11 +9,10 @@ class PullsUpdateBranch extends \Github\Runtime\Client\BaseEndpoint implements \
     protected $pull_number;
     /**
      * Updates the pull request branch with the latest upstream changes by merging HEAD from the base branch into the pull request branch.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $pullNumber 
-     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberUpdateBranchPutBody $requestBody 
+     * @param string $owner
+     * @param string $repo
+     * @param int $pullNumber
+     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberUpdateBranchPutBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberUpdateBranchPutBody $requestBody = null)
     {

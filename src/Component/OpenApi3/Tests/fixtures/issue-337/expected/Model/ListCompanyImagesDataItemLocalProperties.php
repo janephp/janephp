@@ -13,14 +13,10 @@ class ListCompanyImagesDataItemLocalProperties extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $accountRefNumber;
     /**
-     * 
-     *
      * @return string
      */
     public function getAccountRefNumber(): string
@@ -28,8 +24,6 @@ class ListCompanyImagesDataItemLocalProperties extends \ArrayObject
         return $this->accountRefNumber;
     }
     /**
-     * 
-     *
      * @param string $accountRefNumber
      *
      * @return self

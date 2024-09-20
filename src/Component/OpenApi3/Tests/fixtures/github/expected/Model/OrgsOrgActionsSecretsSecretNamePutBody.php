@@ -25,13 +25,13 @@ class OrgsOrgActionsSecretsSecretNamePutBody extends \ArrayObject
      */
     protected $keyId;
     /**
-    * Configures the access that repositories have to the organization secret. Can be one of:  
-    \- `all` - All repositories in an organization can access the secret.  
-    \- `private` - Private repositories in an organization can access the secret.  
-    \- `selected` - Only specific repositories can access the secret.
-    *
-    * @var string
-    */
+     * Configures the access that repositories have to the organization secret. Can be one of:
+     * \- `all` - All repositories in an organization can access the secret.
+     * \- `private` - Private repositories in an organization can access the secret.
+     * \- `selected` - Only specific repositories can access the secret.
+     *
+     * @var string
+     */
     protected $visibility;
     /**
      * An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://developer.github.com/v3/actions/secrets/#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://developer.github.com/v3/actions/secrets/#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://developer.github.com/v3/actions/secrets/#remove-selected-repository-from-an-organization-secret) endpoints.
@@ -84,13 +84,13 @@ class OrgsOrgActionsSecretsSecretNamePutBody extends \ArrayObject
         return $this;
     }
     /**
-    * Configures the access that repositories have to the organization secret. Can be one of:  
-    \- `all` - All repositories in an organization can access the secret.  
-    \- `private` - Private repositories in an organization can access the secret.  
-    \- `selected` - Only specific repositories can access the secret.
-    *
-    * @return string
-    */
+     * Configures the access that repositories have to the organization secret. Can be one of:
+     * \- `all` - All repositories in an organization can access the secret.
+     * \- `private` - Private repositories in an organization can access the secret.
+     * \- `selected` - Only specific repositories can access the secret.
+     *
+     * @return string
+     */
     public function getVisibility(): string
     {
         return $this->visibility;

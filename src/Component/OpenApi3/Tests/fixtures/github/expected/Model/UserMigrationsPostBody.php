@@ -31,8 +31,6 @@ class UserMigrationsPostBody extends \ArrayObject
      */
     protected $exclude;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $repositories;
@@ -103,8 +101,6 @@ class UserMigrationsPostBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getRepositories(): array
@@ -112,8 +108,6 @@ class UserMigrationsPostBody extends \ArrayObject
         return $this->repositories;
     }
     /**
-     * 
-     *
      * @param list<string> $repositories
      *
      * @return self

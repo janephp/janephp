@@ -6,12 +6,11 @@ class AppsGetUserInstallation extends \Github\Runtime\Client\BaseEndpoint implem
 {
     protected $username;
     /**
-    * Enables an authenticated GitHub App to find the user’s installation information.
-    
-    You must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-    *
-    * @param string $username 
-    */
+     * Enables an authenticated GitHub App to find the user’s installation information.
+     *
+     * You must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+     * @param string $username
+     */
     public function __construct(string $username)
     {
         $this->username = $username;

@@ -13,68 +13,46 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAdditionalInfoItem>
      */
     protected $additionalInfo;
     /**
-     * 
-     *
      * @var list<ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAddressesItem>
      */
     protected $addresses;
     /**
-     * 
-     *
      * @var list<ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAkAsItem>
      */
     protected $akAs;
     /**
-     * 
-     *
      * @var string
      */
     protected $comments;
     /**
-     * 
-     *
      * @var string
      */
     protected $dateListed;
     /**
-     * 
-     *
      * @var string
      */
     protected $entityType;
     /**
-     * 
-     *
      * @var list<ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsIDsItem>
      */
     protected $iDs;
     /**
-     * 
-     *
      * @var string
      */
     protected $listReferenceNumber;
     /**
-     * 
-     *
      * @var ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsName
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $reasonListed;
     /**
-     * 
-     *
      * @return list<ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAdditionalInfoItem>
      */
     public function getAdditionalInfo(): array
@@ -82,8 +60,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this->additionalInfo;
     }
     /**
-     * 
-     *
      * @param list<ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAdditionalInfoItem> $additionalInfo
      *
      * @return self
@@ -95,8 +71,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAddressesItem>
      */
     public function getAddresses(): array
@@ -104,8 +78,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this->addresses;
     }
     /**
-     * 
-     *
      * @param list<ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAddressesItem> $addresses
      *
      * @return self
@@ -117,8 +89,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAkAsItem>
      */
     public function getAkAs(): array
@@ -126,8 +96,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this->akAs;
     }
     /**
-     * 
-     *
      * @param list<ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsAkAsItem> $akAs
      *
      * @return self
@@ -139,8 +107,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getComments(): string
@@ -148,8 +114,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this->comments;
     }
     /**
-     * 
-     *
      * @param string $comments
      *
      * @return self
@@ -161,8 +125,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDateListed(): string
@@ -170,8 +132,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this->dateListed;
     }
     /**
-     * 
-     *
      * @param string $dateListed
      *
      * @return self
@@ -183,8 +143,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEntityType(): string
@@ -192,8 +150,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this->entityType;
     }
     /**
-     * 
-     *
      * @param string $entityType
      *
      * @return self
@@ -205,8 +161,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsIDsItem>
      */
     public function getIDs(): array
@@ -214,8 +168,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this->iDs;
     }
     /**
-     * 
-     *
      * @param list<ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsIDsItem> $iDs
      *
      * @return self
@@ -227,8 +179,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getListReferenceNumber(): string
@@ -236,8 +186,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this->listReferenceNumber;
     }
     /**
-     * 
-     *
      * @param string $listReferenceNumber
      *
      * @return self
@@ -249,8 +197,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this;
     }
     /**
-     * 
-     *
      * @return ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsName
      */
     public function getName(): ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsName
@@ -258,8 +204,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this->name;
     }
     /**
-     * 
-     *
      * @param ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetailsName $name
      *
      * @return self
@@ -271,8 +215,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getReasonListed(): string
@@ -280,8 +222,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this->reasonListed;
     }
     /**
-     * 
-     *
      * @param string $reasonListed
      *
      * @return self

@@ -5,12 +5,11 @@ namespace PicturePark\API\Endpoint;
 class ContentUpdateMetadataMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Updates metadata layers of multiple contents. For file-less contents, the contents itself can be updated a swell.
-    See [ShouldUpdateMetadata](https://github.com/Picturepark/Picturepark.SDK.DotNet/blob/master/src/Picturepark.SDK.V1.Tests/Clients/ContentTests.cs) tests.
-    The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param \PicturePark\API\Model\ContentMetadataUpdateManyRequest $requestBody 
-    */
+     * Updates metadata layers of multiple contents. For file-less contents, the contents itself can be updated a swell.
+     * See [ShouldUpdateMetadata](https://github.com/Picturepark/Picturepark.SDK.DotNet/blob/master/src/Picturepark.SDK.V1.Tests/Clients/ContentTests.cs) tests.
+     * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param \PicturePark\API\Model\ContentMetadataUpdateManyRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\ContentMetadataUpdateManyRequest $requestBody)
     {
         $this->body = $requestBody;

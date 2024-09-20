@@ -6,8 +6,7 @@ class ContentPermissionSetCreate extends \PicturePark\API\Runtime\Client\BaseEnd
 {
     /**
      * Creates new content permission set based on supplied request.
-     *
-     * @param \PicturePark\API\Model\ContentPermissionSetCreateRequest $requestBody 
+     * @param \PicturePark\API\Model\ContentPermissionSetCreateRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\ContentPermissionSetCreateRequest $requestBody)
     {

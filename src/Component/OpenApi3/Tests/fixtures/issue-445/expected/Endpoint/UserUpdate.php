@@ -6,10 +6,8 @@ class UserUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
 {
     protected $id;
     /**
-     * 
-     *
      * @param string $id User ID to action on.
-     * @param \PicturePark\API\Model\UserUpdateRequest $requestBody 
+     * @param \PicturePark\API\Model\UserUpdateRequest $requestBody
      */
     public function __construct(string $id, \PicturePark\API\Model\UserUpdateRequest $requestBody)
     {

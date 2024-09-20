@@ -6,15 +6,14 @@ class TeamsCreateOrUpdateIdpGroupConnectionsLegacy extends \Github\Runtime\Clien
 {
     protected $team_id;
     /**
-    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Create or update IdP group connections`](https://developer.github.com/v3/teams/team_sync/#create-or-update-idp-group-connections) endpoint.
-    
-    Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    
-    Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a team, you must include all new and existing groups to avoid replacing existing groups with the new ones. Specifying an empty `groups` array will remove all connections for a team.
-    *
-    * @param int $teamId 
-    * @param null|\Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody $requestBody 
-    */
+     * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Create or update IdP group connections`](https://developer.github.com/v3/teams/team_sync/#create-or-update-idp-group-connections) endpoint.
+     *
+     * Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+     *
+     * Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a team, you must include all new and existing groups to avoid replacing existing groups with the new ones. Specifying an empty `groups` array will remove all connections for a team.
+     * @param int $teamId
+     * @param null|\Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody $requestBody
+     */
     public function __construct(int $teamId, ?\Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody $requestBody = null)
     {
         $this->team_id = $teamId;

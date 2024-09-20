@@ -25,11 +25,11 @@ class PermissionUserRoleRightsOfMetadataRight
      */
     protected $names;
     /**
-    * List of rights: they can be content, metadata or permission set rights, depending on the type defined on the class
-    (ContentRight, MetadataRight, PermissionSetRight).
-    *
-    * @var list<string>|null
-    */
+     * List of rights: they can be content, metadata or permission set rights, depending on the type defined on the class
+     * (ContentRight, MetadataRight, PermissionSetRight).
+     *
+     * @var list<string>|null
+     */
     protected $rights;
     /**
      * The user role ID.
@@ -76,11 +76,11 @@ class PermissionUserRoleRightsOfMetadataRight
         return $this;
     }
     /**
-    * List of rights: they can be content, metadata or permission set rights, depending on the type defined on the class
-    (ContentRight, MetadataRight, PermissionSetRight).
-    *
-    * @return list<string>|null
-    */
+     * List of rights: they can be content, metadata or permission set rights, depending on the type defined on the class
+     * (ContentRight, MetadataRight, PermissionSetRight).
+     *
+     * @return list<string>|null
+     */
     public function getRights(): ?array
     {
         return $this->rights;

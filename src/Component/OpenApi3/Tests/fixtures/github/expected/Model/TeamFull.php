@@ -19,8 +19,6 @@ class TeamFull extends \ArrayObject
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
@@ -31,8 +29,6 @@ class TeamFull extends \ArrayObject
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
@@ -43,14 +39,10 @@ class TeamFull extends \ArrayObject
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $slug;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
@@ -67,44 +59,30 @@ class TeamFull extends \ArrayObject
      */
     protected $permission;
     /**
-     * 
-     *
      * @var string
      */
     protected $membersUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $repositoriesUrl;
     /**
-     * 
-     *
      * @var TeamFullParent|null
      */
     protected $parent;
     /**
-     * 
-     *
      * @var int
      */
     protected $membersCount;
     /**
-     * 
-     *
      * @var int
      */
     protected $reposCount;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
@@ -143,8 +121,6 @@ class TeamFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -152,8 +128,6 @@ class TeamFull extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -187,8 +161,6 @@ class TeamFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -196,8 +168,6 @@ class TeamFull extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -231,8 +201,6 @@ class TeamFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSlug(): string
@@ -240,8 +208,6 @@ class TeamFull extends \ArrayObject
         return $this->slug;
     }
     /**
-     * 
-     *
      * @param string $slug
      *
      * @return self
@@ -253,8 +219,6 @@ class TeamFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription(): ?string
@@ -262,8 +226,6 @@ class TeamFull extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -319,8 +281,6 @@ class TeamFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMembersUrl(): string
@@ -328,8 +288,6 @@ class TeamFull extends \ArrayObject
         return $this->membersUrl;
     }
     /**
-     * 
-     *
      * @param string $membersUrl
      *
      * @return self
@@ -341,8 +299,6 @@ class TeamFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRepositoriesUrl(): string
@@ -350,8 +306,6 @@ class TeamFull extends \ArrayObject
         return $this->repositoriesUrl;
     }
     /**
-     * 
-     *
      * @param string $repositoriesUrl
      *
      * @return self
@@ -363,8 +317,6 @@ class TeamFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return TeamFullParent|null
      */
     public function getParent(): ?TeamFullParent
@@ -372,8 +324,6 @@ class TeamFull extends \ArrayObject
         return $this->parent;
     }
     /**
-     * 
-     *
      * @param TeamFullParent|null $parent
      *
      * @return self
@@ -385,8 +335,6 @@ class TeamFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getMembersCount(): int
@@ -394,8 +342,6 @@ class TeamFull extends \ArrayObject
         return $this->membersCount;
     }
     /**
-     * 
-     *
      * @param int $membersCount
      *
      * @return self
@@ -407,8 +353,6 @@ class TeamFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getReposCount(): int
@@ -416,8 +360,6 @@ class TeamFull extends \ArrayObject
         return $this->reposCount;
     }
     /**
-     * 
-     *
      * @param int $reposCount
      *
      * @return self
@@ -429,8 +371,6 @@ class TeamFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -438,8 +378,6 @@ class TeamFull extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -451,8 +389,6 @@ class TeamFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -460,8 +396,6 @@ class TeamFull extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self

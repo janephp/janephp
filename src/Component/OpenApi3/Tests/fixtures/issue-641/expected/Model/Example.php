@@ -13,14 +13,10 @@ class Example extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $property1;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getProperty1(): ?string
@@ -28,8 +24,6 @@ class Example extends \ArrayObject
         return $this->property1;
     }
     /**
-     * 
-     *
      * @param string|null $property1
      *
      * @return self

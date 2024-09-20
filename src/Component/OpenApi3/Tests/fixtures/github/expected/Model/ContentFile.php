@@ -13,92 +13,62 @@ class ContentFile extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $encoding;
     /**
-     * 
-     *
      * @var int
      */
     protected $size;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $path;
     /**
-     * 
-     *
      * @var string
      */
     protected $content;
     /**
-     * 
-     *
      * @var string
      */
     protected $sha;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $gitUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $downloadUrl;
     /**
-     * 
-     *
      * @var ContentFileLinks
      */
     protected $links;
     /**
-     * 
-     *
      * @var string
      */
     protected $target;
     /**
-     * 
-     *
      * @var string
      */
     protected $submoduleGitUrl;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -106,8 +76,6 @@ class ContentFile extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -119,8 +87,6 @@ class ContentFile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEncoding(): string
@@ -128,8 +94,6 @@ class ContentFile extends \ArrayObject
         return $this->encoding;
     }
     /**
-     * 
-     *
      * @param string $encoding
      *
      * @return self
@@ -141,8 +105,6 @@ class ContentFile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getSize(): int
@@ -150,8 +112,6 @@ class ContentFile extends \ArrayObject
         return $this->size;
     }
     /**
-     * 
-     *
      * @param int $size
      *
      * @return self
@@ -163,8 +123,6 @@ class ContentFile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -172,8 +130,6 @@ class ContentFile extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -185,8 +141,6 @@ class ContentFile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPath(): string
@@ -194,8 +148,6 @@ class ContentFile extends \ArrayObject
         return $this->path;
     }
     /**
-     * 
-     *
      * @param string $path
      *
      * @return self
@@ -207,8 +159,6 @@ class ContentFile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContent(): string
@@ -216,8 +166,6 @@ class ContentFile extends \ArrayObject
         return $this->content;
     }
     /**
-     * 
-     *
      * @param string $content
      *
      * @return self
@@ -229,8 +177,6 @@ class ContentFile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSha(): string
@@ -238,8 +184,6 @@ class ContentFile extends \ArrayObject
         return $this->sha;
     }
     /**
-     * 
-     *
      * @param string $sha
      *
      * @return self
@@ -251,8 +195,6 @@ class ContentFile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -260,8 +202,6 @@ class ContentFile extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -273,8 +213,6 @@ class ContentFile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getGitUrl(): ?string
@@ -282,8 +220,6 @@ class ContentFile extends \ArrayObject
         return $this->gitUrl;
     }
     /**
-     * 
-     *
      * @param string|null $gitUrl
      *
      * @return self
@@ -295,8 +231,6 @@ class ContentFile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getHtmlUrl(): ?string
@@ -304,8 +238,6 @@ class ContentFile extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string|null $htmlUrl
      *
      * @return self
@@ -317,8 +249,6 @@ class ContentFile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDownloadUrl(): ?string
@@ -326,8 +256,6 @@ class ContentFile extends \ArrayObject
         return $this->downloadUrl;
     }
     /**
-     * 
-     *
      * @param string|null $downloadUrl
      *
      * @return self
@@ -339,8 +267,6 @@ class ContentFile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ContentFileLinks
      */
     public function getLinks(): ContentFileLinks
@@ -348,8 +274,6 @@ class ContentFile extends \ArrayObject
         return $this->links;
     }
     /**
-     * 
-     *
      * @param ContentFileLinks $links
      *
      * @return self
@@ -361,8 +285,6 @@ class ContentFile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTarget(): string
@@ -370,8 +292,6 @@ class ContentFile extends \ArrayObject
         return $this->target;
     }
     /**
-     * 
-     *
      * @param string $target
      *
      * @return self
@@ -383,8 +303,6 @@ class ContentFile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSubmoduleGitUrl(): string
@@ -392,8 +310,6 @@ class ContentFile extends \ArrayObject
         return $this->submoduleGitUrl;
     }
     /**
-     * 
-     *
      * @param string $submoduleGitUrl
      *
      * @return self

@@ -13,20 +13,14 @@ class TweetMetricsResponse extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<TweetMetrics>
      */
     protected $data;
     /**
-     * 
-     *
      * @var list<mixed>
      */
     protected $errors;
     /**
-     * 
-     *
      * @return list<TweetMetrics>
      */
     public function getData(): array
@@ -34,8 +28,6 @@ class TweetMetricsResponse extends \ArrayObject
         return $this->data;
     }
     /**
-     * 
-     *
      * @param list<TweetMetrics> $data
      *
      * @return self
@@ -47,8 +39,6 @@ class TweetMetricsResponse extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<mixed>
      */
     public function getErrors(): array
@@ -56,8 +46,6 @@ class TweetMetricsResponse extends \ArrayObject
         return $this->errors;
     }
     /**
-     * 
-     *
      * @param list<mixed> $errors
      *
      * @return self

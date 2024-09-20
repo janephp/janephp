@@ -13,26 +13,18 @@ class GbCompanyReportExampleResponseReportCompanyIdentification extends \ArrayOb
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation
      */
     protected $basicInformation;
     /**
-     * 
-     *
      * @var list<GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItem>
      */
     protected $activityClassifications;
     /**
-     * 
-     *
      * @var list<GbCompanyReportExampleResponseReportCompanyIdentificationPreviousNamesItem>
      */
     protected $previousNames;
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation
      */
     public function getBasicInformation(): GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation
@@ -40,8 +32,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentification extends \ArrayOb
         return $this->basicInformation;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation $basicInformation
      *
      * @return self
@@ -53,8 +43,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentification extends \ArrayOb
         return $this;
     }
     /**
-     * 
-     *
      * @return list<GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItem>
      */
     public function getActivityClassifications(): array
@@ -62,8 +50,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentification extends \ArrayOb
         return $this->activityClassifications;
     }
     /**
-     * 
-     *
      * @param list<GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassificationsItem> $activityClassifications
      *
      * @return self
@@ -75,8 +61,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentification extends \ArrayOb
         return $this;
     }
     /**
-     * 
-     *
      * @return list<GbCompanyReportExampleResponseReportCompanyIdentificationPreviousNamesItem>
      */
     public function getPreviousNames(): array
@@ -84,8 +68,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentification extends \ArrayOb
         return $this->previousNames;
     }
     /**
-     * 
-     *
      * @param list<GbCompanyReportExampleResponseReportCompanyIdentificationPreviousNamesItem> $previousNames
      *
      * @return self

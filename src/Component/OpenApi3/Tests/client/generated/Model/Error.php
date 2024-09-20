@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApi3\Tests\Client\Model;
 class Error extends \ArrayObject
 {
     /**
+<<<<<<< HEAD
      * @var array
      */
     protected $initialized = [];
@@ -15,12 +16,15 @@ class Error extends \ArrayObject
     /**
      * 
      *
+||||||| parent of 6c3127df5 (Update fixtures for tests)
+     * 
+     *
+=======
+>>>>>>> 6c3127df5 (Update fixtures for tests)
      * @var string
      */
     protected $message;
     /**
-     * 
-     *
      * @return string
      */
     public function getMessage(): string
@@ -28,8 +32,6 @@ class Error extends \ArrayObject
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string $message
      *
      * @return self

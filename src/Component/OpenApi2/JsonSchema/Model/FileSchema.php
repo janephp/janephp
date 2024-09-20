@@ -13,44 +13,30 @@ class FileSchema extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $format;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $title;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $default;
     /**
-     * 
-     *
      * @var string[]|null
      */
     protected $required;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $type;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $readOnly = false;
@@ -61,14 +47,10 @@ class FileSchema extends \ArrayObject
      */
     protected $externalDocs;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $example;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFormat() : ?string
@@ -76,8 +58,6 @@ class FileSchema extends \ArrayObject
         return $this->format;
     }
     /**
-     * 
-     *
      * @param string|null $format
      *
      * @return self
@@ -89,8 +69,6 @@ class FileSchema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTitle() : ?string
@@ -98,8 +76,6 @@ class FileSchema extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string|null $title
      *
      * @return self
@@ -111,8 +87,6 @@ class FileSchema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription() : ?string
@@ -120,8 +94,6 @@ class FileSchema extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -133,8 +105,6 @@ class FileSchema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getDefault()
@@ -142,8 +112,6 @@ class FileSchema extends \ArrayObject
         return $this->default;
     }
     /**
-     * 
-     *
      * @param mixed $default
      *
      * @return self
@@ -155,8 +123,6 @@ class FileSchema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string[]|null
      */
     public function getRequired() : ?array
@@ -164,8 +130,6 @@ class FileSchema extends \ArrayObject
         return $this->required;
     }
     /**
-     * 
-     *
      * @param string[]|null $required
      *
      * @return self
@@ -177,8 +141,6 @@ class FileSchema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getType() : ?string
@@ -186,8 +148,6 @@ class FileSchema extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string|null $type
      *
      * @return self
@@ -199,8 +159,6 @@ class FileSchema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getReadOnly() : ?bool
@@ -208,8 +166,6 @@ class FileSchema extends \ArrayObject
         return $this->readOnly;
     }
     /**
-     * 
-     *
      * @param bool|null $readOnly
      *
      * @return self
@@ -243,8 +199,6 @@ class FileSchema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getExample()
@@ -252,8 +206,6 @@ class FileSchema extends \ArrayObject
         return $this->example;
     }
     /**
-     * 
-     *
      * @param mixed $example
      *
      * @return self

@@ -6,8 +6,7 @@ class ContentSearch extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
 {
     /**
      * Searches contents as specified in the search request.
-     *
-     * @param \PicturePark\API\Model\ContentSearchRequest $requestBody 
+     * @param \PicturePark\API\Model\ContentSearchRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\ContentSearchRequest $requestBody)
     {

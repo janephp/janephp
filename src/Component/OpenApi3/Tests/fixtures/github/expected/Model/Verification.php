@@ -13,32 +13,22 @@ class Verification extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var bool
      */
     protected $verified;
     /**
-     * 
-     *
      * @var string
      */
     protected $reason;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $payload;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $signature;
     /**
-     * 
-     *
      * @return bool
      */
     public function getVerified(): bool
@@ -46,8 +36,6 @@ class Verification extends \ArrayObject
         return $this->verified;
     }
     /**
-     * 
-     *
      * @param bool $verified
      *
      * @return self
@@ -59,8 +47,6 @@ class Verification extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getReason(): string
@@ -68,8 +54,6 @@ class Verification extends \ArrayObject
         return $this->reason;
     }
     /**
-     * 
-     *
      * @param string $reason
      *
      * @return self
@@ -81,8 +65,6 @@ class Verification extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getPayload(): ?string
@@ -90,8 +72,6 @@ class Verification extends \ArrayObject
         return $this->payload;
     }
     /**
-     * 
-     *
      * @param string|null $payload
      *
      * @return self
@@ -103,8 +83,6 @@ class Verification extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getSignature(): ?string
@@ -112,8 +90,6 @@ class Verification extends \ArrayObject
         return $this->signature;
     }
     /**
-     * 
-     *
      * @param string|null $signature
      *
      * @return self

@@ -13,32 +13,22 @@ class BranchRestrictionPolicyAppsItemPermissions extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $metadata;
     /**
-     * 
-     *
      * @var string
      */
     protected $contents;
     /**
-     * 
-     *
      * @var string
      */
     protected $issues;
     /**
-     * 
-     *
      * @var string
      */
     protected $singleFile;
     /**
-     * 
-     *
      * @return string
      */
     public function getMetadata(): string
@@ -46,8 +36,6 @@ class BranchRestrictionPolicyAppsItemPermissions extends \ArrayObject
         return $this->metadata;
     }
     /**
-     * 
-     *
      * @param string $metadata
      *
      * @return self
@@ -59,8 +47,6 @@ class BranchRestrictionPolicyAppsItemPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContents(): string
@@ -68,8 +54,6 @@ class BranchRestrictionPolicyAppsItemPermissions extends \ArrayObject
         return $this->contents;
     }
     /**
-     * 
-     *
      * @param string $contents
      *
      * @return self
@@ -81,8 +65,6 @@ class BranchRestrictionPolicyAppsItemPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIssues(): string
@@ -90,8 +72,6 @@ class BranchRestrictionPolicyAppsItemPermissions extends \ArrayObject
         return $this->issues;
     }
     /**
-     * 
-     *
      * @param string $issues
      *
      * @return self
@@ -103,8 +83,6 @@ class BranchRestrictionPolicyAppsItemPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSingleFile(): string
@@ -112,8 +90,6 @@ class BranchRestrictionPolicyAppsItemPermissions extends \ArrayObject
         return $this->singleFile;
     }
     /**
-     * 
-     *
      * @param string $singleFile
      *
      * @return self

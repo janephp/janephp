@@ -6,7 +6,6 @@ class ActivityListPublicEvents extends \Github\Runtime\Client\BaseEndpoint imple
 {
     /**
      * We delay the public events feed by five minutes, which means the most recent event returned by the public events API actually occurred at least five minutes ago.
-     *
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.

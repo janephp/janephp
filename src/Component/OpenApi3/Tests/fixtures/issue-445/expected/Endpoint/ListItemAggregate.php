@@ -6,8 +6,7 @@ class ListItemAggregate extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
 {
     /**
      * Aggregates list items as specified in the aggregation request.
-     *
-     * @param \PicturePark\API\Model\ListItemAggregationRequest $requestBody 
+     * @param \PicturePark\API\Model\ListItemAggregationRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\ListItemAggregationRequest $requestBody)
     {

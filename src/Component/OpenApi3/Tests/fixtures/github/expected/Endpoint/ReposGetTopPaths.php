@@ -8,9 +8,8 @@ class ReposGetTopPaths extends \Github\Runtime\Client\BaseEndpoint implements \G
     protected $repo;
     /**
      * Get the top 10 popular contents over the last 14 days.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      */
     public function __construct(string $owner, string $repo)
     {

@@ -13,14 +13,10 @@ class HTTPSecuritySchemeSub
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $scheme;
     /**
-     * 
-     *
      * @return mixed
      */
     public function getScheme()
@@ -28,8 +24,6 @@ class HTTPSecuritySchemeSub
         return $this->scheme;
     }
     /**
-     * 
-     *
      * @param mixed $scheme
      *
      * @return self

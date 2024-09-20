@@ -13,26 +13,18 @@ class FileCommitContentLinks extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $self;
     /**
-     * 
-     *
      * @var string
      */
     protected $git;
     /**
-     * 
-     *
      * @var string
      */
     protected $html;
     /**
-     * 
-     *
      * @return string
      */
     public function getSelf(): string
@@ -40,8 +32,6 @@ class FileCommitContentLinks extends \ArrayObject
         return $this->self;
     }
     /**
-     * 
-     *
      * @param string $self
      *
      * @return self
@@ -53,8 +43,6 @@ class FileCommitContentLinks extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGit(): string
@@ -62,8 +50,6 @@ class FileCommitContentLinks extends \ArrayObject
         return $this->git;
     }
     /**
-     * 
-     *
      * @param string $git
      *
      * @return self
@@ -75,8 +61,6 @@ class FileCommitContentLinks extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtml(): string
@@ -84,8 +68,6 @@ class FileCommitContentLinks extends \ArrayObject
         return $this->html;
     }
     /**
-     * 
-     *
      * @param string $html
      *
      * @return self

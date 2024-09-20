@@ -7,9 +7,8 @@ class BusinessProcessUpdateNotification extends \PicturePark\API\Runtime\Client\
     protected $id;
     /**
      * Only available for business processes created through BusinessProcessCreateRequest).
-     *
      * @param string $id The business process id.
-     * @param \PicturePark\API\Model\BusinessProcessNotificationUpdateRequest $requestBody 
+     * @param \PicturePark\API\Model\BusinessProcessNotificationUpdateRequest $requestBody
      */
     public function __construct(string $id, \PicturePark\API\Model\BusinessProcessNotificationUpdateRequest $requestBody)
     {

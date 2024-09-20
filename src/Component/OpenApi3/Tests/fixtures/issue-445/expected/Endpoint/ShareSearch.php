@@ -6,8 +6,7 @@ class ShareSearch extends \PicturePark\API\Runtime\Client\BaseEndpoint implement
 {
     /**
      * Search shares either created by or sent to current user.
-     *
-     * @param \PicturePark\API\Model\ShareSearchRequest $requestBody 
+     * @param \PicturePark\API\Model\ShareSearchRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\ShareSearchRequest $requestBody)
     {

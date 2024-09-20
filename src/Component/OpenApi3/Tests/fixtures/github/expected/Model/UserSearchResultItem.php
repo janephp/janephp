@@ -13,212 +13,142 @@ class UserSearchResultItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $login;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $avatarUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $gravatarId;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $followersUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $subscriptionsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $organizationsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $reposUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $receivedEventsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var int
      */
     protected $score;
     /**
-     * 
-     *
      * @var string
      */
     protected $followingUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $gistsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $starredUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $eventsUrl;
     /**
-     * 
-     *
      * @var int
      */
     protected $publicRepos;
     /**
-     * 
-     *
      * @var int
      */
     protected $publicGists;
     /**
-     * 
-     *
      * @var int
      */
     protected $followers;
     /**
-     * 
-     *
      * @var int
      */
     protected $following;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $name;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $bio;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $email;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $location;
     /**
-     * 
-     *
      * @var bool
      */
     protected $siteAdmin;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $hireable;
     /**
-     * 
-     *
      * @var list<SearchResultTextMatchesItem>
      */
     protected $textMatches;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $blog;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $company;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $suspendedAt;
     /**
-     * 
-     *
      * @return string
      */
     public function getLogin(): string
@@ -226,8 +156,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->login;
     }
     /**
-     * 
-     *
      * @param string $login
      *
      * @return self
@@ -239,8 +167,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -248,8 +174,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -261,8 +185,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -270,8 +192,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -283,8 +203,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAvatarUrl(): string
@@ -292,8 +210,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->avatarUrl;
     }
     /**
-     * 
-     *
      * @param string $avatarUrl
      *
      * @return self
@@ -305,8 +221,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getGravatarId(): ?string
@@ -314,8 +228,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->gravatarId;
     }
     /**
-     * 
-     *
      * @param string|null $gravatarId
      *
      * @return self
@@ -327,8 +239,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -336,8 +246,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -349,8 +257,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -358,8 +264,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -371,8 +275,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFollowersUrl(): string
@@ -380,8 +282,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->followersUrl;
     }
     /**
-     * 
-     *
      * @param string $followersUrl
      *
      * @return self
@@ -393,8 +293,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSubscriptionsUrl(): string
@@ -402,8 +300,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->subscriptionsUrl;
     }
     /**
-     * 
-     *
      * @param string $subscriptionsUrl
      *
      * @return self
@@ -415,8 +311,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getOrganizationsUrl(): string
@@ -424,8 +318,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->organizationsUrl;
     }
     /**
-     * 
-     *
      * @param string $organizationsUrl
      *
      * @return self
@@ -437,8 +329,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getReposUrl(): string
@@ -446,8 +336,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->reposUrl;
     }
     /**
-     * 
-     *
      * @param string $reposUrl
      *
      * @return self
@@ -459,8 +347,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getReceivedEventsUrl(): string
@@ -468,8 +354,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->receivedEventsUrl;
     }
     /**
-     * 
-     *
      * @param string $receivedEventsUrl
      *
      * @return self
@@ -481,8 +365,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -490,8 +372,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -503,8 +383,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getScore(): int
@@ -512,8 +390,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->score;
     }
     /**
-     * 
-     *
      * @param int $score
      *
      * @return self
@@ -525,8 +401,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFollowingUrl(): string
@@ -534,8 +408,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->followingUrl;
     }
     /**
-     * 
-     *
      * @param string $followingUrl
      *
      * @return self
@@ -547,8 +419,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGistsUrl(): string
@@ -556,8 +426,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->gistsUrl;
     }
     /**
-     * 
-     *
      * @param string $gistsUrl
      *
      * @return self
@@ -569,8 +437,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStarredUrl(): string
@@ -578,8 +444,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->starredUrl;
     }
     /**
-     * 
-     *
      * @param string $starredUrl
      *
      * @return self
@@ -591,8 +455,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEventsUrl(): string
@@ -600,8 +462,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->eventsUrl;
     }
     /**
-     * 
-     *
      * @param string $eventsUrl
      *
      * @return self
@@ -613,8 +473,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getPublicRepos(): int
@@ -622,8 +480,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->publicRepos;
     }
     /**
-     * 
-     *
      * @param int $publicRepos
      *
      * @return self
@@ -635,8 +491,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getPublicGists(): int
@@ -644,8 +498,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->publicGists;
     }
     /**
-     * 
-     *
      * @param int $publicGists
      *
      * @return self
@@ -657,8 +509,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getFollowers(): int
@@ -666,8 +516,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->followers;
     }
     /**
-     * 
-     *
      * @param int $followers
      *
      * @return self
@@ -679,8 +527,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getFollowing(): int
@@ -688,8 +534,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->following;
     }
     /**
-     * 
-     *
      * @param int $following
      *
      * @return self
@@ -701,8 +545,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -710,8 +552,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -723,8 +563,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -732,8 +570,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -745,8 +581,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getName(): ?string
@@ -754,8 +588,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string|null $name
      *
      * @return self
@@ -767,8 +599,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getBio(): ?string
@@ -776,8 +606,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->bio;
     }
     /**
-     * 
-     *
      * @param string|null $bio
      *
      * @return self
@@ -789,8 +617,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getEmail(): ?string
@@ -798,8 +624,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->email;
     }
     /**
-     * 
-     *
      * @param string|null $email
      *
      * @return self
@@ -811,8 +635,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getLocation(): ?string
@@ -820,8 +642,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->location;
     }
     /**
-     * 
-     *
      * @param string|null $location
      *
      * @return self
@@ -833,8 +653,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getSiteAdmin(): bool
@@ -842,8 +660,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->siteAdmin;
     }
     /**
-     * 
-     *
      * @param bool $siteAdmin
      *
      * @return self
@@ -855,8 +671,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getHireable(): ?bool
@@ -864,8 +678,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->hireable;
     }
     /**
-     * 
-     *
      * @param bool|null $hireable
      *
      * @return self
@@ -877,8 +689,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<SearchResultTextMatchesItem>
      */
     public function getTextMatches(): array
@@ -886,8 +696,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->textMatches;
     }
     /**
-     * 
-     *
      * @param list<SearchResultTextMatchesItem> $textMatches
      *
      * @return self
@@ -899,8 +707,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getBlog(): ?string
@@ -908,8 +714,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->blog;
     }
     /**
-     * 
-     *
      * @param string|null $blog
      *
      * @return self
@@ -921,8 +725,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCompany(): ?string
@@ -930,8 +732,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->company;
     }
     /**
-     * 
-     *
      * @param string|null $company
      *
      * @return self
@@ -943,8 +743,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getSuspendedAt(): ?\DateTime
@@ -952,8 +750,6 @@ class UserSearchResultItem extends \ArrayObject
         return $this->suspendedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $suspendedAt
      *
      * @return self

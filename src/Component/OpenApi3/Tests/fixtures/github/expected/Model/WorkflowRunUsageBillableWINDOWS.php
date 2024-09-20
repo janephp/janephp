@@ -13,20 +13,14 @@ class WorkflowRunUsageBillableWINDOWS extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $totalMs;
     /**
-     * 
-     *
      * @var int
      */
     protected $jobs;
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalMs(): int
@@ -34,8 +28,6 @@ class WorkflowRunUsageBillableWINDOWS extends \ArrayObject
         return $this->totalMs;
     }
     /**
-     * 
-     *
      * @param int $totalMs
      *
      * @return self
@@ -47,8 +39,6 @@ class WorkflowRunUsageBillableWINDOWS extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getJobs(): int
@@ -56,8 +46,6 @@ class WorkflowRunUsageBillableWINDOWS extends \ArrayObject
         return $this->jobs;
     }
     /**
-     * 
-     *
      * @param int $jobs
      *
      * @return self

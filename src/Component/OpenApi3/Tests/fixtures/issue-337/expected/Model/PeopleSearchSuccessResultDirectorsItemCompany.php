@@ -13,38 +13,26 @@ class PeopleSearchSuccessResultDirectorsItemCompany extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $companyName;
     /**
-     * 
-     *
      * @var string
      */
     protected $companyNumber;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $regNo;
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -52,8 +40,6 @@ class PeopleSearchSuccessResultDirectorsItemCompany extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -65,8 +51,6 @@ class PeopleSearchSuccessResultDirectorsItemCompany extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCompanyName(): string
@@ -74,8 +58,6 @@ class PeopleSearchSuccessResultDirectorsItemCompany extends \ArrayObject
         return $this->companyName;
     }
     /**
-     * 
-     *
      * @param string $companyName
      *
      * @return self
@@ -87,8 +69,6 @@ class PeopleSearchSuccessResultDirectorsItemCompany extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCompanyNumber(): string
@@ -96,8 +76,6 @@ class PeopleSearchSuccessResultDirectorsItemCompany extends \ArrayObject
         return $this->companyNumber;
     }
     /**
-     * 
-     *
      * @param string $companyNumber
      *
      * @return self
@@ -109,8 +87,6 @@ class PeopleSearchSuccessResultDirectorsItemCompany extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -118,8 +94,6 @@ class PeopleSearchSuccessResultDirectorsItemCompany extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -131,8 +105,6 @@ class PeopleSearchSuccessResultDirectorsItemCompany extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRegNo(): string
@@ -140,8 +112,6 @@ class PeopleSearchSuccessResultDirectorsItemCompany extends \ArrayObject
         return $this->regNo;
     }
     /**
-     * 
-     *
      * @param string $regNo
      *
      * @return self

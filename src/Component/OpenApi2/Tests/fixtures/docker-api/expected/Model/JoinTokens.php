@@ -14,18 +14,21 @@ class JoinTokens
     }
     /**
      * The token workers can use to join the swarm.
+     * 
      *
      * @var string
      */
     protected $worker;
     /**
      * The token managers can use to join the swarm.
+     * 
      *
      * @var string
      */
     protected $manager;
     /**
      * The token workers can use to join the swarm.
+     * 
      *
      * @return string
      */
@@ -48,6 +51,7 @@ class JoinTokens
     }
     /**
      * The token managers can use to join the swarm.
+     * 
      *
      * @return string
      */

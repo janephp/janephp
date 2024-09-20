@@ -13,50 +13,34 @@ class MarketplaceAccount extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $login;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $email;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $organizationBillingEmail;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -64,8 +48,6 @@ class MarketplaceAccount extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -77,8 +59,6 @@ class MarketplaceAccount extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -86,8 +66,6 @@ class MarketplaceAccount extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -99,8 +77,6 @@ class MarketplaceAccount extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -108,8 +84,6 @@ class MarketplaceAccount extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -121,8 +95,6 @@ class MarketplaceAccount extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -130,8 +102,6 @@ class MarketplaceAccount extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -143,8 +113,6 @@ class MarketplaceAccount extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLogin(): string
@@ -152,8 +120,6 @@ class MarketplaceAccount extends \ArrayObject
         return $this->login;
     }
     /**
-     * 
-     *
      * @param string $login
      *
      * @return self
@@ -165,8 +131,6 @@ class MarketplaceAccount extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getEmail(): ?string
@@ -174,8 +138,6 @@ class MarketplaceAccount extends \ArrayObject
         return $this->email;
     }
     /**
-     * 
-     *
      * @param string|null $email
      *
      * @return self
@@ -187,8 +149,6 @@ class MarketplaceAccount extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getOrganizationBillingEmail(): ?string
@@ -196,8 +156,6 @@ class MarketplaceAccount extends \ArrayObject
         return $this->organizationBillingEmail;
     }
     /**
-     * 
-     *
      * @param string|null $organizationBillingEmail
      *
      * @return self

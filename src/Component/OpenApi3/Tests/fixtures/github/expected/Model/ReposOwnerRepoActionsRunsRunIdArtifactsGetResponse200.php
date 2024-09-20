@@ -13,20 +13,14 @@ class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $totalCount;
     /**
-     * 
-     *
      * @var list<Artifact>
      */
     protected $artifacts;
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalCount(): int
@@ -34,8 +28,6 @@ class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200 extends \ArrayObject
         return $this->totalCount;
     }
     /**
-     * 
-     *
      * @param int $totalCount
      *
      * @return self
@@ -47,8 +39,6 @@ class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<Artifact>
      */
     public function getArtifacts(): array
@@ -56,8 +46,6 @@ class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200 extends \ArrayObject
         return $this->artifacts;
     }
     /**
-     * 
-     *
      * @param list<Artifact> $artifacts
      *
      * @return self

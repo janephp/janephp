@@ -13,44 +13,30 @@ class EventPayloadPagesItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $pageName;
     /**
-     * 
-     *
      * @var string
      */
     protected $title;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $summary;
     /**
-     * 
-     *
      * @var string
      */
     protected $action;
     /**
-     * 
-     *
      * @var string
      */
     protected $sha;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @return string
      */
     public function getPageName(): string
@@ -58,8 +44,6 @@ class EventPayloadPagesItem extends \ArrayObject
         return $this->pageName;
     }
     /**
-     * 
-     *
      * @param string $pageName
      *
      * @return self
@@ -71,8 +55,6 @@ class EventPayloadPagesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTitle(): string
@@ -80,8 +62,6 @@ class EventPayloadPagesItem extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string $title
      *
      * @return self
@@ -93,8 +73,6 @@ class EventPayloadPagesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getSummary(): ?string
@@ -102,8 +80,6 @@ class EventPayloadPagesItem extends \ArrayObject
         return $this->summary;
     }
     /**
-     * 
-     *
      * @param string|null $summary
      *
      * @return self
@@ -115,8 +91,6 @@ class EventPayloadPagesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAction(): string
@@ -124,8 +98,6 @@ class EventPayloadPagesItem extends \ArrayObject
         return $this->action;
     }
     /**
-     * 
-     *
      * @param string $action
      *
      * @return self
@@ -137,8 +109,6 @@ class EventPayloadPagesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSha(): string
@@ -146,8 +116,6 @@ class EventPayloadPagesItem extends \ArrayObject
         return $this->sha;
     }
     /**
-     * 
-     *
      * @param string $sha
      *
      * @return self
@@ -159,8 +127,6 @@ class EventPayloadPagesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -168,8 +134,6 @@ class EventPayloadPagesItem extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self

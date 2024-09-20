@@ -19,8 +19,6 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
      */
     protected $userName;
     /**
-     * 
-     *
      * @var ScimV2OrganizationsOrgUsersPostBodyName
      */
     protected $name;
@@ -31,32 +29,22 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
      */
     protected $emails;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $schemas;
     /**
-     * 
-     *
      * @var string
      */
     protected $displayName;
     /**
-     * 
-     *
      * @var string
      */
     protected $externalId;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $groups;
     /**
-     * 
-     *
      * @var bool
      */
     protected $active;
@@ -83,8 +71,6 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ScimV2OrganizationsOrgUsersPostBodyName
      */
     public function getName(): ScimV2OrganizationsOrgUsersPostBodyName
@@ -92,8 +78,6 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param ScimV2OrganizationsOrgUsersPostBodyName $name
      *
      * @return self
@@ -127,8 +111,6 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getSchemas(): array
@@ -136,8 +118,6 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
         return $this->schemas;
     }
     /**
-     * 
-     *
      * @param list<string> $schemas
      *
      * @return self
@@ -149,8 +129,6 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDisplayName(): string
@@ -158,8 +136,6 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
         return $this->displayName;
     }
     /**
-     * 
-     *
      * @param string $displayName
      *
      * @return self
@@ -171,8 +147,6 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getExternalId(): string
@@ -180,8 +154,6 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
         return $this->externalId;
     }
     /**
-     * 
-     *
      * @param string $externalId
      *
      * @return self
@@ -193,8 +165,6 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getGroups(): array
@@ -202,8 +172,6 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
         return $this->groups;
     }
     /**
-     * 
-     *
      * @param list<string> $groups
      *
      * @return self
@@ -215,8 +183,6 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getActive(): bool
@@ -224,8 +190,6 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
         return $this->active;
     }
     /**
-     * 
-     *
      * @param bool $active
      *
      * @return self

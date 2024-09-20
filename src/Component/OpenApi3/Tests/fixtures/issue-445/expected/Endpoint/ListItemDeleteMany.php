@@ -5,11 +5,10 @@ namespace PicturePark\API\Endpoint;
 class ListItemDeleteMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the list item and all files will be deleted.
-    The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param \PicturePark\API\Model\ListItemDeleteManyRequest $requestBody 
-    */
+     * The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the list item and all files will be deleted.
+     * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param \PicturePark\API\Model\ListItemDeleteManyRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\ListItemDeleteManyRequest $requestBody)
     {
         $this->body = $requestBody;

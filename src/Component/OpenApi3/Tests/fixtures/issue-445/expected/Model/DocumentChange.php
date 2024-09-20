@@ -13,38 +13,26 @@ class DocumentChange
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $documentName;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $documentId;
     /**
-     * 
-     *
      * @var int
      */
     protected $version;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $action;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $timeStamp;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDocumentName(): ?string
@@ -52,8 +40,6 @@ class DocumentChange
         return $this->documentName;
     }
     /**
-     * 
-     *
      * @param string|null $documentName
      *
      * @return self
@@ -65,8 +51,6 @@ class DocumentChange
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDocumentId(): ?string
@@ -74,8 +58,6 @@ class DocumentChange
         return $this->documentId;
     }
     /**
-     * 
-     *
      * @param string|null $documentId
      *
      * @return self
@@ -87,8 +69,6 @@ class DocumentChange
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getVersion(): int
@@ -96,8 +76,6 @@ class DocumentChange
         return $this->version;
     }
     /**
-     * 
-     *
      * @param int $version
      *
      * @return self
@@ -109,8 +87,6 @@ class DocumentChange
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getAction(): ?string
@@ -118,8 +94,6 @@ class DocumentChange
         return $this->action;
     }
     /**
-     * 
-     *
      * @param string|null $action
      *
      * @return self
@@ -131,8 +105,6 @@ class DocumentChange
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getTimeStamp(): \DateTime
@@ -140,8 +112,6 @@ class DocumentChange
         return $this->timeStamp;
     }
     /**
-     * 
-     *
      * @param \DateTime $timeStamp
      *
      * @return self

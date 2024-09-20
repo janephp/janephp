@@ -6,8 +6,7 @@ class ContentGetReferencesMany extends \PicturePark\API\Runtime\Client\BaseEndpo
 {
     /**
      * Gets references (list items, contents, shares) to content documents defined by IDs.
-     *
-     * @param \PicturePark\API\Model\ContentManyReferencesRequest $requestBody 
+     * @param \PicturePark\API\Model\ContentManyReferencesRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\ContentManyReferencesRequest $requestBody)
     {

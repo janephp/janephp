@@ -7,9 +7,8 @@ class OutputFormatSetDownloadFileNamePatterns extends \PicturePark\API\Runtime\C
     protected $id;
     /**
      * This is allowed for both static and dynamic formats. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
      * @param string $id ID of the output format.
-     * @param \stdClass $requestBody 
+     * @param \stdClass $requestBody
      */
     public function __construct(string $id, \stdClass $requestBody)
     {

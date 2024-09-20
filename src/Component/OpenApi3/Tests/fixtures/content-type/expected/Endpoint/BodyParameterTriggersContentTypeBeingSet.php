@@ -5,9 +5,7 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 class BodyParameterTriggersContentTypeBeingSet extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-     * 
-     *
-     * @param string $requestBody 
+     * @param string $requestBody
      */
     public function __construct(string $requestBody)
     {

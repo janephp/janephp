@@ -13,43 +13,44 @@ class SwarmSpecCAConfigExternalCAsItem
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * Protocol for communication with the external CA (currently
-    only `cfssl` is supported).
-    
-    *
-    * @var string
-    */
+     * Protocol for communication with the external CA (currently
+     * only `cfssl` is supported).
+     * 
+     *
+     * @var string
+     */
     protected $protocol = 'cfssl';
     /**
      * URL where certificate signing requests should be sent.
+     * 
      *
      * @var string
      */
     protected $uRL;
     /**
-    * An object with key/value pairs that are interpreted as
-    protocol-specific options for the external CA driver.
-    
-    *
-    * @var array<string, string>
-    */
+     * An object with key/value pairs that are interpreted as
+     * protocol-specific options for the external CA driver.
+     * 
+     *
+     * @var array<string, string>
+     */
     protected $options;
     /**
-    * The root CA certificate (in PEM format) this external CA uses
-    to issue TLS certificates (assumed to be to the current swarm
-    root CA certificate if not provided).
-    
-    *
-    * @var string
-    */
+     * The root CA certificate (in PEM format) this external CA uses
+     * to issue TLS certificates (assumed to be to the current swarm
+     * root CA certificate if not provided).
+     * 
+     *
+     * @var string
+     */
     protected $cACert;
     /**
-    * Protocol for communication with the external CA (currently
-    only `cfssl` is supported).
-    
-    *
-    * @return string
-    */
+     * Protocol for communication with the external CA (currently
+     * only `cfssl` is supported).
+     * 
+     *
+     * @return string
+     */
     public function getProtocol(): string
     {
         return $this->protocol;
@@ -71,6 +72,7 @@ class SwarmSpecCAConfigExternalCAsItem
     }
     /**
      * URL where certificate signing requests should be sent.
+     * 
      *
      * @return string
      */
@@ -92,12 +94,12 @@ class SwarmSpecCAConfigExternalCAsItem
         return $this;
     }
     /**
-    * An object with key/value pairs that are interpreted as
-    protocol-specific options for the external CA driver.
-    
-    *
-    * @return array<string, string>
-    */
+     * An object with key/value pairs that are interpreted as
+     * protocol-specific options for the external CA driver.
+     * 
+     *
+     * @return array<string, string>
+     */
     public function getOptions(): iterable
     {
         return $this->options;
@@ -118,13 +120,13 @@ class SwarmSpecCAConfigExternalCAsItem
         return $this;
     }
     /**
-    * The root CA certificate (in PEM format) this external CA uses
-    to issue TLS certificates (assumed to be to the current swarm
-    root CA certificate if not provided).
-    
-    *
-    * @return string
-    */
+     * The root CA certificate (in PEM format) this external CA uses
+     * to issue TLS certificates (assumed to be to the current swarm
+     * root CA certificate if not provided).
+     * 
+     *
+     * @return string
+     */
     public function getCACert(): string
     {
         return $this->cACert;

@@ -9,9 +9,8 @@ class ReposGetRelease extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     protected $release_id;
     /**
      * **Note:** This returns an `upload_url` key corresponding to the endpoint for uploading release assets. This key is a [hypermedia resource](https://developer.github.com/v3/#hypermedia).
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $releaseId release_id parameter
      */
     public function __construct(string $owner, string $repo, int $releaseId)

@@ -37,15 +37,16 @@ class TaskSpecContainerSpec
      */
     protected $args;
     /**
-    * The hostname to use for the container, as a valid
-    [RFC 1123](https://tools.ietf.org/html/rfc1123) hostname.
-    
-    *
-    * @var string
-    */
+     * The hostname to use for the container, as a valid
+     * [RFC 1123](https://tools.ietf.org/html/rfc1123) hostname.
+     * 
+     *
+     * @var string
+     */
     protected $hostname;
     /**
      * A list of environment variables in the form `VAR=value`.
+     * 
      *
      * @var list<string>
      */
@@ -64,6 +65,7 @@ class TaskSpecContainerSpec
     protected $user;
     /**
      * A list of additional groups that the container process will run as.
+     * 
      *
      * @var list<string>
      */
@@ -93,12 +95,12 @@ class TaskSpecContainerSpec
      */
     protected $readOnly;
     /**
-    * Specification for mounts to be added to containers created as part
-    of the service.
-    
-    *
-    * @var list<Mount>
-    */
+     * Specification for mounts to be added to containers created as part
+     * of the service.
+     * 
+     *
+     * @var list<Mount>
+     */
     protected $mounts;
     /**
      * Signal to stop the container.
@@ -107,12 +109,12 @@ class TaskSpecContainerSpec
      */
     protected $stopSignal;
     /**
-    * Amount of time to wait for the container to terminate before
-    forcefully killing it.
-    
-    *
-    * @var int
-    */
+     * Amount of time to wait for the container to terminate before
+     * forcefully killing it.
+     * 
+     *
+     * @var int
+     */
     protected $stopGracePeriod;
     /**
      * A test to perform to check that the container is healthy.
@@ -121,89 +123,90 @@ class TaskSpecContainerSpec
      */
     protected $healthCheck;
     /**
-    * A list of hostname/IP mappings to add to the container's `hosts`
-    file. The format of extra hosts is specified in the
-    [hosts(5)](http://man7.org/linux/man-pages/man5/hosts.5.html)
-    man page:
-    
-       IP_address canonical_hostname [aliases...]
-    
-    *
-    * @var list<string>
-    */
+     * A list of hostname/IP mappings to add to the container's `hosts`
+     * file. The format of extra hosts is specified in the
+     * [hosts(5)](http://man7.org/linux/man-pages/man5/hosts.5.html)
+     * man page:
+     * 
+     *     IP_address canonical_hostname [aliases...]
+     * 
+     *
+     * @var list<string>
+     */
     protected $hosts;
     /**
-    * Specification for DNS related configurations in resolver configuration
-    file (`resolv.conf`).
-    
-    *
-    * @var TaskSpecContainerSpecDNSConfig
-    */
+     * Specification for DNS related configurations in resolver configuration
+     * file (`resolv.conf`).
+     * 
+     *
+     * @var TaskSpecContainerSpecDNSConfig
+     */
     protected $dNSConfig;
     /**
-    * Secrets contains references to zero or more secrets that will be
-    exposed to the service.
-    
-    *
-    * @var list<TaskSpecContainerSpecSecretsItem>
-    */
+     * Secrets contains references to zero or more secrets that will be
+     * exposed to the service.
+     * 
+     *
+     * @var list<TaskSpecContainerSpecSecretsItem>
+     */
     protected $secrets;
     /**
-    * Configs contains references to zero or more configs that will be
-    exposed to the service.
-    
-    *
-    * @var list<TaskSpecContainerSpecConfigsItem>
-    */
+     * Configs contains references to zero or more configs that will be
+     * exposed to the service.
+     * 
+     *
+     * @var list<TaskSpecContainerSpecConfigsItem>
+     */
     protected $configs;
     /**
-    * Isolation technology of the containers running the service.
-    (Windows only)
-    
-    *
-    * @var string
-    */
+     * Isolation technology of the containers running the service.
+     * (Windows only)
+     * 
+     *
+     * @var string
+     */
     protected $isolation;
     /**
-    * Run an init inside the container that forwards signals and reaps
-    processes. This field is omitted if empty, and the default (as
-    configured on the daemon) is used.
-    
-    *
-    * @var bool|null
-    */
+     * Run an init inside the container that forwards signals and reaps
+     * processes. This field is omitted if empty, and the default (as
+     * configured on the daemon) is used.
+     * 
+     *
+     * @var bool|null
+     */
     protected $init;
     /**
-    * Set kernel namedspaced parameters (sysctls) in the container.
-    The Sysctls option on services accepts the same sysctls as the
-    are supported on containers. Note that while the same sysctls are
-    supported, no guarantees or checks are made about their
-    suitability for a clustered environment, and it's up to the user
-    to determine whether a given sysctl will work properly in a
-    Service.
-    
-    *
-    * @var array<string, string>
-    */
+     * Set kernel namedspaced parameters (sysctls) in the container.
+     * The Sysctls option on services accepts the same sysctls as the
+     * are supported on containers. Note that while the same sysctls are
+     * supported, no guarantees or checks are made about their
+     * suitability for a clustered environment, and it's up to the user
+     * to determine whether a given sysctl will work properly in a
+     * Service.
+     * 
+     *
+     * @var array<string, string>
+     */
     protected $sysctls;
     /**
-    * A list of kernel capabilities to add to the default set
-    for the container.
-    
-    *
-    * @var list<string>
-    */
+     * A list of kernel capabilities to add to the default set
+     * for the container.
+     * 
+     *
+     * @var list<string>
+     */
     protected $capabilityAdd;
     /**
-    * A list of kernel capabilities to drop from the default set
-    for the container.
-    
-    *
-    * @var list<string>
-    */
+     * A list of kernel capabilities to drop from the default set
+     * for the container.
+     * 
+     *
+     * @var list<string>
+     */
     protected $capabilityDrop;
     /**
      * A list of resource limits to set in the container. For example: `{"Name": "nofile", "Soft": 1024, "Hard": 2048}`"
+     * 
      *
      * @var list<TaskSpecContainerSpecUlimitsItem>
      */
@@ -297,12 +300,12 @@ class TaskSpecContainerSpec
         return $this;
     }
     /**
-    * The hostname to use for the container, as a valid
-    [RFC 1123](https://tools.ietf.org/html/rfc1123) hostname.
-    
-    *
-    * @return string
-    */
+     * The hostname to use for the container, as a valid
+     * [RFC 1123](https://tools.ietf.org/html/rfc1123) hostname.
+     * 
+     *
+     * @return string
+     */
     public function getHostname(): string
     {
         return $this->hostname;
@@ -324,6 +327,7 @@ class TaskSpecContainerSpec
     }
     /**
      * A list of environment variables in the form `VAR=value`.
+     * 
      *
      * @return list<string>
      */
@@ -390,6 +394,7 @@ class TaskSpecContainerSpec
     }
     /**
      * A list of additional groups that the container process will run as.
+     * 
      *
      * @return list<string>
      */
@@ -499,12 +504,12 @@ class TaskSpecContainerSpec
         return $this;
     }
     /**
-    * Specification for mounts to be added to containers created as part
-    of the service.
-    
-    *
-    * @return list<Mount>
-    */
+     * Specification for mounts to be added to containers created as part
+     * of the service.
+     * 
+     *
+     * @return list<Mount>
+     */
     public function getMounts(): array
     {
         return $this->mounts;
@@ -547,12 +552,12 @@ class TaskSpecContainerSpec
         return $this;
     }
     /**
-    * Amount of time to wait for the container to terminate before
-    forcefully killing it.
-    
-    *
-    * @return int
-    */
+     * Amount of time to wait for the container to terminate before
+     * forcefully killing it.
+     * 
+     *
+     * @return int
+     */
     public function getStopGracePeriod(): int
     {
         return $this->stopGracePeriod;
@@ -595,16 +600,16 @@ class TaskSpecContainerSpec
         return $this;
     }
     /**
-    * A list of hostname/IP mappings to add to the container's `hosts`
-    file. The format of extra hosts is specified in the
-    [hosts(5)](http://man7.org/linux/man-pages/man5/hosts.5.html)
-    man page:
-    
-       IP_address canonical_hostname [aliases...]
-    
-    *
-    * @return list<string>
-    */
+     * A list of hostname/IP mappings to add to the container's `hosts`
+     * file. The format of extra hosts is specified in the
+     * [hosts(5)](http://man7.org/linux/man-pages/man5/hosts.5.html)
+     * man page:
+     * 
+     *     IP_address canonical_hostname [aliases...]
+     * 
+     *
+     * @return list<string>
+     */
     public function getHosts(): array
     {
         return $this->hosts;
@@ -629,12 +634,12 @@ class TaskSpecContainerSpec
         return $this;
     }
     /**
-    * Specification for DNS related configurations in resolver configuration
-    file (`resolv.conf`).
-    
-    *
-    * @return TaskSpecContainerSpecDNSConfig
-    */
+     * Specification for DNS related configurations in resolver configuration
+     * file (`resolv.conf`).
+     * 
+     *
+     * @return TaskSpecContainerSpecDNSConfig
+     */
     public function getDNSConfig(): TaskSpecContainerSpecDNSConfig
     {
         return $this->dNSConfig;
@@ -655,12 +660,12 @@ class TaskSpecContainerSpec
         return $this;
     }
     /**
-    * Secrets contains references to zero or more secrets that will be
-    exposed to the service.
-    
-    *
-    * @return list<TaskSpecContainerSpecSecretsItem>
-    */
+     * Secrets contains references to zero or more secrets that will be
+     * exposed to the service.
+     * 
+     *
+     * @return list<TaskSpecContainerSpecSecretsItem>
+     */
     public function getSecrets(): array
     {
         return $this->secrets;
@@ -681,12 +686,12 @@ class TaskSpecContainerSpec
         return $this;
     }
     /**
-    * Configs contains references to zero or more configs that will be
-    exposed to the service.
-    
-    *
-    * @return list<TaskSpecContainerSpecConfigsItem>
-    */
+     * Configs contains references to zero or more configs that will be
+     * exposed to the service.
+     * 
+     *
+     * @return list<TaskSpecContainerSpecConfigsItem>
+     */
     public function getConfigs(): array
     {
         return $this->configs;
@@ -707,12 +712,12 @@ class TaskSpecContainerSpec
         return $this;
     }
     /**
-    * Isolation technology of the containers running the service.
-    (Windows only)
-    
-    *
-    * @return string
-    */
+     * Isolation technology of the containers running the service.
+     * (Windows only)
+     * 
+     *
+     * @return string
+     */
     public function getIsolation(): string
     {
         return $this->isolation;
@@ -733,13 +738,13 @@ class TaskSpecContainerSpec
         return $this;
     }
     /**
-    * Run an init inside the container that forwards signals and reaps
-    processes. This field is omitted if empty, and the default (as
-    configured on the daemon) is used.
-    
-    *
-    * @return bool|null
-    */
+     * Run an init inside the container that forwards signals and reaps
+     * processes. This field is omitted if empty, and the default (as
+     * configured on the daemon) is used.
+     * 
+     *
+     * @return bool|null
+     */
     public function getInit(): ?bool
     {
         return $this->init;
@@ -761,17 +766,17 @@ class TaskSpecContainerSpec
         return $this;
     }
     /**
-    * Set kernel namedspaced parameters (sysctls) in the container.
-    The Sysctls option on services accepts the same sysctls as the
-    are supported on containers. Note that while the same sysctls are
-    supported, no guarantees or checks are made about their
-    suitability for a clustered environment, and it's up to the user
-    to determine whether a given sysctl will work properly in a
-    Service.
-    
-    *
-    * @return array<string, string>
-    */
+     * Set kernel namedspaced parameters (sysctls) in the container.
+     * The Sysctls option on services accepts the same sysctls as the
+     * are supported on containers. Note that while the same sysctls are
+     * supported, no guarantees or checks are made about their
+     * suitability for a clustered environment, and it's up to the user
+     * to determine whether a given sysctl will work properly in a
+     * Service.
+     * 
+     *
+     * @return array<string, string>
+     */
     public function getSysctls(): iterable
     {
         return $this->sysctls;
@@ -797,12 +802,12 @@ class TaskSpecContainerSpec
         return $this;
     }
     /**
-    * A list of kernel capabilities to add to the default set
-    for the container.
-    
-    *
-    * @return list<string>
-    */
+     * A list of kernel capabilities to add to the default set
+     * for the container.
+     * 
+     *
+     * @return list<string>
+     */
     public function getCapabilityAdd(): array
     {
         return $this->capabilityAdd;
@@ -823,12 +828,12 @@ class TaskSpecContainerSpec
         return $this;
     }
     /**
-    * A list of kernel capabilities to drop from the default set
-    for the container.
-    
-    *
-    * @return list<string>
-    */
+     * A list of kernel capabilities to drop from the default set
+     * for the container.
+     * 
+     *
+     * @return list<string>
+     */
     public function getCapabilityDrop(): array
     {
         return $this->capabilityDrop;
@@ -850,6 +855,7 @@ class TaskSpecContainerSpec
     }
     /**
      * A list of resource limits to set in the container. For example: `{"Name": "nofile", "Soft": 1024, "Hard": 2048}`"
+     * 
      *
      * @return list<TaskSpecContainerSpecUlimitsItem>
      */

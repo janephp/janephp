@@ -13,50 +13,34 @@ class DeployKey extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $key;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $title;
     /**
-     * 
-     *
      * @var bool
      */
     protected $verified;
     /**
-     * 
-     *
      * @var string
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var bool
      */
     protected $readOnly;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -64,8 +48,6 @@ class DeployKey extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -77,8 +59,6 @@ class DeployKey extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKey(): string
@@ -86,8 +66,6 @@ class DeployKey extends \ArrayObject
         return $this->key;
     }
     /**
-     * 
-     *
      * @param string $key
      *
      * @return self
@@ -99,8 +77,6 @@ class DeployKey extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -108,8 +84,6 @@ class DeployKey extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -121,8 +95,6 @@ class DeployKey extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTitle(): string
@@ -130,8 +102,6 @@ class DeployKey extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string $title
      *
      * @return self
@@ -143,8 +113,6 @@ class DeployKey extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getVerified(): bool
@@ -152,8 +120,6 @@ class DeployKey extends \ArrayObject
         return $this->verified;
     }
     /**
-     * 
-     *
      * @param bool $verified
      *
      * @return self
@@ -165,8 +131,6 @@ class DeployKey extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCreatedAt(): string
@@ -174,8 +138,6 @@ class DeployKey extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param string $createdAt
      *
      * @return self
@@ -187,8 +149,6 @@ class DeployKey extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getReadOnly(): bool
@@ -196,8 +156,6 @@ class DeployKey extends \ArrayObject
         return $this->readOnly;
     }
     /**
-     * 
-     *
      * @param bool $readOnly
      *
      * @return self

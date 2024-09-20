@@ -19,8 +19,6 @@ class MetadataValuesChangeCommandBase
      */
     protected $schemaId;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
@@ -44,8 +42,6 @@ class MetadataValuesChangeCommandBase
         $this->schemaId = $schemaId;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -53,8 +49,6 @@ class MetadataValuesChangeCommandBase
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      */
     public function setKind(string $kind)

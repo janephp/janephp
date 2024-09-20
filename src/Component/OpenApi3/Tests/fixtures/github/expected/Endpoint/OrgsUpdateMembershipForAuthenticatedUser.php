@@ -6,10 +6,8 @@ class OrgsUpdateMembershipForAuthenticatedUser extends \Github\Runtime\Client\Ba
 {
     protected $org;
     /**
-     * 
-     *
-     * @param string $org 
-     * @param null|\Github\Model\UserMembershipsOrgsOrgPatchBody $requestBody 
+     * @param string $org
+     * @param null|\Github\Model\UserMembershipsOrgsOrgPatchBody $requestBody
      */
     public function __construct(string $org, ?\Github\Model\UserMembershipsOrgsOrgPatchBody $requestBody = null)
     {

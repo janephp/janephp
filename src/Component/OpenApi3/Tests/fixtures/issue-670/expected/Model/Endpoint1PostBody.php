@@ -13,14 +13,10 @@ class Endpoint1PostBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $postField1;
     /**
-     * 
-     *
      * @return string
      */
     public function getPostField1(): string
@@ -28,8 +24,6 @@ class Endpoint1PostBody extends \ArrayObject
         return $this->postField1;
     }
     /**
-     * 
-     *
      * @param string $postField1
      *
      * @return self

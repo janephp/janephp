@@ -8,17 +8,16 @@ class ScimSetInformationForProvisionedUser extends \Github\Runtime\Client\BaseEn
     protected $scim_user_id;
     protected $accept;
     /**
-    * Replaces an existing provisioned user's information. You must provide all the information required for the user as if you were provisioning them for the first time. Any existing user information that you don't provide will be removed. If you want to only update a specific attribute, use the [Update an attribute for a SCIM user](https://developer.github.com/v3/scim/#update-an-attribute-for-a-scim-user) endpoint instead.
-    
-    You must at least provide the required values for the user: `userName`, `name`, and `emails`.
-    
-    **Warning:** Setting `active: false` removes the user from the organization, deletes the external identity, and deletes the associated `{scim_user_id}`.
-    *
-    * @param string $org 
-    * @param string $scimUserId scim_user_id parameter
-    * @param null|\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody 
-    * @param array $accept Accept content header application/scim+json|application/json
-    */
+     * Replaces an existing provisioned user's information. You must provide all the information required for the user as if you were provisioning them for the first time. Any existing user information that you don't provide will be removed. If you want to only update a specific attribute, use the [Update an attribute for a SCIM user](https://developer.github.com/v3/scim/#update-an-attribute-for-a-scim-user) endpoint instead.
+     *
+     * You must at least provide the required values for the user: `userName`, `name`, and `emails`.
+     *
+     * **Warning:** Setting `active: false` removes the user from the organization, deletes the external identity, and deletes the associated `{scim_user_id}`.
+     * @param string $org
+     * @param string $scimUserId scim_user_id parameter
+     * @param null|\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody
+     * @param array $accept Accept content header application/scim+json|application/json
+     */
     public function __construct(string $org, string $scimUserId, ?\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody = null, array $accept = [])
     {
         $this->org = $org;

@@ -6,7 +6,6 @@ class UpdateCompany extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseEnd
 {
     /**
      * Updates the company setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a company object and a 200 OK response code if the call succeeded.
-     *
      * @param \Jane\OpenApi2\Tests\Expected\Model\CompanyPatchBody $payload json payload
      */
     public function __construct(\Jane\OpenApi2\Tests\Expected\Model\CompanyPatchBody $payload)

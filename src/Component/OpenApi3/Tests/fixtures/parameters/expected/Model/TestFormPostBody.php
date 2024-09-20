@@ -13,44 +13,30 @@ class TestFormPostBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $testString;
     /**
-     * 
-     *
      * @var int
      */
     protected $testInteger;
     /**
-     * 
-     *
      * @var float
      */
     protected $testFloat;
     /**
-     * 
-     *
      * @var list<mixed>
      */
     protected $testArray;
     /**
-     * 
-     *
      * @var string
      */
     protected $testRequired;
     /**
-     * 
-     *
      * @var string
      */
     protected $testDefault = 'test';
     /**
-     * 
-     *
      * @return string
      */
     public function getTestString(): string
@@ -58,8 +44,6 @@ class TestFormPostBody extends \ArrayObject
         return $this->testString;
     }
     /**
-     * 
-     *
      * @param string $testString
      *
      * @return self
@@ -71,8 +55,6 @@ class TestFormPostBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getTestInteger(): int
@@ -80,8 +62,6 @@ class TestFormPostBody extends \ArrayObject
         return $this->testInteger;
     }
     /**
-     * 
-     *
      * @param int $testInteger
      *
      * @return self
@@ -93,8 +73,6 @@ class TestFormPostBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getTestFloat(): float
@@ -102,8 +80,6 @@ class TestFormPostBody extends \ArrayObject
         return $this->testFloat;
     }
     /**
-     * 
-     *
      * @param float $testFloat
      *
      * @return self
@@ -115,8 +91,6 @@ class TestFormPostBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<mixed>
      */
     public function getTestArray(): array
@@ -124,8 +98,6 @@ class TestFormPostBody extends \ArrayObject
         return $this->testArray;
     }
     /**
-     * 
-     *
      * @param list<mixed> $testArray
      *
      * @return self
@@ -137,8 +109,6 @@ class TestFormPostBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTestRequired(): string
@@ -146,8 +116,6 @@ class TestFormPostBody extends \ArrayObject
         return $this->testRequired;
     }
     /**
-     * 
-     *
      * @param string $testRequired
      *
      * @return self
@@ -159,8 +127,6 @@ class TestFormPostBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTestDefault(): string
@@ -168,8 +134,6 @@ class TestFormPostBody extends \ArrayObject
         return $this->testDefault;
     }
     /**
-     * 
-     *
      * @param string $testDefault
      *
      * @return self

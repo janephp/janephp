@@ -13,86 +13,58 @@ class Network
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $created;
     /**
-     * 
-     *
      * @var string
      */
     protected $scope;
     /**
-     * 
-     *
      * @var string
      */
     protected $driver;
     /**
-     * 
-     *
      * @var bool
      */
     protected $enableIPv6;
     /**
-     * 
-     *
      * @var IPAM
      */
     protected $iPAM;
     /**
-     * 
-     *
      * @var bool
      */
     protected $internal;
     /**
-     * 
-     *
      * @var bool
      */
     protected $attachable;
     /**
-     * 
-     *
      * @var bool
      */
     protected $ingress;
     /**
-     * 
-     *
      * @var array<string, NetworkContainer>
      */
     protected $containers;
     /**
-     * 
-     *
      * @var array<string, string>
      */
     protected $options;
     /**
-     * 
-     *
      * @var array<string, string>
      */
     protected $labels;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -100,8 +72,6 @@ class Network
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -113,8 +83,6 @@ class Network
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -122,8 +90,6 @@ class Network
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -135,8 +101,6 @@ class Network
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCreated(): string
@@ -144,8 +108,6 @@ class Network
         return $this->created;
     }
     /**
-     * 
-     *
      * @param string $created
      *
      * @return self
@@ -157,8 +119,6 @@ class Network
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getScope(): string
@@ -166,8 +126,6 @@ class Network
         return $this->scope;
     }
     /**
-     * 
-     *
      * @param string $scope
      *
      * @return self
@@ -179,8 +137,6 @@ class Network
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDriver(): string
@@ -188,8 +144,6 @@ class Network
         return $this->driver;
     }
     /**
-     * 
-     *
      * @param string $driver
      *
      * @return self
@@ -201,8 +155,6 @@ class Network
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getEnableIPv6(): bool
@@ -210,8 +162,6 @@ class Network
         return $this->enableIPv6;
     }
     /**
-     * 
-     *
      * @param bool $enableIPv6
      *
      * @return self
@@ -223,8 +173,6 @@ class Network
         return $this;
     }
     /**
-     * 
-     *
      * @return IPAM
      */
     public function getIPAM(): IPAM
@@ -232,8 +180,6 @@ class Network
         return $this->iPAM;
     }
     /**
-     * 
-     *
      * @param IPAM $iPAM
      *
      * @return self
@@ -245,8 +191,6 @@ class Network
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getInternal(): bool
@@ -254,8 +198,6 @@ class Network
         return $this->internal;
     }
     /**
-     * 
-     *
      * @param bool $internal
      *
      * @return self
@@ -267,8 +209,6 @@ class Network
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getAttachable(): bool
@@ -276,8 +216,6 @@ class Network
         return $this->attachable;
     }
     /**
-     * 
-     *
      * @param bool $attachable
      *
      * @return self
@@ -289,8 +227,6 @@ class Network
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getIngress(): bool
@@ -298,8 +234,6 @@ class Network
         return $this->ingress;
     }
     /**
-     * 
-     *
      * @param bool $ingress
      *
      * @return self
@@ -311,8 +245,6 @@ class Network
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, NetworkContainer>
      */
     public function getContainers(): iterable
@@ -320,8 +252,6 @@ class Network
         return $this->containers;
     }
     /**
-     * 
-     *
      * @param array<string, NetworkContainer> $containers
      *
      * @return self
@@ -333,8 +263,6 @@ class Network
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, string>
      */
     public function getOptions(): iterable
@@ -342,8 +270,6 @@ class Network
         return $this->options;
     }
     /**
-     * 
-     *
      * @param array<string, string> $options
      *
      * @return self
@@ -355,8 +281,6 @@ class Network
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, string>
      */
     public function getLabels(): iterable
@@ -364,8 +288,6 @@ class Network
         return $this->labels;
     }
     /**
-     * 
-     *
      * @param array<string, string> $labels
      *
      * @return self

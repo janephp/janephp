@@ -13,20 +13,14 @@ class IssueEventForIssue extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
@@ -37,110 +31,74 @@ class IssueEventForIssue extends \ArrayObject
      */
     protected $actor;
     /**
-     * 
-     *
      * @var string
      */
     protected $event;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $commitId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $commitUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $sha;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $message;
     /**
-     * 
-     *
      * @var string
      */
     protected $issueUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $authorAssociation;
     /**
-     * 
-     *
      * @var string
      */
     protected $body;
     /**
-     * 
-     *
      * @var string
      */
     protected $lockReason;
     /**
-     * 
-     *
      * @var string
      */
     protected $submittedAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $state;
     /**
-     * 
-     *
      * @var string
      */
     protected $pullRequestUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $bodyHtml;
     /**
-     * 
-     *
      * @var string
      */
     protected $bodyText;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -148,8 +106,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -161,8 +117,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -170,8 +124,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -183,8 +135,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -192,8 +142,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -227,8 +175,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEvent(): string
@@ -236,8 +182,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->event;
     }
     /**
-     * 
-     *
      * @param string $event
      *
      * @return self
@@ -249,8 +193,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCommitId(): ?string
@@ -258,8 +200,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->commitId;
     }
     /**
-     * 
-     *
      * @param string|null $commitId
      *
      * @return self
@@ -271,8 +211,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCommitUrl(): ?string
@@ -280,8 +218,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->commitUrl;
     }
     /**
-     * 
-     *
      * @param string|null $commitUrl
      *
      * @return self
@@ -293,8 +229,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCreatedAt(): string
@@ -302,8 +236,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param string $createdAt
      *
      * @return self
@@ -315,8 +247,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSha(): string
@@ -324,8 +254,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->sha;
     }
     /**
-     * 
-     *
      * @param string $sha
      *
      * @return self
@@ -337,8 +265,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -346,8 +272,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -359,8 +283,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMessage(): string
@@ -368,8 +290,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string $message
      *
      * @return self
@@ -381,8 +301,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIssueUrl(): string
@@ -390,8 +308,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->issueUrl;
     }
     /**
-     * 
-     *
      * @param string $issueUrl
      *
      * @return self
@@ -403,8 +319,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUpdatedAt(): string
@@ -412,8 +326,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param string $updatedAt
      *
      * @return self
@@ -425,8 +337,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAuthorAssociation(): string
@@ -434,8 +344,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->authorAssociation;
     }
     /**
-     * 
-     *
      * @param string $authorAssociation
      *
      * @return self
@@ -447,8 +355,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBody(): string
@@ -456,8 +362,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->body;
     }
     /**
-     * 
-     *
      * @param string $body
      *
      * @return self
@@ -469,8 +373,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLockReason(): string
@@ -478,8 +380,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->lockReason;
     }
     /**
-     * 
-     *
      * @param string $lockReason
      *
      * @return self
@@ -491,8 +391,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSubmittedAt(): string
@@ -500,8 +398,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->submittedAt;
     }
     /**
-     * 
-     *
      * @param string $submittedAt
      *
      * @return self
@@ -513,8 +409,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getState(): string
@@ -522,8 +416,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->state;
     }
     /**
-     * 
-     *
      * @param string $state
      *
      * @return self
@@ -535,8 +427,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPullRequestUrl(): string
@@ -544,8 +434,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->pullRequestUrl;
     }
     /**
-     * 
-     *
      * @param string $pullRequestUrl
      *
      * @return self
@@ -557,8 +445,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBodyHtml(): string
@@ -566,8 +452,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->bodyHtml;
     }
     /**
-     * 
-     *
      * @param string $bodyHtml
      *
      * @return self
@@ -579,8 +463,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBodyText(): string
@@ -588,8 +470,6 @@ class IssueEventForIssue extends \ArrayObject
         return $this->bodyText;
     }
     /**
-     * 
-     *
      * @param string $bodyText
      *
      * @return self

@@ -19,8 +19,6 @@ class IssueComment extends \ArrayObject
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
@@ -37,62 +35,42 @@ class IssueComment extends \ArrayObject
      */
     protected $body;
     /**
-     * 
-     *
      * @var string
      */
     protected $bodyText;
     /**
-     * 
-     *
      * @var string
      */
     protected $bodyHtml;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var IssueCommentUser|null
      */
     protected $user;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $issueUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $authorAssociation;
     /**
-     * 
-     *
      * @var IssueCommentPerformedViaGithubApp|null
      */
     protected $performedViaGithubApp;
     /**
-     * 
-     *
      * @var ReactionRollup
      */
     protected $reactions;
@@ -119,8 +97,6 @@ class IssueComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -128,8 +104,6 @@ class IssueComment extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -185,8 +159,6 @@ class IssueComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBodyText(): string
@@ -194,8 +166,6 @@ class IssueComment extends \ArrayObject
         return $this->bodyText;
     }
     /**
-     * 
-     *
      * @param string $bodyText
      *
      * @return self
@@ -207,8 +177,6 @@ class IssueComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBodyHtml(): string
@@ -216,8 +184,6 @@ class IssueComment extends \ArrayObject
         return $this->bodyHtml;
     }
     /**
-     * 
-     *
      * @param string $bodyHtml
      *
      * @return self
@@ -229,8 +195,6 @@ class IssueComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -238,8 +202,6 @@ class IssueComment extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -251,8 +213,6 @@ class IssueComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IssueCommentUser|null
      */
     public function getUser(): ?IssueCommentUser
@@ -260,8 +220,6 @@ class IssueComment extends \ArrayObject
         return $this->user;
     }
     /**
-     * 
-     *
      * @param IssueCommentUser|null $user
      *
      * @return self
@@ -273,8 +231,6 @@ class IssueComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -282,8 +238,6 @@ class IssueComment extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -295,8 +249,6 @@ class IssueComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -304,8 +256,6 @@ class IssueComment extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -317,8 +267,6 @@ class IssueComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIssueUrl(): string
@@ -326,8 +274,6 @@ class IssueComment extends \ArrayObject
         return $this->issueUrl;
     }
     /**
-     * 
-     *
      * @param string $issueUrl
      *
      * @return self
@@ -339,8 +285,6 @@ class IssueComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAuthorAssociation(): string
@@ -348,8 +292,6 @@ class IssueComment extends \ArrayObject
         return $this->authorAssociation;
     }
     /**
-     * 
-     *
      * @param string $authorAssociation
      *
      * @return self
@@ -361,8 +303,6 @@ class IssueComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IssueCommentPerformedViaGithubApp|null
      */
     public function getPerformedViaGithubApp(): ?IssueCommentPerformedViaGithubApp
@@ -370,8 +310,6 @@ class IssueComment extends \ArrayObject
         return $this->performedViaGithubApp;
     }
     /**
-     * 
-     *
      * @param IssueCommentPerformedViaGithubApp|null $performedViaGithubApp
      *
      * @return self
@@ -383,8 +321,6 @@ class IssueComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ReactionRollup
      */
     public function getReactions(): ReactionRollup
@@ -392,8 +328,6 @@ class IssueComment extends \ArrayObject
         return $this->reactions;
     }
     /**
-     * 
-     *
      * @param ReactionRollup $reactions
      *
      * @return self

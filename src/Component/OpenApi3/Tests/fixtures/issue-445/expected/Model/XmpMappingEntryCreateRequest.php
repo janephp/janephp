@@ -49,12 +49,12 @@ class XmpMappingEntryCreateRequest extends \ArrayObject
      */
     protected $configuration;
     /**
-    * Optional client reference for this request.
-    Will be returned back in response to make easier for clients to match request items with the respective results.
-    It is not persisted anywhere and it is ignored in single operations.
-    *
-    * @var string|null
-    */
+     * Optional client reference for this request.
+     * Will be returned back in response to make easier for clients to match request items with the respective results.
+     * It is not persisted anywhere and it is ignored in single operations.
+     *
+     * @var string|null
+     */
     protected $requestId;
     /**
      * Direction of the mapping.
@@ -189,12 +189,12 @@ class XmpMappingEntryCreateRequest extends \ArrayObject
         return $this;
     }
     /**
-    * Optional client reference for this request.
-    Will be returned back in response to make easier for clients to match request items with the respective results.
-    It is not persisted anywhere and it is ignored in single operations.
-    *
-    * @return string|null
-    */
+     * Optional client reference for this request.
+     * Will be returned back in response to make easier for clients to match request items with the respective results.
+     * It is not persisted anywhere and it is ignored in single operations.
+     *
+     * @return string|null
+     */
     public function getRequestId(): ?string
     {
         return $this->requestId;

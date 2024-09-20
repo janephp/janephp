@@ -13,32 +13,22 @@ class ContributorActivityWeeksItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $w;
     /**
-     * 
-     *
      * @var int
      */
     protected $a;
     /**
-     * 
-     *
      * @var int
      */
     protected $d;
     /**
-     * 
-     *
      * @var int
      */
     protected $c;
     /**
-     * 
-     *
      * @return string
      */
     public function getW(): string
@@ -46,8 +36,6 @@ class ContributorActivityWeeksItem extends \ArrayObject
         return $this->w;
     }
     /**
-     * 
-     *
      * @param string $w
      *
      * @return self
@@ -59,8 +47,6 @@ class ContributorActivityWeeksItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getA(): int
@@ -68,8 +54,6 @@ class ContributorActivityWeeksItem extends \ArrayObject
         return $this->a;
     }
     /**
-     * 
-     *
      * @param int $a
      *
      * @return self
@@ -81,8 +65,6 @@ class ContributorActivityWeeksItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getD(): int
@@ -90,8 +72,6 @@ class ContributorActivityWeeksItem extends \ArrayObject
         return $this->d;
     }
     /**
-     * 
-     *
      * @param int $d
      *
      * @return self
@@ -103,8 +83,6 @@ class ContributorActivityWeeksItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getC(): int
@@ -112,8 +90,6 @@ class ContributorActivityWeeksItem extends \ArrayObject
         return $this->c;
     }
     /**
-     * 
-     *
      * @param int $c
      *
      * @return self

@@ -5,15 +5,14 @@ namespace Github\Endpoint;
 class AppsListReposAccessibleToInstallation extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
-    * List repositories that an app installation can access.
-    
-    You must use an [installation access token](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation) to access this endpoint.
-    *
-    * @param array $queryParameters {
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
-    */
+     * List repositories that an app installation can access.
+     *
+     * You must use an [installation access token](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation) to access this endpoint.
+     * @param array $queryParameters {
+     *     @var int $per_page Results per page (max 100)
+     *     @var int $page Page number of the results to fetch.
+     * }
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

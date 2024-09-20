@@ -6,7 +6,6 @@ class CreateProject extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\BaseEnd
 {
     /**
      * Creates a new project object. Returns a project object and a 201 Created response code if the call succeeded.
-     *
      * @param \Jane\OpenApi2\Tests\Expected\Model\ProjectsPostBody $payload json payload
      */
     public function __construct(\Jane\OpenApi2\Tests\Expected\Model\ProjectsPostBody $payload)

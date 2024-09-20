@@ -6,8 +6,7 @@ class ContentAggregate extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
 {
     /**
      * Aggregates content by content fields values as specified in the aggregation request.
-     *
-     * @param \PicturePark\API\Model\ContentAggregationRequest $requestBody 
+     * @param \PicturePark\API\Model\ContentAggregationRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\ContentAggregationRequest $requestBody)
     {

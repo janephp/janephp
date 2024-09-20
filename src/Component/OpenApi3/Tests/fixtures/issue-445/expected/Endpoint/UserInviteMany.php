@@ -6,8 +6,7 @@ class UserInviteMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
 {
     /**
      * Formally invites users, e.g. sends an invitation email. Transitions to Invited, implicitly reviews user. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
-     * @param \PicturePark\API\Model\UserInviteManyRequest $requestBody 
+     * @param \PicturePark\API\Model\UserInviteManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\UserInviteManyRequest $requestBody)
     {

@@ -7,7 +7,6 @@ class SchemaPermissionSetDelete extends \PicturePark\API\Runtime\Client\BaseEndp
     protected $id;
     /**
      * Deletes the schema permission set specified by the ID.
-     *
      * @param string $id Schema permission set ID.
      */
     public function __construct(string $id)

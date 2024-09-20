@@ -15,8 +15,8 @@ class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
     }
     /**
      * Updates the company setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a company object and a 200 OK response code if the call succeeded.
-     *
      * @param \Jane\OpenApi2\Tests\Expected\Model\CompanyPatchBody $payload json payload
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Jane\OpenApi2\Tests\Expected\Model\Company|\Jane\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
@@ -26,29 +26,29 @@ class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
         return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\UpdateCompany($payload), $fetch);
     }
     /**
-    * Returns a list of your projects. The projects are returned sorted by creation date, with the most recently created projects appearing first.
-    
-    The response contains an object with a projects property that contains an array of up to per_page projects. Each entry in the array is a separate project object. If no more projects are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your projects.
-    *
-    * @param array $queryParameters {
-    *     @var bool $is_active Pass true to only return active projects and false to return inactive projects.
-    *     @var int $client_id Only return projects belonging to the client with the given ID.
-    *     @var string $updated_since Only return projects that have been updated since the given date and time.
-    *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
-    *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return null|\Jane\OpenApi2\Tests\Expected\Model\Projects|\Jane\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
-    */
+     * Returns a list of your projects. The projects are returned sorted by creation date, with the most recently created projects appearing first.
+     *
+     * The response contains an object with a projects property that contains an array of up to per_page projects. Each entry in the array is a separate project object. If no more projects are available, the resulting array will be empty. Several additional pagination properties are included in the response to simplify paginating your projects.
+     * @param array $queryParameters {
+     *     @var bool $is_active Pass true to only return active projects and false to return inactive projects.
+     *     @var int $client_id Only return projects belonging to the client with the given ID.
+     *     @var string $updated_since Only return projects that have been updated since the given date and time.
+     *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
+     *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
+     * }
+     */
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Jane\OpenApi2\Tests\Expected\Model\Projects|\Jane\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
     public function listProjects(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\OpenApi2\Tests\Expected\Endpoint\ListProjects($queryParameters), $fetch);
     }
     /**
      * Creates a new project object. Returns a project object and a 201 Created response code if the call succeeded.
-     *
      * @param \Jane\OpenApi2\Tests\Expected\Model\ProjectsPostBody $payload json payload
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Jane\OpenApi2\Tests\Expected\Model\Project|\Jane\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface

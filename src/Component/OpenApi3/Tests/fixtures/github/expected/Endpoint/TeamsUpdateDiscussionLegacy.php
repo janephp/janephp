@@ -7,14 +7,13 @@ class TeamsUpdateDiscussionLegacy extends \Github\Runtime\Client\BaseEndpoint im
     protected $team_id;
     protected $discussion_number;
     /**
-    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a discussion](https://developer.github.com/v3/teams/discussions/#update-a-discussion) endpoint.
-    
-    Edits the title and body text of a discussion post. Only the parameters you provide are updated. OAuth access tokens require the `write:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    *
-    * @param int $teamId 
-    * @param int $discussionNumber 
-    * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberPatchBody $requestBody 
-    */
+     * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a discussion](https://developer.github.com/v3/teams/discussions/#update-a-discussion) endpoint.
+     *
+     * Edits the title and body text of a discussion post. Only the parameters you provide are updated. OAuth access tokens require the `write:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+     * @param int $teamId
+     * @param int $discussionNumber
+     * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberPatchBody $requestBody
+     */
     public function __construct(int $teamId, int $discussionNumber, ?\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberPatchBody $requestBody = null)
     {
         $this->team_id = $teamId;

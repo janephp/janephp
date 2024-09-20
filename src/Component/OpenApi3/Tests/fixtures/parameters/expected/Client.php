@@ -5,15 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
 {
     /**
-     * 
-     *
-     * @param string $testPath 
+     * @param string $testPath
      * @param array $queryParameters {
-     *     @var string $testQuery 
+     *     @var string $testQuery
      * }
      * @param array $headerParameters {
-     *     @var string $testHeader 
+     *     @var string $testHeader
      * }
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -23,15 +22,14 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestGetWithPathParameters($testPath, $queryParameters, $headerParameters), $fetch);
     }
     /**
-     * 
-     *
-     * @param string $testPath 
+     * @param string $testPath
      * @param array $queryParameters {
-     *     @var string $testQuery 
+     *     @var string $testQuery
      * }
      * @param array $headerParameters {
-     *     @var string $testHeader 
+     *     @var string $testHeader
      * }
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -41,16 +39,15 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestPostWithPathParameters($testPath, $queryParameters, $headerParameters), $fetch);
     }
     /**
-     * 
-     *
      * @param array $queryParameters {
-     *     @var string $testString 
-     *     @var int $testInteger 
-     *     @var float $testFloat 
-     *     @var array $testArray 
-     *     @var string $testRequired 
-     *     @var string $testDefault 
+     *     @var string $testString
+     *     @var int $testInteger
+     *     @var float $testFloat
+     *     @var array $testArray
+     *     @var string $testRequired
+     *     @var string $testDefault
      * }
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -60,16 +57,15 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestQueryParameters($queryParameters), $fetch);
     }
     /**
-     * 
-     *
      * @param array $headerParameters {
-     *     @var string $testString 
-     *     @var int $testInteger 
-     *     @var float $testFloat 
-     *     @var array $testArray 
-     *     @var string $testRequired 
-     *     @var string $testDefault 
+     *     @var string $testString
+     *     @var int $testInteger
+     *     @var float $testFloat
+     *     @var array $testArray
+     *     @var string $testRequired
+     *     @var string $testDefault
      * }
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -79,9 +75,8 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestHeaderParameters($headerParameters), $fetch);
     }
     /**
-     * 
-     *
-     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormPostBody $requestBody 
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormPostBody $requestBody
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -91,9 +86,8 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestFormParameters($requestBody), $fetch);
     }
     /**
-     * 
-     *
-     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormFilePostBody $requestBody 
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormFilePostBody $requestBody
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -103,9 +97,8 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestFormFileParameters($requestBody), $fetch);
     }
     /**
-     * 
-     *
-     * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody 
+     * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -115,11 +108,10 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestBinaryBody($requestBody), $fetch);
     }
     /**
-     * 
-     *
-     * @param string $testString 
-     * @param int $testInteger 
-     * @param float $testFloat 
+     * @param string $testString
+     * @param int $testInteger
+     * @param float $testFloat
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -129,9 +121,8 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestPathParameters($testString, $testInteger, $testFloat), $fetch);
     }
     /**
-     * 
-     *
-     * @param int $testInteger 
+     * @param int $testInteger
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -141,11 +132,10 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetByTestInteger($testInteger), $fetch);
     }
     /**
-     * 
-     *
      * @param array $queryParameters {
-     *     @var string $input 
+     *     @var string $input
      * }
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface

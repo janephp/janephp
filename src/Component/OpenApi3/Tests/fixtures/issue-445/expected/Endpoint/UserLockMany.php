@@ -5,11 +5,10 @@ namespace PicturePark\API\Endpoint;
 class UserLockMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Does not affect AuthorizationState of users
-    Users which are already in desired state will be returned as errors. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param \PicturePark\API\Model\UserLockManyRequest $requestBody 
-    */
+     * Does not affect AuthorizationState of users
+     * Users which are already in desired state will be returned as errors. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param \PicturePark\API\Model\UserLockManyRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\UserLockManyRequest $requestBody)
     {
         $this->body = $requestBody;

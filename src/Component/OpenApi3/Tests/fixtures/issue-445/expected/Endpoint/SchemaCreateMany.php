@@ -6,8 +6,7 @@ class SchemaCreateMany extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
 {
     /**
      * Creates new schemas. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
-     * @param \PicturePark\API\Model\SchemaCreateManyRequest $requestBody 
+     * @param \PicturePark\API\Model\SchemaCreateManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\SchemaCreateManyRequest $requestBody)
     {

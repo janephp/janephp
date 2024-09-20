@@ -13,80 +13,54 @@ class OrganizationSimple extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $login;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $reposUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $eventsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $hooksUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $issuesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $membersUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $publicMembersUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $avatarUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @return string
      */
     public function getLogin(): string
@@ -94,8 +68,6 @@ class OrganizationSimple extends \ArrayObject
         return $this->login;
     }
     /**
-     * 
-     *
      * @param string $login
      *
      * @return self
@@ -107,8 +79,6 @@ class OrganizationSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -116,8 +86,6 @@ class OrganizationSimple extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -129,8 +97,6 @@ class OrganizationSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -138,8 +104,6 @@ class OrganizationSimple extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -151,8 +115,6 @@ class OrganizationSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -160,8 +122,6 @@ class OrganizationSimple extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -173,8 +133,6 @@ class OrganizationSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getReposUrl(): string
@@ -182,8 +140,6 @@ class OrganizationSimple extends \ArrayObject
         return $this->reposUrl;
     }
     /**
-     * 
-     *
      * @param string $reposUrl
      *
      * @return self
@@ -195,8 +151,6 @@ class OrganizationSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEventsUrl(): string
@@ -204,8 +158,6 @@ class OrganizationSimple extends \ArrayObject
         return $this->eventsUrl;
     }
     /**
-     * 
-     *
      * @param string $eventsUrl
      *
      * @return self
@@ -217,8 +169,6 @@ class OrganizationSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHooksUrl(): string
@@ -226,8 +176,6 @@ class OrganizationSimple extends \ArrayObject
         return $this->hooksUrl;
     }
     /**
-     * 
-     *
      * @param string $hooksUrl
      *
      * @return self
@@ -239,8 +187,6 @@ class OrganizationSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIssuesUrl(): string
@@ -248,8 +194,6 @@ class OrganizationSimple extends \ArrayObject
         return $this->issuesUrl;
     }
     /**
-     * 
-     *
      * @param string $issuesUrl
      *
      * @return self
@@ -261,8 +205,6 @@ class OrganizationSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMembersUrl(): string
@@ -270,8 +212,6 @@ class OrganizationSimple extends \ArrayObject
         return $this->membersUrl;
     }
     /**
-     * 
-     *
      * @param string $membersUrl
      *
      * @return self
@@ -283,8 +223,6 @@ class OrganizationSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPublicMembersUrl(): string
@@ -292,8 +230,6 @@ class OrganizationSimple extends \ArrayObject
         return $this->publicMembersUrl;
     }
     /**
-     * 
-     *
      * @param string $publicMembersUrl
      *
      * @return self
@@ -305,8 +241,6 @@ class OrganizationSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAvatarUrl(): string
@@ -314,8 +248,6 @@ class OrganizationSimple extends \ArrayObject
         return $this->avatarUrl;
     }
     /**
-     * 
-     *
      * @param string $avatarUrl
      *
      * @return self
@@ -327,8 +259,6 @@ class OrganizationSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription(): ?string
@@ -336,8 +266,6 @@ class OrganizationSimple extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self

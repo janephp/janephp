@@ -8,8 +8,7 @@ class ActionsGetOrgSecret extends \Github\Runtime\Client\BaseEndpoint implements
     protected $secret_name;
     /**
      * Gets a single organization secret without revealing its encrypted value. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
-     *
-     * @param string $org 
+     * @param string $org
      * @param string $secretName secret_name parameter
      */
     public function __construct(string $org, string $secretName)

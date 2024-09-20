@@ -7,19 +7,18 @@ class ActivityListReposStarredByUser extends \Github\Runtime\Client\BaseEndpoint
     protected $username;
     protected $accept;
     /**
-    * Lists repositories a user has starred.
-    
-    You can also find out _when_ stars were created by passing the following custom [media type](https://developer.github.com/v3/media/) via the `Accept` header:
-    *
-    * @param string $username 
-    * @param array $queryParameters {
-    *     @var string $sort One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-    *     @var string $direction One of `asc` (ascending) or `desc` (descending).
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
-    * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
-    */
+     * Lists repositories a user has starred.
+     *
+     * You can also find out _when_ stars were created by passing the following custom [media type](https://developer.github.com/v3/media/) via the `Accept` header:
+     * @param string $username
+     * @param array $queryParameters {
+     *     @var string $sort One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+     *     @var string $direction One of `asc` (ascending) or `desc` (descending).
+     *     @var int $per_page Results per page (max 100)
+     *     @var int $page Page number of the results to fetch.
+     * }
+     * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
+     */
     public function __construct(string $username, array $queryParameters = [], array $accept = [])
     {
         $this->username = $username;

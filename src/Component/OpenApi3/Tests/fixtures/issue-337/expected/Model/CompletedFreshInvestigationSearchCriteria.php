@@ -13,44 +13,30 @@ class CompletedFreshInvestigationSearchCriteria extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $additionalInfo;
     /**
-     * 
-     *
      * @var CompletedFreshInvestigationSearchCriteriaAddress
      */
     protected $address;
     /**
-     * 
-     *
      * @var string
      */
     protected $countryCode;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $regNo;
     /**
-     * 
-     *
      * @var string
      */
     protected $vatNo;
     /**
-     * 
-     *
      * @return string
      */
     public function getAdditionalInfo(): string
@@ -58,8 +44,6 @@ class CompletedFreshInvestigationSearchCriteria extends \ArrayObject
         return $this->additionalInfo;
     }
     /**
-     * 
-     *
      * @param string $additionalInfo
      *
      * @return self
@@ -71,8 +55,6 @@ class CompletedFreshInvestigationSearchCriteria extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CompletedFreshInvestigationSearchCriteriaAddress
      */
     public function getAddress(): CompletedFreshInvestigationSearchCriteriaAddress
@@ -80,8 +62,6 @@ class CompletedFreshInvestigationSearchCriteria extends \ArrayObject
         return $this->address;
     }
     /**
-     * 
-     *
      * @param CompletedFreshInvestigationSearchCriteriaAddress $address
      *
      * @return self
@@ -93,8 +73,6 @@ class CompletedFreshInvestigationSearchCriteria extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountryCode(): string
@@ -102,8 +80,6 @@ class CompletedFreshInvestigationSearchCriteria extends \ArrayObject
         return $this->countryCode;
     }
     /**
-     * 
-     *
      * @param string $countryCode
      *
      * @return self
@@ -115,8 +91,6 @@ class CompletedFreshInvestigationSearchCriteria extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -124,8 +98,6 @@ class CompletedFreshInvestigationSearchCriteria extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -137,8 +109,6 @@ class CompletedFreshInvestigationSearchCriteria extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRegNo(): string
@@ -146,8 +116,6 @@ class CompletedFreshInvestigationSearchCriteria extends \ArrayObject
         return $this->regNo;
     }
     /**
-     * 
-     *
      * @param string $regNo
      *
      * @return self
@@ -159,8 +127,6 @@ class CompletedFreshInvestigationSearchCriteria extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getVatNo(): string
@@ -168,8 +134,6 @@ class CompletedFreshInvestigationSearchCriteria extends \ArrayObject
         return $this->vatNo;
     }
     /**
-     * 
-     *
      * @param string $vatNo
      *
      * @return self

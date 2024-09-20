@@ -19,11 +19,11 @@ class UserReviewManyRequest extends \ArrayObject
      */
     protected $userIds;
     /**
-    * Indicates the requested review state of the user.
-    If _true_ is specified, user will be transitioned into _reviewed_ state. _False_ will put the user back into _to be reviewed_ state.
-    *
-    * @var bool
-    */
+     * Indicates the requested review state of the user.
+     * If _true_ is specified, user will be transitioned into _reviewed_ state. _False_ will put the user back into _to be reviewed_ state.
+     *
+     * @var bool
+     */
     protected $reviewed;
     /**
      * User IDs.
@@ -48,11 +48,11 @@ class UserReviewManyRequest extends \ArrayObject
         return $this;
     }
     /**
-    * Indicates the requested review state of the user.
-    If _true_ is specified, user will be transitioned into _reviewed_ state. _False_ will put the user back into _to be reviewed_ state.
-    *
-    * @return bool
-    */
+     * Indicates the requested review state of the user.
+     * If _true_ is specified, user will be transitioned into _reviewed_ state. _False_ will put the user back into _to be reviewed_ state.
+     *
+     * @return bool
+     */
     public function getReviewed(): bool
     {
         return $this->reviewed;

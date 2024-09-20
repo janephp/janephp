@@ -13,20 +13,14 @@ class ComplianceSearchResultDataBodySearchResult extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<ComplianceSearchResultDataBodySearchResultRecordsItem>
      */
     protected $records;
     /**
-     * 
-     *
      * @var string
      */
     protected $searchEngineVersion;
     /**
-     * 
-     *
      * @return list<ComplianceSearchResultDataBodySearchResultRecordsItem>
      */
     public function getRecords(): array
@@ -34,8 +28,6 @@ class ComplianceSearchResultDataBodySearchResult extends \ArrayObject
         return $this->records;
     }
     /**
-     * 
-     *
      * @param list<ComplianceSearchResultDataBodySearchResultRecordsItem> $records
      *
      * @return self
@@ -47,8 +39,6 @@ class ComplianceSearchResultDataBodySearchResult extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSearchEngineVersion(): string
@@ -56,8 +46,6 @@ class ComplianceSearchResultDataBodySearchResult extends \ArrayObject
         return $this->searchEngineVersion;
     }
     /**
-     * 
-     *
      * @param string $searchEngineVersion
      *
      * @return self

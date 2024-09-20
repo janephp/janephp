@@ -9,16 +9,15 @@ class ActionsDownloadArtifact extends \Github\Runtime\Client\BaseEndpoint implem
     protected $artifact_id;
     protected $archive_format;
     /**
-    * Gets a redirect URL to download an archive for a repository. This URL expires after 1 minute. Look for `Location:` in
-    the response header to find the URL for the download. The `:archive_format` must be `zip`. Anyone with read access to
-    the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope.
-    GitHub Apps must have the `actions:read` permission to use this endpoint.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param int $artifactId artifact_id parameter
-    * @param string $archiveFormat archive_format parameter
-    */
+     * Gets a redirect URL to download an archive for a repository. This URL expires after 1 minute. Look for `Location:` in
+     * the response header to find the URL for the download. The `:archive_format` must be `zip`. Anyone with read access to
+     * the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope.
+     * GitHub Apps must have the `actions:read` permission to use this endpoint.
+     * @param string $owner
+     * @param string $repo
+     * @param int $artifactId artifact_id parameter
+     * @param string $archiveFormat archive_format parameter
+     */
     public function __construct(string $owner, string $repo, int $artifactId, string $archiveFormat)
     {
         $this->owner = $owner;

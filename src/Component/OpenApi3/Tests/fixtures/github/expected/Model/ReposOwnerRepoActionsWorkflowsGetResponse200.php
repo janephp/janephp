@@ -13,20 +13,14 @@ class ReposOwnerRepoActionsWorkflowsGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $totalCount;
     /**
-     * 
-     *
      * @var list<Workflow>
      */
     protected $workflows;
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalCount(): int
@@ -34,8 +28,6 @@ class ReposOwnerRepoActionsWorkflowsGetResponse200 extends \ArrayObject
         return $this->totalCount;
     }
     /**
-     * 
-     *
      * @param int $totalCount
      *
      * @return self
@@ -47,8 +39,6 @@ class ReposOwnerRepoActionsWorkflowsGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<Workflow>
      */
     public function getWorkflows(): array
@@ -56,8 +46,6 @@ class ReposOwnerRepoActionsWorkflowsGetResponse200 extends \ArrayObject
         return $this->workflows;
     }
     /**
-     * 
-     *
      * @param list<Workflow> $workflows
      *
      * @return self

@@ -13,74 +13,50 @@ class Workflow extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $path;
     /**
-     * 
-     *
      * @var string
      */
     protected $state;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $badgeUrl;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $deletedAt;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -88,8 +64,6 @@ class Workflow extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -101,8 +75,6 @@ class Workflow extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -110,8 +82,6 @@ class Workflow extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -123,8 +93,6 @@ class Workflow extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -132,8 +100,6 @@ class Workflow extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -145,8 +111,6 @@ class Workflow extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPath(): string
@@ -154,8 +118,6 @@ class Workflow extends \ArrayObject
         return $this->path;
     }
     /**
-     * 
-     *
      * @param string $path
      *
      * @return self
@@ -167,8 +129,6 @@ class Workflow extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getState(): string
@@ -176,8 +136,6 @@ class Workflow extends \ArrayObject
         return $this->state;
     }
     /**
-     * 
-     *
      * @param string $state
      *
      * @return self
@@ -189,8 +147,6 @@ class Workflow extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -198,8 +154,6 @@ class Workflow extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -211,8 +165,6 @@ class Workflow extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -220,8 +172,6 @@ class Workflow extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -233,8 +183,6 @@ class Workflow extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -242,8 +190,6 @@ class Workflow extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -255,8 +201,6 @@ class Workflow extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -264,8 +208,6 @@ class Workflow extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -277,8 +219,6 @@ class Workflow extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBadgeUrl(): string
@@ -286,8 +226,6 @@ class Workflow extends \ArrayObject
         return $this->badgeUrl;
     }
     /**
-     * 
-     *
      * @param string $badgeUrl
      *
      * @return self
@@ -299,8 +237,6 @@ class Workflow extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getDeletedAt(): \DateTime
@@ -308,8 +244,6 @@ class Workflow extends \ArrayObject
         return $this->deletedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $deletedAt
      *
      * @return self

@@ -13,26 +13,18 @@ class CombinedCommitStatus extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $state;
     /**
-     * 
-     *
      * @var list<SimpleCommitStatus>
      */
     protected $statuses;
     /**
-     * 
-     *
      * @var string
      */
     protected $sha;
     /**
-     * 
-     *
      * @var int
      */
     protected $totalCount;
@@ -43,20 +35,14 @@ class CombinedCommitStatus extends \ArrayObject
      */
     protected $repository;
     /**
-     * 
-     *
      * @var string
      */
     protected $commitUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @return string
      */
     public function getState(): string
@@ -64,8 +50,6 @@ class CombinedCommitStatus extends \ArrayObject
         return $this->state;
     }
     /**
-     * 
-     *
      * @param string $state
      *
      * @return self
@@ -77,8 +61,6 @@ class CombinedCommitStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<SimpleCommitStatus>
      */
     public function getStatuses(): array
@@ -86,8 +68,6 @@ class CombinedCommitStatus extends \ArrayObject
         return $this->statuses;
     }
     /**
-     * 
-     *
      * @param list<SimpleCommitStatus> $statuses
      *
      * @return self
@@ -99,8 +79,6 @@ class CombinedCommitStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSha(): string
@@ -108,8 +86,6 @@ class CombinedCommitStatus extends \ArrayObject
         return $this->sha;
     }
     /**
-     * 
-     *
      * @param string $sha
      *
      * @return self
@@ -121,8 +97,6 @@ class CombinedCommitStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalCount(): int
@@ -130,8 +104,6 @@ class CombinedCommitStatus extends \ArrayObject
         return $this->totalCount;
     }
     /**
-     * 
-     *
      * @param int $totalCount
      *
      * @return self
@@ -165,8 +137,6 @@ class CombinedCommitStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommitUrl(): string
@@ -174,8 +144,6 @@ class CombinedCommitStatus extends \ArrayObject
         return $this->commitUrl;
     }
     /**
-     * 
-     *
      * @param string $commitUrl
      *
      * @return self
@@ -187,8 +155,6 @@ class CombinedCommitStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -196,8 +162,6 @@ class CombinedCommitStatus extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self

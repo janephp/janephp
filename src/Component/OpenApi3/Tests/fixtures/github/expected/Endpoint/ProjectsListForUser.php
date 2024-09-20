@@ -6,9 +6,7 @@ class ProjectsListForUser extends \Github\Runtime\Client\BaseEndpoint implements
 {
     protected $username;
     /**
-     * 
-     *
-     * @param string $username 
+     * @param string $username
      * @param array $queryParameters {
      *     @var string $state Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
      *     @var int $per_page Results per page (max 100)

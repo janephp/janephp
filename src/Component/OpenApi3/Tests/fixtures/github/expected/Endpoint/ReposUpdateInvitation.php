@@ -8,12 +8,10 @@ class ReposUpdateInvitation extends \Github\Runtime\Client\BaseEndpoint implemen
     protected $repo;
     protected $invitation_id;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $invitationId invitation_id parameter
-     * @param null|\Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $invitationId, ?\Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody $requestBody = null)
     {

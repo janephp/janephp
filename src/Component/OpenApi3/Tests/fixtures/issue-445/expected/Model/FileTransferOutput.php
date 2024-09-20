@@ -13,26 +13,18 @@ class FileTransferOutput
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $id;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $filePath;
     /**
-     * 
-     *
      * @var string
      */
     protected $outputSource;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getId(): ?string
@@ -40,8 +32,6 @@ class FileTransferOutput
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string|null $id
      *
      * @return self
@@ -53,8 +43,6 @@ class FileTransferOutput
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFilePath(): ?string
@@ -62,8 +50,6 @@ class FileTransferOutput
         return $this->filePath;
     }
     /**
-     * 
-     *
      * @param string|null $filePath
      *
      * @return self
@@ -75,8 +61,6 @@ class FileTransferOutput
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getOutputSource(): string
@@ -84,8 +68,6 @@ class FileTransferOutput
         return $this->outputSource;
     }
     /**
-     * 
-     *
      * @param string $outputSource
      *
      * @return self

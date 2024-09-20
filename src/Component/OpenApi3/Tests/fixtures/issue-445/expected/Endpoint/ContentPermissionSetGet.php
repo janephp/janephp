@@ -7,7 +7,6 @@ class ContentPermissionSetGet extends \PicturePark\API\Runtime\Client\BaseEndpoi
     protected $id;
     /**
      * Gets the content permission set detail information by the content permission set ID.
-     *
      * @param string $id Content permission set ID.
      */
     public function __construct(string $id)

@@ -5,14 +5,12 @@ namespace Docker\Api\Endpoint;
 class GetPluginPrivileges extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docker\Api\Runtime\Client\Endpoint
 {
     /**
-    * 
-    *
-    * @param array $queryParameters {
-    *     @var string $remote The name of the plugin. The `:latest` tag is optional, and is the
-    default if omitted.
-    
-    * }
-    */
+     * @param array $queryParameters {
+     *     @var string $remote The name of the plugin. The `:latest` tag is optional, and is the
+     *     default if omitted.
+     *     
+     * }
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

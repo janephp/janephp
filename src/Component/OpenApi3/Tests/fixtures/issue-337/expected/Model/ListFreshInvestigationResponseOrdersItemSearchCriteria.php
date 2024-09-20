@@ -13,44 +13,30 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $vatNo;
     /**
-     * 
-     *
      * @var string
      */
     protected $regNo;
     /**
-     * 
-     *
      * @var string
      */
     protected $additionalInfo;
     /**
-     * 
-     *
      * @var ListFreshInvestigationResponseOrdersItemSearchCriteriaAddress
      */
     protected $address;
     /**
-     * 
-     *
      * @var string
      */
     protected $countryCode;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -58,8 +44,6 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -71,8 +55,6 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getVatNo(): string
@@ -80,8 +62,6 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
         return $this->vatNo;
     }
     /**
-     * 
-     *
      * @param string $vatNo
      *
      * @return self
@@ -93,8 +73,6 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRegNo(): string
@@ -102,8 +80,6 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
         return $this->regNo;
     }
     /**
-     * 
-     *
      * @param string $regNo
      *
      * @return self
@@ -115,8 +91,6 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAdditionalInfo(): string
@@ -124,8 +98,6 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
         return $this->additionalInfo;
     }
     /**
-     * 
-     *
      * @param string $additionalInfo
      *
      * @return self
@@ -137,8 +109,6 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
         return $this;
     }
     /**
-     * 
-     *
      * @return ListFreshInvestigationResponseOrdersItemSearchCriteriaAddress
      */
     public function getAddress(): ListFreshInvestigationResponseOrdersItemSearchCriteriaAddress
@@ -146,8 +116,6 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
         return $this->address;
     }
     /**
-     * 
-     *
      * @param ListFreshInvestigationResponseOrdersItemSearchCriteriaAddress $address
      *
      * @return self
@@ -159,8 +127,6 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountryCode(): string
@@ -168,8 +134,6 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
         return $this->countryCode;
     }
     /**
-     * 
-     *
      * @param string $countryCode
      *
      * @return self

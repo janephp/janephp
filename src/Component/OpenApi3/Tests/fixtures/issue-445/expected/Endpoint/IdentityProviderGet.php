@@ -6,8 +6,6 @@ class IdentityProviderGet extends \PicturePark\API\Runtime\Client\BaseEndpoint i
 {
     protected $id;
     /**
-     * 
-     *
      * @param string $id Identity provider ID.
      */
     public function __construct(string $id)

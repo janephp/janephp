@@ -13,56 +13,56 @@ class TaskSpecContainerSpecConfigsItem
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * File represents a specific target that is backed by a file.
-    
-    <p><br /><p>
-    
-    > **Note**: `Configs.File` and `Configs.Runtime` are mutually exclusive
-    
-    *
-    * @var TaskSpecContainerSpecConfigsItemFile
-    */
+     * File represents a specific target that is backed by a file.
+     * 
+     * <p><br /><p>
+     * 
+     * > **Note**: `Configs.File` and `Configs.Runtime` are mutually exclusive
+     * 
+     *
+     * @var TaskSpecContainerSpecConfigsItemFile
+     */
     protected $file;
     /**
-    * Runtime represents a target that is not mounted into the
-    container but is used by the task
-    
-    <p><br /><p>
-    
-    > **Note**: `Configs.File` and `Configs.Runtime` are mutually
-    > exclusive
-    
-    *
-    * @var mixed
-    */
+     * Runtime represents a target that is not mounted into the
+     * container but is used by the task
+     * 
+     * <p><br /><p>
+     * 
+     * > **Note**: `Configs.File` and `Configs.Runtime` are mutually
+     * > exclusive
+     * 
+     *
+     * @var mixed
+     */
     protected $runtime;
     /**
-    * ConfigID represents the ID of the specific config that we're
-    referencing.
-    
-    *
-    * @var string
-    */
+     * ConfigID represents the ID of the specific config that we're
+     * referencing.
+     * 
+     *
+     * @var string
+     */
     protected $configID;
     /**
-    * ConfigName is the name of the config that this references,
-    but this is just provided for lookup/display purposes. The
-    config in the reference will be identified by its ID.
-    
-    *
-    * @var string
-    */
+     * ConfigName is the name of the config that this references,
+     * but this is just provided for lookup/display purposes. The
+     * config in the reference will be identified by its ID.
+     * 
+     *
+     * @var string
+     */
     protected $configName;
     /**
-    * File represents a specific target that is backed by a file.
-    
-    <p><br /><p>
-    
-    > **Note**: `Configs.File` and `Configs.Runtime` are mutually exclusive
-    
-    *
-    * @return TaskSpecContainerSpecConfigsItemFile
-    */
+     * File represents a specific target that is backed by a file.
+     * 
+     * <p><br /><p>
+     * 
+     * > **Note**: `Configs.File` and `Configs.Runtime` are mutually exclusive
+     * 
+     *
+     * @return TaskSpecContainerSpecConfigsItemFile
+     */
     public function getFile(): TaskSpecContainerSpecConfigsItemFile
     {
         return $this->file;
@@ -86,17 +86,17 @@ class TaskSpecContainerSpecConfigsItem
         return $this;
     }
     /**
-    * Runtime represents a target that is not mounted into the
-    container but is used by the task
-    
-    <p><br /><p>
-    
-    > **Note**: `Configs.File` and `Configs.Runtime` are mutually
-    > exclusive
-    
-    *
-    * @return mixed
-    */
+     * Runtime represents a target that is not mounted into the
+     * container but is used by the task
+     * 
+     * <p><br /><p>
+     * 
+     * > **Note**: `Configs.File` and `Configs.Runtime` are mutually
+     * > exclusive
+     * 
+     *
+     * @return mixed
+     */
     public function getRuntime()
     {
         return $this->runtime;
@@ -122,12 +122,12 @@ class TaskSpecContainerSpecConfigsItem
         return $this;
     }
     /**
-    * ConfigID represents the ID of the specific config that we're
-    referencing.
-    
-    *
-    * @return string
-    */
+     * ConfigID represents the ID of the specific config that we're
+     * referencing.
+     * 
+     *
+     * @return string
+     */
     public function getConfigID(): string
     {
         return $this->configID;
@@ -148,13 +148,13 @@ class TaskSpecContainerSpecConfigsItem
         return $this;
     }
     /**
-    * ConfigName is the name of the config that this references,
-    but this is just provided for lookup/display purposes. The
-    config in the reference will be identified by its ID.
-    
-    *
-    * @return string
-    */
+     * ConfigName is the name of the config that this references,
+     * but this is just provided for lookup/display purposes. The
+     * config in the reference will be identified by its ID.
+     * 
+     *
+     * @return string
+     */
     public function getConfigName(): string
     {
         return $this->configName;

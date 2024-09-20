@@ -7,7 +7,6 @@ class TransferDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
     protected $id;
     /**
      * A transfer cannot be deleted if it's currently in the UploadInProgress or ImportInProgress state.
-     *
      * @param string $id ID of transfer.
      */
     public function __construct(string $id)

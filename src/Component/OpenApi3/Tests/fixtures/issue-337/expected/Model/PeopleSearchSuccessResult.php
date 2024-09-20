@@ -13,20 +13,14 @@ class PeopleSearchSuccessResult extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $totalSize;
     /**
-     * 
-     *
      * @var list<PeopleSearchSuccessResultDirectorsItem>
      */
     protected $directors;
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalSize(): int
@@ -34,8 +28,6 @@ class PeopleSearchSuccessResult extends \ArrayObject
         return $this->totalSize;
     }
     /**
-     * 
-     *
      * @param int $totalSize
      *
      * @return self
@@ -47,8 +39,6 @@ class PeopleSearchSuccessResult extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<PeopleSearchSuccessResultDirectorsItem>
      */
     public function getDirectors(): array
@@ -56,8 +46,6 @@ class PeopleSearchSuccessResult extends \ArrayObject
         return $this->directors;
     }
     /**
-     * 
-     *
      * @param list<PeopleSearchSuccessResultDirectorsItem> $directors
      *
      * @return self

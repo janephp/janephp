@@ -13,26 +13,18 @@ class SingleTweetLookupResponse extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var mixed
      */
     protected $data;
     /**
-     * 
-     *
      * @var Expansions
      */
     protected $includes;
     /**
-     * 
-     *
      * @var list<mixed>
      */
     protected $errors;
     /**
-     * 
-     *
      * @return mixed
      */
     public function getData()
@@ -40,8 +32,6 @@ class SingleTweetLookupResponse extends \ArrayObject
         return $this->data;
     }
     /**
-     * 
-     *
      * @param mixed $data
      *
      * @return self
@@ -53,8 +43,6 @@ class SingleTweetLookupResponse extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Expansions
      */
     public function getIncludes(): Expansions
@@ -62,8 +50,6 @@ class SingleTweetLookupResponse extends \ArrayObject
         return $this->includes;
     }
     /**
-     * 
-     *
      * @param Expansions $includes
      *
      * @return self
@@ -75,8 +61,6 @@ class SingleTweetLookupResponse extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<mixed>
      */
     public function getErrors(): array
@@ -84,8 +68,6 @@ class SingleTweetLookupResponse extends \ArrayObject
         return $this->errors;
     }
     /**
-     * 
-     *
      * @param list<mixed> $errors
      *
      * @return self

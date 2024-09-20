@@ -43,8 +43,6 @@ class Info extends \ArrayObject
      */
     protected $contact;
     /**
-     * 
-     *
      * @var License|null
      */
     protected $license;
@@ -159,8 +157,6 @@ class Info extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return License|null
      */
     public function getLicense() : ?License
@@ -168,8 +164,6 @@ class Info extends \ArrayObject
         return $this->license;
     }
     /**
-     * 
-     *
      * @param License|null $license
      *
      * @return self

@@ -9,9 +9,8 @@ class ActionsGetJobForWorkflowRun extends \Github\Runtime\Client\BaseEndpoint im
     protected $job_id;
     /**
      * Gets a specific job in a workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $jobId job_id parameter
      */
     public function __construct(string $owner, string $repo, int $jobId)

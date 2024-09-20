@@ -9,11 +9,9 @@ class PullsDeletePendingReview extends \Github\Runtime\Client\BaseEndpoint imple
     protected $pull_number;
     protected $review_id;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $pullNumber 
+     * @param string $owner
+     * @param string $repo
+     * @param int $pullNumber
      * @param int $reviewId review_id parameter
      */
     public function __construct(string $owner, string $repo, int $pullNumber, int $reviewId)

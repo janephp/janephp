@@ -6,8 +6,7 @@ class TransferCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
 {
     /**
      * For transfers of type FileUpload or FileUploadAutoImport, after creating the transfer, wait for the returned BusinessProcess to hit the "Created" state before attempting to upload files.
-     *
-     * @param \PicturePark\API\Model\CreateTransferRequest $requestBody 
+     * @param \PicturePark\API\Model\CreateTransferRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\CreateTransferRequest $requestBody)
     {

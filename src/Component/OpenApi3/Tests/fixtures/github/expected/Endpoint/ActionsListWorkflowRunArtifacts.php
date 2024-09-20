@@ -9,10 +9,9 @@ class ActionsListWorkflowRunArtifacts extends \Github\Runtime\Client\BaseEndpoin
     protected $run_id;
     /**
      * Lists artifacts for a workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $runId 
+     * @param string $owner
+     * @param string $repo
+     * @param int $runId
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.

@@ -6,8 +6,7 @@ class ListItemGetReferencesMany extends \PicturePark\API\Runtime\Client\BaseEndp
 {
     /**
      * Gets the references (list items, contents) to multiple list items.
-     *
-     * @param \PicturePark\API\Model\ListItemManyReferencesRequest $requestBody 
+     * @param \PicturePark\API\Model\ListItemManyReferencesRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\ListItemManyReferencesRequest $requestBody)
     {

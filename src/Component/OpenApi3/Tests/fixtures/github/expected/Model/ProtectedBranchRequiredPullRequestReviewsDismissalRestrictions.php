@@ -13,38 +13,26 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions extends \Ar
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $usersUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $teamsUrl;
     /**
-     * 
-     *
      * @var list<SimpleUser>
      */
     protected $users;
     /**
-     * 
-     *
      * @var list<Team>
      */
     protected $teams;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -52,8 +40,6 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions extends \Ar
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -65,8 +51,6 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions extends \Ar
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUsersUrl(): string
@@ -74,8 +58,6 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions extends \Ar
         return $this->usersUrl;
     }
     /**
-     * 
-     *
      * @param string $usersUrl
      *
      * @return self
@@ -87,8 +69,6 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions extends \Ar
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTeamsUrl(): string
@@ -96,8 +76,6 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions extends \Ar
         return $this->teamsUrl;
     }
     /**
-     * 
-     *
      * @param string $teamsUrl
      *
      * @return self
@@ -109,8 +87,6 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions extends \Ar
         return $this;
     }
     /**
-     * 
-     *
      * @return list<SimpleUser>
      */
     public function getUsers(): array
@@ -118,8 +94,6 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions extends \Ar
         return $this->users;
     }
     /**
-     * 
-     *
      * @param list<SimpleUser> $users
      *
      * @return self
@@ -131,8 +105,6 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions extends \Ar
         return $this;
     }
     /**
-     * 
-     *
      * @return list<Team>
      */
     public function getTeams(): array
@@ -140,8 +112,6 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions extends \Ar
         return $this->teams;
     }
     /**
-     * 
-     *
      * @param list<Team> $teams
      *
      * @return self

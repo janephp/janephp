@@ -13,26 +13,18 @@ class RepoSearchResultItemPermissions extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var bool
      */
     protected $admin;
     /**
-     * 
-     *
      * @var bool
      */
     protected $pull;
     /**
-     * 
-     *
      * @var bool
      */
     protected $push;
     /**
-     * 
-     *
      * @return bool
      */
     public function getAdmin(): bool
@@ -40,8 +32,6 @@ class RepoSearchResultItemPermissions extends \ArrayObject
         return $this->admin;
     }
     /**
-     * 
-     *
      * @param bool $admin
      *
      * @return self
@@ -53,8 +43,6 @@ class RepoSearchResultItemPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getPull(): bool
@@ -62,8 +50,6 @@ class RepoSearchResultItemPermissions extends \ArrayObject
         return $this->pull;
     }
     /**
-     * 
-     *
      * @param bool $pull
      *
      * @return self
@@ -75,8 +61,6 @@ class RepoSearchResultItemPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getPush(): bool
@@ -84,8 +68,6 @@ class RepoSearchResultItemPermissions extends \ArrayObject
         return $this->push;
     }
     /**
-     * 
-     *
      * @param bool $push
      *
      * @return self

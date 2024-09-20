@@ -7,17 +7,16 @@ class ReposListCommitCommentsForRepo extends \Github\Runtime\Client\BaseEndpoint
     protected $owner;
     protected $repo;
     /**
-    * Commit Comments use [these custom media types](https://developer.github.com/v3/repos/comments/#custom-media-types). You can read more about the use of media types in the API [here](https://developer.github.com/v3/media/).
-    
-    Comments are ordered by ascending ID.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param array $queryParameters {
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
-    */
+     * Commit Comments use [these custom media types](https://developer.github.com/v3/repos/comments/#custom-media-types). You can read more about the use of media types in the API [here](https://developer.github.com/v3/media/).
+     *
+     * Comments are ordered by ascending ID.
+     * @param string $owner
+     * @param string $repo
+     * @param array $queryParameters {
+     *     @var int $per_page Results per page (max 100)
+     *     @var int $page Page number of the results to fetch.
+     * }
+     */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {
         $this->owner = $owner;

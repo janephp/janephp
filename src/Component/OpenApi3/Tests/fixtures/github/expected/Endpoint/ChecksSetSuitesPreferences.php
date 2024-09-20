@@ -8,10 +8,9 @@ class ChecksSetSuitesPreferences extends \Github\Runtime\Client\BaseEndpoint imp
     protected $repo;
     /**
      * Changes the default automatic flow when creating check suites. By default, a check suite is automatically created each time code is pushed to a repository. When you disable the automatic creation of check suites, you can manually [Create a check suite](https://developer.github.com/v3/checks/suites/#create-a-check-suite). You must have admin permissions in the repository to set preferences for check suites.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param null|\Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody $requestBody 
+     * @param string $owner
+     * @param string $repo
+     * @param null|\Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody $requestBody
      */
     public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody $requestBody = null)
     {

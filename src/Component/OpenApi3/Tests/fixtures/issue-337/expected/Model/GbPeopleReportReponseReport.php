@@ -13,38 +13,26 @@ class GbPeopleReportReponseReport extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $directorId;
     /**
-     * 
-     *
      * @var GbPeopleReportReponseReportDirectorSummary
      */
     protected $directorSummary;
     /**
-     * 
-     *
      * @var GbPeopleReportReponseReportDirectorDetails
      */
     protected $directorDetails;
     /**
-     * 
-     *
      * @var list<GbPeopleReportReponseReportOtherAddressesItem>
      */
     protected $otherAddresses;
     /**
-     * 
-     *
      * @var GbPeopleReportReponseReportDirectorships
      */
     protected $directorships;
     /**
-     * 
-     *
      * @return string
      */
     public function getDirectorId(): string
@@ -52,8 +40,6 @@ class GbPeopleReportReponseReport extends \ArrayObject
         return $this->directorId;
     }
     /**
-     * 
-     *
      * @param string $directorId
      *
      * @return self
@@ -65,8 +51,6 @@ class GbPeopleReportReponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbPeopleReportReponseReportDirectorSummary
      */
     public function getDirectorSummary(): GbPeopleReportReponseReportDirectorSummary
@@ -74,8 +58,6 @@ class GbPeopleReportReponseReport extends \ArrayObject
         return $this->directorSummary;
     }
     /**
-     * 
-     *
      * @param GbPeopleReportReponseReportDirectorSummary $directorSummary
      *
      * @return self
@@ -87,8 +69,6 @@ class GbPeopleReportReponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbPeopleReportReponseReportDirectorDetails
      */
     public function getDirectorDetails(): GbPeopleReportReponseReportDirectorDetails
@@ -96,8 +76,6 @@ class GbPeopleReportReponseReport extends \ArrayObject
         return $this->directorDetails;
     }
     /**
-     * 
-     *
      * @param GbPeopleReportReponseReportDirectorDetails $directorDetails
      *
      * @return self
@@ -109,8 +87,6 @@ class GbPeopleReportReponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<GbPeopleReportReponseReportOtherAddressesItem>
      */
     public function getOtherAddresses(): array
@@ -118,8 +94,6 @@ class GbPeopleReportReponseReport extends \ArrayObject
         return $this->otherAddresses;
     }
     /**
-     * 
-     *
      * @param list<GbPeopleReportReponseReportOtherAddressesItem> $otherAddresses
      *
      * @return self
@@ -131,8 +105,6 @@ class GbPeopleReportReponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbPeopleReportReponseReportDirectorships
      */
     public function getDirectorships(): GbPeopleReportReponseReportDirectorships
@@ -140,8 +112,6 @@ class GbPeopleReportReponseReport extends \ArrayObject
         return $this->directorships;
     }
     /**
-     * 
-     *
      * @param GbPeopleReportReponseReportDirectorships $directorships
      *
      * @return self

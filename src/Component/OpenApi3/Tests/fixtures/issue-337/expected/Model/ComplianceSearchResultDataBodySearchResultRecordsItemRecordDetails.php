@@ -13,86 +13,58 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $acceptListID;
     /**
-     * 
-     *
      * @var bool
      */
     protected $addedToAcceptList;
     /**
-     * 
-     *
      * @var string
      */
     protected $division;
     /**
-     * 
-     *
      * @var string
      */
     protected $dppa;
     /**
-     * 
-     *
      * @var string
      */
     protected $eftType;
     /**
-     * 
-     *
      * @var string
      */
     protected $entityType;
     /**
-     * 
-     *
      * @var string
      */
     protected $gender;
     /**
-     * 
-     *
      * @var int
      */
     protected $glb;
     /**
-     * 
-     *
      * @var list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsIDsItem>
      */
     protected $iDs;
     /**
-     * 
-     *
      * @var string
      */
     protected $lastUpdatedDate;
     /**
-     * 
-     *
      * @var ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsName
      */
     protected $name;
     /**
-     * 
-     *
      * @var ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordState
      */
     protected $recordState;
     /**
-     * 
-     *
      * @var string
      */
     protected $searchDate;
     /**
-     * 
-     *
      * @return int
      */
     public function getAcceptListID(): int
@@ -100,8 +72,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this->acceptListID;
     }
     /**
-     * 
-     *
      * @param int $acceptListID
      *
      * @return self
@@ -113,8 +83,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getAddedToAcceptList(): bool
@@ -122,8 +90,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this->addedToAcceptList;
     }
     /**
-     * 
-     *
      * @param bool $addedToAcceptList
      *
      * @return self
@@ -135,8 +101,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDivision(): string
@@ -144,8 +108,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this->division;
     }
     /**
-     * 
-     *
      * @param string $division
      *
      * @return self
@@ -157,8 +119,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDppa(): string
@@ -166,8 +126,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this->dppa;
     }
     /**
-     * 
-     *
      * @param string $dppa
      *
      * @return self
@@ -179,8 +137,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEftType(): string
@@ -188,8 +144,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this->eftType;
     }
     /**
-     * 
-     *
      * @param string $eftType
      *
      * @return self
@@ -201,8 +155,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEntityType(): string
@@ -210,8 +162,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this->entityType;
     }
     /**
-     * 
-     *
      * @param string $entityType
      *
      * @return self
@@ -223,8 +173,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGender(): string
@@ -232,8 +180,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this->gender;
     }
     /**
-     * 
-     *
      * @param string $gender
      *
      * @return self
@@ -245,8 +191,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getGlb(): int
@@ -254,8 +198,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this->glb;
     }
     /**
-     * 
-     *
      * @param int $glb
      *
      * @return self
@@ -267,8 +209,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsIDsItem>
      */
     public function getIDs(): array
@@ -276,8 +216,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this->iDs;
     }
     /**
-     * 
-     *
      * @param list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsIDsItem> $iDs
      *
      * @return self
@@ -289,8 +227,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLastUpdatedDate(): string
@@ -298,8 +234,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this->lastUpdatedDate;
     }
     /**
-     * 
-     *
      * @param string $lastUpdatedDate
      *
      * @return self
@@ -311,8 +245,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this;
     }
     /**
-     * 
-     *
      * @return ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsName
      */
     public function getName(): ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsName
@@ -320,8 +252,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this->name;
     }
     /**
-     * 
-     *
      * @param ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsName $name
      *
      * @return self
@@ -333,8 +263,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this;
     }
     /**
-     * 
-     *
      * @return ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordState
      */
     public function getRecordState(): ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordState
@@ -342,8 +270,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this->recordState;
     }
     /**
-     * 
-     *
      * @param ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordState $recordState
      *
      * @return self
@@ -355,8 +281,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSearchDate(): string
@@ -364,8 +288,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         return $this->searchDate;
     }
     /**
-     * 
-     *
      * @param string $searchDate
      *
      * @return self

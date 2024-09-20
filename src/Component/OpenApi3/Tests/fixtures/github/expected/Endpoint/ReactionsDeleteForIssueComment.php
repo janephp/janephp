@@ -9,15 +9,14 @@ class ReactionsDeleteForIssueComment extends \Github\Runtime\Client\BaseEndpoint
     protected $comment_id;
     protected $reaction_id;
     /**
-    * **Note:** You can also specify a repository by `repository_id` using the route `DELETE delete /repositories/:repository_id/issues/comments/:comment_id/reactions/:reaction_id`.
-    
-    Delete a reaction to an [issue comment](https://developer.github.com/v3/issues/comments/).
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param int $commentId comment_id parameter
-    * @param int $reactionId 
-    */
+     * **Note:** You can also specify a repository by `repository_id` using the route `DELETE delete /repositories/:repository_id/issues/comments/:comment_id/reactions/:reaction_id`.
+     *
+     * Delete a reaction to an [issue comment](https://developer.github.com/v3/issues/comments/).
+     * @param string $owner
+     * @param string $repo
+     * @param int $commentId comment_id parameter
+     * @param int $reactionId
+     */
     public function __construct(string $owner, string $repo, int $commentId, int $reactionId)
     {
         $this->owner = $owner;

@@ -25,15 +25,15 @@ class SecretsCreatePostBody
      */
     protected $labels;
     /**
-    * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-5))
-    data to store as secret.
-    
-    This field is only used to _create_ a secret, and is not returned by
-    other endpoints.
-    
-    *
-    * @var string
-    */
+     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-5))
+     * data to store as secret.
+     * 
+     * This field is only used to _create_ a secret, and is not returned by
+     * other endpoints.
+     * 
+     *
+     * @var string
+     */
     protected $data;
     /**
      * Driver represents a driver (network, logging, secrets).
@@ -92,15 +92,15 @@ class SecretsCreatePostBody
         return $this;
     }
     /**
-    * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-5))
-    data to store as secret.
-    
-    This field is only used to _create_ a secret, and is not returned by
-    other endpoints.
-    
-    *
-    * @return string
-    */
+     * Base64-url-safe-encoded ([RFC 4648](https://tools.ietf.org/html/rfc4648#section-5))
+     * data to store as secret.
+     * 
+     * This field is only used to _create_ a secret, and is not returned by
+     * other endpoints.
+     * 
+     *
+     * @return string
+     */
     public function getData(): string
     {
         return $this->data;

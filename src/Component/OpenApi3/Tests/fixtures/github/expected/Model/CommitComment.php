@@ -13,92 +13,62 @@ class CommitComment extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $body;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $path;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $position;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $line;
     /**
-     * 
-     *
      * @var string
      */
     protected $commitId;
     /**
-     * 
-     *
      * @var CommitCommentUser|null
      */
     protected $user;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $authorAssociation;
     /**
-     * 
-     *
      * @var ReactionRollup
      */
     protected $reactions;
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -106,8 +76,6 @@ class CommitComment extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -119,8 +87,6 @@ class CommitComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -128,8 +94,6 @@ class CommitComment extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -141,8 +105,6 @@ class CommitComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -150,8 +112,6 @@ class CommitComment extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -163,8 +123,6 @@ class CommitComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -172,8 +130,6 @@ class CommitComment extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -185,8 +141,6 @@ class CommitComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBody(): string
@@ -194,8 +148,6 @@ class CommitComment extends \ArrayObject
         return $this->body;
     }
     /**
-     * 
-     *
      * @param string $body
      *
      * @return self
@@ -207,8 +159,6 @@ class CommitComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getPath(): ?string
@@ -216,8 +166,6 @@ class CommitComment extends \ArrayObject
         return $this->path;
     }
     /**
-     * 
-     *
      * @param string|null $path
      *
      * @return self
@@ -229,8 +177,6 @@ class CommitComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getPosition(): ?int
@@ -238,8 +184,6 @@ class CommitComment extends \ArrayObject
         return $this->position;
     }
     /**
-     * 
-     *
      * @param int|null $position
      *
      * @return self
@@ -251,8 +195,6 @@ class CommitComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getLine(): ?int
@@ -260,8 +202,6 @@ class CommitComment extends \ArrayObject
         return $this->line;
     }
     /**
-     * 
-     *
      * @param int|null $line
      *
      * @return self
@@ -273,8 +213,6 @@ class CommitComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommitId(): string
@@ -282,8 +220,6 @@ class CommitComment extends \ArrayObject
         return $this->commitId;
     }
     /**
-     * 
-     *
      * @param string $commitId
      *
      * @return self
@@ -295,8 +231,6 @@ class CommitComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CommitCommentUser|null
      */
     public function getUser(): ?CommitCommentUser
@@ -304,8 +238,6 @@ class CommitComment extends \ArrayObject
         return $this->user;
     }
     /**
-     * 
-     *
      * @param CommitCommentUser|null $user
      *
      * @return self
@@ -317,8 +249,6 @@ class CommitComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -326,8 +256,6 @@ class CommitComment extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -339,8 +267,6 @@ class CommitComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -348,8 +274,6 @@ class CommitComment extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -361,8 +285,6 @@ class CommitComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAuthorAssociation(): string
@@ -370,8 +292,6 @@ class CommitComment extends \ArrayObject
         return $this->authorAssociation;
     }
     /**
-     * 
-     *
      * @param string $authorAssociation
      *
      * @return self
@@ -383,8 +303,6 @@ class CommitComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ReactionRollup
      */
     public function getReactions(): ReactionRollup
@@ -392,8 +310,6 @@ class CommitComment extends \ArrayObject
         return $this->reactions;
     }
     /**
-     * 
-     *
      * @param ReactionRollup $reactions
      *
      * @return self

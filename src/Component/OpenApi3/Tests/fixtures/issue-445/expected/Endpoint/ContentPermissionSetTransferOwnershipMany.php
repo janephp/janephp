@@ -6,8 +6,7 @@ class ContentPermissionSetTransferOwnershipMany extends \PicturePark\API\Runtime
 {
     /**
      * Transfers ownership of multiple content permission sets to respective supplied users.
-     *
-     * @param \PicturePark\API\Model\PermissionSetOwnershipTransferManyRequest $requestBody 
+     * @param \PicturePark\API\Model\PermissionSetOwnershipTransferManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\PermissionSetOwnershipTransferManyRequest $requestBody)
     {

@@ -13,128 +13,86 @@ class BaseGist extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $forksUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $commitsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $gitPullUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $gitPushUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var array<string, BaseGistFilesItem>
      */
     protected $files;
     /**
-     * 
-     *
      * @var bool
      */
     protected $public;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var int
      */
     protected $comments;
     /**
-     * 
-     *
      * @var BaseGistUser|null
      */
     protected $user;
     /**
-     * 
-     *
      * @var string
      */
     protected $commentsUrl;
     /**
-     * 
-     *
      * @var BaseGistOwner|null
      */
     protected $owner;
     /**
-     * 
-     *
      * @var bool
      */
     protected $truncated;
     /**
-     * 
-     *
      * @var list<mixed>
      */
     protected $forks;
     /**
-     * 
-     *
      * @var list<mixed>
      */
     protected $history;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -142,8 +100,6 @@ class BaseGist extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -155,8 +111,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getForksUrl(): string
@@ -164,8 +118,6 @@ class BaseGist extends \ArrayObject
         return $this->forksUrl;
     }
     /**
-     * 
-     *
      * @param string $forksUrl
      *
      * @return self
@@ -177,8 +129,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommitsUrl(): string
@@ -186,8 +136,6 @@ class BaseGist extends \ArrayObject
         return $this->commitsUrl;
     }
     /**
-     * 
-     *
      * @param string $commitsUrl
      *
      * @return self
@@ -199,8 +147,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -208,8 +154,6 @@ class BaseGist extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -221,8 +165,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -230,8 +172,6 @@ class BaseGist extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -243,8 +183,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGitPullUrl(): string
@@ -252,8 +190,6 @@ class BaseGist extends \ArrayObject
         return $this->gitPullUrl;
     }
     /**
-     * 
-     *
      * @param string $gitPullUrl
      *
      * @return self
@@ -265,8 +201,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGitPushUrl(): string
@@ -274,8 +208,6 @@ class BaseGist extends \ArrayObject
         return $this->gitPushUrl;
     }
     /**
-     * 
-     *
      * @param string $gitPushUrl
      *
      * @return self
@@ -287,8 +219,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -296,8 +226,6 @@ class BaseGist extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -309,8 +237,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, BaseGistFilesItem>
      */
     public function getFiles(): iterable
@@ -318,8 +244,6 @@ class BaseGist extends \ArrayObject
         return $this->files;
     }
     /**
-     * 
-     *
      * @param array<string, BaseGistFilesItem> $files
      *
      * @return self
@@ -331,8 +255,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getPublic(): bool
@@ -340,8 +262,6 @@ class BaseGist extends \ArrayObject
         return $this->public;
     }
     /**
-     * 
-     *
      * @param bool $public
      *
      * @return self
@@ -353,8 +273,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -362,8 +280,6 @@ class BaseGist extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -375,8 +291,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -384,8 +298,6 @@ class BaseGist extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -397,8 +309,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription(): ?string
@@ -406,8 +316,6 @@ class BaseGist extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -419,8 +327,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getComments(): int
@@ -428,8 +334,6 @@ class BaseGist extends \ArrayObject
         return $this->comments;
     }
     /**
-     * 
-     *
      * @param int $comments
      *
      * @return self
@@ -441,8 +345,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BaseGistUser|null
      */
     public function getUser(): ?BaseGistUser
@@ -450,8 +352,6 @@ class BaseGist extends \ArrayObject
         return $this->user;
     }
     /**
-     * 
-     *
      * @param BaseGistUser|null $user
      *
      * @return self
@@ -463,8 +363,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommentsUrl(): string
@@ -472,8 +370,6 @@ class BaseGist extends \ArrayObject
         return $this->commentsUrl;
     }
     /**
-     * 
-     *
      * @param string $commentsUrl
      *
      * @return self
@@ -485,8 +381,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BaseGistOwner|null
      */
     public function getOwner(): ?BaseGistOwner
@@ -494,8 +388,6 @@ class BaseGist extends \ArrayObject
         return $this->owner;
     }
     /**
-     * 
-     *
      * @param BaseGistOwner|null $owner
      *
      * @return self
@@ -507,8 +399,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getTruncated(): bool
@@ -516,8 +406,6 @@ class BaseGist extends \ArrayObject
         return $this->truncated;
     }
     /**
-     * 
-     *
      * @param bool $truncated
      *
      * @return self
@@ -529,8 +417,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<mixed>
      */
     public function getForks(): array
@@ -538,8 +424,6 @@ class BaseGist extends \ArrayObject
         return $this->forks;
     }
     /**
-     * 
-     *
      * @param list<mixed> $forks
      *
      * @return self
@@ -551,8 +435,6 @@ class BaseGist extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<mixed>
      */
     public function getHistory(): array
@@ -560,8 +442,6 @@ class BaseGist extends \ArrayObject
         return $this->history;
     }
     /**
-     * 
-     *
      * @param list<mixed> $history
      *
      * @return self

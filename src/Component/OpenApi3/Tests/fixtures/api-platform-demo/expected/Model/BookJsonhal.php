@@ -13,14 +13,10 @@ class BookJsonhal extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var BookJsonhalLinks
      */
     protected $links;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $id;
@@ -67,14 +63,10 @@ class BookJsonhal extends \ArrayObject
      */
     protected $cover;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $archivedAt;
     /**
-     * 
-     *
      * @return BookJsonhalLinks
      */
     public function getLinks(): BookJsonhalLinks
@@ -82,8 +74,6 @@ class BookJsonhal extends \ArrayObject
         return $this->links;
     }
     /**
-     * 
-     *
      * @param BookJsonhalLinks $links
      *
      * @return self
@@ -95,8 +85,6 @@ class BookJsonhal extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getId(): ?string
@@ -104,8 +92,6 @@ class BookJsonhal extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string|null $id
      *
      * @return self
@@ -271,8 +257,6 @@ class BookJsonhal extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getArchivedAt(): ?\DateTime
@@ -280,8 +264,6 @@ class BookJsonhal extends \ArrayObject
         return $this->archivedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $archivedAt
      *
      * @return self

@@ -6,16 +6,15 @@ class TeamsListProjectsLegacy extends \Github\Runtime\Client\BaseEndpoint implem
 {
     protected $team_id;
     /**
-    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List team projects`](https://developer.github.com/v3/teams/#list-team-projects) endpoint.
-    
-    Lists the organization projects for a team.
-    *
-    * @param int $teamId 
-    * @param array $queryParameters {
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
-    */
+     * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List team projects`](https://developer.github.com/v3/teams/#list-team-projects) endpoint.
+     *
+     * Lists the organization projects for a team.
+     * @param int $teamId
+     * @param array $queryParameters {
+     *     @var int $per_page Results per page (max 100)
+     *     @var int $page Page number of the results to fetch.
+     * }
+     */
     public function __construct(int $teamId, array $queryParameters = [])
     {
         $this->team_id = $teamId;

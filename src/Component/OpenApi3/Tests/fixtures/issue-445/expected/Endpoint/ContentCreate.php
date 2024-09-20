@@ -6,8 +6,7 @@ class ContentCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
 {
     /**
     * Create a single file-less content item. To import files, see [Transfer](#tag/Transfer).
-    *
-    * @param \PicturePark\API\Model\ContentCreateRequest $requestBody 
+    * @param \PicturePark\API\Model\ContentCreateRequest $requestBody
     * @param array $queryParameters {
     *     @var array $resolveBehaviors List of enums that control which parts of the content are resolved and returned.
     *     @var bool $allowMissingDependencies Allows creating contents that refer to list items or contents that don't exist in the system.

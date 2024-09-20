@@ -19,11 +19,11 @@ class MetadataField
      */
     protected $path;
     /**
-    * Indicates if the field can act as target for a mapping.
-    If field is read-only, it can only act as source of a mapping.
-    *
-    * @var bool
-    */
+     * Indicates if the field can act as target for a mapping.
+     * If field is read-only, it can only act as source of a mapping.
+     *
+     * @var bool
+     */
     protected $isWritable;
     /**
      * Data type of the field.
@@ -60,11 +60,11 @@ class MetadataField
         return $this;
     }
     /**
-    * Indicates if the field can act as target for a mapping.
-    If field is read-only, it can only act as source of a mapping.
-    *
-    * @return bool
-    */
+     * Indicates if the field can act as target for a mapping.
+     * If field is read-only, it can only act as source of a mapping.
+     *
+     * @return bool
+     */
     public function getIsWritable(): bool
     {
         return $this->isWritable;

@@ -7,10 +7,8 @@ class IssuesListMilestones extends \Github\Runtime\Client\BaseEndpoint implement
     protected $owner;
     protected $repo;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param array $queryParameters {
      *     @var string $state The state of the milestone. Either `open`, `closed`, or `all`.
      *     @var string $sort What to sort results by. Either `due_on` or `completeness`.

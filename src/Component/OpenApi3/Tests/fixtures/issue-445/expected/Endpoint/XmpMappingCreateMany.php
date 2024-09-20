@@ -6,8 +6,7 @@ class XmpMappingCreateMany extends \PicturePark\API\Runtime\Client\BaseEndpoint 
 {
     /**
      * Creates new xmp mappings based on supplied requests. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
-     * @param \PicturePark\API\Model\XmpMappingEntryCreateManyRequest $requestBody 
+     * @param \PicturePark\API\Model\XmpMappingEntryCreateManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\XmpMappingEntryCreateManyRequest $requestBody)
     {

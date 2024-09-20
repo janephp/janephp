@@ -9,9 +9,8 @@ class ReposDeleteRelease extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $release_id;
     /**
      * Users with push access to the repository can delete a release.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $releaseId release_id parameter
      */
     public function __construct(string $owner, string $repo, int $releaseId)

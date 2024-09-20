@@ -7,7 +7,6 @@ class UserInvite extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
     protected $id;
     /**
      * Formally invites a user, e.g. sends an invitation email. Transitions AuthorizationState to Invited, implicitly reviews user.
-     *
      * @param string $id User ID to action on.
      */
     public function __construct(string $id)

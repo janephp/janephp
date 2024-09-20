@@ -13,50 +13,34 @@ class IssueEvent extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var IssueEventActor|null
      */
     protected $actor;
     /**
-     * 
-     *
      * @var string
      */
     protected $event;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $commitId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $commitUrl;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
@@ -73,26 +57,18 @@ class IssueEvent extends \ArrayObject
      */
     protected $label;
     /**
-     * 
-     *
      * @var IssueEventAssignee|null
      */
     protected $assignee;
     /**
-     * 
-     *
      * @var IssueEventAssigner|null
      */
     protected $assigner;
     /**
-     * 
-     *
      * @var IssueEventReviewRequester|null
      */
     protected $reviewRequester;
     /**
-     * 
-     *
      * @var IssueEventRequestedReviewer|null
      */
     protected $requestedReviewer;
@@ -103,8 +79,6 @@ class IssueEvent extends \ArrayObject
      */
     protected $requestedTeam;
     /**
-     * 
-     *
      * @var IssueEventDismissedReview
      */
     protected $dismissedReview;
@@ -127,20 +101,14 @@ class IssueEvent extends \ArrayObject
      */
     protected $rename;
     /**
-     * 
-     *
      * @var string
      */
     protected $authorAssociation;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $lockReason;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -148,8 +116,6 @@ class IssueEvent extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -161,8 +127,6 @@ class IssueEvent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -170,8 +134,6 @@ class IssueEvent extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -183,8 +145,6 @@ class IssueEvent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -192,8 +152,6 @@ class IssueEvent extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -205,8 +163,6 @@ class IssueEvent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IssueEventActor|null
      */
     public function getActor(): ?IssueEventActor
@@ -214,8 +170,6 @@ class IssueEvent extends \ArrayObject
         return $this->actor;
     }
     /**
-     * 
-     *
      * @param IssueEventActor|null $actor
      *
      * @return self
@@ -227,8 +181,6 @@ class IssueEvent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEvent(): string
@@ -236,8 +188,6 @@ class IssueEvent extends \ArrayObject
         return $this->event;
     }
     /**
-     * 
-     *
      * @param string $event
      *
      * @return self
@@ -249,8 +199,6 @@ class IssueEvent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCommitId(): ?string
@@ -258,8 +206,6 @@ class IssueEvent extends \ArrayObject
         return $this->commitId;
     }
     /**
-     * 
-     *
      * @param string|null $commitId
      *
      * @return self
@@ -271,8 +217,6 @@ class IssueEvent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCommitUrl(): ?string
@@ -280,8 +224,6 @@ class IssueEvent extends \ArrayObject
         return $this->commitUrl;
     }
     /**
-     * 
-     *
      * @param string|null $commitUrl
      *
      * @return self
@@ -293,8 +235,6 @@ class IssueEvent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -302,8 +242,6 @@ class IssueEvent extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -359,8 +297,6 @@ class IssueEvent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IssueEventAssignee|null
      */
     public function getAssignee(): ?IssueEventAssignee
@@ -368,8 +304,6 @@ class IssueEvent extends \ArrayObject
         return $this->assignee;
     }
     /**
-     * 
-     *
      * @param IssueEventAssignee|null $assignee
      *
      * @return self
@@ -381,8 +315,6 @@ class IssueEvent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IssueEventAssigner|null
      */
     public function getAssigner(): ?IssueEventAssigner
@@ -390,8 +322,6 @@ class IssueEvent extends \ArrayObject
         return $this->assigner;
     }
     /**
-     * 
-     *
      * @param IssueEventAssigner|null $assigner
      *
      * @return self
@@ -403,8 +333,6 @@ class IssueEvent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IssueEventReviewRequester|null
      */
     public function getReviewRequester(): ?IssueEventReviewRequester
@@ -412,8 +340,6 @@ class IssueEvent extends \ArrayObject
         return $this->reviewRequester;
     }
     /**
-     * 
-     *
      * @param IssueEventReviewRequester|null $reviewRequester
      *
      * @return self
@@ -425,8 +351,6 @@ class IssueEvent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IssueEventRequestedReviewer|null
      */
     public function getRequestedReviewer(): ?IssueEventRequestedReviewer
@@ -434,8 +358,6 @@ class IssueEvent extends \ArrayObject
         return $this->requestedReviewer;
     }
     /**
-     * 
-     *
      * @param IssueEventRequestedReviewer|null $requestedReviewer
      *
      * @return self
@@ -469,8 +391,6 @@ class IssueEvent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IssueEventDismissedReview
      */
     public function getDismissedReview(): IssueEventDismissedReview
@@ -478,8 +398,6 @@ class IssueEvent extends \ArrayObject
         return $this->dismissedReview;
     }
     /**
-     * 
-     *
      * @param IssueEventDismissedReview $dismissedReview
      *
      * @return self
@@ -557,8 +475,6 @@ class IssueEvent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAuthorAssociation(): string
@@ -566,8 +482,6 @@ class IssueEvent extends \ArrayObject
         return $this->authorAssociation;
     }
     /**
-     * 
-     *
      * @param string $authorAssociation
      *
      * @return self
@@ -579,8 +493,6 @@ class IssueEvent extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getLockReason(): ?string
@@ -588,8 +500,6 @@ class IssueEvent extends \ArrayObject
         return $this->lockReason;
     }
     /**
-     * 
-     *
      * @param string|null $lockReason
      *
      * @return self

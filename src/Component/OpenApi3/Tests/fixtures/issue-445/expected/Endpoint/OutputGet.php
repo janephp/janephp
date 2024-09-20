@@ -7,7 +7,6 @@ class OutputGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements 
     protected $id;
     /**
      * Gets a output document by id.
-     *
      * @param string $id Output ID.
      */
     public function __construct(string $id)

@@ -6,8 +6,6 @@ class DirectorReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint impleme
 {
     protected $personId;
     /**
-     * 
-     *
      * @param string $personId Identifier of the Person/Director required to order their Director Report. Obtained from `/people` search results.
      * @param array $queryParameters {
      *     @var string $language Report Language - The JSON structure of the Report is language invariant, but field content will return as the given language, where available.

@@ -13,8 +13,6 @@ class StatusOfMetadataState
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $id;
@@ -25,8 +23,6 @@ class StatusOfMetadataState
      */
     protected $state;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getId(): ?string
@@ -34,8 +30,6 @@ class StatusOfMetadataState
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string|null $id
      *
      * @return self

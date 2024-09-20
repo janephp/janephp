@@ -13,14 +13,10 @@ class GuidSuccessResponse extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<GuidSuccessResponseGUIDListItem>
      */
     protected $gUIDList;
     /**
-     * 
-     *
      * @return list<GuidSuccessResponseGUIDListItem>
      */
     public function getGUIDList(): array
@@ -28,8 +24,6 @@ class GuidSuccessResponse extends \ArrayObject
         return $this->gUIDList;
     }
     /**
-     * 
-     *
      * @param list<GuidSuccessResponseGUIDListItem> $gUIDList
      *
      * @return self

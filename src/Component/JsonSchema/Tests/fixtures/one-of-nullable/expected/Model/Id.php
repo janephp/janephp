@@ -13,14 +13,10 @@ class Id
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $uuid;
     /**
-     * 
-     *
      * @return string
      */
     public function getUuid(): string
@@ -28,8 +24,6 @@ class Id
         return $this->uuid;
     }
     /**
-     * 
-     *
      * @param string $uuid
      *
      * @return self

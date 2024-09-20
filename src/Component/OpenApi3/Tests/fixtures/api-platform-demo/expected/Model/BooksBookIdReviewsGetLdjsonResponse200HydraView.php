@@ -13,44 +13,30 @@ class BooksBookIdReviewsGetLdjsonResponse200HydraView extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $hydraFirst;
     /**
-     * 
-     *
      * @var string
      */
     protected $hydraLast;
     /**
-     * 
-     *
      * @var string
      */
     protected $hydraPrevious;
     /**
-     * 
-     *
      * @var string
      */
     protected $hydraNext;
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -58,8 +44,6 @@ class BooksBookIdReviewsGetLdjsonResponse200HydraView extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -71,8 +55,6 @@ class BooksBookIdReviewsGetLdjsonResponse200HydraView extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -80,8 +62,6 @@ class BooksBookIdReviewsGetLdjsonResponse200HydraView extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -93,8 +73,6 @@ class BooksBookIdReviewsGetLdjsonResponse200HydraView extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHydraFirst(): string
@@ -102,8 +80,6 @@ class BooksBookIdReviewsGetLdjsonResponse200HydraView extends \ArrayObject
         return $this->hydraFirst;
     }
     /**
-     * 
-     *
      * @param string $hydraFirst
      *
      * @return self
@@ -115,8 +91,6 @@ class BooksBookIdReviewsGetLdjsonResponse200HydraView extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHydraLast(): string
@@ -124,8 +98,6 @@ class BooksBookIdReviewsGetLdjsonResponse200HydraView extends \ArrayObject
         return $this->hydraLast;
     }
     /**
-     * 
-     *
      * @param string $hydraLast
      *
      * @return self
@@ -137,8 +109,6 @@ class BooksBookIdReviewsGetLdjsonResponse200HydraView extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHydraPrevious(): string
@@ -146,8 +116,6 @@ class BooksBookIdReviewsGetLdjsonResponse200HydraView extends \ArrayObject
         return $this->hydraPrevious;
     }
     /**
-     * 
-     *
      * @param string $hydraPrevious
      *
      * @return self
@@ -159,8 +127,6 @@ class BooksBookIdReviewsGetLdjsonResponse200HydraView extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHydraNext(): string
@@ -168,8 +134,6 @@ class BooksBookIdReviewsGetLdjsonResponse200HydraView extends \ArrayObject
         return $this->hydraNext;
     }
     /**
-     * 
-     *
      * @param string $hydraNext
      *
      * @return self

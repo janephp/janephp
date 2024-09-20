@@ -9,9 +9,8 @@ class ActionsDeleteSelfHostedRunnerFromRepo extends \Github\Runtime\Client\BaseE
     protected $runner_id;
     /**
      * Forces the removal of a self-hosted runner from a repository. You can use this endpoint to completely remove the runner when the machine you were using no longer exists. You must authenticate using an access token with the `repo` scope to use this endpoint.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $runnerId runner_id parameter
      */
     public function __construct(string $owner, string $repo, int $runnerId)

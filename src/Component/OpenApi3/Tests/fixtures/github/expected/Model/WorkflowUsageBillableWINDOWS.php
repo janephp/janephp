@@ -13,14 +13,10 @@ class WorkflowUsageBillableWINDOWS extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $totalMs;
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalMs(): int
@@ -28,8 +24,6 @@ class WorkflowUsageBillableWINDOWS extends \ArrayObject
         return $this->totalMs;
     }
     /**
-     * 
-     *
      * @param int $totalMs
      *
      * @return self

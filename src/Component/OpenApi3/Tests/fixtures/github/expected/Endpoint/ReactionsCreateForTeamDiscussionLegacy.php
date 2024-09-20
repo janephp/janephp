@@ -7,14 +7,13 @@ class ReactionsCreateForTeamDiscussionLegacy extends \Github\Runtime\Client\Base
     protected $team_id;
     protected $discussion_number;
     /**
-    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Create reaction for a team discussion`](https://developer.github.com/v3/reactions/#create-reaction-for-a-team-discussion) endpoint.
-    
-    Create a reaction to a [team discussion](https://developer.github.com/v3/teams/discussions/). OAuth access tokens require the `write:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A response with a `Status: 200 OK` means that you already added the reaction type to this team discussion.
-    *
-    * @param int $teamId 
-    * @param int $discussionNumber 
-    * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody $requestBody 
-    */
+     * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Create reaction for a team discussion`](https://developer.github.com/v3/reactions/#create-reaction-for-a-team-discussion) endpoint.
+     *
+     * Create a reaction to a [team discussion](https://developer.github.com/v3/teams/discussions/). OAuth access tokens require the `write:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A response with a `Status: 200 OK` means that you already added the reaction type to this team discussion.
+     * @param int $teamId
+     * @param int $discussionNumber
+     * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody $requestBody
+     */
     public function __construct(int $teamId, int $discussionNumber, ?\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody $requestBody = null)
     {
         $this->team_id = $teamId;

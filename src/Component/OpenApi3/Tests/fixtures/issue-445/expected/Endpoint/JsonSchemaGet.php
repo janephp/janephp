@@ -7,7 +7,6 @@ class JsonSchemaGet extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     protected $id;
     /**
      * Gets the json schema for the specified schema.
-     *
      * @param string $id The ID of the schema whose json schema to retrieve.
      */
     public function __construct(string $id)

@@ -7,7 +7,6 @@ class ContentGetOutputs extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
     protected $id;
     /**
      * Retrieves all outputs available for content, also dynamic rendered outputs are returned, if requested.
-     *
      * @param string $id ID of content.
      */
     public function __construct(string $id)

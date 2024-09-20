@@ -19,8 +19,6 @@ class ReposOwnerRepoPagesPutBody extends \ArrayObject
      */
     protected $cname;
     /**
-     * 
-     *
      * @var mixed
      */
     protected $source;
@@ -47,8 +45,6 @@ class ReposOwnerRepoPagesPutBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getSource()
@@ -56,8 +52,6 @@ class ReposOwnerRepoPagesPutBody extends \ArrayObject
         return $this->source;
     }
     /**
-     * 
-     *
      * @param mixed $source
      *
      * @return self

@@ -7,8 +7,7 @@ class ReposListForOrg extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     protected $org;
     /**
      * Lists repositories for the specified organization.
-     *
-     * @param string $org 
+     * @param string $org
      * @param array $queryParameters {
      *     @var string $type Specifies the types of repositories you want returned. Can be one of `all`, `public`, `private`, `forks`, `sources`, `member`, `internal`. Default: `all`. If your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `type` can also be `internal`.
      *     @var string $sort Can be one of `created`, `updated`, `pushed`, `full_name`.

@@ -7,12 +7,11 @@ class SchemaFieldExists extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
     protected $schemaId;
     protected $fieldId;
     /**
-    * Checks if the field in the specified schema already exists.
-    Also returns a flag indicating if the field was previously deleted and the ID can therefore not be reused.
-    *
-    * @param string $schemaId The schema ID.
-    * @param string $fieldId The field ID.
-    */
+     * Checks if the field in the specified schema already exists.
+     * Also returns a flag indicating if the field was previously deleted and the ID can therefore not be reused.
+     * @param string $schemaId The schema ID.
+     * @param string $fieldId The field ID.
+     */
     public function __construct(string $schemaId, string $fieldId)
     {
         $this->schemaId = $schemaId;

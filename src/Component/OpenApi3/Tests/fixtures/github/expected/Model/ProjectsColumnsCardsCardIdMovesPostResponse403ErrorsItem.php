@@ -13,32 +13,22 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItem extends \ArrayObj
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $code;
     /**
-     * 
-     *
      * @var string
      */
     protected $message;
     /**
-     * 
-     *
      * @var string
      */
     protected $resource;
     /**
-     * 
-     *
      * @var string
      */
     protected $field;
     /**
-     * 
-     *
      * @return string
      */
     public function getCode(): string
@@ -46,8 +36,6 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItem extends \ArrayObj
         return $this->code;
     }
     /**
-     * 
-     *
      * @param string $code
      *
      * @return self
@@ -59,8 +47,6 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItem extends \ArrayObj
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMessage(): string
@@ -68,8 +54,6 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItem extends \ArrayObj
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string $message
      *
      * @return self
@@ -81,8 +65,6 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItem extends \ArrayObj
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getResource(): string
@@ -90,8 +72,6 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItem extends \ArrayObj
         return $this->resource;
     }
     /**
-     * 
-     *
      * @param string $resource
      *
      * @return self
@@ -103,8 +83,6 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItem extends \ArrayObj
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getField(): string
@@ -112,8 +90,6 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItem extends \ArrayObj
         return $this->field;
     }
     /**
-     * 
-     *
      * @param string $field
      *
      * @return self

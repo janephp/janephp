@@ -19,17 +19,17 @@ class NetworksCreatePostBody
      */
     protected $name;
     /**
-    * Check for networks with duplicate names. Since Network is
-    primarily keyed based on a random ID and not on the name, and
-    network name is strictly a user-friendly alias to the network
-    which is uniquely identified using ID, there is no guaranteed
-    way to check for duplicates. CheckDuplicate is there to provide
-    a best effort checking of any networks which has the same name
-    but it is not guaranteed to catch all name collisions.
-    
-    *
-    * @var bool
-    */
+     * Check for networks with duplicate names. Since Network is
+     * primarily keyed based on a random ID and not on the name, and
+     * network name is strictly a user-friendly alias to the network
+     * which is uniquely identified using ID, there is no guaranteed
+     * way to check for duplicates. CheckDuplicate is there to provide
+     * a best effort checking of any networks which has the same name
+     * but it is not guaranteed to catch all name collisions.
+     * 
+     *
+     * @var bool
+     */
     protected $checkDuplicate;
     /**
      * Name of the network driver plugin to use.
@@ -44,24 +44,22 @@ class NetworksCreatePostBody
      */
     protected $internal;
     /**
-    * Globally scoped network is manually attachable by regular
-    containers from workers in swarm mode.
-    
-    *
-    * @var bool
-    */
-    protected $attachable;
-    /**
-    * Ingress network is the network which provides the routing-mesh
-    in swarm mode.
-    
-    *
-    * @var bool
-    */
-    protected $ingress;
-    /**
+     * Globally scoped network is manually attachable by regular
+     * containers from workers in swarm mode.
      * 
      *
+     * @var bool
+     */
+    protected $attachable;
+    /**
+     * Ingress network is the network which provides the routing-mesh
+     * in swarm mode.
+     * 
+     *
+     * @var bool
+     */
+    protected $ingress;
+    /**
      * @var IPAM
      */
     protected $iPAM;
@@ -106,17 +104,17 @@ class NetworksCreatePostBody
         return $this;
     }
     /**
-    * Check for networks with duplicate names. Since Network is
-    primarily keyed based on a random ID and not on the name, and
-    network name is strictly a user-friendly alias to the network
-    which is uniquely identified using ID, there is no guaranteed
-    way to check for duplicates. CheckDuplicate is there to provide
-    a best effort checking of any networks which has the same name
-    but it is not guaranteed to catch all name collisions.
-    
-    *
-    * @return bool
-    */
+     * Check for networks with duplicate names. Since Network is
+     * primarily keyed based on a random ID and not on the name, and
+     * network name is strictly a user-friendly alias to the network
+     * which is uniquely identified using ID, there is no guaranteed
+     * way to check for duplicates. CheckDuplicate is there to provide
+     * a best effort checking of any networks which has the same name
+     * but it is not guaranteed to catch all name collisions.
+     * 
+     *
+     * @return bool
+     */
     public function getCheckDuplicate(): bool
     {
         return $this->checkDuplicate;
@@ -186,12 +184,12 @@ class NetworksCreatePostBody
         return $this;
     }
     /**
-    * Globally scoped network is manually attachable by regular
-    containers from workers in swarm mode.
-    
-    *
-    * @return bool
-    */
+     * Globally scoped network is manually attachable by regular
+     * containers from workers in swarm mode.
+     * 
+     *
+     * @return bool
+     */
     public function getAttachable(): bool
     {
         return $this->attachable;
@@ -212,12 +210,12 @@ class NetworksCreatePostBody
         return $this;
     }
     /**
-    * Ingress network is the network which provides the routing-mesh
-    in swarm mode.
-    
-    *
-    * @return bool
-    */
+     * Ingress network is the network which provides the routing-mesh
+     * in swarm mode.
+     * 
+     *
+     * @return bool
+     */
     public function getIngress(): bool
     {
         return $this->ingress;
@@ -238,8 +236,6 @@ class NetworksCreatePostBody
         return $this;
     }
     /**
-     * 
-     *
      * @return IPAM
      */
     public function getIPAM(): IPAM
@@ -247,8 +243,6 @@ class NetworksCreatePostBody
         return $this->iPAM;
     }
     /**
-     * 
-     *
      * @param IPAM $iPAM
      *
      * @return self

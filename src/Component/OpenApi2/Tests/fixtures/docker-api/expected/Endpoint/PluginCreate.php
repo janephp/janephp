@@ -5,15 +5,13 @@ namespace Docker\Api\Endpoint;
 class PluginCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docker\Api\Runtime\Client\Endpoint
 {
     /**
-    * 
-    *
-    * @param string|resource|\Psr\Http\Message\StreamInterface $tarContext Path to tar containing plugin rootfs and manifest
-    * @param array $queryParameters {
-    *     @var string $name The name of the plugin. The `:latest` tag is optional, and is the
-    default if omitted.
-    
-    * }
-    */
+     * @param string|resource|\Psr\Http\Message\StreamInterface $tarContext Path to tar containing plugin rootfs and manifest
+     * @param array $queryParameters {
+     *     @var string $name The name of the plugin. The `:latest` tag is optional, and is the
+     *     default if omitted.
+     *     
+     * }
+     */
     public function __construct($tarContext, array $queryParameters = [])
     {
         $this->body = $tarContext;

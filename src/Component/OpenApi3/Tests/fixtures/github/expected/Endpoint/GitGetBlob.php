@@ -8,14 +8,13 @@ class GitGetBlob extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     protected $repo;
     protected $file_sha;
     /**
-    * The `content` in the response will always be Base64 encoded.
-    
-    _Note_: This API supports blobs up to 100 megabytes in size.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param string $fileSha file_sha parameter
-    */
+     * The `content` in the response will always be Base64 encoded.
+     *
+     * _Note_: This API supports blobs up to 100 megabytes in size.
+     * @param string $owner
+     * @param string $repo
+     * @param string $fileSha file_sha parameter
+     */
     public function __construct(string $owner, string $repo, string $fileSha)
     {
         $this->owner = $owner;

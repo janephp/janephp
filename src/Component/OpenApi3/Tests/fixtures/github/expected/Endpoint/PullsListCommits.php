@@ -9,10 +9,9 @@ class PullsListCommits extends \Github\Runtime\Client\BaseEndpoint implements \G
     protected $pull_number;
     /**
      * Lists a maximum of 250 commits for a pull request. To receive a complete commit list for pull requests with more than 250 commits, use the [List commits](https://developer.github.com/v3/repos/commits/#list-commits) endpoint.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $pullNumber 
+     * @param string $owner
+     * @param string $repo
+     * @param int $pullNumber
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.

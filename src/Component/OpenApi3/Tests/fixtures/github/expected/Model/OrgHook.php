@@ -13,68 +13,46 @@ class OrgHook extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $pingUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $events;
     /**
-     * 
-     *
      * @var bool
      */
     protected $active;
     /**
-     * 
-     *
      * @var OrgHookConfig
      */
     protected $config;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -82,8 +60,6 @@ class OrgHook extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -95,8 +71,6 @@ class OrgHook extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -104,8 +78,6 @@ class OrgHook extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -117,8 +89,6 @@ class OrgHook extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPingUrl(): string
@@ -126,8 +96,6 @@ class OrgHook extends \ArrayObject
         return $this->pingUrl;
     }
     /**
-     * 
-     *
      * @param string $pingUrl
      *
      * @return self
@@ -139,8 +107,6 @@ class OrgHook extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -148,8 +114,6 @@ class OrgHook extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -161,8 +125,6 @@ class OrgHook extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getEvents(): array
@@ -170,8 +132,6 @@ class OrgHook extends \ArrayObject
         return $this->events;
     }
     /**
-     * 
-     *
      * @param list<string> $events
      *
      * @return self
@@ -183,8 +143,6 @@ class OrgHook extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getActive(): bool
@@ -192,8 +150,6 @@ class OrgHook extends \ArrayObject
         return $this->active;
     }
     /**
-     * 
-     *
      * @param bool $active
      *
      * @return self
@@ -205,8 +161,6 @@ class OrgHook extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return OrgHookConfig
      */
     public function getConfig(): OrgHookConfig
@@ -214,8 +168,6 @@ class OrgHook extends \ArrayObject
         return $this->config;
     }
     /**
-     * 
-     *
      * @param OrgHookConfig $config
      *
      * @return self
@@ -227,8 +179,6 @@ class OrgHook extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -236,8 +186,6 @@ class OrgHook extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -249,8 +197,6 @@ class OrgHook extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -258,8 +204,6 @@ class OrgHook extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -271,8 +215,6 @@ class OrgHook extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -280,8 +222,6 @@ class OrgHook extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self

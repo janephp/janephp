@@ -7,10 +7,8 @@ class OrgsCheckBlockedUser extends \Github\Runtime\Client\BaseEndpoint implement
     protected $org;
     protected $username;
     /**
-     * 
-     *
-     * @param string $org 
-     * @param string $username 
+     * @param string $org
+     * @param string $username
      */
     public function __construct(string $org, string $username)
     {

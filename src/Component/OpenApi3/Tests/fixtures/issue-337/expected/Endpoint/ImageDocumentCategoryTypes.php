@@ -6,7 +6,6 @@ class ImageDocumentCategoryTypes extends \CreditSafe\API\Runtime\Client\BaseEndp
 {
     /**
      * Returns the type of Image that can be returned by for additional meta data.
-     *
      * @param array $queryParameters {
      *     @var string $countries Filter Images by country.
      * }

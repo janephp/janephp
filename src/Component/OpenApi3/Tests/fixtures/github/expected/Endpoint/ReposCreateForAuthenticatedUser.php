@@ -6,18 +6,17 @@ class ReposCreateForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoin
 {
     protected $accept;
     /**
-    * Creates a new repository for the authenticated user.
-    
-    **OAuth scope requirements**
-    
-    When using [OAuth](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
-    
-    *   `public_repo` scope or `repo` scope to create a public repository
-    *   `repo` scope to create a private repository
-    *
-    * @param null|\Github\Model\UserReposPostBody $requestBody 
-    * @param array $accept Accept content header application/json|application/scim+json
-    */
+     * Creates a new repository for the authenticated user.
+     *
+     * **OAuth scope requirements**
+     *
+     * When using [OAuth](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
+     *
+     * *   `public_repo` scope or `repo` scope to create a public repository
+     * *   `repo` scope to create a private repository
+     * @param null|\Github\Model\UserReposPostBody $requestBody
+     * @param array $accept Accept content header application/json|application/scim+json
+     */
     public function __construct(?\Github\Model\UserReposPostBody $requestBody = null, array $accept = [])
     {
         $this->body = $requestBody;

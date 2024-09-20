@@ -13,14 +13,10 @@ class ContentDetailViewEvent extends ApplicationEvent
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<string>|null
      */
     protected $contentIds;
     /**
-     * 
-     *
      * @return list<string>|null
      */
     public function getContentIds(): ?array
@@ -28,8 +24,6 @@ class ContentDetailViewEvent extends ApplicationEvent
         return $this->contentIds;
     }
     /**
-     * 
-     *
      * @param list<string>|null $contentIds
      *
      * @return self

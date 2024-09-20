@@ -13,14 +13,10 @@ class SchemaObjectProperty extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $stringProperty;
     /**
-     * 
-     *
      * @return string
      */
     public function getStringProperty(): string
@@ -28,8 +24,6 @@ class SchemaObjectProperty extends \ArrayObject
         return $this->stringProperty;
     }
     /**
-     * 
-     *
      * @param string $stringProperty
      *
      * @return self

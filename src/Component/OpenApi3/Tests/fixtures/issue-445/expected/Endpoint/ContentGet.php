@@ -7,7 +7,6 @@ class ContentGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
     protected $id;
     /**
      * Gets the content detail by ID.
-     *
      * @param string $id The content ID.
      * @param array $queryParameters {
      *     @var array $resolveBehaviors List of enums that control which parts of the content are resolved and returned.

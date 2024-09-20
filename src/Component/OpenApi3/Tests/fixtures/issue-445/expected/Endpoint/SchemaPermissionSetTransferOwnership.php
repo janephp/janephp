@@ -7,9 +7,8 @@ class SchemaPermissionSetTransferOwnership extends \PicturePark\API\Runtime\Clie
     protected $id;
     /**
      * Transfers ownership of schema permission set to supplied user.
-     *
      * @param string $id Schema permission set ID.
-     * @param \PicturePark\API\Model\PermissionSetOwnershipTransferRequest $requestBody 
+     * @param \PicturePark\API\Model\PermissionSetOwnershipTransferRequest $requestBody
      */
     public function __construct(string $id, \PicturePark\API\Model\PermissionSetOwnershipTransferRequest $requestBody)
     {

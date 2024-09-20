@@ -7,12 +7,11 @@ class ContentUpdateMetadata extends \PicturePark\API\Runtime\Client\BaseEndpoint
     protected $id;
     /**
     * Updates metadata layers of a specified content. For file-less contents, the content itself can be updated as well.
-    The update is flexible enough to allow the update of only the fields that are specified in the request (leaving untouched the other existing ones) or to allow
-    the entire replacement of all the values of a schema or even of all the schemas.
-    See [ShouldUpdateMetadata](https://github.com/Picturepark/Picturepark.SDK.DotNet/blob/master/src/Picturepark.SDK.V1.Tests/Clients/ContentTests.cs) tests.
-    *
+    * The update is flexible enough to allow the update of only the fields that are specified in the request (leaving untouched the other existing ones) or to allow
+    * the entire replacement of all the values of a schema or even of all the schemas.
+    * See [ShouldUpdateMetadata](https://github.com/Picturepark/Picturepark.SDK.DotNet/blob/master/src/Picturepark.SDK.V1.Tests/Clients/ContentTests.cs) tests.
     * @param string $id The content ID.
-    * @param \PicturePark\API\Model\ContentMetadataUpdateRequest $requestBody 
+    * @param \PicturePark\API\Model\ContentMetadataUpdateRequest $requestBody
     * @param array $queryParameters {
     *     @var array $resolveBehaviors List of enums that control which parts of the content are resolved and returned.
     *     @var bool $allowMissingDependencies Allows storing references to list items or contents that don't exist in the system.

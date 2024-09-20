@@ -9,9 +9,8 @@ class ReposGetReleaseByTag extends \Github\Runtime\Client\BaseEndpoint implement
     protected $tag;
     /**
      * Get a published release with the specified tag.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param string $tag tag+ parameter
      */
     public function __construct(string $owner, string $repo, string $tag)

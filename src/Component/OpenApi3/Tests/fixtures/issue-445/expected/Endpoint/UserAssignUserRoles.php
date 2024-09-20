@@ -5,9 +5,7 @@ namespace PicturePark\API\Endpoint;
 class UserAssignUserRoles extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-     * 
-     *
-     * @param \PicturePark\API\Model\UserRoleAssignManyRequest $requestBody 
+     * @param \PicturePark\API\Model\UserRoleAssignManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\UserRoleAssignManyRequest $requestBody)
     {

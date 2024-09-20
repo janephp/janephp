@@ -5,11 +5,10 @@ namespace PicturePark\API\Endpoint;
 class ContentCreateMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Create multiple file-less content items. To import files, see [Transfer](#tag/Transfer).
-    The operation is executed asynchronous and it's not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param \PicturePark\API\Model\ContentCreateManyRequest $requestBody 
-    */
+     * Create multiple file-less content items. To import files, see [Transfer](#tag/Transfer).
+     * The operation is executed asynchronous and it's not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param \PicturePark\API\Model\ContentCreateManyRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\ContentCreateManyRequest $requestBody)
     {
         $this->body = $requestBody;

@@ -13,14 +13,10 @@ class BusinessRuleFiredEvent extends ApplicationEvent
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<BusinessRuleFiredEventDetail>|null
      */
     protected $details;
     /**
-     * 
-     *
      * @return list<BusinessRuleFiredEventDetail>|null
      */
     public function getDetails(): ?array
@@ -28,8 +24,6 @@ class BusinessRuleFiredEvent extends ApplicationEvent
         return $this->details;
     }
     /**
-     * 
-     *
      * @param list<BusinessRuleFiredEventDetail>|null $details
      *
      * @return self

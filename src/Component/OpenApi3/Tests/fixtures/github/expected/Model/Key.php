@@ -13,56 +13,38 @@ class Key extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $keyId;
     /**
-     * 
-     *
      * @var string
      */
     protected $key;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $title;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var bool
      */
     protected $verified;
     /**
-     * 
-     *
      * @var bool
      */
     protected $readOnly;
     /**
-     * 
-     *
      * @return string
      */
     public function getKeyId(): string
@@ -70,8 +52,6 @@ class Key extends \ArrayObject
         return $this->keyId;
     }
     /**
-     * 
-     *
      * @param string $keyId
      *
      * @return self
@@ -83,8 +63,6 @@ class Key extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKey(): string
@@ -92,8 +70,6 @@ class Key extends \ArrayObject
         return $this->key;
     }
     /**
-     * 
-     *
      * @param string $key
      *
      * @return self
@@ -105,8 +81,6 @@ class Key extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -114,8 +88,6 @@ class Key extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -127,8 +99,6 @@ class Key extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -136,8 +106,6 @@ class Key extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -149,8 +117,6 @@ class Key extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTitle(): string
@@ -158,8 +124,6 @@ class Key extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string $title
      *
      * @return self
@@ -171,8 +135,6 @@ class Key extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -180,8 +142,6 @@ class Key extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -193,8 +153,6 @@ class Key extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getVerified(): bool
@@ -202,8 +160,6 @@ class Key extends \ArrayObject
         return $this->verified;
     }
     /**
-     * 
-     *
      * @param bool $verified
      *
      * @return self
@@ -215,8 +171,6 @@ class Key extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getReadOnly(): bool
@@ -224,8 +178,6 @@ class Key extends \ArrayObject
         return $this->readOnly;
     }
     /**
-     * 
-     *
      * @param bool $readOnly
      *
      * @return self

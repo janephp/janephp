@@ -5,11 +5,10 @@ namespace PicturePark\API\Endpoint;
 class SchemaTransferImport extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Imports schemas and list items. The file must already be uploaded before calling this endpoint. See [Transfer](#tag/Transfer).
-    The operation is executed asynchronous and it is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param \PicturePark\API\Model\SchemaImportRequest $requestBody 
-    */
+     * Imports schemas and list items. The file must already be uploaded before calling this endpoint. See [Transfer](#tag/Transfer).
+     * The operation is executed asynchronous and it is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param \PicturePark\API\Model\SchemaImportRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\SchemaImportRequest $requestBody)
     {
         $this->body = $requestBody;

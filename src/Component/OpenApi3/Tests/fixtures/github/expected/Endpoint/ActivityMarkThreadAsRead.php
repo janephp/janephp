@@ -6,8 +6,6 @@ class ActivityMarkThreadAsRead extends \Github\Runtime\Client\BaseEndpoint imple
 {
     protected $thread_id;
     /**
-     * 
-     *
      * @param int $threadId thread_id parameter
      */
     public function __construct(int $threadId)

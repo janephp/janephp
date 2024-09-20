@@ -6,8 +6,7 @@ class UserRoleCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
 {
     /**
      * Creates new user role based on the supplied request.
-     *
-     * @param \PicturePark\API\Model\UserRoleCreateRequest $requestBody 
+     * @param \PicturePark\API\Model\UserRoleCreateRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\UserRoleCreateRequest $requestBody)
     {

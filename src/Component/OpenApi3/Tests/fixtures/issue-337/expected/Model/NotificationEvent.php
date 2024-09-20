@@ -13,8 +13,6 @@ class NotificationEvent extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var Company
      */
     protected $company;
@@ -61,8 +59,6 @@ class NotificationEvent extends \ArrayObject
      */
     protected $ruleName;
     /**
-     * 
-     *
      * @return Company
      */
     public function getCompany(): Company
@@ -70,8 +66,6 @@ class NotificationEvent extends \ArrayObject
         return $this->company;
     }
     /**
-     * 
-     *
      * @param Company $company
      *
      * @return self

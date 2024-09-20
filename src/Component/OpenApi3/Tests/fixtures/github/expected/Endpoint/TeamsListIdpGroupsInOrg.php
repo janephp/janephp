@@ -7,15 +7,14 @@ class TeamsListIdpGroupsInOrg extends \Github\Runtime\Client\BaseEndpoint implem
     protected $org;
     protected $team_slug;
     /**
-    * Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    
-    List IdP groups connected to a team on GitHub.
-    
-    **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
-    *
-    * @param string $org 
-    * @param string $teamSlug team_slug parameter
-    */
+     * Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+     *
+     * List IdP groups connected to a team on GitHub.
+     *
+     * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
+     * @param string $org
+     * @param string $teamSlug team_slug parameter
+     */
     public function __construct(string $org, string $teamSlug)
     {
         $this->org = $org;

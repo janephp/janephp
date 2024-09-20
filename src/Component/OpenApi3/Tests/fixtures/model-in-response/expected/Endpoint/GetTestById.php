@@ -6,8 +6,6 @@ class GetTestById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client
 {
     protected $id;
     /**
-     * 
-     *
      * @param int $id id
      */
     public function __construct(int $id)

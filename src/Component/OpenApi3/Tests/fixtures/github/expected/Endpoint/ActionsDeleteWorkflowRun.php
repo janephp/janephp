@@ -8,14 +8,13 @@ class ActionsDeleteWorkflowRun extends \Github\Runtime\Client\BaseEndpoint imple
     protected $repo;
     protected $run_id;
     /**
-    * Delete a specific workflow run. Anyone with write access to the repository can use this endpoint. If the repository is
-    private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:write` permission to use
-    this endpoint.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param int $runId 
-    */
+     * Delete a specific workflow run. Anyone with write access to the repository can use this endpoint. If the repository is
+     * private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:write` permission to use
+     * this endpoint.
+     * @param string $owner
+     * @param string $repo
+     * @param int $runId
+     */
     public function __construct(string $owner, string $repo, int $runId)
     {
         $this->owner = $owner;

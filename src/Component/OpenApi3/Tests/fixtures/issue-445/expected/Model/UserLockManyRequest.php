@@ -19,12 +19,12 @@ class UserLockManyRequest extends \ArrayObject
      */
     protected $userIds;
     /**
-    * Indicates the requested lock state of the users.
-    If _true_ was specified, the users will be _locked_. _False_ will unlock the previously _locked_ users.
-    Users which are already in desired state will be returned as errors.
-    *
-    * @var bool
-    */
+     * Indicates the requested lock state of the users.
+     * If _true_ was specified, the users will be _locked_. _False_ will unlock the previously _locked_ users.
+     * Users which are already in desired state will be returned as errors.
+     *
+     * @var bool
+     */
     protected $lock;
     /**
      * User IDs.
@@ -49,12 +49,12 @@ class UserLockManyRequest extends \ArrayObject
         return $this;
     }
     /**
-    * Indicates the requested lock state of the users.
-    If _true_ was specified, the users will be _locked_. _False_ will unlock the previously _locked_ users.
-    Users which are already in desired state will be returned as errors.
-    *
-    * @return bool
-    */
+     * Indicates the requested lock state of the users.
+     * If _true_ was specified, the users will be _locked_. _False_ will unlock the previously _locked_ users.
+     * Users which are already in desired state will be returned as errors.
+     *
+     * @return bool
+     */
     public function getLock(): bool
     {
         return $this->lock;

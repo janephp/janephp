@@ -13,26 +13,18 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200 extends \ArrayOb
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $totalCount;
     /**
-     * 
-     *
      * @var string
      */
     protected $repositorySelection;
     /**
-     * 
-     *
      * @var list<Repository>
      */
     protected $repositories;
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalCount(): int
@@ -40,8 +32,6 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200 extends \ArrayOb
         return $this->totalCount;
     }
     /**
-     * 
-     *
      * @param int $totalCount
      *
      * @return self
@@ -53,8 +43,6 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200 extends \ArrayOb
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRepositorySelection(): string
@@ -62,8 +50,6 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200 extends \ArrayOb
         return $this->repositorySelection;
     }
     /**
-     * 
-     *
      * @param string $repositorySelection
      *
      * @return self
@@ -75,8 +61,6 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200 extends \ArrayOb
         return $this;
     }
     /**
-     * 
-     *
      * @return list<Repository>
      */
     public function getRepositories(): array
@@ -84,8 +68,6 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200 extends \ArrayOb
         return $this->repositories;
     }
     /**
-     * 
-     *
      * @param list<Repository> $repositories
      *
      * @return self

@@ -13,26 +13,18 @@ class ConsoleMessage extends Message
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $command;
     /**
-     * 
-     *
      * @var list<TupleOfStringAndString>|null
      */
     protected $arguments;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $targetQueue;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCommand(): ?string
@@ -40,8 +32,6 @@ class ConsoleMessage extends Message
         return $this->command;
     }
     /**
-     * 
-     *
      * @param string|null $command
      *
      * @return self
@@ -53,8 +43,6 @@ class ConsoleMessage extends Message
         return $this;
     }
     /**
-     * 
-     *
      * @return list<TupleOfStringAndString>|null
      */
     public function getArguments(): ?array
@@ -62,8 +50,6 @@ class ConsoleMessage extends Message
         return $this->arguments;
     }
     /**
-     * 
-     *
      * @param list<TupleOfStringAndString>|null $arguments
      *
      * @return self
@@ -75,8 +61,6 @@ class ConsoleMessage extends Message
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTargetQueue(): ?string
@@ -84,8 +68,6 @@ class ConsoleMessage extends Message
         return $this->targetQueue;
     }
     /**
-     * 
-     *
      * @param string|null $targetQueue
      *
      * @return self

@@ -6,7 +6,6 @@ class ActivityListNotificationsForAuthenticatedUser extends \Github\Runtime\Clie
 {
     /**
      * List all notifications for the current user, sorted by most recently updated.
-     *
      * @param array $queryParameters {
      *     @var bool $all If `true`, show notifications marked as read.
      *     @var bool $participating If `true`, only shows notifications in which the user is directly participating or mentioned.

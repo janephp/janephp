@@ -13,20 +13,14 @@ class ReviewJsonldReviewWrite extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var mixed
      */
     protected $context;
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
@@ -69,8 +63,6 @@ class ReviewJsonldReviewWrite extends \ArrayObject
      */
     protected $publicationDate;
     /**
-     * 
-     *
      * @return mixed
      */
     public function getContext()
@@ -78,8 +70,6 @@ class ReviewJsonldReviewWrite extends \ArrayObject
         return $this->context;
     }
     /**
-     * 
-     *
      * @param mixed $context
      *
      * @return self
@@ -91,8 +81,6 @@ class ReviewJsonldReviewWrite extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -100,8 +88,6 @@ class ReviewJsonldReviewWrite extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -113,8 +99,6 @@ class ReviewJsonldReviewWrite extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -122,8 +106,6 @@ class ReviewJsonldReviewWrite extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self

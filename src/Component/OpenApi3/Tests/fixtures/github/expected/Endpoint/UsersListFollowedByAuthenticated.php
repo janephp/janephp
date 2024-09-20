@@ -6,7 +6,6 @@ class UsersListFollowedByAuthenticated extends \Github\Runtime\Client\BaseEndpoi
 {
     /**
      * Lists the people who the authenticated user follows.
-     *
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.

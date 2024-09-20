@@ -13,14 +13,10 @@ class Parenttype
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $inheritedProperty;
     /**
-     * 
-     *
      * @return string
      */
     public function getInheritedProperty(): string
@@ -28,8 +24,6 @@ class Parenttype
         return $this->inheritedProperty;
     }
     /**
-     * 
-     *
      * @param string $inheritedProperty
      *
      * @return self

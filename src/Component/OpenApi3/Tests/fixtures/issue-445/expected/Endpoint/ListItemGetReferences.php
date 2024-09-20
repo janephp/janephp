@@ -7,9 +7,8 @@ class ListItemGetReferences extends \PicturePark\API\Runtime\Client\BaseEndpoint
     protected $id;
     /**
      * Gets the references (list items, contents) to a single list item.
-     *
      * @param string $id The ID of the list item.
-     * @param \PicturePark\API\Model\ListItemReferencesRequest $requestBody 
+     * @param \PicturePark\API\Model\ListItemReferencesRequest $requestBody
      */
     public function __construct(string $id, \PicturePark\API\Model\ListItemReferencesRequest $requestBody)
     {

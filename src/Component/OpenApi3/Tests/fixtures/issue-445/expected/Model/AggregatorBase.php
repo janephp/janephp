@@ -37,8 +37,6 @@ class AggregatorBase
      */
     protected $filter;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
@@ -119,8 +117,6 @@ class AggregatorBase
         $this->filter = $filter;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -128,8 +124,6 @@ class AggregatorBase
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      */
     public function setKind(string $kind)

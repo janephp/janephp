@@ -7,7 +7,6 @@ class ContainerResize extends \Docker\Api\Runtime\Client\BaseEndpoint implements
     protected $id;
     /**
      * Resize the TTY for a container.
-     *
      * @param string $id ID or name of the container
      * @param array $queryParameters {
      *     @var int $h Height of the TTY session in characters

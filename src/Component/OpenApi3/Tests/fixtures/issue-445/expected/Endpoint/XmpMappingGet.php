@@ -7,7 +7,6 @@ class XmpMappingGet extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     protected $id;
     /**
      * Gets the xmp mapping by the xmp mapping ID.
-     *
      * @param string $id Xmp mapping ID.
      */
     public function __construct(string $id)

@@ -13,14 +13,10 @@ class Topic extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $names;
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getNames(): array
@@ -28,8 +24,6 @@ class Topic extends \ArrayObject
         return $this->names;
     }
     /**
-     * 
-     *
      * @param list<string> $names
      *
      * @return self

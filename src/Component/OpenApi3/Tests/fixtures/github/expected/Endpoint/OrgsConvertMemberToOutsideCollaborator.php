@@ -8,9 +8,8 @@ class OrgsConvertMemberToOutsideCollaborator extends \Github\Runtime\Client\Base
     protected $username;
     /**
      * When an organization member is converted to an outside collaborator, they'll only have access to the repositories that their current team membership allows. The user will no longer be a member of the organization. For more information, see "[Converting an organization member to an outside collaborator](https://help.github.com/articles/converting-an-organization-member-to-an-outside-collaborator/)".
-     *
-     * @param string $org 
-     * @param string $username 
+     * @param string $org
+     * @param string $username
      */
     public function __construct(string $org, string $username)
     {

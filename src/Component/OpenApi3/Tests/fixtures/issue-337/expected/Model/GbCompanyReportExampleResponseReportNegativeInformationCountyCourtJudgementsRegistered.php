@@ -13,20 +13,14 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredExactItem>
      */
     protected $exact;
     /**
-     * 
-     *
      * @var list<GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredPossibleItem>
      */
     protected $possible;
     /**
-     * 
-     *
      * @return list<GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredExactItem>
      */
     public function getExact(): array
@@ -34,8 +28,6 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         return $this->exact;
     }
     /**
-     * 
-     *
      * @param list<GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredExactItem> $exact
      *
      * @return self
@@ -47,8 +39,6 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         return $this;
     }
     /**
-     * 
-     *
      * @return list<GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredPossibleItem>
      */
     public function getPossible(): array
@@ -56,8 +46,6 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         return $this->possible;
     }
     /**
-     * 
-     *
      * @param list<GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredPossibleItem> $possible
      *
      * @return self

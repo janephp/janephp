@@ -7,11 +7,9 @@ class PatchParentsByParentIdChildChildId extends \Jane\Component\OpenApi3\Tests\
     protected $parent_id;
     protected $child_id;
     /**
-     * 
-     *
-     * @param string $parentId 
-     * @param string $childId 
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\ParentsParentIdChildChildIdPatchBody $requestBody 
+     * @param string $parentId
+     * @param string $childId
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\ParentsParentIdChildChildIdPatchBody $requestBody
      */
     public function __construct(string $parentId, string $childId, \Jane\Component\OpenApi3\Tests\Expected\Model\ParentsParentIdChildChildIdPatchBody $requestBody)
     {

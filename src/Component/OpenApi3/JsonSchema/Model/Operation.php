@@ -13,80 +13,54 @@ class Operation extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string[]|null
      */
     protected $tags;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $summary;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var ExternalDocumentation|null
      */
     protected $externalDocs;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $operationId;
     /**
-     * 
-     *
      * @var Parameter[]|Reference[]|null
      */
     protected $parameters;
     /**
-     * 
-     *
      * @var RequestBody|Reference|null
      */
     protected $requestBody;
     /**
-     * 
-     *
      * @var Responses|null
      */
     protected $responses;
     /**
-     * 
-     *
      * @var array<string, mixed[]|Reference>|null
      */
     protected $callbacks;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $deprecated = false;
     /**
-     * 
-     *
      * @var array<string, string[]>[]|null
      */
     protected $security;
     /**
-     * 
-     *
      * @var Server[]|null
      */
     protected $servers;
     /**
-     * 
-     *
      * @return string[]|null
      */
     public function getTags() : ?array
@@ -94,8 +68,6 @@ class Operation extends \ArrayObject
         return $this->tags;
     }
     /**
-     * 
-     *
      * @param string[]|null $tags
      *
      * @return self
@@ -107,8 +79,6 @@ class Operation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getSummary() : ?string
@@ -116,8 +86,6 @@ class Operation extends \ArrayObject
         return $this->summary;
     }
     /**
-     * 
-     *
      * @param string|null $summary
      *
      * @return self
@@ -129,8 +97,6 @@ class Operation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription() : ?string
@@ -138,8 +104,6 @@ class Operation extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -151,8 +115,6 @@ class Operation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ExternalDocumentation|null
      */
     public function getExternalDocs() : ?ExternalDocumentation
@@ -160,8 +122,6 @@ class Operation extends \ArrayObject
         return $this->externalDocs;
     }
     /**
-     * 
-     *
      * @param ExternalDocumentation|null $externalDocs
      *
      * @return self
@@ -173,8 +133,6 @@ class Operation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getOperationId() : ?string
@@ -182,8 +140,6 @@ class Operation extends \ArrayObject
         return $this->operationId;
     }
     /**
-     * 
-     *
      * @param string|null $operationId
      *
      * @return self
@@ -195,8 +151,6 @@ class Operation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Parameter[]|Reference[]|null
      */
     public function getParameters() : ?array
@@ -204,8 +158,6 @@ class Operation extends \ArrayObject
         return $this->parameters;
     }
     /**
-     * 
-     *
      * @param Parameter[]|Reference[]|null $parameters
      *
      * @return self
@@ -217,8 +169,6 @@ class Operation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return RequestBody|Reference|null
      */
     public function getRequestBody()
@@ -226,8 +176,6 @@ class Operation extends \ArrayObject
         return $this->requestBody;
     }
     /**
-     * 
-     *
      * @param RequestBody|Reference|null $requestBody
      *
      * @return self
@@ -239,8 +187,6 @@ class Operation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Responses|null
      */
     public function getResponses() : ?Responses
@@ -248,8 +194,6 @@ class Operation extends \ArrayObject
         return $this->responses;
     }
     /**
-     * 
-     *
      * @param Responses|null $responses
      *
      * @return self
@@ -261,8 +205,6 @@ class Operation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, mixed[]|Reference>|null
      */
     public function getCallbacks() : ?iterable
@@ -270,8 +212,6 @@ class Operation extends \ArrayObject
         return $this->callbacks;
     }
     /**
-     * 
-     *
      * @param array<string, mixed[]|Reference>|null $callbacks
      *
      * @return self
@@ -283,8 +223,6 @@ class Operation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getDeprecated() : ?bool
@@ -292,8 +230,6 @@ class Operation extends \ArrayObject
         return $this->deprecated;
     }
     /**
-     * 
-     *
      * @param bool|null $deprecated
      *
      * @return self
@@ -305,8 +241,6 @@ class Operation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, string[]>[]|null
      */
     public function getSecurity() : ?array
@@ -314,8 +248,6 @@ class Operation extends \ArrayObject
         return $this->security;
     }
     /**
-     * 
-     *
      * @param array<string, string[]>[]|null $security
      *
      * @return self
@@ -327,8 +259,6 @@ class Operation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Server[]|null
      */
     public function getServers() : ?array
@@ -336,8 +266,6 @@ class Operation extends \ArrayObject
         return $this->servers;
     }
     /**
-     * 
-     *
      * @param Server[]|null $servers
      *
      * @return self

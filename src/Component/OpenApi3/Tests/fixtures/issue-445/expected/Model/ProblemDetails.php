@@ -13,44 +13,30 @@ class ProblemDetails
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $type;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $title;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $status;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $detail;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $instance;
     /**
-     * 
-     *
      * @var array<string, mixed>|null
      */
     protected $extensions;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getType(): ?string
@@ -58,8 +44,6 @@ class ProblemDetails
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string|null $type
      *
      * @return self
@@ -71,8 +55,6 @@ class ProblemDetails
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTitle(): ?string
@@ -80,8 +62,6 @@ class ProblemDetails
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string|null $title
      *
      * @return self
@@ -93,8 +73,6 @@ class ProblemDetails
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getStatus(): ?int
@@ -102,8 +80,6 @@ class ProblemDetails
         return $this->status;
     }
     /**
-     * 
-     *
      * @param int|null $status
      *
      * @return self
@@ -115,8 +91,6 @@ class ProblemDetails
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDetail(): ?string
@@ -124,8 +98,6 @@ class ProblemDetails
         return $this->detail;
     }
     /**
-     * 
-     *
      * @param string|null $detail
      *
      * @return self
@@ -137,8 +109,6 @@ class ProblemDetails
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getInstance(): ?string
@@ -146,8 +116,6 @@ class ProblemDetails
         return $this->instance;
     }
     /**
-     * 
-     *
      * @param string|null $instance
      *
      * @return self
@@ -159,8 +127,6 @@ class ProblemDetails
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, mixed>|null
      */
     public function getExtensions(): ?iterable
@@ -168,8 +134,6 @@ class ProblemDetails
         return $this->extensions;
     }
     /**
-     * 
-     *
      * @param array<string, mixed>|null $extensions
      *
      * @return self

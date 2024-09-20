@@ -13,11 +13,11 @@ class NGramTransformation extends BusinessRuleTransformation
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * Maximum size of n-grams to produce.
-    Settings this to 3 will produce unigrams, bigrams, trigrams.
-    *
-    * @var int
-    */
+     * Maximum size of n-grams to produce.
+     * Settings this to 3 will produce unigrams, bigrams, trigrams.
+     *
+     * @var int
+     */
     protected $size;
     /**
      * Minimum length of a word to be considered.
@@ -32,11 +32,11 @@ class NGramTransformation extends BusinessRuleTransformation
      */
     protected $maxWordLength;
     /**
-    * Maximum size of n-grams to produce.
-    Settings this to 3 will produce unigrams, bigrams, trigrams.
-    *
-    * @return int
-    */
+     * Maximum size of n-grams to produce.
+     * Settings this to 3 will produce unigrams, bigrams, trigrams.
+     *
+     * @return int
+     */
     public function getSize(): int
     {
         return $this->size;

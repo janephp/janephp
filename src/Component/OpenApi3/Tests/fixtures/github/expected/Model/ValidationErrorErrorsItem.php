@@ -13,44 +13,30 @@ class ValidationErrorErrorsItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $resource;
     /**
-     * 
-     *
      * @var string
      */
     protected $field;
     /**
-     * 
-     *
      * @var string
      */
     protected $message;
     /**
-     * 
-     *
      * @var string
      */
     protected $code;
     /**
-     * 
-     *
      * @var int
      */
     protected $index;
     /**
-     * 
-     *
      * @var mixed
      */
     protected $value;
     /**
-     * 
-     *
      * @return string
      */
     public function getResource(): string
@@ -58,8 +44,6 @@ class ValidationErrorErrorsItem extends \ArrayObject
         return $this->resource;
     }
     /**
-     * 
-     *
      * @param string $resource
      *
      * @return self
@@ -71,8 +55,6 @@ class ValidationErrorErrorsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getField(): string
@@ -80,8 +62,6 @@ class ValidationErrorErrorsItem extends \ArrayObject
         return $this->field;
     }
     /**
-     * 
-     *
      * @param string $field
      *
      * @return self
@@ -93,8 +73,6 @@ class ValidationErrorErrorsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMessage(): string
@@ -102,8 +80,6 @@ class ValidationErrorErrorsItem extends \ArrayObject
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string $message
      *
      * @return self
@@ -115,8 +91,6 @@ class ValidationErrorErrorsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCode(): string
@@ -124,8 +98,6 @@ class ValidationErrorErrorsItem extends \ArrayObject
         return $this->code;
     }
     /**
-     * 
-     *
      * @param string $code
      *
      * @return self
@@ -137,8 +109,6 @@ class ValidationErrorErrorsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getIndex(): int
@@ -146,8 +116,6 @@ class ValidationErrorErrorsItem extends \ArrayObject
         return $this->index;
     }
     /**
-     * 
-     *
      * @param int $index
      *
      * @return self
@@ -159,8 +127,6 @@ class ValidationErrorErrorsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getValue()
@@ -168,8 +134,6 @@ class ValidationErrorErrorsItem extends \ArrayObject
         return $this->value;
     }
     /**
-     * 
-     *
      * @param mixed $value
      *
      * @return self

@@ -7,9 +7,8 @@ class ContentPermissionSetUpdate extends \PicturePark\API\Runtime\Client\BaseEnd
     protected $id;
     /**
      * Updates the content permission set specified by the ID and based on supplied request.
-     *
      * @param string $id Content permission set ID.
-     * @param \PicturePark\API\Model\ContentPermissionSetUpdateRequest $requestBody 
+     * @param \PicturePark\API\Model\ContentPermissionSetUpdateRequest $requestBody
      */
     public function __construct(string $id, \PicturePark\API\Model\ContentPermissionSetUpdateRequest $requestBody)
     {

@@ -25,8 +25,6 @@ class PermissionSetSearchRequest
      */
     protected $searchBehaviors;
     /**
-     * 
-     *
      * @var list<SortInfo>|null
      */
     protected $sort;
@@ -43,8 +41,6 @@ class PermissionSetSearchRequest
      */
     protected $pageToken;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $filter;
@@ -55,18 +51,18 @@ class PermissionSetSearchRequest
      */
     protected $rightFilter;
     /**
-    * Enable debug mode: additional debug information regarding the query execution and reason of the matched documents are returned in the result.
-    Warning! It severely affects performance.
-    *
-    * @var bool
-    */
+     * Enable debug mode: additional debug information regarding the query execution and reason of the matched documents are returned in the result.
+     * Warning! It severely affects performance.
+     *
+     * @var bool
+     */
     protected $debugMode = false;
     /**
-    * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
-    If not specified, all metadata languages defined in the system are used.
-    *
-    * @var list<string>|null
-    */
+     * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
+     * If not specified, all metadata languages defined in the system are used.
+     *
+     * @var list<string>|null
+     */
     protected $searchLanguages;
     /**
      * The string used to query the data. The Lucene query string syntax is supported.
@@ -113,8 +109,6 @@ class PermissionSetSearchRequest
         return $this;
     }
     /**
-     * 
-     *
      * @return list<SortInfo>|null
      */
     public function getSort(): ?array
@@ -122,8 +116,6 @@ class PermissionSetSearchRequest
         return $this->sort;
     }
     /**
-     * 
-     *
      * @param list<SortInfo>|null $sort
      *
      * @return self
@@ -179,8 +171,6 @@ class PermissionSetSearchRequest
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getFilter()
@@ -188,8 +178,6 @@ class PermissionSetSearchRequest
         return $this->filter;
     }
     /**
-     * 
-     *
      * @param mixed $filter
      *
      * @return self
@@ -223,11 +211,11 @@ class PermissionSetSearchRequest
         return $this;
     }
     /**
-    * Enable debug mode: additional debug information regarding the query execution and reason of the matched documents are returned in the result.
-    Warning! It severely affects performance.
-    *
-    * @return bool
-    */
+     * Enable debug mode: additional debug information regarding the query execution and reason of the matched documents are returned in the result.
+     * Warning! It severely affects performance.
+     *
+     * @return bool
+     */
     public function getDebugMode(): bool
     {
         return $this->debugMode;
@@ -247,11 +235,11 @@ class PermissionSetSearchRequest
         return $this;
     }
     /**
-    * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
-    If not specified, all metadata languages defined in the system are used.
-    *
-    * @return list<string>|null
-    */
+     * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
+     * If not specified, all metadata languages defined in the system are used.
+     *
+     * @return list<string>|null
+     */
     public function getSearchLanguages(): ?array
     {
         return $this->searchLanguages;

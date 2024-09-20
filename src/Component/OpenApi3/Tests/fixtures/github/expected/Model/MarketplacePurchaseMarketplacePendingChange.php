@@ -13,26 +13,18 @@ class MarketplacePurchaseMarketplacePendingChange extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var bool
      */
     protected $isInstalled;
     /**
-     * 
-     *
      * @var string
      */
     protected $effectiveDate;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $unitCount;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
@@ -43,8 +35,6 @@ class MarketplacePurchaseMarketplacePendingChange extends \ArrayObject
      */
     protected $plan;
     /**
-     * 
-     *
      * @return bool
      */
     public function getIsInstalled(): bool
@@ -52,8 +42,6 @@ class MarketplacePurchaseMarketplacePendingChange extends \ArrayObject
         return $this->isInstalled;
     }
     /**
-     * 
-     *
      * @param bool $isInstalled
      *
      * @return self
@@ -65,8 +53,6 @@ class MarketplacePurchaseMarketplacePendingChange extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEffectiveDate(): string
@@ -74,8 +60,6 @@ class MarketplacePurchaseMarketplacePendingChange extends \ArrayObject
         return $this->effectiveDate;
     }
     /**
-     * 
-     *
      * @param string $effectiveDate
      *
      * @return self
@@ -87,8 +71,6 @@ class MarketplacePurchaseMarketplacePendingChange extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getUnitCount(): ?int
@@ -96,8 +78,6 @@ class MarketplacePurchaseMarketplacePendingChange extends \ArrayObject
         return $this->unitCount;
     }
     /**
-     * 
-     *
      * @param int|null $unitCount
      *
      * @return self
@@ -109,8 +89,6 @@ class MarketplacePurchaseMarketplacePendingChange extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -118,8 +96,6 @@ class MarketplacePurchaseMarketplacePendingChange extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self

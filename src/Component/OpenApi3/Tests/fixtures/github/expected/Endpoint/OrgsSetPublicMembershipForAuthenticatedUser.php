@@ -7,13 +7,12 @@ class OrgsSetPublicMembershipForAuthenticatedUser extends \Github\Runtime\Client
     protected $org;
     protected $username;
     /**
-    * The user can publicize their own membership. (A user cannot publicize the membership for another user.)
-    
-    Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://developer.github.com/v3/#http-verbs)."
-    *
-    * @param string $org 
-    * @param string $username 
-    */
+     * The user can publicize their own membership. (A user cannot publicize the membership for another user.)
+     *
+     * Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://developer.github.com/v3/#http-verbs)."
+     * @param string $org
+     * @param string $username
+     */
     public function __construct(string $org, string $username)
     {
         $this->org = $org;

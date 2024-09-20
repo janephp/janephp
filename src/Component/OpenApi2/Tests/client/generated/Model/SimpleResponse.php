@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApi2\Tests\Client\Model;
 class SimpleResponse
 {
     /**
+<<<<<<< HEAD
      * @var array
      */
     protected $initialized = [];
@@ -15,18 +16,19 @@ class SimpleResponse
     /**
      * 
      *
+||||||| parent of 6c3127df5 (Update fixtures for tests)
+     * 
+     *
+=======
+>>>>>>> 6c3127df5 (Update fixtures for tests)
      * @var string
      */
     protected $foo;
     /**
-     * 
-     *
      * @var bool
      */
     protected $baz;
     /**
-     * 
-     *
      * @return string
      */
     public function getFoo(): string
@@ -34,8 +36,6 @@ class SimpleResponse
         return $this->foo;
     }
     /**
-     * 
-     *
      * @param string $foo
      *
      * @return self
@@ -47,8 +47,6 @@ class SimpleResponse
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getBaz(): bool
@@ -56,8 +54,6 @@ class SimpleResponse
         return $this->baz;
     }
     /**
-     * 
-     *
      * @param bool $baz
      *
      * @return self

@@ -13,38 +13,26 @@ class FullTextEntities extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<UrlEntity>
      */
     protected $urls;
     /**
-     * 
-     *
      * @var list<HashtagEntity>
      */
     protected $hashtags;
     /**
-     * 
-     *
      * @var list<MentionEntity>
      */
     protected $mentions;
     /**
-     * 
-     *
      * @var list<CashtagEntity>
      */
     protected $cashtags;
     /**
-     * 
-     *
      * @var list<FullTextEntitiesAnnotationsItem>
      */
     protected $annotations;
     /**
-     * 
-     *
      * @return list<UrlEntity>
      */
     public function getUrls(): array
@@ -52,8 +40,6 @@ class FullTextEntities extends \ArrayObject
         return $this->urls;
     }
     /**
-     * 
-     *
      * @param list<UrlEntity> $urls
      *
      * @return self
@@ -65,8 +51,6 @@ class FullTextEntities extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<HashtagEntity>
      */
     public function getHashtags(): array
@@ -74,8 +58,6 @@ class FullTextEntities extends \ArrayObject
         return $this->hashtags;
     }
     /**
-     * 
-     *
      * @param list<HashtagEntity> $hashtags
      *
      * @return self
@@ -87,8 +69,6 @@ class FullTextEntities extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<MentionEntity>
      */
     public function getMentions(): array
@@ -96,8 +76,6 @@ class FullTextEntities extends \ArrayObject
         return $this->mentions;
     }
     /**
-     * 
-     *
      * @param list<MentionEntity> $mentions
      *
      * @return self
@@ -109,8 +87,6 @@ class FullTextEntities extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<CashtagEntity>
      */
     public function getCashtags(): array
@@ -118,8 +94,6 @@ class FullTextEntities extends \ArrayObject
         return $this->cashtags;
     }
     /**
-     * 
-     *
      * @param list<CashtagEntity> $cashtags
      *
      * @return self
@@ -131,8 +105,6 @@ class FullTextEntities extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<FullTextEntitiesAnnotationsItem>
      */
     public function getAnnotations(): array
@@ -140,8 +112,6 @@ class FullTextEntities extends \ArrayObject
         return $this->annotations;
     }
     /**
-     * 
-     *
      * @param list<FullTextEntitiesAnnotationsItem> $annotations
      *
      * @return self

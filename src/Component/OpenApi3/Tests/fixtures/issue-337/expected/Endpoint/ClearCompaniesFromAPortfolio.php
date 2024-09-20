@@ -7,9 +7,8 @@ class ClearCompaniesFromAPortfolio extends \CreditSafe\API\Runtime\Client\BaseEn
     protected $portfolioId;
     /**
      * Delete companies from current portfolio
-     *
      * @param string $portfolioId The unique identifier of the portfolio you want to delete companies from, obtained from `/portfolios`.
-     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody 
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody
      * @param array $queryParameters {
      *     @var bool $clearAll When ClearAll queryparameter is False,Companies List needs to be passed. When ClearAll queryparameter is True, Companies List must be empty. All companies will be deleted
      * }

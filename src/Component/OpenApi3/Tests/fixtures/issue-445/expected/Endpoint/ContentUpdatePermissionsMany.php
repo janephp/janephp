@@ -5,11 +5,10 @@ namespace PicturePark\API\Endpoint;
 class ContentUpdatePermissionsMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Updates the content permission sets of multiple contents. To get a list of available content permission sets, see [Permissions](#operation/Permission_SearchContentPermissions)
-    The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param \PicturePark\API\Model\ContentPermissionsUpdateManyRequest $requestBody 
-    */
+     * Updates the content permission sets of multiple contents. To get a list of available content permission sets, see [Permissions](#operation/Permission_SearchContentPermissions)
+     * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param \PicturePark\API\Model\ContentPermissionsUpdateManyRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\ContentPermissionsUpdateManyRequest $requestBody)
     {
         $this->body = $requestBody;

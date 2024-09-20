@@ -8,10 +8,9 @@ class ReposCreateDeployKey extends \Github\Runtime\Client\BaseEndpoint implement
     protected $repo;
     /**
      * You can create a read-only deploy key.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param null|\Github\Model\ReposOwnerRepoKeysPostBody $requestBody 
+     * @param string $owner
+     * @param string $repo
+     * @param null|\Github\Model\ReposOwnerRepoKeysPostBody $requestBody
      */
     public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoKeysPostBody $requestBody = null)
     {

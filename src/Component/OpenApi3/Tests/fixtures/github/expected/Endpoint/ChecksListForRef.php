@@ -8,21 +8,20 @@ class ChecksListForRef extends \Github\Runtime\Client\BaseEndpoint implements \G
     protected $repo;
     protected $ref;
     /**
-    * **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
-    
-    Lists check runs for a commit ref. The `ref` can be a SHA, branch name, or a tag name. GitHub Apps must have the `checks:read` permission on a private repository or pull access to a public repository to get check runs. OAuth Apps and authenticated users must have the `repo` scope to get check runs in a private repository.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param string $ref ref+ parameter
-    * @param array $queryParameters {
-    *     @var string $check_name Returns check runs with the specified `name`.
-    *     @var string $status Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or `completed`.
-    *     @var string $filter Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most recent check runs) or `all`.
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
-    */
+     * **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
+     *
+     * Lists check runs for a commit ref. The `ref` can be a SHA, branch name, or a tag name. GitHub Apps must have the `checks:read` permission on a private repository or pull access to a public repository to get check runs. OAuth Apps and authenticated users must have the `repo` scope to get check runs in a private repository.
+     * @param string $owner
+     * @param string $repo
+     * @param string $ref ref+ parameter
+     * @param array $queryParameters {
+     *     @var string $check_name Returns check runs with the specified `name`.
+     *     @var string $status Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or `completed`.
+     *     @var string $filter Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most recent check runs) or `all`.
+     *     @var int $per_page Results per page (max 100)
+     *     @var int $page Page number of the results to fetch.
+     * }
+     */
     public function __construct(string $owner, string $repo, string $ref, array $queryParameters = [])
     {
         $this->owner = $owner;

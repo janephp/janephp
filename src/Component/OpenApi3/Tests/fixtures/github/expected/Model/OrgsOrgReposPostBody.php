@@ -37,11 +37,11 @@ class OrgsOrgReposPostBody extends \ArrayObject
      */
     protected $private = false;
     /**
-    * Can be `public` or `private`. If your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `visibility` can also be `internal`. For more information, see "[Creating an internal repository](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-repository-visibility#about-internal-repositories)" in the GitHub Help documentation.  
-    The `visibility` parameter overrides the `private` parameter when you use both parameters with the `nebula-preview` preview header.
-    *
-    * @var string
-    */
+     * Can be `public` or `private`. If your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `visibility` can also be `internal`. For more information, see "[Creating an internal repository](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-repository-visibility#about-internal-repositories)" in the GitHub Help documentation.
+     * The `visibility` parameter overrides the `private` parameter when you use both parameters with the `nebula-preview` preview header.
+     *
+     * @var string
+     */
     protected $visibility;
     /**
      * Either `true` to enable issues for this repository or `false` to disable them.
@@ -204,11 +204,11 @@ class OrgsOrgReposPostBody extends \ArrayObject
         return $this;
     }
     /**
-    * Can be `public` or `private`. If your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `visibility` can also be `internal`. For more information, see "[Creating an internal repository](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-repository-visibility#about-internal-repositories)" in the GitHub Help documentation.  
-    The `visibility` parameter overrides the `private` parameter when you use both parameters with the `nebula-preview` preview header.
-    *
-    * @return string
-    */
+     * Can be `public` or `private`. If your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `visibility` can also be `internal`. For more information, see "[Creating an internal repository](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-repository-visibility#about-internal-repositories)" in the GitHub Help documentation.
+     * The `visibility` parameter overrides the `private` parameter when you use both parameters with the `nebula-preview` preview header.
+     *
+     * @return string
+     */
     public function getVisibility(): string
     {
         return $this->visibility;

@@ -8,10 +8,8 @@ class IssuesGetEvent extends \Github\Runtime\Client\BaseEndpoint implements \Git
     protected $repo;
     protected $event_id;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $eventId event_id parameter
      */
     public function __construct(string $owner, string $repo, int $eventId)

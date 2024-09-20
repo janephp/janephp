@@ -5,11 +5,10 @@ namespace PicturePark\API\Endpoint;
 class ContentTransferOwnershipMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Transfers ownerships of multiple contents to specified users. The target users must have the ManageContent UserRight.
-    The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param \PicturePark\API\Model\ContentOwnershipTransferManyRequest $requestBody 
-    */
+     * Transfers ownerships of multiple contents to specified users. The target users must have the ManageContent UserRight.
+     * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param \PicturePark\API\Model\ContentOwnershipTransferManyRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\ContentOwnershipTransferManyRequest $requestBody)
     {
         $this->body = $requestBody;

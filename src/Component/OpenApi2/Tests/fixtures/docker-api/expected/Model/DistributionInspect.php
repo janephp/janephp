@@ -13,26 +13,27 @@ class DistributionInspect
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * A descriptor struct containing digest, media type, and size, as defined in
-    the [OCI Content Descriptors Specification](https://github.com/opencontainers/image-spec/blob/v1.0.1/descriptor.md).
-    
-    *
-    * @var OCIDescriptor
-    */
+     * A descriptor struct containing digest, media type, and size, as defined in
+     * the [OCI Content Descriptors Specification](https://github.com/opencontainers/image-spec/blob/v1.0.1/descriptor.md).
+     * 
+     *
+     * @var OCIDescriptor
+     */
     protected $descriptor;
     /**
      * An array containing all platforms supported by the image.
+     * 
      *
      * @var list<OCIPlatform>
      */
     protected $platforms;
     /**
-    * A descriptor struct containing digest, media type, and size, as defined in
-    the [OCI Content Descriptors Specification](https://github.com/opencontainers/image-spec/blob/v1.0.1/descriptor.md).
-    
-    *
-    * @return OCIDescriptor
-    */
+     * A descriptor struct containing digest, media type, and size, as defined in
+     * the [OCI Content Descriptors Specification](https://github.com/opencontainers/image-spec/blob/v1.0.1/descriptor.md).
+     * 
+     *
+     * @return OCIDescriptor
+     */
     public function getDescriptor(): OCIDescriptor
     {
         return $this->descriptor;
@@ -54,6 +55,7 @@ class DistributionInspect
     }
     /**
      * An array containing all platforms supported by the image.
+     * 
      *
      * @return list<OCIPlatform>
      */

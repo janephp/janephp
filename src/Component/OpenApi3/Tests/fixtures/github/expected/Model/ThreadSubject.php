@@ -13,32 +13,22 @@ class ThreadSubject extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $title;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $latestCommentUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @return string
      */
     public function getTitle(): string
@@ -46,8 +36,6 @@ class ThreadSubject extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string $title
      *
      * @return self
@@ -59,8 +47,6 @@ class ThreadSubject extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -68,8 +54,6 @@ class ThreadSubject extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -81,8 +65,6 @@ class ThreadSubject extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLatestCommentUrl(): string
@@ -90,8 +72,6 @@ class ThreadSubject extends \ArrayObject
         return $this->latestCommentUrl;
     }
     /**
-     * 
-     *
      * @param string $latestCommentUrl
      *
      * @return self
@@ -103,8 +83,6 @@ class ThreadSubject extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -112,8 +90,6 @@ class ThreadSubject extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self

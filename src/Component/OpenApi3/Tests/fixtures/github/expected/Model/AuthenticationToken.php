@@ -25,8 +25,6 @@ class AuthenticationToken extends \ArrayObject
      */
     protected $expiresAt;
     /**
-     * 
-     *
      * @var array<string, mixed>
      */
     protected $permissions;
@@ -37,8 +35,6 @@ class AuthenticationToken extends \ArrayObject
      */
     protected $repositories;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $singleFile;
@@ -93,8 +89,6 @@ class AuthenticationToken extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, mixed>
      */
     public function getPermissions(): iterable
@@ -102,8 +96,6 @@ class AuthenticationToken extends \ArrayObject
         return $this->permissions;
     }
     /**
-     * 
-     *
      * @param array<string, mixed> $permissions
      *
      * @return self
@@ -137,8 +129,6 @@ class AuthenticationToken extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getSingleFile(): ?string
@@ -146,8 +136,6 @@ class AuthenticationToken extends \ArrayObject
         return $this->singleFile;
     }
     /**
-     * 
-     *
      * @param string|null $singleFile
      *
      * @return self

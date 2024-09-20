@@ -8,9 +8,8 @@ class ActivityStarRepoForAuthenticatedUser extends \Github\Runtime\Client\BaseEn
     protected $repo;
     /**
      * Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://developer.github.com/v3/#http-verbs)."
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      */
     public function __construct(string $owner, string $repo)
     {

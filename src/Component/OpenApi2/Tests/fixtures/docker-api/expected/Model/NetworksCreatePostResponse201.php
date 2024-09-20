@@ -19,8 +19,6 @@ class NetworksCreatePostResponse201
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $warning;
@@ -47,8 +45,6 @@ class NetworksCreatePostResponse201
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getWarning(): string
@@ -56,8 +52,6 @@ class NetworksCreatePostResponse201
         return $this->warning;
     }
     /**
-     * 
-     *
      * @param string $warning
      *
      * @return self

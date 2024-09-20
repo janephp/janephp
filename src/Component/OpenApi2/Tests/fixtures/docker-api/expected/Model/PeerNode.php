@@ -20,6 +20,7 @@ class PeerNode
     protected $nodeID;
     /**
      * IP address and ports at which this node can be reached.
+     * 
      *
      * @var string
      */
@@ -48,6 +49,7 @@ class PeerNode
     }
     /**
      * IP address and ports at which this node can be reached.
+     * 
      *
      * @return string
      */

@@ -13,50 +13,34 @@ class MarketplacePurchase extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $login;
     /**
-     * 
-     *
      * @var string
      */
     protected $organizationBillingEmail;
     /**
-     * 
-     *
      * @var MarketplacePurchaseMarketplacePendingChange|null
      */
     protected $marketplacePendingChange;
     /**
-     * 
-     *
      * @var MarketplacePurchaseMarketplacePurchase
      */
     protected $marketplacePurchase;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -64,8 +48,6 @@ class MarketplacePurchase extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -77,8 +59,6 @@ class MarketplacePurchase extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -86,8 +66,6 @@ class MarketplacePurchase extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -99,8 +77,6 @@ class MarketplacePurchase extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -108,8 +84,6 @@ class MarketplacePurchase extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -121,8 +95,6 @@ class MarketplacePurchase extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLogin(): string
@@ -130,8 +102,6 @@ class MarketplacePurchase extends \ArrayObject
         return $this->login;
     }
     /**
-     * 
-     *
      * @param string $login
      *
      * @return self
@@ -143,8 +113,6 @@ class MarketplacePurchase extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getOrganizationBillingEmail(): string
@@ -152,8 +120,6 @@ class MarketplacePurchase extends \ArrayObject
         return $this->organizationBillingEmail;
     }
     /**
-     * 
-     *
      * @param string $organizationBillingEmail
      *
      * @return self
@@ -165,8 +131,6 @@ class MarketplacePurchase extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return MarketplacePurchaseMarketplacePendingChange|null
      */
     public function getMarketplacePendingChange(): ?MarketplacePurchaseMarketplacePendingChange
@@ -174,8 +138,6 @@ class MarketplacePurchase extends \ArrayObject
         return $this->marketplacePendingChange;
     }
     /**
-     * 
-     *
      * @param MarketplacePurchaseMarketplacePendingChange|null $marketplacePendingChange
      *
      * @return self
@@ -187,8 +149,6 @@ class MarketplacePurchase extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return MarketplacePurchaseMarketplacePurchase
      */
     public function getMarketplacePurchase(): MarketplacePurchaseMarketplacePurchase
@@ -196,8 +156,6 @@ class MarketplacePurchase extends \ArrayObject
         return $this->marketplacePurchase;
     }
     /**
-     * 
-     *
      * @param MarketplacePurchaseMarketplacePurchase $marketplacePurchase
      *
      * @return self

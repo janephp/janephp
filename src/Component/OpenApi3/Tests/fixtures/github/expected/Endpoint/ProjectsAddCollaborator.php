@@ -8,10 +8,9 @@ class ProjectsAddCollaborator extends \Github\Runtime\Client\BaseEndpoint implem
     protected $username;
     /**
      * Adds a collaborator to an organization project and sets their permission level. You must be an organization owner or a project `admin` to add a collaborator.
-     *
-     * @param int $projectId 
-     * @param string $username 
-     * @param null|\Github\Model\ProjectsProjectIdCollaboratorsUsernamePutBody $requestBody 
+     * @param int $projectId
+     * @param string $username
+     * @param null|\Github\Model\ProjectsProjectIdCollaboratorsUsernamePutBody $requestBody
      */
     public function __construct(int $projectId, string $username, ?\Github\Model\ProjectsProjectIdCollaboratorsUsernamePutBody $requestBody = null)
     {

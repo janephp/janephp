@@ -7,7 +7,6 @@ class XmpMappingDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
     protected $id;
     /**
      * Deletes the xmp mapping specified by the ID. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
      * @param string $id Xmp mapping ID.
      */
     public function __construct(string $id)

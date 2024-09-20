@@ -13,500 +13,334 @@ class MinimalRepository extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $fullName;
     /**
-     * 
-     *
      * @var MinimalRepositoryOwner|null
      */
     protected $owner;
     /**
-     * 
-     *
      * @var bool
      */
     protected $private;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var bool
      */
     protected $fork;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $archiveUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $assigneesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $blobsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $branchesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $collaboratorsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $commentsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $commitsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $compareUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $contentsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $contributorsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $deploymentsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $downloadsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $eventsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $forksUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $gitCommitsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $gitRefsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $gitTagsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $gitUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $issueCommentUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $issueEventsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $issuesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $keysUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $labelsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $languagesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $mergesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $milestonesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $notificationsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $pullsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $releasesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $sshUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $stargazersUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $statusesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $subscribersUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $subscriptionUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $tagsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $teamsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $treesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $cloneUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $mirrorUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $hooksUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $svnUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $homepage;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $language;
     /**
-     * 
-     *
      * @var int
      */
     protected $forksCount;
     /**
-     * 
-     *
      * @var int
      */
     protected $stargazersCount;
     /**
-     * 
-     *
      * @var int
      */
     protected $watchersCount;
     /**
-     * 
-     *
      * @var int
      */
     protected $size;
     /**
-     * 
-     *
      * @var string
      */
     protected $defaultBranch;
     /**
-     * 
-     *
      * @var int
      */
     protected $openIssuesCount;
     /**
-     * 
-     *
      * @var bool
      */
     protected $isTemplate;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $topics;
     /**
-     * 
-     *
      * @var bool
      */
     protected $hasIssues;
     /**
-     * 
-     *
      * @var bool
      */
     protected $hasProjects;
     /**
-     * 
-     *
      * @var bool
      */
     protected $hasWiki;
     /**
-     * 
-     *
      * @var bool
      */
     protected $hasPages;
     /**
-     * 
-     *
      * @var bool
      */
     protected $hasDownloads;
     /**
-     * 
-     *
      * @var bool
      */
     protected $archived;
     /**
-     * 
-     *
      * @var bool
      */
     protected $disabled;
     /**
-     * 
-     *
      * @var string
      */
     protected $visibility;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $pushedAt;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var MinimalRepositoryPermissions
      */
     protected $permissions;
     /**
-     * 
-     *
      * @var string
      */
     protected $templateRepository;
     /**
-     * 
-     *
      * @var string
      */
     protected $tempCloneToken;
     /**
-     * 
-     *
      * @var bool
      */
     protected $deleteBranchOnMerge;
     /**
-     * 
-     *
      * @var int
      */
     protected $subscribersCount;
     /**
-     * 
-     *
      * @var int
      */
     protected $networkCount;
     /**
-     * 
-     *
      * @var MinimalRepositoryLicense|null
      */
     protected $license;
     /**
-     * 
-     *
      * @var int
      */
     protected $forks;
     /**
-     * 
-     *
      * @var int
      */
     protected $openIssues;
     /**
-     * 
-     *
      * @var int
      */
     protected $watchers;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -514,8 +348,6 @@ class MinimalRepository extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -527,8 +359,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -536,8 +366,6 @@ class MinimalRepository extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -549,8 +377,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -558,8 +384,6 @@ class MinimalRepository extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -571,8 +395,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFullName(): string
@@ -580,8 +402,6 @@ class MinimalRepository extends \ArrayObject
         return $this->fullName;
     }
     /**
-     * 
-     *
      * @param string $fullName
      *
      * @return self
@@ -593,8 +413,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return MinimalRepositoryOwner|null
      */
     public function getOwner(): ?MinimalRepositoryOwner
@@ -602,8 +420,6 @@ class MinimalRepository extends \ArrayObject
         return $this->owner;
     }
     /**
-     * 
-     *
      * @param MinimalRepositoryOwner|null $owner
      *
      * @return self
@@ -615,8 +431,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getPrivate(): bool
@@ -624,8 +438,6 @@ class MinimalRepository extends \ArrayObject
         return $this->private;
     }
     /**
-     * 
-     *
      * @param bool $private
      *
      * @return self
@@ -637,8 +449,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -646,8 +456,6 @@ class MinimalRepository extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -659,8 +467,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription(): ?string
@@ -668,8 +474,6 @@ class MinimalRepository extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -681,8 +485,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getFork(): bool
@@ -690,8 +492,6 @@ class MinimalRepository extends \ArrayObject
         return $this->fork;
     }
     /**
-     * 
-     *
      * @param bool $fork
      *
      * @return self
@@ -703,8 +503,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -712,8 +510,6 @@ class MinimalRepository extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -725,8 +521,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getArchiveUrl(): string
@@ -734,8 +528,6 @@ class MinimalRepository extends \ArrayObject
         return $this->archiveUrl;
     }
     /**
-     * 
-     *
      * @param string $archiveUrl
      *
      * @return self
@@ -747,8 +539,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAssigneesUrl(): string
@@ -756,8 +546,6 @@ class MinimalRepository extends \ArrayObject
         return $this->assigneesUrl;
     }
     /**
-     * 
-     *
      * @param string $assigneesUrl
      *
      * @return self
@@ -769,8 +557,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBlobsUrl(): string
@@ -778,8 +564,6 @@ class MinimalRepository extends \ArrayObject
         return $this->blobsUrl;
     }
     /**
-     * 
-     *
      * @param string $blobsUrl
      *
      * @return self
@@ -791,8 +575,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBranchesUrl(): string
@@ -800,8 +582,6 @@ class MinimalRepository extends \ArrayObject
         return $this->branchesUrl;
     }
     /**
-     * 
-     *
      * @param string $branchesUrl
      *
      * @return self
@@ -813,8 +593,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCollaboratorsUrl(): string
@@ -822,8 +600,6 @@ class MinimalRepository extends \ArrayObject
         return $this->collaboratorsUrl;
     }
     /**
-     * 
-     *
      * @param string $collaboratorsUrl
      *
      * @return self
@@ -835,8 +611,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommentsUrl(): string
@@ -844,8 +618,6 @@ class MinimalRepository extends \ArrayObject
         return $this->commentsUrl;
     }
     /**
-     * 
-     *
      * @param string $commentsUrl
      *
      * @return self
@@ -857,8 +629,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommitsUrl(): string
@@ -866,8 +636,6 @@ class MinimalRepository extends \ArrayObject
         return $this->commitsUrl;
     }
     /**
-     * 
-     *
      * @param string $commitsUrl
      *
      * @return self
@@ -879,8 +647,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCompareUrl(): string
@@ -888,8 +654,6 @@ class MinimalRepository extends \ArrayObject
         return $this->compareUrl;
     }
     /**
-     * 
-     *
      * @param string $compareUrl
      *
      * @return self
@@ -901,8 +665,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContentsUrl(): string
@@ -910,8 +672,6 @@ class MinimalRepository extends \ArrayObject
         return $this->contentsUrl;
     }
     /**
-     * 
-     *
      * @param string $contentsUrl
      *
      * @return self
@@ -923,8 +683,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContributorsUrl(): string
@@ -932,8 +690,6 @@ class MinimalRepository extends \ArrayObject
         return $this->contributorsUrl;
     }
     /**
-     * 
-     *
      * @param string $contributorsUrl
      *
      * @return self
@@ -945,8 +701,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDeploymentsUrl(): string
@@ -954,8 +708,6 @@ class MinimalRepository extends \ArrayObject
         return $this->deploymentsUrl;
     }
     /**
-     * 
-     *
      * @param string $deploymentsUrl
      *
      * @return self
@@ -967,8 +719,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDownloadsUrl(): string
@@ -976,8 +726,6 @@ class MinimalRepository extends \ArrayObject
         return $this->downloadsUrl;
     }
     /**
-     * 
-     *
      * @param string $downloadsUrl
      *
      * @return self
@@ -989,8 +737,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEventsUrl(): string
@@ -998,8 +744,6 @@ class MinimalRepository extends \ArrayObject
         return $this->eventsUrl;
     }
     /**
-     * 
-     *
      * @param string $eventsUrl
      *
      * @return self
@@ -1011,8 +755,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getForksUrl(): string
@@ -1020,8 +762,6 @@ class MinimalRepository extends \ArrayObject
         return $this->forksUrl;
     }
     /**
-     * 
-     *
      * @param string $forksUrl
      *
      * @return self
@@ -1033,8 +773,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGitCommitsUrl(): string
@@ -1042,8 +780,6 @@ class MinimalRepository extends \ArrayObject
         return $this->gitCommitsUrl;
     }
     /**
-     * 
-     *
      * @param string $gitCommitsUrl
      *
      * @return self
@@ -1055,8 +791,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGitRefsUrl(): string
@@ -1064,8 +798,6 @@ class MinimalRepository extends \ArrayObject
         return $this->gitRefsUrl;
     }
     /**
-     * 
-     *
      * @param string $gitRefsUrl
      *
      * @return self
@@ -1077,8 +809,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGitTagsUrl(): string
@@ -1086,8 +816,6 @@ class MinimalRepository extends \ArrayObject
         return $this->gitTagsUrl;
     }
     /**
-     * 
-     *
      * @param string $gitTagsUrl
      *
      * @return self
@@ -1099,8 +827,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGitUrl(): string
@@ -1108,8 +834,6 @@ class MinimalRepository extends \ArrayObject
         return $this->gitUrl;
     }
     /**
-     * 
-     *
      * @param string $gitUrl
      *
      * @return self
@@ -1121,8 +845,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIssueCommentUrl(): string
@@ -1130,8 +852,6 @@ class MinimalRepository extends \ArrayObject
         return $this->issueCommentUrl;
     }
     /**
-     * 
-     *
      * @param string $issueCommentUrl
      *
      * @return self
@@ -1143,8 +863,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIssueEventsUrl(): string
@@ -1152,8 +870,6 @@ class MinimalRepository extends \ArrayObject
         return $this->issueEventsUrl;
     }
     /**
-     * 
-     *
      * @param string $issueEventsUrl
      *
      * @return self
@@ -1165,8 +881,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIssuesUrl(): string
@@ -1174,8 +888,6 @@ class MinimalRepository extends \ArrayObject
         return $this->issuesUrl;
     }
     /**
-     * 
-     *
      * @param string $issuesUrl
      *
      * @return self
@@ -1187,8 +899,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKeysUrl(): string
@@ -1196,8 +906,6 @@ class MinimalRepository extends \ArrayObject
         return $this->keysUrl;
     }
     /**
-     * 
-     *
      * @param string $keysUrl
      *
      * @return self
@@ -1209,8 +917,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLabelsUrl(): string
@@ -1218,8 +924,6 @@ class MinimalRepository extends \ArrayObject
         return $this->labelsUrl;
     }
     /**
-     * 
-     *
      * @param string $labelsUrl
      *
      * @return self
@@ -1231,8 +935,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLanguagesUrl(): string
@@ -1240,8 +942,6 @@ class MinimalRepository extends \ArrayObject
         return $this->languagesUrl;
     }
     /**
-     * 
-     *
      * @param string $languagesUrl
      *
      * @return self
@@ -1253,8 +953,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMergesUrl(): string
@@ -1262,8 +960,6 @@ class MinimalRepository extends \ArrayObject
         return $this->mergesUrl;
     }
     /**
-     * 
-     *
      * @param string $mergesUrl
      *
      * @return self
@@ -1275,8 +971,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMilestonesUrl(): string
@@ -1284,8 +978,6 @@ class MinimalRepository extends \ArrayObject
         return $this->milestonesUrl;
     }
     /**
-     * 
-     *
      * @param string $milestonesUrl
      *
      * @return self
@@ -1297,8 +989,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNotificationsUrl(): string
@@ -1306,8 +996,6 @@ class MinimalRepository extends \ArrayObject
         return $this->notificationsUrl;
     }
     /**
-     * 
-     *
      * @param string $notificationsUrl
      *
      * @return self
@@ -1319,8 +1007,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPullsUrl(): string
@@ -1328,8 +1014,6 @@ class MinimalRepository extends \ArrayObject
         return $this->pullsUrl;
     }
     /**
-     * 
-     *
      * @param string $pullsUrl
      *
      * @return self
@@ -1341,8 +1025,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getReleasesUrl(): string
@@ -1350,8 +1032,6 @@ class MinimalRepository extends \ArrayObject
         return $this->releasesUrl;
     }
     /**
-     * 
-     *
      * @param string $releasesUrl
      *
      * @return self
@@ -1363,8 +1043,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSshUrl(): string
@@ -1372,8 +1050,6 @@ class MinimalRepository extends \ArrayObject
         return $this->sshUrl;
     }
     /**
-     * 
-     *
      * @param string $sshUrl
      *
      * @return self
@@ -1385,8 +1061,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStargazersUrl(): string
@@ -1394,8 +1068,6 @@ class MinimalRepository extends \ArrayObject
         return $this->stargazersUrl;
     }
     /**
-     * 
-     *
      * @param string $stargazersUrl
      *
      * @return self
@@ -1407,8 +1079,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStatusesUrl(): string
@@ -1416,8 +1086,6 @@ class MinimalRepository extends \ArrayObject
         return $this->statusesUrl;
     }
     /**
-     * 
-     *
      * @param string $statusesUrl
      *
      * @return self
@@ -1429,8 +1097,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSubscribersUrl(): string
@@ -1438,8 +1104,6 @@ class MinimalRepository extends \ArrayObject
         return $this->subscribersUrl;
     }
     /**
-     * 
-     *
      * @param string $subscribersUrl
      *
      * @return self
@@ -1451,8 +1115,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSubscriptionUrl(): string
@@ -1460,8 +1122,6 @@ class MinimalRepository extends \ArrayObject
         return $this->subscriptionUrl;
     }
     /**
-     * 
-     *
      * @param string $subscriptionUrl
      *
      * @return self
@@ -1473,8 +1133,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTagsUrl(): string
@@ -1482,8 +1140,6 @@ class MinimalRepository extends \ArrayObject
         return $this->tagsUrl;
     }
     /**
-     * 
-     *
      * @param string $tagsUrl
      *
      * @return self
@@ -1495,8 +1151,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTeamsUrl(): string
@@ -1504,8 +1158,6 @@ class MinimalRepository extends \ArrayObject
         return $this->teamsUrl;
     }
     /**
-     * 
-     *
      * @param string $teamsUrl
      *
      * @return self
@@ -1517,8 +1169,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTreesUrl(): string
@@ -1526,8 +1176,6 @@ class MinimalRepository extends \ArrayObject
         return $this->treesUrl;
     }
     /**
-     * 
-     *
      * @param string $treesUrl
      *
      * @return self
@@ -1539,8 +1187,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCloneUrl(): string
@@ -1548,8 +1194,6 @@ class MinimalRepository extends \ArrayObject
         return $this->cloneUrl;
     }
     /**
-     * 
-     *
      * @param string $cloneUrl
      *
      * @return self
@@ -1561,8 +1205,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getMirrorUrl(): ?string
@@ -1570,8 +1212,6 @@ class MinimalRepository extends \ArrayObject
         return $this->mirrorUrl;
     }
     /**
-     * 
-     *
      * @param string|null $mirrorUrl
      *
      * @return self
@@ -1583,8 +1223,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHooksUrl(): string
@@ -1592,8 +1230,6 @@ class MinimalRepository extends \ArrayObject
         return $this->hooksUrl;
     }
     /**
-     * 
-     *
      * @param string $hooksUrl
      *
      * @return self
@@ -1605,8 +1241,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSvnUrl(): string
@@ -1614,8 +1248,6 @@ class MinimalRepository extends \ArrayObject
         return $this->svnUrl;
     }
     /**
-     * 
-     *
      * @param string $svnUrl
      *
      * @return self
@@ -1627,8 +1259,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getHomepage(): ?string
@@ -1636,8 +1266,6 @@ class MinimalRepository extends \ArrayObject
         return $this->homepage;
     }
     /**
-     * 
-     *
      * @param string|null $homepage
      *
      * @return self
@@ -1649,8 +1277,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getLanguage(): ?string
@@ -1658,8 +1284,6 @@ class MinimalRepository extends \ArrayObject
         return $this->language;
     }
     /**
-     * 
-     *
      * @param string|null $language
      *
      * @return self
@@ -1671,8 +1295,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getForksCount(): int
@@ -1680,8 +1302,6 @@ class MinimalRepository extends \ArrayObject
         return $this->forksCount;
     }
     /**
-     * 
-     *
      * @param int $forksCount
      *
      * @return self
@@ -1693,8 +1313,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getStargazersCount(): int
@@ -1702,8 +1320,6 @@ class MinimalRepository extends \ArrayObject
         return $this->stargazersCount;
     }
     /**
-     * 
-     *
      * @param int $stargazersCount
      *
      * @return self
@@ -1715,8 +1331,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getWatchersCount(): int
@@ -1724,8 +1338,6 @@ class MinimalRepository extends \ArrayObject
         return $this->watchersCount;
     }
     /**
-     * 
-     *
      * @param int $watchersCount
      *
      * @return self
@@ -1737,8 +1349,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getSize(): int
@@ -1746,8 +1356,6 @@ class MinimalRepository extends \ArrayObject
         return $this->size;
     }
     /**
-     * 
-     *
      * @param int $size
      *
      * @return self
@@ -1759,8 +1367,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDefaultBranch(): string
@@ -1768,8 +1374,6 @@ class MinimalRepository extends \ArrayObject
         return $this->defaultBranch;
     }
     /**
-     * 
-     *
      * @param string $defaultBranch
      *
      * @return self
@@ -1781,8 +1385,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getOpenIssuesCount(): int
@@ -1790,8 +1392,6 @@ class MinimalRepository extends \ArrayObject
         return $this->openIssuesCount;
     }
     /**
-     * 
-     *
      * @param int $openIssuesCount
      *
      * @return self
@@ -1803,8 +1403,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getIsTemplate(): bool
@@ -1812,8 +1410,6 @@ class MinimalRepository extends \ArrayObject
         return $this->isTemplate;
     }
     /**
-     * 
-     *
      * @param bool $isTemplate
      *
      * @return self
@@ -1825,8 +1421,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getTopics(): array
@@ -1834,8 +1428,6 @@ class MinimalRepository extends \ArrayObject
         return $this->topics;
     }
     /**
-     * 
-     *
      * @param list<string> $topics
      *
      * @return self
@@ -1847,8 +1439,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getHasIssues(): bool
@@ -1856,8 +1446,6 @@ class MinimalRepository extends \ArrayObject
         return $this->hasIssues;
     }
     /**
-     * 
-     *
      * @param bool $hasIssues
      *
      * @return self
@@ -1869,8 +1457,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getHasProjects(): bool
@@ -1878,8 +1464,6 @@ class MinimalRepository extends \ArrayObject
         return $this->hasProjects;
     }
     /**
-     * 
-     *
      * @param bool $hasProjects
      *
      * @return self
@@ -1891,8 +1475,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getHasWiki(): bool
@@ -1900,8 +1482,6 @@ class MinimalRepository extends \ArrayObject
         return $this->hasWiki;
     }
     /**
-     * 
-     *
      * @param bool $hasWiki
      *
      * @return self
@@ -1913,8 +1493,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getHasPages(): bool
@@ -1922,8 +1500,6 @@ class MinimalRepository extends \ArrayObject
         return $this->hasPages;
     }
     /**
-     * 
-     *
      * @param bool $hasPages
      *
      * @return self
@@ -1935,8 +1511,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getHasDownloads(): bool
@@ -1944,8 +1518,6 @@ class MinimalRepository extends \ArrayObject
         return $this->hasDownloads;
     }
     /**
-     * 
-     *
      * @param bool $hasDownloads
      *
      * @return self
@@ -1957,8 +1529,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getArchived(): bool
@@ -1966,8 +1536,6 @@ class MinimalRepository extends \ArrayObject
         return $this->archived;
     }
     /**
-     * 
-     *
      * @param bool $archived
      *
      * @return self
@@ -1979,8 +1547,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getDisabled(): bool
@@ -1988,8 +1554,6 @@ class MinimalRepository extends \ArrayObject
         return $this->disabled;
     }
     /**
-     * 
-     *
      * @param bool $disabled
      *
      * @return self
@@ -2001,8 +1565,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getVisibility(): string
@@ -2010,8 +1572,6 @@ class MinimalRepository extends \ArrayObject
         return $this->visibility;
     }
     /**
-     * 
-     *
      * @param string $visibility
      *
      * @return self
@@ -2023,8 +1583,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getPushedAt(): ?\DateTime
@@ -2032,8 +1590,6 @@ class MinimalRepository extends \ArrayObject
         return $this->pushedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $pushedAt
      *
      * @return self
@@ -2045,8 +1601,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
@@ -2054,8 +1608,6 @@ class MinimalRepository extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $createdAt
      *
      * @return self
@@ -2067,8 +1619,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
@@ -2076,8 +1626,6 @@ class MinimalRepository extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $updatedAt
      *
      * @return self
@@ -2089,8 +1637,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return MinimalRepositoryPermissions
      */
     public function getPermissions(): MinimalRepositoryPermissions
@@ -2098,8 +1644,6 @@ class MinimalRepository extends \ArrayObject
         return $this->permissions;
     }
     /**
-     * 
-     *
      * @param MinimalRepositoryPermissions $permissions
      *
      * @return self
@@ -2111,8 +1655,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTemplateRepository(): string
@@ -2120,8 +1662,6 @@ class MinimalRepository extends \ArrayObject
         return $this->templateRepository;
     }
     /**
-     * 
-     *
      * @param string $templateRepository
      *
      * @return self
@@ -2133,8 +1673,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTempCloneToken(): string
@@ -2142,8 +1680,6 @@ class MinimalRepository extends \ArrayObject
         return $this->tempCloneToken;
     }
     /**
-     * 
-     *
      * @param string $tempCloneToken
      *
      * @return self
@@ -2155,8 +1691,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getDeleteBranchOnMerge(): bool
@@ -2164,8 +1698,6 @@ class MinimalRepository extends \ArrayObject
         return $this->deleteBranchOnMerge;
     }
     /**
-     * 
-     *
      * @param bool $deleteBranchOnMerge
      *
      * @return self
@@ -2177,8 +1709,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getSubscribersCount(): int
@@ -2186,8 +1716,6 @@ class MinimalRepository extends \ArrayObject
         return $this->subscribersCount;
     }
     /**
-     * 
-     *
      * @param int $subscribersCount
      *
      * @return self
@@ -2199,8 +1727,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getNetworkCount(): int
@@ -2208,8 +1734,6 @@ class MinimalRepository extends \ArrayObject
         return $this->networkCount;
     }
     /**
-     * 
-     *
      * @param int $networkCount
      *
      * @return self
@@ -2221,8 +1745,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return MinimalRepositoryLicense|null
      */
     public function getLicense(): ?MinimalRepositoryLicense
@@ -2230,8 +1752,6 @@ class MinimalRepository extends \ArrayObject
         return $this->license;
     }
     /**
-     * 
-     *
      * @param MinimalRepositoryLicense|null $license
      *
      * @return self
@@ -2243,8 +1763,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getForks(): int
@@ -2252,8 +1770,6 @@ class MinimalRepository extends \ArrayObject
         return $this->forks;
     }
     /**
-     * 
-     *
      * @param int $forks
      *
      * @return self
@@ -2265,8 +1781,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getOpenIssues(): int
@@ -2274,8 +1788,6 @@ class MinimalRepository extends \ArrayObject
         return $this->openIssues;
     }
     /**
-     * 
-     *
      * @param int $openIssues
      *
      * @return self
@@ -2287,8 +1799,6 @@ class MinimalRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getWatchers(): int
@@ -2296,8 +1806,6 @@ class MinimalRepository extends \ArrayObject
         return $this->watchers;
     }
     /**
-     * 
-     *
      * @param int $watchers
      *
      * @return self

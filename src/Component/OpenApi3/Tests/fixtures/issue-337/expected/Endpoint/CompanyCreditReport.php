@@ -7,7 +7,6 @@ class CompanyCreditReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint im
     protected $id;
     /**
      * Orders a Company's Credit Report by connectId. Set the content-type of the request to `application\pdf` to receive a PDF of the report instead of JSON.
-     *
      * @param string $id The connectId (optionally Safe Number where available) of the Company required to order their Credit Report. Obtained from `/companies` search results.
      * @param array $queryParameters {
      *     @var string $language Report Language - The JSON structure of the Report is language invariant, but field content will return as the given language, where available.

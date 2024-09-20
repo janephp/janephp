@@ -7,7 +7,6 @@ class FindUsersByIdOrUsername extends \Jane\Component\OpenApi3\Tests\Expected\Ru
     protected $accept;
     /**
      * This endpoint returns information about users. You can specify users by their ID or screen name, or by a combination of the two.
-     *
      * @param array $queryParameters {
      *     @var array $ids Required (unless using `usernames`). A list of User IDs, comma-separated. You can specify up to 100 IDs.
      *     @var array $usernames Required (unless using `ids`). A list of Twitter handles, comma-separated. You can specify up to 100 values.

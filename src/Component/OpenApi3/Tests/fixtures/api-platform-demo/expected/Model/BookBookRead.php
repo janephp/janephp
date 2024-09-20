@@ -13,8 +13,6 @@ class BookBookRead extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $id;
@@ -55,8 +53,6 @@ class BookBookRead extends \ArrayObject
      */
     protected $reviews;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getId(): ?string
@@ -64,8 +60,6 @@ class BookBookRead extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string|null $id
      *
      * @return self

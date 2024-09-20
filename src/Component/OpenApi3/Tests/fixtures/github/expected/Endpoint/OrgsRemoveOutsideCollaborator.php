@@ -8,9 +8,8 @@ class OrgsRemoveOutsideCollaborator extends \Github\Runtime\Client\BaseEndpoint 
     protected $username;
     /**
      * Removing a user from this list will remove them from all the organization's repositories.
-     *
-     * @param string $org 
-     * @param string $username 
+     * @param string $org
+     * @param string $username
      */
     public function __construct(string $org, string $username)
     {

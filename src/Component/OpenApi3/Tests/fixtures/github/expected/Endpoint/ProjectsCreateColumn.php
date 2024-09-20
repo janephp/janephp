@@ -6,10 +6,8 @@ class ProjectsCreateColumn extends \Github\Runtime\Client\BaseEndpoint implement
 {
     protected $project_id;
     /**
-     * 
-     *
-     * @param int $projectId 
-     * @param null|\Github\Model\ProjectsProjectIdColumnsPostBody $requestBody 
+     * @param int $projectId
+     * @param null|\Github\Model\ProjectsProjectIdColumnsPostBody $requestBody
      */
     public function __construct(int $projectId, ?\Github\Model\ProjectsProjectIdColumnsPostBody $requestBody = null)
     {

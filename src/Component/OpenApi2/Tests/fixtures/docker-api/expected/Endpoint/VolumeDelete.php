@@ -7,7 +7,6 @@ class VolumeDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     protected $name;
     /**
      * Instruct the driver to remove the volume.
-     *
      * @param string $name Volume name or ID
      * @param array $queryParameters {
      *     @var bool $force Force the removal of the volume

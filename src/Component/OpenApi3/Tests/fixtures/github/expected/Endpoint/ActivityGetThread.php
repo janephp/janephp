@@ -6,8 +6,6 @@ class ActivityGetThread extends \Github\Runtime\Client\BaseEndpoint implements \
 {
     protected $thread_id;
     /**
-     * 
-     *
      * @param int $threadId thread_id parameter
      */
     public function __construct(int $threadId)

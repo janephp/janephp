@@ -19,8 +19,6 @@ class GitCommitTree extends \ArrayObject
      */
     protected $sha;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
@@ -47,8 +45,6 @@ class GitCommitTree extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -56,8 +52,6 @@ class GitCommitTree extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self

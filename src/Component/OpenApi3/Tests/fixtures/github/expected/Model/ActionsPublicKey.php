@@ -25,26 +25,18 @@ class ActionsPublicKey extends \ArrayObject
      */
     protected $key;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $title;
     /**
-     * 
-     *
      * @var string
      */
     protected $createdAt;
@@ -93,8 +85,6 @@ class ActionsPublicKey extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -102,8 +92,6 @@ class ActionsPublicKey extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -115,8 +103,6 @@ class ActionsPublicKey extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -124,8 +110,6 @@ class ActionsPublicKey extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -137,8 +121,6 @@ class ActionsPublicKey extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTitle(): string
@@ -146,8 +128,6 @@ class ActionsPublicKey extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string $title
      *
      * @return self
@@ -159,8 +139,6 @@ class ActionsPublicKey extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCreatedAt(): string
@@ -168,8 +146,6 @@ class ActionsPublicKey extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param string $createdAt
      *
      * @return self

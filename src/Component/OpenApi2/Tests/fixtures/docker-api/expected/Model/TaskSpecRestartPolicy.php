@@ -25,20 +25,20 @@ class TaskSpecRestartPolicy
      */
     protected $delay;
     /**
-    * Maximum attempts to restart a given container before giving up
-    (default value is 0, which is ignored).
-    
-    *
-    * @var int
-    */
+     * Maximum attempts to restart a given container before giving up
+     * (default value is 0, which is ignored).
+     * 
+     *
+     * @var int
+     */
     protected $maxAttempts = 0;
     /**
-    * Windows is the time window used to evaluate the restart policy
-    (default value is 0, which is unbounded).
-    
-    *
-    * @var int
-    */
+     * Windows is the time window used to evaluate the restart policy
+     * (default value is 0, which is unbounded).
+     * 
+     *
+     * @var int
+     */
     protected $window = 0;
     /**
      * Condition for restart.
@@ -85,12 +85,12 @@ class TaskSpecRestartPolicy
         return $this;
     }
     /**
-    * Maximum attempts to restart a given container before giving up
-    (default value is 0, which is ignored).
-    
-    *
-    * @return int
-    */
+     * Maximum attempts to restart a given container before giving up
+     * (default value is 0, which is ignored).
+     * 
+     *
+     * @return int
+     */
     public function getMaxAttempts(): int
     {
         return $this->maxAttempts;
@@ -111,12 +111,12 @@ class TaskSpecRestartPolicy
         return $this;
     }
     /**
-    * Windows is the time window used to evaluate the restart policy
-    (default value is 0, which is unbounded).
-    
-    *
-    * @return int
-    */
+     * Windows is the time window used to evaluate the restart policy
+     * (default value is 0, which is unbounded).
+     * 
+     *
+     * @return int
+     */
     public function getWindow(): int
     {
         return $this->window;

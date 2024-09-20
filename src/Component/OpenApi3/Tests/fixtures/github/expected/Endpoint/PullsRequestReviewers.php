@@ -9,11 +9,10 @@ class PullsRequestReviewers extends \Github\Runtime\Client\BaseEndpoint implemen
     protected $pull_number;
     /**
      * This endpoint triggers [notifications](https://help.github.com/articles/about-notifications/). Creating content too quickly using this endpoint may result in abuse rate limiting. See "[Abuse rate limits](https://developer.github.com/v3/#abuse-rate-limits)" and "[Dealing with abuse rate limits](https://developer.github.com/v3/guides/best-practices-for-integrators/#dealing-with-abuse-rate-limits)" for details.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $pullNumber 
-     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersPostBody $requestBody 
+     * @param string $owner
+     * @param string $repo
+     * @param int $pullNumber
+     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersPostBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersPostBody $requestBody = null)
     {

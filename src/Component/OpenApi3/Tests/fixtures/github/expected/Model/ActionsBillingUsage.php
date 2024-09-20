@@ -31,8 +31,6 @@ class ActionsBillingUsage extends \ArrayObject
      */
     protected $includedMinutes;
     /**
-     * 
-     *
      * @var ActionsBillingUsageMinutesUsedBreakdown
      */
     protected $minutesUsedBreakdown;
@@ -103,8 +101,6 @@ class ActionsBillingUsage extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ActionsBillingUsageMinutesUsedBreakdown
      */
     public function getMinutesUsedBreakdown(): ActionsBillingUsageMinutesUsedBreakdown
@@ -112,8 +108,6 @@ class ActionsBillingUsage extends \ArrayObject
         return $this->minutesUsedBreakdown;
     }
     /**
-     * 
-     *
      * @param ActionsBillingUsageMinutesUsedBreakdown $minutesUsedBreakdown
      *
      * @return self
