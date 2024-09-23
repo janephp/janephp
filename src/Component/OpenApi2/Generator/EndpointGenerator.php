@@ -42,11 +42,11 @@ class EndpointGenerator implements EndpointGeneratorInterface
     private GuessClass $guessClass;
 
     public function __construct(
-        private OperationNamingInterface $operationNaming,
-        private Parameter\BodyParameterGenerator $bodyParameterGenerator,
-        private Parameter\NonBodyParameterGenerator $nonBodyParameterGenerator,
+        private readonly OperationNamingInterface $operationNaming,
+        private readonly Parameter\BodyParameterGenerator $bodyParameterGenerator,
+        private readonly Parameter\NonBodyParameterGenerator $nonBodyParameterGenerator,
         DenormalizerInterface $denormalizer,
-        private ExceptionGenerator $exceptionGenerator,
+        private readonly ExceptionGenerator $exceptionGenerator,
     ) {
         $this->guessClass = new GuessClass(Schema::class, $denormalizer);
     }
