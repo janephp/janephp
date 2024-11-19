@@ -26,7 +26,7 @@ trait GetGetUriTrait
 
             if ($parameter instanceof Parameter && EndpointGenerator::IN_PATH === $parameter->getIn()) {
                 // $url = str_replace('{param}', $param, $url)
-                $names[] = $parameter->getName();
+                $names[] = [$parameter->getName(), $this->getInflector()->camelize($parameter->getName())];
             }
         }
 
@@ -44,11 +44,11 @@ trait GetGetUriTrait
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'stmts' => [
                 new Stmt\Return_(new Expr\FuncCall(new Name('str_replace'), [
-                    new Arg(new Expr\Array_(array_map(function ($name) {
-                        return new Scalar\String_('{' . $name . '}');
+                    new Arg(new Expr\Array_(array_map(function ($args) {
+                        return new Scalar\String_('{' . $args[0] . '}');
                     }, $names))),
-                    new Arg(new Expr\Array_(array_map(function ($name) {
-                        return new Expr\PropertyFetch(new Expr\Variable('this'), $name);
+                    new Arg(new Expr\Array_(array_map(function ($args) {
+                        return new Expr\PropertyFetch(new Expr\Variable('this'), $args[1]);
                     }, $names))),
                     new Arg(new Scalar\String_($operation->getPath())),
                 ])),

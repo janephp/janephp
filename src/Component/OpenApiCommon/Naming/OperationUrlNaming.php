@@ -40,7 +40,7 @@ class OperationUrlNaming implements OperationNamingInterface
         }
 
         $matches = [];
-        preg_match_all('/(?<separator>[^a-zA-Z0-9_{}])+(?<part>[a-zA-Z0-9_{}]*)/', $operation->getPath(), $matches);
+        preg_match_all('/(?<separator>[\/])+(?<part>[^\/]*)/', $operation->getPath(), $matches);
 
         $methodNameParts = [];
         $lastNonParameterPartIndex = 0;
@@ -55,7 +55,7 @@ class OperationUrlNaming implements OperationNamingInterface
             if (preg_match_all('/{(?P<parameter>[^{}]+)}/', $part, $parameterMatches)) {
                 foreach ($parameterMatches[0] as $parameterIndex => $parameterMatch) {
                     $withoutSnakes = preg_replace_callback(
-                        '/(^|_|\.)+(.)/',
+                        '/(^|_|\.|-)+(.)/',
                         function ($match) {
                             return ('.' === $match[1] ? '_' : '') . strtoupper($match[2]);
                         },

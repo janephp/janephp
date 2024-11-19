@@ -50,9 +50,9 @@ trait GetConstructorTrait
             if ($parameter instanceof Parameter && EndpointGenerator::IN_PATH === $parameter->getIn()) {
                 $pathParams[] = $nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $pathParamsDoc[] = $nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
-                $methodStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), $parameter->getName()), new Expr\Variable($this->getInflector()->camelize($parameter->getName()))));
+                $methodStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), $this->getInflector()->camelize($parameter->getName())), new Expr\Variable($this->getInflector()->camelize($parameter->getName()))));
                 $pathProperties[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
-                    new Stmt\PropertyProperty($parameter->getName()),
+                    new Stmt\PropertyProperty($this->getInflector()->camelize($parameter->getName())),
                 ]);
             }
 
