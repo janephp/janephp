@@ -42,7 +42,7 @@ class SchemaGuesser extends ObjectGuesser
                     $subClassName,
                     preg_replace(
                         '#components/schemas\/.+$#',
-                        sprintf('components/schemas/%s', $subClassName),
+                        \sprintf('components/schemas/%s', $subClassName),
                         $reference
                     ),
                     $discriminatorValue
@@ -61,7 +61,7 @@ class SchemaGuesser extends ObjectGuesser
                     $subClassName,
                     preg_replace(
                         '#components/schemas\/.+$#',
-                        sprintf('components/schemas/%s', $subClassName),
+                        \sprintf('components/schemas/%s', $subClassName),
                         $reference
                     )
                 );

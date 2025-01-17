@@ -53,7 +53,7 @@ class BodyParameterGenerator extends ParameterGenerator
     {
         list($class, $array) = $this->getClass($parameter, $context, $reference);
 
-        return sprintf(' * @param %s $%s %s', implode('|', $class), $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: '');
+        return \sprintf(' * @param %s $%s %s', implode('|', $class), $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: '');
     }
 
     protected function getClass(BodyParameter $parameter, Context $context, string $reference): array

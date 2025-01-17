@@ -21,7 +21,7 @@ class OpenApiMatcher
 
         if (null === $openApiClass) {
             if (null !== $openApi2Message || null !== $openApi3Message) {
-                throw new CouldNotParseException(sprintf("Could not parse schema in OpenApi v2 nor v3 format:\n- OpenApi v2 error: \"%s\"\n- OpenApi v3: \"%s\"\n", (string) $openApi2Message, (string) $openApi3Message));
+                throw new CouldNotParseException(\sprintf("Could not parse schema in OpenApi v2 nor v3 format:\n- OpenApi v2 error: \"%s\"\n- OpenApi v3: \"%s\"\n", (string) $openApi2Message, (string) $openApi3Message));
             } else {
                 throw new OpenApiVersionSupportException('Only OpenApi v2 / v3 specifications are supported, use an external tool to convert your api files.');
             }
