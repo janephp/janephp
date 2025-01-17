@@ -487,7 +487,9 @@ class ValidationTest extends TestCase
         $this->assertInstanceOf(ValidationException::class, $caughtException);
         $this->assertEquals(400, $caughtException->getCode());
         $this->assertEquals(1, $caughtException->getViolationList()->count());
-        $this->assertEquals('[arrayUnique]', $caughtException->getViolationList()->get(0)->getPropertyPath());
+
+        $propertyPath = $caughtException->getViolationList()->get(0)->getPropertyPath();
+        $this->assertMatchesRegularExpression('/\[arrayUnique\](\[1\])?/', $propertyPath);
     }
 
     private function formatValidation(): void

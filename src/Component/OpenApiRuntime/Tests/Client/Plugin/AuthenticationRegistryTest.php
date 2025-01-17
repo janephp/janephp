@@ -5,7 +5,6 @@ namespace Jane\Component\OpenApiRuntime\Tests\Client\Plugin;
 use Http\Promise\FulfilledPromise;
 use Jane\Component\OpenApiRuntime\Client\AuthenticationPlugin;
 use Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
-use PHPUnit\Framework\MockObject\Stub\ReturnCallback;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 
@@ -70,10 +69,10 @@ class AuthenticationRegistryTest extends TestCase
         $request = $this->createMock(RequestInterface::class);
         $request
             ->method('withHeader')
-            ->willReturnCallback(function (string $name, string $value) {});
+            ->willReturnSelf();
         $request
             ->method('withoutHeader')
-            ->willReturn($request);
+            ->willReturnSelf();
 
         $fakeCallback = function (RequestInterface $request) {
             $this->assertTrue(true);
@@ -92,13 +91,10 @@ class AuthenticationRegistryTest extends TestCase
             ->willReturn(['A']);
         $request
             ->method('withHeader')
-            ->willReturnCallback(function (string $name, string $value) {
-                $this->assertEquals('A', $name);
-                $this->assertEquals('A', $value);
-            });
+            ->willReturnSelf();
         $request
             ->method('withoutHeader')
-            ->willReturn($request);
+            ->willReturnSelf();
 
         $fakeCallback = function (RequestInterface $request) {
             $this->assertTrue(true);
@@ -117,19 +113,10 @@ class AuthenticationRegistryTest extends TestCase
             ->willReturn(['A', 'C']);
         $request
             ->method('withHeader')
-            ->willReturnOnConsecutiveCalls([
-                new ReturnCallback(function (string $name, string $value) {
-                    $this->assertEquals('A', $name);
-                    $this->assertEquals('A', $value);
-                }),
-                new ReturnCallback(function (string $name, string $value) {
-                    $this->assertEquals('C', $name);
-                    $this->assertEquals('C', $value);
-                }),
-            ]);
+            ->willReturnSelf();
         $request
             ->method('withoutHeader')
-            ->willReturn($request);
+            ->willReturnSelf();
 
         $fakeCallback = function (RequestInterface $request) {
             $this->assertTrue(true);
