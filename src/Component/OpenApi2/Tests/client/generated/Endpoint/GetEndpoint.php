@@ -5,19 +5,19 @@ namespace Jane\Component\OpenApi2\Tests\Client\Endpoint;
 class GetEndpoint extends \Jane\Component\OpenApi2\Tests\Client\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Client\Runtime\Client\Endpoint
 {
     use \Jane\Component\OpenApi2\Tests\Client\Runtime\Client\EndpointTrait;
-    public function getMethod() : string
+    public function getMethod(): string
     {
         return 'GET';
     }
-    public function getUri() : string
+    public function getUri(): string
     {
         return '/endpoint';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
-    public function getExtraHeaders() : array
+    public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
     }
@@ -28,16 +28,18 @@ class GetEndpoint extends \Jane\Component\OpenApi2\Tests\Client\Runtime\Client\B
      *
      * @return null|\Jane\Component\OpenApi2\Tests\Client\Model\SimpleResponse
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (200 === $status) {
-            return $serializer->deserialize($body, 'Jane\\Component\\OpenApi2\\Tests\\Client\\Model\\SimpleResponse', 'json');
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Client\Model\SimpleResponse', 'json');
         }
         if (401 === $status) {
-            throw new \Jane\Component\OpenApi2\Tests\Client\Exception\GetEndpointUnauthorizedException($serializer->deserialize($body, 'Jane\\Component\\OpenApi2\\Tests\\Client\\Model\\Error', 'json'));
+            throw new \Jane\Component\OpenApi2\Tests\Client\Exception\GetEndpointUnauthorizedException($serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Client\Model\Error', 'json'), $response);
         }
     }
-    public function getAuthenticationScopes() : array
+    public function getAuthenticationScopes(): array
     {
         return ['ApiKeyAuth'];
     }

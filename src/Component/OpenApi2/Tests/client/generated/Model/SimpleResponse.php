@@ -5,6 +5,14 @@ namespace Jane\Component\OpenApi2\Tests\Client\Model;
 class SimpleResponse
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * 
      *
      * @var string
@@ -21,7 +29,7 @@ class SimpleResponse
      *
      * @return string
      */
-    public function getFoo() : string
+    public function getFoo(): string
     {
         return $this->foo;
     }
@@ -32,8 +40,9 @@ class SimpleResponse
      *
      * @return self
      */
-    public function setFoo(string $foo) : self
+    public function setFoo(string $foo): self
     {
+        $this->initialized['foo'] = true;
         $this->foo = $foo;
         return $this;
     }
@@ -42,7 +51,7 @@ class SimpleResponse
      *
      * @return bool
      */
-    public function getBaz() : bool
+    public function getBaz(): bool
     {
         return $this->baz;
     }
@@ -53,8 +62,9 @@ class SimpleResponse
      *
      * @return self
      */
-    public function setBaz(bool $baz) : self
+    public function setBaz(bool $baz): self
     {
+        $this->initialized['baz'] = true;
         $this->baz = $baz;
         return $this;
     }

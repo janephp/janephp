@@ -19,10 +19,17 @@ if (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_V
         }
         /**
          * {@inheritdoc}
+         * @param mixed $data
+         * @param null $format
+         * @param array $context
          */
-        public function supportsNormalization($data, $format = null): bool
+        public function supportsNormalization($data, $format = null, array $context = []): bool
         {
             return $data instanceof Reference;
+        }
+        public function getSupportedTypes(?string $format): array
+        {
+            return [Reference::class => false];
         }
     }
 } else {

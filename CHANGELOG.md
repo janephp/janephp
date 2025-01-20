@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- [PHP] [GH#842](https://github.com/janephp/janephp/pull/842) Fix generated files to be compatible with PHP 8.4
 
 ## [7.8.1] - 2024-07-29
 ### Fixed
