@@ -4,7 +4,7 @@ namespace Jane\Component\OpenApi3\Tests\Client\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi3\Tests\Client\Runtime\Normalizer\CheckArray;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
+use Jane\Component\OpenApi3\Tests\Client\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -16,15 +16,16 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    public function supportsDenormalization($data, $type, $format = null)
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === 'Jane\\Component\\OpenApi3\\Tests\\Client\\Model\\Error';
+        return $type === \Jane\Component\OpenApi3\Tests\Client\Model\Error::class;
     }
-    public function supportsNormalization($data, $format = null, $context = []) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Jane\\Component\\OpenApi3\\Tests\\Client\\Model\\Error';
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Client\Model\Error::class;
     }
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -38,15 +39,30 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
-    public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $data = [];
-        if (null !== $object->getMessage()) {
-            $data['message'] = $object->getMessage();
+        $dataArray = [];
+        if ($data->isInitialized('message') && null !== $data->getMessage()) {
+            $dataArray['message'] = $data->getMessage();
         }
-        return $data;
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Jane\Component\OpenApi3\Tests\Client\Model\Error::class => false];
     }
 }

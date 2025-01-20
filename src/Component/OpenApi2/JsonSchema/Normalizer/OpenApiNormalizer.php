@@ -18,7 +18,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\OpenApi';
     }
@@ -29,7 +29,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
     /**
      * @return mixed
      */
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -237,37 +237,37 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $object, ?string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = [];
-        $data['swagger'] = $object->getSwagger();
-        $data['info'] = $this->normalizer->normalize($object->getInfo(), 'json', $context);
+        $dataArray = [];
+        $dataArray['swagger'] = $object->getSwagger();
+        $dataArray['info'] = $this->normalizer->normalize($object->getInfo(), 'json', $context);
         if ($object->isInitialized('host') && null !== $object->getHost()) {
-            $data['host'] = $object->getHost();
+            $dataArray['host'] = $object->getHost();
         }
         if ($object->isInitialized('basePath') && null !== $object->getBasePath()) {
-            $data['basePath'] = $object->getBasePath();
+            $dataArray['basePath'] = $object->getBasePath();
         }
         if ($object->isInitialized('schemes') && null !== $object->getSchemes()) {
             $values = [];
             foreach ($object->getSchemes() as $value) {
                 $values[] = $value;
             }
-            $data['schemes'] = $values;
+            $dataArray['schemes'] = $values;
         }
         if ($object->isInitialized('consumes') && null !== $object->getConsumes()) {
             $values_1 = [];
             foreach ($object->getConsumes() as $value_1) {
                 $values_1[] = $value_1;
             }
-            $data['consumes'] = $values_1;
+            $dataArray['consumes'] = $values_1;
         }
         if ($object->isInitialized('produces') && null !== $object->getProduces()) {
             $values_2 = [];
             foreach ($object->getProduces() as $value_2) {
                 $values_2[] = $value_2;
             }
-            $data['produces'] = $values_2;
+            $dataArray['produces'] = $values_2;
         }
         $values_3 = [];
         foreach ($object->getPaths() as $key => $value_3) {
@@ -280,13 +280,13 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 continue;
             }
         }
-        $data['paths'] = $values_3;
+        $dataArray['paths'] = $values_3;
         if ($object->isInitialized('definitions') && null !== $object->getDefinitions()) {
             $values_4 = [];
             foreach ($object->getDefinitions() as $key_1 => $value_4) {
                 $values_4[$key_1] = $this->normalizer->normalize($value_4, 'json', $context);
             }
-            $data['definitions'] = $values_4;
+            $dataArray['definitions'] = $values_4;
         }
         if ($object->isInitialized('parameters') && null !== $object->getParameters()) {
             $values_5 = [];
@@ -305,14 +305,14 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 }
                 $values_5[$key_2] = $value_6;
             }
-            $data['parameters'] = $values_5;
+            $dataArray['parameters'] = $values_5;
         }
         if ($object->isInitialized('responses') && null !== $object->getResponses()) {
             $values_6 = [];
             foreach ($object->getResponses() as $key_3 => $value_7) {
                 $values_6[$key_3] = $this->normalizer->normalize($value_7, 'json', $context);
             }
-            $data['responses'] = $values_6;
+            $dataArray['responses'] = $values_6;
         }
         if ($object->isInitialized('security') && null !== $object->getSecurity()) {
             $values_7 = [];
@@ -327,7 +327,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 }
                 $values_7[] = $values_8;
             }
-            $data['security'] = $values_7;
+            $dataArray['security'] = $values_7;
         }
         if ($object->isInitialized('securityDefinitions') && null !== $object->getSecurityDefinitions()) {
             $values_10 = [];
@@ -348,24 +348,24 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 }
                 $values_10[$key_5] = $value_12;
             }
-            $data['securityDefinitions'] = $values_10;
+            $dataArray['securityDefinitions'] = $values_10;
         }
         if ($object->isInitialized('tags') && null !== $object->getTags()) {
             $values_11 = [];
             foreach ($object->getTags() as $value_13) {
                 $values_11[] = $this->normalizer->normalize($value_13, 'json', $context);
             }
-            $data['tags'] = $values_11;
+            $dataArray['tags'] = $values_11;
         }
         if ($object->isInitialized('externalDocs') && null !== $object->getExternalDocs()) {
-            $data['externalDocs'] = $this->normalizer->normalize($object->getExternalDocs(), 'json', $context);
+            $dataArray['externalDocs'] = $this->normalizer->normalize($object->getExternalDocs(), 'json', $context);
         }
         foreach ($object as $key_6 => $value_14) {
             if (preg_match('/^x-/', (string) $key_6)) {
-                $data[$key_6] = $value_14;
+                $dataArray[$key_6] = $value_14;
             }
         }
-        return $data;
+        return $dataArray;
     }
     public function getSupportedTypes(?string $format = null) : array
     {

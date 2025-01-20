@@ -6,7 +6,6 @@ use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
-use PhpParser\Comment\Doc;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
@@ -28,23 +27,22 @@ trait DenormalizerGenerator
      * Create method to check if denormalization is supported.
      *
      * @param string $modelFqdn Fully Qualified name of the model class denormalized
-     * @param bool   $symfony7  Use Symfony 7 prototype or not
      *
      * @return Stmt\ClassMethod
      */
-    protected function createSupportsDenormalizationMethod(string $modelFqdn, bool $symfony7)
+    protected function createSupportsDenormalizationMethod(string $modelFqdn)
     {
         return new Stmt\ClassMethod('supportsDenormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'returnType' => new Identifier('bool'),
             'params' => [
-                $symfony7
-                    ? new Param(new Expr\Variable('data'), type: new Identifier('mixed'))
-                    : new Param(new Expr\Variable('data')),
-                $symfony7
-                    ? new Param(new Expr\Variable('type'), type: new Identifier('string'))
-                    : new Param(new Expr\Variable('type')),
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('string')),
+                new Param(new Expr\Variable('data'), type: new Identifier('mixed')),
+                new Param(new Expr\Variable('type'), type: new Identifier('string')),
+                new Param(
+                    new Expr\Variable('format'),
+                    new Expr\ConstFetch(new Name('null')),
+                    new Identifier('?string')
+                ),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), new Identifier('array')),
             ],
             'stmts' => [new Stmt\Return_(new Expr\BinaryOp\Identical(
@@ -54,7 +52,7 @@ trait DenormalizerGenerator
         ]);
     }
 
-    protected function createDenormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $symfony7): Stmt\ClassMethod
+    protected function createDenormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess): Stmt\ClassMethod
     {
         $context->refreshScope();
         $objectVariable = new Expr\Variable('object');
@@ -209,21 +207,16 @@ trait DenormalizerGenerator
 
         return new Stmt\ClassMethod('denormalize', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
-            'returnType' => $symfony7 ? new Identifier('mixed') : null,
+            'returnType' => new Identifier('mixed'),
             'params' => [
-                $symfony7 ? new Param($dataVariable, type: new Identifier('mixed')) : new Param($dataVariable),
-                $symfony7 ? new Param(new Expr\Variable('type'), type: new Identifier('string')) : new Param(new Expr\Variable('type')),
-                $symfony7 ? new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('string')) : new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param($dataVariable, type: new Identifier('mixed')),
+                new Param(new Expr\Variable('type'), type: new Identifier('string')),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('?string')),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), new Identifier('array')),
             ],
             'stmts' => $statements,
         ], [
-            'comments' => $symfony7 ? [] : [new Doc(<<<EOD
-/**
- * @return mixed
- */
-EOD
-            )],
+            'comments' => [],
         ]);
     }
 

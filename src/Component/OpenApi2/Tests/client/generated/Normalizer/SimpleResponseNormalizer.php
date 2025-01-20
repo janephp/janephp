@@ -4,7 +4,7 @@ namespace Jane\Component\OpenApi2\Tests\Client\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi2\Tests\Client\Runtime\Normalizer\CheckArray;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
+use Jane\Component\OpenApi2\Tests\Client\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -16,15 +16,16 @@ class SimpleResponseNormalizer implements DenormalizerInterface, NormalizerInter
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    public function supportsDenormalization($data, $type, $format = null)
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === 'Jane\\Component\\OpenApi2\\Tests\\Client\\Model\\SimpleResponse';
+        return $type === \Jane\Component\OpenApi2\Tests\Client\Model\SimpleResponse::class;
     }
-    public function supportsNormalization($data, $format = null, $context = []) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Jane\\Component\\OpenApi2\\Tests\\Client\\Model\\SimpleResponse';
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi2\Tests\Client\Model\SimpleResponse::class;
     }
-    public function denormalize($data, $type, $format = null, array $context = [])
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -44,15 +45,19 @@ class SimpleResponseNormalizer implements DenormalizerInterface, NormalizerInter
         }
         return $object;
     }
-    public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $data = [];
-        if (null !== $object->getFoo()) {
-            $data['foo'] = $object->getFoo();
+        $dataArray = [];
+        if ($data->isInitialized('foo') && null !== $data->getFoo()) {
+            $dataArray['foo'] = $data->getFoo();
         }
-        if (null !== $object->getBaz()) {
-            $data['baz'] = $object->getBaz();
+        if ($data->isInitialized('baz') && null !== $data->getBaz()) {
+            $dataArray['baz'] = $data->getBaz();
         }
-        return $data;
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Jane\Component\OpenApi2\Tests\Client\Model\SimpleResponse::class => false];
     }
 }

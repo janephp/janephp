@@ -3,6 +3,7 @@
 namespace Jane\Component\OpenApi3\Tests\Client\Normalizer;
 
 use Jane\Component\OpenApi3\Tests\Client\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Client\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -14,22 +15,30 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    protected $normalizers = ['Jane\\Component\\OpenApi3\\Tests\\Client\\Model\\SimpleResponse' => 'Jane\\Component\\OpenApi3\\Tests\\Client\\Normalizer\\SimpleResponseNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Client\\Model\\Error' => 'Jane\\Component\\OpenApi3\\Tests\\Client\\Normalizer\\ErrorNormalizer', \Jane\Component\JsonSchemaRuntime\Reference::class => '\\Jane\\Component\\OpenApi3\\Tests\\Client\\Runtime\\Normalizer\\ReferenceNormalizer'], $normalizersCache = [];
-    public function supportsDenormalization($data, $type, $format = null)
+    use ValidatorTrait;
+    protected $normalizers = [
+        
+        \Jane\Component\OpenApi3\Tests\Client\Model\SimpleResponse::class => \Jane\Component\OpenApi3\Tests\Client\Normalizer\SimpleResponseNormalizer::class,
+        
+        \Jane\Component\OpenApi3\Tests\Client\Model\Error::class => \Jane\Component\OpenApi3\Tests\Client\Normalizer\ErrorNormalizer::class,
+        
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Client\Runtime\Normalizer\ReferenceNormalizer::class,
+    ], $normalizersCache = [];
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return array_key_exists($type, $this->normalizers);
     }
-    public function supportsNormalization($data, $format = null, $context = []) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
     }
-    public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $normalizerClass = $this->normalizers[get_class($object)];
+        $normalizerClass = $this->normalizers[get_class($data)];
         $normalizer = $this->getNormalizer($normalizerClass);
-        return $normalizer->normalize($object, $format, $context);
+        return $normalizer->normalize($data, $format, $context);
     }
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         $denormalizerClass = $this->normalizers[$type];
         $denormalizer = $this->getNormalizer($denormalizerClass);
@@ -46,5 +55,14 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         $normalizer->setDenormalizer($this->denormalizer);
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [
+            
+            \Jane\Component\OpenApi3\Tests\Client\Model\SimpleResponse::class => false,
+            \Jane\Component\OpenApi3\Tests\Client\Model\Error::class => false,
+            \Jane\Component\JsonSchemaRuntime\Reference::class => false,
+        ];
     }
 }

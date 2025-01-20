@@ -5,1162 +5,580 @@ namespace Github\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
 use Github\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\HttpKernel\Kernel;
-if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
-    class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
-        {
-            return $type === \Github\Model\MinimalRepository::class;
-        }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \Github\Model\MinimalRepository::class;
-        }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \Github\Model\MinimalRepository();
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\MinimalRepositoryConstraint());
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('id', $data)) {
-                $object->setId($data['id']);
-                unset($data['id']);
-            }
-            if (\array_key_exists('node_id', $data)) {
-                $object->setNodeId($data['node_id']);
-                unset($data['node_id']);
-            }
-            if (\array_key_exists('name', $data)) {
-                $object->setName($data['name']);
-                unset($data['name']);
-            }
-            if (\array_key_exists('full_name', $data)) {
-                $object->setFullName($data['full_name']);
-                unset($data['full_name']);
-            }
-            if (\array_key_exists('owner', $data) && $data['owner'] !== null) {
-                $object->setOwner($this->denormalizer->denormalize($data['owner'], \Github\Model\MinimalRepositoryOwner::class, 'json', $context));
-                unset($data['owner']);
-            }
-            elseif (\array_key_exists('owner', $data) && $data['owner'] === null) {
-                $object->setOwner(null);
-            }
-            if (\array_key_exists('private', $data)) {
-                $object->setPrivate($data['private']);
-                unset($data['private']);
-            }
-            if (\array_key_exists('html_url', $data)) {
-                $object->setHtmlUrl($data['html_url']);
-                unset($data['html_url']);
-            }
-            if (\array_key_exists('description', $data) && $data['description'] !== null) {
-                $object->setDescription($data['description']);
-                unset($data['description']);
-            }
-            elseif (\array_key_exists('description', $data) && $data['description'] === null) {
-                $object->setDescription(null);
-            }
-            if (\array_key_exists('fork', $data)) {
-                $object->setFork($data['fork']);
-                unset($data['fork']);
-            }
-            if (\array_key_exists('url', $data)) {
-                $object->setUrl($data['url']);
-                unset($data['url']);
-            }
-            if (\array_key_exists('archive_url', $data)) {
-                $object->setArchiveUrl($data['archive_url']);
-                unset($data['archive_url']);
-            }
-            if (\array_key_exists('assignees_url', $data)) {
-                $object->setAssigneesUrl($data['assignees_url']);
-                unset($data['assignees_url']);
-            }
-            if (\array_key_exists('blobs_url', $data)) {
-                $object->setBlobsUrl($data['blobs_url']);
-                unset($data['blobs_url']);
-            }
-            if (\array_key_exists('branches_url', $data)) {
-                $object->setBranchesUrl($data['branches_url']);
-                unset($data['branches_url']);
-            }
-            if (\array_key_exists('collaborators_url', $data)) {
-                $object->setCollaboratorsUrl($data['collaborators_url']);
-                unset($data['collaborators_url']);
-            }
-            if (\array_key_exists('comments_url', $data)) {
-                $object->setCommentsUrl($data['comments_url']);
-                unset($data['comments_url']);
-            }
-            if (\array_key_exists('commits_url', $data)) {
-                $object->setCommitsUrl($data['commits_url']);
-                unset($data['commits_url']);
-            }
-            if (\array_key_exists('compare_url', $data)) {
-                $object->setCompareUrl($data['compare_url']);
-                unset($data['compare_url']);
-            }
-            if (\array_key_exists('contents_url', $data)) {
-                $object->setContentsUrl($data['contents_url']);
-                unset($data['contents_url']);
-            }
-            if (\array_key_exists('contributors_url', $data)) {
-                $object->setContributorsUrl($data['contributors_url']);
-                unset($data['contributors_url']);
-            }
-            if (\array_key_exists('deployments_url', $data)) {
-                $object->setDeploymentsUrl($data['deployments_url']);
-                unset($data['deployments_url']);
-            }
-            if (\array_key_exists('downloads_url', $data)) {
-                $object->setDownloadsUrl($data['downloads_url']);
-                unset($data['downloads_url']);
-            }
-            if (\array_key_exists('events_url', $data)) {
-                $object->setEventsUrl($data['events_url']);
-                unset($data['events_url']);
-            }
-            if (\array_key_exists('forks_url', $data)) {
-                $object->setForksUrl($data['forks_url']);
-                unset($data['forks_url']);
-            }
-            if (\array_key_exists('git_commits_url', $data)) {
-                $object->setGitCommitsUrl($data['git_commits_url']);
-                unset($data['git_commits_url']);
-            }
-            if (\array_key_exists('git_refs_url', $data)) {
-                $object->setGitRefsUrl($data['git_refs_url']);
-                unset($data['git_refs_url']);
-            }
-            if (\array_key_exists('git_tags_url', $data)) {
-                $object->setGitTagsUrl($data['git_tags_url']);
-                unset($data['git_tags_url']);
-            }
-            if (\array_key_exists('git_url', $data)) {
-                $object->setGitUrl($data['git_url']);
-                unset($data['git_url']);
-            }
-            if (\array_key_exists('issue_comment_url', $data)) {
-                $object->setIssueCommentUrl($data['issue_comment_url']);
-                unset($data['issue_comment_url']);
-            }
-            if (\array_key_exists('issue_events_url', $data)) {
-                $object->setIssueEventsUrl($data['issue_events_url']);
-                unset($data['issue_events_url']);
-            }
-            if (\array_key_exists('issues_url', $data)) {
-                $object->setIssuesUrl($data['issues_url']);
-                unset($data['issues_url']);
-            }
-            if (\array_key_exists('keys_url', $data)) {
-                $object->setKeysUrl($data['keys_url']);
-                unset($data['keys_url']);
-            }
-            if (\array_key_exists('labels_url', $data)) {
-                $object->setLabelsUrl($data['labels_url']);
-                unset($data['labels_url']);
-            }
-            if (\array_key_exists('languages_url', $data)) {
-                $object->setLanguagesUrl($data['languages_url']);
-                unset($data['languages_url']);
-            }
-            if (\array_key_exists('merges_url', $data)) {
-                $object->setMergesUrl($data['merges_url']);
-                unset($data['merges_url']);
-            }
-            if (\array_key_exists('milestones_url', $data)) {
-                $object->setMilestonesUrl($data['milestones_url']);
-                unset($data['milestones_url']);
-            }
-            if (\array_key_exists('notifications_url', $data)) {
-                $object->setNotificationsUrl($data['notifications_url']);
-                unset($data['notifications_url']);
-            }
-            if (\array_key_exists('pulls_url', $data)) {
-                $object->setPullsUrl($data['pulls_url']);
-                unset($data['pulls_url']);
-            }
-            if (\array_key_exists('releases_url', $data)) {
-                $object->setReleasesUrl($data['releases_url']);
-                unset($data['releases_url']);
-            }
-            if (\array_key_exists('ssh_url', $data)) {
-                $object->setSshUrl($data['ssh_url']);
-                unset($data['ssh_url']);
-            }
-            if (\array_key_exists('stargazers_url', $data)) {
-                $object->setStargazersUrl($data['stargazers_url']);
-                unset($data['stargazers_url']);
-            }
-            if (\array_key_exists('statuses_url', $data)) {
-                $object->setStatusesUrl($data['statuses_url']);
-                unset($data['statuses_url']);
-            }
-            if (\array_key_exists('subscribers_url', $data)) {
-                $object->setSubscribersUrl($data['subscribers_url']);
-                unset($data['subscribers_url']);
-            }
-            if (\array_key_exists('subscription_url', $data)) {
-                $object->setSubscriptionUrl($data['subscription_url']);
-                unset($data['subscription_url']);
-            }
-            if (\array_key_exists('tags_url', $data)) {
-                $object->setTagsUrl($data['tags_url']);
-                unset($data['tags_url']);
-            }
-            if (\array_key_exists('teams_url', $data)) {
-                $object->setTeamsUrl($data['teams_url']);
-                unset($data['teams_url']);
-            }
-            if (\array_key_exists('trees_url', $data)) {
-                $object->setTreesUrl($data['trees_url']);
-                unset($data['trees_url']);
-            }
-            if (\array_key_exists('clone_url', $data)) {
-                $object->setCloneUrl($data['clone_url']);
-                unset($data['clone_url']);
-            }
-            if (\array_key_exists('mirror_url', $data) && $data['mirror_url'] !== null) {
-                $object->setMirrorUrl($data['mirror_url']);
-                unset($data['mirror_url']);
-            }
-            elseif (\array_key_exists('mirror_url', $data) && $data['mirror_url'] === null) {
-                $object->setMirrorUrl(null);
-            }
-            if (\array_key_exists('hooks_url', $data)) {
-                $object->setHooksUrl($data['hooks_url']);
-                unset($data['hooks_url']);
-            }
-            if (\array_key_exists('svn_url', $data)) {
-                $object->setSvnUrl($data['svn_url']);
-                unset($data['svn_url']);
-            }
-            if (\array_key_exists('homepage', $data) && $data['homepage'] !== null) {
-                $object->setHomepage($data['homepage']);
-                unset($data['homepage']);
-            }
-            elseif (\array_key_exists('homepage', $data) && $data['homepage'] === null) {
-                $object->setHomepage(null);
-            }
-            if (\array_key_exists('language', $data) && $data['language'] !== null) {
-                $object->setLanguage($data['language']);
-                unset($data['language']);
-            }
-            elseif (\array_key_exists('language', $data) && $data['language'] === null) {
-                $object->setLanguage(null);
-            }
-            if (\array_key_exists('forks_count', $data)) {
-                $object->setForksCount($data['forks_count']);
-                unset($data['forks_count']);
-            }
-            if (\array_key_exists('stargazers_count', $data)) {
-                $object->setStargazersCount($data['stargazers_count']);
-                unset($data['stargazers_count']);
-            }
-            if (\array_key_exists('watchers_count', $data)) {
-                $object->setWatchersCount($data['watchers_count']);
-                unset($data['watchers_count']);
-            }
-            if (\array_key_exists('size', $data)) {
-                $object->setSize($data['size']);
-                unset($data['size']);
-            }
-            if (\array_key_exists('default_branch', $data)) {
-                $object->setDefaultBranch($data['default_branch']);
-                unset($data['default_branch']);
-            }
-            if (\array_key_exists('open_issues_count', $data)) {
-                $object->setOpenIssuesCount($data['open_issues_count']);
-                unset($data['open_issues_count']);
-            }
-            if (\array_key_exists('is_template', $data)) {
-                $object->setIsTemplate($data['is_template']);
-                unset($data['is_template']);
-            }
-            if (\array_key_exists('topics', $data)) {
-                $values = [];
-                foreach ($data['topics'] as $value) {
-                    $values[] = $value;
-                }
-                $object->setTopics($values);
-                unset($data['topics']);
-            }
-            if (\array_key_exists('has_issues', $data)) {
-                $object->setHasIssues($data['has_issues']);
-                unset($data['has_issues']);
-            }
-            if (\array_key_exists('has_projects', $data)) {
-                $object->setHasProjects($data['has_projects']);
-                unset($data['has_projects']);
-            }
-            if (\array_key_exists('has_wiki', $data)) {
-                $object->setHasWiki($data['has_wiki']);
-                unset($data['has_wiki']);
-            }
-            if (\array_key_exists('has_pages', $data)) {
-                $object->setHasPages($data['has_pages']);
-                unset($data['has_pages']);
-            }
-            if (\array_key_exists('has_downloads', $data)) {
-                $object->setHasDownloads($data['has_downloads']);
-                unset($data['has_downloads']);
-            }
-            if (\array_key_exists('archived', $data)) {
-                $object->setArchived($data['archived']);
-                unset($data['archived']);
-            }
-            if (\array_key_exists('disabled', $data)) {
-                $object->setDisabled($data['disabled']);
-                unset($data['disabled']);
-            }
-            if (\array_key_exists('visibility', $data)) {
-                $object->setVisibility($data['visibility']);
-                unset($data['visibility']);
-            }
-            if (\array_key_exists('pushed_at', $data) && $data['pushed_at'] !== null) {
-                $object->setPushedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['pushed_at']));
-                unset($data['pushed_at']);
-            }
-            elseif (\array_key_exists('pushed_at', $data) && $data['pushed_at'] === null) {
-                $object->setPushedAt(null);
-            }
-            if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
-                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
-                unset($data['created_at']);
-            }
-            elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
-                $object->setCreatedAt(null);
-            }
-            if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
-                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
-                unset($data['updated_at']);
-            }
-            elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
-                $object->setUpdatedAt(null);
-            }
-            if (\array_key_exists('permissions', $data)) {
-                $object->setPermissions($this->denormalizer->denormalize($data['permissions'], \Github\Model\MinimalRepositoryPermissions::class, 'json', $context));
-                unset($data['permissions']);
-            }
-            if (\array_key_exists('template_repository', $data)) {
-                $object->setTemplateRepository($data['template_repository']);
-                unset($data['template_repository']);
-            }
-            if (\array_key_exists('temp_clone_token', $data)) {
-                $object->setTempCloneToken($data['temp_clone_token']);
-                unset($data['temp_clone_token']);
-            }
-            if (\array_key_exists('delete_branch_on_merge', $data)) {
-                $object->setDeleteBranchOnMerge($data['delete_branch_on_merge']);
-                unset($data['delete_branch_on_merge']);
-            }
-            if (\array_key_exists('subscribers_count', $data)) {
-                $object->setSubscribersCount($data['subscribers_count']);
-                unset($data['subscribers_count']);
-            }
-            if (\array_key_exists('network_count', $data)) {
-                $object->setNetworkCount($data['network_count']);
-                unset($data['network_count']);
-            }
-            if (\array_key_exists('license', $data) && $data['license'] !== null) {
-                $object->setLicense($this->denormalizer->denormalize($data['license'], \Github\Model\MinimalRepositoryLicense::class, 'json', $context));
-                unset($data['license']);
-            }
-            elseif (\array_key_exists('license', $data) && $data['license'] === null) {
-                $object->setLicense(null);
-            }
-            if (\array_key_exists('forks', $data)) {
-                $object->setForks($data['forks']);
-                unset($data['forks']);
-            }
-            if (\array_key_exists('open_issues', $data)) {
-                $object->setOpenIssues($data['open_issues']);
-                unset($data['open_issues']);
-            }
-            if (\array_key_exists('watchers', $data)) {
-                $object->setWatchers($data['watchers']);
-                unset($data['watchers']);
-            }
-            foreach ($data as $key => $value_1) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value_1;
-                }
-            }
-            return $object;
-        }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            $data['id'] = $object->getId();
-            $data['node_id'] = $object->getNodeId();
-            $data['name'] = $object->getName();
-            $data['full_name'] = $object->getFullName();
-            $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
-            $data['private'] = $object->getPrivate();
-            $data['html_url'] = $object->getHtmlUrl();
-            $data['description'] = $object->getDescription();
-            $data['fork'] = $object->getFork();
-            $data['url'] = $object->getUrl();
-            $data['archive_url'] = $object->getArchiveUrl();
-            $data['assignees_url'] = $object->getAssigneesUrl();
-            $data['blobs_url'] = $object->getBlobsUrl();
-            $data['branches_url'] = $object->getBranchesUrl();
-            $data['collaborators_url'] = $object->getCollaboratorsUrl();
-            $data['comments_url'] = $object->getCommentsUrl();
-            $data['commits_url'] = $object->getCommitsUrl();
-            $data['compare_url'] = $object->getCompareUrl();
-            $data['contents_url'] = $object->getContentsUrl();
-            $data['contributors_url'] = $object->getContributorsUrl();
-            $data['deployments_url'] = $object->getDeploymentsUrl();
-            $data['downloads_url'] = $object->getDownloadsUrl();
-            $data['events_url'] = $object->getEventsUrl();
-            $data['forks_url'] = $object->getForksUrl();
-            $data['git_commits_url'] = $object->getGitCommitsUrl();
-            $data['git_refs_url'] = $object->getGitRefsUrl();
-            $data['git_tags_url'] = $object->getGitTagsUrl();
-            if ($object->isInitialized('gitUrl') && null !== $object->getGitUrl()) {
-                $data['git_url'] = $object->getGitUrl();
-            }
-            $data['issue_comment_url'] = $object->getIssueCommentUrl();
-            $data['issue_events_url'] = $object->getIssueEventsUrl();
-            $data['issues_url'] = $object->getIssuesUrl();
-            $data['keys_url'] = $object->getKeysUrl();
-            $data['labels_url'] = $object->getLabelsUrl();
-            $data['languages_url'] = $object->getLanguagesUrl();
-            $data['merges_url'] = $object->getMergesUrl();
-            $data['milestones_url'] = $object->getMilestonesUrl();
-            $data['notifications_url'] = $object->getNotificationsUrl();
-            $data['pulls_url'] = $object->getPullsUrl();
-            $data['releases_url'] = $object->getReleasesUrl();
-            if ($object->isInitialized('sshUrl') && null !== $object->getSshUrl()) {
-                $data['ssh_url'] = $object->getSshUrl();
-            }
-            $data['stargazers_url'] = $object->getStargazersUrl();
-            $data['statuses_url'] = $object->getStatusesUrl();
-            $data['subscribers_url'] = $object->getSubscribersUrl();
-            $data['subscription_url'] = $object->getSubscriptionUrl();
-            $data['tags_url'] = $object->getTagsUrl();
-            $data['teams_url'] = $object->getTeamsUrl();
-            $data['trees_url'] = $object->getTreesUrl();
-            if ($object->isInitialized('cloneUrl') && null !== $object->getCloneUrl()) {
-                $data['clone_url'] = $object->getCloneUrl();
-            }
-            if ($object->isInitialized('mirrorUrl') && null !== $object->getMirrorUrl()) {
-                $data['mirror_url'] = $object->getMirrorUrl();
-            }
-            $data['hooks_url'] = $object->getHooksUrl();
-            if ($object->isInitialized('svnUrl') && null !== $object->getSvnUrl()) {
-                $data['svn_url'] = $object->getSvnUrl();
-            }
-            if ($object->isInitialized('homepage') && null !== $object->getHomepage()) {
-                $data['homepage'] = $object->getHomepage();
-            }
-            if ($object->isInitialized('language') && null !== $object->getLanguage()) {
-                $data['language'] = $object->getLanguage();
-            }
-            if ($object->isInitialized('forksCount') && null !== $object->getForksCount()) {
-                $data['forks_count'] = $object->getForksCount();
-            }
-            if ($object->isInitialized('stargazersCount') && null !== $object->getStargazersCount()) {
-                $data['stargazers_count'] = $object->getStargazersCount();
-            }
-            if ($object->isInitialized('watchersCount') && null !== $object->getWatchersCount()) {
-                $data['watchers_count'] = $object->getWatchersCount();
-            }
-            if ($object->isInitialized('size') && null !== $object->getSize()) {
-                $data['size'] = $object->getSize();
-            }
-            if ($object->isInitialized('defaultBranch') && null !== $object->getDefaultBranch()) {
-                $data['default_branch'] = $object->getDefaultBranch();
-            }
-            if ($object->isInitialized('openIssuesCount') && null !== $object->getOpenIssuesCount()) {
-                $data['open_issues_count'] = $object->getOpenIssuesCount();
-            }
-            if ($object->isInitialized('isTemplate') && null !== $object->getIsTemplate()) {
-                $data['is_template'] = $object->getIsTemplate();
-            }
-            if ($object->isInitialized('topics') && null !== $object->getTopics()) {
-                $values = [];
-                foreach ($object->getTopics() as $value) {
-                    $values[] = $value;
-                }
-                $data['topics'] = $values;
-            }
-            if ($object->isInitialized('hasIssues') && null !== $object->getHasIssues()) {
-                $data['has_issues'] = $object->getHasIssues();
-            }
-            if ($object->isInitialized('hasProjects') && null !== $object->getHasProjects()) {
-                $data['has_projects'] = $object->getHasProjects();
-            }
-            if ($object->isInitialized('hasWiki') && null !== $object->getHasWiki()) {
-                $data['has_wiki'] = $object->getHasWiki();
-            }
-            if ($object->isInitialized('hasPages') && null !== $object->getHasPages()) {
-                $data['has_pages'] = $object->getHasPages();
-            }
-            if ($object->isInitialized('hasDownloads') && null !== $object->getHasDownloads()) {
-                $data['has_downloads'] = $object->getHasDownloads();
-            }
-            if ($object->isInitialized('archived') && null !== $object->getArchived()) {
-                $data['archived'] = $object->getArchived();
-            }
-            if ($object->isInitialized('disabled') && null !== $object->getDisabled()) {
-                $data['disabled'] = $object->getDisabled();
-            }
-            if ($object->isInitialized('visibility') && null !== $object->getVisibility()) {
-                $data['visibility'] = $object->getVisibility();
-            }
-            if ($object->isInitialized('pushedAt') && null !== $object->getPushedAt()) {
-                $data['pushed_at'] = $object->getPushedAt()->format('Y-m-d\TH:i:sP');
-            }
-            if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
-                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\TH:i:sP');
-            }
-            if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
-                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\TH:i:sP');
-            }
-            if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
-                $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
-            }
-            if ($object->isInitialized('templateRepository') && null !== $object->getTemplateRepository()) {
-                $data['template_repository'] = $object->getTemplateRepository();
-            }
-            if ($object->isInitialized('tempCloneToken') && null !== $object->getTempCloneToken()) {
-                $data['temp_clone_token'] = $object->getTempCloneToken();
-            }
-            if ($object->isInitialized('deleteBranchOnMerge') && null !== $object->getDeleteBranchOnMerge()) {
-                $data['delete_branch_on_merge'] = $object->getDeleteBranchOnMerge();
-            }
-            if ($object->isInitialized('subscribersCount') && null !== $object->getSubscribersCount()) {
-                $data['subscribers_count'] = $object->getSubscribersCount();
-            }
-            if ($object->isInitialized('networkCount') && null !== $object->getNetworkCount()) {
-                $data['network_count'] = $object->getNetworkCount();
-            }
-            if ($object->isInitialized('license') && null !== $object->getLicense()) {
-                $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
-            }
-            if ($object->isInitialized('forks') && null !== $object->getForks()) {
-                $data['forks'] = $object->getForks();
-            }
-            if ($object->isInitialized('openIssues') && null !== $object->getOpenIssues()) {
-                $data['open_issues'] = $object->getOpenIssues();
-            }
-            if ($object->isInitialized('watchers') && null !== $object->getWatchers()) {
-                $data['watchers'] = $object->getWatchers();
-            }
-            foreach ($object as $key => $value_1) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value_1;
-                }
-            }
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\MinimalRepositoryConstraint());
-            }
-            return $data;
-        }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\Github\Model\MinimalRepository::class => false];
-        }
+        return $type === \Github\Model\MinimalRepository::class;
     }
-} else {
-    class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
-        {
-            return $type === \Github\Model\MinimalRepository::class;
+        return is_object($data) && get_class($data) === \Github\Model\MinimalRepository::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \Github\Model\MinimalRepository::class;
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        /**
-         * @return mixed
-         */
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \Github\Model\MinimalRepository();
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\MinimalRepositoryConstraint());
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('id', $data)) {
-                $object->setId($data['id']);
-                unset($data['id']);
-            }
-            if (\array_key_exists('node_id', $data)) {
-                $object->setNodeId($data['node_id']);
-                unset($data['node_id']);
-            }
-            if (\array_key_exists('name', $data)) {
-                $object->setName($data['name']);
-                unset($data['name']);
-            }
-            if (\array_key_exists('full_name', $data)) {
-                $object->setFullName($data['full_name']);
-                unset($data['full_name']);
-            }
-            if (\array_key_exists('owner', $data) && $data['owner'] !== null) {
-                $object->setOwner($this->denormalizer->denormalize($data['owner'], \Github\Model\MinimalRepositoryOwner::class, 'json', $context));
-                unset($data['owner']);
-            }
-            elseif (\array_key_exists('owner', $data) && $data['owner'] === null) {
-                $object->setOwner(null);
-            }
-            if (\array_key_exists('private', $data)) {
-                $object->setPrivate($data['private']);
-                unset($data['private']);
-            }
-            if (\array_key_exists('html_url', $data)) {
-                $object->setHtmlUrl($data['html_url']);
-                unset($data['html_url']);
-            }
-            if (\array_key_exists('description', $data) && $data['description'] !== null) {
-                $object->setDescription($data['description']);
-                unset($data['description']);
-            }
-            elseif (\array_key_exists('description', $data) && $data['description'] === null) {
-                $object->setDescription(null);
-            }
-            if (\array_key_exists('fork', $data)) {
-                $object->setFork($data['fork']);
-                unset($data['fork']);
-            }
-            if (\array_key_exists('url', $data)) {
-                $object->setUrl($data['url']);
-                unset($data['url']);
-            }
-            if (\array_key_exists('archive_url', $data)) {
-                $object->setArchiveUrl($data['archive_url']);
-                unset($data['archive_url']);
-            }
-            if (\array_key_exists('assignees_url', $data)) {
-                $object->setAssigneesUrl($data['assignees_url']);
-                unset($data['assignees_url']);
-            }
-            if (\array_key_exists('blobs_url', $data)) {
-                $object->setBlobsUrl($data['blobs_url']);
-                unset($data['blobs_url']);
-            }
-            if (\array_key_exists('branches_url', $data)) {
-                $object->setBranchesUrl($data['branches_url']);
-                unset($data['branches_url']);
-            }
-            if (\array_key_exists('collaborators_url', $data)) {
-                $object->setCollaboratorsUrl($data['collaborators_url']);
-                unset($data['collaborators_url']);
-            }
-            if (\array_key_exists('comments_url', $data)) {
-                $object->setCommentsUrl($data['comments_url']);
-                unset($data['comments_url']);
-            }
-            if (\array_key_exists('commits_url', $data)) {
-                $object->setCommitsUrl($data['commits_url']);
-                unset($data['commits_url']);
-            }
-            if (\array_key_exists('compare_url', $data)) {
-                $object->setCompareUrl($data['compare_url']);
-                unset($data['compare_url']);
-            }
-            if (\array_key_exists('contents_url', $data)) {
-                $object->setContentsUrl($data['contents_url']);
-                unset($data['contents_url']);
-            }
-            if (\array_key_exists('contributors_url', $data)) {
-                $object->setContributorsUrl($data['contributors_url']);
-                unset($data['contributors_url']);
-            }
-            if (\array_key_exists('deployments_url', $data)) {
-                $object->setDeploymentsUrl($data['deployments_url']);
-                unset($data['deployments_url']);
-            }
-            if (\array_key_exists('downloads_url', $data)) {
-                $object->setDownloadsUrl($data['downloads_url']);
-                unset($data['downloads_url']);
-            }
-            if (\array_key_exists('events_url', $data)) {
-                $object->setEventsUrl($data['events_url']);
-                unset($data['events_url']);
-            }
-            if (\array_key_exists('forks_url', $data)) {
-                $object->setForksUrl($data['forks_url']);
-                unset($data['forks_url']);
-            }
-            if (\array_key_exists('git_commits_url', $data)) {
-                $object->setGitCommitsUrl($data['git_commits_url']);
-                unset($data['git_commits_url']);
-            }
-            if (\array_key_exists('git_refs_url', $data)) {
-                $object->setGitRefsUrl($data['git_refs_url']);
-                unset($data['git_refs_url']);
-            }
-            if (\array_key_exists('git_tags_url', $data)) {
-                $object->setGitTagsUrl($data['git_tags_url']);
-                unset($data['git_tags_url']);
-            }
-            if (\array_key_exists('git_url', $data)) {
-                $object->setGitUrl($data['git_url']);
-                unset($data['git_url']);
-            }
-            if (\array_key_exists('issue_comment_url', $data)) {
-                $object->setIssueCommentUrl($data['issue_comment_url']);
-                unset($data['issue_comment_url']);
-            }
-            if (\array_key_exists('issue_events_url', $data)) {
-                $object->setIssueEventsUrl($data['issue_events_url']);
-                unset($data['issue_events_url']);
-            }
-            if (\array_key_exists('issues_url', $data)) {
-                $object->setIssuesUrl($data['issues_url']);
-                unset($data['issues_url']);
-            }
-            if (\array_key_exists('keys_url', $data)) {
-                $object->setKeysUrl($data['keys_url']);
-                unset($data['keys_url']);
-            }
-            if (\array_key_exists('labels_url', $data)) {
-                $object->setLabelsUrl($data['labels_url']);
-                unset($data['labels_url']);
-            }
-            if (\array_key_exists('languages_url', $data)) {
-                $object->setLanguagesUrl($data['languages_url']);
-                unset($data['languages_url']);
-            }
-            if (\array_key_exists('merges_url', $data)) {
-                $object->setMergesUrl($data['merges_url']);
-                unset($data['merges_url']);
-            }
-            if (\array_key_exists('milestones_url', $data)) {
-                $object->setMilestonesUrl($data['milestones_url']);
-                unset($data['milestones_url']);
-            }
-            if (\array_key_exists('notifications_url', $data)) {
-                $object->setNotificationsUrl($data['notifications_url']);
-                unset($data['notifications_url']);
-            }
-            if (\array_key_exists('pulls_url', $data)) {
-                $object->setPullsUrl($data['pulls_url']);
-                unset($data['pulls_url']);
-            }
-            if (\array_key_exists('releases_url', $data)) {
-                $object->setReleasesUrl($data['releases_url']);
-                unset($data['releases_url']);
-            }
-            if (\array_key_exists('ssh_url', $data)) {
-                $object->setSshUrl($data['ssh_url']);
-                unset($data['ssh_url']);
-            }
-            if (\array_key_exists('stargazers_url', $data)) {
-                $object->setStargazersUrl($data['stargazers_url']);
-                unset($data['stargazers_url']);
-            }
-            if (\array_key_exists('statuses_url', $data)) {
-                $object->setStatusesUrl($data['statuses_url']);
-                unset($data['statuses_url']);
-            }
-            if (\array_key_exists('subscribers_url', $data)) {
-                $object->setSubscribersUrl($data['subscribers_url']);
-                unset($data['subscribers_url']);
-            }
-            if (\array_key_exists('subscription_url', $data)) {
-                $object->setSubscriptionUrl($data['subscription_url']);
-                unset($data['subscription_url']);
-            }
-            if (\array_key_exists('tags_url', $data)) {
-                $object->setTagsUrl($data['tags_url']);
-                unset($data['tags_url']);
-            }
-            if (\array_key_exists('teams_url', $data)) {
-                $object->setTeamsUrl($data['teams_url']);
-                unset($data['teams_url']);
-            }
-            if (\array_key_exists('trees_url', $data)) {
-                $object->setTreesUrl($data['trees_url']);
-                unset($data['trees_url']);
-            }
-            if (\array_key_exists('clone_url', $data)) {
-                $object->setCloneUrl($data['clone_url']);
-                unset($data['clone_url']);
-            }
-            if (\array_key_exists('mirror_url', $data) && $data['mirror_url'] !== null) {
-                $object->setMirrorUrl($data['mirror_url']);
-                unset($data['mirror_url']);
-            }
-            elseif (\array_key_exists('mirror_url', $data) && $data['mirror_url'] === null) {
-                $object->setMirrorUrl(null);
-            }
-            if (\array_key_exists('hooks_url', $data)) {
-                $object->setHooksUrl($data['hooks_url']);
-                unset($data['hooks_url']);
-            }
-            if (\array_key_exists('svn_url', $data)) {
-                $object->setSvnUrl($data['svn_url']);
-                unset($data['svn_url']);
-            }
-            if (\array_key_exists('homepage', $data) && $data['homepage'] !== null) {
-                $object->setHomepage($data['homepage']);
-                unset($data['homepage']);
-            }
-            elseif (\array_key_exists('homepage', $data) && $data['homepage'] === null) {
-                $object->setHomepage(null);
-            }
-            if (\array_key_exists('language', $data) && $data['language'] !== null) {
-                $object->setLanguage($data['language']);
-                unset($data['language']);
-            }
-            elseif (\array_key_exists('language', $data) && $data['language'] === null) {
-                $object->setLanguage(null);
-            }
-            if (\array_key_exists('forks_count', $data)) {
-                $object->setForksCount($data['forks_count']);
-                unset($data['forks_count']);
-            }
-            if (\array_key_exists('stargazers_count', $data)) {
-                $object->setStargazersCount($data['stargazers_count']);
-                unset($data['stargazers_count']);
-            }
-            if (\array_key_exists('watchers_count', $data)) {
-                $object->setWatchersCount($data['watchers_count']);
-                unset($data['watchers_count']);
-            }
-            if (\array_key_exists('size', $data)) {
-                $object->setSize($data['size']);
-                unset($data['size']);
-            }
-            if (\array_key_exists('default_branch', $data)) {
-                $object->setDefaultBranch($data['default_branch']);
-                unset($data['default_branch']);
-            }
-            if (\array_key_exists('open_issues_count', $data)) {
-                $object->setOpenIssuesCount($data['open_issues_count']);
-                unset($data['open_issues_count']);
-            }
-            if (\array_key_exists('is_template', $data)) {
-                $object->setIsTemplate($data['is_template']);
-                unset($data['is_template']);
-            }
-            if (\array_key_exists('topics', $data)) {
-                $values = [];
-                foreach ($data['topics'] as $value) {
-                    $values[] = $value;
-                }
-                $object->setTopics($values);
-                unset($data['topics']);
-            }
-            if (\array_key_exists('has_issues', $data)) {
-                $object->setHasIssues($data['has_issues']);
-                unset($data['has_issues']);
-            }
-            if (\array_key_exists('has_projects', $data)) {
-                $object->setHasProjects($data['has_projects']);
-                unset($data['has_projects']);
-            }
-            if (\array_key_exists('has_wiki', $data)) {
-                $object->setHasWiki($data['has_wiki']);
-                unset($data['has_wiki']);
-            }
-            if (\array_key_exists('has_pages', $data)) {
-                $object->setHasPages($data['has_pages']);
-                unset($data['has_pages']);
-            }
-            if (\array_key_exists('has_downloads', $data)) {
-                $object->setHasDownloads($data['has_downloads']);
-                unset($data['has_downloads']);
-            }
-            if (\array_key_exists('archived', $data)) {
-                $object->setArchived($data['archived']);
-                unset($data['archived']);
-            }
-            if (\array_key_exists('disabled', $data)) {
-                $object->setDisabled($data['disabled']);
-                unset($data['disabled']);
-            }
-            if (\array_key_exists('visibility', $data)) {
-                $object->setVisibility($data['visibility']);
-                unset($data['visibility']);
-            }
-            if (\array_key_exists('pushed_at', $data) && $data['pushed_at'] !== null) {
-                $object->setPushedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['pushed_at']));
-                unset($data['pushed_at']);
-            }
-            elseif (\array_key_exists('pushed_at', $data) && $data['pushed_at'] === null) {
-                $object->setPushedAt(null);
-            }
-            if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
-                $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
-                unset($data['created_at']);
-            }
-            elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
-                $object->setCreatedAt(null);
-            }
-            if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
-                $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
-                unset($data['updated_at']);
-            }
-            elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
-                $object->setUpdatedAt(null);
-            }
-            if (\array_key_exists('permissions', $data)) {
-                $object->setPermissions($this->denormalizer->denormalize($data['permissions'], \Github\Model\MinimalRepositoryPermissions::class, 'json', $context));
-                unset($data['permissions']);
-            }
-            if (\array_key_exists('template_repository', $data)) {
-                $object->setTemplateRepository($data['template_repository']);
-                unset($data['template_repository']);
-            }
-            if (\array_key_exists('temp_clone_token', $data)) {
-                $object->setTempCloneToken($data['temp_clone_token']);
-                unset($data['temp_clone_token']);
-            }
-            if (\array_key_exists('delete_branch_on_merge', $data)) {
-                $object->setDeleteBranchOnMerge($data['delete_branch_on_merge']);
-                unset($data['delete_branch_on_merge']);
-            }
-            if (\array_key_exists('subscribers_count', $data)) {
-                $object->setSubscribersCount($data['subscribers_count']);
-                unset($data['subscribers_count']);
-            }
-            if (\array_key_exists('network_count', $data)) {
-                $object->setNetworkCount($data['network_count']);
-                unset($data['network_count']);
-            }
-            if (\array_key_exists('license', $data) && $data['license'] !== null) {
-                $object->setLicense($this->denormalizer->denormalize($data['license'], \Github\Model\MinimalRepositoryLicense::class, 'json', $context));
-                unset($data['license']);
-            }
-            elseif (\array_key_exists('license', $data) && $data['license'] === null) {
-                $object->setLicense(null);
-            }
-            if (\array_key_exists('forks', $data)) {
-                $object->setForks($data['forks']);
-                unset($data['forks']);
-            }
-            if (\array_key_exists('open_issues', $data)) {
-                $object->setOpenIssues($data['open_issues']);
-                unset($data['open_issues']);
-            }
-            if (\array_key_exists('watchers', $data)) {
-                $object->setWatchers($data['watchers']);
-                unset($data['watchers']);
-            }
-            foreach ($data as $key => $value_1) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value_1;
-                }
-            }
+        $object = new \Github\Model\MinimalRepository();
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\MinimalRepositoryConstraint());
+        }
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            $data['id'] = $object->getId();
-            $data['node_id'] = $object->getNodeId();
-            $data['name'] = $object->getName();
-            $data['full_name'] = $object->getFullName();
-            $data['owner'] = $this->normalizer->normalize($object->getOwner(), 'json', $context);
-            $data['private'] = $object->getPrivate();
-            $data['html_url'] = $object->getHtmlUrl();
-            $data['description'] = $object->getDescription();
-            $data['fork'] = $object->getFork();
-            $data['url'] = $object->getUrl();
-            $data['archive_url'] = $object->getArchiveUrl();
-            $data['assignees_url'] = $object->getAssigneesUrl();
-            $data['blobs_url'] = $object->getBlobsUrl();
-            $data['branches_url'] = $object->getBranchesUrl();
-            $data['collaborators_url'] = $object->getCollaboratorsUrl();
-            $data['comments_url'] = $object->getCommentsUrl();
-            $data['commits_url'] = $object->getCommitsUrl();
-            $data['compare_url'] = $object->getCompareUrl();
-            $data['contents_url'] = $object->getContentsUrl();
-            $data['contributors_url'] = $object->getContributorsUrl();
-            $data['deployments_url'] = $object->getDeploymentsUrl();
-            $data['downloads_url'] = $object->getDownloadsUrl();
-            $data['events_url'] = $object->getEventsUrl();
-            $data['forks_url'] = $object->getForksUrl();
-            $data['git_commits_url'] = $object->getGitCommitsUrl();
-            $data['git_refs_url'] = $object->getGitRefsUrl();
-            $data['git_tags_url'] = $object->getGitTagsUrl();
-            if ($object->isInitialized('gitUrl') && null !== $object->getGitUrl()) {
-                $data['git_url'] = $object->getGitUrl();
-            }
-            $data['issue_comment_url'] = $object->getIssueCommentUrl();
-            $data['issue_events_url'] = $object->getIssueEventsUrl();
-            $data['issues_url'] = $object->getIssuesUrl();
-            $data['keys_url'] = $object->getKeysUrl();
-            $data['labels_url'] = $object->getLabelsUrl();
-            $data['languages_url'] = $object->getLanguagesUrl();
-            $data['merges_url'] = $object->getMergesUrl();
-            $data['milestones_url'] = $object->getMilestonesUrl();
-            $data['notifications_url'] = $object->getNotificationsUrl();
-            $data['pulls_url'] = $object->getPullsUrl();
-            $data['releases_url'] = $object->getReleasesUrl();
-            if ($object->isInitialized('sshUrl') && null !== $object->getSshUrl()) {
-                $data['ssh_url'] = $object->getSshUrl();
-            }
-            $data['stargazers_url'] = $object->getStargazersUrl();
-            $data['statuses_url'] = $object->getStatusesUrl();
-            $data['subscribers_url'] = $object->getSubscribersUrl();
-            $data['subscription_url'] = $object->getSubscriptionUrl();
-            $data['tags_url'] = $object->getTagsUrl();
-            $data['teams_url'] = $object->getTeamsUrl();
-            $data['trees_url'] = $object->getTreesUrl();
-            if ($object->isInitialized('cloneUrl') && null !== $object->getCloneUrl()) {
-                $data['clone_url'] = $object->getCloneUrl();
-            }
-            if ($object->isInitialized('mirrorUrl') && null !== $object->getMirrorUrl()) {
-                $data['mirror_url'] = $object->getMirrorUrl();
-            }
-            $data['hooks_url'] = $object->getHooksUrl();
-            if ($object->isInitialized('svnUrl') && null !== $object->getSvnUrl()) {
-                $data['svn_url'] = $object->getSvnUrl();
-            }
-            if ($object->isInitialized('homepage') && null !== $object->getHomepage()) {
-                $data['homepage'] = $object->getHomepage();
-            }
-            if ($object->isInitialized('language') && null !== $object->getLanguage()) {
-                $data['language'] = $object->getLanguage();
-            }
-            if ($object->isInitialized('forksCount') && null !== $object->getForksCount()) {
-                $data['forks_count'] = $object->getForksCount();
-            }
-            if ($object->isInitialized('stargazersCount') && null !== $object->getStargazersCount()) {
-                $data['stargazers_count'] = $object->getStargazersCount();
-            }
-            if ($object->isInitialized('watchersCount') && null !== $object->getWatchersCount()) {
-                $data['watchers_count'] = $object->getWatchersCount();
-            }
-            if ($object->isInitialized('size') && null !== $object->getSize()) {
-                $data['size'] = $object->getSize();
-            }
-            if ($object->isInitialized('defaultBranch') && null !== $object->getDefaultBranch()) {
-                $data['default_branch'] = $object->getDefaultBranch();
-            }
-            if ($object->isInitialized('openIssuesCount') && null !== $object->getOpenIssuesCount()) {
-                $data['open_issues_count'] = $object->getOpenIssuesCount();
-            }
-            if ($object->isInitialized('isTemplate') && null !== $object->getIsTemplate()) {
-                $data['is_template'] = $object->getIsTemplate();
-            }
-            if ($object->isInitialized('topics') && null !== $object->getTopics()) {
-                $values = [];
-                foreach ($object->getTopics() as $value) {
-                    $values[] = $value;
-                }
-                $data['topics'] = $values;
-            }
-            if ($object->isInitialized('hasIssues') && null !== $object->getHasIssues()) {
-                $data['has_issues'] = $object->getHasIssues();
-            }
-            if ($object->isInitialized('hasProjects') && null !== $object->getHasProjects()) {
-                $data['has_projects'] = $object->getHasProjects();
-            }
-            if ($object->isInitialized('hasWiki') && null !== $object->getHasWiki()) {
-                $data['has_wiki'] = $object->getHasWiki();
-            }
-            if ($object->isInitialized('hasPages') && null !== $object->getHasPages()) {
-                $data['has_pages'] = $object->getHasPages();
-            }
-            if ($object->isInitialized('hasDownloads') && null !== $object->getHasDownloads()) {
-                $data['has_downloads'] = $object->getHasDownloads();
-            }
-            if ($object->isInitialized('archived') && null !== $object->getArchived()) {
-                $data['archived'] = $object->getArchived();
-            }
-            if ($object->isInitialized('disabled') && null !== $object->getDisabled()) {
-                $data['disabled'] = $object->getDisabled();
-            }
-            if ($object->isInitialized('visibility') && null !== $object->getVisibility()) {
-                $data['visibility'] = $object->getVisibility();
-            }
-            if ($object->isInitialized('pushedAt') && null !== $object->getPushedAt()) {
-                $data['pushed_at'] = $object->getPushedAt()->format('Y-m-d\TH:i:sP');
-            }
-            if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
-                $data['created_at'] = $object->getCreatedAt()->format('Y-m-d\TH:i:sP');
-            }
-            if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
-                $data['updated_at'] = $object->getUpdatedAt()->format('Y-m-d\TH:i:sP');
-            }
-            if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
-                $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
-            }
-            if ($object->isInitialized('templateRepository') && null !== $object->getTemplateRepository()) {
-                $data['template_repository'] = $object->getTemplateRepository();
-            }
-            if ($object->isInitialized('tempCloneToken') && null !== $object->getTempCloneToken()) {
-                $data['temp_clone_token'] = $object->getTempCloneToken();
-            }
-            if ($object->isInitialized('deleteBranchOnMerge') && null !== $object->getDeleteBranchOnMerge()) {
-                $data['delete_branch_on_merge'] = $object->getDeleteBranchOnMerge();
-            }
-            if ($object->isInitialized('subscribersCount') && null !== $object->getSubscribersCount()) {
-                $data['subscribers_count'] = $object->getSubscribersCount();
-            }
-            if ($object->isInitialized('networkCount') && null !== $object->getNetworkCount()) {
-                $data['network_count'] = $object->getNetworkCount();
-            }
-            if ($object->isInitialized('license') && null !== $object->getLicense()) {
-                $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
-            }
-            if ($object->isInitialized('forks') && null !== $object->getForks()) {
-                $data['forks'] = $object->getForks();
-            }
-            if ($object->isInitialized('openIssues') && null !== $object->getOpenIssues()) {
-                $data['open_issues'] = $object->getOpenIssues();
-            }
-            if ($object->isInitialized('watchers') && null !== $object->getWatchers()) {
-                $data['watchers'] = $object->getWatchers();
-            }
-            foreach ($object as $key => $value_1) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value_1;
-                }
-            }
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\MinimalRepositoryConstraint());
-            }
-            return $data;
+        if (\array_key_exists('id', $data)) {
+            $object->setId($data['id']);
+            unset($data['id']);
         }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\Github\Model\MinimalRepository::class => false];
+        if (\array_key_exists('node_id', $data)) {
+            $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
         }
+        if (\array_key_exists('name', $data)) {
+            $object->setName($data['name']);
+            unset($data['name']);
+        }
+        if (\array_key_exists('full_name', $data)) {
+            $object->setFullName($data['full_name']);
+            unset($data['full_name']);
+        }
+        if (\array_key_exists('owner', $data) && $data['owner'] !== null) {
+            $object->setOwner($this->denormalizer->denormalize($data['owner'], \Github\Model\MinimalRepositoryOwner::class, 'json', $context));
+            unset($data['owner']);
+        }
+        elseif (\array_key_exists('owner', $data) && $data['owner'] === null) {
+            $object->setOwner(null);
+        }
+        if (\array_key_exists('private', $data)) {
+            $object->setPrivate($data['private']);
+            unset($data['private']);
+        }
+        if (\array_key_exists('html_url', $data)) {
+            $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
+        }
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
+            $object->setDescription($data['description']);
+            unset($data['description']);
+        }
+        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
+        }
+        if (\array_key_exists('fork', $data)) {
+            $object->setFork($data['fork']);
+            unset($data['fork']);
+        }
+        if (\array_key_exists('url', $data)) {
+            $object->setUrl($data['url']);
+            unset($data['url']);
+        }
+        if (\array_key_exists('archive_url', $data)) {
+            $object->setArchiveUrl($data['archive_url']);
+            unset($data['archive_url']);
+        }
+        if (\array_key_exists('assignees_url', $data)) {
+            $object->setAssigneesUrl($data['assignees_url']);
+            unset($data['assignees_url']);
+        }
+        if (\array_key_exists('blobs_url', $data)) {
+            $object->setBlobsUrl($data['blobs_url']);
+            unset($data['blobs_url']);
+        }
+        if (\array_key_exists('branches_url', $data)) {
+            $object->setBranchesUrl($data['branches_url']);
+            unset($data['branches_url']);
+        }
+        if (\array_key_exists('collaborators_url', $data)) {
+            $object->setCollaboratorsUrl($data['collaborators_url']);
+            unset($data['collaborators_url']);
+        }
+        if (\array_key_exists('comments_url', $data)) {
+            $object->setCommentsUrl($data['comments_url']);
+            unset($data['comments_url']);
+        }
+        if (\array_key_exists('commits_url', $data)) {
+            $object->setCommitsUrl($data['commits_url']);
+            unset($data['commits_url']);
+        }
+        if (\array_key_exists('compare_url', $data)) {
+            $object->setCompareUrl($data['compare_url']);
+            unset($data['compare_url']);
+        }
+        if (\array_key_exists('contents_url', $data)) {
+            $object->setContentsUrl($data['contents_url']);
+            unset($data['contents_url']);
+        }
+        if (\array_key_exists('contributors_url', $data)) {
+            $object->setContributorsUrl($data['contributors_url']);
+            unset($data['contributors_url']);
+        }
+        if (\array_key_exists('deployments_url', $data)) {
+            $object->setDeploymentsUrl($data['deployments_url']);
+            unset($data['deployments_url']);
+        }
+        if (\array_key_exists('downloads_url', $data)) {
+            $object->setDownloadsUrl($data['downloads_url']);
+            unset($data['downloads_url']);
+        }
+        if (\array_key_exists('events_url', $data)) {
+            $object->setEventsUrl($data['events_url']);
+            unset($data['events_url']);
+        }
+        if (\array_key_exists('forks_url', $data)) {
+            $object->setForksUrl($data['forks_url']);
+            unset($data['forks_url']);
+        }
+        if (\array_key_exists('git_commits_url', $data)) {
+            $object->setGitCommitsUrl($data['git_commits_url']);
+            unset($data['git_commits_url']);
+        }
+        if (\array_key_exists('git_refs_url', $data)) {
+            $object->setGitRefsUrl($data['git_refs_url']);
+            unset($data['git_refs_url']);
+        }
+        if (\array_key_exists('git_tags_url', $data)) {
+            $object->setGitTagsUrl($data['git_tags_url']);
+            unset($data['git_tags_url']);
+        }
+        if (\array_key_exists('git_url', $data)) {
+            $object->setGitUrl($data['git_url']);
+            unset($data['git_url']);
+        }
+        if (\array_key_exists('issue_comment_url', $data)) {
+            $object->setIssueCommentUrl($data['issue_comment_url']);
+            unset($data['issue_comment_url']);
+        }
+        if (\array_key_exists('issue_events_url', $data)) {
+            $object->setIssueEventsUrl($data['issue_events_url']);
+            unset($data['issue_events_url']);
+        }
+        if (\array_key_exists('issues_url', $data)) {
+            $object->setIssuesUrl($data['issues_url']);
+            unset($data['issues_url']);
+        }
+        if (\array_key_exists('keys_url', $data)) {
+            $object->setKeysUrl($data['keys_url']);
+            unset($data['keys_url']);
+        }
+        if (\array_key_exists('labels_url', $data)) {
+            $object->setLabelsUrl($data['labels_url']);
+            unset($data['labels_url']);
+        }
+        if (\array_key_exists('languages_url', $data)) {
+            $object->setLanguagesUrl($data['languages_url']);
+            unset($data['languages_url']);
+        }
+        if (\array_key_exists('merges_url', $data)) {
+            $object->setMergesUrl($data['merges_url']);
+            unset($data['merges_url']);
+        }
+        if (\array_key_exists('milestones_url', $data)) {
+            $object->setMilestonesUrl($data['milestones_url']);
+            unset($data['milestones_url']);
+        }
+        if (\array_key_exists('notifications_url', $data)) {
+            $object->setNotificationsUrl($data['notifications_url']);
+            unset($data['notifications_url']);
+        }
+        if (\array_key_exists('pulls_url', $data)) {
+            $object->setPullsUrl($data['pulls_url']);
+            unset($data['pulls_url']);
+        }
+        if (\array_key_exists('releases_url', $data)) {
+            $object->setReleasesUrl($data['releases_url']);
+            unset($data['releases_url']);
+        }
+        if (\array_key_exists('ssh_url', $data)) {
+            $object->setSshUrl($data['ssh_url']);
+            unset($data['ssh_url']);
+        }
+        if (\array_key_exists('stargazers_url', $data)) {
+            $object->setStargazersUrl($data['stargazers_url']);
+            unset($data['stargazers_url']);
+        }
+        if (\array_key_exists('statuses_url', $data)) {
+            $object->setStatusesUrl($data['statuses_url']);
+            unset($data['statuses_url']);
+        }
+        if (\array_key_exists('subscribers_url', $data)) {
+            $object->setSubscribersUrl($data['subscribers_url']);
+            unset($data['subscribers_url']);
+        }
+        if (\array_key_exists('subscription_url', $data)) {
+            $object->setSubscriptionUrl($data['subscription_url']);
+            unset($data['subscription_url']);
+        }
+        if (\array_key_exists('tags_url', $data)) {
+            $object->setTagsUrl($data['tags_url']);
+            unset($data['tags_url']);
+        }
+        if (\array_key_exists('teams_url', $data)) {
+            $object->setTeamsUrl($data['teams_url']);
+            unset($data['teams_url']);
+        }
+        if (\array_key_exists('trees_url', $data)) {
+            $object->setTreesUrl($data['trees_url']);
+            unset($data['trees_url']);
+        }
+        if (\array_key_exists('clone_url', $data)) {
+            $object->setCloneUrl($data['clone_url']);
+            unset($data['clone_url']);
+        }
+        if (\array_key_exists('mirror_url', $data) && $data['mirror_url'] !== null) {
+            $object->setMirrorUrl($data['mirror_url']);
+            unset($data['mirror_url']);
+        }
+        elseif (\array_key_exists('mirror_url', $data) && $data['mirror_url'] === null) {
+            $object->setMirrorUrl(null);
+        }
+        if (\array_key_exists('hooks_url', $data)) {
+            $object->setHooksUrl($data['hooks_url']);
+            unset($data['hooks_url']);
+        }
+        if (\array_key_exists('svn_url', $data)) {
+            $object->setSvnUrl($data['svn_url']);
+            unset($data['svn_url']);
+        }
+        if (\array_key_exists('homepage', $data) && $data['homepage'] !== null) {
+            $object->setHomepage($data['homepage']);
+            unset($data['homepage']);
+        }
+        elseif (\array_key_exists('homepage', $data) && $data['homepage'] === null) {
+            $object->setHomepage(null);
+        }
+        if (\array_key_exists('language', $data) && $data['language'] !== null) {
+            $object->setLanguage($data['language']);
+            unset($data['language']);
+        }
+        elseif (\array_key_exists('language', $data) && $data['language'] === null) {
+            $object->setLanguage(null);
+        }
+        if (\array_key_exists('forks_count', $data)) {
+            $object->setForksCount($data['forks_count']);
+            unset($data['forks_count']);
+        }
+        if (\array_key_exists('stargazers_count', $data)) {
+            $object->setStargazersCount($data['stargazers_count']);
+            unset($data['stargazers_count']);
+        }
+        if (\array_key_exists('watchers_count', $data)) {
+            $object->setWatchersCount($data['watchers_count']);
+            unset($data['watchers_count']);
+        }
+        if (\array_key_exists('size', $data)) {
+            $object->setSize($data['size']);
+            unset($data['size']);
+        }
+        if (\array_key_exists('default_branch', $data)) {
+            $object->setDefaultBranch($data['default_branch']);
+            unset($data['default_branch']);
+        }
+        if (\array_key_exists('open_issues_count', $data)) {
+            $object->setOpenIssuesCount($data['open_issues_count']);
+            unset($data['open_issues_count']);
+        }
+        if (\array_key_exists('is_template', $data)) {
+            $object->setIsTemplate($data['is_template']);
+            unset($data['is_template']);
+        }
+        if (\array_key_exists('topics', $data)) {
+            $values = [];
+            foreach ($data['topics'] as $value) {
+                $values[] = $value;
+            }
+            $object->setTopics($values);
+            unset($data['topics']);
+        }
+        if (\array_key_exists('has_issues', $data)) {
+            $object->setHasIssues($data['has_issues']);
+            unset($data['has_issues']);
+        }
+        if (\array_key_exists('has_projects', $data)) {
+            $object->setHasProjects($data['has_projects']);
+            unset($data['has_projects']);
+        }
+        if (\array_key_exists('has_wiki', $data)) {
+            $object->setHasWiki($data['has_wiki']);
+            unset($data['has_wiki']);
+        }
+        if (\array_key_exists('has_pages', $data)) {
+            $object->setHasPages($data['has_pages']);
+            unset($data['has_pages']);
+        }
+        if (\array_key_exists('has_downloads', $data)) {
+            $object->setHasDownloads($data['has_downloads']);
+            unset($data['has_downloads']);
+        }
+        if (\array_key_exists('archived', $data)) {
+            $object->setArchived($data['archived']);
+            unset($data['archived']);
+        }
+        if (\array_key_exists('disabled', $data)) {
+            $object->setDisabled($data['disabled']);
+            unset($data['disabled']);
+        }
+        if (\array_key_exists('visibility', $data)) {
+            $object->setVisibility($data['visibility']);
+            unset($data['visibility']);
+        }
+        if (\array_key_exists('pushed_at', $data) && $data['pushed_at'] !== null) {
+            $object->setPushedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['pushed_at']));
+            unset($data['pushed_at']);
+        }
+        elseif (\array_key_exists('pushed_at', $data) && $data['pushed_at'] === null) {
+            $object->setPushedAt(null);
+        }
+        if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
+            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
+        }
+        elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
+            $object->setCreatedAt(null);
+        }
+        if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
+            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            unset($data['updated_at']);
+        }
+        elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
+            $object->setUpdatedAt(null);
+        }
+        if (\array_key_exists('permissions', $data)) {
+            $object->setPermissions($this->denormalizer->denormalize($data['permissions'], \Github\Model\MinimalRepositoryPermissions::class, 'json', $context));
+            unset($data['permissions']);
+        }
+        if (\array_key_exists('template_repository', $data)) {
+            $object->setTemplateRepository($data['template_repository']);
+            unset($data['template_repository']);
+        }
+        if (\array_key_exists('temp_clone_token', $data)) {
+            $object->setTempCloneToken($data['temp_clone_token']);
+            unset($data['temp_clone_token']);
+        }
+        if (\array_key_exists('delete_branch_on_merge', $data)) {
+            $object->setDeleteBranchOnMerge($data['delete_branch_on_merge']);
+            unset($data['delete_branch_on_merge']);
+        }
+        if (\array_key_exists('subscribers_count', $data)) {
+            $object->setSubscribersCount($data['subscribers_count']);
+            unset($data['subscribers_count']);
+        }
+        if (\array_key_exists('network_count', $data)) {
+            $object->setNetworkCount($data['network_count']);
+            unset($data['network_count']);
+        }
+        if (\array_key_exists('license', $data) && $data['license'] !== null) {
+            $object->setLicense($this->denormalizer->denormalize($data['license'], \Github\Model\MinimalRepositoryLicense::class, 'json', $context));
+            unset($data['license']);
+        }
+        elseif (\array_key_exists('license', $data) && $data['license'] === null) {
+            $object->setLicense(null);
+        }
+        if (\array_key_exists('forks', $data)) {
+            $object->setForks($data['forks']);
+            unset($data['forks']);
+        }
+        if (\array_key_exists('open_issues', $data)) {
+            $object->setOpenIssues($data['open_issues']);
+            unset($data['open_issues']);
+        }
+        if (\array_key_exists('watchers', $data)) {
+            $object->setWatchers($data['watchers']);
+            unset($data['watchers']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        $dataArray['id'] = $data->getId();
+        $dataArray['node_id'] = $data->getNodeId();
+        $dataArray['name'] = $data->getName();
+        $dataArray['full_name'] = $data->getFullName();
+        $dataArray['owner'] = $this->normalizer->normalize($data->getOwner(), 'json', $context);
+        $dataArray['private'] = $data->getPrivate();
+        $dataArray['html_url'] = $data->getHtmlUrl();
+        $dataArray['description'] = $data->getDescription();
+        $dataArray['fork'] = $data->getFork();
+        $dataArray['url'] = $data->getUrl();
+        $dataArray['archive_url'] = $data->getArchiveUrl();
+        $dataArray['assignees_url'] = $data->getAssigneesUrl();
+        $dataArray['blobs_url'] = $data->getBlobsUrl();
+        $dataArray['branches_url'] = $data->getBranchesUrl();
+        $dataArray['collaborators_url'] = $data->getCollaboratorsUrl();
+        $dataArray['comments_url'] = $data->getCommentsUrl();
+        $dataArray['commits_url'] = $data->getCommitsUrl();
+        $dataArray['compare_url'] = $data->getCompareUrl();
+        $dataArray['contents_url'] = $data->getContentsUrl();
+        $dataArray['contributors_url'] = $data->getContributorsUrl();
+        $dataArray['deployments_url'] = $data->getDeploymentsUrl();
+        $dataArray['downloads_url'] = $data->getDownloadsUrl();
+        $dataArray['events_url'] = $data->getEventsUrl();
+        $dataArray['forks_url'] = $data->getForksUrl();
+        $dataArray['git_commits_url'] = $data->getGitCommitsUrl();
+        $dataArray['git_refs_url'] = $data->getGitRefsUrl();
+        $dataArray['git_tags_url'] = $data->getGitTagsUrl();
+        if ($data->isInitialized('gitUrl') && null !== $data->getGitUrl()) {
+            $dataArray['git_url'] = $data->getGitUrl();
+        }
+        $dataArray['issue_comment_url'] = $data->getIssueCommentUrl();
+        $dataArray['issue_events_url'] = $data->getIssueEventsUrl();
+        $dataArray['issues_url'] = $data->getIssuesUrl();
+        $dataArray['keys_url'] = $data->getKeysUrl();
+        $dataArray['labels_url'] = $data->getLabelsUrl();
+        $dataArray['languages_url'] = $data->getLanguagesUrl();
+        $dataArray['merges_url'] = $data->getMergesUrl();
+        $dataArray['milestones_url'] = $data->getMilestonesUrl();
+        $dataArray['notifications_url'] = $data->getNotificationsUrl();
+        $dataArray['pulls_url'] = $data->getPullsUrl();
+        $dataArray['releases_url'] = $data->getReleasesUrl();
+        if ($data->isInitialized('sshUrl') && null !== $data->getSshUrl()) {
+            $dataArray['ssh_url'] = $data->getSshUrl();
+        }
+        $dataArray['stargazers_url'] = $data->getStargazersUrl();
+        $dataArray['statuses_url'] = $data->getStatusesUrl();
+        $dataArray['subscribers_url'] = $data->getSubscribersUrl();
+        $dataArray['subscription_url'] = $data->getSubscriptionUrl();
+        $dataArray['tags_url'] = $data->getTagsUrl();
+        $dataArray['teams_url'] = $data->getTeamsUrl();
+        $dataArray['trees_url'] = $data->getTreesUrl();
+        if ($data->isInitialized('cloneUrl') && null !== $data->getCloneUrl()) {
+            $dataArray['clone_url'] = $data->getCloneUrl();
+        }
+        if ($data->isInitialized('mirrorUrl') && null !== $data->getMirrorUrl()) {
+            $dataArray['mirror_url'] = $data->getMirrorUrl();
+        }
+        $dataArray['hooks_url'] = $data->getHooksUrl();
+        if ($data->isInitialized('svnUrl') && null !== $data->getSvnUrl()) {
+            $dataArray['svn_url'] = $data->getSvnUrl();
+        }
+        if ($data->isInitialized('homepage') && null !== $data->getHomepage()) {
+            $dataArray['homepage'] = $data->getHomepage();
+        }
+        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
+            $dataArray['language'] = $data->getLanguage();
+        }
+        if ($data->isInitialized('forksCount') && null !== $data->getForksCount()) {
+            $dataArray['forks_count'] = $data->getForksCount();
+        }
+        if ($data->isInitialized('stargazersCount') && null !== $data->getStargazersCount()) {
+            $dataArray['stargazers_count'] = $data->getStargazersCount();
+        }
+        if ($data->isInitialized('watchersCount') && null !== $data->getWatchersCount()) {
+            $dataArray['watchers_count'] = $data->getWatchersCount();
+        }
+        if ($data->isInitialized('size') && null !== $data->getSize()) {
+            $dataArray['size'] = $data->getSize();
+        }
+        if ($data->isInitialized('defaultBranch') && null !== $data->getDefaultBranch()) {
+            $dataArray['default_branch'] = $data->getDefaultBranch();
+        }
+        if ($data->isInitialized('openIssuesCount') && null !== $data->getOpenIssuesCount()) {
+            $dataArray['open_issues_count'] = $data->getOpenIssuesCount();
+        }
+        if ($data->isInitialized('isTemplate') && null !== $data->getIsTemplate()) {
+            $dataArray['is_template'] = $data->getIsTemplate();
+        }
+        if ($data->isInitialized('topics') && null !== $data->getTopics()) {
+            $values = [];
+            foreach ($data->getTopics() as $value) {
+                $values[] = $value;
+            }
+            $dataArray['topics'] = $values;
+        }
+        if ($data->isInitialized('hasIssues') && null !== $data->getHasIssues()) {
+            $dataArray['has_issues'] = $data->getHasIssues();
+        }
+        if ($data->isInitialized('hasProjects') && null !== $data->getHasProjects()) {
+            $dataArray['has_projects'] = $data->getHasProjects();
+        }
+        if ($data->isInitialized('hasWiki') && null !== $data->getHasWiki()) {
+            $dataArray['has_wiki'] = $data->getHasWiki();
+        }
+        if ($data->isInitialized('hasPages') && null !== $data->getHasPages()) {
+            $dataArray['has_pages'] = $data->getHasPages();
+        }
+        if ($data->isInitialized('hasDownloads') && null !== $data->getHasDownloads()) {
+            $dataArray['has_downloads'] = $data->getHasDownloads();
+        }
+        if ($data->isInitialized('archived') && null !== $data->getArchived()) {
+            $dataArray['archived'] = $data->getArchived();
+        }
+        if ($data->isInitialized('disabled') && null !== $data->getDisabled()) {
+            $dataArray['disabled'] = $data->getDisabled();
+        }
+        if ($data->isInitialized('visibility') && null !== $data->getVisibility()) {
+            $dataArray['visibility'] = $data->getVisibility();
+        }
+        if ($data->isInitialized('pushedAt') && null !== $data->getPushedAt()) {
+            $dataArray['pushed_at'] = $data->getPushedAt()->format('Y-m-d\TH:i:sP');
+        }
+        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
+            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        }
+        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
+            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        }
+        if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
+            $dataArray['permissions'] = $this->normalizer->normalize($data->getPermissions(), 'json', $context);
+        }
+        if ($data->isInitialized('templateRepository') && null !== $data->getTemplateRepository()) {
+            $dataArray['template_repository'] = $data->getTemplateRepository();
+        }
+        if ($data->isInitialized('tempCloneToken') && null !== $data->getTempCloneToken()) {
+            $dataArray['temp_clone_token'] = $data->getTempCloneToken();
+        }
+        if ($data->isInitialized('deleteBranchOnMerge') && null !== $data->getDeleteBranchOnMerge()) {
+            $dataArray['delete_branch_on_merge'] = $data->getDeleteBranchOnMerge();
+        }
+        if ($data->isInitialized('subscribersCount') && null !== $data->getSubscribersCount()) {
+            $dataArray['subscribers_count'] = $data->getSubscribersCount();
+        }
+        if ($data->isInitialized('networkCount') && null !== $data->getNetworkCount()) {
+            $dataArray['network_count'] = $data->getNetworkCount();
+        }
+        if ($data->isInitialized('license') && null !== $data->getLicense()) {
+            $dataArray['license'] = $this->normalizer->normalize($data->getLicense(), 'json', $context);
+        }
+        if ($data->isInitialized('forks') && null !== $data->getForks()) {
+            $dataArray['forks'] = $data->getForks();
+        }
+        if ($data->isInitialized('openIssues') && null !== $data->getOpenIssues()) {
+            $dataArray['open_issues'] = $data->getOpenIssues();
+        }
+        if ($data->isInitialized('watchers') && null !== $data->getWatchers()) {
+            $dataArray['watchers'] = $data->getWatchers();
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_1;
+            }
+        }
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($dataArray, new \Github\Validator\MinimalRepositoryConstraint());
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Github\Model\MinimalRepository::class => false];
     }
 }

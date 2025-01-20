@@ -13,25 +13,13 @@ abstract class Client
     public const FETCH_RESPONSE = 'response';
     public const FETCH_OBJECT = 'object';
 
-    /**
-     * @var ClientInterface
-     */
-    protected $httpClient;
+    protected ClientInterface $httpClient;
 
-    /**
-     * @var RequestFactoryInterface
-     */
-    protected $requestFactory;
+    protected RequestFactoryInterface $requestFactory;
 
-    /**
-     * @var SerializerInterface
-     */
-    protected $serializer;
+    protected SerializerInterface $serializer;
 
-    /**
-     * @var StreamFactoryInterface
-     */
-    protected $streamFactory;
+    protected StreamFactoryInterface $streamFactory;
 
     public function __construct(ClientInterface $httpClient, RequestFactoryInterface $requestFactory, SerializerInterface $serializer, StreamFactoryInterface $streamFactory)
     {
@@ -61,7 +49,7 @@ abstract class Client
     {
         [$bodyHeaders, $body] = $endpoint->getBody($this->serializer, $this->streamFactory);
         $queryString = $endpoint->getQueryString();
-        $uriGlue = false === strpos($endpoint->getUri(), '?') ? '?' : '&';
+        $uriGlue = !str_contains($endpoint->getUri(), '?') ? '?' : '&';
         $uri = $queryString !== '' ? $endpoint->getUri() . $uriGlue . $queryString : $endpoint->getUri();
         $request = $this->requestFactory->createRequest($endpoint->getMethod(), $uri);
 

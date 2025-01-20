@@ -18,7 +18,7 @@ class XmlNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Xml';
     }
@@ -29,7 +29,7 @@ class XmlNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     /**
      * @return mixed
      */
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -86,30 +86,30 @@ class XmlNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $object, ?string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = [];
+        $dataArray = [];
         if ($object->isInitialized('name') && null !== $object->getName()) {
-            $data['name'] = $object->getName();
+            $dataArray['name'] = $object->getName();
         }
         if ($object->isInitialized('namespace') && null !== $object->getNamespace()) {
-            $data['namespace'] = $object->getNamespace();
+            $dataArray['namespace'] = $object->getNamespace();
         }
         if ($object->isInitialized('prefix') && null !== $object->getPrefix()) {
-            $data['prefix'] = $object->getPrefix();
+            $dataArray['prefix'] = $object->getPrefix();
         }
         if ($object->isInitialized('attribute') && null !== $object->getAttribute()) {
-            $data['attribute'] = $object->getAttribute();
+            $dataArray['attribute'] = $object->getAttribute();
         }
         if ($object->isInitialized('wrapped') && null !== $object->getWrapped()) {
-            $data['wrapped'] = $object->getWrapped();
+            $dataArray['wrapped'] = $object->getWrapped();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/^x-/', (string) $key)) {
-                $data[$key] = $value;
+                $dataArray[$key] = $value;
             }
         }
-        return $data;
+        return $dataArray;
     }
     public function getSupportedTypes(?string $format = null) : array
     {

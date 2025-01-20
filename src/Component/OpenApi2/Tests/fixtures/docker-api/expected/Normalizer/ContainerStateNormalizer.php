@@ -5,252 +5,125 @@ namespace Docker\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Docker\Api\Runtime\Normalizer\CheckArray;
 use Docker\Api\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\HttpKernel\Kernel;
-if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
-    class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
-        {
-            return $type === \Docker\Api\Model\ContainerState::class;
-        }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \Docker\Api\Model\ContainerState::class;
-        }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \Docker\Api\Model\ContainerState();
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Docker\Api\Validator\ContainerStateConstraint());
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('Status', $data)) {
-                $object->setStatus($data['Status']);
-            }
-            if (\array_key_exists('Running', $data)) {
-                $object->setRunning($data['Running']);
-            }
-            if (\array_key_exists('Paused', $data)) {
-                $object->setPaused($data['Paused']);
-            }
-            if (\array_key_exists('Restarting', $data)) {
-                $object->setRestarting($data['Restarting']);
-            }
-            if (\array_key_exists('OOMKilled', $data)) {
-                $object->setOOMKilled($data['OOMKilled']);
-            }
-            if (\array_key_exists('Dead', $data)) {
-                $object->setDead($data['Dead']);
-            }
-            if (\array_key_exists('Pid', $data)) {
-                $object->setPid($data['Pid']);
-            }
-            if (\array_key_exists('ExitCode', $data)) {
-                $object->setExitCode($data['ExitCode']);
-            }
-            if (\array_key_exists('Error', $data)) {
-                $object->setError($data['Error']);
-            }
-            if (\array_key_exists('StartedAt', $data)) {
-                $object->setStartedAt($data['StartedAt']);
-            }
-            if (\array_key_exists('FinishedAt', $data)) {
-                $object->setFinishedAt($data['FinishedAt']);
-            }
-            if (\array_key_exists('Health', $data)) {
-                $object->setHealth($this->denormalizer->denormalize($data['Health'], \Docker\Api\Model\Health::class, 'json', $context));
-            }
-            return $object;
-        }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            if ($object->isInitialized('status') && null !== $object->getStatus()) {
-                $data['Status'] = $object->getStatus();
-            }
-            if ($object->isInitialized('running') && null !== $object->getRunning()) {
-                $data['Running'] = $object->getRunning();
-            }
-            if ($object->isInitialized('paused') && null !== $object->getPaused()) {
-                $data['Paused'] = $object->getPaused();
-            }
-            if ($object->isInitialized('restarting') && null !== $object->getRestarting()) {
-                $data['Restarting'] = $object->getRestarting();
-            }
-            if ($object->isInitialized('oOMKilled') && null !== $object->getOOMKilled()) {
-                $data['OOMKilled'] = $object->getOOMKilled();
-            }
-            if ($object->isInitialized('dead') && null !== $object->getDead()) {
-                $data['Dead'] = $object->getDead();
-            }
-            if ($object->isInitialized('pid') && null !== $object->getPid()) {
-                $data['Pid'] = $object->getPid();
-            }
-            if ($object->isInitialized('exitCode') && null !== $object->getExitCode()) {
-                $data['ExitCode'] = $object->getExitCode();
-            }
-            if ($object->isInitialized('error') && null !== $object->getError()) {
-                $data['Error'] = $object->getError();
-            }
-            if ($object->isInitialized('startedAt') && null !== $object->getStartedAt()) {
-                $data['StartedAt'] = $object->getStartedAt();
-            }
-            if ($object->isInitialized('finishedAt') && null !== $object->getFinishedAt()) {
-                $data['FinishedAt'] = $object->getFinishedAt();
-            }
-            if ($object->isInitialized('health') && null !== $object->getHealth()) {
-                $data['Health'] = $this->normalizer->normalize($object->getHealth(), 'json', $context);
-            }
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Docker\Api\Validator\ContainerStateConstraint());
-            }
-            return $data;
-        }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\Docker\Api\Model\ContainerState::class => false];
-        }
+        return $type === \Docker\Api\Model\ContainerState::class;
     }
-} else {
-    class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
-        {
-            return $type === \Docker\Api\Model\ContainerState::class;
+        return is_object($data) && get_class($data) === \Docker\Api\Model\ContainerState::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \Docker\Api\Model\ContainerState::class;
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        /**
-         * @return mixed
-         */
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \Docker\Api\Model\ContainerState();
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Docker\Api\Validator\ContainerStateConstraint());
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('Status', $data)) {
-                $object->setStatus($data['Status']);
-            }
-            if (\array_key_exists('Running', $data)) {
-                $object->setRunning($data['Running']);
-            }
-            if (\array_key_exists('Paused', $data)) {
-                $object->setPaused($data['Paused']);
-            }
-            if (\array_key_exists('Restarting', $data)) {
-                $object->setRestarting($data['Restarting']);
-            }
-            if (\array_key_exists('OOMKilled', $data)) {
-                $object->setOOMKilled($data['OOMKilled']);
-            }
-            if (\array_key_exists('Dead', $data)) {
-                $object->setDead($data['Dead']);
-            }
-            if (\array_key_exists('Pid', $data)) {
-                $object->setPid($data['Pid']);
-            }
-            if (\array_key_exists('ExitCode', $data)) {
-                $object->setExitCode($data['ExitCode']);
-            }
-            if (\array_key_exists('Error', $data)) {
-                $object->setError($data['Error']);
-            }
-            if (\array_key_exists('StartedAt', $data)) {
-                $object->setStartedAt($data['StartedAt']);
-            }
-            if (\array_key_exists('FinishedAt', $data)) {
-                $object->setFinishedAt($data['FinishedAt']);
-            }
-            if (\array_key_exists('Health', $data)) {
-                $object->setHealth($this->denormalizer->denormalize($data['Health'], \Docker\Api\Model\Health::class, 'json', $context));
-            }
+        $object = new \Docker\Api\Model\ContainerState();
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Docker\Api\Validator\ContainerStateConstraint());
+        }
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            if ($object->isInitialized('status') && null !== $object->getStatus()) {
-                $data['Status'] = $object->getStatus();
-            }
-            if ($object->isInitialized('running') && null !== $object->getRunning()) {
-                $data['Running'] = $object->getRunning();
-            }
-            if ($object->isInitialized('paused') && null !== $object->getPaused()) {
-                $data['Paused'] = $object->getPaused();
-            }
-            if ($object->isInitialized('restarting') && null !== $object->getRestarting()) {
-                $data['Restarting'] = $object->getRestarting();
-            }
-            if ($object->isInitialized('oOMKilled') && null !== $object->getOOMKilled()) {
-                $data['OOMKilled'] = $object->getOOMKilled();
-            }
-            if ($object->isInitialized('dead') && null !== $object->getDead()) {
-                $data['Dead'] = $object->getDead();
-            }
-            if ($object->isInitialized('pid') && null !== $object->getPid()) {
-                $data['Pid'] = $object->getPid();
-            }
-            if ($object->isInitialized('exitCode') && null !== $object->getExitCode()) {
-                $data['ExitCode'] = $object->getExitCode();
-            }
-            if ($object->isInitialized('error') && null !== $object->getError()) {
-                $data['Error'] = $object->getError();
-            }
-            if ($object->isInitialized('startedAt') && null !== $object->getStartedAt()) {
-                $data['StartedAt'] = $object->getStartedAt();
-            }
-            if ($object->isInitialized('finishedAt') && null !== $object->getFinishedAt()) {
-                $data['FinishedAt'] = $object->getFinishedAt();
-            }
-            if ($object->isInitialized('health') && null !== $object->getHealth()) {
-                $data['Health'] = $this->normalizer->normalize($object->getHealth(), 'json', $context);
-            }
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Docker\Api\Validator\ContainerStateConstraint());
-            }
-            return $data;
+        if (\array_key_exists('Status', $data)) {
+            $object->setStatus($data['Status']);
         }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\Docker\Api\Model\ContainerState::class => false];
+        if (\array_key_exists('Running', $data)) {
+            $object->setRunning($data['Running']);
         }
+        if (\array_key_exists('Paused', $data)) {
+            $object->setPaused($data['Paused']);
+        }
+        if (\array_key_exists('Restarting', $data)) {
+            $object->setRestarting($data['Restarting']);
+        }
+        if (\array_key_exists('OOMKilled', $data)) {
+            $object->setOOMKilled($data['OOMKilled']);
+        }
+        if (\array_key_exists('Dead', $data)) {
+            $object->setDead($data['Dead']);
+        }
+        if (\array_key_exists('Pid', $data)) {
+            $object->setPid($data['Pid']);
+        }
+        if (\array_key_exists('ExitCode', $data)) {
+            $object->setExitCode($data['ExitCode']);
+        }
+        if (\array_key_exists('Error', $data)) {
+            $object->setError($data['Error']);
+        }
+        if (\array_key_exists('StartedAt', $data)) {
+            $object->setStartedAt($data['StartedAt']);
+        }
+        if (\array_key_exists('FinishedAt', $data)) {
+            $object->setFinishedAt($data['FinishedAt']);
+        }
+        if (\array_key_exists('Health', $data)) {
+            $object->setHealth($this->denormalizer->denormalize($data['Health'], \Docker\Api\Model\Health::class, 'json', $context));
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if ($data->isInitialized('status') && null !== $data->getStatus()) {
+            $dataArray['Status'] = $data->getStatus();
+        }
+        if ($data->isInitialized('running') && null !== $data->getRunning()) {
+            $dataArray['Running'] = $data->getRunning();
+        }
+        if ($data->isInitialized('paused') && null !== $data->getPaused()) {
+            $dataArray['Paused'] = $data->getPaused();
+        }
+        if ($data->isInitialized('restarting') && null !== $data->getRestarting()) {
+            $dataArray['Restarting'] = $data->getRestarting();
+        }
+        if ($data->isInitialized('oOMKilled') && null !== $data->getOOMKilled()) {
+            $dataArray['OOMKilled'] = $data->getOOMKilled();
+        }
+        if ($data->isInitialized('dead') && null !== $data->getDead()) {
+            $dataArray['Dead'] = $data->getDead();
+        }
+        if ($data->isInitialized('pid') && null !== $data->getPid()) {
+            $dataArray['Pid'] = $data->getPid();
+        }
+        if ($data->isInitialized('exitCode') && null !== $data->getExitCode()) {
+            $dataArray['ExitCode'] = $data->getExitCode();
+        }
+        if ($data->isInitialized('error') && null !== $data->getError()) {
+            $dataArray['Error'] = $data->getError();
+        }
+        if ($data->isInitialized('startedAt') && null !== $data->getStartedAt()) {
+            $dataArray['StartedAt'] = $data->getStartedAt();
+        }
+        if ($data->isInitialized('finishedAt') && null !== $data->getFinishedAt()) {
+            $dataArray['FinishedAt'] = $data->getFinishedAt();
+        }
+        if ($data->isInitialized('health') && null !== $data->getHealth()) {
+            $dataArray['Health'] = $this->normalizer->normalize($data->getHealth(), 'json', $context);
+        }
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($dataArray, new \Docker\Api\Validator\ContainerStateConstraint());
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Docker\Api\Model\ContainerState::class => false];
     }
 }

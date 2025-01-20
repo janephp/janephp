@@ -5,140 +5,69 @@ namespace Docker\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Docker\Api\Runtime\Normalizer\CheckArray;
 use Docker\Api\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\HttpKernel\Kernel;
-if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
-    class DistributionInspectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class DistributionInspectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
-        {
-            return $type === \Docker\Api\Model\DistributionInspect::class;
-        }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \Docker\Api\Model\DistributionInspect::class;
-        }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \Docker\Api\Model\DistributionInspect();
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Docker\Api\Validator\DistributionInspectConstraint());
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('Descriptor', $data)) {
-                $object->setDescriptor($this->denormalizer->denormalize($data['Descriptor'], \Docker\Api\Model\OCIDescriptor::class, 'json', $context));
-            }
-            if (\array_key_exists('Platforms', $data)) {
-                $values = [];
-                foreach ($data['Platforms'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, \Docker\Api\Model\OCIPlatform::class, 'json', $context);
-                }
-                $object->setPlatforms($values);
-            }
-            return $object;
-        }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            $data['Descriptor'] = $this->normalizer->normalize($object->getDescriptor(), 'json', $context);
-            $values = [];
-            foreach ($object->getPlatforms() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['Platforms'] = $values;
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Docker\Api\Validator\DistributionInspectConstraint());
-            }
-            return $data;
-        }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\Docker\Api\Model\DistributionInspect::class => false];
-        }
+        return $type === \Docker\Api\Model\DistributionInspect::class;
     }
-} else {
-    class DistributionInspectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
-        {
-            return $type === \Docker\Api\Model\DistributionInspect::class;
+        return is_object($data) && get_class($data) === \Docker\Api\Model\DistributionInspect::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \Docker\Api\Model\DistributionInspect::class;
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        /**
-         * @return mixed
-         */
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \Docker\Api\Model\DistributionInspect();
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Docker\Api\Validator\DistributionInspectConstraint());
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('Descriptor', $data)) {
-                $object->setDescriptor($this->denormalizer->denormalize($data['Descriptor'], \Docker\Api\Model\OCIDescriptor::class, 'json', $context));
-            }
-            if (\array_key_exists('Platforms', $data)) {
-                $values = [];
-                foreach ($data['Platforms'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, \Docker\Api\Model\OCIPlatform::class, 'json', $context);
-                }
-                $object->setPlatforms($values);
-            }
+        $object = new \Docker\Api\Model\DistributionInspect();
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Docker\Api\Validator\DistributionInspectConstraint());
+        }
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            $data['Descriptor'] = $this->normalizer->normalize($object->getDescriptor(), 'json', $context);
+        if (\array_key_exists('Descriptor', $data)) {
+            $object->setDescriptor($this->denormalizer->denormalize($data['Descriptor'], \Docker\Api\Model\OCIDescriptor::class, 'json', $context));
+        }
+        if (\array_key_exists('Platforms', $data)) {
             $values = [];
-            foreach ($object->getPlatforms() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data['Platforms'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \Docker\Api\Model\OCIPlatform::class, 'json', $context);
             }
-            $data['Platforms'] = $values;
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Docker\Api\Validator\DistributionInspectConstraint());
-            }
-            return $data;
+            $object->setPlatforms($values);
         }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\Docker\Api\Model\DistributionInspect::class => false];
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        $dataArray['Descriptor'] = $this->normalizer->normalize($data->getDescriptor(), 'json', $context);
+        $values = [];
+        foreach ($data->getPlatforms() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
+        $dataArray['Platforms'] = $values;
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($dataArray, new \Docker\Api\Validator\DistributionInspectConstraint());
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Docker\Api\Model\DistributionInspect::class => false];
     }
 }

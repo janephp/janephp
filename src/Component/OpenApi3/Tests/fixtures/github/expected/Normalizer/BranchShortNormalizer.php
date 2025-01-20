@@ -5,170 +5,84 @@ namespace Github\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
 use Github\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\HttpKernel\Kernel;
-if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
-    class BranchShortNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class BranchShortNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
-        {
-            return $type === \Github\Model\BranchShort::class;
-        }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \Github\Model\BranchShort::class;
-        }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \Github\Model\BranchShort();
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\BranchShortConstraint());
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('name', $data)) {
-                $object->setName($data['name']);
-                unset($data['name']);
-            }
-            if (\array_key_exists('commit', $data)) {
-                $object->setCommit($this->denormalizer->denormalize($data['commit'], \Github\Model\BranchShortCommit::class, 'json', $context));
-                unset($data['commit']);
-            }
-            if (\array_key_exists('protected', $data)) {
-                $object->setProtected($data['protected']);
-                unset($data['protected']);
-            }
-            foreach ($data as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
-                }
-            }
-            return $object;
-        }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            if ($object->isInitialized('name') && null !== $object->getName()) {
-                $data['name'] = $object->getName();
-            }
-            if ($object->isInitialized('commit') && null !== $object->getCommit()) {
-                $data['commit'] = $this->normalizer->normalize($object->getCommit(), 'json', $context);
-            }
-            if ($object->isInitialized('protected') && null !== $object->getProtected()) {
-                $data['protected'] = $object->getProtected();
-            }
-            foreach ($object as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
-                }
-            }
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\BranchShortConstraint());
-            }
-            return $data;
-        }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\Github\Model\BranchShort::class => false];
-        }
+        return $type === \Github\Model\BranchShort::class;
     }
-} else {
-    class BranchShortNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
-        {
-            return $type === \Github\Model\BranchShort::class;
+        return is_object($data) && get_class($data) === \Github\Model\BranchShort::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \Github\Model\BranchShort::class;
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        /**
-         * @return mixed
-         */
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \Github\Model\BranchShort();
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\BranchShortConstraint());
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('name', $data)) {
-                $object->setName($data['name']);
-                unset($data['name']);
-            }
-            if (\array_key_exists('commit', $data)) {
-                $object->setCommit($this->denormalizer->denormalize($data['commit'], \Github\Model\BranchShortCommit::class, 'json', $context));
-                unset($data['commit']);
-            }
-            if (\array_key_exists('protected', $data)) {
-                $object->setProtected($data['protected']);
-                unset($data['protected']);
-            }
-            foreach ($data as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
-                }
-            }
+        $object = new \Github\Model\BranchShort();
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\BranchShortConstraint());
+        }
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            if ($object->isInitialized('name') && null !== $object->getName()) {
-                $data['name'] = $object->getName();
-            }
-            if ($object->isInitialized('commit') && null !== $object->getCommit()) {
-                $data['commit'] = $this->normalizer->normalize($object->getCommit(), 'json', $context);
-            }
-            if ($object->isInitialized('protected') && null !== $object->getProtected()) {
-                $data['protected'] = $object->getProtected();
-            }
-            foreach ($object as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
-                }
-            }
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\BranchShortConstraint());
-            }
-            return $data;
+        if (\array_key_exists('name', $data)) {
+            $object->setName($data['name']);
+            unset($data['name']);
         }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\Github\Model\BranchShort::class => false];
+        if (\array_key_exists('commit', $data)) {
+            $object->setCommit($this->denormalizer->denormalize($data['commit'], \Github\Model\BranchShortCommit::class, 'json', $context));
+            unset($data['commit']);
         }
+        if (\array_key_exists('protected', $data)) {
+            $object->setProtected($data['protected']);
+            unset($data['protected']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if ($data->isInitialized('name') && null !== $data->getName()) {
+            $dataArray['name'] = $data->getName();
+        }
+        if ($data->isInitialized('commit') && null !== $data->getCommit()) {
+            $dataArray['commit'] = $this->normalizer->normalize($data->getCommit(), 'json', $context);
+        }
+        if ($data->isInitialized('protected') && null !== $data->getProtected()) {
+            $dataArray['protected'] = $data->getProtected();
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
+        }
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($dataArray, new \Github\Validator\BranchShortConstraint());
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Github\Model\BranchShort::class => false];
     }
 }
