@@ -99,7 +99,8 @@ trait GetConstructorTrait
             $bodyDoc ? [$bodyDoc] : [],
             \count($queryParamsDoc) > 0 ? array_merge([' * @param array $queryParameters {'], $queryParamsDoc, [' * }']) : [],
             \count($headerParamsDoc) > 0 ? array_merge([' * @param array $headerParameters {'], $headerParamsDoc, [' * }']) : [],
-            \count($contentTypes) > 1 ? [' * @param array $accept Accept content header ' . implode('|', $this->getContentTypes($operation, $guessClass))] : []
+            \count($contentTypes) > 1 ? [' * @param array $accept Accept content header ' .
+                str_replace('*/', '*\\/', implode('|', $this->getContentTypes($operation, $guessClass)))] : []
         );
 
         $methodParamsDoc = <<<EOD
