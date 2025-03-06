@@ -43,6 +43,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('ruleType', $data) && \is_int($data['ruleType'])) {
                 $data['ruleType'] = (double) $data['ruleType'];
             }
+            if (\array_key_exists('isActive', $data) && \is_int($data['isActive'])) {
+                $data['isActive'] = (bool) $data['isActive'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -156,6 +159,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if (\array_key_exists('ruleType', $data) && \is_int($data['ruleType'])) {
                 $data['ruleType'] = (double) $data['ruleType'];
+            }
+            if (\array_key_exists('isActive', $data) && \is_int($data['isActive'])) {
+                $data['isActive'] = (bool) $data['isActive'];
             }
             if (null === $data || false === \is_array($data)) {
                 return $object;

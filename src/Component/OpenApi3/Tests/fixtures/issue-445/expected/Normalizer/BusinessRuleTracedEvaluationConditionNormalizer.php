@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\BusinessRuleTracedEvaluationCondition();
+            if (\array_key_exists('satisfied', $data) && \is_int($data['satisfied'])) {
+                $data['satisfied'] = (bool) $data['satisfied'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -101,6 +104,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\BusinessRuleTracedEvaluationCondition();
+            if (\array_key_exists('satisfied', $data) && \is_int($data['satisfied'])) {
+                $data['satisfied'] = (bool) $data['satisfied'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }

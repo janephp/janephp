@@ -37,6 +37,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\ReposOwnerRepoDeploymentsPostBody();
+            if (\array_key_exists('auto_merge', $data) && \is_int($data['auto_merge'])) {
+                $data['auto_merge'] = (bool) $data['auto_merge'];
+            }
+            if (\array_key_exists('transient_environment', $data) && \is_int($data['transient_environment'])) {
+                $data['transient_environment'] = (bool) $data['transient_environment'];
+            }
+            if (\array_key_exists('production_environment', $data) && \is_int($data['production_environment'])) {
+                $data['production_environment'] = (bool) $data['production_environment'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\ReposOwnerRepoDeploymentsPostBodyConstraint());
             }
@@ -174,6 +183,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\ReposOwnerRepoDeploymentsPostBody();
+            if (\array_key_exists('auto_merge', $data) && \is_int($data['auto_merge'])) {
+                $data['auto_merge'] = (bool) $data['auto_merge'];
+            }
+            if (\array_key_exists('transient_environment', $data) && \is_int($data['transient_environment'])) {
+                $data['transient_environment'] = (bool) $data['transient_environment'];
+            }
+            if (\array_key_exists('production_environment', $data) && \is_int($data['production_environment'])) {
+                $data['production_environment'] = (bool) $data['production_environment'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\ReposOwnerRepoDeploymentsPostBodyConstraint());
             }

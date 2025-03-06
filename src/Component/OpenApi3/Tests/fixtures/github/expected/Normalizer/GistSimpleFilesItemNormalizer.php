@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\GistSimpleFilesItem();
+            if (\array_key_exists('truncated', $data) && \is_int($data['truncated'])) {
+                $data['truncated'] = (bool) $data['truncated'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\GistSimpleFilesItemConstraint());
             }
@@ -144,6 +147,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\GistSimpleFilesItem();
+            if (\array_key_exists('truncated', $data) && \is_int($data['truncated'])) {
+                $data['truncated'] = (bool) $data['truncated'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\GistSimpleFilesItemConstraint());
             }

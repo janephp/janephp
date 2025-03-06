@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\PluginConfigLinux();
+            if (\array_key_exists('AllowAllDevices', $data) && \is_int($data['AllowAllDevices'])) {
+                $data['AllowAllDevices'] = (bool) $data['AllowAllDevices'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\PluginConfigLinuxConstraint());
             }
@@ -113,6 +116,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\PluginConfigLinux();
+            if (\array_key_exists('AllowAllDevices', $data) && \is_int($data['AllowAllDevices'])) {
+                $data['AllowAllDevices'] = (bool) $data['AllowAllDevices'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\PluginConfigLinuxConstraint());
             }

@@ -37,6 +37,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\MinimalRepositoryPermissions();
+            if (\array_key_exists('admin', $data) && \is_int($data['admin'])) {
+                $data['admin'] = (bool) $data['admin'];
+            }
+            if (\array_key_exists('push', $data) && \is_int($data['push'])) {
+                $data['push'] = (bool) $data['push'];
+            }
+            if (\array_key_exists('pull', $data) && \is_int($data['pull'])) {
+                $data['pull'] = (bool) $data['pull'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\MinimalRepositoryPermissionsConstraint());
             }
@@ -116,6 +125,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\MinimalRepositoryPermissions();
+            if (\array_key_exists('admin', $data) && \is_int($data['admin'])) {
+                $data['admin'] = (bool) $data['admin'];
+            }
+            if (\array_key_exists('push', $data) && \is_int($data['push'])) {
+                $data['push'] = (bool) $data['push'];
+            }
+            if (\array_key_exists('pull', $data) && \is_int($data['pull'])) {
+                $data['pull'] = (bool) $data['pull'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\MinimalRepositoryPermissionsConstraint());
             }

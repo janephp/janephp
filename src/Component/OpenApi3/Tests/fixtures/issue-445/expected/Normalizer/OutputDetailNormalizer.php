@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\OutputDetail();
+            if (\array_key_exists('dynamicRendering', $data) && \is_int($data['dynamicRendering'])) {
+                $data['dynamicRendering'] = (bool) $data['dynamicRendering'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -154,6 +157,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\OutputDetail();
+            if (\array_key_exists('dynamicRendering', $data) && \is_int($data['dynamicRendering'])) {
+                $data['dynamicRendering'] = (bool) $data['dynamicRendering'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }

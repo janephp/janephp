@@ -55,6 +55,27 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('verticalResolution', $data) && \is_int($data['verticalResolution'])) {
                 $data['verticalResolution'] = (double) $data['verticalResolution'];
             }
+            if (\array_key_exists('hasAlpha', $data) && \is_int($data['hasAlpha'])) {
+                $data['hasAlpha'] = (bool) $data['hasAlpha'];
+            }
+            if (\array_key_exists('isIndexed', $data) && \is_int($data['isIndexed'])) {
+                $data['isIndexed'] = (bool) $data['isIndexed'];
+            }
+            if (\array_key_exists('isExtended', $data) && \is_int($data['isExtended'])) {
+                $data['isExtended'] = (bool) $data['isExtended'];
+            }
+            if (\array_key_exists('hasExifData', $data) && \is_int($data['hasExifData'])) {
+                $data['hasExifData'] = (bool) $data['hasExifData'];
+            }
+            if (\array_key_exists('hasIptcData', $data) && \is_int($data['hasIptcData'])) {
+                $data['hasIptcData'] = (bool) $data['hasIptcData'];
+            }
+            if (\array_key_exists('hasAdobeResourceData', $data) && \is_int($data['hasAdobeResourceData'])) {
+                $data['hasAdobeResourceData'] = (bool) $data['hasAdobeResourceData'];
+            }
+            if (\array_key_exists('hasXmpData', $data) && \is_int($data['hasXmpData'])) {
+                $data['hasXmpData'] = (bool) $data['hasXmpData'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -404,6 +425,27 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if (\array_key_exists('verticalResolution', $data) && \is_int($data['verticalResolution'])) {
                 $data['verticalResolution'] = (double) $data['verticalResolution'];
+            }
+            if (\array_key_exists('hasAlpha', $data) && \is_int($data['hasAlpha'])) {
+                $data['hasAlpha'] = (bool) $data['hasAlpha'];
+            }
+            if (\array_key_exists('isIndexed', $data) && \is_int($data['isIndexed'])) {
+                $data['isIndexed'] = (bool) $data['isIndexed'];
+            }
+            if (\array_key_exists('isExtended', $data) && \is_int($data['isExtended'])) {
+                $data['isExtended'] = (bool) $data['isExtended'];
+            }
+            if (\array_key_exists('hasExifData', $data) && \is_int($data['hasExifData'])) {
+                $data['hasExifData'] = (bool) $data['hasExifData'];
+            }
+            if (\array_key_exists('hasIptcData', $data) && \is_int($data['hasIptcData'])) {
+                $data['hasIptcData'] = (bool) $data['hasIptcData'];
+            }
+            if (\array_key_exists('hasAdobeResourceData', $data) && \is_int($data['hasAdobeResourceData'])) {
+                $data['hasAdobeResourceData'] = (bool) $data['hasAdobeResourceData'];
+            }
+            if (\array_key_exists('hasXmpData', $data) && \is_int($data['hasXmpData'])) {
+                $data['hasXmpData'] = (bool) $data['hasXmpData'];
             }
             if (null === $data || false === \is_array($data)) {
                 return $object;

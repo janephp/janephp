@@ -43,6 +43,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\FieldOverwriteBase();
+            if (\array_key_exists('required', $data) && \is_int($data['required'])) {
+                $data['required'] = (bool) $data['required'];
+            }
+            if (\array_key_exists('overwriteRequired', $data) && \is_int($data['overwriteRequired'])) {
+                $data['overwriteRequired'] = (bool) $data['overwriteRequired'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -118,6 +124,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\FieldOverwriteBase();
+            if (\array_key_exists('required', $data) && \is_int($data['required'])) {
+                $data['required'] = (bool) $data['required'];
+            }
+            if (\array_key_exists('overwriteRequired', $data) && \is_int($data['overwriteRequired'])) {
+                $data['overwriteRequired'] = (bool) $data['overwriteRequired'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }

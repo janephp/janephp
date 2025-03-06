@@ -37,6 +37,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBody();
+            if (\array_key_exists('enforce_admins', $data) && \is_int($data['enforce_admins'])) {
+                $data['enforce_admins'] = (bool) $data['enforce_admins'];
+            }
+            if (\array_key_exists('required_linear_history', $data) && \is_int($data['required_linear_history'])) {
+                $data['required_linear_history'] = (bool) $data['required_linear_history'];
+            }
+            if (\array_key_exists('allow_force_pushes', $data) && \is_int($data['allow_force_pushes'])) {
+                $data['allow_force_pushes'] = (bool) $data['allow_force_pushes'];
+            }
+            if (\array_key_exists('allow_deletions', $data) && \is_int($data['allow_deletions'])) {
+                $data['allow_deletions'] = (bool) $data['allow_deletions'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyConstraint());
             }
@@ -151,6 +163,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBody();
+            if (\array_key_exists('enforce_admins', $data) && \is_int($data['enforce_admins'])) {
+                $data['enforce_admins'] = (bool) $data['enforce_admins'];
+            }
+            if (\array_key_exists('required_linear_history', $data) && \is_int($data['required_linear_history'])) {
+                $data['required_linear_history'] = (bool) $data['required_linear_history'];
+            }
+            if (\array_key_exists('allow_force_pushes', $data) && \is_int($data['allow_force_pushes'])) {
+                $data['allow_force_pushes'] = (bool) $data['allow_force_pushes'];
+            }
+            if (\array_key_exists('allow_deletions', $data) && \is_int($data['allow_deletions'])) {
+                $data['allow_deletions'] = (bool) $data['allow_deletions'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyConstraint());
             }

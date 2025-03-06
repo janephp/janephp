@@ -40,6 +40,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\BusinessProcess();
+            if (\array_key_exists('supportsCancellation', $data) && \is_int($data['supportsCancellation'])) {
+                $data['supportsCancellation'] = (bool) $data['supportsCancellation'];
+            }
+            if (\array_key_exists('finished', $data) && \is_int($data['finished'])) {
+                $data['finished'] = (bool) $data['finished'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -186,6 +192,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\BusinessProcess();
+            if (\array_key_exists('supportsCancellation', $data) && \is_int($data['supportsCancellation'])) {
+                $data['supportsCancellation'] = (bool) $data['supportsCancellation'];
+            }
+            if (\array_key_exists('finished', $data) && \is_int($data['finished'])) {
+                $data['finished'] = (bool) $data['finished'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }

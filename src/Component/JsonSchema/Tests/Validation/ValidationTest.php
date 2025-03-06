@@ -695,7 +695,7 @@ class ValidationTest extends TestCase
         $caughtException = null;
         try {
             $normalizer->denormalize([
-                'booleanProperty' => 1,
+                'booleanProperty' => 1.0,
             ], TypeObject::class);
         } catch (ValidationException $exception) {
             $caughtException = $exception;

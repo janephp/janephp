@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\DetailedTweet();
+            if (\array_key_exists('possibly_sensitive', $data) && \is_int($data['possibly_sensitive'])) {
+                $data['possibly_sensitive'] = (bool) $data['possibly_sensitive'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -205,6 +208,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\DetailedTweet();
+            if (\array_key_exists('possibly_sensitive', $data) && \is_int($data['possibly_sensitive'])) {
+                $data['possibly_sensitive'] = (bool) $data['possibly_sensitive'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }

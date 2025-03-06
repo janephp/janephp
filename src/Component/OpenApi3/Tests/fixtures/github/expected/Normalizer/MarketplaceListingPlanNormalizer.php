@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\MarketplaceListingPlan();
+            if (\array_key_exists('has_free_trial', $data) && \is_int($data['has_free_trial'])) {
+                $data['has_free_trial'] = (bool) $data['has_free_trial'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\MarketplaceListingPlanConstraint());
             }
@@ -171,6 +174,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\MarketplaceListingPlan();
+            if (\array_key_exists('has_free_trial', $data) && \is_int($data['has_free_trial'])) {
+                $data['has_free_trial'] = (bool) $data['has_free_trial'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\MarketplaceListingPlanConstraint());
             }

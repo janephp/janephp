@@ -37,6 +37,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\BuildCache();
+            if (\array_key_exists('InUse', $data) && \is_int($data['InUse'])) {
+                $data['InUse'] = (bool) $data['InUse'];
+            }
+            if (\array_key_exists('Shared', $data) && \is_int($data['Shared'])) {
+                $data['Shared'] = (bool) $data['Shared'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\BuildCacheConstraint());
             }
@@ -148,6 +154,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\BuildCache();
+            if (\array_key_exists('InUse', $data) && \is_int($data['InUse'])) {
+                $data['InUse'] = (bool) $data['InUse'];
+            }
+            if (\array_key_exists('Shared', $data) && \is_int($data['Shared'])) {
+                $data['Shared'] = (bool) $data['Shared'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\BuildCacheConstraint());
             }

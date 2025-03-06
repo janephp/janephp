@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\CodeScanningAlert();
+            if (\array_key_exists('open', $data) && \is_int($data['open'])) {
+                $data['open'] = (bool) $data['open'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\CodeScanningAlertConstraint());
             }
@@ -191,6 +194,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\CodeScanningAlert();
+            if (\array_key_exists('open', $data) && \is_int($data['open'])) {
+                $data['open'] = (bool) $data['open'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\CodeScanningAlertConstraint());
             }

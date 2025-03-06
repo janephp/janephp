@@ -37,6 +37,36 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem();
+            if (\array_key_exists('addedToAcceptList', $data) && \is_int($data['addedToAcceptList'])) {
+                $data['addedToAcceptList'] = (bool) $data['addedToAcceptList'];
+            }
+            if (\array_key_exists('addressName', $data) && \is_int($data['addressName'])) {
+                $data['addressName'] = (bool) $data['addressName'];
+            }
+            if (\array_key_exists('autoFalsePositive', $data) && \is_int($data['autoFalsePositive'])) {
+                $data['autoFalsePositive'] = (bool) $data['autoFalsePositive'];
+            }
+            if (\array_key_exists('bestAddressIsPartial', $data) && \is_int($data['bestAddressIsPartial'])) {
+                $data['bestAddressIsPartial'] = (bool) $data['bestAddressIsPartial'];
+            }
+            if (\array_key_exists('bestDOBIsPartial', $data) && \is_int($data['bestDOBIsPartial'])) {
+                $data['bestDOBIsPartial'] = (bool) $data['bestDOBIsPartial'];
+            }
+            if (\array_key_exists('falsePositive', $data) && \is_int($data['falsePositive'])) {
+                $data['falsePositive'] = (bool) $data['falsePositive'];
+            }
+            if (\array_key_exists('gatewayOFACScreeningIndicatorMatch', $data) && \is_int($data['gatewayOFACScreeningIndicatorMatch'])) {
+                $data['gatewayOFACScreeningIndicatorMatch'] = (bool) $data['gatewayOFACScreeningIndicatorMatch'];
+            }
+            if (\array_key_exists('matchReAlert', $data) && \is_int($data['matchReAlert'])) {
+                $data['matchReAlert'] = (bool) $data['matchReAlert'];
+            }
+            if (\array_key_exists('secondaryOFACScreeningIndicatorMatch', $data) && \is_int($data['secondaryOFACScreeningIndicatorMatch'])) {
+                $data['secondaryOFACScreeningIndicatorMatch'] = (bool) $data['secondaryOFACScreeningIndicatorMatch'];
+            }
+            if (\array_key_exists('trueMatch', $data) && \is_int($data['trueMatch'])) {
+                $data['trueMatch'] = (bool) $data['trueMatch'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -271,6 +301,36 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem();
+            if (\array_key_exists('addedToAcceptList', $data) && \is_int($data['addedToAcceptList'])) {
+                $data['addedToAcceptList'] = (bool) $data['addedToAcceptList'];
+            }
+            if (\array_key_exists('addressName', $data) && \is_int($data['addressName'])) {
+                $data['addressName'] = (bool) $data['addressName'];
+            }
+            if (\array_key_exists('autoFalsePositive', $data) && \is_int($data['autoFalsePositive'])) {
+                $data['autoFalsePositive'] = (bool) $data['autoFalsePositive'];
+            }
+            if (\array_key_exists('bestAddressIsPartial', $data) && \is_int($data['bestAddressIsPartial'])) {
+                $data['bestAddressIsPartial'] = (bool) $data['bestAddressIsPartial'];
+            }
+            if (\array_key_exists('bestDOBIsPartial', $data) && \is_int($data['bestDOBIsPartial'])) {
+                $data['bestDOBIsPartial'] = (bool) $data['bestDOBIsPartial'];
+            }
+            if (\array_key_exists('falsePositive', $data) && \is_int($data['falsePositive'])) {
+                $data['falsePositive'] = (bool) $data['falsePositive'];
+            }
+            if (\array_key_exists('gatewayOFACScreeningIndicatorMatch', $data) && \is_int($data['gatewayOFACScreeningIndicatorMatch'])) {
+                $data['gatewayOFACScreeningIndicatorMatch'] = (bool) $data['gatewayOFACScreeningIndicatorMatch'];
+            }
+            if (\array_key_exists('matchReAlert', $data) && \is_int($data['matchReAlert'])) {
+                $data['matchReAlert'] = (bool) $data['matchReAlert'];
+            }
+            if (\array_key_exists('secondaryOFACScreeningIndicatorMatch', $data) && \is_int($data['secondaryOFACScreeningIndicatorMatch'])) {
+                $data['secondaryOFACScreeningIndicatorMatch'] = (bool) $data['secondaryOFACScreeningIndicatorMatch'];
+            }
+            if (\array_key_exists('trueMatch', $data) && \is_int($data['trueMatch'])) {
+                $data['trueMatch'] = (bool) $data['trueMatch'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }

@@ -37,6 +37,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\PrivateUser();
+            if (\array_key_exists('site_admin', $data) && \is_int($data['site_admin'])) {
+                $data['site_admin'] = (bool) $data['site_admin'];
+            }
+            if (\array_key_exists('hireable', $data) && \is_int($data['hireable'])) {
+                $data['hireable'] = (bool) $data['hireable'];
+            }
+            if (\array_key_exists('two_factor_authentication', $data) && \is_int($data['two_factor_authentication'])) {
+                $data['two_factor_authentication'] = (bool) $data['two_factor_authentication'];
+            }
+            if (\array_key_exists('business_plus', $data) && \is_int($data['business_plus'])) {
+                $data['business_plus'] = (bool) $data['business_plus'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\PrivateUserConstraint());
             }
@@ -345,6 +357,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\PrivateUser();
+            if (\array_key_exists('site_admin', $data) && \is_int($data['site_admin'])) {
+                $data['site_admin'] = (bool) $data['site_admin'];
+            }
+            if (\array_key_exists('hireable', $data) && \is_int($data['hireable'])) {
+                $data['hireable'] = (bool) $data['hireable'];
+            }
+            if (\array_key_exists('two_factor_authentication', $data) && \is_int($data['two_factor_authentication'])) {
+                $data['two_factor_authentication'] = (bool) $data['two_factor_authentication'];
+            }
+            if (\array_key_exists('business_plus', $data) && \is_int($data['business_plus'])) {
+                $data['business_plus'] = (bool) $data['business_plus'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\PrivateUserConstraint());
             }

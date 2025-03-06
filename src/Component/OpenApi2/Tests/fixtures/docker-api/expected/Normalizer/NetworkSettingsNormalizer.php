@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\NetworkSettings();
+            if (\array_key_exists('HairpinMode', $data) && \is_int($data['HairpinMode'])) {
+                $data['HairpinMode'] = (bool) $data['HairpinMode'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\NetworkSettingsConstraint());
             }
@@ -239,6 +242,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\NetworkSettings();
+            if (\array_key_exists('HairpinMode', $data) && \is_int($data['HairpinMode'])) {
+                $data['HairpinMode'] = (bool) $data['HairpinMode'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\NetworkSettingsConstraint());
             }

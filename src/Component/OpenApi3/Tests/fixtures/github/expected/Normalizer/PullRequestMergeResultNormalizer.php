@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\PullRequestMergeResult();
+            if (\array_key_exists('merged', $data) && \is_int($data['merged'])) {
+                $data['merged'] = (bool) $data['merged'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\PullRequestMergeResultConstraint());
             }
@@ -110,6 +113,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\PullRequestMergeResult();
+            if (\array_key_exists('merged', $data) && \is_int($data['merged'])) {
+                $data['merged'] = (bool) $data['merged'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\PullRequestMergeResultConstraint());
             }

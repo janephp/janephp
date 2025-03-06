@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\SystemVersion();
+            if (\array_key_exists('Experimental', $data) && \is_int($data['Experimental'])) {
+                $data['Experimental'] = (bool) $data['Experimental'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\SystemVersionConstraint());
             }
@@ -165,6 +168,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\SystemVersion();
+            if (\array_key_exists('Experimental', $data) && \is_int($data['Experimental'])) {
+                $data['Experimental'] = (bool) $data['Experimental'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\SystemVersionConstraint());
             }

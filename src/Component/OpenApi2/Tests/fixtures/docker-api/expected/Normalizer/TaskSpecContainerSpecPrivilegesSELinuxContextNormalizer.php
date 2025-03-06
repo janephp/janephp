@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\TaskSpecContainerSpecPrivilegesSELinuxContext();
+            if (\array_key_exists('Disable', $data) && \is_int($data['Disable'])) {
+                $data['Disable'] = (bool) $data['Disable'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesSELinuxContextConstraint());
             }
@@ -115,6 +118,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\TaskSpecContainerSpecPrivilegesSELinuxContext();
+            if (\array_key_exists('Disable', $data) && \is_int($data['Disable'])) {
+                $data['Disable'] = (bool) $data['Disable'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesSELinuxContextConstraint());
             }

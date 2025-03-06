@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\Thread();
+            if (\array_key_exists('unread', $data) && \is_int($data['unread'])) {
+                $data['unread'] = (bool) $data['unread'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\ThreadConstraint());
             }
@@ -161,6 +164,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\Thread();
+            if (\array_key_exists('unread', $data) && \is_int($data['unread'])) {
+                $data['unread'] = (bool) $data['unread'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\ThreadConstraint());
             }

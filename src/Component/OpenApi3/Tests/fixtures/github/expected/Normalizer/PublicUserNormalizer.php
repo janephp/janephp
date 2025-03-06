@@ -37,6 +37,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\PublicUser();
+            if (\array_key_exists('site_admin', $data) && \is_int($data['site_admin'])) {
+                $data['site_admin'] = (bool) $data['site_admin'];
+            }
+            if (\array_key_exists('hireable', $data) && \is_int($data['hireable'])) {
+                $data['hireable'] = (bool) $data['hireable'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\PublicUserConstraint());
             }
@@ -287,6 +293,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\PublicUser();
+            if (\array_key_exists('site_admin', $data) && \is_int($data['site_admin'])) {
+                $data['site_admin'] = (bool) $data['site_admin'];
+            }
+            if (\array_key_exists('hireable', $data) && \is_int($data['hireable'])) {
+                $data['hireable'] = (bool) $data['hireable'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\PublicUserConstraint());
             }

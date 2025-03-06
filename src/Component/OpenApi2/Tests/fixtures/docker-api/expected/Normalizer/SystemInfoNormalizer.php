@@ -37,6 +37,51 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\SystemInfo();
+            if (\array_key_exists('MemoryLimit', $data) && \is_int($data['MemoryLimit'])) {
+                $data['MemoryLimit'] = (bool) $data['MemoryLimit'];
+            }
+            if (\array_key_exists('SwapLimit', $data) && \is_int($data['SwapLimit'])) {
+                $data['SwapLimit'] = (bool) $data['SwapLimit'];
+            }
+            if (\array_key_exists('KernelMemory', $data) && \is_int($data['KernelMemory'])) {
+                $data['KernelMemory'] = (bool) $data['KernelMemory'];
+            }
+            if (\array_key_exists('CpuCfsPeriod', $data) && \is_int($data['CpuCfsPeriod'])) {
+                $data['CpuCfsPeriod'] = (bool) $data['CpuCfsPeriod'];
+            }
+            if (\array_key_exists('CpuCfsQuota', $data) && \is_int($data['CpuCfsQuota'])) {
+                $data['CpuCfsQuota'] = (bool) $data['CpuCfsQuota'];
+            }
+            if (\array_key_exists('CPUShares', $data) && \is_int($data['CPUShares'])) {
+                $data['CPUShares'] = (bool) $data['CPUShares'];
+            }
+            if (\array_key_exists('CPUSet', $data) && \is_int($data['CPUSet'])) {
+                $data['CPUSet'] = (bool) $data['CPUSet'];
+            }
+            if (\array_key_exists('PidsLimit', $data) && \is_int($data['PidsLimit'])) {
+                $data['PidsLimit'] = (bool) $data['PidsLimit'];
+            }
+            if (\array_key_exists('OomKillDisable', $data) && \is_int($data['OomKillDisable'])) {
+                $data['OomKillDisable'] = (bool) $data['OomKillDisable'];
+            }
+            if (\array_key_exists('IPv4Forwarding', $data) && \is_int($data['IPv4Forwarding'])) {
+                $data['IPv4Forwarding'] = (bool) $data['IPv4Forwarding'];
+            }
+            if (\array_key_exists('BridgeNfIptables', $data) && \is_int($data['BridgeNfIptables'])) {
+                $data['BridgeNfIptables'] = (bool) $data['BridgeNfIptables'];
+            }
+            if (\array_key_exists('BridgeNfIp6tables', $data) && \is_int($data['BridgeNfIp6tables'])) {
+                $data['BridgeNfIp6tables'] = (bool) $data['BridgeNfIp6tables'];
+            }
+            if (\array_key_exists('Debug', $data) && \is_int($data['Debug'])) {
+                $data['Debug'] = (bool) $data['Debug'];
+            }
+            if (\array_key_exists('ExperimentalBuild', $data) && \is_int($data['ExperimentalBuild'])) {
+                $data['ExperimentalBuild'] = (bool) $data['ExperimentalBuild'];
+            }
+            if (\array_key_exists('LiveRestoreEnabled', $data) && \is_int($data['LiveRestoreEnabled'])) {
+                $data['LiveRestoreEnabled'] = (bool) $data['LiveRestoreEnabled'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\SystemInfoConstraint());
             }
@@ -524,6 +569,51 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\SystemInfo();
+            if (\array_key_exists('MemoryLimit', $data) && \is_int($data['MemoryLimit'])) {
+                $data['MemoryLimit'] = (bool) $data['MemoryLimit'];
+            }
+            if (\array_key_exists('SwapLimit', $data) && \is_int($data['SwapLimit'])) {
+                $data['SwapLimit'] = (bool) $data['SwapLimit'];
+            }
+            if (\array_key_exists('KernelMemory', $data) && \is_int($data['KernelMemory'])) {
+                $data['KernelMemory'] = (bool) $data['KernelMemory'];
+            }
+            if (\array_key_exists('CpuCfsPeriod', $data) && \is_int($data['CpuCfsPeriod'])) {
+                $data['CpuCfsPeriod'] = (bool) $data['CpuCfsPeriod'];
+            }
+            if (\array_key_exists('CpuCfsQuota', $data) && \is_int($data['CpuCfsQuota'])) {
+                $data['CpuCfsQuota'] = (bool) $data['CpuCfsQuota'];
+            }
+            if (\array_key_exists('CPUShares', $data) && \is_int($data['CPUShares'])) {
+                $data['CPUShares'] = (bool) $data['CPUShares'];
+            }
+            if (\array_key_exists('CPUSet', $data) && \is_int($data['CPUSet'])) {
+                $data['CPUSet'] = (bool) $data['CPUSet'];
+            }
+            if (\array_key_exists('PidsLimit', $data) && \is_int($data['PidsLimit'])) {
+                $data['PidsLimit'] = (bool) $data['PidsLimit'];
+            }
+            if (\array_key_exists('OomKillDisable', $data) && \is_int($data['OomKillDisable'])) {
+                $data['OomKillDisable'] = (bool) $data['OomKillDisable'];
+            }
+            if (\array_key_exists('IPv4Forwarding', $data) && \is_int($data['IPv4Forwarding'])) {
+                $data['IPv4Forwarding'] = (bool) $data['IPv4Forwarding'];
+            }
+            if (\array_key_exists('BridgeNfIptables', $data) && \is_int($data['BridgeNfIptables'])) {
+                $data['BridgeNfIptables'] = (bool) $data['BridgeNfIptables'];
+            }
+            if (\array_key_exists('BridgeNfIp6tables', $data) && \is_int($data['BridgeNfIp6tables'])) {
+                $data['BridgeNfIp6tables'] = (bool) $data['BridgeNfIp6tables'];
+            }
+            if (\array_key_exists('Debug', $data) && \is_int($data['Debug'])) {
+                $data['Debug'] = (bool) $data['Debug'];
+            }
+            if (\array_key_exists('ExperimentalBuild', $data) && \is_int($data['ExperimentalBuild'])) {
+                $data['ExperimentalBuild'] = (bool) $data['ExperimentalBuild'];
+            }
+            if (\array_key_exists('LiveRestoreEnabled', $data) && \is_int($data['LiveRestoreEnabled'])) {
+                $data['LiveRestoreEnabled'] = (bool) $data['LiveRestoreEnabled'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\SystemInfoConstraint());
             }

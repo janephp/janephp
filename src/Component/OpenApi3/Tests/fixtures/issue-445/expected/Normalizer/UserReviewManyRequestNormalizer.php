@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\UserReviewManyRequest();
+            if (\array_key_exists('reviewed', $data) && \is_int($data['reviewed'])) {
+                $data['reviewed'] = (bool) $data['reviewed'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -107,6 +110,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\UserReviewManyRequest();
+            if (\array_key_exists('reviewed', $data) && \is_int($data['reviewed'])) {
+                $data['reviewed'] = (bool) $data['reviewed'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }

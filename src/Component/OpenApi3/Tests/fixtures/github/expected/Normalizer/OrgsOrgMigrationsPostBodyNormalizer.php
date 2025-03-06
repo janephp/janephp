@@ -37,6 +37,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\OrgsOrgMigrationsPostBody();
+            if (\array_key_exists('lock_repositories', $data) && \is_int($data['lock_repositories'])) {
+                $data['lock_repositories'] = (bool) $data['lock_repositories'];
+            }
+            if (\array_key_exists('exclude_attachments', $data) && \is_int($data['exclude_attachments'])) {
+                $data['exclude_attachments'] = (bool) $data['exclude_attachments'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\OrgsOrgMigrationsPostBodyConstraint());
             }
@@ -137,6 +143,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\OrgsOrgMigrationsPostBody();
+            if (\array_key_exists('lock_repositories', $data) && \is_int($data['lock_repositories'])) {
+                $data['lock_repositories'] = (bool) $data['lock_repositories'];
+            }
+            if (\array_key_exists('exclude_attachments', $data) && \is_int($data['exclude_attachments'])) {
+                $data['exclude_attachments'] = (bool) $data['exclude_attachments'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\OrgsOrgMigrationsPostBodyConstraint());
             }

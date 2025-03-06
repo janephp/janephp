@@ -37,6 +37,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\PullRequestSimple();
+            if (\array_key_exists('locked', $data) && \is_int($data['locked'])) {
+                $data['locked'] = (bool) $data['locked'];
+            }
+            if (\array_key_exists('draft', $data) && \is_int($data['draft'])) {
+                $data['draft'] = (bool) $data['draft'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\PullRequestSimpleConstraint());
             }
@@ -345,6 +351,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\PullRequestSimple();
+            if (\array_key_exists('locked', $data) && \is_int($data['locked'])) {
+                $data['locked'] = (bool) $data['locked'];
+            }
+            if (\array_key_exists('draft', $data) && \is_int($data['draft'])) {
+                $data['draft'] = (bool) $data['draft'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\PullRequestSimpleConstraint());
             }

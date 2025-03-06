@@ -37,6 +37,24 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Jane\OpenApi2\Tests\Expected\Model\Company();
+            if (\array_key_exists('is_active', $data) && \is_int($data['is_active'])) {
+                $data['is_active'] = (bool) $data['is_active'];
+            }
+            if (\array_key_exists('wants_timestamp_timers', $data) && \is_int($data['wants_timestamp_timers'])) {
+                $data['wants_timestamp_timers'] = (bool) $data['wants_timestamp_timers'];
+            }
+            if (\array_key_exists('expense_feature', $data) && \is_int($data['expense_feature'])) {
+                $data['expense_feature'] = (bool) $data['expense_feature'];
+            }
+            if (\array_key_exists('invoice_feature', $data) && \is_int($data['invoice_feature'])) {
+                $data['invoice_feature'] = (bool) $data['invoice_feature'];
+            }
+            if (\array_key_exists('estimate_feature', $data) && \is_int($data['estimate_feature'])) {
+                $data['estimate_feature'] = (bool) $data['estimate_feature'];
+            }
+            if (\array_key_exists('approval_feature', $data) && \is_int($data['approval_feature'])) {
+                $data['approval_feature'] = (bool) $data['approval_feature'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -181,6 +199,24 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Jane\OpenApi2\Tests\Expected\Model\Company();
+            if (\array_key_exists('is_active', $data) && \is_int($data['is_active'])) {
+                $data['is_active'] = (bool) $data['is_active'];
+            }
+            if (\array_key_exists('wants_timestamp_timers', $data) && \is_int($data['wants_timestamp_timers'])) {
+                $data['wants_timestamp_timers'] = (bool) $data['wants_timestamp_timers'];
+            }
+            if (\array_key_exists('expense_feature', $data) && \is_int($data['expense_feature'])) {
+                $data['expense_feature'] = (bool) $data['expense_feature'];
+            }
+            if (\array_key_exists('invoice_feature', $data) && \is_int($data['invoice_feature'])) {
+                $data['invoice_feature'] = (bool) $data['invoice_feature'];
+            }
+            if (\array_key_exists('estimate_feature', $data) && \is_int($data['estimate_feature'])) {
+                $data['estimate_feature'] = (bool) $data['estimate_feature'];
+            }
+            if (\array_key_exists('approval_feature', $data) && \is_int($data['approval_feature'])) {
+                $data['approval_feature'] = (bool) $data['approval_feature'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }

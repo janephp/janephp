@@ -40,6 +40,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('boost', $data) && \is_int($data['boost'])) {
                 $data['boost'] = (double) $data['boost'];
             }
+            if (\array_key_exists('ignoreForSearch', $data) && \is_int($data['ignoreForSearch'])) {
+                $data['ignoreForSearch'] = (bool) $data['ignoreForSearch'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -171,6 +174,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $object = new \PicturePark\API\Model\IndexField();
             if (\array_key_exists('boost', $data) && \is_int($data['boost'])) {
                 $data['boost'] = (double) $data['boost'];
+            }
+            if (\array_key_exists('ignoreForSearch', $data) && \is_int($data['ignoreForSearch'])) {
+                $data['ignoreForSearch'] = (bool) $data['ignoreForSearch'];
             }
             if (null === $data || false === \is_array($data)) {
                 return $object;

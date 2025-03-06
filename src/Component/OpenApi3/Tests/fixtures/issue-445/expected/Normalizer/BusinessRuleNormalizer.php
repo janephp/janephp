@@ -43,6 +43,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\BusinessRule();
+            if (\array_key_exists('isEnabled', $data) && \is_int($data['isEnabled'])) {
+                $data['isEnabled'] = (bool) $data['isEnabled'];
+            }
+            if (\array_key_exists('enableTracing', $data) && \is_int($data['enableTracing'])) {
+                $data['enableTracing'] = (bool) $data['enableTracing'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -145,6 +151,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\BusinessRule();
+            if (\array_key_exists('isEnabled', $data) && \is_int($data['isEnabled'])) {
+                $data['isEnabled'] = (bool) $data['isEnabled'];
+            }
+            if (\array_key_exists('enableTracing', $data) && \is_int($data['enableTracing'])) {
+                $data['enableTracing'] = (bool) $data['enableTracing'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }

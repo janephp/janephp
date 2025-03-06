@@ -46,6 +46,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('userId', $data) && \is_int($data['userId'])) {
                 $data['userId'] = (double) $data['userId'];
             }
+            if (\array_key_exists('isAutoTracker', $data) && \is_int($data['isAutoTracker'])) {
+                $data['isAutoTracker'] = (bool) $data['isAutoTracker'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -176,6 +179,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if (\array_key_exists('userId', $data) && \is_int($data['userId'])) {
                 $data['userId'] = (double) $data['userId'];
+            }
+            if (\array_key_exists('isAutoTracker', $data) && \is_int($data['isAutoTracker'])) {
+                $data['isAutoTracker'] = (bool) $data['isAutoTracker'];
             }
             if (null === $data || false === \is_array($data)) {
                 return $object;

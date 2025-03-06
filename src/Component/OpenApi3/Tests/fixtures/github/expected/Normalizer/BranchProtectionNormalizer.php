@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\BranchProtection();
+            if (\array_key_exists('enabled', $data) && \is_int($data['enabled'])) {
+                $data['enabled'] = (bool) $data['enabled'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\BranchProtectionConstraint());
             }
@@ -168,6 +171,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\BranchProtection();
+            if (\array_key_exists('enabled', $data) && \is_int($data['enabled'])) {
+                $data['enabled'] = (bool) $data['enabled'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\BranchProtectionConstraint());
             }
