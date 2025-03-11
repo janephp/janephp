@@ -262,15 +262,38 @@ class NormalizerGenerator implements GeneratorInterface
             'params' => [
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new NullableType(new Identifier('string'))),
             ],
-            'stmts' => [new Stmt\Return_(new Expr\Array_([
-                new Expr\ArrayItem(
-                    new Expr\ConstFetch(new Name($useCacheableSupportsMethod ? 'true' : 'false')),
-                    new Expr\ClassConstFetch(
-                        new Name\FullyQualified($modelFqdn),
-                        new Identifier('class')
-                    )
+            'stmts' => [new Stmt\Return_(
+                new Expr\FuncCall(
+                    new Name('array_combine'),
+                    [
+                        new Arg(
+                            new Expr\FuncCall(
+                                new Name('array_keys'),
+                                [
+                                    new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizers')),
+                                ]
+                            )
+                        ),
+                        new Arg(
+                            new Expr\FuncCall(
+                                new Name('array_fill'),
+                                [
+                                    new Arg(new Scalar\LNumber(0)),
+                                    new Arg(
+                                        new Expr\FuncCall(
+                                            new Name('count'),
+                                            [
+                                                new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizers')),
+                                            ]
+                                        )
+                                    ),
+                                    new Arg(new Expr\ConstFetch(new Name('false'))),
+                                ],
+                            ),
+                        ),
+                    ],
                 ),
-            ]))],
+            )],
         ]);
     }
 

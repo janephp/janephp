@@ -111,7 +111,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null): array
         {
-            return [\ApiPlatform\Demo\Model\ReviewJsonhalReviewWrite::class => false];
+            return array_combine(array_keys($this->normalizers), array_fill(0, count($this->normalizers), false));
         }
     }
 } else {
@@ -218,7 +218,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null): array
         {
-            return [\ApiPlatform\Demo\Model\ReviewJsonhalReviewWrite::class => false];
+            return array_combine(array_keys($this->normalizers), array_fill(0, count($this->normalizers), false));
         }
     }
 }
