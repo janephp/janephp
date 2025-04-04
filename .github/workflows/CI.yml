@@ -20,13 +20,13 @@ jobs:
     strategy:
       max-parallel: 15
       matrix:
-        php-versions:  ['8.1', '8.2']
+        php-versions:  ['8.1', '8.2', '8.3', '8.4']
     name: tests-${{ matrix.php-versions }}
     steps:
       - name: checkout
         uses: actions/checkout@master
       - name: cache-composer
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.composer/cache/
           key: composer-${{ matrix.php-versions }}-${{ github.sha }}
@@ -51,7 +51,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
       - name: cache-composer-lowest
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.composer/cache/
           key: composer-lowest-${{ github.sha }}
