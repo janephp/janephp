@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- [Jane] [GH#836](https://github.com/janephp/janephp/pull/836) Run test suite with PHP 8.3 & PHP 8.4
+
 ## [7.8.1] - 2024-07-29
 ### Fixed
 - [JsonSchema] [GH#819](https://github.com/janephp/janephp/pull/819) Fix fully qualified name generation in Normalizers
