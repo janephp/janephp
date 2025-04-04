@@ -9,7 +9,7 @@ jobs:
       - name: setup
         uses: shivammathur/setup-php@2.28.0
         with:
-          php-version: 8.2
+          php-version: 8.3
           coverage: none
       - name: install PHP CS Fixer
         run: 'composer install -n --prefer-dist --optimize-autoloader --working-dir=tools/php-cs-fixer'
@@ -40,7 +40,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
       - name: cache-composer
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.composer/cache/
           key: composer-${{ matrix.php-versions }}-${{ github.sha }}
@@ -65,7 +65,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
       - name: cache-composer-lowest
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.composer/cache/
           key: composer-lowest-${{ github.sha }}

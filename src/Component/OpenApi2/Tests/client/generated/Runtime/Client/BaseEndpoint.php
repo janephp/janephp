@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\SerializerInterface;
 abstract class BaseEndpoint implements Endpoint
 {
+<<<<<<< HEAD
     protected array $formParameters = [];
     protected array $queryParameters = [];
     protected array $headerParameters = [];
@@ -18,6 +19,28 @@ abstract class BaseEndpoint implements Endpoint
     abstract public function getAuthenticationScopes(): array;
     abstract protected function transformResponseBody(ResponseInterface $response, SerializerInterface $serializer, ?string $contentType = null);
     protected function getExtraHeaders(): array
+||||||| 47d94227b
+    protected $queryParameters = [];
+    protected $headerParameters = [];
+    protected $body;
+    public abstract function getMethod() : string;
+    public abstract function getBody(SerializerInterface $serializer, $streamFactory = null) : array;
+    public abstract function getUri() : string;
+    public abstract function getAuthenticationScopes() : array;
+    protected abstract function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType = null);
+    protected function getExtraHeaders() : array
+=======
+    protected $formParameters = [];
+    protected $queryParameters = [];
+    protected $headerParameters = [];
+    protected $body;
+    abstract public function getMethod(): string;
+    abstract public function getBody(SerializerInterface $serializer, $streamFactory = null): array;
+    abstract public function getUri(): string;
+    abstract public function getAuthenticationScopes(): array;
+    abstract protected function transformResponseBody(ResponseInterface $response, SerializerInterface $serializer, ?string $contentType = null);
+    protected function getExtraHeaders(): array
+>>>>>>> origin/next
     {
         return [];
     }
