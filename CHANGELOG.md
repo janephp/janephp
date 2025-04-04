@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - [PHP] [GH#842](https://github.com/janephp/janephp/pull/842) Fix generated files to be compatible with PHP 8.4
+- [CI] [GH#850](https://github.com/janephp/janephp/pull/850) Update GH actions/cache to v4
 
 ## [7.8.1] - 2024-07-29
 ### Fixed
