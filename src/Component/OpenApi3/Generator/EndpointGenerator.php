@@ -64,7 +64,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
         NonBodyParameterGenerator $nonBodyParameterGenerator,
         DenormalizerInterface $denormalizer,
         ExceptionGenerator $exceptionGenerator,
-        RequestBodyGenerator $requestBodyGenerator
+        RequestBodyGenerator $requestBodyGenerator,
     ) {
         $this->operationNaming = $operationNaming;
         $this->nonBodyParameterGenerator = $nonBodyParameterGenerator;

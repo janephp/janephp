@@ -59,7 +59,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
         Parameter\BodyParameterGenerator $bodyParameterGenerator,
         Parameter\NonBodyParameterGenerator $nonBodyParameterGenerator,
         DenormalizerInterface $denormalizer,
-        ExceptionGenerator $exceptionGenerator
+        ExceptionGenerator $exceptionGenerator,
     ) {
         $this->operationNaming = $operationNaming;
         $this->bodyParameterGenerator = $bodyParameterGenerator;

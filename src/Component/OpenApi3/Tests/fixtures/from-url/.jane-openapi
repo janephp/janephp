@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'openapi-file' => 'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore.yaml',
+    'openapi-file' => 'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/tests/v3.0/pass/petstore.yaml',
     'namespace' => 'Jane\Component\OpenApi3\Tests\Expected',
     'directory' => __DIR__ . '/generated',
 ];
