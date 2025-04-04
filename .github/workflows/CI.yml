@@ -9,7 +9,7 @@ jobs:
       - name: setup
         uses: shivammathur/setup-php@2.28.0
         with:
-          php-version: 8.2
+          php-version: 8.3
           coverage: none
       - name: install PHP CS Fixer
         run: 'composer install -n --prefer-dist --optimize-autoloader --working-dir=tools/php-cs-fixer'

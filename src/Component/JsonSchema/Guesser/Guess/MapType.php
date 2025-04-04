@@ -23,7 +23,7 @@ class MapType extends ArrayType
 
     public function getDocTypeHint(string $namespace)
     {
-        return new Name(sprintf('array<string, %s>', $this->getItemType()->getDocTypeHint($namespace)));
+        return new Name(\sprintf('array<string, %s>', $this->getItemType()->getDocTypeHint($namespace)));
     }
 
     protected function createArrayValueStatement(): Expr

@@ -70,7 +70,7 @@ class Reference
     protected function doResolve()
     {
         $fragment = (string) $this->mergedUri->withFragment('');
-        $reference = sprintf('%s_%s', $fragment, $this->mergedUri->getFragment());
+        $reference = \sprintf('%s_%s', $fragment, $this->mergedUri->getFragment());
 
         if (!\array_key_exists($fragment, self::$fileCache)) {
             $contents = file_get_contents($fragment);
