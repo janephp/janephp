@@ -9,20 +9,6 @@ jobs:
       - name: setup
         uses: shivammathur/setup-php@2.28.0
         with:
-          php-version: 8.3
-          coverage: none
-      - name: install PHP CS Fixer
-        run: 'composer install -n --prefer-dist --optimize-autoloader --working-dir=tools/php-cs-fixer'
-      - name: 'php-cs-fixer check'
-        run: 'tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --dry-run --diff'
-  cs-check-php-84:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@master
-      - name: setup
-        uses: shivammathur/setup-php@2.28.0
-        with:
           php-version: 8.4
           coverage: none
       - name: install PHP CS Fixer
