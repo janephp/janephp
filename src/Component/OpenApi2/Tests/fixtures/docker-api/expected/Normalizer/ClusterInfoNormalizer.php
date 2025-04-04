@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\ClusterInfo();
+            if (\array_key_exists('RootRotationInProgress', $data) && \is_int($data['RootRotationInProgress'])) {
+                $data['RootRotationInProgress'] = (bool) $data['RootRotationInProgress'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\ClusterInfoConstraint());
             }
@@ -153,6 +156,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\ClusterInfo();
+            if (\array_key_exists('RootRotationInProgress', $data) && \is_int($data['RootRotationInProgress'])) {
+                $data['RootRotationInProgress'] = (bool) $data['RootRotationInProgress'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\ClusterInfoConstraint());
             }

@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\SearchRepositoriesGetResponse200();
+            if (\array_key_exists('incomplete_results', $data) && \is_int($data['incomplete_results'])) {
+                $data['incomplete_results'] = (bool) $data['incomplete_results'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\SearchRepositoriesGetResponse200Constraint());
             }
@@ -124,6 +127,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\SearchRepositoriesGetResponse200();
+            if (\array_key_exists('incomplete_results', $data) && \is_int($data['incomplete_results'])) {
+                $data['incomplete_results'] = (bool) $data['incomplete_results'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\SearchRepositoriesGetResponse200Constraint());
             }

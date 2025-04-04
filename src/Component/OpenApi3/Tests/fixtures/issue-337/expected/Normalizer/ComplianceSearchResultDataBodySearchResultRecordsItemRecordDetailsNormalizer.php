@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails();
+            if (\array_key_exists('addedToAcceptList', $data) && \is_int($data['addedToAcceptList'])) {
+                $data['addedToAcceptList'] = (bool) $data['addedToAcceptList'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -188,6 +191,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails();
+            if (\array_key_exists('addedToAcceptList', $data) && \is_int($data['addedToAcceptList'])) {
+                $data['addedToAcceptList'] = (bool) $data['addedToAcceptList'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }

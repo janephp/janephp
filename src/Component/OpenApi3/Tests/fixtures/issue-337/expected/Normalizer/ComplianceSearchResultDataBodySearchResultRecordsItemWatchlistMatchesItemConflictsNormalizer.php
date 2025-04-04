@@ -37,6 +37,30 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemConflicts();
+            if (\array_key_exists('addressConflict', $data) && \is_int($data['addressConflict'])) {
+                $data['addressConflict'] = (bool) $data['addressConflict'];
+            }
+            if (\array_key_exists('citizenshipConflict', $data) && \is_int($data['citizenshipConflict'])) {
+                $data['citizenshipConflict'] = (bool) $data['citizenshipConflict'];
+            }
+            if (\array_key_exists('countryConflict', $data) && \is_int($data['countryConflict'])) {
+                $data['countryConflict'] = (bool) $data['countryConflict'];
+            }
+            if (\array_key_exists('dobConflict', $data) && \is_int($data['dobConflict'])) {
+                $data['dobConflict'] = (bool) $data['dobConflict'];
+            }
+            if (\array_key_exists('entityTypeConflict', $data) && \is_int($data['entityTypeConflict'])) {
+                $data['entityTypeConflict'] = (bool) $data['entityTypeConflict'];
+            }
+            if (\array_key_exists('genderConflict', $data) && \is_int($data['genderConflict'])) {
+                $data['genderConflict'] = (bool) $data['genderConflict'];
+            }
+            if (\array_key_exists('idConflict', $data) && \is_int($data['idConflict'])) {
+                $data['idConflict'] = (bool) $data['idConflict'];
+            }
+            if (\array_key_exists('phoneConflict', $data) && \is_int($data['phoneConflict'])) {
+                $data['phoneConflict'] = (bool) $data['phoneConflict'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -145,6 +169,30 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemConflicts();
+            if (\array_key_exists('addressConflict', $data) && \is_int($data['addressConflict'])) {
+                $data['addressConflict'] = (bool) $data['addressConflict'];
+            }
+            if (\array_key_exists('citizenshipConflict', $data) && \is_int($data['citizenshipConflict'])) {
+                $data['citizenshipConflict'] = (bool) $data['citizenshipConflict'];
+            }
+            if (\array_key_exists('countryConflict', $data) && \is_int($data['countryConflict'])) {
+                $data['countryConflict'] = (bool) $data['countryConflict'];
+            }
+            if (\array_key_exists('dobConflict', $data) && \is_int($data['dobConflict'])) {
+                $data['dobConflict'] = (bool) $data['dobConflict'];
+            }
+            if (\array_key_exists('entityTypeConflict', $data) && \is_int($data['entityTypeConflict'])) {
+                $data['entityTypeConflict'] = (bool) $data['entityTypeConflict'];
+            }
+            if (\array_key_exists('genderConflict', $data) && \is_int($data['genderConflict'])) {
+                $data['genderConflict'] = (bool) $data['genderConflict'];
+            }
+            if (\array_key_exists('idConflict', $data) && \is_int($data['idConflict'])) {
+                $data['idConflict'] = (bool) $data['idConflict'];
+            }
+            if (\array_key_exists('phoneConflict', $data) && \is_int($data['phoneConflict'])) {
+                $data['phoneConflict'] = (bool) $data['phoneConflict'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }

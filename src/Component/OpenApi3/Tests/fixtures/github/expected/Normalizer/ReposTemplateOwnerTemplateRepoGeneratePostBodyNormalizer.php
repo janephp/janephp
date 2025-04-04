@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody();
+            if (\array_key_exists('private', $data) && \is_int($data['private'])) {
+                $data['private'] = (bool) $data['private'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\ReposTemplateOwnerTemplateRepoGeneratePostBodyConstraint());
             }
@@ -121,6 +124,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody();
+            if (\array_key_exists('private', $data) && \is_int($data['private'])) {
+                $data['private'] = (bool) $data['private'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\ReposTemplateOwnerTemplateRepoGeneratePostBodyConstraint());
             }

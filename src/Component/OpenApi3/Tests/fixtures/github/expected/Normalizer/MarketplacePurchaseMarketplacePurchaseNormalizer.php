@@ -37,6 +37,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\MarketplacePurchaseMarketplacePurchase();
+            if (\array_key_exists('is_installed', $data) && \is_int($data['is_installed'])) {
+                $data['is_installed'] = (bool) $data['is_installed'];
+            }
+            if (\array_key_exists('on_free_trial', $data) && \is_int($data['on_free_trial'])) {
+                $data['on_free_trial'] = (bool) $data['on_free_trial'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\MarketplacePurchaseMarketplacePurchaseConstraint());
             }
@@ -160,6 +166,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\MarketplacePurchaseMarketplacePurchase();
+            if (\array_key_exists('is_installed', $data) && \is_int($data['is_installed'])) {
+                $data['is_installed'] = (bool) $data['is_installed'];
+            }
+            if (\array_key_exists('on_free_trial', $data) && \is_int($data['on_free_trial'])) {
+                $data['on_free_trial'] = (bool) $data['on_free_trial'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\MarketplacePurchaseMarketplacePurchaseConstraint());
             }

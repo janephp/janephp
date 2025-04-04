@@ -37,6 +37,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\UserSearchRequest();
+            if (\array_key_exists('includeServiceUser', $data) && \is_int($data['includeServiceUser'])) {
+                $data['includeServiceUser'] = (bool) $data['includeServiceUser'];
+            }
+            if (\array_key_exists('editableOnly', $data) && \is_int($data['editableOnly'])) {
+                $data['editableOnly'] = (bool) $data['editableOnly'];
+            }
+            if (\array_key_exists('debugMode', $data) && \is_int($data['debugMode'])) {
+                $data['debugMode'] = (bool) $data['debugMode'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -238,6 +247,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\UserSearchRequest();
+            if (\array_key_exists('includeServiceUser', $data) && \is_int($data['includeServiceUser'])) {
+                $data['includeServiceUser'] = (bool) $data['includeServiceUser'];
+            }
+            if (\array_key_exists('editableOnly', $data) && \is_int($data['editableOnly'])) {
+                $data['editableOnly'] = (bool) $data['editableOnly'];
+            }
+            if (\array_key_exists('debugMode', $data) && \is_int($data['debugMode'])) {
+                $data['debugMode'] = (bool) $data['debugMode'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }

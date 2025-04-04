@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\MountBindOptions();
+            if (\array_key_exists('NonRecursive', $data) && \is_int($data['NonRecursive'])) {
+                $data['NonRecursive'] = (bool) $data['NonRecursive'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\MountBindOptionsConstraint());
             }
@@ -97,6 +100,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\MountBindOptions();
+            if (\array_key_exists('NonRecursive', $data) && \is_int($data['NonRecursive'])) {
+                $data['NonRecursive'] = (bool) $data['NonRecursive'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\MountBindOptionsConstraint());
             }

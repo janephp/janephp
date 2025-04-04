@@ -37,6 +37,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\ExecIdStartPostBody();
+            if (\array_key_exists('Detach', $data) && \is_int($data['Detach'])) {
+                $data['Detach'] = (bool) $data['Detach'];
+            }
+            if (\array_key_exists('Tty', $data) && \is_int($data['Tty'])) {
+                $data['Tty'] = (bool) $data['Tty'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\ExecIdStartPostBodyConstraint());
             }
@@ -97,6 +103,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\ExecIdStartPostBody();
+            if (\array_key_exists('Detach', $data) && \is_int($data['Detach'])) {
+                $data['Detach'] = (bool) $data['Detach'];
+            }
+            if (\array_key_exists('Tty', $data) && \is_int($data['Tty'])) {
+                $data['Tty'] = (bool) $data['Tty'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\ExecIdStartPostBodyConstraint());
             }

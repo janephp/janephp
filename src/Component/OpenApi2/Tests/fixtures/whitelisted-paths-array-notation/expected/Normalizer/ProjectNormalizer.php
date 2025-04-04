@@ -52,6 +52,27 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('fee', $data) && \is_int($data['fee'])) {
                 $data['fee'] = (double) $data['fee'];
             }
+            if (\array_key_exists('is_active', $data) && \is_int($data['is_active'])) {
+                $data['is_active'] = (bool) $data['is_active'];
+            }
+            if (\array_key_exists('is_billable', $data) && \is_int($data['is_billable'])) {
+                $data['is_billable'] = (bool) $data['is_billable'];
+            }
+            if (\array_key_exists('is_fixed_fee', $data) && \is_int($data['is_fixed_fee'])) {
+                $data['is_fixed_fee'] = (bool) $data['is_fixed_fee'];
+            }
+            if (\array_key_exists('budget_is_monthly', $data) && \is_int($data['budget_is_monthly'])) {
+                $data['budget_is_monthly'] = (bool) $data['budget_is_monthly'];
+            }
+            if (\array_key_exists('notify_when_over_budget', $data) && \is_int($data['notify_when_over_budget'])) {
+                $data['notify_when_over_budget'] = (bool) $data['notify_when_over_budget'];
+            }
+            if (\array_key_exists('show_budget_to_all', $data) && \is_int($data['show_budget_to_all'])) {
+                $data['show_budget_to_all'] = (bool) $data['show_budget_to_all'];
+            }
+            if (\array_key_exists('cost_budget_include_expenses', $data) && \is_int($data['cost_budget_include_expenses'])) {
+                $data['cost_budget_include_expenses'] = (bool) $data['cost_budget_include_expenses'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -252,6 +273,27 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if (\array_key_exists('fee', $data) && \is_int($data['fee'])) {
                 $data['fee'] = (double) $data['fee'];
+            }
+            if (\array_key_exists('is_active', $data) && \is_int($data['is_active'])) {
+                $data['is_active'] = (bool) $data['is_active'];
+            }
+            if (\array_key_exists('is_billable', $data) && \is_int($data['is_billable'])) {
+                $data['is_billable'] = (bool) $data['is_billable'];
+            }
+            if (\array_key_exists('is_fixed_fee', $data) && \is_int($data['is_fixed_fee'])) {
+                $data['is_fixed_fee'] = (bool) $data['is_fixed_fee'];
+            }
+            if (\array_key_exists('budget_is_monthly', $data) && \is_int($data['budget_is_monthly'])) {
+                $data['budget_is_monthly'] = (bool) $data['budget_is_monthly'];
+            }
+            if (\array_key_exists('notify_when_over_budget', $data) && \is_int($data['notify_when_over_budget'])) {
+                $data['notify_when_over_budget'] = (bool) $data['notify_when_over_budget'];
+            }
+            if (\array_key_exists('show_budget_to_all', $data) && \is_int($data['show_budget_to_all'])) {
+                $data['show_budget_to_all'] = (bool) $data['show_budget_to_all'];
+            }
+            if (\array_key_exists('cost_budget_include_expenses', $data) && \is_int($data['cost_budget_include_expenses'])) {
+                $data['cost_budget_include_expenses'] = (bool) $data['cost_budget_include_expenses'];
             }
             if (null === $data || false === \is_array($data)) {
                 return $object;

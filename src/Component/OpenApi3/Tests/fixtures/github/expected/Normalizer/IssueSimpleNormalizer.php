@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\IssueSimple();
+            if (\array_key_exists('locked', $data) && \is_int($data['locked'])) {
+                $data['locked'] = (bool) $data['locked'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\IssueSimpleConstraint());
             }
@@ -300,6 +303,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\IssueSimple();
+            if (\array_key_exists('locked', $data) && \is_int($data['locked'])) {
+                $data['locked'] = (bool) $data['locked'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\IssueSimpleConstraint());
             }

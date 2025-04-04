@@ -37,6 +37,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\FieldOverwriteSingleTagbox();
+            if (\array_key_exists('required', $data) && \is_int($data['required'])) {
+                $data['required'] = (bool) $data['required'];
+            }
+            if (\array_key_exists('overwriteRequired', $data) && \is_int($data['overwriteRequired'])) {
+                $data['overwriteRequired'] = (bool) $data['overwriteRequired'];
+            }
+            if (\array_key_exists('overwriteFilter', $data) && \is_int($data['overwriteFilter'])) {
+                $data['overwriteFilter'] = (bool) $data['overwriteFilter'];
+            }
+            if (\array_key_exists('overwriteListItemCreateTemplate', $data) && \is_int($data['overwriteListItemCreateTemplate'])) {
+                $data['overwriteListItemCreateTemplate'] = (bool) $data['overwriteListItemCreateTemplate'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -148,6 +160,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\FieldOverwriteSingleTagbox();
+            if (\array_key_exists('required', $data) && \is_int($data['required'])) {
+                $data['required'] = (bool) $data['required'];
+            }
+            if (\array_key_exists('overwriteRequired', $data) && \is_int($data['overwriteRequired'])) {
+                $data['overwriteRequired'] = (bool) $data['overwriteRequired'];
+            }
+            if (\array_key_exists('overwriteFilter', $data) && \is_int($data['overwriteFilter'])) {
+                $data['overwriteFilter'] = (bool) $data['overwriteFilter'];
+            }
+            if (\array_key_exists('overwriteListItemCreateTemplate', $data) && \is_int($data['overwriteListItemCreateTemplate'])) {
+                $data['overwriteListItemCreateTemplate'] = (bool) $data['overwriteListItemCreateTemplate'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }

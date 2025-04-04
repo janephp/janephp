@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Jane\OpenApi2\Tests\Expected\Model\CompanyPatchBody();
+            if (\array_key_exists('wants_timestamp_timers', $data) && \is_int($data['wants_timestamp_timers'])) {
+                $data['wants_timestamp_timers'] = (bool) $data['wants_timestamp_timers'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -91,6 +94,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Jane\OpenApi2\Tests\Expected\Model\CompanyPatchBody();
+            if (\array_key_exists('wants_timestamp_timers', $data) && \is_int($data['wants_timestamp_timers'])) {
+                $data['wants_timestamp_timers'] = (bool) $data['wants_timestamp_timers'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }

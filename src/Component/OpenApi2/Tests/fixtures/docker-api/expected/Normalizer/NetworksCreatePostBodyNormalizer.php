@@ -37,6 +37,21 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\NetworksCreatePostBody();
+            if (\array_key_exists('CheckDuplicate', $data) && \is_int($data['CheckDuplicate'])) {
+                $data['CheckDuplicate'] = (bool) $data['CheckDuplicate'];
+            }
+            if (\array_key_exists('Internal', $data) && \is_int($data['Internal'])) {
+                $data['Internal'] = (bool) $data['Internal'];
+            }
+            if (\array_key_exists('Attachable', $data) && \is_int($data['Attachable'])) {
+                $data['Attachable'] = (bool) $data['Attachable'];
+            }
+            if (\array_key_exists('Ingress', $data) && \is_int($data['Ingress'])) {
+                $data['Ingress'] = (bool) $data['Ingress'];
+            }
+            if (\array_key_exists('EnableIPv6', $data) && \is_int($data['EnableIPv6'])) {
+                $data['EnableIPv6'] = (bool) $data['EnableIPv6'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\NetworksCreatePostBodyConstraint());
             }
@@ -159,6 +174,21 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\NetworksCreatePostBody();
+            if (\array_key_exists('CheckDuplicate', $data) && \is_int($data['CheckDuplicate'])) {
+                $data['CheckDuplicate'] = (bool) $data['CheckDuplicate'];
+            }
+            if (\array_key_exists('Internal', $data) && \is_int($data['Internal'])) {
+                $data['Internal'] = (bool) $data['Internal'];
+            }
+            if (\array_key_exists('Attachable', $data) && \is_int($data['Attachable'])) {
+                $data['Attachable'] = (bool) $data['Attachable'];
+            }
+            if (\array_key_exists('Ingress', $data) && \is_int($data['Ingress'])) {
+                $data['Ingress'] = (bool) $data['Ingress'];
+            }
+            if (\array_key_exists('EnableIPv6', $data) && \is_int($data['EnableIPv6'])) {
+                $data['EnableIPv6'] = (bool) $data['EnableIPv6'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\NetworksCreatePostBodyConstraint());
             }

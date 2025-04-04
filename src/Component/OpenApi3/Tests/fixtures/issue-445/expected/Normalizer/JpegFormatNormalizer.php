@@ -43,6 +43,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('verticalResolution', $data) && \is_int($data['verticalResolution'])) {
                 $data['verticalResolution'] = (double) $data['verticalResolution'];
             }
+            if (\array_key_exists('keepClippingPath', $data) && \is_int($data['keepClippingPath'])) {
+                $data['keepClippingPath'] = (bool) $data['keepClippingPath'];
+            }
+            if (\array_key_exists('chromaSubsamplingEnabled', $data) && \is_int($data['chromaSubsamplingEnabled'])) {
+                $data['chromaSubsamplingEnabled'] = (bool) $data['chromaSubsamplingEnabled'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -201,6 +207,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if (\array_key_exists('verticalResolution', $data) && \is_int($data['verticalResolution'])) {
                 $data['verticalResolution'] = (double) $data['verticalResolution'];
+            }
+            if (\array_key_exists('keepClippingPath', $data) && \is_int($data['keepClippingPath'])) {
+                $data['keepClippingPath'] = (bool) $data['keepClippingPath'];
+            }
+            if (\array_key_exists('chromaSubsamplingEnabled', $data) && \is_int($data['chromaSubsamplingEnabled'])) {
+                $data['chromaSubsamplingEnabled'] = (bool) $data['chromaSubsamplingEnabled'];
             }
             if (null === $data || false === \is_array($data)) {
                 return $object;

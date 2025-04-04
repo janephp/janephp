@@ -40,6 +40,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('numberOfWeeks', $data) && \is_int($data['numberOfWeeks'])) {
                 $data['numberOfWeeks'] = (double) $data['numberOfWeeks'];
             }
+            if (\array_key_exists('consolidatedAccounts', $data) && \is_int($data['consolidatedAccounts'])) {
+                $data['consolidatedAccounts'] = (bool) $data['consolidatedAccounts'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -157,6 +160,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportFinancialStatementsItem();
             if (\array_key_exists('numberOfWeeks', $data) && \is_int($data['numberOfWeeks'])) {
                 $data['numberOfWeeks'] = (double) $data['numberOfWeeks'];
+            }
+            if (\array_key_exists('consolidatedAccounts', $data) && \is_int($data['consolidatedAccounts'])) {
+                $data['consolidatedAccounts'] = (bool) $data['consolidatedAccounts'];
             }
             if (null === $data || false === \is_array($data)) {
                 return $object;

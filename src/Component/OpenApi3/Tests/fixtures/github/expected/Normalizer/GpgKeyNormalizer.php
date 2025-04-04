@@ -37,6 +37,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\GpgKey();
+            if (\array_key_exists('can_sign', $data) && \is_int($data['can_sign'])) {
+                $data['can_sign'] = (bool) $data['can_sign'];
+            }
+            if (\array_key_exists('can_encrypt_comms', $data) && \is_int($data['can_encrypt_comms'])) {
+                $data['can_encrypt_comms'] = (bool) $data['can_encrypt_comms'];
+            }
+            if (\array_key_exists('can_encrypt_storage', $data) && \is_int($data['can_encrypt_storage'])) {
+                $data['can_encrypt_storage'] = (bool) $data['can_encrypt_storage'];
+            }
+            if (\array_key_exists('can_certify', $data) && \is_int($data['can_certify'])) {
+                $data['can_certify'] = (bool) $data['can_certify'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\GpgKeyConstraint());
             }
@@ -185,6 +197,18 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\GpgKey();
+            if (\array_key_exists('can_sign', $data) && \is_int($data['can_sign'])) {
+                $data['can_sign'] = (bool) $data['can_sign'];
+            }
+            if (\array_key_exists('can_encrypt_comms', $data) && \is_int($data['can_encrypt_comms'])) {
+                $data['can_encrypt_comms'] = (bool) $data['can_encrypt_comms'];
+            }
+            if (\array_key_exists('can_encrypt_storage', $data) && \is_int($data['can_encrypt_storage'])) {
+                $data['can_encrypt_storage'] = (bool) $data['can_encrypt_storage'];
+            }
+            if (\array_key_exists('can_certify', $data) && \is_int($data['can_certify'])) {
+                $data['can_certify'] = (bool) $data['can_certify'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\GpgKeyConstraint());
             }

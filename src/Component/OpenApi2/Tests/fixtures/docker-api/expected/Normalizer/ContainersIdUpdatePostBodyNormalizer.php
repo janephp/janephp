@@ -37,6 +37,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\ContainersIdUpdatePostBody();
+            if (\array_key_exists('OomKillDisable', $data) && \is_int($data['OomKillDisable'])) {
+                $data['OomKillDisable'] = (bool) $data['OomKillDisable'];
+            }
+            if (\array_key_exists('Init', $data) && \is_int($data['Init'])) {
+                $data['Init'] = (bool) $data['Init'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\ContainersIdUpdatePostBodyConstraint());
             }
@@ -361,6 +367,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\ContainersIdUpdatePostBody();
+            if (\array_key_exists('OomKillDisable', $data) && \is_int($data['OomKillDisable'])) {
+                $data['OomKillDisable'] = (bool) $data['OomKillDisable'];
+            }
+            if (\array_key_exists('Init', $data) && \is_int($data['Init'])) {
+                $data['Init'] = (bool) $data['Init'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\ContainersIdUpdatePostBodyConstraint());
             }

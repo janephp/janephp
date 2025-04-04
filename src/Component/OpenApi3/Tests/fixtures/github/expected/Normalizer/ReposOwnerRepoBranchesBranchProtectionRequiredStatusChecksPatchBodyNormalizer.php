@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody();
+            if (\array_key_exists('strict', $data) && \is_int($data['strict'])) {
+                $data['strict'] = (bool) $data['strict'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyConstraint());
             }
@@ -117,6 +120,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody();
+            if (\array_key_exists('strict', $data) && \is_int($data['strict'])) {
+                $data['strict'] = (bool) $data['strict'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyConstraint());
             }

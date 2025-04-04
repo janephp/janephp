@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\TaskSpecPluginSpec();
+            if (\array_key_exists('Disabled', $data) && \is_int($data['Disabled'])) {
+                $data['Disabled'] = (bool) $data['Disabled'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\TaskSpecPluginSpecConstraint());
             }
@@ -117,6 +120,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\TaskSpecPluginSpec();
+            if (\array_key_exists('Disabled', $data) && \is_int($data['Disabled'])) {
+                $data['Disabled'] = (bool) $data['Disabled'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\TaskSpecPluginSpecConstraint());
             }

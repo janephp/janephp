@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \ApiPlatform\Demo\Model\BooksBookIdReviewsGetLdjsonResponse200HydraSearchHydraMappingItem();
+            if (\array_key_exists('required', $data) && \is_int($data['required'])) {
+                $data['required'] = (bool) $data['required'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -120,6 +123,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \ApiPlatform\Demo\Model\BooksBookIdReviewsGetLdjsonResponse200HydraSearchHydraMappingItem();
+            if (\array_key_exists('required', $data) && \is_int($data['required'])) {
+                $data['required'] = (bool) $data['required'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }

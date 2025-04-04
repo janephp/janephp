@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\ApiOverview();
+            if (\array_key_exists('verifiable_password_authentication', $data) && \is_int($data['verifiable_password_authentication'])) {
+                $data['verifiable_password_authentication'] = (bool) $data['verifiable_password_authentication'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\ApiOverviewConstraint());
             }
@@ -211,6 +214,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\ApiOverview();
+            if (\array_key_exists('verifiable_password_authentication', $data) && \is_int($data['verifiable_password_authentication'])) {
+                $data['verifiable_password_authentication'] = (bool) $data['verifiable_password_authentication'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\ApiOverviewConstraint());
             }

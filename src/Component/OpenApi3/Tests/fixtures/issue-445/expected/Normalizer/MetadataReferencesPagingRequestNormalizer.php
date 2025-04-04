@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\MetadataReferencesPagingRequest();
+            if (\array_key_exists('fetchReferencedByRestrictedItem', $data) && \is_int($data['fetchReferencedByRestrictedItem'])) {
+                $data['fetchReferencedByRestrictedItem'] = (bool) $data['fetchReferencedByRestrictedItem'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -111,6 +114,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\MetadataReferencesPagingRequest();
+            if (\array_key_exists('fetchReferencedByRestrictedItem', $data) && \is_int($data['fetchReferencedByRestrictedItem'])) {
+                $data['fetchReferencedByRestrictedItem'] = (bool) $data['fetchReferencedByRestrictedItem'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }

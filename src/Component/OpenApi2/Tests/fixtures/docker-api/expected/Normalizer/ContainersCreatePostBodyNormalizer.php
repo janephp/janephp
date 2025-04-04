@@ -37,6 +37,30 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\ContainersCreatePostBody();
+            if (\array_key_exists('AttachStdin', $data) && \is_int($data['AttachStdin'])) {
+                $data['AttachStdin'] = (bool) $data['AttachStdin'];
+            }
+            if (\array_key_exists('AttachStdout', $data) && \is_int($data['AttachStdout'])) {
+                $data['AttachStdout'] = (bool) $data['AttachStdout'];
+            }
+            if (\array_key_exists('AttachStderr', $data) && \is_int($data['AttachStderr'])) {
+                $data['AttachStderr'] = (bool) $data['AttachStderr'];
+            }
+            if (\array_key_exists('Tty', $data) && \is_int($data['Tty'])) {
+                $data['Tty'] = (bool) $data['Tty'];
+            }
+            if (\array_key_exists('OpenStdin', $data) && \is_int($data['OpenStdin'])) {
+                $data['OpenStdin'] = (bool) $data['OpenStdin'];
+            }
+            if (\array_key_exists('StdinOnce', $data) && \is_int($data['StdinOnce'])) {
+                $data['StdinOnce'] = (bool) $data['StdinOnce'];
+            }
+            if (\array_key_exists('ArgsEscaped', $data) && \is_int($data['ArgsEscaped'])) {
+                $data['ArgsEscaped'] = (bool) $data['ArgsEscaped'];
+            }
+            if (\array_key_exists('NetworkDisabled', $data) && \is_int($data['NetworkDisabled'])) {
+                $data['NetworkDisabled'] = (bool) $data['NetworkDisabled'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\ContainersCreatePostBodyConstraint());
             }
@@ -311,6 +335,30 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Docker\Api\Model\ContainersCreatePostBody();
+            if (\array_key_exists('AttachStdin', $data) && \is_int($data['AttachStdin'])) {
+                $data['AttachStdin'] = (bool) $data['AttachStdin'];
+            }
+            if (\array_key_exists('AttachStdout', $data) && \is_int($data['AttachStdout'])) {
+                $data['AttachStdout'] = (bool) $data['AttachStdout'];
+            }
+            if (\array_key_exists('AttachStderr', $data) && \is_int($data['AttachStderr'])) {
+                $data['AttachStderr'] = (bool) $data['AttachStderr'];
+            }
+            if (\array_key_exists('Tty', $data) && \is_int($data['Tty'])) {
+                $data['Tty'] = (bool) $data['Tty'];
+            }
+            if (\array_key_exists('OpenStdin', $data) && \is_int($data['OpenStdin'])) {
+                $data['OpenStdin'] = (bool) $data['OpenStdin'];
+            }
+            if (\array_key_exists('StdinOnce', $data) && \is_int($data['StdinOnce'])) {
+                $data['StdinOnce'] = (bool) $data['StdinOnce'];
+            }
+            if (\array_key_exists('ArgsEscaped', $data) && \is_int($data['ArgsEscaped'])) {
+                $data['ArgsEscaped'] = (bool) $data['ArgsEscaped'];
+            }
+            if (\array_key_exists('NetworkDisabled', $data) && \is_int($data['NetworkDisabled'])) {
+                $data['NetworkDisabled'] = (bool) $data['NetworkDisabled'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Docker\Api\Validator\ContainersCreatePostBodyConstraint());
             }

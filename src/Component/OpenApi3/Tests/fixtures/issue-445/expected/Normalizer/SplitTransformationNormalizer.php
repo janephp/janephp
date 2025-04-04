@@ -37,6 +37,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\SplitTransformation();
+            if (\array_key_exists('keepEmpty', $data) && \is_int($data['keepEmpty'])) {
+                $data['keepEmpty'] = (bool) $data['keepEmpty'];
+            }
+            if (\array_key_exists('trim', $data) && \is_int($data['trim'])) {
+                $data['trim'] = (bool) $data['trim'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -128,6 +134,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \PicturePark\API\Model\SplitTransformation();
+            if (\array_key_exists('keepEmpty', $data) && \is_int($data['keepEmpty'])) {
+                $data['keepEmpty'] = (bool) $data['keepEmpty'];
+            }
+            if (\array_key_exists('trim', $data) && \is_int($data['trim'])) {
+                $data['trim'] = (bool) $data['trim'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }

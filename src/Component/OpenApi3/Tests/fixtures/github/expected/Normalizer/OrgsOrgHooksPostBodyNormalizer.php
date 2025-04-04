@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\OrgsOrgHooksPostBody();
+            if (\array_key_exists('active', $data) && \is_int($data['active'])) {
+                $data['active'] = (bool) $data['active'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\OrgsOrgHooksPostBodyConstraint());
             }
@@ -127,6 +130,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\OrgsOrgHooksPostBody();
+            if (\array_key_exists('active', $data) && \is_int($data['active'])) {
+                $data['active'] = (bool) $data['active'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\OrgsOrgHooksPostBodyConstraint());
             }

@@ -37,6 +37,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\Key();
+            if (\array_key_exists('verified', $data) && \is_int($data['verified'])) {
+                $data['verified'] = (bool) $data['verified'];
+            }
+            if (\array_key_exists('read_only', $data) && \is_int($data['read_only'])) {
+                $data['read_only'] = (bool) $data['read_only'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\KeyConstraint());
             }
@@ -151,6 +157,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\Key();
+            if (\array_key_exists('verified', $data) && \is_int($data['verified'])) {
+                $data['verified'] = (bool) $data['verified'];
+            }
+            if (\array_key_exists('read_only', $data) && \is_int($data['read_only'])) {
+                $data['read_only'] = (bool) $data['read_only'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\KeyConstraint());
             }

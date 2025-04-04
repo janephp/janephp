@@ -40,6 +40,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('float', $data) && \is_int($data['float'])) {
                 $data['float'] = (double) $data['float'];
             }
+            if (\array_key_exists('bool', $data) && \is_int($data['bool'])) {
+                $data['bool'] = (bool) $data['bool'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -163,6 +166,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\Test();
             if (\array_key_exists('float', $data) && \is_int($data['float'])) {
                 $data['float'] = (double) $data['float'];
+            }
+            if (\array_key_exists('bool', $data) && \is_int($data['bool'])) {
+                $data['bool'] = (bool) $data['bool'];
             }
             if (null === $data || false === \is_array($data)) {
                 return $object;

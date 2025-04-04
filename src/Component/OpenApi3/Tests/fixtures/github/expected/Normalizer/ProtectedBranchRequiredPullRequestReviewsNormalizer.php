@@ -37,6 +37,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\ProtectedBranchRequiredPullRequestReviews();
+            if (\array_key_exists('dismiss_stale_reviews', $data) && \is_int($data['dismiss_stale_reviews'])) {
+                $data['dismiss_stale_reviews'] = (bool) $data['dismiss_stale_reviews'];
+            }
+            if (\array_key_exists('require_code_owner_reviews', $data) && \is_int($data['require_code_owner_reviews'])) {
+                $data['require_code_owner_reviews'] = (bool) $data['require_code_owner_reviews'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\ProtectedBranchRequiredPullRequestReviewsConstraint());
             }
@@ -128,6 +134,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\ProtectedBranchRequiredPullRequestReviews();
+            if (\array_key_exists('dismiss_stale_reviews', $data) && \is_int($data['dismiss_stale_reviews'])) {
+                $data['dismiss_stale_reviews'] = (bool) $data['dismiss_stale_reviews'];
+            }
+            if (\array_key_exists('require_code_owner_reviews', $data) && \is_int($data['require_code_owner_reviews'])) {
+                $data['require_code_owner_reviews'] = (bool) $data['require_code_owner_reviews'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\ProtectedBranchRequiredPullRequestReviewsConstraint());
             }

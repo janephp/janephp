@@ -43,6 +43,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('heightInPoints', $data) && \is_int($data['heightInPoints'])) {
                 $data['heightInPoints'] = (double) $data['heightInPoints'];
             }
+            if (\array_key_exists('isRasterized', $data) && \is_int($data['isRasterized'])) {
+                $data['isRasterized'] = (bool) $data['isRasterized'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -102,6 +105,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if (\array_key_exists('heightInPoints', $data) && \is_int($data['heightInPoints'])) {
                 $data['heightInPoints'] = (double) $data['heightInPoints'];
+            }
+            if (\array_key_exists('isRasterized', $data) && \is_int($data['isRasterized'])) {
+                $data['isRasterized'] = (bool) $data['isRasterized'];
             }
             if (null === $data || false === \is_array($data)) {
                 return $object;

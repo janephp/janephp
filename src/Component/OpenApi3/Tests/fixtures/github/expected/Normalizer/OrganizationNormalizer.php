@@ -37,6 +37,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\Organization();
+            if (\array_key_exists('has_organization_projects', $data) && \is_int($data['has_organization_projects'])) {
+                $data['has_organization_projects'] = (bool) $data['has_organization_projects'];
+            }
+            if (\array_key_exists('has_repository_projects', $data) && \is_int($data['has_repository_projects'])) {
+                $data['has_repository_projects'] = (bool) $data['has_repository_projects'];
+            }
+            if (\array_key_exists('is_verified', $data) && \is_int($data['is_verified'])) {
+                $data['is_verified'] = (bool) $data['is_verified'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\OrganizationConstraint());
             }
@@ -257,6 +266,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\Organization();
+            if (\array_key_exists('has_organization_projects', $data) && \is_int($data['has_organization_projects'])) {
+                $data['has_organization_projects'] = (bool) $data['has_organization_projects'];
+            }
+            if (\array_key_exists('has_repository_projects', $data) && \is_int($data['has_repository_projects'])) {
+                $data['has_repository_projects'] = (bool) $data['has_repository_projects'];
+            }
+            if (\array_key_exists('is_verified', $data) && \is_int($data['is_verified'])) {
+                $data['is_verified'] = (bool) $data['is_verified'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\OrganizationConstraint());
             }

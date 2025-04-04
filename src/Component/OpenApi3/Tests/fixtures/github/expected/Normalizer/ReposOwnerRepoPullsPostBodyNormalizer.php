@@ -37,6 +37,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\ReposOwnerRepoPullsPostBody();
+            if (\array_key_exists('maintainer_can_modify', $data) && \is_int($data['maintainer_can_modify'])) {
+                $data['maintainer_can_modify'] = (bool) $data['maintainer_can_modify'];
+            }
+            if (\array_key_exists('draft', $data) && \is_int($data['draft'])) {
+                $data['draft'] = (bool) $data['draft'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPostBodyConstraint());
             }
@@ -140,6 +146,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\ReposOwnerRepoPullsPostBody();
+            if (\array_key_exists('maintainer_can_modify', $data) && \is_int($data['maintainer_can_modify'])) {
+                $data['maintainer_can_modify'] = (bool) $data['maintainer_can_modify'];
+            }
+            if (\array_key_exists('draft', $data) && \is_int($data['draft'])) {
+                $data['draft'] = (bool) $data['draft'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPostBodyConstraint());
             }

@@ -37,6 +37,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\NotificationsPutBody();
+            if (\array_key_exists('read', $data) && \is_int($data['read'])) {
+                $data['read'] = (bool) $data['read'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\NotificationsPutBodyConstraint());
             }
@@ -109,6 +112,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Github\Model\NotificationsPutBody();
+            if (\array_key_exists('read', $data) && \is_int($data['read'])) {
+                $data['read'] = (bool) $data['read'];
+            }
             if (!($context['skip_validation'] ?? false)) {
                 $this->validate($data, new \Github\Validator\NotificationsPutBodyConstraint());
             }
