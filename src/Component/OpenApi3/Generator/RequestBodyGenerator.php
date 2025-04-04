@@ -71,7 +71,7 @@ class RequestBodyGenerator
             array_unshift($types, 'null');
         }
 
-        return sprintf(' * @param %s $%s %s', implode('|', $types), 'requestBody', '');
+        return \sprintf(' * @param %s $%s %s', implode('|', $types), 'requestBody', '');
     }
 
     private function getTypes(?RequestBody $requestBody, string $reference, Context $context): array

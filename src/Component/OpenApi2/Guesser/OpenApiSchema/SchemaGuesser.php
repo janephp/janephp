@@ -38,7 +38,7 @@ class SchemaGuesser extends ObjectGuesser
             $classGuess = new ParentClass($classGuess, $object->getDiscriminator());
 
             foreach ($object->getEnum() as $subClassName) {
-                $subReference = preg_replace('#definitions\/.+$#', sprintf('definitions/%s', $subClassName), $reference);
+                $subReference = preg_replace('#definitions\/.+$#', \sprintf('definitions/%s', $subClassName), $reference);
                 $classGuess->addChildEntry($subClassName, $subReference);
             }
         }

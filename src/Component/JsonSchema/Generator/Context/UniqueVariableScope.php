@@ -26,6 +26,6 @@ class UniqueVariableScope
 
         ++$this->registry[$name];
 
-        return sprintf('%s_%s', $name, $this->registry[$name]);
+        return \sprintf('%s_%s', $name, $this->registry[$name]);
     }
 }

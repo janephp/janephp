@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - [Jane] [GH#836](https://github.com/janephp/janephp/pull/836) Run test suite with PHP 8.3 & PHP 8.4
 
+### Changed
+- [CI] [GH#852](https://github.com/janephp/janephp/pull/852)  Update PHP-CS-Fixer to v3.75.0
+
 ### Fixed
 - [PHP] [GH#842](https://github.com/janephp/janephp/pull/842) Fix generated files to be compatible with PHP 8.4
 - [CI] [GH#850](https://github.com/janephp/janephp/pull/850) Update GH actions/cache to v4

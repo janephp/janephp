@@ -26,7 +26,7 @@ class PatternValidator implements ValidatorInterface
     public function guess($object, string $name, $guess): void
     {
         $guess->addValidatorGuess(new ValidatorGuess(Regex::class, [
-            'pattern' => sprintf('#%s#', $object->getPattern()),
+            'pattern' => \sprintf('#%s#', $object->getPattern()),
             'message' => 'This value is not valid.',
         ]));
     }

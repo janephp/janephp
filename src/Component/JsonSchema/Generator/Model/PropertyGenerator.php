@@ -48,7 +48,7 @@ trait PropertyGenerator
             $docTypeHint .= '|null';
         }
 
-        $description = sprintf(<<<EOD
+        $description = \sprintf(<<<EOD
 /**
  * %s
  *
@@ -64,7 +64,7 @@ EOD
 EOD;
         }
 
-        $description .= sprintf(<<<EOD
+        $description .= \sprintf(<<<EOD
  * @var %s
  */
 EOD

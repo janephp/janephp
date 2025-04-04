@@ -179,7 +179,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
                 $whitelistedPath = $data[0];
             }
 
-            if (preg_match(sprintf('#%s#', $whitelistedPath), $path)) {
+            if (preg_match(\sprintf('#%s#', $whitelistedPath), $path)) {
                 return $whitelistedMethods;
             }
         }
