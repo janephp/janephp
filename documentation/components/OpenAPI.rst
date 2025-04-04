@@ -119,8 +119,6 @@ Options
 Other options are available to customize the generated code:
 
  * ``reference``: A boolean which indicate to add the support for `JSON Reference`_ into the generated code.
- * ``date-format``: A date format to specify how the generated code should encode and decode ``\DateTime`` object to
-   string
  * ``date-format``: A date-time format to specify how the generated code should encode and decode ``\DateTime`` object
    to string.  This option is only for format ``date-time``.
  * ``full-date-format``: A date format to specify how the generated code should encode and decode ``\DateTime`` object
