@@ -51,6 +51,12 @@ class Schema extends \ArrayObject
     /**
      * 
      *
+     * @var \DateTime|null
+     */
+    protected $dateNullableProperty;
+    /**
+     * 
+     *
      * @var int
      */
     protected $integerProperty;
@@ -214,6 +220,28 @@ class Schema extends \ArrayObject
     {
         $this->initialized['dateProperty'] = true;
         $this->dateProperty = $dateProperty;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return \DateTime|null
+     */
+    public function getDateNullableProperty(): ?\DateTime
+    {
+        return $this->dateNullableProperty;
+    }
+    /**
+     * 
+     *
+     * @param \DateTime|null $dateNullableProperty
+     *
+     * @return self
+     */
+    public function setDateNullableProperty(?\DateTime $dateNullableProperty): self
+    {
+        $this->initialized['dateNullableProperty'] = true;
+        $this->dateNullableProperty = $dateNullableProperty;
         return $this;
     }
     /**
