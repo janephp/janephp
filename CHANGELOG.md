@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - [Jane] [GH#836](https://github.com/janephp/janephp/pull/836) Run test suite with PHP 8.3 & PHP 8.4
+- [Jane] [GH#843](https://github.com/janephp/janephp/pull/843) Add PHP 8.4 support
+- [Jane] [GH#842](https://github.com/janephp/janephp/pull/842) Add Symfony 7.2 support & remove deprecations
 
 ### Changed
 - [CI] [GH#852](https://github.com/janephp/janephp/pull/852)  Update PHP-CS-Fixer to v3.75.0
