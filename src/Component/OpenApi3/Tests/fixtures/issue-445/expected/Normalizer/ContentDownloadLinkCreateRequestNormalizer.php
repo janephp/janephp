@@ -5,128 +5,66 @@ namespace PicturePark\API\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use PicturePark\API\Runtime\Normalizer\CheckArray;
 use PicturePark\API\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\HttpKernel\Kernel;
-if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
-    class ContentDownloadLinkCreateRequestNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ContentDownloadLinkCreateRequestNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
-        {
-            return $type === \PicturePark\API\Model\ContentDownloadLinkCreateRequest::class;
-        }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \PicturePark\API\Model\ContentDownloadLinkCreateRequest::class;
-        }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \PicturePark\API\Model\ContentDownloadLinkCreateRequest();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('contents', $data)) {
-                $values = [];
-                foreach ($data['contents'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\ContentDownloadRequestItem::class, 'json', $context);
-                }
-                $object->setContents($values);
-            }
-            if (\array_key_exists('notifyProgress', $data)) {
-                $object->setNotifyProgress($data['notifyProgress']);
-            }
-            return $object;
-        }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            $values = [];
-            foreach ($object->getContents() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['contents'] = $values;
-            $data['notifyProgress'] = $object->getNotifyProgress();
-            return $data;
-        }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\PicturePark\API\Model\ContentDownloadLinkCreateRequest::class => false];
-        }
+        return $type === \PicturePark\API\Model\ContentDownloadLinkCreateRequest::class;
     }
-} else {
-    class ContentDownloadLinkCreateRequestNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
-        {
-            return $type === \PicturePark\API\Model\ContentDownloadLinkCreateRequest::class;
+        return is_object($data) && get_class($data) === \PicturePark\API\Model\ContentDownloadLinkCreateRequest::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \PicturePark\API\Model\ContentDownloadLinkCreateRequest::class;
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        /**
-         * @return mixed
-         */
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \PicturePark\API\Model\ContentDownloadLinkCreateRequest();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('contents', $data)) {
-                $values = [];
-                foreach ($data['contents'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\ContentDownloadRequestItem::class, 'json', $context);
-                }
-                $object->setContents($values);
-            }
-            if (\array_key_exists('notifyProgress', $data)) {
-                $object->setNotifyProgress($data['notifyProgress']);
-            }
+        $object = new \PicturePark\API\Model\ContentDownloadLinkCreateRequest();
+        if (\array_key_exists('notifyProgress', $data) && \is_int($data['notifyProgress'])) {
+            $data['notifyProgress'] = (bool) $data['notifyProgress'];
+        }
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
+        if (\array_key_exists('contents', $data)) {
             $values = [];
-            foreach ($object->getContents() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data['contents'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\ContentDownloadRequestItem::class, 'json', $context);
             }
-            $data['contents'] = $values;
-            $data['notifyProgress'] = $object->getNotifyProgress();
-            return $data;
+            $object->setContents($values);
         }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\PicturePark\API\Model\ContentDownloadLinkCreateRequest::class => false];
+        if (\array_key_exists('notifyProgress', $data)) {
+            $object->setNotifyProgress($data['notifyProgress']);
         }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        $values = [];
+        foreach ($data->getContents() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
+        }
+        $dataArray['contents'] = $values;
+        $dataArray['notifyProgress'] = $data->getNotifyProgress();
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\PicturePark\API\Model\ContentDownloadLinkCreateRequest::class => false];
     }
 }

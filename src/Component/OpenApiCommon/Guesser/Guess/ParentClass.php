@@ -32,7 +32,7 @@ class ParentClass extends ClassGuess
         return $this->discriminator;
     }
 
-    public function addChildEntry(string $className, string $reference, string $discriminatorValue = null): self
+    public function addChildEntry(string $className, string $reference, ?string $discriminatorValue = null): self
     {
         $this->childEntries[$discriminatorValue ?? $className] = [$className, $reference];
 

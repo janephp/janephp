@@ -70,10 +70,10 @@ class AuthenticationRegistryTest extends TestCase
         $request = $this->createMock(RequestInterface::class);
         $request
             ->method('withHeader')
-            ->willReturnCallback(function (string $name, string $value) {});
+            ->willReturnSelf();
         $request
             ->method('withoutHeader')
-            ->willReturn($request);
+            ->willReturnSelf();
 
         $fakeCallback = function (RequestInterface $request) {
             $this->assertTrue(true);
@@ -100,7 +100,7 @@ class AuthenticationRegistryTest extends TestCase
             });
         $request
             ->method('withoutHeader')
-            ->willReturn($request);
+            ->willReturnSelf();
 
         $fakeCallback = function (RequestInterface $request) {
             $this->assertTrue(true);
@@ -135,7 +135,7 @@ class AuthenticationRegistryTest extends TestCase
             );
         $request
             ->method('withoutHeader')
-            ->willReturn($request);
+            ->willReturnSelf();
 
         $fakeCallback = function (RequestInterface $request) {
             $this->assertTrue(true);

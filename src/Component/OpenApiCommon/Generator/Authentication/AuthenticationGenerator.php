@@ -76,8 +76,6 @@ trait AuthenticationGenerator
                             ]))),
                             new Stmt\Expression(new Expr\Assign(new Expr\Variable('query'), new Expr\FuncCall(new Name('http_build_query'), [
                                 new Node\Arg(new Expr\Variable('params')),
-                                new Node\Arg(new Expr\ConstFetch(new Name('null'))),
-                                new Node\Arg(new Scalar\String_('&')),
                             ]))),
                             new Stmt\Expression(new Expr\Assign(new Expr\Variable('uri'), new Expr\MethodCall(new Expr\Variable('uri'), 'withQuery', [
                                 new Node\Arg(new Expr\Variable('query')),
@@ -90,7 +88,7 @@ trait AuthenticationGenerator
                 }
                 break;
             default:
-                throw new \Exception(sprintf('Jane actually does not support Security type %s generation', $securityScheme->getType()));
+                throw new \Exception(\sprintf('Jane actually does not support Security type %s generation', $securityScheme->getType()));
                 break;
         }
 

@@ -5,364 +5,184 @@ namespace Github\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
 use Github\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\HttpKernel\Kernel;
-if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
-    class TeamProjectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class TeamProjectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
-        {
-            return $type === \Github\Model\TeamProject::class;
-        }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \Github\Model\TeamProject::class;
-        }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \Github\Model\TeamProject();
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\TeamProjectConstraint());
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('owner_url', $data)) {
-                $object->setOwnerUrl($data['owner_url']);
-                unset($data['owner_url']);
-            }
-            if (\array_key_exists('url', $data)) {
-                $object->setUrl($data['url']);
-                unset($data['url']);
-            }
-            if (\array_key_exists('html_url', $data)) {
-                $object->setHtmlUrl($data['html_url']);
-                unset($data['html_url']);
-            }
-            if (\array_key_exists('columns_url', $data)) {
-                $object->setColumnsUrl($data['columns_url']);
-                unset($data['columns_url']);
-            }
-            if (\array_key_exists('id', $data)) {
-                $object->setId($data['id']);
-                unset($data['id']);
-            }
-            if (\array_key_exists('node_id', $data)) {
-                $object->setNodeId($data['node_id']);
-                unset($data['node_id']);
-            }
-            if (\array_key_exists('name', $data)) {
-                $object->setName($data['name']);
-                unset($data['name']);
-            }
-            if (\array_key_exists('body', $data) && $data['body'] !== null) {
-                $object->setBody($data['body']);
-                unset($data['body']);
-            }
-            elseif (\array_key_exists('body', $data) && $data['body'] === null) {
-                $object->setBody(null);
-            }
-            if (\array_key_exists('number', $data)) {
-                $object->setNumber($data['number']);
-                unset($data['number']);
-            }
-            if (\array_key_exists('state', $data)) {
-                $object->setState($data['state']);
-                unset($data['state']);
-            }
-            if (\array_key_exists('creator', $data) && $data['creator'] !== null) {
-                $object->setCreator($this->denormalizer->denormalize($data['creator'], \Github\Model\SimpleUser::class, 'json', $context));
-                unset($data['creator']);
-            }
-            elseif (\array_key_exists('creator', $data) && $data['creator'] === null) {
-                $object->setCreator(null);
-            }
-            if (\array_key_exists('created_at', $data)) {
-                $object->setCreatedAt($data['created_at']);
-                unset($data['created_at']);
-            }
-            if (\array_key_exists('updated_at', $data)) {
-                $object->setUpdatedAt($data['updated_at']);
-                unset($data['updated_at']);
-            }
-            if (\array_key_exists('organization_permission', $data)) {
-                $object->setOrganizationPermission($data['organization_permission']);
-                unset($data['organization_permission']);
-            }
-            if (\array_key_exists('private', $data)) {
-                $object->setPrivate($data['private']);
-                unset($data['private']);
-            }
-            if (\array_key_exists('permissions', $data)) {
-                $object->setPermissions($this->denormalizer->denormalize($data['permissions'], \Github\Model\TeamProjectPermissions::class, 'json', $context));
-                unset($data['permissions']);
-            }
-            foreach ($data as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
-                }
-            }
-            return $object;
-        }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            if ($object->isInitialized('ownerUrl') && null !== $object->getOwnerUrl()) {
-                $data['owner_url'] = $object->getOwnerUrl();
-            }
-            if ($object->isInitialized('url') && null !== $object->getUrl()) {
-                $data['url'] = $object->getUrl();
-            }
-            if ($object->isInitialized('htmlUrl') && null !== $object->getHtmlUrl()) {
-                $data['html_url'] = $object->getHtmlUrl();
-            }
-            if ($object->isInitialized('columnsUrl') && null !== $object->getColumnsUrl()) {
-                $data['columns_url'] = $object->getColumnsUrl();
-            }
-            if ($object->isInitialized('id') && null !== $object->getId()) {
-                $data['id'] = $object->getId();
-            }
-            if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
-                $data['node_id'] = $object->getNodeId();
-            }
-            if ($object->isInitialized('name') && null !== $object->getName()) {
-                $data['name'] = $object->getName();
-            }
-            if ($object->isInitialized('body') && null !== $object->getBody()) {
-                $data['body'] = $object->getBody();
-            }
-            if ($object->isInitialized('number') && null !== $object->getNumber()) {
-                $data['number'] = $object->getNumber();
-            }
-            if ($object->isInitialized('state') && null !== $object->getState()) {
-                $data['state'] = $object->getState();
-            }
-            if ($object->isInitialized('creator') && null !== $object->getCreator()) {
-                $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
-            }
-            if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
-                $data['created_at'] = $object->getCreatedAt();
-            }
-            if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
-                $data['updated_at'] = $object->getUpdatedAt();
-            }
-            if ($object->isInitialized('organizationPermission') && null !== $object->getOrganizationPermission()) {
-                $data['organization_permission'] = $object->getOrganizationPermission();
-            }
-            if ($object->isInitialized('private') && null !== $object->getPrivate()) {
-                $data['private'] = $object->getPrivate();
-            }
-            if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
-                $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
-            }
-            foreach ($object as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
-                }
-            }
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\TeamProjectConstraint());
-            }
-            return $data;
-        }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\Github\Model\TeamProject::class => false];
-        }
+        return $type === \Github\Model\TeamProject::class;
     }
-} else {
-    class TeamProjectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
-        {
-            return $type === \Github\Model\TeamProject::class;
+        return is_object($data) && get_class($data) === \Github\Model\TeamProject::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \Github\Model\TeamProject::class;
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        /**
-         * @return mixed
-         */
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \Github\Model\TeamProject();
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\TeamProjectConstraint());
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('owner_url', $data)) {
-                $object->setOwnerUrl($data['owner_url']);
-                unset($data['owner_url']);
-            }
-            if (\array_key_exists('url', $data)) {
-                $object->setUrl($data['url']);
-                unset($data['url']);
-            }
-            if (\array_key_exists('html_url', $data)) {
-                $object->setHtmlUrl($data['html_url']);
-                unset($data['html_url']);
-            }
-            if (\array_key_exists('columns_url', $data)) {
-                $object->setColumnsUrl($data['columns_url']);
-                unset($data['columns_url']);
-            }
-            if (\array_key_exists('id', $data)) {
-                $object->setId($data['id']);
-                unset($data['id']);
-            }
-            if (\array_key_exists('node_id', $data)) {
-                $object->setNodeId($data['node_id']);
-                unset($data['node_id']);
-            }
-            if (\array_key_exists('name', $data)) {
-                $object->setName($data['name']);
-                unset($data['name']);
-            }
-            if (\array_key_exists('body', $data) && $data['body'] !== null) {
-                $object->setBody($data['body']);
-                unset($data['body']);
-            }
-            elseif (\array_key_exists('body', $data) && $data['body'] === null) {
-                $object->setBody(null);
-            }
-            if (\array_key_exists('number', $data)) {
-                $object->setNumber($data['number']);
-                unset($data['number']);
-            }
-            if (\array_key_exists('state', $data)) {
-                $object->setState($data['state']);
-                unset($data['state']);
-            }
-            if (\array_key_exists('creator', $data) && $data['creator'] !== null) {
-                $object->setCreator($this->denormalizer->denormalize($data['creator'], \Github\Model\SimpleUser::class, 'json', $context));
-                unset($data['creator']);
-            }
-            elseif (\array_key_exists('creator', $data) && $data['creator'] === null) {
-                $object->setCreator(null);
-            }
-            if (\array_key_exists('created_at', $data)) {
-                $object->setCreatedAt($data['created_at']);
-                unset($data['created_at']);
-            }
-            if (\array_key_exists('updated_at', $data)) {
-                $object->setUpdatedAt($data['updated_at']);
-                unset($data['updated_at']);
-            }
-            if (\array_key_exists('organization_permission', $data)) {
-                $object->setOrganizationPermission($data['organization_permission']);
-                unset($data['organization_permission']);
-            }
-            if (\array_key_exists('private', $data)) {
-                $object->setPrivate($data['private']);
-                unset($data['private']);
-            }
-            if (\array_key_exists('permissions', $data)) {
-                $object->setPermissions($this->denormalizer->denormalize($data['permissions'], \Github\Model\TeamProjectPermissions::class, 'json', $context));
-                unset($data['permissions']);
-            }
-            foreach ($data as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
-                }
-            }
+        $object = new \Github\Model\TeamProject();
+        if (\array_key_exists('private', $data) && \is_int($data['private'])) {
+            $data['private'] = (bool) $data['private'];
+        }
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\TeamProjectConstraint());
+        }
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            if ($object->isInitialized('ownerUrl') && null !== $object->getOwnerUrl()) {
-                $data['owner_url'] = $object->getOwnerUrl();
-            }
-            if ($object->isInitialized('url') && null !== $object->getUrl()) {
-                $data['url'] = $object->getUrl();
-            }
-            if ($object->isInitialized('htmlUrl') && null !== $object->getHtmlUrl()) {
-                $data['html_url'] = $object->getHtmlUrl();
-            }
-            if ($object->isInitialized('columnsUrl') && null !== $object->getColumnsUrl()) {
-                $data['columns_url'] = $object->getColumnsUrl();
-            }
-            if ($object->isInitialized('id') && null !== $object->getId()) {
-                $data['id'] = $object->getId();
-            }
-            if ($object->isInitialized('nodeId') && null !== $object->getNodeId()) {
-                $data['node_id'] = $object->getNodeId();
-            }
-            if ($object->isInitialized('name') && null !== $object->getName()) {
-                $data['name'] = $object->getName();
-            }
-            if ($object->isInitialized('body') && null !== $object->getBody()) {
-                $data['body'] = $object->getBody();
-            }
-            if ($object->isInitialized('number') && null !== $object->getNumber()) {
-                $data['number'] = $object->getNumber();
-            }
-            if ($object->isInitialized('state') && null !== $object->getState()) {
-                $data['state'] = $object->getState();
-            }
-            if ($object->isInitialized('creator') && null !== $object->getCreator()) {
-                $data['creator'] = $this->normalizer->normalize($object->getCreator(), 'json', $context);
-            }
-            if ($object->isInitialized('createdAt') && null !== $object->getCreatedAt()) {
-                $data['created_at'] = $object->getCreatedAt();
-            }
-            if ($object->isInitialized('updatedAt') && null !== $object->getUpdatedAt()) {
-                $data['updated_at'] = $object->getUpdatedAt();
-            }
-            if ($object->isInitialized('organizationPermission') && null !== $object->getOrganizationPermission()) {
-                $data['organization_permission'] = $object->getOrganizationPermission();
-            }
-            if ($object->isInitialized('private') && null !== $object->getPrivate()) {
-                $data['private'] = $object->getPrivate();
-            }
-            if ($object->isInitialized('permissions') && null !== $object->getPermissions()) {
-                $data['permissions'] = $this->normalizer->normalize($object->getPermissions(), 'json', $context);
-            }
-            foreach ($object as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
-                }
-            }
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\TeamProjectConstraint());
-            }
-            return $data;
+        if (\array_key_exists('owner_url', $data)) {
+            $object->setOwnerUrl($data['owner_url']);
+            unset($data['owner_url']);
         }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\Github\Model\TeamProject::class => false];
+        if (\array_key_exists('url', $data)) {
+            $object->setUrl($data['url']);
+            unset($data['url']);
         }
+        if (\array_key_exists('html_url', $data)) {
+            $object->setHtmlUrl($data['html_url']);
+            unset($data['html_url']);
+        }
+        if (\array_key_exists('columns_url', $data)) {
+            $object->setColumnsUrl($data['columns_url']);
+            unset($data['columns_url']);
+        }
+        if (\array_key_exists('id', $data)) {
+            $object->setId($data['id']);
+            unset($data['id']);
+        }
+        if (\array_key_exists('node_id', $data)) {
+            $object->setNodeId($data['node_id']);
+            unset($data['node_id']);
+        }
+        if (\array_key_exists('name', $data)) {
+            $object->setName($data['name']);
+            unset($data['name']);
+        }
+        if (\array_key_exists('body', $data) && $data['body'] !== null) {
+            $object->setBody($data['body']);
+            unset($data['body']);
+        }
+        elseif (\array_key_exists('body', $data) && $data['body'] === null) {
+            $object->setBody(null);
+        }
+        if (\array_key_exists('number', $data)) {
+            $object->setNumber($data['number']);
+            unset($data['number']);
+        }
+        if (\array_key_exists('state', $data)) {
+            $object->setState($data['state']);
+            unset($data['state']);
+        }
+        if (\array_key_exists('creator', $data) && $data['creator'] !== null) {
+            $object->setCreator($this->denormalizer->denormalize($data['creator'], \Github\Model\SimpleUser::class, 'json', $context));
+            unset($data['creator']);
+        }
+        elseif (\array_key_exists('creator', $data) && $data['creator'] === null) {
+            $object->setCreator(null);
+        }
+        if (\array_key_exists('created_at', $data)) {
+            $object->setCreatedAt($data['created_at']);
+            unset($data['created_at']);
+        }
+        if (\array_key_exists('updated_at', $data)) {
+            $object->setUpdatedAt($data['updated_at']);
+            unset($data['updated_at']);
+        }
+        if (\array_key_exists('organization_permission', $data)) {
+            $object->setOrganizationPermission($data['organization_permission']);
+            unset($data['organization_permission']);
+        }
+        if (\array_key_exists('private', $data)) {
+            $object->setPrivate($data['private']);
+            unset($data['private']);
+        }
+        if (\array_key_exists('permissions', $data)) {
+            $object->setPermissions($this->denormalizer->denormalize($data['permissions'], \Github\Model\TeamProjectPermissions::class, 'json', $context));
+            unset($data['permissions']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if ($data->isInitialized('ownerUrl') && null !== $data->getOwnerUrl()) {
+            $dataArray['owner_url'] = $data->getOwnerUrl();
+        }
+        if ($data->isInitialized('url') && null !== $data->getUrl()) {
+            $dataArray['url'] = $data->getUrl();
+        }
+        if ($data->isInitialized('htmlUrl') && null !== $data->getHtmlUrl()) {
+            $dataArray['html_url'] = $data->getHtmlUrl();
+        }
+        if ($data->isInitialized('columnsUrl') && null !== $data->getColumnsUrl()) {
+            $dataArray['columns_url'] = $data->getColumnsUrl();
+        }
+        if ($data->isInitialized('id') && null !== $data->getId()) {
+            $dataArray['id'] = $data->getId();
+        }
+        if ($data->isInitialized('nodeId') && null !== $data->getNodeId()) {
+            $dataArray['node_id'] = $data->getNodeId();
+        }
+        if ($data->isInitialized('name') && null !== $data->getName()) {
+            $dataArray['name'] = $data->getName();
+        }
+        if ($data->isInitialized('body') && null !== $data->getBody()) {
+            $dataArray['body'] = $data->getBody();
+        }
+        if ($data->isInitialized('number') && null !== $data->getNumber()) {
+            $dataArray['number'] = $data->getNumber();
+        }
+        if ($data->isInitialized('state') && null !== $data->getState()) {
+            $dataArray['state'] = $data->getState();
+        }
+        if ($data->isInitialized('creator') && null !== $data->getCreator()) {
+            $dataArray['creator'] = $this->normalizer->normalize($data->getCreator(), 'json', $context);
+        }
+        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
+            $dataArray['created_at'] = $data->getCreatedAt();
+        }
+        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
+            $dataArray['updated_at'] = $data->getUpdatedAt();
+        }
+        if ($data->isInitialized('organizationPermission') && null !== $data->getOrganizationPermission()) {
+            $dataArray['organization_permission'] = $data->getOrganizationPermission();
+        }
+        if ($data->isInitialized('private') && null !== $data->getPrivate()) {
+            $dataArray['private'] = $data->getPrivate();
+        }
+        if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
+            $dataArray['permissions'] = $this->normalizer->normalize($data->getPermissions(), 'json', $context);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
+        }
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($dataArray, new \Github\Validator\TeamProjectConstraint());
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Github\Model\TeamProject::class => false];
     }
 }

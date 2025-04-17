@@ -15,9 +15,9 @@ use Symfony\Component\Yaml\Yaml;
  */
 class Reference
 {
-    private static $fileCache = [];
-    private static $pointerCache = [];
-    private static $arrayCache = [];
+    private static array $fileCache = [];
+    private static array $pointerCache = [];
+    private static array $arrayCache = [];
 
     private $resolved;
 
@@ -49,7 +49,7 @@ class Reference
      *
      * @return mixed Return the json value (deserialized) referenced
      */
-    public function resolve(callable $deserializeCallback = null)
+    public function resolve(?callable $deserializeCallback = null)
     {
         if (null === $deserializeCallback) {
             $deserializeCallback = function ($data) { return $data; };
@@ -70,12 +70,12 @@ class Reference
     protected function doResolve()
     {
         $fragment = (string) $this->mergedUri->withFragment('');
-        $reference = sprintf('%s_%s', $fragment, $this->mergedUri->getFragment());
+        $reference = \sprintf('%s_%s', $fragment, $this->mergedUri->getFragment());
 
         if (!\array_key_exists($fragment, self::$fileCache)) {
             $contents = file_get_contents($fragment);
 
-            if (!json_decode($contents, true) || JSON_ERROR_NONE !== json_last_error()) {
+            if (!json_decode($contents, true) || \JSON_ERROR_NONE !== json_last_error()) {
                 $decoded = Yaml::parse($contents,
                     Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE);
                 $contents = json_encode($decoded);

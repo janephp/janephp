@@ -5,132 +5,65 @@ namespace PicturePark\API\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use PicturePark\API\Runtime\Normalizer\CheckArray;
 use PicturePark\API\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\HttpKernel\Kernel;
-if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
-    class ContentReferencesResultNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ContentReferencesResultNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
-        {
-            return $type === \PicturePark\API\Model\ContentReferencesResult::class;
-        }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \PicturePark\API\Model\ContentReferencesResult::class;
-        }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \PicturePark\API\Model\ContentReferencesResult();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('metadataReferences', $data) && $data['metadataReferences'] !== null) {
-                $object->setMetadataReferences($data['metadataReferences']);
-            }
-            elseif (\array_key_exists('metadataReferences', $data) && $data['metadataReferences'] === null) {
-                $object->setMetadataReferences(null);
-            }
-            if (\array_key_exists('shareReferences', $data) && $data['shareReferences'] !== null) {
-                $object->setShareReferences($data['shareReferences']);
-            }
-            elseif (\array_key_exists('shareReferences', $data) && $data['shareReferences'] === null) {
-                $object->setShareReferences(null);
-            }
-            return $object;
-        }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            if ($object->isInitialized('metadataReferences') && null !== $object->getMetadataReferences()) {
-                $data['metadataReferences'] = $object->getMetadataReferences();
-            }
-            if ($object->isInitialized('shareReferences') && null !== $object->getShareReferences()) {
-                $data['shareReferences'] = $object->getShareReferences();
-            }
-            return $data;
-        }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\PicturePark\API\Model\ContentReferencesResult::class => false];
-        }
+        return $type === \PicturePark\API\Model\ContentReferencesResult::class;
     }
-} else {
-    class ContentReferencesResultNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
-        {
-            return $type === \PicturePark\API\Model\ContentReferencesResult::class;
+        return is_object($data) && get_class($data) === \PicturePark\API\Model\ContentReferencesResult::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \PicturePark\API\Model\ContentReferencesResult::class;
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        /**
-         * @return mixed
-         */
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \PicturePark\API\Model\ContentReferencesResult();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('metadataReferences', $data) && $data['metadataReferences'] !== null) {
-                $object->setMetadataReferences($data['metadataReferences']);
-            }
-            elseif (\array_key_exists('metadataReferences', $data) && $data['metadataReferences'] === null) {
-                $object->setMetadataReferences(null);
-            }
-            if (\array_key_exists('shareReferences', $data) && $data['shareReferences'] !== null) {
-                $object->setShareReferences($data['shareReferences']);
-            }
-            elseif (\array_key_exists('shareReferences', $data) && $data['shareReferences'] === null) {
-                $object->setShareReferences(null);
-            }
+        $object = new \PicturePark\API\Model\ContentReferencesResult();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            if ($object->isInitialized('metadataReferences') && null !== $object->getMetadataReferences()) {
-                $data['metadataReferences'] = $object->getMetadataReferences();
-            }
-            if ($object->isInitialized('shareReferences') && null !== $object->getShareReferences()) {
-                $data['shareReferences'] = $object->getShareReferences();
-            }
-            return $data;
+        if (\array_key_exists('metadataReferences', $data) && $data['metadataReferences'] !== null) {
+            $object->setMetadataReferences($data['metadataReferences']);
         }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\PicturePark\API\Model\ContentReferencesResult::class => false];
+        elseif (\array_key_exists('metadataReferences', $data) && $data['metadataReferences'] === null) {
+            $object->setMetadataReferences(null);
         }
+        if (\array_key_exists('shareReferences', $data) && $data['shareReferences'] !== null) {
+            $object->setShareReferences($data['shareReferences']);
+        }
+        elseif (\array_key_exists('shareReferences', $data) && $data['shareReferences'] === null) {
+            $object->setShareReferences(null);
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if ($data->isInitialized('metadataReferences') && null !== $data->getMetadataReferences()) {
+            $dataArray['metadataReferences'] = $data->getMetadataReferences();
+        }
+        if ($data->isInitialized('shareReferences') && null !== $data->getShareReferences()) {
+            $dataArray['shareReferences'] = $data->getShareReferences();
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\PicturePark\API\Model\ContentReferencesResult::class => false];
     }
 }

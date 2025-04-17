@@ -5,160 +5,82 @@ namespace PicturePark\API\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use PicturePark\API\Runtime\Normalizer\CheckArray;
 use PicturePark\API\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\HttpKernel\Kernel;
-if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
-    class MetadataReferencesPagingRequestNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class MetadataReferencesPagingRequestNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
-        {
-            return $type === \PicturePark\API\Model\MetadataReferencesPagingRequest::class;
-        }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \PicturePark\API\Model\MetadataReferencesPagingRequest::class;
-        }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \PicturePark\API\Model\MetadataReferencesPagingRequest();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('limit', $data)) {
-                $object->setLimit($data['limit']);
-                unset($data['limit']);
-            }
-            if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
-                $object->setPageToken($data['pageToken']);
-                unset($data['pageToken']);
-            }
-            elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
-                $object->setPageToken(null);
-            }
-            if (\array_key_exists('fetchReferencedByRestrictedItem', $data)) {
-                $object->setFetchReferencedByRestrictedItem($data['fetchReferencedByRestrictedItem']);
-                unset($data['fetchReferencedByRestrictedItem']);
-            }
-            foreach ($data as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
-                }
-            }
-            return $object;
-        }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            $data['limit'] = $object->getLimit();
-            if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
-                $data['pageToken'] = $object->getPageToken();
-            }
-            if ($object->isInitialized('fetchReferencedByRestrictedItem') && null !== $object->getFetchReferencedByRestrictedItem()) {
-                $data['fetchReferencedByRestrictedItem'] = $object->getFetchReferencedByRestrictedItem();
-            }
-            foreach ($object as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
-                }
-            }
-            return $data;
-        }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\PicturePark\API\Model\MetadataReferencesPagingRequest::class => false];
-        }
+        return $type === \PicturePark\API\Model\MetadataReferencesPagingRequest::class;
     }
-} else {
-    class MetadataReferencesPagingRequestNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
-        {
-            return $type === \PicturePark\API\Model\MetadataReferencesPagingRequest::class;
+        return is_object($data) && get_class($data) === \PicturePark\API\Model\MetadataReferencesPagingRequest::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \PicturePark\API\Model\MetadataReferencesPagingRequest::class;
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        /**
-         * @return mixed
-         */
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \PicturePark\API\Model\MetadataReferencesPagingRequest();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('limit', $data)) {
-                $object->setLimit($data['limit']);
-                unset($data['limit']);
-            }
-            if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
-                $object->setPageToken($data['pageToken']);
-                unset($data['pageToken']);
-            }
-            elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
-                $object->setPageToken(null);
-            }
-            if (\array_key_exists('fetchReferencedByRestrictedItem', $data)) {
-                $object->setFetchReferencedByRestrictedItem($data['fetchReferencedByRestrictedItem']);
-                unset($data['fetchReferencedByRestrictedItem']);
-            }
-            foreach ($data as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
-                }
-            }
+        $object = new \PicturePark\API\Model\MetadataReferencesPagingRequest();
+        if (\array_key_exists('fetchReferencedByRestrictedItem', $data) && \is_int($data['fetchReferencedByRestrictedItem'])) {
+            $data['fetchReferencedByRestrictedItem'] = (bool) $data['fetchReferencedByRestrictedItem'];
+        }
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            $data['limit'] = $object->getLimit();
-            if ($object->isInitialized('pageToken') && null !== $object->getPageToken()) {
-                $data['pageToken'] = $object->getPageToken();
-            }
-            if ($object->isInitialized('fetchReferencedByRestrictedItem') && null !== $object->getFetchReferencedByRestrictedItem()) {
-                $data['fetchReferencedByRestrictedItem'] = $object->getFetchReferencedByRestrictedItem();
-            }
-            foreach ($object as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
-                }
-            }
-            return $data;
+        if (\array_key_exists('limit', $data)) {
+            $object->setLimit($data['limit']);
+            unset($data['limit']);
         }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\PicturePark\API\Model\MetadataReferencesPagingRequest::class => false];
+        if (\array_key_exists('pageToken', $data) && $data['pageToken'] !== null) {
+            $object->setPageToken($data['pageToken']);
+            unset($data['pageToken']);
         }
+        elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
+            $object->setPageToken(null);
+        }
+        if (\array_key_exists('fetchReferencedByRestrictedItem', $data)) {
+            $object->setFetchReferencedByRestrictedItem($data['fetchReferencedByRestrictedItem']);
+            unset($data['fetchReferencedByRestrictedItem']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        $dataArray['limit'] = $data->getLimit();
+        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
+            $dataArray['pageToken'] = $data->getPageToken();
+        }
+        if ($data->isInitialized('fetchReferencedByRestrictedItem') && null !== $data->getFetchReferencedByRestrictedItem()) {
+            $dataArray['fetchReferencedByRestrictedItem'] = $data->getFetchReferencedByRestrictedItem();
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\PicturePark\API\Model\MetadataReferencesPagingRequest::class => false];
     }
 }

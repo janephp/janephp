@@ -47,20 +47,20 @@ class ExceptionNaming
         511 => 'NetworkAuthenticationRequired',
     ];
 
-    public function generateExceptionName(int $status, string $functionName = null): string
+    public function generateExceptionName(int $status, ?string $functionName = null): string
     {
         $genericName = (string) $status;
         if (\array_key_exists($status, $this->statusNamingMapping)) {
             $genericName = $this->statusNamingMapping[$status];
         } else {
-            $genericName = sprintf('Custom%s', $genericName);
+            $genericName = \sprintf('Custom%s', $genericName);
         }
 
-        $exceptionName = sprintf('%sException', $genericName);
+        $exceptionName = \sprintf('%sException', $genericName);
         if (null === $functionName) {
             return $exceptionName;
         }
 
-        return sprintf('%s%s', ucfirst($functionName), $exceptionName);
+        return \sprintf('%s%s', ucfirst($functionName), $exceptionName);
     }
 }

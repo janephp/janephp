@@ -18,7 +18,7 @@ class FileSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\FileSchema';
     }
@@ -29,7 +29,7 @@ class FileSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
     /**
      * @return mixed
      */
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -118,44 +118,44 @@ class FileSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $object, ?string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = [];
+        $dataArray = [];
         if ($object->isInitialized('format') && null !== $object->getFormat()) {
-            $data['format'] = $object->getFormat();
+            $dataArray['format'] = $object->getFormat();
         }
         if ($object->isInitialized('title') && null !== $object->getTitle()) {
-            $data['title'] = $object->getTitle();
+            $dataArray['title'] = $object->getTitle();
         }
         if ($object->isInitialized('description') && null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
+            $dataArray['description'] = $object->getDescription();
         }
         if ($object->isInitialized('default') && null !== $object->getDefault()) {
-            $data['default'] = $object->getDefault();
+            $dataArray['default'] = $object->getDefault();
         }
         if ($object->isInitialized('required') && null !== $object->getRequired()) {
             $values = [];
             foreach ($object->getRequired() as $value) {
                 $values[] = $value;
             }
-            $data['required'] = $values;
+            $dataArray['required'] = $values;
         }
-        $data['type'] = $object->getType();
+        $dataArray['type'] = $object->getType();
         if ($object->isInitialized('readOnly') && null !== $object->getReadOnly()) {
-            $data['readOnly'] = $object->getReadOnly();
+            $dataArray['readOnly'] = $object->getReadOnly();
         }
         if ($object->isInitialized('externalDocs') && null !== $object->getExternalDocs()) {
-            $data['externalDocs'] = $this->normalizer->normalize($object->getExternalDocs(), 'json', $context);
+            $dataArray['externalDocs'] = $this->normalizer->normalize($object->getExternalDocs(), 'json', $context);
         }
         if ($object->isInitialized('example') && null !== $object->getExample()) {
-            $data['example'] = $object->getExample();
+            $dataArray['example'] = $object->getExample();
         }
         foreach ($object as $key => $value_1) {
             if (preg_match('/^x-/', (string) $key)) {
-                $data[$key] = $value_1;
+                $dataArray[$key] = $value_1;
             }
         }
-        return $data;
+        return $dataArray;
     }
     public function getSupportedTypes(?string $format = null) : array
     {

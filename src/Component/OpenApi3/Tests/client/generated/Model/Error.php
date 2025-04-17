@@ -2,8 +2,16 @@
 
 namespace Jane\Component\OpenApi3\Tests\Client\Model;
 
-class Error
+class Error extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
@@ -15,7 +23,7 @@ class Error
      *
      * @return string
      */
-    public function getMessage() : string
+    public function getMessage(): string
     {
         return $this->message;
     }
@@ -26,8 +34,9 @@ class Error
      *
      * @return self
      */
-    public function setMessage(string $message) : self
+    public function setMessage(string $message): self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }

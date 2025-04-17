@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- [Jane] [GH#836](https://github.com/janephp/janephp/pull/836) Run test suite with PHP 8.3 & PHP 8.4
+- [Jane] [GH#843](https://github.com/janephp/janephp/pull/843) Add PHP 8.4 support
+- [Jane] [GH#842](https://github.com/janephp/janephp/pull/842) Add Symfony 7.2 support & remove deprecations
+
+### Changed
+- [CI] [GH#852](https://github.com/janephp/janephp/pull/852)  Update PHP-CS-Fixer to v3.75.0
+- [OpenAPI] [GH#835](https://github.com/janephp/janephp/pull/835) Add array support in simple style path parameters
+
+### Fixed
+- [PHP] [GH#842](https://github.com/janephp/janephp/pull/842) Fix generated files to be compatible with PHP 8.4
+- [CI] [GH#850](https://github.com/janephp/janephp/pull/850) Update GH actions/cache to v4
+- [OpenApi] [GH#845](https://github.com/janephp/janephp/pull/845) Content */* breaks generated Endpoint PHP class
+- [JsonSchema] [GH#846](https://github.com/janephp/janephp/pull/846) Cast integer data to bool for boolean fields when integer is in data
 
 ## [7.8.1] - 2024-07-29
 ### Fixed

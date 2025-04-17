@@ -63,7 +63,7 @@ class ValidatorGenerator implements GeneratorInterface
                             }
                         }
 
-                        $classGuess->setConstraintClass(sprintf('%s\%s', $localNamespace, $classGuess->getConstraintClass()));
+                        $classGuess->setConstraintClass(\sprintf('%s\%s', $localNamespace, $classGuess->getConstraintClass()));
 
                         if (!\array_key_exists($classGuess->getSubProperty(), $collectionItemsConstraints)) {
                             $collectionItemsConstraints[$classGuess->getSubProperty()] = [$this->generateConstraint($classGuess)];

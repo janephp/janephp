@@ -3,23 +3,95 @@
 namespace Jane\Component\OpenApi2\Tests\Client\Runtime\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+<<<<<<< HEAD
+class ReferenceNormalizer implements NormalizerInterface
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+||||||| 47d94227b
 class ReferenceNormalizer implements NormalizerInterface
 {
     /**
      * {@inheritdoc}
      */
     public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+=======
+if (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4) {
+    class ReferenceNormalizer implements NormalizerInterface
+>>>>>>> origin/next
     {
+<<<<<<< HEAD
+        $ref = [];
+        $ref['$ref'] = (string) $data->getReferenceUri();
+        return $ref;
+||||||| 47d94227b
         $ref = [];
         $ref['$ref'] = (string) $object->getReferenceUri();
         return $ref;
+=======
+        /**
+         * {@inheritdoc}
+         */
+        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $ref = [];
+            $ref['$ref'] = (string) $object->getReferenceUri();
+            return $ref;
+        }
+        /**
+         * {@inheritdoc}
+         * @param mixed $data
+         * @param null $format
+         * @param array $context
+         */
+        public function supportsNormalization($data, $format = null, array $context = []): bool
+        {
+            return $data instanceof Reference;
+        }
+        public function getSupportedTypes(?string $format): array
+        {
+            return [Reference::class => false];
+        }
+>>>>>>> origin/next
     }
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+||||||| 47d94227b
     /**
      * {@inheritdoc}
      */
     public function supportsNormalization($data, $format = null, $context = []) : bool
+=======
+} else {
+    class ReferenceNormalizer implements NormalizerInterface
+>>>>>>> origin/next
     {
-        return $data instanceof Reference;
+        /**
+         * {@inheritdoc}
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $ref = [];
+            $ref['$ref'] = (string) $object->getReferenceUri();
+            return $ref;
+        }
+        /**
+         * {@inheritdoc}
+         */
+        public function supportsNormalization($data, $format = null): bool
+        {
+            return $data instanceof Reference;
+        }
+    }
+    public function getSupportedTypes(?string $format): array
+    {
+        return [Reference::class => false];
     }
 }

@@ -57,7 +57,7 @@ class RuntimeGenerator implements GeneratorInterface
     {
         $files = scandir($directory);
         foreach ($files as $file) {
-            $fullPath = sprintf('%s/%s', $directory, $file);
+            $fullPath = \sprintf('%s/%s', $directory, $file);
             if (\in_array($file, ['.', '..'])) {
                 continue;
             }

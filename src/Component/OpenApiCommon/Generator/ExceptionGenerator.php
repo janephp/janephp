@@ -92,10 +92,10 @@ class ExceptionGenerator
             }
 
             if (\in_array($propertyName, self::BANNED_VARIABLES)) {
-                $propertyName = sprintf('%sObject', $propertyName);
+                $propertyName = \sprintf('%sObject', $propertyName);
             }
 
-            $propertyComment = sprintf(<<<EOD
+            $propertyComment = \sprintf(<<<EOD
 /**
  * @var %s%s
  */
@@ -347,7 +347,7 @@ EOD
             ),
         ]);
 
-        $schema->addFile(new File(sprintf('%s/Exception/%s.php', $schema->getDirectory(), $highLevelExceptionName), $highLevelException, 'Exception'));
+        $schema->addFile(new File(\sprintf('%s/Exception/%s.php', $schema->getDirectory(), $highLevelExceptionName), $highLevelException, 'Exception'));
 
         return $highLevelExceptionName;
     }

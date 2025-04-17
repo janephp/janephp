@@ -101,7 +101,7 @@ trait GetterSetterGenerator
 
     protected function createGetterDoc(Property $property, string $namespace, bool $strict): Doc
     {
-        $description = sprintf(
+        $description = \sprintf(
             <<<EOD
 /**
  * %s
@@ -120,7 +120,7 @@ EOD
 EOD;
         }
 
-        $description .= sprintf(
+        $description .= \sprintf(
             <<<EOD
  * @return %s
  */
@@ -134,7 +134,7 @@ EOD
 
     protected function createSetterDoc(Property $property, string $namespace, bool $strict, bool $fluent): Doc
     {
-        $description = sprintf(
+        $description = \sprintf(
             <<<EOD
 /**
  * %s

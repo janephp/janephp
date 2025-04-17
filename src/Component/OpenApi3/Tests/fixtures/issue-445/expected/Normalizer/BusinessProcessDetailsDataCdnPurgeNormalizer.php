@@ -5,162 +5,80 @@ namespace PicturePark\API\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use PicturePark\API\Runtime\Normalizer\CheckArray;
 use PicturePark\API\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\HttpKernel\Kernel;
-if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
-    class BusinessProcessDetailsDataCdnPurgeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class BusinessProcessDetailsDataCdnPurgeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
-        {
-            return $type === \PicturePark\API\Model\BusinessProcessDetailsDataCdnPurge::class;
-        }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \PicturePark\API\Model\BusinessProcessDetailsDataCdnPurge::class;
-        }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \PicturePark\API\Model\BusinessProcessDetailsDataCdnPurge();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('kind', $data)) {
-                $object->setKind($data['kind']);
-                unset($data['kind']);
-            }
-            if (\array_key_exists('serializedCdnConfiguration', $data)) {
-                $object->setSerializedCdnConfiguration($data['serializedCdnConfiguration']);
-                unset($data['serializedCdnConfiguration']);
-            }
-            if (\array_key_exists('jobs', $data)) {
-                $values = [];
-                foreach ($data['jobs'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\CdnPurgeJobBase::class, 'json', $context);
-                }
-                $object->setJobs($values);
-                unset($data['jobs']);
-            }
-            foreach ($data as $key => $value_1) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value_1;
-                }
-            }
-            return $object;
-        }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            $data['kind'] = $object->getKind();
-            $data['serializedCdnConfiguration'] = $object->getSerializedCdnConfiguration();
-            $values = [];
-            foreach ($object->getJobs() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['jobs'] = $values;
-            foreach ($object as $key => $value_1) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value_1;
-                }
-            }
-            return $data;
-        }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\PicturePark\API\Model\BusinessProcessDetailsDataCdnPurge::class => false];
-        }
+        return $type === \PicturePark\API\Model\BusinessProcessDetailsDataCdnPurge::class;
     }
-} else {
-    class BusinessProcessDetailsDataCdnPurgeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
-        {
-            return $type === \PicturePark\API\Model\BusinessProcessDetailsDataCdnPurge::class;
+        return is_object($data) && get_class($data) === \PicturePark\API\Model\BusinessProcessDetailsDataCdnPurge::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \PicturePark\API\Model\BusinessProcessDetailsDataCdnPurge::class;
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        /**
-         * @return mixed
-         */
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \PicturePark\API\Model\BusinessProcessDetailsDataCdnPurge();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('kind', $data)) {
-                $object->setKind($data['kind']);
-                unset($data['kind']);
-            }
-            if (\array_key_exists('serializedCdnConfiguration', $data)) {
-                $object->setSerializedCdnConfiguration($data['serializedCdnConfiguration']);
-                unset($data['serializedCdnConfiguration']);
-            }
-            if (\array_key_exists('jobs', $data)) {
-                $values = [];
-                foreach ($data['jobs'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\CdnPurgeJobBase::class, 'json', $context);
-                }
-                $object->setJobs($values);
-                unset($data['jobs']);
-            }
-            foreach ($data as $key => $value_1) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value_1;
-                }
-            }
+        $object = new \PicturePark\API\Model\BusinessProcessDetailsDataCdnPurge();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            $data['kind'] = $object->getKind();
-            $data['serializedCdnConfiguration'] = $object->getSerializedCdnConfiguration();
+        if (\array_key_exists('kind', $data)) {
+            $object->setKind($data['kind']);
+            unset($data['kind']);
+        }
+        if (\array_key_exists('serializedCdnConfiguration', $data)) {
+            $object->setSerializedCdnConfiguration($data['serializedCdnConfiguration']);
+            unset($data['serializedCdnConfiguration']);
+        }
+        if (\array_key_exists('jobs', $data)) {
             $values = [];
-            foreach ($object->getJobs() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data['jobs'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\CdnPurgeJobBase::class, 'json', $context);
             }
-            $data['jobs'] = $values;
-            foreach ($object as $key => $value_1) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value_1;
-                }
+            $object->setJobs($values);
+            unset($data['jobs']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
             }
-            return $data;
         }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\PicturePark\API\Model\BusinessProcessDetailsDataCdnPurge::class => false];
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        $dataArray['kind'] = $data->getKind();
+        $dataArray['serializedCdnConfiguration'] = $data->getSerializedCdnConfiguration();
+        $values = [];
+        foreach ($data->getJobs() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
+        $dataArray['jobs'] = $values;
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_1;
+            }
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\PicturePark\API\Model\BusinessProcessDetailsDataCdnPurge::class => false];
     }
 }

@@ -14,13 +14,13 @@ class ConfigLoader implements ConfigLoaderInterface
     public function load(string $path): array
     {
         if (!file_exists($path)) {
-            throw new \RuntimeException(sprintf('Config file %s does not exist', $path));
+            throw new \RuntimeException(\sprintf('Config file %s does not exist', $path));
         }
 
         $options = require $path;
 
         if (!\is_array($options)) {
-            throw new \RuntimeException(sprintf('Invalid config file specified or invalid return type in file %s', $path));
+            throw new \RuntimeException(\sprintf('Invalid config file specified or invalid return type in file %s', $path));
         }
 
         return $this->resolveConfiguration($options);
