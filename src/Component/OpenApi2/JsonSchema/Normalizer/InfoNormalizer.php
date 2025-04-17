@@ -18,7 +18,7 @@ class InfoNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Info';
     }
@@ -29,7 +29,7 @@ class InfoNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     /**
      * @return mixed
      */
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -93,29 +93,29 @@ class InfoNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $object, ?string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = [];
-        $data['title'] = $object->getTitle();
-        $data['version'] = $object->getVersion();
+        $dataArray = [];
+        $dataArray['title'] = $object->getTitle();
+        $dataArray['version'] = $object->getVersion();
         if ($object->isInitialized('description') && null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
+            $dataArray['description'] = $object->getDescription();
         }
         if ($object->isInitialized('termsOfService') && null !== $object->getTermsOfService()) {
-            $data['termsOfService'] = $object->getTermsOfService();
+            $dataArray['termsOfService'] = $object->getTermsOfService();
         }
         if ($object->isInitialized('contact') && null !== $object->getContact()) {
-            $data['contact'] = $this->normalizer->normalize($object->getContact(), 'json', $context);
+            $dataArray['contact'] = $this->normalizer->normalize($object->getContact(), 'json', $context);
         }
         if ($object->isInitialized('license') && null !== $object->getLicense()) {
-            $data['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
+            $dataArray['license'] = $this->normalizer->normalize($object->getLicense(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/^x-/', (string) $key)) {
-                $data[$key] = $value;
+                $dataArray[$key] = $value;
             }
         }
-        return $data;
+        return $dataArray;
     }
     public function getSupportedTypes(?string $format = null) : array
     {

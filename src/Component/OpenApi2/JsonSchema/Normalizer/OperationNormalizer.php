@@ -18,7 +18,7 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Operation';
     }
@@ -29,7 +29,7 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
     /**
      * @return mixed
      */
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -198,41 +198,41 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $object, ?string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = [];
+        $dataArray = [];
         if ($object->isInitialized('tags') && null !== $object->getTags()) {
             $values = [];
             foreach ($object->getTags() as $value) {
                 $values[] = $value;
             }
-            $data['tags'] = $values;
+            $dataArray['tags'] = $values;
         }
         if ($object->isInitialized('summary') && null !== $object->getSummary()) {
-            $data['summary'] = $object->getSummary();
+            $dataArray['summary'] = $object->getSummary();
         }
         if ($object->isInitialized('description') && null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
+            $dataArray['description'] = $object->getDescription();
         }
         if ($object->isInitialized('externalDocs') && null !== $object->getExternalDocs()) {
-            $data['externalDocs'] = $this->normalizer->normalize($object->getExternalDocs(), 'json', $context);
+            $dataArray['externalDocs'] = $this->normalizer->normalize($object->getExternalDocs(), 'json', $context);
         }
         if ($object->isInitialized('operationId') && null !== $object->getOperationId()) {
-            $data['operationId'] = $object->getOperationId();
+            $dataArray['operationId'] = $object->getOperationId();
         }
         if ($object->isInitialized('produces') && null !== $object->getProduces()) {
             $values_1 = [];
             foreach ($object->getProduces() as $value_1) {
                 $values_1[] = $value_1;
             }
-            $data['produces'] = $values_1;
+            $dataArray['produces'] = $values_1;
         }
         if ($object->isInitialized('consumes') && null !== $object->getConsumes()) {
             $values_2 = [];
             foreach ($object->getConsumes() as $value_2) {
                 $values_2[] = $value_2;
             }
-            $data['consumes'] = $values_2;
+            $dataArray['consumes'] = $values_2;
         }
         if ($object->isInitialized('parameters') && null !== $object->getParameters()) {
             $values_3 = [];
@@ -253,7 +253,7 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
                 }
                 $values_3[] = $value_4;
             }
-            $data['parameters'] = $values_3;
+            $dataArray['parameters'] = $values_3;
         }
         $values_4 = [];
         foreach ($object->getResponses() as $key => $value_5) {
@@ -272,16 +272,16 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
                 continue;
             }
         }
-        $data['responses'] = $values_4;
+        $dataArray['responses'] = $values_4;
         if ($object->isInitialized('schemes') && null !== $object->getSchemes()) {
             $values_5 = [];
             foreach ($object->getSchemes() as $value_7) {
                 $values_5[] = $value_7;
             }
-            $data['schemes'] = $values_5;
+            $dataArray['schemes'] = $values_5;
         }
         if ($object->isInitialized('deprecated') && null !== $object->getDeprecated()) {
-            $data['deprecated'] = $object->getDeprecated();
+            $dataArray['deprecated'] = $object->getDeprecated();
         }
         if ($object->isInitialized('security') && null !== $object->getSecurity()) {
             $values_6 = [];
@@ -296,14 +296,14 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
                 }
                 $values_6[] = $values_7;
             }
-            $data['security'] = $values_6;
+            $dataArray['security'] = $values_6;
         }
         foreach ($object as $key_2 => $value_11) {
             if (preg_match('/^x-/', (string) $key_2)) {
-                $data[$key_2] = $value_11;
+                $dataArray[$key_2] = $value_11;
             }
         }
-        return $data;
+        return $dataArray;
     }
     public function getSupportedTypes(?string $format = null) : array
     {

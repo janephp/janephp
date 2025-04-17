@@ -8,7 +8,6 @@ use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\MultipleType;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
-use PhpParser\Comment\Doc;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
@@ -63,14 +62,14 @@ trait NormalizerGenerator
      *
      * @return Stmt\ClassMethod
      */
-    protected function createSupportsNormalizationMethod(string $modelFqdn, bool $symfony7)
+    protected function createSupportsNormalizationMethod(string $modelFqdn)
     {
         return new Stmt\ClassMethod('supportsNormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'returnType' => new Identifier('bool'),
             'params' => [
-                $symfony7 ? new Param(new Expr\Variable('data'), type: new Identifier('mixed')) : new Param(new Expr\Variable('data')),
-                $symfony7 ? new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('string')) : new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('data'), type: new Identifier('mixed')),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('?string')),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), new Identifier('array')),
             ],
             'stmts' => [new Stmt\Return_(new Expr\Instanceof_(
@@ -85,11 +84,11 @@ trait NormalizerGenerator
      *
      * @return Stmt\ClassMethod
      */
-    protected function createNormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $symfony7, bool $skipNullValues = true, bool $skipRequiredFields = false, bool $includeNullValue = true)
+    protected function createNormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $skipNullValues = true, bool $skipRequiredFields = false, bool $includeNullValue = true)
     {
         $context->refreshScope();
-        $dataVariable = new Expr\Variable('data');
-        $objectVariable = new Expr\Variable('object');
+        $dataVariable = new Expr\Variable('dataArray');
+        $objectVariable = new Expr\Variable('data');
         $statements = $this->normalizeMethodStatements($dataVariable, $classGuess, $context);
 
         /** @var Property $property */
@@ -191,30 +190,15 @@ trait NormalizerGenerator
 
         return new Stmt\ClassMethod('normalize', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
-            'returnType' => $symfony7
-                ? new UnionType([
-                    new Identifier('array'),
-                    new Identifier('string'),
-                    new Identifier('int'),
-                    new Identifier('float'),
-                    new Identifier('bool'),
-                    new Name('\ArrayObject'),
-                    new Identifier('null'),
-                ])
-                : null,
+            'returnType' => new UnionType([new Identifier('array'), new Identifier('string'), new Identifier('int'), new Identifier('float'), new Identifier('bool'), new Name('\ArrayObject'), new Identifier('null')]),
             'params' => [
-                $symfony7 ? new Param($objectVariable, type: new Identifier('mixed')) : new Param($objectVariable),
-                $symfony7 ? new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('string')) : new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param($objectVariable, type: new Identifier('mixed')),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('?string')),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), new Identifier('array')),
             ],
             'stmts' => $statements,
         ], [
-            'comments' => $symfony7 ? [] : [new Doc(<<<EOD
-/**
- * @return array|string|int|float|bool|\ArrayObject|null
- */
-EOD
-            )],
+            'comments' => [],
         ]);
     }
 

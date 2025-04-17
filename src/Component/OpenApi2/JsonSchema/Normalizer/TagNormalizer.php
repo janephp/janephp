@@ -18,7 +18,7 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Tag';
     }
@@ -29,7 +29,7 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     /**
      * @return mixed
      */
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -72,22 +72,22 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $object, ?string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = [];
-        $data['name'] = $object->getName();
+        $dataArray = [];
+        $dataArray['name'] = $object->getName();
         if ($object->isInitialized('description') && null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
+            $dataArray['description'] = $object->getDescription();
         }
         if ($object->isInitialized('externalDocs') && null !== $object->getExternalDocs()) {
-            $data['externalDocs'] = $this->normalizer->normalize($object->getExternalDocs(), 'json', $context);
+            $dataArray['externalDocs'] = $this->normalizer->normalize($object->getExternalDocs(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/^x-/', (string) $key)) {
-                $data[$key] = $value;
+                $dataArray[$key] = $value;
             }
         }
-        return $data;
+        return $dataArray;
     }
     public function getSupportedTypes(?string $format = null) : array
     {

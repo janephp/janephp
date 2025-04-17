@@ -5,332 +5,165 @@ namespace PicturePark\API\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use PicturePark\API\Runtime\Normalizer\CheckArray;
 use PicturePark\API\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\HttpKernel\Kernel;
-if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
-    class FormatBaseNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class FormatBaseNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
-        {
-            return $type === \PicturePark\API\Model\FormatBase::class;
-        }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \PicturePark\API\Model\FormatBase::class;
-        }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
-        {
-            if (array_key_exists('kind', $data) and 'ImageFormatBase' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ImageFormatBase', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'OriginalFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\OriginalFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'JpegFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\JpegFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'PngFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\PngFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'TiffFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\TiffFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'VideoFormatBase' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\VideoFormatBase', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'AudioFormatBase' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\AudioFormatBase', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'Mp4VideoFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\Mp4VideoFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'VideoSpriteFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\VideoSpriteFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'VideoStillFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\VideoStillFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'AacAudioFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\AacAudioFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'AudioStillFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\AudioStillFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'Mp3AudioFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\Mp3AudioFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'DocumentFormatBase' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\DocumentFormatBase', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'DocumentStillFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\DocumentStillFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'PdfFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\PdfFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'VectorFormatBase' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\VectorFormatBase', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'SvgFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\SvgFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'VectorStillFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\VectorStillFormat', $format, $context);
-            }
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \PicturePark\API\Model\FormatBase();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('kind', $data)) {
-                $object->setKind($data['kind']);
-            }
-            return $object;
-        }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            if (null !== $object->getKind() and 'ImageFormatBase' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'OriginalFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'JpegFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'PngFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'TiffFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'VideoFormatBase' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'AudioFormatBase' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'Mp4VideoFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'VideoSpriteFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'VideoStillFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'AacAudioFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'AudioStillFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'Mp3AudioFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'DocumentFormatBase' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'DocumentStillFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'PdfFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'VectorFormatBase' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'SvgFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'VectorStillFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            $data['kind'] = $object->getKind();
-            return $data;
-        }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\PicturePark\API\Model\FormatBase::class => false];
-        }
+        return $type === \PicturePark\API\Model\FormatBase::class;
     }
-} else {
-    class FormatBaseNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
-        {
-            return $type === \PicturePark\API\Model\FormatBase::class;
+        return is_object($data) && get_class($data) === \PicturePark\API\Model\FormatBase::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (array_key_exists('kind', $data) and 'ImageFormatBase' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ImageFormatBase', $format, $context);
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \PicturePark\API\Model\FormatBase::class;
+        if (array_key_exists('kind', $data) and 'OriginalFormat' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\OriginalFormat', $format, $context);
         }
-        /**
-         * @return mixed
-         */
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (array_key_exists('kind', $data) and 'ImageFormatBase' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ImageFormatBase', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'OriginalFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\OriginalFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'JpegFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\JpegFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'PngFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\PngFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'TiffFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\TiffFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'VideoFormatBase' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\VideoFormatBase', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'AudioFormatBase' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\AudioFormatBase', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'Mp4VideoFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\Mp4VideoFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'VideoSpriteFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\VideoSpriteFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'VideoStillFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\VideoStillFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'AacAudioFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\AacAudioFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'AudioStillFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\AudioStillFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'Mp3AudioFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\Mp3AudioFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'DocumentFormatBase' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\DocumentFormatBase', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'DocumentStillFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\DocumentStillFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'PdfFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\PdfFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'VectorFormatBase' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\VectorFormatBase', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'SvgFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\SvgFormat', $format, $context);
-            }
-            if (array_key_exists('kind', $data) and 'VectorStillFormat' === $data['kind']) {
-                return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\VectorStillFormat', $format, $context);
-            }
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \PicturePark\API\Model\FormatBase();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('kind', $data)) {
-                $object->setKind($data['kind']);
-            }
+        if (array_key_exists('kind', $data) and 'JpegFormat' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\JpegFormat', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'PngFormat' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\PngFormat', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'TiffFormat' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\TiffFormat', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'VideoFormatBase' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\VideoFormatBase', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'AudioFormatBase' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\AudioFormatBase', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'Mp4VideoFormat' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\Mp4VideoFormat', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'VideoSpriteFormat' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\VideoSpriteFormat', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'VideoStillFormat' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\VideoStillFormat', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'AacAudioFormat' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\AacAudioFormat', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'AudioStillFormat' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\AudioStillFormat', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'Mp3AudioFormat' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\Mp3AudioFormat', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'DocumentFormatBase' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\DocumentFormatBase', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'DocumentStillFormat' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\DocumentStillFormat', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'PdfFormat' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\PdfFormat', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'VectorFormatBase' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\VectorFormatBase', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'SvgFormat' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\SvgFormat', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'VectorStillFormat' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\VectorStillFormat', $format, $context);
+        }
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
+        $object = new \PicturePark\API\Model\FormatBase();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            if (null !== $object->getKind() and 'ImageFormatBase' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'OriginalFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'JpegFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'PngFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'TiffFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'VideoFormatBase' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'AudioFormatBase' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'Mp4VideoFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'VideoSpriteFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'VideoStillFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'AacAudioFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'AudioStillFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'Mp3AudioFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'DocumentFormatBase' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'DocumentStillFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'PdfFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'VectorFormatBase' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'SvgFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            if (null !== $object->getKind() and 'VectorStillFormat' === $object->getKind()) {
-                return $this->normalizer->normalize($object, $format, $context);
-            }
-            $data['kind'] = $object->getKind();
-            return $data;
+        if (\array_key_exists('kind', $data)) {
+            $object->setKind($data['kind']);
         }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\PicturePark\API\Model\FormatBase::class => false];
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if (null !== $data->getKind() and 'ImageFormatBase' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
         }
+        if (null !== $data->getKind() and 'OriginalFormat' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
+        }
+        if (null !== $data->getKind() and 'JpegFormat' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
+        }
+        if (null !== $data->getKind() and 'PngFormat' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
+        }
+        if (null !== $data->getKind() and 'TiffFormat' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
+        }
+        if (null !== $data->getKind() and 'VideoFormatBase' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
+        }
+        if (null !== $data->getKind() and 'AudioFormatBase' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
+        }
+        if (null !== $data->getKind() and 'Mp4VideoFormat' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
+        }
+        if (null !== $data->getKind() and 'VideoSpriteFormat' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
+        }
+        if (null !== $data->getKind() and 'VideoStillFormat' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
+        }
+        if (null !== $data->getKind() and 'AacAudioFormat' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
+        }
+        if (null !== $data->getKind() and 'AudioStillFormat' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
+        }
+        if (null !== $data->getKind() and 'Mp3AudioFormat' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
+        }
+        if (null !== $data->getKind() and 'DocumentFormatBase' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
+        }
+        if (null !== $data->getKind() and 'DocumentStillFormat' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
+        }
+        if (null !== $data->getKind() and 'PdfFormat' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
+        }
+        if (null !== $data->getKind() and 'VectorFormatBase' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
+        }
+        if (null !== $data->getKind() and 'SvgFormat' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
+        }
+        if (null !== $data->getKind() and 'VectorStillFormat' === $data->getKind()) {
+            return $this->normalizer->normalize($data, $format, $context);
+        }
+        $dataArray['kind'] = $data->getKind();
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\PicturePark\API\Model\FormatBase::class => false];
     }
 }

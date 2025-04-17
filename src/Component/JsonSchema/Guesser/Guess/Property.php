@@ -56,7 +56,7 @@ class Property
      */
     private $accessorName;
 
-    public function __construct(object $object, string $name, string $reference, bool $nullable = false, bool $required = false, Type $type = null, string $description = null, $default = null, ?bool $readOnly = null)
+    public function __construct(object $object, string $name, string $reference, bool $nullable = false, bool $required = false, ?Type $type = null, ?string $description = null, mixed $default = null, ?bool $readOnly = null)
     {
         $this->name = $name;
         $this->object = $object;

@@ -5,132 +5,65 @@ namespace PicturePark\API\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use PicturePark\API\Runtime\Normalizer\CheckArray;
 use PicturePark\API\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\HttpKernel\Kernel;
-if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
-    class TransferFileNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class TransferFileNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
-        {
-            return $type === \PicturePark\API\Model\TransferFile::class;
-        }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \PicturePark\API\Model\TransferFile::class;
-        }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \PicturePark\API\Model\TransferFile();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('identifier', $data) && $data['identifier'] !== null) {
-                $object->setIdentifier($data['identifier']);
-            }
-            elseif (\array_key_exists('identifier', $data) && $data['identifier'] === null) {
-                $object->setIdentifier(null);
-            }
-            if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
-                $object->setRequestId($data['requestId']);
-            }
-            elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
-                $object->setRequestId(null);
-            }
-            return $object;
-        }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            if ($object->isInitialized('identifier') && null !== $object->getIdentifier()) {
-                $data['identifier'] = $object->getIdentifier();
-            }
-            if ($object->isInitialized('requestId') && null !== $object->getRequestId()) {
-                $data['requestId'] = $object->getRequestId();
-            }
-            return $data;
-        }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\PicturePark\API\Model\TransferFile::class => false];
-        }
+        return $type === \PicturePark\API\Model\TransferFile::class;
     }
-} else {
-    class TransferFileNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
-        {
-            return $type === \PicturePark\API\Model\TransferFile::class;
+        return is_object($data) && get_class($data) === \PicturePark\API\Model\TransferFile::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \PicturePark\API\Model\TransferFile::class;
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        /**
-         * @return mixed
-         */
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \PicturePark\API\Model\TransferFile();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('identifier', $data) && $data['identifier'] !== null) {
-                $object->setIdentifier($data['identifier']);
-            }
-            elseif (\array_key_exists('identifier', $data) && $data['identifier'] === null) {
-                $object->setIdentifier(null);
-            }
-            if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
-                $object->setRequestId($data['requestId']);
-            }
-            elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
-                $object->setRequestId(null);
-            }
+        $object = new \PicturePark\API\Model\TransferFile();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            if ($object->isInitialized('identifier') && null !== $object->getIdentifier()) {
-                $data['identifier'] = $object->getIdentifier();
-            }
-            if ($object->isInitialized('requestId') && null !== $object->getRequestId()) {
-                $data['requestId'] = $object->getRequestId();
-            }
-            return $data;
+        if (\array_key_exists('identifier', $data) && $data['identifier'] !== null) {
+            $object->setIdentifier($data['identifier']);
         }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\PicturePark\API\Model\TransferFile::class => false];
+        elseif (\array_key_exists('identifier', $data) && $data['identifier'] === null) {
+            $object->setIdentifier(null);
         }
+        if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
+            $object->setRequestId($data['requestId']);
+        }
+        elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
+            $object->setRequestId(null);
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if ($data->isInitialized('identifier') && null !== $data->getIdentifier()) {
+            $dataArray['identifier'] = $data->getIdentifier();
+        }
+        if ($data->isInitialized('requestId') && null !== $data->getRequestId()) {
+            $dataArray['requestId'] = $data->getRequestId();
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\PicturePark\API\Model\TransferFile::class => false];
     }
 }

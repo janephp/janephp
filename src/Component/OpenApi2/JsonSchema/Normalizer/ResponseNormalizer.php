@@ -18,7 +18,7 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Response';
     }
@@ -29,7 +29,7 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
     /**
      * @return mixed
      */
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -93,10 +93,10 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $object, ?string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = [];
-        $data['description'] = $object->getDescription();
+        $dataArray = [];
+        $dataArray['description'] = $object->getDescription();
         if ($object->isInitialized('schema') && null !== $object->getSchema()) {
             $value = $object->getSchema();
             if (is_object($object->getSchema())) {
@@ -104,28 +104,28 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
             } elseif (is_object($object->getSchema())) {
                 $value = $this->normalizer->normalize($object->getSchema(), 'json', $context);
             }
-            $data['schema'] = $value;
+            $dataArray['schema'] = $value;
         }
         if ($object->isInitialized('headers') && null !== $object->getHeaders()) {
             $values = [];
             foreach ($object->getHeaders() as $key => $value_1) {
                 $values[$key] = $this->normalizer->normalize($value_1, 'json', $context);
             }
-            $data['headers'] = $values;
+            $dataArray['headers'] = $values;
         }
         if ($object->isInitialized('examples') && null !== $object->getExamples()) {
             $values_1 = [];
             foreach ($object->getExamples() as $key_1 => $value_2) {
                 $values_1[$key_1] = $value_2;
             }
-            $data['examples'] = $values_1;
+            $dataArray['examples'] = $values_1;
         }
         foreach ($object as $key_2 => $value_3) {
             if (preg_match('/^x-/', (string) $key_2)) {
-                $data[$key_2] = $value_3;
+                $dataArray[$key_2] = $value_3;
             }
         }
-        return $data;
+        return $dataArray;
     }
     public function getSupportedTypes(?string $format = null) : array
     {

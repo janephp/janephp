@@ -5,168 +5,83 @@ namespace Docker\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Docker\Api\Runtime\Normalizer\CheckArray;
 use Docker\Api\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\HttpKernel\Kernel;
-if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
-    class EndpointPortConfigNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class EndpointPortConfigNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
-        {
-            return $type === \Docker\Api\Model\EndpointPortConfig::class;
-        }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \Docker\Api\Model\EndpointPortConfig::class;
-        }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \Docker\Api\Model\EndpointPortConfig();
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Docker\Api\Validator\EndpointPortConfigConstraint());
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('Name', $data)) {
-                $object->setName($data['Name']);
-            }
-            if (\array_key_exists('Protocol', $data)) {
-                $object->setProtocol($data['Protocol']);
-            }
-            if (\array_key_exists('TargetPort', $data)) {
-                $object->setTargetPort($data['TargetPort']);
-            }
-            if (\array_key_exists('PublishedPort', $data)) {
-                $object->setPublishedPort($data['PublishedPort']);
-            }
-            if (\array_key_exists('PublishMode', $data)) {
-                $object->setPublishMode($data['PublishMode']);
-            }
-            return $object;
-        }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            if ($object->isInitialized('name') && null !== $object->getName()) {
-                $data['Name'] = $object->getName();
-            }
-            if ($object->isInitialized('protocol') && null !== $object->getProtocol()) {
-                $data['Protocol'] = $object->getProtocol();
-            }
-            if ($object->isInitialized('targetPort') && null !== $object->getTargetPort()) {
-                $data['TargetPort'] = $object->getTargetPort();
-            }
-            if ($object->isInitialized('publishedPort') && null !== $object->getPublishedPort()) {
-                $data['PublishedPort'] = $object->getPublishedPort();
-            }
-            if ($object->isInitialized('publishMode') && null !== $object->getPublishMode()) {
-                $data['PublishMode'] = $object->getPublishMode();
-            }
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Docker\Api\Validator\EndpointPortConfigConstraint());
-            }
-            return $data;
-        }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\Docker\Api\Model\EndpointPortConfig::class => false];
-        }
+        return $type === \Docker\Api\Model\EndpointPortConfig::class;
     }
-} else {
-    class EndpointPortConfigNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
-        {
-            return $type === \Docker\Api\Model\EndpointPortConfig::class;
+        return is_object($data) && get_class($data) === \Docker\Api\Model\EndpointPortConfig::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \Docker\Api\Model\EndpointPortConfig::class;
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        /**
-         * @return mixed
-         */
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \Docker\Api\Model\EndpointPortConfig();
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Docker\Api\Validator\EndpointPortConfigConstraint());
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('Name', $data)) {
-                $object->setName($data['Name']);
-            }
-            if (\array_key_exists('Protocol', $data)) {
-                $object->setProtocol($data['Protocol']);
-            }
-            if (\array_key_exists('TargetPort', $data)) {
-                $object->setTargetPort($data['TargetPort']);
-            }
-            if (\array_key_exists('PublishedPort', $data)) {
-                $object->setPublishedPort($data['PublishedPort']);
-            }
-            if (\array_key_exists('PublishMode', $data)) {
-                $object->setPublishMode($data['PublishMode']);
-            }
+        $object = new \Docker\Api\Model\EndpointPortConfig();
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Docker\Api\Validator\EndpointPortConfigConstraint());
+        }
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            if ($object->isInitialized('name') && null !== $object->getName()) {
-                $data['Name'] = $object->getName();
-            }
-            if ($object->isInitialized('protocol') && null !== $object->getProtocol()) {
-                $data['Protocol'] = $object->getProtocol();
-            }
-            if ($object->isInitialized('targetPort') && null !== $object->getTargetPort()) {
-                $data['TargetPort'] = $object->getTargetPort();
-            }
-            if ($object->isInitialized('publishedPort') && null !== $object->getPublishedPort()) {
-                $data['PublishedPort'] = $object->getPublishedPort();
-            }
-            if ($object->isInitialized('publishMode') && null !== $object->getPublishMode()) {
-                $data['PublishMode'] = $object->getPublishMode();
-            }
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Docker\Api\Validator\EndpointPortConfigConstraint());
-            }
-            return $data;
+        if (\array_key_exists('Name', $data)) {
+            $object->setName($data['Name']);
         }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\Docker\Api\Model\EndpointPortConfig::class => false];
+        if (\array_key_exists('Protocol', $data)) {
+            $object->setProtocol($data['Protocol']);
         }
+        if (\array_key_exists('TargetPort', $data)) {
+            $object->setTargetPort($data['TargetPort']);
+        }
+        if (\array_key_exists('PublishedPort', $data)) {
+            $object->setPublishedPort($data['PublishedPort']);
+        }
+        if (\array_key_exists('PublishMode', $data)) {
+            $object->setPublishMode($data['PublishMode']);
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if ($data->isInitialized('name') && null !== $data->getName()) {
+            $dataArray['Name'] = $data->getName();
+        }
+        if ($data->isInitialized('protocol') && null !== $data->getProtocol()) {
+            $dataArray['Protocol'] = $data->getProtocol();
+        }
+        if ($data->isInitialized('targetPort') && null !== $data->getTargetPort()) {
+            $dataArray['TargetPort'] = $data->getTargetPort();
+        }
+        if ($data->isInitialized('publishedPort') && null !== $data->getPublishedPort()) {
+            $dataArray['PublishedPort'] = $data->getPublishedPort();
+        }
+        if ($data->isInitialized('publishMode') && null !== $data->getPublishMode()) {
+            $dataArray['PublishMode'] = $data->getPublishMode();
+        }
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($dataArray, new \Docker\Api\Validator\EndpointPortConfigConstraint());
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Docker\Api\Model\EndpointPortConfig::class => false];
     }
 }
