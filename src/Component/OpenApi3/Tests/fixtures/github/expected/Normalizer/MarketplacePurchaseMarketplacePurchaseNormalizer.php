@@ -100,19 +100,19 @@ class MarketplacePurchaseMarketplacePurchaseNormalizer implements DenormalizerIn
         if ($data->isInitialized('billingCycle') && null !== $data->getBillingCycle()) {
             $dataArray['billing_cycle'] = $data->getBillingCycle();
         }
-        if ($data->isInitialized('nextBillingDate') && null !== $data->getNextBillingDate()) {
+        if ($data->isInitialized('nextBillingDate')) {
             $dataArray['next_billing_date'] = $data->getNextBillingDate();
         }
         if ($data->isInitialized('isInstalled') && null !== $data->getIsInstalled()) {
             $dataArray['is_installed'] = $data->getIsInstalled();
         }
-        if ($data->isInitialized('unitCount') && null !== $data->getUnitCount()) {
+        if ($data->isInitialized('unitCount')) {
             $dataArray['unit_count'] = $data->getUnitCount();
         }
         if ($data->isInitialized('onFreeTrial') && null !== $data->getOnFreeTrial()) {
             $dataArray['on_free_trial'] = $data->getOnFreeTrial();
         }
-        if ($data->isInitialized('freeTrialEndsOn') && null !== $data->getFreeTrialEndsOn()) {
+        if ($data->isInitialized('freeTrialEndsOn')) {
             $dataArray['free_trial_ends_on'] = $data->getFreeTrialEndsOn();
         }
         if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {

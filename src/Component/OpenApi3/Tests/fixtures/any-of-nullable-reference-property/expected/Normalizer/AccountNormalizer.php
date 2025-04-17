@@ -97,7 +97,7 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('lastname') && null !== $data->getLastname()) {
             $dataArray['lastname'] = $data->getLastname();
         }
-        if ($data->isInitialized('countryOfBirth') && null !== $data->getCountryOfBirth()) {
+        if ($data->isInitialized('countryOfBirth')) {
             $value = $data->getCountryOfBirth();
             if (is_object($data->getCountryOfBirth())) {
                 $value = $this->normalizer->normalize($data->getCountryOfBirth(), 'json', $context);
@@ -107,7 +107,7 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('country') && null !== $data->getCountry()) {
             $dataArray['country'] = $this->normalizer->normalize($data->getCountry(), 'json', $context);
         }
-        if ($data->isInitialized('nationality') && null !== $data->getNationality()) {
+        if ($data->isInitialized('nationality')) {
             $value_1 = $data->getNationality();
             if (is_object($data->getNationality())) {
                 $value_1 = $this->normalizer->normalize($data->getNationality(), 'json', $context);

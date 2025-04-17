@@ -72,7 +72,7 @@ class CdnPurgeJobByUriNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray['success'] = $data->getSuccess();
         $dataArray['retriesLeft'] = $data->getRetriesLeft();
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('uri') && null !== $data->getUri()) {
+        if ($data->isInitialized('uri')) {
             $dataArray['uri'] = $data->getUri();
         }
         foreach ($data as $key => $value) {

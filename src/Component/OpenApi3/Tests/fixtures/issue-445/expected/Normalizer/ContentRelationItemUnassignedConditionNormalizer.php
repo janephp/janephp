@@ -72,14 +72,14 @@ class ContentRelationItemUnassignedConditionNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
+        if ($data->isInitialized('traceRefId')) {
             $dataArray['traceRefId'] = $data->getTraceRefId();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('contentId') && null !== $data->getContentId()) {
+        if ($data->isInitialized('contentId')) {
             $dataArray['contentId'] = $data->getContentId();
         }
-        if ($data->isInitialized('fieldPath') && null !== $data->getFieldPath()) {
+        if ($data->isInitialized('fieldPath')) {
             $dataArray['fieldPath'] = $data->getFieldPath();
         }
         foreach ($data as $key => $value) {

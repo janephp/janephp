@@ -80,16 +80,16 @@ class BusinessProcessSearchRequestNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         $dataArray['limit'] = $data->getLimit();
-        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
+        if ($data->isInitialized('pageToken')) {
             $dataArray['pageToken'] = $data->getPageToken();
         }
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
+        if ($data->isInitialized('filter')) {
             $dataArray['filter'] = $data->getFilter();
         }
-        if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
+        if ($data->isInitialized('searchString')) {
             $dataArray['searchString'] = $data->getSearchString();
         }
-        if ($data->isInitialized('searchBehaviors') && null !== $data->getSearchBehaviors()) {
+        if ($data->isInitialized('searchBehaviors')) {
             $values = [];
             foreach ($data->getSearchBehaviors() as $value) {
                 $values[] = $value;

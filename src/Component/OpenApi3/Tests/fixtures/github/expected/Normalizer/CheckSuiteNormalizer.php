@@ -168,8 +168,8 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray['pull_requests'] = $values;
         $dataArray['app'] = $this->normalizer->normalize($data->getApp(), 'json', $context);
         $dataArray['repository'] = $this->normalizer->normalize($data->getRepository(), 'json', $context);
-        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['head_commit'] = $this->normalizer->normalize($data->getHeadCommit(), 'json', $context);
         $dataArray['latest_check_runs_count'] = $data->getLatestCheckRunsCount();
         $dataArray['check_runs_url'] = $data->getCheckRunsUrl();

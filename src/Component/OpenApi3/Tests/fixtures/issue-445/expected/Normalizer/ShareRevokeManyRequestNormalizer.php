@@ -52,7 +52,7 @@ class ShareRevokeManyRequestNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('ids') && null !== $data->getIds()) {
+        if ($data->isInitialized('ids')) {
             $values = [];
             foreach ($data->getIds() as $value) {
                 $values[] = $value;

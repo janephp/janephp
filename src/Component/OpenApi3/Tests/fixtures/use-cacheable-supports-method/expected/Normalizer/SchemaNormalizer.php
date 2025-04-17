@@ -95,7 +95,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['stringProperty'] = $data->getStringProperty();
         }
         if ($data->isInitialized('dateProperty') && null !== $data->getDateProperty()) {
-            $dataArray['dateProperty'] = $data->getDateProperty()?->format('Y-m-d\TH:i:sP');
+            $dataArray['dateProperty'] = $data->getDateProperty()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('integerProperty') && null !== $data->getIntegerProperty()) {
             $dataArray['integerProperty'] = $data->getIntegerProperty();

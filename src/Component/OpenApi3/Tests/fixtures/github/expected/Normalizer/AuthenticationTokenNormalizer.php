@@ -86,7 +86,7 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         $dataArray['token'] = $data->getToken();
-        $dataArray['expires_at'] = $data->getExpiresAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['expires_at'] = $data->getExpiresAt()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
             $values = [];
             foreach ($data->getPermissions() as $key => $value) {
@@ -101,7 +101,7 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
             }
             $dataArray['repositories'] = $values_1;
         }
-        if ($data->isInitialized('singleFile') && null !== $data->getSingleFile()) {
+        if ($data->isInitialized('singleFile')) {
             $dataArray['single_file'] = $data->getSingleFile();
         }
         if ($data->isInitialized('repositorySelection') && null !== $data->getRepositorySelection()) {

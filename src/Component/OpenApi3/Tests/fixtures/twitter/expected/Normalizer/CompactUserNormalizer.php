@@ -93,7 +93,7 @@ class CompactUserNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['format'] = $data->getFormat();
         }
         $dataArray['id'] = $data->getId();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['name'] = $data->getName();
         $dataArray['username'] = $data->getUsername();
         $dataArray['protected'] = $data->getProtected();

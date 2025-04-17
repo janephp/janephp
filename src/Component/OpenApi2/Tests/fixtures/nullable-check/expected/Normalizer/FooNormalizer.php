@@ -68,7 +68,7 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             }
             $dataArray['bar'] = $value;
         }
-        if ($data->isInitialized('baz') && null !== $data->getBaz()) {
+        if ($data->isInitialized('baz')) {
             $dataArray['baz'] = $data->getBaz();
         }
         return $dataArray;

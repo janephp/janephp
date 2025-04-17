@@ -72,14 +72,14 @@ class TagboxItemAssignedConditionNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
+        if ($data->isInitialized('traceRefId')) {
             $dataArray['traceRefId'] = $data->getTraceRefId();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('fieldPath') && null !== $data->getFieldPath()) {
+        if ($data->isInitialized('fieldPath')) {
             $dataArray['fieldPath'] = $data->getFieldPath();
         }
-        if ($data->isInitialized('refId') && null !== $data->getRefId()) {
+        if ($data->isInitialized('refId')) {
             $dataArray['refId'] = $data->getRefId();
         }
         foreach ($data as $key => $value) {

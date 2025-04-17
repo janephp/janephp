@@ -81,7 +81,7 @@ class AacAudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('extension') && null !== $data->getExtension()) {
+        if ($data->isInitialized('extension')) {
             $dataArray['extension'] = $data->getExtension();
         }
         if ($data->isInitialized('profile') && null !== $data->getProfile()) {
@@ -90,10 +90,10 @@ class AacAudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('coder') && null !== $data->getCoder()) {
             $dataArray['coder'] = $data->getCoder();
         }
-        if ($data->isInitialized('bitrate') && null !== $data->getBitrate()) {
+        if ($data->isInitialized('bitrate')) {
             $dataArray['bitrate'] = $data->getBitrate();
         }
-        if ($data->isInitialized('variableBitRate') && null !== $data->getVariableBitRate()) {
+        if ($data->isInitialized('variableBitRate')) {
             $dataArray['variableBitRate'] = $data->getVariableBitRate();
         }
         foreach ($data as $key => $value) {

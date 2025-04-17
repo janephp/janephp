@@ -85,8 +85,8 @@ class IssueSearchResultItemPullRequestNormalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('mergedAt') && null !== $data->getMergedAt()) {
-            $dataArray['merged_at'] = $data->getMergedAt()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('mergedAt')) {
+            $dataArray['merged_at'] = $data->getMergedAt()?->format('Y-m-d\TH:i:sP');
         }
         $dataArray['diff_url'] = $data->getDiffUrl();
         $dataArray['html_url'] = $data->getHtmlUrl();

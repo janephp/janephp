@@ -121,10 +121,10 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $dataArray['oldValue'] = $data->getOldValue();
         }
         if ($data->isInitialized('eventDate') && null !== $data->getEventDate()) {
-            $dataArray['eventDate'] = $data->getEventDate()?->format('Y-m-d\TH:i:sP');
+            $dataArray['eventDate'] = $data->getEventDate()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('createdDate') && null !== $data->getCreatedDate()) {
-            $dataArray['createdDate'] = $data->getCreatedDate()?->format('Y-m-d\TH:i:sP');
+            $dataArray['createdDate'] = $data->getCreatedDate()->format('Y-m-d\TH:i:sP');
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

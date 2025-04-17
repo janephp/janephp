@@ -112,13 +112,13 @@ class SimpleCommitStatusNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray['state'] = $data->getState();
         $dataArray['context'] = $data->getContext();
         $dataArray['target_url'] = $data->getTargetUrl();
-        if ($data->isInitialized('required') && null !== $data->getRequired()) {
+        if ($data->isInitialized('required')) {
             $dataArray['required'] = $data->getRequired();
         }
         $dataArray['avatar_url'] = $data->getAvatarUrl();
         $dataArray['url'] = $data->getUrl();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

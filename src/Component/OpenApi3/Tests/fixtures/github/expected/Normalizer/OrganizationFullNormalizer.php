@@ -300,7 +300,7 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('email') && null !== $data->getEmail()) {
             $dataArray['email'] = $data->getEmail();
         }
-        if ($data->isInitialized('twitterUsername') && null !== $data->getTwitterUsername()) {
+        if ($data->isInitialized('twitterUsername')) {
             $dataArray['twitter_username'] = $data->getTwitterUsername();
         }
         if ($data->isInitialized('isVerified') && null !== $data->getIsVerified()) {
@@ -313,7 +313,7 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray['followers'] = $data->getFollowers();
         $dataArray['following'] = $data->getFollowing();
         $dataArray['html_url'] = $data->getHtmlUrl();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['type'] = $data->getType();
         if ($data->isInitialized('totalPrivateRepos') && null !== $data->getTotalPrivateRepos()) {
             $dataArray['total_private_repos'] = $data->getTotalPrivateRepos();
@@ -321,28 +321,28 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('ownedPrivateRepos') && null !== $data->getOwnedPrivateRepos()) {
             $dataArray['owned_private_repos'] = $data->getOwnedPrivateRepos();
         }
-        if ($data->isInitialized('privateGists') && null !== $data->getPrivateGists()) {
+        if ($data->isInitialized('privateGists')) {
             $dataArray['private_gists'] = $data->getPrivateGists();
         }
-        if ($data->isInitialized('diskUsage') && null !== $data->getDiskUsage()) {
+        if ($data->isInitialized('diskUsage')) {
             $dataArray['disk_usage'] = $data->getDiskUsage();
         }
-        if ($data->isInitialized('collaborators') && null !== $data->getCollaborators()) {
+        if ($data->isInitialized('collaborators')) {
             $dataArray['collaborators'] = $data->getCollaborators();
         }
-        if ($data->isInitialized('billingEmail') && null !== $data->getBillingEmail()) {
+        if ($data->isInitialized('billingEmail')) {
             $dataArray['billing_email'] = $data->getBillingEmail();
         }
         if ($data->isInitialized('plan') && null !== $data->getPlan()) {
             $dataArray['plan'] = $this->normalizer->normalize($data->getPlan(), 'json', $context);
         }
-        if ($data->isInitialized('defaultRepositoryPermission') && null !== $data->getDefaultRepositoryPermission()) {
+        if ($data->isInitialized('defaultRepositoryPermission')) {
             $dataArray['default_repository_permission'] = $data->getDefaultRepositoryPermission();
         }
-        if ($data->isInitialized('membersCanCreateRepositories') && null !== $data->getMembersCanCreateRepositories()) {
+        if ($data->isInitialized('membersCanCreateRepositories')) {
             $dataArray['members_can_create_repositories'] = $data->getMembersCanCreateRepositories();
         }
-        if ($data->isInitialized('twoFactorRequirementEnabled') && null !== $data->getTwoFactorRequirementEnabled()) {
+        if ($data->isInitialized('twoFactorRequirementEnabled')) {
             $dataArray['two_factor_requirement_enabled'] = $data->getTwoFactorRequirementEnabled();
         }
         if ($data->isInitialized('membersAllowedRepositoryCreationType') && null !== $data->getMembersAllowedRepositoryCreationType()) {
@@ -357,7 +357,7 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('membersCanCreateInternalRepositories') && null !== $data->getMembersCanCreateInternalRepositories()) {
             $dataArray['members_can_create_internal_repositories'] = $data->getMembersCanCreateInternalRepositories();
         }
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

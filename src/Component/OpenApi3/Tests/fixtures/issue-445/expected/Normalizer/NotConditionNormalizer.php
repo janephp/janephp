@@ -65,11 +65,11 @@ class NotConditionNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
+        if ($data->isInitialized('traceRefId')) {
             $dataArray['traceRefId'] = $data->getTraceRefId();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('condition') && null !== $data->getCondition()) {
+        if ($data->isInitialized('condition')) {
             $dataArray['condition'] = $data->getCondition();
         }
         foreach ($data as $key => $value) {

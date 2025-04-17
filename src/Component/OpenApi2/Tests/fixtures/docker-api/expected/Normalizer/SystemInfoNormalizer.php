@@ -433,7 +433,7 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('indexServerAddress') && null !== $data->getIndexServerAddress()) {
             $dataArray['IndexServerAddress'] = $data->getIndexServerAddress();
         }
-        if ($data->isInitialized('registryConfig') && null !== $data->getRegistryConfig()) {
+        if ($data->isInitialized('registryConfig')) {
             $dataArray['RegistryConfig'] = $this->normalizer->normalize($data->getRegistryConfig(), 'json', $context);
         }
         if ($data->isInitialized('genericResources') && null !== $data->getGenericResources()) {

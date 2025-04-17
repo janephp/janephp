@@ -65,11 +65,11 @@ class TakeDictionaryValueTransformationNormalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
+        if ($data->isInitialized('traceRefId')) {
             $dataArray['traceRefId'] = $data->getTraceRefId();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('key') && null !== $data->getKey()) {
+        if ($data->isInitialized('key')) {
             $dataArray['key'] = $data->getKey();
         }
         foreach ($data as $key => $value) {

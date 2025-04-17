@@ -93,7 +93,7 @@ class BusinessRuleTransformationNormalizer implements DenormalizerInterface, Nor
         if (null !== $data->getKind() and 'SplitTransformation' === $data->getKind()) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
+        if ($data->isInitialized('traceRefId')) {
             $dataArray['traceRefId'] = $data->getTraceRefId();
         }
         $dataArray['kind'] = $data->getKind();

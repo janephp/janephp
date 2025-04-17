@@ -102,19 +102,19 @@ class EnterpriseNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description')) {
             $dataArray['description'] = $data->getDescription();
         }
         $dataArray['html_url'] = $data->getHtmlUrl();
-        if ($data->isInitialized('websiteUrl') && null !== $data->getWebsiteUrl()) {
+        if ($data->isInitialized('websiteUrl')) {
             $dataArray['website_url'] = $data->getWebsiteUrl();
         }
         $dataArray['id'] = $data->getId();
         $dataArray['node_id'] = $data->getNodeId();
         $dataArray['name'] = $data->getName();
         $dataArray['slug'] = $data->getSlug();
-        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['avatar_url'] = $data->getAvatarUrl();
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

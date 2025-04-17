@@ -126,36 +126,36 @@ class InvalidMetadataExceptionNormalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('traceLevel') && null !== $data->getTraceLevel()) {
             $dataArray['traceLevel'] = $data->getTraceLevel();
         }
-        if ($data->isInitialized('traceId') && null !== $data->getTraceId()) {
+        if ($data->isInitialized('traceId')) {
             $dataArray['traceId'] = $data->getTraceId();
         }
-        if ($data->isInitialized('traceJobId') && null !== $data->getTraceJobId()) {
+        if ($data->isInitialized('traceJobId')) {
             $dataArray['traceJobId'] = $data->getTraceJobId();
         }
         if ($data->isInitialized('httpStatusCode') && null !== $data->getHttpStatusCode()) {
             $dataArray['httpStatusCode'] = $data->getHttpStatusCode();
         }
-        if ($data->isInitialized('exceptionMessage') && null !== $data->getExceptionMessage()) {
+        if ($data->isInitialized('exceptionMessage')) {
             $dataArray['exceptionMessage'] = $data->getExceptionMessage();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('customerId') && null !== $data->getCustomerId()) {
+        if ($data->isInitialized('customerId')) {
             $dataArray['customerId'] = $data->getCustomerId();
         }
-        if ($data->isInitialized('customerAlias') && null !== $data->getCustomerAlias()) {
+        if ($data->isInitialized('customerAlias')) {
             $dataArray['customerAlias'] = $data->getCustomerAlias();
         }
-        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
+        if ($data->isInitialized('userId')) {
             $dataArray['userId'] = $data->getUserId();
         }
-        if ($data->isInitialized('metadataErrors') && null !== $data->getMetadataErrors()) {
+        if ($data->isInitialized('metadataErrors')) {
             $values = [];
             foreach ($data->getMetadataErrors() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['metadataErrors'] = $values;
         }
-        if ($data->isInitialized('validationErrors') && null !== $data->getValidationErrors()) {
+        if ($data->isInitialized('validationErrors')) {
             $values_1 = [];
             foreach ($data->getValidationErrors() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

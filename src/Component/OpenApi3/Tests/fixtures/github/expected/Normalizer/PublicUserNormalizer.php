@@ -223,20 +223,20 @@ class PublicUserNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray['email'] = $data->getEmail();
         $dataArray['hireable'] = $data->getHireable();
         $dataArray['bio'] = $data->getBio();
-        if ($data->isInitialized('twitterUsername') && null !== $data->getTwitterUsername()) {
+        if ($data->isInitialized('twitterUsername')) {
             $dataArray['twitter_username'] = $data->getTwitterUsername();
         }
         $dataArray['public_repos'] = $data->getPublicRepos();
         $dataArray['public_gists'] = $data->getPublicGists();
         $dataArray['followers'] = $data->getFollowers();
         $dataArray['following'] = $data->getFollowing();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('plan') && null !== $data->getPlan()) {
             $dataArray['plan'] = $this->normalizer->normalize($data->getPlan(), 'json', $context);
         }
-        if ($data->isInitialized('suspendedAt') && null !== $data->getSuspendedAt()) {
-            $dataArray['suspended_at'] = $data->getSuspendedAt()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('suspendedAt')) {
+            $dataArray['suspended_at'] = $data->getSuspendedAt()?->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('privateGists') && null !== $data->getPrivateGists()) {
             $dataArray['private_gists'] = $data->getPrivateGists();

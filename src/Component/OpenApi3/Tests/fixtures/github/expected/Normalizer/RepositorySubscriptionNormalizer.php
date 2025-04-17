@@ -86,7 +86,7 @@ class RepositorySubscriptionNormalizer implements DenormalizerInterface, Normali
         $dataArray['subscribed'] = $data->getSubscribed();
         $dataArray['ignored'] = $data->getIgnored();
         $dataArray['reason'] = $data->getReason();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['url'] = $data->getUrl();
         $dataArray['repository_url'] = $data->getRepositoryUrl();
         foreach ($data as $key => $value) {

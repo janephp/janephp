@@ -92,16 +92,16 @@ class SwarmSpecNormalizer implements DenormalizerInterface, NormalizerInterface,
             }
             $dataArray['Labels'] = $values;
         }
-        if ($data->isInitialized('orchestration') && null !== $data->getOrchestration()) {
+        if ($data->isInitialized('orchestration')) {
             $dataArray['Orchestration'] = $this->normalizer->normalize($data->getOrchestration(), 'json', $context);
         }
         if ($data->isInitialized('raft') && null !== $data->getRaft()) {
             $dataArray['Raft'] = $this->normalizer->normalize($data->getRaft(), 'json', $context);
         }
-        if ($data->isInitialized('dispatcher') && null !== $data->getDispatcher()) {
+        if ($data->isInitialized('dispatcher')) {
             $dataArray['Dispatcher'] = $this->normalizer->normalize($data->getDispatcher(), 'json', $context);
         }
-        if ($data->isInitialized('cAConfig') && null !== $data->getCAConfig()) {
+        if ($data->isInitialized('cAConfig')) {
             $dataArray['CAConfig'] = $this->normalizer->normalize($data->getCAConfig(), 'json', $context);
         }
         if ($data->isInitialized('encryptionConfig') && null !== $data->getEncryptionConfig()) {

@@ -97,17 +97,17 @@ class GeoDistanceAggregatorNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
+        if ($data->isInitialized('names')) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('aggregators') && null !== $data->getAggregators()) {
+        if ($data->isInitialized('aggregators')) {
             $values = [];
             foreach ($data->getAggregators() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['aggregators'] = $values;
         }
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
+        if ($data->isInitialized('filter')) {
             $dataArray['filter'] = $data->getFilter();
         }
         $dataArray['kind'] = $data->getKind();

@@ -90,17 +90,17 @@ class OutputNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $data->getKind() and 'OutputDetail' === $data->getKind()) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
         $dataArray['outputFormatId'] = $data->getOutputFormatId();
         $dataArray['contentId'] = $data->getContentId();
         $dataArray['renderingState'] = $data->getRenderingState();
-        if ($data->isInitialized('detail') && null !== $data->getDetail()) {
+        if ($data->isInitialized('detail')) {
             $dataArray['detail'] = $data->getDetail();
         }
-        if ($data->isInitialized('backupTimestamp') && null !== $data->getBackupTimestamp()) {
-            $dataArray['backupTimestamp'] = $data->getBackupTimestamp()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('backupTimestamp')) {
+            $dataArray['backupTimestamp'] = $data->getBackupTimestamp()?->format('Y-m-d\TH:i:sP');
         }
         $dataArray['attemptsLeft'] = $data->getAttemptsLeft();
         $dataArray['fileVersion'] = $data->getFileVersion();

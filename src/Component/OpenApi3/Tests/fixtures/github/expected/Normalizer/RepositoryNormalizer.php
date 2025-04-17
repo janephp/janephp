@@ -558,13 +558,13 @@ class RepositoryNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('visibility') && null !== $data->getVisibility()) {
             $dataArray['visibility'] = $data->getVisibility();
         }
-        $dataArray['pushed_at'] = $data->getPushedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['pushed_at'] = $data->getPushedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('allowRebaseMerge') && null !== $data->getAllowRebaseMerge()) {
             $dataArray['allow_rebase_merge'] = $data->getAllowRebaseMerge();
         }
-        if ($data->isInitialized('templateRepository') && null !== $data->getTemplateRepository()) {
+        if ($data->isInitialized('templateRepository')) {
             $dataArray['template_repository'] = $this->normalizer->normalize($data->getTemplateRepository(), 'json', $context);
         }
         if ($data->isInitialized('tempCloneToken') && null !== $data->getTempCloneToken()) {

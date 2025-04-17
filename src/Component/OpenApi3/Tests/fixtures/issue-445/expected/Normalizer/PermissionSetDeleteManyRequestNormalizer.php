@@ -52,7 +52,7 @@ class PermissionSetDeleteManyRequestNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('permissionSetIds') && null !== $data->getPermissionSetIds()) {
+        if ($data->isInitialized('permissionSetIds')) {
             $values = [];
             foreach ($data->getPermissionSetIds() as $value) {
                 $values[] = $value;

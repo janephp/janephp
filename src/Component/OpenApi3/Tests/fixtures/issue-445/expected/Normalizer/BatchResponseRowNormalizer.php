@@ -73,10 +73,10 @@ class BatchResponseRowNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray['succeeded'] = $data->getSucceeded();
         $dataArray['status'] = $data->getStatus();
         $dataArray['version'] = $data->getVersion();
-        if ($data->isInitialized('error') && null !== $data->getError()) {
+        if ($data->isInitialized('error')) {
             $dataArray['error'] = $data->getError();
         }
-        if ($data->isInitialized('requestId') && null !== $data->getRequestId()) {
+        if ($data->isInitialized('requestId')) {
             $dataArray['requestId'] = $data->getRequestId();
         }
         return $dataArray;

@@ -98,24 +98,24 @@ class ConsoleMessageNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
         $dataArray['retries'] = $data->getRetries();
         $dataArray['priority'] = $data->getPriority();
         $dataArray['deduplicate'] = $data->getDeduplicate();
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('command') && null !== $data->getCommand()) {
+        if ($data->isInitialized('command')) {
             $dataArray['command'] = $data->getCommand();
         }
-        if ($data->isInitialized('arguments') && null !== $data->getArguments()) {
+        if ($data->isInitialized('arguments')) {
             $values = [];
             foreach ($data->getArguments() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['arguments'] = $values;
         }
-        if ($data->isInitialized('targetQueue') && null !== $data->getTargetQueue()) {
+        if ($data->isInitialized('targetQueue')) {
             $dataArray['targetQueue'] = $data->getTargetQueue();
         }
         foreach ($data as $key => $value_1) {

@@ -103,42 +103,42 @@ class BusinessRuleTraceLogNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('documentId') && null !== $data->getDocumentId()) {
+        if ($data->isInitialized('documentId')) {
             $dataArray['documentId'] = $data->getDocumentId();
         }
         $dataArray['documentType'] = $data->getDocumentType();
-        if ($data->isInitialized('ruleIds') && null !== $data->getRuleIds()) {
+        if ($data->isInitialized('ruleIds')) {
             $values = [];
             foreach ($data->getRuleIds() as $value) {
                 $values[] = $value;
             }
             $dataArray['ruleIds'] = $values;
         }
-        if ($data->isInitialized('rules') && null !== $data->getRules()) {
+        if ($data->isInitialized('rules')) {
             $values_1 = [];
             foreach ($data->getRules() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['rules'] = $values_1;
         }
-        if ($data->isInitialized('validationErrors') && null !== $data->getValidationErrors()) {
+        if ($data->isInitialized('validationErrors')) {
             $values_2 = [];
             foreach ($data->getValidationErrors() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['validationErrors'] = $values_2;
         }
-        if ($data->isInitialized('generalErrors') && null !== $data->getGeneralErrors()) {
+        if ($data->isInitialized('generalErrors')) {
             $values_3 = [];
             foreach ($data->getGeneralErrors() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $dataArray['generalErrors'] = $values_3;
         }
-        if ($data->isInitialized('audit') && null !== $data->getAudit()) {
+        if ($data->isInitialized('audit')) {
             $dataArray['audit'] = $data->getAudit();
         }
         return $dataArray;

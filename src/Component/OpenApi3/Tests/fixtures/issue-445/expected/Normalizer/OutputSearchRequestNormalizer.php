@@ -92,31 +92,31 @@ class OutputSearchRequestNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         $dataArray['limit'] = $data->getLimit();
-        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
+        if ($data->isInitialized('pageToken')) {
             $dataArray['pageToken'] = $data->getPageToken();
         }
-        if ($data->isInitialized('contentIds') && null !== $data->getContentIds()) {
+        if ($data->isInitialized('contentIds')) {
             $values = [];
             foreach ($data->getContentIds() as $value) {
                 $values[] = $value;
             }
             $dataArray['contentIds'] = $values;
         }
-        if ($data->isInitialized('renderingStates') && null !== $data->getRenderingStates()) {
+        if ($data->isInitialized('renderingStates')) {
             $values_1 = [];
             foreach ($data->getRenderingStates() as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['renderingStates'] = $values_1;
         }
-        if ($data->isInitialized('fileExtensions') && null !== $data->getFileExtensions()) {
+        if ($data->isInitialized('fileExtensions')) {
             $values_2 = [];
             foreach ($data->getFileExtensions() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['fileExtensions'] = $values_2;
         }
-        if ($data->isInitialized('outputFormatIds') && null !== $data->getOutputFormatIds()) {
+        if ($data->isInitialized('outputFormatIds')) {
             $values_3 = [];
             foreach ($data->getOutputFormatIds() as $value_3) {
                 $values_3[] = $value_3;

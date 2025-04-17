@@ -140,8 +140,8 @@ class TeamDiscussionNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['body_version'] = $data->getBodyVersion();
         $dataArray['comments_count'] = $data->getCommentsCount();
         $dataArray['comments_url'] = $data->getCommentsUrl();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['last_edited_at'] = $data->getLastEditedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['last_edited_at'] = $data->getLastEditedAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['html_url'] = $data->getHtmlUrl();
         $dataArray['node_id'] = $data->getNodeId();
         $dataArray['number'] = $data->getNumber();
@@ -149,7 +149,7 @@ class TeamDiscussionNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['private'] = $data->getPrivate();
         $dataArray['team_url'] = $data->getTeamUrl();
         $dataArray['title'] = $data->getTitle();
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['url'] = $data->getUrl();
         if ($data->isInitialized('reactions') && null !== $data->getReactions()) {
             $dataArray['reactions'] = $this->normalizer->normalize($data->getReactions(), 'json', $context);

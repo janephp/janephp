@@ -120,28 +120,28 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
+        if ($data->isInitialized('searchString')) {
             $dataArray['searchString'] = $data->getSearchString();
         }
-        if ($data->isInitialized('searchBehaviors') && null !== $data->getSearchBehaviors()) {
+        if ($data->isInitialized('searchBehaviors')) {
             $values = [];
             foreach ($data->getSearchBehaviors() as $value) {
                 $values[] = $value;
             }
             $dataArray['searchBehaviors'] = $values;
         }
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
+        if ($data->isInitialized('filter')) {
             $dataArray['filter'] = $data->getFilter();
         }
         $dataArray['lifeCycleFilter'] = $data->getLifeCycleFilter();
-        if ($data->isInitialized('userRightsFilter') && null !== $data->getUserRightsFilter()) {
+        if ($data->isInitialized('userRightsFilter')) {
             $values_1 = [];
             foreach ($data->getUserRightsFilter() as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['userRightsFilter'] = $values_1;
         }
-        if ($data->isInitialized('aggregationFilters') && null !== $data->getAggregationFilters()) {
+        if ($data->isInitialized('aggregationFilters')) {
             $values_2 = [];
             foreach ($data->getAggregationFilters() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);

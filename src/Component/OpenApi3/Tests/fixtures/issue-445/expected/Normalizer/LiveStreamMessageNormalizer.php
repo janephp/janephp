@@ -112,29 +112,29 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
         $dataArray['retries'] = $data->getRetries();
         $dataArray['priority'] = $data->getPriority();
         $dataArray['deduplicate'] = $data->getDeduplicate();
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('customerId') && null !== $data->getCustomerId()) {
+        if ($data->isInitialized('customerId')) {
             $dataArray['customerId'] = $data->getCustomerId();
         }
-        if ($data->isInitialized('customerAlias') && null !== $data->getCustomerAlias()) {
+        if ($data->isInitialized('customerAlias')) {
             $dataArray['customerAlias'] = $data->getCustomerAlias();
         }
         if ($data->isInitialized('timestamp') && null !== $data->getTimestamp()) {
-            $dataArray['timestamp'] = $data->getTimestamp()?->format('Y-m-d\TH:i:sP');
+            $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('scope') && null !== $data->getScope()) {
+        if ($data->isInitialized('scope')) {
             $dataArray['scope'] = $data->getScope();
         }
-        if ($data->isInitialized('documentChange') && null !== $data->getDocumentChange()) {
+        if ($data->isInitialized('documentChange')) {
             $dataArray['documentChange'] = $data->getDocumentChange();
         }
-        if ($data->isInitialized('applicationEvent') && null !== $data->getApplicationEvent()) {
+        if ($data->isInitialized('applicationEvent')) {
             $dataArray['applicationEvent'] = $data->getApplicationEvent();
         }
         foreach ($data as $key => $value) {

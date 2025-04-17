@@ -63,7 +63,7 @@ class AndFilterNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('filters') && null !== $data->getFilters()) {
+        if ($data->isInitialized('filters')) {
             $values = [];
             foreach ($data->getFilters() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

@@ -66,7 +66,7 @@ class EdgeNGramAnalyzerNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('type') && null !== $data->getType()) {
             $dataArray['type'] = $data->getType();
         }
-        if ($data->isInitialized('fieldSuffix') && null !== $data->getFieldSuffix()) {
+        if ($data->isInitialized('fieldSuffix')) {
             $dataArray['fieldSuffix'] = $data->getFieldSuffix();
         }
         foreach ($data as $key => $value) {

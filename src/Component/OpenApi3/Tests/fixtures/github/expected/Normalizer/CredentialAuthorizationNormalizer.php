@@ -95,7 +95,7 @@ class CredentialAuthorizationNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('tokenLastEight') && null !== $data->getTokenLastEight()) {
             $dataArray['token_last_eight'] = $data->getTokenLastEight();
         }
-        $dataArray['credential_authorized_at'] = $data->getCredentialAuthorizedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['credential_authorized_at'] = $data->getCredentialAuthorizedAt()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('scopes') && null !== $data->getScopes()) {
             $values = [];
             foreach ($data->getScopes() as $value) {
@@ -106,8 +106,8 @@ class CredentialAuthorizationNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('fingerprint') && null !== $data->getFingerprint()) {
             $dataArray['fingerprint'] = $data->getFingerprint();
         }
-        if ($data->isInitialized('credentialAccessedAt') && null !== $data->getCredentialAccessedAt()) {
-            $dataArray['credential_accessed_at'] = $data->getCredentialAccessedAt()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('credentialAccessedAt')) {
+            $dataArray['credential_accessed_at'] = $data->getCredentialAccessedAt()?->format('Y-m-d\TH:i:sP');
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

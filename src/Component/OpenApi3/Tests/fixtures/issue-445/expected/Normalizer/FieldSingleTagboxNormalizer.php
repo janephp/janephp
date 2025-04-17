@@ -148,16 +148,16 @@ class FieldSingleTagboxNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('indexId') && null !== $data->getIndexId()) {
+        if ($data->isInitialized('indexId')) {
             $dataArray['indexId'] = $data->getIndexId();
         }
-        if ($data->isInitialized('fieldNamespace') && null !== $data->getFieldNamespace()) {
+        if ($data->isInitialized('fieldNamespace')) {
             $dataArray['fieldNamespace'] = $data->getFieldNamespace();
         }
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
+        if ($data->isInitialized('names')) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
+        if ($data->isInitialized('descriptions')) {
             $dataArray['descriptions'] = $data->getDescriptions();
         }
         $dataArray['required'] = $data->getRequired();
@@ -167,13 +167,13 @@ class FieldSingleTagboxNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray['sortable'] = $data->getSortable();
         $dataArray['kind'] = $data->getKind();
         $dataArray['schemaId'] = $data->getSchemaId();
-        if ($data->isInitialized('schemaIndexingInfo') && null !== $data->getSchemaIndexingInfo()) {
+        if ($data->isInitialized('schemaIndexingInfo')) {
             $dataArray['schemaIndexingInfo'] = $data->getSchemaIndexingInfo();
         }
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
+        if ($data->isInitialized('filter')) {
             $dataArray['filter'] = $data->getFilter();
         }
-        if ($data->isInitialized('listItemCreateTemplate') && null !== $data->getListItemCreateTemplate()) {
+        if ($data->isInitialized('listItemCreateTemplate')) {
             $dataArray['listItemCreateTemplate'] = $data->getListItemCreateTemplate();
         }
         if ($data->isInitialized('viewModeDisplayPatternType') && null !== $data->getViewModeDisplayPatternType()) {

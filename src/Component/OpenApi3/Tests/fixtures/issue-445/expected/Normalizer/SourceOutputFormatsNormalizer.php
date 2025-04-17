@@ -72,19 +72,19 @@ class SourceOutputFormatsNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('image') && null !== $data->getImage()) {
+        if ($data->isInitialized('image')) {
             $dataArray['image'] = $data->getImage();
         }
-        if ($data->isInitialized('video') && null !== $data->getVideo()) {
+        if ($data->isInitialized('video')) {
             $dataArray['video'] = $data->getVideo();
         }
-        if ($data->isInitialized('document') && null !== $data->getDocument()) {
+        if ($data->isInitialized('document')) {
             $dataArray['document'] = $data->getDocument();
         }
-        if ($data->isInitialized('audio') && null !== $data->getAudio()) {
+        if ($data->isInitialized('audio')) {
             $dataArray['audio'] = $data->getAudio();
         }
-        if ($data->isInitialized('vector') && null !== $data->getVector()) {
+        if ($data->isInitialized('vector')) {
             $dataArray['vector'] = $data->getVector();
         }
         return $dataArray;

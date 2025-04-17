@@ -75,7 +75,7 @@ class BooksGetLdjsonResponse200HydraSearchHydraMappingItemNormalizer implements 
         if ($data->isInitialized('variable') && null !== $data->getVariable()) {
             $dataArray['variable'] = $data->getVariable();
         }
-        if ($data->isInitialized('property') && null !== $data->getProperty()) {
+        if ($data->isInitialized('property')) {
             $dataArray['property'] = $data->getProperty();
         }
         if ($data->isInitialized('required') && null !== $data->getRequired()) {

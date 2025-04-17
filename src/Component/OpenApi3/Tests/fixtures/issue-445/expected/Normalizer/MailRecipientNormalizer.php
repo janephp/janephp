@@ -58,10 +58,10 @@ class MailRecipientNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         $dataArray['userEmail'] = $data->getUserEmail();
-        if ($data->isInitialized('token') && null !== $data->getToken()) {
+        if ($data->isInitialized('token')) {
             $dataArray['token'] = $data->getToken();
         }
-        if ($data->isInitialized('url') && null !== $data->getUrl()) {
+        if ($data->isInitialized('url')) {
             $dataArray['url'] = $data->getUrl();
         }
         return $dataArray;

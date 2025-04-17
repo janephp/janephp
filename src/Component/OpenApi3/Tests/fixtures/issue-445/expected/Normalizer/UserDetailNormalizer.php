@@ -172,37 +172,37 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
+        if ($data->isInitialized('firstName')) {
             $dataArray['firstName'] = $data->getFirstName();
         }
-        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
+        if ($data->isInitialized('lastName')) {
             $dataArray['lastName'] = $data->getLastName();
         }
         $dataArray['emailAddress'] = $data->getEmailAddress();
         $dataArray['isDeleted'] = $data->getIsDeleted();
-        if ($data->isInitialized('userRoles') && null !== $data->getUserRoles()) {
+        if ($data->isInitialized('userRoles')) {
             $values = [];
             foreach ($data->getUserRoles() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['userRoles'] = $values;
         }
-        if ($data->isInitialized('comment') && null !== $data->getComment()) {
+        if ($data->isInitialized('comment')) {
             $dataArray['comment'] = $data->getComment();
         }
-        if ($data->isInitialized('languageCode') && null !== $data->getLanguageCode()) {
+        if ($data->isInitialized('languageCode')) {
             $dataArray['languageCode'] = $data->getLanguageCode();
         }
-        if ($data->isInitialized('address') && null !== $data->getAddress()) {
+        if ($data->isInitialized('address')) {
             $dataArray['address'] = $data->getAddress();
         }
-        if ($data->isInitialized('identityProviderId') && null !== $data->getIdentityProviderId()) {
+        if ($data->isInitialized('identityProviderId')) {
             $dataArray['identityProviderId'] = $data->getIdentityProviderId();
         }
-        if ($data->isInitialized('ownerTokens') && null !== $data->getOwnerTokens()) {
+        if ($data->isInitialized('ownerTokens')) {
             $values_1 = [];
             foreach ($data->getOwnerTokens() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
@@ -227,7 +227,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('isFederated') && null !== $data->getIsFederated()) {
             $dataArray['isFederated'] = $data->getIsFederated();
         }
-        if ($data->isInitialized('audit') && null !== $data->getAudit()) {
+        if ($data->isInitialized('audit')) {
             $dataArray['audit'] = $data->getAudit();
         }
         foreach ($data as $key => $value_2) {

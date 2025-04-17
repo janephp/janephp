@@ -185,22 +185,22 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['tfvc_project'] = $data->getTfvcProject();
         }
         $dataArray['status'] = $data->getStatus();
-        if ($data->isInitialized('statusText') && null !== $data->getStatusText()) {
+        if ($data->isInitialized('statusText')) {
             $dataArray['status_text'] = $data->getStatusText();
         }
-        if ($data->isInitialized('failedStep') && null !== $data->getFailedStep()) {
+        if ($data->isInitialized('failedStep')) {
             $dataArray['failed_step'] = $data->getFailedStep();
         }
-        if ($data->isInitialized('errorMessage') && null !== $data->getErrorMessage()) {
+        if ($data->isInitialized('errorMessage')) {
             $dataArray['error_message'] = $data->getErrorMessage();
         }
-        if ($data->isInitialized('importPercent') && null !== $data->getImportPercent()) {
+        if ($data->isInitialized('importPercent')) {
             $dataArray['import_percent'] = $data->getImportPercent();
         }
-        if ($data->isInitialized('commitCount') && null !== $data->getCommitCount()) {
+        if ($data->isInitialized('commitCount')) {
             $dataArray['commit_count'] = $data->getCommitCount();
         }
-        if ($data->isInitialized('pushPercent') && null !== $data->getPushPercent()) {
+        if ($data->isInitialized('pushPercent')) {
             $dataArray['push_percent'] = $data->getPushPercent();
         }
         if ($data->isInitialized('hasLargeFiles') && null !== $data->getHasLargeFiles()) {
@@ -222,7 +222,7 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if ($data->isInitialized('message') && null !== $data->getMessage()) {
             $dataArray['message'] = $data->getMessage();
         }
-        if ($data->isInitialized('authorsCount') && null !== $data->getAuthorsCount()) {
+        if ($data->isInitialized('authorsCount')) {
             $dataArray['authors_count'] = $data->getAuthorsCount();
         }
         $dataArray['url'] = $data->getUrl();

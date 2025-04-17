@@ -52,7 +52,7 @@ class SchemaPermissionSetCreateManyRequestNormalizer implements DenormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('items') && null !== $data->getItems()) {
+        if ($data->isInitialized('items')) {
             $values = [];
             foreach ($data->getItems() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

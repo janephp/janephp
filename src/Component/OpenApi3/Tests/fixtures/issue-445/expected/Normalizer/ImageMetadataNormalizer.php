@@ -264,34 +264,34 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
+        if ($data->isInitialized('names')) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
+        if ($data->isInitialized('descriptions')) {
             $dataArray['descriptions'] = $data->getDescriptions();
         }
-        if ($data->isInitialized('fileExtension') && null !== $data->getFileExtension()) {
+        if ($data->isInitialized('fileExtension')) {
             $dataArray['fileExtension'] = $data->getFileExtension();
         }
-        if ($data->isInitialized('fileName') && null !== $data->getFileName()) {
+        if ($data->isInitialized('fileName')) {
             $dataArray['fileName'] = $data->getFileName();
         }
-        if ($data->isInitialized('filePath') && null !== $data->getFilePath()) {
+        if ($data->isInitialized('filePath')) {
             $dataArray['filePath'] = $data->getFilePath();
         }
-        if ($data->isInitialized('fileSizeInBytes') && null !== $data->getFileSizeInBytes()) {
+        if ($data->isInitialized('fileSizeInBytes')) {
             $dataArray['fileSizeInBytes'] = $data->getFileSizeInBytes();
         }
-        if ($data->isInitialized('sha1Hash') && null !== $data->getSha1Hash()) {
+        if ($data->isInitialized('sha1Hash')) {
             $dataArray['sha1Hash'] = $data->getSha1Hash();
         }
-        if ($data->isInitialized('xmpMetadata') && null !== $data->getXmpMetadata()) {
+        if ($data->isInitialized('xmpMetadata')) {
             $dataArray['xmpMetadata'] = $data->getXmpMetadata();
         }
-        if ($data->isInitialized('exifMetadata') && null !== $data->getExifMetadata()) {
+        if ($data->isInitialized('exifMetadata')) {
             $dataArray['exifMetadata'] = $data->getExifMetadata();
         }
-        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
+        if ($data->isInitialized('language')) {
             $dataArray['language'] = $data->getLanguage();
         }
         if ($data->isInitialized('width') && null !== $data->getWidth()) {
@@ -312,10 +312,10 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('heightInCm') && null !== $data->getHeightInCm()) {
             $dataArray['heightInCm'] = $data->getHeightInCm();
         }
-        if ($data->isInitialized('colorSpace') && null !== $data->getColorSpace()) {
+        if ($data->isInitialized('colorSpace')) {
             $dataArray['colorSpace'] = $data->getColorSpace();
         }
-        if ($data->isInitialized('colorProfile') && null !== $data->getColorProfile()) {
+        if ($data->isInitialized('colorProfile')) {
             $dataArray['colorProfile'] = $data->getColorProfile();
         }
         if ($data->isInitialized('bitsPerPixel') && null !== $data->getBitsPerPixel()) {
@@ -324,10 +324,10 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('bitsPerChannel') && null !== $data->getBitsPerChannel()) {
             $dataArray['bitsPerChannel'] = $data->getBitsPerChannel();
         }
-        if ($data->isInitialized('channels') && null !== $data->getChannels()) {
+        if ($data->isInitialized('channels')) {
             $dataArray['channels'] = $data->getChannels();
         }
-        if ($data->isInitialized('pixelFormat') && null !== $data->getPixelFormat()) {
+        if ($data->isInitialized('pixelFormat')) {
             $dataArray['pixelFormat'] = $data->getPixelFormat();
         }
         if ($data->isInitialized('hasAlpha') && null !== $data->getHasAlpha()) {

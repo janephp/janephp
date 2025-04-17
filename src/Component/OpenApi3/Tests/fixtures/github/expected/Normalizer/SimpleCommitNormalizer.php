@@ -83,7 +83,7 @@ class SimpleCommitNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['id'] = $data->getId();
         $dataArray['tree_id'] = $data->getTreeId();
         $dataArray['message'] = $data->getMessage();
-        $dataArray['timestamp'] = $data->getTimestamp()?->format('Y-m-d\TH:i:sP');
+        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
         $dataArray['author'] = $this->normalizer->normalize($data->getAuthor(), 'json', $context);
         $dataArray['committer'] = $this->normalizer->normalize($data->getCommitter(), 'json', $context);
         foreach ($data as $key => $value) {

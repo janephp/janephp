@@ -295,7 +295,7 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('isolation') && null !== $data->getIsolation()) {
             $dataArray['Isolation'] = $data->getIsolation();
         }
-        if ($data->isInitialized('init') && null !== $data->getInit()) {
+        if ($data->isInitialized('init')) {
             $dataArray['Init'] = $data->getInit();
         }
         if ($data->isInitialized('sysctls') && null !== $data->getSysctls()) {

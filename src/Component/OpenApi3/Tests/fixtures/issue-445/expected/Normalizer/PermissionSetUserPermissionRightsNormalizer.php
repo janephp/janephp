@@ -58,10 +58,10 @@ class PermissionSetUserPermissionRightsNormalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('permissionSetId') && null !== $data->getPermissionSetId()) {
+        if ($data->isInitialized('permissionSetId')) {
             $dataArray['permissionSetId'] = $data->getPermissionSetId();
         }
-        if ($data->isInitialized('permissionSetRights') && null !== $data->getPermissionSetRights()) {
+        if ($data->isInitialized('permissionSetRights')) {
             $values = [];
             foreach ($data->getPermissionSetRights() as $value) {
                 $values[] = $value;

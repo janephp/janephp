@@ -122,7 +122,7 @@ class PullRequestReviewRequestTeamsItemNormalizer implements DenormalizerInterfa
         if ($data->isInitialized('slug') && null !== $data->getSlug()) {
             $dataArray['slug'] = $data->getSlug();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description')) {
             $dataArray['description'] = $data->getDescription();
         }
         if ($data->isInitialized('privacy') && null !== $data->getPrivacy()) {
@@ -137,7 +137,7 @@ class PullRequestReviewRequestTeamsItemNormalizer implements DenormalizerInterfa
         if ($data->isInitialized('repositoriesUrl') && null !== $data->getRepositoriesUrl()) {
             $dataArray['repositories_url'] = $data->getRepositoriesUrl();
         }
-        if ($data->isInitialized('parent') && null !== $data->getParent()) {
+        if ($data->isInitialized('parent')) {
             $dataArray['parent'] = $data->getParent();
         }
         foreach ($data as $key => $value) {

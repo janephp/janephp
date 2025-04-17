@@ -62,7 +62,7 @@ class FieldExistsResponseNormalizer implements DenormalizerInterface, Normalizer
         $dataArray = [];
         $dataArray['exists'] = $data->getExists();
         $dataArray['previouslyUsed'] = $data->getPreviouslyUsed();
-        if ($data->isInitialized('schemaId') && null !== $data->getSchemaId()) {
+        if ($data->isInitialized('schemaId')) {
             $dataArray['schemaId'] = $data->getSchemaId();
         }
         return $dataArray;

@@ -565,19 +565,19 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('visibility') && null !== $data->getVisibility()) {
             $dataArray['visibility'] = $data->getVisibility();
         }
-        $dataArray['pushed_at'] = $data->getPushedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['pushed_at'] = $data->getPushedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
             $dataArray['permissions'] = $this->normalizer->normalize($data->getPermissions(), 'json', $context);
         }
         if ($data->isInitialized('allowRebaseMerge') && null !== $data->getAllowRebaseMerge()) {
             $dataArray['allow_rebase_merge'] = $data->getAllowRebaseMerge();
         }
-        if ($data->isInitialized('templateRepository') && null !== $data->getTemplateRepository()) {
+        if ($data->isInitialized('templateRepository')) {
             $dataArray['template_repository'] = $this->normalizer->normalize($data->getTemplateRepository(), 'json', $context);
         }
-        if ($data->isInitialized('tempCloneToken') && null !== $data->getTempCloneToken()) {
+        if ($data->isInitialized('tempCloneToken')) {
             $dataArray['temp_clone_token'] = $data->getTempCloneToken();
         }
         if ($data->isInitialized('allowSquashMerge') && null !== $data->getAllowSquashMerge()) {
@@ -592,7 +592,7 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['subscribers_count'] = $data->getSubscribersCount();
         $dataArray['network_count'] = $data->getNetworkCount();
         $dataArray['license'] = $this->normalizer->normalize($data->getLicense(), 'json', $context);
-        if ($data->isInitialized('organization') && null !== $data->getOrganization()) {
+        if ($data->isInitialized('organization')) {
             $dataArray['organization'] = $this->normalizer->normalize($data->getOrganization(), 'json', $context);
         }
         if ($data->isInitialized('parent') && null !== $data->getParent()) {

@@ -66,7 +66,7 @@ class AlphaHandlingActionNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('alphaHandling') && null !== $data->getAlphaHandling()) {
             $dataArray['alphaHandling'] = $data->getAlphaHandling();
         }
-        if ($data->isInitialized('replacementRgbColorHexCode') && null !== $data->getReplacementRgbColorHexCode()) {
+        if ($data->isInitialized('replacementRgbColorHexCode')) {
             $dataArray['replacementRgbColorHexCode'] = $data->getReplacementRgbColorHexCode();
         }
         foreach ($data as $key => $value) {

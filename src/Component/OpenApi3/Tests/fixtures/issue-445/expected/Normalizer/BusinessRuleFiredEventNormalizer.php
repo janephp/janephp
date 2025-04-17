@@ -66,9 +66,9 @@ class BusinessRuleFiredEventNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = $data->getTimestamp()?->format('Y-m-d\TH:i:sP');
+        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('details') && null !== $data->getDetails()) {
+        if ($data->isInitialized('details')) {
             $values = [];
             foreach ($data->getDetails() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

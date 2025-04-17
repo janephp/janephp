@@ -63,7 +63,7 @@ class GitCommitAuthorNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if ($data->isInitialized('date') && null !== $data->getDate()) {
-            $dataArray['date'] = $data->getDate()?->format('Y-m-d\TH:i:sP');
+            $dataArray['date'] = $data->getDate()->format('Y-m-d\TH:i:sP');
         }
         $dataArray['email'] = $data->getEmail();
         $dataArray['name'] = $data->getName();

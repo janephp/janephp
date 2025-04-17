@@ -80,11 +80,11 @@ class ObjectAggregationResultNormalizer implements DenormalizerInterface, Normal
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $dataArray['aggregationResults'] = $values;
-        if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
+        if ($data->isInitialized('searchString')) {
             $dataArray['searchString'] = $data->getSearchString();
         }
         $dataArray['isSearchStringRewritten'] = $data->getIsSearchStringRewritten();
-        if ($data->isInitialized('queryDebugInformation') && null !== $data->getQueryDebugInformation()) {
+        if ($data->isInitialized('queryDebugInformation')) {
             $values_1 = [];
             foreach ($data->getQueryDebugInformation() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

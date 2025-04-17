@@ -216,8 +216,8 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['followers'] = $data->getFollowers();
         $dataArray['following'] = $data->getFollowing();
         $dataArray['type'] = $data->getType();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('plan') && null !== $data->getPlan()) {
             $dataArray['plan'] = $this->normalizer->normalize($data->getPlan(), 'json', $context);
         }

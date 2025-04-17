@@ -79,11 +79,11 @@ class SplitTransformationNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
+        if ($data->isInitialized('traceRefId')) {
             $dataArray['traceRefId'] = $data->getTraceRefId();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('separators') && null !== $data->getSeparators()) {
+        if ($data->isInitialized('separators')) {
             $dataArray['separators'] = $data->getSeparators();
         }
         if ($data->isInitialized('keepEmpty') && null !== $data->getKeepEmpty()) {

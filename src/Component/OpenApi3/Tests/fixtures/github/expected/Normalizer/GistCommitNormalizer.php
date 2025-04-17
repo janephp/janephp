@@ -77,7 +77,7 @@ class GistCommitNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray['version'] = $data->getVersion();
         $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
         $dataArray['change_status'] = $this->normalizer->normalize($data->getChangeStatus(), 'json', $context);
-        $dataArray['committed_at'] = $data->getCommittedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['committed_at'] = $data->getCommittedAt()->format('Y-m-d\TH:i:sP');
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

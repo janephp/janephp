@@ -507,7 +507,7 @@ class PullRequestHeadRepoNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['allow_rebase_merge'] = $data->getAllowRebaseMerge();
         }
         $dataArray['license'] = $this->normalizer->normalize($data->getLicense(), 'json', $context);
-        $dataArray['pushed_at'] = $data->getPushedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['pushed_at'] = $data->getPushedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['size'] = $data->getSize();
         $dataArray['ssh_url'] = $data->getSshUrl();
         $dataArray['stargazers_count'] = $data->getStargazersCount();
@@ -521,8 +521,8 @@ class PullRequestHeadRepoNormalizer implements DenormalizerInterface, Normalizer
         }
         $dataArray['watchers'] = $data->getWatchers();
         $dataArray['watchers_count'] = $data->getWatchersCount();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

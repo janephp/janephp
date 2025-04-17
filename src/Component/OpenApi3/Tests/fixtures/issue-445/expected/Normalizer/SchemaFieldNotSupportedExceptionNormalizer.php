@@ -125,35 +125,35 @@ class SchemaFieldNotSupportedExceptionNormalizer implements DenormalizerInterfac
         if ($data->isInitialized('traceLevel') && null !== $data->getTraceLevel()) {
             $dataArray['traceLevel'] = $data->getTraceLevel();
         }
-        if ($data->isInitialized('traceId') && null !== $data->getTraceId()) {
+        if ($data->isInitialized('traceId')) {
             $dataArray['traceId'] = $data->getTraceId();
         }
-        if ($data->isInitialized('traceJobId') && null !== $data->getTraceJobId()) {
+        if ($data->isInitialized('traceJobId')) {
             $dataArray['traceJobId'] = $data->getTraceJobId();
         }
         if ($data->isInitialized('httpStatusCode') && null !== $data->getHttpStatusCode()) {
             $dataArray['httpStatusCode'] = $data->getHttpStatusCode();
         }
-        if ($data->isInitialized('exceptionMessage') && null !== $data->getExceptionMessage()) {
+        if ($data->isInitialized('exceptionMessage')) {
             $dataArray['exceptionMessage'] = $data->getExceptionMessage();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('customerId') && null !== $data->getCustomerId()) {
+        if ($data->isInitialized('customerId')) {
             $dataArray['customerId'] = $data->getCustomerId();
         }
-        if ($data->isInitialized('customerAlias') && null !== $data->getCustomerAlias()) {
+        if ($data->isInitialized('customerAlias')) {
             $dataArray['customerAlias'] = $data->getCustomerAlias();
         }
-        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
+        if ($data->isInitialized('userId')) {
             $dataArray['userId'] = $data->getUserId();
         }
-        if ($data->isInitialized('fieldId') && null !== $data->getFieldId()) {
+        if ($data->isInitialized('fieldId')) {
             $dataArray['fieldId'] = $data->getFieldId();
         }
-        if ($data->isInitialized('schemaId') && null !== $data->getSchemaId()) {
+        if ($data->isInitialized('schemaId')) {
             $dataArray['schemaId'] = $data->getSchemaId();
         }
-        if ($data->isInitialized('fieldType') && null !== $data->getFieldType()) {
+        if ($data->isInitialized('fieldType')) {
             $dataArray['fieldType'] = $data->getFieldType();
         }
         foreach ($data as $key => $value) {

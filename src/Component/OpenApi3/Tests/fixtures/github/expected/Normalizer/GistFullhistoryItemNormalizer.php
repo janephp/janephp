@@ -79,7 +79,7 @@ class GistFullhistoryItemNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('version') && null !== $data->getVersion()) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('user') && null !== $data->getUser()) {
+        if ($data->isInitialized('user')) {
             $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
         }
         if ($data->isInitialized('changeStatus') && null !== $data->getChangeStatus()) {

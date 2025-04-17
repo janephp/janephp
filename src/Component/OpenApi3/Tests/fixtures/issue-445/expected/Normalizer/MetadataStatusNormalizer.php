@@ -79,14 +79,14 @@ class MetadataStatusNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('contentOrLayerSchemaIds') && null !== $data->getContentOrLayerSchemaIds()) {
+        if ($data->isInitialized('contentOrLayerSchemaIds')) {
             $values = [];
             foreach ($data->getContentOrLayerSchemaIds() as $value) {
                 $values[] = $value;
             }
             $dataArray['contentOrLayerSchemaIds'] = $values;
         }
-        if ($data->isInitialized('listSchemaIds') && null !== $data->getListSchemaIds()) {
+        if ($data->isInitialized('listSchemaIds')) {
             $values_1 = [];
             foreach ($data->getListSchemaIds() as $value_1) {
                 $values_1[] = $value_1;
@@ -94,7 +94,7 @@ class MetadataStatusNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['listSchemaIds'] = $values_1;
         }
         $dataArray['state'] = $data->getState();
-        if ($data->isInitialized('fieldIdsToCleanup') && null !== $data->getFieldIdsToCleanup()) {
+        if ($data->isInitialized('fieldIdsToCleanup')) {
             $values_2 = [];
             foreach ($data->getFieldIdsToCleanup() as $key => $value_2) {
                 $values_3 = [];

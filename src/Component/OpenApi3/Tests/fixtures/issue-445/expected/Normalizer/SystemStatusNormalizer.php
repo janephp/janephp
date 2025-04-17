@@ -72,21 +72,21 @@ class SystemStatusNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('searchIndicesStatus') && null !== $data->getSearchIndicesStatus()) {
+        if ($data->isInitialized('searchIndicesStatus')) {
             $values = [];
             foreach ($data->getSearchIndicesStatus() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['searchIndicesStatus'] = $values;
         }
-        if ($data->isInitialized('displayValuesStatus') && null !== $data->getDisplayValuesStatus()) {
+        if ($data->isInitialized('displayValuesStatus')) {
             $values_1 = [];
             foreach ($data->getDisplayValuesStatus() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['displayValuesStatus'] = $values_1;
         }
-        if ($data->isInitialized('metadataStatus') && null !== $data->getMetadataStatus()) {
+        if ($data->isInitialized('metadataStatus')) {
             $values_2 = [];
             foreach ($data->getMetadataStatus() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);

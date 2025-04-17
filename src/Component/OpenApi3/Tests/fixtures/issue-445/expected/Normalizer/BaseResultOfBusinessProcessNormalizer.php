@@ -68,7 +68,7 @@ class BaseResultOfBusinessProcessNormalizer implements DenormalizerInterface, No
         }
         $dataArray['results'] = $values;
         $dataArray['elapsedMilliseconds'] = $data->getElapsedMilliseconds();
-        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
+        if ($data->isInitialized('pageToken')) {
             $dataArray['pageToken'] = $data->getPageToken();
         }
         return $dataArray;

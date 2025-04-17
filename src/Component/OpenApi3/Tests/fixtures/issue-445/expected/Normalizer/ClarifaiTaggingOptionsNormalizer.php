@@ -107,29 +107,29 @@ class ClarifaiTaggingOptionsNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('tagOutputFormatId') && null !== $data->getTagOutputFormatId()) {
+        if ($data->isInitialized('tagOutputFormatId')) {
             $dataArray['tagOutputFormatId'] = $data->getTagOutputFormatId();
         }
-        if ($data->isInitialized('keywordLookupCacheName') && null !== $data->getKeywordLookupCacheName()) {
+        if ($data->isInitialized('keywordLookupCacheName')) {
             $dataArray['keywordLookupCacheName'] = $data->getKeywordLookupCacheName();
         }
-        if ($data->isInitialized('taggingLayerId') && null !== $data->getTaggingLayerId()) {
+        if ($data->isInitialized('taggingLayerId')) {
             $dataArray['taggingLayerId'] = $data->getTaggingLayerId();
         }
-        if ($data->isInitialized('foundTagsFieldId') && null !== $data->getFoundTagsFieldId()) {
+        if ($data->isInitialized('foundTagsFieldId')) {
             $dataArray['foundTagsFieldId'] = $data->getFoundTagsFieldId();
         }
-        if ($data->isInitialized('missingKeywordsFieldId') && null !== $data->getMissingKeywordsFieldId()) {
+        if ($data->isInitialized('missingKeywordsFieldId')) {
             $dataArray['missingKeywordsFieldId'] = $data->getMissingKeywordsFieldId();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('model') && null !== $data->getModel()) {
+        if ($data->isInitialized('model')) {
             $dataArray['model'] = $data->getModel();
         }
-        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
+        if ($data->isInitialized('language')) {
             $dataArray['language'] = $data->getLanguage();
         }
-        if ($data->isInitialized('minimumValue') && null !== $data->getMinimumValue()) {
+        if ($data->isInitialized('minimumValue')) {
             $dataArray['minimumValue'] = $data->getMinimumValue();
         }
         foreach ($data as $key => $value) {

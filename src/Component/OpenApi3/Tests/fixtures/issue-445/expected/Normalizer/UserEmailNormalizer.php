@@ -57,10 +57,10 @@ class UserEmailNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
+        if ($data->isInitialized('firstName')) {
             $dataArray['firstName'] = $data->getFirstName();
         }
-        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
+        if ($data->isInitialized('lastName')) {
             $dataArray['lastName'] = $data->getLastName();
         }
         $dataArray['emailAddress'] = $data->getEmailAddress();

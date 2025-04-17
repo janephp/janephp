@@ -66,17 +66,17 @@ class DocumentChangeNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('documentName') && null !== $data->getDocumentName()) {
+        if ($data->isInitialized('documentName')) {
             $dataArray['documentName'] = $data->getDocumentName();
         }
-        if ($data->isInitialized('documentId') && null !== $data->getDocumentId()) {
+        if ($data->isInitialized('documentId')) {
             $dataArray['documentId'] = $data->getDocumentId();
         }
         $dataArray['version'] = $data->getVersion();
-        if ($data->isInitialized('action') && null !== $data->getAction()) {
+        if ($data->isInitialized('action')) {
             $dataArray['action'] = $data->getAction();
         }
-        $dataArray['timeStamp'] = $data->getTimeStamp()?->format('Y-m-d\TH:i:sP');
+        $dataArray['timeStamp'] = $data->getTimeStamp()->format('Y-m-d\TH:i:sP');
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

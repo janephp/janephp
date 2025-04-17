@@ -77,16 +77,16 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('resizeAction') && null !== $data->getResizeAction()) {
+        if ($data->isInitialized('resizeAction')) {
             $dataArray['resizeAction'] = $data->getResizeAction();
         }
-        if ($data->isInitialized('audioCodec') && null !== $data->getAudioCodec()) {
+        if ($data->isInitialized('audioCodec')) {
             $dataArray['audioCodec'] = $data->getAudioCodec();
         }
         if ($data->isInitialized('preset') && null !== $data->getPreset()) {
             $dataArray['preset'] = $data->getPreset();
         }
-        if ($data->isInitialized('extension') && null !== $data->getExtension()) {
+        if ($data->isInitialized('extension')) {
             $dataArray['extension'] = $data->getExtension();
         }
         foreach ($data as $key => $value) {

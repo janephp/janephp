@@ -123,7 +123,7 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('sort') && null !== $data->getSort()) {
+        if ($data->isInitialized('sort')) {
             $values = [];
             foreach ($data->getSort() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
@@ -141,34 +141,34 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
             $values_2[$key] = $value_2;
         }
         $dataArray['names'] = $values_2;
-        if ($data->isInitialized('searchIndexId') && null !== $data->getSearchIndexId()) {
+        if ($data->isInitialized('searchIndexId')) {
             $dataArray['searchIndexId'] = $data->getSearchIndexId();
         }
-        if ($data->isInitialized('grantedUserRoleIds') && null !== $data->getGrantedUserRoleIds()) {
+        if ($data->isInitialized('grantedUserRoleIds')) {
             $values_3 = [];
             foreach ($data->getGrantedUserRoleIds() as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['grantedUserRoleIds'] = $values_3;
         }
-        if ($data->isInitialized('aggregations') && null !== $data->getAggregations()) {
+        if ($data->isInitialized('aggregations')) {
             $values_4 = [];
             foreach ($data->getAggregations() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $dataArray['aggregations'] = $values_4;
         }
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
+        if ($data->isInitialized('filter')) {
             $dataArray['filter'] = $data->getFilter();
         }
-        if ($data->isInitialized('extendedSimpleSearchFields') && null !== $data->getExtendedSimpleSearchFields()) {
+        if ($data->isInitialized('extendedSimpleSearchFields')) {
             $values_5 = [];
             foreach ($data->getExtendedSimpleSearchFields() as $value_5) {
                 $values_5[] = $value_5;
             }
             $dataArray['extendedSimpleSearchFields'] = $values_5;
         }
-        if ($data->isInitialized('missingResultsDisplayPatterns') && null !== $data->getMissingResultsDisplayPatterns()) {
+        if ($data->isInitialized('missingResultsDisplayPatterns')) {
             $dataArray['missingResultsDisplayPatterns'] = $data->getMissingResultsDisplayPatterns();
         }
         $dataArray['viewForAll'] = $data->getViewForAll();

@@ -108,8 +108,8 @@ class ProjectCardNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray['node_id'] = $data->getNodeId();
         $dataArray['note'] = $data->getNote();
         $dataArray['creator'] = $this->normalizer->normalize($data->getCreator(), 'json', $context);
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('archived') && null !== $data->getArchived()) {
             $dataArray['archived'] = $data->getArchived();
         }

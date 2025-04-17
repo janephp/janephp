@@ -99,7 +99,7 @@ class DefaultTweetNormalizer implements DenormalizerInterface, NormalizerInterfa
             $dataArray['format'] = $data->getFormat();
         }
         $dataArray['id'] = $data->getId();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['text'] = $data->getText();
         $dataArray['author_id'] = $data->getAuthorId();
         if ($data->isInitialized('inReplyToUserId') && null !== $data->getInReplyToUserId()) {

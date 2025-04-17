@@ -168,17 +168,17 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
             $values[] = $value_1;
         }
         $dataArray['events'] = $values;
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['single_file_name'] = $data->getSingleFileName();
         $dataArray['app_slug'] = $data->getAppSlug();
-        if ($data->isInitialized('suspendedBy') && null !== $data->getSuspendedBy()) {
+        if ($data->isInitialized('suspendedBy')) {
             $dataArray['suspended_by'] = $this->normalizer->normalize($data->getSuspendedBy(), 'json', $context);
         }
-        if ($data->isInitialized('suspendedAt') && null !== $data->getSuspendedAt()) {
-            $dataArray['suspended_at'] = $data->getSuspendedAt()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('suspendedAt')) {
+            $dataArray['suspended_at'] = $data->getSuspendedAt()?->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('contactEmail') && null !== $data->getContactEmail()) {
+        if ($data->isInitialized('contactEmail')) {
             $dataArray['contact_email'] = $data->getContactEmail();
         }
         foreach ($data as $key => $value_2) {

@@ -68,13 +68,13 @@ class LanguageNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray = [];
         $dataArray['name'] = $data->getName();
         $dataArray['ietf'] = $data->getIetf();
-        if ($data->isInitialized('twoLetterISOLanguageName') && null !== $data->getTwoLetterISOLanguageName()) {
+        if ($data->isInitialized('twoLetterISOLanguageName')) {
             $dataArray['twoLetterISOLanguageName'] = $data->getTwoLetterISOLanguageName();
         }
-        if ($data->isInitialized('threeLetterISOLanguageName') && null !== $data->getThreeLetterISOLanguageName()) {
+        if ($data->isInitialized('threeLetterISOLanguageName')) {
             $dataArray['threeLetterISOLanguageName'] = $data->getThreeLetterISOLanguageName();
         }
-        if ($data->isInitialized('regionCode') && null !== $data->getRegionCode()) {
+        if ($data->isInitialized('regionCode')) {
             $dataArray['regionCode'] = $data->getRegionCode();
         }
         return $dataArray;

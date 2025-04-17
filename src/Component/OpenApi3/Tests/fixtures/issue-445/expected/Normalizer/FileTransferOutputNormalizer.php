@@ -57,10 +57,10 @@ class FileTransferOutputNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('filePath') && null !== $data->getFilePath()) {
+        if ($data->isInitialized('filePath')) {
             $dataArray['filePath'] = $data->getFilePath();
         }
         $dataArray['outputSource'] = $data->getOutputSource();

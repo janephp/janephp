@@ -496,17 +496,17 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('cloneUrl') && null !== $data->getCloneUrl()) {
             $dataArray['clone_url'] = $data->getCloneUrl();
         }
-        if ($data->isInitialized('mirrorUrl') && null !== $data->getMirrorUrl()) {
+        if ($data->isInitialized('mirrorUrl')) {
             $dataArray['mirror_url'] = $data->getMirrorUrl();
         }
         $dataArray['hooks_url'] = $data->getHooksUrl();
         if ($data->isInitialized('svnUrl') && null !== $data->getSvnUrl()) {
             $dataArray['svn_url'] = $data->getSvnUrl();
         }
-        if ($data->isInitialized('homepage') && null !== $data->getHomepage()) {
+        if ($data->isInitialized('homepage')) {
             $dataArray['homepage'] = $data->getHomepage();
         }
-        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
+        if ($data->isInitialized('language')) {
             $dataArray['language'] = $data->getLanguage();
         }
         if ($data->isInitialized('forksCount') && null !== $data->getForksCount()) {
@@ -561,14 +561,14 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('visibility') && null !== $data->getVisibility()) {
             $dataArray['visibility'] = $data->getVisibility();
         }
-        if ($data->isInitialized('pushedAt') && null !== $data->getPushedAt()) {
-            $dataArray['pushed_at'] = $data->getPushedAt()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('pushedAt')) {
+            $dataArray['pushed_at'] = $data->getPushedAt()?->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('createdAt')) {
+            $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('updatedAt')) {
+            $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
             $dataArray['permissions'] = $this->normalizer->normalize($data->getPermissions(), 'json', $context);
@@ -588,7 +588,7 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('networkCount') && null !== $data->getNetworkCount()) {
             $dataArray['network_count'] = $data->getNetworkCount();
         }
-        if ($data->isInitialized('license') && null !== $data->getLicense()) {
+        if ($data->isInitialized('license')) {
             $dataArray['license'] = $this->normalizer->normalize($data->getLicense(), 'json', $context);
         }
         if ($data->isInitialized('forks') && null !== $data->getForks()) {

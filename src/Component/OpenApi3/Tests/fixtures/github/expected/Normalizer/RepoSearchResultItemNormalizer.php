@@ -457,9 +457,9 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         $dataArray['description'] = $data->getDescription();
         $dataArray['fork'] = $data->getFork();
         $dataArray['url'] = $data->getUrl();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['pushed_at'] = $data->getPushedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['pushed_at'] = $data->getPushedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['homepage'] = $data->getHomepage();
         $dataArray['size'] = $data->getSize();
         $dataArray['stargazers_count'] = $data->getStargazersCount();

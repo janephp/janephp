@@ -193,50 +193,50 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
+        if ($data->isInitialized('searchString')) {
             $dataArray['searchString'] = $data->getSearchString();
         }
-        if ($data->isInitialized('searchBehaviors') && null !== $data->getSearchBehaviors()) {
+        if ($data->isInitialized('searchBehaviors')) {
             $values = [];
             foreach ($data->getSearchBehaviors() as $value) {
                 $values[] = $value;
             }
             $dataArray['searchBehaviors'] = $values;
         }
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
+        if ($data->isInitialized('filter')) {
             $dataArray['filter'] = $data->getFilter();
         }
-        if ($data->isInitialized('aggregationFilters') && null !== $data->getAggregationFilters()) {
+        if ($data->isInitialized('aggregationFilters')) {
             $values_1 = [];
             foreach ($data->getAggregationFilters() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['aggregationFilters'] = $values_1;
         }
-        if ($data->isInitialized('channelId') && null !== $data->getChannelId()) {
+        if ($data->isInitialized('channelId')) {
             $dataArray['channelId'] = $data->getChannelId();
         }
-        if ($data->isInitialized('searchLanguages') && null !== $data->getSearchLanguages()) {
+        if ($data->isInitialized('searchLanguages')) {
             $values_2 = [];
             foreach ($data->getSearchLanguages() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['searchLanguages'] = $values_2;
         }
-        if ($data->isInitialized('collectionId') && null !== $data->getCollectionId()) {
+        if ($data->isInitialized('collectionId')) {
             $dataArray['collectionId'] = $data->getCollectionId();
         }
         $dataArray['lifeCycleFilter'] = $data->getLifeCycleFilter();
         $dataArray['brokenDependenciesFilter'] = $data->getBrokenDependenciesFilter();
         $dataArray['searchType'] = $data->getSearchType();
-        if ($data->isInitialized('displayPatternIds') && null !== $data->getDisplayPatternIds()) {
+        if ($data->isInitialized('displayPatternIds')) {
             $values_3 = [];
             foreach ($data->getDisplayPatternIds() as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['displayPatternIds'] = $values_3;
         }
-        if ($data->isInitialized('sort') && null !== $data->getSort()) {
+        if ($data->isInitialized('sort')) {
             $values_4 = [];
             foreach ($data->getSort() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
@@ -246,17 +246,17 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('limit') && null !== $data->getLimit()) {
             $dataArray['limit'] = $data->getLimit();
         }
-        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
+        if ($data->isInitialized('pageToken')) {
             $dataArray['pageToken'] = $data->getPageToken();
         }
-        if ($data->isInitialized('rightsFilter') && null !== $data->getRightsFilter()) {
+        if ($data->isInitialized('rightsFilter')) {
             $values_5 = [];
             foreach ($data->getRightsFilter() as $value_5) {
                 $values_5[] = $value_5;
             }
             $dataArray['rightsFilter'] = $values_5;
         }
-        if ($data->isInitialized('rightsAggregations') && null !== $data->getRightsAggregations()) {
+        if ($data->isInitialized('rightsAggregations')) {
             $values_6 = [];
             foreach ($data->getRightsAggregations() as $value_6) {
                 $values_6[] = $value_6;
@@ -266,7 +266,7 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('debugMode') && null !== $data->getDebugMode()) {
             $dataArray['debugMode'] = $data->getDebugMode();
         }
-        if ($data->isInitialized('aggregators') && null !== $data->getAggregators()) {
+        if ($data->isInitialized('aggregators')) {
             $values_7 = [];
             foreach ($data->getAggregators() as $value_7) {
                 $values_7[] = $this->normalizer->normalize($value_7, 'json', $context);

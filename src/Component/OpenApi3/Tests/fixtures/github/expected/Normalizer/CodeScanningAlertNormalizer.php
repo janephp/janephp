@@ -125,20 +125,20 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('ruleDescription') && null !== $data->getRuleDescription()) {
             $dataArray['rule_description'] = $data->getRuleDescription();
         }
-        if ($data->isInitialized('tool') && null !== $data->getTool()) {
+        if ($data->isInitialized('tool')) {
             $dataArray['tool'] = $data->getTool();
         }
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
+            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('open') && null !== $data->getOpen()) {
             $dataArray['open'] = $data->getOpen();
         }
-        if ($data->isInitialized('closedBy') && null !== $data->getClosedBy()) {
+        if ($data->isInitialized('closedBy')) {
             $dataArray['closed_by'] = $this->normalizer->normalize($data->getClosedBy(), 'json', $context);
         }
-        if ($data->isInitialized('closedAt') && null !== $data->getClosedAt()) {
-            $dataArray['closed_at'] = $data->getClosedAt()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('closedAt')) {
+            $dataArray['closed_at'] = $data->getClosedAt()?->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('url') && null !== $data->getUrl()) {
             $dataArray['url'] = $data->getUrl();
@@ -146,7 +146,7 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('htmlUrl') && null !== $data->getHtmlUrl()) {
             $dataArray['html_url'] = $data->getHtmlUrl();
         }
-        if ($data->isInitialized('closedReason') && null !== $data->getClosedReason()) {
+        if ($data->isInitialized('closedReason')) {
             $dataArray['closed_reason'] = $data->getClosedReason();
         }
         foreach ($data as $key => $value) {

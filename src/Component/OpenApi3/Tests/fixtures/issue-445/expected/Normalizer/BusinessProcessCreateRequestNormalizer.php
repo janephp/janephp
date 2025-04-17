@@ -58,7 +58,7 @@ class BusinessProcessCreateRequestNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         $dataArray['supportsCancellation'] = $data->getSupportsCancellation();
-        if ($data->isInitialized('notification') && null !== $data->getNotification()) {
+        if ($data->isInitialized('notification')) {
             $dataArray['notification'] = $data->getNotification();
         }
         $dataArray['initialState'] = $data->getInitialState();

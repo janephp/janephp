@@ -165,23 +165,23 @@ class IssueEventNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray['event'] = $data->getEvent();
         $dataArray['commit_id'] = $data->getCommitId();
         $dataArray['commit_url'] = $data->getCommitUrl();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('issue') && null !== $data->getIssue()) {
             $dataArray['issue'] = $this->normalizer->normalize($data->getIssue(), 'json', $context);
         }
         if ($data->isInitialized('label') && null !== $data->getLabel()) {
             $dataArray['label'] = $this->normalizer->normalize($data->getLabel(), 'json', $context);
         }
-        if ($data->isInitialized('assignee') && null !== $data->getAssignee()) {
+        if ($data->isInitialized('assignee')) {
             $dataArray['assignee'] = $this->normalizer->normalize($data->getAssignee(), 'json', $context);
         }
-        if ($data->isInitialized('assigner') && null !== $data->getAssigner()) {
+        if ($data->isInitialized('assigner')) {
             $dataArray['assigner'] = $this->normalizer->normalize($data->getAssigner(), 'json', $context);
         }
-        if ($data->isInitialized('reviewRequester') && null !== $data->getReviewRequester()) {
+        if ($data->isInitialized('reviewRequester')) {
             $dataArray['review_requester'] = $this->normalizer->normalize($data->getReviewRequester(), 'json', $context);
         }
-        if ($data->isInitialized('requestedReviewer') && null !== $data->getRequestedReviewer()) {
+        if ($data->isInitialized('requestedReviewer')) {
             $dataArray['requested_reviewer'] = $this->normalizer->normalize($data->getRequestedReviewer(), 'json', $context);
         }
         if ($data->isInitialized('requestedTeam') && null !== $data->getRequestedTeam()) {
@@ -202,7 +202,7 @@ class IssueEventNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('authorAssociation') && null !== $data->getAuthorAssociation()) {
             $dataArray['author_association'] = $data->getAuthorAssociation();
         }
-        if ($data->isInitialized('lockReason') && null !== $data->getLockReason()) {
+        if ($data->isInitialized('lockReason')) {
             $dataArray['lock_reason'] = $data->getLockReason();
         }
         foreach ($data as $key => $value) {

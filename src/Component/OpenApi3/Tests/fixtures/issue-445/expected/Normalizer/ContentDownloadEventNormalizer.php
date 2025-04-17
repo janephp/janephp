@@ -84,9 +84,9 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timestamp'] = $data->getTimestamp()?->format('Y-m-d\TH:i:sP');
+        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('downloadInfos') && null !== $data->getDownloadInfos()) {
+        if ($data->isInitialized('downloadInfos')) {
             $values = [];
             foreach ($data->getDownloadInfos() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
@@ -96,10 +96,10 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('fileSize') && null !== $data->getFileSize()) {
             $dataArray['fileSize'] = $data->getFileSize();
         }
-        if ($data->isInitialized('shareToken') && null !== $data->getShareToken()) {
+        if ($data->isInitialized('shareToken')) {
             $dataArray['shareToken'] = $data->getShareToken();
         }
-        if ($data->isInitialized('range') && null !== $data->getRange()) {
+        if ($data->isInitialized('range')) {
             $dataArray['range'] = $data->getRange();
         }
         foreach ($data as $key => $value_1) {

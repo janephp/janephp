@@ -175,34 +175,34 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
+        if ($data->isInitialized('names')) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
+        if ($data->isInitialized('descriptions')) {
             $dataArray['descriptions'] = $data->getDescriptions();
         }
-        if ($data->isInitialized('fileExtension') && null !== $data->getFileExtension()) {
+        if ($data->isInitialized('fileExtension')) {
             $dataArray['fileExtension'] = $data->getFileExtension();
         }
-        if ($data->isInitialized('fileName') && null !== $data->getFileName()) {
+        if ($data->isInitialized('fileName')) {
             $dataArray['fileName'] = $data->getFileName();
         }
-        if ($data->isInitialized('filePath') && null !== $data->getFilePath()) {
+        if ($data->isInitialized('filePath')) {
             $dataArray['filePath'] = $data->getFilePath();
         }
-        if ($data->isInitialized('fileSizeInBytes') && null !== $data->getFileSizeInBytes()) {
+        if ($data->isInitialized('fileSizeInBytes')) {
             $dataArray['fileSizeInBytes'] = $data->getFileSizeInBytes();
         }
-        if ($data->isInitialized('sha1Hash') && null !== $data->getSha1Hash()) {
+        if ($data->isInitialized('sha1Hash')) {
             $dataArray['sha1Hash'] = $data->getSha1Hash();
         }
-        if ($data->isInitialized('xmpMetadata') && null !== $data->getXmpMetadata()) {
+        if ($data->isInitialized('xmpMetadata')) {
             $dataArray['xmpMetadata'] = $data->getXmpMetadata();
         }
-        if ($data->isInitialized('exifMetadata') && null !== $data->getExifMetadata()) {
+        if ($data->isInitialized('exifMetadata')) {
             $dataArray['exifMetadata'] = $data->getExifMetadata();
         }
-        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
+        if ($data->isInitialized('language')) {
             $dataArray['language'] = $data->getLanguage();
         }
         if ($data->isInitialized('width') && null !== $data->getWidth()) {
@@ -214,23 +214,23 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('durationInSeconds') && null !== $data->getDurationInSeconds()) {
             $dataArray['durationInSeconds'] = $data->getDurationInSeconds();
         }
-        if ($data->isInitialized('format') && null !== $data->getFormat()) {
+        if ($data->isInitialized('format')) {
             $dataArray['format'] = $data->getFormat();
         }
-        if ($data->isInitialized('codec') && null !== $data->getCodec()) {
+        if ($data->isInitialized('codec')) {
             $dataArray['codec'] = $data->getCodec();
         }
-        if ($data->isInitialized('overallBitrate') && null !== $data->getOverallBitrate()) {
+        if ($data->isInitialized('overallBitrate')) {
             $dataArray['overallBitrate'] = $data->getOverallBitrate();
         }
-        if ($data->isInitialized('videoStreams') && null !== $data->getVideoStreams()) {
+        if ($data->isInitialized('videoStreams')) {
             $values = [];
             foreach ($data->getVideoStreams() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['videoStreams'] = $values;
         }
-        if ($data->isInitialized('audioStreams') && null !== $data->getAudioStreams()) {
+        if ($data->isInitialized('audioStreams')) {
             $values_1 = [];
             foreach ($data->getAudioStreams() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

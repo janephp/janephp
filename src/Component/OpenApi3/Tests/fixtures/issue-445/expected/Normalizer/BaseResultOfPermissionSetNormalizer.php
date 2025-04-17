@@ -68,7 +68,7 @@ class BaseResultOfPermissionSetNormalizer implements DenormalizerInterface, Norm
         }
         $dataArray['results'] = $values;
         $dataArray['elapsedMilliseconds'] = $data->getElapsedMilliseconds();
-        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
+        if ($data->isInitialized('pageToken')) {
             $dataArray['pageToken'] = $data->getPageToken();
         }
         return $dataArray;

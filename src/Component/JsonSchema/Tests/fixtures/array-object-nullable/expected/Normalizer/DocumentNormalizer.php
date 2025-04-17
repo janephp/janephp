@@ -58,7 +58,7 @@ class DocumentNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('attributes') && null !== $data->getAttributes()) {
+        if ($data->isInitialized('attributes')) {
             $value = $data->getAttributes();
             if (is_array($data->getAttributes())) {
                 $values = [];

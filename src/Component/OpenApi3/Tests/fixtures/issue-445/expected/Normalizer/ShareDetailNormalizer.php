@@ -113,7 +113,7 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray = [];
         $dataArray['id'] = $data->getId();
         $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description')) {
             $dataArray['description'] = $data->getDescription();
         }
         $dataArray['creator'] = $data->getCreator();
@@ -123,23 +123,23 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $dataArray['contentSelections'] = $values;
-        if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
+        if ($data->isInitialized('layerSchemaIds')) {
             $values_1 = [];
             foreach ($data->getLayerSchemaIds() as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['layerSchemaIds'] = $values_1;
         }
-        if ($data->isInitialized('data') && null !== $data->getData()) {
+        if ($data->isInitialized('data')) {
             $dataArray['data'] = $data->getData();
         }
-        if ($data->isInitialized('expirationDate') && null !== $data->getExpirationDate()) {
-            $dataArray['expirationDate'] = $data->getExpirationDate()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('expirationDate')) {
+            $dataArray['expirationDate'] = $data->getExpirationDate()?->format('Y-m-d\TH:i:sP');
         }
         $dataArray['expired'] = $data->getExpired();
         $dataArray['outputAccess'] = $data->getOutputAccess();
         $dataArray['shareType'] = $data->getShareType();
-        if ($data->isInitialized('schemas') && null !== $data->getSchemas()) {
+        if ($data->isInitialized('schemas')) {
             $values_2 = [];
             foreach ($data->getSchemas() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);

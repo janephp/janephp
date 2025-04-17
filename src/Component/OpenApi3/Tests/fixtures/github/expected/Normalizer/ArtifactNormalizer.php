@@ -106,9 +106,9 @@ class ArtifactNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray['url'] = $data->getUrl();
         $dataArray['archive_download_url'] = $data->getArchiveDownloadUrl();
         $dataArray['expired'] = $data->getExpired();
-        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['expires_at'] = $data->getExpiresAt();
-        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

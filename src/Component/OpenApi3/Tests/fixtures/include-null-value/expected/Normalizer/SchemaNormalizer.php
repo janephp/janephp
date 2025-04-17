@@ -70,6 +70,13 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setDateProperty(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateProperty']));
             unset($data['dateProperty']);
         }
+        if (\array_key_exists('dateNullableProperty', $data) && $data['dateNullableProperty'] !== null) {
+            $object->setDateNullableProperty(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateNullableProperty']));
+            unset($data['dateNullableProperty']);
+        }
+        elseif (\array_key_exists('dateNullableProperty', $data) && $data['dateNullableProperty'] === null) {
+            $object->setDateNullableProperty(null);
+        }
         if (\array_key_exists('integerProperty', $data)) {
             $object->setIntegerProperty($data['integerProperty']);
             unset($data['integerProperty']);
@@ -124,7 +131,10 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['stringProperty'] = $data->getStringProperty();
         }
         if ($data->isInitialized('dateProperty')) {
-            $dataArray['dateProperty'] = $data->getDateProperty()?->format('Y-m-d\TH:i:sP');
+            $dataArray['dateProperty'] = $data->getDateProperty()->format('Y-m-d\TH:i:sP');
+        }
+        if ($data->isInitialized('dateNullableProperty')) {
+            $dataArray['dateNullableProperty'] = $data->getDateNullableProperty()?->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('integerProperty')) {
             $dataArray['integerProperty'] = $data->getIntegerProperty();

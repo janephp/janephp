@@ -61,7 +61,7 @@ class FileCommitNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('content') && null !== $data->getContent()) {
+        if ($data->isInitialized('content')) {
             $dataArray['content'] = $this->normalizer->normalize($data->getContent(), 'json', $context);
         }
         if ($data->isInitialized('commit') && null !== $data->getCommit()) {

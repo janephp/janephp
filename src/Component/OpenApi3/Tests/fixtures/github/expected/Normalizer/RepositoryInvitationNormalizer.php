@@ -97,7 +97,7 @@ class RepositoryInvitationNormalizer implements DenormalizerInterface, Normalize
         $dataArray['invitee'] = $this->normalizer->normalize($data->getInvitee(), 'json', $context);
         $dataArray['inviter'] = $this->normalizer->normalize($data->getInviter(), 'json', $context);
         $dataArray['permissions'] = $data->getPermissions();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['url'] = $data->getUrl();
         $dataArray['html_url'] = $data->getHtmlUrl();
         $dataArray['node_id'] = $data->getNodeId();

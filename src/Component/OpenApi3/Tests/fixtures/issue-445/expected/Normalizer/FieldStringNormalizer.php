@@ -194,16 +194,16 @@ class FieldStringNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('indexId') && null !== $data->getIndexId()) {
+        if ($data->isInitialized('indexId')) {
             $dataArray['indexId'] = $data->getIndexId();
         }
-        if ($data->isInitialized('fieldNamespace') && null !== $data->getFieldNamespace()) {
+        if ($data->isInitialized('fieldNamespace')) {
             $dataArray['fieldNamespace'] = $data->getFieldNamespace();
         }
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
+        if ($data->isInitialized('names')) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
+        if ($data->isInitialized('descriptions')) {
             $dataArray['descriptions'] = $data->getDescriptions();
         }
         $dataArray['required'] = $data->getRequired();
@@ -212,26 +212,26 @@ class FieldStringNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray['simpleSearch'] = $data->getSimpleSearch();
         $dataArray['sortable'] = $data->getSortable();
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('template') && null !== $data->getTemplate()) {
+        if ($data->isInitialized('template')) {
             $dataArray['template'] = $data->getTemplate();
         }
-        if ($data->isInitialized('pattern') && null !== $data->getPattern()) {
+        if ($data->isInitialized('pattern')) {
             $dataArray['pattern'] = $data->getPattern();
         }
-        if ($data->isInitialized('minimumLength') && null !== $data->getMinimumLength()) {
+        if ($data->isInitialized('minimumLength')) {
             $dataArray['minimumLength'] = $data->getMinimumLength();
         }
-        if ($data->isInitialized('maximumLength') && null !== $data->getMaximumLength()) {
+        if ($data->isInitialized('maximumLength')) {
             $dataArray['maximumLength'] = $data->getMaximumLength();
         }
-        if ($data->isInitialized('indexAnalyzers') && null !== $data->getIndexAnalyzers()) {
+        if ($data->isInitialized('indexAnalyzers')) {
             $values = [];
             foreach ($data->getIndexAnalyzers() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['indexAnalyzers'] = $values;
         }
-        if ($data->isInitialized('simpleSearchAnalyzers') && null !== $data->getSimpleSearchAnalyzers()) {
+        if ($data->isInitialized('simpleSearchAnalyzers')) {
             $values_1 = [];
             foreach ($data->getSimpleSearchAnalyzers() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
@@ -241,7 +241,7 @@ class FieldStringNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('multiLine') && null !== $data->getMultiLine()) {
             $dataArray['multiLine'] = $data->getMultiLine();
         }
-        if ($data->isInitialized('grantedValues') && null !== $data->getGrantedValues()) {
+        if ($data->isInitialized('grantedValues')) {
             $values_2 = [];
             foreach ($data->getGrantedValues() as $value_2) {
                 $values_2[] = $value_2;

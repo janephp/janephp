@@ -102,7 +102,7 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('iPAMConfig') && null !== $data->getIPAMConfig()) {
+        if ($data->isInitialized('iPAMConfig')) {
             $dataArray['IPAMConfig'] = $this->normalizer->normalize($data->getIPAMConfig(), 'json', $context);
         }
         if ($data->isInitialized('links') && null !== $data->getLinks()) {
@@ -146,7 +146,7 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('macAddress') && null !== $data->getMacAddress()) {
             $dataArray['MacAddress'] = $data->getMacAddress();
         }
-        if ($data->isInitialized('driverOpts') && null !== $data->getDriverOpts()) {
+        if ($data->isInitialized('driverOpts')) {
             $values_2 = [];
             foreach ($data->getDriverOpts() as $key => $value_2) {
                 $values_2[$key] = $value_2;

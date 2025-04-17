@@ -138,8 +138,8 @@ class IntegrationNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray['description'] = $data->getDescription();
         $dataArray['external_url'] = $data->getExternalUrl();
         $dataArray['html_url'] = $data->getHtmlUrl();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['permissions'] = $this->normalizer->normalize($data->getPermissions(), 'json', $context);
         $values = [];
         foreach ($data->getEvents() as $value) {

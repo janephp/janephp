@@ -100,22 +100,22 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('triggerPoint') && null !== $data->getTriggerPoint()) {
+        if ($data->isInitialized('triggerPoint')) {
             $dataArray['triggerPoint'] = $data->getTriggerPoint();
         }
         $dataArray['isEnabled'] = $data->getIsEnabled();
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
+        if ($data->isInitialized('names')) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description')) {
             $dataArray['description'] = $data->getDescription();
         }
         $dataArray['enableTracing'] = $data->getEnableTracing();
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('script') && null !== $data->getScript()) {
+        if ($data->isInitialized('script')) {
             $dataArray['script'] = $data->getScript();
         }
         foreach ($data as $key => $value) {

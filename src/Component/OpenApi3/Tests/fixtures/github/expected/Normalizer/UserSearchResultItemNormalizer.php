@@ -254,25 +254,25 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
             $dataArray['following'] = $data->getFollowing();
         }
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
+            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
-            $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
+        if ($data->isInitialized('name')) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('bio') && null !== $data->getBio()) {
+        if ($data->isInitialized('bio')) {
             $dataArray['bio'] = $data->getBio();
         }
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
+        if ($data->isInitialized('email')) {
             $dataArray['email'] = $data->getEmail();
         }
-        if ($data->isInitialized('location') && null !== $data->getLocation()) {
+        if ($data->isInitialized('location')) {
             $dataArray['location'] = $data->getLocation();
         }
         $dataArray['site_admin'] = $data->getSiteAdmin();
-        if ($data->isInitialized('hireable') && null !== $data->getHireable()) {
+        if ($data->isInitialized('hireable')) {
             $dataArray['hireable'] = $data->getHireable();
         }
         if ($data->isInitialized('textMatches') && null !== $data->getTextMatches()) {
@@ -282,14 +282,14 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
             }
             $dataArray['text_matches'] = $values;
         }
-        if ($data->isInitialized('blog') && null !== $data->getBlog()) {
+        if ($data->isInitialized('blog')) {
             $dataArray['blog'] = $data->getBlog();
         }
-        if ($data->isInitialized('company') && null !== $data->getCompany()) {
+        if ($data->isInitialized('company')) {
             $dataArray['company'] = $data->getCompany();
         }
-        if ($data->isInitialized('suspendedAt') && null !== $data->getSuspendedAt()) {
-            $dataArray['suspended_at'] = $data->getSuspendedAt()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('suspendedAt')) {
+            $dataArray['suspended_at'] = $data->getSuspendedAt()?->format('Y-m-d\TH:i:sP');
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

@@ -147,8 +147,8 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray['details_url'] = $data->getDetailsUrl();
         $dataArray['status'] = $data->getStatus();
         $dataArray['conclusion'] = $data->getConclusion();
-        $dataArray['started_at'] = $data->getStartedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['completed_at'] = $data->getCompletedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['started_at'] = $data->getStartedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['completed_at'] = $data->getCompletedAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['output'] = $this->normalizer->normalize($data->getOutput(), 'json', $context);
         $dataArray['name'] = $data->getName();
         $dataArray['check_suite'] = $this->normalizer->normalize($data->getCheckSuite(), 'json', $context);

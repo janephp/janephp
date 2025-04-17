@@ -171,13 +171,13 @@ class BaseGistNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         $dataArray['files'] = $values;
         $dataArray['public'] = $data->getPublic();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['description'] = $data->getDescription();
         $dataArray['comments'] = $data->getComments();
         $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
         $dataArray['comments_url'] = $data->getCommentsUrl();
-        if ($data->isInitialized('owner') && null !== $data->getOwner()) {
+        if ($data->isInitialized('owner')) {
             $dataArray['owner'] = $this->normalizer->normalize($data->getOwner(), 'json', $context);
         }
         if ($data->isInitialized('truncated') && null !== $data->getTruncated()) {

@@ -112,7 +112,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
         if ($data->isInitialized('requiredLinearHistory') && null !== $data->getRequiredLinearHistory()) {
             $dataArray['required_linear_history'] = $data->getRequiredLinearHistory();
         }
-        if ($data->isInitialized('allowForcePushes') && null !== $data->getAllowForcePushes()) {
+        if ($data->isInitialized('allowForcePushes')) {
             $dataArray['allow_force_pushes'] = $data->getAllowForcePushes();
         }
         if ($data->isInitialized('allowDeletions') && null !== $data->getAllowDeletions()) {

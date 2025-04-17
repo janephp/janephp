@@ -67,7 +67,7 @@ class MetadataFieldNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray['path'] = $data->getPath();
         $dataArray['isWritable'] = $data->getIsWritable();
         $dataArray['dataType'] = $data->getDataType();
-        if ($data->isInitialized('availableKeyFields') && null !== $data->getAvailableKeyFields()) {
+        if ($data->isInitialized('availableKeyFields')) {
             $values = [];
             foreach ($data->getAvailableKeyFields() as $value) {
                 $values[] = $value;

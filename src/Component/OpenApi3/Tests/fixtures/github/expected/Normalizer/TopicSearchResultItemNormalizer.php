@@ -165,15 +165,15 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         $dataArray['description'] = $data->getDescription();
         $dataArray['created_by'] = $data->getCreatedBy();
         $dataArray['released'] = $data->getReleased();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['featured'] = $data->getFeatured();
         $dataArray['curated'] = $data->getCurated();
         $dataArray['score'] = $data->getScore();
-        if ($data->isInitialized('repositoryCount') && null !== $data->getRepositoryCount()) {
+        if ($data->isInitialized('repositoryCount')) {
             $dataArray['repository_count'] = $data->getRepositoryCount();
         }
-        if ($data->isInitialized('logoUrl') && null !== $data->getLogoUrl()) {
+        if ($data->isInitialized('logoUrl')) {
             $dataArray['logo_url'] = $data->getLogoUrl();
         }
         if ($data->isInitialized('textMatches') && null !== $data->getTextMatches()) {
@@ -183,14 +183,14 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
             }
             $dataArray['text_matches'] = $values;
         }
-        if ($data->isInitialized('related') && null !== $data->getRelated()) {
+        if ($data->isInitialized('related')) {
             $values_1 = [];
             foreach ($data->getRelated() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['related'] = $values_1;
         }
-        if ($data->isInitialized('aliases') && null !== $data->getAliases()) {
+        if ($data->isInitialized('aliases')) {
             $values_2 = [];
             foreach ($data->getAliases() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);

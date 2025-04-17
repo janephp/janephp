@@ -62,7 +62,7 @@ class ContentPermissionsUpdateItemNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('contentPermissionSetIds') && null !== $data->getContentPermissionSetIds()) {
+        if ($data->isInitialized('contentPermissionSetIds')) {
             $values = [];
             foreach ($data->getContentPermissionSetIds() as $value) {
                 $values[] = $value;

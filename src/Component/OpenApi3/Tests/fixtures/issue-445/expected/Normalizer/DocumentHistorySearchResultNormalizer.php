@@ -77,7 +77,7 @@ class DocumentHistorySearchResultNormalizer implements DenormalizerInterface, No
         }
         $dataArray['results'] = $values;
         $dataArray['elapsedMilliseconds'] = $data->getElapsedMilliseconds();
-        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
+        if ($data->isInitialized('pageToken')) {
             $dataArray['pageToken'] = $data->getPageToken();
         }
         foreach ($data as $key => $value_1) {

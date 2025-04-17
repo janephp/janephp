@@ -115,32 +115,32 @@ class PngFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('colorProfile') && null !== $data->getColorProfile()) {
+        if ($data->isInitialized('colorProfile')) {
             $dataArray['colorProfile'] = $data->getColorProfile();
         }
         if ($data->isInitialized('colorTransformationIntent') && null !== $data->getColorTransformationIntent()) {
             $dataArray['colorTransformationIntent'] = $data->getColorTransformationIntent();
         }
-        if ($data->isInitialized('horizontalResolution') && null !== $data->getHorizontalResolution()) {
+        if ($data->isInitialized('horizontalResolution')) {
             $dataArray['horizontalResolution'] = $data->getHorizontalResolution();
         }
-        if ($data->isInitialized('verticalResolution') && null !== $data->getVerticalResolution()) {
+        if ($data->isInitialized('verticalResolution')) {
             $dataArray['verticalResolution'] = $data->getVerticalResolution();
         }
         if ($data->isInitialized('keepClippingPath') && null !== $data->getKeepClippingPath()) {
             $dataArray['keepClippingPath'] = $data->getKeepClippingPath();
         }
-        if ($data->isInitialized('resizeAction') && null !== $data->getResizeAction()) {
+        if ($data->isInitialized('resizeAction')) {
             $dataArray['resizeAction'] = $data->getResizeAction();
         }
-        if ($data->isInitialized('actions') && null !== $data->getActions()) {
+        if ($data->isInitialized('actions')) {
             $values = [];
             foreach ($data->getActions() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['actions'] = $values;
         }
-        if ($data->isInitialized('extension') && null !== $data->getExtension()) {
+        if ($data->isInitialized('extension')) {
             $dataArray['extension'] = $data->getExtension();
         }
         foreach ($data as $key => $value_1) {

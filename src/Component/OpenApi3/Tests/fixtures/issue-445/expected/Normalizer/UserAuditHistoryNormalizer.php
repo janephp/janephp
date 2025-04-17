@@ -51,8 +51,8 @@ class UserAuditHistoryNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['modificationDate'] = $data->getModificationDate()?->format('Y-m-d\TH:i:sP');
-        if ($data->isInitialized('modifiedByUser') && null !== $data->getModifiedByUser()) {
+        $dataArray['modificationDate'] = $data->getModificationDate()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('modifiedByUser')) {
             $dataArray['modifiedByUser'] = $data->getModifiedByUser();
         }
         return $dataArray;

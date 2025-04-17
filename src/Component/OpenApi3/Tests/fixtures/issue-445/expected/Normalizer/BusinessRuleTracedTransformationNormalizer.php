@@ -60,13 +60,13 @@ class BusinessRuleTracedTransformationNormalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
+        if ($data->isInitialized('traceRefId')) {
             $dataArray['traceRefId'] = $data->getTraceRefId();
         }
-        if ($data->isInitialized('input') && null !== $data->getInput()) {
+        if ($data->isInitialized('input')) {
             $dataArray['input'] = $data->getInput();
         }
-        if ($data->isInitialized('output') && null !== $data->getOutput()) {
+        if ($data->isInitialized('output')) {
             $dataArray['output'] = $data->getOutput();
         }
         return $dataArray;

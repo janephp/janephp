@@ -81,7 +81,7 @@ class AuthorizationsPostBodyNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('scopes') && null !== $data->getScopes()) {
+        if ($data->isInitialized('scopes')) {
             $values = [];
             foreach ($data->getScopes() as $value) {
                 $values[] = $value;

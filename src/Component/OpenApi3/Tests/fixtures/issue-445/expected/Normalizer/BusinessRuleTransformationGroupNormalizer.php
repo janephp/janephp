@@ -74,24 +74,24 @@ class BusinessRuleTransformationGroupNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('inputs') && null !== $data->getInputs()) {
+        if ($data->isInitialized('inputs')) {
             $values = [];
             foreach ($data->getInputs() as $value) {
                 $values[] = $value;
             }
             $dataArray['inputs'] = $values;
         }
-        if ($data->isInitialized('transformations') && null !== $data->getTransformations()) {
+        if ($data->isInitialized('transformations')) {
             $values_1 = [];
             foreach ($data->getTransformations() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['transformations'] = $values_1;
         }
-        if ($data->isInitialized('storeIn') && null !== $data->getStoreIn()) {
+        if ($data->isInitialized('storeIn')) {
             $dataArray['storeIn'] = $data->getStoreIn();
         }
-        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
+        if ($data->isInitialized('traceRefId')) {
             $dataArray['traceRefId'] = $data->getTraceRefId();
         }
         return $dataArray;

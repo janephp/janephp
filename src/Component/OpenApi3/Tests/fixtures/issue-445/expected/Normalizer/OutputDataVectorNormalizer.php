@@ -86,19 +86,19 @@ class OutputDataVectorNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('fileExtension') && null !== $data->getFileExtension()) {
+        if ($data->isInitialized('fileExtension')) {
             $dataArray['fileExtension'] = $data->getFileExtension();
         }
-        if ($data->isInitialized('filePath') && null !== $data->getFilePath()) {
+        if ($data->isInitialized('filePath')) {
             $dataArray['filePath'] = $data->getFilePath();
         }
-        if ($data->isInitialized('fileSizeInBytes') && null !== $data->getFileSizeInBytes()) {
+        if ($data->isInitialized('fileSizeInBytes')) {
             $dataArray['fileSizeInBytes'] = $data->getFileSizeInBytes();
         }
-        if ($data->isInitialized('sha1Hash') && null !== $data->getSha1Hash()) {
+        if ($data->isInitialized('sha1Hash')) {
             $dataArray['sha1Hash'] = $data->getSha1Hash();
         }
-        if ($data->isInitialized('originalFileName') && null !== $data->getOriginalFileName()) {
+        if ($data->isInitialized('originalFileName')) {
             $dataArray['originalFileName'] = $data->getOriginalFileName();
         }
         $dataArray['kind'] = $data->getKind();

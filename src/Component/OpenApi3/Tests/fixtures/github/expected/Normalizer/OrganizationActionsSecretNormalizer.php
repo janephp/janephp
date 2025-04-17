@@ -71,8 +71,8 @@ class OrganizationActionsSecretNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         $dataArray['name'] = $data->getName();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['visibility'] = $data->getVisibility();
         if ($data->isInitialized('selectedRepositoriesUrl') && null !== $data->getSelectedRepositoriesUrl()) {
             $dataArray['selected_repositories_url'] = $data->getSelectedRepositoriesUrl();
