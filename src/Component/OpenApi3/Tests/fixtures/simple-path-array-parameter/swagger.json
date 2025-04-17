@@ -1,0 +1,69 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/test-simple-path-array-parameters/{string}/{array}/{stringRef}/{arrayRef}": {
+            "parameters": [
+                {
+                    "name": "string",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "array",
+                    "in": "path",
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "required": true
+                },
+                {
+                    "name": "stringRef",
+                    "in": "path",
+                    "schema": {
+                        "$ref": "#/components/schemas/StringRef"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "arrayRef",
+                    "in": "path",
+                    "schema": {
+                        "$ref": "#/components/schemas/ArrayRef"
+                    },
+                    "required": true
+                }
+            ],
+            "get": {
+                "operationId": "testSimplePathArrayParameters",
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        }
+    },
+    "info": {
+        "version": "",
+        "title": ""
+    },
+    "components": {
+        "schemas": {
+            "StringRef": {
+                "type": "string"
+            },
+            "ArrayRef": {
+                "type": "array",
+                "items": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

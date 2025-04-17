@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApiRuntime\Tests\Client\Plugin;
 use Http\Promise\FulfilledPromise;
 use Jane\Component\OpenApiRuntime\Client\AuthenticationPlugin;
 use Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
+use PHPUnit\Framework\MockObject\Stub\ReturnCallback;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 
@@ -91,7 +92,12 @@ class AuthenticationRegistryTest extends TestCase
             ->willReturn(['A']);
         $request
             ->method('withHeader')
-            ->willReturnSelf();
+            ->willReturnCallback(function (string $name, string $value) use ($request) {
+                $this->assertEquals('A', $name);
+                $this->assertEquals('A', $value);
+
+                return $request;
+            });
         $request
             ->method('withoutHeader')
             ->willReturnSelf();
@@ -113,7 +119,20 @@ class AuthenticationRegistryTest extends TestCase
             ->willReturn(['A', 'C']);
         $request
             ->method('withHeader')
-            ->willReturnSelf();
+            ->willReturnOnConsecutiveCalls(
+                new ReturnCallback(function (string $name, string $value) use ($request) {
+                    $this->assertEquals('A', $name);
+                    $this->assertEquals('A', $value);
+
+                    return $request;
+                }),
+                new ReturnCallback(function (string $name, string $value) use ($request) {
+                    $this->assertEquals('C', $name);
+                    $this->assertEquals('C', $value);
+
+                    return $request;
+                }),
+            );
         $request
             ->method('withoutHeader')
             ->willReturnSelf();
