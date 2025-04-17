@@ -34,6 +34,9 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\License();
+        if (\array_key_exists('featured', $data) && \is_int($data['featured'])) {
+            $data['featured'] = (bool) $data['featured'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\LicenseConstraint());
         }

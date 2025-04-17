@@ -34,6 +34,9 @@ class AssignTagboxItemsActionNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\AssignTagboxItemsAction();
+        if (\array_key_exists('replace', $data) && \is_int($data['replace'])) {
+            $data['replace'] = (bool) $data['replace'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

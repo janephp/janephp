@@ -34,6 +34,9 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordState();
+        if (\array_key_exists('addedToAcceptList', $data) && \is_int($data['addedToAcceptList'])) {
+            $data['addedToAcceptList'] = (bool) $data['addedToAcceptList'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

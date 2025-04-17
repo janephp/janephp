@@ -34,6 +34,15 @@ class TeamProjectPermissionsNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\TeamProjectPermissions();
+        if (\array_key_exists('read', $data) && \is_int($data['read'])) {
+            $data['read'] = (bool) $data['read'];
+        }
+        if (\array_key_exists('write', $data) && \is_int($data['write'])) {
+            $data['write'] = (bool) $data['write'];
+        }
+        if (\array_key_exists('admin', $data) && \is_int($data['admin'])) {
+            $data['admin'] = (bool) $data['admin'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamProjectPermissionsConstraint());
         }

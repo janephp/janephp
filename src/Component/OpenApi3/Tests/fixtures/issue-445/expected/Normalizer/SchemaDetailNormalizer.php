@@ -34,6 +34,12 @@ class SchemaDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\SchemaDetail();
+        if (\array_key_exists('system', $data) && \is_int($data['system'])) {
+            $data['system'] = (bool) $data['system'];
+        }
+        if (\array_key_exists('viewForAll', $data) && \is_int($data['viewForAll'])) {
+            $data['viewForAll'] = (bool) $data['viewForAll'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

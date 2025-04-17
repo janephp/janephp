@@ -34,6 +34,9 @@ class PullRequestSimpleLabelsItemNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequestSimpleLabelsItem();
+        if (\array_key_exists('default', $data) && \is_int($data['default'])) {
+            $data['default'] = (bool) $data['default'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestSimpleLabelsItemConstraint());
         }

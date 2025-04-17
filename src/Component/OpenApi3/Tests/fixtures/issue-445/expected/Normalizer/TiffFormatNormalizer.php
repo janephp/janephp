@@ -40,6 +40,15 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         if (\array_key_exists('verticalResolution', $data) && \is_int($data['verticalResolution'])) {
             $data['verticalResolution'] = (double) $data['verticalResolution'];
         }
+        if (\array_key_exists('keepClippingPath', $data) && \is_int($data['keepClippingPath'])) {
+            $data['keepClippingPath'] = (bool) $data['keepClippingPath'];
+        }
+        if (\array_key_exists('alphaPremultiplied', $data) && \is_int($data['alphaPremultiplied'])) {
+            $data['alphaPremultiplied'] = (bool) $data['alphaPremultiplied'];
+        }
+        if (\array_key_exists('includeUnspecifiedTiffExtraChannels', $data) && \is_int($data['includeUnspecifiedTiffExtraChannels'])) {
+            $data['includeUnspecifiedTiffExtraChannels'] = (bool) $data['includeUnspecifiedTiffExtraChannels'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

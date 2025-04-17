@@ -34,6 +34,24 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\OutputFormat();
+        if (\array_key_exists('viewForAll', $data) && \is_int($data['viewForAll'])) {
+            $data['viewForAll'] = (bool) $data['viewForAll'];
+        }
+        if (\array_key_exists('enableXmpWriteback', $data) && \is_int($data['enableXmpWriteback'])) {
+            $data['enableXmpWriteback'] = (bool) $data['enableXmpWriteback'];
+        }
+        if (\array_key_exists('system', $data) && \is_int($data['system'])) {
+            $data['system'] = (bool) $data['system'];
+        }
+        if (\array_key_exists('dynamic', $data) && \is_int($data['dynamic'])) {
+            $data['dynamic'] = (bool) $data['dynamic'];
+        }
+        if (\array_key_exists('dataExtraction', $data) && \is_int($data['dataExtraction'])) {
+            $data['dataExtraction'] = (bool) $data['dataExtraction'];
+        }
+        if (\array_key_exists('temporary', $data) && \is_int($data['temporary'])) {
+            $data['temporary'] = (bool) $data['temporary'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

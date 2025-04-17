@@ -34,6 +34,9 @@ class BulkResponseRowNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\BulkResponseRow();
+        if (\array_key_exists('succeeded', $data) && \is_int($data['succeeded'])) {
+            $data['succeeded'] = (bool) $data['succeeded'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

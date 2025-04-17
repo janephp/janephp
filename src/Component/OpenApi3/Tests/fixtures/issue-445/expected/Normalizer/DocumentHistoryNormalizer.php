@@ -34,6 +34,9 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\DocumentHistory();
+        if (\array_key_exists('deleted', $data) && \is_int($data['deleted'])) {
+            $data['deleted'] = (bool) $data['deleted'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

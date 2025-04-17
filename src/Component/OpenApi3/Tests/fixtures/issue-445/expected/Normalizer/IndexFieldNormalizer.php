@@ -37,6 +37,9 @@ class IndexFieldNormalizer implements DenormalizerInterface, NormalizerInterface
         if (\array_key_exists('boost', $data) && \is_int($data['boost'])) {
             $data['boost'] = (double) $data['boost'];
         }
+        if (\array_key_exists('ignoreForSearch', $data) && \is_int($data['ignoreForSearch'])) {
+            $data['ignoreForSearch'] = (bool) $data['ignoreForSearch'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

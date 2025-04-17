@@ -34,6 +34,9 @@ class TransferSearchRequestNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\TransferSearchRequest();
+        if (\array_key_exists('debugMode', $data) && \is_int($data['debugMode'])) {
+            $data['debugMode'] = (bool) $data['debugMode'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

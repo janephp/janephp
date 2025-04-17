@@ -37,6 +37,21 @@ class FieldDateNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (\array_key_exists('boost', $data) && \is_int($data['boost'])) {
             $data['boost'] = (double) $data['boost'];
         }
+        if (\array_key_exists('required', $data) && \is_int($data['required'])) {
+            $data['required'] = (bool) $data['required'];
+        }
+        if (\array_key_exists('fixed', $data) && \is_int($data['fixed'])) {
+            $data['fixed'] = (bool) $data['fixed'];
+        }
+        if (\array_key_exists('index', $data) && \is_int($data['index'])) {
+            $data['index'] = (bool) $data['index'];
+        }
+        if (\array_key_exists('simpleSearch', $data) && \is_int($data['simpleSearch'])) {
+            $data['simpleSearch'] = (bool) $data['simpleSearch'];
+        }
+        if (\array_key_exists('sortable', $data) && \is_int($data['sortable'])) {
+            $data['sortable'] = (bool) $data['sortable'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

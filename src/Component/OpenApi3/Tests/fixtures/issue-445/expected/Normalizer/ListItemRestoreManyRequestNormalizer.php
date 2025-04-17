@@ -34,6 +34,9 @@ class ListItemRestoreManyRequestNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\ListItemRestoreManyRequest();
+        if (\array_key_exists('allowMissingDependencies', $data) && \is_int($data['allowMissingDependencies'])) {
+            $data['allowMissingDependencies'] = (bool) $data['allowMissingDependencies'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

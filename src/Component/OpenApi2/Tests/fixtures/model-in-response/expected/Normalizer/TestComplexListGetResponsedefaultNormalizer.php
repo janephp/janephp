@@ -34,6 +34,9 @@ class TestComplexListGetResponsedefaultNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\Component\OpenApi2\Tests\Expected\Model\TestComplexListGetResponsedefault();
+        if (\array_key_exists('ok', $data) && \is_int($data['ok'])) {
+            $data['ok'] = (bool) $data['ok'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

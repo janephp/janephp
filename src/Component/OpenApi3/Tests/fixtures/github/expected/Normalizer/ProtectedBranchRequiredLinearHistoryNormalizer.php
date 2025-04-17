@@ -34,6 +34,9 @@ class ProtectedBranchRequiredLinearHistoryNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ProtectedBranchRequiredLinearHistory();
+        if (\array_key_exists('enabled', $data) && \is_int($data['enabled'])) {
+            $data['enabled'] = (bool) $data['enabled'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProtectedBranchRequiredLinearHistoryConstraint());
         }

@@ -34,6 +34,9 @@ class CreateTransferRequestNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\CreateTransferRequest();
+        if (\array_key_exists('createCollection', $data) && \is_int($data['createCollection'])) {
+            $data['createCollection'] = (bool) $data['createCollection'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

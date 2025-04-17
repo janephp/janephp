@@ -34,6 +34,9 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\ShareBasicCreateRequest();
+        if (\array_key_exists('suppressNotifications', $data) && \is_int($data['suppressNotifications'])) {
+            $data['suppressNotifications'] = (bool) $data['suppressNotifications'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

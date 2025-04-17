@@ -34,6 +34,9 @@ class ThreadNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Thread();
+        if (\array_key_exists('unread', $data) && \is_int($data['unread'])) {
+            $data['unread'] = (bool) $data['unread'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ThreadConstraint());
         }

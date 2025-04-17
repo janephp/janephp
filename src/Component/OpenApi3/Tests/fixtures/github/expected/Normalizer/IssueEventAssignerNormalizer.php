@@ -34,6 +34,9 @@ class IssueEventAssignerNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\IssueEventAssigner();
+        if (\array_key_exists('site_admin', $data) && \is_int($data['site_admin'])) {
+            $data['site_admin'] = (bool) $data['site_admin'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssueEventAssignerConstraint());
         }

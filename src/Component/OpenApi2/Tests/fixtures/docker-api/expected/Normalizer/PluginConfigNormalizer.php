@@ -34,6 +34,12 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\PluginConfig();
+        if (\array_key_exists('IpcHost', $data) && \is_int($data['IpcHost'])) {
+            $data['IpcHost'] = (bool) $data['IpcHost'];
+        }
+        if (\array_key_exists('PidHost', $data) && \is_int($data['PidHost'])) {
+            $data['PidHost'] = (bool) $data['PidHost'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PluginConfigConstraint());
         }

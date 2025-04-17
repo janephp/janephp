@@ -34,6 +34,9 @@ class TaskSpecContainerSpecPrivilegesSELinuxContextNormalizer implements Denorma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\TaskSpecContainerSpecPrivilegesSELinuxContext();
+        if (\array_key_exists('Disable', $data) && \is_int($data['Disable'])) {
+            $data['Disable'] = (bool) $data['Disable'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\TaskSpecContainerSpecPrivilegesSELinuxContextConstraint());
         }

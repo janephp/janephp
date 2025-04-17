@@ -34,6 +34,15 @@ class CollaboratorPermissionsNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\CollaboratorPermissions();
+        if (\array_key_exists('pull', $data) && \is_int($data['pull'])) {
+            $data['pull'] = (bool) $data['pull'];
+        }
+        if (\array_key_exists('push', $data) && \is_int($data['push'])) {
+            $data['push'] = (bool) $data['push'];
+        }
+        if (\array_key_exists('admin', $data) && \is_int($data['admin'])) {
+            $data['admin'] = (bool) $data['admin'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CollaboratorPermissionsConstraint());
         }

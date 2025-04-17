@@ -34,6 +34,9 @@ class MonitoringPortfoliosPostBodyNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\MonitoringPortfoliosPostBody();
+        if (\array_key_exists('isDefault', $data) && \is_int($data['isDefault'])) {
+            $data['isDefault'] = (bool) $data['isDefault'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

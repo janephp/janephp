@@ -34,6 +34,9 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\User();
+        if (\array_key_exists('isDeleted', $data) && \is_int($data['isDeleted'])) {
+            $data['isDeleted'] = (bool) $data['isDeleted'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

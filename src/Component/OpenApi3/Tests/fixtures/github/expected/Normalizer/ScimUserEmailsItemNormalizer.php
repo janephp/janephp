@@ -34,6 +34,9 @@ class ScimUserEmailsItemNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ScimUserEmailsItem();
+        if (\array_key_exists('primary', $data) && \is_int($data['primary'])) {
+            $data['primary'] = (bool) $data['primary'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ScimUserEmailsItemConstraint());
         }

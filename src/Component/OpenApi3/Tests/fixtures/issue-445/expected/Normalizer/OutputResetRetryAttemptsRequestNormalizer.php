@@ -34,6 +34,9 @@ class OutputResetRetryAttemptsRequestNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\OutputResetRetryAttemptsRequest();
+        if (\array_key_exists('includeCompleted', $data) && \is_int($data['includeCompleted'])) {
+            $data['includeCompleted'] = (bool) $data['includeCompleted'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

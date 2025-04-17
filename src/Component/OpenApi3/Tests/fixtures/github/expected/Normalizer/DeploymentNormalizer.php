@@ -34,6 +34,12 @@ class DeploymentNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Deployment();
+        if (\array_key_exists('transient_environment', $data) && \is_int($data['transient_environment'])) {
+            $data['transient_environment'] = (bool) $data['transient_environment'];
+        }
+        if (\array_key_exists('production_environment', $data) && \is_int($data['production_environment'])) {
+            $data['production_environment'] = (bool) $data['production_environment'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\DeploymentConstraint());
         }

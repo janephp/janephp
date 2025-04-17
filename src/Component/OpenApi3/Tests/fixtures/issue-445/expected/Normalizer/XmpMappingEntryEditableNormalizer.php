@@ -34,6 +34,9 @@ class XmpMappingEntryEditableNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\XmpMappingEntryEditable();
+        if (\array_key_exists('stopProcessing', $data) && \is_int($data['stopProcessing'])) {
+            $data['stopProcessing'] = (bool) $data['stopProcessing'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

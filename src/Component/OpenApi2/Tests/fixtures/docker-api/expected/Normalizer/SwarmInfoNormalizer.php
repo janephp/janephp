@@ -34,6 +34,9 @@ class SwarmInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\SwarmInfo();
+        if (\array_key_exists('ControlAvailable', $data) && \is_int($data['ControlAvailable'])) {
+            $data['ControlAvailable'] = (bool) $data['ControlAvailable'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SwarmInfoConstraint());
         }

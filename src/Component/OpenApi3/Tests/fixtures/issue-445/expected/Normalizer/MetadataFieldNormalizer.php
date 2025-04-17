@@ -34,6 +34,9 @@ class MetadataFieldNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\MetadataField();
+        if (\array_key_exists('isWritable', $data) && \is_int($data['isWritable'])) {
+            $data['isWritable'] = (bool) $data['isWritable'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

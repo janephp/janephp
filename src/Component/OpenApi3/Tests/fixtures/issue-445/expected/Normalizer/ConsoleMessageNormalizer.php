@@ -34,6 +34,9 @@ class ConsoleMessageNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\ConsoleMessage();
+        if (\array_key_exists('deduplicate', $data) && \is_int($data['deduplicate'])) {
+            $data['deduplicate'] = (bool) $data['deduplicate'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

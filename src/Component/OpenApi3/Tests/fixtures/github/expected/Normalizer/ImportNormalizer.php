@@ -34,6 +34,9 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Import();
+        if (\array_key_exists('has_large_files', $data) && \is_int($data['has_large_files'])) {
+            $data['has_large_files'] = (bool) $data['has_large_files'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ImportConstraint());
         }

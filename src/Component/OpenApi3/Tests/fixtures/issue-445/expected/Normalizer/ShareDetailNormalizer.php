@@ -34,6 +34,9 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\ShareDetail();
+        if (\array_key_exists('expired', $data) && \is_int($data['expired'])) {
+            $data['expired'] = (bool) $data['expired'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

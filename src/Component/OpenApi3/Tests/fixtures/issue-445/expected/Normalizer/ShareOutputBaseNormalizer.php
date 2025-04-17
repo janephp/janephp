@@ -40,6 +40,9 @@ class ShareOutputBaseNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\ShareOutputBase();
+        if (\array_key_exists('dynamicRendering', $data) && \is_int($data['dynamicRendering'])) {
+            $data['dynamicRendering'] = (bool) $data['dynamicRendering'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

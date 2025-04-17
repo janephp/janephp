@@ -34,6 +34,9 @@ class PluginNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Plugin();
+        if (\array_key_exists('Enabled', $data) && \is_int($data['Enabled'])) {
+            $data['Enabled'] = (bool) $data['Enabled'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PluginConstraint());
         }

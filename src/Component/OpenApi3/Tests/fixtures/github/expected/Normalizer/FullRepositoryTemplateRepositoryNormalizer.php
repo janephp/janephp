@@ -34,6 +34,48 @@ class FullRepositoryTemplateRepositoryNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\FullRepositoryTemplateRepository();
+        if (\array_key_exists('private', $data) && \is_int($data['private'])) {
+            $data['private'] = (bool) $data['private'];
+        }
+        if (\array_key_exists('fork', $data) && \is_int($data['fork'])) {
+            $data['fork'] = (bool) $data['fork'];
+        }
+        if (\array_key_exists('is_template', $data) && \is_int($data['is_template'])) {
+            $data['is_template'] = (bool) $data['is_template'];
+        }
+        if (\array_key_exists('has_issues', $data) && \is_int($data['has_issues'])) {
+            $data['has_issues'] = (bool) $data['has_issues'];
+        }
+        if (\array_key_exists('has_projects', $data) && \is_int($data['has_projects'])) {
+            $data['has_projects'] = (bool) $data['has_projects'];
+        }
+        if (\array_key_exists('has_wiki', $data) && \is_int($data['has_wiki'])) {
+            $data['has_wiki'] = (bool) $data['has_wiki'];
+        }
+        if (\array_key_exists('has_pages', $data) && \is_int($data['has_pages'])) {
+            $data['has_pages'] = (bool) $data['has_pages'];
+        }
+        if (\array_key_exists('has_downloads', $data) && \is_int($data['has_downloads'])) {
+            $data['has_downloads'] = (bool) $data['has_downloads'];
+        }
+        if (\array_key_exists('archived', $data) && \is_int($data['archived'])) {
+            $data['archived'] = (bool) $data['archived'];
+        }
+        if (\array_key_exists('disabled', $data) && \is_int($data['disabled'])) {
+            $data['disabled'] = (bool) $data['disabled'];
+        }
+        if (\array_key_exists('allow_rebase_merge', $data) && \is_int($data['allow_rebase_merge'])) {
+            $data['allow_rebase_merge'] = (bool) $data['allow_rebase_merge'];
+        }
+        if (\array_key_exists('allow_squash_merge', $data) && \is_int($data['allow_squash_merge'])) {
+            $data['allow_squash_merge'] = (bool) $data['allow_squash_merge'];
+        }
+        if (\array_key_exists('delete_branch_on_merge', $data) && \is_int($data['delete_branch_on_merge'])) {
+            $data['delete_branch_on_merge'] = (bool) $data['delete_branch_on_merge'];
+        }
+        if (\array_key_exists('allow_merge_commit', $data) && \is_int($data['allow_merge_commit'])) {
+            $data['allow_merge_commit'] = (bool) $data['allow_merge_commit'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\FullRepositoryTemplateRepositoryConstraint());
         }

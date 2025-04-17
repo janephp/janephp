@@ -34,6 +34,9 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Swarm();
+        if (\array_key_exists('RootRotationInProgress', $data) && \is_int($data['RootRotationInProgress'])) {
+            $data['RootRotationInProgress'] = (bool) $data['RootRotationInProgress'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SwarmConstraint());
         }

@@ -34,6 +34,9 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Project();
+        if (\array_key_exists('private', $data) && \is_int($data['private'])) {
+            $data['private'] = (bool) $data['private'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProjectConstraint());
         }

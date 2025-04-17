@@ -34,6 +34,9 @@ class MountPointNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\MountPoint();
+        if (\array_key_exists('RW', $data) && \is_int($data['RW'])) {
+            $data['RW'] = (bool) $data['RW'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\MountPointConstraint());
         }

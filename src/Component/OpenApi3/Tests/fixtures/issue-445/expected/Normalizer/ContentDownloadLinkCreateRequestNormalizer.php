@@ -34,6 +34,9 @@ class ContentDownloadLinkCreateRequestNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\ContentDownloadLinkCreateRequest();
+        if (\array_key_exists('notifyProgress', $data) && \is_int($data['notifyProgress'])) {
+            $data['notifyProgress'] = (bool) $data['notifyProgress'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

@@ -34,6 +34,9 @@ class UserPatchBodyNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\UserPatchBody();
+        if (\array_key_exists('hireable', $data) && \is_int($data['hireable'])) {
+            $data['hireable'] = (bool) $data['hireable'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\UserPatchBodyConstraint());
         }

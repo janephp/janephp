@@ -34,6 +34,9 @@ class ListFreshInvestigationResponseOrdersItemNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\ListFreshInvestigationResponseOrdersItem();
+        if (\array_key_exists('consent', $data) && \is_int($data['consent'])) {
+            $data['consent'] = (bool) $data['consent'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

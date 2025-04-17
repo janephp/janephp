@@ -34,6 +34,18 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\UserProfile();
+        if (\array_key_exists('isLocked', $data) && \is_int($data['isLocked'])) {
+            $data['isLocked'] = (bool) $data['isLocked'];
+        }
+        if (\array_key_exists('termsConsentExpired', $data) && \is_int($data['termsConsentExpired'])) {
+            $data['termsConsentExpired'] = (bool) $data['termsConsentExpired'];
+        }
+        if (\array_key_exists('isDeveloper', $data) && \is_int($data['isDeveloper'])) {
+            $data['isDeveloper'] = (bool) $data['isDeveloper'];
+        }
+        if (\array_key_exists('isFederated', $data) && \is_int($data['isFederated'])) {
+            $data['isFederated'] = (bool) $data['isFederated'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

@@ -34,6 +34,9 @@ class SearchCodeGetResponse200Normalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\SearchCodeGetResponse200();
+        if (\array_key_exists('incomplete_results', $data) && \is_int($data['incomplete_results'])) {
+            $data['incomplete_results'] = (bool) $data['incomplete_results'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\SearchCodeGetResponse200Constraint());
         }

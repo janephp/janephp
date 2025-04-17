@@ -34,6 +34,9 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\ContentSearchResult();
+        if (\array_key_exists('isSearchStringRewritten', $data) && \is_int($data['isSearchStringRewritten'])) {
+            $data['isSearchStringRewritten'] = (bool) $data['isSearchStringRewritten'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

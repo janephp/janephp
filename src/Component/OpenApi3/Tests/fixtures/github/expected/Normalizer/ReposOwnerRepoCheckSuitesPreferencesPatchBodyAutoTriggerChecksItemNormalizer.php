@@ -34,6 +34,9 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItemNormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItem();
+        if (\array_key_exists('setting', $data) && \is_int($data['setting'])) {
+            $data['setting'] = (bool) $data['setting'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItemConstraint());
         }

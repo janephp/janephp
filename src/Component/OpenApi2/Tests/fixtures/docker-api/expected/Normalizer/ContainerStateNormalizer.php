@@ -34,6 +34,21 @@ class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ContainerState();
+        if (\array_key_exists('Running', $data) && \is_int($data['Running'])) {
+            $data['Running'] = (bool) $data['Running'];
+        }
+        if (\array_key_exists('Paused', $data) && \is_int($data['Paused'])) {
+            $data['Paused'] = (bool) $data['Paused'];
+        }
+        if (\array_key_exists('Restarting', $data) && \is_int($data['Restarting'])) {
+            $data['Restarting'] = (bool) $data['Restarting'];
+        }
+        if (\array_key_exists('OOMKilled', $data) && \is_int($data['OOMKilled'])) {
+            $data['OOMKilled'] = (bool) $data['OOMKilled'];
+        }
+        if (\array_key_exists('Dead', $data) && \is_int($data['Dead'])) {
+            $data['Dead'] = (bool) $data['Dead'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ContainerStateConstraint());
         }

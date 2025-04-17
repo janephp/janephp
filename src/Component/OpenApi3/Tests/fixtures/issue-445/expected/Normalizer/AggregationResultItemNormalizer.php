@@ -34,6 +34,9 @@ class AggregationResultItemNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\AggregationResultItem();
+        if (\array_key_exists('active', $data) && \is_int($data['active'])) {
+            $data['active'] = (bool) $data['active'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

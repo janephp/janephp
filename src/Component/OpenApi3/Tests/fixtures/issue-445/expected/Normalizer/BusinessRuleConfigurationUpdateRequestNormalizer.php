@@ -34,6 +34,9 @@ class BusinessRuleConfigurationUpdateRequestNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\BusinessRuleConfigurationUpdateRequest();
+        if (\array_key_exists('disableRuleEngine', $data) && \is_int($data['disableRuleEngine'])) {
+            $data['disableRuleEngine'] = (bool) $data['disableRuleEngine'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

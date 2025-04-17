@@ -37,6 +37,9 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemNormalizer impl
         if (\array_key_exists('numberOfWeeks', $data) && \is_int($data['numberOfWeeks'])) {
             $data['numberOfWeeks'] = (double) $data['numberOfWeeks'];
         }
+        if (\array_key_exists('consolidatedAccounts', $data) && \is_int($data['consolidatedAccounts'])) {
+            $data['consolidatedAccounts'] = (bool) $data['consolidatedAccounts'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

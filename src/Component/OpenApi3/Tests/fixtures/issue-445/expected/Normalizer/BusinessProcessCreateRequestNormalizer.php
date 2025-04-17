@@ -34,6 +34,9 @@ class BusinessProcessCreateRequestNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\BusinessProcessCreateRequest();
+        if (\array_key_exists('supportsCancellation', $data) && \is_int($data['supportsCancellation'])) {
+            $data['supportsCancellation'] = (bool) $data['supportsCancellation'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

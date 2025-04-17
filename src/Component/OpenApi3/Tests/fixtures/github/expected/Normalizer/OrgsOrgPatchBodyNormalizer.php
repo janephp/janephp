@@ -34,6 +34,24 @@ class OrgsOrgPatchBodyNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\OrgsOrgPatchBody();
+        if (\array_key_exists('has_organization_projects', $data) && \is_int($data['has_organization_projects'])) {
+            $data['has_organization_projects'] = (bool) $data['has_organization_projects'];
+        }
+        if (\array_key_exists('has_repository_projects', $data) && \is_int($data['has_repository_projects'])) {
+            $data['has_repository_projects'] = (bool) $data['has_repository_projects'];
+        }
+        if (\array_key_exists('members_can_create_repositories', $data) && \is_int($data['members_can_create_repositories'])) {
+            $data['members_can_create_repositories'] = (bool) $data['members_can_create_repositories'];
+        }
+        if (\array_key_exists('members_can_create_internal_repositories', $data) && \is_int($data['members_can_create_internal_repositories'])) {
+            $data['members_can_create_internal_repositories'] = (bool) $data['members_can_create_internal_repositories'];
+        }
+        if (\array_key_exists('members_can_create_private_repositories', $data) && \is_int($data['members_can_create_private_repositories'])) {
+            $data['members_can_create_private_repositories'] = (bool) $data['members_can_create_private_repositories'];
+        }
+        if (\array_key_exists('members_can_create_public_repositories', $data) && \is_int($data['members_can_create_public_repositories'])) {
+            $data['members_can_create_public_repositories'] = (bool) $data['members_can_create_public_repositories'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgPatchBodyConstraint());
         }

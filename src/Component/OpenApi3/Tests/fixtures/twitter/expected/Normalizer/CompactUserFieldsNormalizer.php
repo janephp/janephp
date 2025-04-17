@@ -34,6 +34,12 @@ class CompactUserFieldsNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\CompactUserFields();
+        if (\array_key_exists('protected', $data) && \is_int($data['protected'])) {
+            $data['protected'] = (bool) $data['protected'];
+        }
+        if (\array_key_exists('verified', $data) && \is_int($data['verified'])) {
+            $data['verified'] = (bool) $data['verified'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

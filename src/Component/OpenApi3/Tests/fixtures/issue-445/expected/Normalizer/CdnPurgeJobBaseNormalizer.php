@@ -40,6 +40,9 @@ class CdnPurgeJobBaseNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\CdnPurgeJobBase();
+        if (\array_key_exists('success', $data) && \is_int($data['success'])) {
+            $data['success'] = (bool) $data['success'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

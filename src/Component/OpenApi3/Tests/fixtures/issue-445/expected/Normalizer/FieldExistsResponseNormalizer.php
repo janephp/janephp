@@ -34,6 +34,12 @@ class FieldExistsResponseNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\FieldExistsResponse();
+        if (\array_key_exists('exists', $data) && \is_int($data['exists'])) {
+            $data['exists'] = (bool) $data['exists'];
+        }
+        if (\array_key_exists('previouslyUsed', $data) && \is_int($data['previouslyUsed'])) {
+            $data['previouslyUsed'] = (bool) $data['previouslyUsed'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

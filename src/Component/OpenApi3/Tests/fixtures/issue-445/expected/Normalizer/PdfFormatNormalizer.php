@@ -34,6 +34,15 @@ class PdfFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\PdfFormat();
+        if (\array_key_exists('fastWebView', $data) && \is_int($data['fastWebView'])) {
+            $data['fastWebView'] = (bool) $data['fastWebView'];
+        }
+        if (\array_key_exists('reduceFileSize', $data) && \is_int($data['reduceFileSize'])) {
+            $data['reduceFileSize'] = (bool) $data['reduceFileSize'];
+        }
+        if (\array_key_exists('extractFullText', $data) && \is_int($data['extractFullText'])) {
+            $data['extractFullText'] = (bool) $data['extractFullText'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

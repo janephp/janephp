@@ -34,6 +34,9 @@ class MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchB
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody();
+        if (\array_key_exists('isProcessed', $data) && \is_int($data['isProcessed'])) {
+            $data['isProcessed'] = (bool) $data['isProcessed'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

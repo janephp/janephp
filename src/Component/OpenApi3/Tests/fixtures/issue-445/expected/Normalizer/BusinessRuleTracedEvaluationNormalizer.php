@@ -34,6 +34,9 @@ class BusinessRuleTracedEvaluationNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\BusinessRuleTracedEvaluation();
+        if (\array_key_exists('conditionSatisfied', $data) && \is_int($data['conditionSatisfied'])) {
+            $data['conditionSatisfied'] = (bool) $data['conditionSatisfied'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

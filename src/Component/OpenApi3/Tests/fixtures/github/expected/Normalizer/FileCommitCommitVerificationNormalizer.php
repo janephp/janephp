@@ -34,6 +34,9 @@ class FileCommitCommitVerificationNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\FileCommitCommitVerification();
+        if (\array_key_exists('verified', $data) && \is_int($data['verified'])) {
+            $data['verified'] = (bool) $data['verified'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\FileCommitCommitVerificationConstraint());
         }

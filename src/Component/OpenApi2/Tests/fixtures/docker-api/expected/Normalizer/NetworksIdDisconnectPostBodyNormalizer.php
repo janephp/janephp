@@ -34,6 +34,9 @@ class NetworksIdDisconnectPostBodyNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\NetworksIdDisconnectPostBody();
+        if (\array_key_exists('Force', $data) && \is_int($data['Force'])) {
+            $data['Force'] = (bool) $data['Force'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\NetworksIdDisconnectPostBodyConstraint());
         }

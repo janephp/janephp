@@ -34,6 +34,9 @@ class ReposOwnerRepoGitRefsRefPatchBodyNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoGitRefsRefPatchBody();
+        if (\array_key_exists('force', $data) && \is_int($data['force'])) {
+            $data['force'] = (bool) $data['force'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoGitRefsRefPatchBodyConstraint());
         }

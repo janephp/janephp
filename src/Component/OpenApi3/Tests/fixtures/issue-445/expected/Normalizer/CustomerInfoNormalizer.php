@@ -34,6 +34,9 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\CustomerInfo();
+        if (\array_key_exists('enableQueryDetails', $data) && \is_int($data['enableQueryDetails'])) {
+            $data['enableQueryDetails'] = (bool) $data['enableQueryDetails'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

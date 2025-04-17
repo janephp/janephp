@@ -34,6 +34,9 @@ class HideReplyRequestNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\HideReplyRequest();
+        if (\array_key_exists('hidden', $data) && \is_int($data['hidden'])) {
+            $data['hidden'] = (bool) $data['hidden'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

@@ -34,6 +34,9 @@ class MetadataReferenceResultNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\MetadataReferenceResult();
+        if (\array_key_exists('isReferencedByRestrictedItem', $data) && \is_int($data['isReferencedByRestrictedItem'])) {
+            $data['isReferencedByRestrictedItem'] = (bool) $data['isReferencedByRestrictedItem'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

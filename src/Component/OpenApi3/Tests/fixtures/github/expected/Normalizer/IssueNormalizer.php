@@ -34,6 +34,9 @@ class IssueNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Issue();
+        if (\array_key_exists('locked', $data) && \is_int($data['locked'])) {
+            $data['locked'] = (bool) $data['locked'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\IssueConstraint());
         }

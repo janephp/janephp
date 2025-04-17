@@ -34,6 +34,9 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Event();
+        if (\array_key_exists('public', $data) && \is_int($data['public'])) {
+            $data['public'] = (bool) $data['public'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\EventConstraint());
         }

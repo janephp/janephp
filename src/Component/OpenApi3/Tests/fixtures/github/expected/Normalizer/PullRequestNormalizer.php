@@ -34,6 +34,24 @@ class PullRequestNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\PullRequest();
+        if (\array_key_exists('locked', $data) && \is_int($data['locked'])) {
+            $data['locked'] = (bool) $data['locked'];
+        }
+        if (\array_key_exists('draft', $data) && \is_int($data['draft'])) {
+            $data['draft'] = (bool) $data['draft'];
+        }
+        if (\array_key_exists('merged', $data) && \is_int($data['merged'])) {
+            $data['merged'] = (bool) $data['merged'];
+        }
+        if (\array_key_exists('mergeable', $data) && \is_int($data['mergeable'])) {
+            $data['mergeable'] = (bool) $data['mergeable'];
+        }
+        if (\array_key_exists('rebaseable', $data) && \is_int($data['rebaseable'])) {
+            $data['rebaseable'] = (bool) $data['rebaseable'];
+        }
+        if (\array_key_exists('maintainer_can_modify', $data) && \is_int($data['maintainer_can_modify'])) {
+            $data['maintainer_can_modify'] = (bool) $data['maintainer_can_modify'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestConstraint());
         }

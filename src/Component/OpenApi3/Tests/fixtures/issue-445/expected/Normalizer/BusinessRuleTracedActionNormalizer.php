@@ -34,6 +34,9 @@ class BusinessRuleTracedActionNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\BusinessRuleTracedAction();
+        if (\array_key_exists('documentModified', $data) && \is_int($data['documentModified'])) {
+            $data['documentModified'] = (bool) $data['documentModified'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

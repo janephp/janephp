@@ -34,6 +34,18 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\TaskSpecContainerSpec();
+        if (\array_key_exists('TTY', $data) && \is_int($data['TTY'])) {
+            $data['TTY'] = (bool) $data['TTY'];
+        }
+        if (\array_key_exists('OpenStdin', $data) && \is_int($data['OpenStdin'])) {
+            $data['OpenStdin'] = (bool) $data['OpenStdin'];
+        }
+        if (\array_key_exists('ReadOnly', $data) && \is_int($data['ReadOnly'])) {
+            $data['ReadOnly'] = (bool) $data['ReadOnly'];
+        }
+        if (\array_key_exists('Init', $data) && \is_int($data['Init'])) {
+            $data['Init'] = (bool) $data['Init'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\TaskSpecContainerSpecConstraint());
         }

@@ -34,6 +34,12 @@ class RepositorySubscriptionNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\RepositorySubscription();
+        if (\array_key_exists('subscribed', $data) && \is_int($data['subscribed'])) {
+            $data['subscribed'] = (bool) $data['subscribed'];
+        }
+        if (\array_key_exists('ignored', $data) && \is_int($data['ignored'])) {
+            $data['ignored'] = (bool) $data['ignored'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\RepositorySubscriptionConstraint());
         }

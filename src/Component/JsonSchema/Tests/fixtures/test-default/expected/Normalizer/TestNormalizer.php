@@ -37,6 +37,9 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('float', $data) && \is_int($data['float'])) {
             $data['float'] = (double) $data['float'];
         }
+        if (\array_key_exists('bool', $data) && \is_int($data['bool'])) {
+            $data['bool'] = (bool) $data['bool'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

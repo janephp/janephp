@@ -34,6 +34,12 @@ class ImagesSearchGetResponse200ItemNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ImagesSearchGetResponse200Item();
+        if (\array_key_exists('is_official', $data) && \is_int($data['is_official'])) {
+            $data['is_official'] = (bool) $data['is_official'];
+        }
+        if (\array_key_exists('is_automated', $data) && \is_int($data['is_automated'])) {
+            $data['is_automated'] = (bool) $data['is_automated'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ImagesSearchGetResponse200ItemConstraint());
         }

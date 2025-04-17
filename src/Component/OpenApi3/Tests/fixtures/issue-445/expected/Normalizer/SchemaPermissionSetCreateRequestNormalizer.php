@@ -34,6 +34,9 @@ class SchemaPermissionSetCreateRequestNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\SchemaPermissionSetCreateRequest();
+        if (\array_key_exists('exclusive', $data) && \is_int($data['exclusive'])) {
+            $data['exclusive'] = (bool) $data['exclusive'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

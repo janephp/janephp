@@ -34,6 +34,12 @@ class ListItemDeleteManyRequestNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\ListItemDeleteManyRequest();
+        if (\array_key_exists('forceReferenceRemoval', $data) && \is_int($data['forceReferenceRemoval'])) {
+            $data['forceReferenceRemoval'] = (bool) $data['forceReferenceRemoval'];
+        }
+        if (\array_key_exists('notifyProgress', $data) && \is_int($data['notifyProgress'])) {
+            $data['notifyProgress'] = (bool) $data['notifyProgress'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

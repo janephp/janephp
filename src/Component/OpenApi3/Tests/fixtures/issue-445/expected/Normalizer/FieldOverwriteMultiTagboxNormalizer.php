@@ -34,6 +34,24 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\FieldOverwriteMultiTagbox();
+        if (\array_key_exists('required', $data) && \is_int($data['required'])) {
+            $data['required'] = (bool) $data['required'];
+        }
+        if (\array_key_exists('overwriteRequired', $data) && \is_int($data['overwriteRequired'])) {
+            $data['overwriteRequired'] = (bool) $data['overwriteRequired'];
+        }
+        if (\array_key_exists('overwriteFilter', $data) && \is_int($data['overwriteFilter'])) {
+            $data['overwriteFilter'] = (bool) $data['overwriteFilter'];
+        }
+        if (\array_key_exists('overwriteListItemCreateTemplate', $data) && \is_int($data['overwriteListItemCreateTemplate'])) {
+            $data['overwriteListItemCreateTemplate'] = (bool) $data['overwriteListItemCreateTemplate'];
+        }
+        if (\array_key_exists('overwriteMaximumItems', $data) && \is_int($data['overwriteMaximumItems'])) {
+            $data['overwriteMaximumItems'] = (bool) $data['overwriteMaximumItems'];
+        }
+        if (\array_key_exists('overwriteMinimumItems', $data) && \is_int($data['overwriteMinimumItems'])) {
+            $data['overwriteMinimumItems'] = (bool) $data['overwriteMinimumItems'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

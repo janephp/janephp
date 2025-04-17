@@ -34,6 +34,9 @@ class ParchmentsGetLdjsonResponse200HydraSearchHydraMappingItemNormalizer implem
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \ApiPlatform\Demo\Model\ParchmentsGetLdjsonResponse200HydraSearchHydraMappingItem();
+        if (\array_key_exists('required', $data) && \is_int($data['required'])) {
+            $data['required'] = (bool) $data['required'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

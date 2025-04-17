@@ -34,6 +34,9 @@ class SimpleCommitStatusNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\SimpleCommitStatus();
+        if (\array_key_exists('required', $data) && \is_int($data['required'])) {
+            $data['required'] = (bool) $data['required'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\SimpleCommitStatusConstraint());
         }

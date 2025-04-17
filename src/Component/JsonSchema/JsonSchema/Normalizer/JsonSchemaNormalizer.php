@@ -49,6 +49,21 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
         if (\array_key_exists('exclusiveMinimum', $data) && \is_int($data['exclusiveMinimum'])) {
             $data['exclusiveMinimum'] = (double) $data['exclusiveMinimum'];
         }
+        if (\array_key_exists('$recursiveAnchor', $data) && \is_int($data['$recursiveAnchor'])) {
+            $data['$recursiveAnchor'] = (bool) $data['$recursiveAnchor'];
+        }
+        if (\array_key_exists('deprecated', $data) && \is_int($data['deprecated'])) {
+            $data['deprecated'] = (bool) $data['deprecated'];
+        }
+        if (\array_key_exists('readOnly', $data) && \is_int($data['readOnly'])) {
+            $data['readOnly'] = (bool) $data['readOnly'];
+        }
+        if (\array_key_exists('writeOnly', $data) && \is_int($data['writeOnly'])) {
+            $data['writeOnly'] = (bool) $data['writeOnly'];
+        }
+        if (\array_key_exists('uniqueItems', $data) && \is_int($data['uniqueItems'])) {
+            $data['uniqueItems'] = (bool) $data['uniqueItems'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

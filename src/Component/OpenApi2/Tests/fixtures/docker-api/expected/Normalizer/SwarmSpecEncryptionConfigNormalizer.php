@@ -34,6 +34,9 @@ class SwarmSpecEncryptionConfigNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\SwarmSpecEncryptionConfig();
+        if (\array_key_exists('AutoLockManagers', $data) && \is_int($data['AutoLockManagers'])) {
+            $data['AutoLockManagers'] = (bool) $data['AutoLockManagers'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SwarmSpecEncryptionConfigConstraint());
         }

@@ -34,6 +34,9 @@ class UserUpdateRequestNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\UserUpdateRequest();
+        if (\array_key_exists('isDeleted', $data) && \is_int($data['isDeleted'])) {
+            $data['isDeleted'] = (bool) $data['isDeleted'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

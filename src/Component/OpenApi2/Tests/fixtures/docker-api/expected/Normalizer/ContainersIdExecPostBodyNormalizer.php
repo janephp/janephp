@@ -34,6 +34,21 @@ class ContainersIdExecPostBodyNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ContainersIdExecPostBody();
+        if (\array_key_exists('AttachStdin', $data) && \is_int($data['AttachStdin'])) {
+            $data['AttachStdin'] = (bool) $data['AttachStdin'];
+        }
+        if (\array_key_exists('AttachStdout', $data) && \is_int($data['AttachStdout'])) {
+            $data['AttachStdout'] = (bool) $data['AttachStdout'];
+        }
+        if (\array_key_exists('AttachStderr', $data) && \is_int($data['AttachStderr'])) {
+            $data['AttachStderr'] = (bool) $data['AttachStderr'];
+        }
+        if (\array_key_exists('Tty', $data) && \is_int($data['Tty'])) {
+            $data['Tty'] = (bool) $data['Tty'];
+        }
+        if (\array_key_exists('Privileged', $data) && \is_int($data['Privileged'])) {
+            $data['Privileged'] = (bool) $data['Privileged'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ContainersIdExecPostBodyConstraint());
         }

@@ -34,6 +34,9 @@ class UserLockRequestNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\UserLockRequest();
+        if (\array_key_exists('lock', $data) && \is_int($data['lock'])) {
+            $data['lock'] = (bool) $data['lock'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

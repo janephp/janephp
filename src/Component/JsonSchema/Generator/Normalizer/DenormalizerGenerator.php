@@ -103,6 +103,20 @@ trait DenormalizerGenerator
             $castFloat = new Stmt\Expression(new Expr\Assign($arrayElement, new Expr\Cast\Double($arrayElement)));
             $statements[] = new Stmt\If_($condition, ['stmts' => [$castFloat]]);
         }
+        foreach ($classGuess->getProperties() as $property) {
+            if (Type::TYPE_BOOLEAN !== $property->getType()->getName()) {
+                continue;
+            }
+            $baseCondition = new Expr\FuncCall(new Name('\array_key_exists'), [
+                new Arg(new Scalar\String_($property->getName())),
+                new Arg($dataVariable),
+            ]);
+            $arrayElement = new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName()));
+            $intCondition = new Expr\FuncCall(new Name('\is_int'), [$arrayElement]);
+            $condition = new Expr\BinaryOp\BooleanAnd($baseCondition, $intCondition);
+            $castFloat = new Stmt\Expression(new Expr\Assign($arrayElement, new Expr\Cast\Bool_($arrayElement)));
+            $statements[] = new Stmt\If_($condition, ['stmts' => [$castFloat]]);
+        }
         if ($this->validation) {
             $schema = $context->getCurrentSchema();
             $contextVariable = new Expr\Variable('context');

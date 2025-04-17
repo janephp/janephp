@@ -34,6 +34,9 @@ class XmpFieldNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\XmpField();
+        if (\array_key_exists('isWritable', $data) && \is_int($data['isWritable'])) {
+            $data['isWritable'] = (bool) $data['isWritable'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

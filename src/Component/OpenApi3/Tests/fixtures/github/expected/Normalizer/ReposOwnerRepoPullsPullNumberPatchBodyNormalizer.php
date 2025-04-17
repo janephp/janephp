@@ -34,6 +34,9 @@ class ReposOwnerRepoPullsPullNumberPatchBodyNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\ReposOwnerRepoPullsPullNumberPatchBody();
+        if (\array_key_exists('maintainer_can_modify', $data) && \is_int($data['maintainer_can_modify'])) {
+            $data['maintainer_can_modify'] = (bool) $data['maintainer_can_modify'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPullNumberPatchBodyConstraint());
         }

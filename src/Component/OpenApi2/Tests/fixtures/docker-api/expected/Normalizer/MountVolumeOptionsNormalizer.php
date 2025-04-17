@@ -34,6 +34,9 @@ class MountVolumeOptionsNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\MountVolumeOptions();
+        if (\array_key_exists('NoCopy', $data) && \is_int($data['NoCopy'])) {
+            $data['NoCopy'] = (bool) $data['NoCopy'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\MountVolumeOptionsConstraint());
         }

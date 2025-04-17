@@ -34,6 +34,9 @@ class MountBindOptionsNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\MountBindOptions();
+        if (\array_key_exists('NonRecursive', $data) && \is_int($data['NonRecursive'])) {
+            $data['NonRecursive'] = (bool) $data['NonRecursive'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\MountBindOptionsConstraint());
         }

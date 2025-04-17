@@ -34,6 +34,12 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\BusinessRuleScript();
+        if (\array_key_exists('isEnabled', $data) && \is_int($data['isEnabled'])) {
+            $data['isEnabled'] = (bool) $data['isEnabled'];
+        }
+        if (\array_key_exists('enableTracing', $data) && \is_int($data['enableTracing'])) {
+            $data['enableTracing'] = (bool) $data['enableTracing'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

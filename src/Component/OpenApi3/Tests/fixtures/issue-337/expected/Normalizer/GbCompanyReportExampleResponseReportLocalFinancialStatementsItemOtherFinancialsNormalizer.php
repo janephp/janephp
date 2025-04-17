@@ -46,6 +46,9 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
         if (\array_key_exists('netWorth', $data) && \is_int($data['netWorth'])) {
             $data['netWorth'] = (double) $data['netWorth'];
         }
+        if (\array_key_exists('contingentLiabilities', $data) && \is_int($data['contingentLiabilities'])) {
+            $data['contingentLiabilities'] = (bool) $data['contingentLiabilities'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

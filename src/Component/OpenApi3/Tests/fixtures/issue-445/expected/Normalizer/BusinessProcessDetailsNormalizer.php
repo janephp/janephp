@@ -34,6 +34,12 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\BusinessProcessDetails();
+        if (\array_key_exists('supportsCancellation', $data) && \is_int($data['supportsCancellation'])) {
+            $data['supportsCancellation'] = (bool) $data['supportsCancellation'];
+        }
+        if (\array_key_exists('finished', $data) && \is_int($data['finished'])) {
+            $data['finished'] = (bool) $data['finished'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

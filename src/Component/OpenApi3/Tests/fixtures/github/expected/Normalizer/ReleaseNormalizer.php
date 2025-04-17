@@ -34,6 +34,12 @@ class ReleaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\Release();
+        if (\array_key_exists('draft', $data) && \is_int($data['draft'])) {
+            $data['draft'] = (bool) $data['draft'];
+        }
+        if (\array_key_exists('prerelease', $data) && \is_int($data['prerelease'])) {
+            $data['prerelease'] = (bool) $data['prerelease'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReleaseConstraint());
         }

@@ -34,6 +34,9 @@ class ListItemAggregationRequestNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\ListItemAggregationRequest();
+        if (\array_key_exists('includeAllSchemaChildren', $data) && \is_int($data['includeAllSchemaChildren'])) {
+            $data['includeAllSchemaChildren'] = (bool) $data['includeAllSchemaChildren'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

@@ -34,6 +34,9 @@ class OutputFormatSetXmpWritebackStateRequestNormalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\OutputFormatSetXmpWritebackStateRequest();
+        if (\array_key_exists('enabled', $data) && \is_int($data['enabled'])) {
+            $data['enabled'] = (bool) $data['enabled'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

@@ -34,6 +34,12 @@ class IndexInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\IndexInfo();
+        if (\array_key_exists('Secure', $data) && \is_int($data['Secure'])) {
+            $data['Secure'] = (bool) $data['Secure'];
+        }
+        if (\array_key_exists('Official', $data) && \is_int($data['Official'])) {
+            $data['Official'] = (bool) $data['Official'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\IndexInfoConstraint());
         }

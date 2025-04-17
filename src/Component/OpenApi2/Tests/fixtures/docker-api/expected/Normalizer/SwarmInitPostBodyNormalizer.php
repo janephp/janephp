@@ -34,6 +34,9 @@ class SwarmInitPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\SwarmInitPostBody();
+        if (\array_key_exists('ForceNewCluster', $data) && \is_int($data['ForceNewCluster'])) {
+            $data['ForceNewCluster'] = (bool) $data['ForceNewCluster'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SwarmInitPostBodyConstraint());
         }

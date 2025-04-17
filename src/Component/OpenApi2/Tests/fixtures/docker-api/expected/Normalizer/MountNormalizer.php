@@ -34,6 +34,9 @@ class MountNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\Mount();
+        if (\array_key_exists('ReadOnly', $data) && \is_int($data['ReadOnly'])) {
+            $data['ReadOnly'] = (bool) $data['ReadOnly'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\MountConstraint());
         }

@@ -34,6 +34,21 @@ class ExecIdJsonGetResponse200Normalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ExecIdJsonGetResponse200();
+        if (\array_key_exists('CanRemove', $data) && \is_int($data['CanRemove'])) {
+            $data['CanRemove'] = (bool) $data['CanRemove'];
+        }
+        if (\array_key_exists('Running', $data) && \is_int($data['Running'])) {
+            $data['Running'] = (bool) $data['Running'];
+        }
+        if (\array_key_exists('OpenStdin', $data) && \is_int($data['OpenStdin'])) {
+            $data['OpenStdin'] = (bool) $data['OpenStdin'];
+        }
+        if (\array_key_exists('OpenStderr', $data) && \is_int($data['OpenStderr'])) {
+            $data['OpenStderr'] = (bool) $data['OpenStderr'];
+        }
+        if (\array_key_exists('OpenStdout', $data) && \is_int($data['OpenStdout'])) {
+            $data['OpenStdout'] = (bool) $data['OpenStdout'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ExecIdJsonGetResponse200Constraint());
         }

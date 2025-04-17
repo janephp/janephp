@@ -34,6 +34,9 @@ class BranchWithProtectionNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Github\Model\BranchWithProtection();
+        if (\array_key_exists('protected', $data) && \is_int($data['protected'])) {
+            $data['protected'] = (bool) $data['protected'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\BranchWithProtectionConstraint());
         }

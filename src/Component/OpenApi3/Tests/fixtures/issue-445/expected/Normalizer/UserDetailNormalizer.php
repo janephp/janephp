@@ -34,6 +34,21 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\UserDetail();
+        if (\array_key_exists('isDeleted', $data) && \is_int($data['isDeleted'])) {
+            $data['isDeleted'] = (bool) $data['isDeleted'];
+        }
+        if (\array_key_exists('isLocked', $data) && \is_int($data['isLocked'])) {
+            $data['isLocked'] = (bool) $data['isLocked'];
+        }
+        if (\array_key_exists('isSupportUser', $data) && \is_int($data['isSupportUser'])) {
+            $data['isSupportUser'] = (bool) $data['isSupportUser'];
+        }
+        if (\array_key_exists('isReadOnly', $data) && \is_int($data['isReadOnly'])) {
+            $data['isReadOnly'] = (bool) $data['isReadOnly'];
+        }
+        if (\array_key_exists('isFederated', $data) && \is_int($data['isFederated'])) {
+            $data['isFederated'] = (bool) $data['isFederated'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

@@ -34,6 +34,9 @@ class ClusterInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\ClusterInfo();
+        if (\array_key_exists('RootRotationInProgress', $data) && \is_int($data['RootRotationInProgress'])) {
+            $data['RootRotationInProgress'] = (bool) $data['RootRotationInProgress'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ClusterInfoConstraint());
         }

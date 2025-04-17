@@ -34,6 +34,24 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Docker\Api\Model\HostConfig();
+        if (\array_key_exists('OomKillDisable', $data) && \is_int($data['OomKillDisable'])) {
+            $data['OomKillDisable'] = (bool) $data['OomKillDisable'];
+        }
+        if (\array_key_exists('Init', $data) && \is_int($data['Init'])) {
+            $data['Init'] = (bool) $data['Init'];
+        }
+        if (\array_key_exists('AutoRemove', $data) && \is_int($data['AutoRemove'])) {
+            $data['AutoRemove'] = (bool) $data['AutoRemove'];
+        }
+        if (\array_key_exists('Privileged', $data) && \is_int($data['Privileged'])) {
+            $data['Privileged'] = (bool) $data['Privileged'];
+        }
+        if (\array_key_exists('PublishAllPorts', $data) && \is_int($data['PublishAllPorts'])) {
+            $data['PublishAllPorts'] = (bool) $data['PublishAllPorts'];
+        }
+        if (\array_key_exists('ReadonlyRootfs', $data) && \is_int($data['ReadonlyRootfs'])) {
+            $data['ReadonlyRootfs'] = (bool) $data['ReadonlyRootfs'];
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\HostConfigConstraint());
         }

@@ -34,6 +34,12 @@ class UserSearchAndAggregationBaseRequestNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\UserSearchAndAggregationBaseRequest();
+        if (\array_key_exists('includeServiceUser', $data) && \is_int($data['includeServiceUser'])) {
+            $data['includeServiceUser'] = (bool) $data['includeServiceUser'];
+        }
+        if (\array_key_exists('editableOnly', $data) && \is_int($data['editableOnly'])) {
+            $data['editableOnly'] = (bool) $data['editableOnly'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

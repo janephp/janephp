@@ -34,6 +34,9 @@ class UserRoleAssignmentNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \PicturePark\API\Model\UserRoleAssignment();
+        if (\array_key_exists('isFederated', $data) && \is_int($data['isFederated'])) {
+            $data['isFederated'] = (bool) $data['isFederated'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
