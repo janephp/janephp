@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [CI] [GH#850](https://github.com/janephp/janephp/pull/850) Update GH actions/cache to v4
 - [OpenApi] [GH#845](https://github.com/janephp/janephp/pull/845) Content */* breaks generated Endpoint PHP class
 - [JsonSchema] [GH#846](https://github.com/janephp/janephp/pull/846) Cast integer data to bool for boolean fields when integer is in data
+- [JsonSchema] [GH#841](https://github.com/janephp/janephp/pull/841) Fix "nullable" property handing in generated normalizers
 
 ## [7.8.1] - 2024-07-29
 ### Fixed
