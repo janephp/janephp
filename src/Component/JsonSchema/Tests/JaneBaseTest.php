@@ -37,7 +37,7 @@ class JaneBaseTest extends TestCase
         $this->fixCodeStyle($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'generated');
         $generatedData = [];
 
-        $this->assertEquals(\count($expectedFinder), \count($generatedFinder), sprintf('No same number of files for %s', $testDirectory->getRelativePathname()));
+        $this->assertEquals(\count($expectedFinder), \count($generatedFinder), \sprintf('No same number of files for %s', $testDirectory->getRelativePathname()));
 
         foreach ($generatedFinder as $generatedFile) {
             $generatedData[$generatedFile->getRelativePathname()] = $generatedFile->getRealPath();
@@ -47,14 +47,14 @@ class JaneBaseTest extends TestCase
             $this->assertArrayHasKey(
                 $expectedFile->getRelativePathname(),
                 $generatedData,
-                sprintf('File %s does not exist for %s', $expectedFile->getRelativePathname(), $testDirectory->getRelativePathname())
+                \sprintf('File %s does not exist for %s', $expectedFile->getRelativePathname(), $testDirectory->getRelativePathname())
             );
 
             if ($expectedFile->isFile()) {
                 $this->assertEquals(
                     file_get_contents($expectedFile->getRealPath()),
                     file_get_contents($generatedData[$expectedFile->getRelativePathname()]),
-                    sprintf('File %s does not have the same content for %s', $expectedFile->getRelativePathname(), $testDirectory->getRelativePathname())
+                    \sprintf('File %s does not have the same content for %s', $expectedFile->getRelativePathname(), $testDirectory->getRelativePathname())
                 );
             }
         }

@@ -66,7 +66,7 @@ class Naming
         $name = $this->cleaning($name);
         // since it's prefixed, it doesn't require to check if it start with a number
 
-        return sprintf('%s%s', $prefix, $this->getInflector()->classify($name));
+        return \sprintf('%s%s', $prefix, $this->getInflector()->classify($name));
     }
 
     public function getClassName(string $name): string
@@ -82,12 +82,12 @@ class Naming
 
     public function getAuthName(string $name): string
     {
-        return $this->getClassName(sprintf('%sAuthentication', $name));
+        return $this->getClassName(\sprintf('%sAuthentication', $name));
     }
 
     public function getConstraintName(string $name): string
     {
-        return $this->getClassName(sprintf('%sConstraint', $name));
+        return $this->getClassName(\sprintf('%sConstraint', $name));
     }
 
     public function getRuntimeNamespace(string $schemaNamespace, array $namespace): string
@@ -102,7 +102,7 @@ class Naming
 
     public function getRuntimeClassFQCN(string $schemaNamespace, array $namespace, string $class): string
     {
-        return sprintf('%s\\%s', $this->getRuntimeNamespace($schemaNamespace, $namespace), $class);
+        return \sprintf('%s\\%s', $this->getRuntimeNamespace($schemaNamespace, $namespace), $class);
     }
 
     protected function cleaning(string $name, bool $class = false): string

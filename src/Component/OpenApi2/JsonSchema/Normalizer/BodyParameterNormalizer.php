@@ -18,7 +18,7 @@ class BodyParameterNormalizer implements DenormalizerInterface, NormalizerInterf
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\BodyParameter';
     }
@@ -29,7 +29,7 @@ class BodyParameterNormalizer implements DenormalizerInterface, NormalizerInterf
     /**
      * @return mixed
      */
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -92,30 +92,30 @@ class BodyParameterNormalizer implements DenormalizerInterface, NormalizerInterf
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $data, ?string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = [];
-        if ($object->isInitialized('description') && null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
+        $dataArray = [];
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+            $dataArray['description'] = $data->getDescription();
         }
-        $data['name'] = $object->getName();
-        $data['in'] = $object->getIn();
-        if ($object->isInitialized('required') && null !== $object->getRequired()) {
-            $data['required'] = $object->getRequired();
+        $dataArray['name'] = $data->getName();
+        $dataArray['in'] = $data->getIn();
+        if ($data->isInitialized('required') && null !== $data->getRequired()) {
+            $dataArray['required'] = $data->getRequired();
         }
-        $value = $object->getSchema();
-        if (is_object($object->getSchema())) {
-            $value = $this->normalizer->normalize($object->getSchema(), 'json', $context);
-        } elseif (is_object($object->getSchema())) {
-            $value = $this->normalizer->normalize($object->getSchema(), 'json', $context);
+        $value = $data->getSchema();
+        if (is_object($data->getSchema())) {
+            $value = $this->normalizer->normalize($data->getSchema(), 'json', $context);
+        } elseif (is_object($data->getSchema())) {
+            $value = $this->normalizer->normalize($data->getSchema(), 'json', $context);
         }
-        $data['schema'] = $value;
-        foreach ($object as $key => $value_1) {
+        $dataArray['schema'] = $value;
+        foreach ($data as $key => $value_1) {
             if (preg_match('/^x-/', (string) $key)) {
-                $data[$key] = $value_1;
+                $dataArray[$key] = $value_1;
             }
         }
-        return $data;
+        return $dataArray;
     }
     public function getSupportedTypes(?string $format = null) : array
     {

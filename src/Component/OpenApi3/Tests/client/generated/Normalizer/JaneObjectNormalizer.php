@@ -10,9 +10,35 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+<<<<<<< HEAD
+class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    protected $normalizers = [
+        
+        \Jane\Component\OpenApi3\Tests\Client\Model\SimpleResponse::class => \Jane\Component\OpenApi3\Tests\Client\Normalizer\SimpleResponseNormalizer::class,
+        
+        \Jane\Component\OpenApi3\Tests\Client\Model\Error::class => \Jane\Component\OpenApi3\Tests\Client\Normalizer\ErrorNormalizer::class,
+        
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Client\Runtime\Normalizer\ReferenceNormalizer::class,
+    ], $normalizersCache = [];
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+||||||| 47d94227b
+class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    protected $normalizers = ['Jane\\Component\\OpenApi3\\Tests\\Client\\Model\\SimpleResponse' => 'Jane\\Component\\OpenApi3\\Tests\\Client\\Normalizer\\SimpleResponseNormalizer', 'Jane\\Component\\OpenApi3\\Tests\\Client\\Model\\Error' => 'Jane\\Component\\OpenApi3\\Tests\\Client\\Normalizer\\ErrorNormalizer', \Jane\Component\JsonSchemaRuntime\Reference::class => '\\Jane\\Component\\OpenApi3\\Tests\\Client\\Runtime\\Normalizer\\ReferenceNormalizer'], $normalizersCache = [];
+    public function supportsDenormalization($data, $type, $format = null)
+=======
 use Symfony\Component\HttpKernel\Kernel;
 if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
     class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+>>>>>>> origin/next
     {
         use DenormalizerAwareTrait;
         use NormalizerAwareTrait;
@@ -68,8 +94,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             ];
         }
     }
+<<<<<<< HEAD
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+||||||| 47d94227b
+    public function supportsNormalization($data, $format = null, $context = []) : bool
+=======
 } else {
     class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+>>>>>>> origin/next
     {
         use DenormalizerAwareTrait;
         use NormalizerAwareTrait;
@@ -131,4 +163,67 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             ];
         }
     }
+<<<<<<< HEAD
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $normalizerClass = $this->normalizers[get_class($data)];
+        $normalizer = $this->getNormalizer($normalizerClass);
+        return $normalizer->normalize($data, $format, $context);
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        $denormalizerClass = $this->normalizers[$type];
+        $denormalizer = $this->getNormalizer($denormalizerClass);
+        return $denormalizer->denormalize($data, $type, $format, $context);
+    }
+    private function getNormalizer(string $normalizerClass)
+    {
+        return $this->normalizersCache[$normalizerClass] ?? $this->initNormalizer($normalizerClass);
+    }
+    private function initNormalizer(string $normalizerClass)
+    {
+        $normalizer = new $normalizerClass();
+        $normalizer->setNormalizer($this->normalizer);
+        $normalizer->setDenormalizer($this->denormalizer);
+        $this->normalizersCache[$normalizerClass] = $normalizer;
+        return $normalizer;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [
+            
+            \Jane\Component\OpenApi3\Tests\Client\Model\SimpleResponse::class => false,
+            \Jane\Component\OpenApi3\Tests\Client\Model\Error::class => false,
+            \Jane\Component\JsonSchemaRuntime\Reference::class => false,
+        ];
+    }
 }
+||||||| 47d94227b
+    public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $normalizerClass = $this->normalizers[get_class($object)];
+        $normalizer = $this->getNormalizer($normalizerClass);
+        return $normalizer->normalize($object, $format, $context);
+    }
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+    {
+        $denormalizerClass = $this->normalizers[$type];
+        $denormalizer = $this->getNormalizer($denormalizerClass);
+        return $denormalizer->denormalize($data, $type, $format, $context);
+    }
+    private function getNormalizer(string $normalizerClass)
+    {
+        return $this->normalizersCache[$normalizerClass] ?? $this->initNormalizer($normalizerClass);
+    }
+    private function initNormalizer(string $normalizerClass)
+    {
+        $normalizer = new $normalizerClass();
+        $normalizer->setNormalizer($this->normalizer);
+        $normalizer->setDenormalizer($this->denormalizer);
+        $this->normalizersCache[$normalizerClass] = $normalizer;
+        return $normalizer;
+    }
+}
+=======
+}
+>>>>>>> origin/next

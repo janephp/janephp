@@ -18,7 +18,7 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\License';
     }
@@ -29,7 +29,7 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
     /**
      * @return mixed
      */
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -65,19 +65,19 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $object, ?string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = [];
-        $data['name'] = $object->getName();
+        $dataArray = [];
+        $dataArray['name'] = $object->getName();
         if ($object->isInitialized('url') && null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
+            $dataArray['url'] = $object->getUrl();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/^x-/', (string) $key)) {
-                $data[$key] = $value;
+                $dataArray[$key] = $value;
             }
         }
-        return $data;
+        return $dataArray;
     }
     public function getSupportedTypes(?string $format = null) : array
     {

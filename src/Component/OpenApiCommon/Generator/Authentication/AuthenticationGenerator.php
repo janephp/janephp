@@ -88,7 +88,7 @@ trait AuthenticationGenerator
                 }
                 break;
             default:
-                throw new \Exception(sprintf('Jane actually does not support Security type %s generation', $securityScheme->getType()));
+                throw new \Exception(\sprintf('Jane actually does not support Security type %s generation', $securityScheme->getType()));
                 break;
         }
 

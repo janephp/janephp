@@ -18,7 +18,7 @@ class HeaderNormalizer implements DenormalizerInterface, NormalizerInterface, De
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Header';
     }
@@ -29,7 +29,7 @@ class HeaderNormalizer implements DenormalizerInterface, NormalizerInterface, De
     /**
      * @return mixed
      */
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -190,71 +190,71 @@ class HeaderNormalizer implements DenormalizerInterface, NormalizerInterface, De
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $data, ?string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = [];
-        $data['type'] = $object->getType();
-        if ($object->isInitialized('format') && null !== $object->getFormat()) {
-            $data['format'] = $object->getFormat();
+        $dataArray = [];
+        $dataArray['type'] = $data->getType();
+        if ($data->isInitialized('format') && null !== $data->getFormat()) {
+            $dataArray['format'] = $data->getFormat();
         }
-        if ($object->isInitialized('items') && null !== $object->getItems()) {
-            $data['items'] = $this->normalizer->normalize($object->getItems(), 'json', $context);
+        if ($data->isInitialized('items') && null !== $data->getItems()) {
+            $dataArray['items'] = $this->normalizer->normalize($data->getItems(), 'json', $context);
         }
-        if ($object->isInitialized('collectionFormat') && null !== $object->getCollectionFormat()) {
-            $data['collectionFormat'] = $object->getCollectionFormat();
+        if ($data->isInitialized('collectionFormat') && null !== $data->getCollectionFormat()) {
+            $dataArray['collectionFormat'] = $data->getCollectionFormat();
         }
-        if ($object->isInitialized('default') && null !== $object->getDefault()) {
-            $data['default'] = $object->getDefault();
+        if ($data->isInitialized('default') && null !== $data->getDefault()) {
+            $dataArray['default'] = $data->getDefault();
         }
-        if ($object->isInitialized('maximum') && null !== $object->getMaximum()) {
-            $data['maximum'] = $object->getMaximum();
+        if ($data->isInitialized('maximum') && null !== $data->getMaximum()) {
+            $dataArray['maximum'] = $data->getMaximum();
         }
-        if ($object->isInitialized('exclusiveMaximum') && null !== $object->getExclusiveMaximum()) {
-            $data['exclusiveMaximum'] = $object->getExclusiveMaximum();
+        if ($data->isInitialized('exclusiveMaximum') && null !== $data->getExclusiveMaximum()) {
+            $dataArray['exclusiveMaximum'] = $data->getExclusiveMaximum();
         }
-        if ($object->isInitialized('minimum') && null !== $object->getMinimum()) {
-            $data['minimum'] = $object->getMinimum();
+        if ($data->isInitialized('minimum') && null !== $data->getMinimum()) {
+            $dataArray['minimum'] = $data->getMinimum();
         }
-        if ($object->isInitialized('exclusiveMinimum') && null !== $object->getExclusiveMinimum()) {
-            $data['exclusiveMinimum'] = $object->getExclusiveMinimum();
+        if ($data->isInitialized('exclusiveMinimum') && null !== $data->getExclusiveMinimum()) {
+            $dataArray['exclusiveMinimum'] = $data->getExclusiveMinimum();
         }
-        if ($object->isInitialized('maxLength') && null !== $object->getMaxLength()) {
-            $data['maxLength'] = $object->getMaxLength();
+        if ($data->isInitialized('maxLength') && null !== $data->getMaxLength()) {
+            $dataArray['maxLength'] = $data->getMaxLength();
         }
-        if ($object->isInitialized('minLength') && null !== $object->getMinLength()) {
-            $data['minLength'] = $object->getMinLength();
+        if ($data->isInitialized('minLength') && null !== $data->getMinLength()) {
+            $dataArray['minLength'] = $data->getMinLength();
         }
-        if ($object->isInitialized('pattern') && null !== $object->getPattern()) {
-            $data['pattern'] = $object->getPattern();
+        if ($data->isInitialized('pattern') && null !== $data->getPattern()) {
+            $dataArray['pattern'] = $data->getPattern();
         }
-        if ($object->isInitialized('maxItems') && null !== $object->getMaxItems()) {
-            $data['maxItems'] = $object->getMaxItems();
+        if ($data->isInitialized('maxItems') && null !== $data->getMaxItems()) {
+            $dataArray['maxItems'] = $data->getMaxItems();
         }
-        if ($object->isInitialized('minItems') && null !== $object->getMinItems()) {
-            $data['minItems'] = $object->getMinItems();
+        if ($data->isInitialized('minItems') && null !== $data->getMinItems()) {
+            $dataArray['minItems'] = $data->getMinItems();
         }
-        if ($object->isInitialized('uniqueItems') && null !== $object->getUniqueItems()) {
-            $data['uniqueItems'] = $object->getUniqueItems();
+        if ($data->isInitialized('uniqueItems') && null !== $data->getUniqueItems()) {
+            $dataArray['uniqueItems'] = $data->getUniqueItems();
         }
-        if ($object->isInitialized('enum') && null !== $object->getEnum()) {
+        if ($data->isInitialized('enum') && null !== $data->getEnum()) {
             $values = [];
-            foreach ($object->getEnum() as $value) {
+            foreach ($data->getEnum() as $value) {
                 $values[] = $value;
             }
-            $data['enum'] = $values;
+            $dataArray['enum'] = $values;
         }
-        if ($object->isInitialized('multipleOf') && null !== $object->getMultipleOf()) {
-            $data['multipleOf'] = $object->getMultipleOf();
+        if ($data->isInitialized('multipleOf') && null !== $data->getMultipleOf()) {
+            $dataArray['multipleOf'] = $data->getMultipleOf();
         }
-        if ($object->isInitialized('description') && null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+            $dataArray['description'] = $data->getDescription();
         }
-        foreach ($object as $key => $value_1) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/^x-/', (string) $key)) {
-                $data[$key] = $value_1;
+                $dataArray[$key] = $value_1;
             }
         }
-        return $data;
+        return $dataArray;
     }
     public function getSupportedTypes(?string $format = null) : array
     {

@@ -18,7 +18,7 @@ class Oauth2AccessCodeSecurityNormalizer implements DenormalizerInterface, Norma
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Oauth2AccessCodeSecurity';
     }
@@ -29,7 +29,7 @@ class Oauth2AccessCodeSecurityNormalizer implements DenormalizerInterface, Norma
     /**
      * @return mixed
      */
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -97,29 +97,29 @@ class Oauth2AccessCodeSecurityNormalizer implements DenormalizerInterface, Norma
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $object, ?string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = [];
-        $data['type'] = $object->getType();
-        $data['flow'] = $object->getFlow();
+        $dataArray = [];
+        $dataArray['type'] = $object->getType();
+        $dataArray['flow'] = $object->getFlow();
         if ($object->isInitialized('scopes') && null !== $object->getScopes()) {
             $values = [];
             foreach ($object->getScopes() as $key => $value) {
                 $values[$key] = $value;
             }
-            $data['scopes'] = $values;
+            $dataArray['scopes'] = $values;
         }
-        $data['authorizationUrl'] = $object->getAuthorizationUrl();
-        $data['tokenUrl'] = $object->getTokenUrl();
+        $dataArray['authorizationUrl'] = $object->getAuthorizationUrl();
+        $dataArray['tokenUrl'] = $object->getTokenUrl();
         if ($object->isInitialized('description') && null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
+            $dataArray['description'] = $object->getDescription();
         }
         foreach ($object as $key_1 => $value_1) {
             if (preg_match('/^x-/', (string) $key_1)) {
-                $data[$key_1] = $value_1;
+                $dataArray[$key_1] = $value_1;
             }
         }
-        return $data;
+        return $dataArray;
     }
     public function getSupportedTypes(?string $format = null) : array
     {

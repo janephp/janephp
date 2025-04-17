@@ -18,7 +18,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Schema';
     }
@@ -29,7 +29,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
     /**
      * @return mixed
      */
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -312,147 +312,147 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $data, ?string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = [];
-        if ($object->isInitialized('dollarRef') && null !== $object->getDollarRef()) {
-            $data['$ref'] = $object->getDollarRef();
+        $dataArray = [];
+        if ($data->isInitialized('dollarRef') && null !== $data->getDollarRef()) {
+            $dataArray['$ref'] = $data->getDollarRef();
         }
-        if ($object->isInitialized('format') && null !== $object->getFormat()) {
-            $data['format'] = $object->getFormat();
+        if ($data->isInitialized('format') && null !== $data->getFormat()) {
+            $dataArray['format'] = $data->getFormat();
         }
-        if ($object->isInitialized('title') && null !== $object->getTitle()) {
-            $data['title'] = $object->getTitle();
+        if ($data->isInitialized('title') && null !== $data->getTitle()) {
+            $dataArray['title'] = $data->getTitle();
         }
-        if ($object->isInitialized('description') && null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+            $dataArray['description'] = $data->getDescription();
         }
-        if ($object->isInitialized('default') && null !== $object->getDefault()) {
-            $data['default'] = $object->getDefault();
+        if ($data->isInitialized('default') && null !== $data->getDefault()) {
+            $dataArray['default'] = $data->getDefault();
         }
-        if ($object->isInitialized('multipleOf') && null !== $object->getMultipleOf()) {
-            $data['multipleOf'] = $object->getMultipleOf();
+        if ($data->isInitialized('multipleOf') && null !== $data->getMultipleOf()) {
+            $dataArray['multipleOf'] = $data->getMultipleOf();
         }
-        if ($object->isInitialized('maximum') && null !== $object->getMaximum()) {
-            $data['maximum'] = $object->getMaximum();
+        if ($data->isInitialized('maximum') && null !== $data->getMaximum()) {
+            $dataArray['maximum'] = $data->getMaximum();
         }
-        if ($object->isInitialized('exclusiveMaximum') && null !== $object->getExclusiveMaximum()) {
-            $data['exclusiveMaximum'] = $object->getExclusiveMaximum();
+        if ($data->isInitialized('exclusiveMaximum') && null !== $data->getExclusiveMaximum()) {
+            $dataArray['exclusiveMaximum'] = $data->getExclusiveMaximum();
         }
-        if ($object->isInitialized('minimum') && null !== $object->getMinimum()) {
-            $data['minimum'] = $object->getMinimum();
+        if ($data->isInitialized('minimum') && null !== $data->getMinimum()) {
+            $dataArray['minimum'] = $data->getMinimum();
         }
-        if ($object->isInitialized('exclusiveMinimum') && null !== $object->getExclusiveMinimum()) {
-            $data['exclusiveMinimum'] = $object->getExclusiveMinimum();
+        if ($data->isInitialized('exclusiveMinimum') && null !== $data->getExclusiveMinimum()) {
+            $dataArray['exclusiveMinimum'] = $data->getExclusiveMinimum();
         }
-        if ($object->isInitialized('maxLength') && null !== $object->getMaxLength()) {
-            $data['maxLength'] = $object->getMaxLength();
+        if ($data->isInitialized('maxLength') && null !== $data->getMaxLength()) {
+            $dataArray['maxLength'] = $data->getMaxLength();
         }
-        if ($object->isInitialized('minLength') && null !== $object->getMinLength()) {
-            $data['minLength'] = $object->getMinLength();
+        if ($data->isInitialized('minLength') && null !== $data->getMinLength()) {
+            $dataArray['minLength'] = $data->getMinLength();
         }
-        if ($object->isInitialized('pattern') && null !== $object->getPattern()) {
-            $data['pattern'] = $object->getPattern();
+        if ($data->isInitialized('pattern') && null !== $data->getPattern()) {
+            $dataArray['pattern'] = $data->getPattern();
         }
-        if ($object->isInitialized('maxItems') && null !== $object->getMaxItems()) {
-            $data['maxItems'] = $object->getMaxItems();
+        if ($data->isInitialized('maxItems') && null !== $data->getMaxItems()) {
+            $dataArray['maxItems'] = $data->getMaxItems();
         }
-        if ($object->isInitialized('minItems') && null !== $object->getMinItems()) {
-            $data['minItems'] = $object->getMinItems();
+        if ($data->isInitialized('minItems') && null !== $data->getMinItems()) {
+            $dataArray['minItems'] = $data->getMinItems();
         }
-        if ($object->isInitialized('uniqueItems') && null !== $object->getUniqueItems()) {
-            $data['uniqueItems'] = $object->getUniqueItems();
+        if ($data->isInitialized('uniqueItems') && null !== $data->getUniqueItems()) {
+            $dataArray['uniqueItems'] = $data->getUniqueItems();
         }
-        if ($object->isInitialized('maxProperties') && null !== $object->getMaxProperties()) {
-            $data['maxProperties'] = $object->getMaxProperties();
+        if ($data->isInitialized('maxProperties') && null !== $data->getMaxProperties()) {
+            $dataArray['maxProperties'] = $data->getMaxProperties();
         }
-        if ($object->isInitialized('minProperties') && null !== $object->getMinProperties()) {
-            $data['minProperties'] = $object->getMinProperties();
+        if ($data->isInitialized('minProperties') && null !== $data->getMinProperties()) {
+            $dataArray['minProperties'] = $data->getMinProperties();
         }
-        if ($object->isInitialized('required') && null !== $object->getRequired()) {
+        if ($data->isInitialized('required') && null !== $data->getRequired()) {
             $values = [];
-            foreach ($object->getRequired() as $value) {
+            foreach ($data->getRequired() as $value) {
                 $values[] = $value;
             }
-            $data['required'] = $values;
+            $dataArray['required'] = $values;
         }
-        if ($object->isInitialized('enum') && null !== $object->getEnum()) {
+        if ($data->isInitialized('enum') && null !== $data->getEnum()) {
             $values_1 = [];
-            foreach ($object->getEnum() as $value_1) {
+            foreach ($data->getEnum() as $value_1) {
                 $values_1[] = $value_1;
             }
-            $data['enum'] = $values_1;
+            $dataArray['enum'] = $values_1;
         }
-        if ($object->isInitialized('additionalProperties') && null !== $object->getAdditionalProperties()) {
-            $value_2 = $object->getAdditionalProperties();
-            if (is_object($object->getAdditionalProperties())) {
-                $value_2 = $this->normalizer->normalize($object->getAdditionalProperties(), 'json', $context);
-            } elseif (is_bool($object->getAdditionalProperties())) {
-                $value_2 = $object->getAdditionalProperties();
+        if ($data->isInitialized('additionalProperties') && null !== $data->getAdditionalProperties()) {
+            $value_2 = $data->getAdditionalProperties();
+            if (is_object($data->getAdditionalProperties())) {
+                $value_2 = $this->normalizer->normalize($data->getAdditionalProperties(), 'json', $context);
+            } elseif (is_bool($data->getAdditionalProperties())) {
+                $value_2 = $data->getAdditionalProperties();
             }
-            $data['additionalProperties'] = $value_2;
+            $dataArray['additionalProperties'] = $value_2;
         }
-        if ($object->isInitialized('type') && null !== $object->getType()) {
-            $value_3 = $object->getType();
-            if (is_array($object->getType())) {
+        if ($data->isInitialized('type') && null !== $data->getType()) {
+            $value_3 = $data->getType();
+            if (is_array($data->getType())) {
                 $values_2 = [];
-                foreach ($object->getType() as $value_4) {
+                foreach ($data->getType() as $value_4) {
                     $values_2[] = $value_4;
                 }
                 $value_3 = $values_2;
-            } elseif (!is_null($object->getType())) {
-                $value_3 = $object->getType();
+            } elseif (!is_null($data->getType())) {
+                $value_3 = $data->getType();
             }
-            $data['type'] = $value_3;
+            $dataArray['type'] = $value_3;
         }
-        if ($object->isInitialized('items') && null !== $object->getItems()) {
-            $value_5 = $object->getItems();
-            if (is_array($object->getItems())) {
+        if ($data->isInitialized('items') && null !== $data->getItems()) {
+            $value_5 = $data->getItems();
+            if (is_array($data->getItems())) {
                 $values_3 = [];
-                foreach ($object->getItems() as $value_6) {
+                foreach ($data->getItems() as $value_6) {
                     $values_3[] = $this->normalizer->normalize($value_6, 'json', $context);
                 }
                 $value_5 = $values_3;
-            } elseif (is_object($object->getItems())) {
-                $value_5 = $this->normalizer->normalize($object->getItems(), 'json', $context);
+            } elseif (is_object($data->getItems())) {
+                $value_5 = $this->normalizer->normalize($data->getItems(), 'json', $context);
             }
-            $data['items'] = $value_5;
+            $dataArray['items'] = $value_5;
         }
-        if ($object->isInitialized('allOf') && null !== $object->getAllOf()) {
+        if ($data->isInitialized('allOf') && null !== $data->getAllOf()) {
             $values_4 = [];
-            foreach ($object->getAllOf() as $value_7) {
+            foreach ($data->getAllOf() as $value_7) {
                 $values_4[] = $this->normalizer->normalize($value_7, 'json', $context);
             }
-            $data['allOf'] = $values_4;
+            $dataArray['allOf'] = $values_4;
         }
-        if ($object->isInitialized('properties') && null !== $object->getProperties()) {
+        if ($data->isInitialized('properties') && null !== $data->getProperties()) {
             $values_5 = [];
-            foreach ($object->getProperties() as $key => $value_8) {
+            foreach ($data->getProperties() as $key => $value_8) {
                 $values_5[$key] = $this->normalizer->normalize($value_8, 'json', $context);
             }
-            $data['properties'] = $values_5;
+            $dataArray['properties'] = $values_5;
         }
-        if ($object->isInitialized('discriminator') && null !== $object->getDiscriminator()) {
-            $data['discriminator'] = $object->getDiscriminator();
+        if ($data->isInitialized('discriminator') && null !== $data->getDiscriminator()) {
+            $dataArray['discriminator'] = $data->getDiscriminator();
         }
-        if ($object->isInitialized('readOnly') && null !== $object->getReadOnly()) {
-            $data['readOnly'] = $object->getReadOnly();
+        if ($data->isInitialized('readOnly') && null !== $data->getReadOnly()) {
+            $dataArray['readOnly'] = $data->getReadOnly();
         }
-        if ($object->isInitialized('xml') && null !== $object->getXml()) {
-            $data['xml'] = $this->normalizer->normalize($object->getXml(), 'json', $context);
+        if ($data->isInitialized('xml') && null !== $data->getXml()) {
+            $dataArray['xml'] = $this->normalizer->normalize($data->getXml(), 'json', $context);
         }
-        if ($object->isInitialized('externalDocs') && null !== $object->getExternalDocs()) {
-            $data['externalDocs'] = $this->normalizer->normalize($object->getExternalDocs(), 'json', $context);
+        if ($data->isInitialized('externalDocs') && null !== $data->getExternalDocs()) {
+            $dataArray['externalDocs'] = $this->normalizer->normalize($data->getExternalDocs(), 'json', $context);
         }
-        if ($object->isInitialized('example') && null !== $object->getExample()) {
-            $data['example'] = $object->getExample();
+        if ($data->isInitialized('example') && null !== $data->getExample()) {
+            $dataArray['example'] = $data->getExample();
         }
-        foreach ($object as $key_1 => $value_9) {
+        foreach ($data as $key_1 => $value_9) {
             if (preg_match('/^x-/', (string) $key_1)) {
-                $data[$key_1] = $value_9;
+                $dataArray[$key_1] = $value_9;
             }
         }
-        return $data;
+        return $dataArray;
     }
     public function getSupportedTypes(?string $format = null) : array
     {

@@ -34,7 +34,7 @@ class GeneratorFactory
         $requestBodyGenerator->addRequestBodyGenerator(['application/x-www-form-urlencoded', 'multipart/form-data'], new FormBodyContentGenerator($serializer));
 
         if (!class_exists($endpointGeneratorClass)) {
-            throw new \InvalidArgumentException(sprintf('Unknown generator class %s', $endpointGeneratorClass));
+            throw new \InvalidArgumentException(\sprintf('Unknown generator class %s', $endpointGeneratorClass));
         }
 
         $endpointGenerator = new $endpointGeneratorClass($operationNaming, $nonBodyParameter, $serializer, $exceptionGenerator, $requestBodyGenerator);
