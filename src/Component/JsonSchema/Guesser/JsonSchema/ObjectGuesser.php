@@ -19,25 +19,20 @@ use Jane\Component\JsonSchema\Guesser\Validator\ValidatorInterface;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface, ClassGuesserInterface
 {
     use ChainGuesserAwareTrait;
     use GuesserResolverTrait;
 
-    /**
-     * @var Naming
-     */
-    protected $naming;
+    protected ?ValidatorInterface $chainValidator = null;
 
-    /** @var ValidatorInterface */
-    protected $chainValidator;
-
-    public function __construct(Naming $naming, SerializerInterface $serializer)
-    {
-        $this->naming = $naming;
-        $this->serializer = $serializer;
+    public function __construct(
+        DenormalizerInterface $denormalizer,
+        protected Naming $naming,
+    ) {
+        $this->denormalizer = $denormalizer;
     }
 
     /**
@@ -202,7 +197,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
     private function initChainValidator(Registry $registry): void
     {
         if (null === $this->chainValidator) {
-            $this->chainValidator = ChainValidatorFactory::create($this->naming, $registry, $this->serializer);
+            $this->chainValidator = ChainValidatorFactory::create($this->naming, $registry, $this->denormalizer);
         }
     }
 }

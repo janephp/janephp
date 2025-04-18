@@ -16,7 +16,6 @@ use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\SerializerInterface;
 
 class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInterface, TypeGuesserInterface
 {
@@ -26,7 +25,7 @@ class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInter
     public function __construct(
         DenormalizerInterface $denormalizer,
         protected Naming $naming,
-        protected string $schemaClass
+        protected string $schemaClass,
     ) {
         $this->denormalizer = $denormalizer;
     }

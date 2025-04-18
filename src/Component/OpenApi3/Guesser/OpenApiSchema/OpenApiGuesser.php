@@ -17,13 +17,13 @@ use Jane\Component\OpenApi3\JsonSchema\Model\PathItem;
 use Jane\Component\OpenApi3\JsonSchema\Model\RequestBody;
 use Jane\Component\OpenApi3\JsonSchema\Model\Response;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
-use Jane\Component\OpenApiCommon\Registry\Schema as OpenApiRegistrySchema;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\Component\OpenApiCommon\Naming\ChainOperationNaming;
 use Jane\Component\OpenApiCommon\Naming\OperationIdNaming;
 use Jane\Component\OpenApiCommon\Naming\OperationNamingInterface;
 use Jane\Component\OpenApiCommon\Naming\OperationUrlNaming;
 use Jane\Component\OpenApiCommon\Registry\Registry as OpenApiRegistry;
+use Jane\Component\OpenApiCommon\Registry\Schema as OpenApiRegistrySchema;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\String\Slugger\AsciiSlugger;
 use Symfony\Component\String\Slugger\SluggerInterface;
@@ -204,7 +204,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         $operationGuess = new OperationGuess($pathItem, $operation, $path, $operationType, $reference, $securityScopes);
         $operationName = $this->naming->getEndpointName($operationGuess);
 
-        /** @var null|OpenApiRegistrySchema $schema */
+        /** @var OpenApiRegistrySchema|null $schema */
         $schema = $registry->getSchema($reference);
         if ($schema === null) {
             throw new \RuntimeException("Schema for reference $reference could not be found");

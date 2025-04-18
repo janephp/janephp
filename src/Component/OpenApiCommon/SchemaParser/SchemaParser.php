@@ -5,7 +5,6 @@ namespace Jane\Component\OpenApiCommon\SchemaParser;
 use Jane\Component\OpenApiCommon\Exception\CouldNotParseException;
 use Jane\Component\OpenApiCommon\Exception\OpenApiVersionSupportException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Yaml\Exception\ExceptionInterface as YamlException;
 use Symfony\Component\Yaml\Yaml;
 

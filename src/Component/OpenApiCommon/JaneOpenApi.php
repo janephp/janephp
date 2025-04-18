@@ -144,7 +144,7 @@ abstract class JaneOpenApi extends ChainGenerator
         }
     }
 
-    public static function buildSerializer(): DenormalizerInterface|NormalizerInterface
+    public static function buildSerializer(): SerializerInterface|DenormalizerInterface|NormalizerInterface
     {
         $encoders = [
             new JsonEncoder(new JsonEncode([JsonEncode::OPTIONS => \JSON_UNESCAPED_SLASHES]), new JsonDecode()),

@@ -6,10 +6,10 @@ use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\File;
 use Jane\Component\JsonSchema\Generator\GeneratorInterface;
 use Jane\Component\JsonSchema\Registry\Schema;
-use Jane\Component\OpenApiCommon\Registry\Schema as OpenApiSchema;
 use Jane\Component\OpenApiCommon\Generator\Client\ClientGenerator as CommonClientGenerator;
 use Jane\Component\OpenApiCommon\Generator\Client\HttpClientCreateGenerator;
 use Jane\Component\OpenApiCommon\Naming\OperationNamingInterface;
+use Jane\Component\OpenApiCommon\Registry\Schema as OpenApiSchema;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 

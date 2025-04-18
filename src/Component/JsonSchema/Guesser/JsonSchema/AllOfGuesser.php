@@ -16,19 +16,18 @@ use Jane\Component\JsonSchema\Guesser\TypeGuesserInterface;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface, PropertiesGuesserInterface, ClassGuesserInterface
 {
     use ChainGuesserAwareTrait;
     use GuesserResolverTrait;
 
-    protected $naming;
-
-    public function __construct(SerializerInterface $serializer, Naming $naming)
-    {
-        $this->serializer = $serializer;
-        $this->naming = $naming;
+    public function __construct(
+        DenormalizerInterface $denormalizer,
+        protected Naming $naming,
+    ) {
+        $this->denormalizer = $denormalizer;
     }
 
     /**

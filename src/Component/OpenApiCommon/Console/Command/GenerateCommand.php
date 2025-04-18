@@ -6,7 +6,6 @@ use Jane\Component\JsonSchema\Console\Command\GenerateCommand as BaseGenerateCom
 use Jane\Component\JsonSchema\Console\Loader\ConfigLoaderInterface;
 use Jane\Component\JsonSchema\Console\Loader\SchemaLoaderInterface;
 use Jane\Component\JsonSchema\Printer;
-use Jane\Component\JsonSchema\Registry\RegistryInterface;
 use Jane\Component\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\Component\OpenApiCommon\JaneOpenApi;
 use Jane\Component\OpenApiCommon\Registry\Registry;

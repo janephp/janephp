@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - next
-      - 6.*.x
   release:
     types: [published]
 jobs:

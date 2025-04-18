@@ -11,6 +11,7 @@ use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
 use Jane\Component\OpenApi3\JsonSchema\Normalizer\ResponseNormalizer;
 use Jane\Component\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
+use Jane\Component\OpenApiCommon\Registry\Registry;
 use PhpParser\Comment\Doc;
 use PhpParser\Modifiers;
 use PhpParser\Node;
@@ -19,7 +20,6 @@ use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
 use Symfony\Component\Serializer\SerializerInterface;
-use Jane\Component\OpenApiCommon\Registry\Registry;
 
 trait GetTransformResponseBodyTrait
 {

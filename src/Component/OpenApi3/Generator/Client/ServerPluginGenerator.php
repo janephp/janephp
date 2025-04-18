@@ -14,7 +14,7 @@ trait ServerPluginGenerator
     /**
      * @param OpenApi $openApi
      */
-    private function discoverServer($openApi): array
+    protected function discoverServer($openApi): array
     {
         $servers = $openApi->getServers();
         $server = $servers !== null && !empty($servers[0]) ? $servers[0] : null;

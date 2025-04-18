@@ -34,7 +34,7 @@ class OpenApiMatcher
     }
 
     /**
-     * @return array{0: null|class-string, 1: null|string}
+     * @return array{0: class-string|null, 1: string|null}
      */
     private function isOpenApi2(string $origin): array
     {
@@ -61,7 +61,7 @@ class OpenApiMatcher
     }
 
     /**
-     * @return array{0: null|class-string, 1: null|string}
+     * @return array{0: class-string|null, 1: string|null}
      */
     private function isOpenApi3(string $origin): array
     {

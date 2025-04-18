@@ -1,5 +1,9 @@
 name: CI
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - next
+  pull_request: ~
 jobs:
   cs-check:
     runs-on: ubuntu-latest
@@ -25,8 +29,10 @@ jobs:
         with:
           php-version: 8.4
           coverage: none
-      - name: install PHP CS Fixer
+      - name: install PHPStan
         run: 'composer install -n --prefer-dist --optimize-autoloader --working-dir=tools/phpstan'
+      - name: composer install
+        run: composer update --prefer-stable
       - name: 'phpstan check'
         run: 'tools/phpstan/vendor/bin/phpstan analyse --configuration=tools/phpstan/phpstan.neon'
   tests:

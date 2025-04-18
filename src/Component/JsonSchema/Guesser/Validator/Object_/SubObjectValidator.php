@@ -19,16 +19,11 @@ class SubObjectValidator implements ValidatorInterface
     use GuesserResolverTrait;
     use ObjectCheckTrait;
 
-    /** @var Naming */
-    private $naming;
-
-    /** @var Registry */
-    private $registry;
-
-    public function __construct(Naming $naming, Registry $registry, DenormalizerInterface $denormalizer)
-    {
-        $this->naming = $naming;
-        $this->registry = $registry;
+    public function __construct(
+        DenormalizerInterface $denormalizer,
+        private readonly Naming $naming,
+        private readonly Registry $registry,
+    ) {
         $this->denormalizer = $denormalizer;
     }
 

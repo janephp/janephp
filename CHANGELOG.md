@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- [Jane] [GH#855](https://github.com/janephp/janephp/pull/855) Add PHPStan
+
 ### Fixed
 - [JsonSchema] [GH#841](https://github.com/janephp/janephp/pull/841) Fix "nullable" property handing in generated normalizers
 
