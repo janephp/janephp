@@ -6,6 +6,7 @@ use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\File;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\OpenApiCommon\Naming\ExceptionNaming;
+use Jane\Component\OpenApiCommon\Registry\Registry;
 use PhpParser\Comment\Doc;
 use PhpParser\Modifiers;
 use PhpParser\Node;
@@ -235,6 +236,7 @@ EOD
     public function createBaseExceptions(Context $context): void
     {
         $schema = $context->getCurrentSchema();
+        /** @var Registry $registry */
         $registry = $context->getRegistry();
 
         $unique = $schema->getRootName() . $schema->getDirectory();

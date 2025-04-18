@@ -17,13 +17,16 @@ use Jane\Component\OpenApi3\JsonSchema\Model\PathItem;
 use Jane\Component\OpenApi3\JsonSchema\Model\RequestBody;
 use Jane\Component\OpenApi3\JsonSchema\Model\Response;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
+use Jane\Component\OpenApiCommon\Registry\Schema as OpenApiRegistrySchema;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\Component\OpenApiCommon\Naming\ChainOperationNaming;
 use Jane\Component\OpenApiCommon\Naming\OperationIdNaming;
+use Jane\Component\OpenApiCommon\Naming\OperationNamingInterface;
 use Jane\Component\OpenApiCommon\Naming\OperationUrlNaming;
 use Jane\Component\OpenApiCommon\Registry\Registry as OpenApiRegistry;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\String\Slugger\AsciiSlugger;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGuesserAwareInterface
 {
@@ -31,12 +34,12 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
     use GuesserResolverTrait;
 
     private const IN_BODY = 'body';
-    private $slugger;
-    private $naming;
+    private SluggerInterface $slugger;
+    private OperationNamingInterface $naming;
 
-    public function __construct(SerializerInterface $serializer)
+    public function __construct(DenormalizerInterface $denormalizer)
     {
-        $this->serializer = $serializer;
+        $this->denormalizer = $denormalizer;
         $this->slugger = new AsciiSlugger();
         $this->naming = new ChainOperationNaming([
             new OperationIdNaming(),
@@ -44,17 +47,12 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         return $object instanceof OpenApi;
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param OpenApi         $object
      * @param OpenApiRegistry $registry
      */
@@ -206,7 +204,9 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         $operationGuess = new OperationGuess($pathItem, $operation, $path, $operationType, $reference, $securityScopes);
         $operationName = $this->naming->getEndpointName($operationGuess);
 
-        if (($schema = $registry->getSchema($reference)) === null) {
+        /** @var null|OpenApiRegistrySchema $schema */
+        $schema = $registry->getSchema($reference);
+        if ($schema === null) {
             throw new \RuntimeException("Schema for reference $reference could not be found");
         }
         $schema->addOperation($reference, $operationGuess);

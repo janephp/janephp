@@ -15,14 +15,16 @@ use Jane\Component\OpenApi2\JsonSchema\Model\Response;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\Component\OpenApiCommon\Naming\ChainOperationNaming;
 use Jane\Component\OpenApiCommon\Naming\OperationIdNaming;
+use Jane\Component\OpenApiCommon\Naming\OperationNamingInterface;
 use Jane\Component\OpenApiCommon\Naming\OperationUrlNaming;
 use Jane\Component\OpenApiCommon\Registry\Registry as OpenApiRegistry;
+use Jane\Component\OpenApiCommon\Registry\Schema;
 
 class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGuesserAwareInterface
 {
     use ChainGuesserAwareTrait;
 
-    private $naming;
+    private OperationNamingInterface $naming;
 
     public function __construct()
     {
@@ -186,6 +188,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         $operationGuess = new OperationGuess($pathItem, $operation, $path, $operationType, $reference, $securityScopes);
         $operationName = $this->naming->getEndpointName($operationGuess);
 
+        /** @var Schema $schema */
         $schema = $registry->getSchema($reference);
         $schema->addOperation($reference, $operationGuess);
         $schema->initOperationRelations($operationName);

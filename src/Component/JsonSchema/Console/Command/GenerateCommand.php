@@ -16,17 +16,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class GenerateCommand extends Command
 {
-    /** @var ConfigLoaderInterface */
-    protected $configLoader;
-
-    /** @var SchemaLoaderInterface */
-    protected $schemaLoader;
-
-    public function __construct(ConfigLoaderInterface $configLoader, SchemaLoaderInterface $schemaLoader)
-    {
+    public function __construct(
+        protected ConfigLoaderInterface $configLoader,
+        protected SchemaLoaderInterface $schemaLoader,
+    ) {
         parent::__construct();
-        $this->configLoader = $configLoader;
-        $this->schemaLoader = $schemaLoader;
     }
 
     /**
@@ -97,7 +91,7 @@ class GenerateCommand extends Command
         return $registries;
     }
 
-    protected function newRegistry(string $schemaFile, array $options): RegistryInterface
+    protected function newRegistry(string $schemaFile, array $options): Registry
     {
         return new Registry();
     }

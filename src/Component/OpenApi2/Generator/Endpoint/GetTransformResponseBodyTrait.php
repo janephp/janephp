@@ -9,6 +9,7 @@ use Jane\Component\OpenApi2\JsonSchema\Model\Response;
 use Jane\Component\OpenApi2\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
+use Jane\Component\OpenApiCommon\Registry\Registry;
 use PhpParser\Comment\Doc;
 use PhpParser\Modifiers;
 use PhpParser\Node;
@@ -27,7 +28,10 @@ trait GetTransformResponseBodyTrait
             new Stmt\Expression(new Expr\Assign(new Expr\Variable('status'), new Expr\MethodCall(new Expr\Variable('response'), 'getStatusCode'))),
             new Stmt\Expression(new Expr\Assign(new Expr\Variable('body'), new Expr\Cast\String_(new Expr\MethodCall(new Expr\Variable('response'), 'getBody')))),
         ];
-        $outputTypes = $context->getRegistry()->getThrowUnexpectedStatusCode() ? [] : ['null'];
+
+        /** @var Registry $registry */
+        $registry = $context->getRegistry();
+        $outputTypes = $registry->getThrowUnexpectedStatusCode() ? [] : ['null'];
         $throwTypes = [];
 
         if ($operation->getOperation()->getResponses()) {
@@ -62,7 +66,7 @@ trait GetTransformResponseBodyTrait
             }
         }
 
-        if ($context->getRegistry()->getThrowUnexpectedStatusCode()) {
+        if ($registry->getThrowUnexpectedStatusCode()) {
             $exceptionGenerator->createBaseExceptions($context);
 
             $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\UnexpectedStatusCodeException';

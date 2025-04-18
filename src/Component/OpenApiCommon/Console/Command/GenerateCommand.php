@@ -65,7 +65,7 @@ class GenerateCommand extends BaseGenerateCommand
         return 0;
     }
 
-    protected function newRegistry(string $schemaFile, array $options): RegistryInterface
+    protected function newRegistry(string $schemaFile, array $options): Registry
     {
         $registry = new Registry();
         $registry->setOpenApiClass($this->matcher->match($schemaFile));

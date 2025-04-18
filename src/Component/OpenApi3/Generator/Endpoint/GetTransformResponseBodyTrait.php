@@ -19,6 +19,7 @@ use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
 use Symfony\Component\Serializer\SerializerInterface;
+use Jane\Component\OpenApiCommon\Registry\Registry;
 
 trait GetTransformResponseBodyTrait
 {
@@ -28,7 +29,10 @@ trait GetTransformResponseBodyTrait
             new Stmt\Expression(new Expr\Assign(new Expr\Variable('status'), new Expr\MethodCall(new Expr\Variable('response'), 'getStatusCode'))),
             new Stmt\Expression(new Expr\Assign(new Expr\Variable('body'), new Expr\Cast\String_(new Expr\MethodCall(new Expr\Variable('response'), 'getBody')))),
         ];
-        $outputTypes = $context->getRegistry()->getThrowUnexpectedStatusCode() ? [] : ['null'];
+
+        /** @var Registry $registry */
+        $registry = $context->getRegistry();
+        $outputTypes = $registry->getThrowUnexpectedStatusCode() ? [] : ['null'];
         $throwTypes = [];
 
         if ($operation->getOperation()->getResponses()) {
@@ -90,7 +94,7 @@ trait GetTransformResponseBodyTrait
             $throwTypes = array_unique($throwTypes);
         }
 
-        if ($context->getRegistry()->getThrowUnexpectedStatusCode()) {
+        if ($registry->getThrowUnexpectedStatusCode()) {
             $exceptionGenerator->createBaseExceptions($context);
 
             $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\UnexpectedStatusCodeException';

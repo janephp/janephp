@@ -15,6 +15,7 @@ use Jane\Component\JsonSchema\Guesser\TypeGuesserInterface;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInterface, TypeGuesserInterface
@@ -22,14 +23,12 @@ class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInter
     use ChainGuesserAwareTrait;
     use GuesserResolverTrait;
 
-    protected $schemaClass;
-    protected $naming;
-
-    public function __construct(SerializerInterface $serializer, Naming $naming, string $schemaClass)
-    {
-        $this->serializer = $serializer;
-        $this->schemaClass = $schemaClass;
-        $this->naming = $naming;
+    public function __construct(
+        DenormalizerInterface $denormalizer,
+        protected Naming $naming,
+        protected string $schemaClass
+    ) {
+        $this->denormalizer = $denormalizer;
     }
 
     public function supportObject($object): bool
@@ -68,7 +67,7 @@ class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInter
                 }
                 if (null !== $anyOfSchema->getType()) {
                     $anyOfType = $this->chainGuesser->guessType($anyOfSchema, $name, $anyOfReference, $registry);
-                    if ($supportsDiscriminator) {
+                    if ($supportsDiscriminator && $anyOf instanceof Reference) {
                         $objectRef = '#' . $anyOf->getMergedUri()->getFragment();
                         $type->addType($anyOfType, $mapping ? $mapping[$objectRef] : $objectRef);
                     } else {

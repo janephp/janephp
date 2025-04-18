@@ -4,11 +4,12 @@ namespace Jane\Component\JsonSchema\Guesser\Validator;
 
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Registry\Registry;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class ChainValidatorFactory
 {
-    public static function create(Naming $naming, Registry $registry, SerializerInterface $denormalizer): ValidatorInterface
+    public static function create(Naming $naming, Registry $registry, DenormalizerInterface $denormalizer): ValidatorInterface
     {
         $chainValidator = new ChainValidator();
         // Numeric

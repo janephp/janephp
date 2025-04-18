@@ -12,7 +12,7 @@ use Jane\Component\JsonSchema\Guesser\Validator\ValidatorInterface;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class SubObjectValidator implements ValidatorInterface
 {
@@ -25,11 +25,11 @@ class SubObjectValidator implements ValidatorInterface
     /** @var Registry */
     private $registry;
 
-    public function __construct(Naming $naming, Registry $registry, SerializerInterface $denormalizer)
+    public function __construct(Naming $naming, Registry $registry, DenormalizerInterface $denormalizer)
     {
         $this->naming = $naming;
         $this->registry = $registry;
-        $this->serializer = $denormalizer;
+        $this->denormalizer = $denormalizer;
     }
 
     public function supports($object): bool
@@ -53,7 +53,7 @@ class SubObjectValidator implements ValidatorInterface
             if ($property instanceof Reference) {
                 $reference = (string) $property->getMergedUri();
                 /** @var JsonSchema|null $propertyObj */
-                $propertyObj = $this->resolve($property, \get_class($object));
+                $propertyObj = $this->resolve($property, \get_class($object)); // @phpstan-ignore varTag.nativeType
                 $classGuess = $this->registry->getClass((string) $property->getMergedUri());
                 if (null !== $classGuess) {
                     $className = $classGuess->getName();
