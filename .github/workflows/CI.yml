@@ -15,6 +15,20 @@ jobs:
         run: 'composer install -n --prefer-dist --optimize-autoloader --working-dir=tools/php-cs-fixer'
       - name: 'php-cs-fixer check'
         run: 'PHP_CS_FIXER_IGNORE_ENV=1 tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --dry-run --diff'
+  phpstan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+      - name: setup
+        uses: shivammathur/setup-php@2.28.0
+        with:
+          php-version: 8.4
+          coverage: none
+      - name: install PHP CS Fixer
+        run: 'composer install -n --prefer-dist --optimize-autoloader --working-dir=tools/phpstan'
+      - name: 'phpstan check'
+        run: 'tools/phpstan/vendor/bin/phpstan analyse --configuration=tools/phpstan/phpstan.neon'
   tests:
     runs-on: ubuntu-latest
     strategy:

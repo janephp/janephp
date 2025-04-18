@@ -1,0 +1,9 @@
+parameters:
+	level: 1
+	tmpDir: cache
+	paths:
+		- ../../src/
+	excludePaths:
+		- ../../src/Component/*/Tests/fixtures/*
+		- ../../src/Component/*/Tests/client/generated/*
+	ignoreErrors: []
