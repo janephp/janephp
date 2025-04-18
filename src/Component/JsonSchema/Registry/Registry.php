@@ -7,11 +7,11 @@ use League\Uri\Http;
 
 class Registry implements RegistryInterface
 {
-    /** @var string[] */
-    protected $outputDirectories = [];
+    /** @var array<string> */
+    protected array $outputDirectories = [];
 
-    /** @var Schema[] */
-    protected $schemas = [];
+    /** @var array<Schema> */
+    protected array $schemas = [];
 
     public function addOutputDirectory(string $outputDirectory): void
     {
@@ -26,7 +26,7 @@ class Registry implements RegistryInterface
         return $this->outputDirectories;
     }
 
-    public function addSchema(SchemaInterface $schema): void
+    public function addSchema(Schema $schema): void
     {
         $this->schemas[] = $schema;
     }
