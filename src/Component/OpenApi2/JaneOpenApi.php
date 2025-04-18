@@ -42,7 +42,7 @@ class JaneOpenApi extends CommonJaneOpenApi
         yield new NormalizerGenerator($naming, $parser, $options['reference'] ?? false, $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true, $options['skip-required-fields'] ?? false, $options['validation'] ?? false, $options['include-null-value'] ?? true);
         yield new AuthenticationGenerator();
         yield GeneratorFactory::build($denormalizer, $options['endpoint-generator'] ?: EndpointGenerator::class);
-        yield new RuntimeGenerator($naming, $parser, $options['validation'] ?? false);
+        yield new RuntimeGenerator($naming, $parser);
         if ($options['validation'] ?? false) {
             yield new ValidatorGenerator($naming);
         }

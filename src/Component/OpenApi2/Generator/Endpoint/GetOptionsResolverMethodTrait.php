@@ -6,6 +6,7 @@ use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi2\Generator\Parameter\NonBodyParameterGenerator;
 use Jane\Component\OpenApi2\Guesser\GuessClass;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
+use PhpParser\Modifiers;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
@@ -43,7 +44,7 @@ trait GetOptionsResolverMethodTrait
         $optionsResolverVariable = new Expr\Variable('optionsResolver');
 
         return new Stmt\ClassMethod($methodName, [
-            'type' => Stmt\Class_::MODIFIER_PROTECTED,
+            'flags' => Modifiers::PROTECTED,
             'stmts' => array_merge(
                 [
                     new Stmt\Expression(new Expr\Assign($optionsResolverVariable, new Expr\StaticCall(new Name('parent'), $methodName))),

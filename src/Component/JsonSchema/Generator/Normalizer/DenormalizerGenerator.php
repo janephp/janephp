@@ -6,6 +6,7 @@ use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
+use PhpParser\Modifiers;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
@@ -33,7 +34,7 @@ trait DenormalizerGenerator
     protected function createSupportsDenormalizationMethod(string $modelFqdn)
     {
         return new Stmt\ClassMethod('supportsDenormalization', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'flags' => Modifiers::PUBLIC,
             'returnType' => new Identifier('bool'),
             'params' => [
                 new Param(new Expr\Variable('data'), type: new Identifier('mixed')),
@@ -220,7 +221,7 @@ trait DenormalizerGenerator
         $statements[] = new Stmt\Return_($objectVariable);
 
         return new Stmt\ClassMethod('denormalize', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'flags' => Modifiers::PUBLIC,
             'returnType' => new Identifier('mixed'),
             'params' => [
                 new Param($dataVariable, type: new Identifier('mixed')),

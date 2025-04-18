@@ -4,6 +4,7 @@ parameters:
 	paths:
 		- ../../src/
 	excludePaths:
+		- ../../src/Component/*/JsonSchema/*
 		- ../../src/Component/*/Tests/fixtures/*
 		- ../../src/Component/*/Tests/client/generated/*
 	ignoreErrors: []

@@ -8,6 +8,7 @@ use Jane\Component\JsonSchema\Generator\Normalizer\JaneObjectNormalizerGenerator
 use Jane\Component\JsonSchema\Generator\Normalizer\NormalizerGenerator as NormalizerGeneratorTrait;
 use Jane\Component\JsonSchema\Registry\Schema;
 use PhpParser\Comment;
+use PhpParser\Modifiers;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
@@ -177,11 +178,11 @@ class NormalizerGenerator implements GeneratorInterface
         $properties[] = new Stmt\PropertyProperty('normalizersCache', new Expr\Array_());
 
         $methods = [];
-        $methods[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, $properties);
+        $methods[] = new Stmt\Property(Modifiers::PROTECTED, $properties);
         $methods[] = $this->createBaseNormalizerSupportsDenormalizationMethod();
         $methods[] = $this->createBaseNormalizerSupportsNormalizationMethod();
-        $methods[] = $this->createBaseNormalizerNormalizeMethod(true);
-        $methods[] = $this->createBaseNormalizerDenormalizeMethod(true);
+        $methods[] = $this->createBaseNormalizerNormalizeMethod();
+        $methods[] = $this->createBaseNormalizerDenormalizeMethod();
         $methods[] = $this->createBaseNormalizerGetNormalizer();
         $methods[] = $this->createBaseNormalizerInitNormalizerMethod();
         $methods[] = $this->createProxyGetSupportedTypesMethod(array_keys($normalizers));
@@ -223,7 +224,7 @@ class NormalizerGenerator implements GeneratorInterface
     protected function createGetSupportedTypesMethod(string $modelFqdn, bool $useCacheableSupportsMethod = false)
     {
         return new Stmt\ClassMethod('getSupportedTypes', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'flags' => Modifiers::PUBLIC,
             'returnType' => new Identifier('array'),
             'params' => [
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new NullableType(new Identifier('string'))),
@@ -266,7 +267,7 @@ class NormalizerGenerator implements GeneratorInterface
         }
 
         return new Stmt\ClassMethod('getSupportedTypes', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'flags' => Modifiers::PUBLIC,
             'returnType' => new Identifier('array'),
             'params' => [
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new NullableType(new Identifier('string'))),

@@ -12,6 +12,7 @@ use Jane\Component\OpenApi3\JsonSchema\Normalizer\ResponseNormalizer;
 use Jane\Component\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Comment\Doc;
+use PhpParser\Modifiers;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -117,7 +118,7 @@ trait GetTransformResponseBodyTrait
             . ' * @return ' . implode('|', $outputTypes);
 
         return [new Stmt\ClassMethod('transformResponseBody', [
-            'type' => Stmt\Class_::MODIFIER_PROTECTED,
+            'flags' => Modifiers::PROTECTED,
             'params' => [
                 new Node\Param(new Expr\Variable('response'), null, new Name('\\Psr\\Http\\Message\\ResponseInterface')),
                 new Node\Param(new Expr\Variable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),

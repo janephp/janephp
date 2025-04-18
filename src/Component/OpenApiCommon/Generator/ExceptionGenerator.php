@@ -7,6 +7,7 @@ use Jane\Component\JsonSchema\Generator\File;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\OpenApiCommon\Naming\ExceptionNaming;
 use PhpParser\Comment\Doc;
+use PhpParser\Modifiers;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -109,10 +110,10 @@ EOD
                     [
                         'extends' => new Name($highLevelExceptionName),
                         'stmts' => [
-                            new Stmt\Property(Stmt\Class_::MODIFIER_PRIVATE, [
+                            new Stmt\Property(Modifiers::PRIVATE, [
                                 new Stmt\PropertyProperty($propertyName),
                             ], ['comments' => [new Doc($propertyComment)]]),
-                            new Stmt\Property(Stmt\Class_::MODIFIER_PRIVATE, [
+                            new Stmt\Property(Modifiers::PRIVATE, [
                                 new Stmt\PropertyProperty('response'),
                             ], ['comments' => [new Doc(<<<EOD
 /**
@@ -121,7 +122,7 @@ EOD
 EOD
                             )]]),
                             new Stmt\ClassMethod('__construct', [
-                                'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                                'flags' => Modifiers::PUBLIC,
                                 'params' => [
                                     new Param(new Expr\Variable($realPropertyName), null, $isArray ? null : new Name('\\' . $classFqdn)),
                                     new Param(new Expr\Variable('response'), null, new Name('\\Psr\\Http\\Message\\ResponseInterface')),
@@ -145,7 +146,7 @@ EOD
                                 ],
                             ]),
                             new Stmt\ClassMethod($methodName, [
-                                'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                                'flags' => Modifiers::PUBLIC,
                                 'stmts' => [
                                     new Stmt\Return_(
                                         new Expr\PropertyFetch(
@@ -157,7 +158,7 @@ EOD
                                 'returnType' => ($isArray ? null : new Name('\\' . $classFqdn)),
                             ]),
                             new Stmt\ClassMethod('getResponse', [
-                                'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                                'flags' => Modifiers::PUBLIC,
                                 'stmts' => [
                                     new Stmt\Return_(
                                         new Expr\PropertyFetch(
@@ -184,7 +185,7 @@ EOD
                 [
                     'extends' => new Name($highLevelExceptionName),
                     'stmts' => [
-                        new Stmt\Property(Stmt\Class_::MODIFIER_PRIVATE, [
+                        new Stmt\Property(Modifiers::PRIVATE, [
                             new Stmt\PropertyProperty('response'),
                         ], ['comments' => [new Doc(<<<EOD
 /**
@@ -193,7 +194,7 @@ EOD
 EOD
                         )]]),
                         new Stmt\ClassMethod('__construct', [
-                            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                            'flags' => Modifiers::PUBLIC,
                             'params' => [
                                 new Param(new Expr\Variable('response'), new Expr\ConstFetch(new Name('null')), new Name('\\Psr\\Http\\Message\\ResponseInterface')),
                             ],
@@ -210,7 +211,7 @@ EOD
                             ],
                         ]),
                         new Stmt\ClassMethod('getResponse', [
-                            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                            'flags' => Modifiers::PUBLIC,
                             'stmts' => [
                                 new Stmt\Return_(
                                     new Expr\PropertyFetch(
@@ -288,10 +289,10 @@ EOD
                             new Name('ClientException'),
                         ],
                         'extends' => new Name('\\RuntimeException'),
-                        'flags' => Stmt\Class_::MODIFIER_FINAL,
+                        'flags' => Modifiers::FINAL,
                         'stmts' => [
                             new Stmt\ClassMethod('__construct', [
-                                'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                                'flags' => Modifiers::PUBLIC,
                                 'params' => [
                                     new Param(new Expr\Variable('status')),
                                     new Param(new Expr\Variable('message'), new Scalar\String_('')),
@@ -331,7 +332,7 @@ EOD
                     'implements' => [new Name($code >= 500 ? 'ServerException' : 'ClientException')],
                     'stmts' => [
                         new Stmt\ClassMethod('__construct', [
-                            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                            'flags' => Modifiers::PUBLIC,
                             'params' => [
                                 new Param(new Expr\Variable('message'), null, new Name('string')),
                             ],

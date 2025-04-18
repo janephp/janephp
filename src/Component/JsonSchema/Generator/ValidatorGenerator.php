@@ -5,6 +5,7 @@ namespace Jane\Component\JsonSchema\Generator;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Guesser\Validator\ValidatorGuess;
 use Jane\Component\JsonSchema\Registry\Schema;
+use PhpParser\Modifiers;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
@@ -103,7 +104,7 @@ class ValidatorGenerator implements GeneratorInterface
                             new Node\Stmt\ClassMethod(
                                 'getConstraints',
                                 [
-                                    'type' => Node\Stmt\Class_::MODIFIER_PROTECTED,
+                                    'flags' => Modifiers::PROTECTED,
                                     'params' => [new Node\Param($optionsVariable)],
                                     'stmts' => [
                                         new Node\Stmt\Return_(new Expr\Array_($constraintsItems)),

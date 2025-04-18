@@ -3,6 +3,7 @@
 namespace Jane\Component\OpenApiCommon\Generator\Authentication;
 
 use Jane\Component\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
+use PhpParser\Modifiers;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -16,11 +17,11 @@ trait AuthenticationGenerator
     protected function createAuthentication(SecuritySchemeGuess $securityScheme): Stmt\ClassMethod
     {
         $requestVar = new Expr\Variable('request');
-        $nextVar = new Expr\Variable('next');
         $stmts = [];
 
         switch ($securityScheme->getType()) {
             case SecuritySchemeGuess::TYPE_HTTP:
+                $fetchedValue = null;
                 switch ($securityScheme->getScheme()) {
                     case SecuritySchemeGuess::SCHEME_BEARER:
                         $fetchedValue = new Expr\PropertyFetch(new Expr\Variable('this'), new Scalar\String_('token'));
@@ -36,14 +37,16 @@ trait AuthenticationGenerator
                         break;
                 }
 
-                $stmts[] = new Stmt\Expression(new Expr\Assign(new Expr\Variable('header'), new Expr\FuncCall(new Name('sprintf'), [
-                    new Node\Arg(new Scalar\String_($securityScheme->getScheme() . ' %s')),
-                    new Node\Arg($fetchedValue),
-                ])));
-                $stmts[] = new Stmt\Expression(new Expr\Assign(new Expr\Variable('request'), new Expr\MethodCall(new Expr\Variable('request'), 'withHeader', [
-                    new Node\Arg(new Scalar\String_('Authorization')),
-                    new Node\Arg(new Expr\Variable('header')),
-                ])));
+                if (null !== $fetchedValue) {
+                    $stmts[] = new Stmt\Expression(new Expr\Assign(new Expr\Variable('header'), new Expr\FuncCall(new Name('sprintf'), [
+                        new Node\Arg(new Scalar\String_($securityScheme->getScheme() . ' %s')),
+                        new Node\Arg($fetchedValue),
+                    ])));
+                    $stmts[] = new Stmt\Expression(new Expr\Assign(new Expr\Variable('request'), new Expr\MethodCall(new Expr\Variable('request'), 'withHeader', [
+                        new Node\Arg(new Scalar\String_('Authorization')),
+                        new Node\Arg(new Expr\Variable('header')),
+                    ])));
+                }
                 break;
             case SecuritySchemeGuess::TYPE_API_KEY:
                 if (null === $securityScheme->getIn()) {
@@ -89,7 +92,6 @@ trait AuthenticationGenerator
                 break;
             default:
                 throw new \Exception(\sprintf('Jane actually does not support Security type %s generation', $securityScheme->getType()));
-                break;
         }
 
         $stmts[] = new Stmt\Return_($requestVar);
@@ -100,7 +102,7 @@ trait AuthenticationGenerator
             ],
             'returnType' => new Name\FullyQualified(RequestInterface::class),
             'stmts' => $stmts,
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'flags' => Modifiers::PUBLIC,
         ]);
     }
 }

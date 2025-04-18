@@ -7,6 +7,7 @@ use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Registry\Schema;
 use Jane\Component\JsonSchema\Registry\Schema as BaseSchema;
+use PhpParser\Modifiers;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -45,7 +46,7 @@ trait ClientGenerator
 
         return new Stmt\ClassMethod(
             'create', [
-                'flags' => Stmt\Class_::MODIFIER_STATIC | Stmt\Class_::MODIFIER_PUBLIC,
+                'flags' => Modifiers::STATIC | Modifiers::PUBLIC,
                 'params' => $params,
                 'stmts' => [
                     new Stmt\If_(

@@ -14,6 +14,7 @@ use Jane\Component\OpenApi3\JsonSchema\Model\RequestBody;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Comment\Doc;
+use PhpParser\Modifiers;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -51,7 +52,7 @@ trait GetConstructorTrait
                 $pathParams[] = $nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $pathParamsDoc[] = $nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 $methodStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), $parameter->getName()), new Expr\Variable($this->getInflector()->camelize($parameter->getName()))));
-                $pathProperties[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
+                $pathProperties[] = new Stmt\Property(Modifiers::PROTECTED, [
                     new Stmt\PropertyProperty($parameter->getName()),
                 ]);
             }
@@ -71,7 +72,7 @@ trait GetConstructorTrait
         }
 
         if (\count($contentTypes) > 1) {
-            $pathProperties[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [new Stmt\PropertyProperty('accept')], []);
+            $pathProperties[] = new Stmt\Property(Modifiers::PROTECTED, [new Stmt\PropertyProperty('accept')], []);
         }
 
         $methodStatements = array_merge(
@@ -112,7 +113,7 @@ EOD
             . implode("\n", $methodDocumentations);
 
         return [new Stmt\ClassMethod('__construct', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'flags' => Modifiers::PUBLIC,
             'params' => $methodParams,
             'stmts' => $methodStatements,
         ], [
