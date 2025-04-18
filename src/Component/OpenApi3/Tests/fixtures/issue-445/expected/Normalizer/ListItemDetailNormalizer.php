@@ -108,41 +108,41 @@ class ListItemDetailNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray = [];
         $dataArray['id'] = $data->getId();
         $dataArray['contentSchemaId'] = $data->getContentSchemaId();
-        if ($data->isInitialized('content') && null !== $data->getContent()) {
+        if ($data->isInitialized('content')) {
             $values = [];
             foreach ($data->getContent() as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['content'] = $values;
         }
-        if ($data->isInitialized('displayValues') && null !== $data->getDisplayValues()) {
+        if ($data->isInitialized('displayValues')) {
             $dataArray['displayValues'] = $data->getDisplayValues();
         }
-        if ($data->isInitialized('brokenReferenceIds') && null !== $data->getBrokenReferenceIds()) {
+        if ($data->isInitialized('brokenReferenceIds')) {
             $values_1 = [];
             foreach ($data->getBrokenReferenceIds() as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['brokenReferenceIds'] = $values_1;
         }
-        if ($data->isInitialized('brokenRelationTargetIds') && null !== $data->getBrokenRelationTargetIds()) {
+        if ($data->isInitialized('brokenRelationTargetIds')) {
             $values_2 = [];
             foreach ($data->getBrokenRelationTargetIds() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['brokenRelationTargetIds'] = $values_2;
         }
-        if ($data->isInitialized('brokenIndirectReferenceIds') && null !== $data->getBrokenIndirectReferenceIds()) {
+        if ($data->isInitialized('brokenIndirectReferenceIds')) {
             $values_3 = [];
             foreach ($data->getBrokenIndirectReferenceIds() as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['brokenIndirectReferenceIds'] = $values_3;
         }
-        if ($data->isInitialized('audit') && null !== $data->getAudit()) {
+        if ($data->isInitialized('audit')) {
             $dataArray['audit'] = $data->getAudit();
         }
-        if ($data->isInitialized('activity') && null !== $data->getActivity()) {
+        if ($data->isInitialized('activity')) {
             $dataArray['activity'] = $data->getActivity();
         }
         return $dataArray;

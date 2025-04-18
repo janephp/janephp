@@ -93,7 +93,7 @@ class NodeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if ($data->isInitialized('status') && null !== $data->getStatus()) {
             $dataArray['Status'] = $this->normalizer->normalize($data->getStatus(), 'json', $context);
         }
-        if ($data->isInitialized('managerStatus') && null !== $data->getManagerStatus()) {
+        if ($data->isInitialized('managerStatus')) {
             $dataArray['ManagerStatus'] = $this->normalizer->normalize($data->getManagerStatus(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

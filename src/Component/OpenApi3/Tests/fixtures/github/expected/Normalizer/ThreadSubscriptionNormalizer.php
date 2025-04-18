@@ -93,7 +93,7 @@ class ThreadSubscriptionNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray['subscribed'] = $data->getSubscribed();
         $dataArray['ignored'] = $data->getIgnored();
         $dataArray['reason'] = $data->getReason();
-        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['url'] = $data->getUrl();
         if ($data->isInitialized('threadUrl') && null !== $data->getThreadUrl()) {
             $dataArray['thread_url'] = $data->getThreadUrl();

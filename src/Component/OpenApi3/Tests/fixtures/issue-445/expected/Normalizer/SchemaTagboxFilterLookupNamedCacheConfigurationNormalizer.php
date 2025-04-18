@@ -72,12 +72,12 @@ class SchemaTagboxFilterLookupNamedCacheConfigurationNormalizer implements Denor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && null !== $data->getName()) {
+        if ($data->isInitialized('name')) {
             $dataArray['name'] = $data->getName();
         }
         $dataArray['caseSensitive'] = $data->getCaseSensitive();
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('schemaId') && null !== $data->getSchemaId()) {
+        if ($data->isInitialized('schemaId')) {
             $dataArray['schemaId'] = $data->getSchemaId();
         }
         foreach ($data as $key => $value) {

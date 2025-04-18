@@ -97,14 +97,14 @@ class SchemaPermissionSetDetailNormalizer implements DenormalizerInterface, Norm
         $dataArray = [];
         $dataArray['id'] = $data->getId();
         $dataArray['names'] = $data->getNames();
-        if ($data->isInitialized('userRolesRights') && null !== $data->getUserRolesRights()) {
+        if ($data->isInitialized('userRolesRights')) {
             $values = [];
             foreach ($data->getUserRolesRights() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['userRolesRights'] = $values;
         }
-        if ($data->isInitialized('userRolesPermissionSetRights') && null !== $data->getUserRolesPermissionSetRights()) {
+        if ($data->isInitialized('userRolesPermissionSetRights')) {
             $values_1 = [];
             foreach ($data->getUserRolesPermissionSetRights() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
@@ -113,7 +113,7 @@ class SchemaPermissionSetDetailNormalizer implements DenormalizerInterface, Norm
         }
         $dataArray['exclusive'] = $data->getExclusive();
         $dataArray['ownerTokenId'] = $data->getOwnerTokenId();
-        if ($data->isInitialized('audit') && null !== $data->getAudit()) {
+        if ($data->isInitialized('audit')) {
             $dataArray['audit'] = $data->getAudit();
         }
         foreach ($data as $key => $value_2) {

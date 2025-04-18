@@ -69,16 +69,16 @@ class DownloadTrackingInfoNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('contentId') && null !== $data->getContentId()) {
+        if ($data->isInitialized('contentId')) {
             $dataArray['contentId'] = $data->getContentId();
         }
-        if ($data->isInitialized('outputFormatId') && null !== $data->getOutputFormatId()) {
+        if ($data->isInitialized('outputFormatId')) {
             $dataArray['outputFormatId'] = $data->getOutputFormatId();
         }
-        if ($data->isInitialized('width') && null !== $data->getWidth()) {
+        if ($data->isInitialized('width')) {
             $dataArray['width'] = $data->getWidth();
         }
-        if ($data->isInitialized('height') && null !== $data->getHeight()) {
+        if ($data->isInitialized('height')) {
             $dataArray['height'] = $data->getHeight();
         }
         $dataArray['contentDisposition'] = $data->getContentDisposition();

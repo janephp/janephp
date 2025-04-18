@@ -90,7 +90,7 @@ class ShareDataBasicNormalizer implements DenormalizerInterface, NormalizerInter
             $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
         $dataArray['internalRecipients'] = $values_1;
-        if ($data->isInitialized('languageCode') && null !== $data->getLanguageCode()) {
+        if ($data->isInitialized('languageCode')) {
             $dataArray['languageCode'] = $data->getLanguageCode();
         }
         foreach ($data as $key => $value_2) {

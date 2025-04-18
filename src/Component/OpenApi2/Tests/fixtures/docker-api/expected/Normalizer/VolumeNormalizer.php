@@ -111,7 +111,7 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $values_2[$key_2] = $value_2;
         }
         $dataArray['Options'] = $values_2;
-        if ($data->isInitialized('usageData') && null !== $data->getUsageData()) {
+        if ($data->isInitialized('usageData')) {
             $dataArray['UsageData'] = $this->normalizer->normalize($data->getUsageData(), 'json', $context);
         }
         if (!($context['skip_validation'] ?? false)) {

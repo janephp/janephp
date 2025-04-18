@@ -136,42 +136,42 @@ class TermsEnumAggregatorNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
+        if ($data->isInitialized('names')) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('aggregators') && null !== $data->getAggregators()) {
+        if ($data->isInitialized('aggregators')) {
             $values = [];
             foreach ($data->getAggregators() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['aggregators'] = $values;
         }
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
+        if ($data->isInitialized('filter')) {
             $dataArray['filter'] = $data->getFilter();
         }
         $dataArray['kind'] = $data->getKind();
         $dataArray['field'] = $data->getField();
-        if ($data->isInitialized('size') && null !== $data->getSize()) {
+        if ($data->isInitialized('size')) {
             $dataArray['size'] = $data->getSize();
         }
-        if ($data->isInitialized('includes') && null !== $data->getIncludes()) {
+        if ($data->isInitialized('includes')) {
             $values_1 = [];
             foreach ($data->getIncludes() as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['includes'] = $values_1;
         }
-        if ($data->isInitialized('excludes') && null !== $data->getExcludes()) {
+        if ($data->isInitialized('excludes')) {
             $values_2 = [];
             foreach ($data->getExcludes() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['excludes'] = $values_2;
         }
-        if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
+        if ($data->isInitialized('searchString')) {
             $dataArray['searchString'] = $data->getSearchString();
         }
-        if ($data->isInitialized('searchFields') && null !== $data->getSearchFields()) {
+        if ($data->isInitialized('searchFields')) {
             $values_3 = [];
             foreach ($data->getSearchFields() as $value_3) {
                 $values_3[] = $value_3;

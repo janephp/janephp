@@ -112,13 +112,13 @@ class TeamDiscussionCommentNormalizer implements DenormalizerInterface, Normaliz
         $dataArray['body'] = $data->getBody();
         $dataArray['body_html'] = $data->getBodyHtml();
         $dataArray['body_version'] = $data->getBodyVersion();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['last_edited_at'] = $data->getLastEditedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['last_edited_at'] = $data->getLastEditedAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['discussion_url'] = $data->getDiscussionUrl();
         $dataArray['html_url'] = $data->getHtmlUrl();
         $dataArray['node_id'] = $data->getNodeId();
         $dataArray['number'] = $data->getNumber();
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['url'] = $data->getUrl();
         if ($data->isInitialized('reactions') && null !== $data->getReactions()) {
             $dataArray['reactions'] = $this->normalizer->normalize($data->getReactions(), 'json', $context);

@@ -338,30 +338,30 @@ class PullRequestNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $dataArray['labels'] = $values;
         $dataArray['milestone'] = $this->normalizer->normalize($data->getMilestone(), 'json', $context);
-        if ($data->isInitialized('activeLockReason') && null !== $data->getActiveLockReason()) {
+        if ($data->isInitialized('activeLockReason')) {
             $dataArray['active_lock_reason'] = $data->getActiveLockReason();
         }
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['closed_at'] = $data->getClosedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['merged_at'] = $data->getMergedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['closed_at'] = $data->getClosedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['merged_at'] = $data->getMergedAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['merge_commit_sha'] = $data->getMergeCommitSha();
         $dataArray['assignee'] = $this->normalizer->normalize($data->getAssignee(), 'json', $context);
-        if ($data->isInitialized('assignees') && null !== $data->getAssignees()) {
+        if ($data->isInitialized('assignees')) {
             $values_1 = [];
             foreach ($data->getAssignees() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['assignees'] = $values_1;
         }
-        if ($data->isInitialized('requestedReviewers') && null !== $data->getRequestedReviewers()) {
+        if ($data->isInitialized('requestedReviewers')) {
             $values_2 = [];
             foreach ($data->getRequestedReviewers() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['requested_reviewers'] = $values_2;
         }
-        if ($data->isInitialized('requestedTeams') && null !== $data->getRequestedTeams()) {
+        if ($data->isInitialized('requestedTeams')) {
             $values_3 = [];
             foreach ($data->getRequestedTeams() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
@@ -377,7 +377,7 @@ class PullRequestNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         $dataArray['merged'] = $data->getMerged();
         $dataArray['mergeable'] = $data->getMergeable();
-        if ($data->isInitialized('rebaseable') && null !== $data->getRebaseable()) {
+        if ($data->isInitialized('rebaseable')) {
             $dataArray['rebaseable'] = $data->getRebaseable();
         }
         $dataArray['mergeable_state'] = $data->getMergeableState();

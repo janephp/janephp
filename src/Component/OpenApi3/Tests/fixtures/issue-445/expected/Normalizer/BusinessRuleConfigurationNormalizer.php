@@ -69,14 +69,14 @@ class BusinessRuleConfigurationNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         $dataArray['disableRuleEngine'] = $data->getDisableRuleEngine();
-        if ($data->isInitialized('rules') && null !== $data->getRules()) {
+        if ($data->isInitialized('rules')) {
             $values = [];
             foreach ($data->getRules() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['rules'] = $values;
         }
-        if ($data->isInitialized('caches') && null !== $data->getCaches()) {
+        if ($data->isInitialized('caches')) {
             $values_1 = [];
             foreach ($data->getCaches() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

@@ -52,7 +52,7 @@ class SchemaIndexingInfoNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('fields') && null !== $data->getFields()) {
+        if ($data->isInitialized('fields')) {
             $values = [];
             foreach ($data->getFields() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

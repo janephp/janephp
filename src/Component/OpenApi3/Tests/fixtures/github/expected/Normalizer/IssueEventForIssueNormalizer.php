@@ -152,16 +152,16 @@ class IssueEventForIssueNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('url') && null !== $data->getUrl()) {
             $dataArray['url'] = $data->getUrl();
         }
-        if ($data->isInitialized('actor') && null !== $data->getActor()) {
+        if ($data->isInitialized('actor')) {
             $dataArray['actor'] = $this->normalizer->normalize($data->getActor(), 'json', $context);
         }
         if ($data->isInitialized('event') && null !== $data->getEvent()) {
             $dataArray['event'] = $data->getEvent();
         }
-        if ($data->isInitialized('commitId') && null !== $data->getCommitId()) {
+        if ($data->isInitialized('commitId')) {
             $dataArray['commit_id'] = $data->getCommitId();
         }
-        if ($data->isInitialized('commitUrl') && null !== $data->getCommitUrl()) {
+        if ($data->isInitialized('commitUrl')) {
             $dataArray['commit_url'] = $data->getCommitUrl();
         }
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {

@@ -58,14 +58,14 @@ class SchemaOwnershipTransferManyRequestNormalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('schemaIds') && null !== $data->getSchemaIds()) {
+        if ($data->isInitialized('schemaIds')) {
             $values = [];
             foreach ($data->getSchemaIds() as $value) {
                 $values[] = $value;
             }
             $dataArray['schemaIds'] = $values;
         }
-        if ($data->isInitialized('transferUserId') && null !== $data->getTransferUserId()) {
+        if ($data->isInitialized('transferUserId')) {
             $dataArray['transferUserId'] = $data->getTransferUserId();
         }
         return $dataArray;

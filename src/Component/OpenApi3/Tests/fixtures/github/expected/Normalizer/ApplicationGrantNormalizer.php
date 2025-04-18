@@ -88,14 +88,14 @@ class ApplicationGrantNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray['id'] = $data->getId();
         $dataArray['url'] = $data->getUrl();
         $dataArray['app'] = $this->normalizer->normalize($data->getApp(), 'json', $context);
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $values = [];
         foreach ($data->getScopes() as $value) {
             $values[] = $value;
         }
         $dataArray['scopes'] = $values;
-        if ($data->isInitialized('user') && null !== $data->getUser()) {
+        if ($data->isInitialized('user')) {
             $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
         }
         foreach ($data as $key => $value_1) {

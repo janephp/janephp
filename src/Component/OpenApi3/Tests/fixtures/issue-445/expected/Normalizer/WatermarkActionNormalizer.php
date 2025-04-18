@@ -108,19 +108,19 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('watermarkFilePath') && null !== $data->getWatermarkFilePath()) {
+        if ($data->isInitialized('watermarkFilePath')) {
             $dataArray['watermarkFilePath'] = $data->getWatermarkFilePath();
         }
-        if ($data->isInitialized('marginLeft') && null !== $data->getMarginLeft()) {
+        if ($data->isInitialized('marginLeft')) {
             $dataArray['marginLeft'] = $data->getMarginLeft();
         }
-        if ($data->isInitialized('marginTop') && null !== $data->getMarginTop()) {
+        if ($data->isInitialized('marginTop')) {
             $dataArray['marginTop'] = $data->getMarginTop();
         }
-        if ($data->isInitialized('marginRight') && null !== $data->getMarginRight()) {
+        if ($data->isInitialized('marginRight')) {
             $dataArray['marginRight'] = $data->getMarginRight();
         }
-        if ($data->isInitialized('marginBottom') && null !== $data->getMarginBottom()) {
+        if ($data->isInitialized('marginBottom')) {
             $dataArray['marginBottom'] = $data->getMarginBottom();
         }
         if ($data->isInitialized('opacity') && null !== $data->getOpacity()) {

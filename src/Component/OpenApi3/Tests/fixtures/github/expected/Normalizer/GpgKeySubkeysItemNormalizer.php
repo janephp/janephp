@@ -169,10 +169,10 @@ class GpgKeySubkeysItemNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
             $dataArray['created_at'] = $data->getCreatedAt();
         }
-        if ($data->isInitialized('expiresAt') && null !== $data->getExpiresAt()) {
+        if ($data->isInitialized('expiresAt')) {
             $dataArray['expires_at'] = $data->getExpiresAt();
         }
-        if ($data->isInitialized('rawKey') && null !== $data->getRawKey()) {
+        if ($data->isInitialized('rawKey')) {
             $dataArray['raw_key'] = $data->getRawKey();
         }
         foreach ($data as $key => $value_2) {

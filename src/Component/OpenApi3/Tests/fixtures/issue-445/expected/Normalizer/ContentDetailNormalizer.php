@@ -172,42 +172,42 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         $dataArray['contentSchemaId'] = $data->getContentSchemaId();
-        if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
+        if ($data->isInitialized('layerSchemaIds')) {
             $values = [];
             foreach ($data->getLayerSchemaIds() as $value) {
                 $values[] = $value;
             }
             $dataArray['layerSchemaIds'] = $values;
         }
-        if ($data->isInitialized('brokenReferenceIds') && null !== $data->getBrokenReferenceIds()) {
+        if ($data->isInitialized('brokenReferenceIds')) {
             $values_1 = [];
             foreach ($data->getBrokenReferenceIds() as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['brokenReferenceIds'] = $values_1;
         }
-        if ($data->isInitialized('brokenIndirectReferenceIds') && null !== $data->getBrokenIndirectReferenceIds()) {
+        if ($data->isInitialized('brokenIndirectReferenceIds')) {
             $values_2 = [];
             foreach ($data->getBrokenIndirectReferenceIds() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['brokenIndirectReferenceIds'] = $values_2;
         }
-        if ($data->isInitialized('brokenRelationTargetIds') && null !== $data->getBrokenRelationTargetIds()) {
+        if ($data->isInitialized('brokenRelationTargetIds')) {
             $values_3 = [];
             foreach ($data->getBrokenRelationTargetIds() as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['brokenRelationTargetIds'] = $values_3;
         }
-        if ($data->isInitialized('content') && null !== $data->getContent()) {
+        if ($data->isInitialized('content')) {
             $values_4 = [];
             foreach ($data->getContent() as $key => $value_4) {
                 $values_4[$key] = $value_4;
             }
             $dataArray['content'] = $values_4;
         }
-        if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
+        if ($data->isInitialized('metadata')) {
             $values_5 = [];
             foreach ($data->getMetadata() as $key_1 => $value_5) {
                 $values_5[$key_1] = $value_5;
@@ -215,40 +215,40 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['metadata'] = $values_5;
         }
         $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('contentPermissionSetIds') && null !== $data->getContentPermissionSetIds()) {
+        if ($data->isInitialized('contentPermissionSetIds')) {
             $values_6 = [];
             foreach ($data->getContentPermissionSetIds() as $value_6) {
                 $values_6[] = $value_6;
             }
             $dataArray['contentPermissionSetIds'] = $values_6;
         }
-        if ($data->isInitialized('outputs') && null !== $data->getOutputs()) {
+        if ($data->isInitialized('outputs')) {
             $values_7 = [];
             foreach ($data->getOutputs() as $value_7) {
                 $values_7[] = $this->normalizer->normalize($value_7, 'json', $context);
             }
             $dataArray['outputs'] = $values_7;
         }
-        if ($data->isInitialized('audit') && null !== $data->getAudit()) {
+        if ($data->isInitialized('audit')) {
             $dataArray['audit'] = $data->getAudit();
         }
         $dataArray['ownerTokenId'] = $data->getOwnerTokenId();
-        if ($data->isInitialized('owner') && null !== $data->getOwner()) {
+        if ($data->isInitialized('owner')) {
             $dataArray['owner'] = $data->getOwner();
         }
         $dataArray['contentType'] = $data->getContentType();
-        if ($data->isInitialized('displayValues') && null !== $data->getDisplayValues()) {
+        if ($data->isInitialized('displayValues')) {
             $dataArray['displayValues'] = $data->getDisplayValues();
         }
         $dataArray['lifeCycle'] = $data->getLifeCycle();
-        if ($data->isInitialized('contentRights') && null !== $data->getContentRights()) {
+        if ($data->isInitialized('contentRights')) {
             $values_8 = [];
             foreach ($data->getContentRights() as $value_8) {
                 $values_8[] = $value_8;
             }
             $dataArray['contentRights'] = $values_8;
         }
-        if ($data->isInitialized('activity') && null !== $data->getActivity()) {
+        if ($data->isInitialized('activity')) {
             $dataArray['activity'] = $data->getActivity();
         }
         return $dataArray;

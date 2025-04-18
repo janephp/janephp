@@ -80,7 +80,7 @@ class SearchResultTextMatchesItemNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('objectUrl') && null !== $data->getObjectUrl()) {
             $dataArray['object_url'] = $data->getObjectUrl();
         }
-        if ($data->isInitialized('objectType') && null !== $data->getObjectType()) {
+        if ($data->isInitialized('objectType')) {
             $dataArray['object_type'] = $data->getObjectType();
         }
         if ($data->isInitialized('property') && null !== $data->getProperty()) {

@@ -97,13 +97,13 @@ class BookJsonldBookReadNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('isbn') && null !== $data->getIsbn()) {
+        if ($data->isInitialized('isbn')) {
             $dataArray['isbn'] = $data->getIsbn();
         }
         $dataArray['title'] = $data->getTitle();
         $dataArray['description'] = $data->getDescription();
         $dataArray['author'] = $data->getAuthor();
-        $dataArray['publicationDate'] = $data->getPublicationDate()?->format('Y-m-d\TH:i:sP');
+        $dataArray['publicationDate'] = $data->getPublicationDate()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('reviews') && null !== $data->getReviews()) {
             $values = [];
             foreach ($data->getReviews() as $value) {

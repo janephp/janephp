@@ -56,7 +56,7 @@ class ShareContentNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         $dataArray['contentId'] = $data->getContentId();
-        if ($data->isInitialized('outputFormatIds') && null !== $data->getOutputFormatIds()) {
+        if ($data->isInitialized('outputFormatIds')) {
             $values = [];
             foreach ($data->getOutputFormatIds() as $value) {
                 $values[] = $value;

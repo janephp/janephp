@@ -78,22 +78,22 @@ class UserProfileUpdateRequestNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('emailAddress') && null !== $data->getEmailAddress()) {
+        if ($data->isInitialized('emailAddress')) {
             $dataArray['emailAddress'] = $data->getEmailAddress();
         }
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
+        if ($data->isInitialized('firstName')) {
             $dataArray['firstName'] = $data->getFirstName();
         }
-        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
+        if ($data->isInitialized('lastName')) {
             $dataArray['lastName'] = $data->getLastName();
         }
-        if ($data->isInitialized('languageCode') && null !== $data->getLanguageCode()) {
+        if ($data->isInitialized('languageCode')) {
             $dataArray['languageCode'] = $data->getLanguageCode();
         }
-        if ($data->isInitialized('address') && null !== $data->getAddress()) {
+        if ($data->isInitialized('address')) {
             $dataArray['address'] = $data->getAddress();
         }
         return $dataArray;

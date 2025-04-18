@@ -100,7 +100,7 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $dataArray['payload'] = $this->normalizer->normalize($data->getPayload(), 'json', $context);
         $dataArray['public'] = $data->getPublic();
-        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

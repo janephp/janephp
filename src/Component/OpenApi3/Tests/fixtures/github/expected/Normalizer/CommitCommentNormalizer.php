@@ -128,8 +128,8 @@ class CommitCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray['line'] = $data->getLine();
         $dataArray['commit_id'] = $data->getCommitId();
         $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['author_association'] = $data->getAuthorAssociation();
         if ($data->isInitialized('reactions') && null !== $data->getReactions()) {
             $dataArray['reactions'] = $this->normalizer->normalize($data->getReactions(), 'json', $context);

@@ -82,20 +82,20 @@ class DocumentHistorySearchRequestNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['from'] = $data->getFrom()?->format('Y-m-d\TH:i:sP');
-        $dataArray['to'] = $data->getTo()?->format('Y-m-d\TH:i:sP');
+        $dataArray['from'] = $data->getFrom()->format('Y-m-d\TH:i:sP');
+        $dataArray['to'] = $data->getTo()->format('Y-m-d\TH:i:sP');
         $dataArray['limit'] = $data->getLimit();
-        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
+        if ($data->isInitialized('pageToken')) {
             $dataArray['pageToken'] = $data->getPageToken();
         }
-        if ($data->isInitialized('documentId') && null !== $data->getDocumentId()) {
+        if ($data->isInitialized('documentId')) {
             $dataArray['documentId'] = $data->getDocumentId();
         }
         $dataArray['documentVersion'] = $data->getDocumentVersion();
-        if ($data->isInitialized('documentType') && null !== $data->getDocumentType()) {
+        if ($data->isInitialized('documentType')) {
             $dataArray['documentType'] = $data->getDocumentType();
         }
-        if ($data->isInitialized('sort') && null !== $data->getSort()) {
+        if ($data->isInitialized('sort')) {
             $values = [];
             foreach ($data->getSort() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

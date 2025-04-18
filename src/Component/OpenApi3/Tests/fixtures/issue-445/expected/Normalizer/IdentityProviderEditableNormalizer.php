@@ -74,24 +74,24 @@ class IdentityProviderEditableNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('claimMapping') && null !== $data->getClaimMapping()) {
+        if ($data->isInitialized('claimMapping')) {
             $values = [];
             foreach ($data->getClaimMapping() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['claimMapping'] = $values;
         }
-        if ($data->isInitialized('groupClaimType') && null !== $data->getGroupClaimType()) {
+        if ($data->isInitialized('groupClaimType')) {
             $dataArray['groupClaimType'] = $data->getGroupClaimType();
         }
-        if ($data->isInitialized('groupMapping') && null !== $data->getGroupMapping()) {
+        if ($data->isInitialized('groupMapping')) {
             $values_1 = [];
             foreach ($data->getGroupMapping() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['groupMapping'] = $values_1;
         }
-        if ($data->isInitialized('fallbackUserRoleId') && null !== $data->getFallbackUserRoleId()) {
+        if ($data->isInitialized('fallbackUserRoleId')) {
             $dataArray['fallbackUserRoleId'] = $data->getFallbackUserRoleId();
         }
         return $dataArray;

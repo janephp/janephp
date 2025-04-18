@@ -69,14 +69,14 @@ class OutputResolveResultNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
         $dataArray['outputFormatId'] = $data->getOutputFormatId();
         $dataArray['contentId'] = $data->getContentId();
         $dataArray['renderingState'] = $data->getRenderingState();
         $dataArray['dynamicRendering'] = $data->getDynamicRendering();
-        if ($data->isInitialized('fileSize') && null !== $data->getFileSize()) {
+        if ($data->isInitialized('fileSize')) {
             $dataArray['fileSize'] = $data->getFileSize();
         }
         return $dataArray;

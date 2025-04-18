@@ -66,7 +66,7 @@ class ListItemUpdateItemNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('content') && null !== $data->getContent()) {
+        if ($data->isInitialized('content')) {
             $values = [];
             foreach ($data->getContent() as $key => $value) {
                 $values[$key] = $value;

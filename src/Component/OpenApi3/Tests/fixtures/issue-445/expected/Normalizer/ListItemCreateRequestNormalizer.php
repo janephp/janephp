@@ -62,14 +62,14 @@ class ListItemCreateRequestNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         $dataArray['contentSchemaId'] = $data->getContentSchemaId();
-        if ($data->isInitialized('content') && null !== $data->getContent()) {
+        if ($data->isInitialized('content')) {
             $values = [];
             foreach ($data->getContent() as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['content'] = $values;
         }
-        if ($data->isInitialized('requestId') && null !== $data->getRequestId()) {
+        if ($data->isInitialized('requestId')) {
             $dataArray['requestId'] = $data->getRequestId();
         }
         return $dataArray;

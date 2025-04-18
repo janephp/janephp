@@ -232,10 +232,10 @@ class IssueSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         $dataArray['number'] = $data->getNumber();
         $dataArray['title'] = $data->getTitle();
         $dataArray['locked'] = $data->getLocked();
-        if ($data->isInitialized('activeLockReason') && null !== $data->getActiveLockReason()) {
+        if ($data->isInitialized('activeLockReason')) {
             $dataArray['active_lock_reason'] = $data->getActiveLockReason();
         }
-        if ($data->isInitialized('assignees') && null !== $data->getAssignees()) {
+        if ($data->isInitialized('assignees')) {
             $values = [];
             foreach ($data->getAssignees() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
@@ -252,9 +252,9 @@ class IssueSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         $dataArray['assignee'] = $this->normalizer->normalize($data->getAssignee(), 'json', $context);
         $dataArray['milestone'] = $this->normalizer->normalize($data->getMilestone(), 'json', $context);
         $dataArray['comments'] = $data->getComments();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['closed_at'] = $data->getClosedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['closed_at'] = $data->getClosedAt()?->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('textMatches') && null !== $data->getTextMatches()) {
             $values_2 = [];
             foreach ($data->getTextMatches() as $value_2) {
@@ -285,7 +285,7 @@ class IssueSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('timelineUrl') && null !== $data->getTimelineUrl()) {
             $dataArray['timeline_url'] = $data->getTimelineUrl();
         }
-        if ($data->isInitialized('performedViaGithubApp') && null !== $data->getPerformedViaGithubApp()) {
+        if ($data->isInitialized('performedViaGithubApp')) {
             $dataArray['performed_via_github_app'] = $this->normalizer->normalize($data->getPerformedViaGithubApp(), 'json', $context);
         }
         foreach ($data as $key => $value_3) {

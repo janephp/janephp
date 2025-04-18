@@ -89,15 +89,15 @@ class ReviewJsonhalReviewWriteNormalizer implements DenormalizerInterface, Norma
         }
         $dataArray['body'] = $data->getBody();
         $dataArray['rating'] = $data->getRating();
-        if ($data->isInitialized('letter') && null !== $data->getLetter()) {
+        if ($data->isInitialized('letter')) {
             $dataArray['letter'] = $data->getLetter();
         }
         $dataArray['book'] = $data->getBook();
-        if ($data->isInitialized('author') && null !== $data->getAuthor()) {
+        if ($data->isInitialized('author')) {
             $dataArray['author'] = $data->getAuthor();
         }
-        if ($data->isInitialized('publicationDate') && null !== $data->getPublicationDate()) {
-            $dataArray['publicationDate'] = $data->getPublicationDate()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('publicationDate')) {
+            $dataArray['publicationDate'] = $data->getPublicationDate()?->format('Y-m-d\TH:i:sP');
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -113,23 +113,23 @@ class SearchBehaviorWithAggregationBaseResultOfShareNormalizer implements Denorm
         }
         $dataArray['results'] = $values;
         $dataArray['elapsedMilliseconds'] = $data->getElapsedMilliseconds();
-        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
+        if ($data->isInitialized('pageToken')) {
             $dataArray['pageToken'] = $data->getPageToken();
         }
-        if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
+        if ($data->isInitialized('searchString')) {
             $dataArray['searchString'] = $data->getSearchString();
         }
         if ($data->isInitialized('isSearchStringRewritten') && null !== $data->getIsSearchStringRewritten()) {
             $dataArray['isSearchStringRewritten'] = $data->getIsSearchStringRewritten();
         }
-        if ($data->isInitialized('queryDebugInformation') && null !== $data->getQueryDebugInformation()) {
+        if ($data->isInitialized('queryDebugInformation')) {
             $values_1 = [];
             foreach ($data->getQueryDebugInformation() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['queryDebugInformation'] = $values_1;
         }
-        if ($data->isInitialized('aggregationResults') && null !== $data->getAggregationResults()) {
+        if ($data->isInitialized('aggregationResults')) {
             $values_2 = [];
             foreach ($data->getAggregationResults() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);

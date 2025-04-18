@@ -91,10 +91,10 @@ class MarketplaceAccountNormalizer implements DenormalizerInterface, NormalizerI
             $dataArray['node_id'] = $data->getNodeId();
         }
         $dataArray['login'] = $data->getLogin();
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
+        if ($data->isInitialized('email')) {
             $dataArray['email'] = $data->getEmail();
         }
-        if ($data->isInitialized('organizationBillingEmail') && null !== $data->getOrganizationBillingEmail()) {
+        if ($data->isInitialized('organizationBillingEmail')) {
             $dataArray['organization_billing_email'] = $data->getOrganizationBillingEmail();
         }
         foreach ($data as $key => $value) {

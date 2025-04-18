@@ -296,10 +296,10 @@ class ResourcesNormalizer implements DenormalizerInterface, NormalizerInterface,
         if ($data->isInitialized('oomKillDisable') && null !== $data->getOomKillDisable()) {
             $dataArray['OomKillDisable'] = $data->getOomKillDisable();
         }
-        if ($data->isInitialized('init') && null !== $data->getInit()) {
+        if ($data->isInitialized('init')) {
             $dataArray['Init'] = $data->getInit();
         }
-        if ($data->isInitialized('pidsLimit') && null !== $data->getPidsLimit()) {
+        if ($data->isInitialized('pidsLimit')) {
             $dataArray['PidsLimit'] = $data->getPidsLimit();
         }
         if ($data->isInitialized('ulimits') && null !== $data->getUlimits()) {

@@ -167,16 +167,16 @@ class FieldLongArrayNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('indexId') && null !== $data->getIndexId()) {
+        if ($data->isInitialized('indexId')) {
             $dataArray['indexId'] = $data->getIndexId();
         }
-        if ($data->isInitialized('fieldNamespace') && null !== $data->getFieldNamespace()) {
+        if ($data->isInitialized('fieldNamespace')) {
             $dataArray['fieldNamespace'] = $data->getFieldNamespace();
         }
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
+        if ($data->isInitialized('names')) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
+        if ($data->isInitialized('descriptions')) {
             $dataArray['descriptions'] = $data->getDescriptions();
         }
         $dataArray['required'] = $data->getRequired();
@@ -185,22 +185,22 @@ class FieldLongArrayNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['simpleSearch'] = $data->getSimpleSearch();
         $dataArray['sortable'] = $data->getSortable();
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('pattern') && null !== $data->getPattern()) {
+        if ($data->isInitialized('pattern')) {
             $dataArray['pattern'] = $data->getPattern();
         }
-        if ($data->isInitialized('minimum') && null !== $data->getMinimum()) {
+        if ($data->isInitialized('minimum')) {
             $dataArray['minimum'] = $data->getMinimum();
         }
-        if ($data->isInitialized('maximum') && null !== $data->getMaximum()) {
+        if ($data->isInitialized('maximum')) {
             $dataArray['maximum'] = $data->getMaximum();
         }
         if ($data->isInitialized('boost') && null !== $data->getBoost()) {
             $dataArray['boost'] = $data->getBoost();
         }
-        if ($data->isInitialized('maximumItems') && null !== $data->getMaximumItems()) {
+        if ($data->isInitialized('maximumItems')) {
             $dataArray['maximumItems'] = $data->getMaximumItems();
         }
-        if ($data->isInitialized('minimumItems') && null !== $data->getMinimumItems()) {
+        if ($data->isInitialized('minimumItems')) {
             $dataArray['minimumItems'] = $data->getMinimumItems();
         }
         foreach ($data as $key => $value) {

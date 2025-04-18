@@ -191,8 +191,8 @@ class ReviewCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
         $dataArray['body'] = $data->getBody();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['html_url'] = $data->getHtmlUrl();
         $dataArray['pull_request_url'] = $data->getPullRequestUrl();
         $dataArray['author_association'] = $data->getAuthorAssociation();
@@ -206,7 +206,7 @@ class ReviewCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('side') && null !== $data->getSide()) {
             $dataArray['side'] = $data->getSide();
         }
-        if ($data->isInitialized('startSide') && null !== $data->getStartSide()) {
+        if ($data->isInitialized('startSide')) {
             $dataArray['start_side'] = $data->getStartSide();
         }
         if ($data->isInitialized('line') && null !== $data->getLine()) {
@@ -215,10 +215,10 @@ class ReviewCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('originalLine') && null !== $data->getOriginalLine()) {
             $dataArray['original_line'] = $data->getOriginalLine();
         }
-        if ($data->isInitialized('startLine') && null !== $data->getStartLine()) {
+        if ($data->isInitialized('startLine')) {
             $dataArray['start_line'] = $data->getStartLine();
         }
-        if ($data->isInitialized('originalStartLine') && null !== $data->getOriginalStartLine()) {
+        if ($data->isInitialized('originalStartLine')) {
             $dataArray['original_start_line'] = $data->getOriginalStartLine();
         }
         foreach ($data as $key => $value) {

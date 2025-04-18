@@ -135,34 +135,34 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('emailAddress') && null !== $data->getEmailAddress()) {
+        if ($data->isInitialized('emailAddress')) {
             $dataArray['emailAddress'] = $data->getEmailAddress();
         }
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
+        if ($data->isInitialized('firstName')) {
             $dataArray['firstName'] = $data->getFirstName();
         }
-        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
+        if ($data->isInitialized('lastName')) {
             $dataArray['lastName'] = $data->getLastName();
         }
-        if ($data->isInitialized('languageCode') && null !== $data->getLanguageCode()) {
+        if ($data->isInitialized('languageCode')) {
             $dataArray['languageCode'] = $data->getLanguageCode();
         }
-        if ($data->isInitialized('address') && null !== $data->getAddress()) {
+        if ($data->isInitialized('address')) {
             $dataArray['address'] = $data->getAddress();
         }
         $dataArray['authorizationState'] = $data->getAuthorizationState();
         $dataArray['isLocked'] = $data->getIsLocked();
-        if ($data->isInitialized('userRights') && null !== $data->getUserRights()) {
+        if ($data->isInitialized('userRights')) {
             $values = [];
             foreach ($data->getUserRights() as $value) {
                 $values[] = $value;
             }
             $dataArray['userRights'] = $values;
         }
-        if ($data->isInitialized('userRoleIds') && null !== $data->getUserRoleIds()) {
+        if ($data->isInitialized('userRoleIds')) {
             $values_1 = [];
             foreach ($data->getUserRoleIds() as $value_1) {
                 $values_1[] = $value_1;
@@ -170,7 +170,7 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['userRoleIds'] = $values_1;
         }
         $dataArray['termsConsentExpired'] = $data->getTermsConsentExpired();
-        if ($data->isInitialized('systemUserRoles') && null !== $data->getSystemUserRoles()) {
+        if ($data->isInitialized('systemUserRoles')) {
             $values_2 = [];
             foreach ($data->getSystemUserRoles() as $value_2) {
                 $values_2[] = $value_2;

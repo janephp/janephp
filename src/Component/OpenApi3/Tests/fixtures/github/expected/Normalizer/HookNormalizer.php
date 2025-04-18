@@ -115,8 +115,8 @@ class HookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         $dataArray['events'] = $values;
         $dataArray['config'] = $this->normalizer->normalize($data->getConfig(), 'json', $context);
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['url'] = $data->getUrl();
         $dataArray['test_url'] = $data->getTestUrl();
         $dataArray['ping_url'] = $data->getPingUrl();

@@ -149,8 +149,8 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $dataArray['can_encrypt_comms'] = $data->getCanEncryptComms();
         $dataArray['can_encrypt_storage'] = $data->getCanEncryptStorage();
         $dataArray['can_certify'] = $data->getCanCertify();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['expires_at'] = $data->getExpiresAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['expires_at'] = $data->getExpiresAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['raw_key'] = $data->getRawKey();
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

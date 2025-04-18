@@ -81,10 +81,10 @@ class FileCommitCommitVerificationNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('reason') && null !== $data->getReason()) {
             $dataArray['reason'] = $data->getReason();
         }
-        if ($data->isInitialized('signature') && null !== $data->getSignature()) {
+        if ($data->isInitialized('signature')) {
             $dataArray['signature'] = $data->getSignature();
         }
-        if ($data->isInitialized('payload') && null !== $data->getPayload()) {
+        if ($data->isInitialized('payload')) {
             $dataArray['payload'] = $data->getPayload();
         }
         foreach ($data as $key => $value) {

@@ -77,7 +77,7 @@ class ReactionNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray['node_id'] = $data->getNodeId();
         $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
         $dataArray['content'] = $data->getContent();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

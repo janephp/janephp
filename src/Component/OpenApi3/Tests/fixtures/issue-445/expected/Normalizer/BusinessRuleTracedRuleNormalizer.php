@@ -58,10 +58,10 @@ class BusinessRuleTracedRuleNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('configuration') && null !== $data->getConfiguration()) {
+        if ($data->isInitialized('configuration')) {
             $dataArray['configuration'] = $data->getConfiguration();
         }
-        if ($data->isInitialized('evaluations') && null !== $data->getEvaluations()) {
+        if ($data->isInitialized('evaluations')) {
             $values = [];
             foreach ($data->getEvaluations() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

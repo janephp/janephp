@@ -128,37 +128,37 @@ class AudioMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
+        if ($data->isInitialized('names')) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
+        if ($data->isInitialized('descriptions')) {
             $dataArray['descriptions'] = $data->getDescriptions();
         }
-        if ($data->isInitialized('fileExtension') && null !== $data->getFileExtension()) {
+        if ($data->isInitialized('fileExtension')) {
             $dataArray['fileExtension'] = $data->getFileExtension();
         }
-        if ($data->isInitialized('fileName') && null !== $data->getFileName()) {
+        if ($data->isInitialized('fileName')) {
             $dataArray['fileName'] = $data->getFileName();
         }
-        if ($data->isInitialized('filePath') && null !== $data->getFilePath()) {
+        if ($data->isInitialized('filePath')) {
             $dataArray['filePath'] = $data->getFilePath();
         }
-        if ($data->isInitialized('fileSizeInBytes') && null !== $data->getFileSizeInBytes()) {
+        if ($data->isInitialized('fileSizeInBytes')) {
             $dataArray['fileSizeInBytes'] = $data->getFileSizeInBytes();
         }
-        if ($data->isInitialized('sha1Hash') && null !== $data->getSha1Hash()) {
+        if ($data->isInitialized('sha1Hash')) {
             $dataArray['sha1Hash'] = $data->getSha1Hash();
         }
-        if ($data->isInitialized('xmpMetadata') && null !== $data->getXmpMetadata()) {
+        if ($data->isInitialized('xmpMetadata')) {
             $dataArray['xmpMetadata'] = $data->getXmpMetadata();
         }
-        if ($data->isInitialized('exifMetadata') && null !== $data->getExifMetadata()) {
+        if ($data->isInitialized('exifMetadata')) {
             $dataArray['exifMetadata'] = $data->getExifMetadata();
         }
-        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
+        if ($data->isInitialized('language')) {
             $dataArray['language'] = $data->getLanguage();
         }
-        if ($data->isInitialized('audioStreams') && null !== $data->getAudioStreams()) {
+        if ($data->isInitialized('audioStreams')) {
             $values = [];
             foreach ($data->getAudioStreams() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

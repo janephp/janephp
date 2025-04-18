@@ -69,16 +69,16 @@ class LiveStreamSearchRequestNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['from'] = $data->getFrom()?->format('Y-m-d\TH:i:sP');
-        $dataArray['to'] = $data->getTo()?->format('Y-m-d\TH:i:sP');
-        if ($data->isInitialized('scopeType') && null !== $data->getScopeType()) {
+        $dataArray['from'] = $data->getFrom()->format('Y-m-d\TH:i:sP');
+        $dataArray['to'] = $data->getTo()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('scopeType')) {
             $dataArray['scopeType'] = $data->getScopeType();
         }
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
+        if ($data->isInitialized('filter')) {
             $dataArray['filter'] = $data->getFilter();
         }
         $dataArray['limit'] = $data->getLimit();
-        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
+        if ($data->isInitialized('pageToken')) {
             $dataArray['pageToken'] = $data->getPageToken();
         }
         return $dataArray;

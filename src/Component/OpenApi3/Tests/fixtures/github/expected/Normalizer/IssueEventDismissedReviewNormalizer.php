@@ -75,7 +75,7 @@ class IssueEventDismissedReviewNormalizer implements DenormalizerInterface, Norm
         $dataArray['state'] = $data->getState();
         $dataArray['review_id'] = $data->getReviewId();
         $dataArray['dismissal_message'] = $data->getDismissalMessage();
-        if ($data->isInitialized('dismissalCommitId') && null !== $data->getDismissalCommitId()) {
+        if ($data->isInitialized('dismissalCommitId')) {
             $dataArray['dismissal_commit_id'] = $data->getDismissalCommitId();
         }
         foreach ($data as $key => $value) {

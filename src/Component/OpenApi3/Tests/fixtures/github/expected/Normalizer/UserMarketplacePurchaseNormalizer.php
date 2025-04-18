@@ -98,11 +98,11 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         $dataArray['billing_cycle'] = $data->getBillingCycle();
-        $dataArray['next_billing_date'] = $data->getNextBillingDate()->format('Y-m-d\TH:i:sP');
+        $dataArray['next_billing_date'] = $data->getNextBillingDate()?->format('Y-m-d\TH:i:sP');
         $dataArray['unit_count'] = $data->getUnitCount();
         $dataArray['on_free_trial'] = $data->getOnFreeTrial();
-        $dataArray['free_trial_ends_on'] = $data->getFreeTrialEndsOn()->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['free_trial_ends_on'] = $data->getFreeTrialEndsOn()?->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['account'] = $this->normalizer->normalize($data->getAccount(), 'json', $context);
         $dataArray['plan'] = $this->normalizer->normalize($data->getPlan(), 'json', $context);
         foreach ($data as $key => $value) {

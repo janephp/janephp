@@ -82,22 +82,22 @@ class ProblemDetailsNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('type') && null !== $data->getType()) {
+        if ($data->isInitialized('type')) {
             $dataArray['type'] = $data->getType();
         }
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
+        if ($data->isInitialized('title')) {
             $dataArray['title'] = $data->getTitle();
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
+        if ($data->isInitialized('status')) {
             $dataArray['status'] = $data->getStatus();
         }
-        if ($data->isInitialized('detail') && null !== $data->getDetail()) {
+        if ($data->isInitialized('detail')) {
             $dataArray['detail'] = $data->getDetail();
         }
-        if ($data->isInitialized('instance') && null !== $data->getInstance()) {
+        if ($data->isInitialized('instance')) {
             $dataArray['instance'] = $data->getInstance();
         }
-        if ($data->isInitialized('extensions') && null !== $data->getExtensions()) {
+        if ($data->isInitialized('extensions')) {
             $values = [];
             foreach ($data->getExtensions() as $key => $value) {
                 $values[$key] = $value;

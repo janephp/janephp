@@ -147,13 +147,13 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200Normalizer implements D
         $dataArray['app'] = $this->normalizer->normalize($data->getApp(), 'json', $context);
         $dataArray['note'] = $data->getNote();
         $dataArray['note_url'] = $data->getNoteUrl();
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['fingerprint'] = $data->getFingerprint();
-        if ($data->isInitialized('user') && null !== $data->getUser()) {
+        if ($data->isInitialized('user')) {
             $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
         }
-        if ($data->isInitialized('installation') && null !== $data->getInstallation()) {
+        if ($data->isInitialized('installation')) {
             $dataArray['installation'] = $this->normalizer->normalize($data->getInstallation(), 'json', $context);
         }
         foreach ($data as $key => $value_1) {

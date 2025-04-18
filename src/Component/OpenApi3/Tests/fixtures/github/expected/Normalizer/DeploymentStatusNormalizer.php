@@ -126,8 +126,8 @@ class DeploymentStatusNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['environment'] = $data->getEnvironment();
         }
         $dataArray['target_url'] = $data->getTargetUrl();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['deployment_url'] = $data->getDeploymentUrl();
         $dataArray['repository_url'] = $data->getRepositoryUrl();
         if ($data->isInitialized('environmentUrl') && null !== $data->getEnvironmentUrl()) {
@@ -136,7 +136,7 @@ class DeploymentStatusNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('logUrl') && null !== $data->getLogUrl()) {
             $dataArray['log_url'] = $data->getLogUrl();
         }
-        if ($data->isInitialized('performedViaGithubApp') && null !== $data->getPerformedViaGithubApp()) {
+        if ($data->isInitialized('performedViaGithubApp')) {
             $dataArray['performed_via_github_app'] = $this->normalizer->normalize($data->getPerformedViaGithubApp(), 'json', $context);
         }
         foreach ($data as $key => $value) {

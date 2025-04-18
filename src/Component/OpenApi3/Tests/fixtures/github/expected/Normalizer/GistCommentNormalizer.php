@@ -90,8 +90,8 @@ class GistCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray['url'] = $data->getUrl();
         $dataArray['body'] = $data->getBody();
         $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['author_association'] = $data->getAuthorAssociation();
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

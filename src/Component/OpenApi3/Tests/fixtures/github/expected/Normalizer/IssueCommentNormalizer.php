@@ -126,11 +126,11 @@ class IssueCommentNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $dataArray['html_url'] = $data->getHtmlUrl();
         $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['issue_url'] = $data->getIssueUrl();
         $dataArray['author_association'] = $data->getAuthorAssociation();
-        if ($data->isInitialized('performedViaGithubApp') && null !== $data->getPerformedViaGithubApp()) {
+        if ($data->isInitialized('performedViaGithubApp')) {
             $dataArray['performed_via_github_app'] = $this->normalizer->normalize($data->getPerformedViaGithubApp(), 'json', $context);
         }
         if ($data->isInitialized('reactions') && null !== $data->getReactions()) {

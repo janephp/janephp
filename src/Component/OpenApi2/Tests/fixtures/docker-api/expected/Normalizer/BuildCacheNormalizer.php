@@ -108,7 +108,7 @@ class BuildCacheNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
             $dataArray['CreatedAt'] = $data->getCreatedAt();
         }
-        if ($data->isInitialized('lastUsedAt') && null !== $data->getLastUsedAt()) {
+        if ($data->isInitialized('lastUsedAt')) {
             $dataArray['LastUsedAt'] = $data->getLastUsedAt();
         }
         if ($data->isInitialized('usageCount') && null !== $data->getUsageCount()) {

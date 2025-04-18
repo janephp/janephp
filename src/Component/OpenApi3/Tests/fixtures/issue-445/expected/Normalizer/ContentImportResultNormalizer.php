@@ -70,14 +70,14 @@ class ContentImportResultNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         $dataArray['fileTransferId'] = $data->getFileTransferId();
-        if ($data->isInitialized('contentId') && null !== $data->getContentId()) {
+        if ($data->isInitialized('contentId')) {
             $dataArray['contentId'] = $data->getContentId();
         }
-        if ($data->isInitialized('state') && null !== $data->getState()) {
+        if ($data->isInitialized('state')) {
             $dataArray['state'] = $data->getState();
         }
         $dataArray['succeeded'] = $data->getSucceeded();
-        if ($data->isInitialized('error') && null !== $data->getError()) {
+        if ($data->isInitialized('error')) {
             $dataArray['error'] = $data->getError();
         }
         return $dataArray;

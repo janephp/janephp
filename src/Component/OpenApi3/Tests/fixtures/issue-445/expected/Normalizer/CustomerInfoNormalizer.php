@@ -128,14 +128,14 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
             $values_2[] = $value_2;
         }
         $dataArray['boostValues'] = $values_2;
-        if ($data->isInitialized('apps') && null !== $data->getApps()) {
+        if ($data->isInitialized('apps')) {
             $values_3 = [];
             foreach ($data->getApps() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $dataArray['apps'] = $values_3;
         }
-        $dataArray['modificationDate'] = $data->getModificationDate()?->format('Y-m-d\TH:i:sP');
+        $dataArray['modificationDate'] = $data->getModificationDate()->format('Y-m-d\TH:i:sP');
         $dataArray['baseUrl'] = $data->getBaseUrl();
         $dataArray['logosUrl'] = $data->getLogosUrl();
         return $dataArray;

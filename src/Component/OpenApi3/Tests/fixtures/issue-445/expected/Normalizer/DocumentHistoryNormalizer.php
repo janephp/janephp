@@ -84,19 +84,19 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('documentId') && null !== $data->getDocumentId()) {
+        if ($data->isInitialized('documentId')) {
             $dataArray['documentId'] = $data->getDocumentId();
         }
         $dataArray['documentVersion'] = $data->getDocumentVersion();
-        if ($data->isInitialized('documentType') && null !== $data->getDocumentType()) {
+        if ($data->isInitialized('documentType')) {
             $dataArray['documentType'] = $data->getDocumentType();
         }
-        $dataArray['documentDate'] = $data->getDocumentDate()?->format('Y-m-d\TH:i:sP');
-        if ($data->isInitialized('document') && null !== $data->getDocument()) {
+        $dataArray['documentDate'] = $data->getDocumentDate()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('document')) {
             $dataArray['document'] = $data->getDocument();
         }
-        $dataArray['timestamp'] = $data->getTimestamp()?->format('Y-m-d\TH:i:sP');
-        if ($data->isInitialized('audit') && null !== $data->getAudit()) {
+        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('audit')) {
             $dataArray['audit'] = $data->getAudit();
         }
         $dataArray['deleted'] = $data->getDeleted();

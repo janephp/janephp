@@ -190,7 +190,7 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
         if ($data->isInitialized('appArmorProfile') && null !== $data->getAppArmorProfile()) {
             $dataArray['AppArmorProfile'] = $data->getAppArmorProfile();
         }
-        if ($data->isInitialized('execIDs') && null !== $data->getExecIDs()) {
+        if ($data->isInitialized('execIDs')) {
             $values_1 = [];
             foreach ($data->getExecIDs() as $value_1) {
                 $values_1[] = $value_1;

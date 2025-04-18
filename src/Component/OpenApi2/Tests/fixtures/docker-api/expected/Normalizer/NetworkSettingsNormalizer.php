@@ -157,14 +157,14 @@ class NetworkSettingsNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('sandboxKey') && null !== $data->getSandboxKey()) {
             $dataArray['SandboxKey'] = $data->getSandboxKey();
         }
-        if ($data->isInitialized('secondaryIPAddresses') && null !== $data->getSecondaryIPAddresses()) {
+        if ($data->isInitialized('secondaryIPAddresses')) {
             $values_2 = [];
             foreach ($data->getSecondaryIPAddresses() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['SecondaryIPAddresses'] = $values_2;
         }
-        if ($data->isInitialized('secondaryIPv6Addresses') && null !== $data->getSecondaryIPv6Addresses()) {
+        if ($data->isInitialized('secondaryIPv6Addresses')) {
             $values_3 = [];
             foreach ($data->getSecondaryIPv6Addresses() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);

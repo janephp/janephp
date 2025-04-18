@@ -144,36 +144,36 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
         $dataArray = [];
         $dataArray['id'] = $data->getId();
         $dataArray['processDefinitionId'] = $data->getProcessDefinitionId();
-        if ($data->isInitialized('referenceId') && null !== $data->getReferenceId()) {
+        if ($data->isInitialized('referenceId')) {
             $dataArray['referenceId'] = $data->getReferenceId();
         }
-        if ($data->isInitialized('referenceDocType') && null !== $data->getReferenceDocType()) {
+        if ($data->isInitialized('referenceDocType')) {
             $dataArray['referenceDocType'] = $data->getReferenceDocType();
         }
         $dataArray['supportsCancellation'] = $data->getSupportsCancellation();
         $dataArray['businessProcessScope'] = $data->getBusinessProcessScope();
         $dataArray['lifeCycle'] = $data->getLifeCycle();
-        $dataArray['startDate'] = $data->getStartDate()?->format('Y-m-d\TH:i:sP');
-        $dataArray['endDate'] = $data->getEndDate()?->format('Y-m-d\TH:i:sP');
+        $dataArray['startDate'] = $data->getStartDate()->format('Y-m-d\TH:i:sP');
+        $dataArray['endDate'] = $data->getEndDate()->format('Y-m-d\TH:i:sP');
         $dataArray['finished'] = $data->getFinished();
-        if ($data->isInitialized('stateHistory') && null !== $data->getStateHistory()) {
+        if ($data->isInitialized('stateHistory')) {
             $values = [];
             foreach ($data->getStateHistory() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['stateHistory'] = $values;
         }
-        if ($data->isInitialized('currentState') && null !== $data->getCurrentState()) {
+        if ($data->isInitialized('currentState')) {
             $dataArray['currentState'] = $data->getCurrentState();
         }
-        if ($data->isInitialized('lastReportedProgress') && null !== $data->getLastReportedProgress()) {
-            $dataArray['lastReportedProgress'] = $data->getLastReportedProgress()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('lastReportedProgress')) {
+            $dataArray['lastReportedProgress'] = $data->getLastReportedProgress()?->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('continuationBusinessProcessId') && null !== $data->getContinuationBusinessProcessId()) {
+        if ($data->isInitialized('continuationBusinessProcessId')) {
             $dataArray['continuationBusinessProcessId'] = $data->getContinuationBusinessProcessId();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('details') && null !== $data->getDetails()) {
+        if ($data->isInitialized('details')) {
             $dataArray['details'] = $data->getDetails();
         }
         foreach ($data as $key => $value_1) {

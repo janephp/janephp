@@ -138,7 +138,7 @@ class ApplicationEventNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $data->getKind() and 'XmpWritebackCompletedEvent' === $data->getKind()) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        $dataArray['timestamp'] = $data->getTimestamp()?->format('Y-m-d\TH:i:sP');
+        $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
         $dataArray['kind'] = $data->getKind();
         return $dataArray;
     }

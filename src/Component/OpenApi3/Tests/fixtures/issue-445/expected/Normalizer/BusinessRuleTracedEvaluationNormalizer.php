@@ -89,28 +89,28 @@ class BusinessRuleTracedEvaluationNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         $dataArray['conditionSatisfied'] = $data->getConditionSatisfied();
-        if ($data->isInitialized('conditions') && null !== $data->getConditions()) {
+        if ($data->isInitialized('conditions')) {
             $values = [];
             foreach ($data->getConditions() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['conditions'] = $values;
         }
-        if ($data->isInitialized('transformationGroups') && null !== $data->getTransformationGroups()) {
+        if ($data->isInitialized('transformationGroups')) {
             $values_1 = [];
             foreach ($data->getTransformationGroups() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['transformationGroups'] = $values_1;
         }
-        if ($data->isInitialized('actions') && null !== $data->getActions()) {
+        if ($data->isInitialized('actions')) {
             $values_2 = [];
             foreach ($data->getActions() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['actions'] = $values_2;
         }
-        if ($data->isInitialized('variables') && null !== $data->getVariables()) {
+        if ($data->isInitialized('variables')) {
             $values_3 = [];
             foreach ($data->getVariables() as $key => $value_3) {
                 $values_3[$key] = $value_3;

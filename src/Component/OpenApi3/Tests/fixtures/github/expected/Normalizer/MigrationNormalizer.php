@@ -131,8 +131,8 @@ class MigrationNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         $dataArray['repositories'] = $values;
         $dataArray['url'] = $data->getUrl();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['node_id'] = $data->getNodeId();
         if ($data->isInitialized('archiveUrl') && null !== $data->getArchiveUrl()) {
             $dataArray['archive_url'] = $data->getArchiveUrl();

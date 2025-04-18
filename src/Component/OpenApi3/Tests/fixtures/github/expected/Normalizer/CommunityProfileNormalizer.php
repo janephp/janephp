@@ -83,7 +83,7 @@ class CommunityProfileNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray['description'] = $data->getDescription();
         $dataArray['documentation'] = $data->getDocumentation();
         $dataArray['files'] = $this->normalizer->normalize($data->getFiles(), 'json', $context);
-        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

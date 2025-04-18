@@ -77,7 +77,7 @@ class UserRoleDetailNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $dataArray['userRights'] = $values;
         $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('audit') && null !== $data->getAudit()) {
+        if ($data->isInitialized('audit')) {
             $dataArray['audit'] = $data->getAudit();
         }
         foreach ($data as $key => $value_1) {

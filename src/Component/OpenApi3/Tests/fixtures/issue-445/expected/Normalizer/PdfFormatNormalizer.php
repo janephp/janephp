@@ -93,7 +93,7 @@ class PdfFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
         if ($data->isInitialized('reduceFileSize') && null !== $data->getReduceFileSize()) {
             $dataArray['reduceFileSize'] = $data->getReduceFileSize();
         }
-        if ($data->isInitialized('extension') && null !== $data->getExtension()) {
+        if ($data->isInitialized('extension')) {
             $dataArray['extension'] = $data->getExtension();
         }
         if ($data->isInitialized('extractFullText') && null !== $data->getExtractFullText()) {

@@ -99,17 +99,17 @@ class OutputDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
         $dataArray['outputFormatId'] = $data->getOutputFormatId();
         $dataArray['contentId'] = $data->getContentId();
         $dataArray['renderingState'] = $data->getRenderingState();
-        if ($data->isInitialized('detail') && null !== $data->getDetail()) {
+        if ($data->isInitialized('detail')) {
             $dataArray['detail'] = $data->getDetail();
         }
-        if ($data->isInitialized('backupTimestamp') && null !== $data->getBackupTimestamp()) {
-            $dataArray['backupTimestamp'] = $data->getBackupTimestamp()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('backupTimestamp')) {
+            $dataArray['backupTimestamp'] = $data->getBackupTimestamp()?->format('Y-m-d\TH:i:sP');
         }
         $dataArray['attemptsLeft'] = $data->getAttemptsLeft();
         $dataArray['fileVersion'] = $data->getFileVersion();

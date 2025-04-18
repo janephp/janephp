@@ -99,13 +99,13 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('isbn') && null !== $data->getIsbn()) {
+        if ($data->isInitialized('isbn')) {
             $dataArray['isbn'] = $data->getIsbn();
         }
         $dataArray['title'] = $data->getTitle();
         $dataArray['description'] = $data->getDescription();
         $dataArray['author'] = $data->getAuthor();
-        $dataArray['publicationDate'] = $data->getPublicationDate()?->format('Y-m-d\TH:i:sP');
+        $dataArray['publicationDate'] = $data->getPublicationDate()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('reviews') && null !== $data->getReviews()) {
             $values = [];
             foreach ($data->getReviews() as $value) {
@@ -113,11 +113,11 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $dataArray['reviews'] = $values;
         }
-        if ($data->isInitialized('cover') && null !== $data->getCover()) {
+        if ($data->isInitialized('cover')) {
             $dataArray['cover'] = $data->getCover();
         }
-        if ($data->isInitialized('archivedAt') && null !== $data->getArchivedAt()) {
-            $dataArray['archivedAt'] = $data->getArchivedAt()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('archivedAt')) {
+            $dataArray['archivedAt'] = $data->getArchivedAt()?->format('Y-m-d\TH:i:sP');
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

@@ -138,8 +138,8 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $dataArray['number'] = $data->getNumber();
         $dataArray['state'] = $data->getState();
         $dataArray['creator'] = $this->normalizer->normalize($data->getCreator(), 'json', $context);
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('organizationPermission') && null !== $data->getOrganizationPermission()) {
             $dataArray['organization_permission'] = $data->getOrganizationPermission();
         }

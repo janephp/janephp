@@ -110,7 +110,7 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $dataArray['id'] = $data->getId();
         $dataArray['sortOrder'] = $data->getSortOrder();
         $dataArray['searchIndexId'] = $data->getSearchIndexId();
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
+        if ($data->isInitialized('filter')) {
             $dataArray['filter'] = $data->getFilter();
         }
         $dataArray['names'] = $data->getNames();

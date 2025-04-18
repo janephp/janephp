@@ -54,10 +54,10 @@ class OutputFormatRenderPreviewRequestNormalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('contentId') && null !== $data->getContentId()) {
+        if ($data->isInitialized('contentId')) {
             $dataArray['contentId'] = $data->getContentId();
         }
-        if ($data->isInitialized('outputFormat') && null !== $data->getOutputFormat()) {
+        if ($data->isInitialized('outputFormat')) {
             $dataArray['outputFormat'] = $data->getOutputFormat();
         }
         return $dataArray;

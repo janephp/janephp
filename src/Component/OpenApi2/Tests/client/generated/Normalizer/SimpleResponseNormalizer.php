@@ -84,6 +84,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Jane\Component\OpenApi2\Tests\Client\Model\SimpleResponse();
+            if (\array_key_exists('baz', $data) && \is_int($data['baz'])) {
+                $data['baz'] = (bool) $data['baz'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
@@ -161,6 +164,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return new Reference($data['$recursiveRef'], $context['document-origin']);
             }
             $object = new \Jane\Component\OpenApi2\Tests\Client\Model\SimpleResponse();
+            if (\array_key_exists('baz', $data) && \is_int($data['baz'])) {
+                $data['baz'] = (bool) $data['baz'];
+            }
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }

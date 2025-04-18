@@ -128,37 +128,37 @@ class ContentAggregationRequestNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
+        if ($data->isInitialized('searchString')) {
             $dataArray['searchString'] = $data->getSearchString();
         }
-        if ($data->isInitialized('searchBehaviors') && null !== $data->getSearchBehaviors()) {
+        if ($data->isInitialized('searchBehaviors')) {
             $values = [];
             foreach ($data->getSearchBehaviors() as $value) {
                 $values[] = $value;
             }
             $dataArray['searchBehaviors'] = $values;
         }
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
+        if ($data->isInitialized('filter')) {
             $dataArray['filter'] = $data->getFilter();
         }
-        if ($data->isInitialized('aggregationFilters') && null !== $data->getAggregationFilters()) {
+        if ($data->isInitialized('aggregationFilters')) {
             $values_1 = [];
             foreach ($data->getAggregationFilters() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['aggregationFilters'] = $values_1;
         }
-        if ($data->isInitialized('channelId') && null !== $data->getChannelId()) {
+        if ($data->isInitialized('channelId')) {
             $dataArray['channelId'] = $data->getChannelId();
         }
-        if ($data->isInitialized('searchLanguages') && null !== $data->getSearchLanguages()) {
+        if ($data->isInitialized('searchLanguages')) {
             $values_2 = [];
             foreach ($data->getSearchLanguages() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['searchLanguages'] = $values_2;
         }
-        if ($data->isInitialized('collectionId') && null !== $data->getCollectionId()) {
+        if ($data->isInitialized('collectionId')) {
             $dataArray['collectionId'] = $data->getCollectionId();
         }
         $dataArray['lifeCycleFilter'] = $data->getLifeCycleFilter();

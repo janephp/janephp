@@ -128,8 +128,8 @@ class JobNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         $dataArray['html_url'] = $data->getHtmlUrl();
         $dataArray['status'] = $data->getStatus();
         $dataArray['conclusion'] = $data->getConclusion();
-        $dataArray['started_at'] = $data->getStartedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['completed_at'] = $data->getCompletedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['started_at'] = $data->getStartedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['completed_at'] = $data->getCompletedAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['name'] = $data->getName();
         if ($data->isInitialized('steps') && null !== $data->getSteps()) {
             $values = [];

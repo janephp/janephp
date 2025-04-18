@@ -62,7 +62,7 @@ class NotificationsPutBodyNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if ($data->isInitialized('lastReadAt') && null !== $data->getLastReadAt()) {
-            $dataArray['last_read_at'] = $data->getLastReadAt()?->format('Y-m-d\TH:i:sP');
+            $dataArray['last_read_at'] = $data->getLastReadAt()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('read') && null !== $data->getRead()) {
             $dataArray['read'] = $data->getRead();

@@ -144,7 +144,7 @@ class TeamProjectNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('body') && null !== $data->getBody()) {
+        if ($data->isInitialized('body')) {
             $dataArray['body'] = $data->getBody();
         }
         if ($data->isInitialized('number') && null !== $data->getNumber()) {
@@ -153,7 +153,7 @@ class TeamProjectNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('state') && null !== $data->getState()) {
             $dataArray['state'] = $data->getState();
         }
-        if ($data->isInitialized('creator') && null !== $data->getCreator()) {
+        if ($data->isInitialized('creator')) {
             $dataArray['creator'] = $this->normalizer->normalize($data->getCreator(), 'json', $context);
         }
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {

@@ -72,21 +72,21 @@ class ImportTransferRequestNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
+        if ($data->isInitialized('layerSchemaIds')) {
             $values = [];
             foreach ($data->getLayerSchemaIds() as $value) {
                 $values[] = $value;
             }
             $dataArray['layerSchemaIds'] = $values;
         }
-        if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
+        if ($data->isInitialized('metadata')) {
             $values_1 = [];
             foreach ($data->getMetadata() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['metadata'] = $values_1;
         }
-        if ($data->isInitialized('contentPermissionSetIds') && null !== $data->getContentPermissionSetIds()) {
+        if ($data->isInitialized('contentPermissionSetIds')) {
             $values_2 = [];
             foreach ($data->getContentPermissionSetIds() as $value_2) {
                 $values_2[] = $value_2;

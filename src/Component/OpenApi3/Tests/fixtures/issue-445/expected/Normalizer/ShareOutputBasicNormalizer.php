@@ -89,13 +89,13 @@ class ShareOutputBasicNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray = [];
         $dataArray['contentId'] = $data->getContentId();
         $dataArray['outputFormatId'] = $data->getOutputFormatId();
-        if ($data->isInitialized('viewUrl') && null !== $data->getViewUrl()) {
+        if ($data->isInitialized('viewUrl')) {
             $dataArray['viewUrl'] = $data->getViewUrl();
         }
-        if ($data->isInitialized('downloadUrl') && null !== $data->getDownloadUrl()) {
+        if ($data->isInitialized('downloadUrl')) {
             $dataArray['downloadUrl'] = $data->getDownloadUrl();
         }
-        if ($data->isInitialized('detail') && null !== $data->getDetail()) {
+        if ($data->isInitialized('detail')) {
             $dataArray['detail'] = $data->getDetail();
         }
         $dataArray['dynamicRendering'] = $data->getDynamicRendering();

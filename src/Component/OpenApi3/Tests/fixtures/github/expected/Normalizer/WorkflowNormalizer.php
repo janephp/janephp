@@ -99,13 +99,13 @@ class WorkflowNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray['name'] = $data->getName();
         $dataArray['path'] = $data->getPath();
         $dataArray['state'] = $data->getState();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['url'] = $data->getUrl();
         $dataArray['html_url'] = $data->getHtmlUrl();
         $dataArray['badge_url'] = $data->getBadgeUrl();
         if ($data->isInitialized('deletedAt') && null !== $data->getDeletedAt()) {
-            $dataArray['deleted_at'] = $data->getDeletedAt()?->format('Y-m-d\TH:i:sP');
+            $dataArray['deleted_at'] = $data->getDeletedAt()->format('Y-m-d\TH:i:sP');
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

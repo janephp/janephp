@@ -70,10 +70,10 @@ class ScimUserMetaNormalizer implements DenormalizerInterface, NormalizerInterfa
             $dataArray['resourceType'] = $data->getResourceType();
         }
         if ($data->isInitialized('created') && null !== $data->getCreated()) {
-            $dataArray['created'] = $data->getCreated()?->format('Y-m-d\TH:i:sP');
+            $dataArray['created'] = $data->getCreated()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('lastModified') && null !== $data->getLastModified()) {
-            $dataArray['lastModified'] = $data->getLastModified()?->format('Y-m-d\TH:i:sP');
+            $dataArray['lastModified'] = $data->getLastModified()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('location') && null !== $data->getLocation()) {
             $dataArray['location'] = $data->getLocation();

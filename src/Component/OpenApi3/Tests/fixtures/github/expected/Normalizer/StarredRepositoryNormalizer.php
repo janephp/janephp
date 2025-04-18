@@ -58,7 +58,7 @@ class StarredRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['starred_at'] = $data->getStarredAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['starred_at'] = $data->getStarredAt()->format('Y-m-d\TH:i:sP');
         $dataArray['repo'] = $this->normalizer->normalize($data->getRepo(), 'json', $context);
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

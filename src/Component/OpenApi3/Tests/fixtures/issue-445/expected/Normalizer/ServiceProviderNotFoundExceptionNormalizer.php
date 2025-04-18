@@ -90,20 +90,20 @@ class ServiceProviderNotFoundExceptionNormalizer implements DenormalizerInterfac
         if ($data->isInitialized('traceLevel') && null !== $data->getTraceLevel()) {
             $dataArray['traceLevel'] = $data->getTraceLevel();
         }
-        if ($data->isInitialized('traceId') && null !== $data->getTraceId()) {
+        if ($data->isInitialized('traceId')) {
             $dataArray['traceId'] = $data->getTraceId();
         }
-        if ($data->isInitialized('traceJobId') && null !== $data->getTraceJobId()) {
+        if ($data->isInitialized('traceJobId')) {
             $dataArray['traceJobId'] = $data->getTraceJobId();
         }
         if ($data->isInitialized('httpStatusCode') && null !== $data->getHttpStatusCode()) {
             $dataArray['httpStatusCode'] = $data->getHttpStatusCode();
         }
-        if ($data->isInitialized('exceptionMessage') && null !== $data->getExceptionMessage()) {
+        if ($data->isInitialized('exceptionMessage')) {
             $dataArray['exceptionMessage'] = $data->getExceptionMessage();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('missingServiceProviderId') && null !== $data->getMissingServiceProviderId()) {
+        if ($data->isInitialized('missingServiceProviderId')) {
             $dataArray['missingServiceProviderId'] = $data->getMissingServiceProviderId();
         }
         foreach ($data as $key => $value) {

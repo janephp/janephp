@@ -51,7 +51,7 @@ class BusinessProcessWaitForStateResultNormalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('stateHit') && null !== $data->getStateHit()) {
+        if ($data->isInitialized('stateHit')) {
             $dataArray['stateHit'] = $data->getStateHit();
         }
         $dataArray['businessProcess'] = $data->getBusinessProcess();

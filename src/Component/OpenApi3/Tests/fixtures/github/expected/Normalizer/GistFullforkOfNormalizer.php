@@ -181,19 +181,19 @@ class GistFullforkOfNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
             $dataArray['updated_at'] = $data->getUpdatedAt();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description')) {
             $dataArray['description'] = $data->getDescription();
         }
         if ($data->isInitialized('comments') && null !== $data->getComments()) {
             $dataArray['comments'] = $data->getComments();
         }
-        if ($data->isInitialized('user') && null !== $data->getUser()) {
+        if ($data->isInitialized('user')) {
             $dataArray['user'] = $data->getUser();
         }
         if ($data->isInitialized('commentsUrl') && null !== $data->getCommentsUrl()) {
             $dataArray['comments_url'] = $data->getCommentsUrl();
         }
-        if ($data->isInitialized('owner') && null !== $data->getOwner()) {
+        if ($data->isInitialized('owner')) {
             $dataArray['owner'] = $this->normalizer->normalize($data->getOwner(), 'json', $context);
         }
         if ($data->isInitialized('truncated') && null !== $data->getTruncated()) {

@@ -88,7 +88,7 @@ class LabelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $dataArray['node_id'] = $data->getNodeId();
         $dataArray['url'] = $data->getUrl();
         $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description')) {
             $dataArray['description'] = $data->getDescription();
         }
         $dataArray['color'] = $data->getColor();

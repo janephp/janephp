@@ -135,44 +135,44 @@ class VideoStreamNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('bitRate') && null !== $data->getBitRate()) {
+        if ($data->isInitialized('bitRate')) {
             $dataArray['bitRate'] = $data->getBitRate();
         }
-        if ($data->isInitialized('codec') && null !== $data->getCodec()) {
+        if ($data->isInitialized('codec')) {
             $dataArray['codec'] = $data->getCodec();
         }
-        if ($data->isInitialized('displayAspectRatio') && null !== $data->getDisplayAspectRatio()) {
+        if ($data->isInitialized('displayAspectRatio')) {
             $dataArray['displayAspectRatio'] = $data->getDisplayAspectRatio();
         }
         $dataArray['durationInSeconds'] = $data->getDurationInSeconds();
-        if ($data->isInitialized('format') && null !== $data->getFormat()) {
+        if ($data->isInitialized('format')) {
             $dataArray['format'] = $data->getFormat();
         }
-        if ($data->isInitialized('frameCount') && null !== $data->getFrameCount()) {
+        if ($data->isInitialized('frameCount')) {
             $dataArray['frameCount'] = $data->getFrameCount();
         }
-        if ($data->isInitialized('frameRate') && null !== $data->getFrameRate()) {
+        if ($data->isInitialized('frameRate')) {
             $dataArray['frameRate'] = $data->getFrameRate();
         }
-        if ($data->isInitialized('height') && null !== $data->getHeight()) {
+        if ($data->isInitialized('height')) {
             $dataArray['height'] = $data->getHeight();
         }
-        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
+        if ($data->isInitialized('language')) {
             $dataArray['language'] = $data->getLanguage();
         }
-        if ($data->isInitialized('pixelAspectRatio') && null !== $data->getPixelAspectRatio()) {
+        if ($data->isInitialized('pixelAspectRatio')) {
             $dataArray['pixelAspectRatio'] = $data->getPixelAspectRatio();
         }
-        if ($data->isInitialized('resolution') && null !== $data->getResolution()) {
+        if ($data->isInitialized('resolution')) {
             $dataArray['resolution'] = $data->getResolution();
         }
-        if ($data->isInitialized('streamSize') && null !== $data->getStreamSize()) {
+        if ($data->isInitialized('streamSize')) {
             $dataArray['streamSize'] = $data->getStreamSize();
         }
-        if ($data->isInitialized('width') && null !== $data->getWidth()) {
+        if ($data->isInitialized('width')) {
             $dataArray['width'] = $data->getWidth();
         }
-        if ($data->isInitialized('rotation') && null !== $data->getRotation()) {
+        if ($data->isInitialized('rotation')) {
             $dataArray['rotation'] = $data->getRotation();
         }
         return $dataArray;

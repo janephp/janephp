@@ -96,21 +96,21 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
+        if ($data->isInitialized('layerSchemaIds')) {
             $values = [];
             foreach ($data->getLayerSchemaIds() as $value) {
                 $values[] = $value;
             }
             $dataArray['layerSchemaIds'] = $values;
         }
-        if ($data->isInitialized('content') && null !== $data->getContent()) {
+        if ($data->isInitialized('content')) {
             $values_1 = [];
             foreach ($data->getContent() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['content'] = $values_1;
         }
-        if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
+        if ($data->isInitialized('metadata')) {
             $values_2 = [];
             foreach ($data->getMetadata() as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;

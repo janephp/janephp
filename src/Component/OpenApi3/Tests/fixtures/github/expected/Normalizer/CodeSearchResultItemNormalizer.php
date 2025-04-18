@@ -124,11 +124,11 @@ class CodeSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('fileSize') && null !== $data->getFileSize()) {
             $dataArray['file_size'] = $data->getFileSize();
         }
-        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
+        if ($data->isInitialized('language')) {
             $dataArray['language'] = $data->getLanguage();
         }
         if ($data->isInitialized('lastModifiedAt') && null !== $data->getLastModifiedAt()) {
-            $dataArray['last_modified_at'] = $data->getLastModifiedAt()?->format('Y-m-d\TH:i:sP');
+            $dataArray['last_modified_at'] = $data->getLastModifiedAt()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('lineNumbers') && null !== $data->getLineNumbers()) {
             $values = [];

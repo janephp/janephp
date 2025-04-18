@@ -188,8 +188,8 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $dataArray['pull_requests'] = $values;
-        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['jobs_url'] = $data->getJobsUrl();
         $dataArray['logs_url'] = $data->getLogsUrl();
         $dataArray['check_suite_url'] = $data->getCheckSuiteUrl();

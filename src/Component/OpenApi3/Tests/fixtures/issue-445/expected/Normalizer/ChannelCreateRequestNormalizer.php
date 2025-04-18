@@ -125,10 +125,10 @@ class ChannelCreateRequestNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('sort') && null !== $data->getSort()) {
+        if ($data->isInitialized('sort')) {
             $values = [];
             foreach ($data->getSort() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
@@ -142,34 +142,34 @@ class ChannelCreateRequestNormalizer implements DenormalizerInterface, Normalize
         }
         $dataArray['sortFields'] = $values_1;
         $dataArray['names'] = $data->getNames();
-        if ($data->isInitialized('searchIndexId') && null !== $data->getSearchIndexId()) {
+        if ($data->isInitialized('searchIndexId')) {
             $dataArray['searchIndexId'] = $data->getSearchIndexId();
         }
-        if ($data->isInitialized('grantedUserRoleIds') && null !== $data->getGrantedUserRoleIds()) {
+        if ($data->isInitialized('grantedUserRoleIds')) {
             $values_2 = [];
             foreach ($data->getGrantedUserRoleIds() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['grantedUserRoleIds'] = $values_2;
         }
-        if ($data->isInitialized('aggregations') && null !== $data->getAggregations()) {
+        if ($data->isInitialized('aggregations')) {
             $values_3 = [];
             foreach ($data->getAggregations() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $dataArray['aggregations'] = $values_3;
         }
-        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
+        if ($data->isInitialized('filter')) {
             $dataArray['filter'] = $data->getFilter();
         }
-        if ($data->isInitialized('extendedSimpleSearchFields') && null !== $data->getExtendedSimpleSearchFields()) {
+        if ($data->isInitialized('extendedSimpleSearchFields')) {
             $values_4 = [];
             foreach ($data->getExtendedSimpleSearchFields() as $value_4) {
                 $values_4[] = $value_4;
             }
             $dataArray['extendedSimpleSearchFields'] = $values_4;
         }
-        if ($data->isInitialized('missingResultsDisplayPatterns') && null !== $data->getMissingResultsDisplayPatterns()) {
+        if ($data->isInitialized('missingResultsDisplayPatterns')) {
             $dataArray['missingResultsDisplayPatterns'] = $data->getMissingResultsDisplayPatterns();
         }
         $dataArray['viewForAll'] = $data->getViewForAll();

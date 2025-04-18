@@ -92,35 +92,35 @@ class ContentCreateRequestNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         $dataArray['contentSchemaId'] = $data->getContentSchemaId();
-        if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
+        if ($data->isInitialized('layerSchemaIds')) {
             $values = [];
             foreach ($data->getLayerSchemaIds() as $value) {
                 $values[] = $value;
             }
             $dataArray['layerSchemaIds'] = $values;
         }
-        if ($data->isInitialized('content') && null !== $data->getContent()) {
+        if ($data->isInitialized('content')) {
             $values_1 = [];
             foreach ($data->getContent() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['content'] = $values_1;
         }
-        if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
+        if ($data->isInitialized('metadata')) {
             $values_2 = [];
             foreach ($data->getMetadata() as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }
             $dataArray['metadata'] = $values_2;
         }
-        if ($data->isInitialized('contentPermissionSetIds') && null !== $data->getContentPermissionSetIds()) {
+        if ($data->isInitialized('contentPermissionSetIds')) {
             $values_3 = [];
             foreach ($data->getContentPermissionSetIds() as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['contentPermissionSetIds'] = $values_3;
         }
-        if ($data->isInitialized('requestId') && null !== $data->getRequestId()) {
+        if ($data->isInitialized('requestId')) {
             $dataArray['requestId'] = $data->getRequestId();
         }
         return $dataArray;

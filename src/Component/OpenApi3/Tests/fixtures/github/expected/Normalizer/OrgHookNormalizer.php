@@ -108,8 +108,8 @@ class OrgHookNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $dataArray['events'] = $values;
         $dataArray['active'] = $data->getActive();
         $dataArray['config'] = $this->normalizer->normalize($data->getConfig(), 'json', $context);
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['type'] = $data->getType();
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

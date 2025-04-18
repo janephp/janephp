@@ -123,13 +123,20 @@ trait NormalizerGenerator
                 }
 
                 if (!$property->isRequired()) {
-                    $statements[] = new Stmt\If_(
-                        new Expr\BinaryOp\BooleanAnd(
+                    if ($property->isNullable()) {
+                        $statements[] = new Stmt\If_(
                             new Expr\MethodCall($objectVariable, 'isInitialized', [new Arg(new Scalar\String_($property->getPhpName()))]),
-                            new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar)
-                        ),
-                        ['stmts' => $normalizationStatements]
-                    );
+                            ['stmts' => $normalizationStatements]
+                        );
+                    } else {
+                        $statements[] = new Stmt\If_(
+                            new Expr\BinaryOp\BooleanAnd(
+                                new Expr\MethodCall($objectVariable, 'isInitialized', [new Arg(new Scalar\String_($property->getPhpName()))]),
+                                new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar)
+                            ),
+                            ['stmts' => $normalizationStatements]
+                        );
+                    }
                 } else {
                     $statements[] = new Stmt\If_(
                         new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),

@@ -102,16 +102,16 @@ class PermissionSetSearchResultNormalizer implements DenormalizerInterface, Norm
         }
         $dataArray['results'] = $values;
         $dataArray['elapsedMilliseconds'] = $data->getElapsedMilliseconds();
-        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
+        if ($data->isInitialized('pageToken')) {
             $dataArray['pageToken'] = $data->getPageToken();
         }
-        if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
+        if ($data->isInitialized('searchString')) {
             $dataArray['searchString'] = $data->getSearchString();
         }
         if ($data->isInitialized('isSearchStringRewritten') && null !== $data->getIsSearchStringRewritten()) {
             $dataArray['isSearchStringRewritten'] = $data->getIsSearchStringRewritten();
         }
-        if ($data->isInitialized('queryDebugInformation') && null !== $data->getQueryDebugInformation()) {
+        if ($data->isInitialized('queryDebugInformation')) {
             $values_1 = [];
             foreach ($data->getQueryDebugInformation() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

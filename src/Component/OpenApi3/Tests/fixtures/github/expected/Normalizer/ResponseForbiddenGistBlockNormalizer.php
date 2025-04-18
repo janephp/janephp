@@ -71,7 +71,7 @@ class ResponseForbiddenGistBlockNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
             $dataArray['created_at'] = $data->getCreatedAt();
         }
-        if ($data->isInitialized('htmlUrl') && null !== $data->getHtmlUrl()) {
+        if ($data->isInitialized('htmlUrl')) {
             $dataArray['html_url'] = $data->getHtmlUrl();
         }
         foreach ($data as $key => $value) {

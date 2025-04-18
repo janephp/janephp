@@ -104,7 +104,7 @@ class KeyNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $dataArray['title'] = $data->getTitle();
         }
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
-            $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
+            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('verified') && null !== $data->getVerified()) {
             $dataArray['verified'] = $data->getVerified();

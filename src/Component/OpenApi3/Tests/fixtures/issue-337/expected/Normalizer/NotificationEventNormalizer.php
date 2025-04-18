@@ -95,7 +95,7 @@ class NotificationEventNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['eventId'] = $data->getEventId();
         }
         if ($data->isInitialized('eventDate') && null !== $data->getEventDate()) {
-            $dataArray['eventDate'] = $data->getEventDate()?->format('Y-m-d\TH:i:sP');
+            $dataArray['eventDate'] = $data->getEventDate()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('newValue') && null !== $data->getNewValue()) {
             $dataArray['newValue'] = $data->getNewValue();

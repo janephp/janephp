@@ -91,8 +91,8 @@ class PageBuildNormalizer implements DenormalizerInterface, NormalizerInterface,
         $dataArray['pusher'] = $this->normalizer->normalize($data->getPusher(), 'json', $context);
         $dataArray['commit'] = $data->getCommit();
         $dataArray['duration'] = $data->getDuration();
-        $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
+        $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

@@ -36,6 +36,11 @@
                         "type": "string",
                         "format": "date-time"
                     },
+                    "dateNullableProperty": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
                     "integerProperty": {
                         "type": "integer"
                     },

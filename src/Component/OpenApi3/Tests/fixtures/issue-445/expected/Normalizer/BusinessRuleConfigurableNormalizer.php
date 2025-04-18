@@ -122,32 +122,32 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id')) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('triggerPoint') && null !== $data->getTriggerPoint()) {
+        if ($data->isInitialized('triggerPoint')) {
             $dataArray['triggerPoint'] = $data->getTriggerPoint();
         }
         $dataArray['isEnabled'] = $data->getIsEnabled();
-        if ($data->isInitialized('names') && null !== $data->getNames()) {
+        if ($data->isInitialized('names')) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description')) {
             $dataArray['description'] = $data->getDescription();
         }
         $dataArray['enableTracing'] = $data->getEnableTracing();
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('condition') && null !== $data->getCondition()) {
+        if ($data->isInitialized('condition')) {
             $dataArray['condition'] = $data->getCondition();
         }
-        if ($data->isInitialized('transformationGroups') && null !== $data->getTransformationGroups()) {
+        if ($data->isInitialized('transformationGroups')) {
             $values = [];
             foreach ($data->getTransformationGroups() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['transformationGroups'] = $values;
         }
-        if ($data->isInitialized('actions') && null !== $data->getActions()) {
+        if ($data->isInitialized('actions')) {
             $values_1 = [];
             foreach ($data->getActions() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
