@@ -7,6 +7,7 @@ parameters:
 		analyse:
 			- ../../src/Component/*/JsonSchema/*
 		analyseAndScan:
+			- ../../src/Bundle/*/Tests/Resources/*
 			- ../../src/Component/*/Tests/fixtures/*
 			- ../../src/Component/*/Tests/generated/*
 			- ../../src/Component/*/Tests/Validation/*

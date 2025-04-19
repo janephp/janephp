@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - [Jane] [GH#855](https://github.com/janephp/janephp/pull/855) Add PHPStan
+- [Jane] [GH#856](https://github.com/janephp/janephp/pull/856) Add bundle tests
+
+### Changed
+- [Jane] [GH#856](https://github.com/janephp/janephp/pull/856) Modernize bundle configuration
 
 ### Fixed
 - [JsonSchema] [GH#841](https://github.com/janephp/janephp/pull/841) Fix "nullable" property handing in generated normalizers

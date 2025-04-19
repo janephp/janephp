@@ -14,10 +14,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class JsonSchemaGenerateCommand extends Command
 {
-    /**
-     * @var GenerateCommand
-     */
-    private $generateCommand;
+    private GenerateCommand $generateCommand;
 
     public function __construct()
     {
