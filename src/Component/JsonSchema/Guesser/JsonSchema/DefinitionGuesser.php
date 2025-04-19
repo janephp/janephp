@@ -14,21 +14,19 @@ class DefinitionGuesser implements ChainGuesserAwareInterface, GuesserInterface,
     use ChainGuesserAwareTrait;
 
     /**
-     * {@inheritdoc}
-     *
      * @param JsonSchema $object
      */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         /**
-         * @var string
+         * @var string     $key
          * @var JsonSchema $definition
          */
         foreach ($object->getDefinitions() ?? [] as $key => $definition) {
             $this->chainGuesser->guessClass($definition, $key, $reference . '/definitions/' . $key, $registry);
         }
         /**
-         * @var string
+         * @var string     $key
          * @var JsonSchema $definition
          */
         foreach ($object->getDollarDefs() ?? [] as $key => $definition) {
@@ -36,9 +34,6 @@ class DefinitionGuesser implements ChainGuesserAwareInterface, GuesserInterface,
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         return ($object instanceof JsonSchema)

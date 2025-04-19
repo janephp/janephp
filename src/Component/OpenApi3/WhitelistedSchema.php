@@ -13,6 +13,7 @@ use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\Component\OpenApiCommon\Guesser\GuessClass;
 use Jane\Component\OpenApiCommon\Naming\ChainOperationNaming;
 use Jane\Component\OpenApiCommon\Naming\OperationIdNaming;
+use Jane\Component\OpenApiCommon\Naming\OperationNamingInterface;
 use Jane\Component\OpenApiCommon\Naming\OperationUrlNaming;
 use Jane\Component\OpenApiCommon\Registry\Registry;
 use Jane\Component\OpenApiCommon\Registry\Schema;
@@ -20,13 +21,13 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class WhitelistedSchema implements WhitelistFetchInterface
 {
-    private $schema;
-    private $naming;
-    private $guessClass;
+    private OperationNamingInterface $naming;
+    private GuessClass $guessClass;
 
-    public function __construct(Schema $schema, DenormalizerInterface $denormalizer)
-    {
-        $this->schema = $schema;
+    public function __construct(
+        private readonly Schema $schema,
+        DenormalizerInterface $denormalizer,
+    ) {
         $this->naming = new ChainOperationNaming([
             new OperationIdNaming(),
             new OperationUrlNaming(),

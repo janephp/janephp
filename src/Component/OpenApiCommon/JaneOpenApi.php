@@ -30,29 +30,21 @@ abstract class JaneOpenApi extends ChainGenerator
     protected const OBJECT_NORMALIZER_CLASS = null;
     protected const WHITELIST_FETCH_CLASS = null;
 
-    /** @var SchemaParser */
-    protected $schemaParser;
-
-    /** @var ChainGuesser */
-    protected $chainGuesser;
-
-    /** @var Naming */
-    protected $naming;
-
-    /** @var bool */
-    protected $strict;
+    protected SchemaParser $schemaParser;
+    protected Naming $naming;
 
     protected NormalizerInterface|DenormalizerInterface $serializer;
 
     /**
      * @param class-string $schemaParserClass
      */
-    public function __construct(string $schemaParserClass, ChainGuesser $chainGuesser, bool $strict = true)
-    {
+    public function __construct(
+        string $schemaParserClass,
+        protected ChainGuesser $chainGuesser,
+        protected bool $strict = true,
+    ) {
         $this->serializer = self::buildSerializer();
         $this->schemaParser = new $schemaParserClass($this->serializer);
-        $this->chainGuesser = $chainGuesser;
-        $this->strict = $strict;
         $this->naming = new Naming();
     }
 

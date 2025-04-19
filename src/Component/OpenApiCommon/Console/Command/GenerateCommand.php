@@ -16,8 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class GenerateCommand extends BaseGenerateCommand
 {
-    /** @var OpenApiMatcher */
-    private $matcher;
+    private OpenApiMatcher $matcher;
 
     public function __construct(ConfigLoaderInterface $configLoader, SchemaLoaderInterface $schemaLoader, OpenApiMatcher $matcher)
     {

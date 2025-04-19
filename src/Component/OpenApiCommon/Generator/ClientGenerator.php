@@ -18,16 +18,10 @@ abstract class ClientGenerator implements GeneratorInterface
     use CommonClientGenerator;
     use HttpClientCreateGenerator;
 
-    /** @var OperationGenerator */
-    private $operationGenerator;
-
-    /** @var OperationNamingInterface */
-    private $operationNaming;
-
-    public function __construct(OperationGenerator $operationGenerator, OperationNamingInterface $operationNaming)
-    {
-        $this->operationGenerator = $operationGenerator;
-        $this->operationNaming = $operationNaming;
+    public function __construct(
+        private readonly OperationGenerator $operationGenerator,
+        private readonly OperationNamingInterface $operationNaming,
+    ) {
     }
 
     /**

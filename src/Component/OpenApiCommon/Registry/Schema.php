@@ -10,17 +10,19 @@ use Jane\Component\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 class Schema extends BaseSchema implements SchemaInterface
 {
     /** @var OperationGuess[] */
-    private $operations = [];
+    private array $operations = [];
 
     /** @var SecuritySchemeGuess[] List of SecuritySchemes associated to this schema */
-    private $securitySchemes = [];
+    private array $securitySchemes = [];
+    private array $neededModels = [];
+    private array $operationRelations = [];
 
     public function __construct(string $origin, string $namespace, string $directory)
     {
         parent::__construct($origin, $namespace, $directory, '');
     }
 
-    public function addSecurityScheme(string $reference, SecuritySchemeGuess $securityScheme)
+    public function addSecurityScheme(string $reference, SecuritySchemeGuess $securityScheme): void
     {
         $this->securitySchemes[urldecode($reference)] = $securityScheme;
     }
@@ -60,9 +62,6 @@ class Schema extends BaseSchema implements SchemaInterface
     {
         return $this->operations;
     }
-
-    private $neededModels = [];
-    private $operationRelations = [];
 
     public function initOperationRelations(string $model): void
     {

@@ -22,12 +22,10 @@ trait NormalizerGenerator
 {
     /**
      * The naming service.
-     *
-     * @return Naming
      */
-    abstract protected function getNaming();
+    abstract protected function getNaming(): Naming;
 
-    protected function createNormalizerClass($name, $methods, $useCacheableSupportsMethod = false)
+    protected function createNormalizerClass($name, $methods, $useCacheableSupportsMethod = false): Stmt\Class_
     {
         $traits = [
             new Stmt\TraitUse([new Name('DenormalizerAwareTrait')]),
@@ -57,13 +55,11 @@ trait NormalizerGenerator
     }
 
     /**
-     * Create method to check if denormalization is supported.
+     * Create a method to check if denormalization is supported.
      *
      * @param string $modelFqdn Fully Qualified name of the model class denormalized
-     *
-     * @return Stmt\ClassMethod
      */
-    protected function createSupportsNormalizationMethod(string $modelFqdn)
+    protected function createSupportsNormalizationMethod(string $modelFqdn): Stmt\ClassMethod
     {
         return new Stmt\ClassMethod('supportsNormalization', [
             'flags' => Modifiers::PUBLIC,
@@ -82,10 +78,8 @@ trait NormalizerGenerator
 
     /**
      * Create the normalization method.
-     *
-     * @return Stmt\ClassMethod
      */
-    protected function createNormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $skipNullValues = true, bool $skipRequiredFields = false, bool $includeNullValue = true)
+    protected function createNormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $skipNullValues = true, bool $skipRequiredFields = false, bool $includeNullValue = true): Stmt\ClassMethod
     {
         $context->refreshScope();
         $dataVariable = new Expr\Variable('dataArray');
@@ -211,11 +205,9 @@ trait NormalizerGenerator
     }
 
     /**
-     * Create method to say that hasCacheableSupportsMethod is supported.
-     *
-     * @return Stmt\ClassMethod
+     * Create a method to say that hasCacheableSupportsMethod is supported.
      */
-    protected function createHasCacheableSupportsMethod()
+    protected function createHasCacheableSupportsMethod(): Stmt\ClassMethod
     {
         return new Stmt\ClassMethod('hasCacheableSupportsMethod', [
             'flags' => Modifiers::PUBLIC,

@@ -12,13 +12,10 @@ class RuntimeGenerator implements GeneratorInterface
 {
     public const FILE_TYPE_RUNTIME = 'runtime';
 
-    private $naming;
-    private $parser;
-
-    public function __construct(Naming $naming, Parser $parser)
-    {
-        $this->naming = $naming;
-        $this->parser = $parser;
+    public function __construct(
+        private readonly Naming $naming,
+        private readonly Parser $parser,
+    ) {
     }
 
     /**

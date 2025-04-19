@@ -11,8 +11,7 @@ class OperationIdNaming implements OperationNamingInterface
 {
     use InflectorTrait;
 
-    /** @var SluggerInterface */
-    private $slugger;
+    private SluggerInterface $slugger;
 
     public function __construct()
     {

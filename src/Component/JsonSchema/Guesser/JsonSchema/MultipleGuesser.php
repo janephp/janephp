@@ -14,11 +14,10 @@ use Jane\Component\JsonSchema\Registry\Registry;
 class MultipleGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface
 {
     use ChainGuesserAwareTrait;
-    protected $bannedTypes = [];
 
-    /**
-     * {@inheritdoc}
-     */
+    /** @var array<string> */
+    protected array $bannedTypes = [];
+
     public function supportObject($object): bool
     {
         $class = $this->getSchemaClass();
@@ -31,9 +30,6 @@ class MultipleGuesser implements GuesserInterface, TypeGuesserInterface, ChainGu
         return JsonSchema::class;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $typeGuess = new MultipleType($object);

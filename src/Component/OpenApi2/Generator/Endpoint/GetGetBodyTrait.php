@@ -18,10 +18,7 @@ trait GetGetBodyTrait
 {
     public function getGetBody(OperationGuess $operation, Context $context): Stmt\ClassMethod
     {
-        $hasBody = false;
-        $isSerializableBody = false;
-        $isFormBody = false;
-        $hasFileInForm = false;
+        $hasBody = $isSerializableBody = $isFormBody = $hasFileInForm = false;
         $consumes = \is_array($operation->getOperation()->getConsumes()) ? $operation->getOperation()->getConsumes() : [$operation->getOperation()->getConsumes()];
 
         foreach ($operation->getParameters() as $key => $parameter) {

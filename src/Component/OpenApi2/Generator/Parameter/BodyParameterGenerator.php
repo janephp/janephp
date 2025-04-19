@@ -15,8 +15,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class BodyParameterGenerator extends ParameterGenerator
 {
-    /** @var GuessClass */
-    private $guessClass;
+    private GuessClass $guessClass;
 
     public function __construct(Parser $parser, DenormalizerInterface $denormalizer)
     {
@@ -26,8 +25,6 @@ class BodyParameterGenerator extends ParameterGenerator
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param BodyParameter $parameter
      */
     public function generateMethodParameter($parameter, Context $context, string $reference): ?Node\Param
@@ -45,8 +42,6 @@ class BodyParameterGenerator extends ParameterGenerator
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param BodyParameter $parameter
      */
     public function generateMethodDocParameter($parameter, Context $context, string $reference): string
@@ -56,10 +51,12 @@ class BodyParameterGenerator extends ParameterGenerator
         return \sprintf(' * @param %s $%s %s', implode('|', $class), $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: '');
     }
 
+    /**
+     * @return array{0: string[], 1: bool}
+     */
     protected function getClass(BodyParameter $parameter, Context $context, string $reference): array
     {
-        $resolvedSchema = null;
-        $jsonReference = null;
+        $resolvedSchema = $jsonReference = null;
         $array = false;
         $schema = $parameter->getSchema();
 
@@ -77,14 +74,14 @@ class BodyParameterGenerator extends ParameterGenerator
                 return [['\\' . $context->getRegistry()->getSchema($reference)->getNamespace() . '\\Model\\' . $context->getRegistry()->getClass($reference)->getName()], false];
             }
 
-            return [$this->convertParameterType($schema->getType(), $schema->getFormat()), null];
+            return [$this->convertParameterType($schema->getType(), $schema->getFormat()), false];
         }
 
         $class = $context->getRegistry()->getClass($jsonReference);
 
         // Happens when reference resolve to a none object
         if (null === $class) {
-            return [$this->convertParameterType($resolvedSchema->getType(), $resolvedSchema->getFormat()), null];
+            return [$this->convertParameterType($resolvedSchema->getType(), $resolvedSchema->getFormat()), false];
         }
 
         $class = '\\' . $context->getRegistry()->getSchema($jsonReference)->getNamespace() . '\\Model\\' . $class->getName();

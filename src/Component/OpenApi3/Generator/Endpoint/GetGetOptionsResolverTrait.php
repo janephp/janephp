@@ -17,9 +17,8 @@ trait GetGetOptionsResolverTrait
 {
     public function getOptionsResolverMethod(OperationGuess $operation, string $parameterIn, string $methodName, GuessClass $guessClass, NonBodyParameterGenerator $nonBodyParameterGenerator, array $customResolver = [], array $genericResolver = []): ?Stmt\ClassMethod
     {
-        $parameters = [];
+        $parameters = $queryResolverNormalizerStms = [];
         $customResolverKeys = array_keys($customResolver);
-        $queryResolverNormalizerStms = [];
 
         foreach ($operation->getParameters() as $parameter) {
             if ($parameter instanceof Reference) {

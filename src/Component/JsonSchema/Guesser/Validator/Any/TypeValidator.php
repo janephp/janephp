@@ -14,6 +14,7 @@ class TypeValidator implements ValidatorInterface
 {
     use ObjectCheckTrait;
 
+    /** @var array<string, string> */
     private const TYPES_MAPPING = [
         'boolean' => 'bool',
         'number' => 'float',

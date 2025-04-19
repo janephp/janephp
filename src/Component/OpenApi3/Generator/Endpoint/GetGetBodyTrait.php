@@ -23,7 +23,7 @@ trait GetGetBodyTrait
         $requestBody = $operation->getOperation()->getRequestBody();
 
         if ($requestBody instanceof Reference) {
-            [$_, $requestBody] = $guessClass->resolve($requestBody, RequestBody::class);
+            [, $requestBody] = $guessClass->resolve($requestBody, RequestBody::class);
         }
 
         return new Stmt\ClassMethod('getBody', [

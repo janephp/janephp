@@ -27,16 +27,8 @@ trait GetConstructorTrait
 
     public function getConstructor(OperationGuess $operation, Context $context, GuessClass $guessClass, BodyParameterGenerator $bodyParameterGenerator, NonBodyParameterGenerator $nonBodyParameterGenerator): array
     {
-        $pathParams = [];
-        $bodyParam = null;
-        $bodyDoc = null;
-        $bodyAssign = null;
-        $pathParamsDoc = [];
-        $queryParamsDoc = [];
-        $formParamsDoc = [];
-        $headerParamsDoc = [];
-        $methodStatements = [];
-        $pathProperties = [];
+        $pathParams = $pathParamsDoc = $queryParamsDoc = $formParamsDoc = $headerParamsDoc = $methodStatements = $pathProperties = [];
+        $bodyParam = $bodyDoc = $bodyAssign = null;
 
         foreach ($operation->getParameters() as $key => $parameter) {
             if ($parameter instanceof Reference) {

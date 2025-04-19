@@ -11,7 +11,7 @@ use Rs\Json\Pointer;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * Deal with a Json Reference.
+ * Deal with a JSON Reference.
  */
 class Reference
 {
@@ -19,13 +19,10 @@ class Reference
     private static array $pointerCache = [];
     private static array $arrayCache = [];
 
-    private $resolved;
-
-    private $referenceUri;
-
-    private $originUri;
-
-    private $mergedUri;
+    private string|array|null $resolved = null;
+    private Http $referenceUri;
+    private Http $originUri;
+    private Http $mergedUri;
 
     public function __construct(string $reference, string $origin)
     {
@@ -65,9 +62,9 @@ class Reference
     /**
      * Resolve a JSON Reference for a Schema.
      *
-     * @return mixed Return the json value referenced
+     * @return string|array Return the json value referenced
      */
-    protected function doResolve()
+    protected function doResolve(): string|array
     {
         $fragment = (string) $this->mergedUri->withFragment('');
         $reference = \sprintf('%s_%s', $fragment, $this->mergedUri->getFragment());

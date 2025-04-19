@@ -26,22 +26,12 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class Jane extends ChainGenerator
 {
-    public const VERSION = '4.x-dev';
-
-    private $serializer;
-
-    private $chainGuesser;
-
-    private $strict;
-
-    private $naming;
-
-    public function __construct(SerializerInterface $serializer, ChainGuesser $chainGuesser, Naming $naming, bool $strict = true)
-    {
-        $this->serializer = $serializer;
-        $this->chainGuesser = $chainGuesser;
-        $this->strict = $strict;
-        $this->naming = $naming;
+    public function __construct(
+        private readonly SerializerInterface $serializer,
+        private readonly ChainGuesser $chainGuesser,
+        private readonly Naming $naming,
+        private readonly bool $strict = true,
+    ) {
     }
 
     public function createContext(Registry $registry): Context

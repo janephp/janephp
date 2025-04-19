@@ -10,6 +10,7 @@ use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Modifiers;
 use PhpParser\Node\Arg;
+use PhpParser\Node\ArrayItem;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
@@ -54,14 +55,14 @@ trait GetGetUriTrait
             'stmts' => [
                 new Stmt\Return_(new Expr\FuncCall(new Name('str_replace'), [
                     new Arg(new Expr\Array_(array_map(function ($name) {
-                        return new Scalar\String_('{' . $name . '}');
+                        return new ArrayItem(new Scalar\String_('{' . $name . '}'));
                     }, $names))),
                     new Arg(new Expr\Array_(array_map(function ($type, $name) {
                         return 'array' === $type
                             // return str_replace(['{param}'], [implode(',', $this->param)], '/path/{param}')
-                            ? new Expr\FuncCall(new Name('implode'), [new Arg(new Scalar\String_(',')), new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), $name))])
+                            ? new ArrayItem(new Expr\FuncCall(new Name('implode'), [new Arg(new Scalar\String_(',')), new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), $name))]))
                             // return str_replace(['{param}'], [$this->param], '/path/{param}')
-                            : new Expr\PropertyFetch(new Expr\Variable('this'), $name);
+                            : new ArrayItem(new Expr\PropertyFetch(new Expr\Variable('this'), $name));
                     }, $types, $names))),
                     new Arg(new Scalar\String_($operation->getPath())),
                 ])),

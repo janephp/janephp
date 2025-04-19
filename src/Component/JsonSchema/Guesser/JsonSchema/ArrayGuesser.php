@@ -19,11 +19,8 @@ class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     use ChainGuesserAwareTrait;
 
     /** @var array<string, int> */
-    protected $refGuessLevel = [];
+    protected array $refGuessLevel = [];
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         if (is_a($object->getItems(), $this->getSchemaClass())) {
@@ -31,17 +28,11 @@ class ArrayGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         return ($object instanceof JsonSchema) && 'array' === $object->getType();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $this->refGuessLevel[$reference] = ($this->refGuessLevel[$reference] ?? 0) + 1;

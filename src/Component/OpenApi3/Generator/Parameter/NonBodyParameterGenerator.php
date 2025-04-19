@@ -75,7 +75,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             $schema = $parameter->getSchema();
 
             if ($schema instanceof Reference) {
-                [$_, $schema] = $this->guessClass->resolve($schema, Schema::class);
+                [, $schema] = $this->guessClass->resolve($schema, Schema::class);
             }
 
             if ($parameter->getRequired() && (null !== $schema && null === $schema->getDefault())) {

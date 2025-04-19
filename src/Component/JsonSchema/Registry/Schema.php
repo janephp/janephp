@@ -10,38 +10,35 @@ use Jane\Component\JsonSchema\Guesser\Guess\ObjectType;
 class Schema implements SchemaInterface
 {
     /** @var string Origin of the schema (file or url path) */
-    private $origin;
+    private string $origin;
 
-    /** @var string Namespace wanted for this schema */
-    private $namespace;
+    /** @var array<ClassGuess> List of classes associated to this schema */
+    private array $classes = [];
 
-    /** @var string Directory where to put files */
-    private $directory;
+    /** @var array<string> A list of references this schema is registered to */
+    private array $references;
 
-    /** @var string Name of the root object in the schema (if needed) */
-    private $rootName;
-
-    /** @var ClassGuess[] List of classes associated to this schema */
-    private $classes = [];
-
-    /** @var string[] A list of references this schema is registered to */
-    private $references;
-
-    /** @var File[] A list of references this schema is registered to */
-    private $files = [];
+    /** @var array<File> A list of references this schema is registered to */
+    private array $files = [];
 
     /** @var mixed Parsed schema */
-    private $parsed;
+    private mixed $parsed;
 
     /** @var array Relation between models */
-    protected $relations = [];
+    protected array $relations = [];
 
-    public function __construct(string $origin, string $namespace, string $directory, string $rootName)
-    {
+    /**
+     * @param string $namespace Namespace wanted for this schema
+     * @param string $directory Directory where to put files
+     * @param string $rootName  Name of the root object in the schema (if needed)
+     */
+    public function __construct(
+        string $origin,
+        private readonly string $namespace,
+        private readonly string $directory,
+        private readonly string $rootName,
+    ) {
         $this->origin = $this->fixPath($origin);
-        $this->namespace = $namespace;
-        $this->directory = $directory;
-        $this->rootName = $rootName;
         $this->references = [$this->origin];
     }
 

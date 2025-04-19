@@ -16,7 +16,7 @@ abstract class SchemaParser
     protected const OPEN_API_VERSION_MAJOR = null;
 
     public function __construct(
-        private DenormalizerInterface $denormalizer,
+        private readonly DenormalizerInterface $denormalizer,
     ) {
     }
 

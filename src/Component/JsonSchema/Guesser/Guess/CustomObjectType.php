@@ -13,21 +13,14 @@ use PhpParser\Node\Scalar;
 
 class CustomObjectType extends Type
 {
-    private $className;
-
-    private $discriminants;
-
-    public function __construct(object $object, string $className, array $discriminants = [])
-    {
+    public function __construct(
+        object $object,
+        private readonly string $className,
+        private readonly array $discriminants = [],
+    ) {
         parent::__construct($object, 'object');
-
-        $this->className = $className;
-        $this->discriminants = $discriminants;
     }
 
-    /**
-     * ({@inheritDoc}.
-     */
     protected function createDenormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
         $denormalizerVar = new Expr\PropertyFetch(new Expr\Variable('this'), 'denormalizer');
@@ -46,9 +39,6 @@ class CustomObjectType extends Type
         ]);
     }
 
-    /**
-     * ({@inheritDoc}.
-     */
     protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
         $normalizerVar = new Expr\PropertyFetch(new Expr\Variable('this'), 'normalizer');
@@ -63,9 +53,6 @@ class CustomObjectType extends Type
         ]);
     }
 
-    /**
-     * ({@inheritDoc}.
-     */
     public function createConditionStatement(Expr $input): Expr
     {
         $conditionStatement = parent::createConditionStatement($input);
@@ -109,22 +96,16 @@ class CustomObjectType extends Type
         return $conditionStatement;
     }
 
-    /**
-     * ({@inheritDoc}.
-     */
-    public function getTypeHint(string $currentNamespace): Name
+    public function getTypeHint(string $namespace): Name
     {
-        if ('\\' . $currentNamespace . '\\' . $this->className === $this->getFqdn()) {
+        if ('\\' . $namespace . '\\' . $this->className === $this->getFqdn()) {
             return new Name($this->className);
         }
 
         return new Name($this->getFqdn());
     }
 
-    /**
-     * ({@inheritDoc}.
-     */
-    public function getDocTypeHint(string $namespace)
+    public function getDocTypeHint(string $namespace): string|Name|null
     {
         return $this->getTypeHint($namespace);
     }

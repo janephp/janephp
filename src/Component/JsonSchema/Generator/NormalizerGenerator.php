@@ -25,60 +25,25 @@ class NormalizerGenerator implements GeneratorInterface
     public const FILE_TYPE_NORMALIZER = 'normalizer';
 
     /**
-     * @var Naming The naming service
+     * @param Naming $naming                     The naming service
+     * @param Parser $parser                     PHP Parser
+     * @param bool   $useReference               Whether to generate the JSON Reference system
+     * @param bool   $useCacheableSupportsMethod Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
+     * @param bool   $skipNullValues             Skip null values or not
+     * @param bool   $skipRequiredFields         if we handle required fields or not during Normalizer generation
+     * @param bool   $validation                 if we run validation or not during normalization/denormalization
+     * @param bool   $includeNullValue           include null value in conditions
      */
-    protected $naming;
-
-    /**
-     * @var Parser PHP Parser
-     */
-    protected $parser;
-
-    /**
-     * @var bool Whether to generate the JSON Reference system
-     */
-    protected $useReference;
-
-    /**
-     * @var bool|null Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
-     */
-    protected $useCacheableSupportsMethod;
-
-    /**
-     * @var bool Whether to set property to null when object contains null value for it when property is nullable
-     */
-    protected $skipNullValues;
-
-    /**
-     * @var bool if we handle required fields or not during Normalizer generation
-     */
-    protected $skipRequiedFields;
-
-    /**
-     * @var bool if we run validation or not during normalization/denormalization
-     */
-    protected $validation;
-
-    /**
-     * @var bool include null value in conditions
-     */
-    protected $includeNullValue;
-
-    /**
-     * @param bool $useReference               Whether to generate the JSON Reference system
-     * @param bool $useCacheableSupportsMethod Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
-     * @param bool $skipNullValues             Skip null values or not
-     */
-    public function __construct(Naming $naming, Parser $parser, bool $useReference = true, ?bool $useCacheableSupportsMethod = null, bool $skipNullValues = true, bool $skipRequiedFields = false, bool $validation = false, bool $includeNullValue = true)
-    {
-        $this->naming = $naming;
-        $this->parser = $parser;
-        $this->useReference = $useReference;
-        $this->useCacheableSupportsMethod = $useCacheableSupportsMethod;
-        $this->skipNullValues = $skipNullValues;
-        $this->skipRequiedFields = $skipRequiedFields;
-        $this->validation = $validation;
-        $this->includeNullValue = $includeNullValue;
+    public function __construct(
+        protected Naming $naming,
+        protected Parser $parser,
+        protected bool $useReference = true,
+        protected ?bool $useCacheableSupportsMethod = null,
+        protected bool $skipNullValues = true,
+        protected bool $skipRequiredFields = false,
+        protected bool $validation = false,
+        protected bool $includeNullValue = true,
+    ) {
     }
 
     /**
@@ -103,7 +68,7 @@ class NormalizerGenerator implements GeneratorInterface
             $methods[] = $this->createSupportsDenormalizationMethod($modelFqdn);
             $methods[] = $this->createSupportsNormalizationMethod($modelFqdn);
             $methods[] = $this->createDenormalizeMethod($modelFqdn, $context, $class);
-            $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class, $this->skipNullValues, $this->skipRequiedFields, $this->includeNullValue);
+            $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class, $this->skipNullValues, $this->skipRequiredFields, $this->includeNullValue);
             $methods[] = $this->createGetSupportedTypesMethod($modelFqdn, $this->useCacheableSupportsMethod);
 
             if ($this->useCacheableSupportsMethod) {
@@ -215,7 +180,7 @@ class NormalizerGenerator implements GeneratorInterface
     }
 
     /**
-     * Create method to return the supported type.
+     * Create a method to return the supported type.
      *
      * @param string $modelFqdn Fully Qualified name of the model class denormalized
      *
@@ -242,7 +207,7 @@ class NormalizerGenerator implements GeneratorInterface
     }
 
     /**
-     * Create method to return the supported type.
+     * Create a method to return the supported type.
      *
      * @param string[] $modelsFqdn Fully Qualified name of the models class denormalized
      *

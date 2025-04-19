@@ -30,9 +30,6 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
         $this->denormalizer = $denormalizer;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         $hasSubObject = false;
@@ -94,9 +91,6 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $type = null;
@@ -145,9 +139,6 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
         return $type;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         $class = $this->getSchemaClass();
@@ -155,9 +146,6 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
         return ($object instanceof $class) && \is_array($object->getAllOf()) && \count($object->getAllOf()) > 0;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessProperties($object, string $name, string $reference, Registry $registry): array
     {
         $properties = [];

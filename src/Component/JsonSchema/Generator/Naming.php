@@ -5,7 +5,7 @@ namespace Jane\Component\JsonSchema\Generator;
 use Jane\Component\JsonSchema\Tools\InflectorTrait;
 
 /**
- * Helper to generate name for property / class / ....
+ * Helper to generate name for property / class / ...
  */
 class Naming
 {

@@ -19,19 +19,15 @@ trait DenormalizerGenerator
 {
     /**
      * The naming service.
-     *
-     * @return Naming
      */
-    abstract protected function getNaming();
+    abstract protected function getNaming(): Naming;
 
     /**
-     * Create method to check if denormalization is supported.
+     * Create a method to check if denormalization is supported.
      *
      * @param string $modelFqdn Fully Qualified name of the model class denormalized
-     *
-     * @return Stmt\ClassMethod
      */
-    protected function createSupportsDenormalizationMethod(string $modelFqdn)
+    protected function createSupportsDenormalizationMethod(string $modelFqdn): Stmt\ClassMethod
     {
         return new Stmt\ClassMethod('supportsDenormalization', [
             'flags' => Modifiers::PUBLIC,

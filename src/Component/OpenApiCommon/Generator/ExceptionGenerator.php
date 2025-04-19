@@ -18,7 +18,8 @@ use PhpParser\Node\Stmt;
 
 class ExceptionGenerator
 {
-    public static $statusTexts = [
+    /** @var array<int, string> */
+    public static array $statusTexts = [
         400 => 'Bad Request',
         401 => 'Unauthorized',
         402 => 'Payment Required',
@@ -62,8 +63,8 @@ class ExceptionGenerator
     ];
 
     private const BANNED_VARIABLES = ['message', 'code', 'file', 'line'];
-    private $exceptionNaming;
-    private $intialized = [];
+    private ExceptionNaming $exceptionNaming;
+    private array $initialized = [];
 
     public function __construct()
     {
@@ -129,9 +130,7 @@ EOD
                                     new Param(new Expr\Variable('response'), null, new Name('\\Psr\\Http\\Message\\ResponseInterface')),
                                 ],
                                 'stmts' => [
-                                    new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
-                                        new Scalar\String_($description),
-                                    ])),
+                                    new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [new Node\Arg(new Scalar\String_($description))])),
                                     new Stmt\Expression(new Expr\Assign(
                                         new Expr\PropertyFetch(
                                             new Expr\Variable('this'),
@@ -240,10 +239,10 @@ EOD
         $registry = $context->getRegistry();
 
         $unique = $schema->getRootName() . $schema->getDirectory();
-        if (\array_key_exists($unique, $this->intialized) && $this->intialized[$unique]['base'] ?? false) {
+        if (\array_key_exists($unique, $this->initialized) && $this->initialized[$unique]['base'] ?? false) {
             return;
         }
-        $this->intialized[$unique]['base'] = true;
+        $this->initialized[$unique]['base'] = true;
 
         $apiException = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
             new Stmt\Interface_(
@@ -321,10 +320,10 @@ EOD
         $highLevelExceptionName = $this->exceptionNaming->generateExceptionName($code);
         $unique = $schema->getRootName() . $schema->getDirectory();
 
-        if (\array_key_exists($unique, $this->intialized) && ($this->intialized[$unique] ?? false) && ($this->intialized[$unique][$code] ?? false)) {
+        if (\array_key_exists($unique, $this->initialized) && ($this->initialized[$unique] ?? false) && ($this->initialized[$unique][$code] ?? false)) {
             return $highLevelExceptionName;
         }
-        $this->intialized[$unique][$code] = true;
+        $this->initialized[$unique][$code] = true;
 
         $highLevelException = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
             new Stmt\Class_(

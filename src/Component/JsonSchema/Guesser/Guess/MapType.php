@@ -21,7 +21,7 @@ class MapType extends ArrayType
         return new Identifier('iterable');
     }
 
-    public function getDocTypeHint(string $namespace)
+    public function getDocTypeHint(string $namespace): string|Name|null
     {
         return new Name(\sprintf('array<string, %s>', $this->getItemType()->getDocTypeHint($namespace)));
     }

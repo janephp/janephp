@@ -15,11 +15,9 @@ use Psr\Http\Message\ResponseInterface;
 
 class OperationGenerator
 {
-    protected $endpointGenerator;
-
-    public function __construct(EndpointGeneratorInterface $endpointGenerator)
-    {
-        $this->endpointGenerator = $endpointGenerator;
+    public function __construct(
+        protected EndpointGeneratorInterface $endpointGenerator,
+    ) {
     }
 
     protected function getReturnDoc(array $returnTypes, array $throwTypes): string

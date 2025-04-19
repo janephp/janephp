@@ -10,9 +10,6 @@ use PhpParser\Node\Stmt;
 
 class DefaultBodyContentGenerator extends AbstractBodyContentGenerator
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getSerializeStatements(MediaType $content, string $contentType, string $reference, Context $context): array
     {
         return [new Stmt\Return_(new Expr\Array_([

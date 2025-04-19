@@ -18,28 +18,17 @@ class GuessClass extends BaseGuessClass
 
         return $parameter->resolve(function ($value) use ($result) {
             if (\array_key_exists('in', $value)) {
-                switch ($value['in']) {
-                    case 'body':
-                        return $this->denormalizer->denormalize($value, BodyParameter::class, 'json', [
-                            'document-origin' => (string) $result->getMergedUri()->withFragment(''),
-                        ]);
-                    case 'header':
-                        return $this->denormalizer->denormalize($value, HeaderParameterSubSchema::class, 'json', [
-                            'document-origin' => (string) $result->getMergedUri()->withFragment(''),
-                        ]);
-                    case 'formData':
-                        return $this->denormalizer->denormalize($value, FormDataParameterSubSchema::class, 'json', [
-                            'document-origin' => (string) $result->getMergedUri()->withFragment(''),
-                        ]);
-                    case 'query':
-                        return $this->denormalizer->denormalize($value, QueryParameterSubSchema::class, 'json', [
-                            'document-origin' => (string) $result->getMergedUri()->withFragment(''),
-                        ]);
-                    case 'path':
-                        return $this->denormalizer->denormalize($value, PathParameterSubSchema::class, 'json', [
-                            'document-origin' => (string) $result->getMergedUri()->withFragment(''),
-                        ]);
-                }
+                $classToDenormalize = match ($value['in']) {
+                    'body' => BodyParameter::class,
+                    'header' => HeaderParameterSubSchema::class,
+                    'formData' => FormDataParameterSubSchema::class,
+                    'query' => QueryParameterSubSchema::class,
+                    'path' => PathParameterSubSchema::class,
+                };
+
+                return $this->denormalizer->denormalize($value, $classToDenormalize, 'json', [
+                    'document-origin' => (string) $result->getMergedUri()->withFragment(''),
+                ]);
             }
 
             return $value;

@@ -13,9 +13,6 @@ use PhpParser\Node\Stmt;
 
 class FormBodyContentGenerator extends AbstractBodyContentGenerator
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getSerializeStatements(MediaType $content, string $contentType, string $reference, Context $context): array
     {
         if (preg_match('/multipart\/form-data/', $contentType)) {

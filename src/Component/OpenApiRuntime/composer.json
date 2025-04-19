@@ -22,7 +22,7 @@
         ]
     },
     "require": {
-        "php": "^8.0",
+        "php": "^8.1",
         "jane-php/json-schema-runtime": "^7.0",
         "nyholm/psr7": "^1.8",
         "php-http/client-common": "^2.0",

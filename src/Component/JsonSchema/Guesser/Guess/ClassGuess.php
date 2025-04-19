@@ -6,42 +6,25 @@ class ClassGuess
 {
     use ValidatorGuessTrait;
 
-    /**
-     * @var string Name of the class
-     */
-    private $name;
+    /** @var array<Property> */
+    private array $properties = [];
+    /** @var array<string> */
+    private array $required = [];
+    /** @var array<Type> */
+    private array $extensionsType = [];
+    private array $constraints = [];
 
     /**
-     * @var object Object link to the generation
+     * @param object $object Object link to the generation
+     * @param string $name   Name of the class
      */
-    private $object;
-
-    /**
-     * @var Property[]
-     */
-    private $properties = [];
-
-    private $required = [];
-
-    private $reference;
-
-    private $extensionsObject;
-
-    /** @var Type[] */
-    private $extensionsType = [];
-
-    private $constraints = [];
-
-    /** @var bool */
-    private $deprecated;
-
-    public function __construct(object $object, string $reference, string $name, array $extensionsObject = [], bool $deprecated = false)
-    {
-        $this->name = $name;
-        $this->object = $object;
-        $this->reference = $reference;
-        $this->extensionsObject = $extensionsObject;
-        $this->deprecated = $deprecated;
+    public function __construct(
+        private readonly object $object,
+        private readonly string $reference,
+        private readonly string $name,
+        private readonly array $extensionsObject = [],
+        private readonly bool $deprecated = false,
+    ) {
     }
 
     public function getObject(): object

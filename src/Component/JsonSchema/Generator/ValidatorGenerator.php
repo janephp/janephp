@@ -19,12 +19,9 @@ class ValidatorGenerator implements GeneratorInterface
     public const VALIDATOR_INTERFACE_NAME = 'ValidatorInterface';
     public const VALIDATOR_EXCEPTION_NAME = 'ValidationException';
 
-    /** @var Naming */
-    private $naming;
-
-    public function __construct(Naming $naming)
-    {
-        $this->naming = $naming;
+    public function __construct(
+        private readonly Naming $naming,
+    ) {
     }
 
     public function generate(Schema $schema, string $className, Context $context): void
