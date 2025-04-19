@@ -7,6 +7,7 @@
     </include>
     <exclude>
       <directory>./src/Component/*/Tests</directory>
+      <directory>./src/Bundle/*/Tests</directory>
       <directory>./src/Bridge/ApiPlatform/Tests</directory>
       <directory>./src/Component/JsonSchema/Model</directory>
       <directory>./src/Component/JsonSchema/Normalizer</directory>
@@ -20,6 +21,7 @@
   <testsuites>
     <testsuite name="Jane Unit Test Suite">
       <directory>./src/Component/*/Tests</directory>
+      <directory>./src/Bundle/*/Tests</directory>
       <exclude>./src/Component/JsonSchema/Tests/fixtures</exclude>
       <exclude>./src/Component/OpenApi2/Tests/fixtures</exclude>
       <exclude>./src/Component/OpenApi3/Tests/fixtures</exclude>

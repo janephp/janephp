@@ -1,0 +1,3 @@
+framework:
+  secret: jane_open_api_bundle
+  test: ~
