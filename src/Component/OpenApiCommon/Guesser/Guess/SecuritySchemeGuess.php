@@ -25,13 +25,13 @@ class SecuritySchemeGuess
     /** @var string */
     private $name;
 
-    /** @var string */
+    /** @var 'apiKey'|'http'|'oauth2'|'openIdConnect'|string */
     private $type;
 
     /** @var string */
     private $variable;
 
-    /** @var string|null */
+    /** @var 'Bearer'|'Basic'|string|null */
     private $scheme;
 
     /** @var string|null */

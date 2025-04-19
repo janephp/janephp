@@ -12,6 +12,7 @@ use Jane\Component\OpenApiCommon\Generator\Traits\OptionResolverNormalizationTra
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
+use PhpParser\Node\Stmt;
 use Psr\Http\Message\StreamInterface;
 
 class NonBodyParameterGenerator extends ParameterGenerator
@@ -19,8 +20,6 @@ class NonBodyParameterGenerator extends ParameterGenerator
     use OptionResolverNormalizationTrait;
 
     /**
-     * {@inheritdoc}
-     *
      * @param PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter
      */
     public function generateMethodParameter($parameter, Context $context, string $reference): Node\Param
@@ -75,7 +74,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
                     $types[] = new Expr\ArrayItem(new Scalar\String_($typeString));
                 }
 
-                $allowedTypes[] = new Node\Stmt\Expression(new Expr\MethodCall($optionsResolverVariable, 'addAllowedTypes', [
+                $allowedTypes[] = new Stmt\Expression(new Expr\MethodCall($optionsResolverVariable, 'addAllowedTypes', [
                     new Node\Arg(new Scalar\String_($parameterName)),
                     new Node\Arg(new Expr\Array_($types)),
                 ]));
@@ -91,13 +90,13 @@ class NonBodyParameterGenerator extends ParameterGenerator
         }
 
         return array_merge([
-            new Node\Stmt\Expression(new Expr\MethodCall($optionsResolverVariable, 'setDefined', [
+            new Stmt\Expression(new Expr\MethodCall($optionsResolverVariable, 'setDefined', [
                 new Node\Arg(new Expr\Array_(array_values($defined))),
             ])),
-            new Node\Stmt\Expression(new Expr\MethodCall($optionsResolverVariable, 'setRequired', [
+            new Stmt\Expression(new Expr\MethodCall($optionsResolverVariable, 'setRequired', [
                 new Node\Arg(new Expr\Array_($required)),
             ])),
-            new Node\Stmt\Expression(new Expr\MethodCall($optionsResolverVariable, 'setDefaults', [
+            new Stmt\Expression(new Expr\MethodCall($optionsResolverVariable, 'setDefaults', [
                 new Node\Arg(new Expr\Array_($defaults)),
             ])),
         ], $allowedTypes);
@@ -115,10 +114,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
         return \sprintf(' * @param %s $%s %s', $type, $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: '');
     }
 
-    /**
-     * @param PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter
-     */
-    public function generateOptionDocParameter($parameter): string
+    public function generateOptionDocParameter(PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter): string
     {
         $type = implode('|', $this->convertParameterType($parameter->getType()));
 
@@ -127,14 +123,13 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
     /**
      * Generate a default value as an Expr.
-     *
-     * @param PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter
      */
-    private function getDefaultAsExpr($parameter): Expr
+    private function getDefaultAsExpr(PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter): Expr
     {
+        /** @var Expr|Stmt\Expression $expr */
         $expr = $this->parser->parse('<?php ' . var_export($parameter->getDefault(), true) . ';')[0];
 
-        if ($expr instanceof Node\Stmt\Expression) {
+        if ($expr instanceof Stmt\Expression) {
             return $expr->expr;
         }
 

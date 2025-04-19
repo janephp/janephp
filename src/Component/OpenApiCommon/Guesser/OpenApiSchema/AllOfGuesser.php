@@ -6,17 +6,16 @@ use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess as BaseClassGuess;
 use Jane\Component\JsonSchema\Guesser\JsonSchema\AllOfGuesser as BaseAllOfGuesser;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ClassGuess;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class AllOfGuesser extends BaseAllOfGuesser
 {
-    /** @var string */
-    private $schemaClass;
-
-    public function __construct(SerializerInterface $serializer, Naming $naming, string $schemaClass)
-    {
-        parent::__construct($serializer, $naming);
-        $this->schemaClass = $schemaClass;
+    public function __construct(
+        DenormalizerInterface $denormalizer,
+        Naming $naming,
+        private string $schemaClass,
+    ) {
+        parent::__construct($denormalizer, $naming);
     }
 
     protected function createClassGuess($object, $reference, $name, $extensions): BaseClassGuess

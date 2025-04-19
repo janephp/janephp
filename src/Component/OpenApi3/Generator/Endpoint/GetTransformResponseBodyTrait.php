@@ -11,7 +11,9 @@ use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
 use Jane\Component\OpenApi3\JsonSchema\Normalizer\ResponseNormalizer;
 use Jane\Component\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
+use Jane\Component\OpenApiCommon\Registry\Registry;
 use PhpParser\Comment\Doc;
+use PhpParser\Modifiers;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -27,7 +29,10 @@ trait GetTransformResponseBodyTrait
             new Stmt\Expression(new Expr\Assign(new Expr\Variable('status'), new Expr\MethodCall(new Expr\Variable('response'), 'getStatusCode'))),
             new Stmt\Expression(new Expr\Assign(new Expr\Variable('body'), new Expr\Cast\String_(new Expr\MethodCall(new Expr\Variable('response'), 'getBody')))),
         ];
-        $outputTypes = $context->getRegistry()->getThrowUnexpectedStatusCode() ? [] : ['null'];
+
+        /** @var Registry $registry */
+        $registry = $context->getRegistry();
+        $outputTypes = $registry->getThrowUnexpectedStatusCode() ? [] : ['null'];
         $throwTypes = [];
 
         if ($operation->getOperation()->getResponses()) {
@@ -89,7 +94,7 @@ trait GetTransformResponseBodyTrait
             $throwTypes = array_unique($throwTypes);
         }
 
-        if ($context->getRegistry()->getThrowUnexpectedStatusCode()) {
+        if ($registry->getThrowUnexpectedStatusCode()) {
             $exceptionGenerator->createBaseExceptions($context);
 
             $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\UnexpectedStatusCodeException';
@@ -117,7 +122,7 @@ trait GetTransformResponseBodyTrait
             . ' * @return ' . implode('|', $outputTypes);
 
         return [new Stmt\ClassMethod('transformResponseBody', [
-            'type' => Stmt\Class_::MODIFIER_PROTECTED,
+            'flags' => Modifiers::PROTECTED,
             'params' => [
                 new Node\Param(new Expr\Variable('response'), null, new Name('\\Psr\\Http\\Message\\ResponseInterface')),
                 new Node\Param(new Expr\Variable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),

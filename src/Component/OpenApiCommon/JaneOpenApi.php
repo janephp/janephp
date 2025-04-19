@@ -19,6 +19,7 @@ use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\YamlEncoder;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Yaml\Dumper;
@@ -41,9 +42,11 @@ abstract class JaneOpenApi extends ChainGenerator
     /** @var bool */
     protected $strict;
 
-    /** @var SerializerInterface */
-    protected $serializer;
+    protected NormalizerInterface|DenormalizerInterface $serializer;
 
+    /**
+     * @param class-string $schemaParserClass
+     */
     public function __construct(string $schemaParserClass, ChainGuesser $chainGuesser, bool $strict = true)
     {
         $this->serializer = self::buildSerializer();
@@ -53,7 +56,7 @@ abstract class JaneOpenApi extends ChainGenerator
         $this->naming = new Naming();
     }
 
-    public function getSerializer(): SerializerInterface
+    public function getSerializer(): NormalizerInterface|DenormalizerInterface
     {
         return $this->serializer;
     }
@@ -141,7 +144,7 @@ abstract class JaneOpenApi extends ChainGenerator
         }
     }
 
-    public static function buildSerializer()
+    public static function buildSerializer(): SerializerInterface|DenormalizerInterface|NormalizerInterface
     {
         $encoders = [
             new JsonEncoder(new JsonEncode([JsonEncode::OPTIONS => \JSON_UNESCAPED_SLASHES]), new JsonDecode()),

@@ -8,6 +8,7 @@ use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\MultipleType;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
+use PhpParser\Modifiers;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
@@ -65,7 +66,7 @@ trait NormalizerGenerator
     protected function createSupportsNormalizationMethod(string $modelFqdn)
     {
         return new Stmt\ClassMethod('supportsNormalization', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'flags' => Modifiers::PUBLIC,
             'returnType' => new Identifier('bool'),
             'params' => [
                 new Param(new Expr\Variable('data'), type: new Identifier('mixed')),
@@ -196,7 +197,7 @@ trait NormalizerGenerator
         $statements[] = new Stmt\Return_($dataVariable);
 
         return new Stmt\ClassMethod('normalize', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'flags' => Modifiers::PUBLIC,
             'returnType' => new UnionType([new Identifier('array'), new Identifier('string'), new Identifier('int'), new Identifier('float'), new Identifier('bool'), new Name('\ArrayObject'), new Identifier('null')]),
             'params' => [
                 new Param($objectVariable, type: new Identifier('mixed')),
@@ -217,7 +218,7 @@ trait NormalizerGenerator
     protected function createHasCacheableSupportsMethod()
     {
         return new Stmt\ClassMethod('hasCacheableSupportsMethod', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'flags' => Modifiers::PUBLIC,
             'returnType' => new Identifier('bool'),
             'stmts' => [
                 new Stmt\Return_(new Expr\ConstFetch(new Name('true'))),

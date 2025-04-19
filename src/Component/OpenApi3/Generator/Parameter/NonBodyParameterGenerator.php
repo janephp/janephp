@@ -21,8 +21,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
 {
     use OptionResolverNormalizationTrait;
 
-    /** @var GuessClass */
-    private $guessClass;
+    private GuessClass $guessClass;
 
     public function __construct(DenormalizerInterface $denormalizer, Parser $parser)
     {
@@ -31,8 +30,6 @@ class NonBodyParameterGenerator extends ParameterGenerator
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param Parameter $parameter
      */
     public function generateMethodParameter($parameter, Context $context, string $reference): ?Node\Param
@@ -161,6 +158,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
      */
     private function getDefaultAsExpr(Parameter $parameter): Expr
     {
+        /** @var Expr|Stmt\Expression $expr */
         $expr = $this->parser->parse('<?php ' . var_export($parameter->getSchema()->getDefault(), true) . ';')[0];
 
         if ($expr instanceof Stmt\Expression) {

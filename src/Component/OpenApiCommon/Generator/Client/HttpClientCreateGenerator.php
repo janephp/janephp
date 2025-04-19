@@ -13,6 +13,8 @@ use PhpParser\Node\Stmt;
 
 trait HttpClientCreateGenerator
 {
+    use ServerPluginGenerator;
+
     protected function getHttpClientCreateExpr(Context $context): array
     {
         /** @var OpenApi $openApi */

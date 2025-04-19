@@ -91,14 +91,14 @@ class Schema implements SchemaInterface
     }
 
     /**
-     * @return {0: ClassGuess, 1: string}|null
+     * @return array{0: ClassGuess, 1: string}|null
      */
     public function findPropertyClass(string $sourceObject, string $propertyObject): ?array
     {
         $referencePart = \sprintf('%s/properties/%s', $sourceObject, $propertyObject);
 
         foreach ($this->classes as $class) {
-            if (strpos($class->getReference(), $referencePart) !== false) {
+            if (str_contains($class->getReference(), $referencePart)) {
                 return [$class, $class->getReference()];
             }
         }

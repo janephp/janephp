@@ -6,6 +6,7 @@ use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use PhpParser\Comment\Doc;
+use PhpParser\Modifiers;
 use PhpParser\Node\Stmt;
 use PhpParser\Parser;
 
@@ -30,11 +31,11 @@ trait PropertyGenerator
             $default = $property->getDefault();
         }
 
-        if ((null !== $default && \is_scalar($default)) || (Type::TYPE_ARRAY === $property->getType()->getTypeHint($namespace)?->toString() && \is_array($default))) {
+        if (\is_scalar($default) || (Type::TYPE_ARRAY === $property->getType()->getTypeHint($namespace)?->toString() && \is_array($default))) {
             $propertyStmt->default = $this->getDefaultAsExpr($default)->expr;
         }
 
-        return new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [
+        return new Stmt\Property(Modifiers::PROTECTED, [
             $propertyStmt,
         ], [
             'comments' => [$this->createPropertyDoc($property, $namespace, $strict)],
@@ -44,7 +45,7 @@ trait PropertyGenerator
     protected function createPropertyDoc(Property $property, $namespace, bool $strict): Doc
     {
         $docTypeHint = $property->getType()->getDocTypeHint($namespace);
-        if ((!$strict || $property->isNullable()) && strpos($docTypeHint, 'null') === false) {
+        if ((!$strict || $property->isNullable()) && !str_contains($docTypeHint, 'null')) {
             $docTypeHint .= '|null';
         }
 
@@ -75,6 +76,9 @@ EOD
 
     private function getDefaultAsExpr($value): Stmt\Expression
     {
-        return $this->parser->parse('<?php ' . var_export($value, true) . ';')[0];
+        /** @var Stmt\Expression $expression */
+        $expression = $this->parser->parse('<?php ' . var_export($value, true) . ';')[0];
+
+        return $expression;
     }
 }

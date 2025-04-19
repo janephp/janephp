@@ -11,9 +11,6 @@ use Jane\Component\OpenApiCommon\Guesser\Guess\ParentClass;
 
 class SchemaGuesser extends ObjectGuesser
 {
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         return ($object instanceof Schema) && ('object' === $object->getType() || null === $object->getType()) && null !== $object->getProperties();

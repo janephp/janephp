@@ -8,6 +8,7 @@ use Jane\Component\OpenApi3\Generator\RequestBodyGenerator;
 use Jane\Component\OpenApi3\Guesser\GuessClass;
 use Jane\Component\OpenApi3\JsonSchema\Model\RequestBody;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
+use PhpParser\Modifiers;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
@@ -26,7 +27,7 @@ trait GetGetBodyTrait
         }
 
         return new Stmt\ClassMethod('getBody', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'flags' => Modifiers::PUBLIC,
             'params' => [
                 new Param(new Expr\Variable('serializer'), null, new Name\FullyQualified(SerializerInterface::class)),
                 new Param(new Expr\Variable('streamFactory'), new Expr\ConstFetch(new Name('null'))),

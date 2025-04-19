@@ -4,6 +4,7 @@ namespace Jane\Component\OpenApi3\Generator\Endpoint;
 
 use Jane\Component\OpenApi3\Guesser\GuessClass;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
+use PhpParser\Modifiers;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -36,7 +37,7 @@ trait GetGetExtraHeadersTrait
 
         if (\count($items) === 1) {
             return new Stmt\ClassMethod('getExtraHeaders', [
-                'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                'flags' => Modifiers::PUBLIC,
                 'stmts' => [new Stmt\Return_(new Expr\Array_($headers))],
                 'returnType' => new Name('array'),
             ]);
@@ -56,7 +57,7 @@ trait GetGetExtraHeadersTrait
         $returnAccept = new Stmt\Return_(new Expr\PropertyFetch(new Expr\Variable('this'), 'accept'));
 
         return new Stmt\ClassMethod('getExtraHeaders', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'flags' => Modifiers::PUBLIC,
             'stmts' => [$returnDefault, $returnAccept],
             'returnType' => new Name('array'),
         ]);

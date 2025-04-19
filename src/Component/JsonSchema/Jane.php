@@ -19,6 +19,8 @@ use PhpParser\ParserFactory;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -107,7 +109,7 @@ class Jane extends ChainGenerator
         return $self;
     }
 
-    public static function buildSerializer(): SerializerInterface
+    public static function buildSerializer(): SerializerInterface|NormalizerInterface|DenormalizerInterface
     {
         $encoders = [new JsonEncoder(new JsonEncode([JsonEncode::OPTIONS => \JSON_UNESCAPED_SLASHES]), new JsonDecode([JsonDecode::ASSOCIATIVE => true]))];
 

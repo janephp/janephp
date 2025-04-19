@@ -6,6 +6,7 @@ use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi2\Guesser\GuessClass;
 use Jane\Component\OpenApi2\JsonSchema\Model\PathParameterSubSchema;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
+use PhpParser\Modifiers;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -31,7 +32,7 @@ trait GetGetUriTrait
 
         if (\count($names) === 0) {
             return new Stmt\ClassMethod('getUri', [
-                'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                'flags' => Modifiers::PUBLIC,
                 'stmts' => [
                     new Stmt\Return_(new Scalar\String_($operation->getPath())),
                 ],
@@ -40,7 +41,7 @@ trait GetGetUriTrait
         }
 
         return new Stmt\ClassMethod('getUri', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'flags' => Modifiers::PUBLIC,
             'stmts' => [
                 new Stmt\Return_(new Expr\FuncCall(new Name('str_replace'), [
                     new Arg(new Expr\Array_(array_map(function ($name) {

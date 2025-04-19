@@ -4,6 +4,7 @@ namespace Jane\Component\JsonSchema\Generator\Model;
 
 use Jane\Component\JsonSchema\Generator\Naming;
 use PhpParser\Comment\Doc;
+use PhpParser\Modifiers;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -48,7 +49,7 @@ EOD
 
     protected function getInitialized(): array
     {
-        $initializedProperty = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, [new Stmt\PropertyProperty('initialized', new Expr\Array_())], ['comments' => [new Doc(<<<EOD
+        $initializedProperty = new Stmt\Property(Modifiers::PROTECTED, [new Stmt\PropertyProperty('initialized', new Expr\Array_())], ['comments' => [new Doc(<<<EOD
 /**
  * @var array
  */
@@ -58,7 +59,7 @@ EOD
             'isInitialized',
             [
                 // public function
-                'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                'flags' => Modifiers::PUBLIC,
                 'params' => [new Node\Param($propertyVariable = new Expr\Variable('property'))],
                 'stmts' => [
                     new Stmt\Return_(
