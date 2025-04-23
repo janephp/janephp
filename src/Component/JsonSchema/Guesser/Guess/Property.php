@@ -6,66 +6,24 @@ class Property
 {
     use ValidatorGuessTrait;
 
-    /**
-     * @var string
-     */
-    private $name;
+    /** @var string Used for generate class properties */
+    private string $phpName;
+    private bool $readOnly;
+    private bool $deprecated = false;
+    /** @var string Used for generate getter/setter name */
+    private string $accessorName;
 
-    /**
-     * @var Type
-     */
-    private $type;
-
-    /**
-     * @var string
-     */
-    private $reference;
-
-    private $object;
-
-    /**
-     * @var bool
-     */
-    private $nullable;
-
-    /**
-     * @var bool
-     */
-    private $required;
-
-    /**
-     * @var string
-     */
-    private $description;
-
-    private $default;
-
-    /**
-     * @var string Used for generate class properties
-     */
-    private $phpName;
-
-    /** @var bool */
-    private $readOnly;
-
-    /** @var bool */
-    private $deprecated = false;
-
-    /**
-     * @var string Used for generate getter/setter name
-     */
-    private $accessorName;
-
-    public function __construct(object $object, string $name, string $reference, bool $nullable = false, bool $required = false, ?Type $type = null, ?string $description = null, mixed $default = null, ?bool $readOnly = null)
-    {
-        $this->name = $name;
-        $this->object = $object;
-        $this->reference = $reference;
-        $this->nullable = $nullable;
-        $this->required = $required;
-        $this->type = $type;
-        $this->description = $description;
-        $this->default = $default;
+    public function __construct(
+        private readonly object $object,
+        private readonly string $name,
+        private readonly string $reference,
+        private readonly bool $nullable = false,
+        private readonly bool $required = false,
+        private ?Type $type = null,
+        private readonly ?string $description = null,
+        private readonly mixed $default = null,
+        ?bool $readOnly = null,
+    ) {
         $this->readOnly = $readOnly ?? false;
     }
 

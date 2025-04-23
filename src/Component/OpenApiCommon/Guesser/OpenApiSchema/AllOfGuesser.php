@@ -13,7 +13,7 @@ class AllOfGuesser extends BaseAllOfGuesser
     public function __construct(
         DenormalizerInterface $denormalizer,
         Naming $naming,
-        private string $schemaClass,
+        private readonly string $schemaClass,
     ) {
         parent::__construct($denormalizer, $naming);
     }

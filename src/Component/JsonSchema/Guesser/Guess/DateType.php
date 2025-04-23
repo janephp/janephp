@@ -16,30 +16,23 @@ class DateType extends ObjectType
     use CheckNullableTrait;
 
     /**
-     * Format of the date to use.
-     *
-     * @var string
+     * Indicator whether to use DateTime or DateTimeInterface as type hint.
      */
-    private $format;
+    private bool $preferInterface;
 
     /**
-     * Indicator whether to use DateTime or DateTimeInterface as type hint.
-     *
-     * @var bool
+     * @param string $format Format of the date to use
      */
-    private $preferInterface;
-
-    public function __construct(object $object, string $format = 'Y-m-d', ?bool $preferInterface = null)
-    {
+    public function __construct(
+        object $object,
+        private string $format = 'Y-m-d',
+        ?bool $preferInterface = null,
+    ) {
         parent::__construct($object, '\DateTime', '', []);
 
-        $this->format = $format;
         $this->preferInterface = $preferInterface ?? false;
     }
 
-    /**
-     * ({@inheritDoc}.
-     */
     protected function createDenormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
         // \DateTime::createFromFormat($format, $data)->setTime(0, 0, 0)
@@ -60,9 +53,6 @@ class DateType extends ObjectType
             ]);
     }
 
-    /**
-     * ({@inheritDoc}.
-     */
     protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
         if ($this->isNullable($this->object)) {
@@ -78,9 +68,6 @@ class DateType extends ObjectType
         ]);
     }
 
-    /**
-     * ({@inheritDoc}.
-     */
     public function createConditionStatement(Expr $input): Expr
     {
         return new Expr\BinaryOp\LogicalAnd(new Expr\FuncCall(

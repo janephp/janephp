@@ -4,20 +4,16 @@ namespace Jane\Component\OpenApiCommon\Guesser\Guess;
 
 class ParentClass extends ClassGuess
 {
-    protected $discriminator;
-
-    protected $childEntries;
-
-    public function __construct(ClassGuess $classGuess, string $discriminator, array $childEntries = [])
-    {
+    public function __construct(
+        ClassGuess $classGuess,
+        protected string $discriminator,
+        protected array $childEntries = [],
+    ) {
         parent::__construct($classGuess->getObject(), $classGuess->getReference(), $classGuess->getName(), $classGuess->getExtensionsObject());
         $this->setParentClass($classGuess->getParentClass());
         $this->setProperties($classGuess->getProperties());
         $this->setExtensionsType($classGuess->getExtensionsType());
         $this->setConstraints($classGuess->getConstraints());
-
-        $this->discriminator = $discriminator;
-        $this->childEntries = $childEntries;
     }
 
     public function setDiscriminator(string $discriminator): self

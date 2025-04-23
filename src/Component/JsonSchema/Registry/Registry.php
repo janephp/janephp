@@ -19,7 +19,7 @@ class Registry implements RegistryInterface
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getOutputDirectories(): array
     {
@@ -56,7 +56,7 @@ class Registry implements RegistryInterface
     }
 
     /**
-     * @return Schema[]
+     * @return array<Schema>
      */
     public function getSchemas(): array
     {

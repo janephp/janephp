@@ -16,7 +16,7 @@ class JsonSchemaGuesserFactory
         $naming = new Naming();
         $merger = new JsonSchemaMerger();
         $dateFormat = isset($options['full-date-format']) ? $options['full-date-format'] : 'Y-m-d';
-        $outputDateTimeFormat = isset($options['date-format']) ? $options['date-format'] : \DateTime::RFC3339;
+        $outputDateTimeFormat = isset($options['date-format']) ? $options['date-format'] : \DateTimeInterface::RFC3339;
         $inputDateTimeFormat = isset($options['date-input-format']) ? $options['date-input-format'] : null;
         $datePreferInterface = isset($options['date-prefer-interface']) ? $options['date-prefer-interface'] : null;
 

@@ -22,7 +22,7 @@
         ]
     },
     "require": {
-        "php": "^8.0",
+        "php": "^8.1",
         "ext-json": "*",
         "league/uri": "^6.7.2 || ^7.4",
         "php-jsonpointer/php-jsonpointer": "^3.0 || ^4.0",

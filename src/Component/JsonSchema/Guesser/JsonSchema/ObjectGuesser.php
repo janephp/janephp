@@ -35,17 +35,12 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
         $this->denormalizer = $denormalizer;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         return ($object instanceof JsonSchema) && (\is_array($object->getType()) ? \in_array('object', $object->getType()) : 'object' === $object->getType()) && null !== $object->getProperties();
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param JsonSchema $object
      */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
@@ -90,9 +85,6 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessProperties($object, string $name, string $reference, Registry $registry): array
     {
         /** @var JsonSchema $object */
@@ -145,9 +137,6 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
         return 'null' == $type || (\is_array($type) && \in_array('null', $type));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $discriminants = [];

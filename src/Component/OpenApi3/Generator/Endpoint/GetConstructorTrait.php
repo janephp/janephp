@@ -27,15 +27,8 @@ trait GetConstructorTrait
 
     public function getConstructor(OperationGuess $operation, Context $context, GuessClass $guessClass, NonBodyParameterGenerator $nonBodyParameterGenerator, RequestBodyGenerator $requestBodyGenerator): array
     {
-        $pathParams = [];
-        $bodyParam = null;
-        $bodyDoc = null;
-        $bodyAssign = null;
-        $pathParamsDoc = [];
-        $queryParamsDoc = [];
-        $headerParamsDoc = [];
-        $methodStatements = [];
-        $pathProperties = [];
+        $pathParams = $pathParamsDoc = $queryParamsDoc = $headerParamsDoc = $methodStatements = $pathProperties = [];
+        $bodyParam = $bodyDoc = $bodyAssign = null;
         $contentTypes = $this->getContentTypes($operation, $guessClass);
 
         foreach ($operation->getParameters() as $key => $parameter) {
@@ -44,7 +37,7 @@ trait GetConstructorTrait
             }
 
             if (!$parameter instanceof \stdClass && $parameter->getSchema() instanceof Reference) {
-                [$_, $schema] = $guessClass->resolve($parameter->getSchema(), Schema::class);
+                [, $schema] = $guessClass->resolve($parameter->getSchema(), Schema::class);
                 $parameter->setSchema($schema);
             }
 

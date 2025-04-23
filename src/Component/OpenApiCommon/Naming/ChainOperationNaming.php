@@ -7,16 +7,11 @@ use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 class ChainOperationNaming implements OperationNamingInterface
 {
     /**
-     * @var OperationNamingInterface[]
-     */
-    private $operationNamings;
-
-    /**
      * @param OperationNamingInterface[] $operationNamings
      */
-    public function __construct(array $operationNamings)
-    {
-        $this->operationNamings = $operationNamings;
+    public function __construct(
+        private readonly array $operationNamings,
+    ) {
     }
 
     public function getFunctionName(OperationGuess $operation): string
@@ -37,7 +32,7 @@ class ChainOperationNaming implements OperationNamingInterface
         foreach ($this->operationNamings as $operationNaming) {
             $functionName = $operationNaming->getEndpointName($operation);
 
-            if (!empty($functionName)) {
+            if (mb_strlen($functionName) > 0) {
                 return $functionName;
             }
         }

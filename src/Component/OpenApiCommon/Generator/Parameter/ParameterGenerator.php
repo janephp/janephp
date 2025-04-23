@@ -11,14 +11,9 @@ abstract class ParameterGenerator
 {
     use InflectorTrait;
 
-    /**
-     * @var Parser
-     */
-    protected $parser;
-
-    public function __construct(Parser $parser)
-    {
-        $this->parser = $parser;
+    public function __construct(
+        protected Parser $parser,
+    ) {
     }
 
     public function generateMethodParameter($parameter, Context $context, string $reference): ?Node\Param

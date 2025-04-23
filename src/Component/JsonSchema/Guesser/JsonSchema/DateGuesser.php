@@ -11,25 +11,16 @@ use Jane\Component\JsonSchema\Registry\Registry;
 
 class DateGuesser implements GuesserInterface, TypeGuesserInterface
 {
-    /** @var string Format of date to use */
-    private $dateFormat;
-
     /**
-     * Indicator whether to use DateTime or DateTimeInterface as type hint.
-     *
-     * @var bool
+     * @param string    $dateFormat      Format of date to use
+     * @param bool|null $preferInterface indicator whether to use DateTime or DateTimeInterface as type hint
      */
-    private $preferInterface;
-
-    public function __construct(string $dateFormat = 'Y-m-d', ?bool $preferInterface = null)
-    {
-        $this->dateFormat = $dateFormat;
-        $this->preferInterface = $preferInterface;
+    public function __construct(
+        private string $dateFormat = 'Y-m-d',
+        private ?bool $preferInterface = null,
+    ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         $class = $this->getSchemaClass();
@@ -37,9 +28,6 @@ class DateGuesser implements GuesserInterface, TypeGuesserInterface
         return ($object instanceof $class) && 'string' === $object->getType() && 'date' === $object->getFormat();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         return new DateType($object, $this->dateFormat, $this->preferInterface);

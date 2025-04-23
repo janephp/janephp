@@ -34,17 +34,12 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         return $object instanceof OpenApi;
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param OpenApi         $object
      * @param OpenApiRegistry $registry
      */

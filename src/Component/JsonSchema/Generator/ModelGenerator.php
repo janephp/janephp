@@ -21,20 +21,10 @@ class ModelGenerator implements GeneratorInterface
 
     public const FILE_TYPE_MODEL = 'model';
 
-    /**
-     * @var Naming Naming Service
-     */
-    protected $naming;
-
-    /**
-     * @var Parser PHP Parser
-     */
-    protected $parser;
-
-    public function __construct(Naming $naming, Parser $parser)
-    {
-        $this->naming = $naming;
-        $this->parser = $parser;
+    public function __construct(
+        protected Naming $naming,
+        protected Parser $parser,
+    ) {
     }
 
     /**

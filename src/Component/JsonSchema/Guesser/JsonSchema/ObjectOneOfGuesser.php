@@ -23,14 +23,11 @@ class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, Clas
 
     public function __construct(
         DenormalizerInterface $denormalizer,
-        private JsonSchemaMerger $jsonSchemaMerger,
+        private readonly JsonSchemaMerger $jsonSchemaMerger,
     ) {
         $this->denormalizer = $denormalizer;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         foreach ($object->getOneOf() as $key => $oneOf) {
@@ -48,9 +45,6 @@ class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, Clas
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $type = new MultipleType($object);
@@ -72,9 +66,6 @@ class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, Clas
         return $type;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         return ($object instanceof JsonSchema) && 'object' === $object->getType() && \is_array($object->getOneOf()) && \count($object->getOneOf()) > 0;

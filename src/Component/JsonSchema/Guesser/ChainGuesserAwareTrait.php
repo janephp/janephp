@@ -4,15 +4,12 @@ namespace Jane\Component\JsonSchema\Guesser;
 
 trait ChainGuesserAwareTrait
 {
-    /**
-     * @var ChainGuesser
-     */
-    protected $chainGuesser;
+    protected ChainGuesser $chainGuesser;
 
     /**
      * Set the chain guesser.
      */
-    public function setChainGuesser(ChainGuesser $chainGuesser)
+    public function setChainGuesser(ChainGuesser $chainGuesser): void
     {
         $this->chainGuesser = $chainGuesser;
     }

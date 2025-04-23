@@ -26,7 +26,7 @@ class ConfigLoader implements ConfigLoaderInterface
         return $this->resolveConfiguration($options);
     }
 
-    protected function resolveConfiguration(array $options = [])
+    protected function resolveConfiguration(array $options = []): array
     {
         $optionsResolver = new OptionsResolver();
         $optionsResolver->setDefaults($this->resolveConfigurationDefaults());

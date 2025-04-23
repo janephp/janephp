@@ -6,11 +6,12 @@ use Jane\Component\JsonSchema\Generator\Context\Context;
 use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 
 class ArrayType extends Type
 {
-    protected $itemType;
+    protected Type $itemType;
 
     public function __construct(object $object, Type $itemType, string $type = 'array')
     {
@@ -24,10 +25,7 @@ class ArrayType extends Type
         return $this->itemType;
     }
 
-    /**
-     * ({@inheritDoc}.
-     */
-    public function getDocTypeHint(string $namespace)
+    public function getDocTypeHint(string $namespace): string|Name|null
     {
         if ($this->itemType instanceof MultipleType) {
             $typesString = [];
@@ -42,9 +40,6 @@ class ArrayType extends Type
         return \sprintf('list<%1$s>', $this->itemType->getDocTypeHint($namespace));
     }
 
-    /**
-     * ({@inheritDoc}.
-     */
     public function createDenormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
@@ -80,9 +75,6 @@ class ArrayType extends Type
         );
     }
 
-    /**
-     * ({@inheritDoc}.
-     */
     public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));

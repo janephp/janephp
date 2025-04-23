@@ -8,9 +8,6 @@ class ArrayGuesser extends BaseArrayGuesser
 {
     use SchemaClassTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         $class = $this->getSchemaClass();

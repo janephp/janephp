@@ -12,18 +12,13 @@ use Symfony\Component\Filesystem\Filesystem;
 
 class Printer
 {
-    private $prettyPrinter;
+    private bool $useFixer = false;
+    private bool $cleanGenerated = true;
 
-    private $fixerConfig;
-
-    private $useFixer = false;
-
-    private $cleanGenerated = true;
-
-    public function __construct(PrettyPrinterAbstract $prettyPrinter, string $fixerConfig = '')
-    {
-        $this->prettyPrinter = $prettyPrinter;
-        $this->fixerConfig = $fixerConfig;
+    public function __construct(
+        private readonly PrettyPrinterAbstract $prettyPrinter,
+        private readonly string $fixerConfig = '',
+    ) {
     }
 
     public function setUseFixer(bool $useFixer): void

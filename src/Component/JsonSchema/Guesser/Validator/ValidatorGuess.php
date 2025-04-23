@@ -4,24 +4,12 @@ namespace Jane\Component\JsonSchema\Guesser\Validator;
 
 class ValidatorGuess
 {
-    /** @var string */
-    private $constraintClass;
-
-    /** @var string|null */
-    private $classReference;
-
-    /** @var array */
-    private $arguments;
-
-    /** @var string|null */
-    private $subProperty;
-
-    public function __construct(string $constraintClass, array $arguments = [], ?string $subProperty = null, ?string $classReference = null)
-    {
-        $this->constraintClass = $constraintClass;
-        $this->arguments = $arguments;
-        $this->subProperty = $subProperty;
-        $this->classReference = $classReference;
+    public function __construct(
+        private string $constraintClass,
+        private array $arguments = [],
+        private ?string $subProperty = null,
+        private ?string $classReference = null,
+    ) {
     }
 
     public function getClassReference(): ?string

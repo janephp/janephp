@@ -16,9 +16,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 abstract class AbstractBodyContentGenerator implements RequestBodyContentGeneratorInterface
 {
-    /** @var GuessClass */
-    protected $guessClass;
-
+    protected GuessClass $guessClass;
     public const PHP_TYPE_MIXED = 'mixed';
 
     public function __construct(DenormalizerInterface $denormalizer)
@@ -52,9 +50,6 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         return [['\\' . $class], $array];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTypeCondition(MediaType $content, string $reference, Context $context): Node
     {
         $schema = $content->getSchema();

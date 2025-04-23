@@ -41,36 +41,15 @@ class EndpointGenerator implements EndpointGeneratorInterface
     public const IN_QUERY = 'query';
     public const IN_HEADER = 'header';
 
-    /** @var OperationNamingInterface */
-    private $operationNaming;
-
-    /** @var NonBodyParameterGenerator */
-    private $nonBodyParameterGenerator;
-
-    /** @var ExceptionGenerator */
-    private $exceptionGenerator;
-
-    /** @var RequestBodyGenerator */
-    private $requestBodyGenerator;
-
-    /** @var DenormalizerInterface */
-    private $denormalizer;
-
-    /** @var GuessClass */
-    private $guessClass;
+    private GuessClass $guessClass;
 
     public function __construct(
-        OperationNamingInterface $operationNaming,
-        NonBodyParameterGenerator $nonBodyParameterGenerator,
-        DenormalizerInterface $denormalizer,
-        ExceptionGenerator $exceptionGenerator,
-        RequestBodyGenerator $requestBodyGenerator,
+        private readonly OperationNamingInterface $operationNaming,
+        private readonly NonBodyParameterGenerator $nonBodyParameterGenerator,
+        private readonly DenormalizerInterface $denormalizer,
+        private readonly ExceptionGenerator $exceptionGenerator,
+        private readonly RequestBodyGenerator $requestBodyGenerator,
     ) {
-        $this->operationNaming = $operationNaming;
-        $this->nonBodyParameterGenerator = $nonBodyParameterGenerator;
-        $this->exceptionGenerator = $exceptionGenerator;
-        $this->requestBodyGenerator = $requestBodyGenerator;
-        $this->denormalizer = $denormalizer;
         $this->guessClass = new GuessClass(Schema::class, $denormalizer);
     }
 

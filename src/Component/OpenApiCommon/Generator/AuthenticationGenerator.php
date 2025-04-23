@@ -25,7 +25,7 @@ class AuthenticationGenerator implements GeneratorInterface
     protected const REFERENCE = 'Authentication';
     protected const FILE_TYPE_AUTH = 'auth';
 
-    protected $naming;
+    protected Naming $naming;
 
     public function __construct()
     {

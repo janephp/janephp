@@ -12,15 +12,15 @@ use PhpParser\Node\Stmt;
 
 class MultipleType extends Type
 {
-    protected $types;
-    protected $discriminatorProperty;
-
-    public function __construct(object $object, array $types = [], $discriminatorProperty = null)
-    {
+    /**
+     * @param array<Type> $types
+     */
+    public function __construct(
+        object $object,
+        protected array $types = [],
+        protected ?string $discriminatorProperty = null,
+    ) {
         parent::__construct($object, 'mixed');
-
-        $this->types = $types;
-        $this->discriminatorProperty = $discriminatorProperty;
     }
 
     /**
@@ -58,7 +58,7 @@ class MultipleType extends Type
     /**
      * Return a list of types.
      *
-     * @return Type[]
+     * @return array<Type>
      */
     public function getTypes(): array
     {
@@ -68,7 +68,7 @@ class MultipleType extends Type
     /**
      * We have to place mixed normalization path at the last.
      *
-     * @return Type[]
+     * @return array<Type>
      */
     protected function getTypesSorted(): array
     {
@@ -86,10 +86,7 @@ class MultipleType extends Type
         return $types;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getDocTypeHint(string $namespace)
+    public function getDocTypeHint(string $namespace): string|Name|null
     {
         $stringTypes = array_map(function ($type) use ($namespace) {
             return $type->getDocTypeHint($namespace);
@@ -98,9 +95,6 @@ class MultipleType extends Type
         return implode('|', $stringTypes);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTypeHint(string $namespace): Identifier|Name|null
     {
         if (1 === \count($this->types)) {
@@ -147,9 +141,6 @@ class MultipleType extends Type
         return new Expr\BinaryOp\LogicalAnd($issetCondition, $valueCondition);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function createDenormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {
         $output = new Expr\Variable($context->getUniqueVariableName('value'));
@@ -182,9 +173,6 @@ class MultipleType extends Type
         return [$statements, $output];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {
         $output = new Expr\Variable($context->getUniqueVariableName('value'));

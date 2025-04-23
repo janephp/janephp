@@ -3,18 +3,18 @@
 namespace Jane\Component\JsonSchema\Generator\Context;
 
 /**
- * Allow to get a unique variable name for a scope (like a method).
+ * Allow getting a unique variable name for a scope (like a method).
  */
 class UniqueVariableScope
 {
-    private $registry = [];
+    private array $registry = [];
 
     /**
-     * Return an unique name for a variable.
+     * Return a unique name for a variable.
      *
      * @param string $name Name of the variable
      *
-     * @return string if not found return the $name given, if not return the name suffixed with a number
+     * @return string if not found, return the $name given, if not, return the name suffixed with a number
      */
     public function getUniqueName(string $name): string
     {

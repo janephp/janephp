@@ -10,7 +10,8 @@ use Jane\Component\JsonSchema\Registry\Registry;
 
 class SimpleTypeGuesser implements GuesserInterface, TypeGuesserInterface
 {
-    protected $typesSupported = [
+    /** @var array<string> */
+    protected array $typesSupported = [
         'boolean',
         'integer',
         'number',
@@ -18,7 +19,8 @@ class SimpleTypeGuesser implements GuesserInterface, TypeGuesserInterface
         'null',
     ];
 
-    protected $phpTypesMapping = [
+    /** @var array<string, string> */
+    protected array $phpTypesMapping = [
         'boolean' => 'bool',
         'integer' => 'int',
         'number' => 'float',
@@ -26,15 +28,13 @@ class SimpleTypeGuesser implements GuesserInterface, TypeGuesserInterface
         'null' => 'null',
     ];
 
-    protected $excludeFormat = [
+    /** @var array<string, array<string>> */
+    protected array $excludeFormat = [
         'string' => [
             'date-time',
         ],
     ];
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         $class = $this->getSchemaClass();
@@ -53,9 +53,6 @@ class SimpleTypeGuesser implements GuesserInterface, TypeGuesserInterface
         return JsonSchema::class;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         return new Type($object, $this->phpTypesMapping[$object->getType()]);

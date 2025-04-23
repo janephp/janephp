@@ -19,7 +19,10 @@ class Type
     public const TYPE_ARRAY = 'array';
     public const TYPE_OBJECT = 'object';
 
-    protected $phpMapping = [
+    /**
+     * @var array<string, string|null>
+     */
+    protected array $phpMapping = [
         self::TYPE_BOOLEAN => 'bool',
         self::TYPE_INTEGER => 'int',
         self::TYPE_FLOAT => 'float',
@@ -30,7 +33,10 @@ class Type
         self::TYPE_OBJECT => null,
     ];
 
-    protected $conditionMapping = [
+    /**
+     * @var array<string, string>
+     */
+    protected array $conditionMapping = [
         self::TYPE_BOOLEAN => 'is_bool',
         self::TYPE_INTEGER => 'is_int',
         self::TYPE_FLOAT => 'is_float',
@@ -41,7 +47,10 @@ class Type
         self::TYPE_OBJECT => 'is_array',
     ];
 
-    protected $normalizationConditionMapping = [
+    /**
+     * @var array<string, string>
+     */
+    protected array $normalizationConditionMapping = [
         self::TYPE_BOOLEAN => 'is_bool',
         self::TYPE_INTEGER => 'is_int',
         self::TYPE_FLOAT => 'is_float',
@@ -52,22 +61,18 @@ class Type
         self::TYPE_OBJECT => 'is_object',
     ];
 
-    protected $name;
-
-    protected $object;
-
-    public function __construct(?object $object, string $name)
-    {
-        $this->name = $name;
-        $this->object = $object;
+    public function __construct(
+        protected ?object $object,
+        protected string $name,
+    ) {
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getObject()
+    public function getObject(): ?object
     {
         return $this->object;
     }
@@ -125,10 +130,7 @@ class Type
         ;
     }
 
-    /**
-     * @return string|Name|null
-     */
-    public function getDocTypeHint(string $namespace)
+    public function getDocTypeHint(string $namespace): string|Name|null
     {
         return (string) $this;
     }

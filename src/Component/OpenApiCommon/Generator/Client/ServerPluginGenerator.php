@@ -14,7 +14,7 @@ trait ServerPluginGenerator
 
     protected function needsServerPlugins($openApi): bool
     {
-        [$baseUri, $_] = $this->discoverServer($openApi);
+        [$baseUri] = $this->discoverServer($openApi);
 
         return !(empty($baseUri) || $baseUri === '/');
     }

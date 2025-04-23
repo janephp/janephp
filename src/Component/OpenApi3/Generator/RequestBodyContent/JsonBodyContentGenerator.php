@@ -21,9 +21,6 @@ class JsonBodyContentGenerator extends AbstractBodyContentGenerator
         'application/problem+json',
     ];
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSerializeStatements(MediaType $content, string $contentType, string $reference, Context $context): array
     {
         $schema = $content->getSchema();

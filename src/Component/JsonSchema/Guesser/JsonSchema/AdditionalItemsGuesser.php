@@ -13,17 +13,11 @@ class AdditionalItemsGuesser implements ChainGuesserAwareInterface, GuesserInter
 {
     use ChainGuesserAwareTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         $this->chainGuesser->guessClass($object->getAdditionalItems(), $name . 'AdditionalItems', $reference . '/additionalItems', $registry);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         return ($object instanceof JsonSchema) && ($object->getAdditionalItems() instanceof JsonSchema);

@@ -4,7 +4,8 @@ namespace Jane\Component\OpenApiCommon\Naming;
 
 class ExceptionNaming
 {
-    private $statusNamingMapping = [
+    /** @var array<int, string> */
+    private array $statusNamingMapping = [
         400 => 'BadRequest',
         401 => 'Unauthorized',
         402 => 'PaymentRequired',

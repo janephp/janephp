@@ -39,32 +39,15 @@ class EndpointGenerator implements EndpointGeneratorInterface
     use GetTransformResponseBodyTrait;
     use OptionResolverNormalizationTrait;
 
-    /** @var OperationNamingInterface */
-    private $operationNaming;
-
-    /** @var Parameter\BodyParameterGenerator */
-    private $bodyParameterGenerator;
-
-    /** @var Parameter\NonBodyParameterGenerator */
-    private $nonBodyParameterGenerator;
-
-    /** @var ExceptionGenerator */
-    private $exceptionGenerator;
-
-    /** @var GuessClass */
-    private $guessClass;
+    private GuessClass $guessClass;
 
     public function __construct(
-        OperationNamingInterface $operationNaming,
-        Parameter\BodyParameterGenerator $bodyParameterGenerator,
-        Parameter\NonBodyParameterGenerator $nonBodyParameterGenerator,
+        private OperationNamingInterface $operationNaming,
+        private Parameter\BodyParameterGenerator $bodyParameterGenerator,
+        private Parameter\NonBodyParameterGenerator $nonBodyParameterGenerator,
         DenormalizerInterface $denormalizer,
-        ExceptionGenerator $exceptionGenerator,
+        private ExceptionGenerator $exceptionGenerator,
     ) {
-        $this->operationNaming = $operationNaming;
-        $this->bodyParameterGenerator = $bodyParameterGenerator;
-        $this->nonBodyParameterGenerator = $nonBodyParameterGenerator;
-        $this->exceptionGenerator = $exceptionGenerator;
         $this->guessClass = new GuessClass(Schema::class, $denormalizer);
     }
 
@@ -106,7 +89,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
             $class->stmts[] = $formResolverMethod;
         }
 
-        if ($headerResolverMethod) {
+        if (null !== $headerResolverMethod) {
             $class->stmts[] = $headerResolverMethod;
         }
 

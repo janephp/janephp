@@ -16,9 +16,6 @@ class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterf
 {
     use ChainGuesserAwareTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         if (is_a($object->getAdditionalProperties(), $this->getSchemaClass())) {
@@ -26,9 +23,6 @@ class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterf
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         $class = $this->getSchemaClass();
@@ -48,9 +42,6 @@ class AdditionalPropertiesGuesser implements GuesserInterface, TypeGuesserInterf
         return true;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         if (true === $object->getAdditionalProperties()) {
