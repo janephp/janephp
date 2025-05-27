@@ -5,7 +5,6 @@ namespace Jane\Component\OpenApi3\Tests\Client\Model;
 class SimpleResponse extends \ArrayObject
 {
     /**
-<<<<<<< HEAD
      * @var array
      */
     protected $initialized = [];
@@ -14,13 +13,6 @@ class SimpleResponse extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
-||||||| parent of 6c3127df5 (Update fixtures for tests)
-     * 
-     *
-=======
->>>>>>> 6c3127df5 (Update fixtures for tests)
      * @var string
      */
     protected $foo;
