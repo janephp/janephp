@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\fixtures\github\expected\Endpoint;
+namespace Github\Endpoint;
 
 class ReposCreateFork extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
@@ -11,9 +11,9 @@ class ReposCreateFork extends \Github\Runtime\Client\BaseEndpoint implements \Gi
      * Create a fork for the authenticated user.
      **Note**: Forking a Repository happens asynchronously. You may have to wait a short period of time before you can access the git objects. If this takes longer than 5 minutes, be sure to contact [GitHub Support](https://github.com/contact) or [GitHub Premium Support](https://premium.githubsupport.com).
      *
-     * @param string $owner
-     * @param string $repo
-     * @param null|\Github\Model\ReposOwnerRepoForksPostBody $requestBody
+     * @param string $owner 
+     * @param string $repo 
+     * @param null|\Github\Model\ReposOwnerRepoForksPostBody $requestBody 
      * @param array $accept Accept content header application/json|application/scim+json
      */
     public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoForksPostBody $requestBody = null, array $accept = [])
@@ -60,24 +60,24 @@ class ReposCreateFork extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (202 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (202 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\Repository', 'json');
         }
         if (400 === $status) {
-            if (mb_strpos($contentType, 'application/json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
                 throw new \Github\Exception\ReposCreateForkBadRequestException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
             }
-            if (mb_strpos($contentType, 'application/scim+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
                 throw new \Github\Exception\ReposCreateForkBadRequestException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
             }
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateForkUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateForkForbiddenException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateForkNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

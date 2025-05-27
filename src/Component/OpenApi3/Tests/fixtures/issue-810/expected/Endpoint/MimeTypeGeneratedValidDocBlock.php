@@ -51,7 +51,7 @@ class MimeTypeGeneratedValidDocBlock extends \Jane\Component\OpenApi3\Tests\Expe
         $body = (string) $response->getBody();
         if (404 === $status) {
         }
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return json_decode($body);
         }
     }

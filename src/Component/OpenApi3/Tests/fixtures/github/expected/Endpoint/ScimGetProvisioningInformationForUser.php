@@ -46,19 +46,30 @@ class ScimGetProvisioningInformationForUser extends \Github\Runtime\Client\BaseE
      * @throws \Github\Exception\ScimGetProvisioningInformationForUserNotFoundException
      * @throws \Github\Exception\ScimGetProvisioningInformationForUserForbiddenException
      *
-     * @return null
+     * @return null|\Github\Model\ScimUser
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (200 === $status) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/scim+json') !== false)) {
+            return $serializer->deserialize($body, 'Github\Model\ScimUser', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimGetProvisioningInformationForUserNotFoundException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+        if (404 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                throw new \Github\Exception\ScimGetProvisioningInformationForUserNotFoundException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
+                throw new \Github\Exception\ScimGetProvisioningInformationForUserNotFoundException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimGetProvisioningInformationForUserForbiddenException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+        if (403 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                throw new \Github\Exception\ScimGetProvisioningInformationForUserForbiddenException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
+                throw new \Github\Exception\ScimGetProvisioningInformationForUserForbiddenException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
         }
         if (304 === $status) {
             return null;

@@ -64,13 +64,13 @@ class TeamsAddOrUpdateMembershipForUserInOrg extends \Github\Runtime\Client\Base
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\TeamMembership', 'json');
         }
         if (403 === $status) {
             throw new \Github\Exception\TeamsAddOrUpdateMembershipForUserInOrgForbiddenException($response);
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422', 'json'), $response);
         }
     }

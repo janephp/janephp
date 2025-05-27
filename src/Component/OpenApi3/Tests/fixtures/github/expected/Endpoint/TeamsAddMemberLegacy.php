@@ -63,10 +63,10 @@ class TeamsAddMemberLegacy extends \Github\Runtime\Client\BaseEndpoint implement
         if (404 === $status) {
             throw new \Github\Exception\TeamsAddMemberLegacyNotFoundException($response);
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\TeamsAddMemberLegacyUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\TeamsTeamIdMembersUsernamePutResponse422', 'json'), $response);
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\TeamsAddMemberLegacyForbiddenException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }
