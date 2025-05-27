@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - [JsonSchema] [GH#841](https://github.com/janephp/janephp/pull/841) Fix "nullable" property handing in generated normalizers
+- [OpenApi3] [GH#787](https://github.com/janephp/janephp/pull/787) Add null safe operator in case $schema is null
 
 ## [7.9.0] - 2025-04-17
 ### Added
