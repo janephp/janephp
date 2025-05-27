@@ -50,5 +50,3 @@ OpenAPI v3.1.x
 
 This new OpenAPI version will be compatible with JSON Schema. So everything will be the same as JSON Schema. You still
 can use ``nullable`` field but it will be deprecated in favor of JSON Schema ``null`` type.
-
-As of 25/04/2020, this version is not yet released.
