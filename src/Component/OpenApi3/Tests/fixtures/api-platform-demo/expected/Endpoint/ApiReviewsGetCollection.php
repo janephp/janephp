@@ -68,16 +68,16 @@ class ApiReviewsGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpo
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (200 === $status) {
-            if (mb_strpos($contentType, 'application/ld+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/ld+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\ReviewsGetLdjsonResponse200', 'json');
             }
-            if (mb_strpos($contentType, 'application/hal+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/hal+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\ReviewsGetHaljsonResponse200', 'json');
             }
-            if (mb_strpos($contentType, 'application/vnd.api+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/vnd.api+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\ReviewReviewRead[]', 'json');
             }
-            if (mb_strpos($contentType, 'application/json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\ReviewReviewRead[]', 'json');
             }
         }

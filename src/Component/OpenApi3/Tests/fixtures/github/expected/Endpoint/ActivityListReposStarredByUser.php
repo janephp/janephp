@@ -62,14 +62,19 @@ class ActivityListReposStarredByUser extends \Github\Runtime\Client\BaseEndpoint
      * {@inheritdoc}
      *
      *
-     * @return null|\Github\Model\Repository[]
+     * @return null|\Github\Model\Repository[]|\Github\Model\StarredRepository[]
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\Model\Repository[]', 'json');
+        if (200 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                return $serializer->deserialize($body, 'Github\Model\Repository[]', 'json');
+            }
+            if (mb_strpos(strtolower($contentType), 'application/vnd.github.v3.star+json') !== false) {
+                return $serializer->deserialize($body, 'Github\Model\StarredRepository[]', 'json');
+            }
         }
     }
     public function getAuthenticationScopes(): array

@@ -51,31 +51,57 @@ class ScimProvisionAndInviteUser extends \Github\Runtime\Client\BaseEndpoint imp
      * @throws \Github\Exception\ScimProvisionAndInviteUserConflictException
      * @throws \Github\Exception\ScimProvisionAndInviteUserBadRequestException
      *
-     * @return null
+     * @return null|\Github\Model\ScimUser
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (201 === $status) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos(strtolower($contentType), 'application/scim+json') !== false)) {
+            return $serializer->deserialize($body, 'Github\Model\ScimUser', 'json');
         }
         if (304 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimProvisionAndInviteUserNotFoundException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+        if (404 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserNotFoundException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserNotFoundException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimProvisionAndInviteUserForbiddenException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+        if (403 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserForbiddenException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserForbiddenException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
         }
-        if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimProvisionAndInviteUserInternalServerErrorException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+        if (500 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserInternalServerErrorException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserInternalServerErrorException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
         }
-        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimProvisionAndInviteUserConflictException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+        if (409 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserConflictException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserConflictException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimProvisionAndInviteUserBadRequestException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+        if (400 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserBadRequestException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserBadRequestException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
         }
     }
     public function getAuthenticationScopes(): array

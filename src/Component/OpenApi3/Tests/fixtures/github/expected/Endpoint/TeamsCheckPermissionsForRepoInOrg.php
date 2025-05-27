@@ -51,13 +51,14 @@ class TeamsCheckPermissionsForRepoInOrg extends \Github\Runtime\Client\BaseEndpo
      *
      * @throws \Github\Exception\TeamsCheckPermissionsForRepoInOrgNotFoundException
      *
-     * @return null
+     * @return null|\Github\Model\TeamRepository
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (200 === $status) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/vnd.github.v3.repository+json') !== false)) {
+            return $serializer->deserialize($body, 'Github\Model\TeamRepository', 'json');
         }
         if (204 === $status) {
             return null;

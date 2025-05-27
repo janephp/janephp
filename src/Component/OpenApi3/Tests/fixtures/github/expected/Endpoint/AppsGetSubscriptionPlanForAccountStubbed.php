@@ -45,13 +45,13 @@ class AppsGetSubscriptionPlanForAccountStubbed extends \Github\Runtime\Client\Ba
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\MarketplacePurchase', 'json');
         }
         if (404 === $status) {
             throw new \Github\Exception\AppsGetSubscriptionPlanForAccountStubbedNotFoundException($response);
         }
-        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\AppsGetSubscriptionPlanForAccountStubbedUnauthorizedException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

@@ -69,16 +69,16 @@ class ApiBooksBookIdreviewsGetCollection extends \ApiPlatform\Demo\Runtime\Clien
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (200 === $status) {
-            if (mb_strpos($contentType, 'application/ld+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/ld+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\BooksBookIdReviewsGetLdjsonResponse200', 'json');
             }
-            if (mb_strpos($contentType, 'application/hal+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/hal+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\BooksBookIdReviewsGetHaljsonResponse200', 'json');
             }
-            if (mb_strpos($contentType, 'application/vnd.api+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/vnd.api+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\ReviewReviewRead[]', 'json');
             }
-            if (mb_strpos($contentType, 'application/json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\ReviewReviewRead[]', 'json');
             }
         }

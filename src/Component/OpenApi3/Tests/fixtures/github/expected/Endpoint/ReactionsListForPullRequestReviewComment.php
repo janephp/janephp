@@ -66,13 +66,13 @@ class ReactionsListForPullRequestReviewComment extends \Github\Runtime\Client\Ba
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\Reaction[]', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReactionsListForPullRequestReviewCommentNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (415 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (415 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReactionsListForPullRequestReviewCommentUnsupportedMediaTypeException($serializer->deserialize($body, 'Github\Model\ResponsePreviewHeaderMissing', 'json'), $response);
         }
     }

@@ -57,25 +57,25 @@ class IssuesUpdate extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\Issue', 'json');
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\IssuesUpdateUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (503 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (503 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\IssuesUpdateServiceUnavailableException($serializer->deserialize($body, 'Github\Model\ResponseServiceUnavailable', 'json'), $response);
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\IssuesUpdateForbiddenException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
         if (301 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\IssuesUpdateNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (410 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (410 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\IssuesUpdateGoneException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

@@ -51,7 +51,7 @@ class GitDeleteRef extends \Github\Runtime\Client\BaseEndpoint implements \Githu
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\GitDeleteRefUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
     }

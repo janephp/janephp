@@ -41,13 +41,14 @@ class ReposGetPullRequestReviewProtection extends \Github\Runtime\Client\BaseEnd
      * {@inheritdoc}
      *
      *
-     * @return null
+     * @return null|\Github\Model\ProtectedBranchPullRequestReview
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (200 === $status) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/vnd.github.luke-cage-preview+json') !== false)) {
+            return $serializer->deserialize($body, 'Github\Model\ProtectedBranchPullRequestReview', 'json');
         }
     }
     public function getAuthenticationScopes(): array

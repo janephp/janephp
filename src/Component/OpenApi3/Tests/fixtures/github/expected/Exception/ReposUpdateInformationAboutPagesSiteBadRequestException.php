@@ -5,22 +5,22 @@ namespace Github\Exception;
 class ReposUpdateInformationAboutPagesSiteBadRequestException extends BadRequestException
 {
     /**
-     * @var \Github\Model\BasicError
+     * @var \Github\Model\ScimError
      */
-    private $basicError;
+    private $scimError;
     /**
      * @var \Psr\Http\Message\ResponseInterface
      */
     private $response;
-    public function __construct(\Github\Model\BasicError $basicError, \Psr\Http\Message\ResponseInterface $response)
+    public function __construct(\Github\Model\ScimError $scimError, \Psr\Http\Message\ResponseInterface $response)
     {
         parent::__construct('Bad Request');
-        $this->basicError = $basicError;
+        $this->scimError = $scimError;
         $this->response = $response;
     }
-    public function getBasicError(): \Github\Model\BasicError
+    public function getScimError(): \Github\Model\ScimError
     {
-        return $this->basicError;
+        return $this->scimError;
     }
     public function getResponse(): \Psr\Http\Message\ResponseInterface
     {

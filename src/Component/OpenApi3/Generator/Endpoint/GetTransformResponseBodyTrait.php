@@ -180,7 +180,7 @@ EOD
         $statements = [];
 
         foreach ($response->getContent() as $contentType => $content) {
-            if (\in_array($contentType, JsonBodyContentGenerator::JSON_TYPES)) {
+            if (\in_array($contentType, JsonBodyContentGenerator::JSON_TYPES) || str_ends_with($contentType, '+json')) {
                 [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
                     $name,
                     $status,
@@ -203,8 +203,12 @@ EOD
                 $statements[] = new Stmt\If_(
                     new Expr\BinaryOp\NotIdentical(
                         new Expr\FuncCall(new Name('mb_strpos'), [
-                            new Node\Arg(new Expr\Variable('contentType')),
-                            new Node\Arg(new Scalar\String_($contentType)),
+                            new Node\Arg(
+                                new Expr\FuncCall(new Name('strtolower'), [
+                                    new Expr\Variable('contentType'),
+                                ]),
+                            ),
+                            new Node\Arg(new Scalar\String_(strtolower($contentType))),
                         ]),
                         new Expr\ConstFetch(new Name('false'))
                     ),

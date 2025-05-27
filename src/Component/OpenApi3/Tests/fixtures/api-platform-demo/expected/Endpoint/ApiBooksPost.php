@@ -76,16 +76,16 @@ class ApiBooksPost extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impleme
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (201 === $status) {
-            if (mb_strpos($contentType, 'application/ld+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/ld+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\BookJsonldBookRead', 'json');
             }
-            if (mb_strpos($contentType, 'application/hal+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/hal+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\BookJsonhalBookRead', 'json');
             }
-            if (mb_strpos($contentType, 'application/vnd.api+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/vnd.api+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\BookBookRead', 'json');
             }
-            if (mb_strpos($contentType, 'application/json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\BookBookRead', 'json');
             }
         }

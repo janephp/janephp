@@ -657,7 +657,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $branch branch+ parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Github\Model\ProtectedBranchPullRequestReview|\Psr\Http\Message\ResponseInterface
      */
     public function reposGetPullRequestReviewProtection(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -2651,7 +2651,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ScimGetProvisioningInformationForUserNotFoundException
      * @throws \Github\Exception\ScimGetProvisioningInformationForUserForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Github\Model\ScimUser|\Psr\Http\Message\ResponseInterface
      */
     public function scimGetProvisioningInformationForUser(string $org, string $scimUserId, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -2685,7 +2685,7 @@ class Client extends \Github\Runtime\Client\Client
     * @throws \Github\Exception\ScimUpdateAttributeForUserBadRequestException
     * @throws \Github\Exception\ScimUpdateAttributeForUserTooManyRequestsException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Github\Model\ScimUser|\Psr\Http\Message\ResponseInterface
     */
     public function scimUpdateAttributeForUser(string $org, string $scimUserId, ?\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -2706,7 +2706,7 @@ class Client extends \Github\Runtime\Client\Client
     * @throws \Github\Exception\ScimSetInformationForProvisionedUserNotFoundException
     * @throws \Github\Exception\ScimSetInformationForProvisionedUserForbiddenException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Github\Model\ScimUser|\Psr\Http\Message\ResponseInterface
     */
     public function scimSetInformationForProvisionedUser(string $org, string $scimUserId, ?\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -2748,7 +2748,7 @@ class Client extends \Github\Runtime\Client\Client
     * @throws \Github\Exception\ScimListProvisionedIdentitiesForbiddenException
     * @throws \Github\Exception\ScimListProvisionedIdentitiesBadRequestException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Github\Model\ScimUserList|\Psr\Http\Message\ResponseInterface
     */
     public function scimListProvisionedIdentities(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -2767,7 +2767,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ScimProvisionAndInviteUserConflictException
      * @throws \Github\Exception\ScimProvisionAndInviteUserBadRequestException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return null|\Github\Model\ScimUser|\Psr\Http\Message\ResponseInterface
      */
     public function scimProvisionAndInviteUser(string $org, ?\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -3586,7 +3586,7 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
     *
-    * @return null|\Github\Model\Repository[]|\Psr\Http\Message\ResponseInterface
+    * @return null|\Github\Model\Repository[]|\Github\Model\StarredRepository[]|\Psr\Http\Message\ResponseInterface
     */
     public function activityListReposStarredByUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -3769,7 +3769,7 @@ class Client extends \Github\Runtime\Client\Client
     * @throws \Github\Exception\ActivityListReposStarredByAuthenticatedUserForbiddenException
     * @throws \Github\Exception\ActivityListReposStarredByAuthenticatedUserUnauthorizedException
     *
-    * @return null|\Github\Model\Repository[]|\Psr\Http\Message\ResponseInterface
+    * @return null|\Github\Model\Repository[]|\Github\Model\StarredRepository[]|\Psr\Http\Message\ResponseInterface
     */
     public function activityListReposStarredByAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -3790,7 +3790,7 @@ class Client extends \Github\Runtime\Client\Client
     * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
     * @throws \Github\Exception\ActivityListStargazersForRepoUnprocessableEntityException
     *
-    * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+    * @return null|\Github\Model\SimpleUser[]|\Github\Model\Stargazer[]|\Psr\Http\Message\ResponseInterface
     */
     public function activityListStargazersForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -7488,7 +7488,7 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\TeamsCheckPermissionsForRepoInOrgNotFoundException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Github\Model\TeamRepository|\Psr\Http\Message\ResponseInterface
     */
     public function teamsCheckPermissionsForRepoInOrg(string $org, string $teamSlug, string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -7615,7 +7615,7 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\TeamsCheckPermissionsForRepoLegacyNotFoundException
     *
-    * @return null|\Psr\Http\Message\ResponseInterface
+    * @return null|\Github\Model\TeamRepository|\Psr\Http\Message\ResponseInterface
     */
     public function teamsCheckPermissionsForRepoLegacy(int $teamId, string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {

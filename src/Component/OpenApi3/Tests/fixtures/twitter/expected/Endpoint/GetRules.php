@@ -57,13 +57,13 @@ class GetRules extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\GetRulesResponse', 'json');
         }
-        if (mb_strpos($contentType, 'application/json') !== false) {
+        if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\Error', 'json');
         }
-        if (mb_strpos($contentType, 'application/problem+json') !== false) {
+        if (mb_strpos(strtolower($contentType), 'application/problem+json') !== false) {
             return json_decode($body);
         }
     }

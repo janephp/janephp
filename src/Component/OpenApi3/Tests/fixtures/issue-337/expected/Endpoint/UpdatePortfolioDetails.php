@@ -64,13 +64,13 @@ class UpdatePortfolioDetails extends \CreditSafe\API\Runtime\Client\BaseEndpoint
         $body = (string) $response->getBody();
         if (204 === $status) {
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\UpdatePortfolioDetailsBadRequestException($response);
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\UpdatePortfolioDetailsForbiddenException($response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\UpdatePortfolioDetailsNotFoundException($response);
         }
     }
