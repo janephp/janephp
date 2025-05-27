@@ -13,50 +13,34 @@ class Blob extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $content;
     /**
-     * 
-     *
      * @var string
      */
     protected $encoding;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $sha;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $size;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $highlightedContent;
     /**
-     * 
-     *
      * @return string
      */
     public function getContent(): string
@@ -64,8 +48,6 @@ class Blob extends \ArrayObject
         return $this->content;
     }
     /**
-     * 
-     *
      * @param string $content
      *
      * @return self
@@ -77,8 +59,6 @@ class Blob extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEncoding(): string
@@ -86,8 +66,6 @@ class Blob extends \ArrayObject
         return $this->encoding;
     }
     /**
-     * 
-     *
      * @param string $encoding
      *
      * @return self
@@ -99,8 +77,6 @@ class Blob extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -108,8 +84,6 @@ class Blob extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -121,8 +95,6 @@ class Blob extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSha(): string
@@ -130,8 +102,6 @@ class Blob extends \ArrayObject
         return $this->sha;
     }
     /**
-     * 
-     *
      * @param string $sha
      *
      * @return self
@@ -143,8 +113,6 @@ class Blob extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getSize(): ?int
@@ -152,8 +120,6 @@ class Blob extends \ArrayObject
         return $this->size;
     }
     /**
-     * 
-     *
      * @param int|null $size
      *
      * @return self
@@ -165,8 +131,6 @@ class Blob extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -174,8 +138,6 @@ class Blob extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -187,8 +149,6 @@ class Blob extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHighlightedContent(): string
@@ -196,8 +156,6 @@ class Blob extends \ArrayObject
         return $this->highlightedContent;
     }
     /**
-     * 
-     *
      * @param string $highlightedContent
      *
      * @return self

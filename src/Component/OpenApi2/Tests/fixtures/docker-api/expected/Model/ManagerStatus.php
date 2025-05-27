@@ -13,8 +13,6 @@ class ManagerStatus
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var bool
      */
     protected $leader = false;
@@ -26,13 +24,12 @@ class ManagerStatus
     protected $reachability;
     /**
      * The IP address and port at which the manager is reachable.
+     * 
      *
      * @var string
      */
     protected $addr;
     /**
-     * 
-     *
      * @return bool
      */
     public function getLeader(): bool
@@ -40,8 +37,6 @@ class ManagerStatus
         return $this->leader;
     }
     /**
-     * 
-     *
      * @param bool $leader
      *
      * @return self
@@ -76,6 +71,7 @@ class ManagerStatus
     }
     /**
      * The IP address and port at which the manager is reachable.
+     * 
      *
      * @return string
      */

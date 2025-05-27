@@ -3,7 +3,6 @@
 namespace ApiPlatform\Demo\Model;
 
 /**
- *
  * @deprecated
  */
 class Parchment extends \ArrayObject
@@ -17,8 +16,6 @@ class Parchment extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $id;
@@ -35,8 +32,6 @@ class Parchment extends \ArrayObject
      */
     protected $description;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getId(): ?string
@@ -44,8 +39,6 @@ class Parchment extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string|null $id
      *
      * @return self

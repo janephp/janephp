@@ -7,11 +7,9 @@ class GitCreateBlob extends \Github\Runtime\Client\BaseEndpoint implements \Gith
     protected $owner;
     protected $repo;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param null|\Github\Model\ReposOwnerRepoGitBlobsPostBody $requestBody 
+     * @param string $owner
+     * @param string $repo
+     * @param null|\Github\Model\ReposOwnerRepoGitBlobsPostBody $requestBody
      */
     public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoGitBlobsPostBody $requestBody = null)
     {

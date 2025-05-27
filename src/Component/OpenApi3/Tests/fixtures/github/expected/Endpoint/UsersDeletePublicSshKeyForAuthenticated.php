@@ -7,7 +7,6 @@ class UsersDeletePublicSshKeyForAuthenticated extends \Github\Runtime\Client\Bas
     protected $key_id;
     /**
      * Removes a public SSH key from the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth or via OAuth with at least `admin:public_key` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-     *
      * @param int $keyId key_id parameter
      */
     public function __construct(int $keyId)

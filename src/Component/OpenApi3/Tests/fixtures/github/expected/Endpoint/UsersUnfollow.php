@@ -7,8 +7,7 @@ class UsersUnfollow extends \Github\Runtime\Client\BaseEndpoint implements \Gith
     protected $username;
     /**
      * Unfollowing a user requires the user to be logged in and authenticated with basic auth or OAuth with the `user:follow` scope.
-     *
-     * @param string $username 
+     * @param string $username
      */
     public function __construct(string $username)
     {

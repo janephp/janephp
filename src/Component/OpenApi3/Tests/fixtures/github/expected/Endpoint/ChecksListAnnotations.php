@@ -9,9 +9,8 @@ class ChecksListAnnotations extends \Github\Runtime\Client\BaseEndpoint implemen
     protected $check_run_id;
     /**
      * Lists annotations for a check run using the annotation `id`. GitHub Apps must have the `checks:read` permission on a private repository or pull access to a public repository to get annotations for a check run. OAuth Apps and authenticated users must have the `repo` scope to get annotations for a check run in a private repository.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $checkRunId check_run_id parameter
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)

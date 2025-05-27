@@ -7,7 +7,6 @@ class SchemaPermissionSetGet extends \PicturePark\API\Runtime\Client\BaseEndpoin
     protected $id;
     /**
      * Gets the schema permission set detail information by the schema permission set ID.
-     *
      * @param string $id Schema permission set ID.
      */
     public function __construct(string $id)

@@ -13,32 +13,22 @@ class ReviewsGetLdjsonResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<ReviewJsonldReviewRead>
      */
     protected $hydraMember;
     /**
-     * 
-     *
      * @var int
      */
     protected $hydraTotalItems;
     /**
-     * 
-     *
      * @var ReviewsGetLdjsonResponse200HydraView
      */
     protected $hydraView;
     /**
-     * 
-     *
      * @var ReviewsGetLdjsonResponse200HydraSearch
      */
     protected $hydraSearch;
     /**
-     * 
-     *
      * @return list<ReviewJsonldReviewRead>
      */
     public function getHydraMember(): array
@@ -46,8 +36,6 @@ class ReviewsGetLdjsonResponse200 extends \ArrayObject
         return $this->hydraMember;
     }
     /**
-     * 
-     *
      * @param list<ReviewJsonldReviewRead> $hydraMember
      *
      * @return self
@@ -59,8 +47,6 @@ class ReviewsGetLdjsonResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getHydraTotalItems(): int
@@ -68,8 +54,6 @@ class ReviewsGetLdjsonResponse200 extends \ArrayObject
         return $this->hydraTotalItems;
     }
     /**
-     * 
-     *
      * @param int $hydraTotalItems
      *
      * @return self
@@ -81,8 +65,6 @@ class ReviewsGetLdjsonResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ReviewsGetLdjsonResponse200HydraView
      */
     public function getHydraView(): ReviewsGetLdjsonResponse200HydraView
@@ -90,8 +72,6 @@ class ReviewsGetLdjsonResponse200 extends \ArrayObject
         return $this->hydraView;
     }
     /**
-     * 
-     *
      * @param ReviewsGetLdjsonResponse200HydraView $hydraView
      *
      * @return self
@@ -103,8 +83,6 @@ class ReviewsGetLdjsonResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ReviewsGetLdjsonResponse200HydraSearch
      */
     public function getHydraSearch(): ReviewsGetLdjsonResponse200HydraSearch
@@ -112,8 +90,6 @@ class ReviewsGetLdjsonResponse200 extends \ArrayObject
         return $this->hydraSearch;
     }
     /**
-     * 
-     *
      * @param ReviewsGetLdjsonResponse200HydraSearch $hydraSearch
      *
      * @return self

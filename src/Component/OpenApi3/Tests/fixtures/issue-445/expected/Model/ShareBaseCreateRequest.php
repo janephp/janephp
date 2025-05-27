@@ -49,8 +49,6 @@ class ShareBaseCreateRequest
      */
     protected $outputAccess;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
@@ -169,8 +167,6 @@ class ShareBaseCreateRequest
         $this->outputAccess = $outputAccess;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -178,8 +174,6 @@ class ShareBaseCreateRequest
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      */
     public function setKind(string $kind)

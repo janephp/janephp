@@ -7,7 +7,6 @@ class SchemaExists extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
     protected $id;
     /**
      * Checks if the schema already exists.
-     *
      * @param string $id The schema ID.
      */
     public function __construct(string $id)

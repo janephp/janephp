@@ -5,12 +5,11 @@ namespace PicturePark\API\Endpoint;
 class ListItemDeleteManyByFilter extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Deletes multiple list items. A filter must be provided to limit the deletion to specific list items.
-    The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the list item and all files will be hard deleted.
-    The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param \PicturePark\API\Model\ListItemDeleteManyFilterRequest $requestBody 
-    */
+     * Deletes multiple list items. A filter must be provided to limit the deletion to specific list items.
+     * The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the list item and all files will be hard deleted.
+     * The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param \PicturePark\API\Model\ListItemDeleteManyFilterRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\ListItemDeleteManyFilterRequest $requestBody)
     {
         $this->body = $requestBody;

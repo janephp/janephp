@@ -7,7 +7,6 @@ class MigrationsListReposForUser extends \Github\Runtime\Client\BaseEndpoint imp
     protected $migration_id;
     /**
      * Lists all the repositories for this user migration.
-     *
      * @param int $migrationId migration_id parameter
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)

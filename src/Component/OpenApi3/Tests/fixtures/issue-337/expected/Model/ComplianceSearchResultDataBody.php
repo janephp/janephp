@@ -13,14 +13,10 @@ class ComplianceSearchResultDataBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var ComplianceSearchResultDataBodySearchResult
      */
     protected $searchResult;
     /**
-     * 
-     *
      * @return ComplianceSearchResultDataBodySearchResult
      */
     public function getSearchResult(): ComplianceSearchResultDataBodySearchResult
@@ -28,8 +24,6 @@ class ComplianceSearchResultDataBody extends \ArrayObject
         return $this->searchResult;
     }
     /**
-     * 
-     *
      * @param ComplianceSearchResultDataBodySearchResult $searchResult
      *
      * @return self

@@ -6,8 +6,7 @@ class ShareDeleteMany extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
 {
     /**
      * Deletes multiple shares. Returns a business process which will hold a batch response detail containing information about successful and failed rows. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
-     * @param \PicturePark\API\Model\ShareDeleteManyRequest $requestBody 
+     * @param \PicturePark\API\Model\ShareDeleteManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\ShareDeleteManyRequest $requestBody)
     {

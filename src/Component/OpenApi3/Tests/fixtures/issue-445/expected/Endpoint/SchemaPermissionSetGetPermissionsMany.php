@@ -6,7 +6,6 @@ class SchemaPermissionSetGetPermissionsMany extends \PicturePark\API\Runtime\Cli
 {
     /**
      * Returns permissions for multiple schema permission sets for the current user.
-     *
      * @param array $queryParameters {
      *     @var array $ids Ids
      * }

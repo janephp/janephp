@@ -13,20 +13,14 @@ class BranchWithProtectionLinks extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $html;
     /**
-     * 
-     *
      * @var string
      */
     protected $self;
     /**
-     * 
-     *
      * @return string
      */
     public function getHtml(): string
@@ -34,8 +28,6 @@ class BranchWithProtectionLinks extends \ArrayObject
         return $this->html;
     }
     /**
-     * 
-     *
      * @param string $html
      *
      * @return self
@@ -47,8 +39,6 @@ class BranchWithProtectionLinks extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSelf(): string
@@ -56,8 +46,6 @@ class BranchWithProtectionLinks extends \ArrayObject
         return $this->self;
     }
     /**
-     * 
-     *
      * @param string $self
      *
      * @return self

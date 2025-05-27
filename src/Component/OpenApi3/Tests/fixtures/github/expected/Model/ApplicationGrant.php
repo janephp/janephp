@@ -13,50 +13,34 @@ class ApplicationGrant extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var ApplicationGrantApp
      */
     protected $app;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $scopes;
     /**
-     * 
-     *
      * @var ApplicationGrantUser|null
      */
     protected $user;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -64,8 +48,6 @@ class ApplicationGrant extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -77,8 +59,6 @@ class ApplicationGrant extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -86,8 +66,6 @@ class ApplicationGrant extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -99,8 +77,6 @@ class ApplicationGrant extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ApplicationGrantApp
      */
     public function getApp(): ApplicationGrantApp
@@ -108,8 +84,6 @@ class ApplicationGrant extends \ArrayObject
         return $this->app;
     }
     /**
-     * 
-     *
      * @param ApplicationGrantApp $app
      *
      * @return self
@@ -121,8 +95,6 @@ class ApplicationGrant extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -130,8 +102,6 @@ class ApplicationGrant extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -143,8 +113,6 @@ class ApplicationGrant extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -152,8 +120,6 @@ class ApplicationGrant extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -165,8 +131,6 @@ class ApplicationGrant extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getScopes(): array
@@ -174,8 +138,6 @@ class ApplicationGrant extends \ArrayObject
         return $this->scopes;
     }
     /**
-     * 
-     *
      * @param list<string> $scopes
      *
      * @return self
@@ -187,8 +149,6 @@ class ApplicationGrant extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ApplicationGrantUser|null
      */
     public function getUser(): ?ApplicationGrantUser
@@ -196,8 +156,6 @@ class ApplicationGrant extends \ArrayObject
         return $this->user;
     }
     /**
-     * 
-     *
      * @param ApplicationGrantUser|null $user
      *
      * @return self

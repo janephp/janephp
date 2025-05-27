@@ -5,12 +5,11 @@ namespace PicturePark\API\Endpoint;
 class ContentBatchUpdateFieldsByFilter extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Updates metadata layers' fields of multiple contents. For file-less contents, the content's fields themselves can be updated as well.
-    A filter must be provided to limit the update to specific contents. The same set of changes is applied to all the contents.
-    The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param \PicturePark\API\Model\ContentFieldsBatchUpdateFilterRequest $requestBody 
-    */
+     * Updates metadata layers' fields of multiple contents. For file-less contents, the content's fields themselves can be updated as well.
+     * A filter must be provided to limit the update to specific contents. The same set of changes is applied to all the contents.
+     * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param \PicturePark\API\Model\ContentFieldsBatchUpdateFilterRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\ContentFieldsBatchUpdateFilterRequest $requestBody)
     {
         $this->body = $requestBody;

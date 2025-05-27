@@ -6,8 +6,7 @@ class UserRoleDeleteMany extends \PicturePark\API\Runtime\Client\BaseEndpoint im
 {
     /**
      * Deletes the user roles specified by the IDs.
-     *
-     * @param \PicturePark\API\Model\UserRoleDeleteManyRequest $requestBody 
+     * @param \PicturePark\API\Model\UserRoleDeleteManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\UserRoleDeleteManyRequest $requestBody)
     {

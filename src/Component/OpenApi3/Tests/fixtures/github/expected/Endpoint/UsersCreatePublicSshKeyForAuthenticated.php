@@ -6,8 +6,7 @@ class UsersCreatePublicSshKeyForAuthenticated extends \Github\Runtime\Client\Bas
 {
     /**
      * Adds a public SSH key to the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth, or OAuth with at least `write:public_key` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-     *
-     * @param null|\Github\Model\UserKeysPostBody $requestBody 
+     * @param null|\Github\Model\UserKeysPostBody $requestBody
      */
     public function __construct(?\Github\Model\UserKeysPostBody $requestBody = null)
     {

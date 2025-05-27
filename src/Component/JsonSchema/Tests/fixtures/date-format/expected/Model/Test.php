@@ -13,26 +13,18 @@ class Test
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $date;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $dateOrNull;
     /**
-     * 
-     *
      * @var \DateTime|null|int
      */
     protected $dateOrNullOrInt;
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getDate(): \DateTime
@@ -40,8 +32,6 @@ class Test
         return $this->date;
     }
     /**
-     * 
-     *
      * @param \DateTime $date
      *
      * @return self
@@ -53,8 +43,6 @@ class Test
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getDateOrNull(): ?\DateTime
@@ -62,8 +50,6 @@ class Test
         return $this->dateOrNull;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $dateOrNull
      *
      * @return self
@@ -75,8 +61,6 @@ class Test
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null|int
      */
     public function getDateOrNullOrInt()
@@ -84,8 +68,6 @@ class Test
         return $this->dateOrNullOrInt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null|int $dateOrNullOrInt
      *
      * @return self

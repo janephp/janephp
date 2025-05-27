@@ -13,50 +13,34 @@ class Schema extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $stringProperty;
     /**
-     * 
-     *
      * @var int
      */
     protected $integerProperty;
     /**
-     * 
-     *
      * @var float
      */
     protected $floatProperty;
     /**
-     * 
-     *
      * @var list<mixed>
      */
     protected $arrayProperty;
     /**
-     * 
-     *
      * @var array<string, string>
      */
     protected $mapProperty;
     /**
-     * 
-     *
      * @var SchemaObjectProperty
      */
     protected $objectProperty;
     /**
-     * 
-     *
      * @var Schema
      */
     protected $objectRefProperty;
     /**
-     * 
-     *
      * @return string
      */
     public function getStringProperty(): string
@@ -64,8 +48,6 @@ class Schema extends \ArrayObject
         return $this->stringProperty;
     }
     /**
-     * 
-     *
      * @param string $stringProperty
      *
      * @return self
@@ -77,8 +59,6 @@ class Schema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getIntegerProperty(): int
@@ -86,8 +66,6 @@ class Schema extends \ArrayObject
         return $this->integerProperty;
     }
     /**
-     * 
-     *
      * @param int $integerProperty
      *
      * @return self
@@ -99,8 +77,6 @@ class Schema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getFloatProperty(): float
@@ -108,8 +84,6 @@ class Schema extends \ArrayObject
         return $this->floatProperty;
     }
     /**
-     * 
-     *
      * @param float $floatProperty
      *
      * @return self
@@ -121,8 +95,6 @@ class Schema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<mixed>
      */
     public function getArrayProperty(): array
@@ -130,8 +102,6 @@ class Schema extends \ArrayObject
         return $this->arrayProperty;
     }
     /**
-     * 
-     *
      * @param list<mixed> $arrayProperty
      *
      * @return self
@@ -143,8 +113,6 @@ class Schema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, string>
      */
     public function getMapProperty(): iterable
@@ -152,8 +120,6 @@ class Schema extends \ArrayObject
         return $this->mapProperty;
     }
     /**
-     * 
-     *
      * @param array<string, string> $mapProperty
      *
      * @return self
@@ -165,8 +131,6 @@ class Schema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return SchemaObjectProperty
      */
     public function getObjectProperty(): SchemaObjectProperty
@@ -174,8 +138,6 @@ class Schema extends \ArrayObject
         return $this->objectProperty;
     }
     /**
-     * 
-     *
      * @param SchemaObjectProperty $objectProperty
      *
      * @return self
@@ -187,8 +149,6 @@ class Schema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Schema
      */
     public function getObjectRefProperty(): Schema
@@ -196,8 +156,6 @@ class Schema extends \ArrayObject
         return $this->objectRefProperty;
     }
     /**
-     * 
-     *
      * @param Schema $objectRefProperty
      *
      * @return self

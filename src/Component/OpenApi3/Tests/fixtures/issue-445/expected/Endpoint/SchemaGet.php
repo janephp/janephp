@@ -7,7 +7,6 @@ class SchemaGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements 
     protected $id;
     /**
      * Gets the schema detail by schema ID.
-     *
      * @param string $id The schema ID.
      */
     public function __construct(string $id)

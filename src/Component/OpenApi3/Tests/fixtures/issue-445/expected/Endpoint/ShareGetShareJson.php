@@ -6,8 +6,6 @@ class ShareGetShareJson extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
 {
     protected $token;
     /**
-     * 
-     *
      * @param string $token Share token
      * @param array $queryParameters {
      *     @var string $lang Language code

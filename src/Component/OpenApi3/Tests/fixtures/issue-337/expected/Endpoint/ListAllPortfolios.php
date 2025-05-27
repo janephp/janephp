@@ -6,7 +6,6 @@ class ListAllPortfolios extends \CreditSafe\API\Runtime\Client\BaseEndpoint impl
 {
     /**
      * Endpoint to get all Portfolios based on the supplied Search Criteria.
-     *
      * @param array $queryParameters {
      *     @var string $searchQuery Return portfolios that match the given value
      *     @var int $page Starting page number (indexed from 0).

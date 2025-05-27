@@ -8,9 +8,8 @@ class ActivityListRepoNotificationsForAuthenticatedUser extends \Github\Runtime\
     protected $repo;
     /**
      * List all notifications for the current user.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param array $queryParameters {
      *     @var bool $all If `true`, show notifications marked as read.
      *     @var bool $participating If `true`, only shows notifications in which the user is directly participating or mentioned.

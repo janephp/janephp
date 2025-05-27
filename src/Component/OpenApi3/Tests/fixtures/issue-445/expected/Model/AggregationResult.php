@@ -25,11 +25,11 @@ class AggregationResult
      */
     protected $sumOtherDocCount;
     /**
-    * Items returned for the aggregation. Each item consists of a bucket with the matched value and the number of matches.
-    Optionally inner aggregations for further drill down can be available.
-    *
-    * @var list<AggregationResultItem>|null
-    */
+     * Items returned for the aggregation. Each item consists of a bucket with the matched value and the number of matches.
+     * Optionally inner aggregations for further drill down can be available.
+     *
+     * @var list<AggregationResultItem>|null
+     */
     protected $aggregationResultItems;
     /**
      * Name of the aggregation.
@@ -76,11 +76,11 @@ class AggregationResult
         return $this;
     }
     /**
-    * Items returned for the aggregation. Each item consists of a bucket with the matched value and the number of matches.
-    Optionally inner aggregations for further drill down can be available.
-    *
-    * @return list<AggregationResultItem>|null
-    */
+     * Items returned for the aggregation. Each item consists of a bucket with the matched value and the number of matches.
+     * Optionally inner aggregations for further drill down can be available.
+     *
+     * @return list<AggregationResultItem>|null
+     */
     public function getAggregationResultItems(): ?array
     {
         return $this->aggregationResultItems;

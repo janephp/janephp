@@ -13,14 +13,10 @@ class TopBookJsonhalLinks extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var TopBookJsonhalLinksSelf
      */
     protected $self;
     /**
-     * 
-     *
      * @return TopBookJsonhalLinksSelf
      */
     public function getSelf(): TopBookJsonhalLinksSelf
@@ -28,8 +24,6 @@ class TopBookJsonhalLinks extends \ArrayObject
         return $this->self;
     }
     /**
-     * 
-     *
      * @param TopBookJsonhalLinksSelf $self
      *
      * @return self

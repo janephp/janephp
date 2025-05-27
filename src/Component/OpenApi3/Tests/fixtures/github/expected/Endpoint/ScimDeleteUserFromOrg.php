@@ -8,9 +8,7 @@ class ScimDeleteUserFromOrg extends \Github\Runtime\Client\BaseEndpoint implemen
     protected $scim_user_id;
     protected $accept;
     /**
-     * 
-     *
-     * @param string $org 
+     * @param string $org
      * @param string $scimUserId scim_user_id parameter
      * @param array $accept Accept content header application/json|application/scim+json
      */

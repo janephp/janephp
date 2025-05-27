@@ -7,9 +7,8 @@ class ChannelUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     protected $id;
     /**
      * Updates the channel specified by the ID and based on supplied request.
-     *
      * @param string $id ID of channel to update
-     * @param \PicturePark\API\Model\ChannelUpdateRequest $requestBody 
+     * @param \PicturePark\API\Model\ChannelUpdateRequest $requestBody
      */
     public function __construct(string $id, \PicturePark\API\Model\ChannelUpdateRequest $requestBody)
     {

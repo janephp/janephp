@@ -13,32 +13,22 @@ class AuthorizationCodeOAuthFlow extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $authorizationUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $tokenUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $refreshUrl;
     /**
-     * 
-     *
      * @var array<string, string>|null
      */
     protected $scopes;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getAuthorizationUrl() : ?string
@@ -46,8 +36,6 @@ class AuthorizationCodeOAuthFlow extends \ArrayObject
         return $this->authorizationUrl;
     }
     /**
-     * 
-     *
      * @param string|null $authorizationUrl
      *
      * @return self
@@ -59,8 +47,6 @@ class AuthorizationCodeOAuthFlow extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTokenUrl() : ?string
@@ -68,8 +54,6 @@ class AuthorizationCodeOAuthFlow extends \ArrayObject
         return $this->tokenUrl;
     }
     /**
-     * 
-     *
      * @param string|null $tokenUrl
      *
      * @return self
@@ -81,8 +65,6 @@ class AuthorizationCodeOAuthFlow extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getRefreshUrl() : ?string
@@ -90,8 +72,6 @@ class AuthorizationCodeOAuthFlow extends \ArrayObject
         return $this->refreshUrl;
     }
     /**
-     * 
-     *
      * @param string|null $refreshUrl
      *
      * @return self
@@ -103,8 +83,6 @@ class AuthorizationCodeOAuthFlow extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, string>|null
      */
     public function getScopes() : ?iterable
@@ -112,8 +90,6 @@ class AuthorizationCodeOAuthFlow extends \ArrayObject
         return $this->scopes;
     }
     /**
-     * 
-     *
      * @param array<string, string>|null $scopes
      *
      * @return self

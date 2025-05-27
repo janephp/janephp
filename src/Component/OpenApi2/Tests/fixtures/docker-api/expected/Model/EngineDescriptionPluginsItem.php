@@ -13,20 +13,14 @@ class EngineDescriptionPluginsItem
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -34,8 +28,6 @@ class EngineDescriptionPluginsItem
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -47,8 +39,6 @@ class EngineDescriptionPluginsItem
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -56,8 +46,6 @@ class EngineDescriptionPluginsItem
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self

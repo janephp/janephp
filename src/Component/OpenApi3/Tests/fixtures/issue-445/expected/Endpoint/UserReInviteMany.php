@@ -6,8 +6,7 @@ class UserReInviteMany extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
 {
     /**
      * Formally re-invites users, e.g. sends an invitation email. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
-     * @param \PicturePark\API\Model\UserReinviteManyRequest $requestBody 
+     * @param \PicturePark\API\Model\UserReinviteManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\UserReinviteManyRequest $requestBody)
     {

@@ -7,7 +7,6 @@ class ContainerExport extends \Docker\Api\Runtime\Client\BaseEndpoint implements
     protected $id;
     /**
      * Export the contents of a container as a tarball.
-     *
      * @param string $id ID or name of the container
      */
     public function __construct(string $id)

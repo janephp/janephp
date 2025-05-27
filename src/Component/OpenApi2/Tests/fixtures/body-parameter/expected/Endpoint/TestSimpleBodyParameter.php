@@ -5,9 +5,7 @@ namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
 class TestSimpleBodyParameter extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-     * 
-     *
-     * @param string|resource|\Psr\Http\Message\StreamInterface $testString 
+     * @param string|resource|\Psr\Http\Message\StreamInterface $testString
      */
     public function __construct($testString)
     {

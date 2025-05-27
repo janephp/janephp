@@ -13,14 +13,10 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectDirectorReportsIt
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $countryName;
     /**
-     * 
-     *
      * @var string
      */
     protected $countryIso2;
@@ -49,8 +45,6 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectDirectorReportsIt
      */
     protected $used;
     /**
-     * 
-     *
      * @return string
      */
     public function getCountryName(): string
@@ -58,8 +52,6 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectDirectorReportsIt
         return $this->countryName;
     }
     /**
-     * 
-     *
      * @param string $countryName
      *
      * @return self
@@ -71,8 +63,6 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectDirectorReportsIt
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountryIso2(): string
@@ -80,8 +70,6 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectDirectorReportsIt
         return $this->countryIso2;
     }
     /**
-     * 
-     *
      * @param string $countryIso2
      *
      * @return self

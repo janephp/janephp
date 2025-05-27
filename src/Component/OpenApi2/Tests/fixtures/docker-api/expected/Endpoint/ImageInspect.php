@@ -7,7 +7,6 @@ class ImageInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     protected $name;
     /**
      * Return low-level information about an image.
-     *
      * @param string $name Image name or id
      */
     public function __construct(string $name)

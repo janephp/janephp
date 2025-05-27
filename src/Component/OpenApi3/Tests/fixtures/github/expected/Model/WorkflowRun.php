@@ -19,14 +19,10 @@ class WorkflowRun extends \ArrayObject
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $headBranch;
@@ -43,20 +39,14 @@ class WorkflowRun extends \ArrayObject
      */
     protected $runNumber;
     /**
-     * 
-     *
      * @var string
      */
     protected $event;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $status;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $conclusion;
@@ -73,26 +63,18 @@ class WorkflowRun extends \ArrayObject
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var list<PullRequestMinimal>|null
      */
     protected $pullRequests;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $updatedAt;
@@ -157,8 +139,6 @@ class WorkflowRun extends \ArrayObject
      */
     protected $headRepository;
     /**
-     * 
-     *
      * @var int
      */
     protected $headRepositoryId;
@@ -185,8 +165,6 @@ class WorkflowRun extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -194,8 +172,6 @@ class WorkflowRun extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -207,8 +183,6 @@ class WorkflowRun extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getHeadBranch(): ?string
@@ -216,8 +190,6 @@ class WorkflowRun extends \ArrayObject
         return $this->headBranch;
     }
     /**
-     * 
-     *
      * @param string|null $headBranch
      *
      * @return self
@@ -273,8 +245,6 @@ class WorkflowRun extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEvent(): string
@@ -282,8 +252,6 @@ class WorkflowRun extends \ArrayObject
         return $this->event;
     }
     /**
-     * 
-     *
      * @param string $event
      *
      * @return self
@@ -295,8 +263,6 @@ class WorkflowRun extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getStatus(): ?string
@@ -304,8 +270,6 @@ class WorkflowRun extends \ArrayObject
         return $this->status;
     }
     /**
-     * 
-     *
      * @param string|null $status
      *
      * @return self
@@ -317,8 +281,6 @@ class WorkflowRun extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getConclusion(): ?string
@@ -326,8 +288,6 @@ class WorkflowRun extends \ArrayObject
         return $this->conclusion;
     }
     /**
-     * 
-     *
      * @param string|null $conclusion
      *
      * @return self
@@ -383,8 +343,6 @@ class WorkflowRun extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -392,8 +350,6 @@ class WorkflowRun extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -405,8 +361,6 @@ class WorkflowRun extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<PullRequestMinimal>|null
      */
     public function getPullRequests(): ?array
@@ -414,8 +368,6 @@ class WorkflowRun extends \ArrayObject
         return $this->pullRequests;
     }
     /**
-     * 
-     *
      * @param list<PullRequestMinimal>|null $pullRequests
      *
      * @return self
@@ -427,8 +379,6 @@ class WorkflowRun extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
@@ -436,8 +386,6 @@ class WorkflowRun extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $createdAt
      *
      * @return self
@@ -449,8 +397,6 @@ class WorkflowRun extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
@@ -458,8 +404,6 @@ class WorkflowRun extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $updatedAt
      *
      * @return self
@@ -691,8 +635,6 @@ class WorkflowRun extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getHeadRepositoryId(): int
@@ -700,8 +642,6 @@ class WorkflowRun extends \ArrayObject
         return $this->headRepositoryId;
     }
     /**
-     * 
-     *
      * @param int $headRepositoryId
      *
      * @return self

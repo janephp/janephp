@@ -8,9 +8,9 @@ class TeamsListDiscussionsInOrg extends \Github\Runtime\Client\BaseEndpoint impl
     protected $team_slug;
     /**
      * List all discussions on a team's page. OAuth access tokens require the `read:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-     **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions`.
      *
-     * @param string $org 
+     * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions`.
+     * @param string $org
      * @param string $teamSlug team_slug parameter
      * @param array $queryParameters {
      *     @var string $direction One of `asc` (ascending) or `desc` (descending).

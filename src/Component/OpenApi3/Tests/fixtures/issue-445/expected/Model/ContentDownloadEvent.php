@@ -13,32 +13,22 @@ class ContentDownloadEvent extends ApplicationEvent
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<DownloadTrackingInfo>|null
      */
     protected $downloadInfos;
     /**
-     * 
-     *
      * @var int
      */
     protected $fileSize;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $shareToken;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $range;
     /**
-     * 
-     *
      * @return list<DownloadTrackingInfo>|null
      */
     public function getDownloadInfos(): ?array
@@ -46,8 +36,6 @@ class ContentDownloadEvent extends ApplicationEvent
         return $this->downloadInfos;
     }
     /**
-     * 
-     *
      * @param list<DownloadTrackingInfo>|null $downloadInfos
      *
      * @return self
@@ -59,8 +47,6 @@ class ContentDownloadEvent extends ApplicationEvent
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getFileSize(): int
@@ -68,8 +54,6 @@ class ContentDownloadEvent extends ApplicationEvent
         return $this->fileSize;
     }
     /**
-     * 
-     *
      * @param int $fileSize
      *
      * @return self
@@ -81,8 +65,6 @@ class ContentDownloadEvent extends ApplicationEvent
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getShareToken(): ?string
@@ -90,8 +72,6 @@ class ContentDownloadEvent extends ApplicationEvent
         return $this->shareToken;
     }
     /**
-     * 
-     *
      * @param string|null $shareToken
      *
      * @return self
@@ -103,8 +83,6 @@ class ContentDownloadEvent extends ApplicationEvent
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getRange(): ?string
@@ -112,8 +90,6 @@ class ContentDownloadEvent extends ApplicationEvent
         return $this->range;
     }
     /**
-     * 
-     *
      * @param string|null $range
      *
      * @return self

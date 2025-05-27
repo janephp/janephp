@@ -8,14 +8,13 @@ class ReposCheckCollaborator extends \Github\Runtime\Client\BaseEndpoint impleme
     protected $repo;
     protected $username;
     /**
-    * For organization-owned repositories, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners.
-    
-    Team members will include the members of child teams.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param string $username 
-    */
+     * For organization-owned repositories, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners.
+     *
+     * Team members will include the members of child teams.
+     * @param string $owner
+     * @param string $repo
+     * @param string $username
+     */
     public function __construct(string $owner, string $repo, string $username)
     {
         $this->owner = $owner;

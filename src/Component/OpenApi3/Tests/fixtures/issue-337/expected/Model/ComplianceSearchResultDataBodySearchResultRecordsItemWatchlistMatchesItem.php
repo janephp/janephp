@@ -13,164 +13,110 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $acceptListID;
     /**
-     * 
-     *
      * @var bool
      */
     protected $addedToAcceptList;
     /**
-     * 
-     *
      * @var bool
      */
     protected $addressName;
     /**
-     * 
-     *
      * @var bool
      */
     protected $autoFalsePositive;
     /**
-     * 
-     *
      * @var bool
      */
     protected $bestAddressIsPartial;
     /**
-     * 
-     *
      * @var int
      */
     protected $bestCountryScore;
     /**
-     * 
-     *
      * @var string
      */
     protected $bestCountryType;
     /**
-     * 
-     *
      * @var bool
      */
     protected $bestDOBIsPartial;
     /**
-     * 
-     *
      * @var string
      */
     protected $bestName;
     /**
-     * 
-     *
      * @var int
      */
     protected $bestNameScore;
     /**
-     * 
-     *
      * @var int
      */
     protected $checkSum;
     /**
-     * 
-     *
      * @var ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemConflicts
      */
     protected $conflicts;
     /**
-     * 
-     *
      * @var ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetails
      */
     protected $entityDetails;
     /**
-     * 
-     *
      * @var string
      */
     protected $entityName;
     /**
-     * 
-     *
      * @var int
      */
     protected $entityScore;
     /**
-     * 
-     *
      * @var string
      */
     protected $entityUniqueID;
     /**
-     * 
-     *
      * @var bool
      */
     protected $falsePositive;
     /**
-     * 
-     *
      * @var ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemFile
      */
     protected $file;
     /**
-     * 
-     *
      * @var bool
      */
     protected $gatewayOFACScreeningIndicatorMatch;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var bool
      */
     protected $matchReAlert;
     /**
-     * 
-     *
      * @var int
      */
     protected $previousResultID;
     /**
-     * 
-     *
      * @var string
      */
     protected $reasonListed;
     /**
-     * 
-     *
      * @var string
      */
     protected $resultDate;
     /**
-     * 
-     *
      * @var bool
      */
     protected $secondaryOFACScreeningIndicatorMatch;
     /**
-     * 
-     *
      * @var bool
      */
     protected $trueMatch;
     /**
-     * 
-     *
      * @return int
      */
     public function getAcceptListID(): int
@@ -178,8 +124,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->acceptListID;
     }
     /**
-     * 
-     *
      * @param int $acceptListID
      *
      * @return self
@@ -191,8 +135,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getAddedToAcceptList(): bool
@@ -200,8 +142,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->addedToAcceptList;
     }
     /**
-     * 
-     *
      * @param bool $addedToAcceptList
      *
      * @return self
@@ -213,8 +153,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getAddressName(): bool
@@ -222,8 +160,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->addressName;
     }
     /**
-     * 
-     *
      * @param bool $addressName
      *
      * @return self
@@ -235,8 +171,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getAutoFalsePositive(): bool
@@ -244,8 +178,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->autoFalsePositive;
     }
     /**
-     * 
-     *
      * @param bool $autoFalsePositive
      *
      * @return self
@@ -257,8 +189,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getBestAddressIsPartial(): bool
@@ -266,8 +196,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->bestAddressIsPartial;
     }
     /**
-     * 
-     *
      * @param bool $bestAddressIsPartial
      *
      * @return self
@@ -279,8 +207,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getBestCountryScore(): int
@@ -288,8 +214,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->bestCountryScore;
     }
     /**
-     * 
-     *
      * @param int $bestCountryScore
      *
      * @return self
@@ -301,8 +225,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBestCountryType(): string
@@ -310,8 +232,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->bestCountryType;
     }
     /**
-     * 
-     *
      * @param string $bestCountryType
      *
      * @return self
@@ -323,8 +243,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getBestDOBIsPartial(): bool
@@ -332,8 +250,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->bestDOBIsPartial;
     }
     /**
-     * 
-     *
      * @param bool $bestDOBIsPartial
      *
      * @return self
@@ -345,8 +261,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBestName(): string
@@ -354,8 +268,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->bestName;
     }
     /**
-     * 
-     *
      * @param string $bestName
      *
      * @return self
@@ -367,8 +279,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getBestNameScore(): int
@@ -376,8 +286,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->bestNameScore;
     }
     /**
-     * 
-     *
      * @param int $bestNameScore
      *
      * @return self
@@ -389,8 +297,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getCheckSum(): int
@@ -398,8 +304,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->checkSum;
     }
     /**
-     * 
-     *
      * @param int $checkSum
      *
      * @return self
@@ -411,8 +315,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemConflicts
      */
     public function getConflicts(): ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemConflicts
@@ -420,8 +322,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->conflicts;
     }
     /**
-     * 
-     *
      * @param ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemConflicts $conflicts
      *
      * @return self
@@ -433,8 +333,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetails
      */
     public function getEntityDetails(): ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetails
@@ -442,8 +340,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->entityDetails;
     }
     /**
-     * 
-     *
      * @param ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetails $entityDetails
      *
      * @return self
@@ -455,8 +351,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEntityName(): string
@@ -464,8 +358,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->entityName;
     }
     /**
-     * 
-     *
      * @param string $entityName
      *
      * @return self
@@ -477,8 +369,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getEntityScore(): int
@@ -486,8 +376,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->entityScore;
     }
     /**
-     * 
-     *
      * @param int $entityScore
      *
      * @return self
@@ -499,8 +387,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEntityUniqueID(): string
@@ -508,8 +394,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->entityUniqueID;
     }
     /**
-     * 
-     *
      * @param string $entityUniqueID
      *
      * @return self
@@ -521,8 +405,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getFalsePositive(): bool
@@ -530,8 +412,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->falsePositive;
     }
     /**
-     * 
-     *
      * @param bool $falsePositive
      *
      * @return self
@@ -543,8 +423,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemFile
      */
     public function getFile(): ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemFile
@@ -552,8 +430,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->file;
     }
     /**
-     * 
-     *
      * @param ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemFile $file
      *
      * @return self
@@ -565,8 +441,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getGatewayOFACScreeningIndicatorMatch(): bool
@@ -574,8 +448,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->gatewayOFACScreeningIndicatorMatch;
     }
     /**
-     * 
-     *
      * @param bool $gatewayOFACScreeningIndicatorMatch
      *
      * @return self
@@ -587,8 +459,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -596,8 +466,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -609,8 +477,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getMatchReAlert(): bool
@@ -618,8 +484,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->matchReAlert;
     }
     /**
-     * 
-     *
      * @param bool $matchReAlert
      *
      * @return self
@@ -631,8 +495,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getPreviousResultID(): int
@@ -640,8 +502,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->previousResultID;
     }
     /**
-     * 
-     *
      * @param int $previousResultID
      *
      * @return self
@@ -653,8 +513,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getReasonListed(): string
@@ -662,8 +520,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->reasonListed;
     }
     /**
-     * 
-     *
      * @param string $reasonListed
      *
      * @return self
@@ -675,8 +531,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getResultDate(): string
@@ -684,8 +538,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->resultDate;
     }
     /**
-     * 
-     *
      * @param string $resultDate
      *
      * @return self
@@ -697,8 +549,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getSecondaryOFACScreeningIndicatorMatch(): bool
@@ -706,8 +556,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->secondaryOFACScreeningIndicatorMatch;
     }
     /**
-     * 
-     *
      * @param bool $secondaryOFACScreeningIndicatorMatch
      *
      * @return self
@@ -719,8 +567,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getTrueMatch(): bool
@@ -728,8 +574,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         return $this->trueMatch;
     }
     /**
-     * 
-     *
      * @param bool $trueMatch
      *
      * @return self

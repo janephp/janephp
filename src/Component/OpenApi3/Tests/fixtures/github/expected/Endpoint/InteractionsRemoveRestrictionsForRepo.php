@@ -8,9 +8,8 @@ class InteractionsRemoveRestrictionsForRepo extends \Github\Runtime\Client\BaseE
     protected $repo;
     /**
      * Removes all interaction restrictions from the given repository. You must have owner or admin access to remove restrictions.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      */
     public function __construct(string $owner, string $repo)
     {

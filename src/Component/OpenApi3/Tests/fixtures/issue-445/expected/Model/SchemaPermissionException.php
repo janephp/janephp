@@ -13,62 +13,42 @@ class SchemaPermissionException extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $traceLevel;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $traceId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $traceJobId;
     /**
-     * 
-     *
      * @var int
      */
     protected $httpStatusCode;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $exceptionMessage;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $customerId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $customerAlias;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $userId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $schemaId;
@@ -79,8 +59,6 @@ class SchemaPermissionException extends \ArrayObject
      */
     protected $metadataRight;
     /**
-     * 
-     *
      * @return string
      */
     public function getTraceLevel(): string
@@ -88,8 +66,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this->traceLevel;
     }
     /**
-     * 
-     *
      * @param string $traceLevel
      *
      * @return self
@@ -101,8 +77,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTraceId(): ?string
@@ -110,8 +84,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this->traceId;
     }
     /**
-     * 
-     *
      * @param string|null $traceId
      *
      * @return self
@@ -123,8 +95,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTraceJobId(): ?string
@@ -132,8 +102,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this->traceJobId;
     }
     /**
-     * 
-     *
      * @param string|null $traceJobId
      *
      * @return self
@@ -145,8 +113,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getHttpStatusCode(): int
@@ -154,8 +120,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this->httpStatusCode;
     }
     /**
-     * 
-     *
      * @param int $httpStatusCode
      *
      * @return self
@@ -167,8 +131,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExceptionMessage(): ?string
@@ -176,8 +138,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this->exceptionMessage;
     }
     /**
-     * 
-     *
      * @param string|null $exceptionMessage
      *
      * @return self
@@ -189,8 +149,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -198,8 +156,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      *
      * @return self
@@ -211,8 +167,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCustomerId(): ?string
@@ -220,8 +174,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this->customerId;
     }
     /**
-     * 
-     *
      * @param string|null $customerId
      *
      * @return self
@@ -233,8 +185,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCustomerAlias(): ?string
@@ -242,8 +192,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this->customerAlias;
     }
     /**
-     * 
-     *
      * @param string|null $customerAlias
      *
      * @return self
@@ -255,8 +203,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getUserId(): ?string
@@ -264,8 +210,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this->userId;
     }
     /**
-     * 
-     *
      * @param string|null $userId
      *
      * @return self
@@ -277,8 +221,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getSchemaId(): ?string
@@ -286,8 +228,6 @@ class SchemaPermissionException extends \ArrayObject
         return $this->schemaId;
     }
     /**
-     * 
-     *
      * @param string|null $schemaId
      *
      * @return self

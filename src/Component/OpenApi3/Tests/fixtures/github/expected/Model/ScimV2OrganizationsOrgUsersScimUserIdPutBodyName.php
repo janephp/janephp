@@ -13,20 +13,14 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyName extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $givenName;
     /**
-     * 
-     *
      * @var string
      */
     protected $familyName;
     /**
-     * 
-     *
      * @return string
      */
     public function getGivenName(): string
@@ -34,8 +28,6 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyName extends \ArrayObject
         return $this->givenName;
     }
     /**
-     * 
-     *
      * @param string $givenName
      *
      * @return self
@@ -47,8 +39,6 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyName extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFamilyName(): string
@@ -56,8 +46,6 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyName extends \ArrayObject
         return $this->familyName;
     }
     /**
-     * 
-     *
      * @param string $familyName
      *
      * @return self

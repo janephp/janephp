@@ -6,22 +6,21 @@ class ActionsCreateRegistrationTokenForOrg extends \Github\Runtime\Client\BaseEn
 {
     protected $org;
     /**
-    * **Warning:** The self-hosted runners API for organizations is currently in public beta and subject to change.
-    
-    
-    Returns a token that you can pass to the `config` script. The token expires after one hour. You must authenticate
-    using an access token with the `admin:org` scope to use this endpoint.
-    
-    #### Example using registration token
-    
-    Configure your self-hosted runner, replacing `TOKEN` with the registration token provided by this endpoint.
-    
-    ```
-    ./config.sh --url https://github.com/octo-org --token TOKEN
-    ```
-    *
-    * @param string $org 
-    */
+     * **Warning:** The self-hosted runners API for organizations is currently in public beta and subject to change.
+     *
+     *
+     * Returns a token that you can pass to the `config` script. The token expires after one hour. You must authenticate
+     * using an access token with the `admin:org` scope to use this endpoint.
+     *
+     * #### Example using registration token
+     *
+     * Configure your self-hosted runner, replacing `TOKEN` with the registration token provided by this endpoint.
+     *
+     * ```
+     * ./config.sh --url https://github.com/octo-org --token TOKEN
+     * ```
+     * @param string $org
+     */
     public function __construct(string $org)
     {
         $this->org = $org;

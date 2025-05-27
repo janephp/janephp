@@ -13,38 +13,26 @@ class PullRequestBase extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $label;
     /**
-     * 
-     *
      * @var string
      */
     protected $ref;
     /**
-     * 
-     *
      * @var PullRequestBaseRepo
      */
     protected $repo;
     /**
-     * 
-     *
      * @var string
      */
     protected $sha;
     /**
-     * 
-     *
      * @var PullRequestBaseUser
      */
     protected $user;
     /**
-     * 
-     *
      * @return string
      */
     public function getLabel(): string
@@ -52,8 +40,6 @@ class PullRequestBase extends \ArrayObject
         return $this->label;
     }
     /**
-     * 
-     *
      * @param string $label
      *
      * @return self
@@ -65,8 +51,6 @@ class PullRequestBase extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRef(): string
@@ -74,8 +58,6 @@ class PullRequestBase extends \ArrayObject
         return $this->ref;
     }
     /**
-     * 
-     *
      * @param string $ref
      *
      * @return self
@@ -87,8 +69,6 @@ class PullRequestBase extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PullRequestBaseRepo
      */
     public function getRepo(): PullRequestBaseRepo
@@ -96,8 +76,6 @@ class PullRequestBase extends \ArrayObject
         return $this->repo;
     }
     /**
-     * 
-     *
      * @param PullRequestBaseRepo $repo
      *
      * @return self
@@ -109,8 +87,6 @@ class PullRequestBase extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSha(): string
@@ -118,8 +94,6 @@ class PullRequestBase extends \ArrayObject
         return $this->sha;
     }
     /**
-     * 
-     *
      * @param string $sha
      *
      * @return self
@@ -131,8 +105,6 @@ class PullRequestBase extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PullRequestBaseUser
      */
     public function getUser(): PullRequestBaseUser
@@ -140,8 +112,6 @@ class PullRequestBase extends \ArrayObject
         return $this->user;
     }
     /**
-     * 
-     *
      * @param PullRequestBaseUser $user
      *
      * @return self

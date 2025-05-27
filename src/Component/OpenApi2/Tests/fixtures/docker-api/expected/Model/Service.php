@@ -13,36 +13,30 @@ class Service
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $iD;
     /**
-    * The version number of the object such as node, service, etc. This is needed
-    to avoid conflicting writes. The client must send the version number along
-    with the modified specification when updating these objects.
-    
-    This approach ensures safe concurrency and determinism in that the change
-    on the object may not be applied if the version number has changed from the
-    last read. In other words, if two update requests specify the same base
-    version, only one of the requests can succeed. As a result, two separate
-    update requests that happen at the same time will not unintentionally
-    overwrite each other.
-    
-    *
-    * @var ObjectVersion
-    */
-    protected $version;
-    /**
+     * The version number of the object such as node, service, etc. This is needed
+     * to avoid conflicting writes. The client must send the version number along
+     * with the modified specification when updating these objects.
+     * 
+     * This approach ensures safe concurrency and determinism in that the change
+     * on the object may not be applied if the version number has changed from the
+     * last read. In other words, if two update requests specify the same base
+     * version, only one of the requests can succeed. As a result, two separate
+     * update requests that happen at the same time will not unintentionally
+     * overwrite each other.
      * 
      *
+     * @var ObjectVersion
+     */
+    protected $version;
+    /**
      * @var string
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $updatedAt;
@@ -53,8 +47,6 @@ class Service
      */
     protected $spec;
     /**
-     * 
-     *
      * @var ServiceEndpoint
      */
     protected $endpoint;
@@ -65,26 +57,24 @@ class Service
      */
     protected $updateStatus;
     /**
-    * The status of the service's tasks. Provided only when requested as
-    part of a ServiceList operation.
-    
-    *
-    * @var ServiceServiceStatus
-    */
-    protected $serviceStatus;
-    /**
-    * The status of the service when it is in one of ReplicatedJob or
-    GlobalJob modes. Absent on Replicated and Global mode services. The
-    JobIteration is an ObjectVersion, but unlike the Service's version,
-    does not need to be sent with an update request.
-    
-    *
-    * @var ServiceJobStatus
-    */
-    protected $jobStatus;
-    /**
+     * The status of the service's tasks. Provided only when requested as
+     * part of a ServiceList operation.
      * 
      *
+     * @var ServiceServiceStatus
+     */
+    protected $serviceStatus;
+    /**
+     * The status of the service when it is in one of ReplicatedJob or
+     * GlobalJob modes. Absent on Replicated and Global mode services. The
+     * JobIteration is an ObjectVersion, but unlike the Service's version,
+     * does not need to be sent with an update request.
+     * 
+     *
+     * @var ServiceJobStatus
+     */
+    protected $jobStatus;
+    /**
      * @return string
      */
     public function getID(): string
@@ -92,8 +82,6 @@ class Service
         return $this->iD;
     }
     /**
-     * 
-     *
      * @param string $iD
      *
      * @return self
@@ -105,20 +93,20 @@ class Service
         return $this;
     }
     /**
-    * The version number of the object such as node, service, etc. This is needed
-    to avoid conflicting writes. The client must send the version number along
-    with the modified specification when updating these objects.
-    
-    This approach ensures safe concurrency and determinism in that the change
-    on the object may not be applied if the version number has changed from the
-    last read. In other words, if two update requests specify the same base
-    version, only one of the requests can succeed. As a result, two separate
-    update requests that happen at the same time will not unintentionally
-    overwrite each other.
-    
-    *
-    * @return ObjectVersion
-    */
+     * The version number of the object such as node, service, etc. This is needed
+     * to avoid conflicting writes. The client must send the version number along
+     * with the modified specification when updating these objects.
+     * 
+     * This approach ensures safe concurrency and determinism in that the change
+     * on the object may not be applied if the version number has changed from the
+     * last read. In other words, if two update requests specify the same base
+     * version, only one of the requests can succeed. As a result, two separate
+     * update requests that happen at the same time will not unintentionally
+     * overwrite each other.
+     * 
+     *
+     * @return ObjectVersion
+     */
     public function getVersion(): ObjectVersion
     {
         return $this->version;
@@ -147,8 +135,6 @@ class Service
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCreatedAt(): string
@@ -156,8 +142,6 @@ class Service
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param string $createdAt
      *
      * @return self
@@ -169,8 +153,6 @@ class Service
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUpdatedAt(): string
@@ -178,8 +160,6 @@ class Service
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param string $updatedAt
      *
      * @return self
@@ -213,8 +193,6 @@ class Service
         return $this;
     }
     /**
-     * 
-     *
      * @return ServiceEndpoint
      */
     public function getEndpoint(): ServiceEndpoint
@@ -222,8 +200,6 @@ class Service
         return $this->endpoint;
     }
     /**
-     * 
-     *
      * @param ServiceEndpoint $endpoint
      *
      * @return self
@@ -257,12 +233,12 @@ class Service
         return $this;
     }
     /**
-    * The status of the service's tasks. Provided only when requested as
-    part of a ServiceList operation.
-    
-    *
-    * @return ServiceServiceStatus
-    */
+     * The status of the service's tasks. Provided only when requested as
+     * part of a ServiceList operation.
+     * 
+     *
+     * @return ServiceServiceStatus
+     */
     public function getServiceStatus(): ServiceServiceStatus
     {
         return $this->serviceStatus;
@@ -283,14 +259,14 @@ class Service
         return $this;
     }
     /**
-    * The status of the service when it is in one of ReplicatedJob or
-    GlobalJob modes. Absent on Replicated and Global mode services. The
-    JobIteration is an ObjectVersion, but unlike the Service's version,
-    does not need to be sent with an update request.
-    
-    *
-    * @return ServiceJobStatus
-    */
+     * The status of the service when it is in one of ReplicatedJob or
+     * GlobalJob modes. Absent on Replicated and Global mode services. The
+     * JobIteration is an ObjectVersion, but unlike the Service's version,
+     * does not need to be sent with an update request.
+     * 
+     *
+     * @return ServiceJobStatus
+     */
     public function getJobStatus(): ServiceJobStatus
     {
         return $this->jobStatus;

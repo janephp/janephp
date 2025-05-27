@@ -6,8 +6,7 @@ class XmpMappingUpdateMany extends \PicturePark\API\Runtime\Client\BaseEndpoint 
 {
     /**
      * Updates the xmp mappings specified by the IDs and based on supplied requests. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
-     * @param \PicturePark\API\Model\XmpMappingEntryUpdateManyRequest $requestBody 
+     * @param \PicturePark\API\Model\XmpMappingEntryUpdateManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\XmpMappingEntryUpdateManyRequest $requestBody)
     {

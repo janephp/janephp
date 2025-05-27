@@ -8,8 +8,7 @@ class MigrationsDownloadArchiveForOrg extends \Github\Runtime\Client\BaseEndpoin
     protected $migration_id;
     /**
      * Fetches the URL to a migration archive.
-     *
-     * @param string $org 
+     * @param string $org
      * @param int $migrationId migration_id parameter
      */
     public function __construct(string $org, int $migrationId)

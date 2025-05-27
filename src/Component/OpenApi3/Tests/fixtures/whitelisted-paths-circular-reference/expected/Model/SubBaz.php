@@ -13,14 +13,10 @@ class SubBaz extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var Baz
      */
     protected $parent;
     /**
-     * 
-     *
      * @return Baz
      */
     public function getParent(): Baz
@@ -28,8 +24,6 @@ class SubBaz extends \ArrayObject
         return $this->parent;
     }
     /**
-     * 
-     *
      * @param Baz $parent
      *
      * @return self

@@ -25,11 +25,11 @@ class ListItemDetail
      */
     protected $contentSchemaId;
     /**
-    * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema specified
-    by the ContentSchemaId property.
-    *
-    * @var array<string, mixed>|null
-    */
+     * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema specified
+     * by the ContentSchemaId property.
+     *
+     * @var array<string, mixed>|null
+     */
     protected $content;
     /**
      * Contains language specific display values. They are calculated values based on the template stored in the Content schema DisplayPatterns property.
@@ -50,11 +50,11 @@ class ListItemDetail
      */
     protected $brokenRelationTargetIds;
     /**
-    * All the IDs of the indirectly referenced list items (tagboxes) that do not exist in the system.
-    They are referenced list items that reference at least a list item that do not exist in the system.
-    *
-    * @var list<string>|null
-    */
+     * All the IDs of the indirectly referenced list items (tagboxes) that do not exist in the system.
+     * They are referenced list items that reference at least a list item that do not exist in the system.
+     *
+     * @var list<string>|null
+     */
     protected $brokenIndirectReferenceIds;
     /**
      * Audit information.
@@ -113,11 +113,11 @@ class ListItemDetail
         return $this;
     }
     /**
-    * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema specified
-    by the ContentSchemaId property.
-    *
-    * @return array<string, mixed>|null
-    */
+     * The content data of the list item. It's an object of dynamic metadata whose structure is defined in the Content schema specified
+     * by the ContentSchemaId property.
+     *
+     * @return array<string, mixed>|null
+     */
     public function getContent(): ?iterable
     {
         return $this->content;
@@ -203,11 +203,11 @@ class ListItemDetail
         return $this;
     }
     /**
-    * All the IDs of the indirectly referenced list items (tagboxes) that do not exist in the system.
-    They are referenced list items that reference at least a list item that do not exist in the system.
-    *
-    * @return list<string>|null
-    */
+     * All the IDs of the indirectly referenced list items (tagboxes) that do not exist in the system.
+     * They are referenced list items that reference at least a list item that do not exist in the system.
+     *
+     * @return list<string>|null
+     */
     public function getBrokenIndirectReferenceIds(): ?array
     {
         return $this->brokenIndirectReferenceIds;

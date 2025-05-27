@@ -8,12 +8,10 @@ class PullsRemoveRequestedReviewers extends \Github\Runtime\Client\BaseEndpoint 
     protected $repo;
     protected $pull_number;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $pullNumber 
-     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody $requestBody 
+     * @param string $owner
+     * @param string $repo
+     * @param int $pullNumber
+     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody $requestBody = null)
     {

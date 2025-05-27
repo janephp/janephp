@@ -5,12 +5,11 @@ namespace PicturePark\API\Endpoint;
 class ContentDeleteManyByFilter extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Deletes multiple contents. A filter must be provided to limit the deletion to specific contents.
-    The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the content and all files will be hard deleted.
-    The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param \PicturePark\API\Model\ContentDeleteManyFilterRequest $requestBody 
-    */
+     * Deletes multiple contents. A filter must be provided to limit the deletion to specific contents.
+     * The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the content and all files will be hard deleted.
+     * The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param \PicturePark\API\Model\ContentDeleteManyFilterRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\ContentDeleteManyFilterRequest $requestBody)
     {
         $this->body = $requestBody;

@@ -13,8 +13,6 @@ class DetailedTweet extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $format;
@@ -73,8 +71,6 @@ class DetailedTweet extends \ArrayObject
      */
     protected $geo;
     /**
-     * 
-     *
      * @var FullTextEntities
      */
     protected $entities;
@@ -85,8 +81,6 @@ class DetailedTweet extends \ArrayObject
      */
     protected $stats;
     /**
-     * 
-     *
      * @var list<ContextAnnotation>
      */
     protected $contextAnnotation;
@@ -109,8 +103,6 @@ class DetailedTweet extends \ArrayObject
      */
     protected $source;
     /**
-     * 
-     *
      * @return string
      */
     public function getFormat(): string
@@ -118,8 +110,6 @@ class DetailedTweet extends \ArrayObject
         return $this->format;
     }
     /**
-     * 
-     *
      * @param string $format
      *
      * @return self
@@ -329,8 +319,6 @@ class DetailedTweet extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return FullTextEntities
      */
     public function getEntities(): FullTextEntities
@@ -338,8 +326,6 @@ class DetailedTweet extends \ArrayObject
         return $this->entities;
     }
     /**
-     * 
-     *
      * @param FullTextEntities $entities
      *
      * @return self
@@ -373,8 +359,6 @@ class DetailedTweet extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ContextAnnotation>
      */
     public function getContextAnnotation(): array
@@ -382,8 +366,6 @@ class DetailedTweet extends \ArrayObject
         return $this->contextAnnotation;
     }
     /**
-     * 
-     *
      * @param list<ContextAnnotation> $contextAnnotation
      *
      * @return self

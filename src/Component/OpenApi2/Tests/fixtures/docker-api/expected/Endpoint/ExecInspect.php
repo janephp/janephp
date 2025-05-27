@@ -7,7 +7,6 @@ class ExecInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
     protected $id;
     /**
      * Return low-level information about an exec instance.
-     *
      * @param string $id Exec instance ID
      */
     public function __construct(string $id)

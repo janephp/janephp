@@ -13,20 +13,14 @@ class DeploymentStatus extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
@@ -37,8 +31,6 @@ class DeploymentStatus extends \ArrayObject
      */
     protected $state;
     /**
-     * 
-     *
      * @var DeploymentStatusCreator|null
      */
     protected $creator;
@@ -61,26 +53,18 @@ class DeploymentStatus extends \ArrayObject
      */
     protected $targetUrl = '';
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $deploymentUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $repositoryUrl;
@@ -97,14 +81,10 @@ class DeploymentStatus extends \ArrayObject
      */
     protected $logUrl = '';
     /**
-     * 
-     *
      * @var DeploymentStatusPerformedViaGithubApp|null
      */
     protected $performedViaGithubApp;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -112,8 +92,6 @@ class DeploymentStatus extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -125,8 +103,6 @@ class DeploymentStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -134,8 +110,6 @@ class DeploymentStatus extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -147,8 +121,6 @@ class DeploymentStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -156,8 +128,6 @@ class DeploymentStatus extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -191,8 +161,6 @@ class DeploymentStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return DeploymentStatusCreator|null
      */
     public function getCreator(): ?DeploymentStatusCreator
@@ -200,8 +168,6 @@ class DeploymentStatus extends \ArrayObject
         return $this->creator;
     }
     /**
-     * 
-     *
      * @param DeploymentStatusCreator|null $creator
      *
      * @return self
@@ -279,8 +245,6 @@ class DeploymentStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -288,8 +252,6 @@ class DeploymentStatus extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -301,8 +263,6 @@ class DeploymentStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -310,8 +270,6 @@ class DeploymentStatus extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -323,8 +281,6 @@ class DeploymentStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDeploymentUrl(): string
@@ -332,8 +288,6 @@ class DeploymentStatus extends \ArrayObject
         return $this->deploymentUrl;
     }
     /**
-     * 
-     *
      * @param string $deploymentUrl
      *
      * @return self
@@ -345,8 +299,6 @@ class DeploymentStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRepositoryUrl(): string
@@ -354,8 +306,6 @@ class DeploymentStatus extends \ArrayObject
         return $this->repositoryUrl;
     }
     /**
-     * 
-     *
      * @param string $repositoryUrl
      *
      * @return self
@@ -411,8 +361,6 @@ class DeploymentStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return DeploymentStatusPerformedViaGithubApp|null
      */
     public function getPerformedViaGithubApp(): ?DeploymentStatusPerformedViaGithubApp
@@ -420,8 +368,6 @@ class DeploymentStatus extends \ArrayObject
         return $this->performedViaGithubApp;
     }
     /**
-     * 
-     *
      * @param DeploymentStatusPerformedViaGithubApp|null $performedViaGithubApp
      *
      * @return self

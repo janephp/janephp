@@ -13,32 +13,22 @@ class ParchmentsGetLdjsonResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<ParchmentJsonld>
      */
     protected $hydraMember;
     /**
-     * 
-     *
      * @var int
      */
     protected $hydraTotalItems;
     /**
-     * 
-     *
      * @var ParchmentsGetLdjsonResponse200HydraView
      */
     protected $hydraView;
     /**
-     * 
-     *
      * @var ParchmentsGetLdjsonResponse200HydraSearch
      */
     protected $hydraSearch;
     /**
-     * 
-     *
      * @return list<ParchmentJsonld>
      */
     public function getHydraMember(): array
@@ -46,8 +36,6 @@ class ParchmentsGetLdjsonResponse200 extends \ArrayObject
         return $this->hydraMember;
     }
     /**
-     * 
-     *
      * @param list<ParchmentJsonld> $hydraMember
      *
      * @return self
@@ -59,8 +47,6 @@ class ParchmentsGetLdjsonResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getHydraTotalItems(): int
@@ -68,8 +54,6 @@ class ParchmentsGetLdjsonResponse200 extends \ArrayObject
         return $this->hydraTotalItems;
     }
     /**
-     * 
-     *
      * @param int $hydraTotalItems
      *
      * @return self
@@ -81,8 +65,6 @@ class ParchmentsGetLdjsonResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ParchmentsGetLdjsonResponse200HydraView
      */
     public function getHydraView(): ParchmentsGetLdjsonResponse200HydraView
@@ -90,8 +72,6 @@ class ParchmentsGetLdjsonResponse200 extends \ArrayObject
         return $this->hydraView;
     }
     /**
-     * 
-     *
      * @param ParchmentsGetLdjsonResponse200HydraView $hydraView
      *
      * @return self
@@ -103,8 +83,6 @@ class ParchmentsGetLdjsonResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ParchmentsGetLdjsonResponse200HydraSearch
      */
     public function getHydraSearch(): ParchmentsGetLdjsonResponse200HydraSearch
@@ -112,8 +90,6 @@ class ParchmentsGetLdjsonResponse200 extends \ArrayObject
         return $this->hydraSearch;
     }
     /**
-     * 
-     *
      * @param ParchmentsGetLdjsonResponse200HydraSearch $hydraSearch
      *
      * @return self

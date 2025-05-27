@@ -7,7 +7,6 @@ class ChannelDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     protected $id;
     /**
      * Deletes the channel specified by the ID.
-     *
      * @param string $id ID of the channel that should be deleted.
      */
     public function __construct(string $id)

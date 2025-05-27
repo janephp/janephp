@@ -13,20 +13,14 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200 extends \ArrayOb
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $totalCount;
     /**
-     * 
-     *
      * @var list<MinimalRepository>
      */
     protected $repositories;
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalCount(): int
@@ -34,8 +28,6 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200 extends \ArrayOb
         return $this->totalCount;
     }
     /**
-     * 
-     *
      * @param int $totalCount
      *
      * @return self
@@ -47,8 +39,6 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200 extends \ArrayOb
         return $this;
     }
     /**
-     * 
-     *
      * @return list<MinimalRepository>
      */
     public function getRepositories(): array
@@ -56,8 +46,6 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200 extends \ArrayOb
         return $this->repositories;
     }
     /**
-     * 
-     *
      * @param list<MinimalRepository> $repositories
      *
      * @return self

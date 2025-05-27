@@ -13,12 +13,12 @@ class ServiceSpecUpdateConfig
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * Maximum number of tasks to be updated in one iteration (0 means
-    unlimited parallelism).
-    
-    *
-    * @var int
-    */
+     * Maximum number of tasks to be updated in one iteration (0 means
+     * unlimited parallelism).
+     * 
+     *
+     * @var int
+     */
     protected $parallelism;
     /**
      * Amount of time between updates, in nanoseconds.
@@ -27,46 +27,46 @@ class ServiceSpecUpdateConfig
      */
     protected $delay;
     /**
-    * Action to take if an updated task fails to run, or stops running
-    during the update.
-    
-    *
-    * @var string
-    */
+     * Action to take if an updated task fails to run, or stops running
+     * during the update.
+     * 
+     *
+     * @var string
+     */
     protected $failureAction;
     /**
-    * Amount of time to monitor each updated task for failures, in
-    nanoseconds.
-    
-    *
-    * @var int
-    */
+     * Amount of time to monitor each updated task for failures, in
+     * nanoseconds.
+     * 
+     *
+     * @var int
+     */
     protected $monitor;
     /**
-    * The fraction of tasks that may fail during an update before the
-    failure action is invoked, specified as a floating point number
-    between 0 and 1.
-    
-    *
-    * @var float
-    */
+     * The fraction of tasks that may fail during an update before the
+     * failure action is invoked, specified as a floating point number
+     * between 0 and 1.
+     * 
+     *
+     * @var float
+     */
     protected $maxFailureRatio = 0;
     /**
-    * The order of operations when rolling out an updated task. Either
-    the old task is shut down before the new task is started, or the
-    new task is started before the old task is shut down.
-    
-    *
-    * @var string
-    */
+     * The order of operations when rolling out an updated task. Either
+     * the old task is shut down before the new task is started, or the
+     * new task is started before the old task is shut down.
+     * 
+     *
+     * @var string
+     */
     protected $order;
     /**
-    * Maximum number of tasks to be updated in one iteration (0 means
-    unlimited parallelism).
-    
-    *
-    * @return int
-    */
+     * Maximum number of tasks to be updated in one iteration (0 means
+     * unlimited parallelism).
+     * 
+     *
+     * @return int
+     */
     public function getParallelism(): int
     {
         return $this->parallelism;
@@ -109,12 +109,12 @@ class ServiceSpecUpdateConfig
         return $this;
     }
     /**
-    * Action to take if an updated task fails to run, or stops running
-    during the update.
-    
-    *
-    * @return string
-    */
+     * Action to take if an updated task fails to run, or stops running
+     * during the update.
+     * 
+     *
+     * @return string
+     */
     public function getFailureAction(): string
     {
         return $this->failureAction;
@@ -135,12 +135,12 @@ class ServiceSpecUpdateConfig
         return $this;
     }
     /**
-    * Amount of time to monitor each updated task for failures, in
-    nanoseconds.
-    
-    *
-    * @return int
-    */
+     * Amount of time to monitor each updated task for failures, in
+     * nanoseconds.
+     * 
+     *
+     * @return int
+     */
     public function getMonitor(): int
     {
         return $this->monitor;
@@ -161,13 +161,13 @@ class ServiceSpecUpdateConfig
         return $this;
     }
     /**
-    * The fraction of tasks that may fail during an update before the
-    failure action is invoked, specified as a floating point number
-    between 0 and 1.
-    
-    *
-    * @return float
-    */
+     * The fraction of tasks that may fail during an update before the
+     * failure action is invoked, specified as a floating point number
+     * between 0 and 1.
+     * 
+     *
+     * @return float
+     */
     public function getMaxFailureRatio(): float
     {
         return $this->maxFailureRatio;
@@ -189,13 +189,13 @@ class ServiceSpecUpdateConfig
         return $this;
     }
     /**
-    * The order of operations when rolling out an updated task. Either
-    the old task is shut down before the new task is started, or the
-    new task is started before the old task is shut down.
-    
-    *
-    * @return string
-    */
+     * The order of operations when rolling out an updated task. Either
+     * the old task is shut down before the new task is started, or the
+     * new task is started before the old task is shut down.
+     * 
+     *
+     * @return string
+     */
     public function getOrder(): string
     {
         return $this->order;

@@ -13,26 +13,18 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationC
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $simpleValue;
     /**
-     * 
-     *
      * @var string
      */
     protected $postalCode;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -40,8 +32,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationC
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -53,8 +43,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationC
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSimpleValue(): string
@@ -62,8 +50,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationC
         return $this->simpleValue;
     }
     /**
-     * 
-     *
      * @param string $simpleValue
      *
      * @return self
@@ -75,8 +61,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationC
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPostalCode(): string
@@ -84,8 +68,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationC
         return $this->postalCode;
     }
     /**
-     * 
-     *
      * @param string $postalCode
      *
      * @return self

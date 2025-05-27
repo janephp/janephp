@@ -7,7 +7,6 @@ class StreamSample extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Clien
     protected $accept;
     /**
      * Streams a deterministic 1% of public tweets.
-     *
      * @param array $queryParameters {
      *     @var array $expansions A comma-separated list of tweet expansions.
      * }

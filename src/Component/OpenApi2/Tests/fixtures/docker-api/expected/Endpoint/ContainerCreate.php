@@ -5,15 +5,13 @@ namespace Docker\Api\Endpoint;
 class ContainerCreate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docker\Api\Runtime\Client\Endpoint
 {
     /**
-    * 
-    *
-    * @param \Docker\Api\Model\ContainersCreatePostBody $body Container to create
-    * @param array $queryParameters {
-    *     @var string $name Assign the specified name to the container. Must match
-    `/?[a-zA-Z0-9][a-zA-Z0-9_.-]+`.
-    
-    * }
-    */
+     * @param \Docker\Api\Model\ContainersCreatePostBody $body Container to create
+     * @param array $queryParameters {
+     *     @var string $name Assign the specified name to the container. Must match
+     *     `/?[a-zA-Z0-9][a-zA-Z0-9_.-]+`.
+     *     
+     * }
+     */
     public function __construct(\Docker\Api\Model\ContainersCreatePostBody $body, array $queryParameters = [])
     {
         $this->body = $body;

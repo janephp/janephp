@@ -13,260 +13,174 @@ class PrivateUser extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $login;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $avatarUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $gravatarId;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $followersUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $followingUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $gistsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $starredUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $subscriptionsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $organizationsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $reposUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $eventsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $receivedEventsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var bool
      */
     protected $siteAdmin;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $name;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $company;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $blog;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $location;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $email;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $hireable;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $bio;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $twitterUsername;
     /**
-     * 
-     *
      * @var int
      */
     protected $publicRepos;
     /**
-     * 
-     *
      * @var int
      */
     protected $publicGists;
     /**
-     * 
-     *
      * @var int
      */
     protected $followers;
     /**
-     * 
-     *
      * @var int
      */
     protected $following;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var int
      */
     protected $privateGists;
     /**
-     * 
-     *
      * @var int
      */
     protected $totalPrivateRepos;
     /**
-     * 
-     *
      * @var int
      */
     protected $ownedPrivateRepos;
     /**
-     * 
-     *
      * @var int
      */
     protected $diskUsage;
     /**
-     * 
-     *
      * @var int
      */
     protected $collaborators;
     /**
-     * 
-     *
      * @var bool
      */
     protected $twoFactorAuthentication;
     /**
-     * 
-     *
      * @var PrivateUserPlan
      */
     protected $plan;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $suspendedAt;
     /**
-     * 
-     *
      * @var bool
      */
     protected $businessPlus;
     /**
-     * 
-     *
      * @var string
      */
     protected $ldapDn;
     /**
-     * 
-     *
      * @return string
      */
     public function getLogin(): string
@@ -274,8 +188,6 @@ class PrivateUser extends \ArrayObject
         return $this->login;
     }
     /**
-     * 
-     *
      * @param string $login
      *
      * @return self
@@ -287,8 +199,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -296,8 +206,6 @@ class PrivateUser extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -309,8 +217,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -318,8 +224,6 @@ class PrivateUser extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -331,8 +235,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAvatarUrl(): string
@@ -340,8 +242,6 @@ class PrivateUser extends \ArrayObject
         return $this->avatarUrl;
     }
     /**
-     * 
-     *
      * @param string $avatarUrl
      *
      * @return self
@@ -353,8 +253,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getGravatarId(): ?string
@@ -362,8 +260,6 @@ class PrivateUser extends \ArrayObject
         return $this->gravatarId;
     }
     /**
-     * 
-     *
      * @param string|null $gravatarId
      *
      * @return self
@@ -375,8 +271,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -384,8 +278,6 @@ class PrivateUser extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -397,8 +289,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -406,8 +296,6 @@ class PrivateUser extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -419,8 +307,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFollowersUrl(): string
@@ -428,8 +314,6 @@ class PrivateUser extends \ArrayObject
         return $this->followersUrl;
     }
     /**
-     * 
-     *
      * @param string $followersUrl
      *
      * @return self
@@ -441,8 +325,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFollowingUrl(): string
@@ -450,8 +332,6 @@ class PrivateUser extends \ArrayObject
         return $this->followingUrl;
     }
     /**
-     * 
-     *
      * @param string $followingUrl
      *
      * @return self
@@ -463,8 +343,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGistsUrl(): string
@@ -472,8 +350,6 @@ class PrivateUser extends \ArrayObject
         return $this->gistsUrl;
     }
     /**
-     * 
-     *
      * @param string $gistsUrl
      *
      * @return self
@@ -485,8 +361,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStarredUrl(): string
@@ -494,8 +368,6 @@ class PrivateUser extends \ArrayObject
         return $this->starredUrl;
     }
     /**
-     * 
-     *
      * @param string $starredUrl
      *
      * @return self
@@ -507,8 +379,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSubscriptionsUrl(): string
@@ -516,8 +386,6 @@ class PrivateUser extends \ArrayObject
         return $this->subscriptionsUrl;
     }
     /**
-     * 
-     *
      * @param string $subscriptionsUrl
      *
      * @return self
@@ -529,8 +397,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getOrganizationsUrl(): string
@@ -538,8 +404,6 @@ class PrivateUser extends \ArrayObject
         return $this->organizationsUrl;
     }
     /**
-     * 
-     *
      * @param string $organizationsUrl
      *
      * @return self
@@ -551,8 +415,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getReposUrl(): string
@@ -560,8 +422,6 @@ class PrivateUser extends \ArrayObject
         return $this->reposUrl;
     }
     /**
-     * 
-     *
      * @param string $reposUrl
      *
      * @return self
@@ -573,8 +433,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEventsUrl(): string
@@ -582,8 +440,6 @@ class PrivateUser extends \ArrayObject
         return $this->eventsUrl;
     }
     /**
-     * 
-     *
      * @param string $eventsUrl
      *
      * @return self
@@ -595,8 +451,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getReceivedEventsUrl(): string
@@ -604,8 +458,6 @@ class PrivateUser extends \ArrayObject
         return $this->receivedEventsUrl;
     }
     /**
-     * 
-     *
      * @param string $receivedEventsUrl
      *
      * @return self
@@ -617,8 +469,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -626,8 +476,6 @@ class PrivateUser extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -639,8 +487,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getSiteAdmin(): bool
@@ -648,8 +494,6 @@ class PrivateUser extends \ArrayObject
         return $this->siteAdmin;
     }
     /**
-     * 
-     *
      * @param bool $siteAdmin
      *
      * @return self
@@ -661,8 +505,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getName(): ?string
@@ -670,8 +512,6 @@ class PrivateUser extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string|null $name
      *
      * @return self
@@ -683,8 +523,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCompany(): ?string
@@ -692,8 +530,6 @@ class PrivateUser extends \ArrayObject
         return $this->company;
     }
     /**
-     * 
-     *
      * @param string|null $company
      *
      * @return self
@@ -705,8 +541,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getBlog(): ?string
@@ -714,8 +548,6 @@ class PrivateUser extends \ArrayObject
         return $this->blog;
     }
     /**
-     * 
-     *
      * @param string|null $blog
      *
      * @return self
@@ -727,8 +559,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getLocation(): ?string
@@ -736,8 +566,6 @@ class PrivateUser extends \ArrayObject
         return $this->location;
     }
     /**
-     * 
-     *
      * @param string|null $location
      *
      * @return self
@@ -749,8 +577,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getEmail(): ?string
@@ -758,8 +584,6 @@ class PrivateUser extends \ArrayObject
         return $this->email;
     }
     /**
-     * 
-     *
      * @param string|null $email
      *
      * @return self
@@ -771,8 +595,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getHireable(): ?bool
@@ -780,8 +602,6 @@ class PrivateUser extends \ArrayObject
         return $this->hireable;
     }
     /**
-     * 
-     *
      * @param bool|null $hireable
      *
      * @return self
@@ -793,8 +613,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getBio(): ?string
@@ -802,8 +620,6 @@ class PrivateUser extends \ArrayObject
         return $this->bio;
     }
     /**
-     * 
-     *
      * @param string|null $bio
      *
      * @return self
@@ -815,8 +631,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTwitterUsername(): ?string
@@ -824,8 +638,6 @@ class PrivateUser extends \ArrayObject
         return $this->twitterUsername;
     }
     /**
-     * 
-     *
      * @param string|null $twitterUsername
      *
      * @return self
@@ -837,8 +649,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getPublicRepos(): int
@@ -846,8 +656,6 @@ class PrivateUser extends \ArrayObject
         return $this->publicRepos;
     }
     /**
-     * 
-     *
      * @param int $publicRepos
      *
      * @return self
@@ -859,8 +667,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getPublicGists(): int
@@ -868,8 +674,6 @@ class PrivateUser extends \ArrayObject
         return $this->publicGists;
     }
     /**
-     * 
-     *
      * @param int $publicGists
      *
      * @return self
@@ -881,8 +685,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getFollowers(): int
@@ -890,8 +692,6 @@ class PrivateUser extends \ArrayObject
         return $this->followers;
     }
     /**
-     * 
-     *
      * @param int $followers
      *
      * @return self
@@ -903,8 +703,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getFollowing(): int
@@ -912,8 +710,6 @@ class PrivateUser extends \ArrayObject
         return $this->following;
     }
     /**
-     * 
-     *
      * @param int $following
      *
      * @return self
@@ -925,8 +721,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -934,8 +728,6 @@ class PrivateUser extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -947,8 +739,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -956,8 +746,6 @@ class PrivateUser extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -969,8 +757,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getPrivateGists(): int
@@ -978,8 +764,6 @@ class PrivateUser extends \ArrayObject
         return $this->privateGists;
     }
     /**
-     * 
-     *
      * @param int $privateGists
      *
      * @return self
@@ -991,8 +775,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalPrivateRepos(): int
@@ -1000,8 +782,6 @@ class PrivateUser extends \ArrayObject
         return $this->totalPrivateRepos;
     }
     /**
-     * 
-     *
      * @param int $totalPrivateRepos
      *
      * @return self
@@ -1013,8 +793,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getOwnedPrivateRepos(): int
@@ -1022,8 +800,6 @@ class PrivateUser extends \ArrayObject
         return $this->ownedPrivateRepos;
     }
     /**
-     * 
-     *
      * @param int $ownedPrivateRepos
      *
      * @return self
@@ -1035,8 +811,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getDiskUsage(): int
@@ -1044,8 +818,6 @@ class PrivateUser extends \ArrayObject
         return $this->diskUsage;
     }
     /**
-     * 
-     *
      * @param int $diskUsage
      *
      * @return self
@@ -1057,8 +829,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getCollaborators(): int
@@ -1066,8 +836,6 @@ class PrivateUser extends \ArrayObject
         return $this->collaborators;
     }
     /**
-     * 
-     *
      * @param int $collaborators
      *
      * @return self
@@ -1079,8 +847,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getTwoFactorAuthentication(): bool
@@ -1088,8 +854,6 @@ class PrivateUser extends \ArrayObject
         return $this->twoFactorAuthentication;
     }
     /**
-     * 
-     *
      * @param bool $twoFactorAuthentication
      *
      * @return self
@@ -1101,8 +865,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PrivateUserPlan
      */
     public function getPlan(): PrivateUserPlan
@@ -1110,8 +872,6 @@ class PrivateUser extends \ArrayObject
         return $this->plan;
     }
     /**
-     * 
-     *
      * @param PrivateUserPlan $plan
      *
      * @return self
@@ -1123,8 +883,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getSuspendedAt(): ?\DateTime
@@ -1132,8 +890,6 @@ class PrivateUser extends \ArrayObject
         return $this->suspendedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $suspendedAt
      *
      * @return self
@@ -1145,8 +901,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getBusinessPlus(): bool
@@ -1154,8 +908,6 @@ class PrivateUser extends \ArrayObject
         return $this->businessPlus;
     }
     /**
-     * 
-     *
      * @param bool $businessPlus
      *
      * @return self
@@ -1167,8 +919,6 @@ class PrivateUser extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLdapDn(): string
@@ -1176,8 +926,6 @@ class PrivateUser extends \ArrayObject
         return $this->ldapDn;
     }
     /**
-     * 
-     *
      * @param string $ldapDn
      *
      * @return self

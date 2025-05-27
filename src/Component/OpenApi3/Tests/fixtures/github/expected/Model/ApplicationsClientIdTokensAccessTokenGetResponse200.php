@@ -13,14 +13,10 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
@@ -31,74 +27,50 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
      */
     protected $scopes;
     /**
-     * 
-     *
      * @var string
      */
     protected $token;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $tokenLastEight;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $hashedToken;
     /**
-     * 
-     *
      * @var AuthorizationApp
      */
     protected $app;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $note;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $noteUrl;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $fingerprint;
     /**
-     * 
-     *
      * @var AuthorizationUser|null
      */
     protected $user;
     /**
-     * 
-     *
      * @var AuthorizationInstallation|null
      */
     protected $installation;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -106,8 +78,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -119,8 +89,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -128,8 +96,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -163,8 +129,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getToken(): string
@@ -172,8 +136,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this->token;
     }
     /**
-     * 
-     *
      * @param string $token
      *
      * @return self
@@ -185,8 +147,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTokenLastEight(): ?string
@@ -194,8 +154,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this->tokenLastEight;
     }
     /**
-     * 
-     *
      * @param string|null $tokenLastEight
      *
      * @return self
@@ -207,8 +165,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getHashedToken(): ?string
@@ -216,8 +172,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this->hashedToken;
     }
     /**
-     * 
-     *
      * @param string|null $hashedToken
      *
      * @return self
@@ -229,8 +183,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return AuthorizationApp
      */
     public function getApp(): AuthorizationApp
@@ -238,8 +190,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this->app;
     }
     /**
-     * 
-     *
      * @param AuthorizationApp $app
      *
      * @return self
@@ -251,8 +201,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getNote(): ?string
@@ -260,8 +208,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this->note;
     }
     /**
-     * 
-     *
      * @param string|null $note
      *
      * @return self
@@ -273,8 +219,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getNoteUrl(): ?string
@@ -282,8 +226,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this->noteUrl;
     }
     /**
-     * 
-     *
      * @param string|null $noteUrl
      *
      * @return self
@@ -295,8 +237,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -304,8 +244,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -317,8 +255,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -326,8 +262,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -339,8 +273,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFingerprint(): ?string
@@ -348,8 +280,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this->fingerprint;
     }
     /**
-     * 
-     *
      * @param string|null $fingerprint
      *
      * @return self
@@ -361,8 +291,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return AuthorizationUser|null
      */
     public function getUser(): ?AuthorizationUser
@@ -370,8 +298,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this->user;
     }
     /**
-     * 
-     *
      * @param AuthorizationUser|null $user
      *
      * @return self
@@ -383,8 +309,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return AuthorizationInstallation|null
      */
     public function getInstallation(): ?AuthorizationInstallation
@@ -392,8 +316,6 @@ class ApplicationsClientIdTokensAccessTokenGetResponse200 extends \ArrayObject
         return $this->installation;
     }
     /**
-     * 
-     *
      * @param AuthorizationInstallation|null $installation
      *
      * @return self

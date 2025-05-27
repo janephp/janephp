@@ -13,32 +13,22 @@ class BooksBookIdReviewsGetLdjsonResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<ReviewJsonldReviewRead>
      */
     protected $hydraMember;
     /**
-     * 
-     *
      * @var int
      */
     protected $hydraTotalItems;
     /**
-     * 
-     *
      * @var BooksBookIdReviewsGetLdjsonResponse200HydraView
      */
     protected $hydraView;
     /**
-     * 
-     *
      * @var BooksBookIdReviewsGetLdjsonResponse200HydraSearch
      */
     protected $hydraSearch;
     /**
-     * 
-     *
      * @return list<ReviewJsonldReviewRead>
      */
     public function getHydraMember(): array
@@ -46,8 +36,6 @@ class BooksBookIdReviewsGetLdjsonResponse200 extends \ArrayObject
         return $this->hydraMember;
     }
     /**
-     * 
-     *
      * @param list<ReviewJsonldReviewRead> $hydraMember
      *
      * @return self
@@ -59,8 +47,6 @@ class BooksBookIdReviewsGetLdjsonResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getHydraTotalItems(): int
@@ -68,8 +54,6 @@ class BooksBookIdReviewsGetLdjsonResponse200 extends \ArrayObject
         return $this->hydraTotalItems;
     }
     /**
-     * 
-     *
      * @param int $hydraTotalItems
      *
      * @return self
@@ -81,8 +65,6 @@ class BooksBookIdReviewsGetLdjsonResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BooksBookIdReviewsGetLdjsonResponse200HydraView
      */
     public function getHydraView(): BooksBookIdReviewsGetLdjsonResponse200HydraView
@@ -90,8 +72,6 @@ class BooksBookIdReviewsGetLdjsonResponse200 extends \ArrayObject
         return $this->hydraView;
     }
     /**
-     * 
-     *
      * @param BooksBookIdReviewsGetLdjsonResponse200HydraView $hydraView
      *
      * @return self
@@ -103,8 +83,6 @@ class BooksBookIdReviewsGetLdjsonResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BooksBookIdReviewsGetLdjsonResponse200HydraSearch
      */
     public function getHydraSearch(): BooksBookIdReviewsGetLdjsonResponse200HydraSearch
@@ -112,8 +90,6 @@ class BooksBookIdReviewsGetLdjsonResponse200 extends \ArrayObject
         return $this->hydraSearch;
     }
     /**
-     * 
-     *
      * @param BooksBookIdReviewsGetLdjsonResponse200HydraSearch $hydraSearch
      *
      * @return self

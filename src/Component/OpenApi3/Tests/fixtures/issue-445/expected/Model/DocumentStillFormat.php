@@ -13,8 +13,6 @@ class DocumentStillFormat extends FormatBase
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $extension;
@@ -25,8 +23,6 @@ class DocumentStillFormat extends FormatBase
      */
     protected $resizeAction;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExtension(): ?string
@@ -34,8 +30,6 @@ class DocumentStillFormat extends FormatBase
         return $this->extension;
     }
     /**
-     * 
-     *
      * @param string|null $extension
      *
      * @return self

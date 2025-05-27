@@ -25,12 +25,12 @@ class TaskSpecContainerSpecDNSConfig
      */
     protected $search;
     /**
-    * A list of internal resolver variables to be modified (e.g.,
-    `debug`, `ndots:3`, etc.).
-    
-    *
-    * @var list<string>
-    */
+     * A list of internal resolver variables to be modified (e.g.,
+     * `debug`, `ndots:3`, etc.).
+     * 
+     *
+     * @var list<string>
+     */
     protected $options;
     /**
      * The IP addresses of the name servers.
@@ -77,12 +77,12 @@ class TaskSpecContainerSpecDNSConfig
         return $this;
     }
     /**
-    * A list of internal resolver variables to be modified (e.g.,
-    `debug`, `ndots:3`, etc.).
-    
-    *
-    * @return list<string>
-    */
+     * A list of internal resolver variables to be modified (e.g.,
+     * `debug`, `ndots:3`, etc.).
+     * 
+     *
+     * @return list<string>
+     */
     public function getOptions(): array
     {
         return $this->options;

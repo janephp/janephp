@@ -7,20 +7,19 @@ class ActionsCreateRegistrationTokenForRepo extends \Github\Runtime\Client\BaseE
     protected $owner;
     protected $repo;
     /**
-    * Returns a token that you can pass to the `config` script. The token expires after one hour. You must authenticate
-    using an access token with the `repo` scope to use this endpoint.
-    
-    #### Example using registration token
-    
-    Configure your self-hosted runner, replacing `TOKEN` with the registration token provided by this endpoint.
-    
-    ```
-    ./config.sh --url https://github.com/octo-org/octo-repo-artifacts --token TOKEN
-    ```
-    *
-    * @param string $owner 
-    * @param string $repo 
-    */
+     * Returns a token that you can pass to the `config` script. The token expires after one hour. You must authenticate
+     * using an access token with the `repo` scope to use this endpoint.
+     *
+     * #### Example using registration token
+     *
+     * Configure your self-hosted runner, replacing `TOKEN` with the registration token provided by this endpoint.
+     *
+     * ```
+     * ./config.sh --url https://github.com/octo-org/octo-repo-artifacts --token TOKEN
+     * ```
+     * @param string $owner
+     * @param string $repo
+     */
     public function __construct(string $owner, string $repo)
     {
         $this->owner = $owner;

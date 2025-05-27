@@ -6,9 +6,7 @@ class MimeTypeGeneratedValidDocBlock extends \Jane\Component\OpenApi3\Tests\Expe
 {
     protected $accept;
     /**
-     * 
-     *
-     * @param string $requestBody 
+     * @param string $requestBody
      * @param array $accept Accept content header *\/*|application/json
      */
     public function __construct(string $requestBody, array $accept = [])

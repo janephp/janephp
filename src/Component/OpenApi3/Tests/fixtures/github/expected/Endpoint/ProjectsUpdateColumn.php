@@ -6,10 +6,8 @@ class ProjectsUpdateColumn extends \Github\Runtime\Client\BaseEndpoint implement
 {
     protected $column_id;
     /**
-     * 
-     *
      * @param int $columnId column_id parameter
-     * @param null|\Github\Model\ProjectsColumnsColumnIdPatchBody $requestBody 
+     * @param null|\Github\Model\ProjectsColumnsColumnIdPatchBody $requestBody
      */
     public function __construct(int $columnId, ?\Github\Model\ProjectsColumnsColumnIdPatchBody $requestBody = null)
     {

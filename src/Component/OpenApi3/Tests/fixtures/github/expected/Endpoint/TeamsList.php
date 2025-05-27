@@ -7,8 +7,7 @@ class TeamsList extends \Github\Runtime\Client\BaseEndpoint implements \Github\R
     protected $org;
     /**
      * Lists all teams in an organization that are visible to the authenticated user.
-     *
-     * @param string $org 
+     * @param string $org
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.

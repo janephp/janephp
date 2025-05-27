@@ -8,9 +8,8 @@ class ReposGetCodeFrequencyStats extends \Github\Runtime\Client\BaseEndpoint imp
     protected $repo;
     /**
      * Returns a weekly aggregate of the number of additions and deletions pushed to a repository.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      */
     public function __construct(string $owner, string $repo)
     {

@@ -6,12 +6,11 @@ class AppsGetOrgInstallation extends \Github\Runtime\Client\BaseEndpoint impleme
 {
     protected $org;
     /**
-    * Enables an authenticated GitHub App to find the organization's installation information.
-    
-    You must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-    *
-    * @param string $org 
-    */
+     * Enables an authenticated GitHub App to find the organization's installation information.
+     *
+     * You must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+     * @param string $org
+     */
     public function __construct(string $org)
     {
         $this->org = $org;

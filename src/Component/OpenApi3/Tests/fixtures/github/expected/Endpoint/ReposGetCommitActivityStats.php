@@ -8,9 +8,8 @@ class ReposGetCommitActivityStats extends \Github\Runtime\Client\BaseEndpoint im
     protected $repo;
     /**
      * Returns the last year of commit activity grouped by week. The `days` array is a group of commits per day, starting on `Sunday`.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      */
     public function __construct(string $owner, string $repo)
     {

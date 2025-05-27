@@ -13,14 +13,10 @@ class TestFormFilePostBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $testFile;
     /**
-     * 
-     *
      * @return string
      */
     public function getTestFile(): string
@@ -28,8 +24,6 @@ class TestFormFilePostBody extends \ArrayObject
         return $this->testFile;
     }
     /**
-     * 
-     *
      * @param string $testFile
      *
      * @return self

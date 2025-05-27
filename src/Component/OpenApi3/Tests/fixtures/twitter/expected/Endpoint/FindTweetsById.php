@@ -7,7 +7,6 @@ class FindTweetsById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Cli
     protected $accept;
     /**
      * Returns a variety of information about the Tweet specified by the requested ID
-     *
      * @param array $queryParameters {
      *     @var array $ids A comma separated list of Tweet IDs. Up to 100 are allowed in a single request.
      *     @var string $format Format for all the objects returned as part of the response, including expansions.

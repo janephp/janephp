@@ -6,8 +6,7 @@ class ContentAggregateOnChannel extends \PicturePark\API\Runtime\Client\BaseEndp
 {
     /**
      * Aggregates content by content fields values as specified in the aggregators saved on a channel.
-     *
-     * @param \PicturePark\API\Model\ContentAggregationOnChannelRequest $requestBody 
+     * @param \PicturePark\API\Model\ContentAggregationOnChannelRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\ContentAggregationOnChannelRequest $requestBody)
     {

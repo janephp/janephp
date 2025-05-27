@@ -7,8 +7,7 @@ class ApiBooksPost extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impleme
     protected $accept;
     /**
      * Creates a Book resource.
-     *
-     * @param \ApiPlatform\Demo\Model\BookJsonld|\ApiPlatform\Demo\Model\BookJsonhal|\ApiPlatform\Demo\Model\Book $requestBody 
+     * @param \ApiPlatform\Demo\Model\BookJsonld|\ApiPlatform\Demo\Model\BookJsonhal|\ApiPlatform\Demo\Model\Book $requestBody
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      */
     public function __construct($requestBody, array $accept = [])

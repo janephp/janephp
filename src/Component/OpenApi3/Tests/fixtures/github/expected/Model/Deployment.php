@@ -13,8 +13,6 @@ class Deployment extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
@@ -25,14 +23,10 @@ class Deployment extends \ArrayObject
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $sha;
@@ -49,14 +43,10 @@ class Deployment extends \ArrayObject
      */
     protected $task;
     /**
-     * 
-     *
      * @var DeploymentPayload
      */
     protected $payload;
     /**
-     * 
-     *
      * @var string
      */
     protected $originalEnvironment;
@@ -67,38 +57,26 @@ class Deployment extends \ArrayObject
      */
     protected $environment;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var DeploymentCreator|null
      */
     protected $creator;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $statusesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $repositoryUrl;
@@ -115,14 +93,10 @@ class Deployment extends \ArrayObject
      */
     protected $productionEnvironment;
     /**
-     * 
-     *
      * @var DeploymentPerformedViaGithubApp|null
      */
     protected $performedViaGithubApp;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -130,8 +104,6 @@ class Deployment extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -165,8 +137,6 @@ class Deployment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -174,8 +144,6 @@ class Deployment extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -187,8 +155,6 @@ class Deployment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSha(): string
@@ -196,8 +162,6 @@ class Deployment extends \ArrayObject
         return $this->sha;
     }
     /**
-     * 
-     *
      * @param string $sha
      *
      * @return self
@@ -253,8 +217,6 @@ class Deployment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return DeploymentPayload
      */
     public function getPayload(): DeploymentPayload
@@ -262,8 +224,6 @@ class Deployment extends \ArrayObject
         return $this->payload;
     }
     /**
-     * 
-     *
      * @param DeploymentPayload $payload
      *
      * @return self
@@ -275,8 +235,6 @@ class Deployment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getOriginalEnvironment(): string
@@ -284,8 +242,6 @@ class Deployment extends \ArrayObject
         return $this->originalEnvironment;
     }
     /**
-     * 
-     *
      * @param string $originalEnvironment
      *
      * @return self
@@ -319,8 +275,6 @@ class Deployment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription(): ?string
@@ -328,8 +282,6 @@ class Deployment extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -341,8 +293,6 @@ class Deployment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return DeploymentCreator|null
      */
     public function getCreator(): ?DeploymentCreator
@@ -350,8 +300,6 @@ class Deployment extends \ArrayObject
         return $this->creator;
     }
     /**
-     * 
-     *
      * @param DeploymentCreator|null $creator
      *
      * @return self
@@ -363,8 +311,6 @@ class Deployment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -372,8 +318,6 @@ class Deployment extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -385,8 +329,6 @@ class Deployment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -394,8 +336,6 @@ class Deployment extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -407,8 +347,6 @@ class Deployment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStatusesUrl(): string
@@ -416,8 +354,6 @@ class Deployment extends \ArrayObject
         return $this->statusesUrl;
     }
     /**
-     * 
-     *
      * @param string $statusesUrl
      *
      * @return self
@@ -429,8 +365,6 @@ class Deployment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRepositoryUrl(): string
@@ -438,8 +372,6 @@ class Deployment extends \ArrayObject
         return $this->repositoryUrl;
     }
     /**
-     * 
-     *
      * @param string $repositoryUrl
      *
      * @return self
@@ -495,8 +427,6 @@ class Deployment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return DeploymentPerformedViaGithubApp|null
      */
     public function getPerformedViaGithubApp(): ?DeploymentPerformedViaGithubApp
@@ -504,8 +434,6 @@ class Deployment extends \ArrayObject
         return $this->performedViaGithubApp;
     }
     /**
-     * 
-     *
      * @param DeploymentPerformedViaGithubApp|null $performedViaGithubApp
      *
      * @return self

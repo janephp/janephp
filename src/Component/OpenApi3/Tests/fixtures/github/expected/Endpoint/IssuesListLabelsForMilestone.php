@@ -8,10 +8,8 @@ class IssuesListLabelsForMilestone extends \Github\Runtime\Client\BaseEndpoint i
     protected $repo;
     protected $milestone_number;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $milestoneNumber milestone_number parameter
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)

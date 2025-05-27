@@ -13,26 +13,18 @@ class SearchTopicsGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $totalCount;
     /**
-     * 
-     *
      * @var bool
      */
     protected $incompleteResults;
     /**
-     * 
-     *
      * @var list<TopicSearchResultItem>
      */
     protected $items;
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalCount(): int
@@ -40,8 +32,6 @@ class SearchTopicsGetResponse200 extends \ArrayObject
         return $this->totalCount;
     }
     /**
-     * 
-     *
      * @param int $totalCount
      *
      * @return self
@@ -53,8 +43,6 @@ class SearchTopicsGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getIncompleteResults(): bool
@@ -62,8 +50,6 @@ class SearchTopicsGetResponse200 extends \ArrayObject
         return $this->incompleteResults;
     }
     /**
-     * 
-     *
      * @param bool $incompleteResults
      *
      * @return self
@@ -75,8 +61,6 @@ class SearchTopicsGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<TopicSearchResultItem>
      */
     public function getItems(): array
@@ -84,8 +68,6 @@ class SearchTopicsGetResponse200 extends \ArrayObject
         return $this->items;
     }
     /**
-     * 
-     *
      * @param list<TopicSearchResultItem> $items
      *
      * @return self

@@ -6,8 +6,7 @@ class ProfileUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
 {
     /**
      * Updates profile of currently logged in user.
-     *
-     * @param \PicturePark\API\Model\UserProfileUpdateRequest $requestBody 
+     * @param \PicturePark\API\Model\UserProfileUpdateRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\UserProfileUpdateRequest $requestBody)
     {

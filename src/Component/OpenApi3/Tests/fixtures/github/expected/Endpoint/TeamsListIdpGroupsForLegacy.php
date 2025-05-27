@@ -6,14 +6,13 @@ class TeamsListIdpGroupsForLegacy extends \Github\Runtime\Client\BaseEndpoint im
 {
     protected $team_id;
     /**
-    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List IdP groups for a team`](https://developer.github.com/v3/teams/team_sync/#list-idp-groups-for-a-team) endpoint.
-    
-    Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    
-    List IdP groups connected to a team on GitHub.
-    *
-    * @param int $teamId 
-    */
+     * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List IdP groups for a team`](https://developer.github.com/v3/teams/team_sync/#list-idp-groups-for-a-team) endpoint.
+     *
+     * Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+     *
+     * List IdP groups connected to a team on GitHub.
+     * @param int $teamId
+     */
     public function __construct(int $teamId)
     {
         $this->team_id = $teamId;

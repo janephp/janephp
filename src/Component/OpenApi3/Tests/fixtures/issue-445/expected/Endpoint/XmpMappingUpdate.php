@@ -7,9 +7,8 @@ class XmpMappingUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
     protected $id;
     /**
      * Updates the xmp mapping specified by the ID and based on supplied request. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
      * @param string $id Xmp mapping ID.
-     * @param \PicturePark\API\Model\XmpMappingEntry $requestBody 
+     * @param \PicturePark\API\Model\XmpMappingEntry $requestBody
      */
     public function __construct(string $id, \PicturePark\API\Model\XmpMappingEntry $requestBody)
     {

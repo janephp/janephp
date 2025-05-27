@@ -13,38 +13,26 @@ class GistFullforksItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var GistFullforksItemUser
      */
     protected $user;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @return GistFullforksItemUser
      */
     public function getUser(): GistFullforksItemUser
@@ -52,8 +40,6 @@ class GistFullforksItem extends \ArrayObject
         return $this->user;
     }
     /**
-     * 
-     *
      * @param GistFullforksItemUser $user
      *
      * @return self
@@ -65,8 +51,6 @@ class GistFullforksItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -74,8 +58,6 @@ class GistFullforksItem extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -87,8 +69,6 @@ class GistFullforksItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -96,8 +76,6 @@ class GistFullforksItem extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -109,8 +87,6 @@ class GistFullforksItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCreatedAt(): string
@@ -118,8 +94,6 @@ class GistFullforksItem extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param string $createdAt
      *
      * @return self
@@ -131,8 +105,6 @@ class GistFullforksItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUpdatedAt(): string
@@ -140,8 +112,6 @@ class GistFullforksItem extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param string $updatedAt
      *
      * @return self

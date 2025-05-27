@@ -14,18 +14,21 @@ class NetworksIdDisconnectPostBody
     }
     /**
      * The ID or name of the container to disconnect from the network.
+     * 
      *
      * @var string
      */
     protected $container;
     /**
      * Force the container to disconnect from the network.
+     * 
      *
      * @var bool
      */
     protected $force;
     /**
      * The ID or name of the container to disconnect from the network.
+     * 
      *
      * @return string
      */
@@ -48,6 +51,7 @@ class NetworksIdDisconnectPostBody
     }
     /**
      * Force the container to disconnect from the network.
+     * 
      *
      * @return bool
      */

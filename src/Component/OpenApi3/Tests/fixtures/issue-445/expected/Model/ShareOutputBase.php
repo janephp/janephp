@@ -49,8 +49,6 @@ class ShareOutputBase
      */
     protected $dynamicRendering;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
@@ -169,8 +167,6 @@ class ShareOutputBase
         $this->dynamicRendering = $dynamicRendering;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -178,8 +174,6 @@ class ShareOutputBase
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      */
     public function setKind(string $kind)

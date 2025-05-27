@@ -6,19 +6,18 @@ class ImageDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
 {
     protected $name;
     /**
-    * Remove an image, along with any untagged parent images that were
-    referenced by that image.
-    
-    Images can't be removed if they have descendant images, are being
-    used by a running container or are being used by a build.
-    
-    *
-    * @param string $name Image name or ID
-    * @param array $queryParameters {
-    *     @var bool $force Remove the image even if it is being used by stopped containers or has other tags
-    *     @var bool $noprune Do not delete untagged parent images
-    * }
-    */
+     * Remove an image, along with any untagged parent images that were
+     * referenced by that image.
+     *
+     * Images can't be removed if they have descendant images, are being
+     * used by a running container or are being used by a build.
+     *
+     * @param string $name Image name or ID
+     * @param array $queryParameters {
+     *     @var bool $force Remove the image even if it is being used by stopped containers or has other tags
+     *     @var bool $noprune Do not delete untagged parent images
+     * }
+     */
     public function __construct(string $name, array $queryParameters = [])
     {
         $this->name = $name;

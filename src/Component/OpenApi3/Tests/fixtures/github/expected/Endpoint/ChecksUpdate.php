@@ -8,15 +8,14 @@ class ChecksUpdate extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     protected $repo;
     protected $check_run_id;
     /**
-    * **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
-    
-    Updates a check run for a specific commit in a repository. Your GitHub App must have the `checks:write` permission to edit check runs.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param int $checkRunId check_run_id parameter
-    * @param null|\Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBody $requestBody 
-    */
+     * **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
+     *
+     * Updates a check run for a specific commit in a repository. Your GitHub App must have the `checks:write` permission to edit check runs.
+     * @param string $owner
+     * @param string $repo
+     * @param int $checkRunId check_run_id parameter
+     * @param null|\Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBody $requestBody
+     */
     public function __construct(string $owner, string $repo, int $checkRunId, ?\Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBody $requestBody = null)
     {
         $this->owner = $owner;

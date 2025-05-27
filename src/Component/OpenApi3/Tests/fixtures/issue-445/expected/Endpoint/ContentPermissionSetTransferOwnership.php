@@ -7,9 +7,8 @@ class ContentPermissionSetTransferOwnership extends \PicturePark\API\Runtime\Cli
     protected $id;
     /**
      * Transfers ownership of content permission set to supplied user.
-     *
      * @param string $id Content permission set ID.
-     * @param \PicturePark\API\Model\PermissionSetOwnershipTransferRequest $requestBody 
+     * @param \PicturePark\API\Model\PermissionSetOwnershipTransferRequest $requestBody
      */
     public function __construct(string $id, \PicturePark\API\Model\PermissionSetOwnershipTransferRequest $requestBody)
     {

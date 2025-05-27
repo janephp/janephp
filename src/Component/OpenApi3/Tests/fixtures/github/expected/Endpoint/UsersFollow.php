@@ -6,12 +6,11 @@ class UsersFollow extends \Github\Runtime\Client\BaseEndpoint implements \Github
 {
     protected $username;
     /**
-    * Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://developer.github.com/v3/#http-verbs)."
-    
-    Following a user requires the user to be logged in and authenticated with basic auth or OAuth with the `user:follow` scope.
-    *
-    * @param string $username 
-    */
+     * Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://developer.github.com/v3/#http-verbs)."
+     *
+     * Following a user requires the user to be logged in and authenticated with basic auth or OAuth with the `user:follow` scope.
+     * @param string $username
+     */
     public function __construct(string $username)
     {
         $this->username = $username;

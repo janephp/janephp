@@ -7,7 +7,6 @@ class CompanyComplianceSearch extends \CreditSafe\API\Runtime\Client\BaseEndpoin
     protected $predefinedSearch;
     /**
      * Searches the provided `Predefined search` list with your search criteria. Results returned here indicate potential matches (depending on the predefined Search used).
-     *
      * @param string $predefinedSearch the predefined search that the search will be made against. See the `/predefinedSearches` endpoint
      * @param array $queryParameters {
      *     @var string $countries A Comma-separated list of country codes to search for Companies in. The list takes ISO/Alpha 2 format country codes. For example US,GB represents searching for Companies in the United States and Great Britain.

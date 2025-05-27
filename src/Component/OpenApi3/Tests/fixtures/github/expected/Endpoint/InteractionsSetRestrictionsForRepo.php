@@ -8,10 +8,9 @@ class InteractionsSetRestrictionsForRepo extends \Github\Runtime\Client\BaseEndp
     protected $repo;
     /**
      * Temporarily restricts interactions to certain GitHub users within the given repository. You must have owner or admin access to set restrictions.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param null|\Github\Model\ReposOwnerRepoInteractionLimitsPutBody $requestBody 
+     * @param string $owner
+     * @param string $repo
+     * @param null|\Github\Model\ReposOwnerRepoInteractionLimitsPutBody $requestBody
      */
     public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoInteractionLimitsPutBody $requestBody = null)
     {

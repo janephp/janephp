@@ -5,21 +5,19 @@ namespace Docker\Api\Endpoint;
 class SecretList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docker\Api\Runtime\Client\Endpoint
 {
     /**
-    * 
-    *
-    * @param array $queryParameters {
-    *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
-    process on the secrets list.
-    
-    Available filters:
-    
-    - `id=<secret id>`
-    - `label=<key> or label=<key>=value`
-    - `name=<secret name>`
-    - `names=<secret name>`
-    
-    * }
-    */
+     * @param array $queryParameters {
+     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
+     *     process on the secrets list.
+     *     
+     *     Available filters:
+     *     
+     *     - `id=<secret id>`
+     *     - `label=<key> or label=<key>=value`
+     *     - `name=<secret name>`
+     *     - `names=<secret name>`
+     *     
+     * }
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

@@ -6,9 +6,7 @@ class GetByTestInteger extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\C
 {
     protected $test_integer;
     /**
-     * 
-     *
-     * @param int $testInteger 
+     * @param int $testInteger
      */
     public function __construct(int $testInteger)
     {

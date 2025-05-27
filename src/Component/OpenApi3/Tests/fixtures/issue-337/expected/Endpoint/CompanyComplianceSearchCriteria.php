@@ -6,7 +6,6 @@ class CompanyComplianceSearchCriteria extends \CreditSafe\API\Runtime\Client\Bas
 {
     /**
      * Returns the search parameters available to use when making a compliance search request against any Company `predefined Search`.
-     *
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }

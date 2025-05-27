@@ -7,8 +7,6 @@ class GistsGetRevision extends \Github\Runtime\Client\BaseEndpoint implements \G
     protected $gist_id;
     protected $sha;
     /**
-     * 
-     *
      * @param string $gistId gist_id parameter
      * @param string $sha sha parameter
      */

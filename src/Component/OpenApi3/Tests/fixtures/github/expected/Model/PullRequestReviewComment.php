@@ -91,14 +91,10 @@ class PullRequestReviewComment extends \ArrayObject
      */
     protected $body;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
@@ -121,8 +117,6 @@ class PullRequestReviewComment extends \ArrayObject
      */
     protected $authorAssociation;
     /**
-     * 
-     *
      * @var PullRequestReviewCommentLinks
      */
     protected $links;
@@ -163,20 +157,14 @@ class PullRequestReviewComment extends \ArrayObject
      */
     protected $side = 'RIGHT';
     /**
-     * 
-     *
      * @var ReactionRollup
      */
     protected $reactions;
     /**
-     * 
-     *
      * @var string
      */
     protected $bodyHtml;
     /**
-     * 
-     *
      * @var string
      */
     protected $bodyText;
@@ -467,8 +455,6 @@ class PullRequestReviewComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -476,8 +462,6 @@ class PullRequestReviewComment extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -489,8 +473,6 @@ class PullRequestReviewComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -498,8 +480,6 @@ class PullRequestReviewComment extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -577,8 +557,6 @@ class PullRequestReviewComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PullRequestReviewCommentLinks
      */
     public function getLinks(): PullRequestReviewCommentLinks
@@ -586,8 +564,6 @@ class PullRequestReviewComment extends \ArrayObject
         return $this->links;
     }
     /**
-     * 
-     *
      * @param PullRequestReviewCommentLinks $links
      *
      * @return self
@@ -731,8 +707,6 @@ class PullRequestReviewComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ReactionRollup
      */
     public function getReactions(): ReactionRollup
@@ -740,8 +714,6 @@ class PullRequestReviewComment extends \ArrayObject
         return $this->reactions;
     }
     /**
-     * 
-     *
      * @param ReactionRollup $reactions
      *
      * @return self
@@ -753,8 +725,6 @@ class PullRequestReviewComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBodyHtml(): string
@@ -762,8 +732,6 @@ class PullRequestReviewComment extends \ArrayObject
         return $this->bodyHtml;
     }
     /**
-     * 
-     *
      * @param string $bodyHtml
      *
      * @return self
@@ -775,8 +743,6 @@ class PullRequestReviewComment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBodyText(): string
@@ -784,8 +750,6 @@ class PullRequestReviewComment extends \ArrayObject
         return $this->bodyText;
     }
     /**
-     * 
-     *
      * @param string $bodyText
      *
      * @return self

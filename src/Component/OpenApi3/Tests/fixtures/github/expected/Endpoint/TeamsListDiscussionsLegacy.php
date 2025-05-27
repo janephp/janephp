@@ -6,17 +6,16 @@ class TeamsListDiscussionsLegacy extends \Github\Runtime\Client\BaseEndpoint imp
 {
     protected $team_id;
     /**
-    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List discussions`](https://developer.github.com/v3/teams/discussions/#list-discussions) endpoint.
-    
-    List all discussions on a team's page. OAuth access tokens require the `read:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    *
-    * @param int $teamId 
-    * @param array $queryParameters {
-    *     @var string $direction One of `asc` (ascending) or `desc` (descending).
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
-    */
+     * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List discussions`](https://developer.github.com/v3/teams/discussions/#list-discussions) endpoint.
+     *
+     * List all discussions on a team's page. OAuth access tokens require the `read:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+     * @param int $teamId
+     * @param array $queryParameters {
+     *     @var string $direction One of `asc` (ascending) or `desc` (descending).
+     *     @var int $per_page Results per page (max 100)
+     *     @var int $page Page number of the results to fetch.
+     * }
+     */
     public function __construct(int $teamId, array $queryParameters = [])
     {
         $this->team_id = $teamId;

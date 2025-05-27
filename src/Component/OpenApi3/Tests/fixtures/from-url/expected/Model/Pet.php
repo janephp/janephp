@@ -13,26 +13,18 @@ class Pet extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $tag;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -40,8 +32,6 @@ class Pet extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -53,8 +43,6 @@ class Pet extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -62,8 +50,6 @@ class Pet extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -75,8 +61,6 @@ class Pet extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTag(): string
@@ -84,8 +68,6 @@ class Pet extends \ArrayObject
         return $this->tag;
     }
     /**
-     * 
-     *
      * @param string $tag
      *
      * @return self

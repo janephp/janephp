@@ -13,8 +13,6 @@ class CompactUser extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $format;
@@ -67,8 +65,6 @@ class CompactUser extends \ArrayObject
      */
     protected $profileImageUrl;
     /**
-     * 
-     *
      * @return string
      */
     public function getFormat(): string
@@ -76,8 +72,6 @@ class CompactUser extends \ArrayObject
         return $this->format;
     }
     /**
-     * 
-     *
      * @param string $format
      *
      * @return self

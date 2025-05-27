@@ -31,8 +31,6 @@ class PdfFormat extends FormatBase
      */
     protected $reduceFileSize;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $extension;
@@ -109,8 +107,6 @@ class PdfFormat extends FormatBase
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExtension(): ?string
@@ -118,8 +114,6 @@ class PdfFormat extends FormatBase
         return $this->extension;
     }
     /**
-     * 
-     *
      * @param string|null $extension
      *
      * @return self

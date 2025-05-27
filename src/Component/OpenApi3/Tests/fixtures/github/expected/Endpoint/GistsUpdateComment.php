@@ -7,11 +7,9 @@ class GistsUpdateComment extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $gist_id;
     protected $comment_id;
     /**
-     * 
-     *
      * @param string $gistId gist_id parameter
      * @param int $commentId comment_id parameter
-     * @param null|\Github\Model\GistsGistIdCommentsCommentIdPatchBody $requestBody 
+     * @param null|\Github\Model\GistsGistIdCommentsCommentIdPatchBody $requestBody
      */
     public function __construct(string $gistId, int $commentId, ?\Github\Model\GistsGistIdCommentsCommentIdPatchBody $requestBody = null)
     {

@@ -7,9 +7,8 @@ class ContentGetReferences extends \PicturePark\API\Runtime\Client\BaseEndpoint 
     protected $id;
     /**
      * Gets the references (list items, contents, shares) to a single content.
-     *
      * @param string $id The content ID whose references to retrieve.
-     * @param \PicturePark\API\Model\ContentReferencesRequest $requestBody 
+     * @param \PicturePark\API\Model\ContentReferencesRequest $requestBody
      */
     public function __construct(string $id, \PicturePark\API\Model\ContentReferencesRequest $requestBody)
     {

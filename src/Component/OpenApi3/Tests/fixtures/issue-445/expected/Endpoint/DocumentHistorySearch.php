@@ -6,8 +6,7 @@ class DocumentHistorySearch extends \PicturePark\API\Runtime\Client\BaseEndpoint
 {
     /**
      * Search the document history as specified in the search request.
-     *
-     * @param \PicturePark\API\Model\DocumentHistorySearchRequest $requestBody 
+     * @param \PicturePark\API\Model\DocumentHistorySearchRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\DocumentHistorySearchRequest $requestBody)
     {

@@ -8,10 +8,8 @@ class ReposGetBranch extends \Github\Runtime\Client\BaseEndpoint implements \Git
     protected $repo;
     protected $branch;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param string $branch branch+ parameter
      */
     public function __construct(string $owner, string $repo, string $branch)

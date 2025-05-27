@@ -13,14 +13,10 @@ class Artifact extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
@@ -37,14 +33,10 @@ class Artifact extends \ArrayObject
      */
     protected $sizeInBytes;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $archiveDownloadUrl;
@@ -55,26 +47,18 @@ class Artifact extends \ArrayObject
      */
     protected $expired;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $expiresAt;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -82,8 +66,6 @@ class Artifact extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -95,8 +77,6 @@ class Artifact extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -104,8 +84,6 @@ class Artifact extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -161,8 +139,6 @@ class Artifact extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -170,8 +146,6 @@ class Artifact extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -183,8 +157,6 @@ class Artifact extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getArchiveDownloadUrl(): string
@@ -192,8 +164,6 @@ class Artifact extends \ArrayObject
         return $this->archiveDownloadUrl;
     }
     /**
-     * 
-     *
      * @param string $archiveDownloadUrl
      *
      * @return self
@@ -227,8 +197,6 @@ class Artifact extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
@@ -236,8 +204,6 @@ class Artifact extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $createdAt
      *
      * @return self
@@ -249,8 +215,6 @@ class Artifact extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getExpiresAt(): string
@@ -258,8 +222,6 @@ class Artifact extends \ArrayObject
         return $this->expiresAt;
     }
     /**
-     * 
-     *
      * @param string $expiresAt
      *
      * @return self
@@ -271,8 +233,6 @@ class Artifact extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
@@ -280,8 +240,6 @@ class Artifact extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $updatedAt
      *
      * @return self

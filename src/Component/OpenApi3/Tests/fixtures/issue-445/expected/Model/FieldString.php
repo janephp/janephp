@@ -37,18 +37,18 @@ class FieldString extends FieldBase
      */
     protected $maximumLength;
     /**
-    * Defines how the value must be analyzed for filtering by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
-    The analyzers are applied only if the Index property is set to true.
-    *
-    * @var list<AnalyzerBase>|null
-    */
+     * Defines how the value must be analyzed for filtering by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
+     * The analyzers are applied only if the Index property is set to true.
+     *
+     * @var list<AnalyzerBase>|null
+     */
     protected $indexAnalyzers;
     /**
-    * Defines how the value must be analyzed for searches by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
-    The analyzers are applied only if the SimpleSearch property is set to true.
-    *
-    * @var list<AnalyzerBase>|null
-    */
+     * Defines how the value must be analyzed for searches by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
+     * The analyzers are applied only if the SimpleSearch property is set to true.
+     *
+     * @var list<AnalyzerBase>|null
+     */
     protected $simpleSearchAnalyzers;
     /**
      * Defines that the field value must be displayed in a multiline component.
@@ -157,11 +157,11 @@ class FieldString extends FieldBase
         return $this;
     }
     /**
-    * Defines how the value must be analyzed for filtering by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
-    The analyzers are applied only if the Index property is set to true.
-    *
-    * @return list<AnalyzerBase>|null
-    */
+     * Defines how the value must be analyzed for filtering by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
+     * The analyzers are applied only if the Index property is set to true.
+     *
+     * @return list<AnalyzerBase>|null
+     */
     public function getIndexAnalyzers(): ?array
     {
         return $this->indexAnalyzers;
@@ -181,11 +181,11 @@ class FieldString extends FieldBase
         return $this;
     }
     /**
-    * Defines how the value must be analyzed for searches by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
-    The analyzers are applied only if the SimpleSearch property is set to true.
-    *
-    * @return list<AnalyzerBase>|null
-    */
+     * Defines how the value must be analyzed for searches by ElasticSearch. A string field can have multiple analyzers, but only one per analyzer type.
+     * The analyzers are applied only if the SimpleSearch property is set to true.
+     *
+     * @return list<AnalyzerBase>|null
+     */
     public function getSimpleSearchAnalyzers(): ?array
     {
         return $this->simpleSearchAnalyzers;

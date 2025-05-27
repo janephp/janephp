@@ -19,8 +19,6 @@ class SponsoredProductsListSponsoredProductsCampaignsResponseContent extends \Ar
      */
     protected $totalResults;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $campaigns;
@@ -47,8 +45,6 @@ class SponsoredProductsListSponsoredProductsCampaignsResponseContent extends \Ar
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getCampaigns(): array
@@ -56,8 +52,6 @@ class SponsoredProductsListSponsoredProductsCampaignsResponseContent extends \Ar
         return $this->campaigns;
     }
     /**
-     * 
-     *
      * @param list<string> $campaigns
      *
      * @return self

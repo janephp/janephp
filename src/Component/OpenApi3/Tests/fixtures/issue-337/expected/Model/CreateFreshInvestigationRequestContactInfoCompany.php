@@ -13,20 +13,14 @@ class CreateFreshInvestigationRequestContactInfoCompany extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $number;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -34,8 +28,6 @@ class CreateFreshInvestigationRequestContactInfoCompany extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -47,8 +39,6 @@ class CreateFreshInvestigationRequestContactInfoCompany extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNumber(): string
@@ -56,8 +46,6 @@ class CreateFreshInvestigationRequestContactInfoCompany extends \ArrayObject
         return $this->number;
     }
     /**
-     * 
-     *
      * @param string $number
      *
      * @return self

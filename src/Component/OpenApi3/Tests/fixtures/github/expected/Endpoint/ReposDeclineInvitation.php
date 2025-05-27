@@ -6,8 +6,6 @@ class ReposDeclineInvitation extends \Github\Runtime\Client\BaseEndpoint impleme
 {
     protected $invitation_id;
     /**
-     * 
-     *
      * @param int $invitationId invitation_id parameter
      */
     public function __construct(int $invitationId)

@@ -7,14 +7,13 @@ class ChecksCreate extends \Github\Runtime\Client\BaseEndpoint implements \Githu
     protected $owner;
     protected $repo;
     /**
-    * **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
-    
-    Creates a new check run for a specific commit in a repository. Your GitHub App must have the `checks:write` permission to create check runs.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param null|\Github\Model\ReposOwnerRepoCheckRunsPostBody $requestBody 
-    */
+     * **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
+     *
+     * Creates a new check run for a specific commit in a repository. Your GitHub App must have the `checks:write` permission to create check runs.
+     * @param string $owner
+     * @param string $repo
+     * @param null|\Github\Model\ReposOwnerRepoCheckRunsPostBody $requestBody
+     */
     public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoCheckRunsPostBody $requestBody = null)
     {
         $this->owner = $owner;

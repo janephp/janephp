@@ -13,56 +13,38 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var bool
      */
     protected $addressConflict;
     /**
-     * 
-     *
      * @var bool
      */
     protected $citizenshipConflict;
     /**
-     * 
-     *
      * @var bool
      */
     protected $countryConflict;
     /**
-     * 
-     *
      * @var bool
      */
     protected $dobConflict;
     /**
-     * 
-     *
      * @var bool
      */
     protected $entityTypeConflict;
     /**
-     * 
-     *
      * @var bool
      */
     protected $genderConflict;
     /**
-     * 
-     *
      * @var bool
      */
     protected $idConflict;
     /**
-     * 
-     *
      * @var bool
      */
     protected $phoneConflict;
     /**
-     * 
-     *
      * @return bool
      */
     public function getAddressConflict(): bool
@@ -70,8 +52,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         return $this->addressConflict;
     }
     /**
-     * 
-     *
      * @param bool $addressConflict
      *
      * @return self
@@ -83,8 +63,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getCitizenshipConflict(): bool
@@ -92,8 +70,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         return $this->citizenshipConflict;
     }
     /**
-     * 
-     *
      * @param bool $citizenshipConflict
      *
      * @return self
@@ -105,8 +81,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getCountryConflict(): bool
@@ -114,8 +88,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         return $this->countryConflict;
     }
     /**
-     * 
-     *
      * @param bool $countryConflict
      *
      * @return self
@@ -127,8 +99,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getDobConflict(): bool
@@ -136,8 +106,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         return $this->dobConflict;
     }
     /**
-     * 
-     *
      * @param bool $dobConflict
      *
      * @return self
@@ -149,8 +117,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getEntityTypeConflict(): bool
@@ -158,8 +124,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         return $this->entityTypeConflict;
     }
     /**
-     * 
-     *
      * @param bool $entityTypeConflict
      *
      * @return self
@@ -171,8 +135,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getGenderConflict(): bool
@@ -180,8 +142,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         return $this->genderConflict;
     }
     /**
-     * 
-     *
      * @param bool $genderConflict
      *
      * @return self
@@ -193,8 +153,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getIdConflict(): bool
@@ -202,8 +160,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         return $this->idConflict;
     }
     /**
-     * 
-     *
      * @param bool $idConflict
      *
      * @return self
@@ -215,8 +171,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getPhoneConflict(): bool
@@ -224,8 +178,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         return $this->phoneConflict;
     }
     /**
-     * 
-     *
      * @param bool $phoneConflict
      *
      * @return self

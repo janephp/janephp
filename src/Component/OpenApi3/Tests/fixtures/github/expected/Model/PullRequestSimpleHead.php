@@ -13,14 +13,10 @@ class PullRequestSimpleHead extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $label;
     /**
-     * 
-     *
      * @var string
      */
     protected $ref;
@@ -31,20 +27,14 @@ class PullRequestSimpleHead extends \ArrayObject
      */
     protected $repo;
     /**
-     * 
-     *
      * @var string
      */
     protected $sha;
     /**
-     * 
-     *
      * @var PullRequestSimpleHeadUser|null
      */
     protected $user;
     /**
-     * 
-     *
      * @return string
      */
     public function getLabel(): string
@@ -52,8 +42,6 @@ class PullRequestSimpleHead extends \ArrayObject
         return $this->label;
     }
     /**
-     * 
-     *
      * @param string $label
      *
      * @return self
@@ -65,8 +53,6 @@ class PullRequestSimpleHead extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRef(): string
@@ -74,8 +60,6 @@ class PullRequestSimpleHead extends \ArrayObject
         return $this->ref;
     }
     /**
-     * 
-     *
      * @param string $ref
      *
      * @return self
@@ -109,8 +93,6 @@ class PullRequestSimpleHead extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSha(): string
@@ -118,8 +100,6 @@ class PullRequestSimpleHead extends \ArrayObject
         return $this->sha;
     }
     /**
-     * 
-     *
      * @param string $sha
      *
      * @return self
@@ -131,8 +111,6 @@ class PullRequestSimpleHead extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PullRequestSimpleHeadUser|null
      */
     public function getUser(): ?PullRequestSimpleHeadUser
@@ -140,8 +118,6 @@ class PullRequestSimpleHead extends \ArrayObject
         return $this->user;
     }
     /**
-     * 
-     *
      * @param PullRequestSimpleHeadUser|null $user
      *
      * @return self

@@ -7,7 +7,6 @@ class PortfolioUserPermissions extends \CreditSafe\API\Runtime\Client\BaseEndpoi
     protected $portfolioId;
     /**
      * Retrieve user permissions within the customer for a portfolio
-     *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.

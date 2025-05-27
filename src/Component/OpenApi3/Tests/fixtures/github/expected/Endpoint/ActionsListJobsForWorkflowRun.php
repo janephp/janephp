@@ -9,13 +9,12 @@ class ActionsListJobsForWorkflowRun extends \Github\Runtime\Client\BaseEndpoint 
     protected $run_id;
     /**
     * Lists jobs for a workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://developer.github.com/v3/#parameters).
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param int $runId 
+    * @param string $owner
+    * @param string $repo
+    * @param int $runId
     * @param array $queryParameters {
-    *     @var string $filter Filters jobs by their `completed_at` timestamp. Can be one of:  
-    \* `latest`: Returns jobs from the most recent execution of the workflow run.  
+    *     @var string $filter Filters jobs by their `completed_at` timestamp. Can be one of:
+    \* `latest`: Returns jobs from the most recent execution of the workflow run.
     \* `all`: Returns all jobs for a workflow run, including from old executions of the workflow run.
     *     @var int $per_page Results per page (max 100)
     *     @var int $page Page number of the results to fetch.

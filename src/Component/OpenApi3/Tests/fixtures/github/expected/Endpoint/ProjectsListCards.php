@@ -6,8 +6,6 @@ class ProjectsListCards extends \Github\Runtime\Client\BaseEndpoint implements \
 {
     protected $column_id;
     /**
-     * 
-     *
      * @param int $columnId column_id parameter
      * @param array $queryParameters {
      *     @var string $archived_state Filters the project cards that are returned by the card's state. Can be one of `all`,`archived`, or `not_archived`.

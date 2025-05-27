@@ -13,20 +13,14 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCompanyHistoryIte
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $date;
     /**
-     * 
-     *
      * @var string
      */
     protected $description;
     /**
-     * 
-     *
      * @return string
      */
     public function getDate(): string
@@ -34,8 +28,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCompanyHistoryIte
         return $this->date;
     }
     /**
-     * 
-     *
      * @param string $date
      *
      * @return self
@@ -47,8 +39,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCompanyHistoryIte
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDescription(): string
@@ -56,8 +46,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCompanyHistoryIte
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string $description
      *
      * @return self

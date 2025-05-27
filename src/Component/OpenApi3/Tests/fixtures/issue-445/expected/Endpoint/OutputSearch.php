@@ -6,8 +6,7 @@ class OutputSearch extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
 {
     /**
      * ContentIds must be mandatory filled.
-     *
-     * @param \PicturePark\API\Model\OutputSearchRequest $requestBody 
+     * @param \PicturePark\API\Model\OutputSearchRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\OutputSearchRequest $requestBody)
     {

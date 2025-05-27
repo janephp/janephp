@@ -6,8 +6,7 @@ class SchemaSearch extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
 {
     /**
      * Searches schemas as specified in the search request.
-     *
-     * @param \PicturePark\API\Model\SchemaSearchRequest $requestBody 
+     * @param \PicturePark\API\Model\SchemaSearchRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\SchemaSearchRequest $requestBody)
     {

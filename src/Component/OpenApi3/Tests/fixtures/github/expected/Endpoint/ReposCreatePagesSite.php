@@ -7,11 +7,9 @@ class ReposCreatePagesSite extends \Github\Runtime\Client\BaseEndpoint implement
     protected $owner;
     protected $repo;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param null|\Github\Model\ReposOwnerRepoPagesPostBody $requestBody 
+     * @param string $owner
+     * @param string $repo
+     * @param null|\Github\Model\ReposOwnerRepoPagesPostBody $requestBody
      */
     public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPagesPostBody $requestBody = null)
     {

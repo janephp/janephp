@@ -7,7 +7,6 @@ class ListItemDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
     protected $id;
     /**
     * Deletes a list item. The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the list item and all related files will be deleted.
-    *
     * @param string $id The ID of the list item to delete.
     * @param array $queryParameters {
     *     @var bool $forceReferenceRemoval A value indicating whether references to the list item should be removed.

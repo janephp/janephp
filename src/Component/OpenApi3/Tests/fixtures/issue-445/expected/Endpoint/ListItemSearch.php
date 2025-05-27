@@ -6,8 +6,7 @@ class ListItemSearch extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
 {
     /**
      * Searches list items as specified in the search request.
-     *
-     * @param \PicturePark\API\Model\ListItemSearchRequest $requestBody 
+     * @param \PicturePark\API\Model\ListItemSearchRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\ListItemSearchRequest $requestBody)
     {

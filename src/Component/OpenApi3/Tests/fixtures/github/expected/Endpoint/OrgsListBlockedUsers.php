@@ -7,8 +7,7 @@ class OrgsListBlockedUsers extends \Github\Runtime\Client\BaseEndpoint implement
     protected $org;
     /**
      * List the users blocked by an organization.
-     *
-     * @param string $org 
+     * @param string $org
      */
     public function __construct(string $org)
     {

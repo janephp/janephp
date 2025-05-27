@@ -13,26 +13,18 @@ class RequestBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var array<string, MediaType>|null
      */
     protected $content;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $required = false;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription() : ?string
@@ -40,8 +32,6 @@ class RequestBody extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -53,8 +43,6 @@ class RequestBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, MediaType>|null
      */
     public function getContent() : ?iterable
@@ -62,8 +50,6 @@ class RequestBody extends \ArrayObject
         return $this->content;
     }
     /**
-     * 
-     *
      * @param array<string, MediaType>|null $content
      *
      * @return self
@@ -75,8 +61,6 @@ class RequestBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getRequired() : ?bool
@@ -84,8 +68,6 @@ class RequestBody extends \ArrayObject
         return $this->required;
     }
     /**
-     * 
-     *
      * @param bool|null $required
      *
      * @return self

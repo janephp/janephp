@@ -13,170 +13,114 @@ class DocumentMetadata extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $names;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $descriptions;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $fileExtension;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $fileName;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $filePath;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $fileSizeInBytes;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $sha1Hash;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $xmpMetadata;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $exifMetadata;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $language;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $applicationName;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $applicationVersion;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $author;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $creator;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $publisher;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $company;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $documentTitle;
     /**
-     * 
-     *
      * @var int
      */
     protected $characterCount;
     /**
-     * 
-     *
      * @var int
      */
     protected $characterCountWithSpaces;
     /**
-     * 
-     *
      * @var int
      */
     protected $lineCount;
     /**
-     * 
-     *
      * @var int
      */
     protected $pageCount;
     /**
-     * 
-     *
      * @var int
      */
     protected $slideCount;
     /**
-     * 
-     *
      * @var int
      */
     protected $paragraphCount;
     /**
-     * 
-     *
      * @var int
      */
     protected $revisionNumber;
     /**
-     * 
-     *
      * @var list<string>|null
      */
     protected $titles;
     /**
-     * 
-     *
      * @var list<string>|null
      */
     protected $imageTitles;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $epsInfo;
     /**
-     * 
-     *
      * @return mixed
      */
     public function getNames()
@@ -184,8 +128,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->names;
     }
     /**
-     * 
-     *
      * @param mixed $names
      *
      * @return self
@@ -197,8 +139,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getDescriptions()
@@ -206,8 +146,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->descriptions;
     }
     /**
-     * 
-     *
      * @param mixed $descriptions
      *
      * @return self
@@ -219,8 +157,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFileExtension(): ?string
@@ -228,8 +164,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->fileExtension;
     }
     /**
-     * 
-     *
      * @param string|null $fileExtension
      *
      * @return self
@@ -241,8 +175,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFileName(): ?string
@@ -250,8 +182,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->fileName;
     }
     /**
-     * 
-     *
      * @param string|null $fileName
      *
      * @return self
@@ -263,8 +193,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFilePath(): ?string
@@ -272,8 +200,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->filePath;
     }
     /**
-     * 
-     *
      * @param string|null $filePath
      *
      * @return self
@@ -285,8 +211,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getFileSizeInBytes(): ?int
@@ -294,8 +218,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->fileSizeInBytes;
     }
     /**
-     * 
-     *
      * @param int|null $fileSizeInBytes
      *
      * @return self
@@ -307,8 +229,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getSha1Hash(): ?string
@@ -316,8 +236,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->sha1Hash;
     }
     /**
-     * 
-     *
      * @param string|null $sha1Hash
      *
      * @return self
@@ -329,8 +247,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getXmpMetadata()
@@ -338,8 +254,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->xmpMetadata;
     }
     /**
-     * 
-     *
      * @param mixed $xmpMetadata
      *
      * @return self
@@ -351,8 +265,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getExifMetadata()
@@ -360,8 +272,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->exifMetadata;
     }
     /**
-     * 
-     *
      * @param mixed $exifMetadata
      *
      * @return self
@@ -373,8 +283,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getLanguage(): ?string
@@ -382,8 +290,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->language;
     }
     /**
-     * 
-     *
      * @param string|null $language
      *
      * @return self
@@ -395,8 +301,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getApplicationName(): ?string
@@ -404,8 +308,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->applicationName;
     }
     /**
-     * 
-     *
      * @param string|null $applicationName
      *
      * @return self
@@ -417,8 +319,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getApplicationVersion(): ?string
@@ -426,8 +326,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->applicationVersion;
     }
     /**
-     * 
-     *
      * @param string|null $applicationVersion
      *
      * @return self
@@ -439,8 +337,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getAuthor(): ?string
@@ -448,8 +344,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->author;
     }
     /**
-     * 
-     *
      * @param string|null $author
      *
      * @return self
@@ -461,8 +355,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCreator(): ?string
@@ -470,8 +362,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->creator;
     }
     /**
-     * 
-     *
      * @param string|null $creator
      *
      * @return self
@@ -483,8 +373,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getPublisher(): ?string
@@ -492,8 +380,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->publisher;
     }
     /**
-     * 
-     *
      * @param string|null $publisher
      *
      * @return self
@@ -505,8 +391,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCompany(): ?string
@@ -514,8 +398,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->company;
     }
     /**
-     * 
-     *
      * @param string|null $company
      *
      * @return self
@@ -527,8 +409,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDocumentTitle(): ?string
@@ -536,8 +416,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->documentTitle;
     }
     /**
-     * 
-     *
      * @param string|null $documentTitle
      *
      * @return self
@@ -549,8 +427,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getCharacterCount(): int
@@ -558,8 +434,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->characterCount;
     }
     /**
-     * 
-     *
      * @param int $characterCount
      *
      * @return self
@@ -571,8 +445,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getCharacterCountWithSpaces(): int
@@ -580,8 +452,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->characterCountWithSpaces;
     }
     /**
-     * 
-     *
      * @param int $characterCountWithSpaces
      *
      * @return self
@@ -593,8 +463,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getLineCount(): int
@@ -602,8 +470,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->lineCount;
     }
     /**
-     * 
-     *
      * @param int $lineCount
      *
      * @return self
@@ -615,8 +481,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getPageCount(): int
@@ -624,8 +488,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->pageCount;
     }
     /**
-     * 
-     *
      * @param int $pageCount
      *
      * @return self
@@ -637,8 +499,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getSlideCount(): int
@@ -646,8 +506,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->slideCount;
     }
     /**
-     * 
-     *
      * @param int $slideCount
      *
      * @return self
@@ -659,8 +517,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getParagraphCount(): int
@@ -668,8 +524,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->paragraphCount;
     }
     /**
-     * 
-     *
      * @param int $paragraphCount
      *
      * @return self
@@ -681,8 +535,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getRevisionNumber(): int
@@ -690,8 +542,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->revisionNumber;
     }
     /**
-     * 
-     *
      * @param int $revisionNumber
      *
      * @return self
@@ -703,8 +553,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>|null
      */
     public function getTitles(): ?array
@@ -712,8 +560,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->titles;
     }
     /**
-     * 
-     *
      * @param list<string>|null $titles
      *
      * @return self
@@ -725,8 +571,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>|null
      */
     public function getImageTitles(): ?array
@@ -734,8 +578,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->imageTitles;
     }
     /**
-     * 
-     *
      * @param list<string>|null $imageTitles
      *
      * @return self
@@ -747,8 +589,6 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getEpsInfo()
@@ -756,8 +596,6 @@ class DocumentMetadata extends \ArrayObject
         return $this->epsInfo;
     }
     /**
-     * 
-     *
      * @param mixed $epsInfo
      *
      * @return self

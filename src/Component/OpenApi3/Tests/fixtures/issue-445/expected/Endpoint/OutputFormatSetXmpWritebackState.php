@@ -6,12 +6,11 @@ class OutputFormatSetXmpWritebackState extends \PicturePark\API\Runtime\Client\B
 {
     protected $id;
     /**
-    * This is allowed for both static and dynamic formats.
-    However, enabling XMP writeback for Thumbnail formats or temporary formats is not allowed. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param string $id ID of the output format.
-    * @param \PicturePark\API\Model\OutputFormatSetXmpWritebackStateRequest $requestBody 
-    */
+     * This is allowed for both static and dynamic formats.
+     * However, enabling XMP writeback for Thumbnail formats or temporary formats is not allowed. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param string $id ID of the output format.
+     * @param \PicturePark\API\Model\OutputFormatSetXmpWritebackStateRequest $requestBody
+     */
     public function __construct(string $id, \PicturePark\API\Model\OutputFormatSetXmpWritebackStateRequest $requestBody)
     {
         $this->id = $id;

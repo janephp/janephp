@@ -13,44 +13,30 @@ class UserMarketplacePurchase extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $billingCycle;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $nextBillingDate;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $unitCount;
     /**
-     * 
-     *
      * @var bool
      */
     protected $onFreeTrial;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $freeTrialEndsOn;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var MarketplaceAccount
      */
     protected $account;
@@ -61,8 +47,6 @@ class UserMarketplacePurchase extends \ArrayObject
      */
     protected $plan;
     /**
-     * 
-     *
      * @return string
      */
     public function getBillingCycle(): string
@@ -70,8 +54,6 @@ class UserMarketplacePurchase extends \ArrayObject
         return $this->billingCycle;
     }
     /**
-     * 
-     *
      * @param string $billingCycle
      *
      * @return self
@@ -83,8 +65,6 @@ class UserMarketplacePurchase extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getNextBillingDate(): ?\DateTime
@@ -92,8 +72,6 @@ class UserMarketplacePurchase extends \ArrayObject
         return $this->nextBillingDate;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $nextBillingDate
      *
      * @return self
@@ -105,8 +83,6 @@ class UserMarketplacePurchase extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getUnitCount(): ?int
@@ -114,8 +90,6 @@ class UserMarketplacePurchase extends \ArrayObject
         return $this->unitCount;
     }
     /**
-     * 
-     *
      * @param int|null $unitCount
      *
      * @return self
@@ -127,8 +101,6 @@ class UserMarketplacePurchase extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getOnFreeTrial(): bool
@@ -136,8 +108,6 @@ class UserMarketplacePurchase extends \ArrayObject
         return $this->onFreeTrial;
     }
     /**
-     * 
-     *
      * @param bool $onFreeTrial
      *
      * @return self
@@ -149,8 +119,6 @@ class UserMarketplacePurchase extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getFreeTrialEndsOn(): ?\DateTime
@@ -158,8 +126,6 @@ class UserMarketplacePurchase extends \ArrayObject
         return $this->freeTrialEndsOn;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $freeTrialEndsOn
      *
      * @return self
@@ -171,8 +137,6 @@ class UserMarketplacePurchase extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
@@ -180,8 +144,6 @@ class UserMarketplacePurchase extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $updatedAt
      *
      * @return self
@@ -193,8 +155,6 @@ class UserMarketplacePurchase extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return MarketplaceAccount
      */
     public function getAccount(): MarketplaceAccount
@@ -202,8 +162,6 @@ class UserMarketplacePurchase extends \ArrayObject
         return $this->account;
     }
     /**
-     * 
-     *
      * @param MarketplaceAccount $account
      *
      * @return self

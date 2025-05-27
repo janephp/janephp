@@ -8,10 +8,8 @@ class ReposGetPagesBuild extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $repo;
     protected $build_id;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $buildId build_id parameter
      */
     public function __construct(string $owner, string $repo, int $buildId)

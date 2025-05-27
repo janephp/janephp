@@ -13,68 +13,46 @@ class CheckAnnotation extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $path;
     /**
-     * 
-     *
      * @var int
      */
     protected $startLine;
     /**
-     * 
-     *
      * @var int
      */
     protected $endLine;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $startColumn;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $endColumn;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $annotationLevel;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $title;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $message;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $rawDetails;
     /**
-     * 
-     *
      * @var string
      */
     protected $blobHref;
     /**
-     * 
-     *
      * @return string
      */
     public function getPath(): string
@@ -82,8 +60,6 @@ class CheckAnnotation extends \ArrayObject
         return $this->path;
     }
     /**
-     * 
-     *
      * @param string $path
      *
      * @return self
@@ -95,8 +71,6 @@ class CheckAnnotation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getStartLine(): int
@@ -104,8 +78,6 @@ class CheckAnnotation extends \ArrayObject
         return $this->startLine;
     }
     /**
-     * 
-     *
      * @param int $startLine
      *
      * @return self
@@ -117,8 +89,6 @@ class CheckAnnotation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getEndLine(): int
@@ -126,8 +96,6 @@ class CheckAnnotation extends \ArrayObject
         return $this->endLine;
     }
     /**
-     * 
-     *
      * @param int $endLine
      *
      * @return self
@@ -139,8 +107,6 @@ class CheckAnnotation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getStartColumn(): ?int
@@ -148,8 +114,6 @@ class CheckAnnotation extends \ArrayObject
         return $this->startColumn;
     }
     /**
-     * 
-     *
      * @param int|null $startColumn
      *
      * @return self
@@ -161,8 +125,6 @@ class CheckAnnotation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getEndColumn(): ?int
@@ -170,8 +132,6 @@ class CheckAnnotation extends \ArrayObject
         return $this->endColumn;
     }
     /**
-     * 
-     *
      * @param int|null $endColumn
      *
      * @return self
@@ -183,8 +143,6 @@ class CheckAnnotation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getAnnotationLevel(): ?string
@@ -192,8 +150,6 @@ class CheckAnnotation extends \ArrayObject
         return $this->annotationLevel;
     }
     /**
-     * 
-     *
      * @param string|null $annotationLevel
      *
      * @return self
@@ -205,8 +161,6 @@ class CheckAnnotation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTitle(): ?string
@@ -214,8 +168,6 @@ class CheckAnnotation extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string|null $title
      *
      * @return self
@@ -227,8 +179,6 @@ class CheckAnnotation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getMessage(): ?string
@@ -236,8 +186,6 @@ class CheckAnnotation extends \ArrayObject
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string|null $message
      *
      * @return self
@@ -249,8 +197,6 @@ class CheckAnnotation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getRawDetails(): ?string
@@ -258,8 +204,6 @@ class CheckAnnotation extends \ArrayObject
         return $this->rawDetails;
     }
     /**
-     * 
-     *
      * @param string|null $rawDetails
      *
      * @return self
@@ -271,8 +215,6 @@ class CheckAnnotation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBlobHref(): string
@@ -280,8 +222,6 @@ class CheckAnnotation extends \ArrayObject
         return $this->blobHref;
     }
     /**
-     * 
-     *
      * @param string $blobHref
      *
      * @return self

@@ -7,9 +7,8 @@ class IdentityProviderUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoin
     protected $id;
     /**
      * Identity provider has to be already created via UI
-     *
      * @param string $id Identity provider ID.
-     * @param \PicturePark\API\Model\IdentityProviderEditable $requestBody 
+     * @param \PicturePark\API\Model\IdentityProviderEditable $requestBody
      */
     public function __construct(string $id, \PicturePark\API\Model\IdentityProviderEditable $requestBody)
     {

@@ -13,86 +13,58 @@ class PathItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $dollarRef;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $summary;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var Operation|null
      */
     protected $get;
     /**
-     * 
-     *
      * @var Operation|null
      */
     protected $put;
     /**
-     * 
-     *
      * @var Operation|null
      */
     protected $post;
     /**
-     * 
-     *
      * @var Operation|null
      */
     protected $delete;
     /**
-     * 
-     *
      * @var Operation|null
      */
     protected $options;
     /**
-     * 
-     *
      * @var Operation|null
      */
     protected $head;
     /**
-     * 
-     *
      * @var Operation|null
      */
     protected $patch;
     /**
-     * 
-     *
      * @var Operation|null
      */
     protected $trace;
     /**
-     * 
-     *
      * @var Server[]|null
      */
     protected $servers;
     /**
-     * 
-     *
      * @var Parameter[]|Reference[]|null
      */
     protected $parameters;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDollarRef() : ?string
@@ -100,8 +72,6 @@ class PathItem extends \ArrayObject
         return $this->dollarRef;
     }
     /**
-     * 
-     *
      * @param string|null $dollarRef
      *
      * @return self
@@ -113,8 +83,6 @@ class PathItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getSummary() : ?string
@@ -122,8 +90,6 @@ class PathItem extends \ArrayObject
         return $this->summary;
     }
     /**
-     * 
-     *
      * @param string|null $summary
      *
      * @return self
@@ -135,8 +101,6 @@ class PathItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription() : ?string
@@ -144,8 +108,6 @@ class PathItem extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -157,8 +119,6 @@ class PathItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Operation|null
      */
     public function getGet() : ?Operation
@@ -166,8 +126,6 @@ class PathItem extends \ArrayObject
         return $this->get;
     }
     /**
-     * 
-     *
      * @param Operation|null $get
      *
      * @return self
@@ -179,8 +137,6 @@ class PathItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Operation|null
      */
     public function getPut() : ?Operation
@@ -188,8 +144,6 @@ class PathItem extends \ArrayObject
         return $this->put;
     }
     /**
-     * 
-     *
      * @param Operation|null $put
      *
      * @return self
@@ -201,8 +155,6 @@ class PathItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Operation|null
      */
     public function getPost() : ?Operation
@@ -210,8 +162,6 @@ class PathItem extends \ArrayObject
         return $this->post;
     }
     /**
-     * 
-     *
      * @param Operation|null $post
      *
      * @return self
@@ -223,8 +173,6 @@ class PathItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Operation|null
      */
     public function getDelete() : ?Operation
@@ -232,8 +180,6 @@ class PathItem extends \ArrayObject
         return $this->delete;
     }
     /**
-     * 
-     *
      * @param Operation|null $delete
      *
      * @return self
@@ -245,8 +191,6 @@ class PathItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Operation|null
      */
     public function getOptions() : ?Operation
@@ -254,8 +198,6 @@ class PathItem extends \ArrayObject
         return $this->options;
     }
     /**
-     * 
-     *
      * @param Operation|null $options
      *
      * @return self
@@ -267,8 +209,6 @@ class PathItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Operation|null
      */
     public function getHead() : ?Operation
@@ -276,8 +216,6 @@ class PathItem extends \ArrayObject
         return $this->head;
     }
     /**
-     * 
-     *
      * @param Operation|null $head
      *
      * @return self
@@ -289,8 +227,6 @@ class PathItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Operation|null
      */
     public function getPatch() : ?Operation
@@ -298,8 +234,6 @@ class PathItem extends \ArrayObject
         return $this->patch;
     }
     /**
-     * 
-     *
      * @param Operation|null $patch
      *
      * @return self
@@ -311,8 +245,6 @@ class PathItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Operation|null
      */
     public function getTrace() : ?Operation
@@ -320,8 +252,6 @@ class PathItem extends \ArrayObject
         return $this->trace;
     }
     /**
-     * 
-     *
      * @param Operation|null $trace
      *
      * @return self
@@ -333,8 +263,6 @@ class PathItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Server[]|null
      */
     public function getServers() : ?array
@@ -342,8 +270,6 @@ class PathItem extends \ArrayObject
         return $this->servers;
     }
     /**
-     * 
-     *
      * @param Server[]|null $servers
      *
      * @return self
@@ -355,8 +281,6 @@ class PathItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Parameter[]|Reference[]|null
      */
     public function getParameters() : ?array
@@ -364,8 +288,6 @@ class PathItem extends \ArrayObject
         return $this->parameters;
     }
     /**
-     * 
-     *
      * @param Parameter[]|Reference[]|null $parameters
      *
      * @return self

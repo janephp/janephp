@@ -5,11 +5,10 @@ namespace PicturePark\API\Endpoint;
 class ContentGetOutputsMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Retrieves all outputs available for contents, also dynamic rendered outputs are returned, if requested.
-    A maximum of 1000 content ids can be specified.
-    *
-    * @param \PicturePark\API\Model\OutputResolveManyRequest $requestBody 
-    */
+     * Retrieves all outputs available for contents, also dynamic rendered outputs are returned, if requested.
+     * A maximum of 1000 content ids can be specified.
+     * @param \PicturePark\API\Model\OutputResolveManyRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\OutputResolveManyRequest $requestBody)
     {
         $this->body = $requestBody;

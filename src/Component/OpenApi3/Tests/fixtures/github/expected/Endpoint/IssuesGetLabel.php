@@ -8,10 +8,8 @@ class IssuesGetLabel extends \Github\Runtime\Client\BaseEndpoint implements \Git
     protected $repo;
     protected $name;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param string $name name parameter
      */
     public function __construct(string $owner, string $repo, string $name)

@@ -10,12 +10,11 @@ class PullsUpdateReview extends \Github\Runtime\Client\BaseEndpoint implements \
     protected $review_id;
     /**
      * Update the review summary comment with new text.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $pullNumber 
+     * @param string $owner
+     * @param string $repo
+     * @param int $pullNumber
      * @param int $reviewId review_id parameter
-     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $pullNumber, int $reviewId, ?\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody $requestBody = null)
     {

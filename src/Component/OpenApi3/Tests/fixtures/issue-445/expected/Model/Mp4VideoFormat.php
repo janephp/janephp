@@ -31,8 +31,6 @@ class Mp4VideoFormat extends FormatBase
      */
     protected $preset;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $extension;
@@ -103,8 +101,6 @@ class Mp4VideoFormat extends FormatBase
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExtension(): ?string
@@ -112,8 +108,6 @@ class Mp4VideoFormat extends FormatBase
         return $this->extension;
     }
     /**
-     * 
-     *
      * @param string|null $extension
      *
      * @return self

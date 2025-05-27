@@ -13,8 +13,6 @@ class AacAudioFormat extends FormatBase
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $extension;
@@ -43,8 +41,6 @@ class AacAudioFormat extends FormatBase
      */
     protected $variableBitRate;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExtension(): ?string
@@ -52,8 +48,6 @@ class AacAudioFormat extends FormatBase
         return $this->extension;
     }
     /**
-     * 
-     *
      * @param string|null $extension
      *
      * @return self

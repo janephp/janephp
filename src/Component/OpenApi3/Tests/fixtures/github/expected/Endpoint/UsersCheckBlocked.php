@@ -6,12 +6,11 @@ class UsersCheckBlocked extends \Github\Runtime\Client\BaseEndpoint implements \
 {
     protected $username;
     /**
-    * If the user is blocked:
-    
-    If the user is not blocked:
-    *
-    * @param string $username 
-    */
+     * If the user is blocked:
+     *
+     * If the user is not blocked:
+     * @param string $username
+     */
     public function __construct(string $username)
     {
         $this->username = $username;

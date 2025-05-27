@@ -7,7 +7,6 @@ class StreamFilter extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Clien
     protected $accept;
     /**
      * Streams tweets matching a user's active rule set.
-     *
      * @param array $queryParameters {
      *     @var array $expansions A comma-separated list of tweet expansions.
      * }

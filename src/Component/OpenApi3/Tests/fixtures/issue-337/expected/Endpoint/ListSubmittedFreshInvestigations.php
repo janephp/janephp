@@ -6,7 +6,6 @@ class ListSubmittedFreshInvestigations extends \CreditSafe\API\Runtime\Client\Ba
 {
     /**
      * Returns a list of your submitted Fresh Investigation Orders.
-     *
      * @param array $queryParameters {
      *     @var int $page Starting page number (indexed from 0)
      *     @var int $pageSize Number of items to return per Page (max 1000)

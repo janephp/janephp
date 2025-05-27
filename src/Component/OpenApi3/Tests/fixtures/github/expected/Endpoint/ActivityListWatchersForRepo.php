@@ -8,9 +8,8 @@ class ActivityListWatchersForRepo extends \Github\Runtime\Client\BaseEndpoint im
     protected $repo;
     /**
      * Lists the people watching the specified repository.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.

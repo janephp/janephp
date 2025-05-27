@@ -8,8 +8,7 @@ class ActionsListSelectedReposForOrgSecret extends \Github\Runtime\Client\BaseEn
     protected $secret_name;
     /**
      * Lists all repositories that have been selected when the `visibility` for repository access to a secret is set to `selected`. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
-     *
-     * @param string $org 
+     * @param string $org
      * @param string $secretName secret_name parameter
      */
     public function __construct(string $org, string $secretName)

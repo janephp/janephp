@@ -13,18 +13,18 @@ class SchemaCreateManyRequest
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * The schemas to create. Cyclic dependencies between schemas are supported, if they
-    are all in the same request.
-    *
-    * @var list<SchemaCreateRequest>
-    */
+     * The schemas to create. Cyclic dependencies between schemas are supported, if they
+     * are all in the same request.
+     *
+     * @var list<SchemaCreateRequest>
+     */
     protected $schemas;
     /**
-    * The schemas to create. Cyclic dependencies between schemas are supported, if they
-    are all in the same request.
-    *
-    * @return list<SchemaCreateRequest>
-    */
+     * The schemas to create. Cyclic dependencies between schemas are supported, if they
+     * are all in the same request.
+     *
+     * @return list<SchemaCreateRequest>
+     */
     public function getSchemas(): array
     {
         return $this->schemas;

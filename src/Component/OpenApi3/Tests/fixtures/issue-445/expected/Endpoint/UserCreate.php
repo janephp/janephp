@@ -6,8 +6,7 @@ class UserCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
 {
     /**
      * User will not be invited.
-     *
-     * @param \PicturePark\API\Model\UserCreateRequest $requestBody 
+     * @param \PicturePark\API\Model\UserCreateRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\UserCreateRequest $requestBody)
     {

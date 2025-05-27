@@ -9,9 +9,8 @@ class ActionsDeleteRepoSecret extends \Github\Runtime\Client\BaseEndpoint implem
     protected $secret_name;
     /**
      * Deletes a secret in a repository using the secret name. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository permission to use this endpoint.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param string $secretName secret_name parameter
      */
     public function __construct(string $owner, string $repo, string $secretName)

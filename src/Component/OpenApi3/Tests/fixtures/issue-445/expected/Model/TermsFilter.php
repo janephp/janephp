@@ -13,11 +13,11 @@ class TermsFilter extends FilterBase
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
-    (i.e. personLayer.address.street).
-    *
-    * @var string
-    */
+     * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
+     * (i.e. personLayer.address.street).
+     *
+     * @var string
+     */
     protected $field;
     /**
      * The list of values to be filtered on. At least one must match to return results.
@@ -26,11 +26,11 @@ class TermsFilter extends FilterBase
      */
     protected $terms;
     /**
-    * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
-    (i.e. personLayer.address.street).
-    *
-    * @return string
-    */
+     * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
+     * (i.e. personLayer.address.street).
+     *
+     * @return string
+     */
     public function getField(): string
     {
         return $this->field;

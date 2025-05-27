@@ -13,14 +13,10 @@ class AnimatedGif extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $previewImageUrl;
@@ -43,8 +39,6 @@ class AnimatedGif extends \ArrayObject
      */
     protected $width;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -52,8 +46,6 @@ class AnimatedGif extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -65,8 +57,6 @@ class AnimatedGif extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPreviewImageUrl(): string
@@ -74,8 +64,6 @@ class AnimatedGif extends \ArrayObject
         return $this->previewImageUrl;
     }
     /**
-     * 
-     *
      * @param string $previewImageUrl
      *
      * @return self

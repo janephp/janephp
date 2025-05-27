@@ -6,8 +6,6 @@ class LicensesGet extends \Github\Runtime\Client\BaseEndpoint implements \Github
 {
     protected $license;
     /**
-     * 
-     *
      * @param string $license license parameter
      */
     public function __construct(string $license)

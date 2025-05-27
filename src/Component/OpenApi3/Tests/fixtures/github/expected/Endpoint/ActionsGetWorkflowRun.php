@@ -9,10 +9,9 @@ class ActionsGetWorkflowRun extends \Github\Runtime\Client\BaseEndpoint implemen
     protected $run_id;
     /**
      * Gets a specific workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $runId 
+     * @param string $owner
+     * @param string $repo
+     * @param int $runId
      */
     public function __construct(string $owner, string $repo, int $runId)
     {

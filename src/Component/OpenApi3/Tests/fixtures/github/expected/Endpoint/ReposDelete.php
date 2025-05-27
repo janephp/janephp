@@ -7,14 +7,13 @@ class ReposDelete extends \Github\Runtime\Client\BaseEndpoint implements \Github
     protected $owner;
     protected $repo;
     /**
-    * Deleting a repository requires admin access. If OAuth is used, the `delete_repo` scope is required.
-    
-    If an organization owner has configured the organization to prevent members from deleting organization-owned
-    repositories, you will get a `403 Forbidden` response.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    */
+     * Deleting a repository requires admin access. If OAuth is used, the `delete_repo` scope is required.
+     *
+     * If an organization owner has configured the organization to prevent members from deleting organization-owned
+     * repositories, you will get a `403 Forbidden` response.
+     * @param string $owner
+     * @param string $repo
+     */
     public function __construct(string $owner, string $repo)
     {
         $this->owner = $owner;

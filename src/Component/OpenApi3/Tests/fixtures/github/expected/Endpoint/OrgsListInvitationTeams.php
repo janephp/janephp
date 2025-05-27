@@ -8,8 +8,7 @@ class OrgsListInvitationTeams extends \Github\Runtime\Client\BaseEndpoint implem
     protected $invitation_id;
     /**
      * List all teams associated with an invitation. In order to see invitations in an organization, the authenticated user must be an organization owner.
-     *
-     * @param string $org 
+     * @param string $org
      * @param int $invitationId invitation_id parameter
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)

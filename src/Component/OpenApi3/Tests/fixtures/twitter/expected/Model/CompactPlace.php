@@ -13,8 +13,6 @@ class CompactPlace extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $format;
@@ -31,14 +29,10 @@ class CompactPlace extends \ArrayObject
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $countryCode;
     /**
-     * 
-     *
      * @return string
      */
     public function getFormat(): string
@@ -46,8 +40,6 @@ class CompactPlace extends \ArrayObject
         return $this->format;
     }
     /**
-     * 
-     *
      * @param string $format
      *
      * @return self
@@ -103,8 +95,6 @@ class CompactPlace extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountryCode(): string
@@ -112,8 +102,6 @@ class CompactPlace extends \ArrayObject
         return $this->countryCode;
     }
     /**
-     * 
-     *
      * @param string $countryCode
      *
      * @return self

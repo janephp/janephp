@@ -14,12 +14,14 @@ class TaskSpecPlacementPreferencesItemSpread
     }
     /**
      * label descriptor, such as `engine.labels.az`.
+     * 
      *
      * @var string
      */
     protected $spreadDescriptor;
     /**
      * label descriptor, such as `engine.labels.az`.
+     * 
      *
      * @return string
      */

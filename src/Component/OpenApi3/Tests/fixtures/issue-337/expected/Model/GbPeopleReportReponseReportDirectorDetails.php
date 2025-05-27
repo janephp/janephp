@@ -13,92 +13,62 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $idType;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $title;
     /**
-     * 
-     *
      * @var string
      */
     protected $firstName;
     /**
-     * 
-     *
      * @var string
      */
     protected $middleName;
     /**
-     * 
-     *
      * @var string
      */
     protected $surname;
     /**
-     * 
-     *
      * @var GbPeopleReportReponseReportDirectorDetailsAddress
      */
     protected $address;
     /**
-     * 
-     *
      * @var string
      */
     protected $gender;
     /**
-     * 
-     *
      * @var string
      */
     protected $dateOfBirth;
     /**
-     * 
-     *
      * @var string
      */
     protected $country;
     /**
-     * 
-     *
      * @var string
      */
     protected $directorType;
     /**
-     * 
-     *
      * @var list<GbPeopleReportReponseReportDirectorDetailsPositionsItem>
      */
     protected $positions;
     /**
-     * 
-     *
      * @var GbPeopleReportReponseReportDirectorDetailsAdditionalData
      */
     protected $additionalData;
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -106,8 +76,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -119,8 +87,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIdType(): string
@@ -128,8 +94,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this->idType;
     }
     /**
-     * 
-     *
      * @param string $idType
      *
      * @return self
@@ -141,8 +105,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -150,8 +112,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -163,8 +123,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTitle(): string
@@ -172,8 +130,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string $title
      *
      * @return self
@@ -185,8 +141,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFirstName(): string
@@ -194,8 +148,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this->firstName;
     }
     /**
-     * 
-     *
      * @param string $firstName
      *
      * @return self
@@ -207,8 +159,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMiddleName(): string
@@ -216,8 +166,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this->middleName;
     }
     /**
-     * 
-     *
      * @param string $middleName
      *
      * @return self
@@ -229,8 +177,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSurname(): string
@@ -238,8 +184,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this->surname;
     }
     /**
-     * 
-     *
      * @param string $surname
      *
      * @return self
@@ -251,8 +195,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbPeopleReportReponseReportDirectorDetailsAddress
      */
     public function getAddress(): GbPeopleReportReponseReportDirectorDetailsAddress
@@ -260,8 +202,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this->address;
     }
     /**
-     * 
-     *
      * @param GbPeopleReportReponseReportDirectorDetailsAddress $address
      *
      * @return self
@@ -273,8 +213,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGender(): string
@@ -282,8 +220,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this->gender;
     }
     /**
-     * 
-     *
      * @param string $gender
      *
      * @return self
@@ -295,8 +231,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDateOfBirth(): string
@@ -304,8 +238,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this->dateOfBirth;
     }
     /**
-     * 
-     *
      * @param string $dateOfBirth
      *
      * @return self
@@ -317,8 +249,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountry(): string
@@ -326,8 +256,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this->country;
     }
     /**
-     * 
-     *
      * @param string $country
      *
      * @return self
@@ -339,8 +267,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDirectorType(): string
@@ -348,8 +274,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this->directorType;
     }
     /**
-     * 
-     *
      * @param string $directorType
      *
      * @return self
@@ -361,8 +285,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<GbPeopleReportReponseReportDirectorDetailsPositionsItem>
      */
     public function getPositions(): array
@@ -370,8 +292,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this->positions;
     }
     /**
-     * 
-     *
      * @param list<GbPeopleReportReponseReportDirectorDetailsPositionsItem> $positions
      *
      * @return self
@@ -383,8 +303,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbPeopleReportReponseReportDirectorDetailsAdditionalData
      */
     public function getAdditionalData(): GbPeopleReportReponseReportDirectorDetailsAdditionalData
@@ -392,8 +310,6 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         return $this->additionalData;
     }
     /**
-     * 
-     *
      * @param GbPeopleReportReponseReportDirectorDetailsAdditionalData $additionalData
      *
      * @return self

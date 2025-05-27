@@ -13,8 +13,6 @@ class DetailedPlace extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $format;
@@ -31,44 +29,30 @@ class DetailedPlace extends \ArrayObject
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $countryCode;
     /**
-     * 
-     *
      * @var string
      */
     protected $placeType;
     /**
-     * 
-     *
      * @var string
      */
     protected $fullName;
     /**
-     * 
-     *
      * @var string
      */
     protected $country;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $containedWithin;
     /**
-     * 
-     *
      * @var Geo
      */
     protected $geo;
     /**
-     * 
-     *
      * @return string
      */
     public function getFormat(): string
@@ -76,8 +60,6 @@ class DetailedPlace extends \ArrayObject
         return $this->format;
     }
     /**
-     * 
-     *
      * @param string $format
      *
      * @return self
@@ -133,8 +115,6 @@ class DetailedPlace extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountryCode(): string
@@ -142,8 +122,6 @@ class DetailedPlace extends \ArrayObject
         return $this->countryCode;
     }
     /**
-     * 
-     *
      * @param string $countryCode
      *
      * @return self
@@ -155,8 +133,6 @@ class DetailedPlace extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPlaceType(): string
@@ -164,8 +140,6 @@ class DetailedPlace extends \ArrayObject
         return $this->placeType;
     }
     /**
-     * 
-     *
      * @param string $placeType
      *
      * @return self
@@ -177,8 +151,6 @@ class DetailedPlace extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFullName(): string
@@ -186,8 +158,6 @@ class DetailedPlace extends \ArrayObject
         return $this->fullName;
     }
     /**
-     * 
-     *
      * @param string $fullName
      *
      * @return self
@@ -199,8 +169,6 @@ class DetailedPlace extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountry(): string
@@ -208,8 +176,6 @@ class DetailedPlace extends \ArrayObject
         return $this->country;
     }
     /**
-     * 
-     *
      * @param string $country
      *
      * @return self
@@ -221,8 +187,6 @@ class DetailedPlace extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getContainedWithin(): array
@@ -230,8 +194,6 @@ class DetailedPlace extends \ArrayObject
         return $this->containedWithin;
     }
     /**
-     * 
-     *
      * @param list<string> $containedWithin
      *
      * @return self
@@ -243,8 +205,6 @@ class DetailedPlace extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Geo
      */
     public function getGeo(): Geo
@@ -252,8 +212,6 @@ class DetailedPlace extends \ArrayObject
         return $this->geo;
     }
     /**
-     * 
-     *
      * @param Geo $geo
      *
      * @return self

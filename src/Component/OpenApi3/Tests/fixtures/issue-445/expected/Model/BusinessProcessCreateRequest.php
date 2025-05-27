@@ -19,11 +19,11 @@ class BusinessProcessCreateRequest
      */
     protected $supportsCancellation;
     /**
-    * Notification data to send to the user when creating the business process.
-    Set to null to not create a notification.
-    *
-    * @var mixed|null
-    */
+     * Notification data to send to the user when creating the business process.
+     * Set to null to not create a notification.
+     *
+     * @var mixed|null
+     */
     protected $notification;
     /**
      * Initial state of the business process.
@@ -54,11 +54,11 @@ class BusinessProcessCreateRequest
         return $this;
     }
     /**
-    * Notification data to send to the user when creating the business process.
-    Set to null to not create a notification.
-    *
-    * @return mixed
-    */
+     * Notification data to send to the user when creating the business process.
+     * Set to null to not create a notification.
+     *
+     * @return mixed
+     */
     public function getNotification()
     {
         return $this->notification;

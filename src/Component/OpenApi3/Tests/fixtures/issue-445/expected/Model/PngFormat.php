@@ -55,8 +55,6 @@ class PngFormat extends FormatBase
      */
     protected $actions;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $extension;
@@ -215,8 +213,6 @@ class PngFormat extends FormatBase
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExtension(): ?string
@@ -224,8 +220,6 @@ class PngFormat extends FormatBase
         return $this->extension;
     }
     /**
-     * 
-     *
      * @param string|null $extension
      *
      * @return self

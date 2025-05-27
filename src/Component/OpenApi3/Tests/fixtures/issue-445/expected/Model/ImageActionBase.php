@@ -13,14 +13,10 @@ class ImageActionBase
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -28,8 +24,6 @@ class ImageActionBase
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      */
     public function setKind(string $kind)

@@ -13,116 +13,78 @@ class VideoMetadata extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $names;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $descriptions;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $fileExtension;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $fileName;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $filePath;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $fileSizeInBytes;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $sha1Hash;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $xmpMetadata;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $exifMetadata;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $language;
     /**
-     * 
-     *
      * @var int
      */
     protected $width;
     /**
-     * 
-     *
      * @var int
      */
     protected $height;
     /**
-     * 
-     *
      * @var float
      */
     protected $durationInSeconds;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $format;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $codec;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $overallBitrate;
     /**
-     * 
-     *
      * @var list<VideoStream>|null
      */
     protected $videoStreams;
     /**
-     * 
-     *
      * @var list<AudioStream>|null
      */
     protected $audioStreams;
     /**
-     * 
-     *
      * @return mixed
      */
     public function getNames()
@@ -130,8 +92,6 @@ class VideoMetadata extends \ArrayObject
         return $this->names;
     }
     /**
-     * 
-     *
      * @param mixed $names
      *
      * @return self
@@ -143,8 +103,6 @@ class VideoMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getDescriptions()
@@ -152,8 +110,6 @@ class VideoMetadata extends \ArrayObject
         return $this->descriptions;
     }
     /**
-     * 
-     *
      * @param mixed $descriptions
      *
      * @return self
@@ -165,8 +121,6 @@ class VideoMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFileExtension(): ?string
@@ -174,8 +128,6 @@ class VideoMetadata extends \ArrayObject
         return $this->fileExtension;
     }
     /**
-     * 
-     *
      * @param string|null $fileExtension
      *
      * @return self
@@ -187,8 +139,6 @@ class VideoMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFileName(): ?string
@@ -196,8 +146,6 @@ class VideoMetadata extends \ArrayObject
         return $this->fileName;
     }
     /**
-     * 
-     *
      * @param string|null $fileName
      *
      * @return self
@@ -209,8 +157,6 @@ class VideoMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFilePath(): ?string
@@ -218,8 +164,6 @@ class VideoMetadata extends \ArrayObject
         return $this->filePath;
     }
     /**
-     * 
-     *
      * @param string|null $filePath
      *
      * @return self
@@ -231,8 +175,6 @@ class VideoMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getFileSizeInBytes(): ?int
@@ -240,8 +182,6 @@ class VideoMetadata extends \ArrayObject
         return $this->fileSizeInBytes;
     }
     /**
-     * 
-     *
      * @param int|null $fileSizeInBytes
      *
      * @return self
@@ -253,8 +193,6 @@ class VideoMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getSha1Hash(): ?string
@@ -262,8 +200,6 @@ class VideoMetadata extends \ArrayObject
         return $this->sha1Hash;
     }
     /**
-     * 
-     *
      * @param string|null $sha1Hash
      *
      * @return self
@@ -275,8 +211,6 @@ class VideoMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getXmpMetadata()
@@ -284,8 +218,6 @@ class VideoMetadata extends \ArrayObject
         return $this->xmpMetadata;
     }
     /**
-     * 
-     *
      * @param mixed $xmpMetadata
      *
      * @return self
@@ -297,8 +229,6 @@ class VideoMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getExifMetadata()
@@ -306,8 +236,6 @@ class VideoMetadata extends \ArrayObject
         return $this->exifMetadata;
     }
     /**
-     * 
-     *
      * @param mixed $exifMetadata
      *
      * @return self
@@ -319,8 +247,6 @@ class VideoMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getLanguage(): ?string
@@ -328,8 +254,6 @@ class VideoMetadata extends \ArrayObject
         return $this->language;
     }
     /**
-     * 
-     *
      * @param string|null $language
      *
      * @return self
@@ -341,8 +265,6 @@ class VideoMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getWidth(): int
@@ -350,8 +272,6 @@ class VideoMetadata extends \ArrayObject
         return $this->width;
     }
     /**
-     * 
-     *
      * @param int $width
      *
      * @return self
@@ -363,8 +283,6 @@ class VideoMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getHeight(): int
@@ -372,8 +290,6 @@ class VideoMetadata extends \ArrayObject
         return $this->height;
     }
     /**
-     * 
-     *
      * @param int $height
      *
      * @return self
@@ -385,8 +301,6 @@ class VideoMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getDurationInSeconds(): float
@@ -394,8 +308,6 @@ class VideoMetadata extends \ArrayObject
         return $this->durationInSeconds;
     }
     /**
-     * 
-     *
      * @param float $durationInSeconds
      *
      * @return self
@@ -407,8 +319,6 @@ class VideoMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFormat(): ?string
@@ -416,8 +326,6 @@ class VideoMetadata extends \ArrayObject
         return $this->format;
     }
     /**
-     * 
-     *
      * @param string|null $format
      *
      * @return self
@@ -429,8 +337,6 @@ class VideoMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCodec(): ?string
@@ -438,8 +344,6 @@ class VideoMetadata extends \ArrayObject
         return $this->codec;
     }
     /**
-     * 
-     *
      * @param string|null $codec
      *
      * @return self
@@ -451,8 +355,6 @@ class VideoMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getOverallBitrate(): ?int
@@ -460,8 +362,6 @@ class VideoMetadata extends \ArrayObject
         return $this->overallBitrate;
     }
     /**
-     * 
-     *
      * @param int|null $overallBitrate
      *
      * @return self
@@ -473,8 +373,6 @@ class VideoMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<VideoStream>|null
      */
     public function getVideoStreams(): ?array
@@ -482,8 +380,6 @@ class VideoMetadata extends \ArrayObject
         return $this->videoStreams;
     }
     /**
-     * 
-     *
      * @param list<VideoStream>|null $videoStreams
      *
      * @return self
@@ -495,8 +391,6 @@ class VideoMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<AudioStream>|null
      */
     public function getAudioStreams(): ?array
@@ -504,8 +398,6 @@ class VideoMetadata extends \ArrayObject
         return $this->audioStreams;
     }
     /**
-     * 
-     *
      * @param list<AudioStream>|null $audioStreams
      *
      * @return self

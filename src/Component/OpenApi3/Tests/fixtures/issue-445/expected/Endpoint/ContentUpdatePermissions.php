@@ -7,9 +7,8 @@ class ContentUpdatePermissions extends \PicturePark\API\Runtime\Client\BaseEndpo
     protected $id;
     /**
     * Updates the content permission sets of a single content. To get a list of available content permission sets, see [Permissions](operation/Permission_SearchContentPermissions)
-    *
     * @param string $id The content ID.
-    * @param \PicturePark\API\Model\ContentPermissionsUpdateRequest $requestBody 
+    * @param \PicturePark\API\Model\ContentPermissionsUpdateRequest $requestBody
     * @param array $queryParameters {
     *     @var array $resolveBehaviors List of enums that control which parts of the content are resolved and returned.
     *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.

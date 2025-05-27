@@ -13,26 +13,26 @@ class SwarmSpecTaskDefaults
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * The log driver to use for tasks created in the orchestrator if
-    unspecified by a service.
-    
-    Updating this value only affects new tasks. Existing tasks continue
-    to use their previously configured log driver until recreated.
-    
-    *
-    * @var SwarmSpecTaskDefaultsLogDriver
-    */
+     * The log driver to use for tasks created in the orchestrator if
+     * unspecified by a service.
+     * 
+     * Updating this value only affects new tasks. Existing tasks continue
+     * to use their previously configured log driver until recreated.
+     * 
+     *
+     * @var SwarmSpecTaskDefaultsLogDriver
+     */
     protected $logDriver;
     /**
-    * The log driver to use for tasks created in the orchestrator if
-    unspecified by a service.
-    
-    Updating this value only affects new tasks. Existing tasks continue
-    to use their previously configured log driver until recreated.
-    
-    *
-    * @return SwarmSpecTaskDefaultsLogDriver
-    */
+     * The log driver to use for tasks created in the orchestrator if
+     * unspecified by a service.
+     * 
+     * Updating this value only affects new tasks. Existing tasks continue
+     * to use their previously configured log driver until recreated.
+     * 
+     *
+     * @return SwarmSpecTaskDefaultsLogDriver
+     */
     public function getLogDriver(): SwarmSpecTaskDefaultsLogDriver
     {
         return $this->logDriver;

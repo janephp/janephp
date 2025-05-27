@@ -10,9 +10,8 @@ class ReposGetDeploymentStatus extends \Github\Runtime\Client\BaseEndpoint imple
     protected $status_id;
     /**
      * Users with pull access can view a deployment status for a deployment:
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $deploymentId deployment_id parameter
      * @param int $statusId status_id parameter
      */

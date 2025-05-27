@@ -6,15 +6,14 @@ class TeamsUpdateLegacy extends \Github\Runtime\Client\BaseEndpoint implements \
 {
     protected $team_id;
     /**
-    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a team](https://developer.github.com/v3/teams/#update-a-team) endpoint.
-    
-    To edit a team, the authenticated user must either be an organization owner or a team maintainer.
-    
-    **Note:** With nested teams, the `privacy` for parent teams cannot be `secret`.
-    *
-    * @param int $teamId 
-    * @param null|\Github\Model\TeamsTeamIdPatchBody $requestBody 
-    */
+     * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a team](https://developer.github.com/v3/teams/#update-a-team) endpoint.
+     *
+     * To edit a team, the authenticated user must either be an organization owner or a team maintainer.
+     *
+     * **Note:** With nested teams, the `privacy` for parent teams cannot be `secret`.
+     * @param int $teamId
+     * @param null|\Github\Model\TeamsTeamIdPatchBody $requestBody
+     */
     public function __construct(int $teamId, ?\Github\Model\TeamsTeamIdPatchBody $requestBody = null)
     {
         $this->team_id = $teamId;

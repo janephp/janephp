@@ -13,14 +13,10 @@ class ResourceNotFoundProblem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $parameter;
@@ -31,26 +27,18 @@ class ResourceNotFoundProblem extends \ArrayObject
      */
     protected $value;
     /**
-     * 
-     *
      * @var string
      */
     protected $resourceType;
     /**
-     * 
-     *
      * @var string
      */
     protected $title;
     /**
-     * 
-     *
      * @var string
      */
     protected $detail;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -58,8 +46,6 @@ class ResourceNotFoundProblem extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -71,8 +57,6 @@ class ResourceNotFoundProblem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getParameter(): string
@@ -80,8 +64,6 @@ class ResourceNotFoundProblem extends \ArrayObject
         return $this->parameter;
     }
     /**
-     * 
-     *
      * @param string $parameter
      *
      * @return self
@@ -115,8 +97,6 @@ class ResourceNotFoundProblem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getResourceType(): string
@@ -124,8 +104,6 @@ class ResourceNotFoundProblem extends \ArrayObject
         return $this->resourceType;
     }
     /**
-     * 
-     *
      * @param string $resourceType
      *
      * @return self
@@ -137,8 +115,6 @@ class ResourceNotFoundProblem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTitle(): string
@@ -146,8 +122,6 @@ class ResourceNotFoundProblem extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string $title
      *
      * @return self
@@ -159,8 +133,6 @@ class ResourceNotFoundProblem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDetail(): string
@@ -168,8 +140,6 @@ class ResourceNotFoundProblem extends \ArrayObject
         return $this->detail;
     }
     /**
-     * 
-     *
      * @param string $detail
      *
      * @return self

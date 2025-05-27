@@ -7,7 +7,6 @@ class ImageTag extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
     protected $name;
     /**
      * Tag an image so that it becomes part of a repository.
-     *
      * @param string $name Image name or ID to tag.
      * @param array $queryParameters {
      *     @var string $repo The repository to tag in. For example, `someuser/someimage`.

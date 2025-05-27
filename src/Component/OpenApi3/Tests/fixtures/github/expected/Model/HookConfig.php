@@ -13,68 +13,46 @@ class HookConfig extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $email;
     /**
-     * 
-     *
      * @var string
      */
     protected $password;
     /**
-     * 
-     *
      * @var string
      */
     protected $room;
     /**
-     * 
-     *
      * @var string
      */
     protected $subdomain;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $insecureSsl;
     /**
-     * 
-     *
      * @var string
      */
     protected $contentType;
     /**
-     * 
-     *
      * @var string
      */
     protected $digest;
     /**
-     * 
-     *
      * @var string
      */
     protected $secret;
     /**
-     * 
-     *
      * @var string
      */
     protected $token;
     /**
-     * 
-     *
      * @return string
      */
     public function getEmail(): string
@@ -82,8 +60,6 @@ class HookConfig extends \ArrayObject
         return $this->email;
     }
     /**
-     * 
-     *
      * @param string $email
      *
      * @return self
@@ -95,8 +71,6 @@ class HookConfig extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPassword(): string
@@ -104,8 +78,6 @@ class HookConfig extends \ArrayObject
         return $this->password;
     }
     /**
-     * 
-     *
      * @param string $password
      *
      * @return self
@@ -117,8 +89,6 @@ class HookConfig extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRoom(): string
@@ -126,8 +96,6 @@ class HookConfig extends \ArrayObject
         return $this->room;
     }
     /**
-     * 
-     *
      * @param string $room
      *
      * @return self
@@ -139,8 +107,6 @@ class HookConfig extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSubdomain(): string
@@ -148,8 +114,6 @@ class HookConfig extends \ArrayObject
         return $this->subdomain;
     }
     /**
-     * 
-     *
      * @param string $subdomain
      *
      * @return self
@@ -161,8 +125,6 @@ class HookConfig extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -170,8 +132,6 @@ class HookConfig extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -183,8 +143,6 @@ class HookConfig extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getInsecureSsl(): string
@@ -192,8 +150,6 @@ class HookConfig extends \ArrayObject
         return $this->insecureSsl;
     }
     /**
-     * 
-     *
      * @param string $insecureSsl
      *
      * @return self
@@ -205,8 +161,6 @@ class HookConfig extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContentType(): string
@@ -214,8 +168,6 @@ class HookConfig extends \ArrayObject
         return $this->contentType;
     }
     /**
-     * 
-     *
      * @param string $contentType
      *
      * @return self
@@ -227,8 +179,6 @@ class HookConfig extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDigest(): string
@@ -236,8 +186,6 @@ class HookConfig extends \ArrayObject
         return $this->digest;
     }
     /**
-     * 
-     *
      * @param string $digest
      *
      * @return self
@@ -249,8 +197,6 @@ class HookConfig extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSecret(): string
@@ -258,8 +204,6 @@ class HookConfig extends \ArrayObject
         return $this->secret;
     }
     /**
-     * 
-     *
      * @param string $secret
      *
      * @return self
@@ -271,8 +215,6 @@ class HookConfig extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getToken(): string
@@ -280,8 +222,6 @@ class HookConfig extends \ArrayObject
         return $this->token;
     }
     /**
-     * 
-     *
      * @param string $token
      *
      * @return self

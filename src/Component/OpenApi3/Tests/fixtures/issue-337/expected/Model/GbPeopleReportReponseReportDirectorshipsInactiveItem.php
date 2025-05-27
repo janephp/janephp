@@ -13,68 +13,46 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $companyName;
     /**
-     * 
-     *
      * @var string
      */
     protected $companyNumber;
     /**
-     * 
-     *
      * @var string
      */
     protected $companyRegistrationNumber;
     /**
-     * 
-     *
      * @var string
      */
     protected $status;
     /**
-     * 
-     *
      * @var GbPeopleReportReponseReportDirectorshipsInactiveItemPosition
      */
     protected $position;
     /**
-     * 
-     *
      * @var string
      */
     protected $companyRegistrationDate;
     /**
-     * 
-     *
      * @var GbPeopleReportReponseReportDirectorshipsInactiveItemNetWorth
      */
     protected $netWorth;
     /**
-     * 
-     *
      * @var int
      */
     protected $legalCount;
     /**
-     * 
-     *
      * @var GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScore
      */
     protected $creditScore;
     /**
-     * 
-     *
      * @var GbPeopleReportReponseReportDirectorshipsInactiveItemAdditionalData
      */
     protected $additionalData;
     /**
-     * 
-     *
      * @return string
      */
     public function getCompanyName(): string
@@ -82,8 +60,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this->companyName;
     }
     /**
-     * 
-     *
      * @param string $companyName
      *
      * @return self
@@ -95,8 +71,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCompanyNumber(): string
@@ -104,8 +78,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this->companyNumber;
     }
     /**
-     * 
-     *
      * @param string $companyNumber
      *
      * @return self
@@ -117,8 +89,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCompanyRegistrationNumber(): string
@@ -126,8 +96,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this->companyRegistrationNumber;
     }
     /**
-     * 
-     *
      * @param string $companyRegistrationNumber
      *
      * @return self
@@ -139,8 +107,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStatus(): string
@@ -148,8 +114,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this->status;
     }
     /**
-     * 
-     *
      * @param string $status
      *
      * @return self
@@ -161,8 +125,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbPeopleReportReponseReportDirectorshipsInactiveItemPosition
      */
     public function getPosition(): GbPeopleReportReponseReportDirectorshipsInactiveItemPosition
@@ -170,8 +132,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this->position;
     }
     /**
-     * 
-     *
      * @param GbPeopleReportReponseReportDirectorshipsInactiveItemPosition $position
      *
      * @return self
@@ -183,8 +143,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCompanyRegistrationDate(): string
@@ -192,8 +150,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this->companyRegistrationDate;
     }
     /**
-     * 
-     *
      * @param string $companyRegistrationDate
      *
      * @return self
@@ -205,8 +161,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbPeopleReportReponseReportDirectorshipsInactiveItemNetWorth
      */
     public function getNetWorth(): GbPeopleReportReponseReportDirectorshipsInactiveItemNetWorth
@@ -214,8 +168,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this->netWorth;
     }
     /**
-     * 
-     *
      * @param GbPeopleReportReponseReportDirectorshipsInactiveItemNetWorth $netWorth
      *
      * @return self
@@ -227,8 +179,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getLegalCount(): int
@@ -236,8 +186,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this->legalCount;
     }
     /**
-     * 
-     *
      * @param int $legalCount
      *
      * @return self
@@ -249,8 +197,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScore
      */
     public function getCreditScore(): GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScore
@@ -258,8 +204,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this->creditScore;
     }
     /**
-     * 
-     *
      * @param GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScore $creditScore
      *
      * @return self
@@ -271,8 +215,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbPeopleReportReponseReportDirectorshipsInactiveItemAdditionalData
      */
     public function getAdditionalData(): GbPeopleReportReponseReportDirectorshipsInactiveItemAdditionalData
@@ -280,8 +222,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         return $this->additionalData;
     }
     /**
-     * 
-     *
      * @param GbPeopleReportReponseReportDirectorshipsInactiveItemAdditionalData $additionalData
      *
      * @return self

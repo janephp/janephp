@@ -7,7 +7,6 @@ class ListItemRestore extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
     protected $id;
     /**
     * Restores a previously deleted list item.
-    *
     * @param string $id The list item ID.
     * @param array $queryParameters {
     *     @var bool $allowMissingDependencies Allows restoring list items that refer to list items or contents that don't exist in the system.

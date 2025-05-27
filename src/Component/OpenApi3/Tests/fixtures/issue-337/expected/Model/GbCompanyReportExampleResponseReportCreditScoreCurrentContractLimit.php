@@ -13,20 +13,14 @@ class GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimit extend
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $currency;
     /**
-     * 
-     *
      * @var float
      */
     protected $value;
     /**
-     * 
-     *
      * @return string
      */
     public function getCurrency(): string
@@ -34,8 +28,6 @@ class GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimit extend
         return $this->currency;
     }
     /**
-     * 
-     *
      * @param string $currency
      *
      * @return self
@@ -47,8 +39,6 @@ class GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimit extend
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getValue(): float
@@ -56,8 +46,6 @@ class GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimit extend
         return $this->value;
     }
     /**
-     * 
-     *
      * @param float $value
      *
      * @return self

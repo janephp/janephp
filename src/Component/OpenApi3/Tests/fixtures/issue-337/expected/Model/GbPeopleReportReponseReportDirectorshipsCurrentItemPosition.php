@@ -13,20 +13,14 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemPosition extends \Array
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $dateAppointed;
     /**
-     * 
-     *
      * @var string
      */
     protected $positionName;
     /**
-     * 
-     *
      * @return string
      */
     public function getDateAppointed(): string
@@ -34,8 +28,6 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemPosition extends \Array
         return $this->dateAppointed;
     }
     /**
-     * 
-     *
      * @param string $dateAppointed
      *
      * @return self
@@ -47,8 +39,6 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemPosition extends \Array
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPositionName(): string
@@ -56,8 +46,6 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemPosition extends \Array
         return $this->positionName;
     }
     /**
-     * 
-     *
      * @param string $positionName
      *
      * @return self

@@ -9,9 +9,8 @@ class ReactionsListForIssue extends \Github\Runtime\Client\BaseEndpoint implemen
     protected $issue_number;
     /**
      * List the reactions to an [issue](https://developer.github.com/v3/issues/).
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $issueNumber issue_number parameter
      * @param array $queryParameters {
      *     @var string $content Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to an issue.

@@ -9,9 +9,8 @@ class IssuesListComments extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $issue_number;
     /**
      * Issue Comments are ordered by ascending ID.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $issueNumber issue_number parameter
      * @param array $queryParameters {
      *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.

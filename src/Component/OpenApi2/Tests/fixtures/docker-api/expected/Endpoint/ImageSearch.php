@@ -5,19 +5,18 @@ namespace Docker\Api\Endpoint;
 class ImageSearch extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docker\Api\Runtime\Client\Endpoint
 {
     /**
-    * Search for an image on Docker Hub.
-    *
-    * @param array $queryParameters {
-    *     @var string $term Term to search
-    *     @var int $limit Maximum number of results to return
-    *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to process on the images list. Available filters:
-    
-    - `is-automated=(true|false)`
-    - `is-official=(true|false)`
-    - `stars=<number>` Matches images that has at least 'number' stars.
-    
-    * }
-    */
+     * Search for an image on Docker Hub.
+     * @param array $queryParameters {
+     *     @var string $term Term to search
+     *     @var int $limit Maximum number of results to return
+     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to process on the images list. Available filters:
+     *     
+     *     - `is-automated=(true|false)`
+     *     - `is-official=(true|false)`
+     *     - `stars=<number>` Matches images that has at least 'number' stars.
+     *     
+     * }
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

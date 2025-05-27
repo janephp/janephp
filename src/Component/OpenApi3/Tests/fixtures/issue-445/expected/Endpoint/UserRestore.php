@@ -7,7 +7,6 @@ class UserRestore extends \PicturePark\API\Runtime\Client\BaseEndpoint implement
     protected $id;
     /**
      * Restores previously deleted user, who was not cleaned up yet.
-     *
      * @param string $id User ID to action on.
      */
     public function __construct(string $id)

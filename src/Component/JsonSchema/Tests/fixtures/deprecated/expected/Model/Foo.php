@@ -3,7 +3,6 @@
 namespace Jane\Component\JsonSchema\Tests\Expected\Model;
 
 /**
- *
  * @deprecated
  */
 class Foo
@@ -17,22 +16,16 @@ class Foo
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $email;
     /**
-     * 
-     *
      * @deprecated
      *
      * @var string
      */
     protected $foo;
     /**
-     * 
-     *
      * @return string
      */
     public function getEmail(): string
@@ -40,8 +33,6 @@ class Foo
         return $this->email;
     }
     /**
-     * 
-     *
      * @param string $email
      *
      * @return self
@@ -53,8 +44,6 @@ class Foo
         return $this;
     }
     /**
-     * 
-     *
      * @deprecated
      *
      * @return string
@@ -64,8 +53,6 @@ class Foo
         return $this->foo;
     }
     /**
-     * 
-     *
      * @param string $foo
      *
      * @deprecated

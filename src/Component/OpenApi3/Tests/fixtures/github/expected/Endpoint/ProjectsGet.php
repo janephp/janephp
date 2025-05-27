@@ -7,8 +7,7 @@ class ProjectsGet extends \Github\Runtime\Client\BaseEndpoint implements \Github
     protected $project_id;
     /**
      * Gets a project by its `id`. Returns a `404 Not Found` status if projects are disabled. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
-     *
-     * @param int $projectId 
+     * @param int $projectId
      */
     public function __construct(int $projectId)
     {

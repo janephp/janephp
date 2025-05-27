@@ -7,9 +7,8 @@ class SyncPortfolioCompaniesToCSVRecords extends \CreditSafe\API\Runtime\Client\
     protected $portfolioId;
     /**
      * Delete companies from portfolio and update new companies from CSV file
-     *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSyncPostBody $requestBody 
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSyncPostBody $requestBody
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }

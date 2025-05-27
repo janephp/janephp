@@ -13,32 +13,22 @@ class MonitoringPortfoliosPortfolioIdPatchBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var list<MonitoringPortfoliosPortfolioIdPatchBodyEmailsItem>
      */
     protected $emails;
     /**
-     * 
-     *
      * @var string
      */
     protected $emailLanguage;
     /**
-     * 
-     *
      * @var string
      */
     protected $emailSubject;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -46,8 +36,6 @@ class MonitoringPortfoliosPortfolioIdPatchBody extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -59,8 +47,6 @@ class MonitoringPortfoliosPortfolioIdPatchBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<MonitoringPortfoliosPortfolioIdPatchBodyEmailsItem>
      */
     public function getEmails(): array
@@ -68,8 +54,6 @@ class MonitoringPortfoliosPortfolioIdPatchBody extends \ArrayObject
         return $this->emails;
     }
     /**
-     * 
-     *
      * @param list<MonitoringPortfoliosPortfolioIdPatchBodyEmailsItem> $emails
      *
      * @return self
@@ -81,8 +65,6 @@ class MonitoringPortfoliosPortfolioIdPatchBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEmailLanguage(): string
@@ -90,8 +72,6 @@ class MonitoringPortfoliosPortfolioIdPatchBody extends \ArrayObject
         return $this->emailLanguage;
     }
     /**
-     * 
-     *
      * @param string $emailLanguage
      *
      * @return self
@@ -103,8 +83,6 @@ class MonitoringPortfoliosPortfolioIdPatchBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEmailSubject(): string
@@ -112,8 +90,6 @@ class MonitoringPortfoliosPortfolioIdPatchBody extends \ArrayObject
         return $this->emailSubject;
     }
     /**
-     * 
-     *
      * @param string $emailSubject
      *
      * @return self

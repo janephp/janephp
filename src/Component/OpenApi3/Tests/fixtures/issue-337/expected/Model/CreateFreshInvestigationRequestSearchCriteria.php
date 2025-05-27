@@ -13,50 +13,34 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $additionalInfo;
     /**
-     * 
-     *
      * @var string
      */
     protected $telephoneNumber;
     /**
-     * 
-     *
      * @var CreateFreshInvestigationRequestSearchCriteriaAddress
      */
     protected $address;
     /**
-     * 
-     *
      * @var string
      */
     protected $regNo;
     /**
-     * 
-     *
      * @var string
      */
     protected $vatNo;
     /**
-     * 
-     *
      * @var string
      */
     protected $countryCode;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -64,8 +48,6 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -77,8 +59,6 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAdditionalInfo(): string
@@ -86,8 +66,6 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
         return $this->additionalInfo;
     }
     /**
-     * 
-     *
      * @param string $additionalInfo
      *
      * @return self
@@ -99,8 +77,6 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTelephoneNumber(): string
@@ -108,8 +84,6 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
         return $this->telephoneNumber;
     }
     /**
-     * 
-     *
      * @param string $telephoneNumber
      *
      * @return self
@@ -121,8 +95,6 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CreateFreshInvestigationRequestSearchCriteriaAddress
      */
     public function getAddress(): CreateFreshInvestigationRequestSearchCriteriaAddress
@@ -130,8 +102,6 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
         return $this->address;
     }
     /**
-     * 
-     *
      * @param CreateFreshInvestigationRequestSearchCriteriaAddress $address
      *
      * @return self
@@ -143,8 +113,6 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRegNo(): string
@@ -152,8 +120,6 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
         return $this->regNo;
     }
     /**
-     * 
-     *
      * @param string $regNo
      *
      * @return self
@@ -165,8 +131,6 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getVatNo(): string
@@ -174,8 +138,6 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
         return $this->vatNo;
     }
     /**
-     * 
-     *
      * @param string $vatNo
      *
      * @return self
@@ -187,8 +149,6 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountryCode(): string
@@ -196,8 +156,6 @@ class CreateFreshInvestigationRequestSearchCriteria extends \ArrayObject
         return $this->countryCode;
     }
     /**
-     * 
-     *
      * @param string $countryCode
      *
      * @return self

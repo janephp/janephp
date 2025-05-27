@@ -49,16 +49,17 @@ class ContainerConfig
      */
     protected $attachStderr = true;
     /**
-    * An object mapping ports to an empty object in the form:
-    
-    `{"<port>/<tcp|udp|sctp>": {}}`
-    
-    *
-    * @var array<string, mixed>
-    */
+     * An object mapping ports to an empty object in the form:
+     * 
+     * `{"<port>/<tcp|udp|sctp>": {}}`
+     * 
+     *
+     * @var array<string, mixed>
+     */
     protected $exposedPorts;
     /**
      * Attach standard streams to a TTY, including `stdin` if it is not closed.
+     * 
      *
      * @var bool
      */
@@ -76,16 +77,17 @@ class ContainerConfig
      */
     protected $stdinOnce = false;
     /**
-    * A list of environment variables to set inside the container in the
-    form `["VAR=value", ...]`. A variable without `=` is removed from the
-    environment, rather than to have an empty value.
-    
-    *
-    * @var list<string>
-    */
+     * A list of environment variables to set inside the container in the
+     * form `["VAR=value", ...]`. A variable without `=` is removed from the
+     * environment, rather than to have an empty value.
+     * 
+     *
+     * @var list<string>
+     */
     protected $env;
     /**
      * Command to run specified as a string or an array of strings.
+     * 
      *
      * @var list<string>
      */
@@ -104,17 +106,18 @@ class ContainerConfig
     protected $argsEscaped;
     /**
      * The name of the image to use when creating the container/
+     * 
      *
      * @var string
      */
     protected $image;
     /**
-    * An object mapping mount point paths inside the container to empty
-    objects.
-    
-    *
-    * @var array<string, mixed>
-    */
+     * An object mapping mount point paths inside the container to empty
+     * objects.
+     * 
+     *
+     * @var array<string, mixed>
+     */
     protected $volumes;
     /**
      * The working directory for commands to run in.
@@ -123,15 +126,15 @@ class ContainerConfig
      */
     protected $workingDir;
     /**
-    * The entry point for the container as a string or an array of strings.
-    
-    If the array consists of exactly one empty string (`[""]`) then the
-    entry point is reset to system default (i.e., the entry point used by
-    docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
-    
-    *
-    * @var list<string>
-    */
+     * The entry point for the container as a string or an array of strings.
+     * 
+     * If the array consists of exactly one empty string (`[""]`) then the
+     * entry point is reset to system default (i.e., the entry point used by
+     * docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
+     * 
+     *
+     * @var list<string>
+     */
     protected $entrypoint;
     /**
      * Disable networking for the container.
@@ -147,6 +150,7 @@ class ContainerConfig
     protected $macAddress;
     /**
      * `ONBUILD` metadata that were defined in the image's `Dockerfile`.
+     * 
      *
      * @var list<string>
      */
@@ -159,6 +163,7 @@ class ContainerConfig
     protected $labels;
     /**
      * Signal to stop a container as a string or unsigned integer.
+     * 
      *
      * @var string
      */
@@ -171,6 +176,7 @@ class ContainerConfig
     protected $stopTimeout = 10;
     /**
      * Shell for when `RUN`, `CMD`, and `ENTRYPOINT` uses a shell.
+     * 
      *
      * @var list<string>
      */
@@ -308,13 +314,13 @@ class ContainerConfig
         return $this;
     }
     /**
-    * An object mapping ports to an empty object in the form:
-    
-    `{"<port>/<tcp|udp|sctp>": {}}`
-    
-    *
-    * @return array<string, mixed>
-    */
+     * An object mapping ports to an empty object in the form:
+     * 
+     * `{"<port>/<tcp|udp|sctp>": {}}`
+     * 
+     *
+     * @return array<string, mixed>
+     */
     public function getExposedPorts(): iterable
     {
         return $this->exposedPorts;
@@ -337,6 +343,7 @@ class ContainerConfig
     }
     /**
      * Attach standard streams to a TTY, including `stdin` if it is not closed.
+     * 
      *
      * @return bool
      */
@@ -402,13 +409,13 @@ class ContainerConfig
         return $this;
     }
     /**
-    * A list of environment variables to set inside the container in the
-    form `["VAR=value", ...]`. A variable without `=` is removed from the
-    environment, rather than to have an empty value.
-    
-    *
-    * @return list<string>
-    */
+     * A list of environment variables to set inside the container in the
+     * form `["VAR=value", ...]`. A variable without `=` is removed from the
+     * environment, rather than to have an empty value.
+     * 
+     *
+     * @return list<string>
+     */
     public function getEnv(): array
     {
         return $this->env;
@@ -431,6 +438,7 @@ class ContainerConfig
     }
     /**
      * Command to run specified as a string or an array of strings.
+     * 
      *
      * @return list<string>
      */
@@ -497,6 +505,7 @@ class ContainerConfig
     }
     /**
      * The name of the image to use when creating the container/
+     * 
      *
      * @return string
      */
@@ -518,12 +527,12 @@ class ContainerConfig
         return $this;
     }
     /**
-    * An object mapping mount point paths inside the container to empty
-    objects.
-    
-    *
-    * @return array<string, mixed>
-    */
+     * An object mapping mount point paths inside the container to empty
+     * objects.
+     * 
+     *
+     * @return array<string, mixed>
+     */
     public function getVolumes(): iterable
     {
         return $this->volumes;
@@ -566,15 +575,15 @@ class ContainerConfig
         return $this;
     }
     /**
-    * The entry point for the container as a string or an array of strings.
-    
-    If the array consists of exactly one empty string (`[""]`) then the
-    entry point is reset to system default (i.e., the entry point used by
-    docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
-    
-    *
-    * @return list<string>
-    */
+     * The entry point for the container as a string or an array of strings.
+     * 
+     * If the array consists of exactly one empty string (`[""]`) then the
+     * entry point is reset to system default (i.e., the entry point used by
+     * docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`).
+     * 
+     *
+     * @return list<string>
+     */
     public function getEntrypoint(): array
     {
         return $this->entrypoint;
@@ -643,6 +652,7 @@ class ContainerConfig
     }
     /**
      * `ONBUILD` metadata that were defined in the image's `Dockerfile`.
+     * 
      *
      * @return list<string>
      */
@@ -687,6 +697,7 @@ class ContainerConfig
     }
     /**
      * Signal to stop a container as a string or unsigned integer.
+     * 
      *
      * @return string
      */
@@ -731,6 +742,7 @@ class ContainerConfig
     }
     /**
      * Shell for when `RUN`, `CMD`, and `ENTRYPOINT` uses a shell.
+     * 
      *
      * @return list<string>
      */

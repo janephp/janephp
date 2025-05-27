@@ -13,14 +13,10 @@ class PluginConfigNetwork
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -28,8 +24,6 @@ class PluginConfigNetwork
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self

@@ -13,8 +13,6 @@ class CustomerChangeEvent extends ApplicationEvent
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $documentType;
@@ -25,8 +23,6 @@ class CustomerChangeEvent extends ApplicationEvent
      */
     protected $lifeCycle;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDocumentType(): ?string
@@ -34,8 +30,6 @@ class CustomerChangeEvent extends ApplicationEvent
         return $this->documentType;
     }
     /**
-     * 
-     *
      * @param string|null $documentType
      *
      * @return self

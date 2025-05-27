@@ -13,98 +13,66 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var float
      */
     protected $revenue;
     /**
-     * 
-     *
      * @var float
      */
     protected $operatingCosts;
     /**
-     * 
-     *
      * @var float
      */
     protected $operatingProfit;
     /**
-     * 
-     *
      * @var float
      */
     protected $wagesAndSalaries;
     /**
-     * 
-     *
      * @var float
      */
     protected $pensionCosts;
     /**
-     * 
-     *
      * @var float
      */
     protected $depreciation;
     /**
-     * 
-     *
      * @var float
      */
     protected $amortisation;
     /**
-     * 
-     *
      * @var float
      */
     protected $financialExpenses;
     /**
-     * 
-     *
      * @var float
      */
     protected $profitBeforeTax;
     /**
-     * 
-     *
      * @var float
      */
     protected $tax;
     /**
-     * 
-     *
      * @var float
      */
     protected $profitAfterTax;
     /**
-     * 
-     *
      * @var float
      */
     protected $dividends;
     /**
-     * 
-     *
      * @var float
      */
     protected $minorityInterests;
     /**
-     * 
-     *
      * @var float
      */
     protected $otherAppropriations;
     /**
-     * 
-     *
      * @var float
      */
     protected $retainedProfit;
     /**
-     * 
-     *
      * @return float
      */
     public function getRevenue(): float
@@ -112,8 +80,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this->revenue;
     }
     /**
-     * 
-     *
      * @param float $revenue
      *
      * @return self
@@ -125,8 +91,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getOperatingCosts(): float
@@ -134,8 +98,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this->operatingCosts;
     }
     /**
-     * 
-     *
      * @param float $operatingCosts
      *
      * @return self
@@ -147,8 +109,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getOperatingProfit(): float
@@ -156,8 +116,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this->operatingProfit;
     }
     /**
-     * 
-     *
      * @param float $operatingProfit
      *
      * @return self
@@ -169,8 +127,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getWagesAndSalaries(): float
@@ -178,8 +134,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this->wagesAndSalaries;
     }
     /**
-     * 
-     *
      * @param float $wagesAndSalaries
      *
      * @return self
@@ -191,8 +145,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getPensionCosts(): float
@@ -200,8 +152,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this->pensionCosts;
     }
     /**
-     * 
-     *
      * @param float $pensionCosts
      *
      * @return self
@@ -213,8 +163,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getDepreciation(): float
@@ -222,8 +170,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this->depreciation;
     }
     /**
-     * 
-     *
      * @param float $depreciation
      *
      * @return self
@@ -235,8 +181,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getAmortisation(): float
@@ -244,8 +188,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this->amortisation;
     }
     /**
-     * 
-     *
      * @param float $amortisation
      *
      * @return self
@@ -257,8 +199,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getFinancialExpenses(): float
@@ -266,8 +206,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this->financialExpenses;
     }
     /**
-     * 
-     *
      * @param float $financialExpenses
      *
      * @return self
@@ -279,8 +217,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getProfitBeforeTax(): float
@@ -288,8 +224,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this->profitBeforeTax;
     }
     /**
-     * 
-     *
      * @param float $profitBeforeTax
      *
      * @return self
@@ -301,8 +235,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getTax(): float
@@ -310,8 +242,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this->tax;
     }
     /**
-     * 
-     *
      * @param float $tax
      *
      * @return self
@@ -323,8 +253,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getProfitAfterTax(): float
@@ -332,8 +260,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this->profitAfterTax;
     }
     /**
-     * 
-     *
      * @param float $profitAfterTax
      *
      * @return self
@@ -345,8 +271,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getDividends(): float
@@ -354,8 +278,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this->dividends;
     }
     /**
-     * 
-     *
      * @param float $dividends
      *
      * @return self
@@ -367,8 +289,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getMinorityInterests(): float
@@ -376,8 +296,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this->minorityInterests;
     }
     /**
-     * 
-     *
      * @param float $minorityInterests
      *
      * @return self
@@ -389,8 +307,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getOtherAppropriations(): float
@@ -398,8 +314,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this->otherAppropriations;
     }
     /**
-     * 
-     *
      * @param float $otherAppropriations
      *
      * @return self
@@ -411,8 +325,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getRetainedProfit(): float
@@ -420,8 +332,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         return $this->retainedProfit;
     }
     /**
-     * 
-     *
      * @param float $retainedProfit
      *
      * @return self

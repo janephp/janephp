@@ -13,20 +13,14 @@ class CheckSuitePreferencePreferencesAutoTriggerChecksItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $appId;
     /**
-     * 
-     *
      * @var bool
      */
     protected $setting;
     /**
-     * 
-     *
      * @return int
      */
     public function getAppId(): int
@@ -34,8 +28,6 @@ class CheckSuitePreferencePreferencesAutoTriggerChecksItem extends \ArrayObject
         return $this->appId;
     }
     /**
-     * 
-     *
      * @param int $appId
      *
      * @return self
@@ -47,8 +39,6 @@ class CheckSuitePreferencePreferencesAutoTriggerChecksItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getSetting(): bool
@@ -56,8 +46,6 @@ class CheckSuitePreferencePreferencesAutoTriggerChecksItem extends \ArrayObject
         return $this->setting;
     }
     /**
-     * 
-     *
      * @param bool $setting
      *
      * @return self

@@ -7,9 +7,8 @@ class ProjectsUpdate extends \Github\Runtime\Client\BaseEndpoint implements \Git
     protected $project_id;
     /**
      * Updates a project board's information. Returns a `404 Not Found` status if projects are disabled. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
-     *
-     * @param int $projectId 
-     * @param null|\Github\Model\ProjectsProjectIdPatchBody $requestBody 
+     * @param int $projectId
+     * @param null|\Github\Model\ProjectsProjectIdPatchBody $requestBody
      */
     public function __construct(int $projectId, ?\Github\Model\ProjectsProjectIdPatchBody $requestBody = null)
     {

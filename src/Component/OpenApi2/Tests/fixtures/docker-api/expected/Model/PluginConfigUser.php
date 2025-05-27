@@ -13,20 +13,14 @@ class PluginConfigUser
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $uID;
     /**
-     * 
-     *
      * @var int
      */
     protected $gID;
     /**
-     * 
-     *
      * @return int
      */
     public function getUID(): int
@@ -34,8 +28,6 @@ class PluginConfigUser
         return $this->uID;
     }
     /**
-     * 
-     *
      * @param int $uID
      *
      * @return self
@@ -47,8 +39,6 @@ class PluginConfigUser
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getGID(): int
@@ -56,8 +46,6 @@ class PluginConfigUser
         return $this->gID;
     }
     /**
-     * 
-     *
      * @param int $gID
      *
      * @return self

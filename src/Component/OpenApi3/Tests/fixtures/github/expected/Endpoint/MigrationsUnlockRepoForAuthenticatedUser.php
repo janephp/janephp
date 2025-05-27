@@ -8,7 +8,6 @@ class MigrationsUnlockRepoForAuthenticatedUser extends \Github\Runtime\Client\Ba
     protected $repo_name;
     /**
      * Unlocks a repository. You can lock repositories when you [start a user migration](https://developer.github.com/v3/migrations/users/#start-a-user-migration). Once the migration is complete you can unlock each repository to begin using it again or [delete the repository](https://developer.github.com/v3/repos/#delete-a-repository) if you no longer need the source data. Returns a status of `404 Not Found` if the repository is not locked.
-     *
      * @param int $migrationId migration_id parameter
      * @param string $repoName repo_name parameter
      */

@@ -5,11 +5,10 @@ namespace PicturePark\API\Endpoint;
 class ContentRestoreMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Restores previously deleted contents.
-    The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param \PicturePark\API\Model\ContentRestoreManyRequest $requestBody 
-    */
+     * Restores previously deleted contents.
+     * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param \PicturePark\API\Model\ContentRestoreManyRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\ContentRestoreManyRequest $requestBody)
     {
         $this->body = $requestBody;

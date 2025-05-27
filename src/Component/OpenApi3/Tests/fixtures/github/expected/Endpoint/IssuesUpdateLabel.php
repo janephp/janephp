@@ -8,12 +8,10 @@ class IssuesUpdateLabel extends \Github\Runtime\Client\BaseEndpoint implements \
     protected $repo;
     protected $name;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param string $name name parameter
-     * @param null|\Github\Model\ReposOwnerRepoLabelsNamePatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoLabelsNamePatchBody $requestBody
      */
     public function __construct(string $owner, string $repo, string $name, ?\Github\Model\ReposOwnerRepoLabelsNamePatchBody $requestBody = null)
     {

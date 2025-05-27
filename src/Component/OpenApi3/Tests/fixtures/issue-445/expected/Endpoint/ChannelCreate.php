@@ -6,8 +6,7 @@ class ChannelCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
 {
     /**
      * Creates new channel based on supplied request.
-     *
-     * @param \PicturePark\API\Model\ChannelCreateRequest $requestBody 
+     * @param \PicturePark\API\Model\ChannelCreateRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\ChannelCreateRequest $requestBody)
     {

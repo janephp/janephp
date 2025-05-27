@@ -7,8 +7,7 @@ class UsersListFollowingForUser extends \Github\Runtime\Client\BaseEndpoint impl
     protected $username;
     /**
      * Lists the people who the specified user follows.
-     *
-     * @param string $username 
+     * @param string $username
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.

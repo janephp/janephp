@@ -13,20 +13,14 @@ class GenericResourcesItemDiscreteResourceSpec
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
     /**
-     * 
-     *
      * @var int
      */
     protected $value;
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -34,8 +28,6 @@ class GenericResourcesItemDiscreteResourceSpec
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      *
      * @return self
@@ -47,8 +39,6 @@ class GenericResourcesItemDiscreteResourceSpec
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getValue(): int
@@ -56,8 +46,6 @@ class GenericResourcesItemDiscreteResourceSpec
         return $this->value;
     }
     /**
-     * 
-     *
      * @param int $value
      *
      * @return self

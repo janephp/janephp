@@ -6,8 +6,7 @@ class BusinessProcessSearch extends \PicturePark\API\Runtime\Client\BaseEndpoint
 {
     /**
      * Search for business processes.
-     *
-     * @param \PicturePark\API\Model\BusinessProcessSearchRequest $requestBody 
+     * @param \PicturePark\API\Model\BusinessProcessSearchRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\BusinessProcessSearchRequest $requestBody)
     {

@@ -6,17 +6,14 @@ class SecretUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
 {
     protected $id;
     /**
-    * 
-    *
     * @param string $id The ID or name of the secret
     * @param \Docker\Api\Model\SecretSpec $body The spec of the secret to update. Currently, only the Labels field
     can be updated. All other fields must remain unchanged from the
     [SecretInspect endpoint](#operation/SecretInspect) response values.
-    
     * @param array $queryParameters {
     *     @var int $version The version number of the secret object being updated. This is
-    required to avoid conflicting writes.
-    
+    *     required to avoid conflicting writes.
+    *     
     * }
     */
     public function __construct(string $id, \Docker\Api\Model\SecretSpec $body, array $queryParameters = [])

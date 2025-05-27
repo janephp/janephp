@@ -8,9 +8,8 @@ class ApiBooksIdPatch extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
     protected $accept;
     /**
      * Updates the Book resource.
-     *
      * @param string $id Book identifier
-     * @param \ApiPlatform\Demo\Model\Book $requestBody 
+     * @param \ApiPlatform\Demo\Model\Book $requestBody
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      */
     public function __construct(string $id, \ApiPlatform\Demo\Model\Book $requestBody, array $accept = [])

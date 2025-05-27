@@ -6,11 +6,10 @@ class ListDecisionTrees extends \CreditSafe\API\Runtime\Client\BaseEndpoint impl
 {
     /**
      * List available decision trees available.
-     *
      * @param array $queryParameters {
      *     @var string $type Filter the list of available decision trees by the provided tree type.
      *     @var string $sortBy Sort results by this column. Null values of sort column are listed after non-nulls.
-     *     @var string $sortDir 
+     *     @var string $sortDir
      *     @var string $callRef Call Reference
      * }
      * @param array $headerParameters {

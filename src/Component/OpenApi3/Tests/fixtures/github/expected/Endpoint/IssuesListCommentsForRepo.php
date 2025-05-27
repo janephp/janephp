@@ -8,9 +8,8 @@ class IssuesListCommentsForRepo extends \Github\Runtime\Client\BaseEndpoint impl
     protected $repo;
     /**
      * By default, Issue Comments are ordered by ascending ID.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param array $queryParameters {
      *     @var string $sort One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
      *     @var string $direction Either `asc` or `desc`. Ignored without the `sort` parameter.

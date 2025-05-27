@@ -13,26 +13,18 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItem extends \A
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $code;
     /**
-     * 
-     *
      * @var string
      */
     protected $field;
     /**
-     * 
-     *
      * @var string
      */
     protected $resource;
     /**
-     * 
-     *
      * @return string
      */
     public function getCode(): string
@@ -40,8 +32,6 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItem extends \A
         return $this->code;
     }
     /**
-     * 
-     *
      * @param string $code
      *
      * @return self
@@ -53,8 +43,6 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItem extends \A
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getField(): string
@@ -62,8 +50,6 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItem extends \A
         return $this->field;
     }
     /**
-     * 
-     *
      * @param string $field
      *
      * @return self
@@ -75,8 +61,6 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItem extends \A
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getResource(): string
@@ -84,8 +68,6 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutResponse422ErrorsItem extends \A
         return $this->resource;
     }
     /**
-     * 
-     *
      * @param string $resource
      *
      * @return self

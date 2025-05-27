@@ -13,20 +13,14 @@ class PagesSourceHash extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $branch;
     /**
-     * 
-     *
      * @var string
      */
     protected $path;
     /**
-     * 
-     *
      * @return string
      */
     public function getBranch(): string
@@ -34,8 +28,6 @@ class PagesSourceHash extends \ArrayObject
         return $this->branch;
     }
     /**
-     * 
-     *
      * @param string $branch
      *
      * @return self
@@ -47,8 +39,6 @@ class PagesSourceHash extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPath(): string
@@ -56,8 +46,6 @@ class PagesSourceHash extends \ArrayObject
         return $this->path;
     }
     /**
-     * 
-     *
      * @param string $path
      *
      * @return self

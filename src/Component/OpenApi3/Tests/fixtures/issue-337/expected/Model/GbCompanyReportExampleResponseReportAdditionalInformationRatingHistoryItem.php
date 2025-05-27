@@ -13,26 +13,18 @@ class GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $date;
     /**
-     * 
-     *
      * @var float
      */
     protected $companyValue;
     /**
-     * 
-     *
      * @var string
      */
     protected $ratingDescription;
     /**
-     * 
-     *
      * @return string
      */
     public function getDate(): string
@@ -40,8 +32,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem
         return $this->date;
     }
     /**
-     * 
-     *
      * @param string $date
      *
      * @return self
@@ -53,8 +43,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getCompanyValue(): float
@@ -62,8 +50,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem
         return $this->companyValue;
     }
     /**
-     * 
-     *
      * @param float $companyValue
      *
      * @return self
@@ -75,8 +61,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRatingDescription(): string
@@ -84,8 +68,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem
         return $this->ratingDescription;
     }
     /**
-     * 
-     *
      * @param string $ratingDescription
      *
      * @return self

@@ -7,7 +7,6 @@ class BusinessProcessCancel extends \PicturePark\API\Runtime\Client\BaseEndpoint
     protected $id;
     /**
      * Only available if the business process indicates support for cancellation in SupportsCancellation.
-     *
      * @param string $id The business process id.
      */
     public function __construct(string $id)

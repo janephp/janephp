@@ -13,38 +13,26 @@ class IssueSearchResultItemPullRequest extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $mergedAt;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $diffUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $patchUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $url;
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getMergedAt(): ?\DateTime
@@ -52,8 +40,6 @@ class IssueSearchResultItemPullRequest extends \ArrayObject
         return $this->mergedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $mergedAt
      *
      * @return self
@@ -65,8 +51,6 @@ class IssueSearchResultItemPullRequest extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDiffUrl(): ?string
@@ -74,8 +58,6 @@ class IssueSearchResultItemPullRequest extends \ArrayObject
         return $this->diffUrl;
     }
     /**
-     * 
-     *
      * @param string|null $diffUrl
      *
      * @return self
@@ -87,8 +69,6 @@ class IssueSearchResultItemPullRequest extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getHtmlUrl(): ?string
@@ -96,8 +76,6 @@ class IssueSearchResultItemPullRequest extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string|null $htmlUrl
      *
      * @return self
@@ -109,8 +87,6 @@ class IssueSearchResultItemPullRequest extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getPatchUrl(): ?string
@@ -118,8 +94,6 @@ class IssueSearchResultItemPullRequest extends \ArrayObject
         return $this->patchUrl;
     }
     /**
-     * 
-     *
      * @param string|null $patchUrl
      *
      * @return self
@@ -131,8 +105,6 @@ class IssueSearchResultItemPullRequest extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getUrl(): ?string
@@ -140,8 +112,6 @@ class IssueSearchResultItemPullRequest extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string|null $url
      *
      * @return self

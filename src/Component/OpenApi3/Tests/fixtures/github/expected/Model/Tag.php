@@ -13,38 +13,26 @@ class Tag extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var TagCommit
      */
     protected $commit;
     /**
-     * 
-     *
      * @var string
      */
     protected $zipballUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $tarballUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -52,8 +40,6 @@ class Tag extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -65,8 +51,6 @@ class Tag extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return TagCommit
      */
     public function getCommit(): TagCommit
@@ -74,8 +58,6 @@ class Tag extends \ArrayObject
         return $this->commit;
     }
     /**
-     * 
-     *
      * @param TagCommit $commit
      *
      * @return self
@@ -87,8 +69,6 @@ class Tag extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getZipballUrl(): string
@@ -96,8 +76,6 @@ class Tag extends \ArrayObject
         return $this->zipballUrl;
     }
     /**
-     * 
-     *
      * @param string $zipballUrl
      *
      * @return self
@@ -109,8 +87,6 @@ class Tag extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTarballUrl(): string
@@ -118,8 +94,6 @@ class Tag extends \ArrayObject
         return $this->tarballUrl;
     }
     /**
-     * 
-     *
      * @param string $tarballUrl
      *
      * @return self
@@ -131,8 +105,6 @@ class Tag extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -140,8 +112,6 @@ class Tag extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self

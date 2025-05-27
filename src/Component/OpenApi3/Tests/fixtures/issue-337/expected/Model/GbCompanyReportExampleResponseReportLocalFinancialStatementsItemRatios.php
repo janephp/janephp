@@ -13,92 +13,62 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var float
      */
     protected $preTaxProfitMargin;
     /**
-     * 
-     *
      * @var float
      */
     protected $returnOnCapitalEmployed;
     /**
-     * 
-     *
      * @var float
      */
     protected $returnOnTotalAssetsEmployed;
     /**
-     * 
-     *
      * @var float
      */
     protected $returnOnNetAssetsEmployed;
     /**
-     * 
-     *
      * @var float
      */
     protected $salesOrNetWorkingCapital;
     /**
-     * 
-     *
      * @var float
      */
     protected $stocKTurnoverRatio;
     /**
-     * 
-     *
      * @var float
      */
     protected $debtorDays;
     /**
-     * 
-     *
      * @var float
      */
     protected $creditorDays;
     /**
-     * 
-     *
      * @var float
      */
     protected $currentRatio;
     /**
-     * 
-     *
      * @var float
      */
     protected $liquidityRatioOrAcidTest;
     /**
-     * 
-     *
      * @var float
      */
     protected $currentDebtRatio;
     /**
-     * 
-     *
      * @var float
      */
     protected $gearing;
     /**
-     * 
-     *
      * @var float
      */
     protected $equityInPercentage;
     /**
-     * 
-     *
      * @var float
      */
     protected $totalDebtRatio;
     /**
-     * 
-     *
      * @return float
      */
     public function getPreTaxProfitMargin(): float
@@ -106,8 +76,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this->preTaxProfitMargin;
     }
     /**
-     * 
-     *
      * @param float $preTaxProfitMargin
      *
      * @return self
@@ -119,8 +87,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getReturnOnCapitalEmployed(): float
@@ -128,8 +94,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this->returnOnCapitalEmployed;
     }
     /**
-     * 
-     *
      * @param float $returnOnCapitalEmployed
      *
      * @return self
@@ -141,8 +105,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getReturnOnTotalAssetsEmployed(): float
@@ -150,8 +112,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this->returnOnTotalAssetsEmployed;
     }
     /**
-     * 
-     *
      * @param float $returnOnTotalAssetsEmployed
      *
      * @return self
@@ -163,8 +123,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getReturnOnNetAssetsEmployed(): float
@@ -172,8 +130,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this->returnOnNetAssetsEmployed;
     }
     /**
-     * 
-     *
      * @param float $returnOnNetAssetsEmployed
      *
      * @return self
@@ -185,8 +141,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getSalesOrNetWorkingCapital(): float
@@ -194,8 +148,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this->salesOrNetWorkingCapital;
     }
     /**
-     * 
-     *
      * @param float $salesOrNetWorkingCapital
      *
      * @return self
@@ -207,8 +159,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getStocKTurnoverRatio(): float
@@ -216,8 +166,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this->stocKTurnoverRatio;
     }
     /**
-     * 
-     *
      * @param float $stocKTurnoverRatio
      *
      * @return self
@@ -229,8 +177,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getDebtorDays(): float
@@ -238,8 +184,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this->debtorDays;
     }
     /**
-     * 
-     *
      * @param float $debtorDays
      *
      * @return self
@@ -251,8 +195,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getCreditorDays(): float
@@ -260,8 +202,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this->creditorDays;
     }
     /**
-     * 
-     *
      * @param float $creditorDays
      *
      * @return self
@@ -273,8 +213,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getCurrentRatio(): float
@@ -282,8 +220,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this->currentRatio;
     }
     /**
-     * 
-     *
      * @param float $currentRatio
      *
      * @return self
@@ -295,8 +231,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getLiquidityRatioOrAcidTest(): float
@@ -304,8 +238,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this->liquidityRatioOrAcidTest;
     }
     /**
-     * 
-     *
      * @param float $liquidityRatioOrAcidTest
      *
      * @return self
@@ -317,8 +249,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getCurrentDebtRatio(): float
@@ -326,8 +256,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this->currentDebtRatio;
     }
     /**
-     * 
-     *
      * @param float $currentDebtRatio
      *
      * @return self
@@ -339,8 +267,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getGearing(): float
@@ -348,8 +274,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this->gearing;
     }
     /**
-     * 
-     *
      * @param float $gearing
      *
      * @return self
@@ -361,8 +285,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getEquityInPercentage(): float
@@ -370,8 +292,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this->equityInPercentage;
     }
     /**
-     * 
-     *
      * @param float $equityInPercentage
      *
      * @return self
@@ -383,8 +303,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getTotalDebtRatio(): float
@@ -392,8 +310,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatios ext
         return $this->totalDebtRatio;
     }
     /**
-     * 
-     *
      * @param float $totalDebtRatio
      *
      * @return self

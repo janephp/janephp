@@ -8,9 +8,8 @@ class ApiParchmentsIdPatch extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint
     protected $accept;
     /**
      * Updates the Parchment resource.
-     *
      * @param string $id Parchment identifier
-     * @param \ApiPlatform\Demo\Model\Parchment $requestBody 
+     * @param \ApiPlatform\Demo\Model\Parchment $requestBody
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      */
     public function __construct(string $id, \ApiPlatform\Demo\Model\Parchment $requestBody, array $accept = [])

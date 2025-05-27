@@ -7,8 +7,7 @@ class ReposListForUser extends \Github\Runtime\Client\BaseEndpoint implements \G
     protected $username;
     /**
      * Lists public repositories for the specified user.
-     *
-     * @param string $username 
+     * @param string $username
      * @param array $queryParameters {
      *     @var string $type Can be one of `all`, `owner`, `member`.
      *     @var string $sort Can be one of `created`, `updated`, `pushed`, `full_name`.

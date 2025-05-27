@@ -8,10 +8,9 @@ class UpdateIsProcessedFlagOnAnNotificationEvent extends \CreditSafe\API\Runtime
     protected $notificationEventId;
     /**
      * Set a `true` or `false` flag on isProcessed for a given event
-     *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param string $notificationEventId A unique notification event ID.
-     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody $requestBody 
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody $requestBody
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }

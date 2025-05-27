@@ -6,7 +6,6 @@ class CompanyImageDocuments extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
 {
     /**
      * Returns the available Images for a given Company connectId.
-     *
      * @param array $queryParameters {
      *     @var string $Id The company's connectId.
      *     @var string $olderThan Returns Images older than this date. Use with newerThan parameter.

@@ -8,9 +8,8 @@ class OrgsGetMembershipForUser extends \Github\Runtime\Client\BaseEndpoint imple
     protected $username;
     /**
      * In order to get a user's membership with an organization, the authenticated user must be an organization member.
-     *
-     * @param string $org 
-     * @param string $username 
+     * @param string $org
+     * @param string $username
      */
     public function __construct(string $org, string $username)
     {

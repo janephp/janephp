@@ -6,10 +6,8 @@ class UserDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
 {
     protected $id;
     /**
-     * 
-     *
      * @param string $id User ID
-     * @param \PicturePark\API\Model\UserDeleteRequest $requestBody 
+     * @param \PicturePark\API\Model\UserDeleteRequest $requestBody
      */
     public function __construct(string $id, \PicturePark\API\Model\UserDeleteRequest $requestBody)
     {

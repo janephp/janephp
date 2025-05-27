@@ -9,11 +9,11 @@ class ReposCreateFork extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     protected $accept;
     /**
      * Create a fork for the authenticated user.
-     **Note**: Forking a Repository happens asynchronously. You may have to wait a short period of time before you can access the git objects. If this takes longer than 5 minutes, be sure to contact [GitHub Support](https://github.com/contact) or [GitHub Premium Support](https://premium.githubsupport.com).
      *
-     * @param string $owner 
-     * @param string $repo 
-     * @param null|\Github\Model\ReposOwnerRepoForksPostBody $requestBody 
+     * **Note**: Forking a Repository happens asynchronously. You may have to wait a short period of time before you can access the git objects. If this takes longer than 5 minutes, be sure to contact [GitHub Support](https://github.com/contact) or [GitHub Premium Support](https://premium.githubsupport.com).
+     * @param string $owner
+     * @param string $repo
+     * @param null|\Github\Model\ReposOwnerRepoForksPostBody $requestBody
      * @param array $accept Accept content header application/json|application/scim+json
      */
     public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoForksPostBody $requestBody = null, array $accept = [])

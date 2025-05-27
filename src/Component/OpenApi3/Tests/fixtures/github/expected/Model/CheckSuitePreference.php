@@ -13,8 +13,6 @@ class CheckSuitePreference extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var CheckSuitePreferencePreferences
      */
     protected $preferences;
@@ -25,8 +23,6 @@ class CheckSuitePreference extends \ArrayObject
      */
     protected $repository;
     /**
-     * 
-     *
      * @return CheckSuitePreferencePreferences
      */
     public function getPreferences(): CheckSuitePreferencePreferences
@@ -34,8 +30,6 @@ class CheckSuitePreference extends \ArrayObject
         return $this->preferences;
     }
     /**
-     * 
-     *
      * @param CheckSuitePreferencePreferences $preferences
      *
      * @return self

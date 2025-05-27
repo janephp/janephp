@@ -7,7 +7,6 @@ class PortoflioRiskSummary extends \CreditSafe\API\Runtime\Client\BaseEndpoint i
     protected $portfolioId;
     /**
      * Get current portfolio risk summary information
-     *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.

@@ -5,9 +5,7 @@ namespace PicturePark\API\Endpoint;
 class ShareRevoke extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-     * 
-     *
-     * @param \PicturePark\API\Model\ShareRevokeManyRequest $requestBody 
+     * @param \PicturePark\API\Model\ShareRevokeManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\ShareRevokeManyRequest $requestBody)
     {

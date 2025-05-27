@@ -5,11 +5,10 @@ namespace PicturePark\API\Endpoint;
 class SchemaTransferOwnershipMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Transfers ownership of multiple schemas to specified user. The target user must have the ManageSchemas user right.
-    The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param \PicturePark\API\Model\SchemaOwnershipTransferManyRequest $requestBody 
-    */
+     * Transfers ownership of multiple schemas to specified user. The target user must have the ManageSchemas user right.
+     * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param \PicturePark\API\Model\SchemaOwnershipTransferManyRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\SchemaOwnershipTransferManyRequest $requestBody)
     {
         $this->body = $requestBody;

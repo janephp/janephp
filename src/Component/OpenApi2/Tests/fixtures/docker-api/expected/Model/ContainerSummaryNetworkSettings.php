@@ -13,14 +13,10 @@ class ContainerSummaryNetworkSettings
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var array<string, EndpointSettings>
      */
     protected $networks;
     /**
-     * 
-     *
      * @return array<string, EndpointSettings>
      */
     public function getNetworks(): iterable
@@ -28,8 +24,6 @@ class ContainerSummaryNetworkSettings
         return $this->networks;
     }
     /**
-     * 
-     *
      * @param array<string, EndpointSettings> $networks
      *
      * @return self

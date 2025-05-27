@@ -7,8 +7,7 @@ class ProjectsDelete extends \Github\Runtime\Client\BaseEndpoint implements \Git
     protected $project_id;
     /**
      * Deletes a project board. Returns a `404 Not Found` status if projects are disabled.
-     *
-     * @param int $projectId 
+     * @param int $projectId
      */
     public function __construct(int $projectId)
     {

@@ -7,7 +7,6 @@ class ListFilteredCompaniesInAPortfolio extends \CreditSafe\API\Runtime\Client\B
     protected $portfolioId;
     /**
      * Get all companies from a specific portfolio based on the portfolio id, optionally filter with query parameters
-     *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param array $queryParameters {
      *     @var string $searchQuery Return companies that match the given value

@@ -8,14 +8,13 @@ class ApiBooksBookIdreviewsGetCollection extends \ApiPlatform\Demo\Runtime\Clien
     protected $accept;
     /**
      * Retrieves the collection of Review resources.
-     *
      * @param string $bookId Book identifier
      * @param array $queryParameters {
      *     @var int $page The collection page number
-     *     @var string $order[id] 
-     *     @var string $order[publicationDate] 
-     *     @var string $book 
-     *     @var array $book[] 
+     *     @var string $order[id]
+     *     @var string $order[publicationDate]
+     *     @var string $book
+     *     @var array $book[]
      * }
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      */

@@ -13,62 +13,42 @@ class MaximumTransferSizeException extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $traceLevel;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $traceId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $traceJobId;
     /**
-     * 
-     *
      * @var int
      */
     protected $httpStatusCode;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $exceptionMessage;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
     /**
-     * 
-     *
      * @var int
      */
     protected $transferSize;
     /**
-     * 
-     *
      * @var int
      */
     protected $maximumTransferSize;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $transferId;
     /**
-     * 
-     *
      * @return string
      */
     public function getTraceLevel(): string
@@ -76,8 +56,6 @@ class MaximumTransferSizeException extends \ArrayObject
         return $this->traceLevel;
     }
     /**
-     * 
-     *
      * @param string $traceLevel
      *
      * @return self
@@ -89,8 +67,6 @@ class MaximumTransferSizeException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTraceId(): ?string
@@ -98,8 +74,6 @@ class MaximumTransferSizeException extends \ArrayObject
         return $this->traceId;
     }
     /**
-     * 
-     *
      * @param string|null $traceId
      *
      * @return self
@@ -111,8 +85,6 @@ class MaximumTransferSizeException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTraceJobId(): ?string
@@ -120,8 +92,6 @@ class MaximumTransferSizeException extends \ArrayObject
         return $this->traceJobId;
     }
     /**
-     * 
-     *
      * @param string|null $traceJobId
      *
      * @return self
@@ -133,8 +103,6 @@ class MaximumTransferSizeException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getHttpStatusCode(): int
@@ -142,8 +110,6 @@ class MaximumTransferSizeException extends \ArrayObject
         return $this->httpStatusCode;
     }
     /**
-     * 
-     *
      * @param int $httpStatusCode
      *
      * @return self
@@ -155,8 +121,6 @@ class MaximumTransferSizeException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExceptionMessage(): ?string
@@ -164,8 +128,6 @@ class MaximumTransferSizeException extends \ArrayObject
         return $this->exceptionMessage;
     }
     /**
-     * 
-     *
      * @param string|null $exceptionMessage
      *
      * @return self
@@ -177,8 +139,6 @@ class MaximumTransferSizeException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -186,8 +146,6 @@ class MaximumTransferSizeException extends \ArrayObject
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      *
      * @return self
@@ -199,8 +157,6 @@ class MaximumTransferSizeException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getTransferSize(): int
@@ -208,8 +164,6 @@ class MaximumTransferSizeException extends \ArrayObject
         return $this->transferSize;
     }
     /**
-     * 
-     *
      * @param int $transferSize
      *
      * @return self
@@ -221,8 +175,6 @@ class MaximumTransferSizeException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getMaximumTransferSize(): int
@@ -230,8 +182,6 @@ class MaximumTransferSizeException extends \ArrayObject
         return $this->maximumTransferSize;
     }
     /**
-     * 
-     *
      * @param int $maximumTransferSize
      *
      * @return self
@@ -243,8 +193,6 @@ class MaximumTransferSizeException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTransferId(): ?string
@@ -252,8 +200,6 @@ class MaximumTransferSizeException extends \ArrayObject
         return $this->transferId;
     }
     /**
-     * 
-     *
      * @param string|null $transferId
      *
      * @return self

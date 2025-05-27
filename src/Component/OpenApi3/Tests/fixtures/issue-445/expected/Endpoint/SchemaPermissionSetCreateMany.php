@@ -6,8 +6,7 @@ class SchemaPermissionSetCreateMany extends \PicturePark\API\Runtime\Client\Base
 {
     /**
      * Creates new schema permission sets based on supplied requests.
-     *
-     * @param \PicturePark\API\Model\SchemaPermissionSetCreateManyRequest $requestBody 
+     * @param \PicturePark\API\Model\SchemaPermissionSetCreateManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\SchemaPermissionSetCreateManyRequest $requestBody)
     {

@@ -13,38 +13,26 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var bool
      */
     protected $contingentLiabilities;
     /**
-     * 
-     *
      * @var float
      */
     protected $bankOverdraftAndLTL;
     /**
-     * 
-     *
      * @var float
      */
     protected $workingCapital;
     /**
-     * 
-     *
      * @var float
      */
     protected $capitalEmployed;
     /**
-     * 
-     *
      * @var float
      */
     protected $netWorth;
     /**
-     * 
-     *
      * @return bool
      */
     public function getContingentLiabilities(): bool
@@ -52,8 +40,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
         return $this->contingentLiabilities;
     }
     /**
-     * 
-     *
      * @param bool $contingentLiabilities
      *
      * @return self
@@ -65,8 +51,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getBankOverdraftAndLTL(): float
@@ -74,8 +58,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
         return $this->bankOverdraftAndLTL;
     }
     /**
-     * 
-     *
      * @param float $bankOverdraftAndLTL
      *
      * @return self
@@ -87,8 +69,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getWorkingCapital(): float
@@ -96,8 +76,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
         return $this->workingCapital;
     }
     /**
-     * 
-     *
      * @param float $workingCapital
      *
      * @return self
@@ -109,8 +87,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getCapitalEmployed(): float
@@ -118,8 +94,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
         return $this->capitalEmployed;
     }
     /**
-     * 
-     *
      * @param float $capitalEmployed
      *
      * @return self
@@ -131,8 +105,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getNetWorth(): float
@@ -140,8 +112,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
         return $this->netWorth;
     }
     /**
-     * 
-     *
      * @param float $netWorth
      *
      * @return self

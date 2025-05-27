@@ -5,10 +5,8 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 class GetFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-     * 
-     *
      * @param array $queryParameters {
-     *     @var bool $testBoolean 
+     *     @var bool $testBoolean
      * }
      */
     public function __construct(array $queryParameters = [])

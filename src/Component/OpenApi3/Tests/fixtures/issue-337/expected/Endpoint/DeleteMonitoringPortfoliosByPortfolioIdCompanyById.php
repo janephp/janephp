@@ -8,7 +8,6 @@ class DeleteMonitoringPortfoliosByPortfolioIdCompanyById extends \CreditSafe\API
     protected $id;
     /**
      * Delete a Company
-     *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param string $id A company Safe Number or Connect ID.
      * @param array $headerParameters {

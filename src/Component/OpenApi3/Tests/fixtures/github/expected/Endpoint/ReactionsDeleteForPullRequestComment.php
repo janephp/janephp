@@ -9,15 +9,14 @@ class ReactionsDeleteForPullRequestComment extends \Github\Runtime\Client\BaseEn
     protected $comment_id;
     protected $reaction_id;
     /**
-    * **Note:** You can also specify a repository by `repository_id` using the route `DELETE /repositories/:repository_id/pulls/comments/:comment_id/reactions/:reaction_id.`
-    
-    Delete a reaction to a [pull request review comment](https://developer.github.com/v3/pulls/comments/).
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param int $commentId comment_id parameter
-    * @param int $reactionId 
-    */
+     * **Note:** You can also specify a repository by `repository_id` using the route `DELETE /repositories/:repository_id/pulls/comments/:comment_id/reactions/:reaction_id.`
+     *
+     * Delete a reaction to a [pull request review comment](https://developer.github.com/v3/pulls/comments/).
+     * @param string $owner
+     * @param string $repo
+     * @param int $commentId comment_id parameter
+     * @param int $reactionId
+     */
     public function __construct(string $owner, string $repo, int $commentId, int $reactionId)
     {
         $this->owner = $owner;

@@ -49,8 +49,6 @@ class ReposOwnerRepoPullsPostBody extends \ArrayObject
      */
     protected $draft;
     /**
-     * 
-     *
      * @var int
      */
     protected $issue;
@@ -187,8 +185,6 @@ class ReposOwnerRepoPullsPostBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getIssue(): int
@@ -196,8 +192,6 @@ class ReposOwnerRepoPullsPostBody extends \ArrayObject
         return $this->issue;
     }
     /**
-     * 
-     *
      * @param int $issue
      *
      * @return self

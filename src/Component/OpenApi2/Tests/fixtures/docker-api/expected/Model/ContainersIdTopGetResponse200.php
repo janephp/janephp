@@ -19,12 +19,12 @@ class ContainersIdTopGetResponse200
      */
     protected $titles;
     /**
-    * Each process running in the container, where each is process
-    is an array of values corresponding to the titles.
-    
-    *
-    * @var list<list<string>>
-    */
+     * Each process running in the container, where each is process
+     * is an array of values corresponding to the titles.
+     * 
+     *
+     * @var list<list<string>>
+     */
     protected $processes;
     /**
      * The ps column titles
@@ -49,12 +49,12 @@ class ContainersIdTopGetResponse200
         return $this;
     }
     /**
-    * Each process running in the container, where each is process
-    is an array of values corresponding to the titles.
-    
-    *
-    * @return list<list<string>>
-    */
+     * Each process running in the container, where each is process
+     * is an array of values corresponding to the titles.
+     * 
+     *
+     * @return list<list<string>>
+     */
     public function getProcesses(): array
     {
         return $this->processes;

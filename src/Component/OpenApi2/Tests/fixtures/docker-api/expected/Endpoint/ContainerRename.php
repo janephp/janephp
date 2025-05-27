@@ -6,8 +6,6 @@ class ContainerRename extends \Docker\Api\Runtime\Client\BaseEndpoint implements
 {
     protected $id;
     /**
-     * 
-     *
      * @param string $id ID or name of the container
      * @param array $queryParameters {
      *     @var string $name New name for the container

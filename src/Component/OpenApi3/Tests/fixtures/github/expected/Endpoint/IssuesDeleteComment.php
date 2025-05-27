@@ -8,10 +8,8 @@ class IssuesDeleteComment extends \Github\Runtime\Client\BaseEndpoint implements
     protected $repo;
     protected $comment_id;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $commentId comment_id parameter
      */
     public function __construct(string $owner, string $repo, int $commentId)

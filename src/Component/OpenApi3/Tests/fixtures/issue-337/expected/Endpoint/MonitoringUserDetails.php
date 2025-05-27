@@ -6,7 +6,6 @@ class MonitoringUserDetails extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
 {
     /**
      * Endpoint to return all user details relating to the Global Monitoring product.
-     *
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }

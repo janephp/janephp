@@ -31,11 +31,11 @@ class AssignTagboxItemsAction extends BusinessRuleAction
      */
     protected $refIds;
     /**
-    * Indicates whether all the already assigned tags get replaced by the set specified in the action.
-    If false, the not already assigned tags get added, the rest is left as is.
-    *
-    * @var bool
-    */
+     * Indicates whether all the already assigned tags get replaced by the set specified in the action.
+     * If false, the not already assigned tags get added, the rest is left as is.
+     *
+     * @var bool
+     */
     protected $replace;
     /**
      * Path to the object the tagbox is contained in.
@@ -104,11 +104,11 @@ class AssignTagboxItemsAction extends BusinessRuleAction
         return $this;
     }
     /**
-    * Indicates whether all the already assigned tags get replaced by the set specified in the action.
-    If false, the not already assigned tags get added, the rest is left as is.
-    *
-    * @return bool
-    */
+     * Indicates whether all the already assigned tags get replaced by the set specified in the action.
+     * If false, the not already assigned tags get added, the rest is left as is.
+     *
+     * @return bool
+     */
     public function getReplace(): bool
     {
         return $this->replace;

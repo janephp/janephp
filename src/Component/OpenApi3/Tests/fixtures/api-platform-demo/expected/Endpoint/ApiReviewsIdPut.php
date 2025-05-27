@@ -8,9 +8,8 @@ class ApiReviewsIdPut extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
     protected $accept;
     /**
      * Replaces the Review resource.
-     *
      * @param string $id Review identifier
-     * @param \ApiPlatform\Demo\Model\ReviewJsonldReviewWrite|\ApiPlatform\Demo\Model\ReviewJsonhalReviewWrite|\ApiPlatform\Demo\Model\ReviewReviewWrite $requestBody 
+     * @param \ApiPlatform\Demo\Model\ReviewJsonldReviewWrite|\ApiPlatform\Demo\Model\ReviewJsonhalReviewWrite|\ApiPlatform\Demo\Model\ReviewReviewWrite $requestBody
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      */
     public function __construct(string $id, $requestBody, array $accept = [])

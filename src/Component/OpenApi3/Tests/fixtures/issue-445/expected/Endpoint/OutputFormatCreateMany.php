@@ -6,8 +6,7 @@ class OutputFormatCreateMany extends \PicturePark\API\Runtime\Client\BaseEndpoin
 {
     /**
      * Creates new output formats based on supplied requests. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
-     * @param \PicturePark\API\Model\OutputFormatCreateManyRequest $requestBody 
+     * @param \PicturePark\API\Model\OutputFormatCreateManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\OutputFormatCreateManyRequest $requestBody)
     {

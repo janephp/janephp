@@ -6,8 +6,7 @@ class UsersSetPrimaryEmailVisibilityForAuthenticated extends \Github\Runtime\Cli
 {
     /**
      * Sets the visibility for your primary email addresses.
-     *
-     * @param null|\Github\Model\UserEmailVisibilityPatchBody $requestBody 
+     * @param null|\Github\Model\UserEmailVisibilityPatchBody $requestBody
      */
     public function __construct(?\Github\Model\UserEmailVisibilityPatchBody $requestBody = null)
     {

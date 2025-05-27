@@ -6,7 +6,6 @@ class SchemaPermissionSetGetMany extends \PicturePark\API\Runtime\Client\BaseEnd
 {
     /**
      * Gets multiple schema permission set details by the schema permission set IDs.
-     *
      * @param array $queryParameters {
      *     @var array $ids Ids
      * }

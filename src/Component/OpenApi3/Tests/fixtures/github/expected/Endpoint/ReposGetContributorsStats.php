@@ -7,17 +7,16 @@ class ReposGetContributorsStats extends \Github\Runtime\Client\BaseEndpoint impl
     protected $owner;
     protected $repo;
     /**
-    * 
-    Returns the `total` number of commits authored by the contributor. In addition, the response includes a Weekly Hash (`weeks` array) with the following information:
-    
-    *   `w` - Start of the week, given as a [Unix timestamp](http://en.wikipedia.org/wiki/Unix_time).
-    *   `a` - Number of additions
-    *   `d` - Number of deletions
-    *   `c` - Number of commits
-    *
-    * @param string $owner 
-    * @param string $repo 
-    */
+     *
+     * Returns the `total` number of commits authored by the contributor. In addition, the response includes a Weekly Hash (`weeks` array) with the following information:
+     *
+     * *   `w` - Start of the week, given as a [Unix timestamp](http://en.wikipedia.org/wiki/Unix_time).
+     * *   `a` - Number of additions
+     * *   `d` - Number of deletions
+     * *   `c` - Number of commits
+     * @param string $owner
+     * @param string $repo
+     */
     public function __construct(string $owner, string $repo)
     {
         $this->owner = $owner;

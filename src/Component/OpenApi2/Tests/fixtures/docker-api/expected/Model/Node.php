@@ -13,79 +13,73 @@ class Node
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $iD;
     /**
-    * The version number of the object such as node, service, etc. This is needed
-    to avoid conflicting writes. The client must send the version number along
-    with the modified specification when updating these objects.
-    
-    This approach ensures safe concurrency and determinism in that the change
-    on the object may not be applied if the version number has changed from the
-    last read. In other words, if two update requests specify the same base
-    version, only one of the requests can succeed. As a result, two separate
-    update requests that happen at the same time will not unintentionally
-    overwrite each other.
-    
-    *
-    * @var ObjectVersion
-    */
-    protected $version;
-    /**
-    * Date and time at which the node was added to the swarm in
-    [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
-    
-    *
-    * @var string
-    */
-    protected $createdAt;
-    /**
-    * Date and time at which the node was last updated in
-    [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
-    
-    *
-    * @var string
-    */
-    protected $updatedAt;
-    /**
+     * The version number of the object such as node, service, etc. This is needed
+     * to avoid conflicting writes. The client must send the version number along
+     * with the modified specification when updating these objects.
+     * 
+     * This approach ensures safe concurrency and determinism in that the change
+     * on the object may not be applied if the version number has changed from the
+     * last read. In other words, if two update requests specify the same base
+     * version, only one of the requests can succeed. As a result, two separate
+     * update requests that happen at the same time will not unintentionally
+     * overwrite each other.
      * 
      *
+     * @var ObjectVersion
+     */
+    protected $version;
+    /**
+     * Date and time at which the node was added to the swarm in
+     * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
+     * 
+     *
+     * @var string
+     */
+    protected $createdAt;
+    /**
+     * Date and time at which the node was last updated in
+     * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
+     * 
+     *
+     * @var string
+     */
+    protected $updatedAt;
+    /**
      * @var NodeSpec
      */
     protected $spec;
     /**
-    * NodeDescription encapsulates the properties of the Node as reported by the
-    agent.
-    
-    *
-    * @var NodeDescription
-    */
-    protected $description;
-    /**
-    * NodeStatus represents the status of a node.
-    
-    It provides the current status of the node, as seen by the manager.
-    
-    *
-    * @var NodeStatus
-    */
-    protected $status;
-    /**
-    * ManagerStatus represents the status of a manager.
-    
-    It provides the current status of a node's manager component, if the node
-    is a manager.
-    
-    *
-    * @var ManagerStatus|null
-    */
-    protected $managerStatus;
-    /**
+     * NodeDescription encapsulates the properties of the Node as reported by the
+     * agent.
      * 
      *
+     * @var NodeDescription
+     */
+    protected $description;
+    /**
+     * NodeStatus represents the status of a node.
+     * 
+     * It provides the current status of the node, as seen by the manager.
+     * 
+     *
+     * @var NodeStatus
+     */
+    protected $status;
+    /**
+     * ManagerStatus represents the status of a manager.
+     * 
+     * It provides the current status of a node's manager component, if the node
+     * is a manager.
+     * 
+     *
+     * @var ManagerStatus|null
+     */
+    protected $managerStatus;
+    /**
      * @return string
      */
     public function getID(): string
@@ -93,8 +87,6 @@ class Node
         return $this->iD;
     }
     /**
-     * 
-     *
      * @param string $iD
      *
      * @return self
@@ -106,20 +98,20 @@ class Node
         return $this;
     }
     /**
-    * The version number of the object such as node, service, etc. This is needed
-    to avoid conflicting writes. The client must send the version number along
-    with the modified specification when updating these objects.
-    
-    This approach ensures safe concurrency and determinism in that the change
-    on the object may not be applied if the version number has changed from the
-    last read. In other words, if two update requests specify the same base
-    version, only one of the requests can succeed. As a result, two separate
-    update requests that happen at the same time will not unintentionally
-    overwrite each other.
-    
-    *
-    * @return ObjectVersion
-    */
+     * The version number of the object such as node, service, etc. This is needed
+     * to avoid conflicting writes. The client must send the version number along
+     * with the modified specification when updating these objects.
+     * 
+     * This approach ensures safe concurrency and determinism in that the change
+     * on the object may not be applied if the version number has changed from the
+     * last read. In other words, if two update requests specify the same base
+     * version, only one of the requests can succeed. As a result, two separate
+     * update requests that happen at the same time will not unintentionally
+     * overwrite each other.
+     * 
+     *
+     * @return ObjectVersion
+     */
     public function getVersion(): ObjectVersion
     {
         return $this->version;
@@ -148,12 +140,12 @@ class Node
         return $this;
     }
     /**
-    * Date and time at which the node was added to the swarm in
-    [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
-    
-    *
-    * @return string
-    */
+     * Date and time at which the node was added to the swarm in
+     * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
+     * 
+     *
+     * @return string
+     */
     public function getCreatedAt(): string
     {
         return $this->createdAt;
@@ -174,12 +166,12 @@ class Node
         return $this;
     }
     /**
-    * Date and time at which the node was last updated in
-    [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
-    
-    *
-    * @return string
-    */
+     * Date and time at which the node was last updated in
+     * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
+     * 
+     *
+     * @return string
+     */
     public function getUpdatedAt(): string
     {
         return $this->updatedAt;
@@ -200,8 +192,6 @@ class Node
         return $this;
     }
     /**
-     * 
-     *
      * @return NodeSpec
      */
     public function getSpec(): NodeSpec
@@ -209,8 +199,6 @@ class Node
         return $this->spec;
     }
     /**
-     * 
-     *
      * @param NodeSpec $spec
      *
      * @return self
@@ -222,12 +210,12 @@ class Node
         return $this;
     }
     /**
-    * NodeDescription encapsulates the properties of the Node as reported by the
-    agent.
-    
-    *
-    * @return NodeDescription
-    */
+     * NodeDescription encapsulates the properties of the Node as reported by the
+     * agent.
+     * 
+     *
+     * @return NodeDescription
+     */
     public function getDescription(): NodeDescription
     {
         return $this->description;
@@ -248,13 +236,13 @@ class Node
         return $this;
     }
     /**
-    * NodeStatus represents the status of a node.
-    
-    It provides the current status of the node, as seen by the manager.
-    
-    *
-    * @return NodeStatus
-    */
+     * NodeStatus represents the status of a node.
+     * 
+     * It provides the current status of the node, as seen by the manager.
+     * 
+     *
+     * @return NodeStatus
+     */
     public function getStatus(): NodeStatus
     {
         return $this->status;
@@ -276,14 +264,14 @@ class Node
         return $this;
     }
     /**
-    * ManagerStatus represents the status of a manager.
-    
-    It provides the current status of a node's manager component, if the node
-    is a manager.
-    
-    *
-    * @return ManagerStatus|null
-    */
+     * ManagerStatus represents the status of a manager.
+     * 
+     * It provides the current status of a node's manager component, if the node
+     * is a manager.
+     * 
+     *
+     * @return ManagerStatus|null
+     */
     public function getManagerStatus(): ?ManagerStatus
     {
         return $this->managerStatus;

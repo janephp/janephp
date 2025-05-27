@@ -13,32 +13,22 @@ class GitRef extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $ref;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var GitRefObject
      */
     protected $object;
     /**
-     * 
-     *
      * @return string
      */
     public function getRef(): string
@@ -46,8 +36,6 @@ class GitRef extends \ArrayObject
         return $this->ref;
     }
     /**
-     * 
-     *
      * @param string $ref
      *
      * @return self
@@ -59,8 +47,6 @@ class GitRef extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -68,8 +54,6 @@ class GitRef extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -81,8 +65,6 @@ class GitRef extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -90,8 +72,6 @@ class GitRef extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -103,8 +83,6 @@ class GitRef extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GitRefObject
      */
     public function getObject(): GitRefObject
@@ -112,8 +90,6 @@ class GitRef extends \ArrayObject
         return $this->object;
     }
     /**
-     * 
-     *
      * @param GitRefObject $object
      *
      * @return self

@@ -8,10 +8,8 @@ class ReposListForks extends \Github\Runtime\Client\BaseEndpoint implements \Git
     protected $repo;
     protected $accept;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param array $queryParameters {
      *     @var string $sort The sort order. Can be either `newest`, `oldest`, or `stargazers`.
      *     @var int $per_page Results per page (max 100)

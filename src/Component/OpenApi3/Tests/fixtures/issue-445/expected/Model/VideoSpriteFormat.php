@@ -31,8 +31,6 @@ class VideoSpriteFormat extends FormatBase
      */
     protected $quality;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $extension;
@@ -103,8 +101,6 @@ class VideoSpriteFormat extends FormatBase
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExtension(): ?string
@@ -112,8 +108,6 @@ class VideoSpriteFormat extends FormatBase
         return $this->extension;
     }
     /**
-     * 
-     *
      * @param string|null $extension
      *
      * @return self

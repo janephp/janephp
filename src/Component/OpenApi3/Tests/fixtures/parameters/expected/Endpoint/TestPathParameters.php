@@ -8,11 +8,9 @@ class TestPathParameters extends \Jane\Component\OpenApi3\Tests\Expected\Runtime
     protected $testInteger;
     protected $testFloat;
     /**
-     * 
-     *
-     * @param string $testString 
-     * @param int $testInteger 
-     * @param float $testFloat 
+     * @param string $testString
+     * @param int $testInteger
+     * @param float $testFloat
      */
     public function __construct(string $testString, int $testInteger, float $testFloat)
     {

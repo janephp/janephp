@@ -13,62 +13,42 @@ class ExecIdJsonGetResponse200
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var bool
      */
     protected $canRemove;
     /**
-     * 
-     *
      * @var string
      */
     protected $detachKeys;
     /**
-     * 
-     *
      * @var string
      */
     protected $iD;
     /**
-     * 
-     *
      * @var bool
      */
     protected $running;
     /**
-     * 
-     *
      * @var int
      */
     protected $exitCode;
     /**
-     * 
-     *
      * @var ProcessConfig
      */
     protected $processConfig;
     /**
-     * 
-     *
      * @var bool
      */
     protected $openStdin;
     /**
-     * 
-     *
      * @var bool
      */
     protected $openStderr;
     /**
-     * 
-     *
      * @var bool
      */
     protected $openStdout;
     /**
-     * 
-     *
      * @var string
      */
     protected $containerID;
@@ -79,8 +59,6 @@ class ExecIdJsonGetResponse200
      */
     protected $pid;
     /**
-     * 
-     *
      * @return bool
      */
     public function getCanRemove(): bool
@@ -88,8 +66,6 @@ class ExecIdJsonGetResponse200
         return $this->canRemove;
     }
     /**
-     * 
-     *
      * @param bool $canRemove
      *
      * @return self
@@ -101,8 +77,6 @@ class ExecIdJsonGetResponse200
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDetachKeys(): string
@@ -110,8 +84,6 @@ class ExecIdJsonGetResponse200
         return $this->detachKeys;
     }
     /**
-     * 
-     *
      * @param string $detachKeys
      *
      * @return self
@@ -123,8 +95,6 @@ class ExecIdJsonGetResponse200
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getID(): string
@@ -132,8 +102,6 @@ class ExecIdJsonGetResponse200
         return $this->iD;
     }
     /**
-     * 
-     *
      * @param string $iD
      *
      * @return self
@@ -145,8 +113,6 @@ class ExecIdJsonGetResponse200
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getRunning(): bool
@@ -154,8 +120,6 @@ class ExecIdJsonGetResponse200
         return $this->running;
     }
     /**
-     * 
-     *
      * @param bool $running
      *
      * @return self
@@ -167,8 +131,6 @@ class ExecIdJsonGetResponse200
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getExitCode(): int
@@ -176,8 +138,6 @@ class ExecIdJsonGetResponse200
         return $this->exitCode;
     }
     /**
-     * 
-     *
      * @param int $exitCode
      *
      * @return self
@@ -189,8 +149,6 @@ class ExecIdJsonGetResponse200
         return $this;
     }
     /**
-     * 
-     *
      * @return ProcessConfig
      */
     public function getProcessConfig(): ProcessConfig
@@ -198,8 +156,6 @@ class ExecIdJsonGetResponse200
         return $this->processConfig;
     }
     /**
-     * 
-     *
      * @param ProcessConfig $processConfig
      *
      * @return self
@@ -211,8 +167,6 @@ class ExecIdJsonGetResponse200
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getOpenStdin(): bool
@@ -220,8 +174,6 @@ class ExecIdJsonGetResponse200
         return $this->openStdin;
     }
     /**
-     * 
-     *
      * @param bool $openStdin
      *
      * @return self
@@ -233,8 +185,6 @@ class ExecIdJsonGetResponse200
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getOpenStderr(): bool
@@ -242,8 +192,6 @@ class ExecIdJsonGetResponse200
         return $this->openStderr;
     }
     /**
-     * 
-     *
      * @param bool $openStderr
      *
      * @return self
@@ -255,8 +203,6 @@ class ExecIdJsonGetResponse200
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getOpenStdout(): bool
@@ -264,8 +210,6 @@ class ExecIdJsonGetResponse200
         return $this->openStdout;
     }
     /**
-     * 
-     *
      * @param bool $openStdout
      *
      * @return self
@@ -277,8 +221,6 @@ class ExecIdJsonGetResponse200
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContainerID(): string
@@ -286,8 +228,6 @@ class ExecIdJsonGetResponse200
         return $this->containerID;
     }
     /**
-     * 
-     *
      * @param string $containerID
      *
      * @return self

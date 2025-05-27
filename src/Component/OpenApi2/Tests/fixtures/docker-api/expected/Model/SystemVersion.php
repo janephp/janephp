@@ -13,13 +13,12 @@ class SystemVersion
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var SystemVersionPlatform
      */
     protected $platform;
     /**
      * Information about system components
+     * 
      *
      * @var list<SystemVersionComponentsItem>
      */
@@ -32,69 +31,73 @@ class SystemVersion
     protected $version;
     /**
      * The default (and highest) API version that is supported by the daemon
+     * 
      *
      * @var string
      */
     protected $apiVersion;
     /**
      * The minimum API version that is supported by the daemon
+     * 
      *
      * @var string
      */
     protected $minAPIVersion;
     /**
      * The Git commit of the source code that was used to build the daemon
+     * 
      *
      * @var string
      */
     protected $gitCommit;
     /**
-    * The version Go used to compile the daemon, and the version of the Go
-    runtime in use.
-    
-    *
-    * @var string
-    */
+     * The version Go used to compile the daemon, and the version of the Go
+     * runtime in use.
+     * 
+     *
+     * @var string
+     */
     protected $goVersion;
     /**
      * The operating system that the daemon is running on ("linux" or "windows")
+     * 
      *
      * @var string
      */
     protected $os;
     /**
      * The architecture that the daemon is running on
+     * 
      *
      * @var string
      */
     protected $arch;
     /**
-    * The kernel version (`uname -r`) that the daemon is running on.
-    
-    This field is omitted when empty.
-    
-    *
-    * @var string
-    */
+     * The kernel version (`uname -r`) that the daemon is running on.
+     * 
+     * This field is omitted when empty.
+     * 
+     *
+     * @var string
+     */
     protected $kernelVersion;
     /**
-    * Indicates if the daemon is started with experimental features enabled.
-    
-    This field is omitted when empty / false.
-    
-    *
-    * @var bool
-    */
+     * Indicates if the daemon is started with experimental features enabled.
+     * 
+     * This field is omitted when empty / false.
+     * 
+     *
+     * @var bool
+     */
     protected $experimental;
     /**
      * The date and time that the daemon was compiled.
+     * 
      *
      * @var string
      */
     protected $buildTime;
     /**
-     * 
-     *
      * @return SystemVersionPlatform
      */
     public function getPlatform(): SystemVersionPlatform
@@ -102,8 +105,6 @@ class SystemVersion
         return $this->platform;
     }
     /**
-     * 
-     *
      * @param SystemVersionPlatform $platform
      *
      * @return self
@@ -116,6 +117,7 @@ class SystemVersion
     }
     /**
      * Information about system components
+     * 
      *
      * @return list<SystemVersionComponentsItem>
      */
@@ -160,6 +162,7 @@ class SystemVersion
     }
     /**
      * The default (and highest) API version that is supported by the daemon
+     * 
      *
      * @return string
      */
@@ -182,6 +185,7 @@ class SystemVersion
     }
     /**
      * The minimum API version that is supported by the daemon
+     * 
      *
      * @return string
      */
@@ -204,6 +208,7 @@ class SystemVersion
     }
     /**
      * The Git commit of the source code that was used to build the daemon
+     * 
      *
      * @return string
      */
@@ -225,12 +230,12 @@ class SystemVersion
         return $this;
     }
     /**
-    * The version Go used to compile the daemon, and the version of the Go
-    runtime in use.
-    
-    *
-    * @return string
-    */
+     * The version Go used to compile the daemon, and the version of the Go
+     * runtime in use.
+     * 
+     *
+     * @return string
+     */
     public function getGoVersion(): string
     {
         return $this->goVersion;
@@ -252,6 +257,7 @@ class SystemVersion
     }
     /**
      * The operating system that the daemon is running on ("linux" or "windows")
+     * 
      *
      * @return string
      */
@@ -274,6 +280,7 @@ class SystemVersion
     }
     /**
      * The architecture that the daemon is running on
+     * 
      *
      * @return string
      */
@@ -295,13 +302,13 @@ class SystemVersion
         return $this;
     }
     /**
-    * The kernel version (`uname -r`) that the daemon is running on.
-    
-    This field is omitted when empty.
-    
-    *
-    * @return string
-    */
+     * The kernel version (`uname -r`) that the daemon is running on.
+     * 
+     * This field is omitted when empty.
+     * 
+     *
+     * @return string
+     */
     public function getKernelVersion(): string
     {
         return $this->kernelVersion;
@@ -323,13 +330,13 @@ class SystemVersion
         return $this;
     }
     /**
-    * Indicates if the daemon is started with experimental features enabled.
-    
-    This field is omitted when empty / false.
-    
-    *
-    * @return bool
-    */
+     * Indicates if the daemon is started with experimental features enabled.
+     * 
+     * This field is omitted when empty / false.
+     * 
+     *
+     * @return bool
+     */
     public function getExperimental(): bool
     {
         return $this->experimental;
@@ -352,6 +359,7 @@ class SystemVersion
     }
     /**
      * The date and time that the daemon was compiled.
+     * 
      *
      * @return string
      */

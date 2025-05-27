@@ -13,26 +13,18 @@ class Contact extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $name;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $url;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $email;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getName() : ?string
@@ -40,8 +32,6 @@ class Contact extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string|null $name
      *
      * @return self
@@ -53,8 +43,6 @@ class Contact extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getUrl() : ?string
@@ -62,8 +50,6 @@ class Contact extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string|null $url
      *
      * @return self
@@ -75,8 +61,6 @@ class Contact extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getEmail() : ?string
@@ -84,8 +68,6 @@ class Contact extends \ArrayObject
         return $this->email;
     }
     /**
-     * 
-     *
      * @param string|null $email
      *
      * @return self

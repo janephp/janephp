@@ -13,20 +13,14 @@ class GetRulesResponse extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<Rule>
      */
     protected $data;
     /**
-     * 
-     *
      * @var RulesResponseMetadata
      */
     protected $meta;
     /**
-     * 
-     *
      * @return list<Rule>
      */
     public function getData(): array
@@ -34,8 +28,6 @@ class GetRulesResponse extends \ArrayObject
         return $this->data;
     }
     /**
-     * 
-     *
      * @param list<Rule> $data
      *
      * @return self
@@ -47,8 +39,6 @@ class GetRulesResponse extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return RulesResponseMetadata
      */
     public function getMeta(): RulesResponseMetadata
@@ -56,8 +46,6 @@ class GetRulesResponse extends \ArrayObject
         return $this->meta;
     }
     /**
-     * 
-     *
      * @param RulesResponseMetadata $meta
      *
      * @return self

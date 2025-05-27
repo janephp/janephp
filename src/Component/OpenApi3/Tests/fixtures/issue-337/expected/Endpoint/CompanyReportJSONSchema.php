@@ -7,7 +7,6 @@ class CompanyReportJSONSchema extends \CreditSafe\API\Runtime\Client\BaseEndpoin
     protected $countryCode;
     /**
      * Returns the JSON schema of the companies/{connectId} endpoint for implementation in strong-typed languages.
-     *
      * @param string $countryCode ISO2 / Alpha 2 Country Code
      * @param array $queryParameters {
      *     @var string $section Use CompanyReportResponse for the Company Credit Report JSON schema, DirectorReportResponse for the Director Report JSON schema.

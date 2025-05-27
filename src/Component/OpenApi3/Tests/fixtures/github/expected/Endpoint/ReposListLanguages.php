@@ -8,9 +8,8 @@ class ReposListLanguages extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $repo;
     /**
      * Lists languages for the specified repository. The value shown for each language is the number of bytes of code written in that language.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      */
     public function __construct(string $owner, string $repo)
     {

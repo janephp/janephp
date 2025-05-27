@@ -6,8 +6,7 @@ class ContentCreateDownloadLink extends \PicturePark\API\Runtime\Client\BaseEndp
 {
     /**
      * Creates a download link for one or more contents. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
-     * @param \PicturePark\API\Model\ContentDownloadLinkCreateRequest $requestBody 
+     * @param \PicturePark\API\Model\ContentDownloadLinkCreateRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\ContentDownloadLinkCreateRequest $requestBody)
     {

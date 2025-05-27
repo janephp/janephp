@@ -5,13 +5,12 @@ namespace PicturePark\API\Endpoint;
 class SchemaGetIndexFields extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Search the indexed fields based on the search request.
-    An indexed field object is created for a schema field only if that field has one of the following properties set to true: Index,
-    SimpleSearch or Sortable.
-    All indexed fields are aggregated and returned as a a single list.
-    *
-    * @param \PicturePark\API\Model\IndexFieldsSearchBySchemaIdsRequest $requestBody 
-    */
+     * Search the indexed fields based on the search request.
+     * An indexed field object is created for a schema field only if that field has one of the following properties set to true: Index,
+     * SimpleSearch or Sortable.
+     * All indexed fields are aggregated and returned as a a single list.
+     * @param \PicturePark\API\Model\IndexFieldsSearchBySchemaIdsRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\IndexFieldsSearchBySchemaIdsRequest $requestBody)
     {
         $this->body = $requestBody;

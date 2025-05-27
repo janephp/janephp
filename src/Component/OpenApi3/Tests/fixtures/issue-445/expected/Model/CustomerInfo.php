@@ -79,8 +79,6 @@ class CustomerInfo
      */
     protected $apps;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $modificationDate;
@@ -339,8 +337,6 @@ class CustomerInfo
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getModificationDate(): \DateTime
@@ -348,8 +344,6 @@ class CustomerInfo
         return $this->modificationDate;
     }
     /**
-     * 
-     *
      * @param \DateTime $modificationDate
      *
      * @return self

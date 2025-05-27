@@ -9,12 +9,10 @@ class TestSimplePathArrayParameters extends \Jane\Component\OpenApi3\Tests\Expec
     protected $stringRef;
     protected $arrayRef;
     /**
-     * 
-     *
-     * @param string $string 
-     * @param array $array 
-     * @param string $stringRef 
-     * @param array $arrayRef 
+     * @param string $string
+     * @param array $array
+     * @param string $stringRef
+     * @param array $arrayRef
      */
     public function __construct(string $string, array $array, string $stringRef, array $arrayRef)
     {

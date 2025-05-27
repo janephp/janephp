@@ -8,9 +8,9 @@ class TeamsListProjectsInOrg extends \Github\Runtime\Client\BaseEndpoint impleme
     protected $team_slug;
     /**
      * Lists the organization projects for a team.
-     **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/projects`.
      *
-     * @param string $org 
+     * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/projects`.
+     * @param string $org
      * @param string $teamSlug team_slug parameter
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)

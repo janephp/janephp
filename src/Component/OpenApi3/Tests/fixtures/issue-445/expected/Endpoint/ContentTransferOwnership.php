@@ -7,9 +7,8 @@ class ContentTransferOwnership extends \PicturePark\API\Runtime\Client\BaseEndpo
     protected $id;
     /**
     * Transfers ownership of a content to another user. The target user must have the ManageContent UserRight.
-    *
     * @param string $id The content ID.
-    * @param \PicturePark\API\Model\ContentOwnershipTransferRequest $requestBody 
+    * @param \PicturePark\API\Model\ContentOwnershipTransferRequest $requestBody
     * @param array $queryParameters {
     *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.

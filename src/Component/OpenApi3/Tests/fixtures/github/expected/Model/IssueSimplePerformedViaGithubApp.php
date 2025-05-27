@@ -25,14 +25,10 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
      */
     protected $slug;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var IntegrationOwner|null
      */
     protected $owner;
@@ -43,32 +39,22 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
      */
     protected $name;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var string
      */
     protected $externalUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
@@ -91,26 +77,18 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
      */
     protected $installationsCount;
     /**
-     * 
-     *
      * @var string
      */
     protected $clientId;
     /**
-     * 
-     *
      * @var string
      */
     protected $clientSecret;
     /**
-     * 
-     *
      * @var string
      */
     protected $webhookSecret;
     /**
-     * 
-     *
      * @var string
      */
     protected $pem;
@@ -159,8 +137,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -168,8 +144,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -181,8 +155,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IntegrationOwner|null
      */
     public function getOwner(): ?IntegrationOwner
@@ -190,8 +162,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this->owner;
     }
     /**
-     * 
-     *
      * @param IntegrationOwner|null $owner
      *
      * @return self
@@ -225,8 +195,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription(): ?string
@@ -234,8 +202,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -247,8 +213,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getExternalUrl(): string
@@ -256,8 +220,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this->externalUrl;
     }
     /**
-     * 
-     *
      * @param string $externalUrl
      *
      * @return self
@@ -269,8 +231,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -278,8 +238,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -291,8 +249,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -300,8 +256,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -313,8 +267,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -322,8 +274,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -401,8 +351,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getClientId(): string
@@ -410,8 +358,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this->clientId;
     }
     /**
-     * 
-     *
      * @param string $clientId
      *
      * @return self
@@ -423,8 +369,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getClientSecret(): string
@@ -432,8 +376,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this->clientSecret;
     }
     /**
-     * 
-     *
      * @param string $clientSecret
      *
      * @return self
@@ -445,8 +387,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getWebhookSecret(): string
@@ -454,8 +394,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this->webhookSecret;
     }
     /**
-     * 
-     *
      * @param string $webhookSecret
      *
      * @return self
@@ -467,8 +405,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPem(): string
@@ -476,8 +412,6 @@ class IssueSimplePerformedViaGithubApp extends \ArrayObject
         return $this->pem;
     }
     /**
-     * 
-     *
      * @param string $pem
      *
      * @return self

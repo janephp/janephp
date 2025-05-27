@@ -7,7 +7,6 @@ class CompanyImage extends \CreditSafe\API\Runtime\Client\BaseEndpoint implement
     protected $imageId;
     /**
      * Endpoint to order an Image Document by Image ID.
-     *
      * @param string $imageId Image ID retrieved from `images/companies`
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.

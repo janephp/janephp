@@ -13,14 +13,10 @@ class Test
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var \Jane\Component\JsonSchema\Tests\Expected\Schema2\Model\Foo
      */
     protected $foo;
     /**
-     * 
-     *
      * @return \Jane\Component\JsonSchema\Tests\Expected\Schema2\Model\Foo
      */
     public function getFoo(): \Jane\Component\JsonSchema\Tests\Expected\Schema2\Model\Foo
@@ -28,8 +24,6 @@ class Test
         return $this->foo;
     }
     /**
-     * 
-     *
      * @param \Jane\Component\JsonSchema\Tests\Expected\Schema2\Model\Foo $foo
      *
      * @return self

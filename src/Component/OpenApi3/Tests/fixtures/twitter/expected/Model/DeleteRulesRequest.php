@@ -13,20 +13,14 @@ class DeleteRulesRequest extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $ids;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $values;
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getIds(): array
@@ -34,8 +28,6 @@ class DeleteRulesRequest extends \ArrayObject
         return $this->ids;
     }
     /**
-     * 
-     *
      * @param list<string> $ids
      *
      * @return self
@@ -47,8 +39,6 @@ class DeleteRulesRequest extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getValues(): array
@@ -56,8 +46,6 @@ class DeleteRulesRequest extends \ArrayObject
         return $this->values;
     }
     /**
-     * 
-     *
      * @param list<string> $values
      *
      * @return self

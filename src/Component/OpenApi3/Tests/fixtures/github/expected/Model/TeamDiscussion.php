@@ -13,8 +13,6 @@ class TeamDiscussion extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var TeamDiscussionAuthor|null
      */
     protected $author;
@@ -25,8 +23,6 @@ class TeamDiscussion extends \ArrayObject
      */
     protected $body;
     /**
-     * 
-     *
      * @var string
      */
     protected $bodyHtml;
@@ -37,38 +33,26 @@ class TeamDiscussion extends \ArrayObject
      */
     protected $bodyVersion;
     /**
-     * 
-     *
      * @var int
      */
     protected $commentsCount;
     /**
-     * 
-     *
      * @var string
      */
     protected $commentsUrl;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $lastEditedAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
@@ -91,8 +75,6 @@ class TeamDiscussion extends \ArrayObject
      */
     protected $private;
     /**
-     * 
-     *
      * @var string
      */
     protected $teamUrl;
@@ -103,26 +85,18 @@ class TeamDiscussion extends \ArrayObject
      */
     protected $title;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var ReactionRollup
      */
     protected $reactions;
     /**
-     * 
-     *
      * @return TeamDiscussionAuthor|null
      */
     public function getAuthor(): ?TeamDiscussionAuthor
@@ -130,8 +104,6 @@ class TeamDiscussion extends \ArrayObject
         return $this->author;
     }
     /**
-     * 
-     *
      * @param TeamDiscussionAuthor|null $author
      *
      * @return self
@@ -165,8 +137,6 @@ class TeamDiscussion extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBodyHtml(): string
@@ -174,8 +144,6 @@ class TeamDiscussion extends \ArrayObject
         return $this->bodyHtml;
     }
     /**
-     * 
-     *
      * @param string $bodyHtml
      *
      * @return self
@@ -209,8 +177,6 @@ class TeamDiscussion extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getCommentsCount(): int
@@ -218,8 +184,6 @@ class TeamDiscussion extends \ArrayObject
         return $this->commentsCount;
     }
     /**
-     * 
-     *
      * @param int $commentsCount
      *
      * @return self
@@ -231,8 +195,6 @@ class TeamDiscussion extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommentsUrl(): string
@@ -240,8 +202,6 @@ class TeamDiscussion extends \ArrayObject
         return $this->commentsUrl;
     }
     /**
-     * 
-     *
      * @param string $commentsUrl
      *
      * @return self
@@ -253,8 +213,6 @@ class TeamDiscussion extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -262,8 +220,6 @@ class TeamDiscussion extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -275,8 +231,6 @@ class TeamDiscussion extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getLastEditedAt(): ?\DateTime
@@ -284,8 +238,6 @@ class TeamDiscussion extends \ArrayObject
         return $this->lastEditedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $lastEditedAt
      *
      * @return self
@@ -297,8 +249,6 @@ class TeamDiscussion extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -306,8 +256,6 @@ class TeamDiscussion extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -319,8 +267,6 @@ class TeamDiscussion extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -328,8 +274,6 @@ class TeamDiscussion extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -407,8 +351,6 @@ class TeamDiscussion extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTeamUrl(): string
@@ -416,8 +358,6 @@ class TeamDiscussion extends \ArrayObject
         return $this->teamUrl;
     }
     /**
-     * 
-     *
      * @param string $teamUrl
      *
      * @return self
@@ -451,8 +391,6 @@ class TeamDiscussion extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -460,8 +398,6 @@ class TeamDiscussion extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -473,8 +409,6 @@ class TeamDiscussion extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -482,8 +416,6 @@ class TeamDiscussion extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -495,8 +427,6 @@ class TeamDiscussion extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ReactionRollup
      */
     public function getReactions(): ReactionRollup
@@ -504,8 +434,6 @@ class TeamDiscussion extends \ArrayObject
         return $this->reactions;
     }
     /**
-     * 
-     *
      * @param ReactionRollup $reactions
      *
      * @return self

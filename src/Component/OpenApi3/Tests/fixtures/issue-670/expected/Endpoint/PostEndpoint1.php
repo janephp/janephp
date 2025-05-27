@@ -5,9 +5,7 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 class PostEndpoint1 extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-     * 
-     *
-     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint1PostBody $requestBody 
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint1PostBody $requestBody
      */
     public function __construct(?\Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint1PostBody $requestBody = null)
     {

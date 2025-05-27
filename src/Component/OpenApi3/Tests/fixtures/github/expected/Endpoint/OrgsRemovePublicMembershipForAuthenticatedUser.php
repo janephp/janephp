@@ -7,10 +7,8 @@ class OrgsRemovePublicMembershipForAuthenticatedUser extends \Github\Runtime\Cli
     protected $org;
     protected $username;
     /**
-     * 
-     *
-     * @param string $org 
-     * @param string $username 
+     * @param string $org
+     * @param string $username
      */
     public function __construct(string $org, string $username)
     {

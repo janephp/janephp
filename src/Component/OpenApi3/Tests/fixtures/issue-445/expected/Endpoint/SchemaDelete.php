@@ -7,8 +7,7 @@ class SchemaDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
     protected $id;
     /**
     * Deletes an existing schema.
-    Depending on how much the schema is referenced, the operation can take a lot of time.
-    *
+    * Depending on how much the schema is referenced, the operation can take a lot of time.
     * @param string $id The schema ID.
     * @param array $queryParameters {
     *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.

@@ -7,12 +7,11 @@ class ProjectsListCollaborators extends \Github\Runtime\Client\BaseEndpoint impl
     protected $project_id;
     /**
     * Lists the collaborators for an organization project. For a project, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners. You must be an organization owner or a project `admin` to list collaborators.
-    *
-    * @param int $projectId 
+    * @param int $projectId
     * @param array $queryParameters {
-    *     @var string $affiliation Filters the collaborators by their affiliation. Can be one of:  
-    \* `outside`: Outside collaborators of a project that are not a member of the project's organization.  
-    \* `direct`: Collaborators with permissions to a project, regardless of organization membership status.  
+    *     @var string $affiliation Filters the collaborators by their affiliation. Can be one of:
+    \* `outside`: Outside collaborators of a project that are not a member of the project's organization.
+    \* `direct`: Collaborators with permissions to a project, regardless of organization membership status.
     \* `all`: All collaborators the authenticated user can see.
     *     @var int $per_page Results per page (max 100)
     *     @var int $page Page number of the results to fetch.

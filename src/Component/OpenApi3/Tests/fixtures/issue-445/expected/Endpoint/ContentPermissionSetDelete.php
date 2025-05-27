@@ -7,7 +7,6 @@ class ContentPermissionSetDelete extends \PicturePark\API\Runtime\Client\BaseEnd
     protected $id;
     /**
      * Deletes the content permission set specified by the ID.
-     *
      * @param string $id Content permission set ID.
      */
     public function __construct(string $id)

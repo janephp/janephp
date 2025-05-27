@@ -8,9 +8,8 @@ class MigrationsCancelImport extends \Github\Runtime\Client\BaseEndpoint impleme
     protected $repo;
     /**
      * Stop an import for a repository.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      */
     public function __construct(string $owner, string $repo)
     {

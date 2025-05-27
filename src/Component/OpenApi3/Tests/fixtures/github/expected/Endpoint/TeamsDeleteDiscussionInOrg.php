@@ -9,11 +9,11 @@ class TeamsDeleteDiscussionInOrg extends \Github\Runtime\Client\BaseEndpoint imp
     protected $discussion_number;
     /**
      * Delete a discussion from a team's page. OAuth access tokens require the `write:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-     **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
      *
-     * @param string $org 
+     * **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
+     * @param string $org
      * @param string $teamSlug team_slug parameter
-     * @param int $discussionNumber 
+     * @param int $discussionNumber
      */
     public function __construct(string $org, string $teamSlug, int $discussionNumber)
     {

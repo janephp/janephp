@@ -14,86 +14,93 @@ class EndpointSettings
     }
     /**
      * EndpointIPAMConfig represents an endpoint's IPAM configuration.
+     * 
      *
      * @var EndpointIPAMConfig|null
      */
     protected $iPAMConfig;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $links;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $aliases;
     /**
      * Unique ID of the network.
+     * 
      *
      * @var string
      */
     protected $networkID;
     /**
      * Unique ID for the service endpoint in a Sandbox.
+     * 
      *
      * @var string
      */
     protected $endpointID;
     /**
      * Gateway address for this network.
+     * 
      *
      * @var string
      */
     protected $gateway;
     /**
      * IPv4 address.
+     * 
      *
      * @var string
      */
     protected $iPAddress;
     /**
      * Mask length of the IPv4 address.
+     * 
      *
      * @var int
      */
     protected $iPPrefixLen;
     /**
      * IPv6 gateway address.
+     * 
      *
      * @var string
      */
     protected $iPv6Gateway;
     /**
      * Global IPv6 address.
+     * 
      *
      * @var string
      */
     protected $globalIPv6Address;
     /**
      * Mask length of the global IPv6 address.
+     * 
      *
      * @var int
      */
     protected $globalIPv6PrefixLen;
     /**
      * MAC address for the endpoint on this network.
+     * 
      *
      * @var string
      */
     protected $macAddress;
     /**
-    * DriverOpts is a mapping of driver options and values. These options
-    are passed directly to the driver and are driver specific.
-    
-    *
-    * @var array<string, string>|null
-    */
+     * DriverOpts is a mapping of driver options and values. These options
+     * are passed directly to the driver and are driver specific.
+     * 
+     *
+     * @var array<string, string>|null
+     */
     protected $driverOpts;
     /**
      * EndpointIPAMConfig represents an endpoint's IPAM configuration.
+     * 
      *
      * @return EndpointIPAMConfig|null
      */
@@ -115,8 +122,6 @@ class EndpointSettings
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getLinks(): array
@@ -124,8 +129,6 @@ class EndpointSettings
         return $this->links;
     }
     /**
-     * 
-     *
      * @param list<string> $links
      *
      * @return self
@@ -137,8 +140,6 @@ class EndpointSettings
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getAliases(): array
@@ -146,8 +147,6 @@ class EndpointSettings
         return $this->aliases;
     }
     /**
-     * 
-     *
      * @param list<string> $aliases
      *
      * @return self
@@ -160,6 +159,7 @@ class EndpointSettings
     }
     /**
      * Unique ID of the network.
+     * 
      *
      * @return string
      */
@@ -182,6 +182,7 @@ class EndpointSettings
     }
     /**
      * Unique ID for the service endpoint in a Sandbox.
+     * 
      *
      * @return string
      */
@@ -204,6 +205,7 @@ class EndpointSettings
     }
     /**
      * Gateway address for this network.
+     * 
      *
      * @return string
      */
@@ -226,6 +228,7 @@ class EndpointSettings
     }
     /**
      * IPv4 address.
+     * 
      *
      * @return string
      */
@@ -248,6 +251,7 @@ class EndpointSettings
     }
     /**
      * Mask length of the IPv4 address.
+     * 
      *
      * @return int
      */
@@ -270,6 +274,7 @@ class EndpointSettings
     }
     /**
      * IPv6 gateway address.
+     * 
      *
      * @return string
      */
@@ -292,6 +297,7 @@ class EndpointSettings
     }
     /**
      * Global IPv6 address.
+     * 
      *
      * @return string
      */
@@ -314,6 +320,7 @@ class EndpointSettings
     }
     /**
      * Mask length of the global IPv6 address.
+     * 
      *
      * @return int
      */
@@ -336,6 +343,7 @@ class EndpointSettings
     }
     /**
      * MAC address for the endpoint on this network.
+     * 
      *
      * @return string
      */
@@ -357,12 +365,12 @@ class EndpointSettings
         return $this;
     }
     /**
-    * DriverOpts is a mapping of driver options and values. These options
-    are passed directly to the driver and are driver specific.
-    
-    *
-    * @return array<string, string>|null
-    */
+     * DriverOpts is a mapping of driver options and values. These options
+     * are passed directly to the driver and are driver specific.
+     * 
+     *
+     * @return array<string, string>|null
+     */
     public function getDriverOpts(): ?iterable
     {
         return $this->driverOpts;

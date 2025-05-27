@@ -9,10 +9,9 @@ class ReposGetCollaboratorPermissionLevel extends \Github\Runtime\Client\BaseEnd
     protected $username;
     /**
      * Checks the repository permission of a collaborator. The possible repository permissions are `admin`, `write`, `read`, and `none`.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param string $username 
+     * @param string $owner
+     * @param string $repo
+     * @param string $username
      */
     public function __construct(string $owner, string $repo, string $username)
     {

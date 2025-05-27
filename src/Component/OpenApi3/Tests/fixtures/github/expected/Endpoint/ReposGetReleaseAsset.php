@@ -9,9 +9,8 @@ class ReposGetReleaseAsset extends \Github\Runtime\Client\BaseEndpoint implement
     protected $asset_id;
     /**
      * To download the asset's binary content, set the `Accept` header of the request to [`application/octet-stream`](https://developer.github.com/v3/media/#media-types). The API will either redirect the client to the location, or stream it directly if possible. API clients should handle both a `200` or `302` response.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $assetId asset_id parameter
      */
     public function __construct(string $owner, string $repo, int $assetId)

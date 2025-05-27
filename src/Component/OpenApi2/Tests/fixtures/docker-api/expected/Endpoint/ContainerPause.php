@@ -6,16 +6,15 @@ class ContainerPause extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
 {
     protected $id;
     /**
-    * Use the freezer cgroup to suspend all processes in a container.
-    
-    Traditionally, when suspending a process the `SIGSTOP` signal is used,
-    which is observable by the process being suspended. With the freezer
-    cgroup the process is unaware, and unable to capture, that it is being
-    suspended, and subsequently resumed.
-    
-    *
-    * @param string $id ID or name of the container
-    */
+     * Use the freezer cgroup to suspend all processes in a container.
+     *
+     * Traditionally, when suspending a process the `SIGSTOP` signal is used,
+     * which is observable by the process being suspended. With the freezer
+     * cgroup the process is unaware, and unable to capture, that it is being
+     * suspended, and subsequently resumed.
+     *
+     * @param string $id ID or name of the container
+     */
     public function __construct(string $id)
     {
         $this->id = $id;

@@ -7,9 +7,8 @@ class RunDecisionTree extends \CreditSafe\API\Runtime\Client\BaseEndpoint implem
     protected $provenirId;
     /**
      * Calls a Decision Tree with the provided parameters to return a Decision.
-     *
      * @param string $provenirId Decision Tree GUID
-     * @param null|\stdClass $requestBody 
+     * @param null|\stdClass $requestBody
      * @param array $queryParameters {
      *     @var string $companyId the connectId of the company to be evaluated in the  deicison tree.
      *     @var string $originationId the origin id of the company we want a decision on. Only up to 100 characters are allowed, the rest will be truncated.

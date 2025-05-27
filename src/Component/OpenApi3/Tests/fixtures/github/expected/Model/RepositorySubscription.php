@@ -25,26 +25,18 @@ class RepositorySubscription extends \ArrayObject
      */
     protected $ignored;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $reason;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $repositoryUrl;
@@ -93,8 +85,6 @@ class RepositorySubscription extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getReason(): ?string
@@ -102,8 +92,6 @@ class RepositorySubscription extends \ArrayObject
         return $this->reason;
     }
     /**
-     * 
-     *
      * @param string|null $reason
      *
      * @return self
@@ -115,8 +103,6 @@ class RepositorySubscription extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -124,8 +110,6 @@ class RepositorySubscription extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -137,8 +121,6 @@ class RepositorySubscription extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -146,8 +128,6 @@ class RepositorySubscription extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -159,8 +139,6 @@ class RepositorySubscription extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRepositoryUrl(): string
@@ -168,8 +146,6 @@ class RepositorySubscription extends \ArrayObject
         return $this->repositoryUrl;
     }
     /**
-     * 
-     *
      * @param string $repositoryUrl
      *
      * @return self

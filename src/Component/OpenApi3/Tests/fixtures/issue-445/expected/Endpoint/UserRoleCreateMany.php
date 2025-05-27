@@ -6,8 +6,7 @@ class UserRoleCreateMany extends \PicturePark\API\Runtime\Client\BaseEndpoint im
 {
     /**
      * Creates new user roles based on supplied requests.
-     *
-     * @param \PicturePark\API\Model\UserRoleCreateManyRequest $requestBody 
+     * @param \PicturePark\API\Model\UserRoleCreateManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\UserRoleCreateManyRequest $requestBody)
     {

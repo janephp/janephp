@@ -6,7 +6,6 @@ class UserGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implement
 {
     /**
      * Can fetch 100 users at most.
-     *
      * @param array $queryParameters {
      *     @var array $ids User IDs.
      * }

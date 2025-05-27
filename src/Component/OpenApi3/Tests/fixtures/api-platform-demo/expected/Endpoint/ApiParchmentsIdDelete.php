@@ -7,7 +7,6 @@ class ApiParchmentsIdDelete extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoin
     protected $id;
     /**
      * Removes the Parchment resource.
-     *
      * @param string $id Parchment identifier
      */
     public function __construct(string $id)

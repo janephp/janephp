@@ -9,7 +9,6 @@ class DocumentHistoryCompareWithVersion extends \PicturePark\API\Runtime\Client\
     protected $documentVersion;
     /**
      * Compare a specific version of a document with another version and get the differences.
-     *
      * @param string $documentType The type of the document (e.g. Content).
      * @param string $documentId The ID of the document (e.g. contentId).
      * @param int $documentVersion The version of the document to use for the comparison.

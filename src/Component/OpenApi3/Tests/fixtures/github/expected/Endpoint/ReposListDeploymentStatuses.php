@@ -9,9 +9,8 @@ class ReposListDeploymentStatuses extends \Github\Runtime\Client\BaseEndpoint im
     protected $deployment_id;
     /**
      * Users with pull access can view deployment statuses for a deployment:
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $deploymentId deployment_id parameter
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)

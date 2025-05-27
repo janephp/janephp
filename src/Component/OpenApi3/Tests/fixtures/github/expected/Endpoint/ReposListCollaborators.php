@@ -8,15 +8,14 @@ class ReposListCollaborators extends \Github\Runtime\Client\BaseEndpoint impleme
     protected $repo;
     /**
     * For organization-owned repositories, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners.
-    
-    Team members will include the members of child teams.
     *
-    * @param string $owner 
-    * @param string $repo 
+    * Team members will include the members of child teams.
+    * @param string $owner
+    * @param string $repo
     * @param array $queryParameters {
-    *     @var string $affiliation Filter collaborators returned by their affiliation. Can be one of:  
-    \* `outside`: All outside collaborators of an organization-owned repository.  
-    \* `direct`: All collaborators with permissions to an organization-owned repository, regardless of organization membership status.  
+    *     @var string $affiliation Filter collaborators returned by their affiliation. Can be one of:
+    \* `outside`: All outside collaborators of an organization-owned repository.
+    \* `direct`: All collaborators with permissions to an organization-owned repository, regardless of organization membership status.
     \* `all`: All collaborators the authenticated user can see.
     *     @var int $per_page Results per page (max 100)
     *     @var int $page Page number of the results to fetch.

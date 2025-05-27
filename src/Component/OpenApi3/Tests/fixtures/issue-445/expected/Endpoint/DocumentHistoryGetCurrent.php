@@ -8,7 +8,6 @@ class DocumentHistoryGetCurrent extends \PicturePark\API\Runtime\Client\BaseEndp
     protected $documentId;
     /**
      * Gets the current version of a document.
-     *
      * @param string $documentType The type of the document (e.g. Content).
      * @param string $documentId The ID of the document (e.g. contentId).
      */

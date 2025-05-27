@@ -13,20 +13,14 @@ class ServiceEndpointVirtualIPsItem
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $networkID;
     /**
-     * 
-     *
      * @var string
      */
     protected $addr;
     /**
-     * 
-     *
      * @return string
      */
     public function getNetworkID(): string
@@ -34,8 +28,6 @@ class ServiceEndpointVirtualIPsItem
         return $this->networkID;
     }
     /**
-     * 
-     *
      * @param string $networkID
      *
      * @return self
@@ -47,8 +39,6 @@ class ServiceEndpointVirtualIPsItem
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAddr(): string
@@ -56,8 +46,6 @@ class ServiceEndpointVirtualIPsItem
         return $this->addr;
     }
     /**
-     * 
-     *
      * @param string $addr
      *
      * @return self

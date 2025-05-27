@@ -7,11 +7,10 @@ class ListNotificationEventsInAPortfolioFiltered extends \CreditSafe\API\Runtime
     protected $portfolioId;
     /**
      * Get all notificationEvents based on the portfolio id, optionally filter with query parameters
-     *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param array $queryParameters {
      *     @var string $searchQuery Return notificationEvents that match the given value
-     *     @var string $sortDir 
+     *     @var string $sortDir
      *     @var int $pageSize Number of items to return per Page (max 1000)
      *     @var int $page Starting page number (indexed from 0)
      *     @var string $sortBy Sort results by this column. Null values of sort column are listed after non-nulls.

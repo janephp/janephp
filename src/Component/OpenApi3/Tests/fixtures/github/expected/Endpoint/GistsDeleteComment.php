@@ -7,8 +7,6 @@ class GistsDeleteComment extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $gist_id;
     protected $comment_id;
     /**
-     * 
-     *
      * @param string $gistId gist_id parameter
      * @param int $commentId comment_id parameter
      */

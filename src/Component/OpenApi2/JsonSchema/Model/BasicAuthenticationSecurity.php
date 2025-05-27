@@ -13,20 +13,14 @@ class BasicAuthenticationSecurity extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $type;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getType() : ?string
@@ -34,8 +28,6 @@ class BasicAuthenticationSecurity extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string|null $type
      *
      * @return self
@@ -47,8 +39,6 @@ class BasicAuthenticationSecurity extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription() : ?string
@@ -56,8 +46,6 @@ class BasicAuthenticationSecurity extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self

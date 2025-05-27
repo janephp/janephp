@@ -8,7 +8,6 @@ class GetFilteredPortfolioEventRules extends \CreditSafe\API\Runtime\Client\Base
     protected $countryCode;
     /**
      * Get all eventRules, optionally filtered by country code
-     *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param string $countryCode Country code to show events for.
      * @param array $headerParameters {

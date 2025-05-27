@@ -9,11 +9,10 @@ class IssuesAddAssignees extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $issue_number;
     /**
      * Adds up to 10 assignees to an issue. Users already assigned to an issue are not replaced.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $issueNumber issue_number parameter
-     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody = null)
     {

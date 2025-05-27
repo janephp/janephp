@@ -25,8 +25,6 @@ class CompactPlaceFields extends \ArrayObject
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $countryCode;
@@ -75,8 +73,6 @@ class CompactPlaceFields extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountryCode(): string
@@ -84,8 +80,6 @@ class CompactPlaceFields extends \ArrayObject
         return $this->countryCode;
     }
     /**
-     * 
-     *
      * @param string $countryCode
      *
      * @return self

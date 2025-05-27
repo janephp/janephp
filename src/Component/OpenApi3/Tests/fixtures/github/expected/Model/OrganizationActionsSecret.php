@@ -19,14 +19,10 @@ class OrganizationActionsSecret extends \ArrayObject
      */
     protected $name;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
@@ -37,8 +33,6 @@ class OrganizationActionsSecret extends \ArrayObject
      */
     protected $visibility;
     /**
-     * 
-     *
      * @var string
      */
     protected $selectedRepositoriesUrl;
@@ -65,8 +59,6 @@ class OrganizationActionsSecret extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -74,8 +66,6 @@ class OrganizationActionsSecret extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -87,8 +77,6 @@ class OrganizationActionsSecret extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -96,8 +84,6 @@ class OrganizationActionsSecret extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -131,8 +117,6 @@ class OrganizationActionsSecret extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSelectedRepositoriesUrl(): string
@@ -140,8 +124,6 @@ class OrganizationActionsSecret extends \ArrayObject
         return $this->selectedRepositoriesUrl;
     }
     /**
-     * 
-     *
      * @param string $selectedRepositoriesUrl
      *
      * @return self

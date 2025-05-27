@@ -6,11 +6,10 @@ class TransferCancel extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
 {
     protected $id;
     /**
-    * Requests cancellation of transfer.
-    Note: Transfers can only be cancelled when state is UploadInProgress.
-    *
-    * @param string $id ID of transfer.
-    */
+     * Requests cancellation of transfer.
+     * Note: Transfers can only be cancelled when state is UploadInProgress.
+     * @param string $id ID of transfer.
+     */
     public function __construct(string $id)
     {
         $this->id = $id;

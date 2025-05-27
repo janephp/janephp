@@ -8,7 +8,6 @@ class ApiTopBooksIdGet extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint imp
     protected $accept;
     /**
      * Retrieves a TopBook resource.
-     *
      * @param string $id TopBook identifier
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      */

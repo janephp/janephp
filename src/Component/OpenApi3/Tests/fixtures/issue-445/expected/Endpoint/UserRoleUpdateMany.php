@@ -6,8 +6,7 @@ class UserRoleUpdateMany extends \PicturePark\API\Runtime\Client\BaseEndpoint im
 {
     /**
      * Updates the user roles specified by the IDs and based on supplied requests.
-     *
-     * @param \PicturePark\API\Model\UserRoleUpdateManyRequest $requestBody 
+     * @param \PicturePark\API\Model\UserRoleUpdateManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\UserRoleUpdateManyRequest $requestBody)
     {

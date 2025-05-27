@@ -13,26 +13,18 @@ class ClientDisconnectedProblem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $title;
     /**
-     * 
-     *
      * @var string
      */
     protected $detail;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -40,8 +32,6 @@ class ClientDisconnectedProblem extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -53,8 +43,6 @@ class ClientDisconnectedProblem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTitle(): string
@@ -62,8 +50,6 @@ class ClientDisconnectedProblem extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string $title
      *
      * @return self
@@ -75,8 +61,6 @@ class ClientDisconnectedProblem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDetail(): string
@@ -84,8 +68,6 @@ class ClientDisconnectedProblem extends \ArrayObject
         return $this->detail;
     }
     /**
-     * 
-     *
      * @param string $detail
      *
      * @return self

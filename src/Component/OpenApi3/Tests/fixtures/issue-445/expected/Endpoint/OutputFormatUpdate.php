@@ -7,9 +7,8 @@ class OutputFormatUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint im
     protected $id;
     /**
      * Updates the output format specified by the ID and based on supplied request. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
      * @param string $id Output format ID.
-     * @param \PicturePark\API\Model\OutputFormatEditable $requestBody 
+     * @param \PicturePark\API\Model\OutputFormatEditable $requestBody
      */
     public function __construct(string $id, \PicturePark\API\Model\OutputFormatEditable $requestBody)
     {

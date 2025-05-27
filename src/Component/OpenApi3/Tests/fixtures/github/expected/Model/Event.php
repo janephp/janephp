@@ -13,14 +13,10 @@ class Event extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $type;
@@ -31,8 +27,6 @@ class Event extends \ArrayObject
      */
     protected $actor;
     /**
-     * 
-     *
      * @var EventRepo
      */
     protected $repo;
@@ -43,26 +37,18 @@ class Event extends \ArrayObject
      */
     protected $org;
     /**
-     * 
-     *
      * @var EventPayload
      */
     protected $payload;
     /**
-     * 
-     *
      * @var bool
      */
     protected $public;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -70,8 +56,6 @@ class Event extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -83,8 +67,6 @@ class Event extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getType(): ?string
@@ -92,8 +74,6 @@ class Event extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string|null $type
      *
      * @return self
@@ -127,8 +107,6 @@ class Event extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return EventRepo
      */
     public function getRepo(): EventRepo
@@ -136,8 +114,6 @@ class Event extends \ArrayObject
         return $this->repo;
     }
     /**
-     * 
-     *
      * @param EventRepo $repo
      *
      * @return self
@@ -171,8 +147,6 @@ class Event extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return EventPayload
      */
     public function getPayload(): EventPayload
@@ -180,8 +154,6 @@ class Event extends \ArrayObject
         return $this->payload;
     }
     /**
-     * 
-     *
      * @param EventPayload $payload
      *
      * @return self
@@ -193,8 +165,6 @@ class Event extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getPublic(): bool
@@ -202,8 +172,6 @@ class Event extends \ArrayObject
         return $this->public;
     }
     /**
-     * 
-     *
      * @param bool $public
      *
      * @return self
@@ -215,8 +183,6 @@ class Event extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
@@ -224,8 +190,6 @@ class Event extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $createdAt
      *
      * @return self

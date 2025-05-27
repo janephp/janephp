@@ -10,7 +10,6 @@ class ShareDownloadSingleContent extends \PicturePark\API\Runtime\Client\BaseEnd
     protected $accept;
     /**
      * Download single content in a specific output format (or automatically determined format if none is specified). To resize images on download specify target width &amp; height. To download only a portion of the file, specify the range parameter.
-     *
      * @param string $token Share token
      * @param string $contentId The content id
      * @param string $outputFormatId The output format id

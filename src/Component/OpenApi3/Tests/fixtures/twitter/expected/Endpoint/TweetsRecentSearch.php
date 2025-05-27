@@ -7,7 +7,6 @@ class TweetsRecentSearch extends \Jane\Component\OpenApi3\Tests\Expected\Runtime
     protected $accept;
     /**
      * Returns Tweets from the last 7 days that match a search query.
-     *
      * @param array $queryParameters {
      *     @var string $query One query/rule/filter for matching Tweets. Up to 512 characters.
      *     @var string $start_time YYYY-MM-DDTHH:mm:ssZ. The oldest UTC timestamp (from most recent 7 days) from which the Tweets will be provided. Timestamp is in second granularity and is inclusive (i.e. 12:00:01 includes the first second of the minute).

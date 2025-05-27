@@ -5,13 +5,12 @@ namespace PicturePark\API\Endpoint;
 class SchemaGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Gets multiple schema details by given schema IDs.
-    Can fetch 100 schema details at most.
-    *
-    * @param array $queryParameters {
-    *     @var array $ids Comma separated list of schema IDs.
-    * }
-    */
+     * Gets multiple schema details by given schema IDs.
+     * Can fetch 100 schema details at most.
+     * @param array $queryParameters {
+     *     @var array $ids Comma separated list of schema IDs.
+     * }
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

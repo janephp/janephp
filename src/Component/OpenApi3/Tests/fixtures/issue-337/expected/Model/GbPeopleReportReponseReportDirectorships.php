@@ -13,26 +13,18 @@ class GbPeopleReportReponseReportDirectorships extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<GbPeopleReportReponseReportDirectorshipsCurrentItem>
      */
     protected $current;
     /**
-     * 
-     *
      * @var list<GbPeopleReportReponseReportDirectorshipsInactiveItem>
      */
     protected $inactive;
     /**
-     * 
-     *
      * @var list<GbPeopleReportReponseReportDirectorshipsPreviousItem>
      */
     protected $previous;
     /**
-     * 
-     *
      * @return list<GbPeopleReportReponseReportDirectorshipsCurrentItem>
      */
     public function getCurrent(): array
@@ -40,8 +32,6 @@ class GbPeopleReportReponseReportDirectorships extends \ArrayObject
         return $this->current;
     }
     /**
-     * 
-     *
      * @param list<GbPeopleReportReponseReportDirectorshipsCurrentItem> $current
      *
      * @return self
@@ -53,8 +43,6 @@ class GbPeopleReportReponseReportDirectorships extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<GbPeopleReportReponseReportDirectorshipsInactiveItem>
      */
     public function getInactive(): array
@@ -62,8 +50,6 @@ class GbPeopleReportReponseReportDirectorships extends \ArrayObject
         return $this->inactive;
     }
     /**
-     * 
-     *
      * @param list<GbPeopleReportReponseReportDirectorshipsInactiveItem> $inactive
      *
      * @return self
@@ -75,8 +61,6 @@ class GbPeopleReportReponseReportDirectorships extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<GbPeopleReportReponseReportDirectorshipsPreviousItem>
      */
     public function getPrevious(): array
@@ -84,8 +68,6 @@ class GbPeopleReportReponseReportDirectorships extends \ArrayObject
         return $this->previous;
     }
     /**
-     * 
-     *
      * @param list<GbPeopleReportReponseReportDirectorshipsPreviousItem> $previous
      *
      * @return self

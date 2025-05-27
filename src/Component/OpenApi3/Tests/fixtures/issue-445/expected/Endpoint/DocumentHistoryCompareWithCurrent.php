@@ -8,7 +8,6 @@ class DocumentHistoryCompareWithCurrent extends \PicturePark\API\Runtime\Client\
     protected $documentId;
     /**
      * Compare the current version of a document with the requested version and get the differences.
-     *
      * @param string $documentType The type of the document (e.g. Content).
      * @param string $documentId The ID of the document (e.g. contentId).
      * @param array $queryParameters {

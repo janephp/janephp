@@ -8,12 +8,10 @@ class ReposUpdateCommitComment extends \Github\Runtime\Client\BaseEndpoint imple
     protected $repo;
     protected $comment_id;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $commentId comment_id parameter
-     * @param null|\Github\Model\ReposOwnerRepoCommentsCommentIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoCommentsCommentIdPatchBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoCommentsCommentIdPatchBody $requestBody = null)
     {

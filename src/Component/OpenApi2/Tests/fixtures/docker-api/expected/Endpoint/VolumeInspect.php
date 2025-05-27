@@ -6,8 +6,6 @@ class VolumeInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
 {
     protected $name;
     /**
-     * 
-     *
      * @param string $name Volume name or ID
      */
     public function __construct(string $name)

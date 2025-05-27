@@ -13,50 +13,34 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $country;
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $safeNumber;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $status;
     /**
-     * 
-     *
      * @var string
      */
     protected $registrationNumber;
     /**
-     * 
-     *
      * @return string
      */
     public function getCountry(): string
@@ -64,8 +48,6 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
         return $this->country;
     }
     /**
-     * 
-     *
      * @param string $country
      *
      * @return self
@@ -77,8 +59,6 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -86,8 +66,6 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -99,8 +77,6 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSafeNumber(): string
@@ -108,8 +84,6 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
         return $this->safeNumber;
     }
     /**
-     * 
-     *
      * @param string $safeNumber
      *
      * @return self
@@ -121,8 +95,6 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -130,8 +102,6 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -143,8 +113,6 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -152,8 +120,6 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -165,8 +131,6 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStatus(): string
@@ -174,8 +138,6 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
         return $this->status;
     }
     /**
-     * 
-     *
      * @param string $status
      *
      * @return self
@@ -187,8 +149,6 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRegistrationNumber(): string
@@ -196,8 +156,6 @@ class GbCompanyReportExampleResponseReportGroupStructureSubsidiaryCompaniesItem 
         return $this->registrationNumber;
     }
     /**
-     * 
-     *
      * @param string $registrationNumber
      *
      * @return self

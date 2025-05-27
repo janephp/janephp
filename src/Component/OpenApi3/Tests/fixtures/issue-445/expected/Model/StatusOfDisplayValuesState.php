@@ -13,20 +13,14 @@ class StatusOfDisplayValuesState
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $state;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getId(): ?string
@@ -34,8 +28,6 @@ class StatusOfDisplayValuesState
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string|null $id
      *
      * @return self
@@ -47,8 +39,6 @@ class StatusOfDisplayValuesState
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getState(): string
@@ -56,8 +46,6 @@ class StatusOfDisplayValuesState
         return $this->state;
     }
     /**
-     * 
-     *
      * @param string $state
      *
      * @return self

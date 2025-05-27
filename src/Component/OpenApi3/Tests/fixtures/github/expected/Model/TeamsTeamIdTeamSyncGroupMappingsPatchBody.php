@@ -19,8 +19,6 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBody extends \ArrayObject
      */
     protected $groups;
     /**
-     * 
-     *
      * @var string
      */
     protected $syncedAt;
@@ -47,8 +45,6 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSyncedAt(): string
@@ -56,8 +52,6 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBody extends \ArrayObject
         return $this->syncedAt;
     }
     /**
-     * 
-     *
      * @param string $syncedAt
      *
      * @return self

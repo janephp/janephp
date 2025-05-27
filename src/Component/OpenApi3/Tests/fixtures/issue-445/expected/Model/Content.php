@@ -43,8 +43,6 @@ class Content
      */
     protected $displayValues;
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
@@ -183,8 +181,6 @@ class Content
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -192,8 +188,6 @@ class Content
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self

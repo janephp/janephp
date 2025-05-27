@@ -13,20 +13,14 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItem extends \ArrayObj
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $code;
     /**
-     * 
-     *
      * @var string
      */
     protected $message;
     /**
-     * 
-     *
      * @return string
      */
     public function getCode(): string
@@ -34,8 +28,6 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItem extends \ArrayObj
         return $this->code;
     }
     /**
-     * 
-     *
      * @param string $code
      *
      * @return self
@@ -47,8 +39,6 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItem extends \ArrayObj
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMessage(): string
@@ -56,8 +46,6 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503ErrorsItem extends \ArrayObj
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string $message
      *
      * @return self

@@ -13,170 +13,114 @@ class IssueSearchResultItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $repositoryUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $labelsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $commentsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $eventsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var int
      */
     protected $number;
     /**
-     * 
-     *
      * @var string
      */
     protected $title;
     /**
-     * 
-     *
      * @var bool
      */
     protected $locked;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $activeLockReason;
     /**
-     * 
-     *
      * @var list<SimpleUser>|null
      */
     protected $assignees;
     /**
-     * 
-     *
      * @var IssueSearchResultItemUser|null
      */
     protected $user;
     /**
-     * 
-     *
      * @var list<IssueSearchResultItemLabelsItem>
      */
     protected $labels;
     /**
-     * 
-     *
      * @var string
      */
     protected $state;
     /**
-     * 
-     *
      * @var IssueSearchResultItemAssignee|null
      */
     protected $assignee;
     /**
-     * 
-     *
      * @var IssueSearchResultItemMilestone|null
      */
     protected $milestone;
     /**
-     * 
-     *
      * @var int
      */
     protected $comments;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $closedAt;
     /**
-     * 
-     *
      * @var list<SearchResultTextMatchesItem>
      */
     protected $textMatches;
     /**
-     * 
-     *
      * @var IssueSearchResultItemPullRequest
      */
     protected $pullRequest;
     /**
-     * 
-     *
      * @var string
      */
     protected $body;
     /**
-     * 
-     *
      * @var int
      */
     protected $score;
     /**
-     * 
-     *
      * @var string
      */
     protected $authorAssociation;
     /**
-     * 
-     *
      * @var bool
      */
     protected $draft;
@@ -187,32 +131,22 @@ class IssueSearchResultItem extends \ArrayObject
      */
     protected $repository;
     /**
-     * 
-     *
      * @var string
      */
     protected $bodyHtml;
     /**
-     * 
-     *
      * @var string
      */
     protected $bodyText;
     /**
-     * 
-     *
      * @var string
      */
     protected $timelineUrl;
     /**
-     * 
-     *
      * @var IssueSearchResultItemPerformedViaGithubApp|null
      */
     protected $performedViaGithubApp;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -220,8 +154,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -233,8 +165,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRepositoryUrl(): string
@@ -242,8 +172,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->repositoryUrl;
     }
     /**
-     * 
-     *
      * @param string $repositoryUrl
      *
      * @return self
@@ -255,8 +183,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLabelsUrl(): string
@@ -264,8 +190,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->labelsUrl;
     }
     /**
-     * 
-     *
      * @param string $labelsUrl
      *
      * @return self
@@ -277,8 +201,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommentsUrl(): string
@@ -286,8 +208,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->commentsUrl;
     }
     /**
-     * 
-     *
      * @param string $commentsUrl
      *
      * @return self
@@ -299,8 +219,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEventsUrl(): string
@@ -308,8 +226,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->eventsUrl;
     }
     /**
-     * 
-     *
      * @param string $eventsUrl
      *
      * @return self
@@ -321,8 +237,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -330,8 +244,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -343,8 +255,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -352,8 +262,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -365,8 +273,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -374,8 +280,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -387,8 +291,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getNumber(): int
@@ -396,8 +298,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->number;
     }
     /**
-     * 
-     *
      * @param int $number
      *
      * @return self
@@ -409,8 +309,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTitle(): string
@@ -418,8 +316,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string $title
      *
      * @return self
@@ -431,8 +327,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getLocked(): bool
@@ -440,8 +334,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->locked;
     }
     /**
-     * 
-     *
      * @param bool $locked
      *
      * @return self
@@ -453,8 +345,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getActiveLockReason(): ?string
@@ -462,8 +352,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->activeLockReason;
     }
     /**
-     * 
-     *
      * @param string|null $activeLockReason
      *
      * @return self
@@ -475,8 +363,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<SimpleUser>|null
      */
     public function getAssignees(): ?array
@@ -484,8 +370,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->assignees;
     }
     /**
-     * 
-     *
      * @param list<SimpleUser>|null $assignees
      *
      * @return self
@@ -497,8 +381,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IssueSearchResultItemUser|null
      */
     public function getUser(): ?IssueSearchResultItemUser
@@ -506,8 +388,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->user;
     }
     /**
-     * 
-     *
      * @param IssueSearchResultItemUser|null $user
      *
      * @return self
@@ -519,8 +399,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<IssueSearchResultItemLabelsItem>
      */
     public function getLabels(): array
@@ -528,8 +406,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->labels;
     }
     /**
-     * 
-     *
      * @param list<IssueSearchResultItemLabelsItem> $labels
      *
      * @return self
@@ -541,8 +417,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getState(): string
@@ -550,8 +424,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->state;
     }
     /**
-     * 
-     *
      * @param string $state
      *
      * @return self
@@ -563,8 +435,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IssueSearchResultItemAssignee|null
      */
     public function getAssignee(): ?IssueSearchResultItemAssignee
@@ -572,8 +442,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->assignee;
     }
     /**
-     * 
-     *
      * @param IssueSearchResultItemAssignee|null $assignee
      *
      * @return self
@@ -585,8 +453,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IssueSearchResultItemMilestone|null
      */
     public function getMilestone(): ?IssueSearchResultItemMilestone
@@ -594,8 +460,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->milestone;
     }
     /**
-     * 
-     *
      * @param IssueSearchResultItemMilestone|null $milestone
      *
      * @return self
@@ -607,8 +471,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getComments(): int
@@ -616,8 +478,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->comments;
     }
     /**
-     * 
-     *
      * @param int $comments
      *
      * @return self
@@ -629,8 +489,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -638,8 +496,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -651,8 +507,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -660,8 +514,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -673,8 +525,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getClosedAt(): ?\DateTime
@@ -682,8 +532,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->closedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $closedAt
      *
      * @return self
@@ -695,8 +543,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<SearchResultTextMatchesItem>
      */
     public function getTextMatches(): array
@@ -704,8 +550,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->textMatches;
     }
     /**
-     * 
-     *
      * @param list<SearchResultTextMatchesItem> $textMatches
      *
      * @return self
@@ -717,8 +561,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IssueSearchResultItemPullRequest
      */
     public function getPullRequest(): IssueSearchResultItemPullRequest
@@ -726,8 +568,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->pullRequest;
     }
     /**
-     * 
-     *
      * @param IssueSearchResultItemPullRequest $pullRequest
      *
      * @return self
@@ -739,8 +579,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBody(): string
@@ -748,8 +586,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->body;
     }
     /**
-     * 
-     *
      * @param string $body
      *
      * @return self
@@ -761,8 +597,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getScore(): int
@@ -770,8 +604,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->score;
     }
     /**
-     * 
-     *
      * @param int $score
      *
      * @return self
@@ -783,8 +615,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAuthorAssociation(): string
@@ -792,8 +622,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->authorAssociation;
     }
     /**
-     * 
-     *
      * @param string $authorAssociation
      *
      * @return self
@@ -805,8 +633,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getDraft(): bool
@@ -814,8 +640,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->draft;
     }
     /**
-     * 
-     *
      * @param bool $draft
      *
      * @return self
@@ -849,8 +673,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBodyHtml(): string
@@ -858,8 +680,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->bodyHtml;
     }
     /**
-     * 
-     *
      * @param string $bodyHtml
      *
      * @return self
@@ -871,8 +691,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBodyText(): string
@@ -880,8 +698,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->bodyText;
     }
     /**
-     * 
-     *
      * @param string $bodyText
      *
      * @return self
@@ -893,8 +709,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTimelineUrl(): string
@@ -902,8 +716,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->timelineUrl;
     }
     /**
-     * 
-     *
      * @param string $timelineUrl
      *
      * @return self
@@ -915,8 +727,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IssueSearchResultItemPerformedViaGithubApp|null
      */
     public function getPerformedViaGithubApp(): ?IssueSearchResultItemPerformedViaGithubApp
@@ -924,8 +734,6 @@ class IssueSearchResultItem extends \ArrayObject
         return $this->performedViaGithubApp;
     }
     /**
-     * 
-     *
      * @param IssueSearchResultItemPerformedViaGithubApp|null $performedViaGithubApp
      *
      * @return self

@@ -6,9 +6,7 @@ class ProjectsListColumns extends \Github\Runtime\Client\BaseEndpoint implements
 {
     protected $project_id;
     /**
-     * 
-     *
-     * @param int $projectId 
+     * @param int $projectId
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.

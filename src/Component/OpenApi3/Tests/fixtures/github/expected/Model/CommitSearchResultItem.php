@@ -13,50 +13,34 @@ class CommitSearchResultItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $sha;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $commentsUrl;
     /**
-     * 
-     *
      * @var CommitSearchResultItemCommit
      */
     protected $commit;
     /**
-     * 
-     *
      * @var CommitSearchResultItemAuthor|null
      */
     protected $author;
     /**
-     * 
-     *
      * @var CommitSearchResultItemCommitter|null
      */
     protected $committer;
     /**
-     * 
-     *
      * @var list<CommitSearchResultItemParentsItem>
      */
     protected $parents;
@@ -67,26 +51,18 @@ class CommitSearchResultItem extends \ArrayObject
      */
     protected $repository;
     /**
-     * 
-     *
      * @var int
      */
     protected $score;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var list<SearchResultTextMatchesItem>
      */
     protected $textMatches;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -94,8 +70,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -107,8 +81,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSha(): string
@@ -116,8 +88,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this->sha;
     }
     /**
-     * 
-     *
      * @param string $sha
      *
      * @return self
@@ -129,8 +99,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -138,8 +106,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -151,8 +117,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommentsUrl(): string
@@ -160,8 +124,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this->commentsUrl;
     }
     /**
-     * 
-     *
      * @param string $commentsUrl
      *
      * @return self
@@ -173,8 +135,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CommitSearchResultItemCommit
      */
     public function getCommit(): CommitSearchResultItemCommit
@@ -182,8 +142,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this->commit;
     }
     /**
-     * 
-     *
      * @param CommitSearchResultItemCommit $commit
      *
      * @return self
@@ -195,8 +153,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CommitSearchResultItemAuthor|null
      */
     public function getAuthor(): ?CommitSearchResultItemAuthor
@@ -204,8 +160,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this->author;
     }
     /**
-     * 
-     *
      * @param CommitSearchResultItemAuthor|null $author
      *
      * @return self
@@ -217,8 +171,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CommitSearchResultItemCommitter|null
      */
     public function getCommitter(): ?CommitSearchResultItemCommitter
@@ -226,8 +178,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this->committer;
     }
     /**
-     * 
-     *
      * @param CommitSearchResultItemCommitter|null $committer
      *
      * @return self
@@ -239,8 +189,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<CommitSearchResultItemParentsItem>
      */
     public function getParents(): array
@@ -248,8 +196,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this->parents;
     }
     /**
-     * 
-     *
      * @param list<CommitSearchResultItemParentsItem> $parents
      *
      * @return self
@@ -283,8 +229,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getScore(): int
@@ -292,8 +236,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this->score;
     }
     /**
-     * 
-     *
      * @param int $score
      *
      * @return self
@@ -305,8 +247,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -314,8 +254,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -327,8 +265,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<SearchResultTextMatchesItem>
      */
     public function getTextMatches(): array
@@ -336,8 +272,6 @@ class CommitSearchResultItem extends \ArrayObject
         return $this->textMatches;
     }
     /**
-     * 
-     *
      * @param list<SearchResultTextMatchesItem> $textMatches
      *
      * @return self

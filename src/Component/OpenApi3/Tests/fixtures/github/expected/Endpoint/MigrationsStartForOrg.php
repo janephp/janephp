@@ -7,9 +7,8 @@ class MigrationsStartForOrg extends \Github\Runtime\Client\BaseEndpoint implemen
     protected $org;
     /**
      * Initiates the generation of a migration archive.
-     *
-     * @param string $org 
-     * @param null|\Github\Model\OrgsOrgMigrationsPostBody $requestBody 
+     * @param string $org
+     * @param null|\Github\Model\OrgsOrgMigrationsPostBody $requestBody
      */
     public function __construct(string $org, ?\Github\Model\OrgsOrgMigrationsPostBody $requestBody = null)
     {

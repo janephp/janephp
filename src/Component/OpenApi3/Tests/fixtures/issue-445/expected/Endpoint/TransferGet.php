@@ -6,8 +6,6 @@ class TransferGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implement
 {
     protected $id;
     /**
-     * 
-     *
      * @param string $id ID of transfer.
      */
     public function __construct(string $id)

@@ -13,44 +13,30 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $ccjDate;
     /**
-     * 
-     *
      * @var string
      */
     protected $court;
     /**
-     * 
-     *
      * @var float
      */
     protected $ccjAmount;
     /**
-     * 
-     *
      * @var string
      */
     protected $caseNumber;
     /**
-     * 
-     *
      * @var string
      */
     protected $ccjStatus;
     /**
-     * 
-     *
      * @var string
      */
     protected $incomingRecordDetails;
     /**
-     * 
-     *
      * @return string
      */
     public function getCcjDate(): string
@@ -58,8 +44,6 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         return $this->ccjDate;
     }
     /**
-     * 
-     *
      * @param string $ccjDate
      *
      * @return self
@@ -71,8 +55,6 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCourt(): string
@@ -80,8 +62,6 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         return $this->court;
     }
     /**
-     * 
-     *
      * @param string $court
      *
      * @return self
@@ -93,8 +73,6 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getCcjAmount(): float
@@ -102,8 +80,6 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         return $this->ccjAmount;
     }
     /**
-     * 
-     *
      * @param float $ccjAmount
      *
      * @return self
@@ -115,8 +91,6 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCaseNumber(): string
@@ -124,8 +98,6 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         return $this->caseNumber;
     }
     /**
-     * 
-     *
      * @param string $caseNumber
      *
      * @return self
@@ -137,8 +109,6 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCcjStatus(): string
@@ -146,8 +116,6 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         return $this->ccjStatus;
     }
     /**
-     * 
-     *
      * @param string $ccjStatus
      *
      * @return self
@@ -159,8 +127,6 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIncomingRecordDetails(): string
@@ -168,8 +134,6 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         return $this->incomingRecordDetails;
     }
     /**
-     * 
-     *
      * @param string $incomingRecordDetails
      *
      * @return self

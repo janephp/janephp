@@ -13,20 +13,14 @@ class ListCompanyImages extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $totalSize;
     /**
-     * 
-     *
      * @var list<ListCompanyImagesDataItem>
      */
     protected $data;
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalSize(): int
@@ -34,8 +28,6 @@ class ListCompanyImages extends \ArrayObject
         return $this->totalSize;
     }
     /**
-     * 
-     *
      * @param int $totalSize
      *
      * @return self
@@ -47,8 +39,6 @@ class ListCompanyImages extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ListCompanyImagesDataItem>
      */
     public function getData(): array
@@ -56,8 +46,6 @@ class ListCompanyImages extends \ArrayObject
         return $this->data;
     }
     /**
-     * 
-     *
      * @param list<ListCompanyImagesDataItem> $data
      *
      * @return self

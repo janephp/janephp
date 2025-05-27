@@ -8,9 +8,8 @@ class OrgsCheckMembershipForUser extends \Github\Runtime\Client\BaseEndpoint imp
     protected $username;
     /**
      * Check if a user is, publicly or privately, a member of the organization.
-     *
-     * @param string $org 
-     * @param string $username 
+     * @param string $org
+     * @param string $username
      */
     public function __construct(string $org, string $username)
     {

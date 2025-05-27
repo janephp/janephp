@@ -8,15 +8,14 @@ class ReposCreateDeploymentStatus extends \Github\Runtime\Client\BaseEndpoint im
     protected $repo;
     protected $deployment_id;
     /**
-    * Users with `push` access can create deployment statuses for a given deployment.
-    
-    GitHub Apps require `read & write` access to "Deployments" and `read-only` access to "Repo contents" (for private repos). OAuth Apps require the `repo_deployment` scope.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param int $deploymentId deployment_id parameter
-    * @param null|\Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody $requestBody 
-    */
+     * Users with `push` access can create deployment statuses for a given deployment.
+     *
+     * GitHub Apps require `read & write` access to "Deployments" and `read-only` access to "Repo contents" (for private repos). OAuth Apps require the `repo_deployment` scope.
+     * @param string $owner
+     * @param string $repo
+     * @param int $deploymentId deployment_id parameter
+     * @param null|\Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody $requestBody
+     */
     public function __construct(string $owner, string $repo, int $deploymentId, ?\Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody $requestBody = null)
     {
         $this->owner = $owner;

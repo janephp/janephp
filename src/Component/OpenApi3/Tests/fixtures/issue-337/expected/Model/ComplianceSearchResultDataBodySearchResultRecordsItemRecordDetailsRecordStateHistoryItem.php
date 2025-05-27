@@ -13,32 +13,22 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $date;
     /**
-     * 
-     *
      * @var string
      */
     protected $event;
     /**
-     * 
-     *
      * @var string
      */
     protected $note;
     /**
-     * 
-     *
      * @var string
      */
     protected $user;
     /**
-     * 
-     *
      * @return string
      */
     public function getDate(): string
@@ -46,8 +36,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this->date;
     }
     /**
-     * 
-     *
      * @param string $date
      *
      * @return self
@@ -59,8 +47,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEvent(): string
@@ -68,8 +54,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this->event;
     }
     /**
-     * 
-     *
      * @param string $event
      *
      * @return self
@@ -81,8 +65,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNote(): string
@@ -90,8 +72,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this->note;
     }
     /**
-     * 
-     *
      * @param string $note
      *
      * @return self
@@ -103,8 +83,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUser(): string
@@ -112,8 +90,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this->user;
     }
     /**
-     * 
-     *
      * @param string $user
      *
      * @return self

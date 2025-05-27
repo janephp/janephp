@@ -7,9 +7,8 @@ class UserRoleUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
     protected $id;
     /**
      * Updates the user role specified by the ID and based on supplied request.
-     *
      * @param string $id User role ID.
-     * @param \PicturePark\API\Model\UserRoleEditable $requestBody 
+     * @param \PicturePark\API\Model\UserRoleEditable $requestBody
      */
     public function __construct(string $id, \PicturePark\API\Model\UserRoleEditable $requestBody)
     {

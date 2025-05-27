@@ -8,7 +8,6 @@ class ApiReviewsIdGet extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
     protected $accept;
     /**
      * Retrieves a Review resource.
-     *
      * @param string $id Review identifier
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      */

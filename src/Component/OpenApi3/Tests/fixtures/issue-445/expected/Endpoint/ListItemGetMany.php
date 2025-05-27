@@ -5,14 +5,13 @@ namespace PicturePark\API\Endpoint;
 class ListItemGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Gets multiple list item details by IDs.
-    Can fetch 100 list items at most.
-    *
-    * @param array $queryParameters {
-    *     @var array $ids List of list item IDs.
-    *     @var array $resolveBehaviors List of enums that control which parts of the list items are resolved and returned.
-    * }
-    */
+     * Gets multiple list item details by IDs.
+     * Can fetch 100 list items at most.
+     * @param array $queryParameters {
+     *     @var array $ids List of list item IDs.
+     *     @var array $resolveBehaviors List of enums that control which parts of the list items are resolved and returned.
+     * }
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

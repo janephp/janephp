@@ -6,8 +6,7 @@ class CreateMonitoringPortfolio extends \CreditSafe\API\Runtime\Client\BaseEndpo
 {
     /**
      * Endpoint to create a new Portfolio based on the supplied criteria. A portfolio can contain any number of `companies` that you wish to monitor changes to.
-     *
-     * @param \CreditSafe\API\Model\MonitoringPortfoliosPostBody $requestBody 
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPostBody $requestBody
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }

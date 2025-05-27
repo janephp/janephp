@@ -13,32 +13,22 @@ class RunnerApplication extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $os;
     /**
-     * 
-     *
      * @var string
      */
     protected $architecture;
     /**
-     * 
-     *
      * @var string
      */
     protected $downloadUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $filename;
     /**
-     * 
-     *
      * @return string
      */
     public function getOs(): string
@@ -46,8 +36,6 @@ class RunnerApplication extends \ArrayObject
         return $this->os;
     }
     /**
-     * 
-     *
      * @param string $os
      *
      * @return self
@@ -59,8 +47,6 @@ class RunnerApplication extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getArchitecture(): string
@@ -68,8 +54,6 @@ class RunnerApplication extends \ArrayObject
         return $this->architecture;
     }
     /**
-     * 
-     *
      * @param string $architecture
      *
      * @return self
@@ -81,8 +65,6 @@ class RunnerApplication extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDownloadUrl(): string
@@ -90,8 +72,6 @@ class RunnerApplication extends \ArrayObject
         return $this->downloadUrl;
     }
     /**
-     * 
-     *
      * @param string $downloadUrl
      *
      * @return self
@@ -103,8 +83,6 @@ class RunnerApplication extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFilename(): string
@@ -112,8 +90,6 @@ class RunnerApplication extends \ArrayObject
         return $this->filename;
     }
     /**
-     * 
-     *
      * @param string $filename
      *
      * @return self

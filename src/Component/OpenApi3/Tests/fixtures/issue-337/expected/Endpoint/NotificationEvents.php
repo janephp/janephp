@@ -6,7 +6,6 @@ class NotificationEvents extends \CreditSafe\API\Runtime\Client\BaseEndpoint imp
 {
     /**
      * Get all notification events generated for companies monitored in your portfolios, based on the notification rules enabled. The notification events returned will be filtered based upon the supplied search criteria.
-     *
      * @param array $queryParameters {
      *     @var string $searchQuery Return notificationEvents that match the given value
      *     @var string $sortBy Sort results by this column. Null values of sort column are listed after non-nulls.

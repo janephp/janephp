@@ -25,8 +25,6 @@ class NamedCacheConfigurationBase
      */
     protected $caseSensitive;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
@@ -69,8 +67,6 @@ class NamedCacheConfigurationBase
         $this->caseSensitive = $caseSensitive;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -78,8 +74,6 @@ class NamedCacheConfigurationBase
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      */
     public function setKind(string $kind)

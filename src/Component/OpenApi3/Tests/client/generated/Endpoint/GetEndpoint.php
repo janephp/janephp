@@ -32,10 +32,10 @@ class GetEndpoint extends \Jane\Component\OpenApi3\Tests\Client\Runtime\Client\B
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Client\Model\SimpleResponse', 'json');
         }
-        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Component\OpenApi3\Tests\Client\Exception\GetEndpointUnauthorizedException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Client\Model\Error', 'json'), $response);
         }
     }

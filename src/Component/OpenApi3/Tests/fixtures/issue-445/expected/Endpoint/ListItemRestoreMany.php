@@ -5,11 +5,10 @@ namespace PicturePark\API\Endpoint;
 class ListItemRestoreMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Restores previously deleted list items.
-    The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param \PicturePark\API\Model\ListItemRestoreManyRequest $requestBody 
-    */
+     * Restores previously deleted list items.
+     * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param \PicturePark\API\Model\ListItemRestoreManyRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\ListItemRestoreManyRequest $requestBody)
     {
         $this->body = $requestBody;

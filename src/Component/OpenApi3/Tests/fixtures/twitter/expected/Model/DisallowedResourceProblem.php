@@ -13,44 +13,30 @@ class DisallowedResourceProblem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $resourceId;
     /**
-     * 
-     *
      * @var string
      */
     protected $resourceType;
     /**
-     * 
-     *
      * @var string
      */
     protected $section;
     /**
-     * 
-     *
      * @var string
      */
     protected $title;
     /**
-     * 
-     *
      * @var string
      */
     protected $detail;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -58,8 +44,6 @@ class DisallowedResourceProblem extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -71,8 +55,6 @@ class DisallowedResourceProblem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getResourceId(): string
@@ -80,8 +62,6 @@ class DisallowedResourceProblem extends \ArrayObject
         return $this->resourceId;
     }
     /**
-     * 
-     *
      * @param string $resourceId
      *
      * @return self
@@ -93,8 +73,6 @@ class DisallowedResourceProblem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getResourceType(): string
@@ -102,8 +80,6 @@ class DisallowedResourceProblem extends \ArrayObject
         return $this->resourceType;
     }
     /**
-     * 
-     *
      * @param string $resourceType
      *
      * @return self
@@ -115,8 +91,6 @@ class DisallowedResourceProblem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSection(): string
@@ -124,8 +98,6 @@ class DisallowedResourceProblem extends \ArrayObject
         return $this->section;
     }
     /**
-     * 
-     *
      * @param string $section
      *
      * @return self
@@ -137,8 +109,6 @@ class DisallowedResourceProblem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTitle(): string
@@ -146,8 +116,6 @@ class DisallowedResourceProblem extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string $title
      *
      * @return self
@@ -159,8 +127,6 @@ class DisallowedResourceProblem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDetail(): string
@@ -168,8 +134,6 @@ class DisallowedResourceProblem extends \ArrayObject
         return $this->detail;
     }
     /**
-     * 
-     *
      * @param string $detail
      *
      * @return self

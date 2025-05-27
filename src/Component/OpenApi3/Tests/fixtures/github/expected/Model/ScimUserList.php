@@ -19,26 +19,18 @@ class ScimUserList extends \ArrayObject
      */
     protected $schemas;
     /**
-     * 
-     *
      * @var int
      */
     protected $totalResults;
     /**
-     * 
-     *
      * @var int
      */
     protected $itemsPerPage;
     /**
-     * 
-     *
      * @var int
      */
     protected $startIndex;
     /**
-     * 
-     *
      * @var list<ScimUser>
      */
     protected $resources;
@@ -65,8 +57,6 @@ class ScimUserList extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalResults(): int
@@ -74,8 +64,6 @@ class ScimUserList extends \ArrayObject
         return $this->totalResults;
     }
     /**
-     * 
-     *
      * @param int $totalResults
      *
      * @return self
@@ -87,8 +75,6 @@ class ScimUserList extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getItemsPerPage(): int
@@ -96,8 +82,6 @@ class ScimUserList extends \ArrayObject
         return $this->itemsPerPage;
     }
     /**
-     * 
-     *
      * @param int $itemsPerPage
      *
      * @return self
@@ -109,8 +93,6 @@ class ScimUserList extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getStartIndex(): int
@@ -118,8 +100,6 @@ class ScimUserList extends \ArrayObject
         return $this->startIndex;
     }
     /**
-     * 
-     *
      * @param int $startIndex
      *
      * @return self
@@ -131,8 +111,6 @@ class ScimUserList extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ScimUser>
      */
     public function getResources(): array
@@ -140,8 +118,6 @@ class ScimUserList extends \ArrayObject
         return $this->resources;
     }
     /**
-     * 
-     *
      * @param list<ScimUser> $resources
      *
      * @return self

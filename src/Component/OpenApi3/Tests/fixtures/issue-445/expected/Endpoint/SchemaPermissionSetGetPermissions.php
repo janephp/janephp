@@ -7,7 +7,6 @@ class SchemaPermissionSetGetPermissions extends \PicturePark\API\Runtime\Client\
     protected $id;
     /**
      * Returns permissions for the schema permission set for the current user.
-     *
      * @param string $id Schema permission set ID.
      */
     public function __construct(string $id)

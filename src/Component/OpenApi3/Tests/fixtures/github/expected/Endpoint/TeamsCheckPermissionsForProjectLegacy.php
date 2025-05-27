@@ -7,13 +7,12 @@ class TeamsCheckPermissionsForProjectLegacy extends \Github\Runtime\Client\BaseE
     protected $team_id;
     protected $project_id;
     /**
-    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Check team permissions for a project](https://developer.github.com/v3/teams/#check-team-permissions-for-a-project) endpoint.
-    
-    Checks whether a team has `read`, `write`, or `admin` permissions for an organization project. The response includes projects inherited from a parent team.
-    *
-    * @param int $teamId 
-    * @param int $projectId 
-    */
+     * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Check team permissions for a project](https://developer.github.com/v3/teams/#check-team-permissions-for-a-project) endpoint.
+     *
+     * Checks whether a team has `read`, `write`, or `admin` permissions for an organization project. The response includes projects inherited from a parent team.
+     * @param int $teamId
+     * @param int $projectId
+     */
     public function __construct(int $teamId, int $projectId)
     {
         $this->team_id = $teamId;

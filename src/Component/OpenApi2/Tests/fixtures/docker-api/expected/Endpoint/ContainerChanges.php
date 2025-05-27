@@ -6,16 +6,15 @@ class ContainerChanges extends \Docker\Api\Runtime\Client\BaseEndpoint implement
 {
     protected $id;
     /**
-    * Returns which files in a container's filesystem have been added, deleted,
-    or modified. The `Kind` of modification can be one of:
-    
-    - `0`: Modified
-    - `1`: Added
-    - `2`: Deleted
-    
-    *
-    * @param string $id ID or name of the container
-    */
+     * Returns which files in a container's filesystem have been added, deleted,
+     * or modified. The `Kind` of modification can be one of:
+     *
+     * - `0`: Modified
+     * - `1`: Added
+     * - `2`: Deleted
+     *
+     * @param string $id ID or name of the container
+     */
     public function __construct(string $id)
     {
         $this->id = $id;

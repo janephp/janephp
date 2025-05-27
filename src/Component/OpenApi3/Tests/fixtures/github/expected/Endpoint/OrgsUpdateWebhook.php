@@ -7,11 +7,9 @@ class OrgsUpdateWebhook extends \Github\Runtime\Client\BaseEndpoint implements \
     protected $org;
     protected $hook_id;
     /**
-     * 
-     *
-     * @param string $org 
-     * @param int $hookId 
-     * @param null|\Github\Model\OrgsOrgHooksHookIdPatchBody $requestBody 
+     * @param string $org
+     * @param int $hookId
+     * @param null|\Github\Model\OrgsOrgHooksHookIdPatchBody $requestBody
      */
     public function __construct(string $org, int $hookId, ?\Github\Model\OrgsOrgHooksHookIdPatchBody $requestBody = null)
     {

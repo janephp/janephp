@@ -13,26 +13,18 @@ class SearchReindexCompletedEvent extends ApplicationEvent
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $searchIndex;
     /**
-     * 
-     *
      * @var int
      */
     protected $items;
     /**
-     * 
-     *
      * @var string
      */
     protected $duration;
     /**
-     * 
-     *
      * @return string
      */
     public function getSearchIndex(): string
@@ -40,8 +32,6 @@ class SearchReindexCompletedEvent extends ApplicationEvent
         return $this->searchIndex;
     }
     /**
-     * 
-     *
      * @param string $searchIndex
      *
      * @return self
@@ -53,8 +43,6 @@ class SearchReindexCompletedEvent extends ApplicationEvent
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getItems(): int
@@ -62,8 +50,6 @@ class SearchReindexCompletedEvent extends ApplicationEvent
         return $this->items;
     }
     /**
-     * 
-     *
      * @param int $items
      *
      * @return self
@@ -75,8 +61,6 @@ class SearchReindexCompletedEvent extends ApplicationEvent
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDuration(): string
@@ -84,8 +68,6 @@ class SearchReindexCompletedEvent extends ApplicationEvent
         return $this->duration;
     }
     /**
-     * 
-     *
      * @param string $duration
      *
      * @return self

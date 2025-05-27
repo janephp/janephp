@@ -7,7 +7,6 @@ class ChannelGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
     protected $id;
     /**
      * Gets the channel information by the output format ID.
-     *
      * @param string $id The channel ID.
      */
     public function __construct(string $id)

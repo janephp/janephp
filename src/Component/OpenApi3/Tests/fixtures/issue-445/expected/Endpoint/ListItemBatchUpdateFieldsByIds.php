@@ -5,12 +5,11 @@ namespace PicturePark\API\Endpoint;
 class ListItemBatchUpdateFieldsByIds extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Updates fields of multiple list items. A list of list item IDs must be provided to limit the update to specific list items.
-    The same set of changes is applied to all the list items.
-    The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param \PicturePark\API\Model\ListItemFieldsBatchUpdateRequest $requestBody 
-    */
+     * Updates fields of multiple list items. A list of list item IDs must be provided to limit the update to specific list items.
+     * The same set of changes is applied to all the list items.
+     * The operation is executed asynchronous and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param \PicturePark\API\Model\ListItemFieldsBatchUpdateRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\ListItemFieldsBatchUpdateRequest $requestBody)
     {
         $this->body = $requestBody;

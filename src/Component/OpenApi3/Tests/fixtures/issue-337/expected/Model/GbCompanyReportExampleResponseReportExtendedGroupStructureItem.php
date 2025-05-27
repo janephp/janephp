@@ -13,56 +13,38 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $country;
     /**
-     * 
-     *
      * @var string
      */
     protected $safeNumber;
     /**
-     * 
-     *
      * @var string
      */
     protected $companyName;
     /**
-     * 
-     *
      * @var string
      */
     protected $registeredNumber;
     /**
-     * 
-     *
      * @var string
      */
     protected $latestAnnualAccounts;
     /**
-     * 
-     *
      * @var float
      */
     protected $level;
     /**
-     * 
-     *
      * @var string
      */
     protected $status;
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -70,8 +52,6 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -83,8 +63,6 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountry(): string
@@ -92,8 +70,6 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
         return $this->country;
     }
     /**
-     * 
-     *
      * @param string $country
      *
      * @return self
@@ -105,8 +81,6 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSafeNumber(): string
@@ -114,8 +88,6 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
         return $this->safeNumber;
     }
     /**
-     * 
-     *
      * @param string $safeNumber
      *
      * @return self
@@ -127,8 +99,6 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCompanyName(): string
@@ -136,8 +106,6 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
         return $this->companyName;
     }
     /**
-     * 
-     *
      * @param string $companyName
      *
      * @return self
@@ -149,8 +117,6 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRegisteredNumber(): string
@@ -158,8 +124,6 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
         return $this->registeredNumber;
     }
     /**
-     * 
-     *
      * @param string $registeredNumber
      *
      * @return self
@@ -171,8 +135,6 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLatestAnnualAccounts(): string
@@ -180,8 +142,6 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
         return $this->latestAnnualAccounts;
     }
     /**
-     * 
-     *
      * @param string $latestAnnualAccounts
      *
      * @return self
@@ -193,8 +153,6 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getLevel(): float
@@ -202,8 +160,6 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
         return $this->level;
     }
     /**
-     * 
-     *
      * @param float $level
      *
      * @return self
@@ -215,8 +171,6 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStatus(): string
@@ -224,8 +178,6 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
         return $this->status;
     }
     /**
-     * 
-     *
      * @param string $status
      *
      * @return self

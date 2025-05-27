@@ -9,7 +9,6 @@ class DocumentHistoryGetVersion extends \PicturePark\API\Runtime\Client\BaseEndp
     protected $documentVersion;
     /**
      * Gets a specific version of a document.
-     *
      * @param string $documentType The type of the document (e.g. Content).
      * @param string $documentId The ID of the document (e.g. contentId).
      * @param int $documentVersion The version of the document.

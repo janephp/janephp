@@ -8,9 +8,8 @@ class ReposGetTopReferrers extends \Github\Runtime\Client\BaseEndpoint implement
     protected $repo;
     /**
      * Get the top 10 referrers over the last 14 days.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      */
     public function __construct(string $owner, string $repo)
     {

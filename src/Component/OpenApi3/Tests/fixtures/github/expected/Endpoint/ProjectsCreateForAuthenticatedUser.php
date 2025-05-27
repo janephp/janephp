@@ -5,9 +5,7 @@ namespace Github\Endpoint;
 class ProjectsCreateForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
-     * 
-     *
-     * @param null|\Github\Model\UserProjectsPostBody $requestBody 
+     * @param null|\Github\Model\UserProjectsPostBody $requestBody
      */
     public function __construct(?\Github\Model\UserProjectsPostBody $requestBody = null)
     {

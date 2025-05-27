@@ -13,38 +13,26 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRating extends \Ar
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $commonValue;
     /**
-     * 
-     *
      * @var string
      */
     protected $commonDescription;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportCompanySummaryCreditRatingCreditLimit
      */
     protected $creditLimit;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportCompanySummaryCreditRatingProviderValue
      */
     protected $providerValue;
     /**
-     * 
-     *
      * @var string
      */
     protected $providerDescription;
     /**
-     * 
-     *
      * @return string
      */
     public function getCommonValue(): string
@@ -52,8 +40,6 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRating extends \Ar
         return $this->commonValue;
     }
     /**
-     * 
-     *
      * @param string $commonValue
      *
      * @return self
@@ -65,8 +51,6 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRating extends \Ar
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommonDescription(): string
@@ -74,8 +58,6 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRating extends \Ar
         return $this->commonDescription;
     }
     /**
-     * 
-     *
      * @param string $commonDescription
      *
      * @return self
@@ -87,8 +69,6 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRating extends \Ar
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportCompanySummaryCreditRatingCreditLimit
      */
     public function getCreditLimit(): GbCompanyReportExampleResponseReportCompanySummaryCreditRatingCreditLimit
@@ -96,8 +76,6 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRating extends \Ar
         return $this->creditLimit;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportCompanySummaryCreditRatingCreditLimit $creditLimit
      *
      * @return self
@@ -109,8 +87,6 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRating extends \Ar
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportCompanySummaryCreditRatingProviderValue
      */
     public function getProviderValue(): GbCompanyReportExampleResponseReportCompanySummaryCreditRatingProviderValue
@@ -118,8 +94,6 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRating extends \Ar
         return $this->providerValue;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportCompanySummaryCreditRatingProviderValue $providerValue
      *
      * @return self
@@ -131,8 +105,6 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRating extends \Ar
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getProviderDescription(): string
@@ -140,8 +112,6 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRating extends \Ar
         return $this->providerDescription;
     }
     /**
-     * 
-     *
      * @param string $providerDescription
      *
      * @return self

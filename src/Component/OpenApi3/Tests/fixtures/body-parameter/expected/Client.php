@@ -5,9 +5,8 @@ namespace Jane\Component\OpenApi3\Tests\Expected;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
 {
     /**
-     * 
-     *
-     * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody 
+     * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -17,9 +16,8 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestSimpleBodyParameter($requestBody), $fetch);
     }
     /**
-     * 
-     *
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\Schema $requestBody 
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\Schema $requestBody
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -29,9 +27,8 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestObjectBodyParameter($requestBody), $fetch);
     }
     /**
-     * 
-     *
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\Schema[] $requestBody 
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\Schema[] $requestBody
+     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface

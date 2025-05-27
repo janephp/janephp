@@ -13,38 +13,26 @@ class BaseGistFilesItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $filename;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $language;
     /**
-     * 
-     *
      * @var string
      */
     protected $rawUrl;
     /**
-     * 
-     *
      * @var int
      */
     protected $size;
     /**
-     * 
-     *
      * @return string
      */
     public function getFilename(): string
@@ -52,8 +40,6 @@ class BaseGistFilesItem extends \ArrayObject
         return $this->filename;
     }
     /**
-     * 
-     *
      * @param string $filename
      *
      * @return self
@@ -65,8 +51,6 @@ class BaseGistFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -74,8 +58,6 @@ class BaseGistFilesItem extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -87,8 +69,6 @@ class BaseGistFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLanguage(): string
@@ -96,8 +76,6 @@ class BaseGistFilesItem extends \ArrayObject
         return $this->language;
     }
     /**
-     * 
-     *
      * @param string $language
      *
      * @return self
@@ -109,8 +87,6 @@ class BaseGistFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRawUrl(): string
@@ -118,8 +94,6 @@ class BaseGistFilesItem extends \ArrayObject
         return $this->rawUrl;
     }
     /**
-     * 
-     *
      * @param string $rawUrl
      *
      * @return self
@@ -131,8 +105,6 @@ class BaseGistFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getSize(): int
@@ -140,8 +112,6 @@ class BaseGistFilesItem extends \ArrayObject
         return $this->size;
     }
     /**
-     * 
-     *
      * @param int $size
      *
      * @return self

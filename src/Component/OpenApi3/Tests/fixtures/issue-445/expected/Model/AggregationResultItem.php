@@ -25,11 +25,11 @@ class AggregationResultItem
      */
     protected $count;
     /**
-    * Ready to use filter to filter the data based on the aggregation result values.
-    It can be passed as one of the aggregation filters of an aggregation query: it returns documents meeting the aggregation condition.
-    *
-    * @var mixed|null
-    */
+     * Ready to use filter to filter the data based on the aggregation result values.
+     * It can be passed as one of the aggregation filters of an aggregation query: it returns documents meeting the aggregation condition.
+     *
+     * @var mixed|null
+     */
     protected $filter;
     /**
      * True if the current result item matches on of the aggregation filters sent in the query.
@@ -88,11 +88,11 @@ class AggregationResultItem
         return $this;
     }
     /**
-    * Ready to use filter to filter the data based on the aggregation result values.
-    It can be passed as one of the aggregation filters of an aggregation query: it returns documents meeting the aggregation condition.
-    *
-    * @return mixed
-    */
+     * Ready to use filter to filter the data based on the aggregation result values.
+     * It can be passed as one of the aggregation filters of an aggregation query: it returns documents meeting the aggregation condition.
+     *
+     * @return mixed
+     */
     public function getFilter()
     {
         return $this->filter;

@@ -7,7 +7,6 @@ class GetRules extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
     protected $accept;
     /**
      * Returns rules from a user's active rule set. Users can fetch all of their rules or a subset, specified by the provided rule ids.
-     *
      * @param array $queryParameters {
      *     @var array $ids A comma-separated list of Rule IDs.
      * }

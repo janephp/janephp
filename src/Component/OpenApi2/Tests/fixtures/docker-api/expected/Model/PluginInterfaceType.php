@@ -13,26 +13,18 @@ class PluginInterfaceType
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $prefix;
     /**
-     * 
-     *
      * @var string
      */
     protected $capability;
     /**
-     * 
-     *
      * @var string
      */
     protected $version;
     /**
-     * 
-     *
      * @return string
      */
     public function getPrefix(): string
@@ -40,8 +32,6 @@ class PluginInterfaceType
         return $this->prefix;
     }
     /**
-     * 
-     *
      * @param string $prefix
      *
      * @return self
@@ -53,8 +43,6 @@ class PluginInterfaceType
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCapability(): string
@@ -62,8 +50,6 @@ class PluginInterfaceType
         return $this->capability;
     }
     /**
-     * 
-     *
      * @param string $capability
      *
      * @return self
@@ -75,8 +61,6 @@ class PluginInterfaceType
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getVersion(): string
@@ -84,8 +68,6 @@ class PluginInterfaceType
         return $this->version;
     }
     /**
-     * 
-     *
      * @param string $version
      *
      * @return self

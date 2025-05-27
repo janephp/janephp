@@ -13,11 +13,11 @@ class GeoBoundingBoxFilter extends FilterBase
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
-    (i.e. personLayer.address.street).
-    *
-    * @var string
-    */
+     * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
+     * (i.e. personLayer.address.street).
+     *
+     * @var string
+     */
     protected $field;
     /**
      * The top left corner of the bounding box's geo location (latitude and longitude).
@@ -32,11 +32,11 @@ class GeoBoundingBoxFilter extends FilterBase
      */
     protected $bottomRight;
     /**
-    * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
-    (i.e. personLayer.address.street).
-    *
-    * @return string
-    */
+     * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
+     * (i.e. personLayer.address.street).
+     *
+     * @return string
+     */
     public function getField(): string
     {
         return $this->field;

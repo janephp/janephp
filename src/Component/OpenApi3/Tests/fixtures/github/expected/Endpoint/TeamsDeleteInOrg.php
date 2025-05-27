@@ -7,15 +7,14 @@ class TeamsDeleteInOrg extends \Github\Runtime\Client\BaseEndpoint implements \G
     protected $org;
     protected $team_slug;
     /**
-    * To delete a team, the authenticated user must be an organization owner or team maintainer.
-    
-    If you are an organization owner, deleting a parent team will delete all of its child teams as well.
-    
-    **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}`.
-    *
-    * @param string $org 
-    * @param string $teamSlug team_slug parameter
-    */
+     * To delete a team, the authenticated user must be an organization owner or team maintainer.
+     *
+     * If you are an organization owner, deleting a parent team will delete all of its child teams as well.
+     *
+     * **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}`.
+     * @param string $org
+     * @param string $teamSlug team_slug parameter
+     */
     public function __construct(string $org, string $teamSlug)
     {
         $this->org = $org;

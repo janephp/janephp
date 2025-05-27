@@ -13,14 +13,10 @@ class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody extends \ArrayObjec
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyCompaniesItem>
      */
     protected $companies;
     /**
-     * 
-     *
      * @return list<MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyCompaniesItem>
      */
     public function getCompanies(): array
@@ -28,8 +24,6 @@ class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody extends \ArrayObjec
         return $this->companies;
     }
     /**
-     * 
-     *
      * @param list<MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyCompaniesItem> $companies
      *
      * @return self

@@ -13,32 +13,32 @@ class HealthcheckResult
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * Date and time at which this check started in
-    [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
-    
-    *
-    * @var \DateTime
-    */
+     * Date and time at which this check started in
+     * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
+     * 
+     *
+     * @var \DateTime
+     */
     protected $start;
     /**
-    * Date and time at which this check ended in
-    [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
-    
-    *
-    * @var string
-    */
+     * Date and time at which this check ended in
+     * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
+     * 
+     *
+     * @var string
+     */
     protected $end;
     /**
-    * ExitCode meanings:
-    
-    - `0` healthy
-    - `1` unhealthy
-    - `2` reserved (considered unhealthy)
-    - other values: error running probe
-    
-    *
-    * @var int
-    */
+     * ExitCode meanings:
+     * 
+     * - `0` healthy
+     * - `1` unhealthy
+     * - `2` reserved (considered unhealthy)
+     * - other values: error running probe
+     * 
+     *
+     * @var int
+     */
     protected $exitCode;
     /**
      * Output from last check
@@ -47,12 +47,12 @@ class HealthcheckResult
      */
     protected $output;
     /**
-    * Date and time at which this check started in
-    [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
-    
-    *
-    * @return \DateTime
-    */
+     * Date and time at which this check started in
+     * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
+     * 
+     *
+     * @return \DateTime
+     */
     public function getStart(): \DateTime
     {
         return $this->start;
@@ -73,12 +73,12 @@ class HealthcheckResult
         return $this;
     }
     /**
-    * Date and time at which this check ended in
-    [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
-    
-    *
-    * @return string
-    */
+     * Date and time at which this check ended in
+     * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
+     * 
+     *
+     * @return string
+     */
     public function getEnd(): string
     {
         return $this->end;
@@ -99,16 +99,16 @@ class HealthcheckResult
         return $this;
     }
     /**
-    * ExitCode meanings:
-    
-    - `0` healthy
-    - `1` unhealthy
-    - `2` reserved (considered unhealthy)
-    - other values: error running probe
-    
-    *
-    * @return int
-    */
+     * ExitCode meanings:
+     * 
+     * - `0` healthy
+     * - `1` unhealthy
+     * - `2` reserved (considered unhealthy)
+     * - other values: error running probe
+     * 
+     *
+     * @return int
+     */
     public function getExitCode(): int
     {
         return $this->exitCode;

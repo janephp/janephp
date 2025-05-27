@@ -13,26 +13,18 @@ class DeviceMapping
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $pathOnHost;
     /**
-     * 
-     *
      * @var string
      */
     protected $pathInContainer;
     /**
-     * 
-     *
      * @var string
      */
     protected $cgroupPermissions;
     /**
-     * 
-     *
      * @return string
      */
     public function getPathOnHost(): string
@@ -40,8 +32,6 @@ class DeviceMapping
         return $this->pathOnHost;
     }
     /**
-     * 
-     *
      * @param string $pathOnHost
      *
      * @return self
@@ -53,8 +43,6 @@ class DeviceMapping
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPathInContainer(): string
@@ -62,8 +50,6 @@ class DeviceMapping
         return $this->pathInContainer;
     }
     /**
-     * 
-     *
      * @param string $pathInContainer
      *
      * @return self
@@ -75,8 +61,6 @@ class DeviceMapping
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCgroupPermissions(): string
@@ -84,8 +68,6 @@ class DeviceMapping
         return $this->cgroupPermissions;
     }
     /**
-     * 
-     *
      * @param string $cgroupPermissions
      *
      * @return self

@@ -13,80 +13,54 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $traceLevel;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $traceId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $traceJobId;
     /**
-     * 
-     *
      * @var int
      */
     protected $httpStatusCode;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $exceptionMessage;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $customerId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $customerAlias;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $userId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $inputExtension;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $targetFormatKind;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $formatId;
     /**
-     * 
-     *
      * @return string
      */
     public function getTraceLevel(): string
@@ -94,8 +68,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this->traceLevel;
     }
     /**
-     * 
-     *
      * @param string $traceLevel
      *
      * @return self
@@ -107,8 +79,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTraceId(): ?string
@@ -116,8 +86,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this->traceId;
     }
     /**
-     * 
-     *
      * @param string|null $traceId
      *
      * @return self
@@ -129,8 +97,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTraceJobId(): ?string
@@ -138,8 +104,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this->traceJobId;
     }
     /**
-     * 
-     *
      * @param string|null $traceJobId
      *
      * @return self
@@ -151,8 +115,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getHttpStatusCode(): int
@@ -160,8 +122,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this->httpStatusCode;
     }
     /**
-     * 
-     *
      * @param int $httpStatusCode
      *
      * @return self
@@ -173,8 +133,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExceptionMessage(): ?string
@@ -182,8 +140,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this->exceptionMessage;
     }
     /**
-     * 
-     *
      * @param string|null $exceptionMessage
      *
      * @return self
@@ -195,8 +151,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -204,8 +158,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      *
      * @return self
@@ -217,8 +169,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCustomerId(): ?string
@@ -226,8 +176,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this->customerId;
     }
     /**
-     * 
-     *
      * @param string|null $customerId
      *
      * @return self
@@ -239,8 +187,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCustomerAlias(): ?string
@@ -248,8 +194,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this->customerAlias;
     }
     /**
-     * 
-     *
      * @param string|null $customerAlias
      *
      * @return self
@@ -261,8 +205,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getUserId(): ?string
@@ -270,8 +212,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this->userId;
     }
     /**
-     * 
-     *
      * @param string|null $userId
      *
      * @return self
@@ -283,8 +223,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getInputExtension(): ?string
@@ -292,8 +230,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this->inputExtension;
     }
     /**
-     * 
-     *
      * @param string|null $inputExtension
      *
      * @return self
@@ -305,8 +241,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTargetFormatKind(): ?string
@@ -314,8 +248,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this->targetFormatKind;
     }
     /**
-     * 
-     *
      * @param string|null $targetFormatKind
      *
      * @return self
@@ -327,8 +259,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFormatId(): ?string
@@ -336,8 +266,6 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         return $this->formatId;
     }
     /**
-     * 
-     *
      * @param string|null $formatId
      *
      * @return self

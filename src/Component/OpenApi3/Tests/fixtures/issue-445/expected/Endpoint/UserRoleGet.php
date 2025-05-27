@@ -7,7 +7,6 @@ class UserRoleGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implement
     protected $id;
     /**
      * Gets the user role by the user role ID.
-     *
      * @param string $id User role ID.
      */
     public function __construct(string $id)

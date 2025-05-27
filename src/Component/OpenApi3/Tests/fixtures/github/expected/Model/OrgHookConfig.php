@@ -13,32 +13,22 @@ class OrgHookConfig extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $insecureSsl;
     /**
-     * 
-     *
      * @var string
      */
     protected $contentType;
     /**
-     * 
-     *
      * @var string
      */
     protected $secret;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -46,8 +36,6 @@ class OrgHookConfig extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -59,8 +47,6 @@ class OrgHookConfig extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getInsecureSsl(): string
@@ -68,8 +54,6 @@ class OrgHookConfig extends \ArrayObject
         return $this->insecureSsl;
     }
     /**
-     * 
-     *
      * @param string $insecureSsl
      *
      * @return self
@@ -81,8 +65,6 @@ class OrgHookConfig extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContentType(): string
@@ -90,8 +72,6 @@ class OrgHookConfig extends \ArrayObject
         return $this->contentType;
     }
     /**
-     * 
-     *
      * @param string $contentType
      *
      * @return self
@@ -103,8 +83,6 @@ class OrgHookConfig extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSecret(): string
@@ -112,8 +90,6 @@ class OrgHookConfig extends \ArrayObject
         return $this->secret;
     }
     /**
-     * 
-     *
      * @param string $secret
      *
      * @return self

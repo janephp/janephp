@@ -43,11 +43,11 @@ class BusinessProcessSearchRequest
      */
     protected $searchBehaviors;
     /**
-    * Enable debug mode: additional debug information regarding the query execution and reason of the matched documents are returned in the BusinessProcessSearchResult.
-    Warning! It severely affects performance.
-    *
-    * @var bool
-    */
+     * Enable debug mode: additional debug information regarding the query execution and reason of the matched documents are returned in the BusinessProcessSearchResult.
+     * Warning! It severely affects performance.
+     *
+     * @var bool
+     */
     protected $debugMode = false;
     /**
      * Limits the document count of the result set.
@@ -160,11 +160,11 @@ class BusinessProcessSearchRequest
         return $this;
     }
     /**
-    * Enable debug mode: additional debug information regarding the query execution and reason of the matched documents are returned in the BusinessProcessSearchResult.
-    Warning! It severely affects performance.
-    *
-    * @return bool
-    */
+     * Enable debug mode: additional debug information regarding the query execution and reason of the matched documents are returned in the BusinessProcessSearchResult.
+     * Warning! It severely affects performance.
+     *
+     * @return bool
+     */
     public function getDebugMode(): bool
     {
         return $this->debugMode;

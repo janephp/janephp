@@ -13,38 +13,26 @@ class CompliancePreDefinedSearchesPredefinedSearchesItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $categoryName;
     /**
-     * 
-     *
      * @var string
      */
     protected $productName;
     /**
-     * 
-     *
      * @var string
      */
     protected $description;
     /**
-     * 
-     *
      * @var int
      */
     protected $confidence;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -52,8 +40,6 @@ class CompliancePreDefinedSearchesPredefinedSearchesItem extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -65,8 +51,6 @@ class CompliancePreDefinedSearchesPredefinedSearchesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCategoryName(): string
@@ -74,8 +58,6 @@ class CompliancePreDefinedSearchesPredefinedSearchesItem extends \ArrayObject
         return $this->categoryName;
     }
     /**
-     * 
-     *
      * @param string $categoryName
      *
      * @return self
@@ -87,8 +69,6 @@ class CompliancePreDefinedSearchesPredefinedSearchesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getProductName(): string
@@ -96,8 +76,6 @@ class CompliancePreDefinedSearchesPredefinedSearchesItem extends \ArrayObject
         return $this->productName;
     }
     /**
-     * 
-     *
      * @param string $productName
      *
      * @return self
@@ -109,8 +87,6 @@ class CompliancePreDefinedSearchesPredefinedSearchesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDescription(): string
@@ -118,8 +94,6 @@ class CompliancePreDefinedSearchesPredefinedSearchesItem extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string $description
      *
      * @return self
@@ -131,8 +105,6 @@ class CompliancePreDefinedSearchesPredefinedSearchesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getConfidence(): int
@@ -140,8 +112,6 @@ class CompliancePreDefinedSearchesPredefinedSearchesItem extends \ArrayObject
         return $this->confidence;
     }
     /**
-     * 
-     *
      * @param int $confidence
      *
      * @return self

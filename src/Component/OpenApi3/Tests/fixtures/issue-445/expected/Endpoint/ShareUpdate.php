@@ -7,9 +7,8 @@ class ShareUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint implement
     protected $id;
     /**
      * Updates a single share. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-     *
      * @param string $id The share id.
-     * @param \PicturePark\API\Model\ShareBaseUpdateRequest $requestBody 
+     * @param \PicturePark\API\Model\ShareBaseUpdateRequest $requestBody
      */
     public function __construct(string $id, \PicturePark\API\Model\ShareBaseUpdateRequest $requestBody)
     {

@@ -9,11 +9,10 @@ class MigrationsMapCommitAuthor extends \Github\Runtime\Client\BaseEndpoint impl
     protected $author_id;
     /**
      * Update an author's identity for the import. Your application can continue updating authors any time before you push new commits to the repository.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $authorId author_id parameter
-     * @param null|\Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $authorId, ?\Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody $requestBody = null)
     {

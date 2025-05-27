@@ -13,32 +13,22 @@ class Example extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $summary;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $value;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $externalValue;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getSummary() : ?string
@@ -46,8 +36,6 @@ class Example extends \ArrayObject
         return $this->summary;
     }
     /**
-     * 
-     *
      * @param string|null $summary
      *
      * @return self
@@ -59,8 +47,6 @@ class Example extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription() : ?string
@@ -68,8 +54,6 @@ class Example extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -81,8 +65,6 @@ class Example extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getValue()
@@ -90,8 +72,6 @@ class Example extends \ArrayObject
         return $this->value;
     }
     /**
-     * 
-     *
      * @param mixed $value
      *
      * @return self
@@ -103,8 +83,6 @@ class Example extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExternalValue() : ?string
@@ -112,8 +90,6 @@ class Example extends \ArrayObject
         return $this->externalValue;
     }
     /**
-     * 
-     *
      * @param string|null $externalValue
      *
      * @return self

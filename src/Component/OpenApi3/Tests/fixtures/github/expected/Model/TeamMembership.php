@@ -13,8 +13,6 @@ class TeamMembership extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
@@ -25,14 +23,10 @@ class TeamMembership extends \ArrayObject
      */
     protected $role = 'member';
     /**
-     * 
-     *
      * @var string
      */
     protected $state;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -40,8 +34,6 @@ class TeamMembership extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -75,8 +67,6 @@ class TeamMembership extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getState(): string
@@ -84,8 +74,6 @@ class TeamMembership extends \ArrayObject
         return $this->state;
     }
     /**
-     * 
-     *
      * @param string $state
      *
      * @return self

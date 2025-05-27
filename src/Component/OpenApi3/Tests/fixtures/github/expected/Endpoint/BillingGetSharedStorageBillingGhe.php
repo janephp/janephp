@@ -6,16 +6,15 @@ class BillingGetSharedStorageBillingGhe extends \Github\Runtime\Client\BaseEndpo
 {
     protected $enterprise_id;
     /**
-    * **Warning:** The Billing API is currently in public beta and subject to change.
-    
-    Gets the estimated paid and estimated total storage used for GitHub Actions and Github Packages.
-    
-    Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-    
-    The authenticated user must be an enterprise admin.
-    *
-    * @param string $enterpriseId Unique identifier of the GitHub Enterprise Cloud instance.
-    */
+     * **Warning:** The Billing API is currently in public beta and subject to change.
+     *
+     * Gets the estimated paid and estimated total storage used for GitHub Actions and Github Packages.
+     *
+     * Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+     *
+     * The authenticated user must be an enterprise admin.
+     * @param string $enterpriseId Unique identifier of the GitHub Enterprise Cloud instance.
+     */
     public function __construct(string $enterpriseId)
     {
         $this->enterprise_id = $enterpriseId;

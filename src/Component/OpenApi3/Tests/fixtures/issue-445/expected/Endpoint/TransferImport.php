@@ -6,14 +6,13 @@ class TransferImport extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
 {
     protected $id;
     /**
-    * This triggers the import of a Transfer, creating Contents. All items in the Transfer will be enqueued for rendering.
-               
-    Wait for completion on the Business process ID that is returned to wait for import completion.
-    Note: Before attempting to import a Transfer, the transfer has to be in the TransferReady state.
-    *
-    * @param string $id ID of transfer.
-    * @param \PicturePark\API\Model\ImportTransferRequest $requestBody 
-    */
+     * This triggers the import of a Transfer, creating Contents. All items in the Transfer will be enqueued for rendering.
+     *
+     * Wait for completion on the Business process ID that is returned to wait for import completion.
+     * Note: Before attempting to import a Transfer, the transfer has to be in the TransferReady state.
+     * @param string $id ID of transfer.
+     * @param \PicturePark\API\Model\ImportTransferRequest $requestBody
+     */
     public function __construct(string $id, \PicturePark\API\Model\ImportTransferRequest $requestBody)
     {
         $this->id = $id;

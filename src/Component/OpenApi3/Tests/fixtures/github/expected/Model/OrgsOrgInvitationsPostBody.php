@@ -25,13 +25,13 @@ class OrgsOrgInvitationsPostBody extends \ArrayObject
      */
     protected $email;
     /**
-    * Specify role for new member. Can be one of:  
-    \* `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  
-    \* `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  
-    \* `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization.
-    *
-    * @var string
-    */
+     * Specify role for new member. Can be one of:
+     * \* `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.
+     * \* `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.
+     * \* `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization.
+     *
+     * @var string
+     */
     protected $role = 'direct_member';
     /**
      * Specify IDs for the teams you want to invite new members to.
@@ -84,13 +84,13 @@ class OrgsOrgInvitationsPostBody extends \ArrayObject
         return $this;
     }
     /**
-    * Specify role for new member. Can be one of:  
-    \* `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  
-    \* `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  
-    \* `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization.
-    *
-    * @return string
-    */
+     * Specify role for new member. Can be one of:
+     * \* `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.
+     * \* `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.
+     * \* `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization.
+     *
+     * @return string
+     */
     public function getRole(): string
     {
         return $this->role;

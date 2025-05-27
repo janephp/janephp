@@ -6,8 +6,7 @@ class LiveStreamSearch extends \PicturePark\API\Runtime\Client\BaseEndpoint impl
 {
     /**
      * Search for live stream events with optional parameters to limit time, document type or use more complex filtering.
-     *
-     * @param \PicturePark\API\Model\LiveStreamSearchRequest $requestBody 
+     * @param \PicturePark\API\Model\LiveStreamSearchRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\LiveStreamSearchRequest $requestBody)
     {

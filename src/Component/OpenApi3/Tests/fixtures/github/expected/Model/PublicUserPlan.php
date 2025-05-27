@@ -13,32 +13,22 @@ class PublicUserPlan extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $collaborators;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var int
      */
     protected $space;
     /**
-     * 
-     *
      * @var int
      */
     protected $privateRepos;
     /**
-     * 
-     *
      * @return int
      */
     public function getCollaborators(): int
@@ -46,8 +36,6 @@ class PublicUserPlan extends \ArrayObject
         return $this->collaborators;
     }
     /**
-     * 
-     *
      * @param int $collaborators
      *
      * @return self
@@ -59,8 +47,6 @@ class PublicUserPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -68,8 +54,6 @@ class PublicUserPlan extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -81,8 +65,6 @@ class PublicUserPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getSpace(): int
@@ -90,8 +72,6 @@ class PublicUserPlan extends \ArrayObject
         return $this->space;
     }
     /**
-     * 
-     *
      * @param int $space
      *
      * @return self
@@ -103,8 +83,6 @@ class PublicUserPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getPrivateRepos(): int
@@ -112,8 +90,6 @@ class PublicUserPlan extends \ArrayObject
         return $this->privateRepos;
     }
     /**
-     * 
-     *
      * @param int $privateRepos
      *
      * @return self

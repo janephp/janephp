@@ -49,8 +49,6 @@ class XmpMappingEntry extends \ArrayObject
      */
     protected $configuration;
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
@@ -187,8 +185,6 @@ class XmpMappingEntry extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -196,8 +192,6 @@ class XmpMappingEntry extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self

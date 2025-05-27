@@ -6,8 +6,6 @@ class ProjectsDeleteColumn extends \Github\Runtime\Client\BaseEndpoint implement
 {
     protected $column_id;
     /**
-     * 
-     *
      * @param int $columnId column_id parameter
      */
     public function __construct(int $columnId)

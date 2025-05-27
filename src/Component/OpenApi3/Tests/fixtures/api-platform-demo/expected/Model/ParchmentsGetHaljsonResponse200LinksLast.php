@@ -13,14 +13,10 @@ class ParchmentsGetHaljsonResponse200LinksLast extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $href;
     /**
-     * 
-     *
      * @return string
      */
     public function getHref(): string
@@ -28,8 +24,6 @@ class ParchmentsGetHaljsonResponse200LinksLast extends \ArrayObject
         return $this->href;
     }
     /**
-     * 
-     *
      * @param string $href
      *
      * @return self

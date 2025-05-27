@@ -9,9 +9,8 @@ class ActionsGetArtifact extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $artifact_id;
     /**
      * Gets a specific artifact for a workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $artifactId artifact_id parameter
      */
     public function __construct(string $owner, string $repo, int $artifactId)

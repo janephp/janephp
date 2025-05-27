@@ -7,7 +7,6 @@ class GistsStar extends \Github\Runtime\Client\BaseEndpoint implements \Github\R
     protected $gist_id;
     /**
      * Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://developer.github.com/v3/#http-verbs)."
-     *
      * @param string $gistId gist_id parameter
      */
     public function __construct(string $gistId)

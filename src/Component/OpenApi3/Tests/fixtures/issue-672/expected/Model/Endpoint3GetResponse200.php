@@ -13,14 +13,10 @@ class Endpoint3GetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $field3;
     /**
-     * 
-     *
      * @return string
      */
     public function getField3(): string
@@ -28,8 +24,6 @@ class Endpoint3GetResponse200 extends \ArrayObject
         return $this->field3;
     }
     /**
-     * 
-     *
      * @param string $field3
      *
      * @return self

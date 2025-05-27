@@ -13,50 +13,34 @@ class TopBookJsonhal extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var TopBookJsonhalLinks
      */
     protected $links;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $title;
     /**
-     * 
-     *
      * @var string
      */
     protected $author;
     /**
-     * 
-     *
      * @var string
      */
     protected $part;
     /**
-     * 
-     *
      * @var string
      */
     protected $place;
     /**
-     * 
-     *
      * @var int
      */
     protected $borrowCount;
     /**
-     * 
-     *
      * @return TopBookJsonhalLinks
      */
     public function getLinks(): TopBookJsonhalLinks
@@ -64,8 +48,6 @@ class TopBookJsonhal extends \ArrayObject
         return $this->links;
     }
     /**
-     * 
-     *
      * @param TopBookJsonhalLinks $links
      *
      * @return self
@@ -77,8 +59,6 @@ class TopBookJsonhal extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -86,8 +66,6 @@ class TopBookJsonhal extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -99,8 +77,6 @@ class TopBookJsonhal extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTitle(): string
@@ -108,8 +84,6 @@ class TopBookJsonhal extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string $title
      *
      * @return self
@@ -121,8 +95,6 @@ class TopBookJsonhal extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAuthor(): string
@@ -130,8 +102,6 @@ class TopBookJsonhal extends \ArrayObject
         return $this->author;
     }
     /**
-     * 
-     *
      * @param string $author
      *
      * @return self
@@ -143,8 +113,6 @@ class TopBookJsonhal extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPart(): string
@@ -152,8 +120,6 @@ class TopBookJsonhal extends \ArrayObject
         return $this->part;
     }
     /**
-     * 
-     *
      * @param string $part
      *
      * @return self
@@ -165,8 +131,6 @@ class TopBookJsonhal extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPlace(): string
@@ -174,8 +138,6 @@ class TopBookJsonhal extends \ArrayObject
         return $this->place;
     }
     /**
-     * 
-     *
      * @param string $place
      *
      * @return self
@@ -187,8 +149,6 @@ class TopBookJsonhal extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getBorrowCount(): int
@@ -196,8 +156,6 @@ class TopBookJsonhal extends \ArrayObject
         return $this->borrowCount;
     }
     /**
-     * 
-     *
      * @param int $borrowCount
      *
      * @return self

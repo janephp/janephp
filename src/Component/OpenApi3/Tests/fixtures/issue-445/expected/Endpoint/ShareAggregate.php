@@ -6,8 +6,7 @@ class ShareAggregate extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
 {
     /**
      * Aggregates shares either created by or sent to current user.
-     *
-     * @param \PicturePark\API\Model\ShareAggregationRequest $requestBody 
+     * @param \PicturePark\API\Model\ShareAggregationRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\ShareAggregationRequest $requestBody)
     {

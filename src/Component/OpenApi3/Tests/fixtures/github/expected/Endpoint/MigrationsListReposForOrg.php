@@ -8,8 +8,7 @@ class MigrationsListReposForOrg extends \Github\Runtime\Client\BaseEndpoint impl
     protected $migration_id;
     /**
      * List all the repositories for this organization migration.
-     *
-     * @param string $org 
+     * @param string $org
      * @param int $migrationId migration_id parameter
      * @param array $queryParameters {
      *     @var int $per_page Results per page (max 100)

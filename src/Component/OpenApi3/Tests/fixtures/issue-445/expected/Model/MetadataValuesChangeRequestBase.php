@@ -31,8 +31,6 @@ class MetadataValuesChangeRequestBase
      */
     protected $notifyProgress;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
@@ -94,8 +92,6 @@ class MetadataValuesChangeRequestBase
         $this->notifyProgress = $notifyProgress;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -103,8 +99,6 @@ class MetadataValuesChangeRequestBase
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      */
     public function setKind(string $kind)

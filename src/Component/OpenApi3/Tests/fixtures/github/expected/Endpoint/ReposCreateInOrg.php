@@ -6,18 +6,17 @@ class ReposCreateInOrg extends \Github\Runtime\Client\BaseEndpoint implements \G
 {
     protected $org;
     /**
-    * Creates a new repository in the specified organization. The authenticated user must be a member of the organization.
-    
-    **OAuth scope requirements**
-    
-    When using [OAuth](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
-    
-    *   `public_repo` scope or `repo` scope to create a public repository
-    *   `repo` scope to create a private repository
-    *
-    * @param string $org 
-    * @param null|\Github\Model\OrgsOrgReposPostBody $requestBody 
-    */
+     * Creates a new repository in the specified organization. The authenticated user must be a member of the organization.
+     *
+     * **OAuth scope requirements**
+     *
+     * When using [OAuth](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
+     *
+     * *   `public_repo` scope or `repo` scope to create a public repository
+     * *   `repo` scope to create a private repository
+     * @param string $org
+     * @param null|\Github\Model\OrgsOrgReposPostBody $requestBody
+     */
     public function __construct(string $org, ?\Github\Model\OrgsOrgReposPostBody $requestBody = null)
     {
         $this->org = $org;

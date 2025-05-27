@@ -13,20 +13,14 @@ class GbCompanyReportExampleResponseReportDirectors extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem>
      */
     protected $currentDirectors;
     /**
-     * 
-     *
      * @var list<GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItem>
      */
     protected $previousDirectors;
     /**
-     * 
-     *
      * @return list<GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem>
      */
     public function getCurrentDirectors(): array
@@ -34,8 +28,6 @@ class GbCompanyReportExampleResponseReportDirectors extends \ArrayObject
         return $this->currentDirectors;
     }
     /**
-     * 
-     *
      * @param list<GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItem> $currentDirectors
      *
      * @return self
@@ -47,8 +39,6 @@ class GbCompanyReportExampleResponseReportDirectors extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItem>
      */
     public function getPreviousDirectors(): array
@@ -56,8 +46,6 @@ class GbCompanyReportExampleResponseReportDirectors extends \ArrayObject
         return $this->previousDirectors;
     }
     /**
-     * 
-     *
      * @param list<GbCompanyReportExampleResponseReportDirectorsPreviousDirectorsItem> $previousDirectors
      *
      * @return self

@@ -13,16 +13,16 @@ class SystemInfo
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * Unique identifier of the daemon.
-    
-    <p><br /></p>
-    
-    > **Note**: The format of the ID itself is not part of the API, and
-    > should not be considered stable.
-    
-    *
-    * @var string
-    */
+     * Unique identifier of the daemon.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Note**: The format of the ID itself is not part of the API, and
+     * > should not be considered stable.
+     * 
+     *
+     * @var string
+     */
     protected $iD;
     /**
      * Total number of containers on the host.
@@ -32,30 +32,33 @@ class SystemInfo
     protected $containers;
     /**
      * Number of containers with status `"running"`.
+     * 
      *
      * @var int
      */
     protected $containersRunning;
     /**
      * Number of containers with status `"paused"`.
+     * 
      *
      * @var int
      */
     protected $containersPaused;
     /**
      * Number of containers with status `"stopped"`.
+     * 
      *
      * @var int
      */
     protected $containersStopped;
     /**
-    * Total number of images on the host.
-    
-    Both _tagged_ and _untagged_ (dangling) images are counted.
-    
-    *
-    * @var int
-    */
+     * Total number of images on the host.
+     * 
+     * Both _tagged_ and _untagged_ (dangling) images are counted.
+     * 
+     *
+     * @var int
+     */
     protected $images;
     /**
      * Name of the storage driver in use.
@@ -64,45 +67,45 @@ class SystemInfo
      */
     protected $driver;
     /**
-    * Information specific to the storage driver, provided as
-    "label" / "value" pairs.
-    
-    This information is provided by the storage driver, and formatted
-    in a way consistent with the output of `docker info` on the command
-    line.
-    
-    <p><br /></p>
-    
-    > **Note**: The information returned in this field, including the
-    > formatting of values and labels, should not be considered stable,
-    > and may change without notice.
-    
-    *
-    * @var list<list<string>>
-    */
+     * Information specific to the storage driver, provided as
+     * "label" / "value" pairs.
+     * 
+     * This information is provided by the storage driver, and formatted
+     * in a way consistent with the output of `docker info` on the command
+     * line.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Note**: The information returned in this field, including the
+     * > formatting of values and labels, should not be considered stable,
+     * > and may change without notice.
+     * 
+     *
+     * @var list<list<string>>
+     */
     protected $driverStatus;
     /**
-    * Root directory of persistent Docker state.
-    
-    Defaults to `/var/lib/docker` on Linux, and `C:\ProgramData\docker`
-    on Windows.
-    
-    *
-    * @var string
-    */
+     * Root directory of persistent Docker state.
+     * 
+     * Defaults to `/var/lib/docker` on Linux, and `C:\ProgramData\docker`
+     * on Windows.
+     * 
+     *
+     * @var string
+     */
     protected $dockerRootDir;
     /**
-    * Available plugins per type.
-    
-    <p><br /></p>
-    
-    > **Note**: Only unmanaged (V1) plugins are included in this list.
-    > V1 plugins are "lazily" loaded, and are not returned in this list
-    > if there is no resource using the plugin.
-    
-    *
-    * @var PluginsInfo
-    */
+     * Available plugins per type.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Note**: Only unmanaged (V1) plugins are included in this list.
+     * > V1 plugins are "lazily" loaded, and are not returned in this list
+     * > if there is no resource using the plugin.
+     * 
+     *
+     * @var PluginsInfo
+     */
     protected $plugins;
     /**
      * Indicates if the host has memory limit support enabled.
@@ -117,47 +120,48 @@ class SystemInfo
      */
     protected $swapLimit;
     /**
-    * Indicates if the host has kernel memory limit support enabled.
-    
-    <p><br /></p>
-    
-    > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
-    > `kmem.limit_in_bytes`.
-    
-    *
-    * @var bool
-    */
+     * Indicates if the host has kernel memory limit support enabled.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
+     * > `kmem.limit_in_bytes`.
+     * 
+     *
+     * @var bool
+     */
     protected $kernelMemory;
     /**
-    * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by
-    the host.
-    
-    *
-    * @var bool
-    */
+     * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by
+     * the host.
+     * 
+     *
+     * @var bool
+     */
     protected $cpuCfsPeriod;
     /**
-    * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by
-    the host.
-    
-    *
-    * @var bool
-    */
+     * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by
+     * the host.
+     * 
+     *
+     * @var bool
+     */
     protected $cpuCfsQuota;
     /**
      * Indicates if CPU Shares limiting is supported by the host.
+     * 
      *
      * @var bool
      */
     protected $cPUShares;
     /**
-    * Indicates if CPUsets (cpuset.cpus, cpuset.mems) are supported by the host.
-    
-    See [cpuset(7)](https://www.kernel.org/doc/Documentation/cgroup-v1/cpusets.txt)
-    
-    *
-    * @var bool
-    */
+     * Indicates if CPUsets (cpuset.cpus, cpuset.mems) are supported by the host.
+     * 
+     * See [cpuset(7)](https://www.kernel.org/doc/Documentation/cgroup-v1/cpusets.txt)
+     * 
+     *
+     * @var bool
+     */
     protected $cPUSet;
     /**
      * Indicates if the host kernel has PID limit support enabled.
@@ -190,53 +194,56 @@ class SystemInfo
      */
     protected $bridgeNfIp6tables;
     /**
-    * Indicates if the daemon is running in debug-mode / with debug-level
-    logging enabled.
-    
-    *
-    * @var bool
-    */
+     * Indicates if the daemon is running in debug-mode / with debug-level
+     * logging enabled.
+     * 
+     *
+     * @var bool
+     */
     protected $debug;
     /**
-    * The total number of file Descriptors in use by the daemon process.
-    
-    This information is only returned if debug-mode is enabled.
-    
-    *
-    * @var int
-    */
+     * The total number of file Descriptors in use by the daemon process.
+     * 
+     * This information is only returned if debug-mode is enabled.
+     * 
+     *
+     * @var int
+     */
     protected $nFd;
     /**
-    * The  number of goroutines that currently exist.
-    
-    This information is only returned if debug-mode is enabled.
-    
-    *
-    * @var int
-    */
+     * The  number of goroutines that currently exist.
+     * 
+     * This information is only returned if debug-mode is enabled.
+     * 
+     *
+     * @var int
+     */
     protected $nGoroutines;
     /**
-    * Current system-time in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt)
-    format with nano-seconds.
-    
-    *
-    * @var string
-    */
+     * Current system-time in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt)
+     * format with nano-seconds.
+     * 
+     *
+     * @var string
+     */
     protected $systemTime;
     /**
      * The logging driver to use as a default for new containers.
+     * 
      *
      * @var string
      */
     protected $loggingDriver;
     /**
      * The driver to use for managing cgroups.
+     * 
      *
      * @var string
      */
     protected $cgroupDriver = 'cgroupfs';
     /**
      * The version of the cgroup.
+     * 
      *
      * @var string
      */
@@ -248,131 +255,133 @@ class SystemInfo
      */
     protected $nEventsListener;
     /**
-    * Kernel version of the host.
-    
-    On Linux, this information obtained from `uname`. On Windows this
-    information is queried from the <kbd>HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\</kbd>
-    registry value, for example _"10.0 14393 (14393.1198.amd64fre.rs1_release_sec.170427-1353)"_.
-    
-    *
-    * @var string
-    */
+     * Kernel version of the host.
+     * 
+     * On Linux, this information obtained from `uname`. On Windows this
+     * information is queried from the <kbd>HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\</kbd>
+     * registry value, for example _"10.0 14393 (14393.1198.amd64fre.rs1_release_sec.170427-1353)"_.
+     * 
+     *
+     * @var string
+     */
     protected $kernelVersion;
     /**
-    * Name of the host's operating system, for example: "Ubuntu 16.04.2 LTS"
-    or "Windows Server 2016 Datacenter"
-    
-    *
-    * @var string
-    */
+     * Name of the host's operating system, for example: "Ubuntu 16.04.2 LTS"
+     * or "Windows Server 2016 Datacenter"
+     * 
+     *
+     * @var string
+     */
     protected $operatingSystem;
     /**
-    * Version of the host's operating system
-    
-    <p><br /></p>
-    
-    > **Note**: The information returned in this field, including its
-    > very existence, and the formatting of values, should not be considered
-    > stable, and may change without notice.
-    
-    *
-    * @var string
-    */
+     * Version of the host's operating system
+     * 
+     * <p><br /></p>
+     * 
+     * > **Note**: The information returned in this field, including its
+     * > very existence, and the formatting of values, should not be considered
+     * > stable, and may change without notice.
+     * 
+     *
+     * @var string
+     */
     protected $oSVersion;
     /**
-    * Generic type of the operating system of the host, as returned by the
-    Go runtime (`GOOS`).
-    
-    Currently returned values are "linux" and "windows". A full list of
-    possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
-    
-    *
-    * @var string
-    */
+     * Generic type of the operating system of the host, as returned by the
+     * Go runtime (`GOOS`).
+     * 
+     * Currently returned values are "linux" and "windows". A full list of
+     * possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
+     * 
+     *
+     * @var string
+     */
     protected $oSType;
     /**
-    * Hardware architecture of the host, as returned by the Go runtime
-    (`GOARCH`).
-    
-    A full list of possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
-    
-    *
-    * @var string
-    */
+     * Hardware architecture of the host, as returned by the Go runtime
+     * (`GOARCH`).
+     * 
+     * A full list of possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
+     * 
+     *
+     * @var string
+     */
     protected $architecture;
     /**
-    * The number of logical CPUs usable by the daemon.
-    
-    The number of available CPUs is checked by querying the operating
-    system when the daemon starts. Changes to operating system CPU
-    allocation after the daemon is started are not reflected.
-    
-    *
-    * @var int
-    */
+     * The number of logical CPUs usable by the daemon.
+     * 
+     * The number of available CPUs is checked by querying the operating
+     * system when the daemon starts. Changes to operating system CPU
+     * allocation after the daemon is started are not reflected.
+     * 
+     *
+     * @var int
+     */
     protected $nCPU;
     /**
      * Total amount of physical memory available on the host, in bytes.
+     * 
      *
      * @var int
      */
     protected $memTotal;
     /**
-    * Address / URL of the index server that is used for image search,
-    and as a default for user authentication for Docker Hub and Docker Cloud.
-    
-    *
-    * @var string
-    */
+     * Address / URL of the index server that is used for image search,
+     * and as a default for user authentication for Docker Hub and Docker Cloud.
+     * 
+     *
+     * @var string
+     */
     protected $indexServerAddress = 'https://index.docker.io/v1/';
     /**
      * RegistryServiceConfig stores daemon registry services configuration.
+     * 
      *
      * @var RegistryServiceConfig|null
      */
     protected $registryConfig;
     /**
-    * User-defined resources can be either Integer resources (e.g, `SSD=3`) or
-    String resources (e.g, `GPU=UUID1`).
-    
-    *
-    * @var list<GenericResourcesItem>
-    */
+     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or
+     * String resources (e.g, `GPU=UUID1`).
+     * 
+     *
+     * @var list<GenericResourcesItem>
+     */
     protected $genericResources;
     /**
-    * HTTP-proxy configured for the daemon. This value is obtained from the
-    [`HTTP_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
-    Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
-    are masked in the API response.
-    
-    Containers do not automatically inherit this configuration.
-    
-    *
-    * @var string
-    */
+     * HTTP-proxy configured for the daemon. This value is obtained from the
+     * [`HTTP_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
+     * Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
+     * are masked in the API response.
+     * 
+     * Containers do not automatically inherit this configuration.
+     * 
+     *
+     * @var string
+     */
     protected $httpProxy;
     /**
-    * HTTPS-proxy configured for the daemon. This value is obtained from the
-    [`HTTPS_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
-    Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
-    are masked in the API response.
-    
-    Containers do not automatically inherit this configuration.
-    
-    *
-    * @var string
-    */
+     * HTTPS-proxy configured for the daemon. This value is obtained from the
+     * [`HTTPS_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
+     * Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
+     * are masked in the API response.
+     * 
+     * Containers do not automatically inherit this configuration.
+     * 
+     *
+     * @var string
+     */
     protected $httpsProxy;
     /**
-    * Comma-separated list of domain extensions for which no proxy should be
-    used. This value is obtained from the [`NO_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html)
-    environment variable.
-    
-    Containers do not automatically inherit this configuration.
-    
-    *
-    * @var string
-    */
+     * Comma-separated list of domain extensions for which no proxy should be
+     * used. This value is obtained from the [`NO_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html)
+     * environment variable.
+     * 
+     * Containers do not automatically inherit this configuration.
+     * 
+     *
+     * @var string
+     */
     protected $noProxy;
     /**
      * Hostname of the host.
@@ -381,216 +390,218 @@ class SystemInfo
      */
     protected $name;
     /**
-    * User-defined labels (key/value metadata) as set on the daemon.
-    
-    <p><br /></p>
-    
-    > **Note**: When part of a Swarm, nodes can both have _daemon_ labels,
-    > set through the daemon configuration, and _node_ labels, set from a
-    > manager node in the Swarm. Node labels are not included in this
-    > field. Node labels can be retrieved using the `/nodes/(id)` endpoint
-    > on a manager node in the Swarm.
-    
-    *
-    * @var list<string>
-    */
+     * User-defined labels (key/value metadata) as set on the daemon.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Note**: When part of a Swarm, nodes can both have _daemon_ labels,
+     * > set through the daemon configuration, and _node_ labels, set from a
+     * > manager node in the Swarm. Node labels are not included in this
+     * > field. Node labels can be retrieved using the `/nodes/(id)` endpoint
+     * > on a manager node in the Swarm.
+     * 
+     *
+     * @var list<string>
+     */
     protected $labels;
     /**
      * Indicates if experimental features are enabled on the daemon.
+     * 
      *
      * @var bool
      */
     protected $experimentalBuild;
     /**
-    * Version string of the daemon.
-    
-    > **Note**: the [standalone Swarm API](/swarm/swarm-api/)
-    > returns the Swarm version instead of the daemon  version, for example
-    > `swarm/1.2.8`.
-    
-    *
-    * @var string
-    */
+     * Version string of the daemon.
+     * 
+     * > **Note**: the [standalone Swarm API](/swarm/swarm-api/)
+     * > returns the Swarm version instead of the daemon  version, for example
+     * > `swarm/1.2.8`.
+     * 
+     *
+     * @var string
+     */
     protected $serverVersion;
     /**
-    * URL of the distributed storage backend.
-    
-    
-    The storage backend is used for multihost networking (to store
-    network and endpoint information) and by the node discovery mechanism.
-    
-    <p><br /></p>
-    
-    > **Deprecated**: This field is only propagated when using standalone Swarm
-    > mode, and overlay networking using an external k/v store. Overlay
-    > networks with Swarm mode enabled use the built-in raft store, and
-    > this field will be empty.
-    
-    *
-    * @var string
-    */
+     * URL of the distributed storage backend.
+     * 
+     * 
+     * The storage backend is used for multihost networking (to store
+     * network and endpoint information) and by the node discovery mechanism.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Deprecated**: This field is only propagated when using standalone Swarm
+     * > mode, and overlay networking using an external k/v store. Overlay
+     * > networks with Swarm mode enabled use the built-in raft store, and
+     * > this field will be empty.
+     * 
+     *
+     * @var string
+     */
     protected $clusterStore;
     /**
-    * The network endpoint that the Engine advertises for the purpose of
-    node discovery. ClusterAdvertise is a `host:port` combination on which
-    the daemon is reachable by other hosts.
-    
-    <p><br /></p>
-    
-    > **Deprecated**: This field is only propagated when using standalone Swarm
-    > mode, and overlay networking using an external k/v store. Overlay
-    > networks with Swarm mode enabled use the built-in raft store, and
-    > this field will be empty.
-    
-    *
-    * @var string
-    */
+     * The network endpoint that the Engine advertises for the purpose of
+     * node discovery. ClusterAdvertise is a `host:port` combination on which
+     * the daemon is reachable by other hosts.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Deprecated**: This field is only propagated when using standalone Swarm
+     * > mode, and overlay networking using an external k/v store. Overlay
+     * > networks with Swarm mode enabled use the built-in raft store, and
+     * > this field will be empty.
+     * 
+     *
+     * @var string
+     */
     protected $clusterAdvertise;
     /**
-    * List of [OCI compliant](https://github.com/opencontainers/runtime-spec)
-    runtimes configured on the daemon. Keys hold the "name" used to
-    reference the runtime.
-    
-    The Docker daemon relies on an OCI compliant runtime (invoked via the
-    `containerd` daemon) as its interface to the Linux kernel namespaces,
-    cgroups, and SELinux.
-    
-    The default runtime is `runc`, and automatically configured. Additional
-    runtimes can be configured by the user and will be listed here.
-    
-    *
-    * @var array<string, Runtime>
-    */
+     * List of [OCI compliant](https://github.com/opencontainers/runtime-spec)
+     * runtimes configured on the daemon. Keys hold the "name" used to
+     * reference the runtime.
+     * 
+     * The Docker daemon relies on an OCI compliant runtime (invoked via the
+     * `containerd` daemon) as its interface to the Linux kernel namespaces,
+     * cgroups, and SELinux.
+     * 
+     * The default runtime is `runc`, and automatically configured. Additional
+     * runtimes can be configured by the user and will be listed here.
+     * 
+     *
+     * @var array<string, Runtime>
+     */
     protected $runtimes;
     /**
-    * Name of the default OCI runtime that is used when starting containers.
-    
-    The default can be overridden per-container at create time.
-    
-    *
-    * @var string
-    */
+     * Name of the default OCI runtime that is used when starting containers.
+     * 
+     * The default can be overridden per-container at create time.
+     * 
+     *
+     * @var string
+     */
     protected $defaultRuntime = 'runc';
     /**
      * Represents generic information about swarm.
+     * 
      *
      * @var SwarmInfo
      */
     protected $swarm;
     /**
-    * Indicates if live restore is enabled.
-    
-    If enabled, containers are kept running when the daemon is shutdown
-    or upon daemon start if running containers are detected.
-    
-    *
-    * @var bool
-    */
+     * Indicates if live restore is enabled.
+     * 
+     * If enabled, containers are kept running when the daemon is shutdown
+     * or upon daemon start if running containers are detected.
+     * 
+     *
+     * @var bool
+     */
     protected $liveRestoreEnabled = false;
     /**
-    * Represents the isolation technology to use as a default for containers.
-    The supported values are platform-specific.
-    
-    If no isolation value is specified on daemon start, on Windows client,
-    the default is `hyperv`, and on Windows server, the default is `process`.
-    
-    This option is currently not used on other platforms.
-    
-    *
-    * @var string
-    */
+     * Represents the isolation technology to use as a default for containers.
+     * The supported values are platform-specific.
+     * 
+     * If no isolation value is specified on daemon start, on Windows client,
+     * the default is `hyperv`, and on Windows server, the default is `process`.
+     * 
+     * This option is currently not used on other platforms.
+     * 
+     *
+     * @var string
+     */
     protected $isolation = 'default';
     /**
-    * Name and, optional, path of the `docker-init` binary.
-    
-    If the path is omitted, the daemon searches the host's `$PATH` for the
-    binary and uses the first result.
-    
-    *
-    * @var string
-    */
+     * Name and, optional, path of the `docker-init` binary.
+     * 
+     * If the path is omitted, the daemon searches the host's `$PATH` for the
+     * binary and uses the first result.
+     * 
+     *
+     * @var string
+     */
     protected $initBinary;
     /**
-    * Commit holds the Git-commit (SHA1) that a binary was built from, as
-    reported in the version-string of external tools, such as `containerd`,
-    or `runC`.
-    
-    *
-    * @var Commit
-    */
+     * Commit holds the Git-commit (SHA1) that a binary was built from, as
+     * reported in the version-string of external tools, such as `containerd`,
+     * or `runC`.
+     * 
+     *
+     * @var Commit
+     */
     protected $containerdCommit;
     /**
-    * Commit holds the Git-commit (SHA1) that a binary was built from, as
-    reported in the version-string of external tools, such as `containerd`,
-    or `runC`.
-    
-    *
-    * @var Commit
-    */
+     * Commit holds the Git-commit (SHA1) that a binary was built from, as
+     * reported in the version-string of external tools, such as `containerd`,
+     * or `runC`.
+     * 
+     *
+     * @var Commit
+     */
     protected $runcCommit;
     /**
-    * Commit holds the Git-commit (SHA1) that a binary was built from, as
-    reported in the version-string of external tools, such as `containerd`,
-    or `runC`.
-    
-    *
-    * @var Commit
-    */
+     * Commit holds the Git-commit (SHA1) that a binary was built from, as
+     * reported in the version-string of external tools, such as `containerd`,
+     * or `runC`.
+     * 
+     *
+     * @var Commit
+     */
     protected $initCommit;
     /**
-    * List of security features that are enabled on the daemon, such as
-    apparmor, seccomp, SELinux, user-namespaces (userns), and rootless.
-    
-    Additional configuration options for each security feature may
-    be present, and are included as a comma-separated list of key/value
-    pairs.
-    
-    *
-    * @var list<string>
-    */
+     * List of security features that are enabled on the daemon, such as
+     * apparmor, seccomp, SELinux, user-namespaces (userns), and rootless.
+     * 
+     * Additional configuration options for each security feature may
+     * be present, and are included as a comma-separated list of key/value
+     * pairs.
+     * 
+     *
+     * @var list<string>
+     */
     protected $securityOptions;
     /**
-    * Reports a summary of the product license on the daemon.
-    
-    If a commercial license has been applied to the daemon, information
-    such as number of nodes, and expiration are included.
-    
-    *
-    * @var string
-    */
+     * Reports a summary of the product license on the daemon.
+     * 
+     * If a commercial license has been applied to the daemon, information
+     * such as number of nodes, and expiration are included.
+     * 
+     *
+     * @var string
+     */
     protected $productLicense;
     /**
-    * List of custom default address pools for local networks, which can be
-    specified in the daemon.json file or dockerd option.
-    
-    Example: a Base "10.10.0.0/16" with Size 24 will define the set of 256
-    10.10.[0-255].0/24 address pools.
-    
-    *
-    * @var list<SystemInfoDefaultAddressPoolsItem>
-    */
+     * List of custom default address pools for local networks, which can be
+     * specified in the daemon.json file or dockerd option.
+     * 
+     * Example: a Base "10.10.0.0/16" with Size 24 will define the set of 256
+     * 10.10.[0-255].0/24 address pools.
+     * 
+     *
+     * @var list<SystemInfoDefaultAddressPoolsItem>
+     */
     protected $defaultAddressPools;
     /**
-    * List of warnings / informational messages about missing features, or
-    issues related to the daemon configuration.
-    
-    These messages can be printed by the client as information to the user.
-    
-    *
-    * @var list<string>
-    */
+     * List of warnings / informational messages about missing features, or
+     * issues related to the daemon configuration.
+     * 
+     * These messages can be printed by the client as information to the user.
+     * 
+     *
+     * @var list<string>
+     */
     protected $warnings;
     /**
-    * Unique identifier of the daemon.
-    
-    <p><br /></p>
-    
-    > **Note**: The format of the ID itself is not part of the API, and
-    > should not be considered stable.
-    
-    *
-    * @return string
-    */
+     * Unique identifier of the daemon.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Note**: The format of the ID itself is not part of the API, and
+     * > should not be considered stable.
+     * 
+     *
+     * @return string
+     */
     public function getID(): string
     {
         return $this->iD;
@@ -638,6 +649,7 @@ class SystemInfo
     }
     /**
      * Number of containers with status `"running"`.
+     * 
      *
      * @return int
      */
@@ -660,6 +672,7 @@ class SystemInfo
     }
     /**
      * Number of containers with status `"paused"`.
+     * 
      *
      * @return int
      */
@@ -682,6 +695,7 @@ class SystemInfo
     }
     /**
      * Number of containers with status `"stopped"`.
+     * 
      *
      * @return int
      */
@@ -703,13 +717,13 @@ class SystemInfo
         return $this;
     }
     /**
-    * Total number of images on the host.
-    
-    Both _tagged_ and _untagged_ (dangling) images are counted.
-    
-    *
-    * @return int
-    */
+     * Total number of images on the host.
+     * 
+     * Both _tagged_ and _untagged_ (dangling) images are counted.
+     * 
+     *
+     * @return int
+     */
     public function getImages(): int
     {
         return $this->images;
@@ -753,22 +767,22 @@ class SystemInfo
         return $this;
     }
     /**
-    * Information specific to the storage driver, provided as
-    "label" / "value" pairs.
-    
-    This information is provided by the storage driver, and formatted
-    in a way consistent with the output of `docker info` on the command
-    line.
-    
-    <p><br /></p>
-    
-    > **Note**: The information returned in this field, including the
-    > formatting of values and labels, should not be considered stable,
-    > and may change without notice.
-    
-    *
-    * @return list<list<string>>
-    */
+     * Information specific to the storage driver, provided as
+     * "label" / "value" pairs.
+     * 
+     * This information is provided by the storage driver, and formatted
+     * in a way consistent with the output of `docker info` on the command
+     * line.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Note**: The information returned in this field, including the
+     * > formatting of values and labels, should not be considered stable,
+     * > and may change without notice.
+     * 
+     *
+     * @return list<list<string>>
+     */
     public function getDriverStatus(): array
     {
         return $this->driverStatus;
@@ -799,14 +813,14 @@ class SystemInfo
         return $this;
     }
     /**
-    * Root directory of persistent Docker state.
-    
-    Defaults to `/var/lib/docker` on Linux, and `C:\ProgramData\docker`
-    on Windows.
-    
-    *
-    * @return string
-    */
+     * Root directory of persistent Docker state.
+     * 
+     * Defaults to `/var/lib/docker` on Linux, and `C:\ProgramData\docker`
+     * on Windows.
+     * 
+     *
+     * @return string
+     */
     public function getDockerRootDir(): string
     {
         return $this->dockerRootDir;
@@ -829,17 +843,17 @@ class SystemInfo
         return $this;
     }
     /**
-    * Available plugins per type.
-    
-    <p><br /></p>
-    
-    > **Note**: Only unmanaged (V1) plugins are included in this list.
-    > V1 plugins are "lazily" loaded, and are not returned in this list
-    > if there is no resource using the plugin.
-    
-    *
-    * @return PluginsInfo
-    */
+     * Available plugins per type.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Note**: Only unmanaged (V1) plugins are included in this list.
+     * > V1 plugins are "lazily" loaded, and are not returned in this list
+     * > if there is no resource using the plugin.
+     * 
+     *
+     * @return PluginsInfo
+     */
     public function getPlugins(): PluginsInfo
     {
         return $this->plugins;
@@ -909,16 +923,16 @@ class SystemInfo
         return $this;
     }
     /**
-    * Indicates if the host has kernel memory limit support enabled.
-    
-    <p><br /></p>
-    
-    > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
-    > `kmem.limit_in_bytes`.
-    
-    *
-    * @return bool
-    */
+     * Indicates if the host has kernel memory limit support enabled.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
+     * > `kmem.limit_in_bytes`.
+     * 
+     *
+     * @return bool
+     */
     public function getKernelMemory(): bool
     {
         return $this->kernelMemory;
@@ -943,12 +957,12 @@ class SystemInfo
         return $this;
     }
     /**
-    * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by
-    the host.
-    
-    *
-    * @return bool
-    */
+     * Indicates if CPU CFS(Completely Fair Scheduler) period is supported by
+     * the host.
+     * 
+     *
+     * @return bool
+     */
     public function getCpuCfsPeriod(): bool
     {
         return $this->cpuCfsPeriod;
@@ -969,12 +983,12 @@ class SystemInfo
         return $this;
     }
     /**
-    * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by
-    the host.
-    
-    *
-    * @return bool
-    */
+     * Indicates if CPU CFS(Completely Fair Scheduler) quota is supported by
+     * the host.
+     * 
+     *
+     * @return bool
+     */
     public function getCpuCfsQuota(): bool
     {
         return $this->cpuCfsQuota;
@@ -996,6 +1010,7 @@ class SystemInfo
     }
     /**
      * Indicates if CPU Shares limiting is supported by the host.
+     * 
      *
      * @return bool
      */
@@ -1017,13 +1032,13 @@ class SystemInfo
         return $this;
     }
     /**
-    * Indicates if CPUsets (cpuset.cpus, cpuset.mems) are supported by the host.
-    
-    See [cpuset(7)](https://www.kernel.org/doc/Documentation/cgroup-v1/cpusets.txt)
-    
-    *
-    * @return bool
-    */
+     * Indicates if CPUsets (cpuset.cpus, cpuset.mems) are supported by the host.
+     * 
+     * See [cpuset(7)](https://www.kernel.org/doc/Documentation/cgroup-v1/cpusets.txt)
+     * 
+     *
+     * @return bool
+     */
     public function getCPUSet(): bool
     {
         return $this->cPUSet;
@@ -1155,12 +1170,12 @@ class SystemInfo
         return $this;
     }
     /**
-    * Indicates if the daemon is running in debug-mode / with debug-level
-    logging enabled.
-    
-    *
-    * @return bool
-    */
+     * Indicates if the daemon is running in debug-mode / with debug-level
+     * logging enabled.
+     * 
+     *
+     * @return bool
+     */
     public function getDebug(): bool
     {
         return $this->debug;
@@ -1181,13 +1196,13 @@ class SystemInfo
         return $this;
     }
     /**
-    * The total number of file Descriptors in use by the daemon process.
-    
-    This information is only returned if debug-mode is enabled.
-    
-    *
-    * @return int
-    */
+     * The total number of file Descriptors in use by the daemon process.
+     * 
+     * This information is only returned if debug-mode is enabled.
+     * 
+     *
+     * @return int
+     */
     public function getNFd(): int
     {
         return $this->nFd;
@@ -1209,13 +1224,13 @@ class SystemInfo
         return $this;
     }
     /**
-    * The  number of goroutines that currently exist.
-    
-    This information is only returned if debug-mode is enabled.
-    
-    *
-    * @return int
-    */
+     * The  number of goroutines that currently exist.
+     * 
+     * This information is only returned if debug-mode is enabled.
+     * 
+     *
+     * @return int
+     */
     public function getNGoroutines(): int
     {
         return $this->nGoroutines;
@@ -1237,12 +1252,12 @@ class SystemInfo
         return $this;
     }
     /**
-    * Current system-time in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt)
-    format with nano-seconds.
-    
-    *
-    * @return string
-    */
+     * Current system-time in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt)
+     * format with nano-seconds.
+     * 
+     *
+     * @return string
+     */
     public function getSystemTime(): string
     {
         return $this->systemTime;
@@ -1264,6 +1279,7 @@ class SystemInfo
     }
     /**
      * The logging driver to use as a default for new containers.
+     * 
      *
      * @return string
      */
@@ -1286,6 +1302,7 @@ class SystemInfo
     }
     /**
      * The driver to use for managing cgroups.
+     * 
      *
      * @return string
      */
@@ -1308,6 +1325,7 @@ class SystemInfo
     }
     /**
      * The version of the cgroup.
+     * 
      *
      * @return string
      */
@@ -1351,15 +1369,15 @@ class SystemInfo
         return $this;
     }
     /**
-    * Kernel version of the host.
-    
-    On Linux, this information obtained from `uname`. On Windows this
-    information is queried from the <kbd>HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\</kbd>
-    registry value, for example _"10.0 14393 (14393.1198.amd64fre.rs1_release_sec.170427-1353)"_.
-    
-    *
-    * @return string
-    */
+     * Kernel version of the host.
+     * 
+     * On Linux, this information obtained from `uname`. On Windows this
+     * information is queried from the <kbd>HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\</kbd>
+     * registry value, for example _"10.0 14393 (14393.1198.amd64fre.rs1_release_sec.170427-1353)"_.
+     * 
+     *
+     * @return string
+     */
     public function getKernelVersion(): string
     {
         return $this->kernelVersion;
@@ -1383,12 +1401,12 @@ class SystemInfo
         return $this;
     }
     /**
-    * Name of the host's operating system, for example: "Ubuntu 16.04.2 LTS"
-    or "Windows Server 2016 Datacenter"
-    
-    *
-    * @return string
-    */
+     * Name of the host's operating system, for example: "Ubuntu 16.04.2 LTS"
+     * or "Windows Server 2016 Datacenter"
+     * 
+     *
+     * @return string
+     */
     public function getOperatingSystem(): string
     {
         return $this->operatingSystem;
@@ -1409,17 +1427,17 @@ class SystemInfo
         return $this;
     }
     /**
-    * Version of the host's operating system
-    
-    <p><br /></p>
-    
-    > **Note**: The information returned in this field, including its
-    > very existence, and the formatting of values, should not be considered
-    > stable, and may change without notice.
-    
-    *
-    * @return string
-    */
+     * Version of the host's operating system
+     * 
+     * <p><br /></p>
+     * 
+     * > **Note**: The information returned in this field, including its
+     * > very existence, and the formatting of values, should not be considered
+     * > stable, and may change without notice.
+     * 
+     *
+     * @return string
+     */
     public function getOSVersion(): string
     {
         return $this->oSVersion;
@@ -1445,15 +1463,15 @@ class SystemInfo
         return $this;
     }
     /**
-    * Generic type of the operating system of the host, as returned by the
-    Go runtime (`GOOS`).
-    
-    Currently returned values are "linux" and "windows". A full list of
-    possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
-    
-    *
-    * @return string
-    */
+     * Generic type of the operating system of the host, as returned by the
+     * Go runtime (`GOOS`).
+     * 
+     * Currently returned values are "linux" and "windows". A full list of
+     * possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
+     * 
+     *
+     * @return string
+     */
     public function getOSType(): string
     {
         return $this->oSType;
@@ -1477,14 +1495,14 @@ class SystemInfo
         return $this;
     }
     /**
-    * Hardware architecture of the host, as returned by the Go runtime
-    (`GOARCH`).
-    
-    A full list of possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
-    
-    *
-    * @return string
-    */
+     * Hardware architecture of the host, as returned by the Go runtime
+     * (`GOARCH`).
+     * 
+     * A full list of possible values can be found in the [Go documentation](https://golang.org/doc/install/source#environment).
+     * 
+     *
+     * @return string
+     */
     public function getArchitecture(): string
     {
         return $this->architecture;
@@ -1507,15 +1525,15 @@ class SystemInfo
         return $this;
     }
     /**
-    * The number of logical CPUs usable by the daemon.
-    
-    The number of available CPUs is checked by querying the operating
-    system when the daemon starts. Changes to operating system CPU
-    allocation after the daemon is started are not reflected.
-    
-    *
-    * @return int
-    */
+     * The number of logical CPUs usable by the daemon.
+     * 
+     * The number of available CPUs is checked by querying the operating
+     * system when the daemon starts. Changes to operating system CPU
+     * allocation after the daemon is started are not reflected.
+     * 
+     *
+     * @return int
+     */
     public function getNCPU(): int
     {
         return $this->nCPU;
@@ -1540,6 +1558,7 @@ class SystemInfo
     }
     /**
      * Total amount of physical memory available on the host, in bytes.
+     * 
      *
      * @return int
      */
@@ -1561,12 +1580,12 @@ class SystemInfo
         return $this;
     }
     /**
-    * Address / URL of the index server that is used for image search,
-    and as a default for user authentication for Docker Hub and Docker Cloud.
-    
-    *
-    * @return string
-    */
+     * Address / URL of the index server that is used for image search,
+     * and as a default for user authentication for Docker Hub and Docker Cloud.
+     * 
+     *
+     * @return string
+     */
     public function getIndexServerAddress(): string
     {
         return $this->indexServerAddress;
@@ -1588,6 +1607,7 @@ class SystemInfo
     }
     /**
      * RegistryServiceConfig stores daemon registry services configuration.
+     * 
      *
      * @return RegistryServiceConfig|null
      */
@@ -1609,12 +1629,12 @@ class SystemInfo
         return $this;
     }
     /**
-    * User-defined resources can be either Integer resources (e.g, `SSD=3`) or
-    String resources (e.g, `GPU=UUID1`).
-    
-    *
-    * @return list<GenericResourcesItem>
-    */
+     * User-defined resources can be either Integer resources (e.g, `SSD=3`) or
+     * String resources (e.g, `GPU=UUID1`).
+     * 
+     *
+     * @return list<GenericResourcesItem>
+     */
     public function getGenericResources(): array
     {
         return $this->genericResources;
@@ -1635,16 +1655,16 @@ class SystemInfo
         return $this;
     }
     /**
-    * HTTP-proxy configured for the daemon. This value is obtained from the
-    [`HTTP_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
-    Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
-    are masked in the API response.
-    
-    Containers do not automatically inherit this configuration.
-    
-    *
-    * @return string
-    */
+     * HTTP-proxy configured for the daemon. This value is obtained from the
+     * [`HTTP_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
+     * Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
+     * are masked in the API response.
+     * 
+     * Containers do not automatically inherit this configuration.
+     * 
+     *
+     * @return string
+     */
     public function getHttpProxy(): string
     {
         return $this->httpProxy;
@@ -1669,16 +1689,16 @@ class SystemInfo
         return $this;
     }
     /**
-    * HTTPS-proxy configured for the daemon. This value is obtained from the
-    [`HTTPS_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
-    Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
-    are masked in the API response.
-    
-    Containers do not automatically inherit this configuration.
-    
-    *
-    * @return string
-    */
+     * HTTPS-proxy configured for the daemon. This value is obtained from the
+     * [`HTTPS_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html) environment variable.
+     * Credentials ([user info component](https://tools.ietf.org/html/rfc3986#section-3.2.1)) in the proxy URL
+     * are masked in the API response.
+     * 
+     * Containers do not automatically inherit this configuration.
+     * 
+     *
+     * @return string
+     */
     public function getHttpsProxy(): string
     {
         return $this->httpsProxy;
@@ -1703,15 +1723,15 @@ class SystemInfo
         return $this;
     }
     /**
-    * Comma-separated list of domain extensions for which no proxy should be
-    used. This value is obtained from the [`NO_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html)
-    environment variable.
-    
-    Containers do not automatically inherit this configuration.
-    
-    *
-    * @return string
-    */
+     * Comma-separated list of domain extensions for which no proxy should be
+     * used. This value is obtained from the [`NO_PROXY`](https://www.gnu.org/software/wget/manual/html_node/Proxies.html)
+     * environment variable.
+     * 
+     * Containers do not automatically inherit this configuration.
+     * 
+     *
+     * @return string
+     */
     public function getNoProxy(): string
     {
         return $this->noProxy;
@@ -1757,19 +1777,19 @@ class SystemInfo
         return $this;
     }
     /**
-    * User-defined labels (key/value metadata) as set on the daemon.
-    
-    <p><br /></p>
-    
-    > **Note**: When part of a Swarm, nodes can both have _daemon_ labels,
-    > set through the daemon configuration, and _node_ labels, set from a
-    > manager node in the Swarm. Node labels are not included in this
-    > field. Node labels can be retrieved using the `/nodes/(id)` endpoint
-    > on a manager node in the Swarm.
-    
-    *
-    * @return list<string>
-    */
+     * User-defined labels (key/value metadata) as set on the daemon.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Note**: When part of a Swarm, nodes can both have _daemon_ labels,
+     * > set through the daemon configuration, and _node_ labels, set from a
+     * > manager node in the Swarm. Node labels are not included in this
+     * > field. Node labels can be retrieved using the `/nodes/(id)` endpoint
+     * > on a manager node in the Swarm.
+     * 
+     *
+     * @return list<string>
+     */
     public function getLabels(): array
     {
         return $this->labels;
@@ -1798,6 +1818,7 @@ class SystemInfo
     }
     /**
      * Indicates if experimental features are enabled on the daemon.
+     * 
      *
      * @return bool
      */
@@ -1819,15 +1840,15 @@ class SystemInfo
         return $this;
     }
     /**
-    * Version string of the daemon.
-    
-    > **Note**: the [standalone Swarm API](/swarm/swarm-api/)
-    > returns the Swarm version instead of the daemon  version, for example
-    > `swarm/1.2.8`.
-    
-    *
-    * @return string
-    */
+     * Version string of the daemon.
+     * 
+     * > **Note**: the [standalone Swarm API](/swarm/swarm-api/)
+     * > returns the Swarm version instead of the daemon  version, for example
+     * > `swarm/1.2.8`.
+     * 
+     *
+     * @return string
+     */
     public function getServerVersion(): string
     {
         return $this->serverVersion;
@@ -1851,22 +1872,22 @@ class SystemInfo
         return $this;
     }
     /**
-    * URL of the distributed storage backend.
-    
-    
-    The storage backend is used for multihost networking (to store
-    network and endpoint information) and by the node discovery mechanism.
-    
-    <p><br /></p>
-    
-    > **Deprecated**: This field is only propagated when using standalone Swarm
-    > mode, and overlay networking using an external k/v store. Overlay
-    > networks with Swarm mode enabled use the built-in raft store, and
-    > this field will be empty.
-    
-    *
-    * @return string
-    */
+     * URL of the distributed storage backend.
+     * 
+     * 
+     * The storage backend is used for multihost networking (to store
+     * network and endpoint information) and by the node discovery mechanism.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Deprecated**: This field is only propagated when using standalone Swarm
+     * > mode, and overlay networking using an external k/v store. Overlay
+     * > networks with Swarm mode enabled use the built-in raft store, and
+     * > this field will be empty.
+     * 
+     *
+     * @return string
+     */
     public function getClusterStore(): string
     {
         return $this->clusterStore;
@@ -1897,20 +1918,20 @@ class SystemInfo
         return $this;
     }
     /**
-    * The network endpoint that the Engine advertises for the purpose of
-    node discovery. ClusterAdvertise is a `host:port` combination on which
-    the daemon is reachable by other hosts.
-    
-    <p><br /></p>
-    
-    > **Deprecated**: This field is only propagated when using standalone Swarm
-    > mode, and overlay networking using an external k/v store. Overlay
-    > networks with Swarm mode enabled use the built-in raft store, and
-    > this field will be empty.
-    
-    *
-    * @return string
-    */
+     * The network endpoint that the Engine advertises for the purpose of
+     * node discovery. ClusterAdvertise is a `host:port` combination on which
+     * the daemon is reachable by other hosts.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Deprecated**: This field is only propagated when using standalone Swarm
+     * > mode, and overlay networking using an external k/v store. Overlay
+     * > networks with Swarm mode enabled use the built-in raft store, and
+     * > this field will be empty.
+     * 
+     *
+     * @return string
+     */
     public function getClusterAdvertise(): string
     {
         return $this->clusterAdvertise;
@@ -1939,20 +1960,20 @@ class SystemInfo
         return $this;
     }
     /**
-    * List of [OCI compliant](https://github.com/opencontainers/runtime-spec)
-    runtimes configured on the daemon. Keys hold the "name" used to
-    reference the runtime.
-    
-    The Docker daemon relies on an OCI compliant runtime (invoked via the
-    `containerd` daemon) as its interface to the Linux kernel namespaces,
-    cgroups, and SELinux.
-    
-    The default runtime is `runc`, and automatically configured. Additional
-    runtimes can be configured by the user and will be listed here.
-    
-    *
-    * @return array<string, Runtime>
-    */
+     * List of [OCI compliant](https://github.com/opencontainers/runtime-spec)
+     * runtimes configured on the daemon. Keys hold the "name" used to
+     * reference the runtime.
+     * 
+     * The Docker daemon relies on an OCI compliant runtime (invoked via the
+     * `containerd` daemon) as its interface to the Linux kernel namespaces,
+     * cgroups, and SELinux.
+     * 
+     * The default runtime is `runc`, and automatically configured. Additional
+     * runtimes can be configured by the user and will be listed here.
+     * 
+     *
+     * @return array<string, Runtime>
+     */
     public function getRuntimes(): iterable
     {
         return $this->runtimes;
@@ -1981,13 +2002,13 @@ class SystemInfo
         return $this;
     }
     /**
-    * Name of the default OCI runtime that is used when starting containers.
-    
-    The default can be overridden per-container at create time.
-    
-    *
-    * @return string
-    */
+     * Name of the default OCI runtime that is used when starting containers.
+     * 
+     * The default can be overridden per-container at create time.
+     * 
+     *
+     * @return string
+     */
     public function getDefaultRuntime(): string
     {
         return $this->defaultRuntime;
@@ -2010,6 +2031,7 @@ class SystemInfo
     }
     /**
      * Represents generic information about swarm.
+     * 
      *
      * @return SwarmInfo
      */
@@ -2031,14 +2053,14 @@ class SystemInfo
         return $this;
     }
     /**
-    * Indicates if live restore is enabled.
-    
-    If enabled, containers are kept running when the daemon is shutdown
-    or upon daemon start if running containers are detected.
-    
-    *
-    * @return bool
-    */
+     * Indicates if live restore is enabled.
+     * 
+     * If enabled, containers are kept running when the daemon is shutdown
+     * or upon daemon start if running containers are detected.
+     * 
+     *
+     * @return bool
+     */
     public function getLiveRestoreEnabled(): bool
     {
         return $this->liveRestoreEnabled;
@@ -2061,17 +2083,17 @@ class SystemInfo
         return $this;
     }
     /**
-    * Represents the isolation technology to use as a default for containers.
-    The supported values are platform-specific.
-    
-    If no isolation value is specified on daemon start, on Windows client,
-    the default is `hyperv`, and on Windows server, the default is `process`.
-    
-    This option is currently not used on other platforms.
-    
-    *
-    * @return string
-    */
+     * Represents the isolation technology to use as a default for containers.
+     * The supported values are platform-specific.
+     * 
+     * If no isolation value is specified on daemon start, on Windows client,
+     * the default is `hyperv`, and on Windows server, the default is `process`.
+     * 
+     * This option is currently not used on other platforms.
+     * 
+     *
+     * @return string
+     */
     public function getIsolation(): string
     {
         return $this->isolation;
@@ -2097,14 +2119,14 @@ class SystemInfo
         return $this;
     }
     /**
-    * Name and, optional, path of the `docker-init` binary.
-    
-    If the path is omitted, the daemon searches the host's `$PATH` for the
-    binary and uses the first result.
-    
-    *
-    * @return string
-    */
+     * Name and, optional, path of the `docker-init` binary.
+     * 
+     * If the path is omitted, the daemon searches the host's `$PATH` for the
+     * binary and uses the first result.
+     * 
+     *
+     * @return string
+     */
     public function getInitBinary(): string
     {
         return $this->initBinary;
@@ -2127,13 +2149,13 @@ class SystemInfo
         return $this;
     }
     /**
-    * Commit holds the Git-commit (SHA1) that a binary was built from, as
-    reported in the version-string of external tools, such as `containerd`,
-    or `runC`.
-    
-    *
-    * @return Commit
-    */
+     * Commit holds the Git-commit (SHA1) that a binary was built from, as
+     * reported in the version-string of external tools, such as `containerd`,
+     * or `runC`.
+     * 
+     *
+     * @return Commit
+     */
     public function getContainerdCommit(): Commit
     {
         return $this->containerdCommit;
@@ -2155,13 +2177,13 @@ class SystemInfo
         return $this;
     }
     /**
-    * Commit holds the Git-commit (SHA1) that a binary was built from, as
-    reported in the version-string of external tools, such as `containerd`,
-    or `runC`.
-    
-    *
-    * @return Commit
-    */
+     * Commit holds the Git-commit (SHA1) that a binary was built from, as
+     * reported in the version-string of external tools, such as `containerd`,
+     * or `runC`.
+     * 
+     *
+     * @return Commit
+     */
     public function getRuncCommit(): Commit
     {
         return $this->runcCommit;
@@ -2183,13 +2205,13 @@ class SystemInfo
         return $this;
     }
     /**
-    * Commit holds the Git-commit (SHA1) that a binary was built from, as
-    reported in the version-string of external tools, such as `containerd`,
-    or `runC`.
-    
-    *
-    * @return Commit
-    */
+     * Commit holds the Git-commit (SHA1) that a binary was built from, as
+     * reported in the version-string of external tools, such as `containerd`,
+     * or `runC`.
+     * 
+     *
+     * @return Commit
+     */
     public function getInitCommit(): Commit
     {
         return $this->initCommit;
@@ -2211,16 +2233,16 @@ class SystemInfo
         return $this;
     }
     /**
-    * List of security features that are enabled on the daemon, such as
-    apparmor, seccomp, SELinux, user-namespaces (userns), and rootless.
-    
-    Additional configuration options for each security feature may
-    be present, and are included as a comma-separated list of key/value
-    pairs.
-    
-    *
-    * @return list<string>
-    */
+     * List of security features that are enabled on the daemon, such as
+     * apparmor, seccomp, SELinux, user-namespaces (userns), and rootless.
+     * 
+     * Additional configuration options for each security feature may
+     * be present, and are included as a comma-separated list of key/value
+     * pairs.
+     * 
+     *
+     * @return list<string>
+     */
     public function getSecurityOptions(): array
     {
         return $this->securityOptions;
@@ -2245,14 +2267,14 @@ class SystemInfo
         return $this;
     }
     /**
-    * Reports a summary of the product license on the daemon.
-    
-    If a commercial license has been applied to the daemon, information
-    such as number of nodes, and expiration are included.
-    
-    *
-    * @return string
-    */
+     * Reports a summary of the product license on the daemon.
+     * 
+     * If a commercial license has been applied to the daemon, information
+     * such as number of nodes, and expiration are included.
+     * 
+     *
+     * @return string
+     */
     public function getProductLicense(): string
     {
         return $this->productLicense;
@@ -2275,15 +2297,15 @@ class SystemInfo
         return $this;
     }
     /**
-    * List of custom default address pools for local networks, which can be
-    specified in the daemon.json file or dockerd option.
-    
-    Example: a Base "10.10.0.0/16" with Size 24 will define the set of 256
-    10.10.[0-255].0/24 address pools.
-    
-    *
-    * @return list<SystemInfoDefaultAddressPoolsItem>
-    */
+     * List of custom default address pools for local networks, which can be
+     * specified in the daemon.json file or dockerd option.
+     * 
+     * Example: a Base "10.10.0.0/16" with Size 24 will define the set of 256
+     * 10.10.[0-255].0/24 address pools.
+     * 
+     *
+     * @return list<SystemInfoDefaultAddressPoolsItem>
+     */
     public function getDefaultAddressPools(): array
     {
         return $this->defaultAddressPools;
@@ -2307,14 +2329,14 @@ class SystemInfo
         return $this;
     }
     /**
-    * List of warnings / informational messages about missing features, or
-    issues related to the daemon configuration.
-    
-    These messages can be printed by the client as information to the user.
-    
-    *
-    * @return list<string>
-    */
+     * List of warnings / informational messages about missing features, or
+     * issues related to the daemon configuration.
+     * 
+     * These messages can be printed by the client as information to the user.
+     * 
+     *
+     * @return list<string>
+     */
     public function getWarnings(): array
     {
         return $this->warnings;

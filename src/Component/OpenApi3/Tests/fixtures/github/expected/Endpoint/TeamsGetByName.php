@@ -8,9 +8,9 @@ class TeamsGetByName extends \Github\Runtime\Client\BaseEndpoint implements \Git
     protected $team_slug;
     /**
      * Gets a team using the team's `slug`. GitHub generates the `slug` from the team `name`.
-     **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}`.
      *
-     * @param string $org 
+     * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}`.
+     * @param string $org
      * @param string $teamSlug team_slug parameter
      */
     public function __construct(string $org, string $teamSlug)

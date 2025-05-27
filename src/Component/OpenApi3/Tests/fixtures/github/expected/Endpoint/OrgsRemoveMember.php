@@ -8,9 +8,8 @@ class OrgsRemoveMember extends \Github\Runtime\Client\BaseEndpoint implements \G
     protected $username;
     /**
      * Removing a user from this list will remove them from all teams and they will no longer have any access to the organization's repositories.
-     *
-     * @param string $org 
-     * @param string $username 
+     * @param string $org
+     * @param string $username
      */
     public function __construct(string $org, string $username)
     {

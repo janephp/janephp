@@ -55,22 +55,20 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
      */
     protected $description = '';
     /**
-    * Specifies if the given environment is specific to the deployment and will no longer exist at some point in the future. Default: `false`  
-    **Note:** This parameter requires you to use the [`application/vnd.github.ant-man-preview+json`](https://developer.github.com/v3/previews/#enhanced-deployments) custom media type. **Note:** This parameter requires you to use the [`application/vnd.github.ant-man-preview+json`](https://developer.github.com/v3/previews/#enhanced-deployments) custom media type.
-    *
-    * @var bool
-    */
+     * Specifies if the given environment is specific to the deployment and will no longer exist at some point in the future. Default: `false`
+     * **Note:** This parameter requires you to use the [`application/vnd.github.ant-man-preview+json`](https://developer.github.com/v3/previews/#enhanced-deployments) custom media type. **Note:** This parameter requires you to use the [`application/vnd.github.ant-man-preview+json`](https://developer.github.com/v3/previews/#enhanced-deployments) custom media type.
+     *
+     * @var bool
+     */
     protected $transientEnvironment = false;
     /**
-    * Specifies if the given environment is one that end-users directly interact with. Default: `true` when `environment` is `production` and `false` otherwise.  
-    **Note:** This parameter requires you to use the [`application/vnd.github.ant-man-preview+json`](https://developer.github.com/v3/previews/#enhanced-deployments) custom media type.
-    *
-    * @var bool
-    */
+     * Specifies if the given environment is one that end-users directly interact with. Default: `true` when `environment` is `production` and `false` otherwise.
+     * **Note:** This parameter requires you to use the [`application/vnd.github.ant-man-preview+json`](https://developer.github.com/v3/previews/#enhanced-deployments) custom media type.
+     *
+     * @var bool
+     */
     protected $productionEnvironment;
     /**
-     * 
-     *
      * @var string
      */
     protected $createdAt;
@@ -229,11 +227,11 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
         return $this;
     }
     /**
-    * Specifies if the given environment is specific to the deployment and will no longer exist at some point in the future. Default: `false`  
-    **Note:** This parameter requires you to use the [`application/vnd.github.ant-man-preview+json`](https://developer.github.com/v3/previews/#enhanced-deployments) custom media type. **Note:** This parameter requires you to use the [`application/vnd.github.ant-man-preview+json`](https://developer.github.com/v3/previews/#enhanced-deployments) custom media type.
-    *
-    * @return bool
-    */
+     * Specifies if the given environment is specific to the deployment and will no longer exist at some point in the future. Default: `false`
+     * **Note:** This parameter requires you to use the [`application/vnd.github.ant-man-preview+json`](https://developer.github.com/v3/previews/#enhanced-deployments) custom media type. **Note:** This parameter requires you to use the [`application/vnd.github.ant-man-preview+json`](https://developer.github.com/v3/previews/#enhanced-deployments) custom media type.
+     *
+     * @return bool
+     */
     public function getTransientEnvironment(): bool
     {
         return $this->transientEnvironment;
@@ -253,11 +251,11 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
         return $this;
     }
     /**
-    * Specifies if the given environment is one that end-users directly interact with. Default: `true` when `environment` is `production` and `false` otherwise.  
-    **Note:** This parameter requires you to use the [`application/vnd.github.ant-man-preview+json`](https://developer.github.com/v3/previews/#enhanced-deployments) custom media type.
-    *
-    * @return bool
-    */
+     * Specifies if the given environment is one that end-users directly interact with. Default: `true` when `environment` is `production` and `false` otherwise.
+     * **Note:** This parameter requires you to use the [`application/vnd.github.ant-man-preview+json`](https://developer.github.com/v3/previews/#enhanced-deployments) custom media type.
+     *
+     * @return bool
+     */
     public function getProductionEnvironment(): bool
     {
         return $this->productionEnvironment;
@@ -277,8 +275,6 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCreatedAt(): string
@@ -286,8 +282,6 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param string $createdAt
      *
      * @return self

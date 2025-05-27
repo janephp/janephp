@@ -7,11 +7,9 @@ class IssuesCreateLabel extends \Github\Runtime\Client\BaseEndpoint implements \
     protected $owner;
     protected $repo;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param null|\Github\Model\ReposOwnerRepoLabelsPostBody $requestBody 
+     * @param string $owner
+     * @param string $repo
+     * @param null|\Github\Model\ReposOwnerRepoLabelsPostBody $requestBody
      */
     public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoLabelsPostBody $requestBody = null)
     {

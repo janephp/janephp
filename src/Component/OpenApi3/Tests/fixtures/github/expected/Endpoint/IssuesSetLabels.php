@@ -9,11 +9,10 @@ class IssuesSetLabels extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     protected $issue_number;
     /**
      * Removes any previous labels and sets the new labels for an issue.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $issueNumber issue_number parameter
-     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody $requestBody = null)
     {

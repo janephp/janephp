@@ -19,8 +19,6 @@ class ShareDataBase
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
@@ -44,8 +42,6 @@ class ShareDataBase
         $this->url = $url;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -53,8 +49,6 @@ class ShareDataBase
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      */
     public function setKind(string $kind)

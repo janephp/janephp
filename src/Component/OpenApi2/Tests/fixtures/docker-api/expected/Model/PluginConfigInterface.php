@@ -13,14 +13,10 @@ class PluginConfigInterface
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<PluginInterfaceType>
      */
     protected $types;
     /**
-     * 
-     *
      * @var string
      */
     protected $socket;
@@ -31,8 +27,6 @@ class PluginConfigInterface
      */
     protected $protocolScheme;
     /**
-     * 
-     *
      * @return list<PluginInterfaceType>
      */
     public function getTypes(): array
@@ -40,8 +34,6 @@ class PluginConfigInterface
         return $this->types;
     }
     /**
-     * 
-     *
      * @param list<PluginInterfaceType> $types
      *
      * @return self
@@ -53,8 +45,6 @@ class PluginConfigInterface
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSocket(): string
@@ -62,8 +52,6 @@ class PluginConfigInterface
         return $this->socket;
     }
     /**
-     * 
-     *
      * @param string $socket
      *
      * @return self

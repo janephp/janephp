@@ -6,8 +6,7 @@ class SchemaPermissionSetDeleteMany extends \PicturePark\API\Runtime\Client\Base
 {
     /**
      * Deletes the schema permission sets specified by the IDs.
-     *
-     * @param \PicturePark\API\Model\PermissionSetDeleteManyRequest $requestBody 
+     * @param \PicturePark\API\Model\PermissionSetDeleteManyRequest $requestBody
      */
     public function __construct(\PicturePark\API\Model\PermissionSetDeleteManyRequest $requestBody)
     {

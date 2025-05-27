@@ -9,7 +9,6 @@ class ContentDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
     protected $accept;
     /**
      * Download a single content in a specific output format. To resize images on download specify target width &amp; height. To download only a portion of the file, specify the range parameter.
-     *
      * @param string $contentId The content ID.
      * @param string $outputFormatId The output format ID.
      * @param array $queryParameters {

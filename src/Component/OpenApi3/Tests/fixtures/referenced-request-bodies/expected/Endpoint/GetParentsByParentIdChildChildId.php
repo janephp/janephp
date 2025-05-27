@@ -7,10 +7,8 @@ class GetParentsByParentIdChildChildId extends \Jane\Component\OpenApi3\Tests\Ex
     protected $parent_id;
     protected $child_id;
     /**
-     * 
-     *
-     * @param string $parentId 
-     * @param string $childId 
+     * @param string $parentId
+     * @param string $childId
      */
     public function __construct(string $parentId, string $childId)
     {

@@ -13,68 +13,46 @@ class ReactionRollup extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var int
      */
     protected $totalCount;
     /**
-     * 
-     *
      * @var int
      */
     protected $n1;
     /**
-     * 
-     *
      * @var int
      */
     protected $n12;
     /**
-     * 
-     *
      * @var int
      */
     protected $laugh;
     /**
-     * 
-     *
      * @var int
      */
     protected $confused;
     /**
-     * 
-     *
      * @var int
      */
     protected $heart;
     /**
-     * 
-     *
      * @var int
      */
     protected $hooray;
     /**
-     * 
-     *
      * @var int
      */
     protected $eyes;
     /**
-     * 
-     *
      * @var int
      */
     protected $rocket;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -82,8 +60,6 @@ class ReactionRollup extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -95,8 +71,6 @@ class ReactionRollup extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalCount(): int
@@ -104,8 +78,6 @@ class ReactionRollup extends \ArrayObject
         return $this->totalCount;
     }
     /**
-     * 
-     *
      * @param int $totalCount
      *
      * @return self
@@ -117,8 +89,6 @@ class ReactionRollup extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function get1(): int
@@ -126,8 +96,6 @@ class ReactionRollup extends \ArrayObject
         return $this->n1;
     }
     /**
-     * 
-     *
      * @param int $n1
      *
      * @return self
@@ -139,8 +107,6 @@ class ReactionRollup extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function get12(): int
@@ -148,8 +114,6 @@ class ReactionRollup extends \ArrayObject
         return $this->n12;
     }
     /**
-     * 
-     *
      * @param int $n12
      *
      * @return self
@@ -161,8 +125,6 @@ class ReactionRollup extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getLaugh(): int
@@ -170,8 +132,6 @@ class ReactionRollup extends \ArrayObject
         return $this->laugh;
     }
     /**
-     * 
-     *
      * @param int $laugh
      *
      * @return self
@@ -183,8 +143,6 @@ class ReactionRollup extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getConfused(): int
@@ -192,8 +150,6 @@ class ReactionRollup extends \ArrayObject
         return $this->confused;
     }
     /**
-     * 
-     *
      * @param int $confused
      *
      * @return self
@@ -205,8 +161,6 @@ class ReactionRollup extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getHeart(): int
@@ -214,8 +168,6 @@ class ReactionRollup extends \ArrayObject
         return $this->heart;
     }
     /**
-     * 
-     *
      * @param int $heart
      *
      * @return self
@@ -227,8 +179,6 @@ class ReactionRollup extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getHooray(): int
@@ -236,8 +186,6 @@ class ReactionRollup extends \ArrayObject
         return $this->hooray;
     }
     /**
-     * 
-     *
      * @param int $hooray
      *
      * @return self
@@ -249,8 +197,6 @@ class ReactionRollup extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getEyes(): int
@@ -258,8 +204,6 @@ class ReactionRollup extends \ArrayObject
         return $this->eyes;
     }
     /**
-     * 
-     *
      * @param int $eyes
      *
      * @return self
@@ -271,8 +215,6 @@ class ReactionRollup extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getRocket(): int
@@ -280,8 +222,6 @@ class ReactionRollup extends \ArrayObject
         return $this->rocket;
     }
     /**
-     * 
-     *
      * @param int $rocket
      *
      * @return self

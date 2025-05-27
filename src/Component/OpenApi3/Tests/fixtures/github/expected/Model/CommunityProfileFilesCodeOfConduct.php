@@ -13,32 +13,22 @@ class CommunityProfileFilesCodeOfConduct extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $key;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -46,8 +36,6 @@ class CommunityProfileFilesCodeOfConduct extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -59,8 +47,6 @@ class CommunityProfileFilesCodeOfConduct extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKey(): string
@@ -68,8 +54,6 @@ class CommunityProfileFilesCodeOfConduct extends \ArrayObject
         return $this->key;
     }
     /**
-     * 
-     *
      * @param string $key
      *
      * @return self
@@ -81,8 +65,6 @@ class CommunityProfileFilesCodeOfConduct extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -90,8 +72,6 @@ class CommunityProfileFilesCodeOfConduct extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -103,8 +83,6 @@ class CommunityProfileFilesCodeOfConduct extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getHtmlUrl(): ?string
@@ -112,8 +90,6 @@ class CommunityProfileFilesCodeOfConduct extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string|null $htmlUrl
      *
      * @return self

@@ -13,14 +13,10 @@ class Endpoint3PostBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var Endpoint3PostBodyPostField3
      */
     protected $postField3;
     /**
-     * 
-     *
      * @return Endpoint3PostBodyPostField3
      */
     public function getPostField3(): Endpoint3PostBodyPostField3
@@ -28,8 +24,6 @@ class Endpoint3PostBody extends \ArrayObject
         return $this->postField3;
     }
     /**
-     * 
-     *
      * @param Endpoint3PostBodyPostField3 $postField3
      *
      * @return self

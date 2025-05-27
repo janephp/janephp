@@ -8,10 +8,8 @@ class IssuesGetMilestone extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $repo;
     protected $milestone_number;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $milestoneNumber milestone_number parameter
      */
     public function __construct(string $owner, string $repo, int $milestoneNumber)

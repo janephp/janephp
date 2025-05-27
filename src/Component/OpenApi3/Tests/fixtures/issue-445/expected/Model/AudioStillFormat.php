@@ -13,14 +13,10 @@ class AudioStillFormat extends FormatBase
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $extension;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExtension(): ?string
@@ -28,8 +24,6 @@ class AudioStillFormat extends FormatBase
         return $this->extension;
     }
     /**
-     * 
-     *
      * @param string|null $extension
      *
      * @return self

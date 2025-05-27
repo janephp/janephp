@@ -13,20 +13,14 @@ class RateLimitOverview extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var RateLimitOverviewResources
      */
     protected $resources;
     /**
-     * 
-     *
      * @var RateLimit
      */
     protected $rate;
     /**
-     * 
-     *
      * @return RateLimitOverviewResources
      */
     public function getResources(): RateLimitOverviewResources
@@ -34,8 +28,6 @@ class RateLimitOverview extends \ArrayObject
         return $this->resources;
     }
     /**
-     * 
-     *
      * @param RateLimitOverviewResources $resources
      *
      * @return self
@@ -47,8 +39,6 @@ class RateLimitOverview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return RateLimit
      */
     public function getRate(): RateLimit
@@ -56,8 +46,6 @@ class RateLimitOverview extends \ArrayObject
         return $this->rate;
     }
     /**
-     * 
-     *
      * @param RateLimit $rate
      *
      * @return self

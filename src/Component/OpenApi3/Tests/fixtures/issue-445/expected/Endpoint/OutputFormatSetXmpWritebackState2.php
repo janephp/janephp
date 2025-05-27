@@ -5,11 +5,10 @@ namespace PicturePark\API\Endpoint;
 class OutputFormatSetXmpWritebackState2 extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * This is allowed for both static and dynamic formats.
-    However, enabling XMP writeback for Thumbnail formats or temporary formats is not allowed. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
-    *
-    * @param \PicturePark\API\Model\OutputFormatSetXmpWritebackStateManyRequest $requestBody 
-    */
+     * This is allowed for both static and dynamic formats.
+     * However, enabling XMP writeback for Thumbnail formats or temporary formats is not allowed. The operation is executed asynchronously and is not awaited. Call [WaitForCompletion](#operation/BusinessProcess_WaitForCompletion) to wait for the process to finish.
+     * @param \PicturePark\API\Model\OutputFormatSetXmpWritebackStateManyRequest $requestBody
+     */
     public function __construct(\PicturePark\API\Model\OutputFormatSetXmpWritebackStateManyRequest $requestBody)
     {
         $this->body = $requestBody;

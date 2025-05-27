@@ -13,56 +13,38 @@ class NodeInfoMessage extends Message
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $hostName;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $lastResponseTime;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $serviceName;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $fileVersion;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $productVersion;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $release;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $logLevel;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getNodeId(): ?string
@@ -70,8 +52,6 @@ class NodeInfoMessage extends Message
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string|null $nodeId
      *
      * @return self
@@ -83,8 +63,6 @@ class NodeInfoMessage extends Message
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getHostName(): ?string
@@ -92,8 +70,6 @@ class NodeInfoMessage extends Message
         return $this->hostName;
     }
     /**
-     * 
-     *
      * @param string|null $hostName
      *
      * @return self
@@ -105,8 +81,6 @@ class NodeInfoMessage extends Message
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getLastResponseTime(): \DateTime
@@ -114,8 +88,6 @@ class NodeInfoMessage extends Message
         return $this->lastResponseTime;
     }
     /**
-     * 
-     *
      * @param \DateTime $lastResponseTime
      *
      * @return self
@@ -127,8 +99,6 @@ class NodeInfoMessage extends Message
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getServiceName(): ?string
@@ -136,8 +106,6 @@ class NodeInfoMessage extends Message
         return $this->serviceName;
     }
     /**
-     * 
-     *
      * @param string|null $serviceName
      *
      * @return self
@@ -149,8 +117,6 @@ class NodeInfoMessage extends Message
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFileVersion(): ?string
@@ -158,8 +124,6 @@ class NodeInfoMessage extends Message
         return $this->fileVersion;
     }
     /**
-     * 
-     *
      * @param string|null $fileVersion
      *
      * @return self
@@ -171,8 +135,6 @@ class NodeInfoMessage extends Message
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getProductVersion(): ?string
@@ -180,8 +142,6 @@ class NodeInfoMessage extends Message
         return $this->productVersion;
     }
     /**
-     * 
-     *
      * @param string|null $productVersion
      *
      * @return self
@@ -193,8 +153,6 @@ class NodeInfoMessage extends Message
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getRelease(): ?string
@@ -202,8 +160,6 @@ class NodeInfoMessage extends Message
         return $this->release;
     }
     /**
-     * 
-     *
      * @param string|null $release
      *
      * @return self
@@ -215,8 +171,6 @@ class NodeInfoMessage extends Message
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getLogLevel(): ?string
@@ -224,8 +178,6 @@ class NodeInfoMessage extends Message
         return $this->logLevel;
     }
     /**
-     * 
-     *
      * @param string|null $logLevel
      *
      * @return self

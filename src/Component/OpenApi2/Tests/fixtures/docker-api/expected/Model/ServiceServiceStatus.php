@@ -14,33 +14,35 @@ class ServiceServiceStatus
     }
     /**
      * The number of tasks for the service currently in the Running state.
+     * 
      *
      * @var int
      */
     protected $runningTasks;
     /**
-    * The number of tasks for the service desired to be running.
-    For replicated services, this is the replica count from the
-    service spec. For global services, this is computed by taking
-    count of all tasks for the service with a Desired State other
-    than Shutdown.
-    
-    *
-    * @var int
-    */
+     * The number of tasks for the service desired to be running.
+     * For replicated services, this is the replica count from the
+     * service spec. For global services, this is computed by taking
+     * count of all tasks for the service with a Desired State other
+     * than Shutdown.
+     * 
+     *
+     * @var int
+     */
     protected $desiredTasks;
     /**
-    * The number of tasks for a job that are in the Completed state.
-    This field must be cross-referenced with the service type, as the
-    value of 0 may mean the service is not in a job mode, or it may
-    mean the job-mode service has no tasks yet Completed.
-    
-    *
-    * @var int
-    */
+     * The number of tasks for a job that are in the Completed state.
+     * This field must be cross-referenced with the service type, as the
+     * value of 0 may mean the service is not in a job mode, or it may
+     * mean the job-mode service has no tasks yet Completed.
+     * 
+     *
+     * @var int
+     */
     protected $completedTasks;
     /**
      * The number of tasks for the service currently in the Running state.
+     * 
      *
      * @return int
      */
@@ -62,15 +64,15 @@ class ServiceServiceStatus
         return $this;
     }
     /**
-    * The number of tasks for the service desired to be running.
-    For replicated services, this is the replica count from the
-    service spec. For global services, this is computed by taking
-    count of all tasks for the service with a Desired State other
-    than Shutdown.
-    
-    *
-    * @return int
-    */
+     * The number of tasks for the service desired to be running.
+     * For replicated services, this is the replica count from the
+     * service spec. For global services, this is computed by taking
+     * count of all tasks for the service with a Desired State other
+     * than Shutdown.
+     * 
+     *
+     * @return int
+     */
     public function getDesiredTasks(): int
     {
         return $this->desiredTasks;
@@ -94,14 +96,14 @@ class ServiceServiceStatus
         return $this;
     }
     /**
-    * The number of tasks for a job that are in the Completed state.
-    This field must be cross-referenced with the service type, as the
-    value of 0 may mean the service is not in a job mode, or it may
-    mean the job-mode service has no tasks yet Completed.
-    
-    *
-    * @return int
-    */
+     * The number of tasks for a job that are in the Completed state.
+     * This field must be cross-referenced with the service type, as the
+     * value of 0 may mean the service is not in a job mode, or it may
+     * mean the job-mode service has no tasks yet Completed.
+     * 
+     *
+     * @return int
+     */
     public function getCompletedTasks(): int
     {
         return $this->completedTasks;

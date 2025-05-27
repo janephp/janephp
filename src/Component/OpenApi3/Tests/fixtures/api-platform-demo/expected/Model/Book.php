@@ -13,8 +13,6 @@ class Book extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $id;
@@ -61,14 +59,10 @@ class Book extends \ArrayObject
      */
     protected $cover;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $archivedAt;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getId(): ?string
@@ -76,8 +70,6 @@ class Book extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string|null $id
      *
      * @return self
@@ -243,8 +235,6 @@ class Book extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getArchivedAt(): ?\DateTime
@@ -252,8 +242,6 @@ class Book extends \ArrayObject
         return $this->archivedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $archivedAt
      *
      * @return self

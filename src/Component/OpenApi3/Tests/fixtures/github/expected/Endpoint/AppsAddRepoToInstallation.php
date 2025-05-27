@@ -7,13 +7,12 @@ class AppsAddRepoToInstallation extends \Github\Runtime\Client\BaseEndpoint impl
     protected $installation_id;
     protected $repository_id;
     /**
-    * Add a single repository to an installation. The authenticated user must have admin access to the repository.
-    
-    You must use a personal access token (which you can create via the [command line](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) or the [OAuth Authorizations API](https://developer.github.com/v3/oauth_authorizations/#create-a-new-authorization)) or [Basic Authentication](https://developer.github.com/v3/auth/#basic-authentication) to access this endpoint.
-    *
-    * @param int $installationId installation_id parameter
-    * @param int $repositoryId repository_id parameter
-    */
+     * Add a single repository to an installation. The authenticated user must have admin access to the repository.
+     *
+     * You must use a personal access token (which you can create via the [command line](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) or the [OAuth Authorizations API](https://developer.github.com/v3/oauth_authorizations/#create-a-new-authorization)) or [Basic Authentication](https://developer.github.com/v3/auth/#basic-authentication) to access this endpoint.
+     * @param int $installationId installation_id parameter
+     * @param int $repositoryId repository_id parameter
+     */
     public function __construct(int $installationId, int $repositoryId)
     {
         $this->installation_id = $installationId;

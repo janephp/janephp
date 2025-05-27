@@ -13,8 +13,6 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectMonitoringItem ex
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
@@ -43,8 +41,6 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectMonitoringItem ex
      */
     protected $used;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -52,8 +48,6 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectMonitoringItem ex
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self

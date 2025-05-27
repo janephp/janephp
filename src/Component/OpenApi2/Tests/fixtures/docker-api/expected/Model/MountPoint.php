@@ -13,56 +13,38 @@ class MountPoint
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $source;
     /**
-     * 
-     *
      * @var string
      */
     protected $destination;
     /**
-     * 
-     *
      * @var string
      */
     protected $driver;
     /**
-     * 
-     *
      * @var string
      */
     protected $mode;
     /**
-     * 
-     *
      * @var bool
      */
     protected $rW;
     /**
-     * 
-     *
      * @var string
      */
     protected $propagation;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -70,8 +52,6 @@ class MountPoint
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -83,8 +63,6 @@ class MountPoint
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -92,8 +70,6 @@ class MountPoint
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -105,8 +81,6 @@ class MountPoint
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSource(): string
@@ -114,8 +88,6 @@ class MountPoint
         return $this->source;
     }
     /**
-     * 
-     *
      * @param string $source
      *
      * @return self
@@ -127,8 +99,6 @@ class MountPoint
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDestination(): string
@@ -136,8 +106,6 @@ class MountPoint
         return $this->destination;
     }
     /**
-     * 
-     *
      * @param string $destination
      *
      * @return self
@@ -149,8 +117,6 @@ class MountPoint
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDriver(): string
@@ -158,8 +124,6 @@ class MountPoint
         return $this->driver;
     }
     /**
-     * 
-     *
      * @param string $driver
      *
      * @return self
@@ -171,8 +135,6 @@ class MountPoint
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMode(): string
@@ -180,8 +142,6 @@ class MountPoint
         return $this->mode;
     }
     /**
-     * 
-     *
      * @param string $mode
      *
      * @return self
@@ -193,8 +153,6 @@ class MountPoint
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getRW(): bool
@@ -202,8 +160,6 @@ class MountPoint
         return $this->rW;
     }
     /**
-     * 
-     *
      * @param bool $rW
      *
      * @return self
@@ -215,8 +171,6 @@ class MountPoint
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPropagation(): string
@@ -224,8 +178,6 @@ class MountPoint
         return $this->propagation;
     }
     /**
-     * 
-     *
      * @param string $propagation
      *
      * @return self

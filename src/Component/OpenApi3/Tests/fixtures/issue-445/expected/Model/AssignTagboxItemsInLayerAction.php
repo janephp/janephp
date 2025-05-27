@@ -25,11 +25,11 @@ class AssignTagboxItemsInLayerAction extends BusinessRuleAction
      */
     protected $refIds;
     /**
-    * Indicates where the assignment should be additive to the already assigned tags
-    or if existing tags should be replaced.
-    *
-    * @var bool
-    */
+     * Indicates where the assignment should be additive to the already assigned tags
+     * or if existing tags should be replaced.
+     *
+     * @var bool
+     */
     protected $replace;
     /**
      * Named cache to use for lookup, should be of type SchemaTagboxFilterLookupNamedCacheConfiguration
@@ -76,11 +76,11 @@ class AssignTagboxItemsInLayerAction extends BusinessRuleAction
         return $this;
     }
     /**
-    * Indicates where the assignment should be additive to the already assigned tags
-    or if existing tags should be replaced.
-    *
-    * @return bool
-    */
+     * Indicates where the assignment should be additive to the already assigned tags
+     * or if existing tags should be replaced.
+     *
+     * @return bool
+     */
     public function getReplace(): bool
     {
         return $this->replace;

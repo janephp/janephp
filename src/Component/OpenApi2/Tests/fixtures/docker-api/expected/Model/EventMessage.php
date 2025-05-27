@@ -25,20 +25,20 @@ class EventMessage
      */
     protected $action;
     /**
-    * Actor describes something that generates events, like a container, network,
-    or a volume.
-    
-    *
-    * @var EventActor
-    */
+     * Actor describes something that generates events, like a container, network,
+     * or a volume.
+     * 
+     *
+     * @var EventActor
+     */
     protected $actor;
     /**
-    * Scope of the event. Engine events are `local` scope. Cluster (Swarm)
-    events are `swarm` scope.
-    
-    *
-    * @var string
-    */
+     * Scope of the event. Engine events are `local` scope. Cluster (Swarm)
+     * events are `swarm` scope.
+     * 
+     *
+     * @var string
+     */
     protected $scope;
     /**
      * Timestamp of event
@@ -97,12 +97,12 @@ class EventMessage
         return $this;
     }
     /**
-    * Actor describes something that generates events, like a container, network,
-    or a volume.
-    
-    *
-    * @return EventActor
-    */
+     * Actor describes something that generates events, like a container, network,
+     * or a volume.
+     * 
+     *
+     * @return EventActor
+     */
     public function getActor(): EventActor
     {
         return $this->actor;
@@ -123,12 +123,12 @@ class EventMessage
         return $this;
     }
     /**
-    * Scope of the event. Engine events are `local` scope. Cluster (Swarm)
-    events are `swarm` scope.
-    
-    *
-    * @return string
-    */
+     * Scope of the event. Engine events are `local` scope. Cluster (Swarm)
+     * events are `swarm` scope.
+     * 
+     *
+     * @return string
+     */
     public function getScope(): string
     {
         return $this->scope;

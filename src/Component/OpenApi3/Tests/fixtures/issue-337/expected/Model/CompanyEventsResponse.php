@@ -19,8 +19,6 @@ class CompanyEventsResponse extends \ArrayObject
      */
     protected $totalCount;
     /**
-     * 
-     *
      * @var list<Event>
      */
     protected $data;
@@ -53,8 +51,6 @@ class CompanyEventsResponse extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<Event>
      */
     public function getData(): array
@@ -62,8 +58,6 @@ class CompanyEventsResponse extends \ArrayObject
         return $this->data;
     }
     /**
-     * 
-     *
      * @param list<Event> $data
      *
      * @return self

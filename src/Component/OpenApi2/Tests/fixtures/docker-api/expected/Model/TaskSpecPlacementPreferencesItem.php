@@ -13,14 +13,10 @@ class TaskSpecPlacementPreferencesItem
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var TaskSpecPlacementPreferencesItemSpread
      */
     protected $spread;
     /**
-     * 
-     *
      * @return TaskSpecPlacementPreferencesItemSpread
      */
     public function getSpread(): TaskSpecPlacementPreferencesItemSpread
@@ -28,8 +24,6 @@ class TaskSpecPlacementPreferencesItem
         return $this->spread;
     }
     /**
-     * 
-     *
      * @param TaskSpecPlacementPreferencesItemSpread $spread
      *
      * @return self

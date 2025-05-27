@@ -43,11 +43,11 @@ class TransferSearchRequest
      */
     protected $filter;
     /**
-    * Enable debug mode: additional debug information regarding the query execution and reason of the matched documents are returned in the TransferSearchResult.
-    Warning! It severely affects performance.
-    *
-    * @var bool
-    */
+     * Enable debug mode: additional debug information regarding the query execution and reason of the matched documents are returned in the TransferSearchResult.
+     * Warning! It severely affects performance.
+     *
+     * @var bool
+     */
     protected $debugMode = false;
     /**
      * Limits the search by using a query string filter. The Lucene query string syntax is supported.
@@ -160,11 +160,11 @@ class TransferSearchRequest
         return $this;
     }
     /**
-    * Enable debug mode: additional debug information regarding the query execution and reason of the matched documents are returned in the TransferSearchResult.
-    Warning! It severely affects performance.
-    *
-    * @return bool
-    */
+     * Enable debug mode: additional debug information regarding the query execution and reason of the matched documents are returned in the TransferSearchResult.
+     * Warning! It severely affects performance.
+     *
+     * @return bool
+     */
     public function getDebugMode(): bool
     {
         return $this->debugMode;

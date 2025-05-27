@@ -6,11 +6,10 @@ class ListSponsoredProductsCampaigns extends \Jane\Component\OpenApi3\Tests\Expe
 {
     /**
     * List campaigns
-    
-    **Requires one of these permissions**:
-    ["advertiser_campaign_edit","advertiser_campaign_view"]
     *
-    * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody 
+    * **Requires one of these permissions**:
+    * ["advertiser_campaign_edit","advertiser_campaign_view"]
+    * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent $requestBody
     * @param array $headerParameters {
     *     @var string $Amazon-Advertising-API-ClientId The identifier of a client associated with a "Login with Amazon" account.
     *     @var string $Amazon-Advertising-API-Scope The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list

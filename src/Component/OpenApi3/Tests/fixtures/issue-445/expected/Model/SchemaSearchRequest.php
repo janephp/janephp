@@ -49,18 +49,18 @@ class SchemaSearchRequest
      */
     protected $filter;
     /**
-    * Enable debug mode: additional debug information regarding the query execution and reason of the matched documents are returned in the SchemaSearchResult.
-    Warning! It severely affects performance.
-    *
-    * @var bool
-    */
+     * Enable debug mode: additional debug information regarding the query execution and reason of the matched documents are returned in the SchemaSearchResult.
+     * Warning! It severely affects performance.
+     *
+     * @var bool
+     */
     protected $debugMode = false;
     /**
-    * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
-    If not specified, all metadata languages in the system are used.
-    *
-    * @var list<string>|null
-    */
+     * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
+     * If not specified, all metadata languages in the system are used.
+     *
+     * @var list<string>|null
+     */
     protected $searchLanguages;
     /**
      * Limits the schemas to the ones the user has the specified MetadataRights.
@@ -201,11 +201,11 @@ class SchemaSearchRequest
         return $this;
     }
     /**
-    * Enable debug mode: additional debug information regarding the query execution and reason of the matched documents are returned in the SchemaSearchResult.
-    Warning! It severely affects performance.
-    *
-    * @return bool
-    */
+     * Enable debug mode: additional debug information regarding the query execution and reason of the matched documents are returned in the SchemaSearchResult.
+     * Warning! It severely affects performance.
+     *
+     * @return bool
+     */
     public function getDebugMode(): bool
     {
         return $this->debugMode;
@@ -225,11 +225,11 @@ class SchemaSearchRequest
         return $this;
     }
     /**
-    * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
-    If not specified, all metadata languages in the system are used.
-    *
-    * @return list<string>|null
-    */
+     * When searching in multi language fields, limit the searchable fields to the ones corresponding to the specified languages.
+     * If not specified, all metadata languages in the system are used.
+     *
+     * @return list<string>|null
+     */
     public function getSearchLanguages(): ?array
     {
         return $this->searchLanguages;

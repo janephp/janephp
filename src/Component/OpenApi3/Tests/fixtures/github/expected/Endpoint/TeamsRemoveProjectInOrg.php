@@ -9,11 +9,11 @@ class TeamsRemoveProjectInOrg extends \Github\Runtime\Client\BaseEndpoint implem
     protected $project_id;
     /**
      * Removes an organization project from a team. An organization owner or a team maintainer can remove any project from the team. To remove a project from a team as an organization member, the authenticated user must have `read` access to both the team and project, or `admin` access to the team or project. This endpoint removes the project from the team, but does not delete the project.
-     **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
      *
-     * @param string $org 
+     * **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
+     * @param string $org
      * @param string $teamSlug team_slug parameter
-     * @param int $projectId 
+     * @param int $projectId
      */
     public function __construct(string $org, string $teamSlug, int $projectId)
     {

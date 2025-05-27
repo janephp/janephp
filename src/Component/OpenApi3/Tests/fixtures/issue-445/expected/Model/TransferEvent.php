@@ -13,8 +13,6 @@ class TransferEvent extends ApplicationEvent
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $transferId;
@@ -25,8 +23,6 @@ class TransferEvent extends ApplicationEvent
      */
     protected $state;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTransferId(): ?string
@@ -34,8 +30,6 @@ class TransferEvent extends ApplicationEvent
         return $this->transferId;
     }
     /**
-     * 
-     *
      * @param string|null $transferId
      *
      * @return self

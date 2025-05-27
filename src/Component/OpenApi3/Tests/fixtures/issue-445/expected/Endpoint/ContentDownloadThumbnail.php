@@ -9,7 +9,6 @@ class ContentDownloadThumbnail extends \PicturePark\API\Runtime\Client\BaseEndpo
     protected $accept;
     /**
      * Provides a lightweight endpoint to download content thumbnails.
-     *
      * @param string $id The content ID.
      * @param string $size Thumbnail size. Either small, medium or large.
      * @param array $queryParameters {

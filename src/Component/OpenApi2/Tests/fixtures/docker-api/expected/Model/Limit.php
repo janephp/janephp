@@ -13,26 +13,21 @@ class Limit
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $nanoCPUs;
     /**
-     * 
-     *
      * @var int
      */
     protected $memoryBytes;
     /**
      * Limits the maximum number of PIDs in the container. Set `0` for unlimited.
+     * 
      *
      * @var int
      */
     protected $pids = 0;
     /**
-     * 
-     *
      * @return int
      */
     public function getNanoCPUs(): int
@@ -40,8 +35,6 @@ class Limit
         return $this->nanoCPUs;
     }
     /**
-     * 
-     *
      * @param int $nanoCPUs
      *
      * @return self
@@ -53,8 +46,6 @@ class Limit
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getMemoryBytes(): int
@@ -62,8 +53,6 @@ class Limit
         return $this->memoryBytes;
     }
     /**
-     * 
-     *
      * @param int $memoryBytes
      *
      * @return self
@@ -76,6 +65,7 @@ class Limit
     }
     /**
      * Limits the maximum number of PIDs in the container. Set `0` for unlimited.
+     * 
      *
      * @return int
      */

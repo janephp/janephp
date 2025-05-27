@@ -13,14 +13,10 @@ class DefaultUserFieldsEntitiesUrl extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<UrlEntity>
      */
     protected $urls;
     /**
-     * 
-     *
      * @return list<UrlEntity>
      */
     public function getUrls(): array
@@ -28,8 +24,6 @@ class DefaultUserFieldsEntitiesUrl extends \ArrayObject
         return $this->urls;
     }
     /**
-     * 
-     *
      * @param list<UrlEntity> $urls
      *
      * @return self

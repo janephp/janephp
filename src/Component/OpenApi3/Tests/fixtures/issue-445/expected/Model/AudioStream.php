@@ -13,74 +13,50 @@ class AudioStream
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $bitRate;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $bitRateMode;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $channels;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $channelPositions;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $codec;
     /**
-     * 
-     *
      * @var float|null
      */
     protected $durationInSeconds;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $format;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $language;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $resolution;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $samplingRate;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $streamSize;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getBitRate(): ?string
@@ -88,8 +64,6 @@ class AudioStream
         return $this->bitRate;
     }
     /**
-     * 
-     *
      * @param string|null $bitRate
      *
      * @return self
@@ -101,8 +75,6 @@ class AudioStream
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getBitRateMode(): ?string
@@ -110,8 +82,6 @@ class AudioStream
         return $this->bitRateMode;
     }
     /**
-     * 
-     *
      * @param string|null $bitRateMode
      *
      * @return self
@@ -123,8 +93,6 @@ class AudioStream
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getChannels(): ?string
@@ -132,8 +100,6 @@ class AudioStream
         return $this->channels;
     }
     /**
-     * 
-     *
      * @param string|null $channels
      *
      * @return self
@@ -145,8 +111,6 @@ class AudioStream
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getChannelPositions(): ?string
@@ -154,8 +118,6 @@ class AudioStream
         return $this->channelPositions;
     }
     /**
-     * 
-     *
      * @param string|null $channelPositions
      *
      * @return self
@@ -167,8 +129,6 @@ class AudioStream
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCodec(): ?string
@@ -176,8 +136,6 @@ class AudioStream
         return $this->codec;
     }
     /**
-     * 
-     *
      * @param string|null $codec
      *
      * @return self
@@ -189,8 +147,6 @@ class AudioStream
         return $this;
     }
     /**
-     * 
-     *
      * @return float|null
      */
     public function getDurationInSeconds(): ?float
@@ -198,8 +154,6 @@ class AudioStream
         return $this->durationInSeconds;
     }
     /**
-     * 
-     *
      * @param float|null $durationInSeconds
      *
      * @return self
@@ -211,8 +165,6 @@ class AudioStream
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFormat(): ?string
@@ -220,8 +172,6 @@ class AudioStream
         return $this->format;
     }
     /**
-     * 
-     *
      * @param string|null $format
      *
      * @return self
@@ -233,8 +183,6 @@ class AudioStream
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getLanguage(): ?string
@@ -242,8 +190,6 @@ class AudioStream
         return $this->language;
     }
     /**
-     * 
-     *
      * @param string|null $language
      *
      * @return self
@@ -255,8 +201,6 @@ class AudioStream
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getResolution(): ?int
@@ -264,8 +208,6 @@ class AudioStream
         return $this->resolution;
     }
     /**
-     * 
-     *
      * @param int|null $resolution
      *
      * @return self
@@ -277,8 +219,6 @@ class AudioStream
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getSamplingRate(): ?int
@@ -286,8 +226,6 @@ class AudioStream
         return $this->samplingRate;
     }
     /**
-     * 
-     *
      * @param int|null $samplingRate
      *
      * @return self
@@ -299,8 +237,6 @@ class AudioStream
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getStreamSize(): ?int
@@ -308,8 +244,6 @@ class AudioStream
         return $this->streamSize;
     }
     /**
-     * 
-     *
      * @param int|null $streamSize
      *
      * @return self

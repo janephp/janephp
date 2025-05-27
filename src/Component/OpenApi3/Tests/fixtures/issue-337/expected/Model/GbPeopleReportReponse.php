@@ -13,50 +13,34 @@ class GbPeopleReportReponse extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $correlationId;
     /**
-     * 
-     *
      * @var string
      */
     protected $orderId;
     /**
-     * 
-     *
      * @var string
      */
     protected $directorId;
     /**
-     * 
-     *
      * @var string
      */
     protected $dateOfOrder;
     /**
-     * 
-     *
      * @var string
      */
     protected $language;
     /**
-     * 
-     *
      * @var string
      */
     protected $userId;
     /**
-     * 
-     *
      * @var GbPeopleReportReponseReport
      */
     protected $report;
     /**
-     * 
-     *
      * @return string
      */
     public function getCorrelationId(): string
@@ -64,8 +48,6 @@ class GbPeopleReportReponse extends \ArrayObject
         return $this->correlationId;
     }
     /**
-     * 
-     *
      * @param string $correlationId
      *
      * @return self
@@ -77,8 +59,6 @@ class GbPeopleReportReponse extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getOrderId(): string
@@ -86,8 +66,6 @@ class GbPeopleReportReponse extends \ArrayObject
         return $this->orderId;
     }
     /**
-     * 
-     *
      * @param string $orderId
      *
      * @return self
@@ -99,8 +77,6 @@ class GbPeopleReportReponse extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDirectorId(): string
@@ -108,8 +84,6 @@ class GbPeopleReportReponse extends \ArrayObject
         return $this->directorId;
     }
     /**
-     * 
-     *
      * @param string $directorId
      *
      * @return self
@@ -121,8 +95,6 @@ class GbPeopleReportReponse extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDateOfOrder(): string
@@ -130,8 +102,6 @@ class GbPeopleReportReponse extends \ArrayObject
         return $this->dateOfOrder;
     }
     /**
-     * 
-     *
      * @param string $dateOfOrder
      *
      * @return self
@@ -143,8 +113,6 @@ class GbPeopleReportReponse extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLanguage(): string
@@ -152,8 +120,6 @@ class GbPeopleReportReponse extends \ArrayObject
         return $this->language;
     }
     /**
-     * 
-     *
      * @param string $language
      *
      * @return self
@@ -165,8 +131,6 @@ class GbPeopleReportReponse extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUserId(): string
@@ -174,8 +138,6 @@ class GbPeopleReportReponse extends \ArrayObject
         return $this->userId;
     }
     /**
-     * 
-     *
      * @param string $userId
      *
      * @return self
@@ -187,8 +149,6 @@ class GbPeopleReportReponse extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbPeopleReportReponseReport
      */
     public function getReport(): GbPeopleReportReponseReport
@@ -196,8 +156,6 @@ class GbPeopleReportReponse extends \ArrayObject
         return $this->report;
     }
     /**
-     * 
-     *
      * @param GbPeopleReportReponseReport $report
      *
      * @return self

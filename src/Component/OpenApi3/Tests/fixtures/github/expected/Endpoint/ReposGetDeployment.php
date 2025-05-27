@@ -8,10 +8,8 @@ class ReposGetDeployment extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $repo;
     protected $deployment_id;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $deploymentId deployment_id parameter
      */
     public function __construct(string $owner, string $repo, int $deploymentId)

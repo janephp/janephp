@@ -13,56 +13,38 @@ class InstallationPermissions extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $deployments;
     /**
-     * 
-     *
      * @var string
      */
     protected $checks;
     /**
-     * 
-     *
      * @var string
      */
     protected $metadata;
     /**
-     * 
-     *
      * @var string
      */
     protected $contents;
     /**
-     * 
-     *
      * @var string
      */
     protected $pullRequests;
     /**
-     * 
-     *
      * @var string
      */
     protected $statuses;
     /**
-     * 
-     *
      * @var string
      */
     protected $issues;
     /**
-     * 
-     *
      * @var string
      */
     protected $organizationAdministration;
     /**
-     * 
-     *
      * @return string
      */
     public function getDeployments(): string
@@ -70,8 +52,6 @@ class InstallationPermissions extends \ArrayObject
         return $this->deployments;
     }
     /**
-     * 
-     *
      * @param string $deployments
      *
      * @return self
@@ -83,8 +63,6 @@ class InstallationPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getChecks(): string
@@ -92,8 +70,6 @@ class InstallationPermissions extends \ArrayObject
         return $this->checks;
     }
     /**
-     * 
-     *
      * @param string $checks
      *
      * @return self
@@ -105,8 +81,6 @@ class InstallationPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMetadata(): string
@@ -114,8 +88,6 @@ class InstallationPermissions extends \ArrayObject
         return $this->metadata;
     }
     /**
-     * 
-     *
      * @param string $metadata
      *
      * @return self
@@ -127,8 +99,6 @@ class InstallationPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContents(): string
@@ -136,8 +106,6 @@ class InstallationPermissions extends \ArrayObject
         return $this->contents;
     }
     /**
-     * 
-     *
      * @param string $contents
      *
      * @return self
@@ -149,8 +117,6 @@ class InstallationPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPullRequests(): string
@@ -158,8 +124,6 @@ class InstallationPermissions extends \ArrayObject
         return $this->pullRequests;
     }
     /**
-     * 
-     *
      * @param string $pullRequests
      *
      * @return self
@@ -171,8 +135,6 @@ class InstallationPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStatuses(): string
@@ -180,8 +142,6 @@ class InstallationPermissions extends \ArrayObject
         return $this->statuses;
     }
     /**
-     * 
-     *
      * @param string $statuses
      *
      * @return self
@@ -193,8 +153,6 @@ class InstallationPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIssues(): string
@@ -202,8 +160,6 @@ class InstallationPermissions extends \ArrayObject
         return $this->issues;
     }
     /**
-     * 
-     *
      * @param string $issues
      *
      * @return self
@@ -215,8 +171,6 @@ class InstallationPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getOrganizationAdministration(): string
@@ -224,8 +178,6 @@ class InstallationPermissions extends \ArrayObject
         return $this->organizationAdministration;
     }
     /**
-     * 
-     *
      * @param string $organizationAdministration
      *
      * @return self

@@ -19,13 +19,13 @@ class ListItemUpdateItem extends \ArrayObject
      */
     protected $content;
     /**
-    * Options to modify the behavior for updating the content.
-    Merge: the values specified in the Content object are merged to the existing content.
-    Replace: the values specified in the Content object entirely replace any existing content.
-    Defaults to Merge.
-    *
-    * @var mixed
-    */
+     * Options to modify the behavior for updating the content.
+     * Merge: the values specified in the Content object are merged to the existing content.
+     * Replace: the values specified in the Content object entirely replace any existing content.
+     * Defaults to Merge.
+     *
+     * @var mixed
+     */
     protected $contentFieldsUpdateOptions = 'Merge';
     /**
      * The list item id.
@@ -56,13 +56,13 @@ class ListItemUpdateItem extends \ArrayObject
         return $this;
     }
     /**
-    * Options to modify the behavior for updating the content.
-    Merge: the values specified in the Content object are merged to the existing content.
-    Replace: the values specified in the Content object entirely replace any existing content.
-    Defaults to Merge.
-    *
-    * @return mixed
-    */
+     * Options to modify the behavior for updating the content.
+     * Merge: the values specified in the Content object are merged to the existing content.
+     * Replace: the values specified in the Content object entirely replace any existing content.
+     * Defaults to Merge.
+     *
+     * @return mixed
+     */
     public function getContentFieldsUpdateOptions()
     {
         return $this->contentFieldsUpdateOptions;

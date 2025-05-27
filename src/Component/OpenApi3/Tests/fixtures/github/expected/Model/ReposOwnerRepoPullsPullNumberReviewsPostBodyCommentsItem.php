@@ -31,26 +31,18 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem extends \ArrayObj
      */
     protected $body;
     /**
-     * 
-     *
      * @var int
      */
     protected $line;
     /**
-     * 
-     *
      * @var string
      */
     protected $side;
     /**
-     * 
-     *
      * @var int
      */
     protected $startLine;
     /**
-     * 
-     *
      * @var string
      */
     protected $startSide;
@@ -121,8 +113,6 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem extends \ArrayObj
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getLine(): int
@@ -130,8 +120,6 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem extends \ArrayObj
         return $this->line;
     }
     /**
-     * 
-     *
      * @param int $line
      *
      * @return self
@@ -143,8 +131,6 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem extends \ArrayObj
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSide(): string
@@ -152,8 +138,6 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem extends \ArrayObj
         return $this->side;
     }
     /**
-     * 
-     *
      * @param string $side
      *
      * @return self
@@ -165,8 +149,6 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem extends \ArrayObj
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getStartLine(): int
@@ -174,8 +156,6 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem extends \ArrayObj
         return $this->startLine;
     }
     /**
-     * 
-     *
      * @param int $startLine
      *
      * @return self
@@ -187,8 +167,6 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem extends \ArrayObj
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStartSide(): string
@@ -196,8 +174,6 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem extends \ArrayObj
         return $this->startSide;
     }
     /**
-     * 
-     *
      * @param string $startSide
      *
      * @return self

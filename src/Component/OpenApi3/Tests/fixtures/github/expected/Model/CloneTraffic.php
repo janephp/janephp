@@ -13,26 +13,18 @@ class CloneTraffic extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $count;
     /**
-     * 
-     *
      * @var int
      */
     protected $uniques;
     /**
-     * 
-     *
      * @var list<Traffic>
      */
     protected $clones;
     /**
-     * 
-     *
      * @return int
      */
     public function getCount(): int
@@ -40,8 +32,6 @@ class CloneTraffic extends \ArrayObject
         return $this->count;
     }
     /**
-     * 
-     *
      * @param int $count
      *
      * @return self
@@ -53,8 +43,6 @@ class CloneTraffic extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getUniques(): int
@@ -62,8 +50,6 @@ class CloneTraffic extends \ArrayObject
         return $this->uniques;
     }
     /**
-     * 
-     *
      * @param int $uniques
      *
      * @return self
@@ -75,8 +61,6 @@ class CloneTraffic extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<Traffic>
      */
     public function getClones(): array
@@ -84,8 +68,6 @@ class CloneTraffic extends \ArrayObject
         return $this->clones;
     }
     /**
-     * 
-     *
      * @param list<Traffic> $clones
      *
      * @return self

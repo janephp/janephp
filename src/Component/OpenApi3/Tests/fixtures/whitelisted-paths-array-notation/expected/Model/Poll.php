@@ -19,26 +19,18 @@ class Poll extends \ArrayObject
      */
     protected $id;
     /**
-     * 
-     *
      * @var list<PollOption>
      */
     protected $options;
     /**
-     * 
-     *
      * @var string
      */
     protected $votingStatus;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $endDatetime;
     /**
-     * 
-     *
      * @var int
      */
     protected $durationMinutes;
@@ -65,8 +57,6 @@ class Poll extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<PollOption>
      */
     public function getOptions(): array
@@ -74,8 +64,6 @@ class Poll extends \ArrayObject
         return $this->options;
     }
     /**
-     * 
-     *
      * @param list<PollOption> $options
      *
      * @return self
@@ -87,8 +75,6 @@ class Poll extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getVotingStatus(): string
@@ -96,8 +82,6 @@ class Poll extends \ArrayObject
         return $this->votingStatus;
     }
     /**
-     * 
-     *
      * @param string $votingStatus
      *
      * @return self
@@ -109,8 +93,6 @@ class Poll extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getEndDatetime(): \DateTime
@@ -118,8 +100,6 @@ class Poll extends \ArrayObject
         return $this->endDatetime;
     }
     /**
-     * 
-     *
      * @param \DateTime $endDatetime
      *
      * @return self
@@ -131,8 +111,6 @@ class Poll extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getDurationMinutes(): int
@@ -140,8 +118,6 @@ class Poll extends \ArrayObject
         return $this->durationMinutes;
     }
     /**
-     * 
-     *
      * @param int $durationMinutes
      *
      * @return self

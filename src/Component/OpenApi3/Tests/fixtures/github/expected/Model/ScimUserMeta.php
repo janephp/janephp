@@ -13,32 +13,22 @@ class ScimUserMeta extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $resourceType;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $created;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $lastModified;
     /**
-     * 
-     *
      * @var string
      */
     protected $location;
     /**
-     * 
-     *
      * @return string
      */
     public function getResourceType(): string
@@ -46,8 +36,6 @@ class ScimUserMeta extends \ArrayObject
         return $this->resourceType;
     }
     /**
-     * 
-     *
      * @param string $resourceType
      *
      * @return self
@@ -59,8 +47,6 @@ class ScimUserMeta extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreated(): \DateTime
@@ -68,8 +54,6 @@ class ScimUserMeta extends \ArrayObject
         return $this->created;
     }
     /**
-     * 
-     *
      * @param \DateTime $created
      *
      * @return self
@@ -81,8 +65,6 @@ class ScimUserMeta extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getLastModified(): \DateTime
@@ -90,8 +72,6 @@ class ScimUserMeta extends \ArrayObject
         return $this->lastModified;
     }
     /**
-     * 
-     *
      * @param \DateTime $lastModified
      *
      * @return self
@@ -103,8 +83,6 @@ class ScimUserMeta extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLocation(): string
@@ -112,8 +90,6 @@ class ScimUserMeta extends \ArrayObject
         return $this->location;
     }
     /**
-     * 
-     *
      * @param string $location
      *
      * @return self

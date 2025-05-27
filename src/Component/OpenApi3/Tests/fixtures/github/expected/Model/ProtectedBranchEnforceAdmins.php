@@ -13,20 +13,14 @@ class ProtectedBranchEnforceAdmins
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var bool
      */
     protected $enabled;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -34,8 +28,6 @@ class ProtectedBranchEnforceAdmins
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -47,8 +39,6 @@ class ProtectedBranchEnforceAdmins
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getEnabled(): bool
@@ -56,8 +46,6 @@ class ProtectedBranchEnforceAdmins
         return $this->enabled;
     }
     /**
-     * 
-     *
      * @param bool $enabled
      *
      * @return self

@@ -6,7 +6,6 @@ class PeopleDirectorSearch extends \CreditSafe\API\Runtime\Client\BaseEndpoint i
 {
     /**
      * Endpoint to find Directors based on search criteria to order a Creditsafe Director Report.
-     *
      * @param array $queryParameters {
      *     @var string $countries A comma-separated list of countries to search for People with registered directorships against. The list takes ISO/Alpha 2 format country codes. For example US,GB represents searching for People/Directorships in the United States and Great Britain.
      *     @var string $id connectId - The primary Company identifier that is used to uniquely identify all companies across Creditsafe's Universe and Partner Network.

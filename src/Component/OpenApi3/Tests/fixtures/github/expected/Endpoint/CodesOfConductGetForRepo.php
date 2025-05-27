@@ -8,9 +8,8 @@ class CodesOfConductGetForRepo extends \Github\Runtime\Client\BaseEndpoint imple
     protected $repo;
     /**
      * This method returns the contents of the repository's code of conduct file, if one is detected.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      */
     public function __construct(string $owner, string $repo)
     {

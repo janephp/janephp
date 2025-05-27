@@ -13,50 +13,34 @@ class GistSimpleFilesItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $filename;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $language;
     /**
-     * 
-     *
      * @var string
      */
     protected $rawUrl;
     /**
-     * 
-     *
      * @var int
      */
     protected $size;
     /**
-     * 
-     *
      * @var bool
      */
     protected $truncated;
     /**
-     * 
-     *
      * @var string
      */
     protected $content;
     /**
-     * 
-     *
      * @return string
      */
     public function getFilename(): string
@@ -64,8 +48,6 @@ class GistSimpleFilesItem extends \ArrayObject
         return $this->filename;
     }
     /**
-     * 
-     *
      * @param string $filename
      *
      * @return self
@@ -77,8 +59,6 @@ class GistSimpleFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -86,8 +66,6 @@ class GistSimpleFilesItem extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -99,8 +77,6 @@ class GistSimpleFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLanguage(): string
@@ -108,8 +84,6 @@ class GistSimpleFilesItem extends \ArrayObject
         return $this->language;
     }
     /**
-     * 
-     *
      * @param string $language
      *
      * @return self
@@ -121,8 +95,6 @@ class GistSimpleFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRawUrl(): string
@@ -130,8 +102,6 @@ class GistSimpleFilesItem extends \ArrayObject
         return $this->rawUrl;
     }
     /**
-     * 
-     *
      * @param string $rawUrl
      *
      * @return self
@@ -143,8 +113,6 @@ class GistSimpleFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getSize(): int
@@ -152,8 +120,6 @@ class GistSimpleFilesItem extends \ArrayObject
         return $this->size;
     }
     /**
-     * 
-     *
      * @param int $size
      *
      * @return self
@@ -165,8 +131,6 @@ class GistSimpleFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getTruncated(): bool
@@ -174,8 +138,6 @@ class GistSimpleFilesItem extends \ArrayObject
         return $this->truncated;
     }
     /**
-     * 
-     *
      * @param bool $truncated
      *
      * @return self
@@ -187,8 +149,6 @@ class GistSimpleFilesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContent(): string
@@ -196,8 +156,6 @@ class GistSimpleFilesItem extends \ArrayObject
         return $this->content;
     }
     /**
-     * 
-     *
      * @param string $content
      *
      * @return self

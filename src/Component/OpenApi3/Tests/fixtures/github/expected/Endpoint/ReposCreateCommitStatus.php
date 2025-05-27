@@ -8,15 +8,14 @@ class ReposCreateCommitStatus extends \Github\Runtime\Client\BaseEndpoint implem
     protected $repo;
     protected $sha;
     /**
-    * Users with push access in a repository can create commit statuses for a given SHA.
-    
-    Note: there is a limit of 1000 statuses per `sha` and `context` within a repository. Attempts to create more than 1000 statuses will result in a validation error.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param string $sha sha parameter
-    * @param null|\Github\Model\ReposOwnerRepoStatusesShaPostBody $requestBody 
-    */
+     * Users with push access in a repository can create commit statuses for a given SHA.
+     *
+     * Note: there is a limit of 1000 statuses per `sha` and `context` within a repository. Attempts to create more than 1000 statuses will result in a validation error.
+     * @param string $owner
+     * @param string $repo
+     * @param string $sha sha parameter
+     * @param null|\Github\Model\ReposOwnerRepoStatusesShaPostBody $requestBody
+     */
     public function __construct(string $owner, string $repo, string $sha, ?\Github\Model\ReposOwnerRepoStatusesShaPostBody $requestBody = null)
     {
         $this->owner = $owner;

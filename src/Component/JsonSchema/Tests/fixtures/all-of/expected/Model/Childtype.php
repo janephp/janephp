@@ -13,20 +13,14 @@ class Childtype
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $childProperty;
     /**
-     * 
-     *
      * @var string
      */
     protected $inheritedProperty;
     /**
-     * 
-     *
      * @return string
      */
     public function getChildProperty(): string
@@ -34,8 +28,6 @@ class Childtype
         return $this->childProperty;
     }
     /**
-     * 
-     *
      * @param string $childProperty
      *
      * @return self
@@ -47,8 +39,6 @@ class Childtype
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getInheritedProperty(): string
@@ -56,8 +46,6 @@ class Childtype
         return $this->inheritedProperty;
     }
     /**
-     * 
-     *
      * @param string $inheritedProperty
      *
      * @return self
