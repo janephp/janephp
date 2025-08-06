@@ -32,7 +32,7 @@ class ReposAddStatusCheckContexts extends \Github\Runtime\Client\BaseEndpoint im
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if (is_array($this->body) and isset($this->body[0]) and is_array($this->body[0])) {
+        if (is_array($this->body)) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
         return [[], null];
