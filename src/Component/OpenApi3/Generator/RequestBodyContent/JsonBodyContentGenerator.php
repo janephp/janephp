@@ -6,7 +6,7 @@ use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\OpenApi3\JsonSchema\Model\MediaType;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
-use PhpParser\Node\Name;
+use PhpParser\Node;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
 
@@ -34,9 +34,14 @@ class JsonBodyContentGenerator extends AbstractBodyContentGenerator
                         new Scalar\String_('Content-Type')
                     ),
                 ]),
-                new Expr\FuncCall(new Name('json_encode'), [
-                    new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'body')),
-                ]),
+                new Expr\MethodCall(
+                    new Expr\Variable('serializer'),
+                    new Node\Identifier('serialize'),
+                    [
+                        new Node\Arg(new Expr\PropertyFetch(new Expr\Variable('this'), new Node\Identifier('body'))),
+                        new Node\Arg(new Scalar\String_('json')),
+                    ]
+                ),
             ]))];
         }
 
