@@ -16,7 +16,6 @@ class Client extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\Client
      * }
      * @param array $accept Accept content header application/json|application/problem+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     */
      *
      * @return null|\Jane\OpenApi3\Tests\Expected\Model\TweetLookupResponse|\Psr\Http\Message\ResponseInterface
      */
@@ -32,7 +31,6 @@ class Client extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\Client
      * }
      * @param array $accept Accept content header application/json|application/problem+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     */
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */

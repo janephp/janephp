@@ -16,7 +16,6 @@ class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
     /**
      * Updates the company setting the values of the parameters passed. Any parameters not provided will be left unchanged. Returns a company object and a 200 OK response code if the call succeeded.
      * @param \Jane\OpenApi2\Tests\Expected\Model\CompanyPatchBody $payload json payload
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Jane\OpenApi2\Tests\Expected\Model\Company|\Jane\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
@@ -36,7 +35,6 @@ class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
      *     @var int $page The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retrieve the next page of the list. (Default: 1)
      *     @var int $per_page The number of records to return per page. Can range between 1 and 100.  (Default: 100)
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Jane\OpenApi2\Tests\Expected\Model\Projects|\Jane\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
@@ -48,7 +46,6 @@ class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
     /**
      * Creates a new project object. Returns a project object and a 201 Created response code if the call succeeded.
      * @param \Jane\OpenApi2\Tests\Expected\Model\ProjectsPostBody $payload json payload
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Jane\OpenApi2\Tests\Expected\Model\Project|\Jane\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface

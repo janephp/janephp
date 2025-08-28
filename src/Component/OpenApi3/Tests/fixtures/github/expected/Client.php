@@ -14,7 +14,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
@@ -34,7 +33,6 @@ class Client extends \Github\Runtime\Client\Client
      * *   `repo` scope to create a private repository
      * @param string $org
      * @param null|\Github\Model\OrgsOrgReposPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreateInOrgForbiddenException
      * @throws \Github\Exception\ReposCreateInOrgUnprocessableEntityException
@@ -57,7 +55,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $branch branch+ parameter
      * @param null|array[] $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposRemoveTeamAccessRestrictionsUnprocessableEntityException
      *
@@ -74,7 +71,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetTeamsWithAccessToProtectedBranchNotFoundException
      *
@@ -96,7 +92,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $branch branch+ parameter
      * @param null|array[] $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposAddTeamAccessRestrictionsUnprocessableEntityException
      *
@@ -118,7 +113,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $branch branch+ parameter
      * @param null|array[] $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposSetTeamAccessRestrictionsUnprocessableEntityException
      *
@@ -135,7 +129,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $commitSha commit_sha+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListBranchesForHeadCommitUnsupportedMediaTypeException
      * @throws \Github\Exception\ReposListBranchesForHeadCommitUnprocessableEntityException
@@ -150,7 +143,6 @@ class Client extends \Github\Runtime\Client\Client
      * Get the top 10 popular contents over the last 14 days.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetTopPathsForbiddenException
      *
@@ -172,7 +164,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $deploymentId deployment_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposDeleteDeploymentNotFoundException
      * @throws \Github\Exception\ReposDeleteDeploymentUnprocessableEntityException
@@ -187,7 +178,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $deploymentId deployment_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetDeploymentNotFoundException
      *
@@ -201,7 +191,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $assetId asset_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -215,7 +204,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $assetId asset_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetReleaseAssetNotFoundException
      * @throws \Github\Exception\ReposGetReleaseAssetUnsupportedMediaTypeException
@@ -232,7 +220,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $assetId asset_id parameter
      * @param null|\Github\Model\ReposOwnerRepoReleasesAssetsAssetIdPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ReleaseAsset|\Psr\Http\Message\ResponseInterface
@@ -247,7 +234,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $branch branch+ parameter
      * @param null|array[] $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposRemoveStatusCheckContextsNotFoundException
      * @throws \Github\Exception\ReposRemoveStatusCheckContextsUnprocessableEntityException
@@ -263,7 +249,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetAllStatusCheckContextsNotFoundException
      *
@@ -279,7 +264,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $branch branch+ parameter
      * @param null|array[] $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposAddStatusCheckContextsUnprocessableEntityException
      * @throws \Github\Exception\ReposAddStatusCheckContextsForbiddenException
@@ -297,7 +281,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $branch branch+ parameter
      * @param null|array[] $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposSetStatusCheckContextsUnprocessableEntityException
      * @throws \Github\Exception\ReposSetStatusCheckContextsNotFoundException
@@ -320,7 +303,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $path path+ parameter
      * @param null|\Github\Model\ReposOwnerRepoContentsPathDeleteBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposDeleteFileUnprocessableEntityException
      * @throws \Github\Exception\ReposDeleteFileNotFoundException
@@ -374,7 +356,6 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param array $accept Accept content header application/vnd.github.v3.object|application/json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     */
      * @throws \Github\Exception\ReposGetContentNotFoundException
      * @throws \Github\Exception\ReposGetContentForbiddenException
      *
@@ -390,7 +371,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $path path+ parameter
      * @param null|\Github\Model\ReposOwnerRepoContentsPathPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreateOrUpdateFileContentsNotFoundException
      * @throws \Github\Exception\ReposCreateOrUpdateFileContentsUnprocessableEntityException
@@ -405,7 +385,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetAllTopicsUnsupportedMediaTypeException
      * @throws \Github\Exception\ReposGetAllTopicsNotFoundException
@@ -420,7 +399,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoTopicsPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposReplaceAllTopicsUnsupportedMediaTypeException
      * @throws \Github\Exception\ReposReplaceAllTopicsNotFoundException
@@ -436,7 +414,6 @@ class Client extends \Github\Runtime\Client\Client
      * Disables dependency alerts and the dependency graph for a repository. The authenticated user must have admin access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://help.github.com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -449,7 +426,6 @@ class Client extends \Github\Runtime\Client\Client
      * Shows whether dependency alerts are enabled or disabled for a repository. The authenticated user must have admin access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://help.github.com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCheckVulnerabilityAlertsNotFoundException
      *
@@ -463,7 +439,6 @@ class Client extends \Github\Runtime\Client\Client
      * Enables dependency alerts and the dependency graph for a repository. The authenticated user must have admin access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://help.github.com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -484,7 +459,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Deployment[]|\Psr\Http\Message\ResponseInterface
@@ -542,7 +516,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoDeploymentsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreateDeploymentConflictException
      * @throws \Github\Exception\ReposCreateDeploymentUnprocessableEntityException
@@ -557,7 +530,6 @@ class Client extends \Github\Runtime\Client\Client
      * This endpoint will return all community profile metrics, including an overall health score, repository description, the presence of documentation, detected code of conduct, detected license, and the presence of ISSUE\_TEMPLATE, PULL\_REQUEST\_TEMPLATE, README, and CONTRIBUTING files.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\CommunityProfile|\Psr\Http\Message\ResponseInterface
@@ -569,7 +541,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposDeletePagesSiteUnprocessableEntityException
      * @throws \Github\Exception\ReposDeletePagesSiteUnsupportedMediaTypeException
@@ -584,7 +555,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetPagesNotFoundException
      *
@@ -598,7 +568,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoPagesPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreatePagesSiteUnprocessableEntityException
      * @throws \Github\Exception\ReposCreatePagesSiteUnsupportedMediaTypeException
@@ -616,7 +585,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoPagesPutBody $requestBody
      * @param array $accept Accept content header application/json|application/scim+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     */
      * @throws \Github\Exception\ReposUpdateInformationAboutPagesSiteUnprocessableEntityException
      * @throws \Github\Exception\ReposUpdateInformationAboutPagesSiteBadRequestException
      *
@@ -631,7 +599,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposDeletePullRequestReviewProtectionNotFoundException
      *
@@ -646,7 +613,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ProtectedBranchPullRequestReview|\Psr\Http\Message\ResponseInterface
@@ -665,7 +631,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $branch branch+ parameter
      * @param null|\Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposUpdatePullRequestReviewProtectionUnprocessableEntityException
      *
@@ -679,7 +644,6 @@ class Client extends \Github\Runtime\Client\Client
      * Get the top 10 referrers over the last 14 days.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetTopReferrersForbiddenException
      *
@@ -700,7 +664,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Status[]|\Psr\Http\Message\ResponseInterface
@@ -747,7 +710,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $base base parameter
      * @param string $head head parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCompareCommitsInternalServerErrorException
      * @throws \Github\Exception\ReposCompareCommitsNotFoundException
@@ -767,7 +729,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListPullRequestsAssociatedWithCommitUnsupportedMediaTypeException
      *
@@ -784,7 +745,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposDeleteAdminBranchProtectionNotFoundException
      *
@@ -799,7 +759,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ProtectedBranchAdminEnforced|\Psr\Http\Message\ResponseInterface
@@ -815,7 +774,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ProtectedBranchAdminEnforced|\Psr\Http\Message\ResponseInterface
@@ -830,7 +788,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $deploymentId deployment_id parameter
      * @param int $statusId status_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetDeploymentStatusNotFoundException
      * @throws \Github\Exception\ReposGetDeploymentStatusUnsupportedMediaTypeException
@@ -845,7 +802,6 @@ class Client extends \Github\Runtime\Client\Client
      * Disables automated security fixes for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring automated security fixes](https://help.github.com/en/articles/configuring-automated-security-fixes)".
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -858,7 +814,6 @@ class Client extends \Github\Runtime\Client\Client
      * Enables automated security fixes for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring automated security fixes](https://help.github.com/en/articles/configuring-automated-security-fixes)".
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -874,7 +829,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposDeleteCommitSignatureProtectionNotFoundException
      *
@@ -893,7 +847,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetCommitSignatureProtectionNotFoundException
      *
@@ -910,7 +863,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreateCommitSignatureProtectionNotFoundException
      *
@@ -932,7 +884,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $branch branch+ parameter
      * @param null|array[] $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposRemoveUserAccessRestrictionsUnprocessableEntityException
      *
@@ -949,7 +900,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetUsersWithAccessToProtectedBranchNotFoundException
      *
@@ -971,7 +921,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $branch branch+ parameter
      * @param null|array[] $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposAddUserAccessRestrictionsUnprocessableEntityException
      *
@@ -993,7 +942,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $branch branch+ parameter
      * @param null|array[] $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposSetUserAccessRestrictionsUnprocessableEntityException
      *
@@ -1012,7 +960,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
      *     @var string $visibility
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListPublicUnprocessableEntityException
      *
@@ -1030,7 +977,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListBranchesNotFoundException
      *
@@ -1046,7 +992,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListInvitationsForAuthenticatedUserNotFoundException
      * @throws \Github\Exception\ReposListInvitationsForAuthenticatedUserForbiddenException
@@ -1062,7 +1007,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetBranchUnsupportedMediaTypeException
      * @throws \Github\Exception\ReposGetBranchNotFoundException
@@ -1080,7 +1024,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\DeployKey[]|\Psr\Http\Message\ResponseInterface
@@ -1094,7 +1037,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoKeysPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreateDeployKeyUnprocessableEntityException
      *
@@ -1108,7 +1050,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $buildId build_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\PageBuild|\Psr\Http\Message\ResponseInterface
@@ -1124,7 +1065,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var string $per Must be one of: `day`, `week`.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetClonesForbiddenException
      *
@@ -1138,7 +1078,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $hookId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposDeleteWebhookNotFoundException
      *
@@ -1152,7 +1091,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $hookId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetWebhookNotFoundException
      *
@@ -1167,7 +1105,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $hookId
      * @param null|\Github\Model\ReposOwnerRepoHooksHookIdPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposUpdateWebhookUnprocessableEntityException
      * @throws \Github\Exception\ReposUpdateWebhookNotFoundException
@@ -1188,7 +1125,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListReleasesNotFoundException
      *
@@ -1205,7 +1141,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoReleasesPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreateReleaseUnprocessableEntityException
      *
@@ -1227,7 +1162,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $templateOwner template_owner parameter
      * @param string $templateRepo template_repo parameter
      * @param null|\Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Repository|\Psr\Http\Message\ResponseInterface
@@ -1246,7 +1180,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
@@ -1260,7 +1193,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1274,7 +1206,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetStatusChecksProtectionNotFoundException
      *
@@ -1292,7 +1223,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $branch branch+ parameter
      * @param null|\Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposUpdateStatusCheckProtectionNotFoundException
      * @throws \Github\Exception\ReposUpdateStatusCheckProtectionUnprocessableEntityException
@@ -1310,7 +1240,6 @@ class Client extends \Github\Runtime\Client\Client
      * repositories, you will get a `403 Forbidden` response.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposDeleteForbiddenException
      * @throws \Github\Exception\ReposDeleteNotFoundException
@@ -1327,7 +1256,6 @@ class Client extends \Github\Runtime\Client\Client
      * The `parent` and `source` objects are present when the repository is a fork. `parent` is the repository this repository was forked from, `source` is the ultimate source for the network.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetForbiddenException
      * @throws \Github\Exception\ReposGetNotFoundException
@@ -1343,7 +1271,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposUpdateForbiddenException
      * @throws \Github\Exception\ReposUpdateUnprocessableEntityException
@@ -1362,7 +1289,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1380,7 +1306,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetAccessRestrictionsNotFoundException
      *
@@ -1395,7 +1320,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $keyId key_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1408,7 +1332,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $keyId key_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetDeployKeyNotFoundException
      *
@@ -1423,7 +1346,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $releaseId release_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1437,7 +1359,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $releaseId release_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetReleaseNotFoundException
      *
@@ -1453,7 +1374,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $releaseId release_id parameter
      * @param null|\Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Release|\Psr\Http\Message\ResponseInterface
@@ -1467,7 +1387,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposDeleteBranchProtectionForbiddenException
      *
@@ -1482,7 +1401,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetBranchProtectionNotFoundException
      *
@@ -1504,7 +1422,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $branch branch+ parameter
      * @param null|\Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposUpdateBranchProtectionForbiddenException
      * @throws \Github\Exception\ReposUpdateBranchProtectionUnsupportedMediaTypeException
@@ -1525,7 +1442,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\RepositoryInvitation[]|\Psr\Http\Message\ResponseInterface
@@ -1536,7 +1452,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param int $invitationId invitation_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposDeclineInvitationConflictException
      * @throws \Github\Exception\ReposDeclineInvitationNotFoundException
@@ -1550,7 +1465,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param int $invitationId invitation_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposAcceptInvitationForbiddenException
      * @throws \Github\Exception\ReposAcceptInvitationConflictException
@@ -1567,7 +1481,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $hookId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposPingWebhookNotFoundException
      *
@@ -1584,7 +1497,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Tag[]|\Psr\Http\Message\ResponseInterface
@@ -1600,7 +1512,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
@@ -1613,7 +1524,6 @@ class Client extends \Github\Runtime\Client\Client
      * Returns the last year of commit activity grouped by week. The `days` array is a group of commits per day, starting on `Sunday`.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\CommitActivity[]|\Psr\Http\Message\ResponseInterface
@@ -1626,7 +1536,6 @@ class Client extends \Github\Runtime\Client\Client
      * Lists languages for the specified repository. The value shown for each language is the number of bytes of code written in that language.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1646,7 +1555,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoDispatchesPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreateDispatchEventUnprocessableEntityException
      *
@@ -1666,7 +1574,6 @@ class Client extends \Github\Runtime\Client\Client
      * For example, `[2, 14, 25]` indicates that there were 25 total commits, during the 2:00pm hour on Tuesdays. All times are based on the time zone of individual commits.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1680,7 +1587,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoTransferPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Repository|\Psr\Http\Message\ResponseInterface
@@ -1709,7 +1615,7 @@ class Client extends \Github\Runtime\Client\Client
     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
     *     @var string $before Only show notifications updated before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
     * }
-    */
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposListForAuthenticatedUserIAmATeapotException
     * @throws \Github\Exception\ReposListForAuthenticatedUserUnprocessableEntityException
@@ -1734,7 +1640,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\UserReposPostBody $requestBody
      * @param array $accept Accept content header application/json|application/scim+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     */
      * @throws \Github\Exception\ReposCreateForAuthenticatedUserUnauthorizedException
      * @throws \Github\Exception\ReposCreateForAuthenticatedUserNotFoundException
      * @throws \Github\Exception\ReposCreateForAuthenticatedUserForbiddenException
@@ -1754,7 +1659,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\PageBuild[]|\Psr\Http\Message\ResponseInterface
@@ -1769,7 +1673,6 @@ class Client extends \Github\Runtime\Client\Client
      * Build requests are limited to one concurrent build per repository and one concurrent build per requester. If you request a build while another is still in progress, the second request will be queued until the first completes.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\PageBuildStatus|\Psr\Http\Message\ResponseInterface
@@ -1782,7 +1685,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -1798,7 +1700,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCheckCollaboratorNotFoundException
      *
@@ -1824,7 +1725,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $username
      * @param null|\Github\Model\ReposOwnerRepoCollaboratorsUsernamePutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposAddCollaboratorUnprocessableEntityException
      * @throws \Github\Exception\ReposAddCollaboratorForbiddenException
@@ -1845,7 +1745,6 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param array $accept Accept content header application/json|application/scim+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     */
      * @throws \Github\Exception\ReposListForksBadRequestException
      *
      * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
@@ -1863,7 +1762,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoForksPostBody $requestBody
      * @param array $accept Accept content header application/json|application/scim+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     */
      * @throws \Github\Exception\ReposCreateForkBadRequestException
      * @throws \Github\Exception\ReposCreateForkUnprocessableEntityException
      * @throws \Github\Exception\ReposCreateForkForbiddenException
@@ -1882,7 +1780,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var string $per Must be one of: `day`, `week`.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetViewsForbiddenException
      *
@@ -1900,7 +1797,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ReleaseAsset[]|\Psr\Http\Message\ResponseInterface
@@ -1936,7 +1832,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var string $name name parameter
      *     @var string $label label parameter
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ReleaseAsset|\Psr\Http\Message\ResponseInterface
@@ -1949,7 +1844,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $commentId comment_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposDeleteCommitCommentNotFoundException
      *
@@ -1963,7 +1857,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $commentId comment_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetCommitCommentNotFoundException
      *
@@ -1978,7 +1871,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $commentId comment_id parameter
      * @param null|\Github\Model\ReposOwnerRepoCommentsCommentIdPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposUpdateCommitCommentNotFoundException
      *
@@ -1995,7 +1887,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $hookId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposTestPushWebhookNotFoundException
      *
@@ -2012,7 +1903,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListWebhooksNotFoundException
      *
@@ -2028,7 +1918,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoHooksPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreateWebhookNotFoundException
      * @throws \Github\Exception\ReposCreateWebhookUnprocessableEntityException
@@ -2043,7 +1932,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\PageBuild|\Psr\Http\Message\ResponseInterface
@@ -2061,7 +1949,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\CommitComment[]|\Psr\Http\Message\ResponseInterface
@@ -2078,7 +1965,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $commitSha commit_sha+ parameter
      * @param null|\Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreateCommitCommentForbiddenException
      * @throws \Github\Exception\ReposCreateCommitCommentUnprocessableEntityException
@@ -2095,7 +1981,6 @@ class Client extends \Github\Runtime\Client\Client
      * The array order is oldest week (index 0) to most recent week.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetParticipationStatsNotFoundException
      *
@@ -2140,7 +2025,6 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param array $accept Accept content header application/json|application/scim+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     */
      * @throws \Github\Exception\ReposListCommitsInternalServerErrorException
      * @throws \Github\Exception\ReposListCommitsBadRequestException
      * @throws \Github\Exception\ReposListCommitsNotFoundException
@@ -2164,7 +2048,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $branch branch+ parameter
      * @param null|array[] $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposRemoveAppAccessRestrictionsUnprocessableEntityException
      *
@@ -2181,7 +2064,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $branch branch+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetAppsWithAccessToProtectedBranchNotFoundException
      *
@@ -2203,7 +2085,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $branch branch+ parameter
      * @param null|array[] $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposAddAppAccessRestrictionsUnprocessableEntityException
      *
@@ -2225,7 +2106,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $branch branch+ parameter
      * @param null|array[] $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposSetAppAccessRestrictionsUnprocessableEntityException
      *
@@ -2240,7 +2120,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $tag tag+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetReleaseByTagNotFoundException
      *
@@ -2258,7 +2137,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $ref ref parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -2271,7 +2149,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $invitationId invitation_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -2285,7 +2162,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $invitationId invitation_id parameter
      * @param null|\Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\RepositoryInvitation|\Psr\Http\Message\ResponseInterface
@@ -2307,7 +2183,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $ref ref+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetCombinedStatusForRefNotFoundException
      *
@@ -2325,7 +2200,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $sha sha parameter
      * @param null|\Github\Model\ReposOwnerRepoStatusesShaPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Status|\Psr\Http\Message\ResponseInterface
@@ -2343,7 +2217,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListDeploymentStatusesNotFoundException
      *
@@ -2361,7 +2234,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $deploymentId deployment_id parameter
      * @param null|\Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreateDeploymentStatusUnprocessableEntityException
      *
@@ -2379,7 +2251,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $ref ref parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -2398,7 +2269,6 @@ class Client extends \Github\Runtime\Client\Client
      * *   `c` - Number of commits
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ContributorActivity[]|\Psr\Http\Message\ResponseInterface
@@ -2416,7 +2286,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var string $ref The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`)
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetReadmeNotFoundException
      * @throws \Github\Exception\ReposGetReadmeUnprocessableEntityException
@@ -2437,7 +2306,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\CommitComment[]|\Psr\Http\Message\ResponseInterface
@@ -2477,7 +2345,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $ref ref+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetCommitUnprocessableEntityException
      * @throws \Github\Exception\ReposGetCommitNotFoundException
@@ -2495,7 +2362,6 @@ class Client extends \Github\Runtime\Client\Client
      * The latest release is the most recent non-prerelease, non-draft release, sorted by the `created_at` attribute. The `created_at` attribute is the date of the commit used for the release, and not the date when the release was drafted or published.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Release|\Psr\Http\Message\ResponseInterface
@@ -2508,7 +2374,6 @@ class Client extends \Github\Runtime\Client\Client
      * Returns a weekly aggregate of the number of additions and deletions pushed to a repository.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -2528,7 +2393,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListContributorsForbiddenException
      * @throws \Github\Exception\ReposListContributorsNotFoundException
@@ -2553,7 +2417,7 @@ class Client extends \Github\Runtime\Client\Client
     *     @var int $per_page Results per page (max 100)
     *     @var int $page Page number of the results to fetch.
     * }
-    */
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposListCollaboratorsNotFoundException
     *
@@ -2567,7 +2431,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoMergesPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposMergeNotFoundException
      * @throws \Github\Exception\ReposMergeConflictException
@@ -2585,7 +2448,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetCollaboratorPermissionLevelNotFoundException
      *
@@ -2600,7 +2462,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $scimUserId scim_user_id parameter
      * @param array $accept Accept content header application/json|application/scim+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     */
      * @throws \Github\Exception\ScimDeleteUserFromOrgNotFoundException
      * @throws \Github\Exception\ScimDeleteUserFromOrgForbiddenException
      *
@@ -2615,7 +2476,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $scimUserId scim_user_id parameter
      * @param array $accept Accept content header application/scim+json|application/json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     */
      * @throws \Github\Exception\ScimGetProvisioningInformationForUserNotFoundException
      * @throws \Github\Exception\ScimGetProvisioningInformationForUserForbiddenException
      *
@@ -2647,7 +2507,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody
      * @param array $accept Accept content header application/scim+json|application/json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     */
      * @throws \Github\Exception\ScimUpdateAttributeForUserNotFoundException
      * @throws \Github\Exception\ScimUpdateAttributeForUserForbiddenException
      * @throws \Github\Exception\ScimUpdateAttributeForUserBadRequestException
@@ -2670,7 +2529,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody
      * @param array $accept Accept content header application/scim+json|application/json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     */
      * @throws \Github\Exception\ScimSetInformationForProvisionedUserNotFoundException
      * @throws \Github\Exception\ScimSetInformationForProvisionedUserForbiddenException
      *
@@ -2711,7 +2569,7 @@ class Client extends \Github\Runtime\Client\Client
     * }
     * @param array $accept Accept content header application/scim+json|application/json
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    */
+    
     * @throws \Github\Exception\ScimListProvisionedIdentitiesNotFoundException
     * @throws \Github\Exception\ScimListProvisionedIdentitiesForbiddenException
     * @throws \Github\Exception\ScimListProvisionedIdentitiesBadRequestException
@@ -2728,7 +2586,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody
      * @param array $accept Accept content header application/scim+json|application/json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     */
      * @throws \Github\Exception\ScimProvisionAndInviteUserNotFoundException
      * @throws \Github\Exception\ScimProvisionAndInviteUserForbiddenException
      * @throws \Github\Exception\ScimProvisionAndInviteUserInternalServerErrorException
@@ -2748,7 +2605,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Migration[]|\Psr\Http\Message\ResponseInterface
@@ -2761,7 +2617,6 @@ class Client extends \Github\Runtime\Client\Client
      * Initiates the generation of a migration archive.
      * @param string $org
      * @param null|\Github\Model\OrgsOrgMigrationsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsStartForOrgNotFoundException
      * @throws \Github\Exception\MigrationsStartForOrgUnprocessableEntityException
@@ -2785,7 +2640,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var array $exclude
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsGetStatusForAuthenticatedUserNotFoundException
      * @throws \Github\Exception\MigrationsGetStatusForAuthenticatedUserForbiddenException
@@ -2801,7 +2655,6 @@ class Client extends \Github\Runtime\Client\Client
      * List files larger than 100MB found during the import
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\PorterLargeFile[]|\Psr\Http\Message\ResponseInterface
@@ -2815,7 +2668,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param int $migrationId migration_id parameter
      * @param string $repoName repo_name parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsUnlockRepoForOrgNotFoundException
      *
@@ -2829,7 +2681,6 @@ class Client extends \Github\Runtime\Client\Client
      * Unlocks a repository. You can lock repositories when you [start a user migration](https://developer.github.com/v3/migrations/users/#start-a-user-migration). Once the migration is complete you can unlock each repository to begin using it again or [delete the repository](https://developer.github.com/v3/repos/#delete-a-repository) if you no longer need the source data. Returns a status of `404 Not Found` if the repository is not locked.
      * @param int $migrationId migration_id parameter
      * @param string $repoName repo_name parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsUnlockRepoForAuthenticatedUserNotFoundException
      * @throws \Github\Exception\MigrationsUnlockRepoForAuthenticatedUserForbiddenException
@@ -2845,7 +2696,6 @@ class Client extends \Github\Runtime\Client\Client
      * Stop an import for a repository.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -2891,7 +2741,6 @@ class Client extends \Github\Runtime\Client\Client
      * *   `large_files_count` - the total number of files larger than 100MB found in the originating repository. To see a list of these files, make a "Get Large Files" request.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsGetImportStatusNotFoundException
      *
@@ -2907,7 +2756,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoImportPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Import|\Psr\Http\Message\ResponseInterface
@@ -2921,7 +2769,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoImportPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsStartImportUnprocessableEntityException
      * @throws \Github\Exception\MigrationsStartImportNotFoundException
@@ -2939,7 +2786,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsListReposForUserNotFoundException
      *
@@ -2957,7 +2803,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsListReposForOrgNotFoundException
      *
@@ -2973,7 +2818,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsListForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\MigrationsListForAuthenticatedUserUnauthorizedException
@@ -2987,7 +2831,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Initiates the generation of a user migration archive.
      * @param null|\Github\Model\UserMigrationsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsStartForAuthenticatedUserUnprocessableEntityException
      * @throws \Github\Exception\MigrationsStartForAuthenticatedUserForbiddenException
@@ -3003,7 +2846,6 @@ class Client extends \Github\Runtime\Client\Client
      * Deletes a previous migration archive. Migration archives are automatically deleted after seven days.
      * @param string $org
      * @param int $migrationId migration_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsDeleteArchiveForOrgNotFoundException
      *
@@ -3017,7 +2859,6 @@ class Client extends \Github\Runtime\Client\Client
      * Fetches the URL to a migration archive.
      * @param string $org
      * @param int $migrationId migration_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsDownloadArchiveForOrgNotFoundException
      *
@@ -3038,7 +2879,6 @@ class Client extends \Github\Runtime\Client\Client
      * *   `failed`, which means the migration failed.
      * @param string $org
      * @param int $migrationId migration_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsGetStatusForOrgNotFoundException
      *
@@ -3051,7 +2891,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Deletes a previous migration archive. Downloadable migration archives are automatically deleted after seven days. Migration metadata, which is returned in the [List user migrations](https://developer.github.com/v3/migrations/users/#list-user-migrations) and [Get a user migration status](https://developer.github.com/v3/migrations/users/#get-a-user-migration-status) endpoints, will continue to be available even after an archive is deleted.
      * @param int $migrationId migration_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsDeleteArchiveForAuthenticatedUserNotFoundException
      * @throws \Github\Exception\MigrationsDeleteArchiveForAuthenticatedUserForbiddenException
@@ -3086,7 +2925,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * The archive will also contain an `attachments` directory that includes all attachment files uploaded to GitHub.com and a `repositories` directory that contains the repository's Git data.
      * @param int $migrationId migration_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsGetArchiveForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\MigrationsGetArchiveForAuthenticatedUserUnauthorizedException
@@ -3103,7 +2941,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $authorId author_id parameter
      * @param null|\Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsMapCommitAuthorUnprocessableEntityException
      * @throws \Github\Exception\MigrationsMapCommitAuthorNotFoundException
@@ -3123,7 +2960,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsGetCommitAuthorsNotFoundException
      *
@@ -3138,7 +2974,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoImportLfsPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsSetLfsPreferenceUnprocessableEntityException
      *
@@ -3152,7 +2987,6 @@ class Client extends \Github\Runtime\Client\Client
      * Removes all interaction restrictions from the given repository. You must have owner or admin access to remove restrictions.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -3165,7 +2999,6 @@ class Client extends \Github\Runtime\Client\Client
      * Shows which group of GitHub users can interact with this repository and when the restriction expires. If there are no restrictions, you will see an empty response.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\InteractionLimit|\Psr\Http\Message\ResponseInterface
@@ -3179,7 +3012,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoInteractionLimitsPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\InteractionLimit|\Psr\Http\Message\ResponseInterface
@@ -3191,7 +3023,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Removes all interaction restrictions from public repositories in the given organization. You must be an organization owner to remove restrictions.
      * @param string $org
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -3203,7 +3034,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Shows which group of GitHub users can interact with this organization and when the restriction expires. If there are no restrictions, you will see an empty response.
      * @param string $org
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\InteractionLimit|\Psr\Http\Message\ResponseInterface
@@ -3216,7 +3046,6 @@ class Client extends \Github\Runtime\Client\Client
      * Temporarily restricts interactions to certain GitHub users in any public repository in the given organization. You must be an organization owner to set these restrictions.
      * @param string $org
      * @param null|\Github\Model\OrgsOrgInteractionLimitsPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\InteractionsSetRestrictionsForOrgUnprocessableEntityException
      *
@@ -3232,7 +3061,6 @@ class Client extends \Github\Runtime\Client\Client
      * Similar to [Get repository content](https://developer.github.com/v3/repos/contents/#get-repository-content), this method also supports [custom media types](https://developer.github.com/v3/repos/contents/#custom-media-types) for retrieving the raw license content or rendered license HTML.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\LicenseContent|\Psr\Http\Message\ResponseInterface
@@ -3243,7 +3071,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param string $license license parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\LicensesGetForbiddenException
      * @throws \Github\Exception\LicensesGetNotFoundException
@@ -3259,7 +3086,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var bool $featured
      *     @var int $per_page Results per page (max 100)
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\LicenseSimple[]|\Psr\Http\Message\ResponseInterface
@@ -3272,7 +3098,6 @@ class Client extends \Github\Runtime\Client\Client
      * This endpoint should only be used to stop watching a repository. To control whether or not you wish to receive notifications from a repository, [set the repository's subscription manually](https://developer.github.com/v3/activity/watching/#set-a-repository-subscription).
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -3284,7 +3109,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityGetRepoSubscriptionNotFoundException
      * @throws \Github\Exception\ActivityGetRepoSubscriptionForbiddenException
@@ -3300,7 +3124,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoSubscriptionPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\RepositorySubscription|\Psr\Http\Message\ResponseInterface
@@ -3316,7 +3139,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityListPublicEventsForRepoNetworkNotFoundException
      * @throws \Github\Exception\ActivityListPublicEventsForRepoNetworkForbiddenException
@@ -3334,7 +3156,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
@@ -3349,7 +3170,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityListPublicEventsForbiddenException
      * @throws \Github\Exception\ActivityListPublicEventsServiceUnavailableException
@@ -3363,7 +3183,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityUnstarRepoForAuthenticatedUserNotFoundException
      * @throws \Github\Exception\ActivityUnstarRepoForAuthenticatedUserUnauthorizedException
@@ -3378,7 +3197,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityCheckRepoIsStarredByAuthenticatedUserNotFoundException
      * @throws \Github\Exception\ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorizedException
@@ -3394,7 +3212,6 @@ class Client extends \Github\Runtime\Client\Client
      * Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://developer.github.com/v3/#http-verbs)."
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityStarRepoForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\ActivityStarRepoForAuthenticatedUserNotFoundException
@@ -3412,7 +3229,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
@@ -3433,7 +3249,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Thread[]|\Psr\Http\Message\ResponseInterface
@@ -3447,7 +3262,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoNotificationsPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -3464,7 +3278,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
@@ -3481,7 +3294,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
@@ -3496,7 +3308,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
@@ -3521,7 +3332,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
@@ -3543,7 +3353,6 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     */
      *
      * @return null|\Github\Model\Repository[]|\Github\Model\StarredRepository[]|\Psr\Http\Message\ResponseInterface
      */
@@ -3558,7 +3367,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
@@ -3569,7 +3377,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param int $threadId thread_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityGetThreadForbiddenException
      * @throws \Github\Exception\ActivityGetThreadUnauthorizedException
@@ -3582,7 +3389,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param int $threadId thread_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityMarkThreadAsReadForbiddenException
      *
@@ -3595,7 +3401,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Mutes all future notifications for a conversation until you comment on the thread or get an **@mention**. If you are watching the repository of the thread, you will still receive notifications. To ignore future notifications for a repository you are watching, use the [Set a thread subscription](https://developer.github.com/v3/activity/notifications/#set-a-thread-subscription) endpoint and set `ignore` to `true`.
      * @param int $threadId thread_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityDeleteThreadSubscriptionForbiddenException
      * @throws \Github\Exception\ActivityDeleteThreadSubscriptionUnauthorizedException
@@ -3611,7 +3416,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * Note that subscriptions are only generated if a user is participating in a conversation--for example, they've replied to the thread, were **@mentioned**, or manually subscribe to a thread.
      * @param int $threadId thread_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityGetThreadSubscriptionForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorizedException
@@ -3630,7 +3434,6 @@ class Client extends \Github\Runtime\Client\Client
      * Unsubscribing from a conversation in a repository that you are not watching is functionally equivalent to the [Delete a thread subscription](https://developer.github.com/v3/activity/notifications/#delete-a-thread-subscription) endpoint.
      * @param int $threadId thread_id parameter
      * @param null|\Github\Model\NotificationsThreadsThreadIdSubscriptionPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivitySetThreadSubscriptionForbiddenException
      * @throws \Github\Exception\ActivitySetThreadSubscriptionUnauthorizedException
@@ -3648,7 +3451,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
@@ -3667,7 +3469,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityListNotificationsForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\ActivityListNotificationsForAuthenticatedUserUnauthorizedException
@@ -3682,7 +3483,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Marks all notifications as "read" removes it from the [default view on GitHub](https://github.com/notifications). If the number of notifications is too large to complete in one request, you will receive a `202 Accepted` status and GitHub will run an asynchronous process to mark notifications as "read." To check whether any "unread" notifications remain, you can use the [List notifications for the authenticated user](https://developer.github.com/v3/activity/notifications/#list-notifications-for-the-authenticated-user) endpoint and pass the query parameter `all=false`.
      * @param null|\Github\Model\NotificationsPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityMarkNotificationsAsReadForbiddenException
      * @throws \Github\Exception\ActivityMarkNotificationsAsReadUnauthorizedException
@@ -3699,7 +3499,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityListWatchedReposForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\ActivityListWatchedReposForAuthenticatedUserUnauthorizedException
@@ -3722,7 +3521,6 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     */
      * @throws \Github\Exception\ActivityListReposStarredByAuthenticatedUserForbiddenException
      * @throws \Github\Exception\ActivityListReposStarredByAuthenticatedUserUnauthorizedException
      *
@@ -3744,7 +3542,6 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     */
      * @throws \Github\Exception\ActivityListStargazersForRepoUnprocessableEntityException
      *
      * @return null|\Github\Model\SimpleUser[]|\Github\Model\Stargazer[]|\Psr\Http\Message\ResponseInterface
@@ -3759,7 +3556,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
@@ -3777,7 +3573,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\CheckAnnotation[]|\Psr\Http\Message\ResponseInterface
@@ -3799,7 +3594,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ReposOwnerRepoCommitsRefCheckSuitesGetResponse200|\Psr\Http\Message\ResponseInterface
@@ -3822,7 +3616,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ReposOwnerRepoCommitsRefCheckRunsGetResponse200|\Psr\Http\Message\ResponseInterface
@@ -3845,7 +3638,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200|\Psr\Http\Message\ResponseInterface
@@ -3861,7 +3653,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $checkRunId check_run_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\CheckRun|\Psr\Http\Message\ResponseInterface
@@ -3878,7 +3669,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $checkRunId check_run_id parameter
      * @param null|\Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\CheckRun|\Psr\Http\Message\ResponseInterface
@@ -3894,7 +3684,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoCheckSuitesPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\CheckSuite|\Psr\Http\Message\ResponseInterface
@@ -3910,7 +3699,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $checkSuiteId check_suite_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -3924,7 +3712,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\CheckSuitePreference|\Psr\Http\Message\ResponseInterface
@@ -3940,7 +3727,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoCheckRunsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\CheckRun|\Psr\Http\Message\ResponseInterface
@@ -3956,7 +3742,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $checkSuiteId check_suite_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\CheckSuite|\Psr\Http\Message\ResponseInterface
@@ -3967,7 +3752,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param null|\Github\Model\MarkdownPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -3979,7 +3763,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * You must send Markdown as plain text (using a `Content-Type` header of `text/plain` or `text/x-markdown`) to this endpoint, rather than using JSON format. In raw mode, [GitHub Flavored Markdown](https://github.github.com/gfm/) is not supported and Markdown will be rendered in plain format like a README.md file. Markdown content must be 400 KB or less.
      * @param null|string $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -3996,7 +3779,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsListForOrgUnprocessableEntityException
      *
@@ -4010,7 +3792,6 @@ class Client extends \Github\Runtime\Client\Client
      * Creates an organization project board. Returns a `404 Not Found` status if projects are disabled in the organization. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
      * @param string $org
      * @param null|\Github\Model\OrgsOrgProjectsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsCreateForOrgUnauthorizedException
      * @throws \Github\Exception\ProjectsCreateForOrgForbiddenException
@@ -4027,7 +3808,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param int $columnId column_id parameter
      * @param null|\Github\Model\ProjectsColumnsColumnIdMovesPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsMoveColumnForbiddenException
      * @throws \Github\Exception\ProjectsMoveColumnUnprocessableEntityException
@@ -4041,7 +3821,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param int $cardId card_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsDeleteCardForbiddenException
      * @throws \Github\Exception\ProjectsDeleteCardUnauthorizedException
@@ -4055,7 +3834,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param int $cardId card_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsGetCardForbiddenException
      * @throws \Github\Exception\ProjectsGetCardUnauthorizedException
@@ -4070,7 +3848,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param int $cardId card_id parameter
      * @param null|\Github\Model\ProjectsColumnsCardsCardIdPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsUpdateCardForbiddenException
      * @throws \Github\Exception\ProjectsUpdateCardUnauthorizedException
@@ -4085,7 +3862,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param int $columnId column_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsDeleteColumnForbiddenException
      * @throws \Github\Exception\ProjectsDeleteColumnUnauthorizedException
@@ -4098,7 +3874,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param int $columnId column_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsGetColumnForbiddenException
      * @throws \Github\Exception\ProjectsGetColumnNotFoundException
@@ -4113,7 +3888,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param int $columnId column_id parameter
      * @param null|\Github\Model\ProjectsColumnsColumnIdPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsUpdateColumnForbiddenException
      * @throws \Github\Exception\ProjectsUpdateColumnUnauthorizedException
@@ -4131,7 +3905,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsListForUserUnsupportedMediaTypeException
      * @throws \Github\Exception\ProjectsListForUserUnprocessableEntityException
@@ -4145,7 +3918,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Deletes a project board. Returns a `404 Not Found` status if projects are disabled.
      * @param int $projectId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsDeleteForbiddenException
      * @throws \Github\Exception\ProjectsDeleteUnauthorizedException
@@ -4161,7 +3933,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Gets a project by its `id`. Returns a `404 Not Found` status if projects are disabled. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
      * @param int $projectId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsGetForbiddenException
      * @throws \Github\Exception\ProjectsGetUnauthorizedException
@@ -4176,7 +3947,6 @@ class Client extends \Github\Runtime\Client\Client
      * Updates a project board's information. Returns a `404 Not Found` status if projects are disabled. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
      * @param int $projectId
      * @param null|\Github\Model\ProjectsProjectIdPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsUpdateNotFoundException
      * @throws \Github\Exception\ProjectsUpdateForbiddenException
@@ -4196,7 +3966,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsListColumnsForbiddenException
      * @throws \Github\Exception\ProjectsListColumnsUnauthorizedException
@@ -4210,7 +3979,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param int $projectId
      * @param null|\Github\Model\ProjectsProjectIdColumnsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsCreateColumnForbiddenException
      * @throws \Github\Exception\ProjectsCreateColumnUnprocessableEntityException
@@ -4229,7 +3997,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsListCardsForbiddenException
      * @throws \Github\Exception\ProjectsListCardsUnauthorizedException
@@ -4246,7 +4013,6 @@ class Client extends \Github\Runtime\Client\Client
      * Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull request id, use the "[List pull requests](https://developer.github.com/v3/pulls/#list-pull-requests)" endpoint.
      * @param int $columnId column_id parameter
      * @param null|mixed $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsCreateCardForbiddenException
      * @throws \Github\Exception\ProjectsCreateCardUnauthorizedException
@@ -4261,7 +4027,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param null|\Github\Model\UserProjectsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsCreateForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\ProjectsCreateForAuthenticatedUserUnauthorizedException
@@ -4278,7 +4043,6 @@ class Client extends \Github\Runtime\Client\Client
      * Removes a collaborator from an organization project. You must be an organization owner or a project `admin` to remove a collaborator.
      * @param int $projectId
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsRemoveCollaboratorNotFoundException
      * @throws \Github\Exception\ProjectsRemoveCollaboratorUnsupportedMediaTypeException
@@ -4297,7 +4061,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $projectId
      * @param string $username
      * @param null|\Github\Model\ProjectsProjectIdCollaboratorsUsernamePutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsAddCollaboratorNotFoundException
      * @throws \Github\Exception\ProjectsAddCollaboratorUnsupportedMediaTypeException
@@ -4315,7 +4078,6 @@ class Client extends \Github\Runtime\Client\Client
      * Returns the collaborator's permission level for an organization project. Possible values for the `permission` key: `admin`, `write`, `read`, `none`. You must be an organization owner or a project `admin` to review a user's permission level.
      * @param int $projectId
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsGetPermissionForUserNotFoundException
      * @throws \Github\Exception\ProjectsGetPermissionForUserUnsupportedMediaTypeException
@@ -4338,7 +4100,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsListForRepoUnauthorizedException
      * @throws \Github\Exception\ProjectsListForRepoForbiddenException
@@ -4357,7 +4118,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoProjectsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsCreateForRepoUnauthorizedException
      * @throws \Github\Exception\ProjectsCreateForRepoForbiddenException
@@ -4374,7 +4134,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param int $cardId card_id parameter
      * @param null|\Github\Model\ProjectsColumnsCardsCardIdMovesPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsMoveCardForbiddenException
      * @throws \Github\Exception\ProjectsMoveCardUnauthorizedException
@@ -4398,7 +4157,7 @@ class Client extends \Github\Runtime\Client\Client
     *     @var int $per_page Results per page (max 100)
     *     @var int $page Page number of the results to fetch.
     * }
-    */
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ProjectsListCollaboratorsNotFoundException
     * @throws \Github\Exception\ProjectsListCollaboratorsUnsupportedMediaTypeException
@@ -4424,7 +4183,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
@@ -4441,7 +4199,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $discussionNumber
      * @param int $commentNumber
      * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
@@ -4461,7 +4218,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
@@ -4477,7 +4233,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $teamId
      * @param int $discussionNumber
      * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
@@ -4496,7 +4251,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReactionsListForIssueCommentNotFoundException
      * @throws \Github\Exception\ReactionsListForIssueCommentUnsupportedMediaTypeException
@@ -4513,7 +4267,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $commentId comment_id parameter
      * @param null|\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReactionsCreateForIssueCommentUnsupportedMediaTypeException
      * @throws \Github\Exception\ReactionsCreateForIssueCommentUnprocessableEntityException
@@ -4532,7 +4285,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber
      * @param int $reactionId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -4551,7 +4303,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReactionsListForIssueNotFoundException
      * @throws \Github\Exception\ReactionsListForIssueGoneException
@@ -4569,7 +4320,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $issueNumber issue_number parameter
      * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberReactionsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReactionsCreateForIssueUnsupportedMediaTypeException
      * @throws \Github\Exception\ReactionsCreateForIssueUnprocessableEntityException
@@ -4590,7 +4340,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReactionsListForPullRequestReviewCommentNotFoundException
      * @throws \Github\Exception\ReactionsListForPullRequestReviewCommentUnsupportedMediaTypeException
@@ -4607,7 +4356,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $commentId comment_id parameter
      * @param null|\Github\Model\ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReactionsCreateForPullRequestReviewCommentUnsupportedMediaTypeException
      * @throws \Github\Exception\ReactionsCreateForPullRequestReviewCommentUnprocessableEntityException
@@ -4626,7 +4374,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $commentId comment_id parameter
      * @param int $reactionId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -4640,7 +4387,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * OAuth access tokens require the `write:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), when deleting a [team discussion](https://developer.github.com/v3/teams/discussions/) or [team discussion comment](https://developer.github.com/v3/teams/discussion_comments/).
      * @param int $reactionId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReactionsDeleteLegacyForbiddenException
      * @throws \Github\Exception\ReactionsDeleteLegacyUnauthorizedException
@@ -4661,7 +4407,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $commentId comment_id parameter
      * @param int $reactionId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -4678,7 +4423,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $issueNumber issue_number parameter
      * @param int $reactionId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -4696,7 +4440,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $discussionNumber
      * @param int $commentNumber
      * @param int $reactionId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -4718,7 +4461,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
@@ -4736,7 +4478,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $discussionNumber
      * @param int $commentNumber
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
@@ -4757,7 +4498,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
@@ -4774,7 +4514,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
@@ -4791,7 +4530,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $commentId comment_id parameter
      * @param int $reactionId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -4810,7 +4548,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReactionsListForCommitCommentNotFoundException
      * @throws \Github\Exception\ReactionsListForCommitCommentUnsupportedMediaTypeException
@@ -4827,7 +4564,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $commentId comment_id parameter
      * @param null|\Github\Model\ReposOwnerRepoCommentsCommentIdReactionsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReactionsCreateForCommitCommentUnsupportedMediaTypeException
      * @throws \Github\Exception\ReactionsCreateForCommitCommentUnprocessableEntityException
@@ -4861,7 +4597,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var string $s The words to show in Octocat's speech bubble
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -4884,7 +4619,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * An authenticated organization owner with the `read:org` scope can list all credential authorizations for an organization that uses SAML single sign-on (SSO). The credentials are either personal access tokens or SSH keys that organization members have authorized for the organization. For more information, see [About authentication with SAML single sign-on](https://help.github.com/en/articles/about-authentication-with-saml-single-sign-on).
      * @param string $org
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\CredentialAuthorization[]|\Psr\Http\Message\ResponseInterface
@@ -4901,7 +4635,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsListInvitationTeamsNotFoundException
      *
@@ -4917,7 +4650,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsListMembershipsForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\OrgsListMembershipsForAuthenticatedUserUnauthorizedException
@@ -4933,7 +4665,6 @@ class Client extends \Github\Runtime\Client\Client
      * Removing a user from this list will remove them from all the organization's repositories.
      * @param string $org
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsRemoveOutsideCollaboratorUnprocessableEntityException
      *
@@ -4947,7 +4678,6 @@ class Client extends \Github\Runtime\Client\Client
      * When an organization member is converted to an outside collaborator, they'll only have access to the repositories that their current team membership allows. The user will no longer be a member of the organization. For more information, see "[Converting an organization member to an outside collaborator](https://help.github.com/articles/converting-an-organization-member-to-an-outside-collaborator/)".
      * @param string $org
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsConvertMemberToOutsideCollaboratorForbiddenException
      * @throws \Github\Exception\OrgsConvertMemberToOutsideCollaboratorNotFoundException
@@ -4960,7 +4690,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param string $org
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsGetMembershipForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\OrgsGetMembershipForAuthenticatedUserNotFoundException
@@ -4974,7 +4703,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $org
      * @param null|\Github\Model\UserMembershipsOrgsOrgPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsUpdateMembershipForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\OrgsUpdateMembershipForAuthenticatedUserNotFoundException
@@ -4992,7 +4720,6 @@ class Client extends \Github\Runtime\Client\Client
      * If the specified user is an active member of the organization, this will remove them from the organization. If the specified user has been invited to the organization, this will cancel their invitation. The specified user will receive an email notification in both cases.
      * @param string $org
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsRemoveMembershipForUserForbiddenException
      * @throws \Github\Exception\OrgsRemoveMembershipForUserNotFoundException
@@ -5007,7 +4734,6 @@ class Client extends \Github\Runtime\Client\Client
      * In order to get a user's membership with an organization, the authenticated user must be an organization member.
      * @param string $org
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsGetMembershipForUserNotFoundException
      * @throws \Github\Exception\OrgsGetMembershipForUserForbiddenException
@@ -5031,7 +4757,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $username
      * @param null|\Github\Model\OrgsOrgMembershipsUsernamePutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsSetMembershipForUserUnprocessableEntityException
      * @throws \Github\Exception\OrgsSetMembershipForUserForbiddenException
@@ -5045,7 +4770,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $org
      * @param int $hookId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsDeleteWebhookNotFoundException
      *
@@ -5058,7 +4782,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $org
      * @param int $hookId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsGetWebhookNotFoundException
      *
@@ -5072,7 +4795,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param int $hookId
      * @param null|\Github\Model\OrgsOrgHooksHookIdPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsUpdateWebhookUnprocessableEntityException
      * @throws \Github\Exception\OrgsUpdateWebhookNotFoundException
@@ -5092,7 +4814,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\OrganizationSimple[]|\Psr\Http\Message\ResponseInterface
@@ -5106,7 +4827,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * GitHub Apps with the `Organization plan` permission can use this endpoint to retrieve information about an organization's GitHub plan. See "[Authenticating with GitHub Apps](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/)" for details. For an example response, see "[Response with GitHub plan information](https://developer.github.com/v3/orgs/#response-with-github-plan-information)."
      * @param string $org
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsGetNotFoundException
      *
@@ -5122,7 +4842,6 @@ class Client extends \Github\Runtime\Client\Client
      * Enables an authenticated organization owner with the `admin:org` scope to update the organization's profile and member privileges.
      * @param string $org
      * @param null|\Github\Model\OrgsOrgPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsUpdateUnprocessableEntityException
      * @throws \Github\Exception\OrgsUpdateConflictException
@@ -5138,7 +4857,6 @@ class Client extends \Github\Runtime\Client\Client
      * This will trigger a [ping event](https://developer.github.com/webhooks/#ping-event) to be sent to the hook.
      * @param string $org
      * @param int $hookId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsPingWebhookNotFoundException
      *
@@ -5152,7 +4870,6 @@ class Client extends \Github\Runtime\Client\Client
      * Removing a user from this list will remove them from all teams and they will no longer have any access to the organization's repositories.
      * @param string $org
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsRemoveMemberForbiddenException
      *
@@ -5166,7 +4883,6 @@ class Client extends \Github\Runtime\Client\Client
      * Check if a user is, publicly or privately, a member of the organization.
      * @param string $org
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsCheckMembershipForUserNotFoundException
      *
@@ -5183,7 +4899,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\OrgsOrgInstallationsGetResponse200|\Psr\Http\Message\ResponseInterface
@@ -5195,7 +4910,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $org
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -5207,7 +4921,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $org
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsCheckPublicMembershipForUserNotFoundException
      *
@@ -5223,7 +4936,6 @@ class Client extends \Github\Runtime\Client\Client
      * Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://developer.github.com/v3/#http-verbs)."
      * @param string $org
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsSetPublicMembershipForAuthenticatedUserForbiddenException
      *
@@ -5243,7 +4955,7 @@ class Client extends \Github\Runtime\Client\Client
     *     @var int $per_page Results per page (max 100)
     *     @var int $page Page number of the results to fetch.
     * }
-    */
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
@@ -5259,7 +4971,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsListPendingInvitationsNotFoundException
      *
@@ -5275,7 +4986,6 @@ class Client extends \Github\Runtime\Client\Client
      * This endpoint triggers [notifications](https://help.github.com/articles/about-notifications/). Creating content too quickly using this endpoint may result in abuse rate limiting. See "[Abuse rate limits](https://developer.github.com/v3/#abuse-rate-limits)" and "[Dealing with abuse rate limits](https://developer.github.com/v3/guides/best-practices-for-integrators/#dealing-with-abuse-rate-limits)" for details.
      * @param string $org
      * @param null|\Github\Model\OrgsOrgInvitationsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsCreateInvitationUnprocessableEntityException
      * @throws \Github\Exception\OrgsCreateInvitationNotFoundException
@@ -5294,7 +5004,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
      *     @var int $per_page Results per page (max 100)
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\OrganizationSimple[]|\Psr\Http\Message\ResponseInterface
@@ -5309,7 +5018,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsListWebhooksNotFoundException
      *
@@ -5323,7 +5031,6 @@ class Client extends \Github\Runtime\Client\Client
      * Here's how you can create a hook that posts payloads in JSON format:
      * @param string $org
      * @param null|\Github\Model\OrgsOrgHooksPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsCreateWebhookUnprocessableEntityException
      * @throws \Github\Exception\OrgsCreateWebhookNotFoundException
@@ -5337,7 +5044,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * List the users blocked by an organization.
      * @param string $org
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsListBlockedUsersUnsupportedMediaTypeException
      *
@@ -5350,7 +5056,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $org
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -5362,7 +5067,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $org
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsCheckBlockedUserNotFoundException
      *
@@ -5375,7 +5079,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $org
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsBlockUserUnprocessableEntityException
      *
@@ -5399,7 +5102,7 @@ class Client extends \Github\Runtime\Client\Client
     *     @var int $per_page Results per page (max 100)
     *     @var int $page Page number of the results to fetch.
     * }
-    */
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\OrgsListMembersUnprocessableEntityException
     *
@@ -5419,7 +5122,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsListForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\OrgsListForAuthenticatedUserUnauthorizedException
@@ -5436,7 +5138,6 @@ class Client extends \Github\Runtime\Client\Client
      * An authenticated organization owner with the `admin:org` scope can remove a credential authorization for an organization that uses SAML SSO. Once you remove someone's credential authorization, they will need to create a new personal access token or SSH key and authorize it for the organization they want to access.
      * @param string $org
      * @param int $credentialId credential_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsRemoveSamlSsoAuthorizationNotFoundException
      *
@@ -5453,7 +5154,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
@@ -5488,7 +5188,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\SearchCodeServiceUnavailableException
      * @throws \Github\Exception\SearchCodeUnprocessableEntityException
@@ -5516,7 +5215,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var string $sort Sorts the results of your query by when the label was `created` or `updated`. Default: [best match](https://developer.github.com/v3/search/#ranking-search-results)
      *     @var string $order Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\SearchLabelsNotFoundException
      * @throws \Github\Exception\SearchLabelsForbiddenException
@@ -5545,7 +5243,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\SearchUsersServiceUnavailableException
      * @throws \Github\Exception\SearchUsersUnprocessableEntityException
@@ -5572,7 +5269,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\SearchCommitsUnsupportedMediaTypeException
      *
@@ -5600,7 +5296,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\SearchIssuesAndPullRequestsServiceUnavailableException
      * @throws \Github\Exception\SearchIssuesAndPullRequestsUnprocessableEntityException
@@ -5633,7 +5328,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\SearchReposServiceUnavailableException
      * @throws \Github\Exception\SearchReposUnprocessableEntityException
@@ -5657,7 +5351,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var string $q The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query).
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\SearchTopicsUnsupportedMediaTypeException
      *
@@ -5675,7 +5368,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OauthAuthorizationsListGrantsForbiddenException
      * @throws \Github\Exception\OauthAuthorizationsListGrantsUnauthorizedException
@@ -5692,7 +5384,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * Deleting an OAuth application's grant will also delete all OAuth tokens associated with the application for your user. Once deleted, the application has no access to your account and is no longer listed on [the application authorizations settings screen within GitHub](https://github.com/settings/applications#authorized).
      * @param int $grantId grant_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OauthAuthorizationsDeleteGrantForbiddenException
      * @throws \Github\Exception\OauthAuthorizationsDeleteGrantUnauthorizedException
@@ -5706,7 +5397,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://developer.github.com/v3/oauth_authorizations/), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth Authorizations API](https://developer.github.com/v3/oauth_authorizations/) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
      * @param int $grantId grant_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OauthAuthorizationsGetGrantForbiddenException
      * @throws \Github\Exception\OauthAuthorizationsGetGrantUnauthorizedException
@@ -5723,7 +5413,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OauthAuthorizationsListAuthorizationsForbiddenException
      * @throws \Github\Exception\OauthAuthorizationsListAuthorizationsUnauthorizedException
@@ -5748,7 +5437,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * Organizations that enforce SAML SSO require personal access tokens to be allowed. Read more about allowing tokens in [the GitHub Help documentation](https://help.github.com/articles/about-identity-and-access-management-with-saml-single-sign-on).
      * @param null|\Github\Model\AuthorizationsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OauthAuthorizationsCreateAuthorizationUnprocessableEntityException
      * @throws \Github\Exception\OauthAuthorizationsCreateAuthorizationGoneException
@@ -5772,7 +5460,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $clientId
      * @param string $fingerprint fingerprint parameter
      * @param null|\Github\Model\AuthorizationsClientsClientIdFingerprintPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OauthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintUnprocessableEntityException
      *
@@ -5785,7 +5472,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://developer.github.com/v3/oauth_authorizations/), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth Authorizations API](https://developer.github.com/v3/oauth_authorizations/) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
      * @param int $authorizationId authorization_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OauthAuthorizationsDeleteAuthorizationForbiddenException
      * @throws \Github\Exception\OauthAuthorizationsDeleteAuthorizationUnauthorizedException
@@ -5799,7 +5485,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://developer.github.com/v3/oauth_authorizations/), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth Authorizations API](https://developer.github.com/v3/oauth_authorizations/) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
      * @param int $authorizationId authorization_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OauthAuthorizationsGetAuthorizationForbiddenException
      * @throws \Github\Exception\OauthAuthorizationsGetAuthorizationUnauthorizedException
@@ -5818,7 +5503,6 @@ class Client extends \Github\Runtime\Client\Client
      * You can only send one of these scope keys at a time.
      * @param int $authorizationId authorization_id parameter
      * @param null|\Github\Model\AuthorizationsAuthorizationIdPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OauthAuthorizationsUpdateAuthorizationUnprocessableEntityException
      *
@@ -5840,7 +5524,6 @@ class Client extends \Github\Runtime\Client\Client
      * **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://developer.github.com/v3/oauth_authorizations/), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth Authorizations API](https://developer.github.com/v3/oauth_authorizations/) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
      * @param string $clientId
      * @param null|\Github\Model\AuthorizationsClientsClientIdPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OauthAuthorizationsGetOrCreateAuthorizationForAppUnprocessableEntityException
      * @throws \Github\Exception\OauthAuthorizationsGetOrCreateAuthorizationForAppForbiddenException
@@ -5856,7 +5539,6 @@ class Client extends \Github\Runtime\Client\Client
      * This method returns the contents of the repository's code of conduct file, if one is detected.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\CodeOfConduct|\Psr\Http\Message\ResponseInterface
@@ -5867,7 +5549,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param string $key key parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\CodesOfConductGetConductCodeNotFoundException
      * @throws \Github\Exception\CodesOfConductGetConductCodeUnsupportedMediaTypeException
@@ -5894,7 +5575,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersListFollowersForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\UsersListFollowersForAuthenticatedUserUnauthorizedException
@@ -5911,7 +5591,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersListFollowedByAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersListFollowedByAuthenticatedUnauthorizedException
@@ -5928,7 +5607,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersListGpgKeysForAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersListGpgKeysForAuthenticatedForbiddenException
@@ -5943,7 +5621,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Adds a GPG key to the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth, or OAuth with at least `write:gpg_key` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
      * @param null|\Github\Model\UserGpgKeysPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersCreateGpgKeyForAuthenticatedUnprocessableEntityException
      * @throws \Github\Exception\UsersCreateGpgKeyForAuthenticatedNotFoundException
@@ -5959,7 +5636,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Removes a public SSH key from the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth or via OAuth with at least `admin:public_key` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
      * @param int $keyId key_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersDeletePublicSshKeyForAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersDeletePublicSshKeyForAuthenticatedForbiddenException
@@ -5974,7 +5650,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * View extended details for a single public SSH key. Requires that you are authenticated via Basic Auth or via OAuth with at least `read:public_key` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
      * @param int $keyId key_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersGetPublicSshKeyForAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersGetPublicSshKeyForAuthenticatedForbiddenException
@@ -5989,7 +5664,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Removes a GPG key from the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth or via OAuth with at least `admin:gpg_key` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
      * @param int $gpgKeyId gpg_key_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersDeleteGpgKeyForAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersDeleteGpgKeyForAuthenticatedUnprocessableEntityException
@@ -6005,7 +5679,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * View extended details for a single GPG key. Requires that you are authenticated via Basic Auth or via OAuth with at least `read:gpg_key` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
      * @param int $gpgKeyId gpg_key_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersGetGpgKeyForAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersGetGpgKeyForAuthenticatedForbiddenException
@@ -6020,7 +5693,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * This endpoint is accessible with the `user` scope.
      * @param null|mixed $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersDeleteEmailForAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersDeleteEmailForAuthenticatedForbiddenException
@@ -6039,7 +5711,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersListEmailsForAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersListEmailsForAuthenticatedForbiddenException
@@ -6054,7 +5725,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * This endpoint is accessible with the `user` scope.
      * @param null|mixed $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersAddEmailForAuthenticatedUnprocessableEntityException
      * @throws \Github\Exception\UsersAddEmailForAuthenticatedNotFoundException
@@ -6070,7 +5740,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Unfollowing a user requires the user to be logged in and authenticated with basic auth or OAuth with the `user:follow` scope.
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersUnfollowNotFoundException
      * @throws \Github\Exception\UsersUnfollowForbiddenException
@@ -6084,7 +5753,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersCheckPersonIsFollowedByAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersCheckPersonIsFollowedByAuthenticatedForbiddenException
@@ -6101,7 +5769,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * Following a user requires the user to be logged in and authenticated with basic auth or OAuth with the `user:follow` scope.
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersFollowNotFoundException
      * @throws \Github\Exception\UsersFollowForbiddenException
@@ -6115,7 +5782,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersUnblockForbiddenException
      * @throws \Github\Exception\UsersUnblockUnauthorizedException
@@ -6132,7 +5798,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * If the user is not blocked:
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersCheckBlockedNotFoundException
      * @throws \Github\Exception\UsersCheckBlockedForbiddenException
@@ -6146,7 +5811,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersBlockNotFoundException
      * @throws \Github\Exception\UsersBlockForbiddenException
@@ -6165,7 +5829,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersListPublicEmailsForAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersListPublicEmailsForAuthenticatedForbiddenException
@@ -6184,7 +5847,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
@@ -6215,7 +5877,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * The Emails API enables you to list all of your email addresses, and toggle a primary email to be visible publicly. For more information, see "[Emails API](https://developer.github.com/v3/users/emails/)".
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersGetByUsernameNotFoundException
      *
@@ -6232,7 +5893,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\GpgKey[]|\Psr\Http\Message\ResponseInterface
@@ -6244,7 +5904,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $username
      * @param string $targetUser target_user parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersCheckFollowingForUserNotFoundException
      *
@@ -6260,7 +5919,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersListPublicSshKeysForAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersListPublicSshKeysForAuthenticatedForbiddenException
@@ -6275,7 +5933,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Adds a public SSH key to the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth, or OAuth with at least `write:public_key` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
      * @param null|\Github\Model\UserKeysPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersCreatePublicSshKeyForAuthenticatedUnprocessableEntityException
      * @throws \Github\Exception\UsersCreatePublicSshKeyForAuthenticatedNotFoundException
@@ -6302,7 +5959,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * **Note:** If your email is set to private and you send an `email` parameter as part of this request to update your profile, your privacy settings are still enforced: the email address will not be displayed on your public profile or via the API.
      * @param null|\Github\Model\UserPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersUpdateAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersUpdateAuthenticatedForbiddenException
@@ -6323,7 +5979,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
      *     @var int $per_page Results per page (max 100)
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
@@ -6346,7 +6001,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var string $subject_type Identifies which additional information you'd like to receive about the person's hovercard. Can be `organization`, `repository`, `issue`, `pull_request`. **Required** when using `subject_id`.
      *     @var string $subject_id Uses the ID for the `subject_type` you specified. **Required** when using `subject_type`.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersGetContextForUserNotFoundException
      * @throws \Github\Exception\UsersGetContextForUserUnprocessableEntityException
@@ -6360,7 +6014,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Sets the visibility for your primary email addresses.
      * @param null|\Github\Model\UserEmailVisibilityPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersSetPrimaryEmailVisibilityForAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersSetPrimaryEmailVisibilityForAuthenticatedForbiddenException
@@ -6380,7 +6033,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\KeySimple[]|\Psr\Http\Message\ResponseInterface
@@ -6396,7 +6048,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
@@ -6413,7 +6064,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ReposOwnerRepoActionsWorkflowsGetResponse200|\Psr\Http\Message\ResponseInterface
@@ -6432,7 +6082,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $workflowId
      * @param null|\Github\Model\ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -6447,7 +6096,6 @@ class Client extends \Github\Runtime\Client\Client
      * Forces the removal of a self-hosted runner from an organization. You can use this endpoint to completely remove the runner when the machine you were using no longer exists. You must authenticate using an access token with the `admin:org` scope to use this endpoint.
      * @param string $org
      * @param int $runnerId runner_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -6462,7 +6110,6 @@ class Client extends \Github\Runtime\Client\Client
      * Gets a specific self-hosted runner for an organization. You must authenticate using an access token with the `admin:org` scope to use this endpoint.
      * @param string $org
      * @param int $runnerId runner_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Runner|\Psr\Http\Message\ResponseInterface
@@ -6480,7 +6127,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\OrgsOrgActionsRunnersGetResponse200|\Psr\Http\Message\ResponseInterface
@@ -6493,7 +6139,6 @@ class Client extends \Github\Runtime\Client\Client
      * Lists binaries for the runner application that you can download and run. You must authenticate using an access token with the `repo` scope to use this endpoint.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\RunnerApplication[]|\Psr\Http\Message\ResponseInterface
@@ -6510,7 +6155,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ReposOwnerRepoActionsArtifactsGetResponse200|\Psr\Http\Message\ResponseInterface
@@ -6527,7 +6171,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ReposOwnerRepoActionsSecretsGetResponse200|\Psr\Http\Message\ResponseInterface
@@ -6540,7 +6183,6 @@ class Client extends \Github\Runtime\Client\Client
      * Deletes a secret in an organization using the secret name. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
      * @param string $org
      * @param string $secretName secret_name parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -6553,7 +6195,6 @@ class Client extends \Github\Runtime\Client\Client
      * Gets a single organization secret without revealing its encrypted value. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
      * @param string $org
      * @param string $secretName secret_name parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\OrganizationActionsSecret|\Psr\Http\Message\ResponseInterface
@@ -6641,7 +6282,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $secretName secret_name parameter
      * @param null|\Github\Model\OrgsOrgActionsSecretsSecretNamePutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -6657,7 +6297,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\OrgsOrgActionsSecretsGetResponse200|\Psr\Http\Message\ResponseInterface
@@ -6675,7 +6314,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $workflowId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\WorkflowUsage|\Psr\Http\Message\ResponseInterface
@@ -6689,7 +6327,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $artifactId artifact_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -6703,7 +6340,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $artifactId artifact_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Artifact|\Psr\Http\Message\ResponseInterface
@@ -6717,7 +6353,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $secretName secret_name parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -6731,7 +6366,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $secretName secret_name parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ActionsSecret|\Psr\Http\Message\ResponseInterface
@@ -6820,7 +6454,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $secretName secret_name parameter
      * @param null|\Github\Model\ReposOwnerRepoActionsSecretsSecretNamePutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -6844,7 +6477,6 @@ class Client extends \Github\Runtime\Client\Client
      * ./config.sh --url https://github.com/octo-org --token TOKEN
      * ```
      * @param string $org
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\AuthenticationToken|\Psr\Http\Message\ResponseInterface
@@ -6862,7 +6494,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $artifactId artifact_id parameter
      * @param string $archiveFormat archive_format parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -6876,7 +6507,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $runnerId runner_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -6890,7 +6520,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $runnerId runner_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Runner|\Psr\Http\Message\ResponseInterface
@@ -6907,7 +6536,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $jobId job_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -6928,7 +6556,7 @@ class Client extends \Github\Runtime\Client\Client
     *     @var int $per_page Results per page (max 100)
     *     @var int $page Page number of the results to fetch.
     * }
-    */
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\ReposOwnerRepoActionsRunsRunIdJobsGetResponse200|\Psr\Http\Message\ResponseInterface
@@ -6945,7 +6573,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ReposOwnerRepoActionsRunnersGetResponse200|\Psr\Http\Message\ResponseInterface
@@ -6959,7 +6586,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $workflowId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Workflow|\Psr\Http\Message\ResponseInterface
@@ -6973,7 +6599,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $secretName secret_name parameter
      * @param int $repositoryId repository_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActionsRemoveSelectedRepoFromOrgSecretConflictException
      *
@@ -6988,7 +6613,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $secretName secret_name parameter
      * @param int $repositoryId repository_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActionsAddSelectedRepoToOrgSecretConflictException
      *
@@ -7003,7 +6627,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * Lists binaries for the runner application that you can download and run. You must authenticate using an access token with the `admin:org` scope to use this endpoint.
      * @param string $org
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\RunnerApplication[]|\Psr\Http\Message\ResponseInterface
@@ -7017,7 +6640,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $jobId job_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Job|\Psr\Http\Message\ResponseInterface
@@ -7031,7 +6653,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $runId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -7045,7 +6666,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $runId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -7062,7 +6682,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $runId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -7076,7 +6695,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $runId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -7092,7 +6710,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $runId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -7106,7 +6723,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $runId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\WorkflowRun|\Psr\Http\Message\ResponseInterface
@@ -7132,7 +6748,6 @@ class Client extends \Github\Runtime\Client\Client
      * ./config.sh remove --token TOKEN
      * ```
      * @param string $org
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\AuthenticationToken|\Psr\Http\Message\ResponseInterface
@@ -7150,7 +6765,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $runId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\WorkflowRunUsage|\Psr\Http\Message\ResponseInterface
@@ -7163,7 +6777,6 @@ class Client extends \Github\Runtime\Client\Client
      * Lists all repositories that have been selected when the `visibility` for repository access to a secret is set to `selected`. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
      * @param string $org
      * @param string $secretName secret_name parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200|\Psr\Http\Message\ResponseInterface
@@ -7177,7 +6790,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $secretName secret_name parameter
      * @param null|\Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -7189,7 +6801,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
      * @param string $org
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ActionsPublicKey|\Psr\Http\Message\ResponseInterface
@@ -7202,7 +6813,6 @@ class Client extends \Github\Runtime\Client\Client
      * Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `secrets` repository permission to use this endpoint.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ActionsPublicKey|\Psr\Http\Message\ResponseInterface
@@ -7220,7 +6830,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200|\Psr\Http\Message\ResponseInterface
@@ -7242,7 +6851,6 @@ class Client extends \Github\Runtime\Client\Client
      * ```
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\AuthenticationToken|\Psr\Http\Message\ResponseInterface
@@ -7264,7 +6872,6 @@ class Client extends \Github\Runtime\Client\Client
      * ```
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\AuthenticationToken|\Psr\Http\Message\ResponseInterface
@@ -7288,7 +6895,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200|\Psr\Http\Message\ResponseInterface
@@ -7311,7 +6917,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ReposOwnerRepoActionsRunsGetResponse200|\Psr\Http\Message\ResponseInterface
@@ -7332,7 +6937,6 @@ class Client extends \Github\Runtime\Client\Client
      * **Note:** When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub](https://help.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
      * @param int $teamId
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsRemoveMemberLegacyNotFoundException
      *
@@ -7350,7 +6954,6 @@ class Client extends \Github\Runtime\Client\Client
      * To list members in a team, the team must be visible to the authenticated user.
      * @param int $teamId
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsGetMemberLegacyNotFoundException
      *
@@ -7374,7 +6977,6 @@ class Client extends \Github\Runtime\Client\Client
      * Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://developer.github.com/v3/#http-verbs)."
      * @param int $teamId
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsAddMemberLegacyNotFoundException
      * @throws \Github\Exception\TeamsAddMemberLegacyUnprocessableEntityException
@@ -7394,7 +6996,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $teamSlug team_slug parameter
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -7415,7 +7016,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $teamSlug team_slug parameter
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsCheckPermissionsForRepoInOrgNotFoundException
      *
@@ -7436,7 +7036,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -7459,7 +7058,7 @@ class Client extends \Github\Runtime\Client\Client
     *     @var int $per_page Results per page (max 100)
     *     @var int $page Page number of the results to fetch.
     * }
-    */
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
@@ -7475,7 +7074,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $teamId
      * @param int $discussionNumber
      * @param int $commentNumber
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -7491,7 +7089,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $teamId
      * @param int $discussionNumber
      * @param int $commentNumber
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamDiscussionComment|\Psr\Http\Message\ResponseInterface
@@ -7508,7 +7105,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $discussionNumber
      * @param int $commentNumber
      * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamDiscussionComment|\Psr\Http\Message\ResponseInterface
@@ -7524,7 +7120,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $teamId
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -7542,7 +7137,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $teamId
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsCheckPermissionsForRepoLegacyNotFoundException
      *
@@ -7562,7 +7156,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\TeamsTeamIdReposOwnerRepoPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsAddOrUpdateRepoPermissionsLegacyForbiddenException
      * @throws \Github\Exception\TeamsAddOrUpdateRepoPermissionsLegacyUnprocessableEntityException
@@ -7583,7 +7176,6 @@ class Client extends \Github\Runtime\Client\Client
      * **Note:** When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub](https://help.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
      * @param int $teamId
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsRemoveMembershipForUserLegacyForbiddenException
      *
@@ -7603,7 +7195,6 @@ class Client extends \Github\Runtime\Client\Client
      * **Note:** The `role` for organization owners returns as `maintainer`. For more information about `maintainer` roles, see [Create a team](https://developer.github.com/v3/teams/#create-a-team).
      * @param int $teamId
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsGetMembershipForUserLegacyNotFoundException
      *
@@ -7628,7 +7219,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $teamId
      * @param string $username
      * @param null|\Github\Model\TeamsTeamIdMembershipsUsernamePutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsAddOrUpdateMembershipForUserLegacyForbiddenException
      * @throws \Github\Exception\TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntityException
@@ -7652,7 +7242,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamDiscussionComment[]|\Psr\Http\Message\ResponseInterface
@@ -7671,7 +7260,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamDiscussionComment|\Psr\Http\Message\ResponseInterface
@@ -7686,7 +7274,6 @@ class Client extends \Github\Runtime\Client\Client
      * Delete a discussion from a team's page. OAuth access tokens require the `write:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
      * @param int $teamId
      * @param int $discussionNumber
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -7701,7 +7288,6 @@ class Client extends \Github\Runtime\Client\Client
      * Get a specific discussion on a team's page. OAuth access tokens require the `read:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
      * @param int $teamId
      * @param int $discussionNumber
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamDiscussion|\Psr\Http\Message\ResponseInterface
@@ -7717,7 +7303,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $teamId
      * @param int $discussionNumber
      * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamDiscussion|\Psr\Http\Message\ResponseInterface
@@ -7733,7 +7318,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * If you are an organization owner, deleting a parent team will delete all of its child teams as well.
      * @param int $teamId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsDeleteLegacyNotFoundException
      * @throws \Github\Exception\TeamsDeleteLegacyUnprocessableEntityException
@@ -7747,7 +7331,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the [Get a team by name](https://developer.github.com/v3/teams/#get-a-team-by-name) endpoint.
      * @param int $teamId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsGetLegacyNotFoundException
      *
@@ -7765,7 +7348,6 @@ class Client extends \Github\Runtime\Client\Client
      * **Note:** With nested teams, the `privacy` for parent teams cannot be `secret`.
      * @param int $teamId
      * @param null|\Github\Model\TeamsTeamIdPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsUpdateLegacyNotFoundException
      * @throws \Github\Exception\TeamsUpdateLegacyUnprocessableEntityException
@@ -7788,7 +7370,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamDiscussion[]|\Psr\Http\Message\ResponseInterface
@@ -7806,7 +7387,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $teamSlug team_slug parameter
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamDiscussion|\Psr\Http\Message\ResponseInterface
@@ -7822,7 +7402,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * List IdP groups connected to a team on GitHub.
      * @param int $teamId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsListIdpGroupsForLegacyForbiddenException
      * @throws \Github\Exception\TeamsListIdpGroupsForLegacyNotFoundException
@@ -7841,7 +7420,6 @@ class Client extends \Github\Runtime\Client\Client
      * Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a team, you must include all new and existing groups to avoid replacing existing groups with the new ones. Specifying an empty `groups` array will remove all connections for a team.
      * @param int $teamId
      * @param null|\Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsCreateOrUpdateIdpGroupConnectionsLegacyUnprocessableEntityException
      * @throws \Github\Exception\TeamsCreateOrUpdateIdpGroupConnectionsLegacyForbiddenException
@@ -7859,7 +7437,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -7875,7 +7452,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamDiscussion|\Psr\Http\Message\ResponseInterface
@@ -7892,7 +7468,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamDiscussion|\Psr\Http\Message\ResponseInterface
@@ -7910,7 +7485,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\OrganizationInvitation[]|\Psr\Http\Message\ResponseInterface
@@ -7930,7 +7504,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamDiscussionComment[]|\Psr\Http\Message\ResponseInterface
@@ -7948,7 +7521,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $teamId
      * @param int $discussionNumber
      * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamDiscussionComment|\Psr\Http\Message\ResponseInterface
@@ -7967,7 +7539,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamProject[]|\Psr\Http\Message\ResponseInterface
@@ -7983,7 +7554,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsListReposLegacyNotFoundException
      *
@@ -8000,7 +7570,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $teamSlug team_slug parameter
      * @param int $projectId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -8016,7 +7585,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $teamSlug team_slug parameter
      * @param int $projectId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsCheckPermissionsForProjectInOrgNotFoundException
      *
@@ -8034,7 +7602,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $teamSlug team_slug parameter
      * @param int $projectId
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsAddOrUpdateProjectPermissionsInOrgForbiddenException
      *
@@ -8052,7 +7619,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber
      * @param int $commentNumber
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -8069,7 +7635,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber
      * @param int $commentNumber
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamDiscussionComment|\Psr\Http\Message\ResponseInterface
@@ -8087,7 +7652,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $discussionNumber
      * @param int $commentNumber
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamDiscussionComment|\Psr\Http\Message\ResponseInterface
@@ -8103,7 +7667,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsListChildLegacyNotFoundException
      * @throws \Github\Exception\TeamsListChildLegacyForbiddenException
@@ -8125,7 +7688,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
@@ -8145,7 +7707,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\GroupMapping|\Psr\Http\Message\ResponseInterface
@@ -8160,7 +7721,6 @@ class Client extends \Github\Runtime\Client\Client
      * Removes an organization project from a team. An organization owner or a team maintainer can remove any project from the team. To remove a project from a team as an organization member, the authenticated user must have `read` access to both the team and project, or `admin` access to the team or project. **Note:** This endpoint removes the project from the team, but does not delete it.
      * @param int $teamId
      * @param int $projectId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsRemoveProjectLegacyNotFoundException
      * @throws \Github\Exception\TeamsRemoveProjectLegacyUnsupportedMediaTypeException
@@ -8178,7 +7738,6 @@ class Client extends \Github\Runtime\Client\Client
      * Checks whether a team has `read`, `write`, or `admin` permissions for an organization project. The response includes projects inherited from a parent team.
      * @param int $teamId
      * @param int $projectId
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsCheckPermissionsForProjectLegacyNotFoundException
      * @throws \Github\Exception\TeamsCheckPermissionsForProjectLegacyUnsupportedMediaTypeException
@@ -8196,7 +7755,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $teamId
      * @param int $projectId
      * @param null|\Github\Model\TeamsTeamIdProjectsProjectIdPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsAddOrUpdateProjectPermissionsLegacyForbiddenException
      * @throws \Github\Exception\TeamsAddOrUpdateProjectPermissionsLegacyNotFoundException
@@ -8220,7 +7778,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $teamSlug team_slug parameter
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsRemoveMembershipForUserInOrgForbiddenException
      *
@@ -8241,7 +7798,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $teamSlug team_slug parameter
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsGetMembershipForUserInOrgNotFoundException
      *
@@ -8267,7 +7823,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $teamSlug team_slug parameter
      * @param string $username
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsAddOrUpdateMembershipForUserInOrgForbiddenException
      * @throws \Github\Exception\TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntityException
@@ -8287,7 +7842,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsListProjectsLegacyNotFoundException
      * @throws \Github\Exception\TeamsListProjectsLegacyUnsupportedMediaTypeException
@@ -8308,7 +7862,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\OrganizationInvitation[]|\Psr\Http\Message\ResponseInterface
@@ -8325,7 +7878,6 @@ class Client extends \Github\Runtime\Client\Client
      * **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}`.
      * @param string $org
      * @param string $teamSlug team_slug parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -8340,7 +7892,6 @@ class Client extends \Github\Runtime\Client\Client
      * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}`.
      * @param string $org
      * @param string $teamSlug team_slug parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsGetByNameNotFoundException
      *
@@ -8357,7 +7908,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $teamSlug team_slug parameter
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamFull|\Psr\Http\Message\ResponseInterface
@@ -8373,7 +7923,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsListForbiddenException
      *
@@ -8389,7 +7938,6 @@ class Client extends \Github\Runtime\Client\Client
      * When you create a new team, you automatically become a team maintainer without explicitly adding yourself to the optional array of `maintainers`. For more information, see "[About teams](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-teams)".
      * @param string $org
      * @param null|\Github\Model\OrgsOrgTeamsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsCreateUnprocessableEntityException
      * @throws \Github\Exception\TeamsCreateForbiddenException
@@ -8410,7 +7958,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
@@ -8429,7 +7976,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamDiscussion[]|\Psr\Http\Message\ResponseInterface
@@ -8446,7 +7992,6 @@ class Client extends \Github\Runtime\Client\Client
      * This endpoint triggers [notifications](https://help.github.com/articles/about-notifications/). Creating content too quickly using this endpoint may result in abuse rate limiting. See "[Abuse rate limits](https://developer.github.com/v3/#abuse-rate-limits)" and "[Dealing with abuse rate limits](https://developer.github.com/v3/guides/best-practices-for-integrators/#dealing-with-abuse-rate-limits)" for details.
      * @param int $teamId
      * @param null|\Github\Model\TeamsTeamIdDiscussionsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\TeamDiscussion|\Psr\Http\Message\ResponseInterface
@@ -8463,7 +8008,6 @@ class Client extends \Github\Runtime\Client\Client
      * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
      * @param string $org
      * @param string $teamSlug team_slug parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\GroupMapping|\Psr\Http\Message\ResponseInterface
@@ -8481,7 +8025,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $teamSlug team_slug parameter
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\GroupMapping|\Psr\Http\Message\ResponseInterface
@@ -8503,7 +8046,7 @@ class Client extends \Github\Runtime\Client\Client
     *     @var int $per_page Results per page (max 100)
     *     @var int $page Page number of the results to fetch.
     * }
-    */
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\TeamsListMembersLegacyNotFoundException
     *
@@ -8519,7 +8062,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsListForAuthenticatedUserNotFoundException
      * @throws \Github\Exception\TeamsListForAuthenticatedUserForbiddenException
@@ -8535,7 +8077,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $commentId comment_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsDeleteReviewCommentNotFoundException
      *
@@ -8570,7 +8111,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $commentId comment_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsGetReviewCommentNotFoundException
      *
@@ -8604,7 +8144,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $commentId comment_id parameter
      * @param null|\Github\Model\ReposOwnerRepoPullsCommentsCommentIdPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\PullRequestReviewComment|\Psr\Http\Message\ResponseInterface
@@ -8645,7 +8184,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\PullRequestReviewComment[]|\Psr\Http\Message\ResponseInterface
@@ -8684,7 +8222,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $pullNumber
      * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberCommentsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsCreateReviewCommentUnprocessableEntityException
      * @throws \Github\Exception\PullsCreateReviewCommentForbiddenException
@@ -8726,7 +8263,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\PullRequestReviewComment[]|\Psr\Http\Message\ResponseInterface
@@ -8740,7 +8276,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $pullNumber
      * @param int $reviewId review_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsDeletePendingReviewUnprocessableEntityException
      * @throws \Github\Exception\PullsDeletePendingReviewNotFoundException
@@ -8756,7 +8291,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $pullNumber
      * @param int $reviewId review_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsGetReviewNotFoundException
      *
@@ -8773,7 +8307,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $pullNumber
      * @param int $reviewId review_id parameter
      * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsUpdateReviewUnprocessableEntityException
      *
@@ -8790,7 +8323,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $pullNumber
      * @param int $reviewId review_id parameter
      * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsDismissReviewNotFoundException
      * @throws \Github\Exception\PullsDismissReviewUnprocessableEntityException
@@ -8806,7 +8338,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $pullNumber
      * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsRemoveRequestedReviewersUnprocessableEntityException
      *
@@ -8824,7 +8355,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\PullRequestReviewRequest|\Psr\Http\Message\ResponseInterface
@@ -8839,7 +8369,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $pullNumber
      * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsRequestReviewersUnprocessableEntityException
      * @throws \Github\Exception\PullsRequestReviewersForbiddenException
@@ -8869,7 +8398,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $pullNumber
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsGetInternalServerErrorException
      * @throws \Github\Exception\PullsGetNotFoundException
@@ -8888,7 +8416,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $pullNumber
      * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsUpdateUnprocessableEntityException
      * @throws \Github\Exception\PullsUpdateForbiddenException
@@ -8908,7 +8435,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\PullRequestReview[]|\Psr\Http\Message\ResponseInterface
@@ -8929,7 +8455,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $pullNumber
      * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberReviewsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsCreateReviewUnprocessableEntityException
      * @throws \Github\Exception\PullsCreateReviewForbiddenException
@@ -8944,7 +8469,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $pullNumber
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsCheckIfMergedNotFoundException
      *
@@ -8960,7 +8484,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $pullNumber
      * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberMergePutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsMergeMethodNotAllowedException
      * @throws \Github\Exception\PullsMergeConflictException
@@ -8980,7 +8503,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $pullNumber
      * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberUpdateBranchPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsUpdateBranchUnprocessableEntityException
      * @throws \Github\Exception\PullsUpdateBranchForbiddenException
@@ -9001,7 +8523,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsListFilesUnprocessableEntityException
      * @throws \Github\Exception\PullsListFilesInternalServerErrorException
@@ -9025,7 +8546,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsListUnprocessableEntityException
      *
@@ -9046,7 +8566,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoPullsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsCreateForbiddenException
      * @throws \Github\Exception\PullsCreateUnprocessableEntityException
@@ -9066,7 +8585,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $pullNumber
      * @param int $commentId comment_id parameter
      * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsCreateReplyForReviewCommentNotFoundException
      *
@@ -9085,7 +8603,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\SimpleCommit[]|\Psr\Http\Message\ResponseInterface
@@ -9100,7 +8617,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $pullNumber
      * @param int $reviewId review_id parameter
      * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsSubmitReviewNotFoundException
      * @throws \Github\Exception\PullsSubmitReviewUnprocessableEntityException
@@ -9122,7 +8638,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsListCommentsForReviewNotFoundException
      *
@@ -9149,7 +8664,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var string $state Set to `closed` to list only closed code scanning alerts.
      *     @var string $ref Returns a list of code scanning alerts for a specific brach reference. The `ref` must be formatted as `heads/<branch name>`.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\CodeScanningListAlertsForRepoNotFoundException
      * @throws \Github\Exception\CodeScanningListAlertsForRepoServiceUnavailableException
@@ -9167,7 +8681,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $alertId alert_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\CodeScanningGetAlertNotFoundException
      * @throws \Github\Exception\CodeScanningGetAlertServiceUnavailableException
@@ -9201,7 +8714,7 @@ class Client extends \Github\Runtime\Client\Client
     *     @var int $per_page Results per page (max 100)
     *     @var int $page Page number of the results to fetch.
     * }
-    */
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\IssuesListForOrgNotFoundException
     *
@@ -9216,7 +8729,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $issueNumber issue_number parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesUnlockForbiddenException
      * @throws \Github\Exception\IssuesUnlockNotFoundException
@@ -9235,7 +8747,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $issueNumber issue_number parameter
      * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberLockPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesLockForbiddenException
      * @throws \Github\Exception\IssuesLockGoneException
@@ -9252,7 +8763,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $milestoneNumber milestone_number parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesDeleteMilestoneNotFoundException
      *
@@ -9266,7 +8776,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $milestoneNumber milestone_number parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesGetMilestoneNotFoundException
      *
@@ -9281,7 +8790,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $milestoneNumber milestone_number parameter
      * @param null|\Github\Model\ReposOwnerRepoMilestonesMilestoneNumberPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Milestone|\Psr\Http\Message\ResponseInterface
@@ -9296,7 +8804,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $issueNumber issue_number parameter
      * @param string $name name parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesRemoveLabelNotFoundException
      * @throws \Github\Exception\IssuesRemoveLabelGoneException
@@ -9317,7 +8824,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListMilestonesNotFoundException
      *
@@ -9331,7 +8837,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoMilestonesPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesCreateMilestoneNotFoundException
      * @throws \Github\Exception\IssuesCreateMilestoneUnprocessableEntityException
@@ -9346,7 +8851,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $commentId comment_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -9359,7 +8863,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $commentId comment_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesGetCommentNotFoundException
      *
@@ -9374,7 +8877,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $commentId comment_id parameter
      * @param null|\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesUpdateCommentUnprocessableEntityException
      *
@@ -9399,7 +8901,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $issueNumber issue_number parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesGetNotFoundException
      * @throws \Github\Exception\IssuesGetGoneException
@@ -9416,7 +8917,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $issueNumber issue_number parameter
      * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesUpdateUnprocessableEntityException
      * @throws \Github\Exception\IssuesUpdateServiceUnavailableException
@@ -9434,7 +8934,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $name name parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -9447,7 +8946,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $name name parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesGetLabelNotFoundException
      *
@@ -9462,7 +8960,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $name name parameter
      * @param null|\Github\Model\ReposOwnerRepoLabelsNamePatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Label|\Psr\Http\Message\ResponseInterface
@@ -9478,7 +8975,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListLabelsForRepoNotFoundException
      *
@@ -9492,7 +8988,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoLabelsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesCreateLabelUnprocessableEntityException
      * @throws \Github\Exception\IssuesCreateLabelNotFoundException
@@ -9511,7 +9006,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListEventsForTimelineNotFoundException
      * @throws \Github\Exception\IssuesListEventsForTimelineGoneException
@@ -9531,7 +9025,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListAssigneesNotFoundException
      *
@@ -9571,7 +9064,7 @@ class Client extends \Github\Runtime\Client\Client
     *     @var int $per_page Results per page (max 100)
     *     @var int $page Page number of the results to fetch.
     * }
-    */
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\IssuesListUnprocessableEntityException
     * @throws \Github\Exception\IssuesListNotFoundException
@@ -9586,7 +9079,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $issueNumber issue_number parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesRemoveAllLabelsGoneException
      *
@@ -9604,7 +9096,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListLabelsOnIssueGoneException
      *
@@ -9619,7 +9110,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $issueNumber issue_number parameter
      * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesAddLabelsGoneException
      * @throws \Github\Exception\IssuesAddLabelsUnprocessableEntityException
@@ -9636,7 +9126,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $issueNumber issue_number parameter
      * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesSetLabelsGoneException
      * @throws \Github\Exception\IssuesSetLabelsUnprocessableEntityException
@@ -9655,7 +9144,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListEventsGoneException
      *
@@ -9687,7 +9175,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListForRepoUnprocessableEntityException
      * @throws \Github\Exception\IssuesListForRepoNotFoundException
@@ -9705,7 +9192,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoIssuesPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesCreateForbiddenException
      * @throws \Github\Exception\IssuesCreateUnprocessableEntityException
@@ -9729,7 +9215,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListCommentsNotFoundException
      * @throws \Github\Exception\IssuesListCommentsGoneException
@@ -9746,7 +9231,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $issueNumber issue_number parameter
      * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberCommentsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesCreateCommentForbiddenException
      * @throws \Github\Exception\IssuesCreateCommentGoneException
@@ -9765,7 +9249,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $issueNumber issue_number parameter
      * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\IssueSimple|\Psr\Http\Message\ResponseInterface
@@ -9780,7 +9263,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $issueNumber issue_number parameter
      * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\IssueSimple|\Psr\Http\Message\ResponseInterface
@@ -9796,7 +9278,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListEventsForRepoUnprocessableEntityException
      *
@@ -9815,7 +9296,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $assignee assignee parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesCheckUserCanBeAssignedNotFoundException
      *
@@ -9847,7 +9327,7 @@ class Client extends \Github\Runtime\Client\Client
     *     @var int $per_page Results per page (max 100)
     *     @var int $page Page number of the results to fetch.
     * }
-    */
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\IssuesListForAuthenticatedUserNotFoundException
     *
@@ -9865,7 +9345,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Label[]|\Psr\Http\Message\ResponseInterface
@@ -9878,7 +9357,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $eventId event_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesGetEventNotFoundException
      * @throws \Github\Exception\IssuesGetEventGoneException
@@ -9901,7 +9379,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListCommentsForRepoUnprocessableEntityException
      * @throws \Github\Exception\IssuesListCommentsForRepoNotFoundException
@@ -9916,7 +9393,6 @@ class Client extends \Github\Runtime\Client\Client
      * OAuth application owners can revoke a single token for an OAuth application. You must use [Basic Authentication](https://developer.github.com/v3/auth#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password.
      * @param string $clientId
      * @param null|\Github\Model\ApplicationsClientIdTokenDeleteBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsDeleteTokenUnprocessableEntityException
      *
@@ -9930,7 +9406,6 @@ class Client extends \Github\Runtime\Client\Client
      * OAuth applications can use this API method to reset a valid OAuth token without end-user involvement. Applications must save the "token" property in the response because changes take effect immediately. You must use [Basic Authentication](https://developer.github.com/v3/auth#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password. Invalid tokens will return `404 NOT FOUND`.
      * @param string $clientId
      * @param null|\Github\Model\ApplicationsClientIdTokenPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsResetTokenUnprocessableEntityException
      *
@@ -9944,7 +9419,6 @@ class Client extends \Github\Runtime\Client\Client
      * OAuth applications can use a special API method for checking OAuth token validity without exceeding the normal rate limits for failed login attempts. Authentication works differently with this particular endpoint. You must use [Basic Authentication](https://developer.github.com/v3/auth#basic-authentication) to use this endpoint, where the username is the OAuth application `client_id` and the password is its `client_secret`. Invalid tokens will return `404 NOT FOUND`.
      * @param string $clientId
      * @param null|\Github\Model\ApplicationsClientIdTokenPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsCheckTokenUnprocessableEntityException
      * @throws \Github\Exception\AppsCheckTokenNotFoundException
@@ -9960,7 +9434,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * You must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Installation|\Psr\Http\Message\ResponseInterface
@@ -9980,7 +9453,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListAccountsForPlanNotFoundException
      * @throws \Github\Exception\AppsListAccountsForPlanUnprocessableEntityException
@@ -10000,7 +9472,6 @@ class Client extends \Github\Runtime\Client\Client
      * You must use an [installation access token](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation) to access this endpoint.
      * @param int $contentReferenceId content_reference_id parameter
      * @param null|\Github\Model\ContentReferencesContentReferenceIdAttachmentsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsCreateContentAttachmentUnprocessableEntityException
      * @throws \Github\Exception\AppsCreateContentAttachmentNotFoundException
@@ -10019,7 +9490,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * GitHub Apps must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth Apps must use [basic authentication](https://developer.github.com/v3/auth/#basic-authentication) with their client ID and client secret to access this endpoint.
      * @param int $accountId account_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsGetSubscriptionPlanForAccountStubbedNotFoundException
      * @throws \Github\Exception\AppsGetSubscriptionPlanForAccountStubbedUnauthorizedException
@@ -10036,7 +9506,6 @@ class Client extends \Github\Runtime\Client\Client
      * You must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
      * @param string $owner
      * @param string $repo
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsGetRepoInstallationNotFoundException
      *
@@ -10057,7 +9526,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListAccountsForPlanStubbedUnauthorizedException
      *
@@ -10079,7 +9547,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListInstallationsForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\AppsListInstallationsForAuthenticatedUserUnauthorizedException
@@ -10100,7 +9567,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * You must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
      * @param int $installationId installation_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsUnsuspendInstallationNotFoundException
      *
@@ -10119,7 +9585,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * You must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
      * @param int $installationId installation_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsSuspendInstallationNotFoundException
      *
@@ -10137,7 +9602,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListReposAccessibleToInstallationForbiddenException
      * @throws \Github\Exception\AppsListReposAccessibleToInstallationUnauthorizedException
@@ -10161,7 +9625,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListInstallationReposForAuthenticatedUserNotFoundException
      * @throws \Github\Exception\AppsListInstallationReposForAuthenticatedUserForbiddenException
@@ -10180,7 +9643,6 @@ class Client extends \Github\Runtime\Client\Client
      * Deleting an OAuth application's grant will also delete all OAuth tokens associated with the application for the user. Once deleted, the application will have no access to the user's account and will no longer be listed on [the Applications settings page under "Authorized OAuth Apps" on GitHub](https://github.com/settings/applications#authorized).
      * @param string $clientId
      * @param string $accessToken
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -10194,7 +9656,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * GitHub Apps must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth Apps must use [basic authentication](https://developer.github.com/v3/auth/#basic-authentication) with their client ID and client secret to access this endpoint.
      * @param int $accountId account_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsGetSubscriptionPlanForAccountNotFoundException
      * @throws \Github\Exception\AppsGetSubscriptionPlanForAccountUnauthorizedException
@@ -10211,7 +9672,6 @@ class Client extends \Github\Runtime\Client\Client
      * You must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
      * @param int $installationId installation_id parameter
      * @param null|\Github\Model\AppInstallationsInstallationIdAccessTokensPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsCreateInstallationAccessTokenForbiddenException
      * @throws \Github\Exception\AppsCreateInstallationAccessTokenUnsupportedMediaTypeException
@@ -10242,7 +9702,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListPlansStubbedUnauthorizedException
      *
@@ -10258,7 +9717,6 @@ class Client extends \Github\Runtime\Client\Client
      * OAuth application owners can revoke a single token for an OAuth application. You must use [Basic Authentication](https://developer.github.com/v3/auth#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password.
      * @param string $clientId
      * @param string $accessToken
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -10273,7 +9731,6 @@ class Client extends \Github\Runtime\Client\Client
      * OAuth applications can use a special API method for checking OAuth token validity without exceeding the normal rate limits for failed login attempts. Authentication works differently with this particular endpoint. You must use [Basic Authentication](https://developer.github.com/v3/auth#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password. Invalid tokens will return `404 NOT FOUND`.
      * @param string $clientId
      * @param string $accessToken
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsCheckAuthorizationNotFoundException
      *
@@ -10289,7 +9746,6 @@ class Client extends \Github\Runtime\Client\Client
      * OAuth applications can use this API method to reset a valid OAuth token without end-user involvement. Applications must save the "token" property in the response because changes take effect immediately. You must use [Basic Authentication](https://developer.github.com/v3/auth#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password. Invalid tokens will return `404 NOT FOUND`.
      * @param string $clientId
      * @param string $accessToken
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Authorization|\Psr\Http\Message\ResponseInterface
@@ -10308,7 +9764,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
      *     @var string $outdated
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Installation[]|\Psr\Http\Message\ResponseInterface
@@ -10320,7 +9775,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Use this endpoint to complete the handshake necessary when implementing the [GitHub App Manifest flow](https://developer.github.com/apps/building-github-apps/creating-github-apps-from-a-manifest/). When you create a GitHub App with the manifest flow, you receive a temporary `code` used to retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
      * @param string $code code parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsCreateFromManifestNotFoundException
      * @throws \Github\Exception\AppsCreateFromManifestUnprocessableEntityException
@@ -10336,7 +9790,6 @@ class Client extends \Github\Runtime\Client\Client
      * Deleting an OAuth application's grant will also delete all OAuth tokens associated with the application for the user. Once deleted, the application will have no access to the user's account and will no longer be listed on [the application authorizations settings screen within GitHub](https://github.com/settings/applications#authorized).
      * @param string $clientId
      * @param null|\Github\Model\ApplicationsClientIdGrantDeleteBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsDeleteAuthorizationUnprocessableEntityException
      *
@@ -10351,7 +9804,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * You must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
      * @param string $org
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\Installation|\Psr\Http\Message\ResponseInterface
@@ -10374,7 +9826,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * You must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
      * @param int $installationId installation_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsDeleteInstallationNotFoundException
      *
@@ -10389,7 +9840,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * You must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
      * @param int $installationId installation_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsGetInstallationNotFoundException
      * @throws \Github\Exception\AppsGetInstallationUnsupportedMediaTypeException
@@ -10406,7 +9856,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListSubscriptionsForAuthenticatedUserUnauthorizedException
      * @throws \Github\Exception\AppsListSubscriptionsForAuthenticatedUserNotFoundException
@@ -10423,7 +9872,6 @@ class Client extends \Github\Runtime\Client\Client
      * You must use a personal access token (which you can create via the [command line](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) or the [OAuth Authorizations API](https://developer.github.com/v3/oauth_authorizations/#create-a-new-authorization)) or [Basic Authentication](https://developer.github.com/v3/auth/#basic-authentication) to access this endpoint.
      * @param int $installationId installation_id parameter
      * @param int $repositoryId repository_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsRemoveRepoFromInstallationForbiddenException
      * @throws \Github\Exception\AppsRemoveRepoFromInstallationNotFoundException
@@ -10440,7 +9888,6 @@ class Client extends \Github\Runtime\Client\Client
      * You must use a personal access token (which you can create via the [command line](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) or the [OAuth Authorizations API](https://developer.github.com/v3/oauth_authorizations/#create-a-new-authorization)) or [Basic Authentication](https://developer.github.com/v3/auth/#basic-authentication) to access this endpoint.
      * @param int $installationId installation_id parameter
      * @param int $repositoryId repository_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsAddRepoToInstallationForbiddenException
      * @throws \Github\Exception\AppsAddRepoToInstallationNotFoundException
@@ -10456,7 +9903,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * If the GitHub App you specify is public, you can access this endpoint without authenticating. If the GitHub App you specify is private, you must authenticate with a [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) or an [installation access token](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation) to access this endpoint.
      * @param string $appSlug app_slug parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsGetBySlugForbiddenException
      * @throws \Github\Exception\AppsGetBySlugNotFoundException
@@ -10474,7 +9920,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListSubscriptionsForAuthenticatedUserStubbedUnauthorizedException
      *
@@ -10492,7 +9937,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListPlansNotFoundException
      * @throws \Github\Exception\AppsListPlansUnauthorizedException
@@ -10505,7 +9949,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param string $gistId gist_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsUnstarNotFoundException
      * @throws \Github\Exception\GistsUnstarForbiddenException
@@ -10518,7 +9961,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param string $gistId gist_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsCheckIsStarredNotFoundException
      * @throws \Github\Exception\GistsCheckIsStarredForbiddenException
@@ -10532,7 +9974,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://developer.github.com/v3/#http-verbs)."
      * @param string $gistId gist_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsStarNotFoundException
      * @throws \Github\Exception\GistsStarForbiddenException
@@ -10550,7 +9991,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsListStarredUnauthorizedException
      * @throws \Github\Exception\GistsListStarredForbiddenException
@@ -10564,7 +10004,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $gistId gist_id parameter
      * @param int $commentId comment_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsDeleteCommentNotFoundException
      * @throws \Github\Exception\GistsDeleteCommentForbiddenException
@@ -10578,7 +10017,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $gistId gist_id parameter
      * @param int $commentId comment_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsGetCommentNotFoundException
      * @throws \Github\Exception\GistsGetCommentForbiddenException
@@ -10593,7 +10031,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $gistId gist_id parameter
      * @param int $commentId comment_id parameter
      * @param null|\Github\Model\GistsGistIdCommentsCommentIdPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsUpdateCommentNotFoundException
      *
@@ -10612,7 +10049,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsListPublicUnprocessableEntityException
      * @throws \Github\Exception\GistsListPublicForbiddenException
@@ -10631,7 +10067,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsListForUserUnprocessableEntityException
      *
@@ -10643,7 +10078,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param string $gistId gist_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsDeleteNotFoundException
      * @throws \Github\Exception\GistsDeleteForbiddenException
@@ -10656,7 +10090,6 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param string $gistId gist_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsGetForbiddenException
      * @throws \Github\Exception\GistsGetNotFoundException
@@ -10671,7 +10104,6 @@ class Client extends \Github\Runtime\Client\Client
      * Allows you to update or delete a gist file and rename gist files. Files from the previous version of the gist that aren't explicitly changed during an edit are unchanged.
      * @param string $gistId gist_id parameter
      * @param null|\Github\Model\GistsGistIdPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsUpdateUnprocessableEntityException
      * @throws \Github\Exception\GistsUpdateNotFoundException
@@ -10688,7 +10120,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsListForksNotFoundException
      * @throws \Github\Exception\GistsListForksForbiddenException
@@ -10702,7 +10133,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * **Note**: This was previously `/gists/:gist_id/fork`.
      * @param string $gistId gist_id parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsForkNotFoundException
      * @throws \Github\Exception\GistsForkUnprocessableEntityException
@@ -10721,7 +10151,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsListForbiddenException
      *
@@ -10736,7 +10165,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * **Note:** Don't name your files "gistfile" with a numerical suffix. This is the format of the automatic naming scheme that Gist uses internally.
      * @param null|\Github\Model\GistsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsCreateUnprocessableEntityException
      * @throws \Github\Exception\GistsCreateNotFoundException
@@ -10754,7 +10182,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsListCommitsNotFoundException
      * @throws \Github\Exception\GistsListCommitsForbiddenException
@@ -10771,7 +10198,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsListCommentsNotFoundException
      * @throws \Github\Exception\GistsListCommentsForbiddenException
@@ -10785,7 +10211,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $gistId gist_id parameter
      * @param null|\Github\Model\GistsGistIdCommentsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsCreateCommentNotFoundException
      * @throws \Github\Exception\GistsCreateCommentForbiddenException
@@ -10799,7 +10224,6 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $gistId gist_id parameter
      * @param string $sha sha parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsGetRevisionUnprocessableEntityException
      * @throws \Github\Exception\GistsGetRevisionNotFoundException
@@ -10820,7 +10244,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * Access tokens must have the `user` scope.
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\CombinedBillingUsage|\Psr\Http\Message\ResponseInterface
@@ -10838,7 +10261,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * Access tokens must have the `read:org` scope.
      * @param string $org
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\PackagesBillingUsage|\Psr\Http\Message\ResponseInterface
@@ -10856,7 +10278,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * The authenticated user must be an enterprise admin.
      * @param string $enterpriseId Unique identifier of the GitHub Enterprise Cloud instance.
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ActionsBillingUsage|\Psr\Http\Message\ResponseInterface
@@ -10874,7 +10295,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * Access tokens must have the `read:org` scope.
      * @param string $org
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\CombinedBillingUsage|\Psr\Http\Message\ResponseInterface
@@ -10892,7 +10312,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * The authenticated user must be an enterprise admin.
      * @param string $enterpriseId Unique identifier of the GitHub Enterprise Cloud instance.
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\CombinedBillingUsage|\Psr\Http\Message\ResponseInterface
@@ -10910,7 +10329,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * Access tokens must have the `read:org` scope.
      * @param string $org
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ActionsBillingUsage|\Psr\Http\Message\ResponseInterface
@@ -10928,7 +10346,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * The authenticated user must be an enterprise admin.
      * @param string $enterpriseId Unique identifier of the GitHub Enterprise Cloud instance.
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\PackagesBillingUsage|\Psr\Http\Message\ResponseInterface
@@ -10946,7 +10363,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * Access tokens must have the `user` scope.
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\PackagesBillingUsage|\Psr\Http\Message\ResponseInterface
@@ -10964,7 +10380,6 @@ class Client extends \Github\Runtime\Client\Client
      *
      * Access tokens must have the `user` scope.
      * @param string $username
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\ActionsBillingUsage|\Psr\Http\Message\ResponseInterface
@@ -10993,7 +10408,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var string $recursive Setting this parameter to any value returns the objects or subtrees referenced by the tree specified in `:tree_sha`. For example, setting `recursive` to any of the following will enable returning objects or subtrees: `0`, `1`, `"true"`, and `"false"`. Omit this parameter to prevent recursively returning objects or subtrees.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitGetTreeUnprocessableEntityException
      * @throws \Github\Exception\GitGetTreeNotFoundException
@@ -11019,7 +10433,6 @@ class Client extends \Github\Runtime\Client\Client
      *     @var int $per_page Results per page (max 100)
      *     @var int $page Page number of the results to fetch.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\GitRef[]|\Psr\Http\Message\ResponseInterface
@@ -11032,7 +10445,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $ref ref+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitDeleteRefUnprocessableEntityException
      *
@@ -11047,7 +10459,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $ref ref+ parameter
      * @param null|\Github\Model\ReposOwnerRepoGitRefsRefPatchBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitUpdateRefUnprocessableEntityException
      *
@@ -11088,7 +10499,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoGitCommitsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitCreateCommitUnprocessableEntityException
      * @throws \Github\Exception\GitCreateCommitNotFoundException
@@ -11124,7 +10534,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $tagSha tag_sha parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitGetTagNotFoundException
      *
@@ -11141,7 +10550,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoGitTreesPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitCreateTreeUnprocessableEntityException
      * @throws \Github\Exception\GitCreateTreeNotFoundException
@@ -11158,7 +10566,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoGitRefsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitCreateRefUnprocessableEntityException
      *
@@ -11195,7 +10602,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoGitTagsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitCreateTagUnprocessableEntityException
      *
@@ -11212,7 +10618,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $ref ref+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitGetRefNotFoundException
      *
@@ -11226,7 +10631,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param null|\Github\Model\ReposOwnerRepoGitBlobsPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitCreateBlobNotFoundException
      * @throws \Github\Exception\GitCreateBlobConflictException
@@ -11246,7 +10650,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $fileSha file_sha parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitGetBlobNotFoundException
      * @throws \Github\Exception\GitGetBlobUnprocessableEntityException
@@ -11285,7 +10688,6 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $commitSha commit_sha+ parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitGetCommitNotFoundException
      *
@@ -11299,7 +10701,6 @@ class Client extends \Github\Runtime\Client\Client
      * The API also allows fetching the source of a single template.
      * Use the raw [media type](https://developer.github.com/v3/media/) to get the raw contents.
      * @param string $name name parameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Github\Model\GitignoreTemplate|\Psr\Http\Message\ResponseInterface

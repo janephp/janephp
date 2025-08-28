@@ -15,7 +15,6 @@ class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
      *     @var string $testHeader
      *     @var string $testHeaderSkipped
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface

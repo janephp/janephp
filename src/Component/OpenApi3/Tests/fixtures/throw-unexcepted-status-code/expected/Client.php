@@ -6,7 +6,6 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
 {
     /**
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UnexpectedStatusCodeException
      *

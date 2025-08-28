@@ -8,7 +8,6 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param array $queryParameters {
      *     @var int $limit How many items to return at one time (max 100)
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Pet[]|\Jane\Component\OpenApi3\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
@@ -19,7 +18,6 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     }
     /**
      * @param \Jane\Component\OpenApi3\Tests\Expected\Model\Pet $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
@@ -30,7 +28,6 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     }
     /**
      * @param string $petId The id of the pet to retrieve
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Pet|\Jane\Component\OpenApi3\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface

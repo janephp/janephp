@@ -7,7 +7,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
     /**
      * Enter your username and password into the request schema to generate an Authorization Token
      * @param null|\CreditSafe\API\Model\AuthenticationRequest $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\GenerateAuthenticationTokenUnauthorizedException
      * @throws \CreditSafe\API\Exception\GenerateAuthenticationTokenNotFoundException
@@ -48,7 +47,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\CompanySearchBadRequestException
      * @throws \CreditSafe\API\Exception\CompanySearchUnauthorizedException
@@ -72,7 +70,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\CompanyCreditReportBadRequestException
      * @throws \CreditSafe\API\Exception\CompanyCreditReportUnauthorizedException
@@ -92,7 +89,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\CompanySearchCriteriaBadRequestException
      * @throws \CreditSafe\API\Exception\CompanySearchCriteriaUnauthorizedException
@@ -115,7 +111,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\CompanyReportJSONSchemaUnauthorizedException
      *
@@ -130,7 +125,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\CountriesInSubscriptionBadRequestException
      * @throws \CreditSafe\API\Exception\CountriesInSubscriptionUnauthorizedException
@@ -162,7 +156,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\PeopleDirectorSearchBadRequestException
      * @throws \CreditSafe\API\Exception\PeopleDirectorSearchUnauthorizedException
@@ -183,7 +176,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\DirectorReportBadRequestException
      * @throws \CreditSafe\API\Exception\DirectorReportUnauthorizedException
@@ -203,7 +195,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\PeopleDirectorSearchCriteriaBadRequestException
      * @throws \CreditSafe\API\Exception\PeopleDirectorSearchCriteriaUnauthorizedException
@@ -225,7 +216,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\CompanyImageDocumentsUnauthorizedException
      * @throws \CreditSafe\API\Exception\CompanyImageDocumentsNotFoundException
@@ -244,7 +234,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\ImageDocumentCategoryTypesUnauthorizedException
      * @throws \CreditSafe\API\Exception\ImageDocumentCategoryTypesNotFoundException
@@ -261,7 +250,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\CompanyImageBadRequestException
      * @throws \CreditSafe\API\Exception\CompanyImageForbiddenException
@@ -294,7 +282,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsBadRequestException
      * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsUnauthorizedException
@@ -313,7 +300,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\RequestFreshInvestigationBadRequestException
      * @throws \CreditSafe\API\Exception\RequestFreshInvestigationUnauthorizedException
@@ -332,7 +318,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\DeletePendingFreshInvesitgationBadRequestException
      * @throws \CreditSafe\API\Exception\DeletePendingFreshInvesitgationUnauthorizedException
@@ -353,7 +338,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\FreshInvestigationReportBadRequestException
      * @throws \CreditSafe\API\Exception\FreshInvestigationReportUnauthorizedException
@@ -371,7 +355,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\EditPendingFreshInvestigationBadRequestException
      * @throws \CreditSafe\API\Exception\EditPendingFreshInvestigationUnauthorizedException
@@ -397,7 +380,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\BankMatchBadRequestException
      * @throws \CreditSafe\API\Exception\BankMatchUnauthorizedException
@@ -414,7 +396,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\CreditSafe\API\Model\UserDetails|\Psr\Http\Message\ResponseInterface
@@ -435,7 +416,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\CompanyEventsBadRequestException
      * @throws \CreditSafe\API\Exception\CompanyEventsUnauthorizedException
@@ -453,7 +433,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\AllEventRulesBadRequestException
      * @throws \CreditSafe\API\Exception\AllEventRulesUnauthorizedException
@@ -472,7 +451,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\FilteredEventRulesBadRequestException
      * @throws \CreditSafe\API\Exception\FilteredEventRulesForbiddenException
@@ -498,7 +476,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\NotificationEventsBadRequestException
      * @throws \CreditSafe\API\Exception\NotificationEventsUnauthorizedException
@@ -521,7 +498,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\ListAllPortfoliosBadRequestException
      * @throws \CreditSafe\API\Exception\ListAllPortfoliosUnauthorizedException
@@ -540,7 +516,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\CreateMonitoringPortfolioBadRequestException
      * @throws \CreditSafe\API\Exception\CreateMonitoringPortfolioUnauthorizedException
@@ -559,7 +534,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfolioByPortfolioIdBadRequestException
      * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfolioByPortfolioIdUnauthorizedException
@@ -578,7 +552,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\RetrievePortfolioByIdBadRequestException
      * @throws \CreditSafe\API\Exception\RetrievePortfolioByIdUnauthorizedException
@@ -598,7 +571,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\UpdatePortfolioDetailsBadRequestException
      * @throws \CreditSafe\API\Exception\UpdatePortfolioDetailsForbiddenException
@@ -616,7 +588,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesBadRequestException
      * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesUnauthorizedException
@@ -635,7 +606,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\ListPortfolioEventRulesBadRequestException
      * @throws \CreditSafe\API\Exception\ListPortfolioEventRulesUnauthorizedException
@@ -655,7 +625,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\GetFilteredPortfolioEventRulesBadRequestException
      * @throws \CreditSafe\API\Exception\GetFilteredPortfolioEventRulesUnauthorizedException
@@ -676,7 +645,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeBadRequestException
      * @throws \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeUnauthorizedException
@@ -695,7 +663,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesBadRequestException
      * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesUnauthorizedException
@@ -715,7 +682,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdImportBadRequestException
      * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdImportUnauthorizedException
@@ -735,7 +701,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\SyncPortfolioCompaniesToCSVRecordsBadRequestException
      * @throws \CreditSafe\API\Exception\SyncPortfolioCompaniesToCSVRecordsUnauthorizedException
@@ -754,7 +719,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\PortoflioRiskSummaryBadRequestException
      * @throws \CreditSafe\API\Exception\PortoflioRiskSummaryUnauthorizedException
@@ -780,7 +744,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\ListNotificationEventsInAPortfolioFilteredBadRequestException
      * @throws \CreditSafe\API\Exception\ListNotificationEventsInAPortfolioFilteredUnauthorizedException
@@ -801,7 +764,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventBadRequestException
      * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventUnauthorizedException
@@ -827,7 +789,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioBadRequestException
      * @throws \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioUnauthorizedException
@@ -847,7 +808,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdCompanyBadRequestException
      * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdCompanyUnauthorizedException
@@ -870,7 +830,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSBadRequestException
      * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSUnauthorizedException
@@ -893,7 +852,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSBadRequestException
      * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSUnauthorizedException
@@ -916,7 +874,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\ClearCompaniesFromAPortfolioBadRequestException
      * @throws \CreditSafe\API\Exception\ClearCompaniesFromAPortfolioUnauthorizedException
@@ -936,7 +893,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfoliosByPortfolioIdCompanyByIdBadRequestException
      * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfoliosByPortfolioIdCompanyByIdUnauthorizedException
@@ -956,7 +912,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioBadRequestException
      * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioUnauthorizedException
@@ -977,7 +932,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioBadRequestException
      * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioUnauthorizedException
@@ -1005,7 +959,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\ListCompanySpecificNotificationEventsBadRequestException
      * @throws \CreditSafe\API\Exception\ListCompanySpecificNotificationEventsUnauthorizedException
@@ -1024,7 +977,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\PortfolioUserPermissionsBadRequestException
      * @throws \CreditSafe\API\Exception\PortfolioUserPermissionsUnauthorizedException
@@ -1044,7 +996,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\SharePortfolioIdBadRequestException
      * @throws \CreditSafe\API\Exception\SharePortfolioIdUnauthorizedException
@@ -1068,7 +1019,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\ListDecisionTreesBadRequestException
      * @throws \CreditSafe\API\Exception\ListDecisionTreesUnauthorizedException
@@ -1092,7 +1042,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\RunDecisionTreeBadRequestException
      * @throws \CreditSafe\API\Exception\RunDecisionTreeUnauthorizedException
@@ -1110,7 +1059,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaBadRequestException
      * @throws \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaUnauthorizedException
@@ -1128,7 +1076,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\ListOfCompanyPreDefinedSearchesBadRequestException
      * @throws \CreditSafe\API\Exception\ListOfCompanyPreDefinedSearchesUnauthorizedException
@@ -1156,7 +1103,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\CompanyComplianceSearchBadRequestException
      * @throws \CreditSafe\API\Exception\CompanyComplianceSearchUnauthorizedException
@@ -1173,7 +1119,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\IndividualsComplianceSearchCriteriaBadRequestException
      * @throws \CreditSafe\API\Exception\IndividualsComplianceSearchCriteriaUnauthorizedException
@@ -1191,7 +1136,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\ListOfIndividualsPreDefinedSearchesBadRequestException
      * @throws \CreditSafe\API\Exception\ListOfIndividualsPreDefinedSearchesUnauthorizedException
@@ -1219,7 +1163,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\IndividualPersonComplianceSearchBadRequestException
      * @throws \CreditSafe\API\Exception\IndividualPersonComplianceSearchUnauthorizedException
@@ -1240,7 +1183,6 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param array $headerParameters {
      *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\CustomReportParametersBadRequestException
      * @throws \CreditSafe\API\Exception\CustomReportParametersUnauthorizedException

@@ -8,7 +8,6 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param string $requestBody
      * @param array $accept Accept content header *\/*|application/json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     */
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */

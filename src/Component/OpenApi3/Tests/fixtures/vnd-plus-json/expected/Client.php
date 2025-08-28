@@ -15,7 +15,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     *     @var string $Amazon-Advertising-API-Scope The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list
     profiles associated with the access token passed in the HTTP Authorization header.
     * }
-    */
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsResponseContent|\Psr\Http\Message\ResponseInterface
