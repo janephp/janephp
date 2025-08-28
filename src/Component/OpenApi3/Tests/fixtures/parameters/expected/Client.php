@@ -12,7 +12,6 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param array $headerParameters {
      *     @var string $testHeader
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -29,7 +28,6 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param array $headerParameters {
      *     @var string $testHeader
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -47,7 +45,6 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      *     @var string $testRequired
      *     @var string $testDefault
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -65,7 +62,6 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      *     @var string $testRequired
      *     @var string $testDefault
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -76,7 +72,6 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     }
     /**
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormPostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -87,7 +82,6 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     }
     /**
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormFilePostBody $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -98,7 +92,6 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     }
     /**
      * @param string|resource|\Psr\Http\Message\StreamInterface $requestBody
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -111,7 +104,6 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param string $testString
      * @param int $testInteger
      * @param float $testFloat
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -122,7 +114,6 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     }
     /**
      * @param int $testInteger
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -135,7 +126,6 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param array $queryParameters {
      *     @var string $input
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface

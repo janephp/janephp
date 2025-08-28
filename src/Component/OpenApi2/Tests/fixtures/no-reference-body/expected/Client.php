@@ -6,7 +6,6 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
 {
     /**
      * @param \Jane\Component\OpenApi2\Tests\Expected\Model\TestGetBody $body
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -17,7 +16,6 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
     }
     /**
      * @param \Jane\Component\OpenApi2\Tests\Expected\Model\TestPostBody $body
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface

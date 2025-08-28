@@ -6,7 +6,6 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
 {
     /**
      * @param string $testParameter
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface

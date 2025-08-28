@@ -42,6 +42,11 @@ class OperationGenerator
             $endpointArgs[] = new Arg($param->var);
             $lastMethodParam = $param->var->name;
         }
+
+        if (str_ends_with($methodDoc, '*/')) {
+            $methodDoc = substr($methodDoc, 0, -2); // remove trailing */ from base method docs
+        }
+
         $methodDocSplit = explode("\n", $methodDoc);
         $methodDocPosition = $lastMethodParam === 'accept' ? \count($methodDocSplit) - 1 : \count($methodDocSplit);
         array_splice($methodDocSplit, $methodDocPosition, 0, [

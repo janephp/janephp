@@ -43,7 +43,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     - `volume`=(`<volume name>` or `<mount point destination>`)
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerListBadRequestException
      * @throws \Docker\Api\Exception\ContainerListInternalServerErrorException
@@ -61,7 +60,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     `/?[a-zA-Z0-9][a-zA-Z0-9_.-]+`.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerCreateBadRequestException
      * @throws \Docker\Api\Exception\ContainerCreateNotFoundException
@@ -80,7 +78,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var bool $size Return the size of container as fields `SizeRw` and `SizeRootFs`
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerInspectNotFoundException
      * @throws \Docker\Api\Exception\ContainerInspectInternalServerErrorException
@@ -99,7 +96,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var string $ps_args The arguments to pass to `ps`. For example, `aux`
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerTopNotFoundException
      * @throws \Docker\Api\Exception\ContainerTopInternalServerErrorException
@@ -128,7 +124,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     Specify as an integer or `all` to output all log lines.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerLogsNotFoundException
      * @throws \Docker\Api\Exception\ContainerLogsInternalServerErrorException
@@ -148,7 +143,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * - `2`: Deleted
      *
      * @param string $id ID or name of the container
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerChangesNotFoundException
      * @throws \Docker\Api\Exception\ContainerChangesInternalServerErrorException
@@ -162,7 +156,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     /**
      * Export the contents of a container as a tarball.
      * @param string $id ID or name of the container
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerExportNotFoundException
      * @throws \Docker\Api\Exception\ContainerExportInternalServerErrorException
@@ -210,7 +203,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     with `stream=false`.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerStatsNotFoundException
      * @throws \Docker\Api\Exception\ContainerStatsInternalServerErrorException
@@ -228,7 +220,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     @var int $h Height of the TTY session in characters
      *     @var int $w Width of the TTY session in characters
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerResizeNotFoundException
      * @throws \Docker\Api\Exception\ContainerResizeInternalServerErrorException
@@ -247,7 +238,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     of: `a-z`, `@`, `^`, `[`, `,` or `_`.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerStartNotFoundException
      * @throws \Docker\Api\Exception\ContainerStartInternalServerErrorException
@@ -263,7 +253,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var int $t Number of seconds to wait before killing the container
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerStopNotFoundException
      * @throws \Docker\Api\Exception\ContainerStopInternalServerErrorException
@@ -279,7 +268,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var int $t Number of seconds to wait before killing the container
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerRestartNotFoundException
      * @throws \Docker\Api\Exception\ContainerRestartInternalServerErrorException
@@ -298,7 +286,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var string $signal Signal to send to the container as an integer or string (e.g. `SIGINT`)
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerKillNotFoundException
      * @throws \Docker\Api\Exception\ContainerKillConflictException
@@ -316,7 +303,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @param string $id ID or name of the container
      * @param \Docker\Api\Model\ContainersIdUpdatePostBody $update
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerUpdateNotFoundException
      * @throws \Docker\Api\Exception\ContainerUpdateInternalServerErrorException
@@ -332,7 +318,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var string $name New name for the container
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerRenameNotFoundException
      * @throws \Docker\Api\Exception\ContainerRenameConflictException
@@ -353,7 +338,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * suspended, and subsequently resumed.
      *
      * @param string $id ID or name of the container
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerPauseNotFoundException
      * @throws \Docker\Api\Exception\ContainerPauseInternalServerErrorException
@@ -367,7 +351,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     /**
      * Resume a container which has been paused.
      * @param string $id ID or name of the container
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerUnpauseNotFoundException
      * @throws \Docker\Api\Exception\ContainerUnpauseInternalServerErrorException
@@ -494,7 +477,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     @var bool $stdout Attach to `stdout`
      *     @var bool $stderr Attach to `stderr`
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerAttachBadRequestException
      * @throws \Docker\Api\Exception\ContainerAttachNotFoundException
@@ -519,7 +501,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     @var bool $stdout Attach to `stdout`
      *     @var bool $stderr Attach to `stderr`
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerAttachWebsocketBadRequestException
      * @throws \Docker\Api\Exception\ContainerAttachWebsocketNotFoundException
@@ -539,7 +520,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     'not-running' (default), 'next-exit', or 'removed'.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerWaitNotFoundException
      * @throws \Docker\Api\Exception\ContainerWaitInternalServerErrorException
@@ -557,7 +537,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     @var bool $force If the container is running, kill it before removing it.
      *     @var bool $link Remove the specified link associated with the container.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerDeleteBadRequestException
      * @throws \Docker\Api\Exception\ContainerDeleteNotFoundException
@@ -576,7 +555,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var string $path Resource in the container’s filesystem to archive.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerArchiveBadRequestException
      * @throws \Docker\Api\Exception\ContainerArchiveNotFoundException
@@ -597,7 +575,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var string $path Resource in the container’s filesystem to archive.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerArchiveInfoBadRequestException
      * @throws \Docker\Api\Exception\ContainerArchiveInfoNotFoundException
@@ -625,7 +602,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *     dir
     *     
     * }
-    */
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Docker\Api\Exception\PutContainerArchiveBadRequestException
     * @throws \Docker\Api\Exception\PutContainerArchiveForbiddenException
@@ -647,7 +624,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     - `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune containers with (or without, in case `label!=...` is used) the specified labels.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerPruneInternalServerErrorException
      *
@@ -674,7 +650,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     
      *     @var bool $digests Show digest information as a `RepoDigests` field on each image.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ImageListInternalServerErrorException
      *
@@ -751,7 +726,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     Only the registry domain name (and port if not the default 443) are required. However, for legacy reasons, the Docker Hub registry must be specified with both a `https://` prefix and a `/v1/` suffix even though Docker will prefer to use the v2 registry API.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ImageBuildBadRequestException
      * @throws \Docker\Api\Exception\ImageBuildInternalServerErrorException
@@ -781,7 +755,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     - `private`
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\BuildPruneInternalServerErrorException
      *
@@ -816,7 +789,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     details.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ImageCreateNotFoundException
      * @throws \Docker\Api\Exception\ImageCreateInternalServerErrorException
@@ -830,7 +802,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     /**
      * Return low-level information about an image.
      * @param string $name Image name or id
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ImageInspectNotFoundException
      * @throws \Docker\Api\Exception\ImageInspectInternalServerErrorException
@@ -844,7 +815,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     /**
      * Return parent layers of an image.
      * @param string $name Image name or ID
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ImageHistoryNotFoundException
      * @throws \Docker\Api\Exception\ImageHistoryInternalServerErrorException
@@ -875,7 +845,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     details.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ImagePushNotFoundException
      * @throws \Docker\Api\Exception\ImagePushInternalServerErrorException
@@ -893,7 +862,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     @var string $repo The repository to tag in. For example, `someuser/someimage`.
      *     @var string $tag The name of the new tag.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ImageTagBadRequestException
      * @throws \Docker\Api\Exception\ImageTagNotFoundException
@@ -918,7 +886,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     @var bool $force Remove the image even if it is being used by stopped containers or has other tags
      *     @var bool $noprune Do not delete untagged parent images
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ImageDeleteNotFoundException
      * @throws \Docker\Api\Exception\ImageDeleteConflictException
@@ -942,7 +909,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     - `stars=<number>` Matches images that has at least 'number' stars.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ImageSearchInternalServerErrorException
      *
@@ -963,7 +929,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     - `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune images with (or without, in case `label!=...` is used) the specified labels.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ImagePruneInternalServerErrorException
      *
@@ -978,7 +943,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * token for accessing the registry without password.
      *
      * @param \Docker\Api\Model\AuthConfig $authConfig Authentication to check
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\SystemAuthInternalServerErrorException
      *
@@ -1039,7 +1003,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     @var bool $pause Whether to pause the container before committing
      *     @var string $changes `Dockerfile` instructions to apply while committing
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ImageCommitNotFoundException
      * @throws \Docker\Api\Exception\ImageCommitInternalServerErrorException
@@ -1096,7 +1059,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     - `volume=<string>` volume name
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\SystemEventsBadRequestException
      * @throws \Docker\Api\Exception\SystemEventsInternalServerErrorException
@@ -1143,7 +1105,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * ```
      *
      * @param string $name Image name or ID
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ImageGetInternalServerErrorException
      *
@@ -1168,7 +1129,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var array $names Image names to filter by
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ImageGetAllInternalServerErrorException
      *
@@ -1187,7 +1147,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var bool $quiet Suppress progress details during load.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ImageLoadInternalServerErrorException
      *
@@ -1201,7 +1160,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * Run a command inside a running container.
      * @param string $id ID or name of container
      * @param \Docker\Api\Model\ContainersIdExecPostBody $execConfig Exec configuration
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ContainerExecNotFoundException
      * @throws \Docker\Api\Exception\ContainerExecConflictException
@@ -1220,7 +1178,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *
      * @param string $id Exec instance ID
      * @param \Docker\Api\Model\ExecIdStartPostBody $execStartConfig
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ExecStartNotFoundException
      * @throws \Docker\Api\Exception\ExecStartConflictException
@@ -1240,7 +1197,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     @var int $h Height of the TTY session in characters
      *     @var int $w Width of the TTY session in characters
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ExecResizeBadRequestException
      * @throws \Docker\Api\Exception\ExecResizeNotFoundException
@@ -1255,7 +1211,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     /**
      * Return low-level information about an exec instance.
      * @param string $id Exec instance ID
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ExecInspectNotFoundException
      * @throws \Docker\Api\Exception\ExecInspectInternalServerErrorException
@@ -1281,7 +1236,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     - `name=<volume-name>` Matches all or part of a volume name.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\VolumeListInternalServerErrorException
      *
@@ -1293,7 +1247,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @param \Docker\Api\Model\VolumesCreatePostBody $volumeConfig Volume configuration
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\VolumeCreateInternalServerErrorException
      *
@@ -1309,7 +1262,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var bool $force Force the removal of the volume
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\VolumeDeleteNotFoundException
      * @throws \Docker\Api\Exception\VolumeDeleteConflictException
@@ -1323,7 +1275,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @param string $name Volume name or ID
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\VolumeInspectNotFoundException
      * @throws \Docker\Api\Exception\VolumeInspectInternalServerErrorException
@@ -1342,7 +1293,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     - `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune volumes with (or without, in case `label!=...` is used) the specified labels.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\VolumePruneInternalServerErrorException
      *
@@ -1378,7 +1328,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     - `type=["custom"|"builtin"]` Filters networks by type. The `custom` keyword returns all user-defined networks.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\NetworkListInternalServerErrorException
      *
@@ -1390,7 +1339,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @param string $id Network ID or name
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\NetworkDeleteForbiddenException
      * @throws \Docker\Api\Exception\NetworkDeleteNotFoundException
@@ -1408,7 +1356,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     @var bool $verbose Detailed inspect output for troubleshooting
      *     @var string $scope Filter the network by scope (swarm, global, or local)
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\NetworkInspectNotFoundException
      * @throws \Docker\Api\Exception\NetworkInspectInternalServerErrorException
@@ -1421,7 +1368,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @param \Docker\Api\Model\NetworksCreatePostBody $networkConfig Network configuration
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\NetworkCreateForbiddenException
      * @throws \Docker\Api\Exception\NetworkCreateNotFoundException
@@ -1436,7 +1382,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     /**
      * @param string $id Network ID or name
      * @param \Docker\Api\Model\NetworksIdConnectPostBody $container
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\NetworkConnectForbiddenException
      * @throws \Docker\Api\Exception\NetworkConnectNotFoundException
@@ -1451,7 +1396,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     /**
      * @param string $id Network ID or name
      * @param \Docker\Api\Model\NetworksIdDisconnectPostBody $container
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\NetworkDisconnectForbiddenException
      * @throws \Docker\Api\Exception\NetworkDisconnectNotFoundException
@@ -1472,7 +1416,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     - `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune networks with (or without, in case `label!=...` is used) the specified labels.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\NetworkPruneInternalServerErrorException
      *
@@ -1494,7 +1437,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     - `enable=<true>|<false>`
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\PluginListInternalServerErrorException
      *
@@ -1510,7 +1452,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     default if omitted.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\GetPluginPrivilegesInternalServerErrorException
      *
@@ -1543,7 +1484,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     details.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\PluginPullInternalServerErrorException
      *
@@ -1557,7 +1497,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param string $name The name of the plugin. The `:latest` tag is optional, and is the
      * default if omitted.
      * 
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\PluginInspectNotFoundException
      * @throws \Docker\Api\Exception\PluginInspectInternalServerErrorException
@@ -1577,7 +1516,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     plugin is in use by a container.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\PluginDeleteNotFoundException
      * @throws \Docker\Api\Exception\PluginDeleteInternalServerErrorException
@@ -1595,7 +1533,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var int $timeout Set the HTTP client timeout (in seconds)
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\PluginEnableNotFoundException
      * @throws \Docker\Api\Exception\PluginEnableInternalServerErrorException
@@ -1610,7 +1547,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param string $name The name of the plugin. The `:latest` tag is optional, and is the
      * default if omitted.
      * 
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\PluginDisableNotFoundException
      * @throws \Docker\Api\Exception\PluginDisableInternalServerErrorException
@@ -1640,7 +1576,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     details.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\PluginUpgradeNotFoundException
      * @throws \Docker\Api\Exception\PluginUpgradeInternalServerErrorException
@@ -1658,7 +1593,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     default if omitted.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\PluginCreateInternalServerErrorException
      *
@@ -1674,7 +1608,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param string $name The name of the plugin. The `:latest` tag is optional, and is the
      * default if omitted.
      * 
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\PluginPushNotFoundException
      * @throws \Docker\Api\Exception\PluginPushInternalServerErrorException
@@ -1690,7 +1623,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * default if omitted.
      * 
      * @param array $body
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\PluginSetNotFoundException
      * @throws \Docker\Api\Exception\PluginSetInternalServerErrorException
@@ -1714,7 +1646,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     - `role=`(`manager`|`worker`)`
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\NodeListInternalServerErrorException
      * @throws \Docker\Api\Exception\NodeListServiceUnavailableException
@@ -1730,7 +1661,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var bool $force Force remove a node from the swarm
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\NodeDeleteNotFoundException
      * @throws \Docker\Api\Exception\NodeDeleteInternalServerErrorException
@@ -1744,7 +1674,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @param string $id The ID or name of the node
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\NodeInspectNotFoundException
      * @throws \Docker\Api\Exception\NodeInspectInternalServerErrorException
@@ -1764,7 +1693,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     to avoid conflicting writes.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\NodeUpdateBadRequestException
      * @throws \Docker\Api\Exception\NodeUpdateNotFoundException
@@ -1791,7 +1719,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @param \Docker\Api\Model\SwarmInitPostBody $body
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\SwarmInitBadRequestException
      * @throws \Docker\Api\Exception\SwarmInitInternalServerErrorException
@@ -1805,7 +1732,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @param \Docker\Api\Model\SwarmJoinPostBody $body
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\SwarmJoinBadRequestException
      * @throws \Docker\Api\Exception\SwarmJoinInternalServerErrorException
@@ -1823,7 +1749,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     break the cluster.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\SwarmLeaveInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmLeaveServiceUnavailableException
@@ -1844,7 +1769,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     @var bool $rotateManagerToken Rotate the manager join token.
      *     @var bool $rotateManagerUnlockKey Rotate the manager unlock key.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\SwarmUpdateBadRequestException
      * @throws \Docker\Api\Exception\SwarmUpdateInternalServerErrorException
@@ -1869,7 +1793,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @param \Docker\Api\Model\SwarmUnlockPostBody $body
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\SwarmUnlockInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmUnlockServiceUnavailableException
@@ -1895,7 +1818,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     @var bool $status Include service status, with count of running and desired tasks.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ServiceListInternalServerErrorException
      * @throws \Docker\Api\Exception\ServiceListServiceUnavailableException
@@ -1916,7 +1838,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     details.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ServiceCreateBadRequestException
      * @throws \Docker\Api\Exception\ServiceCreateForbiddenException
@@ -1932,7 +1853,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @param string $id ID or name of service.
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ServiceDeleteNotFoundException
      * @throws \Docker\Api\Exception\ServiceDeleteInternalServerErrorException
@@ -1949,7 +1869,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var bool $insertDefaults Fill empty fields with default values.
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ServiceInspectNotFoundException
      * @throws \Docker\Api\Exception\ServiceInspectInternalServerErrorException
@@ -1987,7 +1906,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     details.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ServiceUpdateBadRequestException
      * @throws \Docker\Api\Exception\ServiceUpdateNotFoundException
@@ -2019,7 +1937,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     Specify as an integer or `all` to output all log lines.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ServiceLogsNotFoundException
      * @throws \Docker\Api\Exception\ServiceLogsInternalServerErrorException
@@ -2046,7 +1963,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     - `service=<service name>`
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\TaskListInternalServerErrorException
      * @throws \Docker\Api\Exception\TaskListServiceUnavailableException
@@ -2059,7 +1975,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @param string $id ID of the task
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\TaskInspectNotFoundException
      * @throws \Docker\Api\Exception\TaskInspectInternalServerErrorException
@@ -2090,7 +2005,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     Specify as an integer or `all` to output all log lines.
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\TaskLogsNotFoundException
      * @throws \Docker\Api\Exception\TaskLogsInternalServerErrorException
@@ -2115,7 +2029,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     - `names=<secret name>`
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\SecretListInternalServerErrorException
      * @throws \Docker\Api\Exception\SecretListServiceUnavailableException
@@ -2128,7 +2041,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @param \Docker\Api\Model\SecretsCreatePostBody $body
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\SecretCreateConflictException
      * @throws \Docker\Api\Exception\SecretCreateInternalServerErrorException
@@ -2142,7 +2054,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @param string $id ID of the secret
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\SecretDeleteNotFoundException
      * @throws \Docker\Api\Exception\SecretDeleteInternalServerErrorException
@@ -2156,7 +2067,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @param string $id ID of the secret
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\SecretInspectNotFoundException
      * @throws \Docker\Api\Exception\SecretInspectInternalServerErrorException
@@ -2178,7 +2088,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *     required to avoid conflicting writes.
     *     
     * }
-    */
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Docker\Api\Exception\SecretUpdateBadRequestException
     * @throws \Docker\Api\Exception\SecretUpdateNotFoundException
@@ -2204,7 +2114,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      *     - `names=<config name>`
      *     
      * }
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ConfigListInternalServerErrorException
      * @throws \Docker\Api\Exception\ConfigListServiceUnavailableException
@@ -2217,7 +2126,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @param \Docker\Api\Model\ConfigsCreatePostBody $body
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ConfigCreateConflictException
      * @throws \Docker\Api\Exception\ConfigCreateInternalServerErrorException
@@ -2231,7 +2139,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @param string $id ID of the config
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ConfigDeleteNotFoundException
      * @throws \Docker\Api\Exception\ConfigDeleteInternalServerErrorException
@@ -2245,7 +2152,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
     }
     /**
      * @param string $id ID of the config
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ConfigInspectNotFoundException
      * @throws \Docker\Api\Exception\ConfigInspectInternalServerErrorException
@@ -2267,7 +2173,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
     *     required to avoid conflicting writes.
     *     
     * }
-    */
+    
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Docker\Api\Exception\ConfigUpdateBadRequestException
     * @throws \Docker\Api\Exception\ConfigUpdateNotFoundException
@@ -2284,7 +2190,6 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * Return image digest and platform information by contacting the registry.
      *
      * @param string $name Image name or id
-     */
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\DistributionInspectUnauthorizedException
      * @throws \Docker\Api\Exception\DistributionInspectInternalServerErrorException
