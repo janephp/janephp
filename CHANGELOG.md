@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [Jane] [GH#856](https://github.com/janephp/janephp/pull/856) Modernize bundle configuration
 - [Jane] [GH#857](https://github.com/janephp/janephp/pull/857) Modernize classes
 - [Jane] [GH#827](https://github.com/janephp/janephp/pull/827) Make doctypes with less whitespace and unnecessary new lines
+- [OpenApi3] [GH#864](https://github.com/janephp/janephp/pull/864) Use serializer rather than `json_encode` in generated `getBody` for requests
 
 ### Fixed
 - [JsonSchema] [GH#841](https://github.com/janephp/janephp/pull/841) Fix "nullable" property handing in generated normalizers
