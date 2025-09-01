@@ -56,7 +56,6 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         $classGuess = $this->guessClass->guessClass($schema, $reference . '/schema', $context->getRegistry(), $array);
 
         if (null === $classGuess) {
-
             return $this->typeToCondition($schema?->getType(), $schema?->getFormat(), new Expr\PropertyFetch(new Expr\Variable('this'), 'body'));
         }
 
