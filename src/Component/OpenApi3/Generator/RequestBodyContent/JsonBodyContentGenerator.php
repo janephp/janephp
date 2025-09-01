@@ -22,7 +22,6 @@ class JsonBodyContentGenerator extends AbstractBodyContentGenerator
 
     public function getSerializeStatements(MediaType $content, string $contentType, string $reference, Context $context): array
     {
-
         return [new Stmt\Return_(new Expr\Array_([
             new Expr\Array_([
                 new Expr\ArrayItem(
