@@ -23,7 +23,7 @@ class TestSimple extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if (is_array($this->body)) {
-            return [['Content-Type' => ['application/json']], json_encode($this->body)];
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
         return [[], null];
     }
