@@ -8,7 +8,7 @@ class AppsGetSubscriptionPlanForAccountStubbedNotFoundException extends NotFound
      * @var \Psr\Http\Message\ResponseInterface
      */
     private $response;
-    public function __construct(\Psr\Http\Message\ResponseInterface $response = null)
+    public function __construct(?\Psr\Http\Message\ResponseInterface $response = null)
     {
         parent::__construct('Response when the account has not purchased the listing');
         $this->response = $response;

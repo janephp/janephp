@@ -8,7 +8,7 @@ class CodeScanningListAlertsForRepoNotFoundException extends NotFoundException
      * @var \Psr\Http\Message\ResponseInterface
      */
     private $response;
-    public function __construct(\Psr\Http\Message\ResponseInterface $response = null)
+    public function __construct(?\Psr\Http\Message\ResponseInterface $response = null)
     {
         parent::__construct('Response if the ref doesn\'t match an existing ref');
         $this->response = $response;
