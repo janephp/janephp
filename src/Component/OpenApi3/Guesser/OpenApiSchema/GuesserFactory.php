@@ -4,6 +4,7 @@ namespace Jane\Component\OpenApi3\Guesser\OpenApiSchema;
 
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
+use Jane\Component\JsonSchema\Guesser\JsonSchema\EnumTypeGuesser;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\AdditionalPropertiesGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\AllOfGuesser;
@@ -34,6 +35,7 @@ class GuesserFactory
         $chainGuesser->addGuesser(new DateGuesser(Schema::class, $dateFormat, $datePreferInterface));
         $chainGuesser->addGuesser(new DateTimeGuesser(Schema::class, $outputDateTimeFormat, $inputDateTimeFormat, $datePreferInterface));
         $chainGuesser->addGuesser(new ReferenceGuesser($denormalizer, Schema::class));
+        $chainGuesser->addGuesser(new EnumTypeGuesser($denormalizer, Schema::class));
         $chainGuesser->addGuesser(new OpenApiGuesser($denormalizer));
         $chainGuesser->addGuesser(new SchemaGuesser($denormalizer, $naming));
         $chainGuesser->addGuesser(new AdditionalPropertiesGuesser(Schema::class));

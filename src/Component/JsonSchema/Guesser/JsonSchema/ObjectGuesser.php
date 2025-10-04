@@ -183,6 +183,11 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
         return new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, $object->getDeprecated());
     }
 
+    protected function createEnumGuess($object, string $reference, string $name, array $extensions): ClassGuess
+    {
+        return new ClassGuess($object, $reference, $this->naming->getClassName($name), $extensions, $object->getDeprecated());
+    }
+
     private function initChainValidator(Registry $registry): void
     {
         if (null === $this->chainValidator) {

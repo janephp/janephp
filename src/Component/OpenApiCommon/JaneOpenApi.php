@@ -64,6 +64,7 @@ abstract class JaneOpenApi extends ChainGenerator
         foreach ($schemas as $schema) {
             $openApiSpec = $this->schemaParser->parseSchema($schema->getOrigin());
             $this->chainGuesser->guessClass($openApiSpec, $schema->getRootName(), $schema->getOrigin() . '#', $registry);
+            $this->chainGuesser->guessEnums($openApiSpec, $schema->getRootName(), $schema->getOrigin() . '#', $registry);
             $schema->setParsed($openApiSpec);
         }
 

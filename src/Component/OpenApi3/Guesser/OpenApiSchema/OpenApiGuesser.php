@@ -61,6 +61,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         if ($object->getComponents() instanceof Components && is_iterable($object->getComponents()->getSchemas())) {
             foreach ($object->getComponents()->getSchemas() as $key => $definition) {
                 $this->chainGuesser->guessClass($definition, $key, $reference . '/components/schemas/' . $key, $registry);
+                $this->chainGuesser->guessEnums($definition, $key, $reference . '/components/schemas/' . $key, $registry);
             }
         }
         if ($object->getComponents() instanceof Components && is_iterable($object->getComponents()->getSecuritySchemes())) {

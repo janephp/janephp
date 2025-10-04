@@ -65,6 +65,12 @@ class ModelGenerator implements GeneratorInterface
             $namespaceStmt = new Stmt\Namespace_(new Name($namespace), [$model]);
             $schema->addFile(new File($schema->getDirectory() . '/Model/' . $class->getName() . '.php', $namespaceStmt, self::FILE_TYPE_MODEL));
         }
+
+        foreach ($schema->getEnums() as $enum) {
+            $model = $this->doCreateEnumModel($enum);
+            $namespaceStmt = new Stmt\Namespace_(new Name($namespace), [$model]);
+            $schema->addFile(new File($schema->getDirectory() . '/Model/' . $enum->getName() . '.php', $namespaceStmt, self::FILE_TYPE_MODEL));
+        }
     }
 
     protected function doCreateClassMethods(ClassGuess $classGuess, Property $property, string $namespace, bool $strict): array
@@ -84,6 +90,18 @@ class ModelGenerator implements GeneratorInterface
             $methods,
             \count($class->getExtensionsType()) > 0,
             $class->isDeprecated()
+        );
+    }
+
+    protected function doCreateEnumModel(ClassGuess $enum): Stmt\Enum_
+    {
+        $cases = $enum->getObject()->getEnum();
+
+        return $this->createEnumModel(
+            $enum->getName(),
+            $cases,
+            \count($enum->getExtensionsType()) > 0,
+            $enum->isDeprecated()
         );
     }
 }

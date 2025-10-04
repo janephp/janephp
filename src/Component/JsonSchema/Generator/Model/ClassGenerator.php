@@ -9,6 +9,7 @@ use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
+use PhpParser\Node\Stmt\EnumCase;
 
 trait ClassGenerator
 {
@@ -40,6 +41,35 @@ EOD
             $this->getNaming()->getClassName($name),
             [
                 'stmts' => array_merge($this->getInitialized(), $properties, $methods),
+                'extends' => $hasExtensions ? new Name('\ArrayObject') : null,
+            ],
+            $attributes
+        );
+    }
+
+    /**
+     * Return a model class.
+     */
+    protected function createEnumModel(string $name, array $cases, bool $hasExtensions = false, bool $deprecated = false): Stmt\Enum_
+    {
+        $attributes = [];
+
+        if ($deprecated) {
+            $attributes['comments'] = [new Doc(<<<EOD
+/**
+ *
+ * @deprecated
+ */
+EOD
+            )];
+        }
+
+        $cases = array_map(fn ($name) => new EnumCase($name), $cases);
+
+        return new Stmt\Enum_(
+            $this->getNaming()->getClassName($name),
+            [
+                'stmts' => $cases,
                 'extends' => $hasExtensions ? new Name('\ArrayObject') : null,
             ],
             $attributes

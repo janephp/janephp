@@ -3,6 +3,7 @@
 namespace Jane\Component\JsonSchema\Guesser\Guess;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
+use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
 use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -124,6 +125,12 @@ class Type
 
     public function getTypeHint(string $namespace): Node\Identifier|Name|null
     {
+        if ($this->object instanceof Schema && $this->object->getEnum() !== null) {
+            return new Node\Identifier('enum', [
+                'values' => $this->object->getEnum(),
+            ]);
+        }
+
         return \is_string($this->phpMapping[$this->name])
             ? new Node\Identifier($this->phpMapping[$this->name])
             : $this->phpMapping[$this->name]

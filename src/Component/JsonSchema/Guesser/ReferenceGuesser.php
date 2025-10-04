@@ -28,6 +28,10 @@ class ReferenceGuesser implements ClassGuesserInterface, GuesserInterface, TypeG
      */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
+        if (!$object instanceof Reference) {
+            return;
+        }
+
         if ($object->isInCurrentDocument()) {
             return;
         }

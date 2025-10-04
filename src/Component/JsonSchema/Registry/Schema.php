@@ -15,6 +15,9 @@ class Schema implements SchemaInterface
     /** @var array<ClassGuess> List of classes associated to this schema */
     private array $classes = [];
 
+    /** @var array<ClassGuess> List of enums associated to this schema */
+    private $enums = [];
+
     /** @var array<string> A list of references this schema is registered to */
     private array $references;
 
@@ -67,6 +70,11 @@ class Schema implements SchemaInterface
         $this->classes[urldecode($reference)] = $class;
     }
 
+    public function addEnum(string $reference, ClassGuess $class): void
+    {
+        $this->enums[urldecode($reference)] = $class;
+    }
+
     public function removeClass(string $reference): void
     {
         unset($this->classes[urldecode($reference)]);
@@ -109,6 +117,14 @@ class Schema implements SchemaInterface
     public function getClasses(): array
     {
         return $this->classes;
+    }
+
+    /**
+     * @return ClassGuess[]
+     */
+    public function getEnums(): array
+    {
+        return $this->enums;
     }
 
     public function addFile(File $file): void
