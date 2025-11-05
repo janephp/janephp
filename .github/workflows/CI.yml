@@ -41,6 +41,12 @@ jobs:
       max-parallel: 15
       matrix:
         php-versions:  ['8.1', '8.2', '8.3', '8.4']
+        symfony-require: ['']
+        include:
+          - php-version: '8.4'
+            symfony-require: 8.*
+    env:
+      SYMFONY_REQUIRE: ${{ matrix.symfony-version }}
     name: tests-${{ matrix.php-versions }}
     steps:
       - name: checkout
@@ -55,6 +61,11 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: mbstring, fileinfo, json, intl, dom
+      # We need Flex to enforce Symfony version with `SYMFONY_REQUIRE` env var
+      - name: Install Symfony Flex
+        run: composer global require --no-progress --no-scripts --no-plugins symfony/flex
+      - name: Enable Symfony Flex
+        run: composer global config --no-plugins allow-plugins.symfony/flex true
       - name: composer install
         run: composer update --prefer-stable
       - name: install prism
