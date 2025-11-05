@@ -5,7 +5,7 @@
 
 [![Latest Version](https://img.shields.io/github/release/janephp/janephp.svg?style=flat-square)](https://github.com/janephp/janephp/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Build Status](https://img.shields.io/travis/janephp/janephp.svg?style=flat-square)](https://travis-ci.org/janephp/janephp)
+[![Build Status](https://github.com/janephp/janephp/actions/workflows/CI.yml/badge.svg)](https://github.com/janephp/janephp/actions/workflows/CI.yml)
 
 Jane is a set of libraries to generate Models & API Clients based on JsonSchema / OpenAPI specs
 
