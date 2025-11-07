@@ -1,0 +1,55 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/test-path-parameters/{testPath}": {
+            "parameters": [
+                {
+                    "name": "foo",
+                    "in": "path",
+                    "schema": {
+                        "type": "string",
+                        "default": "foo"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "bar",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                },
+                {
+                    "name": "testQuery",
+                    "in": "query",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "testHeader",
+                    "in": "header",
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "get": {
+                "operationId": "testGetWithDefaultValuesInPathParameters",
+                "tags": [
+                    "Test"
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        }
+    },
+    "info": {
+        "version": "",
+        "title": ""
+    }
+}
