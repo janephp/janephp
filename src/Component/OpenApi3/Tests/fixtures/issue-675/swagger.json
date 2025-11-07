@@ -1,0 +1,33 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/test-simple": {
+            "post": {
+                "operationId": "testSimple",
+                "parameters": [
+                    {
+                        "name": "foo",
+                        "in": "query",
+                        "allowReserved": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "bar",
+                        "in": "query",
+                        "allowReserved": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        }
+    },
+    "info": {
+        "version": "",
+        "title": ""
+    }
+}

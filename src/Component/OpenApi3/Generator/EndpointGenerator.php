@@ -9,6 +9,7 @@ use Jane\Component\OpenApi3\Generator\Endpoint\GetConstructorTrait;
 use Jane\Component\OpenApi3\Generator\Endpoint\GetGetBodyTrait;
 use Jane\Component\OpenApi3\Generator\Endpoint\GetGetExtraHeadersTrait;
 use Jane\Component\OpenApi3\Generator\Endpoint\GetGetOptionsResolverTrait;
+use Jane\Component\OpenApi3\Generator\Endpoint\GetGetQueryAllowReservedTrait;
 use Jane\Component\OpenApi3\Generator\Endpoint\GetGetUriTrait;
 use Jane\Component\OpenApi3\Generator\Endpoint\GetTransformResponseBodyTrait;
 use Jane\Component\OpenApi3\Generator\Parameter\NonBodyParameterGenerator;
@@ -33,6 +34,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
     use GetGetExtraHeadersTrait;
     use GetGetMethodTrait;
     use GetGetOptionsResolverTrait;
+    use GetGetQueryAllowReservedTrait;
     use GetGetUriTrait;
     use GetTransformResponseBodyTrait;
     use OptionResolverNormalizationTrait;
@@ -76,6 +78,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
         $extraHeadersMethod = $this->getExtraHeadersMethod($operation, $this->guessClass);
         $queryResolverMethod = $this->getOptionsResolverMethod($operation, self::IN_QUERY, 'getQueryOptionsResolver', $this->guessClass, $this->nonBodyParameterGenerator, $operationCustomQueryResolver, $genericCustomQueryResolver);
         $headerResolverMethod = $this->getOptionsResolverMethod($operation, self::IN_HEADER, 'getHeadersOptionsResolver', $this->guessClass, $this->nonBodyParameterGenerator);
+        $queryAllowReservedMethod = $this->getQueryAllowReservedMethod($operation, 'getQueryAllowReserved');
 
         if ($extraHeadersMethod) {
             $class->stmts[] = $extraHeadersMethod;
@@ -87,6 +90,10 @@ class EndpointGenerator implements EndpointGeneratorInterface
 
         if ($headerResolverMethod) {
             $class->stmts[] = $headerResolverMethod;
+        }
+
+        if ($queryAllowReservedMethod) {
+            $class->stmts[] = $queryAllowReservedMethod;
         }
 
         $class->stmts[] = $transformBodyMethod;
