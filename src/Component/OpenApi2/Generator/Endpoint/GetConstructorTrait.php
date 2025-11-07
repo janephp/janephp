@@ -27,7 +27,7 @@ trait GetConstructorTrait
 
     public function getConstructor(OperationGuess $operation, Context $context, GuessClass $guessClass, BodyParameterGenerator $bodyParameterGenerator, NonBodyParameterGenerator $nonBodyParameterGenerator): array
     {
-        $pathParams = $pathParamsDoc = $queryParamsDoc = $formParamsDoc = $headerParamsDoc = $methodStatements = $pathProperties = [];
+        $pathParams = $pathParamsDoc = $pathParamsWithDefaultValue = $pathParamsWithDefaultValueDoc = $queryParamsDoc = $formParamsDoc = $headerParamsDoc = $methodStatements = $pathProperties = [];
         $bodyParam = $bodyDoc = $bodyAssign = null;
 
         foreach ($operation->getParameters() as $key => $parameter) {
@@ -36,8 +36,14 @@ trait GetConstructorTrait
             }
 
             if ($parameter instanceof PathParameterSubSchema) {
-                $pathParams[] = $nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
-                $pathParamsDoc[] = $nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
+                if (null === $parameter->getDefault()) {
+                    $pathParams[] = $nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
+                    $pathParamsDoc[] = $nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
+                } else {
+                    $pathParamsWithDefaultValue[] = $nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
+                    $pathParamsWithDefaultValueDoc[] = $nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
+                }
+
                 $methodStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), $parameter->getName()), new Expr\Variable($this->getInflector()->camelize($parameter->getName()))));
                 $pathProperties[] = new Stmt\Property(Modifiers::PROTECTED, [
                     new Stmt\PropertyProperty($parameter->getName()),
@@ -77,6 +83,7 @@ trait GetConstructorTrait
 
         $methodParams = array_merge(
             $pathParams,
+            $pathParamsWithDefaultValue,
             $bodyParam ? [$bodyParam] : [],
             \count($queryParamsDoc) > 0 ? [new Node\Param(new Expr\Variable('queryParameters'), new Expr\Array_(), new Name('array'))] : [],
             \count($formParamsDoc) > 0 ? [new Node\Param(new Expr\Variable('formParameters'), new Expr\Array_(), new Name('array'))] : [],
@@ -85,6 +92,7 @@ trait GetConstructorTrait
 
         $methodDocumentations = array_merge(
             $pathParamsDoc,
+            $pathParamsWithDefaultValueDoc,
             $bodyDoc ? [$bodyDoc] : [],
             \count($queryParamsDoc) > 0 ? array_merge([' * @param array $queryParameters {'], $queryParamsDoc, [' * }']) : [],
             \count($formParamsDoc) > 0 ? array_merge([' * @param array $formParameters {'], $formParamsDoc, [' * }']) : [],
