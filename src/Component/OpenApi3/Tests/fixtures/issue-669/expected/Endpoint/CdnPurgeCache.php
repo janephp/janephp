@@ -1,0 +1,84 @@
+<?php
+
+namespace Jane\Generated\DigitalOcean\Endpoint;
+
+class CdnPurgeCache extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
+{
+    protected $cdn_id;
+    /**
+     * To purge cached content from a CDN endpoint, send a DELETE request to
+     * `/v2/cdn/endpoints/$ENDPOINT_ID/cache`. The body of the request should include
+     * a `files` attribute containing a list of cached file paths to be purged. A
+     * path may be for a single file or may contain a wildcard (`*`) to recursively
+     * purge all files under a directory. When only a wildcard is provided, all cached
+     * files will be purged. There is a rate limit of 50 files per 20 seconds that can
+     * be purged. CDN endpoints have a rate limit of 5 requests per 10 seconds.
+     * Purging files using a wildcard path counts as a single request against the API's
+     * rate limit. Two identical purge requests cannot be sent at the same time.
+     *
+     * @param string $cdnId A unique identifier for a CDN endpoint.
+     * @param \Jane\Generated\DigitalOcean\Model\PurgeCache $requestBody
+     */
+    public function __construct(string $cdnId, \Jane\Generated\DigitalOcean\Model\PurgeCache $requestBody)
+    {
+        $this->cdn_id = $cdnId;
+        $this->body = $requestBody;
+    }
+    use \Jane\Generated\DigitalOcean\Runtime\Client\EndpointTrait;
+    public function getMethod(): string
+    {
+        return 'DELETE';
+    }
+    public function getUri(): string
+    {
+        return str_replace(['{cdn_id}'], [$this->cdn_id], '/v2/cdn/endpoints/{cdn_id}/cache');
+    }
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    {
+        if ($this->body instanceof \Jane\Generated\DigitalOcean\Model\PurgeCache) {
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+        }
+        return [[], null];
+    }
+    public function getExtraHeaders(): array
+    {
+        return ['Accept' => ['application/json']];
+    }
+    /**
+     * {@inheritdoc}
+     *
+     * @throws \Jane\Generated\DigitalOcean\Exception\CdnPurgeCacheUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\CdnPurgeCacheNotFoundException
+     * @throws \Jane\Generated\DigitalOcean\Exception\CdnPurgeCacheTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\CdnPurgeCacheInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\Error
+     */
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
+        if (204 === $status) {
+            return null;
+        }
+        if (is_null($contentType) === false && (401 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\CdnPurgeCacheUnauthorizedException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\CdnPurgeCacheNotFoundException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (429 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\CdnPurgeCacheTooManyRequestsException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (500 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\CdnPurgeCacheInternalServerErrorException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+            return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
+        }
+    }
+    public function getAuthenticationScopes(): array
+    {
+        return ['bearer_auth'];
+    }
+}

@@ -1,0 +1,125 @@
+<?php
+
+namespace Jane\Generated\DigitalOcean\Normalizer;
+
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Jane\Generated\DigitalOcean\Runtime\Normalizer\CheckArray;
+use Jane\Generated\DigitalOcean\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+class ApiModelProviderKeyInfoNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+    {
+        return $type === \Jane\Generated\DigitalOcean\Model\ApiModelProviderKeyInfo::class;
+    }
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+    {
+        return is_object($data) && get_class($data) === \Jane\Generated\DigitalOcean\Model\ApiModelProviderKeyInfo::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
+        $object = new \Jane\Generated\DigitalOcean\Model\ApiModelProviderKeyInfo();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (\array_key_exists('api_key_uuid', $data)) {
+            $object->setApiKeyUuid($data['api_key_uuid']);
+            unset($data['api_key_uuid']);
+        }
+        if (\array_key_exists('created_at', $data)) {
+            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            unset($data['created_at']);
+        }
+        if (\array_key_exists('created_by', $data)) {
+            $object->setCreatedBy($data['created_by']);
+            unset($data['created_by']);
+        }
+        if (\array_key_exists('deleted_at', $data)) {
+            $object->setDeletedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['deleted_at']));
+            unset($data['deleted_at']);
+        }
+        if (\array_key_exists('models', $data)) {
+            $values = [];
+            foreach ($data['models'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\ApiModel::class, 'json', $context);
+            }
+            $object->setModels($values);
+            unset($data['models']);
+        }
+        if (\array_key_exists('name', $data)) {
+            $object->setName($data['name']);
+            unset($data['name']);
+        }
+        if (\array_key_exists('provider', $data)) {
+            $object->setProvider($data['provider']);
+            unset($data['provider']);
+        }
+        if (\array_key_exists('updated_at', $data)) {
+            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            unset($data['updated_at']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if ($data->isInitialized('apiKeyUuid') && null !== $data->getApiKeyUuid()) {
+            $dataArray['api_key_uuid'] = $data->getApiKeyUuid();
+        }
+        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
+            $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
+        }
+        if ($data->isInitialized('createdBy') && null !== $data->getCreatedBy()) {
+            $dataArray['created_by'] = $data->getCreatedBy();
+        }
+        if ($data->isInitialized('deletedAt') && null !== $data->getDeletedAt()) {
+            $dataArray['deleted_at'] = $data->getDeletedAt()->format('Y-m-d\TH:i:sP');
+        }
+        if ($data->isInitialized('models') && null !== $data->getModels()) {
+            $values = [];
+            foreach ($data->getModels() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $dataArray['models'] = $values;
+        }
+        if ($data->isInitialized('name') && null !== $data->getName()) {
+            $dataArray['name'] = $data->getName();
+        }
+        if ($data->isInitialized('provider') && null !== $data->getProvider()) {
+            $dataArray['provider'] = $data->getProvider();
+        }
+        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
+            $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_1;
+            }
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Jane\Generated\DigitalOcean\Model\ApiModelProviderKeyInfo::class => false];
+    }
+}

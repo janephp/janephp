@@ -1,0 +1,85 @@
+<?php
+
+namespace Jane\Generated\DigitalOcean\Endpoint;
+
+class GenaiListKnowledgeBaseDataSources extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
+{
+    protected $knowledge_base_uuid;
+    /**
+     * To list all data sources for a knowledge base, send a GET request to `/v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources`.
+     * @param string $knowledgeBaseUuid Knowledge base id
+     * @param array $queryParameters {
+     *     @var int $page Page number.
+     *     @var int $per_page Items per page.
+     * }
+     */
+    public function __construct(string $knowledgeBaseUuid, array $queryParameters = [])
+    {
+        $this->knowledge_base_uuid = $knowledgeBaseUuid;
+        $this->queryParameters = $queryParameters;
+    }
+    use \Jane\Generated\DigitalOcean\Runtime\Client\EndpointTrait;
+    public function getMethod(): string
+    {
+        return 'GET';
+    }
+    public function getUri(): string
+    {
+        return str_replace(['{knowledge_base_uuid}'], [$this->knowledge_base_uuid], '/v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources');
+    }
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    {
+        return [[], null];
+    }
+    public function getExtraHeaders(): array
+    {
+        return ['Accept' => ['application/json']];
+    }
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['page', 'per_page']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('page', ['int']);
+        $optionsResolver->addAllowedTypes('per_page', ['int']);
+        return $optionsResolver;
+    }
+    /**
+     * {@inheritdoc}
+     *
+     * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBaseDataSourcesUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBaseDataSourcesNotFoundException
+     * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBaseDataSourcesTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBaseDataSourcesInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBaseDataSourcesOutput|\Jane\Generated\DigitalOcean\Model\Error
+     */
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBaseDataSourcesOutput', 'json');
+        }
+        if (is_null($contentType) === false && (401 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBaseDataSourcesUnauthorizedException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBaseDataSourcesNotFoundException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (429 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBaseDataSourcesTooManyRequestsException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (500 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBaseDataSourcesInternalServerErrorException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+            return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
+        }
+    }
+    public function getAuthenticationScopes(): array
+    {
+        return ['bearer_auth'];
+    }
+}

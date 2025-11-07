@@ -1,0 +1,57 @@
+<?php
+
+namespace Jane\Generated\DigitalOcean\Endpoint;
+
+class AppsListRegions extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
+{
+    use \Jane\Generated\DigitalOcean\Runtime\Client\EndpointTrait;
+    public function getMethod(): string
+    {
+        return 'GET';
+    }
+    public function getUri(): string
+    {
+        return '/v2/apps/regions';
+    }
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    {
+        return [[], null];
+    }
+    public function getExtraHeaders(): array
+    {
+        return ['Accept' => ['application/json']];
+    }
+    /**
+     * {@inheritdoc}
+     *
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsListRegionsUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsListRegionsTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AppsListRegionsInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\AppsListRegionsResponse|\Jane\Generated\DigitalOcean\Model\Error
+     */
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\AppsListRegionsResponse', 'json');
+        }
+        if (is_null($contentType) === false && (401 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\AppsListRegionsUnauthorizedException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (429 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\AppsListRegionsTooManyRequestsException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (500 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\AppsListRegionsInternalServerErrorException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+            return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
+        }
+    }
+    public function getAuthenticationScopes(): array
+    {
+        return ['bearer_auth'];
+    }
+}
