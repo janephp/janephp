@@ -45,6 +45,10 @@ class NonBodyParameterGenerator extends ParameterGenerator
             $methodParameter->default = $this->getDefaultAsExpr($parameter);
         }
 
+        if (null !== $parameter->getSchema()->getAnyOf() && \count($parameter->getSchema()->getAnyOf()) > 0) {
+            return $methodParameter;
+        }
+
         $types = $this->convertParameterType($parameter->getSchema());
 
         if (\count($types) === 1) {
@@ -135,7 +139,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
     {
         $type = 'mixed';
 
-        if ($parameter->getSchema()) {
+        if ($parameter->getSchema() && (null === $parameter->getSchema()->getAnyOf() || \count($parameter->getSchema()->getAnyOf()) === 0)) {
             $type = implode('|', $this->convertParameterType($parameter->getSchema()));
         }
 

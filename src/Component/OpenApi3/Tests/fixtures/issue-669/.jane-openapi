@@ -1,0 +1,8 @@
+<?php
+
+// digitalocean.php
+return [
+    'openapi-file' => 'https://api-engineering.nyc3.cdn.digitaloceanspaces.com/spec-ci/DigitalOcean-public.v2.yaml',
+    'namespace' => 'Jane\Generated\DigitalOcean',
+    'directory' => __DIR__ . '/generated',
+];

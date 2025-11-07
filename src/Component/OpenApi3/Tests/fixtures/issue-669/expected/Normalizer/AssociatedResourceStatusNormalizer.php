@@ -1,0 +1,89 @@
+<?php
+
+namespace Jane\Generated\DigitalOcean\Normalizer;
+
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Jane\Generated\DigitalOcean\Runtime\Normalizer\CheckArray;
+use Jane\Generated\DigitalOcean\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+class AssociatedResourceStatusNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+    {
+        return $type === \Jane\Generated\DigitalOcean\Model\AssociatedResourceStatus::class;
+    }
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+    {
+        return is_object($data) && get_class($data) === \Jane\Generated\DigitalOcean\Model\AssociatedResourceStatus::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
+        $object = new \Jane\Generated\DigitalOcean\Model\AssociatedResourceStatus();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (\array_key_exists('droplet', $data)) {
+            $object->setDroplet($this->denormalizer->denormalize($data['droplet'], \Jane\Generated\DigitalOcean\Model\DestroyedAssociatedResource::class, 'json', $context));
+            unset($data['droplet']);
+        }
+        if (\array_key_exists('resources', $data)) {
+            $object->setResources($this->denormalizer->denormalize($data['resources'], \Jane\Generated\DigitalOcean\Model\AssociatedResourceStatusResources::class, 'json', $context));
+            unset($data['resources']);
+        }
+        if (\array_key_exists('completed_at', $data)) {
+            $object->setCompletedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['completed_at']));
+            unset($data['completed_at']);
+        }
+        if (\array_key_exists('failures', $data)) {
+            $object->setFailures($data['failures']);
+            unset($data['failures']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if ($data->isInitialized('droplet') && null !== $data->getDroplet()) {
+            $dataArray['droplet'] = $this->normalizer->normalize($data->getDroplet(), 'json', $context);
+        }
+        if ($data->isInitialized('resources') && null !== $data->getResources()) {
+            $dataArray['resources'] = $this->normalizer->normalize($data->getResources(), 'json', $context);
+        }
+        if ($data->isInitialized('completedAt') && null !== $data->getCompletedAt()) {
+            $dataArray['completed_at'] = $data->getCompletedAt()->format('Y-m-d\TH:i:sP');
+        }
+        if ($data->isInitialized('failures') && null !== $data->getFailures()) {
+            $dataArray['failures'] = $data->getFailures();
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Jane\Generated\DigitalOcean\Model\AssociatedResourceStatus::class => false];
+    }
+}

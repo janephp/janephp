@@ -1,0 +1,78 @@
+<?php
+
+namespace Jane\Generated\DigitalOcean\Endpoint;
+
+class PartnerAttachmentsPatch extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
+{
+    protected $pa_id;
+    /**
+     * To update an existing partner attachment, send a `PATCH` request to
+     * `/v2/partner_network_connect/attachments/{pa_id}` with a JSON object containing the
+     * fields to be updated.
+     *
+     * @param string $paId A unique identifier for a partner attachment.
+     * @param null|mixed $requestBody
+     */
+    public function __construct(string $paId, $requestBody = null)
+    {
+        $this->pa_id = $paId;
+        $this->body = $requestBody;
+    }
+    use \Jane\Generated\DigitalOcean\Runtime\Client\EndpointTrait;
+    public function getMethod(): string
+    {
+        return 'PATCH';
+    }
+    public function getUri(): string
+    {
+        return str_replace(['{pa_id}'], [$this->pa_id], '/v2/partner_network_connect/attachments/{pa_id}');
+    }
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    {
+        if (isset($this->body)) {
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+        }
+        return [[], null];
+    }
+    public function getExtraHeaders(): array
+    {
+        return ['Accept' => ['application/json']];
+    }
+    /**
+     * {@inheritdoc}
+     *
+     * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsPatchUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsPatchNotFoundException
+     * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsPatchTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsPatchInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachment|\Jane\Generated\DigitalOcean\Model\Error
+     */
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
+        if (is_null($contentType) === false && (202 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachment', 'json');
+        }
+        if (is_null($contentType) === false && (401 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsPatchUnauthorizedException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsPatchNotFoundException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (429 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsPatchTooManyRequestsException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (500 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsPatchInternalServerErrorException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+            return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
+        }
+    }
+    public function getAuthenticationScopes(): array
+    {
+        return ['bearer_auth'];
+    }
+}

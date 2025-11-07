@@ -1,0 +1,99 @@
+<?php
+
+namespace Jane\Generated\DigitalOcean\Model;
+
+class ApiRunEvaluationTestCaseInputPublic extends \ArrayObject
+{
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
+     * Agent UUIDs to run the test case against.
+     *
+     * @var list<string>
+     */
+    protected $agentUuids;
+    /**
+     * The name of the run.
+     *
+     * @var string
+     */
+    protected $runName;
+    /**
+     * Test-case UUID to run
+     *
+     * @var string
+     */
+    protected $testCaseUuid;
+    /**
+     * Agent UUIDs to run the test case against.
+     *
+     * @return list<string>
+     */
+    public function getAgentUuids(): array
+    {
+        return $this->agentUuids;
+    }
+    /**
+     * Agent UUIDs to run the test case against.
+     *
+     * @param list<string> $agentUuids
+     *
+     * @return self
+     */
+    public function setAgentUuids(array $agentUuids): self
+    {
+        $this->initialized['agentUuids'] = true;
+        $this->agentUuids = $agentUuids;
+        return $this;
+    }
+    /**
+     * The name of the run.
+     *
+     * @return string
+     */
+    public function getRunName(): string
+    {
+        return $this->runName;
+    }
+    /**
+     * The name of the run.
+     *
+     * @param string $runName
+     *
+     * @return self
+     */
+    public function setRunName(string $runName): self
+    {
+        $this->initialized['runName'] = true;
+        $this->runName = $runName;
+        return $this;
+    }
+    /**
+     * Test-case UUID to run
+     *
+     * @return string
+     */
+    public function getTestCaseUuid(): string
+    {
+        return $this->testCaseUuid;
+    }
+    /**
+     * Test-case UUID to run
+     *
+     * @param string $testCaseUuid
+     *
+     * @return self
+     */
+    public function setTestCaseUuid(string $testCaseUuid): self
+    {
+        $this->initialized['testCaseUuid'] = true;
+        $this->testCaseUuid = $testCaseUuid;
+        return $this;
+    }
+}

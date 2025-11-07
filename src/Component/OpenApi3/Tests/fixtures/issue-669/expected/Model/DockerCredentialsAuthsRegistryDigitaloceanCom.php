@@ -1,0 +1,43 @@
+<?php
+
+namespace Jane\Generated\DigitalOcean\Model;
+
+class DockerCredentialsAuthsRegistryDigitaloceanCom extends \ArrayObject
+{
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
+     * A base64 encoded string containing credentials for the container registry.
+     *
+     * @var string
+     */
+    protected $auth;
+    /**
+     * A base64 encoded string containing credentials for the container registry.
+     *
+     * @return string
+     */
+    public function getAuth(): string
+    {
+        return $this->auth;
+    }
+    /**
+     * A base64 encoded string containing credentials for the container registry.
+     *
+     * @param string $auth
+     *
+     * @return self
+     */
+    public function setAuth(string $auth): self
+    {
+        $this->initialized['auth'] = true;
+        $this->auth = $auth;
+        return $this;
+    }
+}

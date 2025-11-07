@@ -1,0 +1,96 @@
+<?php
+
+namespace Jane\Generated\DigitalOcean\Endpoint;
+
+class VpcsListMembers extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
+{
+    protected $vpc_id;
+    /**
+     * To list all of the resources that are members of a VPC, send a GET request to
+     * `/v2/vpcs/$VPC_ID/members`.
+     *
+     * To only list resources of a specific type that are members of the VPC,
+     * included a `resource_type` query parameter. For example, to only list Droplets
+     * in the VPC, send a GET request to `/v2/vpcs/$VPC_ID/members?resource_type=droplet`.
+     *
+     * Only resources that you are authorized to see will be returned (e.g. to see Droplets,
+     * you must have `droplet:read`).
+     *
+     * @param string $vpcId A unique identifier for a VPC.
+     * @param array $queryParameters {
+     *     @var string $resource_type Used to filter VPC members by a resource type.
+     *     @var int $per_page Number of items returned per page
+     *     @var int $page Which 'page' of paginated results to return.
+     * }
+     */
+    public function __construct(string $vpcId, array $queryParameters = [])
+    {
+        $this->vpc_id = $vpcId;
+        $this->queryParameters = $queryParameters;
+    }
+    use \Jane\Generated\DigitalOcean\Runtime\Client\EndpointTrait;
+    public function getMethod(): string
+    {
+        return 'GET';
+    }
+    public function getUri(): string
+    {
+        return str_replace(['{vpc_id}'], [$this->vpc_id], '/v2/vpcs/{vpc_id}/members');
+    }
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    {
+        return [[], null];
+    }
+    public function getExtraHeaders(): array
+    {
+        return ['Accept' => ['application/json']];
+    }
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['resource_type', 'per_page', 'page']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['per_page' => 20, 'page' => 1]);
+        $optionsResolver->addAllowedTypes('resource_type', ['string']);
+        $optionsResolver->addAllowedTypes('per_page', ['int']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
+        return $optionsResolver;
+    }
+    /**
+     * {@inheritdoc}
+     *
+     * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListMembersUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListMembersNotFoundException
+     * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListMembersTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListMembersInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcMembers|\Jane\Generated\DigitalOcean\Model\Error
+     */
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\ResponseVpcMembers', 'json');
+        }
+        if (is_null($contentType) === false && (401 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\VpcsListMembersUnauthorizedException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\VpcsListMembersNotFoundException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (429 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\VpcsListMembersTooManyRequestsException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (500 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Jane\Generated\DigitalOcean\Exception\VpcsListMembersInternalServerErrorException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);
+        }
+        if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+            return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json');
+        }
+    }
+    public function getAuthenticationScopes(): array
+    {
+        return ['bearer_auth'];
+    }
+}
