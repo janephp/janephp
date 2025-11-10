@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [OpenApi3] [GH#862](https://github.com/janephp/janephp/pull/862) Fix [GH#828](https://github.com/janephp/janephp/issues/828) with simpler array type check
 - [OpenApi3] [GH#874](https://github.com/janephp/janephp/pull/874) Fix error for anyOf in endpoint parameters
 - [JsonSchema] [GH#877](https://github.com/janephp/janephp/pull/877) Do no generate a MinLength constraint when value is zero
+- [OpenApi3] [GH#878](https://github.com/janephp/janephp/pull/878) Handle any content-type starting with application/json
 
 ## [7.9.0] - 2025-04-17
 ### Added
