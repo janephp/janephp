@@ -1,0 +1,151 @@
+<?php
+
+namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+class ProfileCreateIpsecProfileNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+    {
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateIpsecProfile::class;
+    }
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+    {
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateIpsecProfile::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateIpsecProfile();
+        if (\array_key_exists('ikeRekeyTime', $data) && \is_int($data['ikeRekeyTime'])) {
+            $data['ikeRekeyTime'] = (double) $data['ikeRekeyTime'];
+        }
+        if (\array_key_exists('espRekeyTime', $data) && \is_int($data['espRekeyTime'])) {
+            $data['espRekeyTime'] = (double) $data['espRekeyTime'];
+        }
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (\array_key_exists('id', $data)) {
+            $object->setId($data['id']);
+        }
+        if (\array_key_exists('name', $data)) {
+            $object->setName($data['name']);
+        }
+        if (\array_key_exists('description', $data)) {
+            $object->setDescription($data['description']);
+        }
+        if (\array_key_exists('serverAddr', $data)) {
+            $object->setServerAddr($data['serverAddr']);
+        }
+        if (\array_key_exists('authType', $data)) {
+            $object->setAuthType($data['authType']);
+        }
+        if (\array_key_exists('tunnelMode', $data)) {
+            $object->setTunnelMode($data['tunnelMode']);
+        }
+        if (\array_key_exists('preSharedKey', $data)) {
+            $object->setPreSharedKey($data['preSharedKey']);
+        }
+        if (\array_key_exists('ikeSecurityAssociation', $data)) {
+            $object->setIkeSecurityAssociation($this->denormalizer->denormalize($data['ikeSecurityAssociation'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileIkeSecurityAssociationContent::class, 'json', $context));
+        }
+        if (\array_key_exists('espSecurityAssociation', $data)) {
+            $object->setEspSecurityAssociation($this->denormalizer->denormalize($data['espSecurityAssociation'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileEspSecurityAssociationContent::class, 'json', $context));
+        }
+        if (\array_key_exists('ikeRekeyTime', $data)) {
+            $object->setIkeRekeyTime($data['ikeRekeyTime']);
+        }
+        if (\array_key_exists('ikeRekeyTimeUnit', $data)) {
+            $object->setIkeRekeyTimeUnit($data['ikeRekeyTimeUnit']);
+        }
+        if (\array_key_exists('espRekeyTime', $data)) {
+            $object->setEspRekeyTime($data['espRekeyTime']);
+        }
+        if (\array_key_exists('espRekeyTimeUnit', $data)) {
+            $object->setEspRekeyTimeUnit($data['espRekeyTimeUnit']);
+        }
+        if (\array_key_exists('cmProtocolOption', $data)) {
+            $object->setCmProtocolOption($this->denormalizer->denormalize($data['cmProtocolOption'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCmProtocolOptionContent::class, 'json', $context));
+        }
+        if (\array_key_exists('advancedOption', $data)) {
+            $object->setAdvancedOption($this->denormalizer->denormalize($data['advancedOption'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAdvancedOptionContent::class, 'json', $context));
+        }
+        if (\array_key_exists('ipMode', $data)) {
+            $object->setIpMode($data['ipMode']);
+        }
+        if (\array_key_exists('domainId', $data)) {
+            $object->setDomainId($data['domainId']);
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if ($data->isInitialized('id') && null !== $data->getId()) {
+            $dataArray['id'] = $data->getId();
+        }
+        $dataArray['name'] = $data->getName();
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+            $dataArray['description'] = $data->getDescription();
+        }
+        if ($data->isInitialized('serverAddr') && null !== $data->getServerAddr()) {
+            $dataArray['serverAddr'] = $data->getServerAddr();
+        }
+        if ($data->isInitialized('authType') && null !== $data->getAuthType()) {
+            $dataArray['authType'] = $data->getAuthType();
+        }
+        if ($data->isInitialized('tunnelMode') && null !== $data->getTunnelMode()) {
+            $dataArray['tunnelMode'] = $data->getTunnelMode();
+        }
+        if ($data->isInitialized('preSharedKey') && null !== $data->getPreSharedKey()) {
+            $dataArray['preSharedKey'] = $data->getPreSharedKey();
+        }
+        if ($data->isInitialized('ikeSecurityAssociation') && null !== $data->getIkeSecurityAssociation()) {
+            $dataArray['ikeSecurityAssociation'] = $this->normalizer->normalize($data->getIkeSecurityAssociation(), 'json', $context);
+        }
+        if ($data->isInitialized('espSecurityAssociation') && null !== $data->getEspSecurityAssociation()) {
+            $dataArray['espSecurityAssociation'] = $this->normalizer->normalize($data->getEspSecurityAssociation(), 'json', $context);
+        }
+        $dataArray['ikeRekeyTime'] = $data->getIkeRekeyTime();
+        if ($data->isInitialized('ikeRekeyTimeUnit') && null !== $data->getIkeRekeyTimeUnit()) {
+            $dataArray['ikeRekeyTimeUnit'] = $data->getIkeRekeyTimeUnit();
+        }
+        $dataArray['espRekeyTime'] = $data->getEspRekeyTime();
+        if ($data->isInitialized('espRekeyTimeUnit') && null !== $data->getEspRekeyTimeUnit()) {
+            $dataArray['espRekeyTimeUnit'] = $data->getEspRekeyTimeUnit();
+        }
+        if ($data->isInitialized('cmProtocolOption') && null !== $data->getCmProtocolOption()) {
+            $dataArray['cmProtocolOption'] = $this->normalizer->normalize($data->getCmProtocolOption(), 'json', $context);
+        }
+        if ($data->isInitialized('advancedOption') && null !== $data->getAdvancedOption()) {
+            $dataArray['advancedOption'] = $this->normalizer->normalize($data->getAdvancedOption(), 'json', $context);
+        }
+        $dataArray['ipMode'] = $data->getIpMode();
+        if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
+            $dataArray['domainId'] = $data->getDomainId();
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateIpsecProfile::class => false];
+    }
+}

@@ -1,0 +1,76 @@
+<?php
+
+namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+
+class FindApsTotalCount extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+{
+    /**
+     * @param array $queryParameters {
+     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     *     @var string $zoneId filter AP total count by zone. Default: current logon domain
+     *     @var string $domainId filter AP total count by domain. Default: current logon domain
+     * }
+     */
+    public function __construct(array $queryParameters = [])
+    {
+        $this->queryParameters = $queryParameters;
+    }
+    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    public function getMethod(): string
+    {
+        return 'GET';
+    }
+    public function getUri(): string
+    {
+        return '/aps/totalCount';
+    }
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    {
+        return [[], null];
+    }
+    public function getExtraHeaders(): array
+    {
+        return ['Accept' => ['application/json']];
+    }
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['serviceTicket', 'zoneId', 'domainId']);
+        $optionsResolver->setRequired(['serviceTicket']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('serviceTicket', ['string']);
+        $optionsResolver->addAllowedTypes('zoneId', ['string']);
+        $optionsResolver->addAllowedTypes('domainId', ['string']);
+        return $optionsResolver;
+    }
+    /**
+     * {@inheritdoc}
+     *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsTotalCountBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsTotalCountForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsTotalCountInternalServerErrorException
+     *
+     * @return null
+     */
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
+        if (400 === $status) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsTotalCountBadRequestException($response);
+        }
+        if (403 === $status) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsTotalCountForbiddenException($response);
+        }
+        if (500 === $status) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsTotalCountInternalServerErrorException($response);
+        }
+        if (200 === $status) {
+            return null;
+        }
+    }
+    public function getAuthenticationScopes(): array
+    {
+        return [];
+    }
+}
