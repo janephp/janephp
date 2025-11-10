@@ -112,9 +112,9 @@ class RequestBodyGenerator
         foreach ($requestBody->getContent() as $contentType => $content) {
             $generator = $this->defaultRequestBodyGenerator;
 
-            if (isset($this->generators[$contentType])) {
+            if (\array_key_exists($contentType, $this->generators)) {
                 $generator = $this->generators[$contentType];
-            } elseif (str_ends_with($contentType, '+json')) {
+            } elseif (str_starts_with($contentType, 'application/json') || str_ends_with($contentType, '+json')) {
                 $generator = $this->generators['application/json'];
             }
 
