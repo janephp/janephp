@@ -31,11 +31,16 @@ class BodyParameterGenerator extends ParameterGenerator
     {
         $name = $this->getInflector()->camelize($parameter->getName());
 
-        list($class, $array) = $this->getClass($parameter, $context, $reference);
-        $paramType = \count($class) === 1 ? $class[0] : null;
+        $guessedType = $this->getClass($parameter, $context, $reference);
+        if (false === $guessedType) {
+            $paramType = 'mixed';
+        } else {
+            [$class, $array] = $guessedType;
+            $paramType = \count($class) === 1 ? $class[0] : null;
 
-        if ($array) {
-            $paramType = 'array';
+            if ($array) {
+                $paramType = 'array';
+            }
         }
 
         return new Node\Param(new Node\Expr\Variable($name), null, null === $paramType ? $paramType : new Node\Name($paramType));
@@ -46,7 +51,12 @@ class BodyParameterGenerator extends ParameterGenerator
      */
     public function generateMethodDocParameter($parameter, Context $context, string $reference): string
     {
-        list($class, $array) = $this->getClass($parameter, $context, $reference);
+        $guessedType = $this->getClass($parameter, $context, $reference);
+        if (false === $guessedType) {
+            $class = ['mixed'];
+        } else {
+            [$class] = $guessedType;
+        }
 
         return rtrim(\sprintf(' * @param %s $%s %s', implode('|', $class), $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: ''));
     }
@@ -54,7 +64,7 @@ class BodyParameterGenerator extends ParameterGenerator
     /**
      * @return array{0: string[], 1: bool}
      */
-    protected function getClass(BodyParameter $parameter, Context $context, string $reference): array
+    protected function getClass(BodyParameter $parameter, Context $context, string $reference): false|array
     {
         $resolvedSchema = $jsonReference = null;
         $array = false;
@@ -81,6 +91,10 @@ class BodyParameterGenerator extends ParameterGenerator
 
         // Happens when reference resolve to a none object
         if (null === $class) {
+            if (null !== $resolvedSchema->getAllOf() && \count($resolvedSchema->getAllOf()) > 0) {
+                return false;
+            }
+
             return [$this->convertParameterType($resolvedSchema->getType(), $resolvedSchema->getFormat()), false];
         }
 
