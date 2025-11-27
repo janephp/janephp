@@ -40,8 +40,24 @@ jobs:
     strategy:
       max-parallel: 15
       matrix:
-        php-versions:  ['8.1', '8.2', '8.3', '8.4']
-    name: tests-${{ matrix.php-versions }}
+        php-version:
+          - 8.1
+          - 8.2
+          - 8.3
+          - 8.4
+        symfony-version:
+          - 6.4.*
+          - 7.0.*
+        dependencies:
+          - ""
+        include:
+          - php-version: 8.1
+            dependencies: --prefer-lowest
+            symfony-version: 6.4.*
+    env:
+      SYMFONY_DEPRECATIONS_HELPER: max[self]=0
+      SYMFONY_REQUIRE: ${{ matrix.symfony-version }}
+    name: tests / PHP ${{ matrix.php-version }} / Symfony ${{ matrix.symfony-version }} / ${{ matrix.dependencies != '' && 'Highest deps' || 'Lowest deps' }}
     steps:
       - name: checkout
         uses: actions/checkout@master
@@ -49,39 +65,14 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.composer/cache/
-          key: composer-${{ matrix.php-versions }}-${{ github.sha }}
+          key: composer-${{ matrix.php-version }}-${{ github.sha }}
       - name: setup
         uses: shivammathur/setup-php@2.28.0
         with:
-          php-version: ${{ matrix.php-versions }}
+          php-version: ${{ matrix.php-version }}
           extensions: mbstring, fileinfo, json, intl, dom
       - name: composer install
-        run: composer update --prefer-stable
-      - name: install prism
-        run: curl -L https://raw.githack.com/stoplightio/prism/master/install | sh
-      - name: run OpenApi3 prism server
-        run: nohup prism mock src/Component/OpenApi3/Tests/client/openapi.yaml -p 4010 &
-      - name: run OpenApi2 prism server
-        run: nohup prism mock src/Component/OpenApi2/Tests/client/swagger.yaml -p 4011 &
-      - name: tests
-        run: vendor/bin/phpunit --exclude-group none
-  tests-lowest:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@master
-      - name: cache-composer-lowest
-        uses: actions/cache@v4
-        with:
-          path: ~/.composer/cache/
-          key: composer-lowest-${{ github.sha }}
-      - name: setup
-        uses: shivammathur/setup-php@2.28.0
-        with:
-          php-version: 8.1
-          extensions: mbstring, fileinfo, json, intl, dom
-      - name: composer install
-        run: composer update --prefer-lowest --prefer-stable
+        run: composer update ${{ matrix.dependencies }} --prefer-stable
       - name: install prism
         run: curl -L https://raw.githack.com/stoplightio/prism/master/install | sh
       - name: run OpenApi3 prism server
