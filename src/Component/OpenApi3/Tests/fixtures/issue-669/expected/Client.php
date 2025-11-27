@@ -168,6 +168,135 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\ActionsGet($actionId), $fetch);
     }
     /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsGetApp|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function addonsGetApp(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AddonsGetApp(), $fetch);
+    }
+    /**
+     * To find out what metadata is required for a specific add-on, send a GET request to `/v2/add-ons/apps/{app_slug}/metadata`.
+     * Metadata varies by application.
+     *
+     * @param string $appSlug The slug identifier for the application whose metadata is being requested.
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppMetadataUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppMetadataNotFoundException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppMetadataTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppMetadataInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsGetAppMetadata|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function addonsGetAppMetadata(string $appSlug, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AddonsGetAppMetadata($appSlug), $fetch);
+    }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsListUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsListTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsListInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsList|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function addonsList(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AddonsList(), $fetch);
+    }
+    /**
+     * To create an add-on resource, send a POST request to `/v2/add-ons/saas` with required parameters.
+     * Some add-ons require additional metadata to be provided in the request body. To find out
+     * what metadata is required for a specific add-on, send a GET request to `/v2/add-ons/apps/{app_slug}/metadata`.
+     *
+     * @param \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasPostBody $requestBody
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsCreateUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsCreateTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsCreateInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsCreate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function addonsCreate(\Jane\Generated\DigitalOcean\Model\V2AddOnsSaasPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AddonsCreate($requestBody), $fetch);
+    }
+    /**
+     * To delete an add-on resource, send a DELETE request to `/v2/add-ons/saas/{resource_uuid}` with the UUID of the resource to delete.
+     * You cannot retrieve the resource after it has been deleted. The response indicates a request was sent to the 3rd party add-on provider to delete the resource.
+     * You will no longer be billed for this resource.
+     *
+     * @param string $resourceUuid A unique identifier for the add-on resource.
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsDeleteUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsDeleteNotFoundException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsDeleteTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsDeleteInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function addonsDelete(string $resourceUuid, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AddonsDelete($resourceUuid), $fetch);
+    }
+    /**
+     * To fetch details of a specific Add-On Resource, send a GET request to `/v2/add-ons/saas/{resource_uuid}`.
+     * Replace `{resource_uuid}` with the UUID of the resource you want to retrieve.
+     *
+     * @param string $resourceUuid The UUID of the add-on resource to retrieve.
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetNotFoundException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsGet|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function addonsGet(string $resourceUuid, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AddonsGet($resourceUuid), $fetch);
+    }
+    /**
+     * To change the name of an Add-On Resource, send a PATCH request to `/v2/add-ons/saas/{resource_uuid}`.
+     * Replace `{resource_uuid}` with the UUID of the resource for which you want to change the name.
+     *
+     * @param string $resourceUuid The UUID of the add-on resource to rename.
+     * @param \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasResourceUuidPatchBody $requestBody
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchNotFoundException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsUpdate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function addonsPatch(string $resourceUuid, \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasResourceUuidPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AddonsPatch($resourceUuid, $requestBody), $fetch);
+    }
+    /**
+     * To change the plan associated with an Add-On Resource, send a PATCH request to `/v2/add-ons/saas/{resource_uuid}/plan`.
+     * Replace `{resource_uuid}` with the UUID of the resource for which you want to change the plan.
+     *
+     * @param string $resourceUuid The UUID of the add-on resource to update.
+     * @param \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasResourceUuidPlanPatchBody $requestBody
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchPlanUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchPlanNotFoundException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchPlanTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchPlanInternalServerErrorException
+     *
+     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsUpdate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     */
+    public function addonsPatchPlan(string $resourceUuid, \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasResourceUuidPlanPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\AddonsPatchPlan($resourceUuid, $requestBody), $fetch);
+    }
+    /**
      * List all apps on your account. Information about the current active deployment as well as any in progress ones will also be included for each app.
      * @param array $queryParameters {
      *     @var int $page Which 'page' of paginated results to return.
@@ -8558,7 +8687,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcNatGateway|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcNatGatewayCreate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
      */
     public function vpcnatgatewaysCreate(?\Jane\Generated\DigitalOcean\Model\VpcNatGatewayCreate $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8612,7 +8741,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysUpdateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcNatGateway|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcNatGatewayUpdate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
      */
     public function vpcnatgatewaysUpdate(string $id, ?\Jane\Generated\DigitalOcean\Model\VpcNatGatewayUpdate $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {

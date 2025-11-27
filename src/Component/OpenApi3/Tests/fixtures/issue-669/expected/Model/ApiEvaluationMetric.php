@@ -15,6 +15,10 @@ class ApiEvaluationMetric extends \ArrayObject
     /**
      * @var string
      */
+    protected $category = 'METRIC_CATEGORY_UNSPECIFIED';
+    /**
+     * @var string
+     */
     protected $description;
     /**
      * If true, the metric is inverted, meaning that a lower value is better.
@@ -23,9 +27,17 @@ class ApiEvaluationMetric extends \ArrayObject
      */
     protected $inverted;
     /**
+     * @var bool
+     */
+    protected $isMetricGoal;
+    /**
      * @var string
      */
     protected $metricName;
+    /**
+     * @var int
+     */
+    protected $metricRank;
     /**
      * @var string
      */
@@ -50,6 +62,24 @@ class ApiEvaluationMetric extends \ArrayObject
      * @var float
      */
     protected $rangeMin;
+    /**
+     * @return string
+     */
+    public function getCategory(): string
+    {
+        return $this->category;
+    }
+    /**
+     * @param string $category
+     *
+     * @return self
+     */
+    public function setCategory(string $category): self
+    {
+        $this->initialized['category'] = true;
+        $this->category = $category;
+        return $this;
+    }
     /**
      * @return string
      */
@@ -91,6 +121,24 @@ class ApiEvaluationMetric extends \ArrayObject
         return $this;
     }
     /**
+     * @return bool
+     */
+    public function getIsMetricGoal(): bool
+    {
+        return $this->isMetricGoal;
+    }
+    /**
+     * @param bool $isMetricGoal
+     *
+     * @return self
+     */
+    public function setIsMetricGoal(bool $isMetricGoal): self
+    {
+        $this->initialized['isMetricGoal'] = true;
+        $this->isMetricGoal = $isMetricGoal;
+        return $this;
+    }
+    /**
      * @return string
      */
     public function getMetricName(): string
@@ -106,6 +154,24 @@ class ApiEvaluationMetric extends \ArrayObject
     {
         $this->initialized['metricName'] = true;
         $this->metricName = $metricName;
+        return $this;
+    }
+    /**
+     * @return int
+     */
+    public function getMetricRank(): int
+    {
+        return $this->metricRank;
+    }
+    /**
+     * @param int $metricRank
+     *
+     * @return self
+     */
+    public function setMetricRank(int $metricRank): self
+    {
+        $this->initialized['metricRank'] = true;
+        $this->metricRank = $metricRank;
         return $this;
     }
     /**

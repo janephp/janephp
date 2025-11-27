@@ -42,14 +42,14 @@ class VpcnatgatewaysCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\B
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcNatGateway|\Jane\Generated\DigitalOcean\Model\Error
+     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcNatGatewayCreate|\Jane\Generated\DigitalOcean\Model\Error
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (202 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\ResponseVpcNatGateway', 'json');
+            return $serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\ResponseVpcNatGatewayCreate', 'json');
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysCreateUnauthorizedException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);

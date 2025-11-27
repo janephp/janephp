@@ -75,30 +75,6 @@ class ApiIndexingJob extends \ArrayObject
      */
     protected $totalDatasources;
     /**
-     * Total Items Failed
-     *
-     * @var string
-     */
-    protected $totalItemsFailed;
-    /**
-     * Total Items Indexed
-     *
-     * @var string
-     */
-    protected $totalItemsIndexed;
-    /**
-     * Total Items Removed
-     *
-     * @var string
-     */
-    protected $totalItemsRemoved;
-    /**
-     * Total Items Skipped
-     *
-     * @var string
-     */
-    protected $totalItemsSkipped;
-    /**
      * Total Tokens Consumed By the Indexing Job
      *
      * @var string
@@ -358,94 +334,6 @@ class ApiIndexingJob extends \ArrayObject
     {
         $this->initialized['totalDatasources'] = true;
         $this->totalDatasources = $totalDatasources;
-        return $this;
-    }
-    /**
-     * Total Items Failed
-     *
-     * @return string
-     */
-    public function getTotalItemsFailed(): string
-    {
-        return $this->totalItemsFailed;
-    }
-    /**
-     * Total Items Failed
-     *
-     * @param string $totalItemsFailed
-     *
-     * @return self
-     */
-    public function setTotalItemsFailed(string $totalItemsFailed): self
-    {
-        $this->initialized['totalItemsFailed'] = true;
-        $this->totalItemsFailed = $totalItemsFailed;
-        return $this;
-    }
-    /**
-     * Total Items Indexed
-     *
-     * @return string
-     */
-    public function getTotalItemsIndexed(): string
-    {
-        return $this->totalItemsIndexed;
-    }
-    /**
-     * Total Items Indexed
-     *
-     * @param string $totalItemsIndexed
-     *
-     * @return self
-     */
-    public function setTotalItemsIndexed(string $totalItemsIndexed): self
-    {
-        $this->initialized['totalItemsIndexed'] = true;
-        $this->totalItemsIndexed = $totalItemsIndexed;
-        return $this;
-    }
-    /**
-     * Total Items Removed
-     *
-     * @return string
-     */
-    public function getTotalItemsRemoved(): string
-    {
-        return $this->totalItemsRemoved;
-    }
-    /**
-     * Total Items Removed
-     *
-     * @param string $totalItemsRemoved
-     *
-     * @return self
-     */
-    public function setTotalItemsRemoved(string $totalItemsRemoved): self
-    {
-        $this->initialized['totalItemsRemoved'] = true;
-        $this->totalItemsRemoved = $totalItemsRemoved;
-        return $this;
-    }
-    /**
-     * Total Items Skipped
-     *
-     * @return string
-     */
-    public function getTotalItemsSkipped(): string
-    {
-        return $this->totalItemsSkipped;
-    }
-    /**
-     * Total Items Skipped
-     *
-     * @param string $totalItemsSkipped
-     *
-     * @return self
-     */
-    public function setTotalItemsSkipped(string $totalItemsSkipped): self
-    {
-        $this->initialized['totalItemsSkipped'] = true;
-        $this->totalItemsSkipped = $totalItemsSkipped;
         return $this;
     }
     /**

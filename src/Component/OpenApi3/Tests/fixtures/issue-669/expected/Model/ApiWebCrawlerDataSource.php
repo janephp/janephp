@@ -26,6 +26,7 @@ class ApiWebCrawlerDataSource extends \ArrayObject
      *  - PATH: Crawl the base URL and linked pages within the URL path.
      *  - DOMAIN: Crawl the base URL and linked pages within the same domain.
      *  - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+     *  - SITEMAP: Crawl URLs discovered in the sitemap.
      *
      * @var string
      */
@@ -72,6 +73,7 @@ class ApiWebCrawlerDataSource extends \ArrayObject
      *  - PATH: Crawl the base URL and linked pages within the URL path.
      *  - DOMAIN: Crawl the base URL and linked pages within the same domain.
      *  - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+     *  - SITEMAP: Crawl URLs discovered in the sitemap.
      *
      * @return string
      */
@@ -87,6 +89,7 @@ class ApiWebCrawlerDataSource extends \ArrayObject
     - PATH: Crawl the base URL and linked pages within the URL path.
     - DOMAIN: Crawl the base URL and linked pages within the same domain.
     - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+    - SITEMAP: Crawl URLs discovered in the sitemap.
     *
     * @param string $crawlingOption
     *
