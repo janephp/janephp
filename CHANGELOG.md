@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [Jane] [GH#856](https://github.com/janephp/janephp/pull/856) Add bundle tests
 - [OpenApi3] [GH#814](https://github.com/janephp/janephp/pull/814) Handle generic `+json` content-types
 - [OpenApi3] [GH#876](https://github.com/janephp/janephp/pull/876) Handle allowReserved on queryParameters
+- [Jane] Allow Symfony 8
 
 ### Changed
 - [Jane] [GH#856](https://github.com/janephp/janephp/pull/856) Modernize bundle configuration
