@@ -25,6 +25,12 @@ class VpcNatGatewayUpdate extends \ArrayObject
      */
     protected $size;
     /**
+     * An array of VPCs associated with the VPC NAT gateway.
+     *
+     * @var list<VpcNatGatewayUpdateVpcsItem>
+     */
+    protected $vpcs;
+    /**
      * The UDP timeout in seconds for the VPC NAT gateway.
      *
      * @var int
@@ -84,6 +90,28 @@ class VpcNatGatewayUpdate extends \ArrayObject
     {
         $this->initialized['size'] = true;
         $this->size = $size;
+        return $this;
+    }
+    /**
+     * An array of VPCs associated with the VPC NAT gateway.
+     *
+     * @return list<VpcNatGatewayUpdateVpcsItem>
+     */
+    public function getVpcs(): array
+    {
+        return $this->vpcs;
+    }
+    /**
+     * An array of VPCs associated with the VPC NAT gateway.
+     *
+     * @param list<VpcNatGatewayUpdateVpcsItem> $vpcs
+     *
+     * @return self
+     */
+    public function setVpcs(array $vpcs): self
+    {
+        $this->initialized['vpcs'] = true;
+        $this->vpcs = $vpcs;
         return $this;
     }
     /**

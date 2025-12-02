@@ -59,12 +59,6 @@ class ApiKnowledgeBaseDataSource extends \ArrayObject
      */
     protected $lastDatasourceIndexingJob;
     /**
-     * IndexingJob description
-     *
-     * @var ApiIndexingJob
-     */
-    protected $lastIndexingJob;
-    /**
      * Region code - Deprecated, moved to data_source_details
      *
      * @var string
@@ -264,28 +258,6 @@ class ApiKnowledgeBaseDataSource extends \ArrayObject
     {
         $this->initialized['lastDatasourceIndexingJob'] = true;
         $this->lastDatasourceIndexingJob = $lastDatasourceIndexingJob;
-        return $this;
-    }
-    /**
-     * IndexingJob description
-     *
-     * @return ApiIndexingJob
-     */
-    public function getLastIndexingJob(): ApiIndexingJob
-    {
-        return $this->lastIndexingJob;
-    }
-    /**
-     * IndexingJob description
-     *
-     * @param ApiIndexingJob $lastIndexingJob
-     *
-     * @return self
-     */
-    public function setLastIndexingJob(ApiIndexingJob $lastIndexingJob): self
-    {
-        $this->initialized['lastIndexingJob'] = true;
-        $this->lastIndexingJob = $lastIndexingJob;
         return $this;
     }
     /**

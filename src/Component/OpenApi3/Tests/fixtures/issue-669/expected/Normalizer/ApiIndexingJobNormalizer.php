@@ -96,22 +96,6 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setTotalDatasources($data['total_datasources']);
             unset($data['total_datasources']);
         }
-        if (\array_key_exists('total_items_failed', $data)) {
-            $object->setTotalItemsFailed($data['total_items_failed']);
-            unset($data['total_items_failed']);
-        }
-        if (\array_key_exists('total_items_indexed', $data)) {
-            $object->setTotalItemsIndexed($data['total_items_indexed']);
-            unset($data['total_items_indexed']);
-        }
-        if (\array_key_exists('total_items_removed', $data)) {
-            $object->setTotalItemsRemoved($data['total_items_removed']);
-            unset($data['total_items_removed']);
-        }
-        if (\array_key_exists('total_items_skipped', $data)) {
-            $object->setTotalItemsSkipped($data['total_items_skipped']);
-            unset($data['total_items_skipped']);
-        }
         if (\array_key_exists('total_tokens', $data)) {
             $object->setTotalTokens($data['total_tokens']);
             unset($data['total_tokens']);
@@ -177,18 +161,6 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if ($data->isInitialized('totalDatasources') && null !== $data->getTotalDatasources()) {
             $dataArray['total_datasources'] = $data->getTotalDatasources();
-        }
-        if ($data->isInitialized('totalItemsFailed') && null !== $data->getTotalItemsFailed()) {
-            $dataArray['total_items_failed'] = $data->getTotalItemsFailed();
-        }
-        if ($data->isInitialized('totalItemsIndexed') && null !== $data->getTotalItemsIndexed()) {
-            $dataArray['total_items_indexed'] = $data->getTotalItemsIndexed();
-        }
-        if ($data->isInitialized('totalItemsRemoved') && null !== $data->getTotalItemsRemoved()) {
-            $dataArray['total_items_removed'] = $data->getTotalItemsRemoved();
-        }
-        if ($data->isInitialized('totalItemsSkipped') && null !== $data->getTotalItemsSkipped()) {
-            $dataArray['total_items_skipped'] = $data->getTotalItemsSkipped();
         }
         if ($data->isInitialized('totalTokens') && null !== $data->getTotalTokens()) {
             $dataArray['total_tokens'] = $data->getTotalTokens();

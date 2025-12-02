@@ -87,10 +87,14 @@ class ValidatorGenerator implements GeneratorInterface
                     }
 
                     $constraintsItems[] = new Expr\ArrayItem(new Expr\New_(new Node\Name\FullyQualified(Collection::class), [
-                        new Node\Arg(new Expr\Array_([
-                            new Expr\ArrayItem(new Expr\Array_($collectionItems), new Scalar\String_('fields')),
-                            new Expr\ArrayItem(new Expr\ConstFetch(new Node\Name($allowExtraFields)), new Scalar\String_('allowExtraFields')),
-                        ])),
+                        new Node\Arg(
+                            new Expr\Array_($collectionItems),
+                            name: new Node\Identifier('fields'),
+                        ),
+                        new Node\Arg(
+                            new Expr\ConstFetch(new Node\Name($allowExtraFields)),
+                            name: new Node\Identifier('allowExtraFields'),
+                        ),
                     ]));
                 }
 
@@ -140,12 +144,10 @@ class ValidatorGenerator implements GeneratorInterface
             }
 
             if (null !== $value) {
-                $args[] = new Expr\ArrayItem($value, new Scalar\String_($argName));
+                $args[] = new Node\Arg($value, name: new Node\Identifier($argName));
             }
         }
 
-        return new Expr\New_(new Node\Name\FullyQualified($guess->getConstraintClass()), [
-            new Node\Arg(new Expr\Array_($args)),
-        ]);
+        return new Expr\New_(new Node\Name\FullyQualified($guess->getConstraintClass()), $args);
     }
 }

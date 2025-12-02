@@ -69,10 +69,6 @@ class ApiKnowledgeBaseDataSourceNormalizer implements DenormalizerInterface, Nor
             $object->setLastDatasourceIndexingJob($this->denormalizer->denormalize($data['last_datasource_indexing_job'], \Jane\Generated\DigitalOcean\Model\ApiIndexedDataSource::class, 'json', $context));
             unset($data['last_datasource_indexing_job']);
         }
-        if (\array_key_exists('last_indexing_job', $data)) {
-            $object->setLastIndexingJob($this->denormalizer->denormalize($data['last_indexing_job'], \Jane\Generated\DigitalOcean\Model\ApiIndexingJob::class, 'json', $context));
-            unset($data['last_indexing_job']);
-        }
         if (\array_key_exists('region', $data)) {
             $object->setRegion($data['region']);
             unset($data['region']);
@@ -126,9 +122,6 @@ class ApiKnowledgeBaseDataSourceNormalizer implements DenormalizerInterface, Nor
         }
         if ($data->isInitialized('lastDatasourceIndexingJob') && null !== $data->getLastDatasourceIndexingJob()) {
             $dataArray['last_datasource_indexing_job'] = $this->normalizer->normalize($data->getLastDatasourceIndexingJob(), 'json', $context);
-        }
-        if ($data->isInitialized('lastIndexingJob') && null !== $data->getLastIndexingJob()) {
-            $dataArray['last_indexing_job'] = $this->normalizer->normalize($data->getLastIndexingJob(), 'json', $context);
         }
         if ($data->isInitialized('region') && null !== $data->getRegion()) {
             $dataArray['region'] = $data->getRegion();

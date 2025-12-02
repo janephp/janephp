@@ -48,6 +48,8 @@ class TypeValidator implements ValidatorInterface
             }
         }
 
-        $guess->addValidatorGuess(new ValidatorGuess(Type::class, array_keys($types)));
+        $guess->addValidatorGuess(new ValidatorGuess(Type::class, [
+            'type' => array_keys($types),
+        ]));
     }
 }

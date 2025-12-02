@@ -45,6 +45,14 @@ class VpcNatGatewayUpdateNormalizer implements DenormalizerInterface, Normalizer
             $object->setSize($data['size']);
             unset($data['size']);
         }
+        if (\array_key_exists('vpcs', $data)) {
+            $values = [];
+            foreach ($data['vpcs'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\VpcNatGatewayUpdateVpcsItem::class, 'json', $context);
+            }
+            $object->setVpcs($values);
+            unset($data['vpcs']);
+        }
         if (\array_key_exists('udp_timeout_seconds', $data)) {
             $object->setUdpTimeoutSeconds($data['udp_timeout_seconds']);
             unset($data['udp_timeout_seconds']);
@@ -57,9 +65,9 @@ class VpcNatGatewayUpdateNormalizer implements DenormalizerInterface, Normalizer
             $object->setTcpTimeoutSeconds($data['tcp_timeout_seconds']);
             unset($data['tcp_timeout_seconds']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -69,6 +77,13 @@ class VpcNatGatewayUpdateNormalizer implements DenormalizerInterface, Normalizer
         $dataArray = [];
         $dataArray['name'] = $data->getName();
         $dataArray['size'] = $data->getSize();
+        if ($data->isInitialized('vpcs') && null !== $data->getVpcs()) {
+            $values = [];
+            foreach ($data->getVpcs() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $dataArray['vpcs'] = $values;
+        }
         if ($data->isInitialized('udpTimeoutSeconds') && null !== $data->getUdpTimeoutSeconds()) {
             $dataArray['udp_timeout_seconds'] = $data->getUdpTimeoutSeconds();
         }
@@ -78,9 +93,9 @@ class VpcNatGatewayUpdateNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('tcpTimeoutSeconds') && null !== $data->getTcpTimeoutSeconds()) {
             $dataArray['tcp_timeout_seconds'] = $data->getTcpTimeoutSeconds();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

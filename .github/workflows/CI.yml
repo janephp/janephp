@@ -39,9 +39,28 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 15
+      fail-fast: false
       matrix:
         php-versions:  ['8.1', '8.2', '8.3', '8.4']
-    name: tests-${{ matrix.php-versions }}
+        symfony-require: ['']
+        include:
+          - php-versions: '8.4'
+            symfony-require: '6.4.*'
+          - php-versions: '8.4'
+            symfony-require: '7.0.*'
+          - php-versions: '8.4'
+            symfony-require: '7.1.*'
+          - php-versions: '8.4'
+            symfony-require: '7.2.*'
+          - php-versions: '8.4'
+            symfony-require: '7.3.*'
+          - php-versions: '8.4'
+            symfony-require: '7.4.*'
+          - php-versions: '8.4'
+            symfony-require: '8.0.*'
+    env:
+      SYMFONY_REQUIRE: ${{ matrix.symfony-require }}
+    name: tests-${{ matrix.php-versions }} - SF ${{ matrix.symfony-require }}
     steps:
       - name: checkout
         uses: actions/checkout@master
@@ -55,8 +74,13 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: mbstring, fileinfo, json, intl, dom
+      # We need Flex to enforce Symfony version with `SYMFONY_REQUIRE` env var
+      - name: Install Symfony Flex
+        run: composer global require --no-progress --no-scripts --no-plugins symfony/flex
+      - name: Enable Symfony Flex
+        run: composer global config --no-plugins allow-plugins.symfony/flex true
       - name: composer install
-        run: composer update --prefer-stable
+        run: composer update --prefer-dist --no-interaction --no-ansi
       - name: install prism
         run: curl -L https://raw.githack.com/stoplightio/prism/master/install | sh
       - name: run OpenApi3 prism server
