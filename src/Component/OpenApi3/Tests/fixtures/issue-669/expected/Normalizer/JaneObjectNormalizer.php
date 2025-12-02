@@ -56,6 +56,24 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Generated\DigitalOcean\Model\Action::class => \Jane\Generated\DigitalOcean\Normalizer\ActionNormalizer::class,
         
+        \Jane\Generated\DigitalOcean\Model\AddonsFeature::class => \Jane\Generated\DigitalOcean\Normalizer\AddonsFeatureNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\AddonsDimensionVolumeWithPrice::class => \Jane\Generated\DigitalOcean\Normalizer\AddonsDimensionVolumeWithPriceNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\AddonsDimensionWithPrice::class => \Jane\Generated\DigitalOcean\Normalizer\AddonsDimensionWithPriceNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\AddonsPlan::class => \Jane\Generated\DigitalOcean\Normalizer\AddonsPlanNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\AddonsAppInfo::class => \Jane\Generated\DigitalOcean\Normalizer\AddonsAppInfoNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\AddonsAppMetadata::class => \Jane\Generated\DigitalOcean\Normalizer\AddonsAppMetadataNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\AddonsResourceMetadata::class => \Jane\Generated\DigitalOcean\Normalizer\AddonsResourceMetadataNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\AddonsResource::class => \Jane\Generated\DigitalOcean\Normalizer\AddonsResourceNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\AddonsResourceNew::class => \Jane\Generated\DigitalOcean\Normalizer\AddonsResourceNewNormalizer::class,
+        
         \Jane\Generated\DigitalOcean\Model\AppsDeploymentJob::class => \Jane\Generated\DigitalOcean\Normalizer\AppsDeploymentJobNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\AppsDeploymentFunctions::class => \Jane\Generated\DigitalOcean\Normalizer\AppsDeploymentFunctionsNormalizer::class,
@@ -1068,6 +1086,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Generated\DigitalOcean\Model\VpcNatGatewayUpdate::class => \Jane\Generated\DigitalOcean\Normalizer\VpcNatGatewayUpdateNormalizer::class,
         
+        \Jane\Generated\DigitalOcean\Model\VpcNatGatewayUpdateVpcsItem::class => \Jane\Generated\DigitalOcean\Normalizer\VpcNatGatewayUpdateVpcsItemNormalizer::class,
+        
         \Jane\Generated\DigitalOcean\Model\CheckBase::class => \Jane\Generated\DigitalOcean\Normalizer\CheckBaseNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\CheckUpdatable::class => \Jane\Generated\DigitalOcean\Normalizer\CheckUpdatableNormalizer::class,
@@ -1450,6 +1470,18 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Generated\DigitalOcean\Model\ResponseAction::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseActionNormalizer::class,
         
+        \Jane\Generated\DigitalOcean\Model\ResponseAddonsGetApp::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseAddonsGetAppNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\ResponseAddonsGetAppMetadata::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseAddonsGetAppMetadataNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\ResponseAddonsList::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseAddonsListNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\ResponseAddonsCreate::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseAddonsCreateNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\ResponseAddonsGet::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseAddonsGetNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\ResponseAddonsUpdate::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseAddonsUpdateNormalizer::class,
+        
         \Jane\Generated\DigitalOcean\Model\ResponseAppsValidateRollback::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseAppsValidateRollbackNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\ResponseAppsValidateRollbackError::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseAppsValidateRollbackErrorNormalizer::class,
@@ -1798,7 +1830,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Generated\DigitalOcean\Model\ResponseVpcNatGateways::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseVpcNatGatewaysNormalizer::class,
         
+        \Jane\Generated\DigitalOcean\Model\ResponseVpcNatGatewayCreate::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseVpcNatGatewayCreateNormalizer::class,
+        
         \Jane\Generated\DigitalOcean\Model\ResponseVpcNatGateway::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseVpcNatGatewayNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\ResponseVpcNatGatewayUpdate::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseVpcNatGatewayUpdateNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\ResponseAllChecks::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseAllChecksNormalizer::class,
         
@@ -1811,6 +1847,12 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Jane\Generated\DigitalOcean\Model\ResponseExistingAlert::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseExistingAlertNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\V2AccountKeysSshKeyIdentifierPutBody::class => \Jane\Generated\DigitalOcean\Normalizer\V2AccountKeysSshKeyIdentifierPutBodyNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasPostBody::class => \Jane\Generated\DigitalOcean\Normalizer\V2AddOnsSaasPostBodyNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasResourceUuidPatchBody::class => \Jane\Generated\DigitalOcean\Normalizer\V2AddOnsSaasResourceUuidPatchBodyNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasResourceUuidPlanPatchBody::class => \Jane\Generated\DigitalOcean\Normalizer\V2AddOnsSaasResourceUuidPlanPatchBodyNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\V2DatabasesPostBody::class => \Jane\Generated\DigitalOcean\Normalizer\V2DatabasesPostBodyNormalizer::class,
         
@@ -1959,6 +2001,15 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Generated\DigitalOcean\Model\MetaMeta::class => false,
             \Jane\Generated\DigitalOcean\Model\Region::class => false,
             \Jane\Generated\DigitalOcean\Model\Action::class => false,
+            \Jane\Generated\DigitalOcean\Model\AddonsFeature::class => false,
+            \Jane\Generated\DigitalOcean\Model\AddonsDimensionVolumeWithPrice::class => false,
+            \Jane\Generated\DigitalOcean\Model\AddonsDimensionWithPrice::class => false,
+            \Jane\Generated\DigitalOcean\Model\AddonsPlan::class => false,
+            \Jane\Generated\DigitalOcean\Model\AddonsAppInfo::class => false,
+            \Jane\Generated\DigitalOcean\Model\AddonsAppMetadata::class => false,
+            \Jane\Generated\DigitalOcean\Model\AddonsResourceMetadata::class => false,
+            \Jane\Generated\DigitalOcean\Model\AddonsResource::class => false,
+            \Jane\Generated\DigitalOcean\Model\AddonsResourceNew::class => false,
             \Jane\Generated\DigitalOcean\Model\AppsDeploymentJob::class => false,
             \Jane\Generated\DigitalOcean\Model\AppsDeploymentFunctions::class => false,
             \Jane\Generated\DigitalOcean\Model\AppsDeploymentProgressStepReason::class => false,
@@ -2465,6 +2516,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Generated\DigitalOcean\Model\VpcNatGatewayCreate::class => false,
             \Jane\Generated\DigitalOcean\Model\VpcNatGatewayCreateVpcsItem::class => false,
             \Jane\Generated\DigitalOcean\Model\VpcNatGatewayUpdate::class => false,
+            \Jane\Generated\DigitalOcean\Model\VpcNatGatewayUpdateVpcsItem::class => false,
             \Jane\Generated\DigitalOcean\Model\CheckBase::class => false,
             \Jane\Generated\DigitalOcean\Model\CheckUpdatable::class => false,
             \Jane\Generated\DigitalOcean\Model\Check::class => false,
@@ -2656,6 +2708,12 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Generated\DigitalOcean\Model\ResponseSshKeysExisting::class => false,
             \Jane\Generated\DigitalOcean\Model\ResponseActions::class => false,
             \Jane\Generated\DigitalOcean\Model\ResponseAction::class => false,
+            \Jane\Generated\DigitalOcean\Model\ResponseAddonsGetApp::class => false,
+            \Jane\Generated\DigitalOcean\Model\ResponseAddonsGetAppMetadata::class => false,
+            \Jane\Generated\DigitalOcean\Model\ResponseAddonsList::class => false,
+            \Jane\Generated\DigitalOcean\Model\ResponseAddonsCreate::class => false,
+            \Jane\Generated\DigitalOcean\Model\ResponseAddonsGet::class => false,
+            \Jane\Generated\DigitalOcean\Model\ResponseAddonsUpdate::class => false,
             \Jane\Generated\DigitalOcean\Model\ResponseAppsValidateRollback::class => false,
             \Jane\Generated\DigitalOcean\Model\ResponseAppsValidateRollbackError::class => false,
             \Jane\Generated\DigitalOcean\Model\ResponseAllCdnEndpoints::class => false,
@@ -2830,13 +2888,18 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Generated\DigitalOcean\Model\ResponseActiveVpcPeering::class => false,
             \Jane\Generated\DigitalOcean\Model\ResponseDeletingVpcPeering::class => false,
             \Jane\Generated\DigitalOcean\Model\ResponseVpcNatGateways::class => false,
+            \Jane\Generated\DigitalOcean\Model\ResponseVpcNatGatewayCreate::class => false,
             \Jane\Generated\DigitalOcean\Model\ResponseVpcNatGateway::class => false,
+            \Jane\Generated\DigitalOcean\Model\ResponseVpcNatGatewayUpdate::class => false,
             \Jane\Generated\DigitalOcean\Model\ResponseAllChecks::class => false,
             \Jane\Generated\DigitalOcean\Model\ResponseExistingCheck::class => false,
             \Jane\Generated\DigitalOcean\Model\ResponseExistingCheckState::class => false,
             \Jane\Generated\DigitalOcean\Model\ResponseAllAlerts::class => false,
             \Jane\Generated\DigitalOcean\Model\ResponseExistingAlert::class => false,
             \Jane\Generated\DigitalOcean\Model\V2AccountKeysSshKeyIdentifierPutBody::class => false,
+            \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasPostBody::class => false,
+            \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasResourceUuidPatchBody::class => false,
+            \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasResourceUuidPlanPatchBody::class => false,
             \Jane\Generated\DigitalOcean\Model\V2DatabasesPostBody::class => false,
             \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidMigratePutBody::class => false,
             \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidFirewallPutBody::class => false,

@@ -6,6 +6,6 @@ class ExecIdStartPostBodyConstraint extends \Symfony\Component\Validator\Constra
 {
     protected function getConstraints($options): array
     {
-        return [new \Symfony\Component\Validator\Constraints\Collection(['fields' => ['Detach' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\Type(['0' => 'bool'])]), 'Tty' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\Type(['0' => 'bool'])])], 'allowExtraFields' => true])];
+        return [new \Symfony\Component\Validator\Constraints\Collection(fields: ['Detach' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\Type(type: ['bool'])]), 'Tty' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\Type(type: ['bool'])])], allowExtraFields: true)];
     }
 }

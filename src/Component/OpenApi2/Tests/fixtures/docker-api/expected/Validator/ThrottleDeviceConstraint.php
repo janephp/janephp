@@ -6,6 +6,6 @@ class ThrottleDeviceConstraint extends \Symfony\Component\Validator\Constraints\
 {
     protected function getConstraints($options): array
     {
-        return [new \Symfony\Component\Validator\Constraints\Collection(['fields' => ['Path' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\Type(['0' => 'string'])]), 'Rate' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\GreaterThanOrEqual(['value' => 0.0]), new \Symfony\Component\Validator\Constraints\Type(['0' => 'integer'])])], 'allowExtraFields' => true])];
+        return [new \Symfony\Component\Validator\Constraints\Collection(fields: ['Path' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\Type(type: ['string'])]), 'Rate' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\GreaterThanOrEqual(value: 0.0), new \Symfony\Component\Validator\Constraints\Type(type: ['integer'])])], allowExtraFields: true)];
     }
 }

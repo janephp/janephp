@@ -43,8 +43,15 @@ class ApiEvaluationMetricNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('inverted', $data) && \is_int($data['inverted'])) {
             $data['inverted'] = (bool) $data['inverted'];
         }
+        if (\array_key_exists('is_metric_goal', $data) && \is_int($data['is_metric_goal'])) {
+            $data['is_metric_goal'] = (bool) $data['is_metric_goal'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
+        }
+        if (\array_key_exists('category', $data)) {
+            $object->setCategory($data['category']);
+            unset($data['category']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
@@ -54,9 +61,17 @@ class ApiEvaluationMetricNormalizer implements DenormalizerInterface, Normalizer
             $object->setInverted($data['inverted']);
             unset($data['inverted']);
         }
+        if (\array_key_exists('is_metric_goal', $data)) {
+            $object->setIsMetricGoal($data['is_metric_goal']);
+            unset($data['is_metric_goal']);
+        }
         if (\array_key_exists('metric_name', $data)) {
             $object->setMetricName($data['metric_name']);
             unset($data['metric_name']);
+        }
+        if (\array_key_exists('metric_rank', $data)) {
+            $object->setMetricRank($data['metric_rank']);
+            unset($data['metric_rank']);
         }
         if (\array_key_exists('metric_type', $data)) {
             $object->setMetricType($data['metric_type']);
@@ -88,14 +103,23 @@ class ApiEvaluationMetricNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
+        if ($data->isInitialized('category') && null !== $data->getCategory()) {
+            $dataArray['category'] = $data->getCategory();
+        }
         if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
         if ($data->isInitialized('inverted') && null !== $data->getInverted()) {
             $dataArray['inverted'] = $data->getInverted();
         }
+        if ($data->isInitialized('isMetricGoal') && null !== $data->getIsMetricGoal()) {
+            $dataArray['is_metric_goal'] = $data->getIsMetricGoal();
+        }
         if ($data->isInitialized('metricName') && null !== $data->getMetricName()) {
             $dataArray['metric_name'] = $data->getMetricName();
+        }
+        if ($data->isInitialized('metricRank') && null !== $data->getMetricRank()) {
+            $dataArray['metric_rank'] = $data->getMetricRank();
         }
         if ($data->isInitialized('metricType') && null !== $data->getMetricType()) {
             $dataArray['metric_type'] = $data->getMetricType();
