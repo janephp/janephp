@@ -15,7 +15,9 @@ class Application extends JsonSchemaApplication
     {
         $configLoader = new ConfigLoader();
 
-        $this->add(new GenerateCommand($configLoader, new SchemaLoader(), new OpenApiMatcher()));
-        $this->add(new DumpConfigCommand($configLoader));
+        $this->addCommands([
+            new GenerateCommand($configLoader, new SchemaLoader(), new OpenApiMatcher()),
+            new DumpConfigCommand($configLoader),
+        ]);
     }
 }

@@ -26,7 +26,9 @@ class Application extends BaseApplication
     {
         $configLoader = new ConfigLoader();
 
-        $this->add(new GenerateCommand($configLoader, new SchemaLoader()));
-        $this->add(new DumpConfigCommand($configLoader));
+        $this->addCommands([
+            new GenerateCommand($configLoader, new SchemaLoader()),
+            new DumpConfigCommand($configLoader),
+        ]);
     }
 }

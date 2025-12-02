@@ -49,13 +49,13 @@
         "doctrine/annotations": "^2.0",
         "friendsofphp/php-cs-fixer": "^3.59",
         "jms/serializer": "^3.28",
-        "kriswallsmith/buzz": "^1.2",
         "moneyphp/money": "^3.3",
         "nyholm/psr7": "^1.8",
         "phpbench/phpbench": "^1.3",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpunit/phpunit": "^9.0",
         "symfony/framework-bundle": "^6.4 || ^7.0 || ^8.0",
+        "symfony/http-client": "^6.4 || ^7.0 || ^8.0",
         "symfony/uid": "^6.4 || ^7.0 || ^8.0"
     },
 
