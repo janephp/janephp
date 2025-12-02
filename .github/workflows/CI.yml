@@ -45,19 +45,19 @@ jobs:
         symfony-require: ['']
         include:
           - php-versions: '8.4'
-            symfony-require: '6.4'
+            symfony-require: '6.4.*'
           - php-versions: '8.4'
-            symfony-require: '7.0'
+            symfony-require: '7.0.*'
           - php-versions: '8.4'
-            symfony-require: '7.1'
+            symfony-require: '7.1.*'
           - php-versions: '8.4'
-            symfony-require: '7.2'
+            symfony-require: '7.2.*'
           - php-versions: '8.4'
-            symfony-require: '7.3'
+            symfony-require: '7.3.*'
           - php-versions: '8.4'
-            symfony-require: '7.4'
+            symfony-require: '7.4.*'
           - php-versions: '8.4'
-            symfony-require: '8.0'
+            symfony-require: '8.0.*'
     env:
       SYMFONY_REQUIRE: ${{ matrix.symfony-require }}
     name: tests-${{ matrix.php-versions }} - SF ${{ matrix.symfony-require }}
