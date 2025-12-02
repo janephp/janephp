@@ -96,6 +96,9 @@
         "sort-packages": true,
         "allow-plugins": {
             "php-http/discovery": false
+        },
+        "audit": {
+            "block-insecure": false
         }
     },
     "minimum-stability": "dev",
