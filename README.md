@@ -29,7 +29,7 @@ View the [CONTRIBUTING](CONTRIBUTING.md) file attached to this project.
 ## Credits
 
 * [All contributors](https://github.com/janephp/jane/graphs/contributors)
-* [Alexandre Godreau](https://www.instagram.com/coucou.alex/) for our logo
+* [Alexandre Godreau](https://www.instagram.com/studio.limace/) for our logo
 
 ## License
 
