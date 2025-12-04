@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://github.com/janephp/janephp"><img src="https://jolicode.com/media/original/oss/headers/jane.png" alt="jane"></a>
+  <a href="https://github.com/janephp/janephp"><img src="https://jolicode.com/media/original/oss/headers/jane.png?v2" alt="jane"></a>
   <br />
   Jane
   <br />
