@@ -12,12 +12,6 @@ jobs:
       - name: checkout
         run: git clone https://github.com/janephp/janephp /home/runner/work/janephp/janephp && cd /home/runner/work/janephp/janephp
 
-      - name: docker-cache
-        uses: satackey/action-docker-layer-caching@v0.0.8
-        continue-on-error: true
-        with:
-          key: docker-{hash}
-          restore-keys: docker-
       - name: gitsplit-cache
         uses: actions/cache@v4
         with:
