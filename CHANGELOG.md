@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [8.0.0] - 2025-12-04
+## [7.10.0] - 2025-12-04
 ### Added
 - [Jane] [GH#855](https://github.com/janephp/janephp/pull/855) Add PHPStan
 - [Jane] [GH#856](https://github.com/janephp/janephp/pull/856) Add bundle tests
@@ -807,8 +807,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v8.0.0...HEAD
-[8.0.0]: https://github.com/janephp/janephp/compare/v7.9.0...v8.0.0
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.10.0...HEAD
+[7.10.0]: https://github.com/janephp/janephp/compare/v7.9.0...v7.10.0
 [7.9.0]: https://github.com/janephp/janephp/compare/v7.8.1...v7.9.0
 [7.8.1]: https://github.com/janephp/janephp/compare/v7.8.0...v7.8.1
 [7.8.0]: https://github.com/janephp/janephp/compare/v7.7.0...v7.8.0
