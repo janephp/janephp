@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [7.10.1] - 2025-12-08
+### Fixed
+- [Jane] [GH#886](https://github.com/janephp/janephp/pull/886) Fix version constraint for Symfony 8
+
 ## [7.10.0] - 2025-12-04
 ### Added
 - [Jane] [GH#855](https://github.com/janephp/janephp/pull/855) Add PHPStan
@@ -807,7 +811,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.10.0...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.10.1...HEAD
+[7.10.1]: https://github.com/janephp/janephp/compare/v7.10.0...v7.10.1
 [7.10.0]: https://github.com/janephp/janephp/compare/v7.9.0...v7.10.0
 [7.9.0]: https://github.com/janephp/janephp/compare/v7.8.1...v7.9.0
 [7.8.1]: https://github.com/janephp/janephp/compare/v7.8.0...v7.8.1
